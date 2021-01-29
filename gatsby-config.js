@@ -9,10 +9,10 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Make a Gift`,
-    description: `Make a Gift to Stanford`,
-    author: `Stanford University Office of Development`,
-    siteUrl: `https://makeagift-preview.stanford.edu`,
+    title: `Stanford Alumni`,
+    description: `Stanford Alumni Association`,
+    author: `Stanford University Alumni Association`,
+    siteUrl: `https://alumni-preview.stanford.edu`,
   },
   plugins: [
     `gatsby-plugin-anchor-links`,
@@ -52,7 +52,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Make a Gift`,
+        name: `Alumni`,
         start_url: `/`,
         include_favicon: false,
         crossOrigin: `use-credentials`,

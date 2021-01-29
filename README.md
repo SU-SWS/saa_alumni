@@ -1,14 +1,14 @@
-# [ADAPT OOD Make A Gift](https://github.com/SU-SWS/ood_online_giving)
+# [ADAPT SAA Alumni](https://github.com/SU-SWS/saa_alumni)
 ##### Version: 1.0.0
 
-<a href="https://codeclimate.com/github/SU-SWS/ood_online_giving/maintainability"><img src="https://api.codeclimate.com/v1/badges/a6f5fe28e280f0999a95/maintainability" /></a>
+<a href="https://codeclimate.com/github/SU-SWS/saa_alumni/maintainability"><img src="https://api.codeclimate.com/v1/badges/6545d64d90025f75e2c8/maintainability" /></a>
 
 Changelog: [Changelog.md](CHANGELOG.md)
 
 Description
 ---
 
-Netlify hosted, Gatsby built, storyblok headless cms site for makeagift.stanford.edu
+Netlify hosted, Gatsby built, storyblok headless cms site for alumni.stanford.edu
 
 
 Installation
