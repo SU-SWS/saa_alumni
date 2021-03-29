@@ -1,0 +1,69 @@
+/**
+ * Credit where credit is deserved.
+ * @see: https://github.com/christo-pr/dangerously-set-html-content
+ *
+ * Use this widget with caution. There are no safeguards on what it can do. It
+ * is also not good practice to inject and manipulate the page outside of
+ * REACT as that can lead to irregularities and troubles.
+ */
+
+import React, { useEffect, useRef } from "react";
+import SbEditable from "storyblok-react";
+
+const Embed = (props) => {
+
+  let premarkup, postmarkup;
+  const myEmbed = useRef(null);
+  const markup = props.blok?.markup;
+
+  if (props.blok?.pre_markup) {
+    premarkup = (<div
+      dangerouslySetInnerHTML={{
+        __html: props.blok.pre_markup,
+      }}
+    />)
+  }
+
+  if (props.blok?.post_markup) {
+    postmarkup = (<div
+      dangerouslySetInnerHTML={{
+        __html: props.blok.post_markup,
+      }}
+    />)
+  }
+
+  useEffect(() => {
+    if (!markup) return;
+
+    // Create a 'tiny' document and parse the html string.
+    // https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
+    const miniDom = document.createRange().createContextualFragment(markup);
+
+    // Force the scripts in the embed script field to load sync.
+    const scripts = miniDom.querySelectorAll('script')
+    if (scripts.length >= 1) {
+      for (let item of scripts) {
+        if (item.src && item.src.length > 1) {
+          item.async = 0;
+          item.defer = 0;
+        }
+      }
+    }
+
+    // Clear the container.
+    myEmbed.current.innerHTML = '';
+
+    // Append the new content.
+    myEmbed.current.appendChild(miniDom);
+  }, [markup]);
+
+  return (
+    <SbEditable content={props.blok}>
+      {premarkup}
+      <div ref={myEmbed} />
+      {postmarkup}
+    </SbEditable>
+  )
+}
+
+export default Embed;

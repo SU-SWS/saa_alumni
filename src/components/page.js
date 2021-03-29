@@ -1,10 +1,24 @@
 import React from 'react'
-import Components from './components.js';
+import SbEditable from "storyblok-react"
+import CreateBloks from "../utilities/createBloks";
+import Footer from "./partials/footer";
+import RichTextRenderer from "../utilities/richTextRenderer";
 
-const Page = (props) => (
-  <div>
-    {props.blok.body && props.blok.body.map((blok) => React.createElement(Components(blok.component), {key: blok._uid, blok: blok}))}
-  </div>
-)
+const Page = (props) => {
+  return (
+    <SbEditable content={props.blok}>
+      <div className='su-flex su-flex-col su-min-h-screen'>
+        <header>
+          <h1>{props.blok.title}</h1>
+          <RichTextRenderer wysiwyg={props.blok.intro} />
+        </header>
+        <main className='su-flex-grow'>
+          <CreateBloks blokSection={props.blok.body}/>
+        </main>
+        <Footer {...props}/>
+      </div>
+    </SbEditable>
+  )
+}
 
 export default Page
