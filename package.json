@@ -5,6 +5,7 @@
   "author": "Stanford University | Alumni Association",
   "dependencies": {
     "@heroicons/react": "^1.0.0",
+    "decanter-react": "github:SU-SWS/decanter-react#main",
     "gatsby": "^2.31.1",
     "gatsby-plugin-anchor-links": "^1.2.0",
     "gatsby-plugin-manifest": "^2.10.0",
@@ -21,7 +22,8 @@
     "react-loader-spinner": "^3.1.14",
     "react-refresh": "^0.8.3",
     "sanitize-html": "^1.27.5",
-    "storyblok-react": "^0.1.2"
+    "storyblok-react": "^0.1.2",
+    "storyblok-rich-text-react-renderer": "^2.3.1"
   },
   "keywords": [
     "Stanford"
