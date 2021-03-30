@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header';
 import Footer from './footer';
-import SEO from './SEO';
+import Seo from './Seo';
 import { FlexBox } from "decanter-react";
 
 /**
@@ -10,7 +10,7 @@ import { FlexBox } from "decanter-react";
  */
 const Layout = (props) => (
   <>
-    <SEO {...props} />
+    <Seo {...props} />
     <FlexBox direction='col' className='su-min-h-screen su-overflow-x-hidden'>
       <Header {...props} />
         {props.children}

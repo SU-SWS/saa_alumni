@@ -11,7 +11,7 @@ import transformImage from "../../utilities/transformImage";
  * and thus returns a string, not an object like the new asset block.
  */
 
-const SEO = (props) => {
+const Seo = (props) => {
   const { title, description } = UseSiteMetadata();
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
@@ -78,4 +78,4 @@ const SEO = (props) => {
   )
 }
 
-export default SEO;
+export default Seo;
