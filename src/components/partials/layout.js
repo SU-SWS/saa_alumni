@@ -4,11 +4,10 @@ import Footer from './footer';
 import SEO from './SEO';
 import { FlexBox } from "decanter-react";
 
-/*
-** The Layout component is referenced and used in all page-type components.
-** It incorporates the Header and sticky Footer, based on page settings.
-*/
-
+/**
+ * The Layout component is referenced and used in all page-type components.
+ * It incorporates the Header and sticky Footer, based on page settings.
+ */
 const Layout = (props) => (
   <>
     <SEO {...props} />

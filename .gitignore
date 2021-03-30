@@ -60,3 +60,6 @@ typings/
 public
 yarn-error.log
 .DS_Store
+
+# Local Netlify folder
+.netlify
