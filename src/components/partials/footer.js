@@ -12,7 +12,7 @@ const Footer = (props) => (
   <SbEditable content={props.blok}>
     <Container element='footer' width='full' className='su-flex-grow-0 su-relative'>
       <CreateBloks blokSection={props.blok.localFooter} />
-      <GlobalFooter color={props.blok.globalFooterColor} />
+      <GlobalFooter color='black' className='su-bg-saa-black' />
     </Container>
   </SbEditable>
 )

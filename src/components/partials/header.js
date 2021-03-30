@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, IdentityBar, Skiplink } from 'decanter-react';
+import { Container, Skiplink } from 'decanter-react';
 import CreateBloks from '../../utilities/createBloks';
 
 /**
@@ -12,7 +12,6 @@ const Header = (props) => (
   <SbEditable content={props.blok}>
     <Container element='header' width='full' className='su-shadow su-relative su-z-20'>
       <Skiplink />
-      <IdentityBar color={props.blok.idBarColor} />
       <CreateBloks blokSection={props.blok.localHeader} />
     </Container>
   </SbEditable>
