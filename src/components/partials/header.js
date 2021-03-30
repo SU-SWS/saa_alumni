@@ -12,7 +12,7 @@ const Header = (props) => (
   <SbEditable content={props.blok}>
     <Container element='header' width='full' className='su-shadow su-relative su-z-20'>
       <Skiplink />
-      <CreateBloks blokSection={props.blok.localHeader} />
+      {/*<CreateBloks blokSection={props.blok.localHeader} />*/}
     </Container>
   </SbEditable>
 )
