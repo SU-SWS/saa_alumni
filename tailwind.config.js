@@ -62,7 +62,6 @@ module.exports = {
 
     // @tailwind utilities;
     require(decanter + '/utilities/accessibility/accessibility-hidden.js')(),
-    require(decanter + '/utilities/accessibility/sr-only-text.js')(),
     require(decanter + '/utilities/link/link.js')(),
     require(decanter + '/utilities/link/link-fontweight.js')(),
     require(decanter + '/utilities/link/link-underline.js')(),

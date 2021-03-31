@@ -7,7 +7,10 @@
 import React from 'react';
 
 // Contexts.
-import { GlobalStateProvider } from "./src/contexts/GlobalContext";
+import { GlobalStateProvider } from './src/contexts/GlobalContext';
+
+// CSS
+import './src/styles/global.css';
 
 // Exports.
 export const wrapRootElement = ({ element }) => (
