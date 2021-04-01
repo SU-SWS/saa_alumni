@@ -17,17 +17,16 @@ const LocalFooter = (props) => {
   return (
     <SbEditable content={props.blok}>
       <Container className='su-bg-saa-black su-text-white' width='site'>
-        <div className='su-rs-mb-0 xl:su-mb-0'>
-          <CreateBloks blokSection={props.blok.column1} classes='su-rs-mb-3 last:su-mb-0' />
+        <div className='su-rs-pt-10 su-rs-pb-6 su-w-200 xl:su-w-300'>
+          <img src='/images/saa-logo-white.svg' width='300' />
         </div>
-        <div className='su-rs-mb-0 xl:su-mb-0'>
-          <CreateBloks blokSection={props.blok.column2} classes='su-rs-mb-3 last:su-mb-0' />
-        </div>
-        <div className={col3Classes}>
-          <CreateBloks blokSection={props.blok.column3} classes='su-rs-mb-3 last:su-mb-0' />
-        </div>
-        <div className={col4Classes}>
-          <CreateBloks blokSection={props.blok.column4} classes='su-rs-mb-3 last:su-mb-0' />
+        <div>
+          <div className='su-font-semibold su-pb-02em'><strong>{props.blok.organization}</strong></div>
+          <address>
+            <div className='su-pb-02em'>{props.blok.address1}</div>
+            <div className='su-pb-02em'>{props.blok.address2}</div>
+            <div>{props.blok.address3}</div>
+          </address>
         </div>
       </Container>
     </SbEditable>

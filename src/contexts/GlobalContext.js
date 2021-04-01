@@ -11,7 +11,6 @@ import React, { useReducer, createContext } from "react"
 
 // Constants.
 export const isBrowser = typeof window !== `undefined`;
-export const basePath = process.env.GATSBY_BASE_URL ?? '/';
 export const assetURL = process.env.GATSBY_ASSET_URL ?? 'https://a.storyblok.com/';
 export const imageURL = process.env.GATSBY_IMAGE_URL ?? 'https://img2.storyblok.com/';
 export const isNetlify = process.env.GATSBY_NETLIFY || process.env.NETLIFY || false;

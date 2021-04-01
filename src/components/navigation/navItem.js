@@ -1,6 +1,6 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import SbLink from "../../utilities/sbLink";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import SbLink from '../../utilities/sbLink';
 
 const NavItem = (props) => (
   <SbEditable content={props.blok}>
@@ -10,6 +10,6 @@ const NavItem = (props) => (
       </SbLink>
     </li>
   </SbEditable>
-)
+);
 
 export default NavItem;

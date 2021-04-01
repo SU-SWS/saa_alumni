@@ -3,6 +3,7 @@ import Embed from './embed/embed';
 import InteriorPage from './page-types/interiorPage';
 import LinkGroup from "./navigation/linkGroup";
 import LocalFooter from './identity/localFooter';
+import LocalFooterPicker from './identity/localFooterPicker';
 import NavItem from "./navigation/navItem";
 import Page from './page';
 import Wysiwyg from "./simple/wysiwyg";
@@ -12,6 +13,7 @@ const ComponentList = {
   interiorPage: InteriorPage,
   linkGroup: LinkGroup,
   localFooter: LocalFooter,
+  localFooterPicker: LocalFooterPicker,
   navItem: NavItem,
   page: Page,
   wysiwyg: Wysiwyg
