@@ -93,7 +93,7 @@ class StoryblokEntry extends React.Component {
       if (this.state.story && payload.story.id === this.state.story.id) {
         payload.story.content = sb.addComments(payload.story.content, payload.story.id)
         sb.resolveRelations(payload.story, sbConfig.options.resolveRelations ||
-          [],
+          ['localFooterPicker.localFooter'],
           () => {
             this.setState({story: payload.story})
           })

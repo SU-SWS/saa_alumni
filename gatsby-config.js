@@ -44,7 +44,9 @@ module.exports = {
       options: {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
         homeSlug: 'home',
-        resolveRelations: [],
+        resolveRelations: [
+          'localFooterPicker.localFooter',
+        ],
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'  // show only published on the front end site
         // version: 'draft'  // would show any including drafts
       }
