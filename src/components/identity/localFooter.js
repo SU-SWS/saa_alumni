@@ -1,10 +1,12 @@
-import React from "react";
-import CreateBloks from "../../utilities/createBloks";
-import getNumBloks from "../../utilities/getNumBloks";
-import SbEditable from "storyblok-react";
-import { Container, Grid, GridCell } from 'decanter-react';
-import getImageWidth from "../../utilities/getImageWidth";
-import transformImage from "../../utilities/transformImage";
+import React from 'react';
+import CreateBloks from '../../utilities/createBloks';
+import SbEditable from 'storyblok-react';
+import { Container, Grid, GridCell, SrOnlyText } from 'decanter-react';
+import getImageWidth from '../../utilities/getImageWidth';
+import transformImage from '../../utilities/transformImage';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import SbLink from '../../utilities/sbLink';
 
 const LocalFooter = (props) => {
   // Display background image option
@@ -21,8 +23,7 @@ const LocalFooter = (props) => {
       // Downsize image if it's wider than 2000px, otherwise just reduce jpg quality to 60%
       if (originalWidth > 2000) {
         processedImg = transformImage(props.blok.bgImage.filename, '/2000x0');
-      }
-      else {
+      } else {
         processedImg = transformImage(props.blok.bgImage.filename, '');
       }
 
@@ -38,10 +39,10 @@ const LocalFooter = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <Container className='su-bg-saa-black su-text-white su-border-b su-border-solid su-border-black-80' width='full'>
+      <Container className='su-bg-saa-black su-text-white su-link-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
         <div>
           <Container style={bgImageStyle}>
-            <img src='/images/saa-logo-white.svg' className='su-rs-pt-10 su-rs-pb-6 su-w-200 md:su-w-300 2xl:su-w-[350px]' />
+            <img src='/images/saa-logo-white.svg' className='su-rs-pt-10 su-rs-pb-6 su-w-200 md:su-w-300 2xl:su-w-[350px]'/>
           </Container>
         </div>
         <Container className='su-rs-pb-5'>
@@ -51,8 +52,44 @@ const LocalFooter = (props) => {
               <address>
                 <div className='su-pb-02em'>{props.blok.address1}</div>
                 <div className='su-pb-02em'>{props.blok.address2}</div>
-                <div>{props.blok.address3}</div>
+                <div className='su-pb-02em'>{props.blok.address3}</div>
               </address>
+              <SbLink link={props.blok.mapLink} classes='su-inline-block su-rs-mb-3'>Map</SbLink>
+              <ul className='su-list-unstyled su-rs-mb-4'>
+                <CreateBloks blokSection={props.blok.actionLinks} />
+              </ul>
+              <ul className='su-flex su-list-unstyled su-link-primary-black-20'>
+                <li className='su-mr-1em'>
+                  <SbLink link={props.blok.fbLink}>
+                    <SrOnlyText srText='Facebook Page' />
+                    <FontAwesomeIcon icon={faFacebookF} aria-hidden='true' size='lg' />
+                  </SbLink>
+                </li>
+                <li className='su-mr-1em'>
+                  <SbLink link={props.blok.fbLink}>
+                    <SrOnlyText srText='LinkedIn Page' />
+                    <FontAwesomeIcon icon={faLinkedinIn} aria-hidden='true' size='lg' />
+                  </SbLink>
+                </li>
+                <li className='su-mr-1em'>
+                  <SbLink link={props.blok.twitterLink}>
+                    <SrOnlyText srText='Twitter Page' />
+                    <FontAwesomeIcon icon={faTwitter} aria-hidden='true' size='lg' />
+                  </SbLink>
+                </li>
+                <li className='su-mr-1em'>
+                  <SbLink link={props.blok.igLink}>
+                    <SrOnlyText srText='Instagram Page' />
+                    <FontAwesomeIcon icon={faInstagram} aria-hidden='true' size='lg' />
+                  </SbLink>
+                </li>
+                <li>
+                  <SbLink link={props.blok.youtubeLink}>
+                    <SrOnlyText srText='Youtube Channel' />
+                    <FontAwesomeIcon icon={faYoutube} aria-hidden='true' size='lg' />
+                  </SbLink>
+                </li>
+              </ul>
             </GridCell>
             <GridCell xs={6} sm={3} md={4} xxl={3}>
               <h1>Test</h1>
@@ -61,7 +98,7 @@ const LocalFooter = (props) => {
         </Container>
       </Container>
     </SbEditable>
-  )
+  );
 };
 
 export default LocalFooter;
