@@ -5,6 +5,7 @@ import SbEditable from 'storyblok-react';
 import { Container, Grid, GridCell, SrOnlyText } from 'decanter-react';
 import getImageWidth from '../../utilities/getImageWidth';
 import transformImage from '../../utilities/transformImage';
+import SocialIconLink from '../simple/socialIconLink';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import SbLink from '../../utilities/sbLink';
@@ -62,36 +63,51 @@ const LocalFooter = (props) => {
               <ul className='su-list-unstyled su-rs-mb-4'>
                 <CreateBloks blokSection={props.blok.actionLinks} />
               </ul>
-              <ul className='su-flex su-list-unstyled su-link-black-20'>
+              <ul className='su-flex su-list-unstyled'>
                 <li className='su-mr-1em'>
-                  <SbLink link={props.blok.fbLink} classe='hover:su-text-digital-red'>
-                    <SrOnlyText srText='Facebook Page' />
-                    <FontAwesomeIcon icon={faFacebookF} aria-hidden='true' size='lg' />
-                  </SbLink>
+                  <SocialIconLink
+                    icon={faFacebookF}
+                    size='lg'
+                    srText='Facebook Page'
+                    href={props.blok.fbLink}
+                    className='su-text-black-20 hover:su-text-facebook focus:su-text-facebook su-transition-colors'
+                  />
                 </li>
                 <li className='su-mr-1em'>
-                  <SbLink link={props.blok.fbLink}>
-                    <SrOnlyText srText='LinkedIn Page' />
-                    <FontAwesomeIcon icon={faLinkedinIn} aria-hidden='true' size='lg' />
-                  </SbLink>
+                  <SocialIconLink
+                    icon={faLinkedinIn}
+                    size='lg'
+                    srText='LinkedIn Page'
+                    href={props.blok.linkedinLink}
+                    className='su-text-black-20 hover:su-text-linkedin focus:su-text-linkedin su-transition-colors'
+                  />
                 </li>
                 <li className='su-mr-1em'>
-                  <SbLink link={props.blok.twitterLink}>
-                    <SrOnlyText srText='Twitter Page' />
-                    <FontAwesomeIcon icon={faTwitter} aria-hidden='true' size='lg' />
-                  </SbLink>
+                  <SocialIconLink
+                    icon={faTwitter}
+                    size='lg'
+                    srText='Twitter Page'
+                    href={props.blok.twitterLink}
+                    className='su-text-black-20 hover:su-text-twitter focus:su-text-twitter su-transition-colors'
+                  />
                 </li>
                 <li className='su-mr-1em'>
-                  <SbLink link={props.blok.igLink}>
-                    <SrOnlyText srText='Instagram Page' />
-                    <FontAwesomeIcon icon={faInstagram} aria-hidden='true' size='lg' />
-                  </SbLink>
+                  <SocialIconLink
+                    icon={faInstagram}
+                    size='lg'
+                    srText='Instagram Page'
+                    href={props.blok.igLink}
+                    className='su-text-black-20 hover:su-text-instagram focus:su-text-instagram su-transition-colors'
+                  />
                 </li>
                 <li>
-                  <SbLink link={props.blok.youtubeLink}>
-                    <SrOnlyText srText='Youtube Channel' />
-                    <FontAwesomeIcon icon={faYoutube} aria-hidden='true' size='lg' />
-                  </SbLink>
+                  <SocialIconLink
+                    icon={faYoutube}
+                    size='lg'
+                    srText='Youtube Channel'
+                    href={props.blok.youtubeLink}
+                    className='su-text-black-20 hover:su-text-youtube focus:su-text-youtube su-transition-colors'
+                  />
                 </li>
               </ul>
             </GridCell>
