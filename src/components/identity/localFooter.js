@@ -8,6 +8,7 @@ import transformImage from '../../utilities/transformImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import SbLink from '../../utilities/sbLink';
+import { bgPositionVertical } from '../../utilities/dataSource';
 
 
 const LocalFooter = (props) => {
@@ -15,8 +16,7 @@ const LocalFooter = (props) => {
   let bgImageStyle = {};
   let processedImg = '';
 
-  // Process image and set inline background image styles if image exists,
-  // and if hide background image option is not toggled on.
+  // Process image and set inline background image if image exists
   if (props.blok.bgImage?.filename != null) {
 
     if (props.blok.bgImage.filename.startsWith('http')) {
@@ -32,18 +32,18 @@ const LocalFooter = (props) => {
       // Set background image style
       bgImageStyle = {
         backgroundImage: `linear-gradient(to bottom, transparent, #181D1C), url('${processedImg}')`,
-        backgroundSize: 'cover',
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center center'
       };
     }
   }
+
+  // Background image vertical focus
+  let bgCrop = bgPositionVertical[props.blok.vCrop] ?? bgPositionVertical['center'];
 
   return (
     <SbEditable content={props.blok}>
       <Container className='su-bg-saa-black su-text-white su-link-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
         <div>
-          <Container style={bgImageStyle} className='su-rs-pt-10 su-rs-pb-6'>
+          <Container style={bgImageStyle} className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
             <Link to='/'>
               <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
             </Link>
@@ -96,7 +96,7 @@ const LocalFooter = (props) => {
               </ul>
             </GridCell>
             <GridCell xs={6} sm={3} md={4} xxl={3}>
-              <Grid xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-lg'>
+              <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-lg' aria-label='SAA Links'>
                 <CreateBloks blokSection={props.blok.linkGroups} />
               </Grid>
               <nav aria-label='Legal links'>

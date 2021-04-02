@@ -1,9 +1,21 @@
 // Common variables for shared datasource in Storyblok
 
+export const bgPositionVertical = {
+  top: 'su-bg-top',
+  center: 'su-bg-center',
+  bottom: 'su-bg-bottom',
+};
+
 export const brandColors = {
   'cardinal-red': 'su-bg-cardinal-red',
   'digital-red': 'su-bg-digital-red',
   'black': 'su-bg-black',
+};
+
+export const objectPositionVertical = {
+  top: 'su-object-top',
+  center: 'su-object-center',
+  bottom: 'su-object-bottom',
 };
 
 export const pageBgColors = {
