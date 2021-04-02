@@ -41,8 +41,10 @@ const LocalFooter = (props) => {
     <SbEditable content={props.blok}>
       <Container className='su-bg-saa-black su-text-white su-link-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
         <div>
-          <Container style={bgImageStyle}>
-            <img src='/images/saa-logo-white.svg' className='su-rs-pt-10 su-rs-pb-6 su-w-200 md:su-w-300 2xl:su-w-[350px]'/>
+          <Container style={bgImageStyle} className='su-rs-pt-10 su-rs-pb-6'>
+            <a href='/'>
+              <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
+            </a>
           </Container>
         </div>
         <Container className='su-rs-pb-5'>
@@ -60,7 +62,7 @@ const LocalFooter = (props) => {
               </ul>
               <ul className='su-flex su-list-unstyled su-link-primary-black-20'>
                 <li className='su-mr-1em'>
-                  <SbLink link={props.blok.fbLink}>
+                  <SbLink link={props.blok.fbLink} classe='hover:su-text-[#4267B2]'>
                     <SrOnlyText srText='Facebook Page' />
                     <FontAwesomeIcon icon={faFacebookF} aria-hidden='true' size='lg' />
                   </SbLink>
@@ -92,7 +94,11 @@ const LocalFooter = (props) => {
               </ul>
             </GridCell>
             <GridCell xs={6} sm={3} md={4} xxl={3}>
-              <h1>Test</h1>
+              <nav aria-label='Legal links'>
+                <ul className='su-list-unstyled su-link-regular su-flex su-flex-wrap su-gap-x-xs su-divide-x su-divide-white su-text-17 xl:su-text-20'>
+                  <CreateBloks blokSection={props.blok.legalLinks} className='su-mb-0' />
+                </ul>
+              </nav>
             </GridCell>
           </Grid>
         </Container>

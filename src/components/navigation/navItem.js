@@ -4,7 +4,7 @@ import SbLink from '../../utilities/sbLink';
 
 const NavItem = (props) => (
   <SbEditable content={props.blok}>
-    <li>
+    <li className={props.blok.classes}>
       <SbLink link={props.blok.link} activeClass={'active'}>
         {props.blok.text}
       </SbLink>

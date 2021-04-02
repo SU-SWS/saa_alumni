@@ -13,7 +13,7 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // Storyblok link object either has a url (external links)
   // or cached_url (internal or asset links)
-  let linkUrl = props.link.url || props.link.cached_url;
+  let linkUrl = props.link?.url || props.link?.cached_url || '';
 
   // Default Classes for all links.
   const linkClasses = props.classes ?? '';
@@ -47,7 +47,7 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // Story or Internal type link.
   // ---------------------------------------------------------------------------
-  if (props.link.linktype === 'story') {
+  if (props.link?.linktype === 'story') {
     // Handle the home slug.
     linkUrl = linkUrl === 'home' ? '/' : '/' + linkUrl;
     linkUrl += linkUrl.endsWith('/') ? '' : '/';
@@ -73,7 +73,7 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // External or absolute url type link.
   // ---------------------------------------------------------------------------
-  if (props.link.linktype === 'url') {
+  if (props.link?.linktype === 'url') {
     return (
       <a
         ref={ref}
@@ -89,7 +89,7 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // A link to a file or other asset.
   // ---------------------------------------------------------------------------
-  if (props.link.linktype === 'asset') {
+  if (props.link?.linktype === 'asset') {
     // Rewrite the URL to the redirect link to mask the API endpoint.
     if (isNetlify) {
       linkUrl = linkUrl.replace(
