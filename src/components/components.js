@@ -1,12 +1,12 @@
 import ComponentNotFound from './component_not_found';
 import Embed from './embed/embed';
 import InteriorPage from './page-types/interiorPage';
-import LinkGroup from "./navigation/linkGroup";
+import LinkGroup from './navigation/linkGroup';
 import LocalFooter from './identity/localFooter';
 import LocalFooterPicker from './identity/localFooterPicker';
-import NavItem from "./navigation/navItem";
+import NavItem from './navigation/navItem';
 import Page from './page';
-import Wysiwyg from "./simple/wysiwyg";
+import Wysiwyg from './simple/wysiwyg';
 
 const ComponentList = {
   embed: Embed,
@@ -17,13 +17,13 @@ const ComponentList = {
   navItem: NavItem,
   page: Page,
   wysiwyg: Wysiwyg
-}
+};
 
 const Components = (type) => {
   if (typeof ComponentList[type] === 'undefined') {
-    return ComponentNotFound
+    return ComponentNotFound;
   }
-  return ComponentList[type]
-}
+  return ComponentList[type];
+};
 
-export default Components
+export default Components;

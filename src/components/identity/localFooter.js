@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import CreateBloks from '../../utilities/createBloks';
 import SbEditable from 'storyblok-react';
 import { Container, Grid, GridCell, SrOnlyText } from 'decanter-react';
@@ -7,6 +8,7 @@ import transformImage from '../../utilities/transformImage';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import SbLink from '../../utilities/sbLink';
+
 
 const LocalFooter = (props) => {
   // Display background image option
@@ -29,7 +31,7 @@ const LocalFooter = (props) => {
 
       // Set background image style
       bgImageStyle = {
-        backgroundImage: `url('${processedImg}')`,
+        backgroundImage: `linear-gradient(to bottom, transparent, #181D1C), url('${processedImg}')`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center center'
@@ -42,13 +44,13 @@ const LocalFooter = (props) => {
       <Container className='su-bg-saa-black su-text-white su-link-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
         <div>
           <Container style={bgImageStyle} className='su-rs-pt-10 su-rs-pb-6'>
-            <a href='/'>
+            <Link to='/'>
               <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
-            </a>
+            </Link>
           </Container>
         </div>
         <Container className='su-rs-pb-5'>
-          <Grid xs={6}>
+          <Grid xs={6} gap={true}>
             <GridCell xs={6} sm={3} md={2} xxl={3}>
               <div className='su-font-semibold su-pb-02em'><strong>{props.blok.organization}</strong></div>
               <address>
@@ -60,9 +62,9 @@ const LocalFooter = (props) => {
               <ul className='su-list-unstyled su-rs-mb-4'>
                 <CreateBloks blokSection={props.blok.actionLinks} />
               </ul>
-              <ul className='su-flex su-list-unstyled su-link-primary-black-20'>
+              <ul className='su-flex su-list-unstyled su-link-black-20'>
                 <li className='su-mr-1em'>
-                  <SbLink link={props.blok.fbLink} classe='hover:su-text-[#4267B2]'>
+                  <SbLink link={props.blok.fbLink} classe='hover:su-text-digital-red'>
                     <SrOnlyText srText='Facebook Page' />
                     <FontAwesomeIcon icon={faFacebookF} aria-hidden='true' size='lg' />
                   </SbLink>
@@ -94,9 +96,13 @@ const LocalFooter = (props) => {
               </ul>
             </GridCell>
             <GridCell xs={6} sm={3} md={4} xxl={3}>
+              <Grid xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-lg'>
+                <CreateBloks blokSection={props.blok.linkGroups} />
+              </Grid>
               <nav aria-label='Legal links'>
-                <ul className='su-list-unstyled su-link-regular su-flex su-flex-wrap su-gap-x-xs su-divide-x su-divide-white su-text-17 xl:su-text-20'>
-                  <CreateBloks blokSection={props.blok.legalLinks} className='su-mb-0' />
+                <ul className='su-list-unstyled su-link-regular su-flex su-flex-wrap su-divide-x su-divide-white su-text-17 xl:su-text-20'>
+                  {/* purgecss: su-px-1em su-pl-1em su-pr-1em */}
+                  <CreateBloks blokSection={props.blok.legalLinks} />
                 </ul>
               </nav>
             </GridCell>
