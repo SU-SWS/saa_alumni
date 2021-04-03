@@ -17,7 +17,7 @@ const InteriorPage = (props) => {
               <header className={`su-rs-mt-3`}>
                 <Heading level={1} font='serif' weight='bold' size={4} className='su-mb-03em'>{props.blok.title}</Heading>
               </header>
-              <div className='su-bg-white su-rs-mt-3 su-rs-mb-7 su-link-digital-red hover:su-link-sky-dark focus:su-link-sky-dark'>
+              <div className='su-bg-white su-rs-mt-3 su-rs-mb-7'>
                 <CreateBloks blokSection={props.blok.content} />
               </div>
             </GridCell>

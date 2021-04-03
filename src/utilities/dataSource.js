@@ -9,16 +9,16 @@ export const bgPositionVertical = {
 export const heroicon = {
   'none': 'none',
   'arrow-right': 'arrow-narrow-right',
-  'external': 'arrow-up',
+  'chevron-down': 'chevron-down',
   'download': 'download',
   'email': 'mail',
-  'chevron-down': 'chevron-down',
+  'external': 'arrow-up',
 }
 
 export const ctaLinkColor = {
-  'white': 'su-text-white',
-  'black': 'su-text-saa-black',
   'bright-red': 'su-text-saa-digital-red hover:su-text-black-true focus:su-text-black-true',
+  'black': 'su-text-saa-black',
+  'white': 'su-text-white',
 }
 
 export const ctaLinkTextSize = {
