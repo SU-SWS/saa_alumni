@@ -6,11 +6,26 @@ export const bgPositionVertical = {
   bottom: 'su-bg-bottom',
 };
 
-export const brandColors = {
-  'cardinal-red': 'su-bg-cardinal-red',
-  'digital-red': 'su-bg-digital-red',
-  'black': 'su-bg-black',
-};
+export const heroicon = {
+  'none': 'none',
+  'arrow-right': 'arrow-narrow-right',
+  'external': 'arrow-up',
+  'download': 'download',
+  'email': 'mail',
+  'chevron-down': 'chevron-down',
+}
+
+export const ctaLinkColor = {
+  'white': 'su-text-white',
+  'black': 'su-text-saa-black',
+  'bright-red': 'su-text-saa-digital-red hover:su-text-black-true focus:su-text-black-true',
+}
+
+export const ctaLinkTextSize = {
+  'default': 'su-text-21 md:su-text-23',
+  'large': 'su-text-23 md:su-text-25',
+  'small': 'su-text-19 md:su-text-21'
+}
 
 export const objectPositionVertical = {
   top: 'su-object-top',
@@ -36,4 +51,10 @@ export const smallPaddingBottom = {
   lg: 'su-rs-pb-4',
   xl: 'su-rs-pb-5',
   xxl: 'su-rs-pb-6',
+};
+
+export const textAlign = {
+  left: 'su-text-left',
+  center: 'su-text-center',
+  right: 'su-text-right'
 };

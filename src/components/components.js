@@ -1,4 +1,5 @@
 import ComponentNotFound from './component_not_found';
+import CtaLink from './simple/ctaLink';
 import Embed from './embed/embed';
 import InteriorPage from './page-types/interiorPage';
 import LinkGroup from './navigation/linkGroup';
@@ -8,7 +9,9 @@ import NavItem from './navigation/navItem';
 import Page from './page';
 import Wysiwyg from './simple/wysiwyg';
 
+
 const ComponentList = {
+  ctaLink: CtaLink,
   embed: Embed,
   interiorPage: InteriorPage,
   linkGroup: LinkGroup,

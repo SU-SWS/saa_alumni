@@ -2,15 +2,13 @@ import React from 'react';
 import { Link } from 'gatsby';
 import CreateBloks from '../../utilities/createBloks';
 import SbEditable from 'storyblok-react';
-import { Container, Grid, GridCell, SrOnlyText } from 'decanter-react';
+import { Container, Grid, GridCell } from 'decanter-react';
 import getImageWidth from '../../utilities/getImageWidth';
 import transformImage from '../../utilities/transformImage';
 import SocialIconLink from '../simple/socialIconLink';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import SbLink from '../../utilities/sbLink';
 import { bgPositionVertical } from '../../utilities/dataSource';
-
 
 const LocalFooter = (props) => {
   // Display background image option
@@ -38,7 +36,7 @@ const LocalFooter = (props) => {
   }
 
   // Background image vertical focus
-  let bgCrop = bgPositionVertical[props.blok.vCrop] ?? bgPositionVertical['center'];
+  const bgCrop = bgPositionVertical[props.blok.vCrop] ?? bgPositionVertical['center'];
 
   return (
     <SbEditable content={props.blok}>
@@ -112,7 +110,7 @@ const LocalFooter = (props) => {
               </ul>
             </GridCell>
             <GridCell xs={6} sm={3} md={4} xxl={3}>
-              <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-lg' aria-label='SAA Links'>
+              <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-x-lg su-gap-y-2xl' aria-label='SAA Links'>
                 <CreateBloks blokSection={props.blok.linkGroups} />
               </Grid>
               <nav aria-label='Legal links'>
