@@ -40,13 +40,11 @@ const LocalFooter = (props) => {
   return (
     <SbEditable content={props.blok}>
       <Container className='su-bg-saa-black su-text-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
-        <div>
-          <Container style={bgImageStyle} className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
-            <Link to='/'>
-              <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
-            </Link>
-          </Container>
-        </div>
+        <Container style={bgImageStyle} width='full' className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
+          <Link to='/' className='su-block su-w-fit'>
+            <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
+          </Link>
+        </Container>
         <Container className='su-rs-pb-5'>
           <Grid xs={6} className='su-gap-y-xl sm:su-gap-x-lg md:su-gap-x-xl'>
             <GridCell xs={6} sm={3} md={2} xxl={3}>
