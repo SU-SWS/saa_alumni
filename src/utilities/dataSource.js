@@ -17,8 +17,15 @@ export const heroicon = {
 
 export const ctaLinkColor = {
   'bright-red': 'su-text-saa-digital-red hover:su-text-black-true focus:su-text-black-true',
-  'black': 'su-text-saa-black',
-  'white': 'su-text-white',
+  'black': 'su-text-saa-black hover:su-text-black focus:su-text-black',
+  'white': 'su-text-white hover:su-text-white focus:su-text-white',
+}
+
+export const ctaLinkIconColor = {
+  'bright-red-hover-black': 'su-text-saa-digital-red group-hover:su-text-black-true group-focus:su-text-black-true',
+  'bright-red-hover-white': 'su-text-saa-digital-red group-hover:su-text-white group-focus:su-text-white',
+  'black': 'su-text-black group-hover:su-text-black group-focus:su-text-black',
+  'white': 'su-text-white group-hover:su-text-white group-focus:su-text-white',
 }
 
 export const ctaLinkTextSize = {
@@ -51,6 +58,13 @@ export const smallPaddingBottom = {
   lg: 'su-rs-pb-4',
   xl: 'su-rs-pb-5',
   xxl: 'su-rs-pb-6',
+};
+
+export const tinyMarginBottom = {
+  none: '',
+  sm: 'su-mb-03em',
+  md: 'su-mb-05em',
+  lg: 'su-mb-07em',
 };
 
 export const textAlign = {

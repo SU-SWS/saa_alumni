@@ -7,7 +7,6 @@ import getImageWidth from '../../utilities/getImageWidth';
 import transformImage from '../../utilities/transformImage';
 import SocialIconLink from '../simple/socialIconLink';
 import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import SbLink from '../../utilities/sbLink';
 import { bgPositionVertical } from '../../utilities/dataSource';
 
 const LocalFooter = (props) => {
@@ -40,7 +39,7 @@ const LocalFooter = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <Container className='su-bg-saa-black su-text-white su-link-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
+      <Container className='su-bg-saa-black su-text-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
         <div>
           <Container style={bgImageStyle} className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
             <Link to='/'>
@@ -49,7 +48,7 @@ const LocalFooter = (props) => {
           </Container>
         </div>
         <Container className='su-rs-pb-5'>
-          <Grid xs={6} gap={true}>
+          <Grid xs={6} className='su-gap-y-xl sm:su-gap-x-lg md:su-gap-x-xl'>
             <GridCell xs={6} sm={3} md={2} xxl={3}>
               <div className='su-font-semibold su-pb-02em'><strong>{props.blok.organization}</strong></div>
               <address>
@@ -57,8 +56,8 @@ const LocalFooter = (props) => {
                 <div className='su-pb-02em'>{props.blok.address2}</div>
                 <div className='su-pb-02em'>{props.blok.address3}</div>
               </address>
-              <SbLink link={props.blok.mapLink} classes='su-inline-block su-rs-mb-3'>Map</SbLink>
-              <ul className='su-list-unstyled su-rs-mb-4'>
+              <CreateBloks blokSection={props.blok.mapLink} />
+              <ul className='su-list-unstyled su-rs-mt-3 su-rs-mb-4'>
                 <CreateBloks blokSection={props.blok.actionLinks} />
               </ul>
               <ul className='su-flex su-list-unstyled'>
@@ -109,7 +108,7 @@ const LocalFooter = (props) => {
                 </li>
               </ul>
             </GridCell>
-            <GridCell xs={6} sm={3} md={4} xxl={3}>
+            <GridCell xs={6} sm={3} md={4} xxl={3} className='su-link-white'>
               <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-x-lg su-gap-y-2xl' aria-label='SAA Links'>
                 <CreateBloks blokSection={props.blok.linkGroups} />
               </Grid>
