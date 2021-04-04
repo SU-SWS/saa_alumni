@@ -1,7 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { Container, Skiplink } from 'decanter-react';
-import CreateBloks from '../../utilities/createBloks';
 
 /**
  * The Header component is referenced and used in the Layout component.

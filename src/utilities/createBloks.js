@@ -9,7 +9,7 @@ const CreateBloks = (props) => {
       key: blok._uid,
       blok: blok,
       ...props
-    }))
+    }));
   }
 
   // Return null if no content provided.
