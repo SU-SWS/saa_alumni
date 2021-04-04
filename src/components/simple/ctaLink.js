@@ -64,7 +64,7 @@ const CtaLink = React.forwardRef((props, ref) => {
             ref={ref}
             link={props.blok.link}
             attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
-            classes={`su-flex su-items-center su-w-fit su-group su-transition-colors su-no-underline hover:su-underline focus:su-underline ${textColor}`}
+            classes={`su-w-fit su-group su-transition-colors su-no-underline hover:su-underline focus:su-underline ${textColor}`}
           >
             {props.blok.linkText}
             {props.blok.srText &&
@@ -76,7 +76,7 @@ const CtaLink = React.forwardRef((props, ref) => {
                     height={iconSize}
                     type='solid'
                     aria-hidden='true'
-                    className={`su-inline-block su-ml-03em ${iconRotate} ${iconColor} ${iconAnimate}`}
+                    className={`su-inline-block su-ml-03em su--mt-2 ${iconRotate} ${iconColor} ${iconAnimate}`}
               />
             }
           </SbLink>
