@@ -8,26 +8,33 @@ const CtaLink = React.forwardRef((props, ref) => {
   // Link text size
   const textSize = ctaLinkTextSize[props.blok.size] ?? ctaLinkTextSize['default'];
 
-  // Icon size
-  let iconSize;
-
-  if (props.blok.size === 'large') {
-    iconSize = 23;
-  }
-  else if (props.blok.size === 'small') {
-    iconSize = 19;
-  }
-  else {
-    iconSize = 20;
-  }
-
   // Link text color
   const textColor = ctaLinkColor[props.blok.textColor] ?? ctaLinkColor['bright-red'];
 
   // Icon color
   const iconColor = ctaLinkIconColor[props.blok.iconColor] ?? ctaLinkIconColor['bright-red'];
 
+  // Icon size/position finetuning based on icon choice
+  let iconClasses;
+
+  if (props.blok.icon === 'external') {
+    iconClasses = 'su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hover:su-rotate-45 group-focus:su-rotate-45';
+  }
+  else if (props.blok.icon === 'email') {
+    iconClasses = 'su-h-08em su-w-08em su-ml-7 su--mt-2';
+  }
+  else if (props.blok.icon === 'download') {
+    iconClasses = 'su-h-08em su-w-08em su-ml-4 su--mt-3';
+  }
+  else if (props.blok.icon === 'chevron-down') {
+    iconClasses = 'su-h-[1.1em] su-w-[1.1em] su-ml-4 su--mt-3';
+  }
+  else {
+    iconClasses = 'su-h-09em su-w-09em su-ml-6 su--mt-2';
+  }
+
   // Icon animation
+  // TODO: use cnbuilder once decanter react PR is merged
   let iconAnimate = 'su-transition-transform group-hover:su-transform group-focus:su-transform';
 
   if (props.blok.icon === 'external') {
@@ -42,13 +49,6 @@ const CtaLink = React.forwardRef((props, ref) => {
 
   // Heroicon option
   const linkIcon = heroicon[props.blok.icon] ?? heroicon['arrow-right'];
-
-  // External link icon custom rotation
-  let iconRotate;
-
-  if (props.blok.icon === 'external') {
-    iconRotate = 'su-transform su-rotate-45 group-hover:su-rotate-45 group-focus:su-rotate-45';
-  }
 
   // Horizontal alignment
   const align = textAlign[props.blok.align] ?? textAlign['left'];
@@ -72,11 +72,9 @@ const CtaLink = React.forwardRef((props, ref) => {
             }
             {props.blok.icon !== 'none' &&
               <Icon icon={linkIcon}
-                    width={iconSize}
-                    height={iconSize}
                     type='solid'
                     aria-hidden='true'
-                    className={`su-inline-block su-ml-03em su--mt-2 ${iconRotate} ${iconColor} ${iconAnimate}`}
+                    className={`su-inline-block ${iconClasses} ${iconColor} ${iconAnimate}`}
               />
             }
           </SbLink>
