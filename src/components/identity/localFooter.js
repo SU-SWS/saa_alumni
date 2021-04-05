@@ -39,13 +39,11 @@ const LocalFooter = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <Container className='su-bg-saa-black su-text-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
-        <Container style={bgImageStyle} width='full' className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
-          <Container>
-            <Link to='/' className='su-block su-w-fit'>
-              <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
-            </Link>
-          </Container>
+      <Container className='local-footer su-bg-saa-black su-text-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
+        <Container style={bgImageStyle} width='site' className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
+          <Link to='/' className='su-block su-w-fit'>
+            <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
+          </Link>
         </Container>
         <Container className='su-rs-pb-5'>
           <Grid xs={6} className='su-gap-y-xl sm:su-gap-x-lg md:su-gap-x-xl'>
@@ -113,7 +111,7 @@ const LocalFooter = (props) => {
                 <CreateBloks blokSection={props.blok.linkGroups} />
               </Grid>
               <nav aria-label='Legal links'>
-                <ul className='su-list-unstyled su-link-regular su-flex su-flex-wrap su-divide-x su-divide-white su-text-17 xl:su-text-20'>
+                <ul className='su-list-unstyled su-link-regular su-flex su-flex-wrap su-gap-y-[10px] su-items-center su-divide-x su-divide-white su-text-17 xl:su-text-20'>
                   {/* purgecss: su-px-1em su-pl-1em su-pr-1em */}
                   <CreateBloks blokSection={props.blok.legalLinks} />
                 </ul>

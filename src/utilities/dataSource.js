@@ -31,7 +31,7 @@ export const ctaLinkIconColor = {
 export const ctaLinkTextSize = {
   'default': 'su-text-21 md:su-text-23',
   'large': 'su-text-23 md:su-text-25',
-  'small': 'su-text-19 md:su-text-21'
+  'small': 'su-text-19 md:su-text-20 xl:su-text-21'
 }
 
 export const objectPositionVertical = {
