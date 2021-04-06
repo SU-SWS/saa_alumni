@@ -14,6 +14,7 @@ export const heroicon = {
   'download': 'download',
   'email': 'mail',
   'external': 'arrow-up',
+  'video': 'play'
 }
 
 export const ctaLinkColor = {

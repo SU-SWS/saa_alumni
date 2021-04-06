@@ -20,7 +20,7 @@ const CtaLink = React.forwardRef((props, ref) => {
   if (props.blok.icon === 'external') {
     iconClasses = 'su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hover:su-rotate-45 group-focus:su-rotate-45';
   }
-  else if (props.blok.icon === 'email') {
+  else if (props.blok.icon === 'email' || props.blok.icon === 'video') {
     iconClasses = 'su-h-08em su-w-08em su-ml-7 su--mt-2';
   }
   else if (props.blok.icon === 'download') {

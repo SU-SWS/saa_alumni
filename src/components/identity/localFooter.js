@@ -111,8 +111,7 @@ const LocalFooter = (props) => {
                 <CreateBloks blokSection={props.blok.linkGroups} />
               </Grid>
               <nav aria-label='Legal links'>
-                <ul className='su-list-unstyled su-link-regular su-flex su-flex-wrap su-gap-y-[10px] su-items-center su-divide-x su-divide-white su-text-17 xl:su-text-20'>
-                  {/* purgecss: su-px-1em su-pl-1em su-pr-1em */}
+                <ul className='su-list-unstyled su-link-regular su-divide-x su-divide-white su-text-17 xl:su-text-20'>
                   <CreateBloks blokSection={props.blok.legalLinks} />
                 </ul>
               </nav>
