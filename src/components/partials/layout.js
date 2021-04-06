@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './header';
 import Footer from './footer';
-import Seo from './Seo';
+import Seo from './seo';
 import { FlexBox } from "decanter-react";
 
 /**

@@ -2,13 +2,13 @@
  * Tailwind Configuration.
  */
 
-var path = require('path');
+const path = require('path');
 
 // Path to Decanter v7 Tailwind plugins
-var decanter = path.resolve(__dirname, 'node_modules/decanter/src/plugins');
+const decanter = path.resolve(__dirname, 'node_modules/decanter/src/plugins');
 
 // Path to custom Tailwind plugins for SAA
-var dir = path.resolve(__dirname, 'src/tailwind/plugins');
+const dir = path.resolve(__dirname, 'src/tailwind/plugins');
 
 module.exports = {
   mode: 'jit',
@@ -59,6 +59,7 @@ module.exports = {
     require(decanter + '/components/typography/modular-typography.js')(),
     require(decanter + '/components/typography/styles.js')(),
     require(decanter + '/components/typography/wysiwyg.js')(),
+    require(dir + '/components/underline/custom-underline.js')(),
 
     // @tailwind utilities;
     require(decanter + '/utilities/accessibility/accessibility-hidden.js')(),

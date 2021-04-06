@@ -10,27 +10,29 @@ export const heroicon = {
   'none': 'none',
   'arrow-right': 'arrow-narrow-right',
   'chevron-down': 'chevron-down',
+  'chevron-right': 'chevron-right',
   'download': 'download',
   'email': 'mail',
   'external': 'arrow-up',
 }
 
 export const ctaLinkColor = {
-  'bright-red': 'su-text-saa-digital-red hover:su-text-black-true focus:su-text-black-true',
-  'black': 'su-text-saa-black hover:su-text-black focus:su-text-black',
-  'white': 'su-text-white hover:su-text-white focus:su-text-white',
+  'bright-red-hover-black': 'su-text-saa-digital-red group-hover:su-text-black group-focus:su-text-black',
+  'bright-red-hover-white': 'su-text-saa-digital-red group-hover:su-text-black-20 group-focus:su-text-black-20',
+  'black': 'su-text-black hover:su-text-black focus:su-text-black !su-underline-saa-digital-red',
+  'white': 'su-text-black-20 hover:su-text-black-20 focus:su-text-black-20 !su-underline-saa-digital-red',
 }
 
 export const ctaLinkIconColor = {
-  'bright-red-hover-black': 'su-text-saa-digital-red group-hover:su-text-black-true group-focus:su-text-black-true',
-  'bright-red-hover-white': 'su-text-saa-digital-red group-hover:su-text-white group-focus:su-text-white',
+  'bright-red-hover-black': 'su-text-saa-digital-red group-hover:su-text-black group-focus:su-text-black',
+  'bright-red-hover-white': 'su-text-saa-digital-red group-hover:su-text-black-20 group-focus:su-text-black-20',
   'black': 'su-text-black group-hover:su-text-black group-focus:su-text-black',
-  'white': 'su-text-white group-hover:su-text-white group-focus:su-text-white',
+  'white': 'su-text-black-20 group-hover:su-text-black-20 group-focus:su-text-black-20',
 }
 
 export const ctaLinkTextSize = {
-  'default': 'su-text-21 md:su-text-23',
-  'large': 'su-text-23 md:su-text-25',
+  'default': 'su-text-20 md:su-text-21 xl:su-text-23',
+  'large': 'su-text-22 md:su-text-23 xl:su-text-25',
   'small': 'su-text-19 md:su-text-20 xl:su-text-21'
 }
 

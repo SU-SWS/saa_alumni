@@ -39,7 +39,7 @@ const LocalFooter = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <Container className='local-footer su-bg-saa-black su-text-white su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
+      <Container className='local-footer su-bg-saa-black su-text-black-20 su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
         <Container style={bgImageStyle} width='site' className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
           <Link to='/' className='su-block su-w-fit'>
             <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
@@ -106,7 +106,7 @@ const LocalFooter = (props) => {
                 </li>
               </ul>
             </GridCell>
-            <GridCell xs={6} sm={3} md={4} xxl={3} className='su-link-white'>
+            <GridCell xs={6} sm={3} md={4} xxl={3} className='su-link-black-20 su-underline-offset !su-link-underline-saa-digital-red'>
               <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-x-lg su-gap-y-2xl' aria-label='SAA Links'>
                 <CreateBloks blokSection={props.blok.linkGroups} />
               </Grid>
