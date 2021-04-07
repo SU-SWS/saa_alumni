@@ -15,9 +15,9 @@ module.exports = {
   prefix: 'su-',
 
   purge: [
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx,vue}',
+    './public/**/*.{js,html}',
   ],
+
   theme: {
     borderRadius: require(decanter + '/theme/borderRadius.js')(),
     borderWidth: require(decanter + '/theme/borderWidth.js')(),
