@@ -15,7 +15,8 @@ module.exports = {
   prefix: 'su-',
 
   purge: [
-    './public/**/*.{js,html}',
+    'src/**/*.{js,html}',
+    'public/**/*.{js,html}',
   ],
 
   theme: {
