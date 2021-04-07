@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
@@ -65,24 +64,27 @@ exports.createPages = ({ graphql, actions }) => {
 }
 
 // Alter Gatsby's webpack config.
-exports.onCreateWebpackConfig = ({
-  stage,
-  rules,
-  loaders,
-  plugins,
-  actions,
-}) => {
+exports.onCreateWebpackConfig = ({ actions, stage, plugins }) => {
+
+  // Polyfill path & fs.
   actions.setWebpackConfig({
     resolve: {
-      fallback: {
+      alias: {
         path: require.resolve("path-browserify"),
+      },
+      fallback: {
         fs: false,
       }
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        process: 'process/browser',
-      }),
-    ]
+    }
   })
+
+  // Polyfill process.
+  if (stage === 'build-javascript' || stage === 'develop') {
+    actions.setWebpackConfig({
+      plugins: [
+        plugins.provide({ process: 'process/browser' })
+      ]
+    })
+  }
+
 }
