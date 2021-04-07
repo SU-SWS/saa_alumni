@@ -45,9 +45,8 @@
     "url": "https://github.com/SU-SWS/saa_alumni"
   },
   "devDependencies": {
-    "@tailwindcss/jit": "^0.1.17",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.8",
-    "tailwindcss": "^2.0.4"
+    "tailwindcss": "^2.1.1"
   }
 }
