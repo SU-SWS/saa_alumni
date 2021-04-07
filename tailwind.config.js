@@ -5,7 +5,7 @@
 const path = require('path');
 
 // Path to Decanter v7 Tailwind plugins
-const decanter = path.resolve(__dirname, 'node_modules/decanter/src/plugins');
+const decanter = 'decanter/src/plugins';
 
 // Path to custom Tailwind plugins for SAA
 const dir = path.resolve(__dirname, 'src/tailwind/plugins');
