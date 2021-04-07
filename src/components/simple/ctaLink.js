@@ -3,6 +3,7 @@ import SbEditable from 'storyblok-react';
 import SbLink from '../../utilities/sbLink';
 import Icon from 'react-hero-icon';
 import { ctaLinkColor, ctaLinkTextSize, ctaLinkIconColor, heroicon, textAlign, tinyMarginBottom } from '../../utilities/dataSource';
+import { dcnb } from 'cnbuilder';
 
 const CtaLink = React.forwardRef((props, ref) => {
   // Link text size
@@ -34,17 +35,16 @@ const CtaLink = React.forwardRef((props, ref) => {
   }
 
   // Icon animation
-  // TODO: use cnbuilder once decanter react PR is merged
   let iconAnimate = 'su-transition-transform group-hover:su-transform group-focus:su-transform';
 
   if (props.blok.icon === 'external') {
-    iconAnimate += ' group-hover:su-translate-x-01em group-focus:su-translate-x-01em group-hover:su--translate-y-01em group-focus:su--translate-y-01em';
+    iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-x-01em group-focus:su-translate-x-01em group-hover:su--translate-y-01em group-focus:su--translate-y-01em');
   }
   else if (props.blok.icon === 'download' || props.blok.icon === 'chevron-down') {
-    iconAnimate += ' group-hover:su-translate-y-02em group-focus:su-translate-y-02em'
+    iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-y-02em group-focus:su-translate-y-02em');
   }
   else {
-    iconAnimate += ' group-hover:su-translate-x-02em group-focus:su-translate-x-02em';
+    iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-x-02em group-focus:su-translate-x-02em');
   }
 
   // Heroicon option
