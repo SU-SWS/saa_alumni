@@ -15,6 +15,7 @@ module.exports = {
   prefix: 'su-',
 
   purge: [
+    './node_modes/decanter-react/dist/**',
     './public/**',
     './src/**',
   ],
