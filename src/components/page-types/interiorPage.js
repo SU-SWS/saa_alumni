@@ -1,6 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import { Container, Grid, GridCell, Heading } from "decanter-react";
+import { Container, Grid, GridCell, Heading, Alert } from "decanter-react";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 
@@ -8,6 +8,7 @@ const InteriorPage = (props) => {
   return (
     <SbEditable content={props.blok}>
       <Layout {...props}>
+        <Alert>This is alert</Alert>
         <Container element='main'
                    id='main-content'
                    className={`su-relative su-flex-grow su-w-full`}
