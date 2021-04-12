@@ -14,11 +14,12 @@ module.exports = {
   mode: 'jit',
   prefix: 'su-',
 
-  purge: [
-    './node_modes/decanter-react/dist/**',
-    './public/**',
-    './src/**',
-  ],
+  purge: {
+    content: [
+      './src/**',
+      './node_modules/decanter-react/**'
+    ],
+  },
   theme: {
     borderRadius: require(decanter + '/theme/borderRadius.js')(),
     borderWidth: require(decanter + '/theme/borderWidth.js')(),
