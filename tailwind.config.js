@@ -14,10 +14,12 @@ module.exports = {
   mode: 'jit',
   prefix: 'su-',
 
-  purge: [
-    './public/**/*.html',
-    './src/**/*.{js,jsx,ts,tsx,vue}',
-  ],
+  purge: {
+    content: [
+      './src/**',
+      './public/**',
+    ],
+  },
   theme: {
     borderRadius: require(decanter + '/theme/borderRadius.js')(),
     borderWidth: require(decanter + '/theme/borderWidth.js')(),

@@ -33,12 +33,13 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && npm run wind",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "wind": "tailwindcss build ./src/styles/global.css -o ./public/styles/global.css"
   },
   "repository": {
     "type": "git",
@@ -46,7 +47,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.8",
+    "postcss": "^8.2.10",
     "tailwindcss": "^2.1.1"
   }
 }
