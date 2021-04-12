@@ -17,7 +17,6 @@ module.exports = {
   plugins: [
     `gatsby-plugin-anchor-links`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-postcss`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {

@@ -16,8 +16,7 @@ module.exports = {
 
   purge: {
     content: [
-      './src/**',
-      './node_modules/decanter-react/**'
+      './public/**',
     ],
   },
   theme: {
