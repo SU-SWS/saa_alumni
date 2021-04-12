@@ -10,10 +10,10 @@ const CtaLink = React.forwardRef((props, ref) => {
   const textSize = ctaLinkTextSize[props.blok.size] ?? ctaLinkTextSize['default'];
 
   // Link text color
-  const textColor = ctaLinkColor[props.blok.textColor] ?? ctaLinkColor['bright-red'];
+  const textColor = ctaLinkColor[props.blok.textColor] ?? ctaLinkColor['bright-red-hover-cardinal-red'];
 
   // Icon color
-  const iconColor = ctaLinkIconColor[props.blok.iconColor] ?? ctaLinkIconColor['bright-red'];
+  const iconColor = ctaLinkIconColor[props.blok.iconColor] ?? ctaLinkIconColor['bright-red-hover-cardinal-red'];
 
   // Icon size/position finetuning based on icon choice
   let iconClasses;
