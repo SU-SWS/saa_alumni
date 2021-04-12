@@ -16,6 +16,7 @@ module.exports = {
 
   purge: {
     content: [
+      './src/**',
       './public/**',
     ],
   },
