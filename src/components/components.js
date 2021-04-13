@@ -1,6 +1,7 @@
 import ComponentNotFound from './component_not_found';
 import CtaLink from './simple/ctaLink';
 import Embed from './embed/embed';
+import Hero from './composite/hero';
 import InteriorPage from './page-types/interiorPage';
 import LinkGroup from './navigation/linkGroup';
 import LocalFooter from './identity/localFooter';
@@ -13,6 +14,7 @@ import Wysiwyg from './simple/wysiwyg';
 const ComponentList = {
   ctaLink: CtaLink,
   embed: Embed,
+  hero: Hero,
   interiorPage: InteriorPage,
   linkGroup: LinkGroup,
   localFooter: LocalFooter,
