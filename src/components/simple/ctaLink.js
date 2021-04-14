@@ -64,7 +64,7 @@ const CtaLink = React.forwardRef((props, ref) => {
             ref={ref}
             link={props.blok.link}
             attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
-            classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hover:su-underline focus:su-underline ${textColor}`}
+            classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-custom hover:su-underline focus:su-underline ${textColor}`}
           >
             {props.blok.linkText}
             {props.blok.srText &&

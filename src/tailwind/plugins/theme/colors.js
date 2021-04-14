@@ -3,6 +3,7 @@
  */
 module.exports = function () {
   return {
+    'transparent-black': 'rgba(0,0,0,20%)',
     'saa-black': '#181D1C',
     'saa-digital-red': '#EC0909',
     'saa-red': '#B1040E',
