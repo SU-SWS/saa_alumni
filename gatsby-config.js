@@ -7,12 +7,24 @@ require("dotenv").config({
   path: `.env.${activeEnv}`,
 })
 
+/**
+ * Resolve relations for storyblok.
+ */
+const storyblokRelations = [
+  'localFooterPicker.localFooter',
+];
+
 module.exports = {
   siteMetadata: {
     title: `Stanford Alumni`,
     description: `Stanford Alumni Association`,
     author: `Stanford University Alumni Association`,
     siteUrl: `https://alumni-preview.stanford.edu`,
+
+    // This key is for metadata only and can be statically queried
+    storyblok: {
+      resolveRelations: storyblokRelations,
+    }
   },
   plugins: [
     `gatsby-plugin-anchor-links`,
@@ -44,9 +56,7 @@ module.exports = {
       options: {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
         homeSlug: 'home',
-        resolveRelations: [
-          'localFooterPicker.localFooter',
-        ],
+        resolveRelations: storyblokRelations,
         version: process.env.NODE_ENV === 'production' ? 'published' : 'draft'  // show only published on the front end site
         // version: 'draft'  // would show any including drafts
       }
