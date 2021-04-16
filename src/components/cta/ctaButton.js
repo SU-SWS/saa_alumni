@@ -12,6 +12,13 @@ const CtaButton = React.forwardRef((props, ref) => {
   // Button style
   const ctaButtonStyle = buttonStyle[props.blok.buttonStyle] ?? buttonSize['primary'];
 
+  // For all button styles other than ghost-gradient, icon color is same as text color
+  let iconColor;
+
+  if (props.blok.buttonStyle === 'ghost-gradient') {
+    iconColor = 'su-text-saa-electric-blue-light group-hover:su-text-white group-focus:su-text-white';
+  }
+
   // Icon size/position finetuning based on icon choice
   let iconClasses;
 
@@ -58,7 +65,7 @@ const CtaButton = React.forwardRef((props, ref) => {
           ref={ref}
           link={props.blok.link}
           attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
-          classes={dcnb('su-inline-block su-w-fit su-group su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline su-shadow-md', ctaButtonStyle, ctaButtonSize)}
+          classes={dcnb('su-inline-block su-w-fit su-group su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline hover:su-shadow-md focus:su-shadow-md', ctaButtonStyle, ctaButtonSize)}
         >
           {props.blok.linkText}
           {props.blok.srText &&
@@ -68,7 +75,7 @@ const CtaButton = React.forwardRef((props, ref) => {
           <Icon icon={linkIcon}
                 type='solid'
                 aria-hidden='true'
-                className={`su-inline-block ${iconClasses} ${iconAnimate}`}
+                className={`su-inline-block ${iconColor} ${iconClasses} ${iconAnimate}`}
           />
           }
         </SbLink>

@@ -9,7 +9,7 @@ module.exports = function () {
     'saa-red': '#B1040E',
     'saa-electric-blue': {
       DEFAULT: '#505EEC',
-      light: ''
+      light: '#6B77F5'
     },
     'facebook': '#4267B2',
     'twitter': '#1da1f2',

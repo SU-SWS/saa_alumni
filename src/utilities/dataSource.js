@@ -26,9 +26,9 @@ export const buttonSize = {
 export const buttonStyle = {
   'primary': 'su-border-solid su-border-3 su-border-digital-red su-bg-digital-red su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white hover:su-border-cardinal focus:su-border-cardinal-red',
   'secondary': 'su-border-solid su-border-3 su-border-digital-red su-text-saa-digital-red hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
-  'secondary-gradient': 'su-border-solid su-border-3',
-  'ghost': 'su-border-solid su-border-3 su-border-saa-digital-red su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
-  'ghost-gradient': 'su-border-solid su-border-3 su-text-white',
+  'secondary-gradient': 'su-border-solid su-border-3 su-gradient-border su-text-saa-electric-blue hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
+  'ghost': 'su-border-solid su-border-3 su-border-saa-digital-red su-bg-transparent su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'ghost-gradient': 'su-border-solid su-border-3 su-gradient-border su-text-white su-bg-transparent hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
 }
 
 export const ctaLinkColor = {
