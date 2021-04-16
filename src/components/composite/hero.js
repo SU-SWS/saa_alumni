@@ -21,7 +21,7 @@ const Hero = (props) => {
         <div className='su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black' aria-hidden='true' />
         <Container className='su-relative su-rs-pt-10 su-rs-pb-4'>
           <FlexBox direction='col'>
-            <FlexCell grow={true}>
+            <FlexCell>
               <p className='su-text-center su-text-white su-font-semibold su-leading-display su-text-m4 su-mb-0'>{props.blok.sansSuper}</p>
               <p className='su-text-center su-text-white su-font-serif su-leading-display su-text-m2 su-mb-05em'>{props.blok.serifSuper}</p>
               <Heading level={1}
@@ -31,17 +31,17 @@ const Hero = (props) => {
               >
                 {props.blok.headline}
               </Heading>
-              <p className='su-text-center su-text-white su-leading-display su-max-w-600 su-mx-auto su-big-paragraph su-mb-0'>{props.blok.sansSub}</p>
+              <p className='su-text-center su-text-white su-max-w-600 su-mx-auto su-big-paragraph su-mb-0'>{props.blok.sansSub}</p>
             </FlexCell>
-            <FlexCell>
+            <FlexCell className='su-rs-mt-3'>
               <CreateBloks blokSection={props.blok.cta} />
             </FlexCell>
             <FlexCell
               grow={false}
-              className='su-text-center su-text-white su-font-semibold su-rs-pt-4 su-font-serif su-font-regular su-text-m1'
+              className='su-text-center su-text-white su-font-semibold su-rs-mt-4 su-font-serif su-font-regular su-text-19 md:su-text-22'
             >
               <p className='su-mb-02em'>Scroll to explore</p>
-              <a href='#below-hero' className='su-block su-mx-auto su-w-fit su-group'>
+              <a href={`#${props.blok.scrollTo}`} className='su-block su-mx-auto su-w-fit su-group'>
                 <SrOnlyText srText='Jump to main content' />
                 <ArrowDownIcon
                   className='su-transition-colors su-text-saa-digital-red su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hover:su-bg-cardinal-red group-focus:su-bg-cardinal-red'

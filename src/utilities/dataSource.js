@@ -18,9 +18,17 @@ export const heroicon = {
 }
 
 export const buttonSize = {
-  'small': 'su-px-26 su-py-14 su-text-18 md:su-text-20',
-  'default': 'su-px-30 su-pt-18 su-text-20 md:su-text-24',
-  'large': 'su-px-36 su-py-23 su-text-20 md:su-text-24',
+  'small': 'su-px-26 su-pt-14 su-pb-16 su-text-18 md:su-text-20',
+  'default': 'su-px-30 su-pt-16 su-pb-18 su-text-20 md:su-text-24',
+  'large': 'su-px-36 su-pt-[22px] su-pb-[24px] su-text-20 md:su-text-24',
+}
+
+export const buttonStyle = {
+  'primary': 'su-bg-digital-red su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'secondary': '',
+  'secondary-gradient': '',
+  'ghost': '',
+  'ghost-gradient': '',
 }
 
 export const ctaLinkColor = {

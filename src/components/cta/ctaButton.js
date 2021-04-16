@@ -2,12 +2,15 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import SbLink from '../../utilities/sbLink';
 import Icon from 'react-hero-icon';
-import { buttonSize, heroicon, textAlign, tinyMarginBottom } from '../../utilities/dataSource';
+import { buttonSize, buttonStyle, heroicon, textAlign, tinyMarginBottom } from '../../utilities/dataSource';
 import { dcnb } from 'cnbuilder';
 
 const CtaButton = React.forwardRef((props, ref) => {
-  // Link text size
+  // Button size
   const ctaButtonSize = buttonSize[props.blok.size] ?? buttonSize['default'];
+
+  // Button style
+  const ctaButtonStyle = buttonStyle[props.blok.buttonStyle] ?? buttonSize['primary'];
 
   // Icon size/position finetuning based on icon choice
   let iconClasses;
@@ -58,7 +61,7 @@ const CtaButton = React.forwardRef((props, ref) => {
           ref={ref}
           link={props.blok.link}
           attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
-          classes={dcnb('su-w-fit su-group su-transition-colors su-no-underline hover:su-underline focus:su-underline', buttonSize)}
+          classes={dcnb('su-inline-block su-w-fit su-group su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline', ctaButtonStyle, ctaButtonSize)}
         >
           {props.blok.linkText}
           {props.blok.srText &&
