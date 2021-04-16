@@ -60,7 +60,7 @@ const CtaButton = React.forwardRef((props, ref) => {
   return (
     <SbEditable content={props.blok}>
       {props.blok.linkText &&
-      <div className={`su-block ${align}`}>
+      <div className={`cta-button su-block ${align}`}>
         <SbLink
           ref={ref}
           link={props.blok.link}
