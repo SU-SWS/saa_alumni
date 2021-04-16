@@ -19,6 +19,14 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {
+      resolve: 'gatsby-plugin-post-tailwind',
+      options: {
+        src: './src/styles/global.css',
+        dest: './public/styles/global.css',
+        // config: './postcss.config.js',
+      }
+    },
+    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         policy: [
