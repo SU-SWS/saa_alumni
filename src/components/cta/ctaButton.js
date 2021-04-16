@@ -65,7 +65,7 @@ const CtaButton = React.forwardRef((props, ref) => {
           ref={ref}
           link={props.blok.link}
           attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
-          classes={dcnb('su-inline-block su-w-fit su-group su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline hover:su-shadow-md focus:su-shadow-md', ctaButtonStyle, ctaButtonSize)}
+          classes={dcnb('su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline hover:su-shadow-md focus:su-shadow-md', ctaButtonStyle, ctaButtonSize)}
         >
           {props.blok.linkText}
           {props.blok.srText &&

@@ -24,11 +24,11 @@ export const buttonSize = {
 }
 
 export const buttonStyle = {
-  'primary': 'su-border-solid su-border-3 su-border-digital-red su-bg-digital-red su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white hover:su-border-cardinal focus:su-border-cardinal-red',
-  'secondary': 'su-border-solid su-border-3 su-border-digital-red su-text-saa-digital-red hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
-  'secondary-gradient': 'su-border-solid su-border-3 su-gradient-border su-text-saa-electric-blue hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
-  'ghost': 'su-border-solid su-border-3 su-border-saa-digital-red su-bg-transparent su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
-  'ghost-gradient': 'su-border-solid su-border-3 su-gradient-border su-text-white su-bg-transparent hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
+  'primary': 'su-border-digital-red su-bg-digital-red su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white hover:su-border-cardinal-red focus:su-border-cardinal-red',
+  'secondary': 'su-border-digital-red su-text-saa-digital-red hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'secondary-gradient': 'su-gradient-border su-text-saa-electric-blue hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
+  'ghost': 'su-border-saa-digital-red su-bg-transparent su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'ghost-gradient': 'su-gradient-border su-text-white su-bg-transparent hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
 }
 
 export const ctaLinkColor = {
@@ -51,10 +51,16 @@ export const ctaLinkTextSize = {
   'small': 'su-text-19 md:su-text-20 xl:su-text-21'
 }
 
-export const objectPositionVertical = {
-  top: 'su-object-top',
-  center: 'su-object-center',
-  bottom: 'su-object-bottom',
+export const objectPosition = {
+  'top': 'su-object-top',
+  'center': 'su-object-center',
+  'bottom': 'su-object-bottom',
+  'top-left': 'su-object-left-top',
+  'top-right': 'su-object-right-top',
+  'center-left': 'su-object-left-center',
+  'center-right': 'su-object-right-center',
+  'bottom-left': 'su-object-left-bottom',
+  'bottom-right': 'su-object-right-bottom',
 };
 
 export const pageBgColors = {

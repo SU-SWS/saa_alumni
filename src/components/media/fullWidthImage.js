@@ -1,9 +1,13 @@
 import React from 'react';
 import transformImage from '../../utilities/transformImage';
 import getImageWidth from '../../utilities/getImageWidth';
+import { objectPosition } from '../../utilities/dataSource';
+import { dcnb } from 'cnbuilder';
 
-const FullWidthImage = ({ filename, element, imageClasses, alt, visibleVertical, ...props}) => {
+const FullWidthImage = ({ filename, element, imageClasses, alt, imageFocus, ...props}) => {
   const Element = element ?? 'figure';
+
+  const imgFocus = objectPosition[imageFocus] ?? objectPosition['center'];
 
   let largeImg, mediumImg, smallImg, originalImg = '';
   let imgSrcset, imgSizes, imgSrc = '';
@@ -54,7 +58,7 @@ const FullWidthImage = ({ filename, element, imageClasses, alt, visibleVertical,
         {...(imgSrcset ? {srcSet: imgSrcset} : {})}
         {...(imgSizes ? {sizes: imgSizes} : {})}
         src={imgSrc}
-        className={imageClasses}
+        className={dcnb(imageClasses, imgFocus)}
         alt={alt}
       />
     </Element>

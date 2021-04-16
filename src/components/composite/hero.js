@@ -12,7 +12,7 @@ const Hero = (props) => {
         {props.blok.image.filename?.startsWith('http') && (
           <FullWidthImage
             filename={props.blok.image.filename}
-            visibleVertical={props.blok.vCrop}
+            imageFocus={props.blok.imageFocus}
             className='hero su-absolute su-top-0 su-w-full su-h-full su-min-h-600 su-overflow-hidden'
             imageClasses='su-w-full su-h-full su-object-cover'
             alt={props.blok.image.alt}
