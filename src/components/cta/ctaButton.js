@@ -2,7 +2,7 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import SbLink from '../../utilities/sbLink';
 import Icon from 'react-hero-icon';
-import { buttonSize, buttonStyle, heroicon, textAlign, tinyMarginBottom } from '../../utilities/dataSource';
+import { buttonSize, buttonStyle, heroicon, textAlign } from '../../utilities/dataSource';
 import { dcnb } from 'cnbuilder';
 
 const CtaButton = React.forwardRef((props, ref) => {
@@ -50,18 +50,15 @@ const CtaButton = React.forwardRef((props, ref) => {
   // Horizontal alignment
   const align = textAlign[props.blok.align] ?? textAlign['left'];
 
-  // Margin bottom
-  const marginBottom = tinyMarginBottom[props.blok.spacingBottom] ?? tinyMarginBottom['md'];
-
   return (
     <SbEditable content={props.blok}>
       {props.blok.linkText &&
-      <div className={`su-block ${align} ${marginBottom}`}>
+      <div className={`su-block ${align}`}>
         <SbLink
           ref={ref}
           link={props.blok.link}
           attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
-          classes={dcnb('su-inline-block su-w-fit su-group su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline', ctaButtonStyle, ctaButtonSize)}
+          classes={dcnb('su-inline-block su-w-fit su-group su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline su-shadow-md', ctaButtonStyle, ctaButtonSize)}
         >
           {props.blok.linkText}
           {props.blok.srText &&

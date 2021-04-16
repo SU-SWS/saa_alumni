@@ -22,12 +22,12 @@ const Hero = (props) => {
         <Container className='su-relative su-rs-pt-10 su-rs-pb-4'>
           <FlexBox direction='col'>
             <FlexCell>
-              <p className='su-text-center su-text-white su-font-semibold su-leading-display su-text-m4 su-mb-0'>{props.blok.sansSuper}</p>
-              <p className='su-text-center su-text-white su-font-serif su-leading-display su-text-m2 su-mb-05em'>{props.blok.serifSuper}</p>
+              <p className='su-text-center su-text-white su-font-semibold su-leading-display su-text-m2 md:su-text-m4 su-mb-0'>{props.blok.sansSuper}</p>
+              <p className='su-text-center su-text-white su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-mb-05em'>{props.blok.serifSuper}</p>
               <Heading level={1}
                        font='serif'
                        weight='bold'
-                       className='su-text-white su-text-center su-text-m8 su-leading-tight su-tracking-normal su-mb-02em'
+                       className='su-text-white su-text-center su-text-m4 md:su-text-m6 lg:su-text-m8 su-leading-tight su-tracking-normal su-mb-02em'
               >
                 {props.blok.headline}
               </Heading>
