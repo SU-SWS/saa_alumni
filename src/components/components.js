@@ -1,5 +1,6 @@
 import ComponentNotFound from './component_not_found';
-import CtaLink from './simple/ctaLink';
+import CtaLink from './cta/ctaLink';
+import CtaButton from './cta/ctaButton';
 import Embed from './embed/embed';
 import Hero from './composite/hero';
 import InteriorPage from './page-types/interiorPage';
@@ -13,6 +14,7 @@ import Wysiwyg from './simple/wysiwyg';
 
 const ComponentList = {
   ctaLink: CtaLink,
+  ctaButton: CtaButton,
   embed: Embed,
   hero: Hero,
   interiorPage: InteriorPage,

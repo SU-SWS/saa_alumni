@@ -17,6 +17,12 @@ export const heroicon = {
   'video': 'play'
 }
 
+export const buttonSize = {
+  'small': 'su-px-26 su-py-14 su-text-18 md:su-text-20',
+  'default': 'su-px-30 su-pt-18 su-text-20 md:su-text-24',
+  'large': 'su-px-36 su-py-23 su-text-20 md:su-text-24',
+}
+
 export const ctaLinkColor = {
   'bright-red-hover-cardinal-red': 'su-text-saa-digital-red hover:su-text-cardinal-red focus:su-text-cardinal-red',
   'bright-red-hover-white': 'su-text-saa-digital-red hover:su-text-black-20 focus:su-text-black-20',

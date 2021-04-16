@@ -33,6 +33,9 @@ const Hero = (props) => {
               </Heading>
               <p className='su-text-center su-text-white su-leading-display su-max-w-600 su-mx-auto su-big-paragraph su-mb-0'>{props.blok.sansSub}</p>
             </FlexCell>
+            <FlexCell>
+              <CreateBloks blokSection={props.blok.cta} />
+            </FlexCell>
             <FlexCell
               grow={false}
               className='su-text-center su-text-white su-font-semibold su-rs-pt-4 su-font-serif su-font-regular su-text-m1'
