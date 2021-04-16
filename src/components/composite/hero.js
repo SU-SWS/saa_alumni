@@ -6,6 +6,12 @@ import CreateBloks from '../../utilities/createBloks';
 import { ArrowDownIcon } from '@heroicons/react/outline';
 
 const Hero = (props) => {
+  let headlineSize = 'su-text-m4 md:su-text-m6 lg:su-text-m8';
+
+  if (props.blok.isSmallHeadline) {
+    headlineSize = 'su-text-m3 md:su-text-m5 lg:su-text-m7';
+  }
+
   return (
     <SbEditable content={props.blok}>
       <Container className={`hero su-relative`} width='full'>
@@ -27,7 +33,7 @@ const Hero = (props) => {
               <Heading level={1}
                        font='serif'
                        weight='bold'
-                       className='su-text-white su-text-center su-text-m4 md:su-text-m6 lg:su-text-m8 su-leading-tight su-tracking-normal su-mb-02em'
+                       className={`su-text-white su-text-center su-leading-tight su-tracking-normal su-mb-02em ${headlineSize}`}
               >
                 {props.blok.headline}
               </Heading>
