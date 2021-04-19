@@ -47,7 +47,7 @@ const initStoryblokEvents = (sbResolveRelations, setState, myState) => {
   let sb = window.storyblok
 
   sb.on(['change', 'published'], (payload) => {
-    loadStory()
+    loadStory(sbResolveRelations, setState)
   })
 
   sb.on('input', (payload) => {
