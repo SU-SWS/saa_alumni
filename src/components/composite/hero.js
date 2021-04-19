@@ -37,7 +37,7 @@ const Hero = (props) => {
               >
                 {props.blok.headline}
               </Heading>
-              <p className='su-text-center su-text-white su-max-w-600 su-mx-auto su-big-paragraph su-mb-0'>{props.blok.sansSub}</p>
+              <p className='su-text-center su-text-white su-max-w-600 su-mx-auto su-text-m1 su-leading-display su-mb-0'>{props.blok.sansSub}</p>
             </FlexCell>
             <FlexCell className='su-rs-mt-3'>
               <CreateBloks blokSection={props.blok.cta} />
@@ -50,7 +50,7 @@ const Hero = (props) => {
               <a href={`#${props.blok.scrollTo}`} className='su-block su-mx-auto su-w-fit su-group'>
                 <SrOnlyText srText='Jump to main content' />
                 <ArrowDownIcon
-                  className='su-transition-colors su-text-saa-digital-red su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hover:su-bg-cardinal-red group-focus:su-bg-cardinal-red'
+                  className='su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hover:su-text-white group-focus:su-text-white group-hover:su-bg-cardinal-red group-focus:su-bg-cardinal-red'
                   aria-hidden='true' />
               </a>
             </FlexCell>

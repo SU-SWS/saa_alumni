@@ -3,10 +3,9 @@
  */
 module.exports = function () {
   return {
-    'transparent-black': 'rgba(0,0,0,20%)',
+    'transparent-black': 'rgba(0,0,0,20%)', // For use in linear gradients
     'saa-black': '#181D1C',
-    'saa-digital-red': '#EC0909',
-    'saa-red': '#B1040E',
+    'digital-red-xlight': '#F83535', // Passed contrast test for black background
     'saa-electric-blue': {
       DEFAULT: '#505EEC',
       light: '#6B77F5'

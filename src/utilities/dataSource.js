@@ -25,22 +25,22 @@ export const buttonSize = {
 
 export const buttonStyle = {
   'primary': 'su-border-digital-red su-bg-digital-red su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white hover:su-border-cardinal-red focus:su-border-cardinal-red',
-  'secondary': 'su-border-digital-red su-text-saa-digital-red hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'secondary': 'su-border-digital-red su-text-digital-red-light hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
   'secondary-gradient': 'su-gradient-border su-text-saa-electric-blue hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
-  'ghost': 'su-border-saa-digital-red su-bg-transparent su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'ghost': 'su-border-digital-red-xlight su-bg-transparent su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
   'ghost-gradient': 'su-gradient-border su-text-white su-bg-transparent hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
 }
 
 export const ctaLinkColor = {
-  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red hover:su-text-cardinal-red focus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-saa-digital-red hover:su-text-black-20 focus:su-text-black-20',
-  'black': 'su-text-black hover:su-text-black focus:su-text-black !su-underline-saa-digital-red',
-  'white': 'su-text-black-20 hover:su-text-black-20 focus:su-text-black-20 !su-underline-saa-digital-red',
+  'bright-red-hover-cardinal-red': 'su-text-digital-red-light hover:su-text-cardinal-red focus:su-text-cardinal-red',
+  'bright-red-hover-white': 'su-text-digital-red-xlight hover:su-text-black-20 focus:su-text-black-20',
+  'black': 'su-text-black hover:su-text-black focus:su-text-black !su-underline-digital-red-light',
+  'white': 'su-text-black-20 hover:su-text-black-20 focus:su-text-black-20 !su-underline-digital-red-xlight',
 }
 
 export const ctaLinkIconColor = {
-  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-saa-digital-red group-hover:su-text-black-20 group-focus:su-text-black-20',
+  'bright-red-hover-cardinal-red': 'su-text-digital-red-light group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red',
+  'bright-red-hover-white': 'su-text-digital-red-xlight group-hover:su-text-black-20 group-focus:su-text-black-20',
   'black': 'su-text-black group-hover:su-text-black group-focus:su-text-black',
   'white': 'su-text-black-20 group-hover:su-text-black-20 group-focus:su-text-black-20',
 }
