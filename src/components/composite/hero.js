@@ -12,6 +12,12 @@ const Hero = (props) => {
     headlineSize = 'su-text-m3 md:su-text-m5 lg:su-text-m7';
   }
 
+  let gradientFrom = 'su-from-transparent';
+
+  if (props.blok.isDarkGradient) {
+    gradientFrom = 'su-from-transparent-black';
+  }
+
   return (
     <SbEditable content={props.blok}>
       <Container className={`hero su-relative`} width='full'>
@@ -24,20 +30,20 @@ const Hero = (props) => {
             alt={props.blok.image.alt}
           />
         )}
-        <div className='su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black' aria-hidden='true' />
+        <div className={`su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b ${gradientFrom} su-to-saa-black`} aria-hidden='true' />
         <Container className='su-relative su-rs-pt-10 su-rs-pb-4'>
           <FlexBox direction='col'>
             <FlexCell>
-              <p className='su-text-center su-text-white su-font-semibold su-leading-display su-text-m2 md:su-text-m4 su-mb-0'>{props.blok.sansSuper}</p>
-              <p className='su-text-center su-text-white su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-mb-05em'>{props.blok.serifSuper}</p>
+              <p className='su-text-center su-text-white su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mb-0'>{props.blok.sansSuper}</p>
+              <p className='su-text-center su-text-white su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mb-05em'>{props.blok.serifSuper}</p>
               <Heading level={1}
                        font='serif'
                        weight='bold'
-                       className={`su-text-white su-text-center su-leading-tight su-tracking-normal su-mb-02em ${headlineSize}`}
+                       className={`su-text-white su-text-center su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em ${headlineSize}`}
               >
                 {props.blok.headline}
               </Heading>
-              <p className='su-text-center su-text-white su-max-w-600 su-mx-auto su-text-m1 su-leading-display su-mb-0'>{props.blok.sansSub}</p>
+              <p className='su-text-center su-text-white su-max-w-600 su-mx-auto su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mb-0'>{props.blok.sansSub}</p>
             </FlexCell>
             <FlexCell className='su-rs-mt-3'>
               <CreateBloks blokSection={props.blok.cta} />
