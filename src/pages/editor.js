@@ -67,7 +67,6 @@ const initBridge = function(key, sbResolveRelations, setStory) {
     resolve_relations: sbResolveRelations || []
   },
   (data) => {
-    console.log(data.story.content);
     setStory(data.story.content)
   })
 }
