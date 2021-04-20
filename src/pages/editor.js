@@ -4,8 +4,6 @@ import SbEditable from 'storyblok-react'
 import Loader from 'react-loader-spinner'
 import { useStaticQuery, graphql } from "gatsby"
 
-let storyblokInstance;
-
 /**
  *
  * @param {*} val
@@ -31,16 +29,16 @@ const getParam = function(val) {
 /**
  * This is Sparta
  */
-const initBridge = function(key, sbResolveRelations, setStory, setError, setState) {
+const initBridge = function(key, sbResolveRelations, setStory) {
 
   // Initialize the Storyblok JS Bridge
   window.storyblok.init({
+    resolveRelations: sbResolveRelations,
     accessToken: key
   });
 
   // Ping the Visual Editor and enter Editmode manually
   window.storyblok.pingEditor(function() {
-    setState(true);
     window.storyblok.enterEditmode();
   });
 
@@ -54,8 +52,24 @@ const initBridge = function(key, sbResolveRelations, setStory, setError, setStat
     // Add _editable properties to keep the Storyblok JS Bridge active after the content updates.
     let updatedStoryContent = window.storyblok.addComments(payload.story.content, payload.story.id)
     setStory(updatedStoryContent);
-
   });
+
+  loadStory(sbResolveRelations, setStory);
+}
+
+/**
+ *
+ */
+ const loadStory = (sbResolveRelations, setStory) => {
+  window.storyblok.get({
+    slug: window.storyblok.getParam('path'),
+    version: 'draft',
+    resolve_relations: sbResolveRelations || []
+  },
+  (data) => {
+    console.log(data.story.content);
+    setStory(data.story.content)
+  })
 }
 
 /**
@@ -63,11 +77,8 @@ const initBridge = function(key, sbResolveRelations, setStory, setError, setStat
  */
 const StoryblokEntry = (props) => {
 
-  const [myState, setState] = useState(false);
-  const [hasError, setError] = useState(false);
   const [myStory, setStory] = useState({});
   const [mounted, setMounted] = useState(false);
-  let content = {};
 
   /**
    * Get resolveRelations
@@ -105,7 +116,7 @@ const StoryblokEntry = (props) => {
       script.type = 'text/javascript';
       script.src = '//app.storyblok.com/f/storyblok-latest.js';
       script.onload = () => {
-        initBridge(key, sbResolveRelations, setStory, setError, setState);
+        initBridge(key, sbResolveRelations, setStory);
       };
       document.getElementsByTagName('head')[0].appendChild(script);
     }
@@ -113,31 +124,29 @@ const StoryblokEntry = (props) => {
     setMounted(true);
 
     // Ready to go.
-  }, [setState, sbResolveRelations, mounted, setMounted, myStory, setError]);
-
-  // If the state is good but the story hasn't been oaded yet. Show loading.
-  if (!myState) {
-    return (
-      <div className="su-cc">
-        <h1>Loading...</h1>
-        <Loader type="Oval" color="#00BFFF" height={125} width={125} />
-      </div>
-    )
-  }
-
-  if (hasError) {
-    return (<h1>Error</h1>)
-  }
+  }, [sbResolveRelations, mounted, setMounted, myStory]);
 
   /**
    * Show the content!
    */
-  content = myStory;
+  if (myStory) {
+    return (
+      <SbEditable content={myStory}>
+        <div>
+          {React.createElement(Components(myStory.component), {key: myStory._uid, blok: myStory})}
+        </div>
+      </SbEditable>
+    )
+  }
+
+  // Loading...
   return (
-    <SbEditable content={content}>
-      {React.createElement(Components(content.component), {key: content._uid, blok: content})}
-    </SbEditable>
+    <div className="su-cc">
+      <h1>Loading...</h1>
+      <Loader type="Oval" color="#00BFFF" height={125} width={125} />
+    </div>
   )
+
 }
 
 export default StoryblokEntry;
