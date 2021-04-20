@@ -35,7 +35,7 @@ const CtaButton = React.forwardRef((props, ref) => {
     iconClasses = 'su-h-[1.1em] su-w-[1.1em] su-ml-4 su--mt-3';
   }
   else {
-    iconClasses = 'su-h-1em su-w-1em su-ml-7 su--mt-2';
+    iconClasses = 'su-h-1em su-w-1em su-ml-04em su--mt-2';
   }
 
   // Icon animation

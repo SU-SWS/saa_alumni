@@ -34,8 +34,8 @@ const Hero = (props) => {
         <Container className='su-relative su-rs-pt-10 su-rs-pb-4'>
           <FlexBox direction='col'>
             <FlexCell>
-              <p className='su-text-center su-text-white su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mb-0'>{props.blok.sansSuper}</p>
-              <p className='su-text-center su-text-white su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mb-05em'>{props.blok.serifSuper}</p>
+              <p className='su-max-w-prose su-text-center su-text-white su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-0'>{props.blok.sansSuper}</p>
+              <p className='su-max-w-prose su-text-center su-text-white su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mx-auto su-mb-05em'>{props.blok.serifSuper}</p>
               <Heading level={1}
                        font='serif'
                        weight='bold'
@@ -43,7 +43,7 @@ const Hero = (props) => {
               >
                 {props.blok.headline}
               </Heading>
-              <p className='su-text-center su-text-white su-max-w-600 su-mx-auto su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mb-0'>{props.blok.sansSub}</p>
+              <p className='su-max-w-prose su-text-center su-text-white su-mx-auto su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mx-auto su-mb-0'>{props.blok.sansSub}</p>
             </FlexCell>
             <FlexCell className='su-rs-mt-3'>
               <CreateBloks blokSection={props.blok.cta} />
