@@ -72,9 +72,4 @@ module.exports = {
     require(decanter + '/utilities/link/link-underline.js')(),
     require(decanter + '/utilities/scrolling/smooth-scroll.js')(),
   ],
-
-  variants: {
-    backgroundColor: ['DEFAULT', 'hocus'],
-    textColor: ['DEFAULT', 'hocus'],
-  },
 }
