@@ -26,7 +26,9 @@
     "react-refresh": "^0.8.3",
     "sanitize-html": "^1.27.5",
     "storyblok-react": "^0.1.2",
-    "storyblok-rich-text-react-renderer": "^2.3.1"
+    "storyblok-rich-text-react-renderer": "^2.3.1",
+    "tailwindcss-children": "^2.1.0",
+    "tailwindcss-interaction-variants": "^5.0.0"
   },
   "keywords": [
     "Stanford"
