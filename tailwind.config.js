@@ -45,6 +45,8 @@ module.exports = {
     }
   },
   plugins: [
+    require('tailwindcss-interaction-variants'),
+
     // @tailwind base;
     require(decanter + '/base/base.js')(),
 
@@ -69,5 +71,10 @@ module.exports = {
     require(decanter + '/utilities/link/link-fontweight.js')(),
     require(decanter + '/utilities/link/link-underline.js')(),
     require(decanter + '/utilities/scrolling/smooth-scroll.js')(),
-  ]
+  ],
+
+  variants: {
+    backgroundColor: ['DEFAULT', 'hocus'],
+    textColor: ['DEFAULT', 'hocus'],
+  },
 }

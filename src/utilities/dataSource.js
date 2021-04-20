@@ -18,17 +18,17 @@ export const heroicon = {
 }
 
 export const ctaLinkColor = {
-  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red hover:su-text-cardinal-red focus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-saa-digital-red hover:su-text-black-20 focus:su-text-black-20',
-  'black': 'su-text-black hover:su-text-black focus:su-text-black !su-underline-saa-digital-red',
-  'white': 'su-text-black-20 hover:su-text-black-20 focus:su-text-black-20 !su-underline-saa-digital-red',
+  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red hocus:su-text-cardinal-red',
+  'bright-red-hover-white': 'su-text-saa-digital-red hocus:su-text-black-20',
+  'black': 'su-text-black hocus:su-text-black !su-underline-saa-digital-red',
+  'white': 'su-text-black-20 hocus:su-text-black-20 !su-underline-saa-digital-red',
 }
 
 export const ctaLinkIconColor = {
-  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-saa-digital-red group-hover:su-text-black-20 group-focus:su-text-black-20',
-  'black': 'su-text-black group-hover:su-text-black group-focus:su-text-black',
-  'white': 'su-text-black-20 group-hover:su-text-black-20 group-focus:su-text-black-20',
+  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red group-hocus:su-text-cardinal-red',
+  'bright-red-hover-white': 'su-text-saa-digital-red group-hocus:su-text-black-20',
+  'black': 'su-text-black group-hocus:su-text-black',
+  'white': 'su-text-black-20 group-hocus:su-text-black-20',
 }
 
 export const ctaLinkTextSize = {
