@@ -1,11 +1,11 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../utilities/createBloks';
+import { ctaGroupDisplay } from '../../utilities/dataSource';
 
 const ctaGroup = (props) => {
-  const display = props.blok.display === 'adjacent'
-    ? 'su-flex-col su-space-y-20 lg:su-flex-row lg:su-flex-wrap lg:su-justify-center lg:su-space-y-0 lg:su-space-x-20'
-    : 'su-flex-col su-space-y-20';
+  // Display type
+  const display = ctaGroupDisplay[props.blok.display] ?? ctaGroupDisplay['adjacent'];
 
   return (
     <SbEditable content={props.blok}>

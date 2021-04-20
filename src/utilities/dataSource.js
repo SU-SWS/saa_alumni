@@ -6,6 +6,12 @@ export const bgPositionVertical = {
   bottom: 'su-bg-bottom',
 };
 
+export const ctaGroupDisplay = {
+  'adjacent': 'su-flex-col lg:su-flex-row lg:su-flex-wrap lg:su-justify-center lg:su--mb-20',
+  'adjacent-left': 'su-flex-col su-items-start su--ml-10 lg:su-flex-row lg:su-flex-wrap lg:su-justify-start lg:su--mb-20',
+  'stack': 'su-flex-col',
+};
+
 export const heroicon = {
   'none': 'none',
   'arrow-right': 'arrow-right',
