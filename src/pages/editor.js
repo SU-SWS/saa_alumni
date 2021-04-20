@@ -56,28 +56,30 @@ const initBridge = function(key, sbResolveRelations, setStory, setError, setStat
     console.log("Entering the edit mode -------------");
     console.log(info);
     console.log("------------------ -------------");
-  })
+  });
 
   storyblokInstance.on(['published', 'change'], (event) => {
     if (!event.slugChanged) {
       console.log('on slug change.');
       window.location.reload()
     }
-  })
+  });
 
   storyblokInstance.on('viewLiveVersion', (event) => {
     console.log("Load live version.");
     console.log(event);
-  })
+  });
 
   // Call ping editor to see if in editor
   storyblokInstance.pingEditor((editor) => {
+    setState(true);
+
     if (storyblokInstance.isInEditor()) {
-      setState(true);
       console.log(editor);
     }
     else {
       // Load published version of story
+      setState(true);
       setError(true);
     }
   })
@@ -129,7 +131,7 @@ const StoryblokEntry = (props) => {
 
       let script = document.createElement('script');
       script.type = 'text/javascript';
-      script.src = 'https://app.storyblok.com/f/storyblok-v2-latest.js';
+      script.src = '//app.storyblok.com/f/storyblok-v2-latest.js';
       script.onload = () => {
         initBridge(key, sbResolveRelations, setStory, setError, setState);
       };
