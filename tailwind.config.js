@@ -45,6 +45,7 @@ module.exports = {
     }
   },
   plugins: [
+    require('tailwindcss-children'),
     require('tailwindcss-interaction-variants'),
 
     // @tailwind base;
