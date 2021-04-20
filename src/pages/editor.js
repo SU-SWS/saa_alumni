@@ -41,17 +41,17 @@ const getParam = function(val) {
 /**
  *
  */
-const initStoryblokEvents = (sbResolveRelations, setState) => {
+const initStoryblokEvents = (sbResolveRelations, setState, myState) => {
   loadStory(sbResolveRelations, setState)
 
   let sb = window.storyblok
 
   sb.on(['change', 'published'], (payload) => {
-    this.loadStory()
+    loadStory(sbResolveRelations, setState)
   })
 
   sb.on('input', (payload) => {
-    if (this.state.story && payload.story.id === this.state.story.id) {
+    if (myState.story && payload.story.id === myState.story.id) {
       payload.story.content = sb.addComments(payload.story.content, payload.story.id)
       sb.resolveRelations(payload.story, sbResolveRelations ||
         ['localFooterPicker.localFooter'],
@@ -132,7 +132,7 @@ const StoryblokEntry = (props) => {
         accessToken: key
       })
 
-      initStoryblokEvents(sbResolveRelations, setState)
+      initStoryblokEvents(sbResolveRelations, setState, myState)
     })
 
   }, [setState, sbResolveRelations])
