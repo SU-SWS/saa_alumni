@@ -33,57 +33,29 @@ const getParam = function(val) {
  */
 const initBridge = function(key, sbResolveRelations, setStory, setError, setState) {
 
-  storyblokInstance = new window.StoryblokBridge({
-    accessToken: key,
-    resolveRelations: sbResolveRelations
+  // Initialize the Storyblok JS Bridge
+  window.storyblok.init({
+    accessToken: key
   });
 
-  storyblokInstance.on('input', (payload) => {
-    console.log(payload);
-    if (payload !== undefined) {
-      setStory(payload.story.content)
-    }
-  });
-
-  storyblokInstance.on('change', (payload) => {
-    console.log(payload);
-    if (payload) {
-      setStory(payload.story.content)
-    }
-  });
-
-  storyblokInstance.on('enterEditmode', (info) => {
-    console.log("Entering the edit mode -------------");
-    console.log(info);
-    console.log("------------------ -------------");
-  });
-
-  storyblokInstance.on(['published', 'change'], (event) => {
-    if (!event.slugChanged) {
-      console.log('on slug change.');
-      window.location.reload()
-    }
-  });
-
-  storyblokInstance.on('viewLiveVersion', (event) => {
-    console.log("Load live version.");
-    console.log(event);
-  });
-
-  // Call ping editor to see if in editor
-  storyblokInstance.pingEditor((editor) => {
+  // Ping the Visual Editor and enter Editmode manually
+  window.storyblok.pingEditor(function() {
     setState(true);
+    window.storyblok.enterEditmode();
+  });
 
-    if (storyblokInstance.isInEditor()) {
-      console.log(editor);
-    }
-    else {
-      // Load published version of story
-      setState(true);
-      setError(true);
-    }
+  // Listens on multiple events and does a basic website refresh
+  window.storyblok.on(['change', 'published', 'unpublished'], () => {
+    window.location.reload();
   })
 
+  // When the content author does stuff.
+  window.storyblok.on('input', (payload) => {
+    // Add _editable properties to keep the Storyblok JS Bridge active after the content updates.
+    let updatedStoryContent = window.storyblok.addComments(payload.story.content, payload.story.id)
+    setStory(updatedStoryContent);
+
+  });
 }
 
 /**
@@ -131,7 +103,7 @@ const StoryblokEntry = (props) => {
 
       let script = document.createElement('script');
       script.type = 'text/javascript';
-      script.src = '//app.storyblok.com/f/storyblok-v2-latest.js';
+      script.src = '//app.storyblok.com/f/storyblok-latest.js';
       script.onload = () => {
         initBridge(key, sbResolveRelations, setStory, setError, setState);
       };
