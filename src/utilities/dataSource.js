@@ -6,9 +6,30 @@ export const bgPositionVertical = {
   bottom: 'su-bg-bottom',
 };
 
+export const buttonSize = {
+  'small': 'su-px-20 su-pt-10 su-pb-12 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20',
+  'default': 'su-px-20 su-pt-14 su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-20 md:su-text-24',
+  'large': 'su-px-26 su-pt-16 su-pb-18 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-20 md:su-text-24',
+}
+
+export const buttonStyle = {
+  'primary': 'su-border-digital-red su-bg-digital-red su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white hover:su-border-cardinal-red focus:su-border-cardinal-red',
+  'secondary': 'su-border-digital-red su-text-digital-red-light hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'secondary-gradient': 'su-gradient-border su-text-saa-electric-blue hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
+  'ghost': 'su-border-digital-red-xlight su-bg-transparent su-text-white hover:su-bg-cardinal-red focus:su-bg-cardinal-red hover:su-text-white focus:su-text-white',
+  'ghost-gradient': 'su-gradient-border su-text-white su-bg-transparent hover:su-text-white focus:su-text-white hover:su-bg-gradient-to-tr hover:su-from-palo-verde-dark hover:su-to-saa-electric-blue',
+}
+
+
+export const ctaGroupDisplay = {
+  'adjacent': 'su-flex-col lg:su-flex-row lg:su-flex-wrap lg:su-justify-center lg:su--mb-20',
+  'adjacent-left': 'su-flex-col su-items-start su--ml-10 lg:su-flex-row lg:su-flex-wrap lg:su-justify-start lg:su--mb-20',
+  'stack': 'su-flex-col',
+};
+
 export const heroicon = {
   'none': 'none',
-  'arrow-right': 'arrow-narrow-right',
+  'arrow-right': 'arrow-right',
   'chevron-down': 'chevron-down',
   'chevron-right': 'chevron-right',
   'download': 'download',
@@ -37,10 +58,16 @@ export const ctaLinkTextSize = {
   'small': 'su-text-19 md:su-text-20 xl:su-text-21'
 }
 
-export const objectPositionVertical = {
-  top: 'su-object-top',
-  center: 'su-object-center',
-  bottom: 'su-object-bottom',
+export const objectPosition = {
+  'top': 'su-object-top',
+  'center': 'su-object-center',
+  'bottom': 'su-object-bottom',
+  'top-left': 'su-object-left-top',
+  'top-right': 'su-object-right-top',
+  'center-left': 'su-object-left-center',
+  'center-right': 'su-object-right-center',
+  'bottom-left': 'su-object-left-bottom',
+  'bottom-right': 'su-object-right-bottom',
 };
 
 export const pageBgColors = {
