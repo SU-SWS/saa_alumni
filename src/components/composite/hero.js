@@ -4,6 +4,7 @@ import { Container, FlexBox, FlexCell, Heading, SrOnlyText } from 'decanter-reac
 import FullWidthImage from '../media/fullWidthImage';
 import CreateBloks from '../../utilities/createBloks';
 import { ArrowDownIcon } from '@heroicons/react/outline';
+import getNumBloks from '../../utilities/getNumBloks';
 
 const Hero = (props) => {
   let headlineSize = 'su-text-m4 md:su-text-m6 lg:su-text-m8';
@@ -18,9 +19,11 @@ const Hero = (props) => {
     gradientFrom = 'su-from-transparent-black';
   }
 
+  let numCta = getNumBloks(props.blok.cta);
+
   return (
     <SbEditable content={props.blok}>
-      <Container className={`hero su-relative`} width='full'>
+      <Container className={`hero su-relative su-bg-saa-black`} width='full'>
         {props.blok.image.filename?.startsWith('http') && (
           <FullWidthImage
             filename={props.blok.image.filename}
@@ -33,29 +36,33 @@ const Hero = (props) => {
         <div className={`su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b ${gradientFrom} su-to-saa-black`} aria-hidden='true' />
         <Container className='su-relative su-rs-pt-9 su-rs-pb-4'>
           <FlexBox direction='col' className='lg:su-mt-[190px]'>
-            <FlexCell className='su-text-center su-text-white'>
-              {props.blok.sansSuper &&
-                <p className='su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-0'>{props.blok.sansSuper}</p>
-              }
-              {props.blok.serifSuper &&
-                <p className='su-max-w-prose su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mx-auto su-mb-05em'>{props.blok.serifSuper}</p>
-              }
-              {props.blok.headline &&
-                <Heading level={1}
-                         font='serif'
-                         weight='bold'
-                         className={`su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em ${headlineSize}`}
-                >
-                  {props.blok.headline}
-                </Heading>
-              }
-              {props.blok.sansSub &&
-                <p className='su-max-w-prose su-mx-auto su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mx-auto su-mb-0'>{props.blok.sansSub}</p>
-              }
-            </FlexCell>
-            <FlexCell className='su-rs-mt-4'>
-              <CreateBloks blokSection={props.blok.cta} />
-            </FlexCell>
+            {(props.blok.sansSuper || props.blok.serifSuper || props.blok.headline || props.blok.sansSub) &&
+              <FlexCell className='su-text-center su-text-white'>
+                {props.blok.sansSuper &&
+                  <p className='su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-0'>{props.blok.sansSuper}</p>
+                }
+                {props.blok.serifSuper &&
+                  <p className='su-max-w-prose su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mx-auto su-mb-05em'>{props.blok.serifSuper}</p>
+                }
+                {props.blok.headline &&
+                  <Heading level={1}
+                           font='serif'
+                           weight='bold'
+                           className={`su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em ${headlineSize}`}
+                  >
+                    {props.blok.headline}
+                  </Heading>
+                }
+                {props.blok.sansSub &&
+                  <p className='su-max-w-prose su-mx-auto su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mx-auto su-mb-0'>{props.blok.sansSub}</p>
+                }
+              </FlexCell>
+            }
+            {numCta > 0 &&
+              <FlexCell className='su-rs-mt-4'>
+                <CreateBloks blokSection={props.blok.cta}/>
+              </FlexCell>
+            }
             <FlexCell
               grow={false}
               className='su-text-center su-text-white su-font-semibold su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22'

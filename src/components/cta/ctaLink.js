@@ -4,6 +4,7 @@ import SbLink from '../../utilities/sbLink';
 import Icon from 'react-hero-icon';
 import { ctaLinkColor, ctaLinkTextSize, ctaLinkIconColor, heroicon, textAlign, tinyMarginBottom } from '../../utilities/dataSource';
 import { dcnb } from 'cnbuilder';
+import { SrOnlyText } from 'decanter-react';
 
 const CtaLink = React.forwardRef((props, ref) => {
   // Link text size
@@ -68,7 +69,7 @@ const CtaLink = React.forwardRef((props, ref) => {
           >
             {props.blok.linkText}
             {props.blok.srText &&
-              <span className='su-sr-only'>{` ${props.blok.srText}`}</span>
+              <SrOnlyText srText={props.blok.srText} />
             }
             {props.blok.icon !== 'none' &&
               <Icon icon={linkIcon}
