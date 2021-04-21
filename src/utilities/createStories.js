@@ -6,7 +6,6 @@ import Components from "../components/components";
 
 const CreateStories = (props) => {
   if (props.stories) {
-
     return props.stories.map((story) => React.createElement(Components(story.content.component), {
       key: story.content._uid,
       blok: story.content,
