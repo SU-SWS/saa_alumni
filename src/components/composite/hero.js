@@ -25,13 +25,15 @@ const Hero = (props) => {
     <SbEditable content={props.blok}>
       <Container className={`hero su-relative su-bg-saa-black`} width='full'>
         {props.blok.image.filename?.startsWith('http') && (
-          <FullWidthImage
-            filename={props.blok.image.filename}
-            imageFocus={props.blok.imageFocus}
-            className='hero su-absolute su-top-0 su-w-full su-h-full su-min-h-600 su-overflow-hidden'
-            imageClasses='su-w-full su-h-full su-object-cover'
-            alt={props.blok.image.alt}
-          />
+          <figure className='hero su-absolute su-top-0 su-w-full su-h-full su-min-h-600 su-overflow-hidden'>
+            <FullWidthImage
+              filename={props.blok.image.filename}
+              imageFocus={props.blok.imageFocus}
+              className='su-w-full su-h-full su-object-cover'
+              loading='eager'
+              alt={props.blok.image.alt}
+            />
+          </figure>
         )}
         <div className={`su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b ${gradientFrom} su-to-saa-black`} aria-hidden='true' />
         <Container className='su-relative su-rs-pt-9 su-rs-pb-4'>
