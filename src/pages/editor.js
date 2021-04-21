@@ -6,172 +6,150 @@ import { useStaticQuery, graphql } from "gatsby"
 
 /**
  *
- * @param {*} cb
- */
-const loadStoryblokBridge = function(cb) {
-  let script = document.createElement('script')
-  script.type = 'text/javascript'
-  script.src = `//app.storyblok.com/f/storyblok-latest.js`
-  script.onload = cb
-  document.getElementsByTagName('head')[0].appendChild(script)
-}
-
-/**
- *
  * @param {*} val
  * @returns
  */
 const getParam = function(val) {
-  var result = ''
-  var tmp = []
+  var result = '';
+  var tmp = [];
 
   window.location.search
     .substr(1)
     .split('&')
     .forEach(function (item) {
-      tmp = item.split('=')
+      tmp = item.split('=');
       if (tmp[0] === val) {
-        result = decodeURIComponent(tmp[1])
+        result = decodeURIComponent(tmp[1]);
       }
     })
 
-  return result
+  return result;
+}
+
+/**
+ * This is Sparta
+ */
+const initBridge = function(key, sbResolveRelations, setStory) {
+
+  // Initialize the Storyblok JS Bridge
+  window.storyblok.init({
+    resolveRelations: sbResolveRelations,
+    accessToken: key
+  });
+
+  // Ping the Visual Editor and enter Editmode manually
+  window.storyblok.pingEditor(function() {
+    window.storyblok.enterEditmode();
+  });
+
+  // Listens on multiple events and does a basic website refresh
+  window.storyblok.on(['change', 'published', 'unpublished'], () => {
+    window.location.reload();
+  })
+
+  // When the content author does stuff.
+  window.storyblok.on('input', (payload) => {
+    // Add _editable properties to keep the Storyblok JS Bridge active after the content updates.
+    window.storyblok.addComments(payload.story.content, payload.story.id)
+    window.storyblok.resolveRelations(payload.story, sbResolveRelations, () => {
+      setStory(payload.story.content);
+    });
+  });
+
+  loadStory(sbResolveRelations, setStory);
 }
 
 /**
  *
  */
-const initStoryblokEvents = (sbResolveRelations, setState, myState) => {
-  loadStory(sbResolveRelations, setState)
-
-  let sb = window.storyblok
-
-  sb.on(['change', 'published'], (payload) => {
-    loadStory(sbResolveRelations, setState)
-  })
-
-  sb.on('input', (payload) => {
-    if (myState.story && payload.story.id === myState.story.id) {
-      payload.story.content = sb.addComments(payload.story.content, payload.story.id)
-      sb.resolveRelations(payload.story, sbResolveRelations ||
-        ['localFooterPicker.localFooter'],
-        () => {
-          setState({story: payload.story})
-        })
-    }
-  })
-
-  sb.pingEditor(() => {
-    if (sb.inEditor) {
-      sb.enterEditmode()
-    }
-  })
-}
-
-/**
- *
- */
-const loadStory = (sbResolveRelations, setState) => {
+ const loadStory = (sbResolveRelations, setStory) => {
   window.storyblok.get({
     slug: window.storyblok.getParam('path'),
     version: 'draft',
     resolve_relations: sbResolveRelations || []
-  }, (data) => {
-    setState({story: data.story})
+  },
+  (data) => {
+    setStory(data.story.content)
   })
 }
 
 /**
- *
+ * This is another try.
  */
 const StoryblokEntry = (props) => {
 
-  // State Management.
-  const [myState, setState] = useState({story: null, bad: false});
+  const [myStory, setStory] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   /**
-   *
+   * Get resolveRelations
    */
-  const { sbResolveRelations } = useStaticQuery(
+   const { site: { siteMetadata: { storyblok: { resolveRelations }}}} = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             storyblok {
-              sbResolveRelations: resolveRelations
+              resolveRelations
             }
           }
         }
       }
-    `,
+    `
   );
+
+  const sbResolveRelations = resolveRelations;
 
   /**
    *
    */
   useEffect(() => {
-    // Storyblok Preview API access key.
-    const key = getParam("access_key")
 
-    // Must have a storyblok key.
-    if (isNaN(getParam("_storyblok"))) {
-      setState({bad: true})
-      return
+    // One time load only.
+    if (!mounted) {
+        // Storyblok Preview API access key.
+      const key = getParam("access_key");
+
+      // Must have the API Access key.
+      if (key.length === 0 || typeof key !== "string") {
+        return;
+      }
+
+      let script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = '//app.storyblok.com/f/storyblok-latest.js';
+      script.onload = () => {
+        initBridge(key, sbResolveRelations, setStory);
+      };
+      document.getElementsByTagName('head')[0].appendChild(script);
     }
 
-    // Must have the API Access key.
-    if (key === '') {
-      setState({bad: true})
-      return
-    }
+    setMounted(true);
 
-    loadStoryblokBridge(() => {
-
-      // Init with access token from url.
-      window.storyblok.init({
-        accessToken: key
-      })
-
-      initStoryblokEvents(sbResolveRelations, setState, myState)
-    })
-
-  }, [setState, sbResolveRelations])
+    // Ready to go.
+  }, [sbResolveRelations, mounted, setMounted, myStory]);
 
   /**
-   *
+   * Show the content!
    */
-  if (myState.bad === true) {
+  if (myStory && myStory.component) {
     return (
-      <div className="su-cc">
-        <h1>Error</h1>
-        <p>You can only access this page through https://app.storyblok.com.</p>
-      </div>
+      <SbEditable content={myStory}>
+        <div>
+          {React.createElement(Components(myStory.component), {key: myStory._uid, blok: myStory})}
+        </div>
+      </SbEditable>
     )
   }
 
-  /**
-   *
-   */
-  if (myState.story == null) {
-    return (
-      <div className="su-cc">
-        <h1>Loading...</h1>
-        <Loader type="Oval" color="#00BFFF" height={125} width={125} />
-      </div>
-    )
-  }
-
-  /**
-   *
-   */
-  let content = myState.story.content;
+  // Loading...
   return (
-    <SbEditable content={content}>
-      <div>
-        {React.createElement(Components(content.component), {key: content._uid, blok: content})}
-      </div>
-    </SbEditable>
+    <div className="su-cc">
+      <h1>Loading...</h1>
+      <Loader type="Oval" color="#00BFFF" height={125} width={125} />
+    </div>
   )
+
 }
 
-export default StoryblokEntry
+export default StoryblokEntry;
