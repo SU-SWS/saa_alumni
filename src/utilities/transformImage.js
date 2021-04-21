@@ -19,7 +19,7 @@ const transformImage = (image, param = '') => {
 
   // If the image is a jpg, optimize it by changing the quality to 60% (quality loss is mostly unnoticeable)
   if (image.endsWith('.jpg')) {
-    param += '/filters:quality(60)';
+    //param += '/filters:quality(60)';
   }
 
   if (param === '') {

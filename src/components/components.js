@@ -1,3 +1,4 @@
+import BasicCard from './cards/basicCard';
 import ComponentNotFound from './component_not_found';
 import CtaButton from './cta/ctaButton';
 import CtaLink from './cta/ctaLink';
@@ -14,6 +15,7 @@ import Wysiwyg from './simple/wysiwyg';
 
 
 const ComponentList = {
+  basicCard: BasicCard,
   ctaButton: CtaButton,
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,
