@@ -50,6 +50,7 @@ module.exports = {
 
     // @tailwind base;
     require(decanter + '/base/base.js')(),
+    require(dir + '/base/base.js')(),
 
     // @tailwind components;
     require(decanter + '/components/form/input-base.js')(),
@@ -72,7 +73,6 @@ module.exports = {
     require(decanter + '/utilities/accessibility/accessibility-hidden.js')(),
     require(decanter + '/utilities/link/link.js')(),
     require(decanter + '/utilities/link/link-fontweight.js')(),
-    require(decanter + '/utilities/link/link-underline.js')(),
     require(decanter + '/utilities/scrolling/smooth-scroll.js')(),
   ],
 }
