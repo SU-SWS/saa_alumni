@@ -3,6 +3,7 @@ import SbEditable from 'storyblok-react';
 import SbLink from '../../utilities/sbLink';
 import Icon from 'react-hero-icon';
 import { buttonSize, buttonStyle, heroicon, textAlign } from '../../utilities/dataSource';
+import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 
 const CtaButton = React.forwardRef((props, ref) => {
@@ -69,14 +70,14 @@ const CtaButton = React.forwardRef((props, ref) => {
         >
           {props.blok.linkText}
           {props.blok.srText &&
-          <span className='su-sr-only'>{` ${props.blok.srText}`}</span>
+            <SrOnlyText srText={props.blok.srText} />
           }
           {props.blok.icon !== 'none' &&
-          <Icon icon={linkIcon}
-                type='solid'
-                aria-hidden='true'
-                className={`su-inline-block ${iconColor} ${iconClasses} ${iconAnimate}`}
-          />
+            <Icon icon={linkIcon}
+                  type='solid'
+                  aria-hidden='true'
+                  className={`su-inline-block ${iconColor} ${iconClasses} ${iconAnimate}`}
+            />
           }
         </SbLink>
       </div>
