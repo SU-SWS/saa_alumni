@@ -82,7 +82,7 @@ const StoryblokEntry = (props) => {
   /**
    * Get resolveRelations
    */
-   const { site: { siteMetadata: { storyblok: { resolveRelations}}}} = useStaticQuery(
+   const { site: { siteMetadata: { storyblok: { resolveRelations }}}} = useStaticQuery(
     graphql`
       query {
         site {
