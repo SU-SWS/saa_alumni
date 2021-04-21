@@ -40,14 +40,14 @@ export const heroicon = {
 
 export const ctaLinkColor = {
   'bright-red-hover-cardinal-red': 'su-text-digital-red-light hocus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-digital-red-light hocus:su-text-black-20',
+  'bright-red-hover-white': 'su-text-digital-red-xlight hocus:su-text-black-20',
   'black': 'su-text-black hocus:su-text-black !su-underline-digital-red-light',
   'white': 'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
 }
 
 export const ctaLinkIconColor = {
   'bright-red-hover-cardinal-red': 'su-text-digital-red-light group-hocus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-digital-red-light group-hocus:su-text-black-20',
+  'bright-red-hover-white': 'su-text-digital-red-xlight group-hocus:su-text-black-20',
   'black': 'su-text-black group-hocus:su-text-black',
   'white': 'su-text-black-20 group-hocus:su-text-black-20',
 }
