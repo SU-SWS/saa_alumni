@@ -42,7 +42,7 @@ export const ctaLinkColor = {
   'bright-red-hover-cardinal-red': 'su-text-digital-red-light hocus:su-text-cardinal-red',
   'bright-red-hover-white': 'su-text-digital-red-light hocus:su-text-black-20',
   'black': 'su-text-black hocus:su-text-black !su-underline-digital-red-light',
-  'white': 'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-light',
+  'white': 'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
 }
 
 export const ctaLinkIconColor = {

@@ -66,6 +66,7 @@ module.exports = {
     require(decanter + '/components/typography/styles.js')(),
     require(decanter + '/components/typography/wysiwyg.js')(),
     require(dir + '/components/underline/custom-underline.js')(),
+    require(dir + '/components/underline/link-underline.js')(),
     require(dir + '/components/gradient-border/gradient-border.js')(),
     require(dir + '/components/shadow/text-shadow.js')(),
 
