@@ -19,18 +19,18 @@ const FullWidthImage = ({ image, className, alt, imageFocus, loading, ...props})
       imgWidth = getImageWidth(image.filename);
     }
 
-    originalImg = transformImage(image.filename, '/filters:quality(60)');
+    originalImg = transformImage(image.filename, '');
 
     if (imgWidth >= 800) {
-      smallImg = transformImage(image.filename, '/800x0/filters:quality(60)');
+      smallImg = transformImage(image.filename, '/800x0');
     }
 
     if (imgWidth >= 1200) {
-      mediumImg = transformImage(image.filename, '/1200x0/filters:quality(60)');
+      mediumImg = transformImage(image.filename, '/1200x0');
     }
 
     if (imgWidth >= 2000) {
-      largeImg = transformImage(image.filename, '/2000x0/filters:quality(60)');
+      largeImg = transformImage(image.filename, '/2000x0');
     }
 
     imgSrcset = smallImg ? smallImg + ' 800w' : '';
