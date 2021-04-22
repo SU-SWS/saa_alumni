@@ -4,38 +4,33 @@ import getImageWidth from '../../utilities/getImageWidth';
 import { objectPosition } from '../../utilities/dataSource';
 import { dcnb } from 'cnbuilder';
 
-const FullWidthImage = ({ filename, className, alt, imageFocus, loading, ...props}) => {
+const FullWidthImage = ({ image, className, alt, imageFocus, loading, ...props}) => {
   const imgFocus = objectPosition[imageFocus] ?? objectPosition['center'];
   const imgLoading = loading ?? 'auto';
 
   let largeImg, mediumImg, smallImg, originalImg = '';
-  let largeWebp, mediumWebp, smallWebp, originalWebp = '';
   let imgSrcset, imgSizes, imgSrc = '';
 
-  if (filename != null) {
+  if (image.filename != null) {
     let imgWidth = '';
 
     // Get image width from URL of storyblok image
-    if (filename?.startsWith('http')) {
-      imgWidth = getImageWidth(filename);
+    if (image.filename?.startsWith('http')) {
+      imgWidth = getImageWidth(image.filename);
     }
 
-    originalImg = transformImage(filename, '/filters:quality(60)');
-    originalWebp = transformImage(filename, '/filters:format(webp)')
+    originalImg = transformImage(image.filename, '/filters:quality(60)');
 
     if (imgWidth >= 800) {
-      smallImg = transformImage(filename, '/800x0/filters:quality(60)');
-      smallWebp = transformImage(filename, '/800x0/filters:format(webp)');
+      smallImg = transformImage(image.filename, '/800x0/filters:quality(60)');
     }
 
     if (imgWidth >= 1200) {
-      mediumImg = transformImage(filename, '/1200x0/filters:quality(60)');
-      mediumWebp = transformImage(filename, '/1200x0/filters:format(webp)');
+      mediumImg = transformImage(image.filename, '/1200x0/filters:quality(60)');
     }
 
     if (imgWidth >= 2000) {
-      largeImg = transformImage(filename, '/2000x0/filters:quality(60)');
-      largeWebp = transformImage(filename, '/2000x0/filters:format(webp)');
+      largeImg = transformImage(image.filename, '/2000x0/filters:quality(60)');
     }
 
     imgSrcset = smallImg ? smallImg + ' 800w' : '';
@@ -57,21 +52,15 @@ const FullWidthImage = ({ filename, className, alt, imageFocus, loading, ...prop
   }
 
   return (
-    <picture>
-      <source media='(max-width: 800px)' srcSet={smallWebp} type='image/webp' />
-      <source media='(max-width: 1200px)' srcSet={mediumWebp} type='image/webp' />
-      <source media='(max-width: 2000px)' srcSet={largeWebp} type='image/webp' />
-      <source media='(min-width: 2001px)' srcSet={originalWebp} type='image/webp' />
-      <img
-        {...(imgSrcset ? {srcSet: imgSrcset} : {})}
-        {...(imgSizes ? {sizes: imgSizes} : {})}
-        src={imgSrc}
-        className={dcnb(className, imgFocus)}
-        alt={alt}
-        loading={imgLoading}
-        {...props}
-      />
-    </picture>
+    <img
+      {...(imgSrcset ? {srcSet: imgSrcset} : {})}
+      {...(imgSizes ? {sizes: imgSizes} : {})}
+      src={imgSrc}
+      className={dcnb(className, imgFocus)}
+      alt={alt}
+      loading={imgLoading}
+      {...props}
+    />
   );
 };
 
