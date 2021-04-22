@@ -62,12 +62,8 @@ export const objectPosition = {
   'top': 'su-object-top',
   'center': 'su-object-center',
   'bottom': 'su-object-bottom',
-  'top-left': 'su-object-left-top',
-  'top-right': 'su-object-right-top',
-  'center-left': 'su-object-left-center',
-  'center-right': 'su-object-right-center',
-  'bottom-left': 'su-object-left-bottom',
-  'bottom-right': 'su-object-right-bottom',
+  'left': 'su-object-left',
+  'right': 'su-object-right',
 };
 
 export const pageBgColors = {
