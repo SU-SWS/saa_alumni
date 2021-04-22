@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import FullWidthImage from '../media/fullWidthImage';
+import CardImage from '../media/cardImage';
 import { Heading } from 'decanter-react';
 
 const BasicCard = (props) => {
@@ -17,12 +17,12 @@ const BasicCard = (props) => {
       <div className={`basic-card`}>
         {props.blok.image.filename?.startsWith('http') && (
           <div className={wrapperClasses}>
-            <FullWidthImage
+            <CardImage
               image={props.blok.image}
+              size={props.blok.isRound ? 'avatar' : 'vertical'}
               imageFocus={props.blok.imageFocus}
-                className={`su-object-cover ${imageClasses}`}
+              className={`su-object-cover ${imageClasses}`}
               loading='lazy'
-              alt=''
             />
           </div>
         )}
