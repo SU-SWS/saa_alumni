@@ -3,7 +3,7 @@ import SbEditable from 'storyblok-react';
 import CardImage from '../media/cardImage';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
-import { Heading } from 'decanter-react';
+import { FlexBox, Heading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { basicCardImageBorderColor } from '../../utilities/dataSource';
 
@@ -31,25 +31,28 @@ const BasicCard = (props) => {
   }
 
   // Content alignment including image, default is left-align
+  let bodyAlign = 'su-items-start';
+
   if (props.blok.align === 'center') {
     wrapperClasses = dcnb(wrapperClasses, 'children:su-mx-auto su-text-center');
+    bodyAlign = 'su-items-center';
   }
 
   return (
     <SbEditable content={props.blok}>
-      <div className={`basic-card su-bg-white su-shadow su-max-w-500 ${wrapperClasses}`}>
+      <div className={dcnb('basic-card su-bg-white su-shadow su-max-w-500', wrapperClasses)}>
         {props.blok.image.filename?.startsWith('http') && (
           <div className={imageWrapperClasses}>
             <CardImage
               image={props.blok.image}
               size={props.blok.isRound ? 'thumb' : 'vertical'}
               imageFocus={props.blok.imageFocus}
-              className={`su-object-cover ${imageClasses}`}
+              className={dcnb('su-object-cover', imageClasses)}
               loading='lazy'
             />
           </div>
         )}
-        <div className='card-body su-rs-px-2 su-rs-pt-2 su-rs-pb-4'>
+        <FlexBox direction={'col'} className={dcnb('card-body su-rs-px-2 su-rs-pt-2 su-rs-pb-4', bodyAlign)}>
           <Heading
             level={props.blok.headingLevel ?? 3}
             className={dcnb('su-font-serif su-bold su-mb-0', headlineSize)}
@@ -64,7 +67,7 @@ const BasicCard = (props) => {
               <CreateBloks blokSection={props.blok.cta} />
             </div>
           }
-        </div>
+        </FlexBox>
       </div>
     </SbEditable>
   );
