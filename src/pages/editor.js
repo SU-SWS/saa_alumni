@@ -50,8 +50,10 @@ const initBridge = function(key, sbResolveRelations, setStory) {
   // When the content author does stuff.
   window.storyblok.on('input', (payload) => {
     // Add _editable properties to keep the Storyblok JS Bridge active after the content updates.
-    let updatedStoryContent = window.storyblok.addComments(payload.story.content, payload.story.id)
-    setStory(updatedStoryContent);
+    window.storyblok.addComments(payload.story.content, payload.story.id)
+    window.storyblok.resolveRelations(payload.story, sbResolveRelations, () => {
+      setStory(payload.story.content);
+    });
   });
 
   loadStory(sbResolveRelations, setStory);
@@ -76,7 +78,7 @@ const initBridge = function(key, sbResolveRelations, setStory) {
  */
 const StoryblokEntry = (props) => {
 
-  const [myStory, setStory] = useState({});
+  const [myStory, setStory] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   /**
@@ -130,7 +132,7 @@ const StoryblokEntry = (props) => {
   /**
    * Show the content!
    */
-  if (myStory) {
+  if (myStory && myStory.component) {
     return (
       <SbEditable content={myStory}>
         <div>
