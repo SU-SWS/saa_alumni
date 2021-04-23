@@ -5,6 +5,7 @@ import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 import { Heading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { basicCardImageBorderColor } from '../../utilities/dataSource';
 
 const BasicCard = (props) => {
   const numCta = getNumBloks(props.blok.cta);
@@ -14,10 +15,12 @@ const BasicCard = (props) => {
   // Basic card image has aspect ratio 4x3 for non-round option
   let imageWrapperClasses = 'su-aspect-w-4 su-aspect-h-3';
 
-  // Option to display image as round thumbnail
+  // Option to display image as round thumbnail with colored border
+  const borderColor = basicCardImageBorderColor[props.blok.borderColor] ?? basicCardImageBorderColor['digital-red'];
+
   if (props.blok.isRound) {
     wrapperClasses = 'su-rs-pt-3';
-    imageWrapperClasses = 'su-w-[14rem] su-h-[14rem] su-rs-ml-2 su-rounded-full su-border-[7px] su-border-solid su-border-digital-red su-overflow-hidden';
+    imageWrapperClasses = dcnb('su-w-[14rem] su-h-[14rem] su-rs-ml-2 su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden', borderColor);
     imageClasses = 'su-w-full su-h-full';
   }
 

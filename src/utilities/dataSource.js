@@ -1,5 +1,14 @@
 // Common variables for shared datasource in Storyblok
 
+export const basicCardImageBorderColor = {
+  'digital-red': 'su-border-digital-red',
+  'electric-blue': 'su-border-saa-electric-blue',
+  'lagunita-light': 'su-border-lagunita-light',
+  'palo-verde': 'su-border-palo-verde',
+  'plum': 'su-border-plum',
+  'poppy': 'su-border-poppy',
+};
+
 export const bgPositionVertical = {
   top: 'su-bg-top',
   center: 'su-bg-center',
