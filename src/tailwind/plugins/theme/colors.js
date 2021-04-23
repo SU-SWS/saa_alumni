@@ -3,10 +3,13 @@
  */
 module.exports = function () {
   return {
+    'transparent-black': 'rgba(0,0,0,20%)', // For use in linear gradients
     'saa-black': '#181D1C',
-    'saa-digital-red': '#EC0909',
-    'saa-red': '#B1040E',
-    'saa-purple': '#505EEC',
+    'digital-red-xlight': '#F83535', // Passed contrast test for black background
+    'saa-electric-blue': {
+      DEFAULT: '#505EEC',
+      light: '#6B77F5'
+    },
     'facebook': '#4267B2',
     'twitter': '#1da1f2',
     'instagram': '#d73676',

@@ -6,9 +6,30 @@ export const bgPositionVertical = {
   bottom: 'su-bg-bottom',
 };
 
+export const buttonSize = {
+  'small': 'su-px-20 su-pt-10 su-pb-12 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20',
+  'default': 'su-px-20 su-pt-14 su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-20 md:su-text-24',
+  'large': 'su-px-26 su-pt-16 su-pb-18 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-20 md:su-text-24',
+}
+
+export const buttonStyle = {
+  'primary': 'su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red',
+  'secondary': 'su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red hocus:su-text-white',
+  'secondary-gradient': 'su-gradient-border su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+  'ghost': 'su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red hocus:su-text-white',
+  'ghost-gradient': 'su-gradient-border su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+}
+
+
+export const ctaGroupDisplay = {
+  'adjacent': 'su-flex-col lg:su-flex-row lg:su-flex-wrap lg:su-justify-center lg:su--mb-20',
+  'adjacent-left': 'su-flex-col su-items-start su--ml-10 lg:su-flex-row lg:su-flex-wrap lg:su-justify-start lg:su--mb-20',
+  'stack': 'su-flex-col',
+};
+
 export const heroicon = {
   'none': 'none',
-  'arrow-right': 'arrow-narrow-right',
+  'arrow-right': 'arrow-right',
   'chevron-down': 'chevron-down',
   'chevron-right': 'chevron-right',
   'download': 'download',
@@ -18,15 +39,15 @@ export const heroicon = {
 }
 
 export const ctaLinkColor = {
-  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red hocus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-saa-digital-red hocus:su-text-black-20',
-  'black': 'su-text-black hocus:su-text-black !su-underline-saa-digital-red',
-  'white': 'su-text-black-20 hocus:su-text-black-20 !su-underline-saa-digital-red',
+  'bright-red-hover-cardinal-red': 'su-text-digital-red-light hocus:su-text-cardinal-red',
+  'bright-red-hover-white': 'su-text-digital-red-xlight hocus:su-text-black-20',
+  'black': 'su-text-black hocus:su-text-black !su-underline-digital-red-light',
+  'white': 'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
 }
 
 export const ctaLinkIconColor = {
-  'bright-red-hover-cardinal-red': 'su-text-saa-digital-red group-hocus:su-text-cardinal-red',
-  'bright-red-hover-white': 'su-text-saa-digital-red group-hocus:su-text-black-20',
+  'bright-red-hover-cardinal-red': 'su-text-digital-red-light group-hocus:su-text-cardinal-red',
+  'bright-red-hover-white': 'su-text-digital-red-xlight group-hocus:su-text-black-20',
   'black': 'su-text-black group-hocus:su-text-black',
   'white': 'su-text-black-20 group-hocus:su-text-black-20',
 }
@@ -37,10 +58,16 @@ export const ctaLinkTextSize = {
   'small': 'su-text-19 md:su-text-20 xl:su-text-21'
 }
 
-export const objectPositionVertical = {
-  top: 'su-object-top',
-  center: 'su-object-center',
-  bottom: 'su-object-bottom',
+export const objectPosition = {
+  'top': 'su-object-top',
+  'center': 'su-object-center',
+  'bottom': 'su-object-bottom',
+  'top-left': 'su-object-left-top',
+  'top-right': 'su-object-right-top',
+  'center-left': 'su-object-left-center',
+  'center-right': 'su-object-right-center',
+  'bottom-left': 'su-object-left-bottom',
+  'bottom-right': 'su-object-right-bottom',
 };
 
 export const pageBgColors = {

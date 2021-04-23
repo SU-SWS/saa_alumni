@@ -106,8 +106,8 @@ const LocalFooter = (props) => {
                 </li>
               </ul>
             </GridCell>
-            <GridCell xs={6} sm={3} md={4} xxl={3} className='su-link-black-20 su-underline-offset !su-link-underline-saa-digital-red'>
-              <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-x-lg su-gap-y-2xl' aria-label='SAA Links'>
+            <GridCell xs={6} sm={3} md={4} xxl={3} className='su-link-black-20 su-underline-custom !su-link-underline-digital-red-xlight'>
+              <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-x-lg su-gap-y-2xl' aria-label='Alumni Links'>
                 <CreateBloks blokSection={props.blok.linkGroups} />
               </Grid>
               <nav aria-label='Legal links'>

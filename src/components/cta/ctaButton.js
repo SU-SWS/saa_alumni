@@ -2,18 +2,23 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import SbLink from '../../utilities/sbLink';
 import Icon from 'react-hero-icon';
-import { ctaLinkColor, ctaLinkTextSize, ctaLinkIconColor, heroicon, textAlign, tinyMarginBottom } from '../../utilities/dataSource';
+import { buttonSize, buttonStyle, heroicon, textAlign } from '../../utilities/dataSource';
+import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 
-const CtaLink = React.forwardRef((props, ref) => {
-  // Link text size
-  const textSize = ctaLinkTextSize[props.blok.size] ?? ctaLinkTextSize['default'];
+const CtaButton = React.forwardRef((props, ref) => {
+  // Button size
+  const ctaButtonSize = buttonSize[props.blok.size] ?? buttonSize['default'];
 
-  // Link text color
-  const textColor = ctaLinkColor[props.blok.textColor] ?? ctaLinkColor['bright-red-hover-cardinal-red'];
+  // Button style
+  const ctaButtonStyle = buttonStyle[props.blok.buttonStyle] ?? buttonSize['primary'];
 
-  // Icon color
-  const iconColor = ctaLinkIconColor[props.blok.iconColor] ?? ctaLinkIconColor['bright-red-hover-cardinal-red'];
+  // For all button styles other than ghost-gradient, icon color is same as text color
+  let iconColor;
+
+  if (props.blok.buttonStyle === 'ghost-gradient') {
+    iconColor = 'su-text-saa-electric-blue-light group-hover:su-text-white group-focus:su-text-white';
+  }
 
   // Icon size/position finetuning based on icon choice
   let iconClasses;
@@ -31,7 +36,7 @@ const CtaLink = React.forwardRef((props, ref) => {
     iconClasses = 'su-h-[1.1em] su-w-[1.1em] su-ml-4 su--mt-3';
   }
   else {
-    iconClasses = 'su-h-09em su-w-09em su-ml-6 su--mt-2';
+    iconClasses = 'su-h-1em su-w-1em su-ml-04em su--mt-2';
   }
 
   // Icon animation
@@ -53,35 +58,32 @@ const CtaLink = React.forwardRef((props, ref) => {
   // Horizontal alignment
   const align = textAlign[props.blok.align] ?? textAlign['left'];
 
-  // Margin bottom
-  const marginBottom = tinyMarginBottom[props.blok.spacingBottom] ?? tinyMarginBottom['md'];
-
   return (
     <SbEditable content={props.blok}>
       {props.blok.linkText &&
-        <div className={`su-block ${align} ${textSize} ${marginBottom}`}>
-          <SbLink
-            ref={ref}
-            link={props.blok.link}
-            attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
-            classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hover:su-underline focus:su-underline ${textColor}`}
-          >
-            {props.blok.linkText}
-            {props.blok.srText &&
-              <span className='su-sr-only'>{` ${props.blok.srText}`}</span>
-            }
-            {props.blok.icon !== 'none' &&
-              <Icon icon={linkIcon}
-                    type='solid'
-                    aria-hidden='true'
-                    className={`su-inline-block ${iconClasses} ${iconColor} ${iconAnimate}`}
-              />
-            }
-          </SbLink>
-        </div>
+      <div className={`cta-button su-block su-mx-10 su-mb-20 last:su-mb-0 ${align}`}>
+        <SbLink
+          ref={ref}
+          link={props.blok.link}
+          attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
+          classes={dcnb('su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline hover:su-shadow-md focus:su-shadow-md', ctaButtonStyle, ctaButtonSize)}
+        >
+          {props.blok.linkText}
+          {props.blok.srText &&
+            <SrOnlyText srText={props.blok.srText} />
+          }
+          {props.blok.icon !== 'none' &&
+            <Icon icon={linkIcon}
+                  type='solid'
+                  aria-hidden='true'
+                  className={`su-inline-block ${iconColor} ${iconClasses} ${iconAnimate}`}
+            />
+          }
+        </SbLink>
+      </div>
       }
     </SbEditable>
   )
 });
 
-export default CtaLink;
+export default CtaButton;

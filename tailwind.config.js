@@ -50,6 +50,7 @@ module.exports = {
 
     // @tailwind base;
     require(decanter + '/base/base.js')(),
+    require(dir + '/base/base.js')(),
 
     // @tailwind components;
     require(decanter + '/components/form/input-base.js')(),
@@ -65,12 +66,14 @@ module.exports = {
     require(decanter + '/components/typography/styles.js')(),
     require(decanter + '/components/typography/wysiwyg.js')(),
     require(dir + '/components/underline/custom-underline.js')(),
+    require(dir + '/components/underline/link-underline.js')(),
+    require(dir + '/components/gradient-border/gradient-border.js')(),
+    require(dir + '/components/shadow/text-shadow.js')(),
 
     // @tailwind utilities;
     require(decanter + '/utilities/accessibility/accessibility-hidden.js')(),
     require(decanter + '/utilities/link/link.js')(),
     require(decanter + '/utilities/link/link-fontweight.js')(),
-    require(decanter + '/utilities/link/link-underline.js')(),
     require(decanter + '/utilities/scrolling/smooth-scroll.js')(),
   ],
 }
