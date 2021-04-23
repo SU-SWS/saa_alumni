@@ -18,6 +18,7 @@ module.exports = {
     content: [
       './src/**',
       './public/**',
+      './node_modules/decanter-react/dist/**',
     ],
   },
   theme: {
