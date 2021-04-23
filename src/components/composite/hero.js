@@ -25,7 +25,7 @@ const Hero = (props) => {
     <SbEditable content={props.blok}>
       <Container className={`hero su-relative su-bg-saa-black`} width='full'>
         {props.blok.image.filename?.startsWith('http') && (
-          <figure className='su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full su-min-h-600'>
+          <figure className='su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full'>
             <FullWidthImage
               image={props.blok.image}
               imageFocus={props.blok.imageFocus}
@@ -61,7 +61,7 @@ const Hero = (props) => {
               </FlexCell>
             }
             {numCta > 0 &&
-              <FlexCell className='su-rs-mt-4'>
+              <FlexCell className={props.blok.sansSub ? 'su-rs-mt-4' : ''}>
                 <CreateBloks blokSection={props.blok.cta}/>
               </FlexCell>
             }
