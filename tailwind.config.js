@@ -19,6 +19,7 @@ module.exports = {
       './src/**',
       './public/**',
       './node_modules/decanter-react/dist/**',
+      './.cache/**'
     ],
   },
   theme: {
