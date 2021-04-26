@@ -38,7 +38,7 @@ const BasicCard = (props) => {
   let headlineSize = 'su-type-2';
 
   if (props.blok.isBigHeadline) {
-    headlineSize = 'su-type-4';
+    headlineSize = 'su-type-3';
   }
 
   // Content alignment including image and CTA, default is left-align
@@ -52,7 +52,7 @@ const BasicCard = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <div className={dcnb('basic-card su-bg-white su-max-w-500', wrapperClasses)}>
+      <div className={dcnb('basic-card su-bg-white su-max-w-500 su-basefont-23', wrapperClasses)}>
         {props.blok.image.filename?.startsWith('http') && (
           <div className={imageWrapperClasses}>
             <CardImage
