@@ -70,8 +70,10 @@ export const objectPosition = {
   'bottom-right': 'su-object-right-bottom',
 };
 
-export const pageBgColors = {
+export const bgColors = {
   'foggy-light': 'su-bg-foggy-light',
+  'white': 'su-bg-white',
+  'black': 'su-bg-saa-black su-text-white',
 };
 
 export const pageTextColors = {

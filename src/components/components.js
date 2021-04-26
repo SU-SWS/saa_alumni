@@ -10,6 +10,7 @@ import LocalFooter from './identity/localFooter';
 import LocalFooterPicker from './identity/localFooterPicker';
 import NavItem from './navigation/navItem';
 import Page from './page';
+import Section from './layout/section';
 import Wysiwyg from './simple/wysiwyg';
 import Redirect from "./redirect/Redirect";
 
@@ -26,6 +27,7 @@ const ComponentList = {
   localFooterPicker: LocalFooterPicker,
   navItem: NavItem,
   page: Page,
+  section: Section,
   wysiwyg: Wysiwyg,
   redirect: Redirect
 };
