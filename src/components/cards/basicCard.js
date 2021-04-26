@@ -10,7 +10,8 @@ import { basicCardImageBorderColor } from '../../utilities/dataSource';
 const BasicCard = (props) => {
   const numCta = getNumBloks(props.blok.cta);
 
-  let wrapperClasses, imageClasses;
+  let wrapperClasses = 'su-border su-border-solid su-border-transparent-black su-shadow'
+  let imageClasses;
 
   // Basic card image has aspect ratio 4x3 for non-round option
   let imageWrapperClasses = 'su-aspect-w-4 su-aspect-h-3';
@@ -19,18 +20,29 @@ const BasicCard = (props) => {
   const borderColor = basicCardImageBorderColor[props.blok.borderColor] ?? basicCardImageBorderColor['digital-red'];
 
   if (props.blok.isRound) {
-    wrapperClasses = 'su-rs-pt-3';
+    wrapperClasses = dcnb('su-rs-pt-3', wrapperClasses);
     imageWrapperClasses = dcnb('su-w-[14rem] su-h-[14rem] su-rs-ml-2 su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden', borderColor);
     imageClasses = 'su-w-full su-h-full';
   }
 
+  // Option to use "minimal" card variant
+  let bodyPadding = 'su-rs-px-2 su-rs-pt-2 su-rs-pb-4'
+
+  if (props.blok.isMinimal) {
+    wrapperClasses = '';
+    bodyPadding = 'su-rs-pt-2';
+    imageWrapperClasses = dcnb(imageWrapperClasses, {'su-rs-ml-2': false});
+  }
+
+  // Option to make headline font larger
   let headlineSize = 'su-type-2';
 
   if (props.blok.isBigHeadline) {
     headlineSize = 'su-type-4';
   }
 
-  // Content alignment including image, default is left-align
+  // Content alignment including image and CTA, default is left-align
+  // This setting overrides the alignment option in the nested CTA
   let bodyAlign = 'su-items-start';
 
   if (props.blok.align === 'center') {
@@ -40,7 +52,7 @@ const BasicCard = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <div className={dcnb('basic-card su-bg-white su-shadow su-max-w-500', wrapperClasses)}>
+      <div className={dcnb('basic-card su-bg-white su-max-w-500', wrapperClasses)}>
         {props.blok.image.filename?.startsWith('http') && (
           <div className={imageWrapperClasses}>
             <CardImage
@@ -52,7 +64,7 @@ const BasicCard = (props) => {
             />
           </div>
         )}
-        <FlexBox direction={'col'} className={dcnb('card-body su-rs-px-2 su-rs-pt-2 su-rs-pb-4', bodyAlign)}>
+        <FlexBox direction={'col'} className={dcnb('card-body', bodyPadding, bodyAlign)}>
           <Heading
             level={props.blok.headingLevel ?? 3}
             className={dcnb('su-font-serif su-bold su-mb-0', headlineSize)}

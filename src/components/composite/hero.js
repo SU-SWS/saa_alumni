@@ -16,7 +16,7 @@ const Hero = (props) => {
   let gradientFrom = 'su-from-transparent';
 
   if (props.blok.isDarkGradient) {
-    gradientFrom = 'su-from-transparent-black';
+    gradientFrom = 'su-from-transparent-black-20';
   }
 
   let numCta = getNumBloks(props.blok.cta);
