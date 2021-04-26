@@ -11,6 +11,7 @@ import LocalFooterPicker from './identity/localFooterPicker';
 import NavItem from './navigation/navItem';
 import Page from './page';
 import Wysiwyg from './simple/wysiwyg';
+import Redirect from "./redirect/Redirect";
 
 
 const ComponentList = {
@@ -25,7 +26,8 @@ const ComponentList = {
   localFooterPicker: LocalFooterPicker,
   navItem: NavItem,
   page: Page,
-  wysiwyg: Wysiwyg
+  wysiwyg: Wysiwyg,
+  redirect: Redirect
 };
 
 const Components = (type) => {
