@@ -1,6 +1,6 @@
 // Common variables for shared datasource in Storyblok
 
-export const basicCardImageBorderColor = {
+export const borderColors = {
   'digital-red': 'su-border-digital-red',
   'electric-blue': 'su-border-saa-electric-blue',
   'lagunita-light': 'su-border-lagunita-light',
