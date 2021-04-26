@@ -10,7 +10,7 @@ import { borderColors } from '../../utilities/dataSource';
 const BasicCard = (props) => {
   const numCta = getNumBloks(props.blok.cta);
 
-  let wrapperClasses = 'su-border su-border-solid su-border-transparent-black su-shadow'
+  let wrapperClasses = 'su-bg-white su-text-black su-border su-border-solid su-border-transparent-black su-shadow'
   let imageClasses;
 
   // Basic card image has aspect ratio 4x3 for non-round option
@@ -34,6 +34,11 @@ const BasicCard = (props) => {
     imageWrapperClasses = dcnb(imageWrapperClasses, {'su-rs-ml-2': false});
   }
 
+  // Option to use light text
+  if (props.blok.isLightText) {
+    wrapperClasses = 'su-bg-transparent su-text-white';
+  }
+
   // Option to make headline font larger
   let headlineSize = 'su-type-2';
 
@@ -54,7 +59,7 @@ const BasicCard = (props) => {
     <SbEditable content={props.blok}>
       <div className={dcnb('basic-card su-bg-white su-max-w-600 su-basefont-23', wrapperClasses)}>
         {props.blok.image.filename?.startsWith('http') && (
-          <div className={imageWrapperClasses}>
+          <div className={imageWrapperClasses} aria-hidden='true'>
             <CardImage
               filename={props.blok.image.filename}
               size={props.blok.isRound ? 'thumb' : 'vertical'}
