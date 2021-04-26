@@ -56,7 +56,7 @@ const BasicCard = (props) => {
         {props.blok.image.filename?.startsWith('http') && (
           <div className={imageWrapperClasses}>
             <CardImage
-              image={props.blok.image}
+              filename={props.blok.image.filename}
               size={props.blok.isRound ? 'thumb' : 'vertical'}
               imageFocus={props.blok.imageFocus}
               className={dcnb('su-object-cover', imageClasses)}

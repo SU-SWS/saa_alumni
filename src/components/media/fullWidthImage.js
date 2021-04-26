@@ -4,33 +4,33 @@ import getImageWidth from '../../utilities/getImageWidth';
 import { objectPosition } from '../../utilities/dataSource';
 import { dcnb } from 'cnbuilder';
 
-const FullWidthImage = ({ image, className, alt, imageFocus, loading, ...props}) => {
+const FullWidthImage = ({ filename, className, alt, imageFocus, loading, ...props}) => {
   const imgFocus = objectPosition[imageFocus] ?? objectPosition['center'];
   const imgLoading = loading ?? 'auto';
 
   let largeImg, mediumImg, smallImg, originalImg = '';
   let imgSrcset, imgSizes, imgSrc = '';
 
-  if (image.filename != null) {
+  if (filename != null) {
     let imgWidth = '';
 
     // Get image width from URL of storyblok image
-    if (image.filename?.startsWith('http')) {
-      imgWidth = getImageWidth(image.filename);
+    if (filename?.startsWith('http')) {
+      imgWidth = getImageWidth(filename);
     }
 
-    originalImg = transformImage(image.filename, '');
+    originalImg = transformImage(filename, '');
 
     if (imgWidth >= 800) {
-      smallImg = transformImage(image.filename, '/800x0');
+      smallImg = transformImage(filename, '/800x0');
     }
 
     if (imgWidth >= 1200) {
-      mediumImg = transformImage(image.filename, '/1200x0');
+      mediumImg = transformImage(filename, '/1200x0');
     }
 
     if (imgWidth >= 2000) {
-      largeImg = transformImage(image.filename, '/2000x0');
+      largeImg = transformImage(filename, '/2000x0');
     }
 
     imgSrcset = smallImg ? smallImg + ' 800w' : '';

@@ -27,7 +27,7 @@ const Hero = (props) => {
         {props.blok.image.filename?.startsWith('http') && (
           <figure className='su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full'>
             <FullWidthImage
-              image={props.blok.image}
+              filename={props.blok.image.filename}
               imageFocus={props.blok.imageFocus}
               className='su-w-full su-h-full su-object-cover'
               loading='eager'
