@@ -68,7 +68,6 @@ module.exports = {
     require(decanter + '/components/typography/wysiwyg.js')(),
     require(dir + '/components/underline/custom-underline.js')(),
     require(dir + '/components/underline/link-underline.js')(),
-    require(dir + '/components/gradient-border/gradient-border.js')(),
     require(dir + '/components/shadow/text-shadow.js')(),
 
     // @tailwind utilities;
@@ -76,5 +75,6 @@ module.exports = {
     require(decanter + '/utilities/link/link.js')(),
     require(decanter + '/utilities/link/link-fontweight.js')(),
     require(decanter + '/utilities/scrolling/smooth-scroll.js')(),
+    require(dir + '/utilities/gradient-border/gradient-border.js')(),
   ],
 }
