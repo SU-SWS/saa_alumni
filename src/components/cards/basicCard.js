@@ -57,7 +57,7 @@ const BasicCard = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <div className={dcnb('basic-card su-bg-white su-max-w-600 su-basefont-23', wrapperClasses)}>
+      <div className={dcnb('basic-card su-max-w-600 su-basefont-23', wrapperClasses)}>
         {props.blok.image.filename?.startsWith('http') && (
           <div className={imageWrapperClasses} aria-hidden='true'>
             <CardImage
