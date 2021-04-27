@@ -9,7 +9,7 @@ const ctaGroup = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <div className={`cta-group su-flex ${display}`}>
+      <div className={`cta-group su-flex ${display} children:su-mx-10 children:su-mb-20 children:last:su-mb-0`}>
         <CreateBloks blokSection={props.blok.cta} />
       </div>
     </SbEditable>

@@ -24,7 +24,8 @@ const transformImage = (image, param = '') => {
 
   if (param === '') {
     return imageService + path;
-  } else {
+  }
+  else {
     return imageService + param + path;
   }
 

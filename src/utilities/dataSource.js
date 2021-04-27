@@ -1,5 +1,14 @@
 // Common variables for shared datasource in Storyblok
 
+export const borderColors = {
+  'digital-red': 'su-border-digital-red',
+  'electric-blue': 'su-border-saa-electric-blue',
+  'lagunita-light': 'su-border-lagunita-light',
+  'palo-verde': 'su-border-palo-verde',
+  'plum': 'su-border-plum',
+  'poppy': 'su-border-poppy',
+};
+
 export const bgPositionVertical = {
   top: 'su-bg-top',
   center: 'su-bg-center',
@@ -62,12 +71,8 @@ export const objectPosition = {
   'top': 'su-object-top',
   'center': 'su-object-center',
   'bottom': 'su-object-bottom',
-  'top-left': 'su-object-left-top',
-  'top-right': 'su-object-right-top',
-  'center-left': 'su-object-left-center',
-  'center-right': 'su-object-right-center',
-  'bottom-left': 'su-object-left-bottom',
-  'bottom-right': 'su-object-right-bottom',
+  'left': 'su-object-left',
+  'right': 'su-object-right',
 };
 
 export const bgColors = {

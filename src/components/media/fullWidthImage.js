@@ -4,10 +4,9 @@ import getImageWidth from '../../utilities/getImageWidth';
 import { objectPosition } from '../../utilities/dataSource';
 import { dcnb } from 'cnbuilder';
 
-const FullWidthImage = ({ filename, element, imageClasses, alt, imageFocus, ...props}) => {
-  const Element = element ?? 'figure';
-
+const FullWidthImage = ({ filename, className, alt, imageFocus, loading, ...props}) => {
   const imgFocus = objectPosition[imageFocus] ?? objectPosition['center'];
+  const imgLoading = loading ?? 'auto';
 
   let largeImg, mediumImg, smallImg, originalImg = '';
   let imgSrcset, imgSizes, imgSrc = '';
@@ -53,15 +52,15 @@ const FullWidthImage = ({ filename, element, imageClasses, alt, imageFocus, ...p
   }
 
   return (
-    <Element {...props}>
-      <img
-        {...(imgSrcset ? {srcSet: imgSrcset} : {})}
-        {...(imgSizes ? {sizes: imgSizes} : {})}
-        src={imgSrc}
-        className={dcnb(imageClasses, imgFocus)}
-        alt={alt}
-      />
-    </Element>
+    <img
+      {...(imgSrcset ? {srcSet: imgSrcset} : {})}
+      {...(imgSizes ? {sizes: imgSizes} : {})}
+      src={imgSrc}
+      className={dcnb(className, imgFocus)}
+      alt={alt}
+      loading={imgLoading}
+      {...props}
+    />
   );
 };
 
