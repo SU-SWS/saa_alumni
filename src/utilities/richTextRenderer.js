@@ -1,10 +1,11 @@
 import React from "react";
 import { render, MARK_BOLD, MARK_ITALIC, NODE_HEADING } from 'storyblok-rich-text-react-renderer';
 import { Heading } from "decanter-react";
+import { dcnb } from 'cnbuilder';
 
-const RichTextRenderer = ({wysiwyg}) => {
+const RichTextRenderer = ({wysiwyg, className}) => {
   return (
-    <div className='su-wysiwyg'>
+    <div className={dcnb('su-wysiwyg', className)}>
       {render(wysiwyg, {
         markResolvers: {
           [MARK_BOLD]: (children) => <strong>{children}</strong>,
