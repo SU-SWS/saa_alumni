@@ -18,8 +18,8 @@ const Section = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <section className={dcnb('section su-cc su-rs-py-6 su-basefont-23', bgColor)}>
-        <header className='su-text-center su-rs-mb-5'>
+      <section className={dcnb('section su-rs-py-6 su-basefont-23', bgColor)}>
+        <header className='su-cc su-text-center su-rs-mb-5'>
           {props.blok.superhead &&
             <SbLink link={props.blok.superLink}
                     classes={dcnb('su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border-bottom su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border', superLinkColor)}
