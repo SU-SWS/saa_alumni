@@ -3,6 +3,7 @@ import CtaButton from './cta/ctaButton';
 import CtaLink from './cta/ctaLink';
 import CtaGroup from './cta/ctaGroup';
 import Embed from './embed/embed';
+import Grid from './layout/grid';
 import Hero from './composite/hero';
 import InteriorPage from './page-types/interiorPage';
 import LinkGroup from './navigation/linkGroup';
@@ -14,12 +15,12 @@ import Section from './layout/section';
 import Wysiwyg from './simple/wysiwyg';
 import Redirect from "./redirect/Redirect";
 
-
 const ComponentList = {
   ctaButton: CtaButton,
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,
   embed: Embed,
+  grid: Grid,
   hero: Hero,
   interiorPage: InteriorPage,
   linkGroup: LinkGroup,

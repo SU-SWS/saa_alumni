@@ -14,7 +14,7 @@ const Section = (props) => {
     <SbEditable content={props.blok}>
       <section className={dcnb('section su-cc su-text-center su-basefont-23', bgColor)}>
         {props.blok.superhead &&
-          <SbLink link={props.blok.superLink} classes='su-rs-mb-6'>
+          <SbLink link={props.blok.superLink} classes='su-inline-block su-rs-mb-6'>
             {props.blok.superhead}
           </SbLink>
         }
@@ -28,7 +28,7 @@ const Section = (props) => {
           </Heading>
         }
         <div className='su-big-paragraph su-max-w-prose su-mx-auto'>
-          <RichTextRenderer wysiwyg={props.blok.intro} className='children:su-leading-snug' />
+          <RichTextRenderer wysiwyg={props.blok.intro} className='children:su-leading-display' />
         </div>
       </section>
     </SbEditable>
