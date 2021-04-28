@@ -15,7 +15,7 @@ const Grid = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <WidthBox width={props.blok.width}>
+      <WidthBox width={props.blok.width} className='saa-grid'>
         <DrGrid xs={1} md={2} lg={props.blok.numCol} className={dcnb('su-items-start su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]', gapClasses)}>
           <CreateBloks blokSection={props.blok.content} />
         </DrGrid>
