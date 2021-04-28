@@ -2,12 +2,15 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../utilities/createBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
-import { Heading } from 'decanter-react';
+import getNumBloks from '../../utilities/getNumBloks';
+import { Container, Heading } from 'decanter-react';
 import { bgColors, largePaddingTop, largePaddingBottom } from '../../utilities/dataSource';
 import SbLink from '../../utilities/sbLink';
 import { dcnb } from 'cnbuilder';
 
 const Section = (props) => {
+  const numCta = getNumBloks(props.blok.cta);
+
   const bgColor = bgColors[props.blok.bgColor] ?? bgColors['white'];
 
   let superLinkColor = 'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue';
@@ -45,6 +48,11 @@ const Section = (props) => {
           </div>
         </header>
         <CreateBloks blokSection={props.blok.content} />
+        {numCta > 0 &&
+          <Container width='site' className='su-rs-mt-6'>
+            <CreateBloks blokSection={props.blok.cta}/>
+          </Container>
+        }
       </section>
     </SbEditable>
   );
