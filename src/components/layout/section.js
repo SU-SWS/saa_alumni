@@ -3,7 +3,7 @@ import SbEditable from 'storyblok-react';
 import CreateBloks from '../../utilities/createBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import { Heading } from 'decanter-react';
-import { bgColors } from '../../utilities/dataSource';
+import { bgColors, largePaddingTop, largePaddingBottom } from '../../utilities/dataSource';
 import SbLink from '../../utilities/sbLink';
 import { dcnb } from 'cnbuilder';
 
@@ -16,9 +16,12 @@ const Section = (props) => {
     superLinkColor = 'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light';
   }
 
+  const paddingTop = largePaddingTop[props.blok.spacingTop] ?? largePaddingTop['lg'];
+  const paddingBottom = largePaddingBottom[props.blok.spacingBottom] ?? largePaddingBottom['lg'];
+
   return (
     <SbEditable content={props.blok}>
-      <section className={dcnb('section su-rs-py-6 su-basefont-23', bgColor)} id={props.blok.id}>
+      <section className={dcnb('section su-basefont-23', bgColor, paddingTop, paddingBottom)} id={props.blok.id}>
         <header className='su-cc su-text-center su-rs-mb-5'>
           {props.blok.superhead &&
             <SbLink link={props.blok.superLink}

@@ -97,6 +97,28 @@ export const smallPaddingBottom = {
   xxl: 'su-rs-pb-6',
 };
 
+export const largePaddingBottom = {
+  none: '',
+  xxs: 'su-rs-pb-4',
+  xs: 'su-rs-pb-5',
+  sm: 'su-rs-pb-6',
+  md: 'su-rs-pb-7',
+  lg: 'su-rs-pb-8',
+  xl: 'su-rs-pb-9',
+  xxl: 'su-rs-pb-10',
+};
+
+export const largePaddingTop = {
+  none: '',
+  xxs: 'su-rs-pt-4',
+  xs: 'su-rs-pt-5',
+  sm: 'su-rs-pt-6',
+  md: 'su-rs-pt-7',
+  lg: 'su-rs-pt-8',
+  xl: 'su-rs-pt-9',
+  xxl: 'su-rs-pt-10',
+};
+
 export const tinyMarginBottom = {
   none: '',
   sm: 'su-mb-03em',
