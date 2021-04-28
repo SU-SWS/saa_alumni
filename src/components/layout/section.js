@@ -18,7 +18,7 @@ const Section = (props) => {
 
   return (
     <SbEditable content={props.blok}>
-      <section className={dcnb('section su-rs-py-6 su-basefont-23', bgColor)}>
+      <section className={dcnb('section su-rs-py-6 su-basefont-23', bgColor)} id={props.blok.id}>
         <header className='su-cc su-text-center su-rs-mb-5'>
           {props.blok.superhead &&
             <SbLink link={props.blok.superLink}
@@ -32,6 +32,7 @@ const Section = (props) => {
                      font='serif'
                      weight='bold'
                      className={`su-mb-02em su-type-5`}
+                     srOnly={props.blok.isSrOnlyTitle}
             >
               {props.blok.title}
             </Heading>
