@@ -9,7 +9,7 @@ import { dcnb } from 'cnbuilder';
 const CtaButton = React.forwardRef(({
   blok: {
     size,
-    buttonStyle,
+    buttonStyle:propsButtonStyle,
     icon,
     align:propsAlign,
     linkText,
@@ -25,7 +25,7 @@ const CtaButton = React.forwardRef(({
   const ctaButtonSize = buttonSize[size] ?? buttonSize['default'];
 
   // Button style
-  const ctaButtonStyle = buttonStyle[buttonStyle] ?? buttonSize['primary'];
+  const ctaButtonStyle = buttonStyle[propsButtonStyle] ?? buttonSize['primary'];
 
   // For all button styles other than ghost-gradient, icon color is same as text color
   let iconColor;
