@@ -96,10 +96,6 @@ const HtmlHead = () => {
         href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
         rel="stylesheet"
       />
-      <link
-        href="/styles/global.css"
-        rel="stylesheet"
-      />
     </>
   )
 }

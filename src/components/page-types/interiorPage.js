@@ -4,10 +4,20 @@ import { Container, Grid, GridCell, Heading } from "decanter-react";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 
-const InteriorPage = ({blok: { title, content}, blok, ...rest}) => {
+const InteriorPage = (props) => {
+
+  // Destructure.
+  const {
+    blok: {
+      title,
+      content
+    },
+    blok
+  } = props;
+
   return (
     <SbEditable content={blok}>
-      <Layout {...rest}>
+      <Layout {...props}>
         <Container element='main'
                    id='main-content'
                    className={`su-relative su-flex-grow su-w-full`}
