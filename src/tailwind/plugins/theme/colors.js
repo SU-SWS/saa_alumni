@@ -4,8 +4,8 @@
 module.exports = function () {
   return {
     'transparent-black': {
-      DEFAULT: 'rgba(0,0,0,10%)', // For card borders
-      '20': 'rgba(0,0,0,20%)', // For use in linear gradients
+      DEFAULT: 'rgba(0, 0, 0, 10%)', // For card borders
+      '20': 'rgba(0, 0, 0, 20%)', // For use in linear gradients
     },
     'saa-black': '#181D1C',
     'digital-red-xlight': '#F83535', // Passed contrast test for black background
