@@ -6,33 +6,47 @@ import { buttonSize, buttonStyle, heroicon, textAlign } from '../../utilities/da
 import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 
-const CtaButton = React.forwardRef((props, ref) => {
+const CtaButton = React.forwardRef(({
+  blok: {
+    size,
+    buttonStyle:propsButtonStyle,
+    icon,
+    align:propsAlign,
+    linkText,
+    link,
+    rel,
+    srText
+  },
+  blok
+  },
+  ref
+) => {
   // Button size
-  const ctaButtonSize = buttonSize[props.blok.size] ?? buttonSize['default'];
+  const ctaButtonSize = buttonSize[size] ?? buttonSize['default'];
 
   // Button style
-  const ctaButtonStyle = buttonStyle[props.blok.buttonStyle] ?? buttonSize['primary'];
+  const ctaButtonStyle = buttonStyle[propsButtonStyle] ?? buttonSize['primary'];
 
   // For all button styles other than ghost-gradient, icon color is same as text color
   let iconColor;
 
-  if (props.blok.buttonStyle === 'ghost-gradient') {
+  if (buttonStyle === 'ghost-gradient') {
     iconColor = 'su-text-saa-electric-blue-light group-hover:su-text-white group-focus:su-text-white';
   }
 
   // Icon size/position finetuning based on icon choice
   let iconClasses;
 
-  if (props.blok.icon === 'external') {
+  if (icon === 'external') {
     iconClasses = 'su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hover:su-rotate-45 group-focus:su-rotate-45';
   }
-  else if (props.blok.icon === 'email' || props.blok.icon === 'video') {
+  else if (icon === 'email' || icon === 'video') {
     iconClasses = 'su-h-08em su-w-08em su-ml-7 su--mt-2';
   }
-  else if (props.blok.icon === 'download') {
+  else if (icon === 'download') {
     iconClasses = 'su-h-08em su-w-08em su-ml-4 su--mt-3';
   }
-  else if (props.blok.icon === 'chevron-down') {
+  else if (icon === 'chevron-down') {
     iconClasses = 'su-h-[1.1em] su-w-[1.1em] su-ml-4 su--mt-3';
   }
   else {
@@ -42,10 +56,10 @@ const CtaButton = React.forwardRef((props, ref) => {
   // Icon animation
   let iconAnimate = 'su-transition-transform group-hover:su-transform group-focus:su-transform';
 
-  if (props.blok.icon === 'external') {
+  if (icon === 'external') {
     iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-x-01em group-focus:su-translate-x-01em group-hover:su--translate-y-01em group-focus:su--translate-y-01em');
   }
-  else if (props.blok.icon === 'download' || props.blok.icon === 'chevron-down') {
+  else if (icon === 'download' || icon === 'chevron-down') {
     iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-y-02em group-focus:su-translate-y-02em');
   }
   else {
@@ -53,26 +67,26 @@ const CtaButton = React.forwardRef((props, ref) => {
   }
 
   // Heroicon option
-  const linkIcon = heroicon[props.blok.icon] ?? heroicon['arrow-right'];
+  const linkIcon = heroicon[icon] ?? heroicon['arrow-right'];
 
   // Horizontal alignment
-  const align = textAlign[props.blok.align] ?? textAlign['left'];
+  const align = textAlign[propsAlign] ?? textAlign['left'];
 
   return (
-    <SbEditable content={props.blok}>
-      {props.blok.linkText &&
+    <SbEditable content={blok}>
+      {linkText &&
       <div className={`cta-button su-block ${align}`}>
         <SbLink
           ref={ref}
-          link={props.blok.link}
-          attributes={props.blok.rel ? {rel: props.blok.rel} : {}}
+          link={link}
+          attributes={rel ? {rel: rel} : {}}
           classes={dcnb('su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline hover:su-shadow-md focus:su-shadow-md', ctaButtonStyle, ctaButtonSize)}
         >
-          {props.blok.linkText}
-          {props.blok.srText &&
-            <SrOnlyText srText={props.blok.srText} />
+          {linkText}
+          {srText &&
+            <SrOnlyText srText={srText} />
           }
-          {props.blok.icon !== 'none' &&
+          {icon !== 'none' &&
             <Icon icon={linkIcon}
                   type='solid'
                   aria-hidden='true'

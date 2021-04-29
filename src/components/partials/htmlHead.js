@@ -6,7 +6,7 @@ import React from "react"
  * from Stanford's media source for browser tab and phone home screens.
  */
 
-const HtmlHead = props => {
+const HtmlHead = () => {
   return (
     <>
       <link
@@ -94,10 +94,6 @@ const HtmlHead = props => {
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link
         href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
-        rel="stylesheet"
-      />
-      <link
-        href="/styles/global.css"
         rel="stylesheet"
       />
     </>

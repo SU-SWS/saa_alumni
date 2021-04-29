@@ -10,24 +10,23 @@
 import React, { useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 
-const Embed = (props) => {
+const Embed = ({blok: { markup, pre_markup, post_markup }, blok}) => {
 
   let premarkup, postmarkup;
   const myEmbed = useRef(null);
-  const markup = props.blok?.markup;
 
-  if (props.blok?.pre_markup) {
+  if (pre_markup) {
     premarkup = (<div
       dangerouslySetInnerHTML={{
-        __html: props.blok.pre_markup,
+        __html: pre_markup,
       }}
     />)
   }
 
-  if (props.blok?.post_markup) {
+  if (post_markup) {
     postmarkup = (<div
       dangerouslySetInnerHTML={{
-        __html: props.blok.post_markup,
+        __html: post_markup,
       }}
     />)
   }
@@ -58,7 +57,7 @@ const Embed = (props) => {
   }, [markup]);
 
   return (
-    <SbEditable content={props.blok}>
+    <SbEditable content={blok}>
       {premarkup}
       <div ref={myEmbed} />
       {postmarkup}

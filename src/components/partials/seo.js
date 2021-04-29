@@ -11,28 +11,28 @@ import transformImage from "../../utilities/transformImage";
  * and thus returns a string, not an object like the new asset block.
  */
 
-const Seo = (props) => {
+const Seo = ({blok: { title:theTitle, seo }, blok}) => {
   const { title, description } = UseSiteMetadata();
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
-  if (props.blok.seo == null) {
+  if (seo == null) {
     return (
-      <Helmet titleTemplate={`%s | ${title}`} title={props.blok.title}>
+      <Helmet titleTemplate={`%s | ${title}`} title={theTitle}>
         <meta name='description' content={description} />
       </Helmet>
     )
   }
 
   // Use the title in SEO component, otherwise use the page title
-  let seoTitle = props.blok.seo.title || props.blok.title || '';
-  let ogTitle = props.blok.seo.og_title || seoTitle;
+  let seoTitle = seo.title || theTitle || '';
+  let ogTitle = seo.og_title || seoTitle;
 
   // Use the description in SEO component, otherwise use the one from gatsby.config
-  let seoDescription = props.blok.seo.description || description || '';
-  let ogDescription = props.blok.seo.og_description || seoDescription;
+  let seoDescription = seo.description || description || '';
+  let ogDescription = seo.og_description || seoDescription;
 
-  let ogImage = props.blok.seo.og_image ?? '';
-  let twitterImage = props.blok.seo.twitter_image ?? '';
+  let ogImage = seo.og_image ?? '';
+  let twitterImage = seo.twitter_image ?? '';
 
   if (ogImage !== '') {
     ogImage = transformImage(ogImage, '/1200x630');
@@ -43,7 +43,7 @@ const Seo = (props) => {
   }
 
   return (
-    <SbEditable content={props.blok}>
+    <SbEditable content={blok}>
       <Helmet titleTemplate={`%s | ${title}`} title={seoTitle}>
         {seoDescription !== '' &&
           <meta name='description'
@@ -61,13 +61,13 @@ const Seo = (props) => {
           <meta property='og:image'
               content={ogImage} />
         }
-        {props.blok.seo.twitter_title &&
+        {seo.twitter_title &&
           <meta name='twitter:title'
-                content={props.blok.seo.twitter_title} />
+                content={seo.twitter_title} />
         }
-        {props.blok.seo.twitter_description &&
+        {seo.twitter_description &&
           <meta name='twitter:description'
-                content={props.blok.seo.twitter_description} />
+                content={seo.twitter_description} />
         }
         {twitterImage !== '' &&
           <meta name='twitter:image'

@@ -3,14 +3,14 @@ import SbEditable from 'storyblok-react';
 import CreateBloks from '../../utilities/createBloks';
 import { ctaGroupDisplay } from '../../utilities/dataSource';
 
-const ctaGroup = (props) => {
+const ctaGroup = ({blok: { display, cta }}, blok) => {
   // Display type
-  const display = ctaGroupDisplay[props.blok.display] ?? ctaGroupDisplay['adjacent'];
+  const myDisplay = ctaGroupDisplay[display] ?? ctaGroupDisplay['adjacent'];
 
   return (
-    <SbEditable content={props.blok}>
-      <div className={`cta-group su-flex ${display} children:su-mx-10 children:su-mb-20 children:last:su-mb-0`}>
-        <CreateBloks blokSection={props.blok.cta} />
+    <SbEditable content={blok}>
+      <div className={`cta-group su-flex ${myDisplay} children:su-mx-10 children:su-mb-20 children:last:su-mb-0`}>
+        <CreateBloks blokSection={cta} />
       </div>
     </SbEditable>
   );
