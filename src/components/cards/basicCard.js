@@ -7,8 +7,26 @@ import { FlexBox, Heading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { borderColors } from '../../utilities/dataSource';
 
-const BasicCard = (props) => {
-  const numCta = getNumBloks(props.blok.cta);
+const BasicCard = ({
+  blok: {
+    cta,
+    borderColor,
+    isRound,
+    isMinimal,
+    isLightText,
+    isBigHeadline,
+    align,
+    image: {
+      filename
+    },
+    imageFocus,
+    headline,
+    headingLevel,
+    text
+  },
+  blok
+}) => {
+  const numCta = getNumBloks(cta);
 
   let wrapperClasses = 'su-bg-white su-text-black su-border su-border-solid su-border-transparent-black su-shadow'
   let imageClasses;
@@ -17,9 +35,9 @@ const BasicCard = (props) => {
   let imageWrapperClasses = 'su-aspect-w-4 su-aspect-h-3';
 
   // Option to display image as round thumbnail with colored border
-  const borderColor = borderColors[props.blok.borderColor] ?? borderColors['digital-red'];
+  borderColor = borderColors[borderColor] ?? borderColors['digital-red'];
 
-  if (props.blok.isRound) {
+  if (isRound) {
     wrapperClasses = dcnb('su-rs-pt-3', wrapperClasses);
     imageWrapperClasses = dcnb('su-w-[14rem] su-h-[14rem] su-rs-ml-2 su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden', borderColor);
     imageClasses = 'su-w-full su-h-full';
@@ -28,21 +46,21 @@ const BasicCard = (props) => {
   // Option to use "minimal" card variant
   let bodyPadding = 'su-rs-px-2 su-rs-pt-2 su-rs-pb-4'
 
-  if (props.blok.isMinimal) {
+  if (isMinimal) {
     wrapperClasses = '';
     bodyPadding = 'su-rs-pt-2';
     imageWrapperClasses = dcnb(imageWrapperClasses, {'su-rs-ml-2': false});
   }
 
   // Option to use light text
-  if (props.blok.isLightText) {
+  if (isLightText) {
     wrapperClasses = 'su-bg-transparent su-text-white';
   }
 
   // Option to make headline font larger
   let headlineSize = 'su-type-2';
 
-  if (props.blok.isBigHeadline) {
+  if (isBigHeadline) {
     headlineSize = 'su-type-3';
   }
 
@@ -50,20 +68,20 @@ const BasicCard = (props) => {
   // This setting overrides the alignment option in the nested CTA
   let bodyAlign = 'su-items-start';
 
-  if (props.blok.align === 'center') {
+  if (align === 'center') {
     wrapperClasses = dcnb(wrapperClasses, 'children:su-mx-auto su-text-center');
     bodyAlign = 'su-items-center';
   }
 
   return (
-    <SbEditable content={props.blok}>
+    <SbEditable content={blok}>
       <div className={dcnb('basic-card su-max-w-600 su-basefont-23', wrapperClasses)}>
-        {props.blok.image.filename?.startsWith('http') && (
+        {filename?.startsWith('http') && (
           <div className={imageWrapperClasses} aria-hidden='true'>
             <CardImage
-              filename={props.blok.image.filename}
-              size={props.blok.isRound ? 'thumb' : 'vertical'}
-              imageFocus={props.blok.imageFocus}
+              filename={filename}
+              size={isRound ? 'thumb' : 'vertical'}
+              imageFocus={imageFocus}
               className={dcnb('su-object-cover', imageClasses)}
               loading='lazy'
             />
@@ -71,17 +89,17 @@ const BasicCard = (props) => {
         )}
         <FlexBox direction={'col'} className={dcnb('card-body', bodyPadding, bodyAlign)}>
           <Heading
-            level={props.blok.headingLevel ?? 3}
+            level={headingLevel ?? 3}
             className={dcnb('su-font-serif su-bold su-mb-0', headlineSize)}
           >
-            {props.blok.headline}
+            {headline}
           </Heading>
-          {props.blok.text &&
-            <p className='su-card-paragraph su-rs-mt-neg1 su-mb-0'>{props.blok.text}</p>
+          {text &&
+            <p className='su-card-paragraph su-rs-mt-neg1 su-mb-0'>{text}</p>
           }
           {numCta > 0 &&
             <div className='su-rs-mt-2'>
-              <CreateBloks blokSection={props.blok.cta} />
+              <CreateBloks blokSection={cta} />
             </div>
           }
         </FlexBox>
