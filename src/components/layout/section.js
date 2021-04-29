@@ -28,7 +28,7 @@ const Section = (props) => {
         <header className='su-cc su-text-center su-rs-mb-5'>
           {props.blok.superhead &&
             <SbLink link={props.blok.superLink}
-                    classes={dcnb('su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border-bottom su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border', superLinkColor)}
+                    classes={dcnb('su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border', superLinkColor)}
             >
               {props.blok.superhead}
             </SbLink>

@@ -24,9 +24,9 @@ export const buttonSize = {
 export const buttonStyle = {
   'primary': 'su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red',
   'secondary': 'su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red hocus:su-text-white',
-  'secondary-gradient': 'su-gradient-border su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+  'secondary-gradient': 'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
   'ghost': 'su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red hocus:su-text-white',
-  'ghost-gradient': 'su-gradient-border su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+  'ghost-gradient': 'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
 }
 
 
