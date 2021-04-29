@@ -24,7 +24,7 @@ const Seo = ({blok: { title:theTitle, seo }, blok}) => {
   }
 
   // Use the title in SEO component, otherwise use the page title
-  let seoTitle = seo.title || title || '';
+  let seoTitle = seo.title || theTitle || '';
   let ogTitle = seo.og_title || seoTitle;
 
   // Use the description in SEO component, otherwise use the one from gatsby.config
