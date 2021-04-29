@@ -6,7 +6,7 @@ import React from "react"
  * from Stanford's media source for browser tab and phone home screens.
  */
 
-const HtmlHead = props => {
+const HtmlHead = () => {
   return (
     <>
       <link

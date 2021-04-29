@@ -3,13 +3,19 @@ import SbEditable from "storyblok-react";
 import { smallPaddingBottom } from "../../utilities/dataSource";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 
-const Wysiwyg = (props) => {
-  let spacingBottom = smallPaddingBottom[props.blok.spacingBottom] ?? '';
+const Wysiwyg = ({
+  blok: {
+    spacingBottom,
+    content
+  },
+  blok
+}) => {
+  spacingBottom = smallPaddingBottom[spacingBottom] ?? '';
 
   return (
-    <SbEditable content={props.blok}>
+    <SbEditable content={blok}>
       <div className={spacingBottom}>
-        <RichTextRenderer wysiwyg={props.blok.content}/>
+        <RichTextRenderer wysiwyg={content}/>
       </div>
     </SbEditable>
   )

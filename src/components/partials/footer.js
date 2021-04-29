@@ -8,10 +8,10 @@ import { Container, GlobalFooter } from 'decanter-react';
  * It incorporates the Local Footer and Global Footer, based on page settings.
  */
 
-const Footer = (props) => (
-  <SbEditable content={props.blok}>
+const Footer = ({blok: { localFooter }, blok}) => (
+  <SbEditable content={blok}>
     <Container element='footer' width='full' className='su-flex-grow-0 su-relative'>
-      <CreateBloks blokSection={props.blok.localFooter}/>
+      <CreateBloks blokSection={localFooter}/>
       <GlobalFooter color='black' className={{'su-bg-black': false, 'su-bg-saa-black': true}} />
     </Container>
   </SbEditable>

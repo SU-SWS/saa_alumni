@@ -4,10 +4,10 @@ import { Container, Grid, GridCell, Heading } from "decanter-react";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 
-const InteriorPage = (props) => {
+const InteriorPage = ({blok: { title, content}, blok, ...rest}) => {
   return (
-    <SbEditable content={props.blok}>
-      <Layout {...props}>
+    <SbEditable content={blok}>
+      <Layout {...rest}>
         <Container element='main'
                    id='main-content'
                    className={`su-relative su-flex-grow su-w-full`}
@@ -15,10 +15,10 @@ const InteriorPage = (props) => {
           <Grid gap={true} xs={12}>
             <GridCell xs={12} lg={10} xl={8} className='lg:su-col-start-2 xl:su-col-start-3'>
               <header className={`su-rs-mt-3`}>
-                <Heading level={1} font='serif' weight='bold' size={4} className='su-mb-03em'>{props.blok.title}</Heading>
+                <Heading level={1} font='serif' weight='bold' size={4} className='su-mb-03em'>{title}</Heading>
               </header>
               <div className='su-bg-white su-rs-mt-3 su-rs-mb-7'>
-                <CreateBloks blokSection={props.blok.content} />
+                <CreateBloks blokSection={content} />
               </div>
             </GridCell>
           </Grid>

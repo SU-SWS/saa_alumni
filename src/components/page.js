@@ -3,14 +3,14 @@ import SbEditable from "storyblok-react"
 import CreateBloks from "../utilities/createBloks";
 import Footer from "./partials/footer";
 
-const Page = (props) => {
+const Page = ({blok: { body }, blok, ...rest}) => {
   return (
-    <SbEditable content={props.blok}>
+    <SbEditable content={blok}>
       <div className='su-flex su-flex-col su-min-h-screen'>
         <main className='su-flex-grow'>
-          <CreateBloks blokSection={props.blok.body}/>
+          <CreateBloks blokSection={body}/>
         </main>
-        <Footer {...props}/>
+        <Footer blok={blok}/>
       </div>
     </SbEditable>
   )

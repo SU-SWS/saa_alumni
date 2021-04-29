@@ -1,8 +1,8 @@
 import React from 'react'
 
-const ComponentNotFound = (props) => (
+const ComponentNotFound = ({blok: { component }}) => (
   <div>
-    Component {props.blok.component} is not defined. Add it to components.js
+    Component {component} is not defined. Add it to components.js
   </div>
 )
 

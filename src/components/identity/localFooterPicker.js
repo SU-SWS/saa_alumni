@@ -1,9 +1,9 @@
 import React from 'react';
 import CreateStories from '../../utilities/createStories';
 
-const LocalFooterPicker = (props) => {
+const LocalFooterPicker = ({blok: { localFooter }}) => {
   return (
-    <CreateStories stories={props.blok.localFooter}/>
+    <CreateStories stories={localFooter}/>
   );
 };
 
