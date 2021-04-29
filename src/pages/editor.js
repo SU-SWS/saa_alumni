@@ -3,6 +3,7 @@ import Components from '../components/components.js'
 import SbEditable from 'storyblok-react'
 import Loader from 'react-loader-spinner'
 import { useStaticQuery, graphql } from "gatsby"
+import StoryblokClient from 'storyblok-js-client/dist/es5/index.es'
 
 /**
  *
@@ -32,7 +33,6 @@ const getParam = function(val) {
 const initBridge = function(key, sbResolveRelations, setStory) {
 
     // 1. Require the Storyblok client
-  const StoryblokClient = require('storyblok-js-client')
   const storyblokInstance = new window.StoryblokBridge({
     resolveRelations: sbResolveRelations
   });
@@ -40,13 +40,12 @@ const initBridge = function(key, sbResolveRelations, setStory) {
   // 2. Initialize the client with the preview token
   // from your space dashboard at https://app.storyblok.com
   let Storyblok = new StoryblokClient({
-    resolveRelations: sbResolveRelations,
     accessToken: key
   })
 
   storyblokInstance.pingEditor(() => {
     if (storyblokInstance.isInEditor()) {
-      loadStory(Storyblok, sbResolveRelations, setStory);
+      loadStory(Storyblok, key, setStory);
     }
   })
 
@@ -56,7 +55,8 @@ const initBridge = function(key, sbResolveRelations, setStory) {
   })
 
   // When the content author does stuff.
-  window.storyblok.on('input', (payload) => {
+  storyblokInstance.on('input', (payload) => {
+    console.log(payload)
     setStory(payload.story.content);
   });
 }
@@ -64,17 +64,23 @@ const initBridge = function(key, sbResolveRelations, setStory) {
 /**
  *
  */
- const loadStory = (Storyblok, sbResolveRelations, setStory) => {
+ const loadStory = (Storyblok, key, setStory) => {
 
   Storyblok
-    .get(window.storyblok.getParam('path'), {
+    .get('cdn/stories/' + getParam('path') + "?token=" + key, {
       version: 'draft'
     })
     .then((data) => {
-      setStory(data.story.content);
+      let story = data.data.story;
+      let ret = {action: "input", story: story};
+
+      if (story) {
+        console.log(ret)
+        setStory(ret);
+      }
     })
-    .error(() => {
-      alert('FAILED TO FETCH STORY');
+    .catch((error) => {
+      console.log(error);
     })
 }
 
