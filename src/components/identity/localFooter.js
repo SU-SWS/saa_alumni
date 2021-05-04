@@ -74,9 +74,9 @@ const LocalFooter = ({
                 <div className='su-pb-02em'>{address3}</div>
               </address>
               <CreateBloks blokSection={mapLink} />
-              <ul className='su-list-unstyled su-rs-mt-3 su-rs-mb-4'>
+              <div className='su-rs-mt-3 su-rs-mb-4'>
                 <CreateBloks blokSection={actionLinks} />
-              </ul>
+              </div>
               <ul className='su-flex su-list-unstyled'>
                 <li className='su-mr-1em'>
                   <SocialIconLink
@@ -84,7 +84,7 @@ const LocalFooter = ({
                     size='lg'
                     srText='Facebook Page'
                     href={fbLink}
-                    className='su-text-black-20 hover:su-text-facebook focus:su-text-facebook su-transition-colors'
+                    className='su-text-black-20 hocus:su-text-facebook su-transition-colors'
                   />
                 </li>
                 <li className='su-mr-1em'>
@@ -93,7 +93,7 @@ const LocalFooter = ({
                     size='lg'
                     srText='LinkedIn Page'
                     href={linkedinLink}
-                    className='su-text-black-20 hover:su-text-linkedin focus:su-text-linkedin su-transition-colors'
+                    className='su-text-black-20 hocus:su-text-linkedin su-transition-colors'
                   />
                 </li>
                 <li className='su-mr-1em'>
@@ -102,7 +102,7 @@ const LocalFooter = ({
                     size='lg'
                     srText='Twitter Page'
                     href={twitterLink}
-                    className='su-text-black-20 hover:su-text-twitter focus:su-text-twitter su-transition-colors'
+                    className='su-text-black-20 hocus:su-text-twitter su-transition-colors'
                   />
                 </li>
                 <li className='su-mr-1em'>
@@ -111,7 +111,7 @@ const LocalFooter = ({
                     size='lg'
                     srText='Instagram Page'
                     href={igLink}
-                    className='su-text-black-20 hover:su-text-instagram focus:su-text-instagram su-transition-colors'
+                    className='su-text-black-20 hocus:su-text-instagram su-transition-colors'
                   />
                 </li>
                 <li>
@@ -120,13 +120,13 @@ const LocalFooter = ({
                     size='lg'
                     srText='Youtube Channel'
                     href={youtubeLink}
-                    className='su-text-black-20 hover:su-text-youtube focus:su-text-youtube su-transition-colors'
+                    className='su-text-black-20 hocus:su-text-youtube su-transition-colors'
                   />
                 </li>
               </ul>
             </GridCell>
             <GridCell xs={6} sm={3} md={4} xxl={3} className='su-link-black-20 su-underline-custom !su-link-underline-digital-red-xlight'>
-              <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-x-lg su-gap-y-2xl' aria-label='Alumni Links'>
+              <Grid element='nav' xs={1} md={2} xl={3} className='su-rs-mb-4 su-gap-x-lg su-gap-y-2xl children:su-text-black-20' aria-label='Alumni Links'>
                 <CreateBloks blokSection={linkGroups} />
               </Grid>
               <nav aria-label='Legal links'>
