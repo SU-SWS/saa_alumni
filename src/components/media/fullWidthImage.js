@@ -57,7 +57,7 @@ const FullWidthImage = ({ filename, className, alt, imageFocus, loading, ...prop
       {...(imgSizes ? {sizes: imgSizes} : {})}
       src={imgSrc}
       className={dcnb(className, imgFocus)}
-      alt={alt}
+      alt={alt ?? ''}
       loading={imgLoading}
       {...props}
     />

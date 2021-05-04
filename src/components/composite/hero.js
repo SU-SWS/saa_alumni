@@ -13,13 +13,13 @@ const Hero = ({
     imageFocus,
     cta,
     image: {
-      filename,
-      alt
+      filename
     },
     sansSuper,
     sansSub,
     serifSuper,
     headline,
+    headingLevel,
     scrollTo
   },
   blok
@@ -48,7 +48,6 @@ const Hero = ({
               imageFocus={imageFocus}
               className='su-w-full su-h-full su-object-cover'
               loading='eager'
-              alt={alt}
             />
           </figure>
         )}
@@ -64,7 +63,7 @@ const Hero = ({
                   <p className='su-max-w-prose su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mx-auto su-mb-05em'>{serifSuper}</p>
                 }
                 {headline &&
-                  <Heading level={1}
+                  <Heading level={headingLevel ?? 1}
                            font='serif'
                            weight='bold'
                            className={`su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em ${headlineSize}`}

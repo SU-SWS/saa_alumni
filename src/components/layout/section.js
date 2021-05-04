@@ -13,6 +13,7 @@ const Section = ({
     superhead,
     superLink,
     title,
+    headingLevel,
     intro,
     cta,
     content,
@@ -49,7 +50,7 @@ const Section = ({
             </SbLink>
           }
           {title &&
-            <Heading level={1}
+            <Heading level={headingLevel ?? 2}
                      font='serif'
                      weight='bold'
                      className={`su-mb-02em su-type-5`}
