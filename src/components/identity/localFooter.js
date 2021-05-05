@@ -8,6 +8,7 @@ import transformImage from '../../utilities/transformImage';
 import SocialIconLink from '../simple/socialIconLink';
 import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { bgPositionVertical } from '../../utilities/dataSource';
+import addBgImage from '../../utilities/addBgImage';
 
 const LocalFooter = ({
   blok: {
@@ -29,29 +30,6 @@ const LocalFooter = ({
   },
   blok
 }) => {
-  // Display background image option
-  let bgImageStyle = {};
-  let processedImg = '';
-
-  // Process image and set inline background image if image exists
-  if (filename != null) {
-
-    if (filename.startsWith('http')) {
-      let originalWidth = getImageWidth(filename);
-
-      // Downsize image if it's wider than 2000px, otherwise just reduce jpg quality to 60%
-      if (originalWidth > 2000) {
-        processedImg = transformImage(filename, '/2000x0');
-      } else {
-        processedImg = transformImage(filename, '');
-      }
-
-      // Set background image style
-      bgImageStyle = {
-        backgroundImage: `linear-gradient(to bottom, transparent, #181D1C), url('${processedImg}')`,
-      };
-    }
-  }
 
   // Background image vertical focus
   const bgCrop = bgPositionVertical[vCrop] ?? bgPositionVertical['center'];
@@ -59,7 +37,7 @@ const LocalFooter = ({
   return (
     <SbEditable content={blok}>
       <Container className='local-footer su-bg-saa-black su-text-black-20 su-link-no-underline su-border-b su-border-solid su-border-black-80' width='full'>
-        <Container style={bgImageStyle} width='site' className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
+        <Container style={addBgImage(filename)} width='site' className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}>
           <Link to='/' className='su-block su-w-fit'>
             <img src='/images/saa-logo-white.svg' className='su-w-200 md:su-w-300 2xl:su-w-[350px]' alt='Stanford Alumni Association' />
           </Link>
