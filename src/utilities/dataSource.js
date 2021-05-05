@@ -15,13 +15,13 @@ export const bgPositionVertical = {
   bottom: 'su-bg-bottom',
 };
 
-export const buttonSize = {
+export const buttonSizes = {
   'small': 'su-px-20 su-pt-10 su-pb-12 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20',
   'default': 'su-px-20 su-pt-14 su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-20 md:su-text-24',
   'large': 'su-px-26 su-pt-16 su-pb-18 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-20 md:su-text-24',
 }
 
-export const buttonStyle = {
+export const buttonStyles = {
   'primary': 'su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red',
   'secondary': 'su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red hocus:su-text-white',
   'secondary-gradient': 'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',

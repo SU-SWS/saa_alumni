@@ -89,7 +89,7 @@ const Hero = ({
               <a href={`#${scrollTo}`} className='su-block su-mx-auto su-w-fit su-group'>
                 <SrOnlyText srText='Jump to main content' />
                 <ArrowDownIcon
-                  className='su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hover:su-text-white group-focus:su-text-white group-hover:su-bg-cardinal-red group-focus:su-bg-cardinal-red'
+                  className='su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red'
                   aria-hidden='true' />
               </a>
             </FlexCell>

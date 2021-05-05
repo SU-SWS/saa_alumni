@@ -35,11 +35,11 @@ const BasicCard = ({
   let imageWrapperClasses = 'su-aspect-w-4 su-aspect-h-3';
 
   // Option to display image as round thumbnail with colored border
-  borderColor = borderColors[borderColor] ?? borderColors['digital-red'];
+  const imageBorderColor = borderColors[borderColor] ?? borderColors['digital-red'];
 
   if (isRound) {
     wrapperClasses = dcnb('su-rs-pt-3', wrapperClasses);
-    imageWrapperClasses = dcnb('su-w-[14rem] su-h-[14rem] su-rs-ml-2 su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden', borderColor);
+    imageWrapperClasses = dcnb('su-w-[14rem] su-h-[14rem] su-rs-ml-2 su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden', imageBorderColor);
     imageClasses = 'su-w-full su-h-full';
   }
 

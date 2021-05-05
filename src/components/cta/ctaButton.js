@@ -2,16 +2,16 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import SbLink from '../../utilities/sbLink';
 import Icon from 'react-hero-icon';
-import { buttonSize, buttonStyle, heroicon, textAlign } from '../../utilities/dataSource';
+import { buttonSizes, buttonStyles, heroicon, textAlign } from '../../utilities/dataSource';
 import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 
 const CtaButton = React.forwardRef(({
   blok: {
     size,
-    buttonStyle:propsButtonStyle,
+    buttonStyle,
     icon,
-    align:propsAlign,
+    align: propsAlign,
     linkText,
     link,
     rel,
@@ -22,10 +22,10 @@ const CtaButton = React.forwardRef(({
   ref
 ) => {
   // Button size
-  const ctaButtonSize = buttonSize[size] ?? buttonSize['default'];
+  const ctaButtonSize = buttonSizes[size] ?? buttonSizes['default'];
 
   // Button style
-  const ctaButtonStyle = buttonStyle[propsButtonStyle] ?? buttonSize['primary'];
+  const ctaButtonStyle = buttonStyles[buttonStyle] ?? buttonStyles['primary'];
 
   // For all button styles other than ghost-gradient, icon color is same as text color
   let iconColor;

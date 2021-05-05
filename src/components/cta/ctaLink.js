@@ -36,7 +36,7 @@ const CtaLink = React.forwardRef((
   let iconClasses;
 
   if (icon === 'external') {
-    iconClasses = 'su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hover:su-rotate-45 group-focus:su-rotate-45';
+    iconClasses = 'su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hocus:su-rotate-45';
   }
   else if (icon === 'email' || icon === 'video') {
     iconClasses = 'su-h-08em su-w-08em su-ml-7 su--mt-2';
@@ -52,16 +52,16 @@ const CtaLink = React.forwardRef((
   }
 
   // Icon animation
-  let iconAnimate = 'su-transition-transform group-hover:su-transform group-focus:su-transform';
+  let iconAnimate = 'su-transition-transform group-hocus:su-transform';
 
   if (icon === 'external') {
-    iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-x-01em group-focus:su-translate-x-01em group-hover:su--translate-y-01em group-focus:su--translate-y-01em');
+    iconAnimate = dcnb(iconAnimate, 'group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em');
   }
   else if (icon === 'download' || icon === 'chevron-down') {
-    iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-y-02em group-focus:su-translate-y-02em');
+    iconAnimate = dcnb(iconAnimate, 'group-hocus:su-translate-y-02em');
   }
   else {
-    iconAnimate = dcnb(iconAnimate, 'group-hover:su-translate-x-02em group-focus:su-translate-x-02em');
+    iconAnimate = dcnb(iconAnimate, 'group-hocus:su-translate-x-02em');
   }
 
   // Heroicon option
@@ -81,7 +81,7 @@ const CtaLink = React.forwardRef((
             ref={ref}
             link={link}
             attributes={rel ? {rel: rel} : {}}
-            classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-custom hover:su-underline focus:su-underline ${textColor}`}
+            classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-custom hocus:su-underline ${textColor}`}
           >
             {linkText}
             {srText &&

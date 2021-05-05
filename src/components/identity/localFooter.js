@@ -130,7 +130,7 @@ const LocalFooter = ({
                 <CreateBloks blokSection={linkGroups} />
               </Grid>
               <nav aria-label='Legal links'>
-                <ul className='su-list-unstyled su-link-regular su-divide-x su-divide-white su-text-17 xl:su-text-20'>
+                <ul className='su-list-unstyled su-link-regular su-divide-x su-divide-white su-text-17 xl:su-text-20 children:su-inline-block children:su-mb-10 children:su-px-1em children:su-leading-display children:first:su-pl-0 children:last:su-pr-0'>
                   <CreateBloks blokSection={legalLinks} />
                 </ul>
               </nav>
