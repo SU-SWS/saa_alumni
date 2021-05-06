@@ -12,6 +12,8 @@ import LocalFooter from './identity/localFooter';
 import LocalFooterPicker from './identity/localFooterPicker';
 import NavItem from './navigation/navItem';
 import Page from './page';
+import Perk from './content-types/perk/perk';
+import PerkCard from './cards/perkCard';
 import Section from './layout/section';
 import Wysiwyg from './simple/wysiwyg';
 import Redirect from "./redirect/Redirect";
@@ -30,6 +32,8 @@ const ComponentList = {
   localFooterPicker: LocalFooterPicker,
   navItem: NavItem,
   page: Page,
+  perk: Perk,
+  perkCard: PerkCard,
   section: Section,
   wysiwyg: Wysiwyg,
   redirect: Redirect
