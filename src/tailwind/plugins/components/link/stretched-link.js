@@ -16,6 +16,12 @@ module.exports = function () {
           pointerEvents: 'auto',
           content: '""',
           backgroundColor: 'transparent'
+        },
+        '&:hover, &:focus': {
+          outline: 'none',
+          '&::after': {
+            border: '1px solid #444'
+          },
         }
       },
     }
