@@ -3,8 +3,6 @@ import { Link } from 'gatsby';
 import CreateBloks from '../../utilities/createBloks';
 import SbEditable from 'storyblok-react';
 import { Container, Grid, GridCell } from 'decanter-react';
-import getImageWidth from '../../utilities/getImageWidth';
-import transformImage from '../../utilities/transformImage';
 import SocialIconLink from '../simple/socialIconLink';
 import { faFacebookF, faInstagram, faTwitter, faLinkedinIn, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { bgPositionVertical } from '../../utilities/dataSource';
