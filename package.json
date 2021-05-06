@@ -27,7 +27,7 @@
     "react-helmet": "^6.1.0",
     "react-loader-spinner": "^3.1.14",
     "react-refresh": "^0.8.3",
-    "sanitize-html": "^1.27.5",
+    "sanitize-html": "^2.3.2",
     "storyblok-react": "^0.1.2",
     "storyblok-rich-text-react-renderer": "^2.3.1",
     "tailwindcss-children": "^2.1.0",
