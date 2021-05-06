@@ -2,8 +2,8 @@ import React from 'react';
 import PerkCardView from './perkCardView';
 import PerkPageView from './perkPageView';
 
-const Perk = (props) => {
-  if (props.layout === 'card') {
+const Perk = ({ layout, ...props }) => {
+  if (layout === 'card') {
     return (
       <PerkCardView {...props} />
     );
