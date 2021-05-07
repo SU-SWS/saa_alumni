@@ -16,11 +16,17 @@ const PerkCardView = (props) => {
       title,
       headingLevel,
       intro,
+      externalUrl
     },
-    blok
+    blok,
+    storyLink
   } = props;
 
-  const perkPageLink = { linktype: 'story', url: props.storyLink + '/' };
+  let perkPageLink = { linktype: 'story', url: storyLink + '/' };
+
+  if (externalUrl) {
+    perkPageLink = { linktype: 'url', url: externalUrl };
+  }
 
   return (
     <SbEditable content={props.blok}>
