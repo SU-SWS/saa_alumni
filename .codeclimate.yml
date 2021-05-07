@@ -1,5 +1,7 @@
 version: "2"
 checks:
+  editorconfig:
+    enabled: true
   argument-count:
     enabled: false
   complex-logic:
@@ -45,9 +47,9 @@ plugins:
   markdownlint:
     enabled: false
   csslint:
-    enabled: true
+    enabled: false
   stylelint:
-    enabled: true
+    enabled: false
   coffeelint:
     enabled: false
   sass-lint:
