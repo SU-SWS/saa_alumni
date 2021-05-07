@@ -4,14 +4,13 @@ checks:
     enabled: false
   complex-logic:
     enabled: false
+  method-lines:
+    enabled: false
   file-lines:
-    config:
-      threshold: 300
+    enabled: false
   method-complexity:
     enabled: false
   method-count:
-    enabled: false
-  method-lines:
     enabled: false
   nested-control-flow:
     enabled: false
@@ -50,9 +49,6 @@ plugins:
     enabled: true
   coffeelint:
     enabled: false
-  # SASS Lint requires a .sass-lint.yml file in the repo in order to tweak settings.
-  # Without the .sass-lint.yml file it will run with the defaults.
-  # Defaults file: https://github.com/sasstools/sass-lint/blob/master/lib/config/sass-lint.yml
   sass-lint:
     enabled: false
 exclude_patterns:
@@ -62,3 +58,5 @@ exclude_patterns:
   - "**/tests/**/*"
   - "package.json"
   - "**.min.*"
+  - "public"
+  - "static"

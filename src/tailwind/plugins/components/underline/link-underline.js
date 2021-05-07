@@ -4,11 +4,11 @@
 module.exports = function () {
   return function ({ addComponents }) {
     const components = {
-      '.link-no-underline a': {
-        textDecoration: 'none'
+      ".link-no-underline a": {
+        textDecoration: "none",
       },
-    }
+    };
 
-    addComponents(components)
-  }
-}
+    addComponents(components);
+  };
+};

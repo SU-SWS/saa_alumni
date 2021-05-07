@@ -1,8 +1,8 @@
-import React from 'react';
-import Header from './header';
-import Footer from './footer';
-import Seo from './seo';
+import React from "react";
 import { FlexBox } from "decanter-react";
+import Header from "./header";
+import Footer from "./footer";
+import Seo from "./seo";
 
 /**
  * The Layout component is referenced and used in all page-type components.
@@ -11,12 +11,12 @@ import { FlexBox } from "decanter-react";
 const Layout = ({ children, ...rest }) => (
   <>
     <Seo {...rest} />
-    <FlexBox direction='col' className='su-min-h-screen su-overflow-x-hidden'>
+    <FlexBox direction="col" className="su-min-h-screen su-overflow-x-hidden">
       <Header {...rest} />
-        {children}
+      {children}
       <Footer {...rest} />
     </FlexBox>
   </>
-)
+);
 
 export default Layout;
