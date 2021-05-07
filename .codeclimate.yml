@@ -30,6 +30,7 @@ plugins:
           mass_threshold: 75
   eslint:
     enabled: true
+    channel: "eslint-7"
   fixme:
     enabled: true
     config:
