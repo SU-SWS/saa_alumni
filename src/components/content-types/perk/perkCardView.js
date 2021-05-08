@@ -32,7 +32,7 @@ const PerkCardView = (props) => {
 
   if (isNew) {
     newTab =
-      <div className='su-absolute su-top-0 su-rs-ml-2 su-py-8 su-pl-12 su-pr-30 su-bg-digital-red-light su-text-white su-font-semibold su-text-20'>
+      <div className='su-absolute su-top-0 su-rs-ml-2 su-pr-8 su-pl-9 su-pb-[1.5em] su-pt-12 su-bg-digital-red-light su-text-white su-font-semibold su-leading-none su-text-vertical-lr su-transform su-rotate-180 su-shadow-sm'>
         New
       </div>
   }
@@ -57,7 +57,7 @@ const PerkCardView = (props) => {
           link={perkPageLink}
           classes='su-stretched-link su-text-white hocus:su-text-white su-no-underline hocus:su-underline su-underline-custom !su-underline-digital-red-xlight'
         >
-          <Heading level={headingLevel ?? 3} font='serif' size={1} tracking='normal' className='su-relative su-mt-[-2em] su-rs-px-2'>{title}</Heading>
+          <Heading level={headingLevel ?? 3} font='serif' size={1} tracking='normal' className='su-relative su-mt-[-3em] su-rs-px-2'>{title}</Heading>
         </SbLink>
         <p className='su-relative su-text-black-20 su-card-paragraph su-mb-0 su-rs-px-2 su-rs-pb-3'>{intro}</p>
         {newTab}

@@ -79,5 +79,6 @@ module.exports = {
     require(decanter + '/utilities/link/link-fontweight.js')(),
     require(decanter + '/utilities/scrolling/smooth-scroll.js')(),
     require(dir + '/utilities/gradient-border/gradient-border.js')(),
+    require(dir + '/utilities/typography/writing-mode.js')(),
   ],
 }
