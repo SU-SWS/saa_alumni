@@ -2,7 +2,7 @@ import SbEditable from 'storyblok-react';
 import React from 'react';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
-import { Heading } from 'decanter-react';
+import { Heading, SrOnlyText } from 'decanter-react';
 
 const PerkCardView = (props) => {
   // Destructure props
@@ -32,8 +32,9 @@ const PerkCardView = (props) => {
 
   if (isNew) {
     newTab =
-      <div className='su-absolute su-top-0 su-rs-ml-2 su-pr-8 su-pl-9 su-pb-[1.5em] su-pt-12 su-bg-digital-red-light su-text-white su-font-semibold su-leading-none su-text-vertical-lr su-transform su-rotate-180 su-shadow-sm'>
+      <div className='su-absolute su-top-0 su-left-0 su-rs-ml-2 su-pr-8 su-pl-9 su-pb-[1.5em] su-pt-12 su-bg-digital-red-light su-text-white su-font-semibold su-leading-none su-text-vertical-lr su-transform su-rotate-180 su-shadow-sm'>
         New
+        <SrOnlyText srText=' perk' />
       </div>
   }
 
@@ -59,8 +60,8 @@ const PerkCardView = (props) => {
         >
           <Heading level={headingLevel ?? 3} font='serif' size={1} tracking='normal' className='su-relative su-mt-[-3em] su-rs-px-2'>{title}</Heading>
         </SbLink>
-        <p className='su-relative su-text-black-20 su-card-paragraph su-mb-0 su-rs-px-2 su-rs-pb-3'>{intro}</p>
         {newTab}
+        <p className='su-relative su-text-black-20 su-card-paragraph su-mb-0 su-rs-px-2 su-rs-pb-3'>{intro}</p>
       </article>
     </SbEditable>
   );
