@@ -14,7 +14,7 @@ const Hero = ({
     cta,
     image: {
       filename
-    },
+    } = {},
     sansSuper,
     sansSub,
     serifSuper,

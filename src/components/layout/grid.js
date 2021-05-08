@@ -14,7 +14,7 @@ const Grid = ({blok: { removeGap, numCol, content, width }, blok}) => {
   }
 
   let grid =
-    <DrGrid xs={1} md={2} lg={numCol} className={dcnb('su-items-start su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]', gapClasses)}>
+    <DrGrid xs={1} md={2} xl={numCol} className={dcnb('su-items-start su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]', gapClasses)}>
       <CreateBloks blokSection={content} />
     </DrGrid>
 
