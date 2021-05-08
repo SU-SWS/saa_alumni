@@ -20,7 +20,7 @@ module.exports = function () {
         '&:hover, &:focus': {
           outline: 'none',
           '&::after': {
-            border: '1px solid #444'
+            outline: '1px solid #666'
           },
         }
       },

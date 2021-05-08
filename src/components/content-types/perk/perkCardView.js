@@ -10,7 +10,7 @@ const PerkCardView = (props) => {
     blok: {
       image: {
         filename
-      },
+      } = {},
       imageFocus,
       isNew,
       title,
@@ -28,10 +28,19 @@ const PerkCardView = (props) => {
     perkPageLink = { linktype: 'url', url: externalUrl };
   }
 
+  let newTab = '';
+
+  if (isNew) {
+    newTab =
+      <div className='su-absolute su-top-0 su-rs-ml-2 su-py-8 su-pl-12 su-pr-30 su-bg-digital-red-light su-text-white su-font-semibold su-text-20'>
+        New
+      </div>
+  }
+
   return (
-    <SbEditable content={props.blok}>
+    <SbEditable content={blok}>
       <article className='perk-card su-relative su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black-90'>
-        <div className='perk-card-image-wrapper su-relative'>
+        <div className='perk-card-image-wrapper su-relative su-aspect-w-4 su-aspect-h-3'>
           {filename?.startsWith('http') &&
             <figure className='su-overflow-hidden su-w-full su-h-full'>
               <CardImage
@@ -51,6 +60,7 @@ const PerkCardView = (props) => {
           <Heading level={headingLevel ?? 3} font='serif' size={1} tracking='normal' className='su-relative su-mt-[-2em] su-rs-px-2'>{title}</Heading>
         </SbLink>
         <p className='su-relative su-text-black-20 su-card-paragraph su-mb-0 su-rs-px-2 su-rs-pb-3'>{intro}</p>
+        {newTab}
       </article>
     </SbEditable>
   );
