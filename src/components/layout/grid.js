@@ -5,7 +5,7 @@ import { Grid as DrGrid } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import WidthBox from './widthBox';
 
-const Grid = ({blok: { removeGap, numCol, content, width }, blok}) => {
+const Grid = ({blok: { removeGap, numCol, content, width, isStretchItems }, blok}) => {
   // Options to have regular grid gap or 1px horizontal gaps
   let gapClasses = 'su-grid-gap';
 
@@ -13,8 +13,16 @@ const Grid = ({blok: { removeGap, numCol, content, width }, blok}) => {
     gapClasses = 'su-gap-x-[1px]'
   }
 
+  // By default, items in a row are top-aligned vertically
+  let itemClasses = 'su-items-start';
+
+  // Option to force items in the same row to stretch to the height of the tallest item
+  if (isStretchItems) {
+    itemClasses = 'su-items-stretch';
+  }
+
   let grid =
-    <DrGrid xs={1} md={2} xl={numCol} className={dcnb('su-items-start su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]', gapClasses)}>
+    <DrGrid xs={1} md={2} xl={numCol} className={dcnb('su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]', gapClasses, itemClasses)}>
       <CreateBloks blokSection={content} />
     </DrGrid>
 

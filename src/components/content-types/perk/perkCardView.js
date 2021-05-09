@@ -53,7 +53,7 @@ const PerkCardView = (props) => {
               />
             </figure>
           }
-          <div className={`su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black`} aria-hidden='true' />
+          <div className={`su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black`} aria-hidden='true' />
         </div>
         {isNew &&
           <TabLabel text='New' srText='perk' />
