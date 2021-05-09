@@ -15,12 +15,12 @@ module.exports = function () {
           zIndex: '1',
           pointerEvents: 'auto',
           content: '""',
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent',
         },
         '&:hover, &:focus': {
           outline: 'none',
           '&::after': {
-            outline: '1px solid #666'
+            outline: '1px solid #2E2D29',
           },
         }
       },
