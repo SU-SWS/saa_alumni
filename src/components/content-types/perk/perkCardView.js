@@ -41,19 +41,19 @@ const PerkCardView = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <article className='perk-card su-group su-relative su-flex su-flex-col su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black'>
+      <article className='perk-card su-group su-relative su-flex su-flex-col su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black'>
         <div className='perk-card-image-wrapper su-relative su-mb-[-3em] su-aspect-w-4 su-aspect-h-3'>
           {filename?.startsWith('http') &&
             <figure className='su-overflow-hidden su-w-full su-h-full'>
               <CardImage
                 filename={filename}
                 imageFocus={imageFocus}
-                className='su-w-full su-h-full su-object-cover'
+                className='su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]'
                 loading='lazy'
               />
             </figure>
           }
-          <div className={`su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black su-transition-all su-backdrop-filter group-hover:su-backdrop-blur-[2px]`} aria-hidden='true' />
+          <div className={`su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black`} aria-hidden='true' />
         </div>
         <SbLink
           link={perkPageLink}
