@@ -10,7 +10,9 @@ import addBgImage from '../../utilities/addBgImage';
 
 const LocalFooter = ({
   blok: {
-    bgImage: { filename },
+    bgImage: {
+      filename
+    } = {},
     vCrop,
     organization,
     address1,

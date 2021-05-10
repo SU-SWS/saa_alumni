@@ -3,7 +3,8 @@ import React from 'react';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import TabLabel from '../../simple/tabLabel';
-import { Heading, SrOnlyText } from 'decanter-react';
+import { Heading } from 'decanter-react';
+import { ArrowRightIcon } from '@heroicons/react/solid';
 
 const PerkCardView = (props) => {
 
@@ -41,7 +42,7 @@ const PerkCardView = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <article className='perk-card su-group su-relative su-flex su-flex-col su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black'>
+      <article className='su-group perk-card su-relative su-flex su-flex-col su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black'>
         <div className='perk-card-image-wrapper su-relative su-mb-[-3em] su-aspect-w-4 su-aspect-h-3'>
           {filename?.startsWith('http') &&
             <figure className='su-overflow-hidden su-w-full su-h-full'>
@@ -57,9 +58,13 @@ const PerkCardView = (props) => {
         </div>
         <SbLink
           link={perkPageLink}
-          classes='su-stretched-link su-text-white hocus:su-text-white su-no-underline hocus:su-underline su-underline-custom !su-underline-digital-red-xlight'
+          classes='su-group su-stretched-link su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline su-underline-custom !su-underline-digital-red-xlight'
         >
-          <Heading level={headingLevel ?? 3} font='serif' size={1} tracking='normal' className='su-relative su-mb-08em su-rs-px-2'>{title}</Heading>
+          <Heading level={headingLevel ?? 3} font='serif' size={1} tracking='normal' className='su-relative su-inline'>{title}</Heading>
+          <ArrowRightIcon
+            className='su-relative su-transition su-transform-gpu group-hocus:su-translate-x-02em su-inline-block su-ml-03em su--mt-03em su-text-digital-red-xlight su-w-1em su-h-1em group-hocus:su-text-white'
+            aria-hidden='true'
+          />
         </SbLink>
         {isNew &&
           <TabLabel text='New' srText={perkType} />
