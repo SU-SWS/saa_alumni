@@ -16,9 +16,9 @@ export const bgPositionVertical = {
 };
 
 export const buttonSizes = {
-  'small': 'su-px-20 su-pt-10 su-pb-12 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20',
-  'default': 'su-px-20 su-pt-14 su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-20 md:su-text-24',
-  'large': 'su-px-26 su-pt-16 su-pb-18 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-20 md:su-text-24',
+  small: 'su-px-20 su-pt-10 su-pb-12 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20',
+  default: 'su-px-20 su-pt-14 su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-20 md:su-text-24',
+  large: 'su-px-26 su-pt-16 su-pb-18 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-20 md:su-text-24',
 }
 
 export const buttonStyles = {
@@ -84,6 +84,16 @@ export const bgColors = {
 export const pageTextColors = {
   'dark': 'su-text-black su-link-digital-red hover:su-link-sky-dark focus:su-link-sky-dark',
   'light': 'su-text-white su-link-white hover:su-link-white focus:su-link-white',
+};
+
+// Simulating Storyblok Link component structure for use with SbLink component,
+// cached_url for internal links (stories), url for external links
+export const perkTypeLinks = {
+  perk: {
+    linktype: "story",
+    cached_url: "test/yvonne/test-interior-page/",
+  },
+  benefit: "",
 };
 
 export const smallPaddingBottom = {
