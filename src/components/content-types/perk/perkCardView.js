@@ -5,7 +5,6 @@ import { ArrowRightIcon } from "@heroicons/react/solid";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
-import { perkTypeLinks } from "../../../utilities/dataSource";
 
 const PerkCardView = ({
   blok: {
