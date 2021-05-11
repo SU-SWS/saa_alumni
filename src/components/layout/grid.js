@@ -28,7 +28,7 @@ const Grid = ({blok: { removeGap, numCol, content, width, isStretchItems }, blok
 
   if (numCol === 'auto') {
     grid =
-      <DrGrid className={dcnb('su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-items-start su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]', gapClasses)}>
+      <DrGrid className={dcnb('su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]', gapClasses, itemClasses)}>
         <CreateBloks blokSection={content} />
       </DrGrid>;
   }
