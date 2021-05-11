@@ -3,7 +3,7 @@ import React from "react";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
-import { Heading } from "decanter-react";
+import { FlexBox, Heading } from "decanter-react";
 import { ArrowRightIcon } from "@heroicons/react/solid";
 import { perkTypeLinks } from "../../../utilities/dataSource";
 
@@ -63,7 +63,7 @@ const PerkCardView = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <article className="su-group perk-card su-relative su-flex su-flex-col su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black">
+      <FlexBox direction='col' element='article' className="perk-card su-group su-relative su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black">
         <div className="perk-card-image-wrapper su-relative su-mb-[-3em] su-aspect-w-4 su-aspect-h-3">
           {filename?.startsWith("http") &&
           <figure className="su-overflow-hidden su-w-full su-h-full">
@@ -92,7 +92,7 @@ const PerkCardView = (props) => {
         }
         <p className="su-relative su-text-black-20 su-card-paragraph su-rs-px-2">{intro}</p>
         {perkTypeTag}
-      </article>
+      </FlexBox>
     </SbEditable>
   );
 };
