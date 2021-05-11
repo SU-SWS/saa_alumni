@@ -8,37 +8,35 @@ const PerkPageView = (props) => {
   // Destructure props
   const {
     blok: {
-      image: {
-        filename
-      } = {},
+      image: { filename } = {},
       imageFocus,
       isNew,
       title,
       intro,
-      externalUrl
+      externalUrl,
     },
-    blok
+    blok,
   } = props;
 
   return (
     <SbEditable content={blok}>
       <Layout {...props}>
-        <article className='perk-page'>
+        <article className="perk-page">
           <Heading level={1}>{title}</Heading>
-          {filename?.startsWith("http") &&
-          <div className='su-max-w-800'>
-            <div className='perk-image-wrapper su-aspect-w-4 su-aspect-h-3'>
-              <figure className='su-overflow-hidden su-w-full su-h-full'>
-                <CardImage
-                  filename={filename}
-                  imageFocus={imageFocus}
-                  className='su-w-full su-h-full su-object-cover'
-                  loading='lazy'
-                />
-              </figure>
+          {filename?.startsWith("http") && (
+            <div className="su-max-w-800">
+              <div className="perk-image-wrapper su-aspect-w-4 su-aspect-h-3">
+                <figure className="su-overflow-hidden su-w-full su-h-full">
+                  <CardImage
+                    filename={filename}
+                    imageFocus={imageFocus}
+                    className="su-w-full su-h-full su-object-cover"
+                    loading="lazy"
+                  />
+                </figure>
+              </div>
             </div>
-          </div>
-          }
+          )}
           <p>{intro}</p>
         </article>
       </Layout>

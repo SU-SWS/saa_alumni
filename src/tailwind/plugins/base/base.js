@@ -5,29 +5,29 @@
 module.exports = function () {
   return function ({ addBase, config }) {
     addBase({
-      'a': {
-        color: config('theme.colors.digital-red.light'),
+      a: {
+        color: config("theme.colors.digital-red.light"),
 
-        '&:hover, &:focus': {
-          color: config('theme.colors.cardinal-red.DEFAULT')
+        "&:hover, &:focus": {
+          color: config("theme.colors.cardinal-red.DEFAULT"),
         },
       },
-      '.su-global-footer': {
-        '.su-logo': {
-          '&:hover, &:focus': {
-            color: config('theme.colors.white'),
-          }
+      ".su-global-footer": {
+        ".su-logo": {
+          "&:hover, &:focus": {
+            color: config("theme.colors.white"),
+          },
         },
-        'nav': {
-          'a': {
-            textDecoration: 'none',
+        nav: {
+          a: {
+            textDecoration: "none",
 
-            '&:hover, &:focus': {
-              textDecoration: 'underline',
-            }
+            "&:hover, &:focus": {
+              textDecoration: "underline",
+            },
           },
         },
       },
-    })
-  }
-}
+    });
+  };
+};

@@ -1,68 +1,67 @@
-import React from 'react';
-import { useLocation } from '@reach/router';
-import { parse } from 'query-string';
-import Link from 'gatsby-link';
-import { assetURL, isNetlify } from '../contexts/GlobalContext';
+import React from "react";
+import { useLocation } from "@reach/router";
+import { parse } from "query-string";
+import Link from "gatsby-link";
+import { assetURL, isNetlify } from "../contexts/GlobalContext";
 
 /**
  * Reusable Storyblok Link component for various link types
  * eg: internal, external, asset
- **/
+ * */
 
 const SbLink = React.forwardRef((props, ref) => {
-
   // Storyblok link object either has a url (external links)
   // or cached_url (internal or asset links)
-  let linkUrl = props.link?.url || props.link?.cached_url || '';
+  let linkUrl = props.link?.url || props.link?.cached_url || "";
 
   // Default Classes for all links.
-  const linkClasses = props.classes ?? '';
-  const storyClasses = props.internalClasses ?? '';
-  const urlClasses = props.externalClasses ?? '';
-  const activeClass = props.activeClass ?? '';
-  const assetClasses = props.assetClasses ?? '';
+  const linkClasses = props.classes ?? "";
+  const storyClasses = props.internalClasses ?? "";
+  const urlClasses = props.externalClasses ?? "";
+  const activeClass = props.activeClass ?? "";
+  const assetClasses = props.assetClasses ?? "";
   const otherAttributes = props.attributes ?? {};
 
   // Get out of the url and keep track of specific utm parameters.
   const location = useLocation();
   const parsedSearch = parse(location.search);
   // utms variable will create a string of just the valid params we want to keep.
-  let utms = '';
+  let utms = "";
   const passParams = [
-    'utm_source',
-    'utm_medium',
-    'utm_campaign',
-    'utm_term',
-    'utm_content',
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
   ];
   // Loop through the paramaters we want to continue to track and check to see
   // if the existing page url has them.
   passParams.forEach((i, v) => {
     if (parsedSearch[i] !== undefined) {
-      utms += i + '=' + parsedSearch[i] + '&';
+      utms += `${i}=${parsedSearch[i]}&`;
     }
   });
   // Strip off the last ampersand.
-  utms = utms.replace(new RegExp('&$'), '');
+  utms = utms.replace(new RegExp("&$"), "");
 
   // Story or Internal type link.
   // ---------------------------------------------------------------------------
-  if (props.link?.linktype === 'story') {
+  if (props.link?.linktype === "story") {
     // Handle the home slug.
-    linkUrl = linkUrl === 'home' ? '/' : '/' + linkUrl;
-    linkUrl += linkUrl.endsWith('/') ? '' : '/';
+    linkUrl = linkUrl === "home" ? "/" : `/${linkUrl}`;
+    linkUrl += linkUrl.endsWith("/") ? "" : "/";
 
     if (linkUrl.match(/\?/) && utms.length) {
-      linkUrl += '&' + utms;
+      linkUrl += `&${utms}`;
     } else if (utms.length) {
-      linkUrl += '?' + utms;
+      linkUrl += `?${utms}`;
     }
 
     return (
       <Link
         ref={ref}
         to={linkUrl}
-        className={linkClasses + ' ' + storyClasses}
+        className={`${linkClasses} ${storyClasses}`}
         activeClassName={activeClass}
         {...otherAttributes}
       >
@@ -73,32 +72,32 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // External or absolute url type link.
   // ---------------------------------------------------------------------------
-  if (props.link?.linktype === 'url') {
+  if (props.link?.linktype === "url") {
     return (
       <a
         ref={ref}
         href={linkUrl}
-        className={linkClasses + ' ' + urlClasses}
+        className={`${linkClasses} ${urlClasses}`}
         {...otherAttributes}
       >
         {props.children}
-        <span className={'su-sr-only'}> (external link)</span>
+        <span className="su-sr-only"> (external link)</span>
       </a>
     );
   }
 
   // A link to a file or other asset.
   // ---------------------------------------------------------------------------
-  if (props.link?.linktype === 'asset') {
+  if (props.link?.linktype === "asset") {
     // Rewrite the URL to the redirect link to mask the API endpoint.
     if (isNetlify) {
       linkUrl = linkUrl.replace(
         /http?(s):\/\/a\.storyblok\.com/gi,
-        assetURL + 'a'
+        `${assetURL}a`
       );
       linkUrl = linkUrl.replace(
         /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-        assetURL + 'i'
+        `${assetURL}i`
       );
     }
 
@@ -106,8 +105,9 @@ const SbLink = React.forwardRef((props, ref) => {
       <a
         ref={ref}
         href={linkUrl}
-        className={linkClasses + ' ' + assetClasses}
-        target={`_blank`}
+        className={`${linkClasses} ${assetClasses}`}
+        target="_blank"
+        rel="noreferrer"
         {...otherAttributes}
       >
         {props.children}
