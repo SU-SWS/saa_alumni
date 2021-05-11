@@ -1,4 +1,4 @@
-name: Run Linting
+name: Run Eslint
 on: push
 jobs:
   build:

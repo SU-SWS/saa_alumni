@@ -40,7 +40,6 @@ plugins:
         - BUG
         - TODO
         - todo
-        - console.log
   nodesecurity:
     enabled: true
   markdownlint:
