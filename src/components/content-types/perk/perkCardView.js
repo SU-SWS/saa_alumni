@@ -42,7 +42,7 @@ const PerkCardView = (props) => {
   }
 
   // Check dataSource.js to see if there is a link provided for the perk type taxonomy
-  const perkTypeLink = perkTypeLinks[type] ?? "";
+  const perkTypeLink = perkTypeLinks[type];
 
   // Perk type taxonomy tag is just plain text if no link object is provided in dataSource.js
   let perkTypeTag =
