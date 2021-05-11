@@ -95,8 +95,7 @@ export const bgColors = {
 };
 
 export const pageTextColors = {
-  dark:
-    "su-text-black su-link-digital-red hover:su-link-sky-dark focus:su-link-sky-dark",
+  dark: "su-text-black su-link-digital-red hover:su-link-sky-dark focus:su-link-sky-dark",
   light: "su-text-white su-link-white hover:su-link-white focus:su-link-white",
 };
 

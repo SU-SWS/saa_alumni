@@ -1,4 +1,4 @@
-version: "2"
+version: '2'
 checks:
   editorconfig:
     enabled: true
@@ -31,8 +31,7 @@ plugins:
         javascript:
           mass_threshold: 75
   eslint:
-    enabled: true
-    channel: "eslint-7"
+    enabled: false
   fixme:
     enabled: true
     config:
@@ -56,10 +55,10 @@ plugins:
     enabled: false
 exclude_patterns:
   - node_modules/
-  - "test/"
-  - "**/__tests__/"
-  - "**/tests/**/*"
-  - "package.json"
-  - "**.min.*"
-  - "public"
-  - "static"
+  - 'test/'
+  - '**/__tests__/'
+  - '**/tests/**/*'
+  - 'package.json'
+  - '**.min.*'
+  - 'public'
+  - 'static'
