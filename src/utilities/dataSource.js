@@ -89,9 +89,9 @@ export const pageTextColors = {
 // Simulating Storyblok Link component structure for use with SbLink component,
 // cached_url for internal links (stories), url for external links
 export const perkTypeLinks = {
-  perk: {
+  "alumni-perk": {
     linktype: "story",
-    cached_url: "test/yvonne/test-interior-page/",
+    cached_url: "test/yvonne/test-interior-page",
   },
   benefit: "",
 };
