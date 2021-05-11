@@ -7,23 +7,20 @@ import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
 import { perkTypeLinks } from "../../../utilities/dataSource";
 
-const PerkCardView = (props) => {
-  // Destructure props
-  const {
-    blok: {
-      image: { filename } = {},
-      imageFocus,
-      isNew,
-      type,
-      title,
-      headingLevel,
-      intro,
-      externalUrl,
-    },
-    blok,
-    storyLink,
-  } = props;
-
+const PerkCardView = ({
+  blok: {
+    image: { filename } = {},
+    imageFocus,
+    isNew,
+    type,
+    title,
+    headingLevel,
+    intro,
+    externalUrl,
+  },
+  blok,
+  storyLink,
+}) => {
   // Default link is the internal link of the perk content page
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
 
