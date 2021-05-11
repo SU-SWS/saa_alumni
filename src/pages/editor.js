@@ -10,7 +10,7 @@ import Components from "../components/components";
  * @param {*} val
  * @returns
  */
-const getParam = function(val){
+const getParam = function (val) {
   let result = "";
   let tmp = [];
 
