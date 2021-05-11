@@ -99,16 +99,6 @@ export const pageTextColors = {
   light: "su-text-white su-link-white hover:su-link-white focus:su-link-white",
 };
 
-// Simulating Storyblok Link component structure for use with SbLink component,
-// cached_url for internal links (stories), url for external links
-export const perkTypeLinks = {
-  "alumni-perk": {
-    linktype: "story",
-    cached_url: "test/yvonne/test-interior-page",
-  },
-  benefit: "",
-};
-
 export const smallPaddingBottom = {
   none: "",
   xxs: "su-rs-pb-0",

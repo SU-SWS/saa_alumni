@@ -35,28 +35,6 @@ const PerkCardView = ({
     perkType = "Member benefit";
   }
 
-  // Check dataSource.js to see if there is a link provided for the perk type taxonomy
-  const perkTypeLink = perkTypeLinks[type];
-
-  // Perk type taxonomy tag is just plain text if no link object is provided in dataSource.js
-  let perkTypeTag = (
-    <p className="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-rs-ml-2 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
-      {perkType}
-    </p>
-  );
-
-  // If link object is provided for the perk type, use the SbLink component instead plus extra hover/focus classes for style
-  if (perkTypeLink !== "") {
-    perkTypeTag = (
-      <SbLink
-        link={perkTypeLink}
-        classes="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight hocus:su-text-black-20 su-z-10 su-rs-mt-0 su-rs-ml-2 su-no-underline hocus:su-underline su-text-17 md:su-text-19 xl:su-text-20 su-font-regular su-transition-colors su-underline-custom"
-      >
-        {perkType}
-      </SbLink>
-    );
-  }
-
   return (
     <SbEditable content={blok}>
       <FlexBox
@@ -102,7 +80,9 @@ const PerkCardView = ({
         <p className="su-relative su-text-black-20 su-card-paragraph su-rs-px-2">
           {intro}
         </p>
-        {perkTypeTag}
+        <p className="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-rs-ml-2 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
+          {perkType}
+        </p>
       </FlexBox>
     </SbEditable>
   );
