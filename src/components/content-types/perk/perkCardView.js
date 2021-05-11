@@ -46,7 +46,7 @@ const PerkCardView = (props) => {
 
   // Perk type taxonomy tag is just plain text if no link object is provided in dataSource.js
   let perkTypeTag =
-    <p className="su-relative su-inline-block su-w-fit su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-rs-ml-2 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
+    <p className="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-rs-ml-2 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
       {perkType}
     </p>
 
@@ -55,7 +55,7 @@ const PerkCardView = (props) => {
     perkTypeTag =
       <SbLink
         link={perkTypeLink}
-        classes="su-relative su-inline-block su-w-fit su-mt-auto su-mb-0 su-text-digital-red-xlight hocus:su-text-black-20 su-z-10 su-rs-mt-0 su-rs-ml-2 su-no-underline hocus:su-underline su-text-17 md:su-text-19 xl:su-text-20 su-font-regular su-transition-colors su-underline-custom"
+        classes="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight hocus:su-text-black-20 su-z-10 su-rs-mt-0 su-rs-ml-2 su-no-underline hocus:su-underline su-text-17 md:su-text-19 xl:su-text-20 su-font-regular su-transition-colors su-underline-custom"
       >
         {perkType}
       </SbLink>
