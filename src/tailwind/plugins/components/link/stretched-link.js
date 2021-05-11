@@ -19,11 +19,15 @@ module.exports = function () {
         },
         '&:hover, &:focus': {
           outline: 'none',
+        }
+      },
+      '.stretched-link-hocus-outline-black-20': {
+        '&:hover, &:focus': {
           '&::after': {
             outline: '1px solid #43423E',
           },
         }
-      },
+      }
     }
 
     addComponents(components)

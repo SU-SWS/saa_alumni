@@ -79,7 +79,7 @@ const PerkCardView = (props) => {
         </div>
         <SbLink
           link={perkPageLink}
-          classes="su-group su-stretched-link su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline su-underline-custom !su-underline-digital-red-xlight"
+          classes="su-group su-stretched-link su-stretched-link-hocus-outline-black-20 su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline su-underline-custom !su-underline-digital-red-xlight"
         >
           <Heading level={headingLevel ?? 3} font="serif" size={1} tracking="normal" className="su-relative su-inline">{title}</Heading>
           <ArrowRightIcon
