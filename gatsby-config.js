@@ -11,6 +11,7 @@ require("dotenv").config({
  * Resolve relations for storyblok.
  */
 const storyblokRelations = [
+  "eventCard.eventPicker",
   "localFooterPicker.localFooter",
   "perkCard.perkPicker",
 ];
