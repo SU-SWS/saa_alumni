@@ -22,7 +22,6 @@ const Event = ({
   },
   blok,
 }) => {
-
   // Link to external URL instead if it is provided
   const eventLink = { linktype: "url", url: externalUrl } ?? "";
 
