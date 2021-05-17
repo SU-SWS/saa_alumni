@@ -25,6 +25,7 @@ const PerkCardView = ({
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
 
   // Default icon is right arrow for internal links
+  // HeadlineIcon starts with uppercase letter because it's a component
   let HeadlineIcon = ArrowRightIcon;
   let headlineIconClasses =
     "su-ml-03em su--mt-02em su-w-09em group-hocus:su-translate-x-02em";
