@@ -27,7 +27,7 @@ const PerkCardView = ({
   // Default icon is right arrow for internal links
   let HeadlineIcon = ArrowRightIcon;
   let headlineIconClasses =
-    "su-ml-03em su--mt-03em su-w-1em group-hocus:su-translate-x-02em ";
+    "su-ml-03em su--mt-02em su-w-09em group-hocus:su-translate-x-02em ";
 
   // Link to external URL instead if it is provided
   // Change headline icon to diagonal arrow for external links
@@ -35,7 +35,7 @@ const PerkCardView = ({
     perkPageLink = { linktype: "url", url: externalUrl };
     HeadlineIcon = ArrowUpIcon;
     headlineIconClasses =
-      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-1em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
+      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-[1.1em] group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
   }
 
   let perkType = "Alumni perk";
