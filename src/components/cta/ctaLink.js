@@ -92,7 +92,7 @@ const CtaLink = React.forwardRef(
               ref={ref}
               link={link}
               attributes={rel ? { rel } : {}}
-              classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-custom hocus:su-underline ${textColor}`}
+              classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline ${textColor}`}
             >
               {linkText}
               {srText && <SrOnlyText srText={srText} />}

@@ -35,7 +35,7 @@ const PerkCardView = ({
     perkPageLink = { linktype: "url", url: externalUrl };
     HeadlineIcon = ArrowUpIcon;
     headlineIconClasses =
-      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-1em group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em";
+      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-1em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
   }
 
   let perkType = "Alumni perk";
@@ -69,7 +69,7 @@ const PerkCardView = ({
         </div>
         <SbLink
           link={perkPageLink}
-          classes="su-stretched-link su-stretched-link-hocus-outline-black-20 su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-custom !su-underline-digital-red-xlight"
+          classes="su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight"
         >
           <Heading
             level={headingLevel ?? 3}

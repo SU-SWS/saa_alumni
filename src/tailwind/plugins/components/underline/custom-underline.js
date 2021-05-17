@@ -5,9 +5,11 @@ module.exports = function () {
   return function ({ addComponents, theme }) {
     const components = {
       // Add spacing between text and underline
-      ".underline-custom": {
+      ".underline-offset": {
         textUnderlineOffset: "0.15em",
-        textDecorationThickness: "0.2rem",
+      },
+      ".underline-thick": {
+        textDecorationThickness: "0.14em",
       },
       // Custom text underline colors
       // For use directly in an <a> tag

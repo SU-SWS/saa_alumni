@@ -38,8 +38,7 @@ const CtaButton = React.forwardRef(
     let iconColor;
 
     if (buttonStyle === "ghost-gradient") {
-      iconColor =
-        "su-text-saa-electric-blue-light group-hover:su-text-white group-focus:su-text-white";
+      iconColor = "su-text-saa-electric-blue-light group-hocus:su-text-white";
     }
 
     // Icon size/position finetuning based on icon choice
@@ -47,7 +46,7 @@ const CtaButton = React.forwardRef(
 
     if (icon === "external") {
       iconClasses =
-        "su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hover:su-rotate-45 group-focus:su-rotate-45";
+        "su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hocus:su-rotate-45";
     } else if (icon === "email" || icon === "video") {
       iconClasses = "su-h-08em su-w-08em su-ml-7 su--mt-2";
     } else if (icon === "download") {
@@ -59,24 +58,17 @@ const CtaButton = React.forwardRef(
     }
 
     // Icon animation
-    let iconAnimate =
-      "su-transition-transform group-hover:su-transform group-focus:su-transform";
+    let iconAnimate = "su-transition-transform group-hocus:su-transform-gpu";
 
     if (icon === "external") {
       iconAnimate = dcnb(
         iconAnimate,
-        "group-hover:su-translate-x-01em group-focus:su-translate-x-01em group-hover:su--translate-y-01em group-focus:su--translate-y-01em"
+        "group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em"
       );
     } else if (icon === "download" || icon === "chevron-down") {
-      iconAnimate = dcnb(
-        iconAnimate,
-        "group-hover:su-translate-y-02em group-focus:su-translate-y-02em"
-      );
+      iconAnimate = dcnb(iconAnimate, "group-hocus:su-translate-y-02em");
     } else {
-      iconAnimate = dcnb(
-        iconAnimate,
-        "group-hover:su-translate-x-02em group-focus:su-translate-x-02em"
-      );
+      iconAnimate = dcnb(iconAnimate, "group-hocus:su-translate-x-02em");
     }
 
     // Heroicon option
@@ -94,7 +86,7 @@ const CtaButton = React.forwardRef(
               link={link}
               attributes={rel ? { rel } : {}}
               classes={dcnb(
-                "su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-custom su-font-regular hover:su-underline focus:su-underline hover:su-shadow-md focus:su-shadow-md",
+                "su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset su-font-regular hocus:su-underline hocus:su-shadow-md",
                 ctaButtonStyle,
                 ctaButtonSize
               )}
