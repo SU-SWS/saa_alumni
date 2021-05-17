@@ -9,7 +9,7 @@
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@heroicons/react": "^1.0.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
-    "decanter-react": "github:SU-SWS/decanter-react#main",
+    "decanter-react": "^1.0.0",
     "gatsby": "^3.4.2",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-manifest": "^3.4.0",

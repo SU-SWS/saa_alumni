@@ -13,12 +13,12 @@ const PerkCardView = ({
     isNew,
     type,
     title,
-    headingLevel,
     intro,
     externalUrl,
   },
   blok,
   storyLink,
+  headingLevel,
 }) => {
   // Default link is the internal link of the perk content page
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
