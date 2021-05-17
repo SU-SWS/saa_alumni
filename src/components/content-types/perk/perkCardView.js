@@ -27,7 +27,7 @@ const PerkCardView = ({
   // Default icon is right arrow for internal links
   let HeadlineIcon = ArrowRightIcon;
   let headlineIconClasses =
-    "su-ml-03em su--mt-02em su-w-09em group-hocus:su-translate-x-02em ";
+    "su-ml-03em su--mt-02em su-w-09em group-hocus:su-translate-x-02em";
 
   // Link to external URL instead if it is provided
   // Change headline icon to diagonal arrow for external links
