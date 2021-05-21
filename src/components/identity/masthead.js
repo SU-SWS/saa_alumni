@@ -22,7 +22,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
         </FlexCell>
         <FlexCell
           grow
-          className="su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom"
+          className="su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
         >
           <CreateBloks blokSection={utilityNav} />
           <CreateBloks blokSection={mainNav} />
