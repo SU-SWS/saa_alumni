@@ -7,12 +7,14 @@ import Embed from "./embed/embed";
 import Grid from "./layout/grid";
 import Hero from "./composite/hero";
 import InteriorPage from "./page-types/interiorPage";
+import LandingPage from "./page-types/landingPage";
 import LinkGroup from "./navigation/linkGroup";
 import LocalFooter from "./identity/localFooter";
 import LocalFooterPicker from "./identity/localFooterPicker";
 import MainMenuGroup from "./navigation/mainMenuGroup";
 import MainNav from "./navigation/mainNav";
 import Masthead from "./identity/masthead";
+import MastheadPicker from "./identity/mastheadPicker";
 import NavItem from "./navigation/navItem";
 import Page from "./page";
 import Perk from "./content-types/perk/perk";
@@ -30,12 +32,14 @@ const ComponentList = {
   grid: Grid,
   hero: Hero,
   interiorPage: InteriorPage,
+  landingPage: LandingPage,
   linkGroup: LinkGroup,
   localFooter: LocalFooter,
   localFooterPicker: LocalFooterPicker,
   mainMenuGroup: MainMenuGroup,
   mainNav: MainNav,
   masthead: Masthead,
+  mastheadPicker: MastheadPicker,
   navItem: NavItem,
   page: Page,
   perk: Perk,
