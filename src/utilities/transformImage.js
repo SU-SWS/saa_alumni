@@ -6,7 +6,7 @@ import { isNetlify, imageURL } from "../contexts/GlobalContext";
 
 const transformImage = (image, param = "") => {
   const imageService = imageURL.endsWith("/") ? imageURL.slice(0, -1) : "";
-  let myParams = "";
+  let myParams = param;
 
   if (image === null) {
     return "";
@@ -19,7 +19,7 @@ const transformImage = (image, param = "") => {
   const path = image.replace("https://a.storyblok.com", "");
 
   // If the image is a jpg, optimize it by changing the quality to 60% (quality loss is mostly unnoticeable)
-  if (image.endsWith(".jpg")) {
+  if (image.endsWith(".jpg") || image.endsWith(".jpeg")) {
     myParams += "/filters:quality(60)";
   }
 
