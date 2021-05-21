@@ -44,7 +44,10 @@ const Hero = ({
 
   return (
     <SbEditable content={blok}>
-      <Container className="su-relative su-bg-saa-black" width="full">
+      <Container
+        className="hero su-relative su-bg-saa-black xl:su-top-0"
+        width="full"
+      >
         {filename?.startsWith("http") && (
           <figure className="su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full">
             <FullWidthImage

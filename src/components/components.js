@@ -10,6 +10,9 @@ import InteriorPage from "./page-types/interiorPage";
 import LinkGroup from "./navigation/linkGroup";
 import LocalFooter from "./identity/localFooter";
 import LocalFooterPicker from "./identity/localFooterPicker";
+import MainMenuGroup from "./navigation/mainMenuGroup";
+import MainNav from "./navigation/mainNav";
+import Masthead from "./identity/masthead";
 import NavItem from "./navigation/navItem";
 import Page from "./page";
 import Perk from "./content-types/perk/perk";
@@ -30,6 +33,9 @@ const ComponentList = {
   linkGroup: LinkGroup,
   localFooter: LocalFooter,
   localFooterPicker: LocalFooterPicker,
+  mainMenuGroup: MainMenuGroup,
+  mainNav: MainNav,
+  masthead: Masthead,
   navItem: NavItem,
   page: Page,
   perk: Perk,
