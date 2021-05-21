@@ -1,6 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import { Container, Grid, GridCell } from "decanter-react";
+import { Container, FlexBox, FlexCell } from "decanter-react";
 import { Link } from "gatsby";
 import CreateBloks from "../../utilities/createBloks";
 
@@ -10,20 +10,24 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
       className="masthead su-relative xl:su-absolute su-z-20"
       width="full"
     >
-      <div className="su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red">
-        <Link
-          to="/"
-          className="su-block su-w-fit su-pl-20 sm:su-pl-30 md:su-pl-50 lg:su-pl-80 xl:su-pl-[100px] su-rs-pt-5 su-rs-pb-3"
-        >
-          <img
-            src="/images/saa-logo-white.svg"
-            className="su-w-[18rem] xl:su-w-[25rem] 2xl:su-w-[28rem]"
-            alt="Stanford Alumni Association"
-          />
-        </Link>
-        <CreateBloks blokSection={utilityNav} />
-        <CreateBloks blokSection={mainNav} />
-      </div>
+      <FlexBox direction="row">
+        <FlexCell className="su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red su-cc xl:su-pr-61 2xl:su-pr-90 su-rs-pt-5 su-rs-pb-3 su-ml-0">
+          <Link
+            to="/"
+            className="su-block su-w-fit"
+          >
+            <img
+              src="/images/saa-logo-white.svg"
+              className="su-w-[18rem] xl:su-w-[25rem] 2xl:su-w-[28rem]"
+              alt="Stanford Alumni Association"
+            />
+          </Link>
+        </FlexCell>
+        <FlexCell grow={true} className="su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom">
+          <CreateBloks blokSection={utilityNav} />
+          <CreateBloks blokSection={mainNav} />
+        </FlexCell>
+      </FlexBox>
     </Container>
   </SbEditable>
 );

@@ -21,7 +21,9 @@ const LandingPage = (props) => {
           width="full"
         >
           <CreateBloks blokSection={hero} />
-          <CreateBloks blokSection={content} />
+          <div id="body-content">
+            <CreateBloks blokSection={content} />
+          </div>
         </Container>
       </Layout>
     </SbEditable>
