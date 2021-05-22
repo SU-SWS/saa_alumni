@@ -10,6 +10,7 @@ const CreateBloks = ({ blokSection, ...props }) => {
         // eslint-disable-next-line no-underscore-dangle
         key: blok._uid,
         blok,
+        ...props,
       })
     );
   }

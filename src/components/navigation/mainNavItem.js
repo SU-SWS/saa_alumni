@@ -1,24 +1,21 @@
 import React from "react";
-import SbEditable from "storyblok-react";
+import { Menu } from "@headlessui/react";
 import SbLink from "../../utilities/sbLink";
-import { Menu } from '@headlessui/react'
 
-const MainNavItem = ({ blok: { classes, link, text }, blok }) => (
-  <SbEditable content={blok}>
-    <Menu>
-      <Menu.Item as='li'>
-        {({ active }) => (
-          <SbLink
-            link={link}
-            activeClass={``}
-            classes={`${active && 'su-bg-cardinal-red su-text-white'} hover:su-underline focus:su-underline`}
-          >
-            {text}
-          </SbLink>
-        )}
-      </Menu.Item>
-    </Menu>
-  </SbEditable>
+const MainNavItem = ({ blok: { link, text } }) => (
+  <Menu.Item as="li">
+    {({ active }) => (
+      <SbLink
+        link={link}
+        activeClass=""
+        classes={`${
+          active && "su-bg-cardinal-red su-text-white"
+        } hocus:su-underline hocus:su-text-white`}
+      >
+        {text}
+      </SbLink>
+    )}
+  </Menu.Item>
 );
 
 export default MainNavItem;
