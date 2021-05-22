@@ -9,8 +9,8 @@ const MainNavItem = ({ blok: { link, text } }) => (
         link={link}
         activeClass=""
         classes={`${
-          active && "su-bg-cardinal-red su-text-white"
-        } hocus:su-underline hocus:su-text-white`}
+          active && "su-bg-digital-red-dark su-text-white su-underline"
+        } su-block su-w-full su-no-underline su-text-white su-font-regular hocus:su-underline hocus:su-text-white`}
       >
         {text}
       </SbLink>
