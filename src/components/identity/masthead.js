@@ -22,10 +22,10 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
         </FlexCell>
         <FlexCell
           grow
-          className="su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
+          className="su-cc su-mr-0 su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
         >
-          <nav aria-label="Utility Menu">
-            <ul>
+          <nav aria-label="Utility Menu" className="su-rs-mt-0 su-text-right">
+            <ul className="su-list-unstyled su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-mr-[2em]">
               <CreateBloks blokSection={utilityNav} />
             </ul>
           </nav>
