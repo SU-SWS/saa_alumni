@@ -24,7 +24,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
           grow
           className="su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
         >
-          <CreateBloks blokSection={utilityNav} />
+          <nav aria-label="Utility Menu">
+            <ul>
+              <CreateBloks blokSection={utilityNav} />
+            </ul>
+          </nav>
           <CreateBloks blokSection={mainNav} />
         </FlexCell>
       </FlexBox>
