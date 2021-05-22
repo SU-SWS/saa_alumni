@@ -13,6 +13,7 @@ import LocalFooter from "./identity/localFooter";
 import LocalFooterPicker from "./identity/localFooterPicker";
 import MainMenuGroup from "./navigation/mainMenuGroup";
 import MainNav from "./navigation/mainNav";
+import MainNavItem from "./navigation/mainNavItem";
 import Masthead from "./identity/masthead";
 import MastheadPicker from "./identity/mastheadPicker";
 import NavItem from "./navigation/navItem";
@@ -38,6 +39,7 @@ const ComponentList = {
   localFooterPicker: LocalFooterPicker,
   mainMenuGroup: MainMenuGroup,
   mainNav: MainNav,
+  mainNavItem: MainNavItem,
   masthead: Masthead,
   mastheadPicker: MastheadPicker,
   navItem: NavItem,

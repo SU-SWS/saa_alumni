@@ -1,14 +1,17 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import CreateBloks from "../../utilities/createBloks";
+import { Menu } from '@headlessui/react'
 
 const MainMenuGroup = ({ blok: { parentText, menuItems }, blok }) => (
   <SbEditable content={blok}>
     <li>
-      <button type="button">{parentText}</button>
-      <ul>
-        <CreateBloks blokSection={menuItems} />
-      </ul>
+      <Menu>
+        <Menu.Button>{parentText}</Menu.Button>
+        <Menu.Items as='ul'>
+          <CreateBloks blokSection={menuItems} />
+        </Menu.Items>
+      </Menu>
     </li>
   </SbEditable>
 );
