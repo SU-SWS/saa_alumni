@@ -36,7 +36,7 @@ const PerkCardView = ({
     perkPageLink = { linktype: "url", url: externalUrl };
     HeadlineIcon = ArrowUpIcon;
     headlineIconClasses =
-      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-[1.1em] group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
+      "su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-[1.1em] group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
   }
 
   let perkType = "Alumni perk";
@@ -64,7 +64,7 @@ const PerkCardView = ({
             </figure>
           )}
           <div
-            className="su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black"
+            className="su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black su-backface-hidden"
             aria-hidden="true"
           />
         </div>

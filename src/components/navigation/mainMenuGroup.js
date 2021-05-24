@@ -16,7 +16,7 @@ const MainMenuGroup = ({ blok: { parentText, menuItems } }) => (
       leaveTo="su-transform-gpu su-scale-75 su-opacity-0"
     >
       <Popover.Panel
-        as='ul'
+        as="ul"
         className="su-list-unstyled su-w-[28rem] su-absolute su-bg-cardinal-red children:su-mb-0"
       >
         <CreateBloks blokSection={menuItems} />

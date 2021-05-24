@@ -2,11 +2,11 @@ import React from "react";
 import SbLink from "../../utilities/sbLink";
 
 const MainNavItem = ({ blok: { link, text } }) => (
-  <li>
+  <li className="su-border-b su-border-solid su-border-digital-red-light last:su-border-none">
     <SbLink
       link={link}
-      activeClass="su-bg-digital-red-dark su-text-white su-underline"
-      classes={`su-block su-w-full su-px-20 su-py-10 su-no-underline su-text-white su-font-regular hocus:su-underline hocus:su-text-white`}
+      classes="su-block su-group su-w-full su-px-20 su-py-14 su-no-underline su-text-20 su-text-white su-font-regular hocus:su-underline hocus:su-text-white hocus:su-bg-cardinal-red-xdark !su-underline-offset"
+      hasExternalIcon
     >
       {text}
     </SbLink>

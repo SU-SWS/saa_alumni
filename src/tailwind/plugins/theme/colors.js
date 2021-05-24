@@ -13,6 +13,7 @@ module.exports = function () {
     },
     "saa-black": "#181D1C",
     "digital-red-xlight": "#F83535", // Passed contrast test for black background
+    "cardinal-red-xdark": "#7A0000",
     "saa-electric-blue": {
       DEFAULT: "#505EEC",
       light: "#6B77F5",

@@ -3,6 +3,8 @@ import { useLocation } from "@reach/router";
 import { parse } from "query-string";
 import Link from "gatsby-link";
 import { assetURL, isNetlify } from "../contexts/GlobalContext";
+import { ArrowUpIcon } from "@heroicons/react/outline";
+import { dcnb } from "cnbuilder";
 
 /**
  * Reusable Storyblok Link component for various link types
@@ -21,6 +23,7 @@ const SbLink = React.forwardRef((props, ref) => {
   const activeClass = props.activeClass ?? "";
   const assetClasses = props.assetClasses ?? "";
   const otherAttributes = props.attributes ?? {};
+
 
   // Get out of the url and keep track of specific utm parameters.
   const location = useLocation();
@@ -72,6 +75,17 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // External or absolute url type link.
   // ---------------------------------------------------------------------------
+  let extLinkIcon = "";
+  const extIconClasses = props.externalIconClasses ?? "";
+
+  if (props.hasExternalIcon) {
+    extLinkIcon =
+      <ArrowUpIcon
+        className={dcnb("su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-09em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em", extIconClasses)}
+        aria-hidden="true"
+      />
+  }
+
   if (props.link?.linktype === "url") {
     return (
       <a
@@ -82,6 +96,7 @@ const SbLink = React.forwardRef((props, ref) => {
       >
         {props.children}
         <span className="su-sr-only"> (external link)</span>
+        {extLinkIcon}
       </a>
     );
   }
