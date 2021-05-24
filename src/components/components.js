@@ -14,6 +14,7 @@ import NavItem from "./navigation/navItem";
 import Page from "./page";
 import Perk from "./content-types/perk/perk";
 import PerkCard from "./cards/perkCard";
+import Poster from "./composite/poster";
 import Section from "./layout/section";
 import Wysiwyg from "./simple/wysiwyg";
 import Redirect from "./redirect/Redirect";
@@ -34,6 +35,7 @@ const ComponentList = {
   page: Page,
   perk: Perk,
   perkCard: PerkCard,
+  poster: Poster,
   section: Section,
   wysiwyg: Wysiwyg,
   redirect: Redirect,
