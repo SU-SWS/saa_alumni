@@ -67,7 +67,7 @@ const Hero = ({
             {(sansSuper || serifSuper || headline || sansSub) && (
               <FlexCell className="su-text-center su-text-white">
                 {sansSuper && (
-                  <p className="su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-0">
+                  <p className="su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-01em">
                     {sansSuper}
                   </p>
                 )}

@@ -11,7 +11,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
       width="full"
     >
       <FlexBox direction="row">
-        <FlexCell className="su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red su-cc xl:su-pr-38 2xl:su-pr-90 su-rs-pt-5 su-rs-pb-3 su-ml-0">
+        <FlexCell className="su-cc xl:su-pr-38 2xl:su-pr-90 su-rs-pt-5 su-rs-pb-3 su-ml-0 su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red ">
           <Link to="/" className="su-block su-w-fit">
             <img
               src="/images/saa-logo-white.svg"
@@ -22,7 +22,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
         </FlexCell>
         <FlexCell
           grow
-          className="su-cc su-mr-0 su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
+          className="su-cc 2xl:su-pl-80 su-mr-0 su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
         >
           <nav aria-label="Utility Menu" className="su-rs-mt-0 su-text-right">
             <ul className="su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-mr-[2em]">
