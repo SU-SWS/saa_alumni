@@ -26,7 +26,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
         >
           <nav aria-label="Utility Menu" className="su-rs-mt-0 su-text-right su-flex-grow">
             <ul className="su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-mr-[2em] su-underline-offset">
-              <CreateBloks blokSection={utilityNav} />
+              <CreateBloks blokSection={utilityNav} hasExternalIcon />
             </ul>
             <form className="su-inline-block">
               <label className="su-sr-only">Search Stanford Alumni</label>
