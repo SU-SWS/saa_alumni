@@ -2,7 +2,6 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
-import CardImage from "../media/cardImage";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
@@ -18,15 +17,17 @@ const Poster = ({
     headline,
     headingLevel,
     text,
+    isIntroText,
     layout,
   },
   blok,
 }) => {
   const numCta = getNumBloks(cta);
 
-  let wrapperClasses = "su-bg-white su-text-black su-rs-pt-3";
+  let wrapperClasses = "su-bg-white su-text-black su-rs-pt-3 su-rs-pb-5";
   let imageWrapper = "";
-  let contentWrapper = "";
+  let contentWrapper = "su-max-w-700";
+  let bodyText = "su-subheading";
 
   // Option to make headline font larger
   let headlineSize = "su-type-2";
@@ -35,19 +36,24 @@ const Poster = ({
     headlineSize = "su-type-3";
   }
 
+  if (isIntroText) {
+    bodyText = "su-intro-text";
+  }
+
   if (layout === "left") {
     wrapperClasses = dcnb(
       "su-flex su-flex-row su-justify-center",
       wrapperClasses
     );
-    imageWrapper = "su-min-w-[14rem] su-rs-mr-2";
-    contentWrapper = "su-items-start su-max-w-600";
+    imageWrapper = "su-min-w-[14rem] su-rs-mr-4";
+    contentWrapper = dcnb("su-items-start", contentWrapper);
   } else {
     wrapperClasses = dcnb(
       "su-flex su-flex-col su-items-center",
       wrapperClasses
     );
-    contentWrapper = "su-items-center";
+    contentWrapper = dcnb("su-items-center su-text-center", contentWrapper);
+    imageWrapper = "su-rs-mb-2";
   }
 
   return (
@@ -69,7 +75,7 @@ const Poster = ({
           >
             {headline}
           </Heading>
-          {text && <RichTextRenderer wysiwyg={text} />}
+          {text && <RichTextRenderer wysiwyg={text} className={bodyText} />}
           {numCta > 0 && (
             <div className="su-rs-mt-2">
               <CreateBloks blokSection={cta} />
