@@ -24,7 +24,7 @@ const Poster = ({
 }) => {
   const numCta = getNumBloks(cta);
 
-  let wrapperClasses = "su-bg-white su-text-black su-rs-pt-3 su-rs-pb-5";
+  let wrapperClasses = "su-bg-white su-text-black su-cc su-rs-pt-3 su-rs-pb-5";
   let imageWrapper = "";
   let contentWrapper = "su-max-w-700";
   let bodyText = "su-subheading";
@@ -42,10 +42,11 @@ const Poster = ({
 
   if (layout === "left") {
     wrapperClasses = dcnb(
-      "su-flex su-flex-row su-justify-center",
+      "su-flex su-flex-col su-justify-center md:su-flex-row",
       wrapperClasses
     );
-    imageWrapper = "su-min-w-[14rem] su-rs-mr-4";
+    imageWrapper =
+      "su-min-w-[14rem] su-rs-mb-2 su-mx-auto md:su-rs-mr-4 md:su-mb-0 md:su-ml-0";
     contentWrapper = dcnb("su-items-start", contentWrapper);
   } else {
     wrapperClasses = dcnb(
@@ -70,12 +71,17 @@ const Poster = ({
         )}
         <FlexBox direction="col" className={contentWrapper}>
           <Heading
-            level={headingLevel ?? 3}
+            level={headingLevel ?? "3"}
             className={dcnb("su-font-serif su-bold su-mb-0", headlineSize)}
           >
             {headline}
           </Heading>
-          {text && <RichTextRenderer wysiwyg={text} className={bodyText} />}
+          {text && (
+            <RichTextRenderer
+              wysiwyg={text}
+              className={dcnb("su-rs-mt-neg1", bodyText)}
+            />
+          )}
           {numCta > 0 && (
             <div className="su-rs-mt-2">
               <CreateBloks blokSection={cta} />
