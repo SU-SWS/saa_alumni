@@ -2,8 +2,7 @@ import React from "react";
 import { dcnb } from "cnbuilder";
 import transformImage from "../../utilities/transformImage";
 import getImageWidth from "../../utilities/getImageWidth";
-import { objectPosition } from "../../utilities/dataSource";
-import { borderColors } from "../../utilities/dataSource";
+import { objectPosition, borderColors } from "../../utilities/dataSource";
 
 const CircularImage = ({
   borderColor,
