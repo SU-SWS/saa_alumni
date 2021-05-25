@@ -16,7 +16,7 @@ const BasicCard = ({
     isLightText,
     isBigHeadline,
     align,
-    image: { filename },
+    image: { filename } = {},
     imageFocus,
     headline,
     headingLevel,

@@ -12,7 +12,7 @@ const Poster = ({
     cta,
     borderColor,
     isBigHeadline,
-    image: { filename },
+    image: { filename } = {},
     imageFocus,
     headline,
     headingLevel,
@@ -71,7 +71,6 @@ const Poster = ({
         )}
         <FlexBox direction="col" className={contentWrapper}>
           <Heading
-            level={headingLevel ?? "3"}
             className={dcnb("su-font-serif su-bold su-mb-0", headlineSize)}
           >
             {headline}
