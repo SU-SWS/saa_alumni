@@ -21,15 +21,15 @@ const MainMenuGroup = ({ blok: { parentText, menuItems } }) => (
         </Popover.Button>
         <Transition
           enter="su-transition su-ease-out"
-          enterFrom="su-transform-gpu su-scale-75 su-opacity-0"
-          enterTo="su-transform-gpu su-scale-100 su-opacity-100"
+          enterFrom="su-transform-gpu su-scale-y-50 su-origin-top-left lg:su-scale-75 su-opacity-100"
+          enterTo="su-transform-gpu su-scale-y-100 su-origin-top-left lg:su-scale-100 su-opacity-100"
           leave="su-transition su-ease-out su-duration-75"
-          leaveFrom="su-transform-gpu su-scale-100 su-opacity-100"
-          leaveTo="su-transform-gpu su-scale-75 su-opacity-0"
+          leaveFrom="su-transform-gpu su-origin-top-left su-scale-y-100 lg:su-scale-100 su-opacity-100"
+          leaveTo="su-transform-gpu su-origin-top-left su-scale-y-50 lg:su-scale-75 su-opacity-0"
         >
           <Popover.Panel
             as="ul"
-            className="su-list-unstyled su-shadow-md su-w-[28rem] su-absolute su-bg-cardinal-red children:su-mb-0"
+            className="su-list-unstyled su-shadow-md su-w-[28rem] su-relative lg:su-absolute su-bg-cardinal-red children:su-mb-0"
           >
             <CreateBloks blokSection={menuItems} />
           </Popover.Panel>
