@@ -17,7 +17,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
         </FlexCell>
         <FlexCell
           grow
-          className="su-flex su-flex-col su-cc xl:su-pl-30 xl:su-pr-45 2xl:su-pl-61 su-mr-0 su-bg-cardinal-red-xdark xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden"
+          className="su-flex su-flex-col 2xl:su-cc xl:su-pl-30 xl:su-pr-45 2xl:su-pl-61 su-mr-0 su-bg-cardinal-red-xdark xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden"
         >
           <FlexBox direction="row" className="su-rs-mt-0 su-flex-grow">
             <nav
