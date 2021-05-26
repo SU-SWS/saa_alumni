@@ -31,7 +31,7 @@ const MainMenuGroup = ({ blok: { parentText, menuItems } }) => (
         >
           <Popover.Panel
             as="ul"
-            className="su-list-unstyled su-shadow-md su-w-[28rem] su-relative lg:su-absolute su-bg-cardinal-red children:su-mb-0"
+            className="su-list-unstyled su-shadow-md su-w-[25rem] xl:su-w-[28rem] su-relative lg:su-absolute su-bg-cardinal-red children:su-mb-0"
           >
             <CreateBloks blokSection={menuItems} />
           </Popover.Panel>
