@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "gatsby";
 
 const Logo = ({ className, ...props }) => (
-  <Link to="/" className="su-block su-w-fit" {...props}>
+  <Link to="/" className="logo su-block su-w-fit" {...props}>
     <img
       src="/images/saa-logo-white.svg"
       className={className}
