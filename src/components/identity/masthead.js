@@ -12,12 +12,12 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
       width="full"
     >
       <FlexBox direction="row">
-        <FlexCell className="su-cc xl:su-pr-30 2xl:su-pr-70 su-rs-pt-5 su-rs-pb-3 su-ml-0 su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red">
-          <Logo className="su-w-[18rem] 2xl:su-w-[26rem]" />
+        <FlexCell className="lg:su-px-45 xl:su-pr-30 2xl:su-cc 2xl:su-pr-70 su-py-30 xl:su-pt-72 xl:su-pb-45 2xl:su-pb-48 2xl:su-pt-78 su-rs-pb-3 su-ml-0 su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red">
+          <Logo className="su-w-[18rem] lg:su-w-[20rem] 2xl:su-w-[26rem]" />
         </FlexCell>
         <FlexCell
           grow
-          className="su-flex su-flex-col su-cc xl:su-pl-30 2xl:su-pl-61 su-mr-0 su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
+          className="su-flex su-flex-col su-cc xl:su-pl-30 xl:su-pr-45 2xl:su-pl-61 su-mr-0 su-bg-cardinal-red-xdark xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden"
         >
           <FlexBox direction="row" className="su-rs-mt-0 su-flex-grow">
             <nav
@@ -35,7 +35,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
       </FlexBox>
       <CreateBloks
         blokSection={mainNav}
-        className="lg:su-flex xl:su-hidden lg:su-bg-gradient-to-b lg:su-from-masthead-black-top lg:su-to-masthead-black-bottom su-backface-hidden"
+        className="lg:su-pl-26 lg:su-flex xl:su-hidden su-rs-pt-2 su-bg-masthead-black-bottom"
       />
     </Container>
   </SbEditable>
