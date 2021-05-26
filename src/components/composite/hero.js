@@ -45,7 +45,7 @@ const Hero = ({
   return (
     <SbEditable content={blok}>
       <Container
-        className="hero su-relative su-bg-saa-black xl:su-top-0"
+        className="hero su-relative su-bg-saa-black lg:su-top-0"
         width="full"
       >
         {filename?.startsWith("http") && (
