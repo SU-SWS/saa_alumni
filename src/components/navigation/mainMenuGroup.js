@@ -22,10 +22,10 @@ const MainMenuGroup = ({ blok: { parentText, menuItems } }) => (
           />
         </Popover.Button>
         <Transition
-          enter="su-transition su-ease-out"
-          enterFrom="su-transform-gpu su-scale-y-50 su-origin-top-left lg:su-scale-75 su-opacity-100"
-          enterTo="su-transform-gpu su-scale-y-100 su-origin-top-left lg:su-scale-100 su-opacity-100"
-          leave="su-transition su-ease-out su-duration-75"
+          enter="su-transition su-duration su-ease-out"
+          enterFrom="su-transform-gpu su-origin-top-left su-scale-y-50 lg:su-scale-75 su-opacity-0"
+          enterTo="su-transform-gpu su-origin-top-left su-scale-y-100 lg:su-scale-100 su-opacity-100"
+          leave="su-transition su-duration su-ease-out"
           leaveFrom="su-transform-gpu su-origin-top-left su-scale-y-100 lg:su-scale-100 su-opacity-100"
           leaveTo="su-transform-gpu su-origin-top-left su-scale-y-50 lg:su-scale-75 su-opacity-0"
         >
