@@ -87,7 +87,9 @@ const Poster = ({
           >
             {headline}
           </Heading>
-          {text && <RichTextRenderer wysiwyg={text} className={bodyText} />}
+          {numText > 0 && (
+            <RichTextRenderer wysiwyg={text} className={bodyText} />
+          )}
           {numCta > 0 && (
             <div className="su-rs-mt-2">
               <CreateBloks blokSection={cta} />
