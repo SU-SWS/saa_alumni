@@ -8,11 +8,11 @@ import CreateBloks from "../../utilities/createBloks";
  * It incorporates the Local Header and the skip link, based on page settings.
  */
 
-const Header = ({ blok: { masthead }, blok }) => (
+const Header = ({ blok: { masthead }, blok, hasHero }) => (
   <SbEditable content={blok}>
     <Container element="header" width="full" className="su-relative su-z-20">
       <Skiplink />
-      <CreateBloks blokSection={masthead} />
+      <CreateBloks blokSection={masthead} hasHero={hasHero} />
     </Container>
   </SbEditable>
 );

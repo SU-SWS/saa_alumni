@@ -8,11 +8,11 @@ import Seo from "./seo";
  * The Layout component is referenced and used in all page-type components.
  * It incorporates the Header and sticky Footer, based on page settings.
  */
-const Layout = ({ children, ...rest }) => (
+const Layout = ({ children, hasHero, ...rest }) => (
   <>
     <Seo {...rest} />
     <FlexBox direction="col" className="su-min-h-screen su-overflow-x-hidden">
-      <Header {...rest} />
+      <Header hasHero={hasHero} {...rest} />
       {children}
       <Footer {...rest} />
     </FlexBox>

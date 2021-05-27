@@ -3,17 +3,21 @@ import SbEditable from "storyblok-react";
 import { Container } from "decanter-react";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
+import getNumBloks from "../../utilities/getNumBloks";
 
 const LandingPage = (props) => {
   // Destructure.
   const {
     blok: { content, hero },
     blok,
+    hasHero,
   } = props;
+
+  const numHero = getNumBloks(hero);
 
   return (
     <SbEditable content={blok}>
-      <Layout {...props}>
+      <Layout hasHero={numHero > 0} {...props}>
         <Container
           element="main"
           id="main-content"

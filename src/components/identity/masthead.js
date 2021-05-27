@@ -5,10 +5,10 @@ import CreateBloks from "../../utilities/createBloks";
 import SearchBar from "../search/searchBar";
 import Logo from "./logo";
 
-const Masthead = ({ blok: { mainNav, utilityNav }, blok }) => (
+const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
   <SbEditable content={blok}>
     <Container
-      className="masthead su-relative lg:su-absolute su-z-20"
+      className={`masthead su-relative ${hasHero ? "lg:su-absolute" : ""}  su-z-20`}
       width="full"
     >
       <FlexBox direction="row">
