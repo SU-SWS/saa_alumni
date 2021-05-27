@@ -5,6 +5,7 @@ import { dcnb } from "cnbuilder";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
+import { render } from "storyblok-rich-text-react-renderer";
 import CircularImage from "../media/circularImage";
 
 const Poster = ({
@@ -23,11 +24,14 @@ const Poster = ({
   blok,
 }) => {
   const numCta = getNumBloks(cta);
+  const rendered = render(text);
+  const numText = getNumBloks(rendered);
 
   let wrapperClasses = "su-bg-white su-text-black su-cc su-rs-pt-3 su-rs-pb-5";
   let imageWrapper = "";
   let contentWrapper = "su-max-w-700";
   let bodyText = "su-subheading";
+  let headingSpacing = "su-mb-0";
 
   // Option to make headline font larger
   let headlineSize = "su-type-2";
@@ -57,6 +61,11 @@ const Poster = ({
     imageWrapper = "su-rs-mb-2";
   }
 
+  // If text contains content, add margin bottom to headingh
+  if (numText) {
+    headingSpacing = "su-mb-13";
+  }
+
   return (
     <SbEditable content={blok}>
       <div className={dcnb("poster su-basefont-23", wrapperClasses)}>
@@ -74,7 +83,7 @@ const Poster = ({
             font="serif"
             weight="bold"
             level={headingLevel ?? 2}
-            className={dcnb("su-mb-0", headlineSize)}
+            className={dcnb(headingSpacing, headlineSize)}
           >
             {headline}
           </Heading>
