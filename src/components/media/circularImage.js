@@ -1,8 +1,7 @@
 import React from "react";
 import { dcnb } from "cnbuilder";
-import transformImage from "../../utilities/transformImage";
-import getImageWidth from "../../utilities/getImageWidth";
-import { objectPosition, borderColors } from "../../utilities/dataSource";
+import { borderColors } from "../../utilities/dataSource";
+import CardImage from "./cardImage";
 
 const CircularImage = ({
   borderColor,
@@ -12,29 +11,6 @@ const CircularImage = ({
   loading,
   ...props
 }) => {
-  const imgFocus = objectPosition[imageFocus] ?? objectPosition.center;
-  const imgLoading = loading ?? "auto";
-
-  let originalImg = "";
-  let imgSrc = "";
-
-  if (filename != null) {
-    let imgWidth = "";
-
-    // Get image width from URL of storyblok image
-    if (filename?.startsWith("http")) {
-      imgWidth = getImageWidth(filename);
-    }
-
-    originalImg = transformImage(filename, "");
-
-    if (imgWidth > 200) {
-      imgSrc = transformImage(filename, "/200x0");
-    } else {
-      imgSrc = originalImg;
-    }
-  }
-
   // Option to display image as round thumbnail with colored border
   const imageBorderColor =
     borderColors[borderColor] ?? borderColors["digital-red"];
@@ -48,12 +24,12 @@ const CircularImage = ({
       )}
       aria-hidden="true"
     >
-      <img
-        src={imgSrc}
-        className={dcnb("su-object-cover su-w-full su-h-full", imgFocus)}
-        alt=""
-        loading={imgLoading}
-        {...props}
+      <CardImage
+        filename={filename}
+        size="thumb"
+        imageFocus={imageFocus}
+        className="su-object-cover su-w-full su-h-full"
+        loading="lazy"
       />
     </div>
   );
