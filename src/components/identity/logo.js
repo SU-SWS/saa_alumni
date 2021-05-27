@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
+import AlumniLogo from "../../images/saa-logo-white.svg";
 
 const Logo = ({ className, ...props }) => (
   <Link to="/" className="su-block su-w-fit" {...props}>
     <img
-      src="/images/saa-logo-white.svg"
+      src={AlumniLogo}
       className={className}
       alt="Stanford Alumni Association"
     />
