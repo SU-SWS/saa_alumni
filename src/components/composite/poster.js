@@ -33,7 +33,7 @@ const Poster = ({
   let headlineSize = "su-type-2";
 
   if (isBigHeadline) {
-    headlineSize = "su-type-3";
+    headlineSize = "su-type-4";
   }
 
   if (isIntroText) {
@@ -59,7 +59,7 @@ const Poster = ({
 
   return (
     <SbEditable content={blok}>
-      <div className={dcnb("su-poster su-basefont-23", wrapperClasses)}>
+      <div className={dcnb("poster su-basefont-23", wrapperClasses)}>
         {filename?.startsWith("http") && (
           <CircularImage
             borderColor={borderColor}
@@ -71,16 +71,14 @@ const Poster = ({
         )}
         <FlexBox direction="col" className={contentWrapper}>
           <Heading
-            className={dcnb("su-font-serif su-bold su-mb-0", headlineSize)}
+            font="serif"
+            weight="bold"
+            level={headingLevel ?? 2}
+            className={dcnb("su-mb-0", headlineSize)}
           >
             {headline}
           </Heading>
-          {text && (
-            <RichTextRenderer
-              wysiwyg={text}
-              className={dcnb("su-rs-mt-neg1", bodyText)}
-            />
-          )}
+          {text && <RichTextRenderer wysiwyg={text} className={bodyText} />}
           {numCta > 0 && (
             <div className="su-rs-mt-2">
               <CreateBloks blokSection={cta} />
