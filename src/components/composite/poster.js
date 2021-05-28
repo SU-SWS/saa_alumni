@@ -7,6 +7,8 @@ import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import CircularImage from "../media/circularImage";
+import { bgTextColorPairs } from "../../utilities/dataSource";
+import addBgImage from "../../utilities/addBgImage";
 
 const Poster = ({
   blok: {
@@ -14,20 +16,23 @@ const Poster = ({
     borderColor,
     isBigHeadline,
     image: { filename } = {},
+    bgImage: { filename: bgFilename } = {},
     imageFocus,
     headline,
     headingLevel,
     text,
     isIntroText,
     layout,
+    theme,
   },
   blok,
 }) => {
   const numCta = getNumBloks(cta);
   const rendered = render(text);
   const numText = getNumBloks(rendered);
+  const colorTheme = bgTextColorPairs[theme] ?? bgTextColorPairs.white;
 
-  let wrapperClasses = "su-bg-white su-text-black su-rs-pt-4 su-rs-pb-5";
+  let wrapperClasses = "su-rs-pt-4 su-rs-pb-5";
   let imageWrapper = "";
   let contentWrapper = "su-max-w-700";
   let bodyText = "su-big-paragraph";
@@ -68,7 +73,7 @@ const Poster = ({
 
   return (
     <SbEditable content={blok}>
-      <Container className={dcnb("poster su-basefont-23", wrapperClasses)}>
+      <Container className={dcnb("poster su-basefont-23", wrapperClasses, colorTheme)} style={addBgImage(bgFilename)}>
         {filename?.startsWith("http") && (
           <CircularImage
             borderColor={borderColor}

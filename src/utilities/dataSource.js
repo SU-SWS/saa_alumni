@@ -94,6 +94,16 @@ export const bgColors = {
   black: "su-bg-saa-black su-text-white",
 };
 
+export const bgTextColorPairs = {
+  "foggy-light": "su-bg-foggy-light su-text-black",
+  white: "su-bg-white su-text-black",
+  black: "su-bg-saa-black su-text-white",
+  "cardinal-red": "su-bg-cardinal-red su-text-white",
+  plum: "su-bg-plum su-text-white",
+  "gradient-red": "su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white",
+  "gradient-translucent-red-plum-black": "su-bg-gradient-to-tr su-from-cardinal-red su-to-transparent-black su-text-white"
+};
+
 export const pageTextColors = {
   dark: "su-text-black su-link-digital-red hover:su-link-sky-dark focus:su-link-sky-dark",
   light: "su-text-white su-link-white hover:su-link-white focus:su-link-white",
