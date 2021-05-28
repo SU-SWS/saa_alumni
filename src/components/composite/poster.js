@@ -2,10 +2,10 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
+import { render } from "storyblok-rich-text-react-renderer";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
-import { render } from "storyblok-rich-text-react-renderer";
 import CircularImage from "../media/circularImage";
 
 const Poster = ({
@@ -87,7 +87,9 @@ const Poster = ({
           >
             {headline}
           </Heading>
-          {text && <RichTextRenderer wysiwyg={text} className={bodyText} />}
+          {numText > 0 && (
+            <RichTextRenderer wysiwyg={text} className={bodyText} />
+          )}
           {numCta > 0 && (
             <div className="su-rs-mt-2">
               <CreateBloks blokSection={cta} />
