@@ -1,6 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import { FlexBox, Heading } from "decanter-react";
+import { Container, FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import { render } from "storyblok-rich-text-react-renderer";
 import CreateBloks from "../../utilities/createBloks";
@@ -27,10 +27,10 @@ const Poster = ({
   const rendered = render(text);
   const numText = getNumBloks(rendered);
 
-  let wrapperClasses = "su-bg-white su-text-black su-cc su-rs-pt-3 su-rs-pb-5";
+  let wrapperClasses = "su-bg-white su-text-black su-rs-pt-4 su-rs-pb-5";
   let imageWrapper = "";
   let contentWrapper = "su-max-w-700";
-  let bodyText = "su-subheading";
+  let bodyText = "su-big-paragraph";
   let headingSpacing = "su-mb-0";
 
   // Option to make headline font larger
@@ -41,7 +41,7 @@ const Poster = ({
   }
 
   if (isIntroText) {
-    bodyText = "su-intro-text";
+    bodyText = "su-subheading";
   }
 
   if (layout === "left") {
@@ -51,7 +51,7 @@ const Poster = ({
     );
     imageWrapper =
       "su-min-w-[14rem] su-rs-mb-2 su-mx-auto md:su-rs-mr-4 md:su-mb-0 md:su-ml-0";
-    contentWrapper = dcnb("su-items-start", contentWrapper);
+    contentWrapper = dcnb("su-items-start md:su-flex-grow", contentWrapper);
   } else {
     wrapperClasses = dcnb(
       "su-flex su-flex-col su-items-center",
@@ -61,14 +61,14 @@ const Poster = ({
     imageWrapper = "su-rs-mb-2";
   }
 
-  // If text contains content, add margin bottom to headingh
+  // If text contains content, add margin bottom to heading
   if (numText) {
-    headingSpacing = "su-mb-13";
+    headingSpacing = "su-mb-03em";
   }
 
   return (
     <SbEditable content={blok}>
-      <div className={dcnb("poster su-basefont-23", wrapperClasses)}>
+      <Container className={dcnb("poster su-basefont-23", wrapperClasses)}>
         {filename?.startsWith("http") && (
           <CircularImage
             borderColor={borderColor}
@@ -96,7 +96,7 @@ const Poster = ({
             </div>
           )}
         </FlexBox>
-      </div>
+      </Container>
     </SbEditable>
   );
 };
