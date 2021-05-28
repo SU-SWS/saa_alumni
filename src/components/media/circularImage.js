@@ -29,7 +29,7 @@ const CircularImage = ({
         size="thumb"
         imageFocus={imageFocus}
         className="su-object-cover su-w-full su-h-full"
-        loading="lazy"
+        loading={loading ?? "lazy"}
       />
     </div>
   );
