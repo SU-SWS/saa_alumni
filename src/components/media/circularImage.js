@@ -23,6 +23,7 @@ const CircularImage = ({
         className
       )}
       aria-hidden="true"
+      {...props}
     >
       <CardImage
         filename={filename}

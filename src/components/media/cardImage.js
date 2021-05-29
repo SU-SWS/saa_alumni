@@ -42,7 +42,7 @@ const CardImage = ({
   return (
     <img
       src={imgSrc}
-      className={dcnb(className, imgFocus)}
+      className={dcnb("su-object-cover", className, imgFocus)}
       alt=""
       loading={imgLoading}
       {...props}
