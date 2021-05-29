@@ -100,8 +100,9 @@ export const bgTextColorPairs = {
   black: "su-bg-saa-black su-text-white",
   "cardinal-red": "su-bg-cardinal-red su-text-white",
   plum: "su-bg-plum su-text-white",
-  "gradient-red": "su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white",
-  "gradient-translucent-red-plum-black": "su-bg-gradient-to-tr su-from-cardinal-red su-to-transparent-black su-text-white"
+  "gradient-red":
+    "su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white",
+  "use-bg-image": "su-text-white",
 };
 
 export const pageTextColors = {

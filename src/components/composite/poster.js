@@ -7,21 +7,25 @@ import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import CircularImage from "../media/circularImage";
-import { bgTextColorPairs } from "../../utilities/dataSource";
+import {
+  bgPositionVertical,
+  bgTextColorPairs,
+} from "../../utilities/dataSource";
 import addBgImage from "../../utilities/addBgImage";
 
 const Poster = ({
   blok: {
     cta,
     borderColor,
-    isBigHeadline,
     image: { filename } = {},
     bgImage: { filename: bgFilename } = {},
+    vCrop,
     imageFocus,
     headline,
+    isBigHeadline,
     headingLevel,
     text,
-    isIntroText,
+    isBigBodyText,
     layout,
     theme,
   },
@@ -31,10 +35,11 @@ const Poster = ({
   const rendered = render(text);
   const numText = getNumBloks(rendered);
   const colorTheme = bgTextColorPairs[theme] ?? bgTextColorPairs.white;
+  const bgCrop = bgPositionVertical[vCrop] ?? bgPositionVertical.center;
 
-  let wrapperClasses = "su-rs-pt-4 su-rs-pb-5";
-  let imageWrapper = "";
-  let contentWrapper = "su-max-w-700";
+  let wrapperClasses;
+  let imageWrapper;
+  let contentWrapper;
   let bodyText = "su-big-paragraph";
   let headingSpacing = "su-mb-0";
 
@@ -45,24 +50,18 @@ const Poster = ({
     headlineSize = "su-type-4";
   }
 
-  if (isIntroText) {
+  if (isBigBodyText) {
     bodyText = "su-subheading";
   }
 
   if (layout === "left") {
-    wrapperClasses = dcnb(
-      "su-flex su-flex-col su-justify-center md:su-flex-row",
-      wrapperClasses
-    );
+    wrapperClasses = "su-flex su-flex-col su-justify-center md:su-flex-row";
     imageWrapper =
       "su-min-w-[14rem] su-rs-mb-2 su-mx-auto md:su-rs-mr-4 md:su-mb-0 md:su-ml-0";
-    contentWrapper = dcnb("su-items-start md:su-flex-grow", contentWrapper);
+    contentWrapper = "su-items-start md:su-flex-grow";
   } else {
-    wrapperClasses = dcnb(
-      "su-flex su-flex-col su-items-center",
-      wrapperClasses
-    );
-    contentWrapper = dcnb("su-items-center su-text-center", contentWrapper);
+    wrapperClasses = "su-flex su-flex-col su-items-center";
+    contentWrapper = "su-items-center su-text-center";
     imageWrapper = "su-rs-mb-2";
   }
 
@@ -73,7 +72,18 @@ const Poster = ({
 
   return (
     <SbEditable content={blok}>
-      <Container className={dcnb("poster su-basefont-23", wrapperClasses, colorTheme)} style={addBgImage(bgFilename)}>
+      <Container
+        className={dcnb(
+          "poster su-basefont-23 su-rs-pt-4 su-rs-pb-5 su-bg-cover su-bg-no-repeat",
+          wrapperClasses,
+          bgCrop,
+          colorTheme
+        )}
+        style={addBgImage(
+          bgFilename,
+          "linear-gradient(240deg, rgba(24, 29, 28) 10%, rgba(98, 0, 89, 0.85) 60%, rgb(177, 4, 14) 100%)"
+        )}
+      >
         {filename?.startsWith("http") && (
           <CircularImage
             borderColor={borderColor}
@@ -83,7 +93,10 @@ const Poster = ({
             loading="lazy"
           />
         )}
-        <FlexBox direction="col" className={contentWrapper}>
+        <FlexBox
+          direction="col"
+          className={dcnb("su-max-w-700", contentWrapper)}
+        >
           <Heading
             font="serif"
             weight="bold"

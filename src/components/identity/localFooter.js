@@ -9,6 +9,7 @@ import {
   faLinkedinIn,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import { dcnb } from "cnbuilder";
 import CreateBloks from "../../utilities/createBloks";
 import SocialIconLink from "../simple/socialIconLink";
 import { bgPositionVertical } from "../../utilities/dataSource";
@@ -46,7 +47,10 @@ const LocalFooter = ({
         <Container
           style={addBgImage(filename)}
           width="site"
-          className={`su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat ${bgCrop}`}
+          className={dcnb(
+            "su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat",
+            bgCrop
+          )}
         >
           <Link to="/" className="su-block su-w-fit">
             <img
