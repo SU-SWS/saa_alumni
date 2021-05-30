@@ -67,7 +67,7 @@ const Poster = ({
 
   // If text contains content, add margin bottom to heading
   if (numText) {
-    headingSpacing = "su-mb-03em";
+    headingSpacing = "su-mb-04em";
   }
 
   return (
