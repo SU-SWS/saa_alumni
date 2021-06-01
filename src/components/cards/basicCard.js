@@ -32,7 +32,6 @@ const BasicCard = ({
   let imageClasses;
 
   // Basic card image has aspect ratio 4x3 for non-round option
-  const imageWrapperClasses = "su-aspect-w-4 su-aspect-h-3";
 
   // Card content padding for non-minimal cards
   let bodyPadding = "su-rs-px-2 su-rs-pt-2 su-rs-pb-4";
