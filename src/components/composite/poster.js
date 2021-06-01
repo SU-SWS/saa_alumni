@@ -17,7 +17,7 @@ const Poster = ({
   blok: {
     cta,
     borderColor,
-    image: { filename } = {},
+    image: { filename, alt } = {},
     bgImage: { filename: bgFilename } = {},
     vCrop,
     imageFocus,
@@ -91,6 +91,7 @@ const Poster = ({
             imageFocus={imageFocus}
             className={imageWrapper}
             loading="lazy"
+            alt={alt ?? ""}
           />
         )}
         <FlexBox

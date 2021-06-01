@@ -6,6 +6,7 @@ import { objectPosition } from "../../utilities/dataSource";
 
 const CardImage = ({
   filename,
+  alt,
   size,
   className,
   imageFocus,
@@ -43,7 +44,7 @@ const CardImage = ({
     <img
       src={imgSrc}
       className={dcnb("su-object-cover", className, imgFocus)}
-      alt=""
+      alt={alt ?? ""}
       loading={imgLoading}
       {...props}
     />
