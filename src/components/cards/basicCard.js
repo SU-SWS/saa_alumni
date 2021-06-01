@@ -38,7 +38,7 @@ const BasicCard = ({
   let bodyPadding = "su-rs-px-2 su-rs-pt-2 su-rs-pb-4";
 
   let cardImage = (
-    <div className={imageWrapperClasses} aria-hidden="true">
+    <div className="su-aspect-w-4 su-aspect-h-3" aria-hidden="true">
       <CardImage
         filename={filename}
         size={isRound ? "thumb" : "vertical"}
