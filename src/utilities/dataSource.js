@@ -2,6 +2,7 @@
 
 export const borderColors = {
   "digital-red": "su-border-digital-red",
+  "digital-red-xlight": "su-border-digital-red-xlight",
   "electric-blue": "su-border-saa-electric-blue",
   "lagunita-light": "su-border-lagunita-light",
   "palo-verde": "su-border-palo-verde",
