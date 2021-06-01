@@ -23,7 +23,7 @@ const CircularImage = ({
         imageBorderColor,
         className
       )}
-      aria-hidden="true"
+      aria-hidden={alt ? "false" : "true"}
       {...props}
     >
       <CardImage
