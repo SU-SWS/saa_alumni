@@ -31,16 +31,15 @@ const BasicCard = ({
     "su-bg-white su-text-black su-border su-border-solid su-border-transparent-black su-shadow";
   let imageClasses;
 
-  // Basic card image has aspect ratio 4x3 for non-round option
-
   // Card content padding for non-minimal cards
   let bodyPadding = "su-rs-px-2 su-rs-pt-2 su-rs-pb-4";
 
+  // Basic card image has aspect ratio 4x3 for non-round option
   let cardImage = (
     <div className="su-aspect-w-4 su-aspect-h-3" aria-hidden="true">
       <CardImage
         filename={filename}
-        size={isRound ? "thumb" : "vertical"}
+        size="vertical"
         imageFocus={imageFocus}
         loading="lazy"
       />
