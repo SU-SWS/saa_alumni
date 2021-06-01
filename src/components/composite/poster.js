@@ -40,7 +40,7 @@ const Poster = ({
   let wrapperClasses;
   let imageWrapper;
   let contentWrapper;
-  let bodyText = "su-big-paragraph";
+  let bodyText = "su-big-paragraph children:su-leading-snug";
   let headingSpacing = "su-mb-0";
 
   // Option to make headline font larger
