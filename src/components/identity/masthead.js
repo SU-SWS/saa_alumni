@@ -15,7 +15,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
     >
       <FlexBox direction="row">
         <FlexCell className="su-cc lg:su-px-45 xl:su-pr-45 2xl:su-cc 2xl:su-pr-70 su-py-30 xl:su-pt-72 xl:su-pb-45 2xl:su-pb-48 2xl:su-pt-78 su-rs-pb-3 su-ml-0 su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red">
-          <Logo className="su-w-[18rem] lg:su-w-[20rem] xl:su-w-[24rem] 2xl:su-w-[26rem]" />
+          <Logo className="su-w-[18rem] lg:su-w-[20rem] xl:su-w-[19vw] 2xl:su-w-[26rem]" />
         </FlexCell>
         <FlexCell
           grow
