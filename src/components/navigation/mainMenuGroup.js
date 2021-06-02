@@ -3,7 +3,9 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import CreateBloks from "../../utilities/createBloks";
 
-const MainMenuGroup = ({ blok: { parentText, menuItems, panelFacing } }) => (
+const MainMenuGroup = ({
+  blok: { parentText, parentTextSecond, menuItems, panelFacing },
+}) => (
   <Popover as="li" className="lg:su-inline-block su-relative">
     {({ open }) => (
       <>
@@ -12,14 +14,20 @@ const MainMenuGroup = ({ blok: { parentText, menuItems, panelFacing } }) => (
             open
               ? "!su-text-white !su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark"
               : ""
-          } su-group su-font-bold su-bg-transparent su-px-16 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[4.2rem] su-border-solid su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-no-underline hocus:su-bg-transparent focus:su-outline-none`}
+          } su-group su-font-bold su-text-left su-leading-snug su-bg-transparent su-px-16 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] su-border-solid su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-no-underline hocus:su-bg-transparent focus:su-outline-none`}
           aria-haspopup
           aria-label={`${open ? "Show" : "Hide"} ${parentText} links`}
         >
           {parentText}
+          {parentTextSecond && (
+            <>
+              <br className="su-hidden xl:su-inline 2xl:su-hidden" />
+              {` ${parentTextSecond}`}
+            </>
+          )}
           <ChevronDownIcon
             className={`${open ? "su-transform-gpu su-rotate-180" : ""}
-                      su-inline-block su-ml-2 su-w-[1.2em] su-text-white su-transition group-hocus:su-text-digital-red-xlight`}
+                      su-inline-block su-w-[1.2em] su-text-white su-transition group-hocus:su-text-digital-red-xlight`}
             aria-hidden="true"
           />
         </Popover.Button>

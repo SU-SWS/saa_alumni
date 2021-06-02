@@ -14,8 +14,8 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
       width="full"
     >
       <FlexBox direction="row">
-        <FlexCell className="su-cc lg:su-px-45 xl:su-pr-30 2xl:su-cc 2xl:su-pr-70 su-py-30 xl:su-pt-72 xl:su-pb-45 2xl:su-pb-48 2xl:su-pt-78 su-rs-pb-3 su-ml-0 su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red">
-          <Logo className="su-w-[18rem] lg:su-w-[20rem] 2xl:su-w-[26rem]" />
+        <FlexCell className="su-cc lg:su-px-45 xl:su-pr-45 2xl:su-cc 2xl:su-pr-70 su-py-30 xl:su-pt-72 xl:su-pb-45 2xl:su-pb-48 2xl:su-pt-78 su-rs-pb-3 su-ml-0 su-bg-gradient-to-b su-from-digital-red su-to-cardinal-red">
+          <Logo className="su-w-[18rem] lg:su-w-[20rem] xl:su-w-[24rem] 2xl:su-w-[26rem]" />
         </FlexCell>
         <FlexCell
           grow
@@ -32,7 +32,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
             </nav>
             <SearchBar />
           </FlexBox>
-          <CreateBloks blokSection={mainNav} className="su-hidden xl:su-flex" />
+          <CreateBloks blokSection={mainNav} className="su-hidden xl:su-flex xl:su-mt-20" />
         </FlexCell>
       </FlexBox>
       <CreateBloks
