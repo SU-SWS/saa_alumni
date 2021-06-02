@@ -3,9 +3,9 @@ import SbEditable from "storyblok-react";
 import { FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import CardImage from "../media/cardImage";
+import CircularImage from "../media/circularImage";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
-import { borderColors } from "../../utilities/dataSource";
 
 const BasicCard = ({
   blok: {
@@ -16,7 +16,7 @@ const BasicCard = ({
     isLightText,
     isBigHeadline,
     align,
-    image: { filename },
+    image: { filename } = {},
     imageFocus,
     headline,
     headingLevel,
@@ -26,36 +26,46 @@ const BasicCard = ({
 }) => {
   const numCta = getNumBloks(cta);
 
+  // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
     "su-bg-white su-text-black su-border su-border-solid su-border-transparent-black su-shadow";
   let imageClasses;
 
-  // Basic card image has aspect ratio 4x3 for non-round option
-  let imageWrapperClasses = "su-aspect-w-4 su-aspect-h-3";
+  // Card content padding for non-minimal cards
+  let bodyPadding = "su-rs-px-2 su-rs-pt-2 su-rs-pb-4";
 
-  // Option to display image as round thumbnail with colored border
-  const imageBorderColor =
-    borderColors[borderColor] ?? borderColors["digital-red"];
+  // Basic card image has aspect ratio 4x3 for non-round option
+  let cardImage = (
+    <div className="su-aspect-w-4 su-aspect-h-3" aria-hidden="true">
+      <CardImage
+        filename={filename}
+        size="vertical"
+        imageFocus={imageFocus}
+        loading="lazy"
+      />
+    </div>
+  );
 
   if (isRound) {
+    // If image is round, we need to add padding above the image
     wrapperClasses = dcnb("su-rs-pt-3", wrapperClasses);
-    imageWrapperClasses = dcnb(
-      "su-w-[14rem] su-h-[14rem] su-rs-ml-2 su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden",
-      imageBorderColor
+    cardImage = (
+      <CircularImage
+        borderColor={borderColor}
+        filename={filename}
+        imageFocus={imageFocus}
+        className={isMinimal ? "" : "su-rs-ml-2"}
+        loading="lazy"
+      />
     );
-    imageClasses = "su-w-full su-h-full";
   }
-
-  // Option to use "minimal" card variant
-  let bodyPadding = "su-rs-px-2 su-rs-pt-2 su-rs-pb-4";
 
   if (isMinimal) {
     wrapperClasses = "";
     bodyPadding = "su-rs-pt-2";
-    imageWrapperClasses = dcnb(imageWrapperClasses, { "su-rs-ml-2": false });
   }
 
-  // Option to use light text
+  // Option to use light text (only for minimal card option)
   if (isLightText) {
     wrapperClasses = "su-bg-transparent su-text-white";
   }
@@ -84,17 +94,7 @@ const BasicCard = ({
           wrapperClasses
         )}
       >
-        {filename?.startsWith("http") && (
-          <div className={imageWrapperClasses} aria-hidden="true">
-            <CardImage
-              filename={filename}
-              size={isRound ? "thumb" : "vertical"}
-              imageFocus={imageFocus}
-              className={dcnb("su-object-cover", imageClasses)}
-              loading="lazy"
-            />
-          </div>
-        )}
+        {filename?.startsWith("http") && cardImage}
         <FlexBox
           direction="col"
           className={dcnb("card-body", bodyPadding, bodyAlign)}
