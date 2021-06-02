@@ -3,8 +3,8 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import CreateBloks from "../../utilities/createBloks";
 
-const MainMenuGroup = ({ blok: { parentText, menuItems } }) => (
-  <Popover as="li" className="lg:su-inline-block">
+const MainMenuGroup = ({ blok: { parentText, menuItems, panelFacing } }) => (
+  <Popover as="li" className="lg:su-inline-block su-relative">
     {({ open }) => (
       <>
         <Popover.Button
@@ -26,15 +26,33 @@ const MainMenuGroup = ({ blok: { parentText, menuItems } }) => (
         <Transition
           as={Fragment}
           enter="su-transition su-duration su-ease-out"
-          enterFrom="su-transform-gpu su-origin-top-left su-scale-y-50 lg:su-scale-75 su-opacity-0"
-          enterTo="su-transform-gpu su-origin-top-left su-scale-y-100 lg:su-scale-100 su-opacity-100"
+          enterFrom={`su-transform-gpu ${
+            panelFacing === "left"
+              ? "su-origin-top-right"
+              : "su-origin-top-left"
+          } su-scale-y-50 lg:su-scale-75 su-opacity-0`}
+          enterTo={`su-transform-gpu ${
+            panelFacing === "left"
+              ? "su-origin-top-right"
+              : "su-origin-top-left"
+          } su-scale-y-100 lg:su-scale-100 su-opacity-100`}
           leave="su-transition su-duration su-ease-out"
-          leaveFrom="su-transform-gpu su-origin-top-left su-scale-y-100 lg:su-scale-100 su-opacity-100"
-          leaveTo="su-transform-gpu su-origin-top-left su-scale-y-50 lg:su-scale-75 su-opacity-0"
+          leaveFrom={`su-transform-gpu ${
+            panelFacing === "left"
+              ? "su-origin-top-right"
+              : "su-origin-top-left"
+          } su-scale-y-100 lg:su-scale-100 su-opacity-100`}
+          leaveTo={`su-transform-gpu ${
+            panelFacing === "left"
+              ? "su-origin-top-right"
+              : "su-origin-top-left"
+          } su-scale-y-50 lg:su-scale-75 su-opacity-0`}
         >
           <Popover.Panel
             as="ul"
-            className="su-list-unstyled su-shadow-md su-w-[25rem] xl:su-w-[28rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0"
+            className={`${
+              panelFacing === "left" ? "lg:su-right-0" : ""
+            } su-list-unstyled su-shadow-md su-w-[25rem] xl:su-w-[28rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
           >
             <CreateBloks blokSection={menuItems} />
           </Popover.Panel>
