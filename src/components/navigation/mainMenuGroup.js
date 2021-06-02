@@ -10,9 +10,9 @@ const MainMenuGroup = ({ blok: { parentText, menuItems, panelFacing } }) => (
         <Popover.Button
           className={`${
             open
-              ? "!su-text-white !su-bg-cardinal-red-xdark su-border-none"
+              ? "!su-text-white !su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark"
               : ""
-          } su-group su-font-bold su-bg-transparent su-px-16 lg:su-pb-18 xl:su-pb-[4.2rem] su-border-solid su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-no-underline hocus:su-bg-transparent focus:su-outline-none`}
+          } su-group su-font-bold su-bg-transparent su-px-16 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[4.2rem] su-border-solid su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-no-underline hocus:su-bg-transparent focus:su-outline-none`}
           aria-haspopup
           aria-label={`${open ? "Show" : "Hide"} ${parentText} links`}
         >
