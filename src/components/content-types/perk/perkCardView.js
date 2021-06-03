@@ -1,7 +1,8 @@
 import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading } from "decanter-react";
-import { ArrowRightIcon } from "@heroicons/react/solid";
+import { ArrowRightIcon, ArrowUpIcon } from "@heroicons/react/solid";
+import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
@@ -13,19 +14,29 @@ const PerkCardView = ({
     isNew,
     type,
     title,
-    headingLevel,
     intro,
     externalUrl,
   },
   blok,
   storyLink,
+  headingLevel,
 }) => {
   // Default link is the internal link of the perk content page
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
 
+  // Default icon is right arrow for internal links
+  // HeadlineIcon starts with uppercase letter because it's a component
+  let HeadlineIcon = ArrowRightIcon;
+  let headlineIconClasses =
+    "su-ml-03em su--mt-02em su-w-09em group-hocus:su-translate-x-02em";
+
   // Link to external URL instead if it is provided
+  // Change headline icon to diagonal arrow for external links
   if (externalUrl) {
     perkPageLink = { linktype: "url", url: externalUrl };
+    HeadlineIcon = ArrowUpIcon;
+    headlineIconClasses =
+      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-[1.1em] group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
   }
 
   let perkType = "Alumni perk";
@@ -47,7 +58,7 @@ const PerkCardView = ({
               <CardImage
                 filename={filename}
                 imageFocus={imageFocus}
-                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+                className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
                 loading="lazy"
               />
             </figure>
@@ -59,7 +70,7 @@ const PerkCardView = ({
         </div>
         <SbLink
           link={perkPageLink}
-          classes="su-stretched-link su-stretched-link-hocus-outline-black-20 su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-custom !su-underline-digital-red-xlight"
+          classes="su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight"
         >
           <Heading
             level={headingLevel ?? 3}
@@ -70,8 +81,11 @@ const PerkCardView = ({
           >
             {title}
           </Heading>
-          <ArrowRightIcon
-            className="su-relative su-transition su-transform-gpu group-hocus:su-translate-x-02em su-inline-block su-ml-03em su--mt-03em su-text-digital-red-xlight su-w-1em group-hocus:su-text-white"
+          <HeadlineIcon
+            className={dcnb(
+              "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight group-hocus:su-text-white",
+              headlineIconClasses
+            )}
             aria-hidden="true"
           />
         </SbLink>

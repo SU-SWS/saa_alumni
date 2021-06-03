@@ -14,6 +14,7 @@ import SbLink from "../../utilities/sbLink";
 
 const Section = ({
   blok: {
+    isLeftAlign,
     superhead,
     superLink,
     title,
@@ -32,6 +33,8 @@ const Section = ({
   const numCta = getNumBloks(cta);
 
   const sectionBgColor = bgColors[bgColor] ?? bgColors.white;
+  let alignment = "su-text-center";
+  let bodyAlign = "su-mx-auto";
 
   let superLinkColor =
     "su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue";
@@ -39,6 +42,11 @@ const Section = ({
   if (bgColor === "black") {
     superLinkColor =
       "su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light";
+  }
+
+  if (isLeftAlign) {
+    alignment = "su-text-left";
+    bodyAlign = "";
   }
 
   const paddingTop = largePaddingTop[spacingTop] ?? largePaddingTop.lg;
@@ -56,7 +64,7 @@ const Section = ({
         )}
         id={id}
       >
-        <header className="su-cc su-text-center su-rs-mb-5">
+        <header className={dcnb("su-cc su-rs-mb-5", alignment)}>
           {superhead && (
             <SbLink
               link={superLink}
@@ -79,7 +87,7 @@ const Section = ({
               {title}
             </Heading>
           )}
-          <div className="su-big-paragraph su-max-w-prose su-mx-auto">
+          <div className={dcnb("su-big-paragraph su-max-w-prose", bodyAlign)}>
             <RichTextRenderer
               wysiwyg={intro}
               className="children:su-leading-display"

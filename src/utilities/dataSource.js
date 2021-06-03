@@ -2,6 +2,7 @@
 
 export const borderColors = {
   "digital-red": "su-border-digital-red",
+  "digital-red-xlight": "su-border-digital-red-xlight",
   "electric-blue": "su-border-saa-electric-blue",
   "lagunita-light": "su-border-lagunita-light",
   "palo-verde": "su-border-palo-verde",
@@ -26,13 +27,13 @@ export const buttonSizes = {
 
 export const buttonStyles = {
   primary:
-    "su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red",
+    "su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark",
   secondary:
-    "su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red hocus:su-text-white",
+    "su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red-xdark hocus:su-text-white",
   "secondary-gradient":
     "su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue",
   ghost:
-    "su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red hocus:su-text-white",
+    "su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white",
   "ghost-gradient":
     "su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue",
 };
@@ -92,6 +93,17 @@ export const bgColors = {
   "foggy-light": "su-bg-foggy-light",
   white: "su-bg-white",
   black: "su-bg-saa-black su-text-white",
+};
+
+export const bgTextColorPairs = {
+  "foggy-light": "su-bg-foggy-light su-text-black",
+  white: "su-bg-white su-text-black",
+  black: "su-bg-saa-black su-text-white",
+  "cardinal-red": "su-bg-cardinal-red su-text-white",
+  plum: "su-bg-plum su-text-white",
+  "gradient-red":
+    "su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white",
+  "use-bg-image": "su-text-white",
 };
 
 export const pageTextColors = {

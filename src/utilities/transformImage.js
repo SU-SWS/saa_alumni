@@ -6,7 +6,7 @@ import { isNetlify, imageURL } from "../contexts/GlobalContext";
 
 const transformImage = (image, param = "") => {
   const imageService = imageURL.endsWith("/") ? imageURL.slice(0, -1) : "";
-  let myParams = "";
+  let myParams = param;
 
   if (image === null) {
     return "";
