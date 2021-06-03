@@ -14,7 +14,7 @@ import SbLink from "../../utilities/sbLink";
 
 const Section = ({
   blok: {
-    align,
+    isLeftAlign,
     superhead,
     superLink,
     title,
@@ -44,7 +44,7 @@ const Section = ({
       "su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light";
   }
 
-  if (align) {
+  if (isLeftAlign) {
     alignment = "su-text-left";
     bodyAlign = "";
   }
