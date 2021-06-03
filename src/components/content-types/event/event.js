@@ -5,6 +5,7 @@ import { ArrowRightIcon } from "@heroicons/react/solid";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
+import DateBlock from "../../simple/dateBlock";
 
 const Event = ({
   blok: {
@@ -34,7 +35,7 @@ const Event = ({
         className="event-card su-group su-relative su-bg-white su-text-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black-10 su-shadow-sm"
       >
         {!isMinimal && (
-          <div className="perk-card-image-wrapper su-relative su-aspect-w-4 su-aspect-h-3">
+          <div className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2">
             {filename?.startsWith("http") && (
               <figure className="su-overflow-hidden su-w-full su-h-full">
                 <CardImage

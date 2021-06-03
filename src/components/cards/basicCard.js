@@ -31,7 +31,7 @@ const BasicCard = ({
   let imageClasses;
 
   // Basic card image has aspect ratio 4x3 for non-round option
-  let imageWrapperClasses = "su-aspect-w-4 su-aspect-h-3";
+  let imageWrapperClasses = "su-aspect-w-3 su-aspect-h-2";
 
   // Option to display image as round thumbnail with colored border
   const imageBorderColor =
