@@ -1,7 +1,14 @@
 import React from "react";
 import { dcnb } from "cnbuilder";
 
-const DateBlock = ({ startMonth, startDay, endMonth, endDay, className, ...props }) => (
+const DateBlock = ({
+  startMonth,
+  startDay,
+  endMonth,
+  endDay,
+  className,
+  ...props
+}) => (
   <div
     className={dcnb(
       "su-block su-bg-cardinal-red su-text-white su-rounded-full",
@@ -13,7 +20,7 @@ const DateBlock = ({ startMonth, startDay, endMonth, endDay, className, ...props
       {startDay}
       {startMonth}
     </time>
-    {endMonth &&
+    {endMonth && (
       <>
         &ndash;
         <time dateTime={`${endMonth}-${endDay}`}>
@@ -21,7 +28,7 @@ const DateBlock = ({ startMonth, startDay, endMonth, endDay, className, ...props
           {endMonth}
         </time>
       </>
-    }
+    )}
   </div>
 );
 

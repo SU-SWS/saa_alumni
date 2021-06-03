@@ -14,7 +14,6 @@ const Event = ({
     title,
     organizer,
     location,
-    date,
     start,
     end,
     externalUrl,
@@ -26,6 +25,20 @@ const Event = ({
 }) => {
   // Link to external URL instead if it is provided
   const eventLink = { linktype: "url", url: externalUrl } ?? "";
+
+  // Find current date/time
+  const currentUTCDate = new Date();
+
+  // The date/time we get from Storyblok is in UTC
+  const startUTCDate = new Date(start);
+  const startMonth = startUTCDate.getMonth() + 1;
+  const startDay = startUTCDate.getDate();
+  const endUTCDate = new Date(end);
+
+  // If the current date/time is after the event end date/time, don't render the card
+  if (currentUTCDate > endUTCDate) {
+    return null;
+  }
 
   return (
     <SbEditable content={blok}>
