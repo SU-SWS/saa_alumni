@@ -2,6 +2,11 @@ import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading } from "decanter-react";
 import { ArrowUpIcon } from "@heroicons/react/solid";
+import {
+  CalendarIcon,
+  LocationMarkerIcon,
+  UserIcon,
+} from "@heroicons/react/outline";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
@@ -30,7 +35,7 @@ const Event = ({
   const currentUTCDate = new Date();
 
   // The date/time we get from Storyblok is in UTC
-  const startUTCDate = new Date(`${start} UTC`)
+  const startUTCDate = new Date(`${start} UTC`);
   const niceStartDate = startUTCDate.toLocaleString("en-us", {
     weekday: "long",
     year: "numeric",
@@ -97,14 +102,17 @@ const Event = ({
         {!isMinimal && <TabLabel text="Event" />}
         <div className="event-card-details su-rs-px-2 su-card-paragraph">
           <div>
+            <CalendarIcon className="su-w-[2.4rem] su-h-[2.4rem] su-inline-block" />
             {niceStartDate}
-            {niceEndDate !== niceStartDate && (
-                ` - ${niceEndDate}`
-              )
-            }
+            {niceEndDate !== niceStartDate && ` - ${niceEndDate}`}
           </div>
           <div>{location}</div>
-          {organizer && <div>Organizer | {organizer}</div>}
+          {organizer && (
+            <div>
+              <UserIcon className="su-w-[2.4rem] su-h-[2.4rem] su-inline-block" />{" "}
+              Organizer | {organizer}
+            </div>
+          )}
         </div>
       </FlexBox>
     </SbEditable>
