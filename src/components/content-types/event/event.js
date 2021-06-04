@@ -1,7 +1,7 @@
 import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading } from "decanter-react";
-import { ArrowRightIcon } from "@heroicons/react/solid";
+import { ArrowUpIcon } from "@heroicons/react/solid";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
@@ -51,7 +51,7 @@ const Event = ({
       <FlexBox
         direction="col"
         element="article"
-        className="event-card su-group su-relative su-bg-white su-text-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black-10 su-shadow-sm"
+        className="event-card su-group su-relative su-bg-white su-text-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-600 su-border su-border-solid su-border-black-10 su-shadow-sm"
       >
         {!isMinimal && (
           <div className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2">
@@ -81,12 +81,22 @@ const Event = ({
           >
             {title}
           </Heading>
-          <ArrowRightIcon
-            className="su-relative su-transition su-transform-gpu group-hocus:su-translate-x-02em su-inline-block su-ml-03em su--mt-03em su-text-digital-red-xlight su-w-1em group-hocus:su-text-white"
+          <ArrowUpIcon
+            className="su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-[1.1em] group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em su-text-digital-red-xlight group-hocus:su-text-cardinal-red"
             aria-hidden="true"
           />
         </SbLink>
         {!isMinimal && <TabLabel text="Event" />}
+        <div className="event-card-details su-rs-px-2 su-card-paragraph">
+          <div>{start}</div>
+          <div>{location}</div>
+          {organizer && (
+            <div>
+              Organizer | {organizer}
+            </div>
+          )
+          }
+        </div>
       </FlexBox>
     </SbEditable>
   );
