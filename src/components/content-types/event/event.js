@@ -26,7 +26,7 @@ const Event = ({
     externalUrl,
   },
   blok,
-  isBig,
+  isBigHeadline,
   isMinimal,
   headingLevel,
 }) => {
@@ -98,7 +98,7 @@ const Event = ({
           <Heading
             level={headingLevel ?? 3}
             font="serif"
-            size={isBig ? 3 : 1}
+            size={isBigHeadline ? 3 : 1}
             tracking="normal"
             className="su-relative su-inline"
           >
