@@ -31,6 +31,12 @@ const Event = ({
 
   // The date/time we get from Storyblok is in UTC
   const startUTCDate = new Date(start);
+  const niceStartDate = startUTCDate.toLocaleString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
   const startMonth = startUTCDate.toLocaleString("en-us", {
     month: "short",
     timeZone: "America/Los_Angeles",
@@ -40,6 +46,12 @@ const Event = ({
     timeZone: "America/Los_Angeles",
   });
   const endUTCDate = new Date(end);
+  const niceEndDate = endUTCDate.toLocaleString("en-us", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   // If the current date/time is after the event end date/time, don't render the card
   if (currentUTCDate > endUTCDate) {
@@ -67,10 +79,10 @@ const Event = ({
             )}
           </div>
         )}
-        <DateBlock start={start} end={end} />
+        <DateBlock start={start} end={end} className="su-mt-[-5.7rem] su-z-10 su-rs-ml-1" />
         <SbLink
           link={eventLink}
-          classes="su-stretched-link su-mb-08em su-rs-px-2 su-text-black su-no-underline hocus:su-underline group-hover:su-underline su-underline-custom !su-underline-digital-red-xlight"
+          classes="su-stretched-link su-rs-mt-0 su-mb-08em su-rs-px-2 su-text-black su-no-underline hocus:su-underline group-hover:su-underline su-underline-custom !su-underline-digital-red-xlight"
         >
           <Heading
             level={headingLevel ?? 3}
@@ -88,14 +100,11 @@ const Event = ({
         </SbLink>
         {!isMinimal && <TabLabel text="Event" />}
         <div className="event-card-details su-rs-px-2 su-card-paragraph">
-          <div>{start}</div>
+          <div>
+            {niceStartDate} - {niceEndDate}
+          </div>
           <div>{location}</div>
-          {organizer && (
-            <div>
-              Organizer | {organizer}
-            </div>
-          )
-          }
+          {organizer && <div>Organizer | {organizer}</div>}
         </div>
       </FlexBox>
     </SbEditable>
