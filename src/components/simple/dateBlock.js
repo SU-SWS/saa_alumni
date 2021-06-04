@@ -22,7 +22,7 @@ const DateBlock = ({ start, end, className, ...props }) => {
   return (
     <div
       className={dcnb(
-        "su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-w-fit",
+        "su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-w-fit group-hover:su-from-digital-red group-hover:su-to-digital-red-light",
         className
       )}
     >

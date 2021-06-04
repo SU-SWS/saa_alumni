@@ -4,6 +4,7 @@ import { FlexBox, Heading } from "decanter-react";
 import { ArrowUpIcon } from "@heroicons/react/solid";
 import {
   CalendarIcon,
+  DesktopComputerIcon,
   LocationMarkerIcon,
   UserIcon,
 } from "@heroicons/react/outline";
@@ -17,10 +18,11 @@ const Event = ({
     image: { filename } = {},
     imageFocus,
     title,
-    organizer,
-    location,
     start,
     end,
+    location,
+    isVirtual,
+    organizer,
     externalUrl,
   },
   blok,
@@ -35,6 +37,7 @@ const Event = ({
   const currentUTCDate = new Date();
 
   // The date/time we get from Storyblok is in UTC
+  // Need to explicitly add "UTC" at the end of the time string for this to convert properly
   const startUTCDate = new Date(`${start} UTC`);
   const niceStartDate = startUTCDate.toLocaleString("en-us", {
     weekday: "long",
@@ -53,6 +56,13 @@ const Event = ({
   // If the current date/time is after the event end date/time, don't render the card
   if (currentUTCDate > endUTCDate) {
     return null;
+  }
+
+  let iconClasses = "su-w-[2.4rem] su-h-[2.4rem] su-inline-block";
+  let locationIcon = <LocationMarkerIcon className={iconClasses} />;
+
+  if (isVirtual) {
+    locationIcon = <DesktopComputerIcon className={iconClasses} />;
   }
 
   return (
@@ -102,14 +112,17 @@ const Event = ({
         {!isMinimal && <TabLabel text="Event" />}
         <div className="event-card-details su-rs-px-2 su-card-paragraph">
           <div>
-            <CalendarIcon className="su-w-[2.4rem] su-h-[2.4rem] su-inline-block" />
+            <CalendarIcon className={iconClasses} />
             {niceStartDate}
             {niceEndDate !== niceStartDate && ` - ${niceEndDate}`}
           </div>
-          <div>{location}</div>
+          <div>
+            {locationIcon}
+            {location}
+          </div>
           {organizer && (
             <div>
-              <UserIcon className="su-w-[2.4rem] su-h-[2.4rem] su-inline-block" />{" "}
+              <UserIcon className={iconClasses} />
               Organizer | {organizer}
             </div>
           )}
