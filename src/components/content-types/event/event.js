@@ -23,29 +23,21 @@ const Event = ({
   isMinimal,
   headingLevel,
 }) => {
-  // Link to external URL instead if it is provided
+  // Link to external URL (always external for MVP)
   const eventLink = { linktype: "url", url: externalUrl } ?? "";
 
-  // Find current date/time
+  // Find current UTC date/time
   const currentUTCDate = new Date();
 
   // The date/time we get from Storyblok is in UTC
-  const startUTCDate = new Date(start);
+  const startUTCDate = new Date(`${start} UTC`)
   const niceStartDate = startUTCDate.toLocaleString("en-us", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
   });
-  const startMonth = startUTCDate.toLocaleString("en-us", {
-    month: "short",
-    timeZone: "America/Los_Angeles",
-  });
-  const startDay = startUTCDate.toLocaleString("en-us", {
-    day: "numeric",
-    timeZone: "America/Los_Angeles",
-  });
-  const endUTCDate = new Date(end);
+  const endUTCDate = new Date(`${end} UTC`);
   const niceEndDate = endUTCDate.toLocaleString("en-us", {
     weekday: "long",
     year: "numeric",
@@ -79,7 +71,11 @@ const Event = ({
             )}
           </div>
         )}
-        <DateBlock start={start} end={end} className="su-mt-[-5.7rem] su-z-10 su-rs-ml-1" />
+        <DateBlock
+          start={start}
+          end={end}
+          className="su-mt-[-5.7rem] su-z-10 su-rs-ml-1"
+        />
         <SbLink
           link={eventLink}
           classes="su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-rs-px-2 su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight"
@@ -101,7 +97,11 @@ const Event = ({
         {!isMinimal && <TabLabel text="Event" />}
         <div className="event-card-details su-rs-px-2 su-card-paragraph">
           <div>
-            {niceStartDate} - {niceEndDate}
+            {niceStartDate}
+            {niceEndDate !== niceStartDate && (
+                ` - ${niceEndDate}`
+              )
+            }
           </div>
           <div>{location}</div>
           {organizer && <div>Organizer | {organizer}</div>}

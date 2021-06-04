@@ -3,12 +3,12 @@ import { dcnb } from "cnbuilder";
 import { SrOnlyText } from "decanter-react";
 
 const DateBlock = ({ start, end, className, ...props }) => {
-  const startUTCDate = new Date(start);
+  const startUTCDate = new Date(`${start} UTC`);
   const startMonth = startUTCDate.toLocaleString("en-us", { month: "short" });
   const startDay = startUTCDate.toLocaleString("en-us", { day: "2-digit" });
-  const endUTCDate = new Date(end);
+  const endUTCDate = new Date(`${end} UTC`);
   const endMonth = endUTCDate.toLocaleString("en-us", { month: "short" });
-  const endDay = endUTCDate.toLocaleString("en-us", { day: "2-digit" });
+  const endDay = endUTCDate.toLocaleDateString("en-us", { day: "2-digit" });
 
   // Check if the start and end day is the same
   let isSameDay;
@@ -29,20 +29,26 @@ const DateBlock = ({ start, end, className, ...props }) => {
       {...props}
     >
       <time dateTime={start} className="su-flex su-flex-col su-px-20">
-        <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">{startMonth}</span>
+        <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">
+          {startMonth}
+        </span>
         <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-trim">
           {startDay}
         </span>
       </time>
       {!isSameDay && (
         <>
-          <span className="su-mt-6 su-text-m4 su-font-bold" aria-hidden="true">&ndash;</span>
+          <span className="su-mt-6 su-text-m4 su-font-bold" aria-hidden="true">
+            &ndash;
+          </span>
           <SrOnlyText srText="to" />
           <time
             dateTime={`${endMonth}-${endDay}`}
             className="su-flex su-flex-col su-px-20"
           >
-            <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">{endMonth}</span>
+            <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">
+              {endMonth}
+            </span>
             <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-trim">
               {endDay}
             </span>
