@@ -82,12 +82,12 @@ const Event = ({
         <DateBlock start={start} end={end} className="su-mt-[-5.7rem] su-z-10 su-rs-ml-1" />
         <SbLink
           link={eventLink}
-          classes="su-stretched-link su-rs-mt-0 su-mb-08em su-rs-px-2 su-text-black su-no-underline hocus:su-underline group-hover:su-underline su-underline-custom !su-underline-digital-red-xlight"
+          classes="su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-rs-px-2 su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight"
         >
           <Heading
             level={headingLevel ?? 3}
             font="serif"
-            size={isBig ? 2 : 1}
+            size={isBig ? 3 : 1}
             tracking="normal"
             className="su-relative su-inline"
           >

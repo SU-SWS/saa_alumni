@@ -1,5 +1,6 @@
 import React from "react";
 import { dcnb } from "cnbuilder";
+import { SrOnlyText } from "decanter-react";
 
 const DateBlock = ({ start, end, className, ...props }) => {
   const startUTCDate = new Date(start);
@@ -10,11 +11,11 @@ const DateBlock = ({ start, end, className, ...props }) => {
   const endDay = endUTCDate.toLocaleString("en-us", { day: "2-digit" });
 
   // Check if the start and end day is the same
-  let isSameStartEndDay;
+  let isSameDay;
   let dateBlockMinWidth;
 
   if (startMonth === endMonth && startDay === endDay) {
-    isSameStartEndDay = true;
+    isSameDay = true;
     dateBlockMinWidth = "su-min-w-[11.4rem]";
   }
 
@@ -28,20 +29,21 @@ const DateBlock = ({ start, end, className, ...props }) => {
       {...props}
     >
       <time dateTime={start} className="su-flex su-flex-col su-px-20">
-        <span className="su-uppercase su-leading-none">{startMonth}</span>
-        <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-none">
+        <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">{startMonth}</span>
+        <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-trim">
           {startDay}
         </span>
       </time>
-      {!isSameStartEndDay && (
+      {!isSameDay && (
         <>
-          <span className="su-text-m4">&ndash;</span>
+          <span className="su-mt-6 su-text-m4 su-font-bold" aria-hidden="true">&ndash;</span>
+          <SrOnlyText srText="to" />
           <time
             dateTime={`${endMonth}-${endDay}`}
             className="su-flex su-flex-col su-px-20"
           >
-            <span className="su-uppercase su-leading-none">{endMonth}</span>
-            <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-none">
+            <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">{endMonth}</span>
+            <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-trim">
               {endDay}
             </span>
           </time>
