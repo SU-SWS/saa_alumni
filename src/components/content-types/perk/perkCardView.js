@@ -26,9 +26,13 @@ const PerkCardView = ({
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
 
   let wrapperClasses = "perk-card su-rs-pb-3 su-max-w-500";
+  let imageWrapper = "su-aspect-w-4 su-aspect-h-3 su-mb-[-3em]";
+  let contentWrapper = "";
 
   if (orientation === "horizontal") {
-    wrapperClasses = "perk-card-horizontal su-rs-pb-3 su-w-full";
+    wrapperClasses = "perk-card-horizontal su-rs-pb-3 su-w-full md:su-flex-row md:su-items-end";
+    imageWrapper = "md:su-w-1/2";
+    contentWrapper = "md:su-w-1/2";
   }
 
   // Default icon is right arrow for internal links
@@ -59,7 +63,7 @@ const PerkCardView = ({
         element="article"
         className={dcnb("su-group su-relative su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-border su-border-solid su-border-black", wrapperClasses)}
       >
-        <div className="perk-card-image-wrapper su-relative su-mb-[-3em] su-aspect-w-4 su-aspect-h-3">
+        <div className={dcnb("perk-card-image-wrapper su-relative", imageWrapper)}>
           {filename?.startsWith("http") && (
             <figure className="su-overflow-hidden su-w-full su-h-full">
               <CardImage
@@ -75,34 +79,36 @@ const PerkCardView = ({
             aria-hidden="true"
           />
         </div>
-        <SbLink
-          link={perkPageLink}
-          classes="su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-08em su-rs-px-2 su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight"
-        >
-          <Heading
-            level={headingLevel ?? 3}
-            font="serif"
-            size={orientation === "horizontal" ? 3 : 1}
-            tracking="normal"
-            className="su-relative su-inline"
-          >
-            {title}
-          </Heading>
-          <HeadlineIcon
-            className={dcnb(
-              "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight group-hocus:su-text-white",
-              headlineIconClasses
-            )}
-            aria-hidden="true"
-          />
-        </SbLink>
         {isNew && <TabLabel text="New" srText={perkType} />}
-        <p className="su-relative su-text-black-20 su-card-paragraph su-rs-px-2">
-          {descriptionShort}
-        </p>
-        <p className="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-rs-ml-2 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
-          {perkType}
-        </p>
+        <div className={dcnb("perk-content su-rs-px-2", contentWrapper)}>
+          <SbLink
+            link={perkPageLink}
+            classes="su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-08em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight"
+          >
+            <Heading
+              level={headingLevel ?? 3}
+              font="serif"
+              size={orientation === "horizontal" ? 3 : 1}
+              tracking="normal"
+              className="su-relative su-inline"
+            >
+              {title}
+            </Heading>
+            <HeadlineIcon
+              className={dcnb(
+                "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight group-hocus:su-text-white",
+                headlineIconClasses
+              )}
+              aria-hidden="true"
+            />
+          </SbLink>
+          <p className="su-relative su-text-black-20 su-card-paragraph">
+            {descriptionShort}
+          </p>
+          <p className="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
+            {perkType}
+          </p>
+        </div>
       </FlexBox>
     </SbEditable>
   );
