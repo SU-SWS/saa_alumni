@@ -2,7 +2,7 @@ import React from "react";
 import CreateStories from "../../utilities/createStories";
 
 const PerkCardHorizontal = ({
-  blok: { perkPicker, headingLevel, spacingBottom },
+  blok: { perkPicker, headingLevel, spacingBottom, cardImageFocus },
 }) => (
   <CreateStories
     stories={perkPicker}
@@ -10,6 +10,7 @@ const PerkCardHorizontal = ({
     orientation="horizontal"
     headingLevel={headingLevel}
     spacingBottom={spacingBottom}
+    cardImageFocus={cardImageFocus}
   />
 );
 

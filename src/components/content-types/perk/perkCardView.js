@@ -23,6 +23,7 @@ const PerkCardView = ({
   headingLevel,
   orientation,
   spacingBottom,
+  cardImageFocus,
 }) => {
   // Default link is the internal link of the perk content page
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
@@ -91,7 +92,7 @@ const PerkCardView = ({
           {filename?.startsWith("http") && (
             <CardImage
               filename={filename}
-              imageFocus={imageFocus}
+              imageFocus={cardImageFocus || imageFocus}
               className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
               loading="lazy"
               size={orientation === "horizontal" ? "horizontal" : "vertical"}
