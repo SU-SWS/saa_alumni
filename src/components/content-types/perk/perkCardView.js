@@ -33,11 +33,12 @@ const PerkCardView = ({
   let contentWrapper = "";
   let descriptionClasses = "su-card-paragraph";
 
-  const marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
+  let marginBottom = "";
 
   if (orientation === "horizontal") {
     wrapperClasses =
       "perk-card-horizontal su-w-full md:su-flex-row md:su-items-end lg:su-max-h-400 xl:su-max-h-500";
+    marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
     imageWrapper =
       "su-aspect-w-3 su-aspect-h-2 sm:su-aspect-w-3 sm:su-aspect-h-1 md:su-w-1/2";
     gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
