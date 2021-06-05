@@ -29,7 +29,6 @@ const BasicCard = ({
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
     "su-bg-white su-text-black su-border su-border-solid su-border-transparent-black su-shadow";
-  let imageClasses;
 
   // Card content padding for non-minimal cards
   let bodyPadding = "su-rs-px-2 su-rs-pt-2 su-rs-pb-4";

@@ -58,11 +58,19 @@ const Event = ({
     return null;
   }
 
-  let iconClasses = "su-w-[2.4rem] su-h-[2.4rem] su-inline-block";
-  let locationIcon = <LocationMarkerIcon className={iconClasses} />;
+  const iconClasses =
+    "su-inline-block su-flex-shrink-0 su-mt-01em su-mr-06em su-w-[2.4rem] su-h-[2.4rem]";
+  let locationIcon = (
+    <LocationMarkerIcon className={iconClasses} aria-label="Event location" />
+  );
 
   if (isVirtual) {
-    locationIcon = <DesktopComputerIcon className={iconClasses} />;
+    locationIcon = (
+      <DesktopComputerIcon
+        className={iconClasses}
+        aria-label="Event is online"
+      />
+    );
   }
 
   return (
@@ -111,20 +119,24 @@ const Event = ({
         </SbLink>
         {!isMinimal && <TabLabel text="Event" />}
         <div className="event-card-details su-rs-px-2 su-card-paragraph">
-          <div>
-            <CalendarIcon className={iconClasses} />
-            {niceStartDate}
-            {niceEndDate !== niceStartDate && ` - ${niceEndDate}`}
-          </div>
-          <div>
-            {locationIcon}
-            {location}
-          </div>
+          <FlexBox direction="row" alignItems="start" className="su-mb-04em">
+            <CalendarIcon className={iconClasses} aria-label="Event date" />
+            <span>
+              {niceStartDate}
+              {niceEndDate !== niceStartDate && ` - ${niceEndDate}`}
+            </span>
+          </FlexBox>
+          {location && (
+            <FlexBox direction="row" alignItems="start" className="su-mb-04em">
+              {locationIcon}
+              <span>{location}</span>
+            </FlexBox>
+          )}
           {organizer && (
-            <div>
-              <UserIcon className={iconClasses} />
-              Organizer | {organizer}
-            </div>
+            <FlexBox direction="row" alignItems="start" className="su-mb-04em">
+              <UserIcon className={iconClasses} aria-hidden="true" />
+              <span>Organizer | {organizer}</span>
+            </FlexBox>
           )}
         </div>
       </FlexBox>
