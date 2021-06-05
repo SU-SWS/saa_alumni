@@ -14,15 +14,22 @@ const PerkCardView = ({
     isNew,
     type,
     title,
-    intro,
+    descriptionShort,
     externalUrl,
   },
   blok,
   storyLink,
   headingLevel,
+  orientation,
 }) => {
   // Default link is the internal link of the perk content page
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
+
+  let wrapperClasses = "perk-card su-rs-pb-3 su-max-w-500";
+
+  if (orientation === "horizontal") {
+    wrapperClasses = "perk-card-horizontal su-rs-pb-3 su-w-full";
+  }
 
   // Default icon is right arrow for internal links
   // HeadlineIcon starts with uppercase letter because it's a component
@@ -50,7 +57,7 @@ const PerkCardView = ({
       <FlexBox
         direction="col"
         element="article"
-        className="perk-card su-group su-relative su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 su-border su-border-solid su-border-black"
+        className={dcnb("su-group su-relative su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-border su-border-solid su-border-black", wrapperClasses)}
       >
         <div className="perk-card-image-wrapper su-relative su-mb-[-3em] su-aspect-w-4 su-aspect-h-3">
           {filename?.startsWith("http") && (
@@ -75,7 +82,7 @@ const PerkCardView = ({
           <Heading
             level={headingLevel ?? 3}
             font="serif"
-            size={1}
+            size={orientation === "horizontal" ? 3 : 1}
             tracking="normal"
             className="su-relative su-inline"
           >
@@ -91,7 +98,7 @@ const PerkCardView = ({
         </SbLink>
         {isNew && <TabLabel text="New" srText={perkType} />}
         <p className="su-relative su-text-black-20 su-card-paragraph su-rs-px-2">
-          {intro}
+          {descriptionShort}
         </p>
         <p className="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-rs-ml-2 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
           {perkType}
