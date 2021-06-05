@@ -27,12 +27,15 @@ const PerkCardView = ({
 
   let wrapperClasses = "perk-card su-rs-pb-3 su-max-w-500";
   let imageWrapper = "su-aspect-w-4 su-aspect-h-3 su-mb-[-3em]";
+  let gradientDirection = "su-bg-gradient-to-b";
   let contentWrapper = "";
 
   if (orientation === "horizontal") {
-    wrapperClasses = "perk-card-horizontal su-rs-pb-3 su-w-full md:su-flex-row md:su-items-end";
+    wrapperClasses =
+      "perk-card-horizontal su-w-full md:su-flex-row lg:su-items-end";
     imageWrapper = "md:su-w-1/2";
-    contentWrapper = "md:su-w-1/2";
+    gradientDirection = "su-bg-gradient-to-r";
+    contentWrapper = "md:su-w-1/2 lg:su-max-w-700 md:su-rs-pb-3 md:su-ml-[-6em]";
   }
 
   // Default icon is right arrow for internal links
@@ -61,9 +64,14 @@ const PerkCardView = ({
       <FlexBox
         direction="col"
         element="article"
-        className={dcnb("su-group su-relative su-bg-saa-black su-rs-pb-3 su-break-words su-basefont-23 su-border su-border-solid su-border-black", wrapperClasses)}
+        className={dcnb(
+          "su-group su-relative su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black",
+          wrapperClasses
+        )}
       >
-        <div className={dcnb("perk-card-image-wrapper su-relative", imageWrapper)}>
+        <div
+          className={dcnb("perk-card-image-wrapper su-relative", imageWrapper)}
+        >
           {filename?.startsWith("http") && (
             <figure className="su-overflow-hidden su-w-full su-h-full">
               <CardImage
@@ -75,7 +83,7 @@ const PerkCardView = ({
             </figure>
           )}
           <div
-            className="su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-bg-gradient-to-b su-from-transparent su-to-saa-black"
+            className={dcnb("su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-from-transparent su-to-saa-black", gradientDirection)}
             aria-hidden="true"
           />
         </div>
