@@ -151,6 +151,17 @@ export const tinyMarginBottom = {
   lg: "su-mb-07em",
 };
 
+export const largeMarginBottom = {
+  none: "",
+  xxs: "su-rs-mb-4",
+  xs: "su-rs-mb-5",
+  sm: "su-rs-mb-6",
+  md: "su-rs-mb-7",
+  lg: "su-rs-mb-8",
+  xl: "su-rs-mb-9",
+  xxl: "su-rs-mb-10",
+};
+
 export const textAlign = {
   left: "su-text-left",
   center: "su-text-center",

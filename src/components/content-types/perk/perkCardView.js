@@ -6,6 +6,7 @@ import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
+import { largeMarginBottom } from "../../../utilities/dataSource";
 
 const PerkCardView = ({
   blok: {
@@ -21,28 +22,38 @@ const PerkCardView = ({
   storyLink,
   headingLevel,
   orientation,
+  spacingBottom,
 }) => {
   // Default link is the internal link of the perk content page
   let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
 
   let wrapperClasses = "perk-card su-rs-pb-3 su-max-w-500";
-  let imageWrapper = "su-aspect-w-4 su-aspect-h-3 su-mb-[-3em]";
+  let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
   let gradientDirection = "su-bg-gradient-to-b";
   let contentWrapper = "";
+  let descriptionClasses = "su-card-paragraph";
+
+  const marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
 
   if (orientation === "horizontal") {
     wrapperClasses =
-      "perk-card-horizontal su-w-full md:su-flex-row lg:su-items-end";
-    imageWrapper = "md:su-w-1/2";
-    gradientDirection = "su-bg-gradient-to-r";
-    contentWrapper = "md:su-w-1/2 lg:su-max-w-700 md:su-rs-pb-3 md:su-ml-[-6em]";
+      "perk-card-horizontal su-w-full md:su-flex-row md:su-items-end lg:su-max-h-400 xl:su-max-h-500";
+    imageWrapper =
+      "su-aspect-w-3 su-aspect-h-2 sm:su-aspect-w-3 sm:su-aspect-h-1 md:su-w-1/2";
+    gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
+    contentWrapper =
+      "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-rs-pb-3 md:su-ml-[-6em]";
+    descriptionClasses = dcnb(
+      "xl:su-big-paragraph xl:su-leading-snug",
+      descriptionClasses
+    );
   }
 
   // Default icon is right arrow for internal links
   // HeadlineIcon starts with uppercase letter because it's a component
   let HeadlineIcon = ArrowRightIcon;
   let headlineIconClasses =
-    "su-ml-03em su--mt-02em su-w-09em group-hocus:su-translate-x-02em";
+    "su-ml-03em su-w-08em su--mt-01em group-hocus:su-translate-x-02em";
 
   // Link to external URL instead if it is provided
   // Change headline icon to diagonal arrow for external links
@@ -50,7 +61,7 @@ const PerkCardView = ({
     perkPageLink = { linktype: "url", url: externalUrl };
     HeadlineIcon = ArrowUpIcon;
     headlineIconClasses =
-      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su--mt-01em su-w-[1.1em] group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
+      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
   }
 
   let perkType = "Alumni perk";
@@ -65,8 +76,9 @@ const PerkCardView = ({
         direction="col"
         element="article"
         className={dcnb(
-          "su-group su-relative su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black",
-          wrapperClasses
+          "su-group su-relative su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black",
+          wrapperClasses,
+          marginBottom
         )}
       >
         <div
@@ -79,11 +91,15 @@ const PerkCardView = ({
                 imageFocus={imageFocus}
                 className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
                 loading="lazy"
+                size={orientation === "horizontal" ? "horizontal" : "vertical"}
               />
             </figure>
           )}
           <div
-            className={dcnb("su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-from-transparent su-to-saa-black", gradientDirection)}
+            className={dcnb(
+              "su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-from-transparent su-to-saa-black",
+              gradientDirection
+            )}
             aria-hidden="true"
           />
         </div>
@@ -91,14 +107,15 @@ const PerkCardView = ({
         <div className={dcnb("perk-content su-rs-px-2", contentWrapper)}>
           <SbLink
             link={perkPageLink}
-            classes="su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-08em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight"
+            classes={`su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight su-text-m1 ${
+              orientation === "horizontal" ? "lg:su-type-2 xl:su-type-3" : ""
+            }`}
           >
             <Heading
               level={headingLevel ?? 3}
               font="serif"
-              size={orientation === "horizontal" ? 3 : 1}
               tracking="normal"
-              className="su-relative su-inline"
+              className="su-relative su-inline su-type-0"
             >
               {title}
             </Heading>
@@ -110,7 +127,9 @@ const PerkCardView = ({
               aria-hidden="true"
             />
           </SbLink>
-          <p className="su-relative su-text-black-20 su-card-paragraph">
+          <p
+            className={dcnb("su-relative su-text-black-20", descriptionClasses)}
+          >
             {descriptionShort}
           </p>
           <p className="su-relative su-inline-block su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
