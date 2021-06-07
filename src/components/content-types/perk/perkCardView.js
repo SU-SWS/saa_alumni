@@ -30,6 +30,7 @@ const PerkCardView = ({
 
   let wrapperClasses = "perk-card su-max-w-500";
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
+  let imageClasses = "";
   let gradientDirection = "su-bg-gradient-to-b";
   let contentWrapper = "su-rs-pb-3 su-flex-grow";
   let descriptionClasses = "su-card-paragraph";
@@ -38,15 +39,13 @@ const PerkCardView = ({
   // Horizontal card styles and options
   if (orientation === "horizontal") {
     wrapperClasses =
-      "perk-card-horizontal su-w-full md:su-flex-row md:su-items-end lg:su-max-h-400 xl:su-max-h-500";
+      "perk-card-horizontal su-w-full md:su-flex-row xl:su-h-500";
     marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
-    imageWrapper = dcnb(
-      "sm:su-aspect-w-3 sm:su-aspect-h-1 md:su-mb-0 md:su-w-1/2",
-      imageWrapper
-    );
+    imageWrapper = "su-mb-[-3em] md:su-mb-0 md:su-w-1/2 su-flex-shrink-0 su-h-full";
+    imageClasses = "md:su-min-h-[40rem]"
     gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
     contentWrapper =
-      "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-pb-30 lg:su-pb-45 md:su-ml-[-6em]";
+      "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-self-end md:su-py-30 lg:su-pb-45 md:su-ml-[-6em]";
     descriptionClasses = dcnb(
       "xl:su-big-paragraph xl:su-leading-snug",
       descriptionClasses
@@ -93,7 +92,7 @@ const PerkCardView = ({
             <CardImage
               filename={filename}
               imageFocus={cardImageFocus || imageFocus}
-              className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+              className={dcnb("su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]", imageClasses)}
               loading="lazy"
               size={orientation === "horizontal" ? "horizontal" : "vertical"}
             />
@@ -113,8 +112,8 @@ const PerkCardView = ({
         >
           <SbLink
             link={perkPageLink}
-            classes={`su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight su-text-m1 ${
-              orientation === "horizontal" ? "lg:su-type-2 xl:su-type-3" : ""
+            classes={`su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight ${
+              orientation === "horizontal" ? "su-type-2 xl:su-type-3" : "su-text-m1"
             }`}
           >
             <Heading
