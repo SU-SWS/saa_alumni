@@ -1,6 +1,6 @@
 import SbEditable from "storyblok-react";
 import React from "react";
-import { FlexBox, FlexCell, Heading } from "decanter-react";
+import { FlexBox, Heading } from "decanter-react";
 import { ArrowRightIcon, ArrowUpIcon } from "@heroicons/react/solid";
 import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
@@ -16,18 +16,14 @@ const PerkCardView = ({
     type,
     title,
     descriptionShort,
-    externalUrl,
+    cardUrl,
   },
   blok,
-  storyLink,
   headingLevel,
   orientation,
   spacingBottom,
   cardImageFocus,
 }) => {
-  // Default link is the internal link of the perk content page
-  let perkPageLink = { linktype: "story", cached_url: `${storyLink}/` };
-
   let wrapperClasses = "perk-card su-max-w-500";
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
   let imageClasses = "";
@@ -41,8 +37,9 @@ const PerkCardView = ({
     wrapperClasses =
       "perk-card-horizontal su-w-full md:su-flex-row xl:su-h-500";
     marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
-    imageWrapper = "su-mb-[-3em] md:su-mb-0 md:su-w-1/2 su-flex-shrink-0 su-h-full";
-    imageClasses = "md:su-min-h-[40rem]"
+    imageWrapper =
+      "su-mb-[-3em] md:su-mb-0 md:su-w-1/2 su-flex-shrink-0 su-h-full";
+    imageClasses = "md:su-min-h-[40rem]";
     gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
     contentWrapper =
       "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-self-end md:su-py-30 lg:su-pb-45 md:su-ml-[-6em]";
@@ -58,10 +55,8 @@ const PerkCardView = ({
   let headlineIconClasses =
     "su-ml-03em su-w-08em su--mt-01em group-hocus:su-translate-x-02em";
 
-  // Link to external URL instead if it is provided
-  // Change headline icon to diagonal arrow for external links
-  if (externalUrl) {
-    perkPageLink = { linktype: "url", url: externalUrl };
+  // Change headline icon to diagonal arrow if card link is external
+  if (cardUrl.linktype === "url") {
     HeadlineIcon = ArrowUpIcon;
     headlineIconClasses =
       "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
@@ -85,14 +80,20 @@ const PerkCardView = ({
         )}
       >
         <div
-          className={dcnb("perk-card-image-wrapper su-relative su-overflow-hidden", imageWrapper)}
+          className={dcnb(
+            "perk-card-image-wrapper su-relative su-overflow-hidden",
+            imageWrapper
+          )}
           aria-hidden="true"
         >
           {filename?.startsWith("http") && (
             <CardImage
               filename={filename}
               imageFocus={cardImageFocus || imageFocus}
-              className={dcnb("su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]", imageClasses)}
+              className={dcnb(
+                "su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]",
+                imageClasses
+              )}
               loading="lazy"
               size={orientation === "horizontal" ? "horizontal" : "vertical"}
             />
@@ -111,9 +112,11 @@ const PerkCardView = ({
           className={dcnb("perk-card-content su-rs-px-2", contentWrapper)}
         >
           <SbLink
-            link={perkPageLink}
+            link={cardUrl}
             classes={`su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight ${
-              orientation === "horizontal" ? "su-type-2 xl:su-type-3" : "su-text-m1"
+              orientation === "horizontal"
+                ? "su-type-2 xl:su-type-3"
+                : "su-text-m1"
             }`}
           >
             <Heading
@@ -132,12 +135,15 @@ const PerkCardView = ({
               aria-hidden="true"
             />
           </SbLink>
-          <p className={dcnb("su-relative su-text-black-20 su-flex-grow su-mb-07em", descriptionClasses)}>
+          <p
+            className={dcnb(
+              "su-relative su-text-black-20 su-flex-grow su-mb-07em",
+              descriptionClasses
+            )}
+          >
             {descriptionShort}
           </p>
-          <p
-            className="su-relative su-inline-block su-flex-grow-0 su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular"
-          >
+          <p className="su-relative su-inline-block su-flex-grow-0 su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
             {perkType}
           </p>
         </FlexBox>
