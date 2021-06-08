@@ -34,17 +34,10 @@ const Event = ({
   // Link to external URL (always external for MVP)
   const eventLink = { linktype: "url", url: externalUrl } ?? "";
 
-  // Find current UTC date/time
-  const currentUTCDate = new Date();
-
-  // The date/time we get from Storyblok is in UTC
-  // Need to explicitly add "UTC" at the end of the time string for this to convert properly
-  const startJsDateString = start.replace(" ", "T");
-  const startUTCDate = new Date(`${startJsDateString}:00Z`);
-
-  // Convert JavaScript Date object to luxon DateTime object and format the pieces for display
+  // The date/time string we get from Storyblok is in UTC
+  // Convert string to luxon DateTime object and format the pieces for display
   // Start date and time
-  const luxonStart = DateTime.fromJSDate(startUTCDate)
+  const luxonStart = DateTime.fromFormat(start, "yyyy-MM-dd T", { zone: "UTC" })
     .setZone("America/Los_Angeles")
     .setLocale("en-us");
   const timeZone = luxonStart.toFormat("ZZZZ");
@@ -54,9 +47,7 @@ const Event = ({
   const startDay = luxonStart.toFormat("dd");
 
   // End date and time
-  const endJsDateString = end.replace(" ", "T");
-  const endUTCDate = new Date(`${endJsDateString}:00Z`);
-  const luxonEnd = DateTime.fromJSDate(endUTCDate)
+  const luxonEnd = DateTime.fromFormat(end, "yyyy-MM-dd T", { zone: "UTC" })
     .setZone("America/Los_Angeles")
     .setLocale("en-us");
   const longEndDate = luxonEnd.toFormat("DDDD");
@@ -64,10 +55,15 @@ const Event = ({
   const endMonth = luxonEnd.toFormat("LLL");
   const endDay = luxonEnd.toFormat("dd");
 
-  const isSameDay = (longStartDate === longEndDate);
+  // Boolean to check if this is a same day event for conditional rendering elements
+  const isSameDay = longStartDate === longEndDate;
+
+  // Find current UTC date/time
+  const currentUTCDate = new Date();
+  const luxonCurrent = DateTime.fromJSDate(currentUTCDate);
 
   // If the current date/time is after the event end date/time, don't render the card
-  if (currentUTCDate > endUTCDate) {
+  if (luxonCurrent > luxonEnd) {
     return null;
   }
 
