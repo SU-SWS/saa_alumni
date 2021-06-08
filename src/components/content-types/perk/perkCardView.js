@@ -40,7 +40,7 @@ const PerkCardView = ({
       "su-w-full su-mb-[-3em] md:su-mb-0 md:su-w-1/2 su-h-[60vw] sm:su-h-[50vw] md:su-h-[40vw] xl:su-h-500 su-flex-shrink-0 su-h-full";
     gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
     contentWrapper =
-      "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-self-end md:su-rs-pt-3 md:su-pl-0 md:su-ml-[-7em]";
+      "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-[72rem] md:su-self-end md:su-rs-pt-3 md:su-pl-0 md:su-ml-[-7em]";
     descriptionClasses = dcnb(
       "xl:su-big-paragraph xl:su-leading-snug",
       descriptionClasses
