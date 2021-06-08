@@ -13,7 +13,6 @@ const PerkCardView = ({
     image: { filename } = {},
     imageFocus,
     isNew,
-    type,
     title,
     descriptionShort,
     cardUrl,
@@ -60,12 +59,6 @@ const PerkCardView = ({
       "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
   }
 
-  let perkType = "Alumni perk";
-
-  if (type === "benefit") {
-    perkType = "Member benefit";
-  }
-
   return (
     <SbEditable content={blok}>
       <FlexBox
@@ -101,7 +94,7 @@ const PerkCardView = ({
             aria-hidden="true"
           />
         </div>
-        {isNew && <TabLabel text="New" srText={perkType} />}
+        {isNew && <TabLabel text="New" srText="item" />}
         <FlexBox
           direction="col"
           className={dcnb(
@@ -135,14 +128,11 @@ const PerkCardView = ({
           </SbLink>
           <p
             className={dcnb(
-              "su-relative su-text-black-20 su-flex-grow su-mb-07em",
+              "su-relative su-text-black-20 su-flex-grow su-mb-0",
               descriptionClasses
             )}
           >
             {descriptionShort}
-          </p>
-          <p className="su-relative su-inline-block su-flex-grow-0 su-w-fit su-leading-display su-mt-auto su-mb-0 su-text-digital-red-xlight su-rs-mt-0 su-text-17 md:su-text-19 xl:su-text-20 su-font-regular">
-            {perkType}
           </p>
         </FlexBox>
       </FlexBox>
