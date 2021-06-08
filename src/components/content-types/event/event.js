@@ -64,11 +64,7 @@ const Event = ({
   const endMonth = luxonEnd.toFormat("LLL");
   const endDay = luxonEnd.toFormat("dd");
 
-  let isSameDay = false;
-
-  if (longStartDate === longEndDate) {
-    isSameDay = true;
-  }
+  const isSameDay = (longStartDate === longEndDate);
 
   // If the current date/time is after the event end date/time, don't render the card
   if (currentUTCDate > endUTCDate) {
