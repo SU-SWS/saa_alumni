@@ -8,6 +8,7 @@ import {
   LocationMarkerIcon,
   UserIcon,
 } from "@heroicons/react/outline";
+import { DateTime } from "luxon";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
@@ -39,19 +40,25 @@ const Event = ({
   // The date/time we get from Storyblok is in UTC
   // Need to explicitly add "UTC" at the end of the time string for this to convert properly
   const startUTCDate = new Date(`${start} UTC`);
-  const niceStartDate = startUTCDate.toLocaleString("en-us", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const luxonStart = DateTime.fromJSDate(startUTCDate)
+    .setZone("America/Los_Angeles")
+    .setLocale("en-us");
+  const longStartDate = luxonStart.toFormat("DDDD");
+  const startTime = luxonStart.toFormat("t");
+  const timeZone = luxonStart.toFormat("ZZZZ");
+
   const endUTCDate = new Date(`${end} UTC`);
-  const niceEndDate = endUTCDate.toLocaleString("en-us", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const luxonEnd = DateTime.fromJSDate(endUTCDate)
+    .setZone("America/Los_Angeles")
+    .setLocale("en-us");
+  const longEndDate = luxonEnd.toFormat("DDDD");
+  const endTime = luxonEnd.toFormat("t");
+
+  let isSameDay = false;
+
+  if (longStartDate === longEndDate) {
+    isSameDay = true;
+  }
 
   // If the current date/time is after the event end date/time, don't render the card
   if (currentUTCDate > endUTCDate) {
@@ -122,8 +129,9 @@ const Event = ({
           <FlexBox direction="row" alignItems="start" className="su-mb-04em">
             <CalendarIcon className={iconClasses} aria-label="Event date" />
             <span>
-              {niceStartDate}
-              {niceEndDate !== niceStartDate && ` - ${niceEndDate}`}
+              {longStartDate}
+              {!isSameDay && ` - ${longEndDate}`}
+              {isSameDay && ` | ${startTime} - ${endTime} ${timeZone}` }
             </span>
           </FlexBox>
           {location && (
