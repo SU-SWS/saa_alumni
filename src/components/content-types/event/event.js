@@ -39,7 +39,8 @@ const Event = ({
 
   // The date/time we get from Storyblok is in UTC
   // Need to explicitly add "UTC" at the end of the time string for this to convert properly
-  const startUTCDate = new Date(`${start} UTC`);
+  const startJsDateString = start.replace(" ", "T");
+  const startUTCDate = new Date(`${startJsDateString}:00Z`);
 
   // Convert JavaScript Date object to luxon DateTime object and format the pieces for display
   // Start date and time
@@ -53,7 +54,8 @@ const Event = ({
   const startDay = luxonStart.toFormat("dd");
 
   // End date and time
-  const endUTCDate = new Date(`${end} UTC`);
+  const endJsDateString = end.replace(" ", "T");
+  const endUTCDate = new Date(`${endJsDateString}:00Z`);
   const luxonEnd = DateTime.fromJSDate(endUTCDate)
     .setZone("America/Los_Angeles")
     .setLocale("en-us");
