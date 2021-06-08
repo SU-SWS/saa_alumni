@@ -2,20 +2,19 @@ import React from "react";
 import { dcnb } from "cnbuilder";
 import { SrOnlyText } from "decanter-react";
 
-const DateBlock = ({ start, end, className, ...props }) => {
-  const startUTCDate = new Date(`${start} UTC`);
-  const startMonth = startUTCDate.toLocaleString("en-us", { month: "short" });
-  const startDay = startUTCDate.toLocaleString("en-us", { day: "2-digit" });
-  const endUTCDate = new Date(`${end} UTC`);
-  const endMonth = endUTCDate.toLocaleString("en-us", { month: "short" });
-  const endDay = endUTCDate.toLocaleDateString("en-us", { day: "2-digit" });
-
+const DateBlock = ({
+  startDay,
+  startMonth,
+  endDay,
+  endMonth,
+  isSameDay,
+  className,
+  ...props
+}) => {
   // Check if the start and end day is the same
-  let isSameDay;
   let dateBlockMinWidth;
 
-  if (startMonth === endMonth && startDay === endDay) {
-    isSameDay = true;
+  if (isSameDay) {
     dateBlockMinWidth = "su-min-w-[11.4rem]";
   }
 
@@ -25,15 +24,18 @@ const DateBlock = ({ start, end, className, ...props }) => {
         "su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-w-fit group-hover:su-from-digital-red group-hover:su-to-digital-red-light",
         className
       )}
+      {...props}
     >
       <div
         className={dcnb(
           "su-flex su-flex-row su-items-center su-justify-center su-w-fit su-h-[11.4rem] su-bg-cardinal-red su-text-white su-rounded-full",
           dateBlockMinWidth
         )}
-        {...props}
       >
-        <time dateTime={start} className="su-flex su-flex-col su-px-20">
+        <time
+          dateTime={`${startMonth}-${startDay}`}
+          className="su-flex su-flex-col su-px-20"
+        >
           <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">
             {startMonth}
           </span>

@@ -40,25 +40,35 @@ const Event = ({
   // The date/time we get from Storyblok is in UTC
   // Need to explicitly add "UTC" at the end of the time string for this to convert properly
   const startUTCDate = new Date(`${start} UTC`);
+
+  // Convert JavaScript Date object to luxon DateTime object and format the pieces for display
+  // Start date and time
   const luxonStart = DateTime.fromJSDate(startUTCDate)
     .setZone("America/Los_Angeles")
     .setLocale("en-us");
+  const timeZone = luxonStart.toFormat("ZZZZ");
   const longStartDate = luxonStart.toFormat("DDDD");
   const startTime = luxonStart.toFormat("t");
-  const timeZone = luxonStart.toFormat("ZZZZ");
+  const startMonth = luxonStart.toFormat("LLL");
+  const startDay = luxonStart.toFormat("dd");
 
+  // End date and time
   const endUTCDate = new Date(`${end} UTC`);
   const luxonEnd = DateTime.fromJSDate(endUTCDate)
     .setZone("America/Los_Angeles")
     .setLocale("en-us");
   const longEndDate = luxonEnd.toFormat("DDDD");
   const endTime = luxonEnd.toFormat("t");
+  let endMonth;
+  let endDay;
+  endMonth = luxonEnd.toFormat("LLL");
+  endDay = luxonEnd.toFormat("dd");
 
   let isSameDay = false;
 
   if (longStartDate === longEndDate) {
     isSameDay = true;
-  }
+  };
 
   // If the current date/time is after the event end date/time, don't render the card
   if (currentUTCDate > endUTCDate) {
@@ -102,8 +112,11 @@ const Event = ({
           </div>
         )}
         <DateBlock
-          start={start}
-          end={end}
+          startMonth={startMonth}
+          startDay={startDay}
+          endMonth={endMonth}
+          endDay={endDay}
+          isSameDay={isSameDay}
           className="su-mt-[-5.7rem] su-z-10 su-rs-ml-1"
         />
         <SbLink
@@ -131,7 +144,7 @@ const Event = ({
             <span>
               {longStartDate}
               {!isSameDay && ` - ${longEndDate}`}
-              {isSameDay && ` | ${startTime} - ${endTime} ${timeZone}` }
+              {isSameDay && ` | ${startTime} - ${endTime} ${timeZone}`}
             </span>
           </FlexBox>
           {location && (
