@@ -26,7 +26,6 @@ const PerkCardView = ({
 }) => {
   let wrapperClasses = "perk-card su-max-w-500";
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
-  let imageClasses = "";
   let gradientDirection = "su-bg-gradient-to-b";
   let contentWrapper = "su-flex-grow";
   let descriptionClasses = "su-card-paragraph";
@@ -39,7 +38,6 @@ const PerkCardView = ({
     marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
     imageWrapper =
       "su-w-full su-mb-[-3em] md:su-mb-0 md:su-w-1/2 su-h-[60vw] sm:su-h-[50vw] md:su-h-[40vw] xl:su-h-500 su-flex-shrink-0 su-h-full";
-    imageClasses = "";
     gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
     contentWrapper =
       "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-self-end md:su-rs-pt-3 md:su-pl-0 md:su-ml-[-7em]";
@@ -90,10 +88,7 @@ const PerkCardView = ({
             <CardImage
               filename={filename}
               imageFocus={cardImageFocus || imageFocus}
-              className={dcnb(
-                "su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]",
-                imageClasses
-              )}
+              className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
               loading="lazy"
               size={orientation === "horizontal" ? "horizontal" : "vertical"}
             />
@@ -109,7 +104,10 @@ const PerkCardView = ({
         {isNew && <TabLabel text="New" srText={perkType} />}
         <FlexBox
           direction="col"
-          className={dcnb("perk-card-content su-rs-px-2 su-rs-pb-3", contentWrapper)}
+          className={dcnb(
+            "perk-card-content su-rs-px-2 su-rs-pb-3",
+            contentWrapper
+          )}
         >
           <SbLink
             link={cardUrl}
