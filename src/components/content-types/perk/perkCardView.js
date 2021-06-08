@@ -28,7 +28,7 @@ const PerkCardView = ({
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
   let imageClasses = "";
   let gradientDirection = "su-bg-gradient-to-b";
-  let contentWrapper = "su-rs-pb-3 su-flex-grow";
+  let contentWrapper = "su-flex-grow";
   let descriptionClasses = "su-card-paragraph";
   let marginBottom = "";
 
@@ -38,11 +38,11 @@ const PerkCardView = ({
       "perk-card-horizontal su-w-full md:su-flex-row xl:su-h-500";
     marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
     imageWrapper =
-      "su-mb-[-3em] md:su-mb-0 md:su-w-1/2 su-flex-shrink-0 su-h-full";
-    imageClasses = "md:su-min-h-[40rem]";
+      "su-w-full su-mb-[-3em] md:su-mb-0 md:su-w-1/2 su-h-[60vw] sm:su-h-[50vw] md:su-h-[40vw] xl:su-h-500 su-flex-shrink-0 su-h-full";
+    imageClasses = "";
     gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
     contentWrapper =
-      "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-self-end md:su-py-30 lg:su-pb-45 md:su-ml-[-6em]";
+      "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-700 md:su-self-end md:su-rs-pt-3 md:su-pl-0 md:su-ml-[-7em]";
     descriptionClasses = dcnb(
       "xl:su-big-paragraph xl:su-leading-snug",
       descriptionClasses
@@ -109,14 +109,14 @@ const PerkCardView = ({
         {isNew && <TabLabel text="New" srText={perkType} />}
         <FlexBox
           direction="col"
-          className={dcnb("perk-card-content su-rs-px-2", contentWrapper)}
+          className={dcnb("perk-card-content su-rs-px-2 su-rs-pb-3", contentWrapper)}
         >
           <SbLink
             link={cardUrl}
             classes={`su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight ${
               orientation === "horizontal"
-                ? "su-type-2 xl:su-type-3"
-                : "su-text-m1"
+                ? "su-type-2 md:su-type-1 lg:su-type-2 xl:su-type-3"
+                : "su-type-1"
             }`}
           >
             <Heading
