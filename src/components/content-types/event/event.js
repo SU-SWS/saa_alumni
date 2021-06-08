@@ -61,16 +61,14 @@ const Event = ({
     .setLocale("en-us");
   const longEndDate = luxonEnd.toFormat("DDDD");
   const endTime = luxonEnd.toFormat("t");
-  let endMonth;
-  let endDay;
-  endMonth = luxonEnd.toFormat("LLL");
-  endDay = luxonEnd.toFormat("dd");
+  const endMonth = luxonEnd.toFormat("LLL");
+  const endDay = luxonEnd.toFormat("dd");
 
   let isSameDay = false;
 
   if (longStartDate === longEndDate) {
     isSameDay = true;
-  };
+  }
 
   // If the current date/time is after the event end date/time, don't render the card
   if (currentUTCDate > endUTCDate) {
