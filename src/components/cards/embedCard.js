@@ -1,3 +1,7 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable react/no-danger */
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
 /**
  * Credit where credit is deserved.
  * @see: https://github.com/christo-pr/dangerously-set-html-content
@@ -31,7 +35,7 @@ const EmbedCard = ({ blok: { embed: html }, blok }) => {
       // Append the new content.
       myEmbed.current.appendChild(miniDom);
     }
-  }, [html]);
+  }, [html, uniqueId]);
 
   return (
     <SbEditable content={blok}>
