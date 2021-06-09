@@ -8,38 +8,38 @@
  */
 import React, { useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
+import postscribe from "postscribe";
+import { v4 as uuidv4 } from "uuid";
 
 const EmbedCard = ({ blok: { embed: html }, blok }) => {
   const myEmbed = useRef(null);
+  const uniqueId = uuidv4();
 
   useEffect(() => {
     if (!html) return;
 
-    // Create a 'tiny' document and parse the html string.
-    // https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
-    const miniDom = document.createRange().createContextualFragment(html);
+    if (html.includes("script")) {
+      postscribe(`#${uniqueId}`, html);
+    } else {
+      // Create a 'tiny' document and parse the html string.
+      // https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
+      const miniDom = document.createRange().createContextualFragment(html);
 
-    // Force the scripts in the embed script field to load sync.
-    const scripts = miniDom.querySelectorAll("script");
-    if (scripts.length >= 1) {
-      for (let item of scripts) {
-        if (item.src && item.src.length > 1) {
-          item.async = 0;
-          item.defer = 0;
-        }
-      }
+      // Clear the container.
+      myEmbed.current.innerHTML = "";
+
+      // Append the new content.
+      myEmbed.current.appendChild(miniDom);
     }
-
-    // Clear the container.
-    myEmbed.current.innerHTML = "";
-
-    // Append the new content.
-    myEmbed.current.appendChild(miniDom);
   }, [html]);
 
   return (
     <SbEditable content={blok}>
-      <div ref={myEmbed} />
+      {html.includes("script") ? (
+        <div id={uniqueId}></div>
+      ) : (
+        <div ref={myEmbed} />
+      )}
     </SbEditable>
   );
 };

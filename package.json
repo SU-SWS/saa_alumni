@@ -20,6 +20,7 @@
     "gatsby-plugin-sitemap": "^4.0.0",
     "gatsby-source-storyblok": "^3.0.1",
     "path-browserify": "^1.0.1",
+    "postscribe": "^2.0.8",
     "process": "^0.11.10",
     "prop-types": "^15.7.2",
     "react": "^16.14.0",
@@ -31,7 +32,8 @@
     "storyblok-react": "^0.1.2",
     "storyblok-rich-text-react-renderer": "^2.3.1",
     "tailwindcss-children": "^2.1.0",
-    "tailwindcss-interaction-variants": "^5.0.0"
+    "tailwindcss-interaction-variants": "^5.0.0",
+    "uuid": "^3.4.0"
   },
   "keywords": [
     "Stanford"
