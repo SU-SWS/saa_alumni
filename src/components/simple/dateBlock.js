@@ -15,7 +15,7 @@ const DateBlock = ({
   let dateBlockMinWidth;
 
   if (isSameDay) {
-    dateBlockMinWidth = "su-min-w-[11.4rem]";
+    dateBlockMinWidth = "su-min-w-[10rem] lg:su-min-w-[11.4rem]";
   }
 
   return (
@@ -28,7 +28,7 @@ const DateBlock = ({
     >
       <div
         className={dcnb(
-          "su-flex su-flex-row su-items-center su-justify-center su-w-fit su-h-[11.4rem] su-bg-cardinal-red su-text-white su-rounded-full",
+          "su-flex su-flex-row su-items-center su-justify-center su-w-fit su-h-100 lg:su-h-[11.4rem] su-bg-cardinal-red su-text-white su-rounded-full",
           dateBlockMinWidth
         )}
       >
@@ -36,10 +36,10 @@ const DateBlock = ({
           dateTime={`${startMonth}-${startDay}`}
           className="su-flex su-flex-col su-px-20"
         >
-          <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">
+          <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 lg:su-text-22">
             {startMonth}
           </span>
-          <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-trim">
+          <span className="su-text-m5 md:su-text-m4 lg:su-text-m5 su-font-bold su-font-serif su-leading-trim">
             {startDay}
           </span>
         </time>
@@ -56,10 +56,10 @@ const DateBlock = ({
               dateTime={`${endMonth}-${endDay}`}
               className="su-flex su-flex-col su-px-20"
             >
-              <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 md:su-text-22">
+              <span className="su-mb-8 su-uppercase su-leading-trim su-text-20 lg:su-text-22">
                 {endMonth}
               </span>
-              <span className="su-text-[6.4rem] su-font-bold su-font-serif su-leading-trim">
+              <span className="su-text-m5 md:su-text-m4 lg:su-text-m5 su-font-bold su-font-serif su-leading-trim">
                 {endDay}
               </span>
             </time>

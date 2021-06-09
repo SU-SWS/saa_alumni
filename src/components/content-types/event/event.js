@@ -109,7 +109,7 @@ const Event = ({
           endMonth={endMonth}
           endDay={endDay}
           isSameDay={isSameDay}
-          className="su-mt-[-5.7rem] su-z-10 su-rs-ml-1"
+          className="su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-z-10 su-rs-ml-1"
         />
         <SbLink
           link={eventLink}
