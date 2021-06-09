@@ -35,11 +35,7 @@ const EmbedCard = ({ blok: { embed: html }, blok }) => {
 
   return (
     <SbEditable content={blok}>
-      {html.includes("script") ? (
-        <div id={uniqueId}></div>
-      ) : (
-        <div ref={myEmbed} />
-      )}
+      {html.includes("script") ? <div id={uniqueId} /> : <div ref={myEmbed} />}
     </SbEditable>
   );
 };
