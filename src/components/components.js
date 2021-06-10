@@ -7,6 +7,10 @@ import LocalFooter from './identity/localFooter';
 import LocalFooterPicker from './identity/localFooterPicker';
 import NavItem from './navigation/navItem';
 import Page from './page';
+import searchFacet from './search/searchFacet';
+import searchField from './search/searchField';
+import searchPager from './search/searchPager';
+import searchResults from './search/searchResults';
 import Wysiwyg from './simple/wysiwyg';
 
 
@@ -19,6 +23,10 @@ const ComponentList = {
   localFooterPicker: LocalFooterPicker,
   navItem: NavItem,
   page: Page,
+  searchFacet: searchFacet,
+  searchField: searchField,
+  searchPager: searchPager,
+  searchResults: searchResults,
   wysiwyg: Wysiwyg
 };
 
