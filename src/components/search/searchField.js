@@ -7,16 +7,19 @@ const SearchField = ({onSubmit, onInput, autocompleteSuggestions}) => {
   const [showAutocomplete, setShowAutocomplete] = useState(false)
   const submitHandler = (e) => {
     e.preventDefault()
+    setShowAutocomplete(false)
     onSubmit(query)
   }
 
   const inputHandler = async (e) => {
     setQuery(e.target.value)
     onInput(e.target.value)
+    setShowAutocomplete(true)
   }
 
   const clearHandler = () => {
     setQuery('')
+    setShowAutocomplete(false)
   }
 
   return (
@@ -27,18 +30,20 @@ const SearchField = ({onSubmit, onInput, autocompleteSuggestions}) => {
           <div className='su-border-b-[1px] su-items-end su-border-solid su-border-black-20 su-flex su-px-20 su-pb-3'>
             <label className="su-flex-grow su-max-w-full">
               <span className="su-sr-only">Search</span>
-              <input type="text" onChange={inputHandler} className="su-text-23 su-w-full su-flex-1 su-outline-none" value={query} />
+              <input type="text" onChange={inputHandler} onBlur={() => setShowAutocomplete(false)} className="su-text-23 su-w-full su-flex-1 su-outline-none" value={query} />
             </label>
             <button type="reset" onClick={clearHandler} className="su-bg-transparent hover:su-bg-transparent hover:su-text-black su-border-none su-text-black su-p-0">
               Clear <X className="su-inline-block"></X>
             </button>
             <div className={`su-absolute su-top-[4rem] su-bg-white su-px-20 su-py-20 su-shadow-md
-              ${!showAutocomplete ? 'su-hidden' : ''}
+              ${showAutocomplete ? '' : 'su-hidden'}
             `}>
               {Array.isArray(autocompleteSuggestions) &&
                 <ul className="su-list-unstyled">
                   {autocompleteSuggestions.map((suggestion, index) => (
-                    <li key={`autocomplete-item-${index}`} className="hover:su-bg-black-20">{suggestion}</li>
+                    <li key={`autocomplete-item-${index}`} className="hover:su-bg-black-20">
+                      <a href="">{suggestion}</a>
+                    </li>
                   ))}
                 </ul>
               }
