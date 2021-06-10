@@ -10,7 +10,7 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
 
   let pagerLinks = []
 
-  for (let i = 0; i < Math.min(maxLinks - 2, nbPages - 1); i++) {
+  for (let i = 0; i < Math.min(maxLinks - 1, nbPages - 1); i++) {
     pagerLinks.push(i)
   }
 

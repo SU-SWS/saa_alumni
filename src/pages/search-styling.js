@@ -20,6 +20,7 @@ const suggestions = [
 const sampleResultWithImage = {
   domain: 'stanfordmag.org',
   url: 'https://stanfordmag.org',
+  title: 'Lorem ipsum dolor sit amet consectetur',
   image: 'https://project-orion-production.s3.amazonaws.com/uploads/content/21468/feature_WomanOnCouch.jpg',
   _snippetResult: {
     body: {
@@ -36,6 +37,7 @@ const sampleResultWithImage = {
 const sampleResultNoImage = {
   domain: 'students.alumni.stanford.edu/',
   url: 'https://https://students.alumni.stanford.edu/',
+  title: 'Tristique cursus litora a est dapibus metus',
   _snippetResult: {
     body: {
       value: `
@@ -56,6 +58,7 @@ for (let i = 0; i < 16; i++ ) {
 
 const results = {
   npPages: 16,
+  nbHits: 4563,
   hits,
   facets: {
     siteName: {
@@ -68,10 +71,10 @@ const results = {
     }
   }
 }
-const page = 2;
 
 const SearchStyling = () => {
   const [selectedOptions, setSelectedOptions] = useState([])
+  const [activePage, setActivePage] = useState(2)
   return (
     <div>
       <SearchField 
@@ -79,7 +82,7 @@ const SearchStyling = () => {
         onInput={(query) => {}}
       />
       <SearchResults results={results}></SearchResults>
-      <SearchPager activePage={page} nbPages={results.nbPages} maxLinks={6}></SearchPager>
+      <SearchPager activePage={activePage} nbPages={8} maxLinks={6} selectPage={(page) => setActivePage(page)}></SearchPager>
       <SearchFacet 
         attribute="siteName" 
         facetValues={results.facets.siteName}
