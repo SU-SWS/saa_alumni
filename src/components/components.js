@@ -18,8 +18,12 @@ import Poster from "./composite/poster";
 import Section from "./layout/section";
 import Wysiwyg from "./simple/wysiwyg";
 import Redirect from "./redirect/Redirect";
+import Alert from "./simple/alert";
+import AlertCtaLink from "./cta/alertCtaLink";
 
 const ComponentList = {
+  alert: Alert,
+  alertCtaLink: AlertCtaLink,
   basicCard: BasicCard,
   ctaButton: CtaButton,
   ctaLink: CtaLink,
