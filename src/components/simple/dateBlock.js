@@ -5,8 +5,10 @@ import { SrOnlyText } from "decanter-react";
 const DateBlock = ({
   startDay,
   startMonth,
+  startHtmlDate,
   endDay,
   endMonth,
+  endHtmlDate,
   isSameDay,
   isMinimal,
   className,
@@ -14,9 +16,11 @@ const DateBlock = ({
 }) => {
   // Check if the start and end day is the same
   let dateBlockMinWidth;
+  let startDatePadding = "su-pl-20 su-pr-12";
 
   if (isSameDay) {
     dateBlockMinWidth = "su-min-w-[10rem] lg:su-min-w-[11.4rem]";
+    startDatePadding = "";
   }
 
   let wrapperClasses =
@@ -27,6 +31,7 @@ const DateBlock = ({
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
     dateClasses = "su-justify-start su-text-black su-bg-transparent";
+    startDatePadding = "su-pl-0 su-pr-10";
   }
 
   return (
@@ -39,10 +44,10 @@ const DateBlock = ({
         )}
       >
         <time
-          dateTime={`${startMonth}-${startDay}`}
-          className="su-flex su-flex-col su-px-20"
+          dateTime={startHtmlDate}
+          className={dcnb("su-flex su-flex-col", startDatePadding)}
         >
-          <span className="su-mb-8 su-uppercase su-leading-none su-text-20 lg:su-text-22">
+          <span className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
             {startMonth}
           </span>
           <span className="su-text-m5 md:su-text-m4 lg:su-text-m5 su-font-bold su-font-serif su-leading-trim">
@@ -52,17 +57,17 @@ const DateBlock = ({
         {!isSameDay && (
           <>
             <span
-              className="su-mt-6 su-text-m4 su-font-bold"
+              className="su-mt-14 su-text-m4 su-font-bold"
               aria-hidden="true"
             >
               &ndash;
             </span>
             <SrOnlyText srText="to" />
             <time
-              dateTime={`${endMonth}-${endDay}`}
-              className="su-flex su-flex-col su-px-20"
+              dateTime={endHtmlDate}
+              className="su-flex su-flex-col su-pl-12 su-pr-20"
             >
-              <span className="su-mb-8 su-uppercase su-leading-none su-text-20 lg:su-text-22">
+              <span className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
                 {endMonth}
               </span>
               <span className="su-text-m5 md:su-text-m4 lg:su-text-m5 su-font-bold su-font-serif su-leading-trim">

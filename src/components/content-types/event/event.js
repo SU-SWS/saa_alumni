@@ -9,11 +9,11 @@ import {
   UserIcon,
 } from "@heroicons/react/outline";
 import { DateTime } from "luxon";
+import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
 import DateBlock from "../../simple/dateBlock";
-import { dcnb } from "cnbuilder";
 
 const Event = ({
   blok: {
@@ -46,6 +46,9 @@ const Event = ({
   const startTime = luxonStart.toFormat("t");
   const startMonth = luxonStart.toFormat("LLL");
   const startDay = luxonStart.toFormat("dd");
+  
+  // Valid datetime for HTML Time element
+  const startHtmlDate = start + "Z";
 
   // End date and time
   const luxonEnd = DateTime.fromFormat(end, "yyyy-MM-dd T", { zone: "UTC" })
@@ -55,6 +58,7 @@ const Event = ({
   const endTime = luxonEnd.toFormat("t");
   const endMonth = luxonEnd.toFormat("LLL");
   const endDay = luxonEnd.toFormat("dd");
+  const endHtmlDate = end + "Z";
 
   // Boolean to check if this is a same day event for conditional rendering elements
   const isSameDay = longStartDate === longEndDate;
@@ -68,13 +72,14 @@ const Event = ({
     return null;
   }
 
-  let wrapperClasses = "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-10 su-shadow-sm";
+  let wrapperClasses =
+    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-10 su-shadow-sm";
   let headlinePadding = "su-rs-px-2";
-  let detailsPadding = "su-rs-px-2"
+  let detailsPadding = "su-rs-px-2";
 
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
-    headlinePadding = "su-pt-02em";
+    headlinePadding = "su-pt-01em";
     detailsPadding = "";
   }
 
@@ -104,7 +109,10 @@ const Event = ({
       <FlexBox
         direction="col"
         element="article"
-        className={dcnb("event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-max-w-500 md:su-max-w-600", wrapperClasses)}
+        className={dcnb(
+          "event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-max-w-500 md:su-max-w-600",
+          wrapperClasses
+        )}
       >
         {!isMinimal && (
           <div className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2">
@@ -123,15 +131,26 @@ const Event = ({
         <DateBlock
           startMonth={startMonth}
           startDay={startDay}
+          startHtmlDate={startHtmlDate}
           endMonth={endMonth}
           endDay={endDay}
+          endHtmlDate={endHtmlDate}
           isSameDay={isSameDay}
           isMinimal={isMinimal}
-          className={isMinimal ? "" : "su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-z-10 su-rs-ml-1"}
+          className={
+            isMinimal
+              ? ""
+              : "su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-z-10 su-rs-ml-1"
+          }
         />
         <SbLink
           link={eventLink}
-          classes={dcnb("su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight", headlineSize, headlinePadding)}
+          classes={dcnb(
+            "su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+            headlineSize,
+            headlinePadding
+          )}
+          attributes={{ rel: "noopener nofollow" }}
         >
           <Heading
             level={headingLevel ?? 3}
@@ -147,7 +166,12 @@ const Event = ({
           />
         </SbLink>
         {!isMinimal && <TabLabel text="Event" />}
-        <div className={dcnb("event-card-details su-card-paragraph", detailsPadding)}>
+        <div
+          className={dcnb(
+            "event-card-details su-card-paragraph",
+            detailsPadding
+          )}
+        >
           <FlexBox direction="row" alignItems="start" className="su-mb-04em">
             <CalendarIcon className={iconClasses} aria-label="Event date" />
             <span>
