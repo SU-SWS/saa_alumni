@@ -124,6 +124,7 @@ const Event = ({
                 <CardImage
                   filename={filename}
                   imageFocus={imageFocus}
+                  size="vertical"
                   className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
                   loading="lazy"
                 />
