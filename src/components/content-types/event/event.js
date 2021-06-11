@@ -110,7 +110,7 @@ const Event = ({
         direction="col"
         element="article"
         className={dcnb(
-          "event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-max-w-500 md:su-max-w-600",
+          "event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-w-full su-max-w-500 md:su-max-w-600",
           wrapperClasses
         )}
       >
