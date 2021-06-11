@@ -6,10 +6,10 @@ import CreateBloks from "../../utilities/createBloks";
 import "../../styles/alert.css";
 
 const Alert = ({ blok }) => {
-  const isLinkDark = blok.type === "warning";
-  console.log(isLinkDark, "isLinkDark");
+  const { type, alertCta, label, heading, body } = blok;
+  const isLinkDark = type === "warning";
   const footerContent = (
-    <CreateBloks blokSection={blok.alertCta} isLinkDark={isLinkDark} />
+    <CreateBloks blokSection={alertCta} isLinkDark={isLinkDark} />
   );
 
   const customStyles = {
@@ -20,14 +20,14 @@ const Alert = ({ blok }) => {
   return (
     <SbEditable content={blok}>
       <DecanterAlert
-        type={blok.type}
-        label={blok.label}
-        heading={blok.heading}
-        hasDismiss={blok.hasDismiss}
+        type={type}
+        label={label}
+        heading={heading}
         footer={footerContent}
         classes={customStyles}
+        hasDismiss
       >
-        <RichTextRenderer wysiwyg={blok.body} />
+        <RichTextRenderer wysiwyg={body} />
       </DecanterAlert>
     </SbEditable>
   );

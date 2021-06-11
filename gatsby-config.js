@@ -13,6 +13,7 @@ require("dotenv").config({
 const storyblokRelations = [
   "localFooterPicker.localFooter",
   "perkCard.perkPicker",
+  "alertPicker.alert",
 ];
 
 module.exports = {

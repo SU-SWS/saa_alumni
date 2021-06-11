@@ -13,6 +13,7 @@ const InteriorPage = (props) => {
 
   return (
     <SbEditable content={blok}>
+      <CreateBloks blokSection={blok.alertPicker} />
       <Layout {...props}>
         <Container
           element="main"
