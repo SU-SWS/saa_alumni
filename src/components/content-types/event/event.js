@@ -46,9 +46,9 @@ const Event = ({
   const startTime = luxonStart.toFormat("t");
   const startMonth = luxonStart.toFormat("LLL");
   const startDay = luxonStart.toFormat("dd");
-  
+
   // Valid datetime for HTML Time element
-  const startHtmlDate = start + "Z";
+  const startHtmlDate = `${start}Z`;
 
   // End date and time
   const luxonEnd = DateTime.fromFormat(end, "yyyy-MM-dd T", { zone: "UTC" })
@@ -58,7 +58,7 @@ const Event = ({
   const endTime = luxonEnd.toFormat("t");
   const endMonth = luxonEnd.toFormat("LLL");
   const endDay = luxonEnd.toFormat("dd");
-  const endHtmlDate = end + "Z";
+  const endHtmlDate = `${end}Z`;
 
   // Boolean to check if this is a same day event for conditional rendering elements
   const isSameDay = longStartDate === longEndDate;
