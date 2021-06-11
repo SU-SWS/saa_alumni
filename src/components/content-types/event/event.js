@@ -115,7 +115,10 @@ const Event = ({
         )}
       >
         {!isMinimal && (
-          <div className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2">
+          <div
+            className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
+            aria-hidden="true"
+          >
             {filename?.startsWith("http") && (
               <figure className="su-overflow-hidden su-w-full su-h-full">
                 <CardImage
