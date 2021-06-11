@@ -154,7 +154,6 @@ const Event = ({
             headlineSize,
             headlinePadding
           )}
-          attributes={{ rel: "noopener nofollow" }}
         >
           <Heading
             level={headingLevel ?? 3}
