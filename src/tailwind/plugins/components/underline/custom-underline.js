@@ -6,7 +6,7 @@ module.exports = function () {
     const components = {
       // Add spacing between text and underline
       ".underline-offset": {
-        textUnderlineOffset: "0.13em",
+        textUnderlineOffset: "0.3rem",
       },
       ".underline-thick": {
         textDecorationThickness: "0.12em",
