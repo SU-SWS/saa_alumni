@@ -5,6 +5,8 @@ import CtaLink from "./cta/ctaLink";
 import CtaGroup from "./cta/ctaGroup";
 import Embed from "./embed/embed";
 import EmbedCard from "./cards/embedCard";
+import Event from "./content-types/event/event";
+import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
 import Hero from "./composite/hero";
 import InteriorPage from "./page-types/interiorPage";
@@ -27,6 +29,8 @@ const ComponentList = {
   ctaGroup: CtaGroup,
   embed: Embed,
   embedCard: EmbedCard,
+  event: Event,
+  eventCard: EventCard,
   grid: Grid,
   hero: Hero,
   interiorPage: InteriorPage,
