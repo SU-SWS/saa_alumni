@@ -68,14 +68,24 @@ const Event = ({
     return null;
   }
 
-  let headlineClasses = "su-type-2 md:su-type-1 lg:su-type-2";
+  let wrapperClasses = "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-10 su-shadow-sm";
+  let headlinePadding = "su-rs-px-2";
+  let detailsPadding = "su-rs-px-2"
+
+  if (isMinimal) {
+    wrapperClasses = "su-bg-transparent";
+    headlinePadding = "su-pt-02em";
+    detailsPadding = "";
+  }
+
+  let headlineSize = "su-type-2 md:su-type-1 lg:su-type-2";
 
   if (isBigHeadline) {
-    headlineClasses = dcnb("xl:su-type-3", headlineClasses);
+    headlineSize = dcnb("xl:su-type-3", headlineSize);
   }
 
   const iconClasses =
-    "su-inline-block su-flex-shrink-0 su-mt-01em su-mr-06em su-w-[2.4rem] su-h-[2.4rem]";
+    "su-inline-block su-flex-shrink-0 su-mt-01em su-mr-06em su-w-[1.1em]";
   let locationIcon = (
     <LocationMarkerIcon className={iconClasses} aria-label="Event location" />
   );
@@ -94,7 +104,7 @@ const Event = ({
       <FlexBox
         direction="col"
         element="article"
-        className="event-card su-group su-relative su-overflow-hidden su-bg-white su-text-black su-rs-pb-3 su-break-words su-basefont-23 su-max-w-500 md:su-max-w-600 su-border su-border-solid su-border-black-10 su-shadow-sm"
+        className={dcnb("event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-max-w-500 md:su-max-w-600", wrapperClasses)}
       >
         {!isMinimal && (
           <div className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2">
@@ -116,11 +126,12 @@ const Event = ({
           endMonth={endMonth}
           endDay={endDay}
           isSameDay={isSameDay}
-          className="su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-z-10 su-rs-ml-1"
+          isMinimal={isMinimal}
+          className={isMinimal ? "" : "su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-z-10 su-rs-ml-1"}
         />
         <SbLink
           link={eventLink}
-          classes={dcnb("su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-rs-px-2 su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight", headlineClasses)}
+          classes={dcnb("su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight", headlineSize, headlinePadding)}
         >
           <Heading
             level={headingLevel ?? 3}
@@ -136,7 +147,7 @@ const Event = ({
           />
         </SbLink>
         {!isMinimal && <TabLabel text="Event" />}
-        <div className="event-card-details su-rs-px-2 su-card-paragraph">
+        <div className={dcnb("event-card-details su-card-paragraph", detailsPadding)}>
           <FlexBox direction="row" alignItems="start" className="su-mb-04em">
             <CalendarIcon className={iconClasses} aria-label="Event date" />
             <span>
