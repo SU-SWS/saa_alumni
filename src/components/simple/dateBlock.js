@@ -31,7 +31,7 @@ const DateBlock = ({
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
     dateClasses = "su-justify-start su-text-black su-bg-transparent";
-    startDatePadding = "su-pl-0 su-pr-10";
+    startDatePadding = "su-pl-0 su-pr-12";
   }
 
   return (
