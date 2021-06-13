@@ -1,4 +1,5 @@
 import BasicCard from "./cards/basicCard";
+import BasicPage from "./page-types/basicPage";
 import ComponentNotFound from "./component_not_found";
 import CtaButton from "./cta/ctaButton";
 import CtaLink from "./cta/ctaLink";
@@ -31,6 +32,7 @@ import Redirect from "./redirect/Redirect";
 
 const ComponentList = {
   basicCard: BasicCard,
+  basicPage: BasicPage,
   ctaButton: CtaButton,
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,

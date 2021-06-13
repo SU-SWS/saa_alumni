@@ -81,7 +81,7 @@ const Section = ({
               level={headingLevel ?? 2}
               font="serif"
               weight="bold"
-              className="su-mb-02em su-type-5"
+              className="su-mb-02em su-type-4 lg:su-type-5"
               srOnly={isSrOnlyTitle}
             >
               {title}
