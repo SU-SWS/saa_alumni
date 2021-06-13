@@ -4,6 +4,9 @@ import CtaButton from "./cta/ctaButton";
 import CtaLink from "./cta/ctaLink";
 import CtaGroup from "./cta/ctaGroup";
 import Embed from "./embed/embed";
+import EmbedCard from "./cards/embedCard";
+import Event from "./content-types/event/event";
+import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
 import Hero from "./composite/hero";
 import InteriorPage from "./page-types/interiorPage";
@@ -20,6 +23,7 @@ import NavItem from "./navigation/navItem";
 import Page from "./page";
 import Perk from "./content-types/perk/perk";
 import PerkCard from "./cards/perkCard";
+import PerkCardHorizontal from "./cards/perkCardHorizontal";
 import Poster from "./composite/poster";
 import Section from "./layout/section";
 import Wysiwyg from "./simple/wysiwyg";
@@ -31,6 +35,9 @@ const ComponentList = {
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,
   embed: Embed,
+  embedCard: EmbedCard,
+  event: Event,
+  eventCard: EventCard,
   grid: Grid,
   hero: Hero,
   interiorPage: InteriorPage,
@@ -47,6 +54,7 @@ const ComponentList = {
   page: Page,
   perk: Perk,
   perkCard: PerkCard,
+  perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
   section: Section,
   wysiwyg: Wysiwyg,

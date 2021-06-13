@@ -32,7 +32,10 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
             </nav>
             <SearchBar />
           </FlexBox>
-          <CreateBloks blokSection={mainNav} className="su-hidden xl:su-flex xl:su-mt-20" />
+          <CreateBloks
+            blokSection={mainNav}
+            className="su-hidden xl:su-flex xl:su-mt-20"
+          />
         </FlexCell>
       </FlexBox>
       <CreateBloks

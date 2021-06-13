@@ -1,14 +1,17 @@
 import React from "react";
 import CreateStories from "../../utilities/createStories";
 
-const PerkCard = ({ blok: { perkPicker, headingLevel, cardImageFocus } }) => (
+const PerkCardHorizontal = ({
+  blok: { perkPicker, headingLevel, spacingBottom, cardImageFocus },
+}) => (
   <CreateStories
     stories={perkPicker}
     layout="card"
-    orientation="vertical"
+    orientation="horizontal"
     headingLevel={headingLevel}
+    spacingBottom={spacingBottom}
     cardImageFocus={cardImageFocus}
   />
 );
 
-export default PerkCard;
+export default PerkCardHorizontal;
