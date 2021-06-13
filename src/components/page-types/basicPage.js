@@ -34,20 +34,22 @@ const BasicPage = (props) => {
           className="basic-page su-relative su-flex-grow su-w-full"
           width="full"
         >
-          <CreateBloks blokSection={hero} />
-          <Heading level={1} align="center" font="serif" srOnly={isSrOnlyTitle}>
-            {title}
-          </Heading>
+          <header>
+            <CreateBloks blokSection={hero} />
+            <Heading level={1} align="center" font="serif" srOnly={isSrOnlyTitle} id="page-title">
+              {title}
+            </Heading>
+          </header>
           {numAbove > 0 && (
-            <div id="basic-page-above-content">
+            <div className="basic-page-above-content">
               <CreateBloks blokSection={aboveContent} />
             </div>
           )}
-          <div id="basic-page-content">
+          <div className="basic-page-content">
             <CreateBloks blokSection={content} />
           </div>
           {numBelow > 0 && (
-            <div id="basic-page-below-content">
+            <div className="basic-page-below-content">
               <CreateBloks blokSection={belowContent} />
             </div>
           )}

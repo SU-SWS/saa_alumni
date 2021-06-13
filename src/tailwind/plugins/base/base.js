@@ -5,6 +5,9 @@
 module.exports = function () {
   return function ({ addBase, config }) {
     addBase({
+      html: {
+        scrollBehavior: "smooth",
+      },
       a: {
         color: config("theme.colors.digital-red.light"),
 
