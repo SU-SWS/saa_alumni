@@ -7,9 +7,19 @@ import Logo from "./logo";
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
   <SbEditable content={blok}>
+    <Container width="full" className="masthead-mobile su-relative lg:su-hidden su-bg-cardinal-red-xdark">
+      <nav
+        aria-label="Utility Menu"
+        className="su-w-full su-text-right su-bg-digital-red"
+      >
+        <ul className="su-cc su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-14 sm:su-text-16 children:su-inline-block children:su-ml-[2em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset">
+          <CreateBloks blokSection={utilityNav} hasExternalIcon />
+        </ul>
+      </nav>
+    </Container>
     <Container
-      className={`masthead su-relative ${
-        hasHero ? "lg:su-absolute" : ""
+      className={`masthead-desktop su-relative su-hidden lg:su-block ${
+        hasHero ? "su-absolute" : ""
       }  su-z-20`}
       width="full"
     >
