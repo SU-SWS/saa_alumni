@@ -1,11 +1,11 @@
 import React from "react";
 import { dcnb } from "cnbuilder";
 import { render } from "storyblok-rich-text-react-renderer";
+import { GridCell } from "decanter-react";
 import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import WidthBox from "../layout/widthBox";
 import getNumBloks from "../../utilities/getNumBloks";
-import { GridCell } from "decanter-react";
 
 const BasicContentNoSidebar = ({ blok: { content, intro }, className }) => {
   const renderedIntro = render(intro);

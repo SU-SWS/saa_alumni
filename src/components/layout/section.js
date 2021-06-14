@@ -35,7 +35,7 @@ const Section = ({
   const sectionBgColor = bgColors[bgColor] ?? bgColors.white;
   let alignment = "su-text-center";
   let bodyAlign = "su-mx-auto";
-  let headlineAlign = "su-mx-auto"
+  let headlineAlign = "su-mx-auto";
 
   let superLinkColor =
     "su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue";
@@ -83,7 +83,10 @@ const Section = ({
               level={headingLevel ?? 2}
               font="serif"
               weight="bold"
-              className={dcnb("su-mb-02em su-type-4 lg:su-type-5 su-max-w-800", headlineAlign)}
+              className={dcnb(
+                "su-mb-02em su-type-4 lg:su-type-5 su-max-w-800",
+                headlineAlign
+              )}
               srOnly={isSrOnlyTitle}
             >
               {title}
