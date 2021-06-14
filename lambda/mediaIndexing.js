@@ -5,7 +5,7 @@ const cheerio = require('cheerio')
 exports.handler = async function(event, context) {
   const podcastEpisodes = await getItunesPodcasts()
   const soundcloudItems = await getSoundcloudItems()
-  console.log(soundcloudItems)
+  console.log('soundcloud', soundcloudItems)
 }
 
 async function getItunesPodcasts() {
@@ -22,7 +22,9 @@ async function getItunesPodcasts() {
           title: item.trackName,
           url: item.trackViewUrl,
           image: item.artworkUrl160,
-          releaseDate: item.releaseDate
+          releaseDate: item.releaseDate,
+          // TODO: Standardize format with Soundcloud
+          duration: item.trackTimeMillis
         })
       }
     }
@@ -44,6 +46,7 @@ async function getSoundcloudItems() {
       title,
       url,
       releaseDate,
+      // TODO: Standardize format with iTunes.
       duration
     })
   })
