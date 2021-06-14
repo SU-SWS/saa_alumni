@@ -29,10 +29,10 @@ const BasicPage = (props) => {
   const numBelow = getNumBloks(belowContent);
 
   // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
-  let contentTopPadding = "";
+  let contentPadding = "su-rs-pb-7";
 
   if (numAbove > 0 || isSrOnlyTitle) {
-    contentTopPadding = "su-rs-py-7";
+    contentPadding = "su-rs-py-7";
   }
 
   return (
@@ -63,10 +63,10 @@ const BasicPage = (props) => {
             </div>
           )}
           {pageLayout === "no-sidebar" && (
-            <BasicContentNoSidebar className={contentTopPadding} {...props} />
+            <BasicContentNoSidebar className={contentPadding} {...props} />
           )}
           {pageLayout === "left-sidebar" && (
-            <BasicContentLeftSidebar className={contentTopPadding} {...props} />
+            <BasicContentLeftSidebar className={contentPadding} {...props} />
           )}
           {numBelow > 0 && (
             <div className="basic-page-below-content">
