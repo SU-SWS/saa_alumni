@@ -4,11 +4,13 @@ import { Container, Heading } from "decanter-react";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
+import BasicContentNoSidebar from "../partials/basicContentNoSidebar";
 
 const BasicPage = (props) => {
   // Destructure.
   const {
     blok: {
+      pageLayout,
       hero,
       aboveContent,
       content,
@@ -42,7 +44,7 @@ const BasicPage = (props) => {
               font="serif"
               srOnly={isSrOnlyTitle}
               id="page-title"
-              className="su-cc su-mb-0 su-rs-py-7 su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
+              className="su-cc su-mb-0 su-rs-pt-7 su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
             >
               {title}
             </Heading>
@@ -52,9 +54,9 @@ const BasicPage = (props) => {
               <CreateBloks blokSection={aboveContent} />
             </div>
           )}
-          <div className="basic-page-content">
-            <CreateBloks blokSection={content} />
-          </div>
+          {pageLayout === "no-sidebar" &&
+            <BasicContentNoSidebar {...props} />
+          }
           {numBelow > 0 && (
             <div className="basic-page-below-content">
               <CreateBloks blokSection={belowContent} />
