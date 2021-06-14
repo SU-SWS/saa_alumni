@@ -3,7 +3,7 @@ import SearchFacet from "../components/search/searchFacet";
 import SearchField from "../components/search/searchField";
 import SearchPager from "../components/search/searchPager";
 import SearchResults from "../components/search/searchResults";
-import { Container, GridCell, Grid, Heading } from "decanter-react";
+import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
 
 const suggestions = [
   "Lorem ipsum dolor",
@@ -54,7 +54,7 @@ const sampleResultNoImage = {
 
 let hits = [];
 for (let i = 0; i < 16; i++) {
-  const includeImage = Math.random() > 0.5 ? true : false;
+  const includeImage = false;
   hits.push(includeImage ? sampleResultWithImage : sampleResultNoImage);
 }
 
@@ -77,36 +77,43 @@ const results = {
 const SearchStyling = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [activePage, setActivePage] = useState(2);
+  const hasFacets = true;
   return (
     <>
       <Container
         element="section"
         width="full"
-        className="su-p-30 su-text-center su-bg-foggy-light"
+        className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light"
       >
         <Heading level={1} font="serif" weight="bold" className="su-mb-0">
           Search For...
         </Heading>
       </Container>
-      <Container element="section" width="site" className="">
-        <Grid gap xs={12} className="su-justify-end">
-          <GridCell xs={12} lg={8}>
+      <Container
+        element="section"
+        width="site"
+        className="su-py-45 md:su-py-80"
+      >
+        <FlexBox gap justifyContent="end">
+          <FlexCell xs="full" lg={8}>
             <SearchField
               autocompleteSuggestions={suggestions}
               onInput={(query) => {}}
             />
-          </GridCell>
-        </Grid>
-        <Grid gap xs={12}>
-          <GridCell xs={12} lg={4}>
-            <SearchFacet
-              attribute="siteName"
-              facetValues={results.facets.siteName}
-              selectedOptions={selectedOptions}
-              onChange={(values) => setSelectedOptions(values)}
-            />
-          </GridCell>
-          <GridCell xs={12} lg={8}>
+          </FlexCell>
+        </FlexBox>
+        <FlexBox wrap="wrap">
+          {hasFacets && (
+            <FlexCell xs="full" lg={4}>
+              <SearchFacet
+                attribute="siteName"
+                facetValues={results.facets.siteName}
+                selectedOptions={selectedOptions}
+                onChange={(values) => setSelectedOptions(values)}
+              />
+            </FlexCell>
+          )}
+          <FlexCell xs="full" lg={hasFacets ? 8 : "full"}>
             <SearchResults results={results} />
             <SearchPager
               activePage={activePage}
@@ -114,8 +121,8 @@ const SearchStyling = () => {
               maxLinks={6}
               selectPage={(page) => setActivePage(page)}
             />
-          </GridCell>
-        </Grid>
+          </FlexCell>
+        </FlexBox>
       </Container>
     </>
   );

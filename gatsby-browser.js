@@ -11,7 +11,6 @@ import { GlobalStateProvider } from "./src/contexts/GlobalContext";
 
 // CSS
 import "./src/styles/global.css";
-import "decanter/dist/decanter.css";
 
 // Exports.
 export const wrapRootElement = ({ element }) => (
