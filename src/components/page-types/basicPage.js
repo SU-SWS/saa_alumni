@@ -17,7 +17,6 @@ const BasicPage = (props) => {
       belowContent,
       title,
       isSrOnlyTitle,
-      intro,
     },
     blok,
     hasHero,
@@ -26,6 +25,13 @@ const BasicPage = (props) => {
   const numHero = getNumBloks(hero);
   const numAbove = getNumBloks(aboveContent);
   const numBelow = getNumBloks(belowContent);
+
+  // Only add top padding to Main Content if the Above Content region is populated
+  let contentTopPadding = "";
+
+  if (numAbove > 0) {
+    contentTopPadding = "su-rs-py-7";
+  }
 
   return (
     <SbEditable content={blok}>
@@ -44,7 +50,7 @@ const BasicPage = (props) => {
               font="serif"
               srOnly={isSrOnlyTitle}
               id="page-title"
-              className="su-cc su-mb-0 su-rs-pt-7 su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
+              className="su-cc su-mb-0 su-rs-py-7 su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
             >
               {title}
             </Heading>
@@ -54,9 +60,9 @@ const BasicPage = (props) => {
               <CreateBloks blokSection={aboveContent} />
             </div>
           )}
-          {pageLayout === "no-sidebar" &&
-            <BasicContentNoSidebar {...props} />
-          }
+          {pageLayout === "no-sidebar" && (
+            <BasicContentNoSidebar className={contentTopPadding} {...props} />
+          )}
           {numBelow > 0 && (
             <div className="basic-page-below-content">
               <CreateBloks blokSection={belowContent} />
