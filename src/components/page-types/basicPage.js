@@ -43,7 +43,7 @@ const BasicPage = (props) => {
           className="basic-page su-relative su-flex-grow su-w-full"
           width="full"
         >
-          <header>
+          <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
             <Heading
               level={1}
@@ -51,7 +51,7 @@ const BasicPage = (props) => {
               font="serif"
               srOnly={isSrOnlyTitle}
               id="page-title"
-              className="su-cc su-mb-0 su-rs-py-7 su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
+              className="su-cc su-mb-0 su-rs-py-7 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
             >
               {title}
             </Heading>
