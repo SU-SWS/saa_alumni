@@ -4,13 +4,13 @@ import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import WidthBox from "../layout/widthBox";
 
-const BasicContentNoSidebar = ({
-  blok: { content, intro },
-  className,
-}) => (
+const BasicContentNoSidebar = ({ blok: { content, intro }, className }) => (
   <WidthBox
     width="8"
-    className={dcnb("basic-page-main-content su-basefont-23 su-mx-auto", className)}
+    className={dcnb(
+      "basic-page-main-content su-basefont-23 su-mx-auto",
+      className
+    )}
   >
     <RichTextRenderer
       wysiwyg={intro}

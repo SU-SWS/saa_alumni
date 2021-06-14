@@ -5,6 +5,7 @@ import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import BasicContentNoSidebar from "../partials/basicContentNoSidebar";
+import BasicContentLeftSidebar from "../partials/basicContentLeftSidebar";
 
 const BasicPage = (props) => {
   // Destructure.
@@ -26,10 +27,10 @@ const BasicPage = (props) => {
   const numAbove = getNumBloks(aboveContent);
   const numBelow = getNumBloks(belowContent);
 
-  // Only add top padding to Main Content if the Above Content region is populated
+  // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
   let contentTopPadding = "";
 
-  if (numAbove > 0) {
+  if (numAbove > 0 || isSrOnlyTitle) {
     contentTopPadding = "su-rs-py-7";
   }
 
@@ -62,6 +63,9 @@ const BasicPage = (props) => {
           )}
           {pageLayout === "no-sidebar" && (
             <BasicContentNoSidebar className={contentTopPadding} {...props} />
+          )}
+          {pageLayout === "left-sidebar" && (
+            <BasicContentLeftSidebar className={contentTopPadding} {...props} />
           )}
           {numBelow > 0 && (
             <div className="basic-page-below-content">
