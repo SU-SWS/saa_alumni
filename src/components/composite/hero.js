@@ -29,12 +29,14 @@ const Hero = ({
   },
   blok,
 }) => {
-  let heroHeadlineSize = "su-text-m3 md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900";
+  let heroHeadlineSize =
+    "su-text-m3 md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900";
 
   if (headlineSize === "large") {
     heroHeadlineSize = "su-text-m4 md:su-text-m6 lg:su-text-m8";
   } else if (headlineSize === "small") {
-    heroHeadlineSize = "su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900";
+    heroHeadlineSize =
+      "su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900";
   }
 
   let gradientFrom = "su-from-transparent";
@@ -62,7 +64,10 @@ const Hero = ({
           </figure>
         )}
         <div
-          className={dcnb("su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black", gradientFrom)}
+          className={dcnb(
+            "su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black",
+            gradientFrom
+          )}
           aria-hidden="true"
         />
         <Container className="su-relative su-rs-pt-9 su-rs-pb-4">
