@@ -5,6 +5,7 @@ import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import WidthBox from "../layout/widthBox";
 import getNumBloks from "../../utilities/getNumBloks";
+import { GridCell } from "decanter-react";
 
 const BasicContentNoSidebar = ({ blok: { content, intro }, className }) => {
   const renderedIntro = render(intro);
@@ -23,10 +24,12 @@ const BasicContentNoSidebar = ({ blok: { content, intro }, className }) => {
         className
       )}
     >
-      <RichTextRenderer
-        wysiwyg={intro}
-        className="su-text-m1 xl:su-text-m2 su-rs-mb-3"
-      />
+      {hasIntro && (
+        <RichTextRenderer
+          wysiwyg={intro}
+          className="su-text-m1 xl:su-text-m2 su-rs-mb-3"
+        />
+      )}
       <CreateBloks blokSection={content} />
     </WidthBox>
   );

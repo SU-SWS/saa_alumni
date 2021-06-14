@@ -1,7 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import { Container, Heading } from "decanter-react";
-import { render } from "storyblok-rich-text-react-renderer";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
@@ -15,13 +14,11 @@ const BasicPage = (props) => {
       pageLayout,
       hero,
       aboveContent,
-      content,
       belowContent,
       title,
       isSrOnlyTitle,
     },
     blok,
-    hasHero,
   } = props;
 
   const numHero = getNumBloks(hero);

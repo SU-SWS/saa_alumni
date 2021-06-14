@@ -33,10 +33,12 @@ const BasicContentLeftSidebar = ({
         lg={8}
         className="basic-page-main-content su-basefont-23 su-ml-0 2xl:su-col-start-5"
       >
-        <RichTextRenderer
-          wysiwyg={intro}
-          className="su-text-m1 xl:su-text-m2 su-rs-mb-3"
-        />
+        {hasIntro && (
+          <RichTextRenderer
+            wysiwyg={intro}
+            className="su-text-m1 xl:su-text-m2 su-rs-mb-3"
+          />
+        )}
         <CreateBloks blokSection={content} />
       </GridCell>
     </Grid>

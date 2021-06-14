@@ -10,6 +10,7 @@ module.exports = function () {
       },
       a: {
         color: config("theme.colors.digital-red.light"),
+        transition: "color 0.25s ease-in-out",
 
         "&:hover, &:focus": {
           color: config("theme.colors.cardinal-red.DEFAULT"),
