@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, createRef } from "react";
 import { X } from "react-hero-icon/solid";
 import { Search } from "react-hero-icon/solid";
 
 const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
   const [query, setQuery] = useState("");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
+  const inputWrapper = createRef();
+
   const submitHandler = (e) => {
     e.preventDefault();
     setShowAutocomplete(false);
@@ -20,7 +22,25 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
   const clearHandler = () => {
     setQuery("");
     setShowAutocomplete(false);
+    onSubmit("");
   };
+
+  const selectSuggestion = (e, suggestion) => {
+    e.preventDefault();
+    setQuery(suggestion);
+    setShowAutocomplete(false);
+    onSubmit(suggestion)
+  }
+
+  const clickOutside = (e) => {
+    if (inputWrapper.current && !inputWrapper.current.contains(e.target)) {
+      setShowAutocomplete(false);
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener("mousedown", clickOutside);
+  })
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
   hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50`;
@@ -43,13 +63,12 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
       <form onSubmit={submitHandler}>
         <div className="su-flex su-items-center">
           <span className=""></span>
-          <div className="su-items-end su-flex su-w-full su-items-center su-relative">
+          <div className="su-items-end su-flex su-w-full su-items-center su-relative" ref={inputWrapper}>
             <label className="su-flex-grow su-max-w-full">
               <span className="su-sr-only">Search</span>
               <input
                 type="text"
                 onChange={inputHandler}
-                onBlur={() => setShowAutocomplete(false)}
                 className={inputClasses}
                 value={query}
               />
@@ -66,7 +85,7 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
                 <ul className="su-list-unstyled">
                   {autocompleteSuggestions.map((suggestion, index) => (
                     <li key={`autocomplete-item-${index}`} className="su-mb-0">
-                      <a href="" className={autocompleteLinkClasses}>
+                      <a href="" className={autocompleteLinkClasses} onClick={(e) => selectSuggestion(e, suggestion)}>
                         {suggestion}
                       </a>
                     </li>

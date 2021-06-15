@@ -14,7 +14,7 @@ const SearchPage = () => {
   const [page, setPage] = useState(0)
   const [selectedFacets, setSelectedFacets] = useState({
     siteName: []
-  }) 
+  })
 
   const client = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY)
   const index = client.initIndex('crawler_federated-search')
