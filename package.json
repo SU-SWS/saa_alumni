@@ -42,9 +42,10 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && npm run crawl",
     "develop": "gatsby develop",
     "start": "npm run develop",
+    "crawl": "node ./scripts/start_crawler.js",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint ./src",
