@@ -8,7 +8,7 @@ const OpenSearchModalButton = (props) => (
     className={{
       "su-leading-display": false,
       "hocus:su-bg-transparent": false,
-      "search-button su-pl-16 su-pr-13 su-rounded-full su-text-18 su-leading-none su-border-2 su-border-solid su-border-digital-red-xlight su-transition-colors lg:hocus:su-bg-cardinal-red-xxdark xl:hocus:su-bg-cardinal-red-xdark": true,
+      "search-button su-pl-16 su-pr-13 su-pt-2 su-rounded-full su-text-18 su-leading-none su-border-2 su-border-solid su-border-digital-red-xlight su-transition-colors lg:hocus:su-bg-cardinal-red-xxdark xl:hocus:su-bg-cardinal-red-xdark lg:hocus:su-no-underline": true,
     }}
     variant="unset"
     size="minimal"

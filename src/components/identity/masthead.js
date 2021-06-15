@@ -56,7 +56,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
       </FlexBox>
       <CreateBloks
         blokSection={mainNav}
-        className="su-flex xl:su-hidden su-pl-26 su-rs-pt-2 su-bg-masthead-black-bottom"
+        className="su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-bg-masthead-black-bottom"
       />
     </Container>
   </SbEditable>
