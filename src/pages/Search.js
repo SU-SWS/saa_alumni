@@ -3,8 +3,9 @@ import SearchField from '../components/search/searchField'
 import SearchResults from '../components/search/searchResults'
 import SearchPager from '../components/search/searchPager'
 import SearchFacet from '../components/search/searchFacet'
+import SearchNoResults from '../components/search/searchNoResults'
 import algoliasearch from 'algoliasearch'
-
+import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
 
 const SearchPage = () => {
   const [suggestions, setSuggestions] = useState([])
@@ -13,7 +14,7 @@ const SearchPage = () => {
   const [page, setPage] = useState(0)
   const [selectedFacets, setSelectedFacets] = useState({
     siteName: []
-  })
+  }) 
 
   const client = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY)
   const index = client.initIndex('crawler_federated-search')
@@ -85,28 +86,64 @@ const SearchPage = () => {
     setResults(algoliaResults)
     return
   }
-
-
+  
 
   return (
-    <div>
-      <SearchField
-        onInput={(query) => updateAutocomplete(query)}
-        onSubmit={(query) => submitSearchQuery(query)}
-        autocompleteSuggestions={suggestions}
-      />
-      <SearchResults results={results}></SearchResults>
-      <SearchPager activePage={page} nbPages={results.nbPages} maxLinks={6} selectPage={updatePage}></SearchPager>
-     
-      {results.facets && results.facets.siteName &&
-        <SearchFacet 
-          attribute="siteName" 
-          facetValues={results.facets.siteName} 
-          selectedOptions={selectedFacets.siteName}
-          onChange={(values) => updateFacetSelections("siteName", values)}
-        ></SearchFacet>
-      }
-    </div>
+    <>
+      <Container
+        element="section"
+        width="full"
+        className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light su-flex-wrap"
+      >
+        <Heading level={1} font="serif" weight="bold" className="su-mb-0">
+          Search For...
+        </Heading>
+      </Container>
+      <Container
+        element="section"
+        width="site"
+        className="su-py-45 md:su-py-80 "
+      >
+        <FlexBox gap justifyContent="center">
+          <FlexCell xs="full" lg={results.facets ? 6 : 8}>
+            <SearchField
+              onInput={(query) => updateAutocomplete(query)}
+              onSubmit={(query) => submitSearchQuery(query)}
+              autocompleteSuggestions={suggestions}
+            />
+          </FlexCell>
+        </FlexBox>
+        <FlexBox
+          wrap="wrap"
+          justifyContent={results.facets ? "start" : "center"}
+          className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]"
+        >
+          {results.facets && (
+            <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
+            {results.facets.siteName &&
+              <SearchFacet 
+                attribute="siteName" 
+                facetValues={results.facets.siteName} 
+                selectedOptions={selectedFacets.siteName}
+                onChange={(values) => updateFacetSelections("siteName", values)}
+              ></SearchFacet>
+            }
+            </FlexCell>
+          )}
+          <FlexCell xs="full" lg={8}>
+            {results.nbHits > 0 &&
+              <>
+                <SearchResults results={results}></SearchResults>
+                <SearchPager activePage={page} nbPages={results.nbPages} maxLinks={6} selectPage={updatePage}></SearchPager>
+              </>
+            }
+            {!results.nbHits && 
+              <SearchNoResults query={query} />
+            }
+          </FlexCell>
+        </FlexBox>
+      </Container>
+    </>
   )
 }
 
