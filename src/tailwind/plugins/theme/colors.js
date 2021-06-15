@@ -7,6 +7,10 @@ module.exports = function () {
       DEFAULT: "rgba(0, 0, 0, 10%)", // For card borders
       20: "rgba(0, 0, 0, 20%)", // For use in linear gradients
     },
+    "masthead-black": {
+      top: "rgba(13, 18, 17, 0.95)",
+      bottom: "rgba(26, 31, 30, 0.85)",
+    },
     "saa-black": "#181D1C",
     "digital-red-xlight": "#F83535", // Passed contrast test for black background
     "cardinal-red": {

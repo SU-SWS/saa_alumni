@@ -8,13 +8,14 @@ import {
   SrOnlyText,
 } from "decanter-react";
 import { ArrowDownIcon } from "@heroicons/react/outline";
+import { dcnb } from "cnbuilder";
 import FullWidthImage from "../media/fullWidthImage";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 
 const Hero = ({
   blok: {
-    isSmallHeadline,
+    headlineSize,
     isDarkGradient,
     imageFocus,
     cta,
@@ -28,10 +29,14 @@ const Hero = ({
   },
   blok,
 }) => {
-  let headlineSize = "su-text-m4 md:su-text-m6 lg:su-text-m8";
+  let heroHeadlineSize =
+    "su-text-m3 md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900";
 
-  if (isSmallHeadline) {
-    headlineSize = "su-text-m3 md:su-text-m5 lg:su-text-m7";
+  if (headlineSize === "large") {
+    heroHeadlineSize = "su-text-m4 md:su-text-m6 lg:su-text-m8";
+  } else if (headlineSize === "small") {
+    heroHeadlineSize =
+      "su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900";
   }
 
   let gradientFrom = "su-from-transparent";
@@ -44,7 +49,10 @@ const Hero = ({
 
   return (
     <SbEditable content={blok}>
-      <Container className="su-relative su-bg-saa-black" width="full">
+      <Container
+        className="hero su-relative su-bg-saa-black lg:su-top-0"
+        width="full"
+      >
         {filename?.startsWith("http") && (
           <figure className="su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full">
             <FullWidthImage
@@ -56,7 +64,10 @@ const Hero = ({
           </figure>
         )}
         <div
-          className={`su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b ${gradientFrom} su-to-saa-black`}
+          className={dcnb(
+            "su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black",
+            gradientFrom
+          )}
           aria-hidden="true"
         />
         <Container className="su-relative su-rs-pt-9 su-rs-pb-4">
@@ -64,7 +75,7 @@ const Hero = ({
             {(sansSuper || serifSuper || headline || sansSub) && (
               <FlexCell className="su-text-center su-text-white">
                 {sansSuper && (
-                  <p className="su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-0">
+                  <p className="su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-01em">
                     {sansSuper}
                   </p>
                 )}
@@ -78,7 +89,10 @@ const Hero = ({
                     level={headingLevel ?? 1}
                     font="serif"
                     weight="bold"
-                    className={`su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em ${headlineSize}`}
+                    className={dcnb(
+                      "su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em",
+                      heroHeadlineSize
+                    )}
                   >
                     {headline}
                   </Heading>
