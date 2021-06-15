@@ -2,7 +2,7 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { Container, FlexBox, FlexCell } from "decanter-react";
 import CreateBloks from "../../utilities/createBloks";
-import SearchBar from "../search/searchBar";
+import SearchButton from "../search/searchButton";
 import Logo from "./logo";
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
@@ -39,11 +39,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
               aria-label="Utility Menu"
               className="su-inline-block su-text-right su-flex-grow"
             >
-              <ul className="su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-mr-[2em] children:su-mb-0 su-underline-offset">
+              <ul className="su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-leading-[3.4rem] children:su-mr-[2em] children:su-mb-0 su-underline-offset">
                 <CreateBloks blokSection={utilityNav} hasExternalIcon />
               </ul>
             </nav>
-            <SearchBar />
+            <SearchButton />
           </FlexBox>
           <CreateBloks
             blokSection={mainNav}
