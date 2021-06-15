@@ -7,14 +7,14 @@ import CreateBloks from "../../utilities/createBloks";
 const InteriorPage = (props) => {
   // Destructure.
   const {
-    blok: { title, content },
+    blok: { title, content, alertPicker, alert },
     blok,
   } = props;
 
   return (
     <SbEditable content={blok}>
-      <CreateBloks blokSection={blok.alertPicker} />
-      <CreateBloks blokSection={blok.alert} />
+      <CreateBloks blokSection={alertPicker} />
+      <CreateBloks blokSection={alert} />
       <Layout {...props}>
         <Container
           element="main"
