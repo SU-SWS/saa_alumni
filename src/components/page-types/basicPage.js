@@ -17,6 +17,8 @@ const BasicPage = (props) => {
       belowContent,
       title,
       isSrOnlyTitle,
+      alertPicker,
+      alert,
     },
     blok,
   } = props;
@@ -34,6 +36,8 @@ const BasicPage = (props) => {
 
   return (
     <SbEditable content={blok}>
+      <CreateBloks blokSection={alertPicker} />
+      <CreateBloks blokSection={alert} />
       <Layout hasHero={numHero > 0} {...props}>
         <Container
           element="main"
