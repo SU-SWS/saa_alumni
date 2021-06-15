@@ -12,6 +12,7 @@ const OpenSearchModalButton = (props) => (
     }}
     variant="unset"
     size="minimal"
+    aria-label="Search Stanford Alumni sites"
     {...props}
   >
     <span className="su-sr-only lg:su-not-sr-only su-leading-none">Search</span>

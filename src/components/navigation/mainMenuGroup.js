@@ -23,7 +23,7 @@ const MainMenuGroup = ({
           {parentTextSecond && (
             <>
               <br className="su-hidden xl:su-inline 2xl:su-hidden" />
-              {` ${parentTextSecond}`}
+              {`${parentTextSecond}`}
             </>
           )}
           <ChevronDownIcon
