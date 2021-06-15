@@ -2,8 +2,8 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { Container, FlexBox, FlexCell } from "decanter-react";
 import CreateBloks from "../../utilities/createBloks";
-import SearchButton from "../search/searchButton";
 import Logo from "./logo";
+import OpenSearchModalButton from "../search/openSearchModalButton";
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
   <SbEditable content={blok}>
@@ -43,7 +43,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
                 <CreateBloks blokSection={utilityNav} hasExternalIcon />
               </ul>
             </nav>
-            <SearchButton />
+            <OpenSearchModalButton />
           </FlexBox>
           <CreateBloks
             blokSection={mainNav}

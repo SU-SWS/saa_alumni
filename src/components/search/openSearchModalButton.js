@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "decanter-react";
 import { SearchIcon } from "@heroicons/react/solid";
 
-const SearchButton = (props) => (
+const OpenSearchModalButton = (props) => (
   <Button
     type="button"
     className={{
@@ -22,4 +22,4 @@ const SearchButton = (props) => (
   </Button>
 );
 
-export default SearchButton;
+export default OpenSearchModalButton;
