@@ -61,7 +61,7 @@ const MainMenuGroup = ({
             as="ul"
             className={`${
               panelFacing === "left" ? "lg:su-right-0" : ""
-            } su-list-unstyled su-shadow-md su-w-[25rem] xl:su-w-[28rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
+            } su-list-unstyled su-shadow-md su-w-[28rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
           >
             <CreateBloks blokSection={menuItems} />
           </Popover.Panel>
