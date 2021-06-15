@@ -23,13 +23,20 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
   };
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
-  hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-20 su-right-0 md:su-right-50`;
+  hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50`;
 
   const inputClasses = `su-text-30 su-font-semibold su-w-full su-flex-1 su-border-0 su-border-b
-  su-border-solid su-border-black-60 su-pl-20 su-pr-70 md:su-pr-126 su-py-10 su-text-m2`;
+  su-border-solid su-border-black-60 su-pl-20 su-pr-70 xl:su-pr-126 su-py-10 su-text-m2`;
 
   const submitBtnClasses = `su-w-40 su-h-40 su-rounded-full su-bg-digital-red-light
    su-p-10 su-origin-center su-transform su-rotate-90 su-ml-10`;
+
+  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
+   su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
+
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-white su-p-10 su-shadow-md su-w-full su-border
+   su-border-digital-red-light su-rounded-b-[0.5rem]
+   ${showAutocomplete ? "" : "su-hidden"}`;
 
   return (
     <div>
@@ -54,19 +61,14 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
             >
               Clear <X className="su-inline-block su-ml-3 su-mt-5" />
             </button>
-            <div
-              className={`su-absolute su-top-[4rem] su-bg-white su-px-20 su-py-20 su-shadow-md
-              ${showAutocomplete ? "" : "su-hidden"}
-            `}
-            >
+            <div className={autocompleteContainerClasses}>
               {Array.isArray(autocompleteSuggestions) && (
                 <ul className="su-list-unstyled">
                   {autocompleteSuggestions.map((suggestion, index) => (
-                    <li
-                      key={`autocomplete-item-${index}`}
-                      className="hover:su-bg-black-20"
-                    >
-                      <a href="">{suggestion}</a>
+                    <li key={`autocomplete-item-${index}`} className="su-mb-0">
+                      <a href="" className={autocompleteLinkClasses}>
+                        {suggestion}
+                      </a>
                     </li>
                   ))}
                 </ul>

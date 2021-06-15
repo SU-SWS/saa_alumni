@@ -54,7 +54,7 @@ const sampleResultNoImage = {
 
 let hits = [];
 for (let i = 0; i < 16; i++) {
-  const includeImage = false;
+  const includeImage = Math.random() > 0.5 ? true : false;
   hits.push(includeImage ? sampleResultWithImage : sampleResultNoImage);
 }
 
@@ -78,12 +78,13 @@ const SearchStyling = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [activePage, setActivePage] = useState(2);
   const hasFacets = true;
+
   return (
     <>
       <Container
         element="section"
         width="full"
-        className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light"
+        className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light su-flex-wrap"
       >
         <Heading level={1} font="serif" weight="bold" className="su-mb-0">
           Search For...
@@ -92,19 +93,23 @@ const SearchStyling = () => {
       <Container
         element="section"
         width="site"
-        className="su-py-45 md:su-py-80"
+        className="su-py-45 md:su-py-80 "
       >
-        <FlexBox gap justifyContent="end">
-          <FlexCell xs="full" lg={8}>
+        <FlexBox gap justifyContent="center">
+          <FlexCell xs="full" lg={hasFacets ? 6 : 8}>
             <SearchField
               autocompleteSuggestions={suggestions}
               onInput={(query) => {}}
             />
           </FlexCell>
         </FlexBox>
-        <FlexBox wrap="wrap">
+        <FlexBox
+          wrap="wrap"
+          justifyContent={hasFacets ? "start" : "center"}
+          className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]"
+        >
           {hasFacets && (
-            <FlexCell xs="full" lg={4}>
+            <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
               <SearchFacet
                 attribute="siteName"
                 facetValues={results.facets.siteName}
@@ -113,7 +118,7 @@ const SearchStyling = () => {
               />
             </FlexCell>
           )}
-          <FlexCell xs="full" lg={hasFacets ? 8 : "full"}>
+          <FlexCell xs="full" lg={8}>
             <SearchResults results={results} />
             <SearchPager
               activePage={activePage}

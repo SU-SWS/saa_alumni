@@ -7,14 +7,14 @@ const SearchResults = ({ results }) => {
 
   return (
     <div>
-      <div>
-        <strong>{results.nbHits}</strong> results:
+      <div className="su-text-21 lg:su-mb-[4rem]">
+        <span className="su-font-semibold">{results.nbHits}</span> results:
       </div>
       {results.hits.map((result, index) => {
         return (
           <div
             key={index}
-            className="su-py-30 su-px-38 su-border-b-[1px] su-border-black-20"
+            className="su-p-30 sm:su-py-[4rem] su-border-b su-border-black-40"
           >
             <div className="su-flex">
               <div className="su-flex-1">

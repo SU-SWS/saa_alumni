@@ -1,37 +1,38 @@
-import React from 'react'
+import React from "react";
 
-const SearchFacet = ({facetValues, attribute, selectedOptions, onChange}) => {
+const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
   const handleCheckboxChange = (e) => {
-    const values = []
-    const checkboxes = document.getElementsByName(e.target.name)
+    const values = [];
+    const checkboxes = document.getElementsByName(e.target.name);
     for (const checkbox of checkboxes) {
       if (checkbox.checked) {
-        values.push(checkbox.value)
+        values.push(checkbox.value);
       }
     }
-    
-    onChange(values)
-  }
+
+    onChange(values);
+  };
   return (
     <div>
+      <p className="su-text-21 su-font-semibold">Filter by</p>
       {Object.keys(facetValues).map((option) => {
-        const count = facetValues[option]
+        const count = facetValues[option];
         return (
           <label>
-            <input 
-              type="checkbox" 
-              value={option} 
-              name={attribute} 
-              defaultChecked={selectedOptions.includes(option)} 
+            <input
+              type="checkbox"
+              value={option}
+              name={attribute}
+              defaultChecked={selectedOptions.includes(option)}
               onChange={(e) => handleCheckboxChange(e)}
             />
             <span>{option}</span>
             <span>{count}</span>
           </label>
-        )
+        );
       })}
     </div>
-  )
-}
+  );
+};
 
-export default SearchFacet
+export default SearchFacet;
