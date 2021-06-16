@@ -1,17 +1,18 @@
-version: "2"
+version: '2'
 checks:
+  editorconfig:
+    enabled: true
   argument-count:
     enabled: false
   complex-logic:
     enabled: false
+  method-lines:
+    enabled: false
   file-lines:
-    config:
-      threshold: 300
+    enabled: false
   method-complexity:
     enabled: false
   method-count:
-    enabled: false
-  method-lines:
     enabled: false
   nested-control-flow:
     enabled: false
@@ -30,7 +31,7 @@ plugins:
         javascript:
           mass_threshold: 75
   eslint:
-    enabled: true
+    enabled: false
   fixme:
     enabled: true
     config:
@@ -39,26 +40,24 @@ plugins:
         - BUG
         - TODO
         - todo
-        - console.log
   nodesecurity:
     enabled: true
   markdownlint:
     enabled: false
   csslint:
-    enabled: true
+    enabled: false
   stylelint:
-    enabled: true
+    enabled: false
   coffeelint:
     enabled: false
-  # SASS Lint requires a .sass-lint.yml file in the repo in order to tweak settings.
-  # Without the .sass-lint.yml file it will run with the defaults.
-  # Defaults file: https://github.com/sasstools/sass-lint/blob/master/lib/config/sass-lint.yml
   sass-lint:
     enabled: false
 exclude_patterns:
   - node_modules/
-  - "test/"
-  - "**/__tests__/"
-  - "**/tests/**/*"
-  - "package.json"
-  - "**.min.*"
+  - 'test/'
+  - '**/__tests__/'
+  - '**/tests/**/*'
+  - 'package.json'
+  - '**.min.*'
+  - 'public'
+  - 'static'
