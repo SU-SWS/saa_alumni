@@ -19,10 +19,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
           <CreateBloks blokSection={utilityNav} hasExternalIcon />
         </ul>
       </nav>
-      <FlexBox className="su-cc">
+      <FlexBox className="su-cc" alignItems="center">
         <FlexCell shrink={false} className="su-flex su-items-center su-rs-py-1">
           <Logo className="su-w-[18rem]" />
         </FlexCell>
+        <OpenSearchModalButton />
       </FlexBox>
     </Container>
     <Container
@@ -32,7 +33,10 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
       width="full"
     >
       <FlexBox>
-        <FlexCell shrink={false} className="su-flex su-items-center lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-pl-61 3xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red">
+        <FlexCell
+          shrink={false}
+          className="su-flex su-items-center lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-pl-61 3xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red"
+        >
           <Logo className="su-w-[18rem] lg:su-w-[20rem] xl:su-w-[19vw] 2xl:su-w-[26rem]" />
         </FlexCell>
         <FlexCell
