@@ -18,6 +18,7 @@ const SearchPage = () => {
 
   const client = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY)
   const index = client.initIndex('crawler_federated-search')
+  const suggestionsIndex = client.initIndex('crawler_federated-search_suggestions')
   const hitsPerPage = 16
 
   useEffect(() => {
@@ -25,33 +26,12 @@ const SearchPage = () => {
   }, [query, page, selectedFacets])
 
   const updateAutocomplete = async (query) => {
-    const results = await client.multipleQueries([
-      {
-        indexName: 'crawler_federated-search_suggestions',
-        query,
-        params: {
-          hitsPerPage: 10
-        }
-      },
-      {
-        indexName: 'crawler_federated-search',
-        query,
-        params: {
-          hitsPerPage: 10
-        }
-      }
-    ]).then((queryResults) => {
-      let hits = [];
-      for (const indexResults of queryResults.results) {
-        const titles = indexResults.hits.map((hit) => hit.title)
-        hits = hits.concat(titles)
-      }
-      return hits.slice(0, 10)
-    })
+    const results = await suggestionsIndex.search(query, {
+      hitsPerPage: 10,
+    }).then((queryResults) => queryResults.hits)
     setSuggestions(results)
   }
      
-
   const submitSearchQuery = async (query) => {
     setQuery(query)
   }

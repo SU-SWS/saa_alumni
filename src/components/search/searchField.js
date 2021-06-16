@@ -5,6 +5,7 @@ import { Search } from "react-hero-icon/solid";
 const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
   const [query, setQuery] = useState("");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
+  const [selectedSuggestion, setSelectedSuggestion] = useState(0);
   const inputWrapper = createRef();
 
   const submitHandler = (e) => {
@@ -38,6 +39,19 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
     }
   }
 
+  const handleArrowKeys = (e) => {
+    if (e.key == 'ArrowDown') {
+      setSelectedSuggestion(selectedSuggestion + 1)
+    }
+    else if (e.key == 'ArrowUp') {
+      setSelectedSuggestion(selectedSuggestion - 1)
+    }
+    else if (e.key == 'Enter') {
+      selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query)
+    }
+  }
+
+  // Close autocomplete when clicking outside of area.
   useEffect(() => {
     document.addEventListener("mousedown", clickOutside);
   })
@@ -69,6 +83,7 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
               <input
                 type="text"
                 onChange={inputHandler}
+                onKeyDown={handleArrowKeys}
                 className={inputClasses}
                 value={query}
               />
@@ -84,9 +99,12 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
               {Array.isArray(autocompleteSuggestions) && (
                 <ul className="su-list-unstyled">
                   {autocompleteSuggestions.map((suggestion, index) => (
-                    <li key={`autocomplete-item-${index}`} className="su-mb-0">
-                      <a href="" className={autocompleteLinkClasses} onClick={(e) => selectSuggestion(e, suggestion)}>
-                        {suggestion}
+                    <li key={`autocomplete-item-${index}`} className="su-mb-0" aria-selected={index == selectedSuggestion ? 'true' : 'false'}>
+                      <a href="" onClick={(e) => selectSuggestion(e, suggestion)} className={`
+                        ${autocompleteLinkClasses}
+                        ${index == selectedSuggestion ? 'su-bg-black-20 su-text-digital-red-light' : ''}
+                      `}>
+                        <span dangerouslySetInnerHTML={{__html: suggestion._highlightResult.query.value}}></span>
                       </a>
                     </li>
                   ))}
