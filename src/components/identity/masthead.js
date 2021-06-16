@@ -19,6 +19,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
           <CreateBloks blokSection={utilityNav} hasExternalIcon />
         </ul>
       </nav>
+      <FlexBox className="su-cc">
+        <FlexCell shrink={false} className="su-flex su-items-center su-rs-py-1">
+          <Logo className="su-w-[18rem]" />
+        </FlexCell>
+      </FlexBox>
     </Container>
     <Container
       className={`masthead-desktop su-hidden lg:su-block ${
@@ -26,13 +31,13 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
       }  su-z-20`}
       width="full"
     >
-      <FlexBox direction="row">
-        <FlexCell className="su-flex su-items-center lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red">
+      <FlexBox>
+        <FlexCell shrink={false} className="su-flex su-items-center lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-pl-61 3xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red">
           <Logo className="su-w-[18rem] lg:su-w-[20rem] xl:su-w-[19vw] 2xl:su-w-[26rem]" />
         </FlexCell>
         <FlexCell
           grow
-          className="su-flex su-flex-col su-cc 2xl:su-cc lg:su-pr-30 2xl:su-pl-36 3xl:su-pl-61 xl:su-pr-[6rem] xl:su-pl-30 2xl:su-pl-61 su-mr-0 su-bg-cardinal-red-xdark xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden"
+          className="su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden"
         >
           <FlexBox
             direction="row"
@@ -56,7 +61,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
       </FlexBox>
       <CreateBloks
         blokSection={mainNav}
-        className="su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-bg-masthead-black-bottom"
+        className="su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
       />
     </Container>
   </SbEditable>
