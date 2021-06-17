@@ -6,7 +6,7 @@ import CreateBloks from "../../utilities/createBloks";
 import "../../styles/alert.css";
 
 const Alert = ({
-  blok: { type, alertCta, label, heading, body, hasDismiss },
+  blok: { type, alertCta, label, heading, body, hasDismiss, _uid },
   blok,
 }) => {
   const [isAlertDismissed, setIsAlertDismissed] = useState(true);
@@ -16,12 +16,14 @@ const Alert = ({
   );
 
   useEffect(() => {
-    const isDismissed = sessionStorage.getItem(blok._uid);
+    // eslint-disable-next-line no-undef
+    const isDismissed = sessionStorage.getItem(_uid);
     if (isDismissed) setIsAlertDismissed(false);
-  }, []);
+  }, [_uid]);
 
   const dismissHandler = () => {
-    sessionStorage.setItem(blok._uid, "dismissed");
+    // eslint-disable-next-line no-undef
+    sessionStorage.setItem(_uid, "dismissed");
     setIsAlertDismissed(false);
   };
 
