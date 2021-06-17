@@ -30,31 +30,29 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
     e.preventDefault();
     setQuery(suggestion);
     setShowAutocomplete(false);
-    onSubmit(suggestion)
-  }
+    onSubmit(suggestion);
+  };
 
   const clickOutside = (e) => {
     if (inputWrapper.current && !inputWrapper.current.contains(e.target)) {
       setShowAutocomplete(false);
     }
-  }
+  };
 
   const handleArrowKeys = (e) => {
-    if (e.key == 'ArrowDown') {
-      setSelectedSuggestion(selectedSuggestion + 1)
+    if (e.key == "ArrowDown") {
+      setSelectedSuggestion(selectedSuggestion + 1);
+    } else if (e.key == "ArrowUp") {
+      setSelectedSuggestion(selectedSuggestion - 1);
+    } else if (e.key == "Enter") {
+      selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query);
     }
-    else if (e.key == 'ArrowUp') {
-      setSelectedSuggestion(selectedSuggestion - 1)
-    }
-    else if (e.key == 'Enter') {
-      selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query)
-    }
-  }
+  };
 
   // Close autocomplete when clicking outside of area.
   useEffect(() => {
     document.addEventListener("mousedown", clickOutside);
-  })
+  });
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
   hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50`;
@@ -76,8 +74,11 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
     <div>
       <form onSubmit={submitHandler}>
         <div className="su-flex su-items-center">
-          <span className=""></span>
-          <div className="su-items-end su-flex su-w-full su-items-center su-relative" ref={inputWrapper}>
+          <span className="" />
+          <div
+            className="su-items-end su-flex su-w-full su-items-center su-relative"
+            ref={inputWrapper}
+          >
             <label className="su-flex-grow su-max-w-full">
               <span className="su-sr-only">Search</span>
               <input
@@ -99,12 +100,32 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
               {Array.isArray(autocompleteSuggestions) && (
                 <ul className="su-list-unstyled">
                   {autocompleteSuggestions.map((suggestion, index) => (
-                    <li key={`autocomplete-item-${index}`} className="su-mb-0" aria-selected={index == selectedSuggestion ? 'true' : 'false'}>
-                      <a href="" onClick={(e) => selectSuggestion(e, suggestion)} className={`
+                    <li
+                      key={`autocomplete-item-${index}`}
+                      className="su-mb-0"
+                      aria-selected={
+                        index == selectedSuggestion ? "true" : "false"
+                      }
+                    >
+                      <a
+                        href=""
+                        onClick={(e) => selectSuggestion(e, suggestion)}
+                        className={`
                         ${autocompleteLinkClasses}
-                        ${index == selectedSuggestion ? 'su-bg-black-20 su-text-digital-red-light' : ''}
-                      `}>
-                        <span dangerouslySetInnerHTML={{__html: suggestion._highlightResult.query.value}}></span>
+                        ${
+                          index == selectedSuggestion
+                            ? "su-bg-black-20 su-text-digital-red-light"
+                            : ""
+                        }
+                      `}
+                      >
+                        {suggestion._highlightResult && (
+                          <span
+                            dangerouslySetInnerHTML={{
+                              __html: suggestion._highlightResult.query.value,
+                            }}
+                          />
+                        )}
                       </a>
                     </li>
                   ))}

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import SearchField from '../components/search/searchField'
-import SearchResults from '../components/search/searchResults'
-import SearchPager from '../components/search/searchPager'
-import SearchFacet from '../components/search/searchFacet'
-import SearchNoResults from '../components/search/searchNoResults'
-import algoliasearch from 'algoliasearch'
+import React, { useState, useEffect } from "react";
+import SearchField from "../components/search/searchField";
+import SearchResults from "../components/search/searchResults";
+import SearchPager from "../components/search/searchPager";
+import SearchFacet from "../components/search/searchFacet";
+import SearchNoResults from "../components/search/searchNoResults";
+import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
 
 const SearchPage = () => {
@@ -31,7 +31,7 @@ const SearchPage = () => {
     }).then((queryResults) => queryResults.hits)
     setSuggestions(results)
   }
-     
+
   const submitSearchQuery = async (query) => {
     setQuery(query)
   }
@@ -66,7 +66,7 @@ const SearchPage = () => {
     setResults(algoliaResults)
     return
   }
-  
+
 
   return (
     <>
@@ -100,31 +100,36 @@ const SearchPage = () => {
         >
           {results.facets && (
             <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
-            {results.facets.siteName &&
-              <SearchFacet 
-                attribute="siteName" 
-                facetValues={results.facets.siteName} 
-                selectedOptions={selectedFacets.siteName}
-                onChange={(values) => updateFacetSelections("siteName", values)}
-              ></SearchFacet>
-            }
+              {results.facets.siteName && (
+                <SearchFacet
+                  attribute="siteName"
+                  facetValues={results.facets.siteName}
+                  selectedOptions={selectedFacets.siteName}
+                  onChange={(values) =>
+                    updateFacetSelections("siteName", values)
+                  }
+                />
+              )}
             </FlexCell>
           )}
           <FlexCell xs="full" lg={8}>
-            {results.nbHits > 0 &&
+            {results.nbHits > 0 && (
               <>
-                <SearchResults results={results}></SearchResults>
-                <SearchPager activePage={page} nbPages={results.nbPages} maxLinks={6} selectPage={updatePage}></SearchPager>
+                <SearchResults results={results} />
+                <SearchPager
+                  activePage={page}
+                  nbPages={results.nbPages}
+                  maxLinks={6}
+                  selectPage={updatePage}
+                />
               </>
-            }
-            {!results.nbHits && 
-              <SearchNoResults query={query} />
-            }
+            )}
+            {!results.nbHits && <SearchNoResults query={query} />}
           </FlexCell>
         </FlexBox>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default SearchPage
+export default SearchPage;
