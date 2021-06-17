@@ -1,6 +1,7 @@
 import React from "react";
 
 const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
+  console.log('selectedOptions', selectedOptions)
   const handleCheckboxChange = (e) => {
     const values = [];
     const checkboxes = document.getElementsByName(e.target.name);
@@ -23,7 +24,7 @@ const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
               type="checkbox"
               value={option}
               name={attribute}
-              defaultChecked={selectedOptions.includes(option)}
+              checked={selectedOptions.includes(option)}
               onChange={(e) => handleCheckboxChange(e)}
             />
             <span>{option}</span>
