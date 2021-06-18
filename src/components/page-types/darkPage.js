@@ -34,16 +34,18 @@ const DarkPage = (props) => {
         >
           <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
-            <Heading
-              level={1}
-              align="center"
-              font="serif"
-              srOnly={isSrOnlyTitle}
-              id="page-title"
-              className="su-cc su-mb-0 su-rs-py-7 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
-            >
-              {title}
-            </Heading>
+            <Container>
+              <Heading
+                level={1}
+                align="center"
+                font="serif"
+                srOnly={isSrOnlyTitle}
+                id="page-title"
+                className="su-max-w-900 su-mb-0 su-rs-py-7 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
+              >
+                {title}
+              </Heading>
+            </Container>
           </header>
           {numAbove > 0 && (
             <div className="dark-page-above-content">
