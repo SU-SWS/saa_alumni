@@ -16,6 +16,7 @@ const storyblokRelations = [
   "mastheadPicker.masthead",
   "perkCard.perkPicker",
   "perkCardHorizontal.perkPicker",
+  "alertPicker.alert",
 ];
 
 module.exports = {
