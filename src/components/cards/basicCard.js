@@ -89,7 +89,7 @@ const BasicCard = ({
     <SbEditable content={blok}>
       <div
         className={dcnb(
-          "basic-card su-max-w-600 su-basefont-23",
+          "basic-card su-w-full su-max-w-600 su-basefont-23",
           wrapperClasses
         )}
       >
