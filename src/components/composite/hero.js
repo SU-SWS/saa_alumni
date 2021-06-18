@@ -86,7 +86,7 @@ const Hero = ({
                 )}
                 {headline && (
                   <Heading
-                    level={headingLevel ?? 1}
+                    level={parseInt(headingLevel, 10) ?? 1}
                     font="serif"
                     weight="bold"
                     className={dcnb(

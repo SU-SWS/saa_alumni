@@ -28,7 +28,7 @@ const Grid = ({
     <DrGrid
       xs={1}
       md={2}
-      xl={numCol}
+      xl={parseInt(numCol, 10)}
       className={dcnb(
         "su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
         gapClasses,

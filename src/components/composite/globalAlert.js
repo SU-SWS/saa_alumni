@@ -37,7 +37,7 @@ const GlobalAlert = () => (
             const blok = JSON.parse(content);
             // eslint-disable-next-line dot-notation
             blok["_uid"] = uuid;
-            return <Alert blok={blok} />;
+            return <Alert blok={blok} key={uuid} />;
           })}
         </>
       );

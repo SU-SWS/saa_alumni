@@ -103,7 +103,7 @@ const BasicCard = ({
           className={dcnb("card-body", bodyPadding, bodyAlign)}
         >
           <Heading
-            level={headingLevel ?? 3}
+            level={parseInt(headingLevel, 10) ?? 3}
             font="serif"
             weight="bold"
             className={dcnb("su-mb-0", headlineSize)}
