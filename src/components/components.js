@@ -9,6 +9,7 @@ import NavItem from './navigation/navItem';
 import Page from './page';
 import searchFacet from './search/searchFacet';
 import searchField from './search/searchField';
+import searchPage from './page-types/searchPage';
 import searchPager from './search/searchPager';
 import searchResults from './search/searchResults';
 import Wysiwyg from './simple/wysiwyg';
@@ -25,6 +26,7 @@ const ComponentList = {
   page: Page,
   searchFacet: searchFacet,
   searchField: searchField,
+  searchPage: searchPage,
   searchPager: searchPager,
   searchResults: searchResults,
   wysiwyg: Wysiwyg

@@ -40,11 +40,11 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
   };
 
   const handleArrowKeys = (e) => {
-    if (e.key == "ArrowDown") {
+    if (e.key === "ArrowDown") {
       setSelectedSuggestion(selectedSuggestion + 1);
-    } else if (e.key == "ArrowUp") {
+    } else if (e.key === "ArrowUp") {
       setSelectedSuggestion(selectedSuggestion - 1);
-    } else if (e.key == "Enter") {
+    } else if (e.key === "Enter") {
       selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query);
     }
   };
@@ -83,6 +83,9 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
               <span className="su-sr-only">Search</span>
               <input
                 type="text"
+                role="combobox"
+                aria-controls="search-autocomplete-listbox"
+                aria-expanded={showAutocomplete ? 'true' : 'false'}
                 onChange={inputHandler}
                 onKeyDown={handleArrowKeys}
                 className={inputClasses}
@@ -98,38 +101,31 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
             </button>
             <div className={autocompleteContainerClasses}>
               {Array.isArray(autocompleteSuggestions) && (
-                <ul className="su-list-unstyled">
+                <div className="su-list-unstyled" role="listbox">
                   {autocompleteSuggestions.map((suggestion, index) => (
-                    <li
+                    <div
                       key={`autocomplete-item-${index}`}
-                      className="su-mb-0"
-                      aria-selected={
-                        index == selectedSuggestion ? "true" : "false"
-                      }
-                    >
-                      <a
-                        href=""
-                        onClick={(e) => selectSuggestion(e, suggestion)}
-                        className={`
+                      role="option"
+                      tabIndex={showAutocomplete ? 0 : -1}
+                      className={`su-mb-0
                         ${autocompleteLinkClasses}
-                        ${
-                          index == selectedSuggestion
-                            ? "su-bg-black-20 su-text-digital-red-light"
-                            : ""
-                        }
+                        ${index === selectedSuggestion ? 'su-bg-black-20 su-text-digital-red' : ''}
                       `}
-                      >
-                        {suggestion._highlightResult && (
-                          <span
-                            dangerouslySetInnerHTML={{
-                              __html: suggestion._highlightResult.query.value,
-                            }}
-                          />
-                        )}
-                      </a>
-                    </li>
+                      onClick={(e) => selectSuggestion(e, suggestion)}
+                      aria-selected={selectedSuggestion === index ? 'true': 'false'}
+                      
+                      id="search-autocomplete-listbox"
+                    >
+                      {suggestion._highlightResult && (
+                        <span
+                          dangerouslySetInnerHTML={{
+                            __html: suggestion._highlightResult.query.value,
+                          }}
+                        />
+                      )}
+                    </div>
                   ))}
-                </ul>
+                </div>
               )}
             </div>
           </div>

@@ -6,17 +6,63 @@ import SearchResults from "../components/search/searchResults";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
 
 const suggestions = [
-  "Lorem ipsum dolor",
-  "Nisi fusce cras",
-  "Phasellus habitant arcu vivamus",
-  "Interdum vel sociis",
-  "Enim hac justo",
-  "Porta tristique",
-  "Facilisis primis venenatis",
-  "Lobortis pulvinar dictumst",
-  "Tristique imperdiet",
-  "Lobortis phasellus arcu",
-];
+  {
+    "query": "alumni",
+    "_highlightResult": {
+        "query": {
+            "value": "<strong>a</strong>lumni",
+        }
+    }
+  },
+  {
+    "query": "awards",
+    "_highlightResult": {
+        "query": {
+            "value": "<strong>a</strong>wards",
+        }
+    }
+  },
+  {
+    "query": "associates",
+    "_highlightResult": {
+        "query": {
+            "value": "<strong>a</strong>ssociates",
+        }
+    }
+  },
+  {
+    "query": "air planning",
+    "_highlightResult": {
+        "query": {
+            "value": "<strong>a</strong>ir planning",
+        }
+    }
+  },
+  {
+    "query": "department administrator",
+    "_highlightResult": {
+        "query": {
+            "value": "department <strong>a</strong>dministrator",
+        }
+    }
+  },
+  {
+    "query": "stanford associates",
+    "_highlightResult": {
+        "query": {
+            "value": "stanford <strong>a</strong>ssociates",
+        }
+    }
+  },
+  {
+    "query": "this is a tessier",
+    "_highlightResult": {
+        "query": {
+            "value": "this is <strong>a</strong> tessier",
+        }
+    }
+  }
+]
 
 const sampleResultWithImage = {
   domain: "stanfordmag.org",

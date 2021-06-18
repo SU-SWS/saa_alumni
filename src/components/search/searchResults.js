@@ -38,7 +38,7 @@ const SearchResults = ({ results }) => {
                   <img
                     className="su-block su-object-cover su-object-center su-h-full"
                     src={result.image}
-                    alt={`Thumbnail image for ${result.title}`}
+                    alt={result.title}
                   />
                 </div>
               )}

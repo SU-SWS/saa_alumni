@@ -34,10 +34,10 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
         <ul className="su-list-none su-flex su-space-x-16">
           {pagerLinks.map((i) => {
             return (
-              <li className="su-mb-0">
+              <li className="su-mb-0" key={`search-pager-link-${i}`}>
                 <a 
                   className={`su-text-24 su-font-bold
-                    ${activePage == i ? activeLinkClasses : linkClasses}
+                    ${activePage === i ? activeLinkClasses : linkClasses}
                   `} 
                   href={`?page=${i}`}
                   onClick={(e) => linkHandler(e, i)}
@@ -53,7 +53,7 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
           <li>
             <a 
               className={`su-text-24 su-font-bold
-                ${activePage == nbPages - 1 ? activeLinkClasses : linkClasses}
+                ${activePage === nbPages - 1 ? activeLinkClasses : linkClasses}
               `}
               href={`?page=${nbPages - 1}`}
               onClick={(e) => linkHandler(e, nbPages - 1)}
