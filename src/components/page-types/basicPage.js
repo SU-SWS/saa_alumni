@@ -17,8 +17,6 @@ const BasicPage = (props) => {
       belowContent,
       title,
       isSrOnlyTitle,
-      alertPicker,
-      alert,
     },
     blok,
   } = props;
