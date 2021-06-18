@@ -14,7 +14,7 @@ const MainMenuGroup = ({
             open
               ? "!su-text-white !su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark"
               : ""
-          } su-group su-font-bold su-text-left lg:su-whitespace-pre su-leading-snug su-bg-transparent su-px-16 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] su-border-solid su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-no-underline hocus:su-bg-transparent focus:su-outline-none`}
+          } su-group su-font-bold su-text-left lg:su-whitespace-pre su-leading-snug su-bg-transparent su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] su-border-solid su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-no-underline hocus:su-bg-transparent focus:su-outline-none`}
           aria-label={`${parentText} ${parentTextSecond} ${
             open ? "" : "- Collapsed"
           }`}
@@ -23,7 +23,7 @@ const MainMenuGroup = ({
           {parentTextSecond && (
             <>
               <br className="su-hidden xl:su-inline 2xl:su-hidden" />
-              {` ${parentTextSecond}`}
+              {parentTextSecond}
             </>
           )}
           <ChevronDownIcon
@@ -61,7 +61,7 @@ const MainMenuGroup = ({
             as="ul"
             className={`${
               panelFacing === "left" ? "lg:su-right-0" : ""
-            } su-list-unstyled su-shadow-md su-w-[25rem] xl:su-w-[28rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
+            } su-list-unstyled su-shadow-md su-w-[29rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
           >
             <CreateBloks blokSection={menuItems} />
           </Popover.Panel>

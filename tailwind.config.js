@@ -44,6 +44,7 @@ module.exports = {
     // SAA themes extending our Decanter ones
     extend: {
       colors: require(dir + '/theme/colors.js')(),
+      screens: require(dir + '/theme/screens.js')(),
     }
   },
   plugins: [
