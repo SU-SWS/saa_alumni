@@ -26,7 +26,7 @@ const DarkPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={numHero > 0} {...props}>
+      <Layout hasHero={numHero > 0} isDark {...props}>
         <Container
           element="main"
           id="main-content"

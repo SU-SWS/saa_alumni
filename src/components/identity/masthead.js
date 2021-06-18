@@ -1,11 +1,21 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import { Button, Container, FlexBox, FlexCell } from "decanter-react";
+import { Container, FlexBox, FlexCell } from "decanter-react";
 import CreateBloks from "../../utilities/createBloks";
 import Logo from "./logo";
 import OpenSearchModalButton from "../search/openSearchModalButton";
+import { dcnb } from "cnbuilder";
 
-const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
+const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
+  let mainNavBgColorXl = "xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden";
+  let mainNavBgColorLg = "su-bg-transparent su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden";
+
+  if (isDark && !hasHero) {
+    mainNavBgColorXl = "xl:su-bg-saa-black";
+    mainNavBgColorLg = "su-bg-saa-black";
+  }
+
+  return (
   <SbEditable content={blok}>
     <Container
       width="full"
@@ -42,7 +52,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
         </FlexCell>
         <FlexCell
           grow
-          className="su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden"
+          className={dcnb("su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90", mainNavBgColorXl)}
         >
           <FlexBox
             direction="row"
@@ -66,10 +76,10 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
       </FlexBox>
       <CreateBloks
         blokSection={mainNav}
-        className="su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden"
+        className={dcnb("su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90", mainNavBgColorLg)}
       />
     </Container>
   </SbEditable>
-);
+)};
 
 export default Masthead;
