@@ -4,16 +4,22 @@ import { Alert as DecanterAlert, DismissButton } from "decanter-react";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import CreateBloks from "../../utilities/createBloks";
 import "../../styles/alert.css";
+import getNumBloks from "../../utilities/getNumBloks";
 
 const Alert = ({
   blok: { type, alertCta, label, heading, body, hasDismiss, _uid },
   blok,
 }) => {
+  const hasCta = getNumBloks(alertCta) > 0;
   const [isAlertDismissed, setIsAlertDismissed] = useState(true);
   const isLinkDark = type === "warning";
-  const footerContent = (
-    <CreateBloks blokSection={alertCta} isLinkDark={isLinkDark} />
-  );
+  let footerContent = "";
+
+  if (hasCta) {
+    footerContent = (
+      <CreateBloks blokSection={alertCta} isLinkDark={isLinkDark} />
+    );
+  }
 
   useEffect(() => {
     // eslint-disable-next-line no-undef
