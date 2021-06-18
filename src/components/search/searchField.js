@@ -44,7 +44,7 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
       setSelectedSuggestion(selectedSuggestion + 1);
     } else if (e.key === "ArrowUp") {
       setSelectedSuggestion(selectedSuggestion - 1);
-    } else if (e.key === "Enter") {
+    } else if (e.key === "Enter" && autocompleteSuggestions[selectedSuggestion]) {
       selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query);
     }
   };
@@ -111,9 +111,8 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
                         ${autocompleteLinkClasses}
                         ${index === selectedSuggestion ? 'su-bg-black-20 su-text-digital-red' : ''}
                       `}
-                      onClick={(e) => selectSuggestion(e, suggestion)}
+                      onClick={(e) => selectSuggestion(e, suggestion.query)}
                       aria-selected={selectedSuggestion === index ? 'true': 'false'}
-                      
                       id="search-autocomplete-listbox"
                     >
                       {suggestion._highlightResult && (

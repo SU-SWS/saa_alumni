@@ -8,6 +8,7 @@ import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
 
 const SearchPage = ({blok}) => {
+  console.log('blok', blok)
   const [suggestions, setSuggestions] = useState([])
   const [results, setResults] = useState([])
   const [query, setQuery] = useState('')
@@ -124,7 +125,9 @@ const SearchPage = ({blok}) => {
                 />
               </>
             )}
-            {!results.nbHits && <SearchNoResults query={query} />}
+            {!results.nbHits && query && 
+              <SearchNoResults heading={blok.noResultsHeading.replace('[query]', query)} body={blok.noResultsBody} additionalContent={blok.noResultsAdditionalContent} />
+            }
           </FlexCell>
         </FlexBox>
       </Container>
