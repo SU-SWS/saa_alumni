@@ -20,11 +20,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero }) => (
         </ul>
       </nav>
       <FlexBox className="su-cc" alignItems="center">
-        <FlexCell shrink={false} className="su-flex su-items-center su-rs-py-1">
+        <FlexCell className="su-flex su-items-center su-rs-py-1">
           <Logo className="su-w-[18rem]" />
         </FlexCell>
         <OpenSearchModalButton />
-        <CreateBloks blokSection={mainNav} />
+        <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
       </FlexBox>
     </Container>
     <Container

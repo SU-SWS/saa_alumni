@@ -8,9 +8,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/react-fontawesome": "^0.1.14",
     "@headlessui/react": "^1.2.0",
-    "@heroicons/react": "^1.0.0",
-    "@tailwindcss/aspect-ratio": "^0.2.0",
-    "decanter-react": "^1.0.0",
+    "@heroicons/react": "^1.0.1",
+    "@tailwindcss/aspect-ratio": "^0.2.1",
+    "decanter-react": "^1.0.6",
     "gatsby": "^3.4.2",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-manifest": "^3.4.0",
@@ -31,7 +31,7 @@
     "react-id-generator": "^3.0.1",
     "react-loader-spinner": "^3.1.14",
     "react-refresh": "^0.8.3",
-    "sanitize-html": "^2.3.3",
+    "sanitize-html": "^2.4.0",
     "storyblok-react": "^0.1.2",
     "storyblok-rich-text-react-renderer": "^2.3.1",
     "tailwindcss-children": "^2.1.0",
@@ -61,7 +61,7 @@
     "@babel/plugin-transform-react-jsx": "^7.13.12",
     "@babel/preset-env": "^7.14.1",
     "@babel/preset-react": "^7.13.13",
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.2.6",
     "cross-env": "^7.0.2",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -73,10 +73,10 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.23.2",
-    "postcss": "^8.2.15",
+    "postcss": "^8.3.5",
     "prettier": "^2.3.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
-    "tailwindcss": "^2.1.4"
+    "tailwindcss": "^2.2.0"
   }
 }
