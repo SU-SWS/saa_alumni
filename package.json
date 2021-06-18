@@ -10,7 +10,7 @@
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
-    "decanter-react": "^1.0.6",
+    "decanter-react": "^1.0.7-alpha.0",
     "gatsby": "^3.4.2",
     "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-manifest": "^3.4.0",
