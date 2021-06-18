@@ -8,7 +8,7 @@ import getNumBloks from "../../utilities/getNumBloks";
 const LandingPage = (props) => {
   // Destructure.
   const {
-    blok: { content, hero, alertPicker, alert },
+    blok: { content, hero },
     blok,
     hasHero,
   } = props;
@@ -17,8 +17,6 @@ const LandingPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <CreateBloks blokSection={alertPicker} />
-      <CreateBloks blokSection={alert} />
       <Layout hasHero={numHero > 0} {...props}>
         <Container
           element="main"

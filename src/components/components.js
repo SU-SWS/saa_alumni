@@ -31,11 +31,9 @@ import Wysiwyg from "./simple/wysiwyg";
 import Redirect from "./redirect/Redirect";
 import Alert from "./composite/alert";
 import AlertCtaLink from "./cta/alertCtaLink";
-import AlertPicker from "./composite/alertPicker";
 
 const ComponentList = {
   alert: Alert,
-  alertPicker: AlertPicker,
   alertCtaLink: AlertCtaLink,
   basicCard: BasicCard,
   basicPage: BasicPage,
