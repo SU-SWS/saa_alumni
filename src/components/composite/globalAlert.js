@@ -22,9 +22,10 @@ const query = graphql`
 const GlobalAlert = () => (
   <StaticQuery
     query={query}
-    render={({ storyblokEntry }) => (
-      <Alert blok={JSON.parse(storyblokEntry.content)} />
-    )}
+    render={({ storyblokEntry }) => {
+      if (!storyblokEntry) return null;
+      return <Alert blok={JSON.parse(storyblokEntry.content)} />;
+    }}
   />
 );
 
