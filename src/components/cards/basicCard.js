@@ -2,10 +2,12 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
+import { render } from "storyblok-rich-text-react-renderer";
 import CardImage from "../media/cardImage";
 import CircularImage from "../media/circularImage";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
+import RichTextRenderer from "../../utilities/richTextRenderer";
 
 const BasicCard = ({
   blok: {
@@ -25,6 +27,8 @@ const BasicCard = ({
   blok,
 }) => {
   const numCta = getNumBloks(cta);
+  const renderedText = render(text);
+  const hasText = getNumBloks(renderedText) > 0;
 
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
@@ -106,8 +110,11 @@ const BasicCard = ({
           >
             {headline}
           </Heading>
-          {text && (
-            <p className="su-card-paragraph su-rs-mt-neg1 su-mb-0">{text}</p>
+          {hasText && (
+            <RichTextRenderer
+              wysiwyg={text}
+              className="su-card-paragraph su-rs-mt-neg1 children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+            />
           )}
           {numCta > 0 && (
             <div className="su-rs-mt-2">
