@@ -14,6 +14,7 @@ const DarkPage = (props) => {
 
   const numHero = getNumBloks(hero);
   const numAbove = getNumBloks(aboveContent);
+  const numContent = getNumBloks(content);
   const numBelow = getNumBloks(belowContent);
 
   // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
@@ -52,7 +53,11 @@ const DarkPage = (props) => {
               <CreateBloks blokSection={aboveContent} />
             </div>
           )}
-          <CreateBloks blokSection={content} />
+          {numContent > 0 && (
+            <div className="dark-page-main-content">
+              <CreateBloks blokSection={content} />
+            </div>
+          )}
           {numBelow > 0 && (
             <div className="dark-page-below-content">
               <CreateBloks blokSection={belowContent} />
