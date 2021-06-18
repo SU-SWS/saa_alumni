@@ -6,9 +6,9 @@ import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import getNumBloks from "../../utilities/getNumBloks";
 import {
-  bgColors,
   largePaddingTop,
   largePaddingBottom,
+  bgTextColorPairs,
 } from "../../utilities/dataSource";
 import SbLink from "../../utilities/sbLink";
 
@@ -32,7 +32,7 @@ const Section = ({
 }) => {
   const numCta = getNumBloks(cta);
 
-  const sectionBgColor = bgColors[bgColor] ?? bgColors.white;
+  const sectionBgColor = bgTextColorPairs[bgColor] ?? bgTextColorPairs.white;
   let alignment = "su-text-center";
   let bodyAlign = "su-mx-auto";
   let headlineAlign = "su-mx-auto";
