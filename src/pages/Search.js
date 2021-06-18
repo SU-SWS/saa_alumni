@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import SearchField from '../components/search/searchField'
-import SearchResults from '../components/search/searchResults'
-import SearchPager from '../components/search/searchPager'
-import SearchFacet from '../components/search/searchFacet'
-import SearchNoResults from '../components/search/searchNoResults'
-import algoliasearch from 'algoliasearch'
+import React, { useState, useEffect } from "react";
+import SearchField from "../components/search/searchField";
+import SearchResults from "../components/search/searchResults";
+import SearchPager from "../components/search/searchPager";
+import SearchFacet from "../components/search/searchFacet";
+import SearchNoResults from "../components/search/searchNoResults";
+import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
 
 const SearchPage = () => {
@@ -18,6 +18,7 @@ const SearchPage = () => {
 
   const client = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY)
   const index = client.initIndex('crawler_federated-search')
+  const suggestionsIndex = client.initIndex('crawler_federated-search_suggestions')
   const hitsPerPage = 16
 
   useEffect(() => {
@@ -25,32 +26,11 @@ const SearchPage = () => {
   }, [query, page, selectedFacets])
 
   const updateAutocomplete = async (query) => {
-    const results = await client.multipleQueries([
-      {
-        indexName: 'crawler_federated-search_suggestions',
-        query,
-        params: {
-          hitsPerPage: 10
-        }
-      },
-      {
-        indexName: 'crawler_federated-search',
-        query,
-        params: {
-          hitsPerPage: 10
-        }
-      }
-    ]).then((queryResults) => {
-      let hits = [];
-      for (const indexResults of queryResults.results) {
-        const titles = indexResults.hits.map((hit) => hit.title)
-        hits = hits.concat(titles)
-      }
-      return hits.slice(0, 10)
-    })
+    const results = await suggestionsIndex.search(query, {
+      hitsPerPage: 10,
+    }).then((queryResults) => queryResults.hits)
     setSuggestions(results)
   }
-     
 
   const submitSearchQuery = async (query) => {
     setQuery(query)
@@ -86,7 +66,7 @@ const SearchPage = () => {
     setResults(algoliaResults)
     return
   }
-  
+
 
   return (
     <>
@@ -120,31 +100,36 @@ const SearchPage = () => {
         >
           {results.facets && (
             <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
-            {results.facets.siteName &&
-              <SearchFacet 
-                attribute="siteName" 
-                facetValues={results.facets.siteName} 
-                selectedOptions={selectedFacets.siteName}
-                onChange={(values) => updateFacetSelections("siteName", values)}
-              ></SearchFacet>
-            }
+              {results.facets.siteName && (
+                <SearchFacet
+                  attribute="siteName"
+                  facetValues={results.facets.siteName}
+                  selectedOptions={selectedFacets.siteName}
+                  onChange={(values) =>
+                    updateFacetSelections("siteName", values)
+                  }
+                />
+              )}
             </FlexCell>
           )}
           <FlexCell xs="full" lg={8}>
-            {results.nbHits > 0 &&
+            {results.nbHits > 0 && (
               <>
-                <SearchResults results={results}></SearchResults>
-                <SearchPager activePage={page} nbPages={results.nbPages} maxLinks={6} selectPage={updatePage}></SearchPager>
+                <SearchResults results={results} />
+                <SearchPager
+                  activePage={page}
+                  nbPages={results.nbPages}
+                  maxLinks={6}
+                  selectPage={updatePage}
+                />
               </>
-            }
-            {!results.nbHits && 
-              <SearchNoResults query={query} />
-            }
+            )}
+            {!results.nbHits && <SearchNoResults query={query} />}
           </FlexCell>
         </FlexBox>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default SearchPage
+export default SearchPage;

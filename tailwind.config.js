@@ -18,8 +18,6 @@ module.exports = {
     content: [
       './src/**',
       './public/**',
-      './node_modules/decanter-react/dist/**',
-      './.cache/**'
     ],
   },
   theme: {
@@ -44,17 +42,14 @@ module.exports = {
     // SAA themes extending our Decanter ones
     extend: {
       colors: require(dir + '/theme/colors.js')(),
-      screens: require(dir + '/theme/screens.js')(),
     }
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio'),
     require('tailwindcss-children'),
     require('tailwindcss-interaction-variants'),
 
     // @tailwind base;
     require(decanter + '/base/base.js')(),
-    require(dir + '/base/base.js')(),
 
     // @tailwind components;
     require(decanter + '/components/form/input-base.js')(),
@@ -69,18 +64,14 @@ module.exports = {
     require(decanter + '/components/typography/modular-typography.js')(),
     require(decanter + '/components/typography/styles.js')(),
     require(decanter + '/components/typography/wysiwyg.js')(),
-    require(dir + '/components/backface-visibility/backface-visibility.js')(),
-    require(dir + '/components/link/stretched-link.js')(),
     require(dir + '/components/underline/custom-underline.js')(),
-    require(dir + '/components/underline/link-underline.js')(),
-    require(dir + '/components/shadow/text-shadow.js')(),
+    require(dir + "/components/checkbox/custom-checkbox.js")(),
 
     // @tailwind utilities;
     require(decanter + '/utilities/accessibility/accessibility-hidden.js')(),
     require(decanter + '/utilities/link/link.js')(),
     require(decanter + '/utilities/link/link-fontweight.js')(),
+    require(decanter + '/utilities/link/link-underline.js')(),
     require(decanter + '/utilities/scrolling/smooth-scroll.js')(),
-    require(dir + '/utilities/gradient-border/gradient-border.js')(),
-    require(dir + '/utilities/typography/writing-mode.js')(),
   ],
 }
