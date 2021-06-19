@@ -81,7 +81,7 @@ const PerkCardView = ({
             <CardImage
               filename={filename}
               imageFocus={cardImageFocus || imageFocus}
-              className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+              className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] su-backface-hidden"
               loading={orientation === "horizontal" ? "eager" : "lazy"}
               size={orientation === "horizontal" ? "horizontal" : "vertical"}
             />

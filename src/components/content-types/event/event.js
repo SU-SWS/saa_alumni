@@ -125,7 +125,7 @@ const Event = ({
                   filename={filename}
                   imageFocus={imageFocus}
                   size="vertical"
-                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] su-backface-hidden"
                   loading="lazy"
                 />
               </figure>
