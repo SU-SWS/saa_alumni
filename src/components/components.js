@@ -27,6 +27,7 @@ import PerkCard from "./cards/perkCard";
 import PerkCardHorizontal from "./cards/perkCardHorizontal";
 import Poster from "./composite/poster";
 import Section from "./layout/section";
+import SimpleImage from "./media/simpleImage";
 import Wysiwyg from "./simple/wysiwyg";
 import Redirect from "./redirect/Redirect";
 import Alert from "./composite/alert";
@@ -63,6 +64,7 @@ const ComponentList = {
   perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
   section: Section,
+  simpleImage: SimpleImage,
   wysiwyg: Wysiwyg,
   redirect: Redirect,
 };
