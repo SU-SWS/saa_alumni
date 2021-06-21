@@ -14,7 +14,7 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
     onSubmit(query);
   };
 
-  const inputHandler = async (e) => {
+  const inputHandler = (e) => {
     setQuery(e.target.value);
     onInput(e.target.value);
     setShowAutocomplete(true);

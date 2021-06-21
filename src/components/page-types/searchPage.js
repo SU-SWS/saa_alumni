@@ -8,7 +8,6 @@ import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
 
 const SearchPage = ({blok}) => {
-  console.log('blok', blok)
   const [suggestions, setSuggestions] = useState([])
   const [results, setResults] = useState([])
   const [query, setQuery] = useState('')
@@ -26,33 +25,34 @@ const SearchPage = ({blok}) => {
     updateSearchResults()
   }, [query, page, selectedFacets])
 
-  const updateAutocomplete = async (query) => {
-    const results = await suggestionsIndex.search(query, {
+  const updateAutocomplete = (query) => {
+    suggestionsIndex.search(query, {
       hitsPerPage: 10,
-    }).then((queryResults) => queryResults.hits)
-    setSuggestions(results)
+    }).then((queryResults) => {
+      setSuggestions(queryResults.hits)
+    })
   }
 
-  const submitSearchQuery = async (query) => {
+  const submitSearchQuery = (query) => {
     setQuery(query)
   }
 
-  const updatePage = async (page) => {
+  const updatePage = (page) => {
     setPage(page)
   }
 
-  const updateFacetSelections = async (attribute, values) => {
+  const updateFacetSelections = (attribute, values) => {
     const newFacets = {...selectedFacets}
     newFacets[attribute] = values
     setSelectedFacets(newFacets)
   }
 
-  const updateSearchResults = async () => {
+  const updateSearchResults = () => {
     const facetFilters = Object.keys(selectedFacets).map((attribute) => {
       return selectedFacets[attribute].map((value) => `${attribute}:${value}`)
     })
 
-    const algoliaResults = await index.search(query, {
+    index.search(query, {
       hitsPerPage,
       page,
       facets: [
@@ -62,9 +62,9 @@ const SearchPage = ({blok}) => {
       facetFilters
     })
     .then((queryResults) => {
-      return queryResults
+      setResults(queryResults)
     })
-    setResults(algoliaResults)
+    
     return
   }
 
