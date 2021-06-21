@@ -1,22 +1,22 @@
-import React from 'react';
-import Header from './header';
-import Footer from './footer';
-import Seo from './seo';
+import React from "react";
 import { FlexBox } from "decanter-react";
+import Header from "./header";
+import Footer from "./footer";
+import Seo from "./seo";
 
 /**
  * The Layout component is referenced and used in all page-type components.
  * It incorporates the Header and sticky Footer, based on page settings.
  */
-const Layout = (props) => (
+const Layout = ({ children, hasHero, isDark, ...rest }) => (
   <>
-    <Seo {...props} />
-    <FlexBox direction='col' className='su-min-h-screen su-overflow-x-hidden'>
-      <Header {...props} />
-        {props.children}
-      <Footer {...props} />
+    <Seo {...rest} />
+    <FlexBox direction="col" className="su-min-h-screen su-overflow-x-hidden">
+      <Header hasHero={hasHero} isDark={isDark} {...rest} />
+      {children}
+      <Footer {...rest} />
     </FlexBox>
   </>
-)
+);
 
 export default Layout;

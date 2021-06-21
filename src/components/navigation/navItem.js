@@ -1,12 +1,17 @@
-import React from 'react';
-import SbEditable from 'storyblok-react';
-import SbLink from '../../utilities/sbLink';
+import React from "react";
+import SbEditable from "storyblok-react";
+import SbLink from "../../utilities/sbLink";
 
-const NavItem = (props) => (
-  <SbEditable content={props.blok}>
-    <li className={props.blok.classes}>
-      <SbLink link={props.blok.link} activeClass={'active'} classes='hover:su-underline focus:su-underline'>
-        {props.blok.text}
+const NavItem = ({ blok: { classes, link, text }, blok, hasExternalIcon }) => (
+  <SbEditable content={blok}>
+    <li className={classes}>
+      <SbLink
+        link={link}
+        activeClass="active"
+        classes="su-group hover:su-underline focus:su-underline"
+        hasExternalIcon={hasExternalIcon}
+      >
+        {text}
       </SbLink>
     </li>
   </SbEditable>

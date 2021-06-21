@@ -1,3 +1,7 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable react/no-danger */
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
 /**
  * Credit where credit is deserved.
  * @see: https://github.com/christo-pr/dangerously-set-html-content
@@ -10,26 +14,29 @@
 import React, { useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 
-const Embed = (props) => {
-
-  let premarkup, postmarkup;
+const Embed = ({ blok: { markup, pre_markup, post_markup }, blok }) => {
+  let premarkup;
+  let postmarkup;
   const myEmbed = useRef(null);
-  const markup = props.blok?.markup;
 
-  if (props.blok?.pre_markup) {
-    premarkup = (<div
-      dangerouslySetInnerHTML={{
-        __html: props.blok.pre_markup,
-      }}
-    />)
+  if (pre_markup) {
+    premarkup = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: pre_markup,
+        }}
+      />
+    );
   }
 
-  if (props.blok?.post_markup) {
-    postmarkup = (<div
-      dangerouslySetInnerHTML={{
-        __html: props.blok.post_markup,
-      }}
-    />)
+  if (post_markup) {
+    postmarkup = (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: post_markup,
+        }}
+      />
+    );
   }
 
   useEffect(() => {
@@ -40,9 +47,9 @@ const Embed = (props) => {
     const miniDom = document.createRange().createContextualFragment(markup);
 
     // Force the scripts in the embed script field to load sync.
-    const scripts = miniDom.querySelectorAll('script')
+    const scripts = miniDom.querySelectorAll("script");
     if (scripts.length >= 1) {
-      for (let item of scripts) {
+      for (const item of scripts) {
         if (item.src && item.src.length > 1) {
           item.async = 0;
           item.defer = 0;
@@ -51,19 +58,19 @@ const Embed = (props) => {
     }
 
     // Clear the container.
-    myEmbed.current.innerHTML = '';
+    myEmbed.current.innerHTML = "";
 
     // Append the new content.
     myEmbed.current.appendChild(miniDom);
   }, [markup]);
 
   return (
-    <SbEditable content={props.blok}>
+    <SbEditable content={blok}>
       {premarkup}
       <div ref={myEmbed} />
       {postmarkup}
     </SbEditable>
-  )
-}
+  );
+};
 
 export default Embed;

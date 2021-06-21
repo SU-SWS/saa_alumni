@@ -1,19 +1,23 @@
-import React from 'react';
-import SbEditable from 'storyblok-react';
-import { Container, Skiplink } from 'decanter-react';
+import React from "react";
+import SbEditable from "storyblok-react";
+import { Container, Skiplink } from "decanter-react";
+import CreateBloks from "../../utilities/createBloks";
+import GlobalAlert from "../composite/globalAlert";
 
 /**
  * The Header component is referenced and used in the Layout component.
- * It incorporates the Identity Bar and Local Header, based on page settings.
+ * It incorporates the Local Header and the skip link, based on page settings.
  */
 
-const Header = (props) => (
-  <SbEditable content={props.blok}>
-    <Container element='header' width='full' className='su-shadow su-relative su-z-20'>
+const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => (
+  <SbEditable content={blok}>
+    <GlobalAlert />
+    <CreateBloks blokSection={alert} />
+    <Container element="header" width="full" className="su-relative su-z-20">
       <Skiplink />
-      {/*<CreateBloks blokSection={props.blok.localHeader} />*/}
+      <CreateBloks blokSection={masthead} hasHero={hasHero} isDark={isDark} />
     </Container>
   </SbEditable>
-)
+);
 
 export default Header;
