@@ -9,15 +9,17 @@ const SimpleImage = ({
 }) => (
   <SbEditable content={blok}>
     <WidthBox width={imageWidth}>
-      <img src={filename} alt="" />
-      {caption && (
-        <RichTextRenderer
-          wysiwyg={caption}
-          className={`su-media__caption su-text-${captionAlign} ${
-            imageWidth === "edge-to-edge" ? "centered-container" : ""
-          }`}
-        />
-      )}
+      <figure>
+        <img src={filename} alt="" />
+        {caption && (
+          <figcaption>
+            <RichTextRenderer
+              wysiwyg={caption}
+              className={`su-caption su-text-${captionAlign}`}
+            />
+          </figcaption>
+        )}
+      </figure>
     </WidthBox>
   </SbEditable>
 );
