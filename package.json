@@ -20,6 +20,7 @@
     "gatsby-plugin-react-helmet": "^4.4.0",
     "gatsby-plugin-robots-txt": "^1.6.2",
     "gatsby-plugin-sitemap": "^4.0.0",
+    "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-source-storyblok": "^3.0.1",
     "luxon": "^1.27.0",
     "path-browserify": "^1.0.1",
@@ -36,7 +37,8 @@
     "storyblok-react": "^0.1.2",
     "storyblok-rich-text-react-renderer": "^2.3.1",
     "tailwindcss-children": "^2.1.0",
-    "tailwindcss-interaction-variants": "^5.0.0"
+    "tailwindcss-interaction-variants": "^5.0.0",
+    "use-query-params": "^1.2.2"
   },
   "keywords": [
     "Stanford"

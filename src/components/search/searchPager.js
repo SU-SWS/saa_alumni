@@ -6,7 +6,7 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
   }
 
   const linkClasses = 'su-text-digital-red-light hover:su-border-b-4'
-  const activeLinkClasses = 'su-text-black su-border-b-4'
+  const activeLinkClasses = 'su-text-black su-border-b-4 su-cursor-default su-pointer-events-none'
 
   let pagerLinks = []
 

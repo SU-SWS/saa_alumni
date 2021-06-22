@@ -8,13 +8,15 @@ import SearchFacet from "../../components/search/searchFacet";
 import SearchNoResults from "../../components/search/searchNoResults";
 import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
+import { useQueryParam, NumberParam } from "use-query-params";
 
 const SearchPage = (props) => {
   const blok = props.blok
   const [suggestions, setSuggestions] = useState([])
   const [results, setResults] = useState([])
   const [query, setQuery] = useState('')
-  const [page, setPage] = useState(0)
+  const [pageParam, setPageParam] = useQueryParam('page', NumberParam)
+  const [page, setPage] = useState(pageParam || 0)
   const [selectedFacets, setSelectedFacets] = useState({
     siteName: []
   })
@@ -37,11 +39,14 @@ const SearchPage = (props) => {
   }
 
   const submitSearchQuery = (query) => {
+    setPage(0)
+    setPageParam(0)
     setQuery(query)
   }
 
   const updatePage = (page) => {
     setPage(page)
+    setPageParam(page)
   }
 
   const updateFacetSelections = (attribute, values) => {
@@ -121,14 +126,18 @@ const SearchPage = (props) => {
               {results.nbHits > 0 && (
                 <>
                   <SearchResults results={results} />
-                  <SearchPager
-                    activePage={page}
-                    nbPages={results.nbPages}
-                    maxLinks={blok.maxPagerLinks}
-                    selectPage={updatePage}
-                  />
                 </>
               )}
+
+              {results.nbHits > hitsPerPage &&
+                <SearchPager
+                  activePage={page}
+                  nbPages={results.nbPages}
+                  maxLinks={blok.maxPagerLinks}
+                  selectPage={updatePage}
+                />
+              }
+              
               {!results.nbHits && query && 
                 <SearchNoResults heading={blok.noResultsHeading.replace('[query]', query)} body={blok.noResultsBody} additionalContent={blok.noResultsAdditionalContent} />
               }
