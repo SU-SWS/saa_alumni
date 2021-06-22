@@ -50,7 +50,7 @@ const CtaLink = React.forwardRef(
 
     if (icon === "external") {
       iconClasses =
-        "su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform su-rotate-45 group-hocus:su-rotate-45";
+        "su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform-gpu su-rotate-45 group-hocus:su-rotate-45";
     } else if (icon === "email" || icon === "video") {
       iconClasses = "su-h-08em su-w-08em su-ml-7 su--mt-2";
     } else if (icon === "download") {
@@ -62,7 +62,7 @@ const CtaLink = React.forwardRef(
     }
 
     // Icon animation
-    let iconAnimate = "su-transition-transform group-hocus:su-transform";
+    let iconAnimate = "su-transition-transform group-hocus:su-transform-gpu";
 
     if (icon === "external") {
       iconAnimate = dcnb(

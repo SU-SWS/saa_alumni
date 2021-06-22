@@ -24,7 +24,7 @@ module.exports = function () {
       ".stretched-link-hocus-outline-black-20": {
         "&:hover, &:focus": {
           "&::after": {
-            outline: "1px solid #43423E",
+            border: "1px solid #43423E",
           },
         },
       },

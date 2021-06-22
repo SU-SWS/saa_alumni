@@ -10,7 +10,7 @@ const TabLabel = ({ text, srText, classes, ...props }) => {
   return (
     <div
       className={dcnb(
-        "su-absolute su-top-0 su-left-0 su-rs-ml-2 su-pr-8 su-pl-9 su-pb-[1.5em] su-pt-12 su-bg-digital-red-light su-text-white su-font-semibold su-leading-none su-text-vertical-lr su-transform-gpu su-rotate-180 su-transition su-bg-gradient-to-t su-from-digital-red su-to-digital-red-light",
+        "su-absolute su-top-[-1px] su-left-0 su-rs-ml-2 su-pr-8 su-pl-9 su-pb-[1.5em] su-pt-12 su-bg-digital-red-light su-text-white su-font-semibold su-leading-none su-text-vertical-lr su-transform-gpu su-rotate-180 su-transition su-bg-gradient-to-t su-from-digital-red su-to-digital-red-light",
         interactionClasses,
         classes
       )}

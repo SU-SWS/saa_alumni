@@ -31,7 +31,7 @@ const WidthBox = ({ width, className, children, ...props }) => {
   }
 
   return (
-    <Grid xs={12} className={dcnb(className, wrapperClasses)} {...props}>
+    <Grid xs={12} gap className={dcnb(className, wrapperClasses)} {...props}>
       <div className={columnSpan}>{children}</div>
     </Grid>
   );

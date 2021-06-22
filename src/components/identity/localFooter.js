@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "gatsby";
 import SbEditable from "storyblok-react";
 import { Container, Grid, GridCell } from "decanter-react";
 import {
@@ -14,6 +13,7 @@ import CreateBloks from "../../utilities/createBloks";
 import SocialIconLink from "../simple/socialIconLink";
 import { bgPositionVertical } from "../../utilities/dataSource";
 import addBgImage from "../../utilities/addBgImage";
+import Logo from "./logo";
 
 const LocalFooter = ({
   blok: {
@@ -52,13 +52,7 @@ const LocalFooter = ({
             bgCrop
           )}
         >
-          <Link to="/" className="su-block su-w-fit">
-            <img
-              src="/images/saa-logo-white.svg"
-              className="su-w-200 md:su-w-300 2xl:su-w-[350px]"
-              alt="Stanford Alumni Association"
-            />
-          </Link>
+          <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />
         </Container>
         <Container className="su-rs-pb-5">
           <Grid xs={6} className="su-gap-y-xl sm:su-gap-x-lg md:su-gap-x-xl">

@@ -2,6 +2,8 @@ import React from "react";
 import { useLocation } from "@reach/router";
 import { parse } from "query-string";
 import Link from "gatsby-link";
+import { ArrowUpIcon } from "@heroicons/react/outline";
+import { dcnb } from "cnbuilder";
 import { assetURL, isNetlify } from "../contexts/GlobalContext";
 
 /**
@@ -72,6 +74,21 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // External or absolute url type link.
   // ---------------------------------------------------------------------------
+  let extLinkIcon = "";
+  const extIconClasses = props.externalIconClasses ?? "";
+
+  if (props.hasExternalIcon) {
+    extLinkIcon = (
+      <ArrowUpIcon
+        className={dcnb(
+          "su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-09em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em",
+          extIconClasses
+        )}
+        aria-hidden="true"
+      />
+    );
+  }
+
   if (props.link?.linktype === "url") {
     return (
       <a
@@ -82,6 +99,7 @@ const SbLink = React.forwardRef((props, ref) => {
       >
         {props.children}
         <span className="su-sr-only"> (external link)</span>
+        {extLinkIcon}
       </a>
     );
   }

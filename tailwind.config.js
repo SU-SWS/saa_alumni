@@ -44,6 +44,7 @@ module.exports = {
     // SAA themes extending our Decanter ones
     extend: {
       colors: require(dir + '/theme/colors.js')(),
+      screens: require(dir + '/theme/screens.js')(),
     }
   },
   plugins: [
@@ -68,6 +69,7 @@ module.exports = {
     require(decanter + '/components/typography/modular-typography.js')(),
     require(decanter + '/components/typography/styles.js')(),
     require(decanter + '/components/typography/wysiwyg.js')(),
+    require(dir + '/components/backface-visibility/backface-visibility.js')(),
     require(dir + '/components/link/stretched-link.js')(),
     require(dir + '/components/underline/custom-underline.js')(),
     require(dir + '/components/underline/link-underline.js')(),

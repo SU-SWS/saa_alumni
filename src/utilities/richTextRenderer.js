@@ -19,7 +19,7 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
         const { level } = props;
         if (level === 2) {
           return (
-            <Heading level={2} font="serif" size={3}>
+            <Heading level={2} font="serif" size={4}>
               {children}
             </Heading>
           );
@@ -27,7 +27,7 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
 
         if (level === 3) {
           return (
-            <Heading level={3} font="serif" size={2}>
+            <Heading level={3} font="serif" size={3}>
               {children}
             </Heading>
           );
@@ -35,7 +35,7 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
 
         if (level === 4) {
           return (
-            <Heading level={4} font="serif" size={1}>
+            <Heading level={4} font="serif" size={2}>
               {children}
             </Heading>
           );
@@ -43,7 +43,7 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
 
         if (level === 5) {
           return (
-            <Heading level={5} font="serif" size={0}>
+            <Heading level={5} font="serif" size={1}>
               {children}
             </Heading>
           );
