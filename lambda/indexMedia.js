@@ -7,6 +7,10 @@ const client = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.ALGO
 
 exports.handler = async(event, context) => {
   try {
+    if (!event.queryStringParameters.key || event.queryStringParameters.key !== process.env.LAMBDA_SECRET) {
+      throw 'Secret key is missing or invalid'
+    }
+    
     console.log('Fetching iTunes episodes...')
     const podcastEpisodes = await getItunesPodcasts()
     console.log('Fetching Soundcloud tracks...')
