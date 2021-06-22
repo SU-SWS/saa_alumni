@@ -5,8 +5,8 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
     return <div></div>
   }
 
-  const linkClasses = 'su-text-digital-red-light su-no-underline hover:su-underline'
-  const activeLinkClasses = 'su-text-black'
+  const linkClasses = 'su-text-digital-red-light hover:su-border-b-4'
+  const activeLinkClasses = 'su-text-black su-border-b-4'
 
   let pagerLinks = []
 
@@ -21,22 +21,22 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
 
   return (
     <div>
-      <div className="su-flex su-space-x-36">
+      <div className="su-flex su-mt-90 su-justify-center su-space-x-36">
         {activePage > 0 &&
           <a 
-            className={`${linkClasses} su-text-20 su-self-center`}
+            className={`${linkClasses} hover:su-border-b-0 su-text-20 su-no-underline su-font-regular su-self-center`}
             href={`?page=${activePage - 1}`} 
             onClick={(e) => linkHandler(e, activePage -1)}
           >
               Previous
           </a>
         }
-        <ul className="su-list-none su-flex su-space-x-16">
+        <ul className="su-list-none su-flex su-space-x-15 su-p-0">
           {pagerLinks.map((i) => {
             return (
               <li className="su-mb-0" key={`search-pager-link-${i}`}>
                 <a 
-                  className={`su-text-24 su-font-bold
+                  className={`su-text-24 su-font-bold su-px-11 su-no-underline
                     ${activePage === i ? activeLinkClasses : linkClasses}
                   `} 
                   href={`?page=${i}`}
@@ -48,11 +48,11 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
             )
           })}
           {nbPages > maxLinks &&
-            <li className="su-mb-0">...</li>
+            <li className="su-mb-0 su-font-bold">...</li>
           }
           <li>
             <a 
-              className={`su-text-24 su-font-bold
+              className={`su-text-24 su-font-bold su-px-11  su-no-underline
                 ${activePage === nbPages - 1 ? activeLinkClasses : linkClasses}
               `}
               href={`?page=${nbPages - 1}`}
@@ -63,7 +63,7 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
 
         {activePage < nbPages - 1 &&
           <a 
-            className={`${linkClasses} su-text-20 su-self-center`} 
+            className={`${linkClasses} hover:su-border-b-0 su-text-20 su-no-underline su-font-regular su-self-center`} 
             href={`?page=${activePage + 1}`}
             onClick={(e) => linkHandler(e, activePage + 1)}
           >
