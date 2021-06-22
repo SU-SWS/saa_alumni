@@ -3,7 +3,7 @@ import { X } from "react-hero-icon/solid";
 import { Search } from "react-hero-icon/solid";
 
 const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(null);
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
   const inputWrapper = createRef();
@@ -89,7 +89,8 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
                 onChange={inputHandler}
                 onKeyDown={handleArrowKeys}
                 className={inputClasses}
-                value={query || defaultValue}
+                value={query}
+                defaultValue={defaultValue}
               />
             </label>
             <button
