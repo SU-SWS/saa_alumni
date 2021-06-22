@@ -2,7 +2,7 @@ import React, { useState, useEffect, createRef } from "react";
 import { X } from "react-hero-icon/solid";
 import { Search } from "react-hero-icon/solid";
 
-const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
+const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue }) => {
   const [query, setQuery] = useState("");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
@@ -89,7 +89,7 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions }) => {
                 onChange={inputHandler}
                 onKeyDown={handleArrowKeys}
                 className={inputClasses}
-                value={query}
+                value={query || defaultValue}
               />
             </label>
             <button

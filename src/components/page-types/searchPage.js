@@ -8,17 +8,19 @@ import SearchFacet from "../../components/search/searchFacet";
 import SearchNoResults from "../../components/search/searchNoResults";
 import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
-import { useQueryParam, NumberParam } from "use-query-params";
+import { useQueryParam, NumberParam, StringParam, ArrayParam } from "use-query-params";
 
 const SearchPage = (props) => {
   const blok = props.blok
   const [suggestions, setSuggestions] = useState([])
   const [results, setResults] = useState([])
-  const [query, setQuery] = useState('')
+  const [queryParam, setQueryParam] = useQueryParam('q', StringParam)
   const [pageParam, setPageParam] = useQueryParam('page', NumberParam)
+  const [siteParam, setSiteParam] = useQueryParam('site', ArrayParam)
+  const [query, setQuery] = useState(queryParam || '')
   const [page, setPage] = useState(pageParam || 0)
   const [selectedFacets, setSelectedFacets] = useState({
-    siteName: []
+    siteName: siteParam || []
   })
 
   const client = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY)
@@ -39,8 +41,9 @@ const SearchPage = (props) => {
   }
 
   const submitSearchQuery = (query) => {
+    setPageParam(undefined)
+    setQueryParam(query || undefined)
     setPage(0)
-    setPageParam(0)
     setQuery(query)
   }
 
@@ -49,10 +52,13 @@ const SearchPage = (props) => {
     setPageParam(page)
   }
 
-  const updateFacetSelections = (attribute, values) => {
+  const updateSiteFacet = (values) => {
     const newFacets = {...selectedFacets}
-    newFacets[attribute] = values
+    newFacets["siteName"] = values
     setSelectedFacets(newFacets)
+    setPageParam(undefined)
+    setPage(0)
+    setSiteParam(values)
   }
 
   const updateSearchResults = () => {
@@ -99,6 +105,7 @@ const SearchPage = (props) => {
               <SearchField
                 onInput={(query) => updateAutocomplete(query)}
                 onSubmit={(query) => submitSearchQuery(query)}
+                defaultValue={query}
                 autocompleteSuggestions={suggestions}
               />
             </FlexCell>
@@ -116,7 +123,7 @@ const SearchPage = (props) => {
                     facetValues={results.facets.siteName}
                     selectedOptions={selectedFacets.siteName}
                     onChange={(values) =>
-                      updateFacetSelections("siteName", values)
+                      updateSiteFacet(values)
                     }
                   />
                 )}
