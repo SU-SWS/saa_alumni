@@ -16,8 +16,8 @@ const SearchResults = ({ results }) => {
             key={index}
             className="su-p-30 sm:su-py-[4rem] su-border-b su-border-black-40"
           >
-            <div className="su-flex">
-              <div className="su-flex-1">
+            <div className="su-flex su-flex-wrap md:su-flex-nowrap">
+              <div className="md:su-flex-1">
                 <div className="su-text-16 su-mb-10">{result.domain}</div>
                 <h3 className="su-text-24">
                   <a
@@ -34,7 +34,7 @@ const SearchResults = ({ results }) => {
                 ></div>
               </div>
               {result.image && (
-                <div className="su-w-[225px] su-h-[150px] su-ml-30">
+                <div className="md:su-w-[225px] su-h-[150px] su-mx-auto su-mt-15 md:su-mx-0 md:su-mt-0 md:su-ml-30">
                   <img
                     className="su-block su-object-cover su-object-center su-h-full"
                     src={result.image}
