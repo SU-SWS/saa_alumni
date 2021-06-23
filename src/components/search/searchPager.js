@@ -21,7 +21,7 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
 
   return (
     <div>
-      <div className="su-flex su-mt-90 su-justify-center su-space-x-36">
+      <div className="su-flex su-mt-90 su-mb-90 su-justify-center su-space-x-32 md:su-space-x-36">
         {activePage > 0 &&
           <a 
             className={`${linkClasses} hover:su-border-b-0 su-text-20 su-no-underline su-font-regular su-self-center`}
@@ -31,12 +31,12 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
               Previous
           </a>
         }
-        <ul className="su-list-none su-flex su-space-x-15 su-p-0">
+        <ul className="su-list-none su-flex su-space-x-3 md:su-space-x-15 su-p-0">
           {pagerLinks.map((i) => {
             return (
               <li className="su-mb-0" key={`search-pager-link-${i}`}>
                 <a 
-                  className={`su-text-24 su-font-bold su-px-11 su-no-underline
+                  className={`su-text-24 su-font-bold su-px-5 md:su-px-11 su-no-underline
                     ${activePage === i ? activeLinkClasses : linkClasses}
                   `} 
                   href={`?page=${i}`}
@@ -52,7 +52,7 @@ const SearchPager = ({activePage, nbPages, maxLinks, selectPage}) => {
           }
           <li>
             <a 
-              className={`su-text-24 su-font-bold su-px-11  su-no-underline
+              className={`su-text-24 su-font-bold su-px-5 md:su-px-11 su-no-underline
                 ${activePage === nbPages - 1 ? activeLinkClasses : linkClasses}
               `}
               href={`?page=${nbPages - 1}`}

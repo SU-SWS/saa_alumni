@@ -98,7 +98,7 @@ const SearchPage = (props) => {
         <Container
           element="section"
           width="site"
-          className="su-py-45 md:su-py-80 "
+          className="su-py-45 su-max-w-full md:su-py-80 "
         >
           <FlexBox gap justifyContent="center">
             <FlexCell xs="full" lg={results.facets ? 6 : 8}>
