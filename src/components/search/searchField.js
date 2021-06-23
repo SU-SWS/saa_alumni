@@ -5,7 +5,7 @@ import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
 const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue }) => {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(defaultValue || "");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
   const inputWrapper = createRef();
@@ -90,7 +90,6 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
                 onKeyDown={handleArrowKeys}
                 className={inputClasses}
                 value={query}
-                defaultValue={defaultValue}
               />
             </label>
             <button
