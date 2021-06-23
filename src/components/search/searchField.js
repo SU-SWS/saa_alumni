@@ -1,9 +1,11 @@
 import React, { useState, useEffect, createRef } from "react";
 import { X } from "react-hero-icon/solid";
 import { Search } from "react-hero-icon/solid";
+import UseEscape from "../../hooks/useEscape";
+import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
 const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue }) => {
-  const [query, setQuery] = useState(null);
+  const [query, setQuery] = useState("");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
   const inputWrapper = createRef();
@@ -33,11 +35,9 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
     onSubmit(suggestion);
   };
 
-  const clickOutside = (e) => {
-    if (inputWrapper.current && !inputWrapper.current.contains(e.target)) {
-      setShowAutocomplete(false);
-    }
-  };
+  UseOnClickOutside(inputWrapper, () => {
+    setShowAutocomplete(false);
+  })
 
   const handleArrowKeys = (e) => {
     if (e.key === "ArrowDown") {
@@ -49,13 +49,13 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
     }
   };
 
-  // Close autocomplete when clicking outside of area.
-  useEffect(() => {
-    document.addEventListener("mousedown", clickOutside);
-  });
+  UseEscape(() => {
+    clearHandler()
+  })
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
-  hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50`;
+  hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50
+  focus:su-bg-transparent focus:su-text-black-70`;
 
   const inputClasses = `su-text-30 su-font-semibold su-w-full su-flex-1 su-border-0 su-border-b
   su-border-solid su-border-black-60 su-pl-20 su-pr-70 xl:su-pr-126 su-py-10 su-text-m2`;
