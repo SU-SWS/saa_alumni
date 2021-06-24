@@ -5,10 +5,12 @@ import {
   MARK_ITALIC,
   MARK_LINK,
   NODE_HEADING,
+  NODE_IMAGE,
 } from "storyblok-rich-text-react-renderer";
 import { Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import Link from "gatsby-link";
+import CardImage from "../components/media/cardImage";
 
 const RichTextRenderer = ({ wysiwyg, className }) => {
   const rendered = render(wysiwyg, {
@@ -17,15 +19,19 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
       [MARK_ITALIC]: (children) => <em>{children}</em>,
       [MARK_LINK]: (children, props) => {
         const { href, target, linktype } = props;
-        if (linktype === 'email') {
+        if (linktype === "email") {
           // Email links: add `mailto:` scheme and map to <a>
           return <a href={`mailto:${href}`}>{children}</a>;
         }
-        if (linktype === 'url') {
+        if (linktype === "url") {
           // External links: map to <a>
-          return <a href={href} target={target}>{children}</a>;
+          return (
+            <a href={href} target={target}>
+              {children}
+            </a>
+          );
         }
-        // Internal links: map to <Link>
+        // Internal links: map to gatsby <Link>
         return <Link to={href}>{children}</Link>;
       },
     },
@@ -74,8 +80,11 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
 
         return null;
       },
-      defaultStringResolver: (str) => (<p>{str}</p>)
+      [NODE_IMAGE]: (children, props) => (
+        <CardImage size="horizontal" {...props} />
+      ),
     },
+    defaultStringResolver: (str) => <p>{str}</p>,
   });
 
   return <div className={dcnb("su-wysiwyg", className)}>{rendered}</div>;
