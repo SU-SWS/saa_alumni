@@ -3,16 +3,31 @@ import {
   render,
   MARK_BOLD,
   MARK_ITALIC,
+  MARK_LINK,
   NODE_HEADING,
 } from "storyblok-rich-text-react-renderer";
 import { Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
+import Link from "gatsby-link";
 
 const RichTextRenderer = ({ wysiwyg, className }) => {
   const rendered = render(wysiwyg, {
     markResolvers: {
       [MARK_BOLD]: (children) => <strong>{children}</strong>,
       [MARK_ITALIC]: (children) => <em>{children}</em>,
+      [MARK_LINK]: (children, props) => {
+        const { href, target, linktype } = props;
+        if (linktype === 'email') {
+          // Email links: add `mailto:` scheme and map to <a>
+          return <a href={`mailto:${href}`}>{children}</a>;
+        }
+        if (linktype === 'url') {
+          // External links: map to <a>
+          return <a href={href} target={target}>{children}</a>;
+        }
+        // Internal links: map to <Link>
+        return <Link to={href}>{children}</Link>;
+      },
     },
     nodeResolvers: {
       [NODE_HEADING]: (children, props) => {
@@ -49,8 +64,17 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
           );
         }
 
+        if (level === 6) {
+          return (
+            <Heading level={6} font="serif" size={0}>
+              {children}
+            </Heading>
+          );
+        }
+
         return null;
       },
+      defaultStringResolver: (str) => (<p>{str}</p>)
     },
   });
 
