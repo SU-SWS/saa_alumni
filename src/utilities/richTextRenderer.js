@@ -12,7 +12,14 @@ import { dcnb } from "cnbuilder";
 import Link from "gatsby-link";
 import CardImage from "../components/media/cardImage";
 
-const RichTextRenderer = ({ wysiwyg, className }) => {
+const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
+  let textColor = "su-text-black";
+  let linkColor = "";
+
+  if (isDark) {
+    textColor = "su-text-white"
+    linkColor = "su-text-digital-red-xlight hocus:su-text-white";
+  }
   const rendered = render(wysiwyg, {
     markResolvers: {
       [MARK_BOLD]: (children) => <strong>{children}</strong>,
@@ -21,18 +28,18 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
         const { href, target, linktype } = props;
         if (linktype === "email") {
           // Email links: add `mailto:` scheme and map to <a>
-          return <a href={`mailto:${href}`}>{children}</a>;
+          return <a href={`mailto:${href}`} className={linkColor}>{children}</a>;
         }
         if (linktype === "url") {
           // External links: map to <a>
           return (
-            <a href={href} target={target}>
+            <a href={href} target={target} className={linkColor}>
               {children}
             </a>
           );
         }
         // Internal links: map to gatsby <Link>
-        return <Link to={href}>{children}</Link>;
+        return <Link to={href} className={linkColor}>{children}</Link>;
       },
     },
     nodeResolvers: {
@@ -80,14 +87,14 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
 
         return null;
       },
-      [NODE_IMAGE]: (children, { src, alt, title }) => (
-        <CardImage size="horizontal" filename={src} alt={alt} title={title} />
+      [NODE_IMAGE]: (children, { src, alt }) => (
+        <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
       ),
     },
     defaultStringResolver: (str) => <p>{str}</p>,
   });
 
-  return <div className={dcnb("su-wysiwyg", className)}>{rendered}</div>;
+  return <div className={dcnb("su-wysiwyg", textColor, className)}>{rendered}</div>;
 };
 
 export default RichTextRenderer;

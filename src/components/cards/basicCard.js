@@ -113,6 +113,7 @@ const BasicCard = ({
           {hasText && (
             <RichTextRenderer
               wysiwyg={text}
+              isDark={isLightText}
               className="su-card-paragraph su-rs-mt-neg1 children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
             />
           )}
