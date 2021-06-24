@@ -15,7 +15,7 @@ const SimpleImage = ({
           <figcaption>
             <RichTextRenderer
               wysiwyg={caption}
-              className={`su-caption su-text-${captionAlign}`}
+              className={`su-caption su-mt-06em children:su-leading-snug su-text-${captionAlign}`}
             />
           </figcaption>
         )}
