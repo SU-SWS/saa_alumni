@@ -13,11 +13,11 @@ import Link from "gatsby-link";
 import CardImage from "../components/media/cardImage";
 
 const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
-  let textColor = "su-text-black";
+  let textColor = "su-text-current";
   let linkColor = "";
 
   if (isDark) {
-    textColor = "su-text-white"
+    textColor = "su-text-white";
     linkColor = "su-text-digital-red-xlight hocus:su-text-white";
   }
   const rendered = render(wysiwyg, {
@@ -28,7 +28,11 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
         const { href, target, linktype } = props;
         if (linktype === "email") {
           // Email links: add `mailto:` scheme and map to <a>
-          return <a href={`mailto:${href}`} className={linkColor}>{children}</a>;
+          return (
+            <a href={`mailto:${href}`} className={linkColor}>
+              {children}
+            </a>
+          );
         }
         if (linktype === "url") {
           // External links: map to <a>
@@ -39,7 +43,11 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
           );
         }
         // Internal links: map to gatsby <Link>
-        return <Link to={href} className={linkColor}>{children}</Link>;
+        return (
+          <Link to={href} className={linkColor}>
+            {children}
+          </Link>
+        );
       },
     },
     nodeResolvers: {
@@ -94,7 +102,9 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
     defaultStringResolver: (str) => <p>{str}</p>,
   });
 
-  return <div className={dcnb("su-wysiwyg", textColor, className)}>{rendered}</div>;
+  return (
+    <div className={dcnb("su-wysiwyg", textColor, className)}>{rendered}</div>
+  );
 };
 
 export default RichTextRenderer;
