@@ -40,9 +40,12 @@ const Section = ({
   let superLinkColor =
     "su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue";
 
+  let isDarkSection = false;
+
   if (bgColor === "black") {
     superLinkColor =
       "su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light";
+    isDarkSection = true;
   }
 
   if (isLeftAlign) {
@@ -96,6 +99,7 @@ const Section = ({
             <RichTextRenderer
               wysiwyg={intro}
               className="children:su-leading-display"
+              isDark={isDarkSection}
             />
           </div>
         </header>
