@@ -80,8 +80,8 @@ const RichTextRenderer = ({ wysiwyg, className }) => {
 
         return null;
       },
-      [NODE_IMAGE]: (children, props) => (
-        <CardImage size="horizontal" {...props} />
+      [NODE_IMAGE]: (children, { src, alt, title }) => (
+        <CardImage size="horizontal" filename={src} alt={alt} title={title} />
       ),
     },
     defaultStringResolver: (str) => <p>{str}</p>,
