@@ -17,7 +17,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
   let linkColor = "";
 
   if (isDark) {
-    textColor = "su-text-white";
+    textColor = "su-text-black-20";
     linkColor = "su-text-digital-red-xlight hocus:su-text-white";
   }
   const rendered = render(wysiwyg, {
@@ -34,19 +34,19 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
             </a>
           );
         }
-        if (linktype === "url") {
-          // External links: map to <a>
+        if (linktype === "story") {
+          // Internal links: map to gatsby <Link>
           return (
-            <a href={href} target={target} className={linkColor}>
+            <Link to={href} className={linkColor}>
               {children}
-            </a>
+            </Link>
           );
         }
-        // Internal links: map to gatsby <Link>
+        // External or asset links: map to <a>
         return (
-          <Link to={href} className={linkColor}>
+          <a href={href} target={target} className={linkColor}>
             {children}
-          </Link>
+          </a>
         );
       },
     },
