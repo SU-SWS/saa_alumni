@@ -42,9 +42,22 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
             </Link>
           );
         }
-        // External or asset links: map to <a>
+
+        if (linktype === "asset") {
+          // Asset links: map to <a>
+          return (
+            <a href={href} target={target} className={linkColor}>
+              {children}
+            </a>
+          );
+        }
+        // External links: map to <a> with external-link classname (used for styling)
         return (
-          <a href={href} target={target} className={linkColor}>
+          <a
+            href={href}
+            target={target}
+            className={dcnb("su-external-link", linkColor)}
+          >
             {children}
           </a>
         );

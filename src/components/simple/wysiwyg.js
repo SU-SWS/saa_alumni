@@ -17,7 +17,11 @@ const Wysiwyg = ({
   return (
     <SbEditable content={blok}>
       <div className={dcnb(mySpacingTop, mySpacingBottom)}>
-        <RichTextRenderer isDark={isLightText} wysiwyg={content} />
+        <RichTextRenderer
+          isDark={isLightText}
+          wysiwyg={content}
+          className="su-heading-link-icon"
+        />
       </div>
     </SbEditable>
   );
