@@ -142,3 +142,22 @@ exports.onCreateWebpackConfig = ({
     });
   }
 };
+
+/**
+ * Typing for when there is no content of such type.
+ */
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions;
+  const typeDefs = `
+    type StoryblokEntry implements Node {
+      field_label_string: String!
+      field_heading_string: String!
+      field_type_string: String!
+      field_to_string: String!
+      field_from_string: String!
+      field_enabled_boolean: Boolean!
+      field_statusCode_string: String!
+    }
+  `;
+  createTypes(typeDefs);
+};
