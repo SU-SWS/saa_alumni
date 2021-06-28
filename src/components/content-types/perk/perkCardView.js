@@ -88,7 +88,7 @@ const PerkCardView = ({
           )}
           <div
             className={dcnb(
-              "su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-from-transparent su-to-saa-black",
+              "su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-from-transparent su-to-saa-black su-backface-hidden",
               gradientDirection
             )}
             aria-hidden="true"
