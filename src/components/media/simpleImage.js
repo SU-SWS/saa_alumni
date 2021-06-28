@@ -4,13 +4,13 @@ import WidthBox from "../layout/widthBox";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 
 const SimpleImage = ({
-  blok: { image: { filename } = {}, imageWidth, caption, captionAlign },
+  blok: { image: { filename, alt } = {}, imageWidth, caption, captionAlign },
   blok,
 }) => (
   <SbEditable content={blok}>
     <WidthBox width={imageWidth}>
       <figure>
-        <img src={filename} alt="" />
+        <img src={filename} alt={alt ?? ""} />
         {caption && (
           <figcaption>
             <RichTextRenderer
