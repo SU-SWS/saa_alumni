@@ -122,6 +122,17 @@ export const smallPaddingBottom = {
   xxl: "su-rs-pb-6",
 };
 
+export const smallPaddingTop = {
+  none: "",
+  xxs: "su-rs-pt-0",
+  xs: "su-rs-pt-1",
+  sm: "su-rs-pt-2",
+  md: "su-rs-pt-3",
+  lg: "su-rs-pt-4",
+  xl: "su-rs-pt-5",
+  xxl: "su-rs-pt-6",
+};
+
 export const largePaddingBottom = {
   none: "",
   xxs: "su-rs-pb-4",
