@@ -54,19 +54,18 @@ const EmbedVideo = ({
     <SbEditable content={blok}>
       <VideoWrapper {...blok}>
         <figure className="su-media">
-          <div
-            className={`su-media__wrapper su-embed-container ${aspectRatio}`}
-          >
-            <ReactPlayer
-              url={videoUrl}
-              controls={true}
-              config={{
-                youtube: {
-                  playerVars: { start: convertToSecond(startMin, startSec) },
-                },
-              }}
-            />
-          </div>
+          <ReactPlayer
+            className={`su-media__wrapper ${aspectRatio}`}
+            width=""
+            height=""
+            url={videoUrl}
+            controls="true"
+            config={{
+              youtube: {
+                playerVars: { start: convertToSecond(startMin, startSec) },
+              },
+            }}
+          />
           {caption && (
             <figcaption>
               <RichTextRenderer
