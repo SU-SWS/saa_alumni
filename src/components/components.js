@@ -4,6 +4,7 @@ import ComponentNotFound from "./component_not_found";
 import CtaButton from "./cta/ctaButton";
 import CtaLink from "./cta/ctaLink";
 import CtaGroup from "./cta/ctaGroup";
+import DarkPage from "./page-types/darkPage";
 import Embed from "./embed/embed";
 import EmbedCard from "./cards/embedCard";
 import Event from "./content-types/event/event";
@@ -41,6 +42,7 @@ const ComponentList = {
   ctaButton: CtaButton,
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,
+  darkPage: DarkPage,
   embed: Embed,
   embedCard: EmbedCard,
   event: Event,

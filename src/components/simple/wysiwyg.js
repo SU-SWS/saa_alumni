@@ -1,15 +1,27 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import { smallPaddingBottom } from "../../utilities/dataSource";
+import { dcnb } from "cnbuilder";
+import {
+  smallPaddingBottom,
+  smallPaddingTop,
+} from "../../utilities/dataSource";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 
-const Wysiwyg = ({ blok: { spacingBottom, content }, blok }) => {
+const Wysiwyg = ({
+  blok: { content, spacingTop, spacingBottom, isLightText },
+  blok,
+}) => {
+  const mySpacingTop = smallPaddingTop[spacingTop] ?? "";
   const mySpacingBottom = smallPaddingBottom[spacingBottom] ?? "";
 
   return (
     <SbEditable content={blok}>
-      <div className={mySpacingBottom}>
-        <RichTextRenderer wysiwyg={content} />
+      <div className={dcnb(mySpacingTop, mySpacingBottom)}>
+        <RichTextRenderer
+          isDark={isLightText}
+          wysiwyg={content}
+          className="su-heading-link-icon"
+        />
       </div>
     </SbEditable>
   );

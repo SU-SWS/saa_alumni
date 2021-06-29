@@ -4,25 +4,17 @@ import { Container, Heading } from "decanter-react";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
-import BasicContentNoSidebar from "../partials/basicContentNoSidebar";
-import BasicContentLeftSidebar from "../partials/basicContentLeftSidebar";
 
-const BasicPage = (props) => {
+const DarkPage = (props) => {
   // Destructure.
   const {
-    blok: {
-      pageLayout,
-      hero,
-      aboveContent,
-      belowContent,
-      title,
-      isSrOnlyTitle,
-    },
+    blok: { hero, aboveContent, content, belowContent, title, isSrOnlyTitle },
     blok,
   } = props;
 
   const numHero = getNumBloks(hero);
   const numAbove = getNumBloks(aboveContent);
+  const numContent = getNumBloks(content);
   const numBelow = getNumBloks(belowContent);
 
   // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
@@ -34,11 +26,11 @@ const BasicPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={numHero > 0} {...props}>
+      <Layout hasHero={numHero > 0} isDark {...props}>
         <Container
           element="main"
           id="main-content"
-          className="basic-page su-relative su-flex-grow su-w-full"
+          className="dark-page su-relative su-flex-grow su-w-full su-bg-saa-black su-text-white"
           width="full"
         >
           <header className="su-basefont-23">
@@ -57,18 +49,17 @@ const BasicPage = (props) => {
             </Container>
           </header>
           {numAbove > 0 && (
-            <div className="basic-page-above-content">
+            <div className="dark-page-above-content">
               <CreateBloks blokSection={aboveContent} />
             </div>
           )}
-          {pageLayout === "no-sidebar" && (
-            <BasicContentNoSidebar className={contentPadding} {...props} />
-          )}
-          {pageLayout === "left-sidebar" && (
-            <BasicContentLeftSidebar className={contentPadding} {...props} />
+          {numContent > 0 && (
+            <div className="dark-page-main-content">
+              <CreateBloks blokSection={content} />
+            </div>
           )}
           {numBelow > 0 && (
-            <div className="basic-page-below-content">
+            <div className="dark-page-below-content">
               <CreateBloks blokSection={belowContent} />
             </div>
           )}
@@ -78,4 +69,4 @@ const BasicPage = (props) => {
   );
 };
 
-export default BasicPage;
+export default DarkPage;

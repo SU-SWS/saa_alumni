@@ -6,9 +6,9 @@ import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import getNumBloks from "../../utilities/getNumBloks";
 import {
-  bgColors,
   largePaddingTop,
   largePaddingBottom,
+  bgTextColorPairs,
 } from "../../utilities/dataSource";
 import SbLink from "../../utilities/sbLink";
 
@@ -32,7 +32,7 @@ const Section = ({
 }) => {
   const numCta = getNumBloks(cta);
 
-  const sectionBgColor = bgColors[bgColor] ?? bgColors.white;
+  const sectionBgColor = bgTextColorPairs[bgColor] ?? bgTextColorPairs.white;
   let alignment = "su-text-center";
   let bodyAlign = "su-mx-auto";
   let headlineAlign = "su-mx-auto";
@@ -40,9 +40,12 @@ const Section = ({
   let superLinkColor =
     "su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue";
 
+  let isDarkSection = false;
+
   if (bgColor === "black") {
     superLinkColor =
       "su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light";
+    isDarkSection = true;
   }
 
   if (isLeftAlign) {
@@ -96,6 +99,7 @@ const Section = ({
             <RichTextRenderer
               wysiwyg={intro}
               className="children:su-leading-display"
+              isDark={isDarkSection}
             />
           </div>
         </header>
