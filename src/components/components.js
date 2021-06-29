@@ -36,7 +36,8 @@ import searchPage from './page-types/searchPage';
 import searchPager from './search/searchPager';
 import searchResults from './search/searchResults';
 import Section from "./layout/section";
-import Wysiwyg from './simple/wysiwyg';
+import SimpleImage from "./media/simpleImage";
+import Wysiwyg from "./simple/wysiwyg";
 
 const ComponentList = {
   alert: Alert,
@@ -75,6 +76,7 @@ const ComponentList = {
   searchPager: searchPager,
   searchResults: searchResults,
   section: Section,
+  simpleImage: SimpleImage,
   wysiwyg: Wysiwyg,
   redirect: Redirect,
 };
