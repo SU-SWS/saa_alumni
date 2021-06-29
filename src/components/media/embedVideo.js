@@ -7,8 +7,6 @@ import {
   smallPaddingBottom,
   smallPaddingTop,
 } from "../../utilities/dataSource";
-// import CenteredContainer from "../partials/";
-// import FlexCell from "../partials/flexCell";
 
 // Wrapper that sets the size of the video depending on Storyblok option selected
 const VideoWrapper = ({ spacingTop, spacingBottom, videoWidth, children }) => {
