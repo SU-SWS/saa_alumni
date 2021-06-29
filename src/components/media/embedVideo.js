@@ -6,48 +6,49 @@ import RichTextField from "../../utilities/richTextRenderer";
 // import FlexCell from "../partials/flexCell";
 
 // Wrapper that sets the size of the video depending on Storyblok option selected
-const VideoWrapper = (
-  props,
-  { blok: { spacingTop, spacingBottom, videoWidth }, children }
-) => {
-  const videoWrapperClasses = `video-embed
-        ${spacingTop !== "none" ? `su-pt-${spacingTop}` : ""}
-        ${spacingBottom !== "none" ? `su-pb-${spacingBottom}` : ""}`;
+// const VideoWrapper = (
+//   props,
+//   { blok: { spacingTop, spacingBottom, videoWidth }, children }
+// ) => {
+//   const videoWrapperClasses = `video-embed
+//         ${spacingTop !== "none" ? `su-pt-${spacingTop}` : ""}
+//         ${spacingBottom !== "none" ? `su-pb-${spacingBottom}` : ""}`;
 
-  // if (videoWidth === "site") {
-  //   return (
-  //     <CenteredContainer classes={videoWrapperClasses}>
-  //       {props.children}
-  //     </CenteredContainer>
-  //   );
-  // }
+// if (videoWidth === "site") {
+//   return (
+//     <CenteredContainer classes={videoWrapperClasses}>
+//       {props.children}
+//     </CenteredContainer>
+//   );
+// }
 
-  // if (videoWidth === "story") {
-  //   return (
-  //     <CenteredContainer flex={true} classes={videoWrapperClasses}>
-  //       <FlexCell lg={8} classes={"su-mx-auto"}>
-  //         {props.children}
-  //       </FlexCell>
-  //     </CenteredContainer>
-  //   );
-  // }
-  // if (videoWidth === "inset") {
-  //   return (
-  //     <CenteredContainer flex={true} classes={videoWrapperClasses}>
-  //       <FlexCell sm={10} md={8} lg={7} xl={6} classes={"su-mx-auto"}>
-  //         {props.children}
-  //       </FlexCell>
-  //     </CenteredContainer>
-  //   );
-  // }
+// if (videoWidth === "inset") {
+//   return (
+//     <CenteredContainer flex={true} classes={videoWrapperClasses}>
+//       <FlexCell sm={10} md={8} lg={7} xl={6} classes={"su-mx-auto"}>
+//         {props.children}
+//       </FlexCell>
+//     </CenteredContainer>
+//   );
+// }
 
-  // This is for fitting to any parent container width so we don't want centered container
-  return <div className={videoWrapperClasses}>{children}</div>;
-};
+// This is for fitting to any parent container width so we don't want centered container
+//   return <div className={videoWrapperClasses}>{children}</div>;
+// };
 
 const EmbedVideo = (
-  props,
-  { blok: { aspectRatio, videoUrl, startMinute, startSecond, caption }, blok }
+  // props,
+  {
+    blok: {
+      videoUrl,
+      startMinute,
+      startSecond,
+      caption,
+      aspectRatio,
+      captionAlign,
+    },
+    blok,
+  }
 ) => {
   const startMin = startMinute ? parseInt(startMinute) : 0;
   const startSec = startSecond ? parseInt(startSecond) : 0;
@@ -56,30 +57,28 @@ const EmbedVideo = (
 
   return (
     <SbEditable content={blok}>
-      <VideoWrapper {...props}>
-        <figure className="su-media">
-          <div
-            className={`su-media__wrapper su-embed-container--${aspectRatio}`}
+      {/* <VideoWrapper {...props}> */}
+      <figure className="su-media">
+        <div className={`su-media__wrapper su-embed-container--${aspectRatio}`}>
+          <ReactPlayer
+            url={videoUrl}
+            controls={true}
+            config={{
+              youtube: {
+                playerVars: { start: convertToSecond(startMin, startSec) },
+              },
+            }}
+          />
+        </div>
+        {caption && (
+          <figcaption
+            className={`su-media__caption ood-story-media__caption su-text-align-${captionAlign}`}
           >
-            <ReactPlayer
-              url={videoUrl}
-              controls={true}
-              config={{
-                youtube: {
-                  playerVars: { start: convertToSecond(startMin, startSec) },
-                },
-              }}
-            />
-          </div>
-          {caption && (
-            <figcaption
-              className={`su-media__caption ood-story-media__caption su-text-align-${captionAlign}`}
-            >
-              <RichTextField data={caption} />
-            </figcaption>
-          )}
-        </figure>
-      </VideoWrapper>
+            <RichTextField data={caption} />
+          </figcaption>
+        )}
+      </figure>
+      {/* </VideoWrapper> */}
     </SbEditable>
   );
 };

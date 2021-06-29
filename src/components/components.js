@@ -7,7 +7,7 @@ import CtaGroup from "./cta/ctaGroup";
 import DarkPage from "./page-types/darkPage";
 import Embed from "./embed/embed";
 import EmbedCard from "./cards/embedCard";
-import EmbedMedia from "./media/embedVideo";
+import EmbedVideo from "./media/embedVideo";
 import Event from "./content-types/event/event";
 import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
@@ -46,7 +46,7 @@ const ComponentList = {
   darkPage: DarkPage,
   embed: Embed,
   embedCard: EmbedCard,
-  embedMedia: EmbedMedia,
+  embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
   grid: Grid,
