@@ -16,6 +16,7 @@ import Hero from "./composite/hero";
 import InteriorPage from "./page-types/interiorPage";
 import LandingPage from "./page-types/landingPage";
 import LinkGroup from './navigation/linkGroup';
+import LinkList from './simple/linkList';
 import LocalFooter from './identity/localFooter';
 import LocalFooterPicker from './identity/localFooterPicker';
 import MainMenuGroup from "./navigation/mainMenuGroup";
@@ -57,6 +58,7 @@ const ComponentList = {
   interiorPage: InteriorPage,
   landingPage: LandingPage,
   linkGroup: LinkGroup,
+  linkList: LinkList,
   localFooter: LocalFooter,
   localFooterPicker: LocalFooterPicker,
   mainMenuGroup: MainMenuGroup,
