@@ -12,6 +12,7 @@ import EmbedCard from "./cards/embedCard";
 import Event from "./content-types/event/event";
 import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
+import Heading from './simple/heading';
 import Hero from "./composite/hero";
 import InteriorPage from "./page-types/interiorPage";
 import LandingPage from "./page-types/landingPage";
@@ -54,6 +55,7 @@ const ComponentList = {
   event: Event,
   eventCard: EventCard,
   grid: Grid,
+  heading: Heading,
   hero: Hero,
   interiorPage: InteriorPage,
   landingPage: LandingPage,
