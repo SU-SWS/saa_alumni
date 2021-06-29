@@ -1,33 +1,34 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import ReactPlayer from "react-player";
-import RichTextField from "../../utilities/richTextRenderer";
+import { Container, FlexCell } from "decanter-react";
+import RichTextRenderer from "../../utilities/richTextRenderer";
+import {
+  smallPaddingBottom,
+  smallPaddingTop,
+} from "../../utilities/dataSource";
 // import CenteredContainer from "../partials/";
 // import FlexCell from "../partials/flexCell";
 
 // Wrapper that sets the size of the video depending on Storyblok option selected
 const VideoWrapper = ({ spacingTop, spacingBottom, videoWidth, children }) => {
   const videoWrapperClasses = `video-embed
-        ${spacingTop !== "none" ? `su-pt-${spacingTop}` : ""}
-        ${spacingBottom !== "none" ? `su-pb-${spacingBottom}` : ""}`;
+        ${spacingTop !== "none" ? smallPaddingTop[spacingTop] : ""}
+        ${spacingBottom !== "none" ? smallPaddingBottom[spacingBottom] : ""}`;
 
-  // if (videoWidth === "site") {
-  //   return (
-  //     <CenteredContainer classes={videoWrapperClasses}>
-  //       {children}
-  //     </CenteredContainer>
-  //   );
-  // }
+  if (videoWidth === "site") {
+    return <Container className={videoWrapperClasses}>{children}</Container>;
+  }
 
-  // if (videoWidth === "inset") {
-  //   return (
-  //     <CenteredContainer flex={true} classes={videoWrapperClasses}>
-  //       <FlexCell sm={10} md={8} lg={7} xl={6} classes={"su-mx-auto"}>
-  //         {children}
-  //       </FlexCell>
-  //     </CenteredContainer>
-  //   );
-  // }
+  if (videoWidth === "inset") {
+    return (
+      <Container width="full" className={videoWrapperClasses}>
+        <FlexCell sm={10} md={8} lg={7} xl={6} className="su-mx-auto">
+          {children}
+        </FlexCell>
+      </Container>
+    );
+  }
 
   // This is for fitting to any parent container width so we don't want centered container
   return <div className={videoWrapperClasses}>{children}</div>;
@@ -54,7 +55,7 @@ const EmbedVideo = ({
       <VideoWrapper {...blok}>
         <figure className="su-media">
           <div
-            className={`su-media__wrapper su-embed-container--${aspectRatio}`}
+            className={`su-media__wrapper su-embed-container ${aspectRatio}`}
           >
             <ReactPlayer
               url={videoUrl}
@@ -67,10 +68,11 @@ const EmbedVideo = ({
             />
           </div>
           {caption && (
-            <figcaption
-              className={`su-media__caption ood-story-media__caption su-text-align-${captionAlign}`}
-            >
-              <RichTextField data={caption} />
+            <figcaption>
+              <RichTextRenderer
+                wysiwyg={caption}
+                className={`su-caption su-mt-06em children:su-leading-snug su-text-${captionAlign}`}
+              />
             </figcaption>
           )}
         </figure>
