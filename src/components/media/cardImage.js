@@ -13,7 +13,6 @@ const CardImage = ({
   loading,
   ...props
 }) => {
-  const imgFocus = objectPosition[imageFocus] ?? objectPosition.center;
   const imgLoading = loading ?? "auto";
 
   let originalImg = "";
@@ -30,11 +29,11 @@ const CardImage = ({
     originalImg = transformImage(filename, "");
 
     if (size === "vertical" && imgWidth > 800) {
-      imgSrc = transformImage(filename, "/800x0");
+      imgSrc = transformImage(filename, "/800x0", imageFocus);
     } else if (size === "thumb" && imgWidth > 200) {
-      imgSrc = transformImage(filename, "/200x0");
+      imgSrc = transformImage(filename, "/200x200", imageFocus);
     } else if (size === "horizontal" && imgWidth > 1200) {
-      imgSrc = transformImage(filename, "/1200x0");
+      imgSrc = transformImage(filename, "/1200x0", imageFocus);
     } else {
       imgSrc = originalImg;
     }
@@ -43,7 +42,7 @@ const CardImage = ({
   return (
     <img
       src={imgSrc}
-      className={dcnb("su-object-cover", className, imgFocus)}
+      className={dcnb("su-object-cover", className, objectPosition.center)}
       alt={alt ?? ""}
       loading={imgLoading}
       {...props}

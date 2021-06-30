@@ -10,8 +10,7 @@ import { largeMarginBottom } from "../../../utilities/dataSource";
 
 const PerkCardView = ({
   blok: {
-    image: { filename } = {},
-    imageFocus,
+    image: { filename, focus } = {},
     isNew,
     title,
     descriptionShort,
@@ -80,7 +79,7 @@ const PerkCardView = ({
           {filename?.startsWith("http") && (
             <CardImage
               filename={filename}
-              imageFocus={cardImageFocus || imageFocus}
+              imageFocus={cardImageFocus || focus}
               className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
               loading={orientation === "horizontal" ? "eager" : "lazy"}
               size={orientation === "horizontal" ? "horizontal" : "vertical"}

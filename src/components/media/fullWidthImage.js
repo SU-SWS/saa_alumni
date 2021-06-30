@@ -12,7 +12,6 @@ const FullWidthImage = ({
   loading,
   ...props
 }) => {
-  const imgFocus = objectPosition[imageFocus] ?? objectPosition.center;
   const imgLoading = loading ?? "auto";
 
   let largeImg;
@@ -34,15 +33,15 @@ const FullWidthImage = ({
     originalImg = transformImage(filename, "");
 
     if (imgWidth >= 800) {
-      smallImg = transformImage(filename, "/800x0");
+      smallImg = transformImage(filename, "/800x0", imageFocus);
     }
 
     if (imgWidth >= 1200) {
-      mediumImg = transformImage(filename, "/1200x0");
+      mediumImg = transformImage(filename, "/1200x0", imageFocus);
     }
 
     if (imgWidth >= 2000) {
-      largeImg = transformImage(filename, "/2000x0");
+      largeImg = transformImage(filename, "/2000x0", imageFocus);
     }
 
     imgSrcset = smallImg ? `${smallImg} 800w` : "";
@@ -68,7 +67,7 @@ const FullWidthImage = ({
       {...(imgSrcset ? { srcSet: imgSrcset } : {})}
       {...(imgSizes ? { sizes: imgSizes } : {})}
       src={imgSrc}
-      className={dcnb(className, imgFocus)}
+      className={dcnb(className, objectPosition.center)}
       alt={alt ?? ""}
       loading={imgLoading}
       {...props}

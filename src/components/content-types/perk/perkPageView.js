@@ -8,8 +8,7 @@ const PerkPageView = (props) => {
   // Destructure props
   const {
     blok: {
-      image: { filename } = {},
-      imageFocus,
+      image: { filename, focus } = {},
       isNew,
       title,
       intro,
@@ -29,7 +28,7 @@ const PerkPageView = (props) => {
                 <figure className="su-overflow-hidden su-w-full su-h-full">
                   <CardImage
                     filename={filename}
-                    imageFocus={imageFocus}
+                    imageFocus={focus}
                     className="su-w-full su-h-full su-object-cover"
                     loading="lazy"
                   />

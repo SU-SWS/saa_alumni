@@ -18,8 +18,7 @@ const BasicCard = ({
     isLightText,
     isBigHeadline,
     align,
-    image: { filename } = {},
-    imageFocus,
+    image: { filename, focus } = {},
     headline,
     headingLevel,
     text,
@@ -43,7 +42,7 @@ const BasicCard = ({
       <CardImage
         filename={filename}
         size="vertical"
-        imageFocus={imageFocus}
+        imageFocus={focus}
         loading="lazy"
       />
     </div>
@@ -56,7 +55,7 @@ const BasicCard = ({
       <CircularImage
         borderColor={borderColor}
         filename={filename}
-        imageFocus={imageFocus}
+        imageFocus={focus}
         className={isMinimal ? "" : "su-rs-ml-2"}
         loading="lazy"
       />

@@ -17,8 +17,7 @@ import DateBlock from "../../simple/dateBlock";
 
 const Event = ({
   blok: {
-    image: { filename } = {},
-    imageFocus,
+    image: { filename, focus } = {},
     title,
     start,
     end,
@@ -123,7 +122,7 @@ const Event = ({
               <figure className="su-overflow-hidden su-w-full su-h-full">
                 <CardImage
                   filename={filename}
-                  imageFocus={imageFocus}
+                  imageFocus={focus}
                   size="vertical"
                   className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
                   loading="lazy"

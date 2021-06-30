@@ -17,9 +17,8 @@ const Hero = ({
   blok: {
     headlineSize,
     isDarkGradient,
-    imageFocus,
     cta,
-    image: { filename } = {},
+    image: { filename, focus } = {},
     sansSuper,
     sansSub,
     serifSuper,
@@ -57,7 +56,7 @@ const Hero = ({
           <figure className="su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full">
             <FullWidthImage
               filename={filename}
-              imageFocus={imageFocus}
+              imageFocus={focus}
               className="su-w-full su-h-full su-object-cover"
               loading="eager"
             />
