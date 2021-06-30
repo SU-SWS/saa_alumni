@@ -8,7 +8,7 @@ module.exports = function () {
       ".custom-checkbox[type='checkbox']:checked": {
         backgroundColor: theme("colors.digital-red.light"),
         borderColor: theme("colors.digital-red.light"),
-        backgroundImage: "url(/images/arrow-right.svg)",
+        backgroundImage: "url(/images/checked-icon.svg)",
         backgroundSize: "60% 100%",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "50%",
