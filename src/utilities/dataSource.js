@@ -178,3 +178,9 @@ export const textAlign = {
   center: "su-text-center",
   right: "su-text-right",
 };
+
+export const mediaAspectRatio = {
+  "16x9": "su-aspect-w-16 su-aspect-h-9",
+  "4x3": "su-aspect-w-4 su-aspect-h-3",
+  "1x1": "su-aspect-w-1 su-aspect-h-1",
+};

@@ -6,6 +6,7 @@ import RichTextRenderer from "../../utilities/richTextRenderer";
 import {
   smallPaddingBottom,
   smallPaddingTop,
+  mediaAspectRatio,
 } from "../../utilities/dataSource";
 
 // Wrapper that sets the size of the video depending on Storyblok option selected
@@ -59,7 +60,9 @@ const EmbedVideo = ({
       <VideoWrapper blok={{ spacingTop, spacingBottom, videoWidth }}>
         <figure className="su-media">
           <ReactPlayer
-            className={`su-media__wrapper ${aspectRatio}`}
+            className={`su-media__wrapper ${
+              mediaAspectRatio !== "none" ? mediaAspectRatio[aspectRatio] : ""
+            }`}
             width=""
             height=""
             url={videoUrl}
