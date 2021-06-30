@@ -9,7 +9,10 @@ import {
 } from "../../utilities/dataSource";
 
 // Wrapper that sets the size of the video depending on Storyblok option selected
-const VideoWrapper = ({ spacingTop, spacingBottom, videoWidth, children }) => {
+const VideoWrapper = ({
+  blok: { spacingTop, spacingBottom, videoWidth },
+  children,
+}) => {
   const videoWrapperClasses = `video-embed
         ${spacingTop !== "none" ? smallPaddingTop[spacingTop] : ""}
         ${spacingBottom !== "none" ? smallPaddingBottom[spacingBottom] : ""}`;
@@ -40,17 +43,20 @@ const EmbedVideo = ({
     caption,
     aspectRatio,
     captionAlign,
+    spacingTop,
+    spacingBottom,
+    videoWidth,
   },
   blok,
 }) => {
-  const startMin = startMinute ? parseInt(startMinute) : 0;
-  const startSec = startSecond ? parseInt(startSecond) : 0;
+  const startMin = startMinute ? parseInt(startMinute, 10) : 0;
+  const startSec = startSecond ? parseInt(startSecond, 10) : 0;
 
   const convertToSecond = (min, sec) => min * 60 + sec;
 
   return (
     <SbEditable content={blok}>
-      <VideoWrapper {...blok}>
+      <VideoWrapper blok={{ spacingTop, spacingBottom, videoWidth }}>
         <figure className="su-media">
           <ReactPlayer
             className={`su-media__wrapper ${aspectRatio}`}
