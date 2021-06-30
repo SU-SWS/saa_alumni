@@ -32,8 +32,7 @@ const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
               className="su-mr-15 su-max-w-[1.7rem] su-custom-checkbox su-max-h-[1.7rem] su-appearance-none !su-border su-rounded-[0.3rem]"
               onChange={(e) => handleCheckboxChange(e)}
             />
-            <span>{option}</span>
-            <span> ({count})</span>
+            <span>{option}<span> ({count})</span></span>
           </label>
         );
       })}

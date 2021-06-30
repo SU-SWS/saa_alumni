@@ -6,9 +6,9 @@ module.exports = function () {
     const components = {
       // Add spacing between text and underline
       ".custom-checkbox[type='checkbox']:checked": {
-        backgroundColor: theme("colors.saa-digital-red"),
-        borderColor: theme("colors.saa-digital-red"),
-        backgroundImage: "url(/images/checked-icon.svg)",
+        backgroundColor: theme("colors.digital-red.light"),
+        borderColor: theme("colors.digital-red.light"),
+        backgroundImage: "url(/images/arrow-right.svg)",
         backgroundSize: "60% 100%",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "50%",
