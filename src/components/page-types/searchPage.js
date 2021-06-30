@@ -46,6 +46,20 @@ const SearchPage = (props) => {
     setPage(0)
     setQuery(query)
   }
+  
+  const autocompleteSelection = (suggestion) => {
+    if (suggestion.facets) {
+      const newFacets = {...selectedFacets}
+      newFacets['siteName'] = [suggestion.facets.siteName.value]
+      setSelectedFacets(newFacets)
+      setSiteParam(suggestion.facets.siteName.value)
+    }
+    
+    setQuery(suggestion.query)
+    setQueryParam(suggestion.query)
+    setPageParam(undefined)
+    setPage(0)
+  }
 
   const updatePage = (page) => {
     setPage(page)
@@ -107,6 +121,7 @@ const SearchPage = (props) => {
                 onSubmit={(query) => submitSearchQuery(query)}
                 defaultValue={query}
                 autocompleteSuggestions={suggestions}
+                onAutocompleteSelect={(suggestion) => autocompleteSelection(suggestion)}
               />
             </FlexCell>
           </FlexBox>

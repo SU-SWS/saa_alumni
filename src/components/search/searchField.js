@@ -1,10 +1,11 @@
+import { domain } from "process";
 import React, { useState, useEffect, createRef } from "react";
 import { X } from "react-hero-icon/solid";
 import { Search } from "react-hero-icon/solid";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
-const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue }) => {
+const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue, onAutocompleteSelect }) => {
   const [query, setQuery] = useState(defaultValue || "");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
@@ -30,9 +31,9 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
 
   const selectSuggestion = (e, suggestion) => {
     e.preventDefault();
-    setQuery(suggestion);
+    setQuery(suggestion.query);
     setShowAutocomplete(false);
-    onSubmit(suggestion);
+    onAutocompleteSelect(suggestion);
   };
 
   UseOnClickOutside(inputWrapper, () => {
@@ -44,8 +45,8 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
       setSelectedSuggestion(selectedSuggestion + 1);
     } else if (e.key === "ArrowUp") {
       setSelectedSuggestion(selectedSuggestion - 1);
-    } else if (e.key === "Enter" && autocompleteSuggestions[selectedSuggestion]) {
-      selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query);
+    } else if (e.key === "Enter" && suggestions[selectedSuggestion]) {
+      selectSuggestion(e, suggestions[selectedSuggestion]);
     }
   };
 
@@ -69,6 +70,33 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
   const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-white su-p-10 su-shadow-md su-w-full su-border
    su-border-digital-red-light su-rounded-b-[0.5rem]
    ${showAutocomplete ? "" : "su-hidden"}`;
+
+  const prepareSuggestions = (suggestions) => {
+    let preparedSuggestions = []
+    for (const suggestion of suggestions) {
+      console.log('suggestion', suggestion)
+      preparedSuggestions.push({
+        'query': suggestion.query,
+        'snippet': suggestion['_highlightResult']['query']['value'],
+      })
+      for (const siteName of suggestion['crawler_federated-search']['facets']['exact_matches']['siteName']) {
+        preparedSuggestions.push({
+          'query': suggestion.query,
+          'snippet': suggestion['_highlightResult']['query']['value'],
+          'facets': {
+            'siteName': {
+              value: siteName.value,
+              count: siteName.count
+            }
+          }
+        })
+      }
+    }
+
+    return preparedSuggestions
+  }
+
+  const suggestions = prepareSuggestions(autocompleteSuggestions)
 
   return (
     <div>
@@ -102,28 +130,30 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
             <div className={autocompleteContainerClasses}>
               {Array.isArray(autocompleteSuggestions) && (
                 <div className="su-list-unstyled" role="listbox">
-                  {autocompleteSuggestions.map((suggestion, index) => (
-                    <div
-                      key={`autocomplete-item-${index}`}
-                      role="option"
-                      tabIndex={showAutocomplete ? 0 : -1}
-                      className={`su-mb-0
-                        ${autocompleteLinkClasses}
-                        ${index === selectedSuggestion ? 'su-bg-black-20 su-text-digital-red' : ''}
-                      `}
-                      onClick={(e) => selectSuggestion(e, suggestion.query)}
-                      aria-selected={selectedSuggestion === index ? 'true': 'false'}
-                      id="search-autocomplete-listbox"
-                    >
-                      {suggestion._highlightResult && (
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html: suggestion._highlightResult.query.value,
-                          }}
-                        />
-                      )}
-                    </div>
-                  ))}
+                  {suggestions.map((suggestion, index) => {
+                    return (
+                      <div
+                        key={`autocomplete-item-${index}`}
+                        role="option"
+                        tabIndex={showAutocomplete ? 0 : -1}
+                        className={`su-mb-0 su-cursor-pointer
+                          ${autocompleteLinkClasses}
+                          ${index === selectedSuggestion ? 'su-bg-black-20 su-text-digital-red' : ''}
+                        `}
+                        onClick={(e) => selectSuggestion(e, suggestion)}
+                        aria-selected={selectedSuggestion === index ? 'true': 'false'}
+                        id="search-autocomplete-listbox"
+                      >
+                        <div>
+                          <span dangerouslySetInnerHTML={{__html: suggestion.snippet}}/>
+                          {suggestion.facets &&
+                            <span className="su-text-14 su-text-digital-green-dark">{` on ${suggestion.facets.siteName.value} (${suggestion.facets.siteName.count})`}</span>
+                          }
+                          
+                        </div>  
+                      </div>
+                    )}
+                  )}
                 </div>
               )}
             </div>
