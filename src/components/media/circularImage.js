@@ -5,7 +5,7 @@ import CardImage from "./cardImage";
 
 const CircularImage = ({
   borderColor,
-  filename,
+  filename = "",
   alt,
   className,
   imageFocus,
@@ -13,8 +13,7 @@ const CircularImage = ({
   ...props
 }) => {
   // Option to display image as round thumbnail with colored border
-  const imageBorderColor =
-    borderColors[borderColor] ?? borderColors["digital-red"];
+  const imageBorderColor = borderColors[borderColor ?? "digital-red"];
   const imageBgColor = bgColors[borderColor ?? "digital-red"];
 
   return (
