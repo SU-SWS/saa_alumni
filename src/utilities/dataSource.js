@@ -20,7 +20,7 @@ export const buttonSizes = {
   small:
     "su-px-20 su-pt-10 su-pb-11 sm:su-px-20 sm:su-pt-10 sm:su-pb-12 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20",
   default:
-    "su-px-20 su-pt-10 su-pb-11 sm:su-px-20 sm:su-pt-14 sm:su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-20 md:su-text-24",
+    "su-px-20 su-pt-10 su-pb-11 sm:su-px-20 sm:su-pt-14 sm:su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24",
   large:
     "su-px-20 su-pt-10 su-pb-11 sm:su-px-26 sm:su-pt-16 sm:su-pb-18 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24",
 };
