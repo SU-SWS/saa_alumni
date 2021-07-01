@@ -1,39 +1,33 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import ReactPlayer from "react-player";
-import { Container, FlexCell } from "decanter-react";
+import { dcnb } from "cnbuilder";
+import WidthBox from "../layout/widthBox";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import {
   smallPaddingBottom,
   smallPaddingTop,
   mediaAspectRatio,
+  textAlign,
 } from "../../utilities/dataSource";
 
-// Wrapper that sets the size of the video depending on Storyblok option selected
 const VideoWrapper = ({
   blok: { spacingTop, spacingBottom, videoWidth },
   children,
 }) => {
-  const videoWrapperClasses = `video-embed
-        ${spacingTop !== "none" ? smallPaddingTop[spacingTop] : ""}
-        ${spacingBottom !== "none" ? smallPaddingBottom[spacingBottom] : ""}`;
+  const spacingTopStyle = smallPaddingTop[spacingTop] ?? "";
+  const spacingBottomStyle = smallPaddingBottom[spacingBottom] ?? "";
+  const videoWrapperClasses = dcnb(
+    "video-embed",
+    spacingTopStyle,
+    spacingBottomStyle
+  );
 
-  if (videoWidth === "site") {
-    return <Container className={videoWrapperClasses}>{children}</Container>;
-  }
-
-  if (videoWidth === "inset") {
-    return (
-      <Container width="full" className={videoWrapperClasses}>
-        <FlexCell sm={10} md={8} lg={7} xl={6} className="su-mx-auto">
-          {children}
-        </FlexCell>
-      </Container>
-    );
-  }
-
-  // This is for fitting to any parent container width so we don't want centered container
-  return <div className={videoWrapperClasses}>{children}</div>;
+  return (
+    <WidthBox width={videoWidth} className={videoWrapperClasses}>
+      {children}
+    </WidthBox>
+  );
 };
 
 const EmbedVideo = ({
@@ -54,15 +48,15 @@ const EmbedVideo = ({
   const startSec = startSecond ? parseInt(startSecond, 10) : 0;
 
   const convertToSecond = (min, sec) => min * 60 + sec;
+  const aspectRatioStyle = mediaAspectRatio[aspectRatio ?? "16x9"];
+  const captionAlignment = textAlign[captionAlign ?? "left"];
 
   return (
     <SbEditable content={blok}>
       <VideoWrapper blok={{ spacingTop, spacingBottom, videoWidth }}>
         <figure className="su-media">
           <ReactPlayer
-            className={`su-media__wrapper ${
-              mediaAspectRatio !== "none" ? mediaAspectRatio[aspectRatio] : ""
-            }`}
+            className={dcnb("su-media__wrapper", aspectRatioStyle)}
             width=""
             height=""
             url={videoUrl}
@@ -77,7 +71,10 @@ const EmbedVideo = ({
             <figcaption>
               <RichTextRenderer
                 wysiwyg={caption}
-                className={`su-caption su-mt-06em children:su-leading-snug su-text-${captionAlign}`}
+                className={dcnb(
+                  "su-caption su-mt-06em children:su-leading-snug",
+                  captionAlignment
+                )}
               />
             </figcaption>
           )}
