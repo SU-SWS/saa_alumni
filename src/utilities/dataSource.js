@@ -178,3 +178,9 @@ export const textAlign = {
   center: "su-text-center",
   right: "su-text-right",
 };
+
+export const containerAlign = {
+  left: "su-flex justify-start",
+  center: "su-flex justify-center",
+  right: "su-flex justify-end",
+};
