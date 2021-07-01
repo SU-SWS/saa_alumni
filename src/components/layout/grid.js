@@ -6,7 +6,7 @@ import CreateBloks from "../../utilities/createBloks";
 import WidthBox from "./widthBox";
 
 const Grid = ({
-  blok: { removeGap, numCol, content, width, isStretchItems },
+  blok: { removeGap, numCol, content, width, isStretchItems, alignment },
   blok,
 }) => {
   // Options to have regular grid gap or 1px horizontal gaps
@@ -24,13 +24,16 @@ const Grid = ({
     itemClasses = "su-items-stretch";
   }
 
+  let alignmentClasses = alignment == 'left' ? 'su-justify-items-left' : 'su-justify-items-center';
+
   let grid = (
     <DrGrid
       xs={1}
       md={2}
       xl={parseInt(numCol, 10)}
       className={dcnb(
-        "su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+        "su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+        alignmentClasses,
         gapClasses,
         itemClasses
       )}
@@ -43,7 +46,8 @@ const Grid = ({
     grid = (
       <DrGrid
         className={dcnb(
-          "su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-justify-items-center su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+          "su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+          alignmentClasses,
           gapClasses,
           itemClasses
         )}

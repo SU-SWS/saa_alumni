@@ -1,5 +1,6 @@
 import React from 'react'
 import CreateBloks from "../../utilities/createBloks";
+import CtaLink from '../cta/ctaLink';
 
 const SearchNoResults = ({heading, body, additionalContent}) => {
   // TODO: Replace hard-coded markup with values from Storyblok.
