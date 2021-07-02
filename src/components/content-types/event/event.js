@@ -92,14 +92,14 @@ const Event = ({
   const iconClasses =
     "su-inline-block su-flex-shrink-0 su-mt-01em su-mr-06em su-w-[1.1em]";
   let locationIcon = (
-    <LocationMarkerIcon className={iconClasses} aria-label="Event location" />
+    <LocationMarkerIcon className={iconClasses} aria-label="Location" />
   );
 
   if (isVirtual) {
     locationIcon = (
       <DesktopComputerIcon
         className={iconClasses}
-        aria-label="Event is online"
+        aria-label="This event is online"
       />
     );
   }
@@ -141,6 +141,7 @@ const Event = ({
           endHtmlDate={endHtmlDate}
           isSameDay={isSameDay}
           isMinimal={isMinimal}
+          aria-hidden="true"
           className={
             isMinimal
               ? ""
@@ -176,7 +177,7 @@ const Event = ({
           )}
         >
           <FlexBox direction="row" alignItems="start" className="su-mb-04em">
-            <CalendarIcon className={iconClasses} aria-label="Event date" />
+            <CalendarIcon className={iconClasses} aria-label="Date" />
             <span>
               {longStartDate}
               {!isSameDay && ` - ${longEndDate}`}
