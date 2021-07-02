@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import React  from "react";
+import { Popover } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import CreateBloks from "../../utilities/createBloks";
 
@@ -32,40 +32,18 @@ const MainMenuGroup = ({
             aria-hidden="true"
           />
         </Popover.Button>
-        <Transition
-          as={Fragment}
-          enter="su-transition su-duration su-ease-out"
-          enterFrom={`su-transform-gpu ${
-            panelFacing === "left"
-              ? "su-origin-top-right"
-              : "su-origin-top-left"
-          } su-scale-y-50 lg:su-scale-75 su-opacity-0`}
-          enterTo={`su-transform-gpu ${
-            panelFacing === "left"
-              ? "su-origin-top-right"
-              : "su-origin-top-left"
-          } su-scale-y-100 lg:su-scale-100 su-opacity-100`}
-          leave="su-transition su-duration su-ease-out"
-          leaveFrom={`su-transform-gpu ${
-            panelFacing === "left"
-              ? "su-origin-top-right"
-              : "su-origin-top-left"
-          } su-scale-y-100 lg:su-scale-100 su-opacity-100`}
-          leaveTo={`su-transform-gpu ${
-            panelFacing === "left"
-              ? "su-origin-top-right"
-              : "su-origin-top-left"
-          } su-scale-y-50 lg:su-scale-75 su-opacity-0`}
+
+        <Popover.Panel
+          as="ul"
+          className={`${
+            panelFacing === "left" ? "lg:su-right-0" : ""
+          }
+          ${open ? 'su-block' : 'su-hidden'}
+          su-list-unstyled su-shadow-md su-w-[29rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
+          static
         >
-          <Popover.Panel
-            as="ul"
-            className={`${
-              panelFacing === "left" ? "lg:su-right-0" : ""
-            } su-list-unstyled su-shadow-md su-w-[29rem] su-px-20 su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
-          >
-            <CreateBloks blokSection={menuItems} />
-          </Popover.Panel>
-        </Transition>
+          <CreateBloks blokSection={menuItems} />
+        </Popover.Panel>
       </>
     )}
   </Popover>
