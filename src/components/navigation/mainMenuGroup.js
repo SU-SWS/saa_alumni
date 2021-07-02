@@ -15,9 +15,6 @@ const MainMenuGroup = ({
               ? "!su-text-white !su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark"
               : ""
           } su-group su-font-bold su-text-left lg:su-whitespace-pre su-leading-snug su-bg-transparent su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] su-border-solid su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-no-underline hocus:su-bg-transparent focus:su-outline-none`}
-          aria-label={`${parentText} ${parentTextSecond} ${
-            open ? "" : "- Collapsed"
-          }`}
         >
           {parentText}
           {parentTextSecond && (
