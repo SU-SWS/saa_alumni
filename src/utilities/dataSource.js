@@ -180,7 +180,7 @@ export const textAlign = {
 };
 
 export const containerAlign = {
-  left: "su-flex justify-start",
-  center: "su-flex justify-center",
-  right: "su-flex justify-end",
+  left: "children:su-mr-auto",
+  center: "children:su-mx-auto",
+  right: "children:su-ml-auto",
 };
