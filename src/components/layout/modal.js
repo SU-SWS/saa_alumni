@@ -5,7 +5,7 @@ import { Container } from 'decanter-react'
 import { tabbable } from 'tabbable';
 import { XIcon } from '@heroicons/react/solid';
 
-export const Modal = ({children, isOpen, onClose, ariaLabel}) => {
+export const Modal = ({children, isOpen, onClose, ariaLabel, initialFocus}) => {
   const closeButton = useRef();
   const modalBodyRef = useRef();
   
@@ -13,7 +13,8 @@ export const Modal = ({children, isOpen, onClose, ariaLabel}) => {
   const getLastTabbableItem = () => {
     if (!modalBodyRef.current) return null;
     const focusableItems = tabbable(modalBodyRef.current);
-    return focusableItems[focusableItems.length - 1];
+    const lastTabbableItem = focusableItems.length ? focusableItems[focusableItems.length - 1] : closeButton.current
+    return lastTabbableItem;
   }
 
   // Mimick the structure of a React ref so it works with UseFocusTrap hook.
@@ -33,7 +34,7 @@ export const Modal = ({children, isOpen, onClose, ariaLabel}) => {
   useEffect(() => {
     if (isOpen) {
       lockScroll();
-      closeButton.current.focus();
+      initialFocus ? initialFocus.current.focus() : closeButton.current.focus();
     } else {
       unlockScroll();
     }

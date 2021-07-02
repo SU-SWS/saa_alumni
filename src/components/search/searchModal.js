@@ -1,11 +1,14 @@
 import React from 'react'
 import Modal from '../layout/modal'
 import { Heading } from "decanter-react";
+import SearchFieldModal from './searchFieldModal';
 
 const SearchModal = ({isOpen, onClose}) => {
+  const searchFieldRef = React.createRef();
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div>
+    <Modal isOpen={isOpen} onClose={onClose} initialFocus={searchFieldRef}>
+      <div className="su-max-w-1000 su-mx-auto">
         <Heading
           font="serif"
           size={2}
@@ -14,6 +17,7 @@ const SearchModal = ({isOpen, onClose}) => {
         >
           Hello, what can we help you find today?
         </Heading>
+        <SearchFieldModal ref={searchFieldRef} />
       </div>
 
     </Modal>
