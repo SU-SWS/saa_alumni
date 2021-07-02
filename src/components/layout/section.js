@@ -83,7 +83,7 @@ const Section = ({
           )}
           {title && (
             <Heading
-              level={headingLevel ?? 2}
+              level={parseInt(headingLevel, 10) ?? 2}
               font="serif"
               weight="bold"
               className={dcnb(

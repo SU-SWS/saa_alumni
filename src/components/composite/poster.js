@@ -101,7 +101,7 @@ const Poster = ({
           <Heading
             font="serif"
             weight="bold"
-            level={headingLevel ?? 2}
+            level={parseInt(headingLevel, 10) ?? 2}
             className={dcnb(headingSpacing, headlineSize)}
           >
             {headline}
