@@ -65,7 +65,7 @@ const BasicCard = ({
   }
 
   if (isMinimal) {
-    wrapperClasses = "";
+    wrapperClasses = "su-max-w-600";
     bodyPadding = "";
 
     // Add top padding to content if the minimal card has an image
@@ -99,7 +99,7 @@ const BasicCard = ({
     <SbEditable content={blok}>
       <div
         className={dcnb(
-          "basic-card su-w-full su-max-w-600 su-basefont-23",
+          "basic-card su-w-full su-basefont-23",
           wrapperClasses
         )}
       >
