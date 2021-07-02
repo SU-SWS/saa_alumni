@@ -16,6 +16,7 @@ const SimpleImage = ({
     image: { filename, alt } = {},
     imageWidth,
     imageFocus,
+    isBanner,
     caption,
     captionAlign,
     spacingTop,
@@ -31,7 +32,7 @@ const SimpleImage = ({
 
   let wrapperHeight = "";
   let imageStyle = "";
-  if (imageWidth === "edge-to-edge") {
+  if (imageWidth === "edge-to-edge" && isBanner) {
     wrapperHeight = "su-relative su-h-screen su-w-full su-overflow-hidden";
     imageStyle = "su-h-full su-w-full su-object-cover";
   }
