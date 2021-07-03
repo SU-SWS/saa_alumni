@@ -15,30 +15,34 @@ const StoryCardView = ({
     title,
     shortTitle,
     teaser,
+    source,
     pubLink,
     tabText,
   },
   blok,
+  storyLink,
   isMinimal,
-  isBigHeadline,
+  isBigText,
+  hideTab,
   headingLevel,
   cardImageFocus,
 }) => {
   let wrapperClasses =
-    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-10 su-shadow-sm";
-  let headlinePadding = "su-rs-px-2";
-  let detailsPadding = "su-rs-px-2";
+    "su-bg-white su-border su-border-solid su-border-black-10 su-shadow-sm";
+
+  let contentPadding = "su-rs-p-2";
 
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
-    headlinePadding = "su-pt-01em";
-    detailsPadding = "";
+    contentPadding = "su-rs-pt-1";
   }
 
   let headlineSize = "su-type-2 md:su-type-1 lg:su-type-2";
+  let teaserSize = "su-card paragraph";
 
-  if (isBigHeadline) {
+  if (isBigText) {
     headlineSize = dcnb("xl:su-type-3", headlineSize);
+    teaserSize = "su-big-paragraph";
   }
 
   // Default icon is right arrow for internal links
@@ -64,47 +68,48 @@ const StoryCardView = ({
           wrapperClasses
         )}
       >
-        {!isMinimal && (
-          <div
-            className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
-            aria-hidden="true"
-          >
-            {filename?.startsWith("http") && (
-              <figure className="su-overflow-hidden su-w-full su-h-full">
-                <CardImage
-                  filename={filename}
-                  imageFocus={cardImageFocus || imageFocus}
-                  size="vertical"
-                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
-                  loading="lazy"
-                />
-              </figure>
-            )}
-          </div>
-        )}
-        <SbLink
-          link={pubLink}
-          classes={dcnb(
-            "su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
-            headlineSize,
-            headlinePadding
-          )}
+        <div
+          className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
+          aria-hidden="true"
         >
-          <Heading
-            level={headingLevel ?? 3}
-            font="serif"
-            tracking="normal"
-            className="su-relative su-inline su-type-0"
+          <figure className="su-overflow-hidden su-w-full su-h-full">
+            <CardImage
+              filename={cardFilename || filename}
+              imageFocus={cardImageFocus || imageFocus}
+              size="vertical"
+              className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+              loading="lazy"
+            />
+          </figure>
+        </div>
+        <div className={dcnb("story-card-content", contentPadding)}>
+          <SbLink
+            link={pubLink || storyLink}
+            classes={dcnb(
+              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-0 su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+              headlineSize
+            )}
           >
-            {shortTitle || title}
-          </Heading>
-          <HeadlineIcon
-            className={dcnb("su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em su-text-digital-red-xlight group-hocus:su-text-cardinal-red", headlineIconClasses)}
-            aria-hidden="true"
-          />
-        </SbLink>
-        {!isMinimal && <TabLabel text={tabText} />}
-        <p>{teaser}</p>
+            <Heading
+              level={headingLevel ?? 3}
+              font="serif"
+              tracking="normal"
+              className="su-relative su-inline su-type-0"
+            >
+              {shortTitle || title}
+            </Heading>
+            <HeadlineIcon
+              className={dcnb(
+                "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight group-hocus:su-text-cardinal-red",
+                headlineIconClasses
+              )}
+              aria-hidden="true"
+            />
+          </SbLink>
+          {source && <p className="su-card-paragraph">from the {source}</p>}
+          {!isMinimal && !hideTab && <TabLabel text={tabText} />}
+          <p className={dcnb("su-rs-mt-1 su-mb-0", teaserSize)}>{teaser}</p>
+        </div>
       </FlexBox>
     </SbEditable>
   );

@@ -3,11 +3,19 @@ import React from "react";
 import { Heading } from "decanter-react";
 import CardImage from "../../media/cardImage";
 import Layout from "../../partials/layout";
+import CreateBloks from "../../../utilities/createBloks";
 
 const StoryPageView = (props) => {
   // Destructure props
   const {
-    blok: { image: { filename } = {}, imageFocus, title, intro },
+    blok: {
+      image: { filename } = {},
+      imageFocus,
+      title,
+      intro,
+      content,
+      belowContent,
+    },
     blok,
   } = props;
 
@@ -31,6 +39,7 @@ const StoryPageView = (props) => {
             </div>
           )}
           <p>{intro}</p>
+          <CreateBloks blokSection={content} />
         </article>
       </Layout>
     </SbEditable>

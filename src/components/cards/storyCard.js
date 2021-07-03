@@ -5,7 +5,7 @@ const StoryCard = ({
   blok: {
     storyPicker,
     isMinimal,
-    isBigHeadline,
+    isBigText,
     hideTab,
     headingLevel,
     cardImageFocus,
@@ -14,7 +14,7 @@ const StoryCard = ({
   <CreateStories
     stories={storyPicker}
     layout="card"
-    isBigHeadline={isBigHeadline}
+    isBigText={isBigText}
     hideTab={hideTab}
     isMinimal={isMinimal}
     headingLevel={headingLevel}
