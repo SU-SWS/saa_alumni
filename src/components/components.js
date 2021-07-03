@@ -30,6 +30,8 @@ import PerkCardHorizontal from "./cards/perkCardHorizontal";
 import Poster from "./composite/poster";
 import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
+import Story from "./content-types/story/story";
+import StoryCard from "./cards/storyCard";
 import Wysiwyg from "./simple/wysiwyg";
 import Redirect from "./redirect/Redirect";
 import Alert from "./composite/alert";
@@ -69,6 +71,8 @@ const ComponentList = {
   poster: Poster,
   section: Section,
   simpleImage: SimpleImage,
+  story: Story,
+  storyCard: StoryCard,
   wysiwyg: Wysiwyg,
   redirect: Redirect,
 };
