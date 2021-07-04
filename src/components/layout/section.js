@@ -103,7 +103,7 @@ const Section = ({
             />
           </div>
         </header>
-        <CreateBloks blokSection={content} />
+        <CreateBloks blokSection={content} isDark={isDarkSection} />
         {numCta > 0 && (
           <Container width="site" className="su-rs-mt-6">
             <CreateBloks blokSection={cta} />

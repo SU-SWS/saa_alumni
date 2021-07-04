@@ -10,6 +10,7 @@ const StoryCard = ({
     headingLevel,
     cardImageFocus,
   },
+  isDark,
 }) => (
   <CreateStories
     stories={storyPicker}
@@ -19,6 +20,7 @@ const StoryCard = ({
     isMinimal={isMinimal}
     headingLevel={headingLevel}
     cardImageFocus={cardImageFocus}
+    isDark={isDark}
   />
 );
 

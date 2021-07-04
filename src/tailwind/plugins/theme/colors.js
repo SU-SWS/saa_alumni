@@ -4,7 +4,7 @@
 module.exports = function () {
   return {
     "transparent-black": {
-      DEFAULT: "rgba(0, 0, 0, 10%)", // For card borders
+      DEFAULT: "rgba(200, 200, 200, 20%)", // For card borders
       20: "rgba(0, 0, 0, 20%)", // For use in linear gradients
     },
     "masthead-black": {

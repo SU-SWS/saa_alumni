@@ -26,23 +26,35 @@ const StoryCardView = ({
   hideTab,
   headingLevel,
   cardImageFocus,
+  isDark,
 }) => {
   let wrapperClasses =
-    "su-bg-white su-border su-border-solid su-border-black-10 su-shadow-sm";
+    "su-bg-white su-border su-border-solid su-border-transparent-black su-bg-clip-padding su-shadow-sm";
 
-  let contentPadding = "su-rs-p-2";
+  let contentPadding = "su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
     contentPadding = "su-rs-pt-1";
   }
 
-  let headlineSize = "su-type-2 md:su-type-1 lg:su-type-2";
-  let teaserSize = "su-card paragraph";
+  let headlineColor = "su-text-black";
+  let headlineIconColor = "group-hocus:su-text-cardinal-red";
+  let textColor = "su-text-black";
+
+  // Use different text color if card has minimal style and is placed in a dark region
+  if (isDark && isMinimal) {
+    textColor = "su-text-black-20";
+    headlineColor = "su-text-white hocus:su-text-white";
+    headlineIconColor = "group-hocus:su-text-white";
+  }
+
+  let headlineSize = "su-type-1";
+  let teaserSize = "su-card-paragraph";
 
   if (isBigText) {
-    headlineSize = dcnb("xl:su-type-3", headlineSize);
-    teaserSize = "su-big-paragraph";
+    headlineSize = dcnb("lg:su-type-2 xl:su-type-3", headlineSize);
+    teaserSize = "su-card-paragraph lg:su-text-25";
   }
 
   // Default icon is right arrow for internal links
@@ -64,12 +76,13 @@ const StoryCardView = ({
         direction="col"
         element="article"
         className={dcnb(
-          "story-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-w-full su-max-w-500 md:su-max-w-600",
-          wrapperClasses
+          "story-card su-group su-relative su-overflow-hidden su-break-words su-basefont-23 su-w-full",
+          wrapperClasses,
+          textColor
         )}
       >
         <div
-          className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
+          className="story-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
           aria-hidden="true"
         >
           <figure className="su-overflow-hidden su-w-full su-h-full">
@@ -86,8 +99,9 @@ const StoryCardView = ({
           <SbLink
             link={pubLink || storyLink}
             classes={dcnb(
-              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-0 su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
-              headlineSize
+              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-0 su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+              headlineSize,
+              headlineColor
             )}
           >
             <Heading
@@ -100,15 +114,22 @@ const StoryCardView = ({
             </Heading>
             <HeadlineIcon
               className={dcnb(
-                "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight group-hocus:su-text-cardinal-red",
-                headlineIconClasses
+                "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight",
+                headlineIconClasses,
+                headlineIconColor
               )}
               aria-hidden="true"
             />
           </SbLink>
-          {source && <p className="su-card-paragraph">from the {source}</p>}
-          {!isMinimal && !hideTab && <TabLabel text={tabText} />}
-          <p className={dcnb("su-rs-mt-1 su-mb-0", teaserSize)}>{teaser}</p>
+          {source && (
+            <p className="su-card-paragraph su-font-serif su-mt-02em">
+              from {source}
+            </p>
+          )}
+          {!hideTab && <TabLabel text={tabText} />}
+          <p className={dcnb("su-rs-mt-1 su-mb-0 su-leading-snug", teaserSize)}>
+            {teaser}
+          </p>
         </div>
       </FlexBox>
     </SbEditable>

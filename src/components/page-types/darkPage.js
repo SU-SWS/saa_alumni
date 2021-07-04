@@ -17,13 +17,6 @@ const DarkPage = (props) => {
   const numContent = getNumBloks(content);
   const numBelow = getNumBloks(belowContent);
 
-  // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
-  let contentPadding = "su-rs-pb-7";
-
-  if (numAbove > 0 || isSrOnlyTitle) {
-    contentPadding = "su-rs-py-7";
-  }
-
   return (
     <SbEditable content={blok}>
       <Layout hasHero={numHero > 0} isDark {...props}>
