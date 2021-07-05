@@ -1,6 +1,6 @@
 import SbEditable from "storyblok-react";
 import React from "react";
-import { FlexBox, Heading } from "decanter-react";
+import { FlexBox, Heading, SrOnlyText } from "decanter-react";
 import { ArrowRightIcon, ArrowUpIcon } from "@heroicons/react/solid";
 import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
@@ -15,6 +15,7 @@ const StoryCardView = ({
     title,
     shortTitle,
     teaser,
+    intro,
     source,
     pubLink,
     tabText,
@@ -24,6 +25,7 @@ const StoryCardView = ({
   isMinimal,
   isBigText,
   hideTab,
+  hideImage,
   headingLevel,
   cardImageFocus,
   isDark,
@@ -36,6 +38,10 @@ const StoryCardView = ({
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
     contentPadding = "su-rs-pt-1";
+
+    if (hideImage) {
+      contentPadding = "";
+    }
   }
 
   let headlineColor = "su-text-black";
@@ -81,20 +87,22 @@ const StoryCardView = ({
           textColor
         )}
       >
-        <div
-          className="story-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
-          aria-hidden="true"
-        >
-          <figure className="su-overflow-hidden su-w-full su-h-full">
-            <CardImage
-              filename={cardFilename || filename}
-              imageFocus={cardImageFocus || imageFocus}
-              size="vertical"
-              className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
-              loading="lazy"
-            />
-          </figure>
-        </div>
+        {!hideImage && (
+          <div
+            className="story-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
+            aria-hidden="true"
+          >
+            <figure className="su-overflow-hidden su-w-full su-h-full">
+              <CardImage
+                filename={cardFilename || filename}
+                imageFocus={cardImageFocus || imageFocus}
+                size="vertical"
+                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+                loading="lazy"
+              />
+            </figure>
+          </div>
+        )}
         <div className={dcnb("story-card-content", contentPadding)}>
           <SbLink
             link={pubLink || storyLink}
@@ -110,7 +118,9 @@ const StoryCardView = ({
               tracking="normal"
               className="su-relative su-inline su-type-0"
             >
+              {tabText && !hideTab && <SrOnlyText srText={`${tabText}: `} />}
               {shortTitle || title}
+              {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
             <HeadlineIcon
               className={dcnb(
@@ -123,13 +133,19 @@ const StoryCardView = ({
           </SbLink>
           {source && (
             <p className="su-card-paragraph su-font-serif su-mt-02em">
-              from {source}
+              <span className="su-italic">from</span> {source}
             </p>
           )}
-          {!hideTab && <TabLabel text={tabText} />}
-          <p className={dcnb("su-rs-mt-1 su-mb-0 su-leading-snug", teaserSize)}>
-            {teaser}
-          </p>
+          {!hideTab && !hideImage && (
+            <TabLabel text={tabText} aria-hidden="true" />
+          )}
+          {(teaser || intro) && (
+            <p
+              className={dcnb("su-rs-mt-0 su-mb-0 su-leading-snug", teaserSize)}
+            >
+              {teaser || intro}
+            </p>
+          )}
         </div>
       </FlexBox>
     </SbEditable>

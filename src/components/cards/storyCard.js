@@ -7,6 +7,7 @@ const StoryCard = ({
     isMinimal,
     isBigText,
     hideTab,
+    hideImage,
     headingLevel,
     cardImageFocus,
   },
@@ -17,6 +18,7 @@ const StoryCard = ({
     layout="card"
     isBigText={isBigText}
     hideTab={hideTab}
+    hideImage={hideImage}
     isMinimal={isMinimal}
     headingLevel={headingLevel}
     cardImageFocus={cardImageFocus}
