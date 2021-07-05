@@ -5,12 +5,12 @@ module.exports = function () {
   return {
     black: {
       true: {
-        transparent: {
+        opacity: {
           20: "rgba(0, 0, 0, 20%)", // For use in linear gradients
         },
       },
       30: {
-        transparent: {
+        opacity: {
           20: "rgba(192, 192, 191, 20%)", // For card borders
         },
       },
