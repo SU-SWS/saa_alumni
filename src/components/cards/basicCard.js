@@ -98,7 +98,7 @@ const BasicCard = ({
   return (
     <SbEditable content={blok}>
       <div
-        className={dcnb("basic-card su-w-full su-basefont-23", wrapperClasses)}
+        className={dcnb("basic-card su-w-full su-basefont-23 su-break-words", wrapperClasses)}
       >
         {filename?.startsWith("http") && cardImage}
         <FlexBox
