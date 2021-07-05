@@ -16,7 +16,7 @@ const StoryCard = ({
   <CreateStories
     stories={storyPicker}
     layout="card"
-    isBigText
+    isBigText={isBigText}
     hideTab={hideTab}
     hideImage={hideImage}
     isMinimal={isMinimal}

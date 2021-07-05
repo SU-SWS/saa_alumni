@@ -31,7 +31,7 @@ const StoryCardView = ({
   isDark,
 }) => {
   let wrapperClasses =
-    "su-bg-white su-border su-border-solid su-border-transparent-black su-bg-clip-padding su-shadow-sm";
+    "su-bg-white su-border su-border-solid su-border-black-30-transparent-20 su-bg-clip-padding su-shadow-sm";
 
   let contentPadding = "su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
