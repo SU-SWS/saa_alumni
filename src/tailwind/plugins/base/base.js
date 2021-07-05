@@ -36,7 +36,7 @@ module.exports = function () {
       // Adding "word-break: break-word" add support for long email addresses
       ".su-break-words": {
         wordBreak: "break-word",
-      }
+      },
     });
   };
 };
