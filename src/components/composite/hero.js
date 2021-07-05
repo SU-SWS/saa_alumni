@@ -42,7 +42,7 @@ const Hero = ({
   let gradientFrom = "su-from-transparent";
 
   if (isDarkGradient) {
-    gradientFrom = "su-from-transparent-black-20";
+    gradientFrom = "su-from-black-true-opacity-20";
   }
 
   const numCta = getNumBloks(cta);

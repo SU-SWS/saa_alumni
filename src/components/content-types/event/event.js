@@ -73,7 +73,7 @@ const Event = ({
   }
 
   let wrapperClasses =
-    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-10 su-shadow-sm";
+    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-30-opacity-20 su-bg-clip-padding su-shadow-sm";
   let headlinePadding = "su-rs-px-2";
   let detailsPadding = "su-rs-px-2";
 
@@ -83,10 +83,10 @@ const Event = ({
     detailsPadding = "";
   }
 
-  let headlineSize = "su-type-2 md:su-type-1 lg:su-type-2";
+  let headlineSize = "su-type-1";
 
   if (isBigHeadline) {
-    headlineSize = dcnb("xl:su-type-3", headlineSize);
+    headlineSize = dcnb("lg:su-type-2 xl:su-type-3", headlineSize);
   }
 
   const iconClasses =
@@ -110,13 +110,13 @@ const Event = ({
         direction="col"
         element="article"
         className={dcnb(
-          "event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-w-full su-max-w-500 md:su-max-w-600",
+          "event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-w-full",
           wrapperClasses
         )}
       >
         {!isMinimal && (
           <div
-            className="perk-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
+            className="event-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
             aria-hidden="true"
           >
             {filename?.startsWith("http") && (

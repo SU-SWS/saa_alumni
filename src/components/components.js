@@ -9,6 +9,7 @@ import CtaGroup from "./cta/ctaGroup";
 import DarkPage from "./page-types/darkPage";
 import Embed from "./embed/embed";
 import EmbedCard from "./cards/embedCard";
+import EmbedVideo from "./media/embedVideo";
 import Event from "./content-types/event/event";
 import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
@@ -39,6 +40,8 @@ import searchPager from './search/searchPager';
 import searchResults from './search/searchResults';
 import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
+import Story from "./content-types/story/story";
+import StoryCard from "./cards/storyCard";
 import Wysiwyg from "./simple/wysiwyg";
 
 const ComponentList = {
@@ -52,6 +55,7 @@ const ComponentList = {
   darkPage: DarkPage,
   embed: Embed,
   embedCard: EmbedCard,
+  embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
   grid: Grid,
@@ -81,6 +85,8 @@ const ComponentList = {
   searchResults: searchResults,
   section: Section,
   simpleImage: SimpleImage,
+  story: Story,
+  storyCard: StoryCard,
   wysiwyg: Wysiwyg,
   redirect: Redirect,
 };

@@ -3,22 +3,30 @@ import React from "react";
 import { Heading } from "decanter-react";
 import CardImage from "../../media/cardImage";
 import Layout from "../../partials/layout";
+import CreateBloks from "../../../utilities/createBloks";
 
-const PerkPageView = (props) => {
+const StoryPageView = (props) => {
   // Destructure props
   const {
-    blok: { image: { filename } = {}, imageFocus, isNew, title, intro },
+    blok: {
+      image: { filename } = {},
+      imageFocus,
+      title,
+      intro,
+      content,
+      belowContent,
+    },
     blok,
   } = props;
 
   return (
     <SbEditable content={blok}>
       <Layout {...props}>
-        <article className="perk-page">
+        <article className="story-page">
           <Heading level={1}>{title}</Heading>
           {filename?.startsWith("http") && (
             <div className="su-max-w-800">
-              <div className="perk-image-wrapper su-aspect-w-4 su-aspect-h-3">
+              <div className="story-image-wrapper su-aspect-w-4 su-aspect-h-3">
                 <figure className="su-overflow-hidden su-w-full su-h-full">
                   <CardImage
                     filename={filename}
@@ -31,10 +39,11 @@ const PerkPageView = (props) => {
             </div>
           )}
           <p>{intro}</p>
+          <CreateBloks blokSection={content} />
         </article>
       </Layout>
     </SbEditable>
   );
 };
 
-export default PerkPageView;
+export default StoryPageView;
