@@ -49,7 +49,7 @@ const Grid = ({
           itemClasses
         )}
       >
-        <CreateBloks blokSection={content} isDark />
+        <CreateBloks blokSection={content} isDark={isDark} />
       </DrGrid>
     );
   }
