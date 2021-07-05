@@ -113,7 +113,7 @@ const StoryCardView = ({
             )}
           >
             <Heading
-              level={headingLevel ?? 3}
+              level={parseInt(headingLevel, 10) || 3}
               font="serif"
               tracking="normal"
               className="su-relative su-inline su-type-0"
