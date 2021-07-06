@@ -3,9 +3,17 @@
  */
 module.exports = function () {
   return {
-    "transparent-black": {
-      DEFAULT: "rgba(0, 0, 0, 10%)", // For card borders
-      20: "rgba(0, 0, 0, 20%)", // For use in linear gradients
+    black: {
+      true: {
+        opacity: {
+          20: "rgba(0, 0, 0, 20%)", // For use in linear gradients
+        },
+      },
+      30: {
+        opacity: {
+          20: "rgba(192, 192, 191, 20%)", // For card borders
+        },
+      },
     },
     "masthead-black": {
       top: "rgba(13, 18, 17, 0.95)",

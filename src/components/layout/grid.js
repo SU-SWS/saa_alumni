@@ -8,6 +8,7 @@ import WidthBox from "./widthBox";
 const Grid = ({
   blok: { removeGap, numCol, content, width, isStretchItems },
   blok,
+  isDark,
 }) => {
   // Options to have regular grid gap or 1px horizontal gaps
   let gapClasses = "su-grid-gap";
@@ -35,7 +36,7 @@ const Grid = ({
         itemClasses
       )}
     >
-      <CreateBloks blokSection={content} />
+      <CreateBloks blokSection={content} isDark={isDark} />
     </DrGrid>
   );
 
@@ -48,7 +49,7 @@ const Grid = ({
           itemClasses
         )}
       >
-        <CreateBloks blokSection={content} />
+        <CreateBloks blokSection={content} isDark={isDark} />
       </DrGrid>
     );
   }
