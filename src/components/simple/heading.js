@@ -9,7 +9,7 @@ const Heading = ({blok: {title, fontSize, headingLevel, spacingBottom, spacingTo
 
   return (
     <DecanterHeading
-      level={headingLevel ?? 2}
+      level={parseInt(headingLevel, 10) || 2}
       size={fontSize == 'default' ? null : fontSize}
       font="serif"
       weight="bold"
