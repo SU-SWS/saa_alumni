@@ -34,7 +34,7 @@ const StoryPageView = (props) => {
         <Container
           element="main"
           id="main-content"
-          className="story-page su-relative su-flex-grow su-w-full"
+          className="story-page su-relative su-flex-grow su-w-full su-basefont-23"
           width="full"
         >
           <article>
@@ -44,19 +44,19 @@ const StoryPageView = (props) => {
                   level={1}
                   align="center"
                   font="serif"
-                  className="su-max-w-900 su-mb-0 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
+                  className="su-max-w-900 su-mb-0 su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
                   {title}
                 </Heading>
                 {intro && (
-                  <p className="su-font-serif su-text-m2 su-text-center su-max-w-prose su-mx-auto">
+                  <p className="su-font-serif su-text-m1 su-leading-snug su-text-center su-max-w-prose su-mx-auto">
                     {intro}
                   </p>
                 )}
               </Container>
               {filename?.startsWith("http") && (
                 <figure className="su-rs-mb-5">
-                  <div className="su-relative su-overflow-hidden su-w-full xl:su-max-h-[90rem]">
+                  <div className="su-relative su-overflow-hidden su-w-full md:su-h-500 lg:su-h-700 xl:su-h-900">
                     <FullWidthImage
                       filename={filename}
                       imageFocus={imageFocus}
