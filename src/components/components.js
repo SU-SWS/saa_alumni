@@ -2,6 +2,7 @@ import BasicCard from "./cards/basicCard";
 import BasicPage from "./page-types/basicPage";
 import ComponentNotFound from "./component_not_found";
 import CtaButton from "./cta/ctaButton";
+import CtaCard from "./cards/ctaCard";
 import CtaLink from "./cta/ctaLink";
 import CtaGroup from "./cta/ctaGroup";
 import DarkPage from "./page-types/darkPage";
@@ -43,6 +44,7 @@ const ComponentList = {
   basicCard: BasicCard,
   basicPage: BasicPage,
   ctaButton: CtaButton,
+  ctaCard: CtaCard,
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,
   darkPage: DarkPage,
