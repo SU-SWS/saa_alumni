@@ -19,6 +19,7 @@ const SimpleImage = ({
     isBanner,
     caption,
     captionAlign,
+    isCaptionCenter,
     spacingTop,
     spacingBottom,
   },
@@ -32,12 +33,17 @@ const SimpleImage = ({
 
   let wrapperHeight = "";
   let imageStyle = "";
+  let captionContainer = "";
   if (imageWidth === "edge-to-edge") {
     wrapperHeight = "su-relative su-h-screen su-w-full su-overflow-hidden";
     imageStyle = "su-h-full su-w-full su-object-cover";
 
     if (isBanner) {
       wrapperHeight = "su-h-[30vw] su-relative su-overflow-hidden";
+    }
+
+    if (isCaptionCenter) {
+      captionContainer = "su-cc";
     }
   }
 
@@ -62,6 +68,7 @@ const SimpleImage = ({
                 className={dcnb(
                   "su-caption su-mt-06em children:su-leading-snug children:su-max-w-[70ch]",
                   captionAlignment,
+                  captionContainer,
                   containerAlignment
                 )}
               />
