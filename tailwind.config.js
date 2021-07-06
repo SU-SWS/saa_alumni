@@ -55,6 +55,7 @@ module.exports = {
     // @tailwind base;
     require(decanter + '/base/base.js')(),
     require(dir + '/base/base.js')(),
+    require(dir + '/base/tw-amendment.js')(),
 
     // @tailwind components;
     require(decanter + '/components/form/input-base.js')(),
