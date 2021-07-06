@@ -75,9 +75,15 @@ const StoryPageView = (props) => {
                   )}
                 </figure>
               )}
-              <WidthBox width="8">{author && <p>by {author}</p>}</WidthBox>
+              {author && (
+                <WidthBox width="8">
+                  <p className="su-mb-0 su-font-serif">
+                    <span className="su-italic">by</span> {author}
+                  </p>
+                </WidthBox>
+              )}
             </header>
-            <div className="story-content">
+            <div className="story-content su-rs-mt-4 su-rs-mb-7">
               <CreateBloks blokSection={content} />
             </div>
             {numBelow > 0 && (
