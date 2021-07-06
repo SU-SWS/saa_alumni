@@ -28,10 +28,12 @@ const SearchPage = (props) => {
   const suggestionsIndex = client.initIndex('crawler_federated-search_suggestions')
   const hitsPerPage = blok.itemsPerPage
 
+  // Listen for changes to query, pager, or facets and update search results.
   useEffect(() => {
     updateSearchResults()
   }, [query, page, selectedFacets])
 
+  // Update autocomplete suggestions when search input changes.
   const updateAutocomplete = (query) => {
     suggestionsIndex.search(query, {
       hitsPerPage: 10,
@@ -40,6 +42,7 @@ const SearchPage = (props) => {
     })
   }
 
+  // Submit handler for search input. 
   const submitSearchQuery = (query) => {
     setPageParam(undefined)
     setQueryParam(query || undefined)
@@ -47,11 +50,13 @@ const SearchPage = (props) => {
     setQuery(query)
   }
 
+  // Update page parameter when pager link is selected.
   const updatePage = (page) => {
     setPage(page)
     setPageParam(page)
   }
 
+  // Update facet values when facet is selected.
   const updateSiteFacet = (values) => {
     const newFacets = {...selectedFacets}
     newFacets["siteName"] = values
@@ -61,6 +66,7 @@ const SearchPage = (props) => {
     setSiteParam(values)
   }
 
+  // Fetch search results from Algolia. (Typically triggered by state changes in useEffect())
   const updateSearchResults = () => {
     const facetFilters = Object.keys(selectedFacets).map((attribute) => {
       return selectedFacets[attribute].map((value) => `${attribute}:${value}`)
