@@ -58,7 +58,7 @@ const SimpleImage = ({
             <img
               src={filename}
               alt={alt ?? ""}
-              className={dcnb(imageStyle, imageFocusPosition)}
+              className={dcnb("su-w-full", imageStyle, imageFocusPosition)}
             />
           </div>
           {caption && (
