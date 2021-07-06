@@ -24,7 +24,7 @@ const Grid = ({
     itemClasses = "su-items-stretch";
   }
 
-  let alignmentClasses = alignment == 'left' ? 'su-justify-items-left' : 'su-justify-items-center';
+  let alignmentClasses = alignment ? `su-justify-items-${alignment}` : 'su-justify-items-center';
 
   let grid = (
     <DrGrid
