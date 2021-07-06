@@ -66,10 +66,10 @@ const StoryPageView = (props) => {
                     />
                   </div>
                   {caption && (
-                    <figcaption>
+                    <figcaption className="su-cc">
                       <RichTextRenderer
                         wysiwyg={caption}
-                        className="su-caption su-cc su-max-w-[85ch] su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
+                        className="su-caption su-max-w-prose su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
                       />
                     </figcaption>
                   )}
