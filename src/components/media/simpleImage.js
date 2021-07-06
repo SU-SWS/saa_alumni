@@ -32,9 +32,13 @@ const SimpleImage = ({
 
   let wrapperHeight = "";
   let imageStyle = "";
-  if (imageWidth === "edge-to-edge" && isBanner) {
+  if (imageWidth === "edge-to-edge") {
     wrapperHeight = "su-relative su-h-screen su-w-full su-overflow-hidden";
     imageStyle = "su-h-full su-w-full su-object-cover";
+
+    if (isBanner) {
+      wrapperHeight = "su-h-[30vw] su-relative su-overflow-hidden";
+    }
   }
 
   return (
