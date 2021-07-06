@@ -10,6 +10,30 @@ export const borderColors = {
   poppy: "su-border-poppy",
 };
 
+export const bgColors = {
+  "digital-red": "su-bg-digital-red",
+  "digital-red-xlight": "su-bg-digital-red-xlight",
+  "electric-blue": "su-bg-saa-electric-blue",
+  "lagunita-light": "su-bg-lagunita-light",
+  "palo-verde": "su-bg-palo-verde",
+  plum: "su-bg-plum",
+  poppy: "su-bg-poppy",
+  "foggy-light": "su-bg-foggy-light",
+  white: "su-bg-white",
+  black: "su-bg-saa-black su-text-white",
+};
+
+export const bgTextColorPairs = {
+  "foggy-light": "su-bg-foggy-light su-text-black",
+  white: "su-bg-white su-text-black",
+  black: "su-bg-saa-black su-text-white",
+  "cardinal-red": "su-bg-cardinal-red su-text-white",
+  plum: "su-bg-plum su-text-white",
+  "gradient-red":
+    "su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white",
+  "use-bg-image": "su-text-white",
+};
+
 export const bgPositionVertical = {
   top: "su-bg-top",
   center: "su-bg-center",
@@ -87,23 +111,6 @@ export const objectPosition = {
   bottom: "su-object-bottom",
   left: "su-object-left",
   right: "su-object-right",
-};
-
-export const bgColors = {
-  "foggy-light": "su-bg-foggy-light",
-  white: "su-bg-white",
-  black: "su-bg-saa-black su-text-white",
-};
-
-export const bgTextColorPairs = {
-  "foggy-light": "su-bg-foggy-light su-text-black",
-  white: "su-bg-white su-text-black",
-  black: "su-bg-saa-black su-text-white",
-  "cardinal-red": "su-bg-cardinal-red su-text-white",
-  plum: "su-bg-plum su-text-white",
-  "gradient-red":
-    "su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white",
-  "use-bg-image": "su-text-white",
 };
 
 export const pageTextColors = {

@@ -13,8 +13,9 @@ const BasicContentLeftSidebar = ({
   const renderedIntro = render(intro);
   const hasIntro = getNumBloks(renderedIntro) > 0;
   const hasContent = getNumBloks(content) > 0;
+  const hasSidebar = getNumBloks(sidebar) > 0;
 
-  if (!hasIntro && !hasContent) {
+  if (!hasIntro && !hasContent && !hasSidebar) {
     return null;
   }
 
