@@ -1,3 +1,5 @@
+import Alert from "./composite/alert";
+import AlertCtaLink from "./cta/alertCtaLink";
 import BasicCard from "./cards/basicCard";
 import BasicPage from "./page-types/basicPage";
 import ComponentNotFound from "./component_not_found";
@@ -14,28 +16,31 @@ import Grid from "./layout/grid";
 import Hero from "./composite/hero";
 import InteriorPage from "./page-types/interiorPage";
 import LandingPage from "./page-types/landingPage";
-import LinkGroup from "./navigation/linkGroup";
-import LocalFooter from "./identity/localFooter";
-import LocalFooterPicker from "./identity/localFooterPicker";
+import LinkGroup from './navigation/linkGroup';
+import LocalFooter from './identity/localFooter';
+import LocalFooterPicker from './identity/localFooterPicker';
 import MainMenuGroup from "./navigation/mainMenuGroup";
 import MainNav from "./navigation/mainNav";
 import MainNavItem from "./navigation/mainNavItem";
 import Masthead from "./identity/masthead";
 import MastheadPicker from "./identity/mastheadPicker";
-import NavItem from "./navigation/navItem";
-import Page from "./page";
+import NavItem from './navigation/navItem';
+import Page from './page';
 import Perk from "./content-types/perk/perk";
 import PerkCard from "./cards/perkCard";
 import PerkCardHorizontal from "./cards/perkCardHorizontal";
 import Poster from "./composite/poster";
+import Redirect from "./redirect/Redirect";
+import searchFacet from './search/searchFacet';
+import searchField from './search/searchField';
+import searchPage from './page-types/searchPage';
+import searchPager from './search/searchPager';
+import searchResults from './search/searchResults';
 import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
 import Story from "./content-types/story/story";
 import StoryCard from "./cards/storyCard";
 import Wysiwyg from "./simple/wysiwyg";
-import Redirect from "./redirect/Redirect";
-import Alert from "./composite/alert";
-import AlertCtaLink from "./cta/alertCtaLink";
 
 const ComponentList = {
   alert: Alert,
@@ -69,6 +74,11 @@ const ComponentList = {
   perkCard: PerkCard,
   perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
+  searchFacet: searchFacet,
+  searchField: searchField,
+  searchPage: searchPage,
+  searchPager: searchPager,
+  searchResults: searchResults,
   section: Section,
   simpleImage: SimpleImage,
   story: Story,
