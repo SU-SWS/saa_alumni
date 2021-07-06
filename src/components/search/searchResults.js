@@ -1,4 +1,5 @@
 import React from "react";
+import sanitize from "sanitize-html";
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -29,7 +30,7 @@ const SearchResults = ({ results }) => {
                 </h3>
                 <div
                   dangerouslySetInnerHTML={{
-                    __html: result._snippetResult.body.value,
+                    __html: sanitize(result._snippetResult.body.value),
                   }}
                 ></div>
               </div>
