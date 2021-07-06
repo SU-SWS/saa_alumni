@@ -97,10 +97,7 @@ const Event = ({
 
   if (isVirtual) {
     locationIcon = (
-      <DesktopComputerIcon
-        className={iconClasses}
-        aria-hidden="true"
-      />
+      <DesktopComputerIcon className={iconClasses} aria-hidden="true" />
     );
   }
 
@@ -188,7 +185,9 @@ const Event = ({
           {location && (
             <FlexBox direction="row" alignItems="start" className="su-mb-04em">
               {locationIcon}
-              <SrOnlyText srText={isVirtual ? "This event is virtual: " : "Location: "} />
+              <SrOnlyText
+                srText={isVirtual ? "This event is virtual: " : "Location: "}
+              />
               <span>{location}</span>
             </FlexBox>
           )}
