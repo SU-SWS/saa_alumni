@@ -4,17 +4,15 @@
  * See: https://www.gatsbyjs.org/docs/browser-apis/
  */
 
-import React from 'react';
+import React from "react";
 
 // Contexts.
-import { GlobalStateProvider } from './src/contexts/GlobalContext';
+import { GlobalStateProvider } from "./src/contexts/GlobalContext";
 
 // CSS
-import './src/styles/global.css';
+import "./src/styles/global.css";
 
 // Exports.
 export const wrapRootElement = ({ element }) => (
-  <GlobalStateProvider>
-    {element}
-  </GlobalStateProvider>
+  <GlobalStateProvider>{element}</GlobalStateProvider>
 );
