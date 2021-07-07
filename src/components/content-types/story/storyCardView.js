@@ -32,6 +32,14 @@ const StoryCardView = ({
   isDark,
   tabText,
 }) => {
+  // Use structure of Storyblok Link so we can pass this to our SbLink component
+  const internalLink = { linktype: "story", url: storyLink + "/"};
+  let externalLink;
+
+  if (pubLink) {
+    externalLink = { linktype: "url", cached_url: pubLink };
+  }
+
   let wrapperClasses =
     "su-bg-white su-border su-border-solid su-border-black-30-opacity-20 su-bg-clip-padding su-shadow-sm";
 
@@ -123,7 +131,7 @@ const StoryCardView = ({
         )}
         <div className={dcnb("story-card-content", contentPadding)}>
           <SbLink
-            link={pubLink || storyLink}
+            link={externalLink || internalLink}
             classes={dcnb(
               "su-stretched-link su-z-20 su-rs-mt-2 su-mb-0 su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
               headlineSize,
