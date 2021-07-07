@@ -49,7 +49,7 @@ const StoryPageView = (props) => {
           <figcaption className="su-cc">
             <RichTextRenderer
               wysiwyg={caption}
-              className="su-caption su-max-w-prose su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
+              className="su-caption su-text-black-70 su-max-w-prose su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
             />
           </figcaption>
         )}
@@ -66,7 +66,7 @@ const StoryPageView = (props) => {
             <figcaption>
               <RichTextRenderer
                 wysiwyg={caption}
-                className="su-caption su-max-w-prose su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
+                className="su-caption su-text-black-70 su-max-w-prose su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
               />
             </figcaption>
           )}
@@ -86,12 +86,12 @@ const StoryPageView = (props) => {
         >
           <article>
             <header className="su-basefont-23">
-              <Container className="su-rs-py-7 su-rs-py-4">
+              <Container className="su-rs-pt-9 su-rs-pb-4">
                 <Heading
                   level={1}
                   align="center"
                   font="serif"
-                  className="su-max-w-900 su-mb-0 su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
+                  className="su-max-w-1200 su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
                   {title}
                 </Heading>

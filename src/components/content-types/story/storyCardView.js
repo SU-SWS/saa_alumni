@@ -18,7 +18,6 @@ const StoryCardView = ({
     intro,
     source,
     pubLink,
-    tabText,
   },
   blok,
   storyLink,
@@ -29,6 +28,7 @@ const StoryCardView = ({
   headingLevel,
   cardImageFocus,
   isDark,
+  tabText,
 }) => {
   let wrapperClasses =
     "su-bg-white su-border su-border-solid su-border-black-30-opacity-20 su-bg-clip-padding su-shadow-sm";
