@@ -138,7 +138,7 @@ const StoryPageView = (props) => {
                 </WidthBox>
               )}
             </header>
-            <div className="story-content su-rs-mt-4 su-rs-mb-7">
+            <div className="story-content su-rs-mt-4 su-rs-mb-9">
               <CreateBloks blokSection={content} />
             </div>
             {numBelow > 0 && (
