@@ -1,9 +1,9 @@
-import React from 'react'
-import Modal from '../layout/modal'
+import React from "react";
 import { Heading } from "decanter-react";
-import SearchFieldModal from './searchFieldModal';
+import Modal from "../layout/modal";
+import SearchFieldModal from "./searchFieldModal";
 
-const SearchModal = ({isOpen, onClose}) => {
+const SearchModal = ({ isOpen, onClose }) => {
   const searchFieldRef = React.createRef();
 
   return (
@@ -19,9 +19,8 @@ const SearchModal = ({isOpen, onClose}) => {
         </Heading>
         <SearchFieldModal ref={searchFieldRef} />
       </div>
-
     </Modal>
-  )
-}
+  );
+};
 
-export default SearchModal
+export default SearchModal;

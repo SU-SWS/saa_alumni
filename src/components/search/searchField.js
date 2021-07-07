@@ -1,10 +1,15 @@
-import React, { useState, useEffect, createRef } from "react";
-import { X } from "react-hero-icon/solid";
-import { Search } from "react-hero-icon/solid";
+import React, { useState, createRef } from "react";
+import { X, Search } from "react-hero-icon/solid";
+import sanitize from "sanitize-html";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
-const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue }) => {
+const SearchField = ({
+  onSubmit,
+  onInput,
+  autocompleteSuggestions,
+  defaultValue,
+}) => {
   const [query, setQuery] = useState(defaultValue || "");
   const [showAutocomplete, setShowAutocomplete] = useState(false);
   const [selectedSuggestion, setSelectedSuggestion] = useState(0);
@@ -37,21 +42,25 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
 
   UseOnClickOutside(inputWrapper, () => {
     setShowAutocomplete(false);
-  })
+  });
 
   const handleArrowKeys = (e) => {
     if (e.key === "ArrowDown") {
       setSelectedSuggestion(selectedSuggestion + 1);
     } else if (e.key === "ArrowUp") {
       setSelectedSuggestion(selectedSuggestion - 1);
-    } else if (e.key === "Enter" && autocompleteSuggestions[selectedSuggestion]) {
+    }
+  };
+
+  const handleEnterKey = (e) => {
+    if (e.key === "Enter" && autocompleteSuggestions[selectedSuggestion]) {
       selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query);
     }
   };
 
   UseEscape(() => {
-    clearHandler()
-  })
+    clearHandler();
+  });
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
   hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50
@@ -93,7 +102,7 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
               />
             </label>
             <button
-              type="reset"
+              type="button"
               onClick={clearHandler}
               className={clearBtnClasses}
             >
@@ -104,24 +113,38 @@ const SearchField = ({ onSubmit, onInput, autocompleteSuggestions, defaultValue 
                 <div className="su-list-unstyled" role="listbox">
                   {autocompleteSuggestions.map((suggestion, index) => (
                     <div
-                      key={`autocomplete-item-${index}`}
+                      key={`autocomplete-item-${suggestion.objectID}`}
                       role="option"
                       tabIndex={showAutocomplete ? 0 : -1}
                       className={`su-mb-0
                         ${autocompleteLinkClasses}
-                        ${index === selectedSuggestion ? 'su-bg-black-20 su-text-digital-red' : ''}
+                        ${
+                          index === selectedSuggestion
+                            ? "su-bg-black-20 su-text-digital-red"
+                            : ""
+                        }
                       `}
+                      onKeyDown={(e) => handleEnterKey}
                       onClick={(e) => selectSuggestion(e, suggestion.query)}
-                      aria-selected={selectedSuggestion === index ? 'true': 'false'}
+                      aria-selected={
+                        selectedSuggestion === index ? "true" : "false"
+                      }
                       id="search-autocomplete-listbox"
                     >
-                      {suggestion._highlightResult && (
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html: suggestion._highlightResult.query.value,
-                          }}
-                        />
-                      )}
+                      {
+                        // eslint-disable-next-line no-underscore-dangle
+                        suggestion._highlightResult && (
+                          <span
+                            // eslint-disable-next-line react/no-danger
+                            dangerouslySetInnerHTML={{
+                              __html: sanitize(
+                                // eslint-disable-next-line no-underscore-dangle
+                                suggestion._highlightResult.query.value
+                              ),
+                            }}
+                          />
+                        )
+                      }
                     </div>
                   ))}
                 </div>

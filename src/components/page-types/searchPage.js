@@ -1,97 +1,105 @@
 import React, { useState, useEffect } from "react";
 import SbEditable from "storyblok-react";
-import Layout from "../partials/layout";
-import SearchField from "../../components/search/searchField";
-import SearchResults from "../../components/search/searchResults";
-import SearchPager from "../../components/search/searchPager";
-import SearchFacet from "../../components/search/searchFacet";
-import SearchNoResults from "../../components/search/searchNoResults";
 import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
-import { useQueryParam, NumberParam, StringParam, ArrayParam } from "use-query-params";
+import {
+  useQueryParam,
+  NumberParam,
+  StringParam,
+  ArrayParam,
+} from "use-query-params";
+import Layout from "../partials/layout";
+import SearchField from "../search/searchField";
+import SearchResults from "../search/searchResults";
+import SearchPager from "../search/searchPager";
+import SearchFacet from "../search/searchFacet";
+import SearchNoResults from "../search/searchNoResults";
 
 const SearchPage = (props) => {
-  const blok = props.blok
-  const [suggestions, setSuggestions] = useState([])
-  const [results, setResults] = useState([])
-  const [queryParam, setQueryParam] = useQueryParam('q', StringParam)
-  const [pageParam, setPageParam] = useQueryParam('page', NumberParam)
-  const [siteParam, setSiteParam] = useQueryParam('site', ArrayParam)
-  const [query, setQuery] = useState(queryParam || '')
-  const [page, setPage] = useState(pageParam || 0)
+  const { blok } = props;
+  const [suggestions, setSuggestions] = useState([]);
+  const [results, setResults] = useState([]);
+  const [queryParam, setQueryParam] = useQueryParam("q", StringParam);
+  const [pageParam, setPageParam] = useQueryParam("page", NumberParam);
+  const [siteParam, setSiteParam] = useQueryParam("site", ArrayParam);
+  const [query, setQuery] = useState(queryParam || "");
+  const [page, setPage] = useState(pageParam || 0);
   const [selectedFacets, setSelectedFacets] = useState({
-    siteName: siteParam || []
-  })
+    siteName: siteParam || [],
+  });
 
-  const client = algoliasearch(process.env.GATSBY_ALGOLIA_APP_ID, process.env.GATSBY_ALGOLIA_API_KEY)
-  const index = client.initIndex('crawler_federated-search')
-  const suggestionsIndex = client.initIndex('crawler_federated-search_suggestions')
-  const hitsPerPage = blok.itemsPerPage
-
-  // Listen for changes to query, pager, or facets and update search results.
-  useEffect(() => {
-    updateSearchResults()
-  }, [query, page, selectedFacets])
+  const client = algoliasearch(
+    process.env.GATSBY_ALGOLIA_APP_ID,
+    process.env.GATSBY_ALGOLIA_API_KEY
+  );
+  const index = client.initIndex("crawler_federated-search");
+  const suggestionsIndex = client.initIndex(
+    "crawler_federated-search_suggestions"
+  );
+  const hitsPerPage = blok.itemsPerPage;
 
   // Update autocomplete suggestions when search input changes.
-  const updateAutocomplete = (query) => {
-    suggestionsIndex.search(query, {
-      hitsPerPage: 10,
-    }).then((queryResults) => {
-      setSuggestions(queryResults.hits)
-    })
-  }
+  const updateAutocomplete = (queryText) => {
+    suggestionsIndex
+      .search(queryText, {
+        hitsPerPage: 10,
+      })
+      .then((queryResults) => {
+        setSuggestions(queryResults.hits);
+      });
+  };
 
-  // Submit handler for search input. 
-  const submitSearchQuery = (query) => {
-    setPageParam(undefined)
-    setQueryParam(query || undefined)
-    setPage(0)
-    setQuery(query)
-  }
+  // Submit handler for search input.
+  const submitSearchQuery = (queryText) => {
+    setPageParam(undefined);
+    setQueryParam(queryText || undefined);
+    setPage(0);
+    setQuery(queryText);
+  };
 
   // Update page parameter when pager link is selected.
-  const updatePage = (page) => {
-    setPage(page)
-    setPageParam(page)
-  }
+  const updatePage = (pageNumber) => {
+    setPage(pageNumber);
+    setPageParam(pageNumber);
+  };
 
   // Update facet values when facet is selected.
   const updateSiteFacet = (values) => {
-    const newFacets = {...selectedFacets}
-    newFacets["siteName"] = values
-    setSelectedFacets(newFacets)
-    setPageParam(undefined)
-    setPage(0)
-    setSiteParam(values)
-  }
+    const newFacets = { ...selectedFacets };
+    newFacets.siteName = values;
+    setSelectedFacets(newFacets);
+    setPageParam(undefined);
+    setPage(0);
+    setSiteParam(values);
+  };
 
   // Fetch search results from Algolia. (Typically triggered by state changes in useEffect())
   const updateSearchResults = () => {
-    const facetFilters = Object.keys(selectedFacets).map((attribute) => {
-      return selectedFacets[attribute].map((value) => `${attribute}:${value}`)
-    })
+    const facetFilters = Object.keys(selectedFacets).map((attribute) =>
+      selectedFacets[attribute].map((value) => `${attribute}:${value}`)
+    );
 
-    index.search(query, {
-      hitsPerPage,
-      page,
-      facets: [
-        'domain',
-        'siteName'
-      ],
-      facetFilters
-    })
-    .then((queryResults) => {
-      setResults(queryResults)
-    })
-    
-    return
-  }
+    index
+      .search(query, {
+        hitsPerPage,
+        page,
+        facets: ["domain", "siteName"],
+        facetFilters,
+      })
+      .then((queryResults) => {
+        setResults(queryResults);
+      });
+  };
 
+  // Listen for changes to query, pager, or facets and update search results.
+  useEffect(() => {
+    updateSearchResults();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query, page, selectedFacets]);
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={false} isDark={true} {...props}>
+      <Layout hasHero={false} isDark {...props}>
         <Container
           element="section"
           width="full"
@@ -128,9 +136,7 @@ const SearchPage = (props) => {
                     attribute="siteName"
                     facetValues={results.facets.siteName}
                     selectedOptions={selectedFacets.siteName}
-                    onChange={(values) =>
-                      updateSiteFacet(values)
-                    }
+                    onChange={(values) => updateSiteFacet(values)}
                   />
                 )}
               </FlexCell>
@@ -142,24 +148,28 @@ const SearchPage = (props) => {
                 </>
               )}
 
-              {results.nbHits > hitsPerPage &&
+              {results.nbHits > hitsPerPage && (
                 <SearchPager
                   activePage={page}
                   nbPages={results.nbPages}
                   maxLinks={blok.maxPagerLinks}
                   selectPage={updatePage}
                 />
-              }
-              
-              {!results.nbHits && query && 
-                <SearchNoResults heading={blok.noResultsHeading.replace('[query]', query)} body={blok.noResultsBody} additionalContent={blok.noResultsAdditionalContent} />
-              }
+              )}
+
+              {!results.nbHits && query && (
+                <SearchNoResults
+                  heading={blok.noResultsHeading.replace("[query]", query)}
+                  body={blok.noResultsBody}
+                  additionalContent={blok.noResultsAdditionalContent}
+                />
+              )}
             </FlexCell>
           </FlexBox>
         </Container>
       </Layout>
     </SbEditable>
   );
-}
+};
 
-export default SearchPage
+export default SearchPage;

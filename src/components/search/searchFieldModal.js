@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { Search } from "react-hero-icon/solid";
 
 const SearchFieldModal = React.forwardRef((props, ref) => {
@@ -15,7 +15,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
         <Search className="su-text-white su-w-[32px] su-h-[32px] su-stroke-2" />
       </button>
     </div>
-  )
-})
+  );
+});
 
 export default SearchFieldModal

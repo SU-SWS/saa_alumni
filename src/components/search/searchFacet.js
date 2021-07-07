@@ -4,11 +4,12 @@ const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
   const handleCheckboxChange = (e) => {
     const values = [];
     const checkboxes = document.getElementsByName(e.target.name);
-    for (const checkbox of checkboxes) {
+
+    checkboxes.forEach((checkbox) => {
       if (checkbox.checked) {
         values.push(checkbox.value);
       }
-    }
+    });
 
     onChange(values);
   };
@@ -32,7 +33,10 @@ const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
               className="su-mr-15 su-max-w-[1.7rem] su-custom-checkbox su-max-h-[1.7rem] su-appearance-none !su-border su-rounded-[0.3rem]"
               onChange={(e) => handleCheckboxChange(e)}
             />
-            <span>{option}<span> ({count})</span></span>
+            <span>
+              {option}
+              <span> ({count})</span>
+            </span>
           </label>
         );
       })}

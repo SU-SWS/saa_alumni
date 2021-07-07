@@ -21,15 +21,17 @@ const OpenSearchModalButton = (props) => {
         onClick={(e) => setModalOpen(true)}
         {...props}
       >
-        <span className="su-sr-only lg:su-not-sr-only su-leading-none">Search</span>
+        <span className="su-sr-only lg:su-not-sr-only su-leading-none">
+          Search
+        </span>
         <SearchIcon
           aria-hidden="true"
           className="su-inline-block su-w-[2.2rem] lg:su-w-20 lg:su-ml-6"
         />
       </Button>
-      <SearchModal isOpen={modalOpen} onClose={() => setModalOpen(false)}></SearchModal>
+      <SearchModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
     </>
-  )
+  );
 };
 
 export default OpenSearchModalButton;
