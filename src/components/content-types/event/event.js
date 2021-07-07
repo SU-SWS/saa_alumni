@@ -14,7 +14,6 @@ import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
 import DateBlock from "../../simple/dateBlock";
-import FullWidthImage from "../../media/fullWidthImage";
 
 const Event = ({
   blok: {

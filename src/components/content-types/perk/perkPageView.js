@@ -3,7 +3,6 @@ import React from "react";
 import { Heading } from "decanter-react";
 import CardImage from "../../media/cardImage";
 import Layout from "../../partials/layout";
-import FullWidthImage from "../../media/fullWidthImage";
 
 const PerkPageView = (props) => {
   // Destructure props

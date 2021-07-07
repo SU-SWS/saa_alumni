@@ -4,7 +4,6 @@ import { Heading } from "decanter-react";
 import CardImage from "../../media/cardImage";
 import Layout from "../../partials/layout";
 import CreateBloks from "../../../utilities/createBloks";
-import FullWidthImage from "../../media/fullWidthImage";
 
 const StoryPageView = (props) => {
   // Destructure props

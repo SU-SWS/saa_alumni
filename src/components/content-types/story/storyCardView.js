@@ -6,7 +6,6 @@ import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
-import FullWidthImage from "../../media/fullWidthImage";
 
 const StoryCardView = ({
   blok: {

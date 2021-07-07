@@ -7,7 +7,6 @@ import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
 import { largeMarginBottom } from "../../../utilities/dataSource";
-import FullWidthImage from "../../media/fullWidthImage";
 
 const PerkCardView = ({
   blok: {
