@@ -55,8 +55,8 @@ const StoryCardView = ({
     }
   }
 
-  let headlineColor = "su-text-black";
-  let headlineIconColor = "group-hocus:su-text-cardinal-red";
+  let headlineColor = "su-text-black hocus:su-text-black";
+  let headlineIconColor = "";
   let textColor = "su-text-black";
 
   // Use different text color if card has minimal style and is placed in a dark region
