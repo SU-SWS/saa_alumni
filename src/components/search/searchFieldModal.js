@@ -18,4 +18,4 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   );
 });
 
-export default SearchFieldModal
+export default SearchFieldModal;

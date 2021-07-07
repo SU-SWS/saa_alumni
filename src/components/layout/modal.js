@@ -70,7 +70,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
       su-justify-center su-z-50 su-pointer-events-none
       ${isOpen ? "su-block" : "su-hidden"}
     `}
-      aria-label={ariaLabel} 
+      aria-label={ariaLabel}
       aria-hidden={isOpen ? "false" : "true"}
       role="dialog"
       tabIndex="-1"

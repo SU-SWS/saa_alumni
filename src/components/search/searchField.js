@@ -85,7 +85,7 @@ const SearchField = ({
         <div className="su-flex su-items-center">
           <span className="" />
           <div
-            className="su-items-end su-flex su-w-full su-items-center su-relative"
+            className="su-flex su-w-full su-items-center su-relative"
             ref={inputWrapper}
           >
             <label className="su-flex-grow su-max-w-full">
@@ -94,7 +94,7 @@ const SearchField = ({
                 type="text"
                 role="combobox"
                 aria-controls="search-autocomplete-listbox"
-                aria-expanded={showAutocomplete ? 'true' : 'false'}
+                aria-expanded={showAutocomplete ? "true" : "false"}
                 onChange={inputHandler}
                 onKeyDown={handleArrowKeys}
                 className={inputClasses}

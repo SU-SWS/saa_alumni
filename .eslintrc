@@ -11,6 +11,12 @@
     "prettier"
   ],
   "rules": {
+    "jsx-a11y/label-has-associated-control": [ 2, {
+      "components": [ "Label" ],
+      "required": {
+          "some": [ "nesting", "id" ]
+      }
+    }],
     "prettier/prettier": [
       "error",
       {
@@ -53,7 +59,8 @@
     "semi": [1, "always"] // 1 is for warning
   },
   "env": {
-    "node": true
+    "node": true,
+    "browser": true
   },
   "parserOptions": {
     "ecmaVersion": 2020,
