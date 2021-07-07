@@ -13,31 +13,31 @@ import EmbedVideo from "./media/embedVideo";
 import Event from "./content-types/event/event";
 import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
-import Heading from './simple/heading';
+import Heading from "./simple/heading";
 import Hero from "./composite/hero";
 import InteriorPage from "./page-types/interiorPage";
 import LandingPage from "./page-types/landingPage";
-import LinkGroup from './navigation/linkGroup';
-import LinkList from './simple/linkList';
-import LocalFooter from './identity/localFooter';
-import LocalFooterPicker from './identity/localFooterPicker';
+import LinkGroup from "./navigation/linkGroup";
+import LinkList from "./simple/linkList";
+import LocalFooter from "./identity/localFooter";
+import LocalFooterPicker from "./identity/localFooterPicker";
 import MainMenuGroup from "./navigation/mainMenuGroup";
 import MainNav from "./navigation/mainNav";
 import MainNavItem from "./navigation/mainNavItem";
 import Masthead from "./identity/masthead";
 import MastheadPicker from "./identity/mastheadPicker";
-import NavItem from './navigation/navItem';
-import Page from './page';
+import NavItem from "./navigation/navItem";
+import Page from "./page";
 import Perk from "./content-types/perk/perk";
 import PerkCard from "./cards/perkCard";
 import PerkCardHorizontal from "./cards/perkCardHorizontal";
 import Poster from "./composite/poster";
 import Redirect from "./redirect/Redirect";
-import searchFacet from './search/searchFacet';
-import searchField from './search/searchField';
-import searchPage from './page-types/searchPage';
-import searchPager from './search/searchPager';
-import searchResults from './search/searchResults';
+import SearchFacet from "./search/searchFacet";
+import SearchField from "./search/searchField";
+import SearchPage from "./page-types/searchPage";
+import SearchPager from "./search/searchPager";
+import SearchResults from "./search/searchResults";
 import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
 import Story from "./content-types/story/story";
@@ -78,11 +78,11 @@ const ComponentList = {
   perkCard: PerkCard,
   perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
-  searchFacet: searchFacet,
-  searchField: searchField,
-  searchPage: searchPage,
-  searchPager: searchPager,
-  searchResults: searchResults,
+  searchFacet: SearchFacet,
+  searchField: SearchField,
+  searchPage: SearchPage,
+  searchPager: SearchPager,
+  searchResults: SearchResults,
   section: Section,
   simpleImage: SimpleImage,
   story: Story,

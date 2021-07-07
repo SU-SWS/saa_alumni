@@ -1,19 +1,15 @@
-import React from 'react'
+import React from "react";
 import CreateBloks from "../../utilities/createBloks";
-import CtaLink from '../cta/ctaLink';
 
-const SearchNoResults = ({heading, body, additionalContent}) => {
-  // TODO: Replace hard-coded markup with values from Storyblok.
-  return (
+const SearchNoResults = ({ heading, body, additionalContent }) => (
+  <div>
+    <h2>{heading}</h2>
+    <div>{body}</div>
+
     <div>
-      <h2>{heading}</h2>
-      <div>{body}</div>
-      
-      <div>
-        <CreateBloks blokSection={additionalContent} />
-      </div>
+      <CreateBloks blokSection={additionalContent} />
     </div>
-  )
-}
+  </div>
+);
 
-export default SearchNoResults
+export default SearchNoResults;
