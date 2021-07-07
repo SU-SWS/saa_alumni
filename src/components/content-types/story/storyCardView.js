@@ -2,6 +2,7 @@ import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading, SrOnlyText } from "decanter-react";
 import { ArrowRightIcon, ArrowUpIcon } from "@heroicons/react/solid";
+import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
 import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
@@ -12,6 +13,7 @@ const StoryCardView = ({
     cardImage: { filename: cardFilename } = {},
     image: { filename } = {},
     imageFocus,
+    storyType,
     title,
     shortTitle,
     teaser,
@@ -39,7 +41,8 @@ const StoryCardView = ({
     wrapperClasses = "su-bg-transparent";
     contentPadding = "su-rs-pt-1";
 
-    if (hideImage) {
+    // No top padding if there are no images uploaded or the hide image option is checked
+    if (hideImage || (!cardFilename && !filename)) {
       contentPadding = "";
     }
   }
@@ -63,6 +66,21 @@ const StoryCardView = ({
     teaserSize = "su-card-paragraph lg:su-text-25";
   }
 
+  // Add leading icon and screen reader text to headline if story type is podcast or video
+  let TypeIcon;
+  let typeIconClasses;
+  let typeSrText;
+
+  if (storyType === "video") {
+    TypeIcon = VideoCameraIcon;
+    typeIconClasses = "su-mt-[-0.2em]";
+    typeSrText = "Video";
+  } else if (storyType === "podcast") {
+    TypeIcon = MicrophoneIcon;
+    typeIconClasses = "su-mt-[-0.25em]";
+    typeSrText = "Podcast";
+  }
+
   // Default icon is right arrow for internal links
   // HeadlineIcon starts with uppercase letter because it's a component
   let HeadlineIcon = ArrowRightIcon;
@@ -73,7 +91,7 @@ const StoryCardView = ({
   if (pubLink) {
     HeadlineIcon = ArrowUpIcon;
     headlineIconClasses =
-      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
+      "su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
   }
 
   return (
@@ -87,7 +105,7 @@ const StoryCardView = ({
           textColor
         )}
       >
-        {!hideImage && (
+        {!hideImage && (cardFilename || filename) && (
           <div
             className="story-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
             aria-hidden="true"
@@ -118,7 +136,20 @@ const StoryCardView = ({
               tracking="normal"
               className="su-relative su-inline su-type-0"
             >
-              {tabText && !hideTab && <SrOnlyText srText={`${tabText}: `} />}
+              {TypeIcon && (
+                <TypeIcon
+                  className={dcnb(
+                    "su-inline-block su-mr-02em su-w-08em",
+                    typeIconClasses
+                  )}
+                  aria-hidden="true"
+                />
+              )}
+              {tabText &&
+                !hideTab &&
+                storyType !== "podcast" &&
+                storyType !== "video" && <SrOnlyText srText={`${tabText}: `} />}
+              {typeSrText && <SrOnlyText srText={`${typeSrText}: `} />}
               {shortTitle || title}
               {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
@@ -136,7 +167,7 @@ const StoryCardView = ({
               <span className="su-italic">from</span> {source}
             </p>
           )}
-          {!hideTab && !hideImage && (
+          {!hideTab && !hideImage && tabText && (cardFilename || filename) && (
             <TabLabel text={tabText} aria-hidden="true" />
           )}
           {(teaser || intro) && (
