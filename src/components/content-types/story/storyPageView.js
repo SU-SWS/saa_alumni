@@ -1,6 +1,7 @@
 import SbEditable from "storyblok-react";
 import React from "react";
-import { Container, Heading } from "decanter-react";
+import { Container, Heading, SrOnlyText } from "decanter-react";
+import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
 import Layout from "../../partials/layout";
 import CreateBloks from "../../../utilities/createBloks";
 import FullWidthImage from "../../media/fullWidthImage";
@@ -17,6 +18,8 @@ const StoryPageView = (props) => {
       imageFocus,
       notFullwidthImage,
       caption,
+      storyType,
+      source,
       title,
       intro,
       author,
@@ -29,6 +32,18 @@ const StoryPageView = (props) => {
   } = props;
 
   const numBelow = getNumBloks(belowContent);
+
+  // Add icon and screen reader text if story type is podcast or video
+  let typeIcon;
+  let typeSrText;
+
+  if (storyType === "video") {
+    typeIcon = <VideoCameraIcon className="su-inline-block su-mt-[-0.2em] su-mr-02em su-w-08em" aria-hidden="true" />;
+    typeSrText = "Video: ";
+  } else if (storyType === "podcast") {
+    typeIcon = <MicrophoneIcon className="su-inline-block su-mt-[-0.25em] su-mr-02em su-w-08em" aria-hidden="true" />;
+    typeSrText = "Podcast: "
+  }
 
   let heroImage;
 
@@ -93,6 +108,8 @@ const StoryPageView = (props) => {
                   font="serif"
                   className="su-max-w-1200 su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
+                  {typeSrText && <SrOnlyText srText={typeSrText} />}
+                  {typeIcon}
                   {title}
                 </Heading>
                 {intro && (
