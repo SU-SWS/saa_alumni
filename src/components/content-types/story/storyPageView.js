@@ -2,6 +2,7 @@ import SbEditable from "storyblok-react";
 import React from "react";
 import { Container, Heading, SrOnlyText } from "decanter-react";
 import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
+import { DateTime } from "luxon";
 import Layout from "../../partials/layout";
 import CreateBloks from "../../../utilities/createBloks";
 import FullWidthImage from "../../media/fullWidthImage";
@@ -9,7 +10,6 @@ import getNumBloks from "../../../utilities/getNumBloks";
 import RichTextRenderer from "../../../utilities/richTextRenderer";
 import WidthBox from "../../layout/widthBox";
 import CardImage from "../../media/cardImage";
-import { DateTime } from "luxon";
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -37,7 +37,9 @@ const StoryPageView = (props) => {
   // The date/time string we get from Storyblok is in UTC
   // Convert string to luxon DateTime object and format the pieces for display
   // Start date and time
-  const luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", { zone: "UTC" })
+  const luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", {
+    zone: "UTC",
+  })
     .setZone("America/Los_Angeles")
     .setLocale("en-us");
   const nicePublishedDate = luxonPublished.toFormat("DDD");
@@ -47,11 +49,21 @@ const StoryPageView = (props) => {
   let typeSrText;
 
   if (storyType === "video") {
-    typeIcon = <VideoCameraIcon className="su-inline-block su-mt-[-0.2em] su-mr-02em su-w-08em" aria-hidden="true" />;
+    typeIcon = (
+      <VideoCameraIcon
+        className="su-inline-block su-mt-[-0.2em] su-mr-02em su-w-08em"
+        aria-hidden="true"
+      />
+    );
     typeSrText = "Video: ";
   } else if (storyType === "podcast") {
-    typeIcon = <MicrophoneIcon className="su-inline-block su-mt-[-0.25em] su-mr-02em su-w-08em" aria-hidden="true" />;
-    typeSrText = "Podcast: "
+    typeIcon = (
+      <MicrophoneIcon
+        className="su-inline-block su-mt-[-0.25em] su-mr-02em su-w-08em"
+        aria-hidden="true"
+      />
+    );
+    typeSrText = "Podcast: ";
   }
 
   let heroImage;
@@ -126,8 +138,16 @@ const StoryPageView = (props) => {
                     {intro}
                   </p>
                 )}
-                {(nicePublishedDate || manualDate) && <p className="su-card-paragraph su-mb-03em su-text-black-70">{manualDate || nicePublishedDate}</p>}
-                {source && <p className="su-card-paragraph su-mb-0 su-text-black-70 su-font-serif"><span className="su-italic">from</span> {source}</p>}
+                {(nicePublishedDate || manualDate) && (
+                  <p className="su-card-paragraph su-mb-03em su-text-black-70">
+                    {manualDate || nicePublishedDate}
+                  </p>
+                )}
+                {source && (
+                  <p className="su-card-paragraph su-mb-0 su-text-black-70 su-font-serif">
+                    <span className="su-italic">from</span> {source}
+                  </p>
+                )}
               </Container>
               {heroImage}
               {author && (
