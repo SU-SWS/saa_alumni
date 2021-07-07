@@ -117,8 +117,8 @@ const SearchPage = (props) => {
           <FlexBox gap justifyContent="center">
             <FlexCell xs="full" lg={results.facets ? 6 : 8}>
               <SearchField
-                onInput={(query) => updateAutocomplete(query)}
-                onSubmit={(query) => submitSearchQuery(query)}
+                onInput={(queryText) => updateAutocomplete(queryText)}
+                onSubmit={(queryText) => submitSearchQuery(queryText)}
                 defaultValue={query}
                 autocompleteSuggestions={suggestions}
               />
