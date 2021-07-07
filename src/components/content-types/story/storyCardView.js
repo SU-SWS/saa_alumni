@@ -171,7 +171,7 @@ const StoryCardView = ({
             />
           </SbLink>
           {source && (
-            <p className="su-card-paragraph su-font-serif su-mt-02em">
+            <p className="su-card-paragraph su-leading-display su-font-serif su-mt-02em">
               <span className="su-italic">from</span> {source}
             </p>
           )}

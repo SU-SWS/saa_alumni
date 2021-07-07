@@ -141,12 +141,12 @@ const StoryPageView = (props) => {
                   </p>
                 )}
                 {(nicePublishedDate || manualDate) && (
-                  <p className="su-card-paragraph su-mb-03em su-text-black-70">
+                  <p className="su-card-paragraph su-leading-display su-mb-02em su-text-black-70">
                     {manualDate || nicePublishedDate}
                   </p>
                 )}
                 {source && (
-                  <p className="su-card-paragraph su-mb-0 su-text-black-70 su-font-serif">
+                  <p className="su-card-paragraph su-leading-display su-mb-0 su-text-black-70 su-font-serif">
                     <span className="su-italic">from</span> {source}
                   </p>
                 )}
@@ -154,7 +154,7 @@ const StoryPageView = (props) => {
               {heroImage}
               {author && (
                 <WidthBox width="8">
-                  <p className="su-mb-0 su-font-serif">
+                  <p className="su-mb-0 su-font-serif su-leading-display">
                     <span className="su-italic">by</span> {author}
                   </p>
                 </WidthBox>
