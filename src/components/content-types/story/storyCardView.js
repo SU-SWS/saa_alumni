@@ -41,7 +41,7 @@ const StoryCardView = ({
   }
 
   let wrapperClasses =
-    "su-border su-border-solid su-border-black-30-opacity-20 su-bg-clip-padding su-shadow-sm";
+    "su-border su-border-solid su-border-black-30-opacity-30 su-bg-clip-padding su-shadow-sm";
 
   let contentClasses = "su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
