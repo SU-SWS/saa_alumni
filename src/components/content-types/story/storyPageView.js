@@ -9,6 +9,7 @@ import getNumBloks from "../../../utilities/getNumBloks";
 import RichTextRenderer from "../../../utilities/richTextRenderer";
 import WidthBox from "../../layout/widthBox";
 import CardImage from "../../media/cardImage";
+import { DateTime } from "luxon";
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -32,6 +33,14 @@ const StoryPageView = (props) => {
   } = props;
 
   const numBelow = getNumBloks(belowContent);
+
+  // The date/time string we get from Storyblok is in UTC
+  // Convert string to luxon DateTime object and format the pieces for display
+  // Start date and time
+  const luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", { zone: "UTC" })
+    .setZone("America/Los_Angeles")
+    .setLocale("en-us");
+  const nicePublishedDate = luxonPublished.toFormat("DDD");
 
   // Add icon and screen reader text if story type is podcast or video
   let typeIcon;
@@ -101,7 +110,7 @@ const StoryPageView = (props) => {
         >
           <article>
             <header className="su-basefont-23">
-              <Container className="su-rs-pt-9 su-rs-pb-4">
+              <Container className="su-rs-pt-9 su-rs-pb-4 su-text-center">
                 <Heading
                   level={1}
                   align="center"
@@ -113,10 +122,12 @@ const StoryPageView = (props) => {
                   {title}
                 </Heading>
                 {intro && (
-                  <p className="su-font-serif su-text-m1 su-leading-snug su-text-center su-max-w-prose su-mx-auto">
+                  <p className="su-rs-mb-3 su-font-serif su-text-m1 su-leading-snug su-max-w-prose su-mx-auto">
                     {intro}
                   </p>
                 )}
+                {(nicePublishedDate || manualDate) && <p className="su-card-paragraph su-mb-03em su-text-black-70">{manualDate || nicePublishedDate}</p>}
+                {source && <p className="su-card-paragraph su-mb-0 su-text-black-70 su-font-serif"><span className="su-italic">from</span> {source}</p>}
               </Container>
               {heroImage}
               {author && (
