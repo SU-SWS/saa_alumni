@@ -4,12 +4,13 @@ import { Heading } from "decanter-react";
 import CardImage from "../../media/cardImage";
 import Layout from "../../partials/layout";
 import CreateBloks from "../../../utilities/createBloks";
+import FullWidthImage from "../../media/fullWidthImage";
 
 const StoryPageView = (props) => {
   // Destructure props
   const {
     blok: {
-      image: { filename } = {},
+      image: { filename, focus } = {},
       imageFocus,
       title,
       intro,
@@ -31,6 +32,7 @@ const StoryPageView = (props) => {
                   <CardImage
                     filename={filename}
                     imageFocus={imageFocus}
+                    smartFocus={focus}
                     className="su-w-full su-h-full su-object-cover"
                     loading="lazy"
                   />

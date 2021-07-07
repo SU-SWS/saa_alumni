@@ -3,11 +3,12 @@ import React from "react";
 import { Heading } from "decanter-react";
 import CardImage from "../../media/cardImage";
 import Layout from "../../partials/layout";
+import FullWidthImage from "../../media/fullWidthImage";
 
 const PerkPageView = (props) => {
   // Destructure props
   const {
-    blok: { image: { filename } = {}, imageFocus, isNew, title, intro },
+    blok: { image: { filename, focus } = {}, imageFocus, isNew, title, intro },
     blok,
   } = props;
 
@@ -22,6 +23,7 @@ const PerkPageView = (props) => {
                 <figure className="su-overflow-hidden su-w-full su-h-full">
                   <CardImage
                     filename={filename}
+                    smartFocus={focus}
                     imageFocus={imageFocus}
                     className="su-w-full su-h-full su-object-cover"
                     loading="lazy"
