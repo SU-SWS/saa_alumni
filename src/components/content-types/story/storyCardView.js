@@ -33,7 +33,7 @@ const StoryCardView = ({
   tabText,
 }) => {
   // Use structure of Storyblok Link so we can pass this to our SbLink component
-  const internalLink = { linktype: "story", cached_url: storyLink + "/"};
+  const internalLink = { linktype: "story", cached_url: `${storyLink}/` };
   let externalLink;
 
   if (pubLink) {
