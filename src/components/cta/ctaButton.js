@@ -34,13 +34,6 @@ const CtaButton = React.forwardRef(
     // Button style
     const ctaButtonStyle = buttonStyles[buttonStyle] ?? buttonStyles.primary;
 
-    // For all button styles other than ghost-gradient, icon color is same as text color
-    let iconColor;
-
-    if (buttonStyle === "ghost-gradient") {
-      iconColor = "su-text-saa-electric-blue-light group-hocus:su-text-white";
-    }
-
     // Icon size/position finetuning based on icon choice
     let iconClasses;
 
@@ -98,7 +91,7 @@ const CtaButton = React.forwardRef(
                   icon={linkIcon}
                   type="solid"
                   aria-hidden="true"
-                  className={`su-inline-block ${iconColor} ${iconClasses} ${iconAnimate}`}
+                  className={`su-inline-block ${iconClasses} ${iconAnimate}`}
                 />
               )}
             </SbLink>

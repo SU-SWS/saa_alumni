@@ -1,6 +1,6 @@
 import SbEditable from "storyblok-react";
 import React from "react";
-import { FlexBox, Heading } from "decanter-react";
+import { FlexBox, Heading, SrOnlyText } from "decanter-react";
 import { ArrowUpIcon } from "@heroicons/react/solid";
 import {
   CalendarIcon,
@@ -92,15 +92,12 @@ const Event = ({
   const iconClasses =
     "su-inline-block su-flex-shrink-0 su-mt-01em su-mr-06em su-w-[1.1em]";
   let locationIcon = (
-    <LocationMarkerIcon className={iconClasses} aria-label="Event location" />
+    <LocationMarkerIcon className={iconClasses} aria-hidden="true" />
   );
 
   if (isVirtual) {
     locationIcon = (
-      <DesktopComputerIcon
-        className={iconClasses}
-        aria-label="Event is online"
-      />
+      <DesktopComputerIcon className={iconClasses} aria-hidden="true" />
     );
   }
 
@@ -141,6 +138,7 @@ const Event = ({
           endHtmlDate={endHtmlDate}
           isSameDay={isSameDay}
           isMinimal={isMinimal}
+          aria-hidden="true"
           className={
             isMinimal
               ? ""
@@ -156,7 +154,7 @@ const Event = ({
           )}
         >
           <Heading
-            level={headingLevel ?? 3}
+            level={parseInt(headingLevel, 10) ?? 3}
             font="serif"
             tracking="normal"
             className="su-relative su-inline su-type-0"
@@ -176,7 +174,8 @@ const Event = ({
           )}
         >
           <FlexBox direction="row" alignItems="start" className="su-mb-04em">
-            <CalendarIcon className={iconClasses} aria-label="Event date" />
+            <CalendarIcon className={iconClasses} aria-hidden="true" />
+            <SrOnlyText srText="Date: " />
             <span>
               {longStartDate}
               {!isSameDay && ` - ${longEndDate}`}
@@ -186,6 +185,9 @@ const Event = ({
           {location && (
             <FlexBox direction="row" alignItems="start" className="su-mb-04em">
               {locationIcon}
+              <SrOnlyText
+                srText={isVirtual ? "This event is virtual: " : "Location: "}
+              />
               <span>{location}</span>
             </FlexBox>
           )}

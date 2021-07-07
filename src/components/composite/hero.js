@@ -24,7 +24,6 @@ const Hero = ({
     sansSub,
     serifSuper,
     headline,
-    headingLevel,
     scrollTo,
   },
   blok,
@@ -86,7 +85,7 @@ const Hero = ({
                 )}
                 {headline && (
                   <Heading
-                    level={parseInt(headingLevel, 10) ?? 1}
+                    level={2}
                     font="serif"
                     weight="bold"
                     className={dcnb(

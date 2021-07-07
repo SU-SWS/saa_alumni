@@ -25,7 +25,6 @@ module.exports = function () {
         nav: {
           a: {
             textDecoration: "none",
-
             "&:hover, &:focus": {
               textDecoration: "underline",
             },
