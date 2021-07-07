@@ -4,10 +4,16 @@ import { dcnb } from "cnbuilder";
 import { Button } from "decanter-react";
 import { MenuIcon } from "@heroicons/react/outline";
 import CreateBloks from "../../utilities/createBloks";
+import { Popover, Transition } from "@headlessui/react";
 
 const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => (
   <SbEditable content={blok}>
-    <nav className={dcnb("main-nav", className)} aria-label="Main Menu">
+    <nav className={dcnb("main-nav-desktop su-hidden lg:su-block", className)} aria-label="Main Menu">
+      <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
+        <CreateBloks blokSection={mainMenuGroups} />
+      </ul>
+    </nav>
+    <nav className={dcnb("main-nav-mobile lg:!su-hidden", className)} aria-label="Main Menu">
       <Button
         variant="unset"
         size="minimal"

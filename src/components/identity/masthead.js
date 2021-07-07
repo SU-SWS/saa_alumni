@@ -75,14 +75,14 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
             </FlexBox>
             <CreateBloks
               blokSection={mainNav}
-              className="su-hidden xl:su-flex xl:su-mt-12 2xl:su-mt-27"
+              className="su-hidden lg:su-hidden xl:su-flex xl:su-mt-12 2xl:su-mt-27"
             />
           </FlexCell>
         </FlexBox>
         <CreateBloks
           blokSection={mainNav}
           className={dcnb(
-            "su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90",
+            "lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90",
             mainNavBgColorLg
           )}
         />
