@@ -142,7 +142,7 @@ const StoryPageView = (props) => {
                 )}
                 {(nicePublishedDate || manualDate) && (
                   <p className="su-card-paragraph su-leading-display su-mb-02em su-text-black-70">
-                    {manualDate || nicePublishedDate}
+                    {nicePublishedDate || manualDate}
                   </p>
                 )}
                 {source && (
