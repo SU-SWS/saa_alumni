@@ -11,8 +11,6 @@ import Event from "./content-types/event/event";
 import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
 import Hero from "./composite/hero";
-import InteriorPage from "./page-types/interiorPage";
-import LandingPage from "./page-types/landingPage";
 import LinkGroup from "./navigation/linkGroup";
 import LocalFooter from "./identity/localFooter";
 import LocalFooterPicker from "./identity/localFooterPicker";
@@ -49,8 +47,6 @@ const ComponentList = {
   eventCard: EventCard,
   grid: Grid,
   hero: Hero,
-  interiorPage: InteriorPage,
-  landingPage: LandingPage,
   linkGroup: LinkGroup,
   localFooter: LocalFooter,
   localFooterPicker: LocalFooterPicker,
