@@ -45,7 +45,7 @@ const CtaCard = React.forwardRef(
       <SbEditable content={blok}>
         <div
           className={dcnb(
-            "cta-card su-w-full su-relative su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark su-basefont-23 su-break-words su-p-50 su-h-[50rem] su-max-h-full su-flex su-flex-col su-justify-end"
+            "cta-card su-w-full su-relative su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark su-basefont-23 su-break-words su-p-50 su-min-h-[50rem] su-h-full su-flex su-flex-col su-justify-end"
           )}
         >
           <Heading
