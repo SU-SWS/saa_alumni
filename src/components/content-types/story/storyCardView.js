@@ -40,7 +40,7 @@ const StoryCardView = ({
   }
 
   let wrapperClasses =
-    "su-border su-border-solid su-border-black-30-opacity-30 su-bg-clip-padding su-shadow-sm";
+    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm";
 
   let contentClasses = "su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
@@ -104,7 +104,7 @@ const StoryCardView = ({
           <SbLink
             link={externalLink || internalLink}
             classes={dcnb(
-              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-0 su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
               headlineSize,
               headlineColor
             )}
@@ -135,7 +135,7 @@ const StoryCardView = ({
             />
           </SbLink>
           {source && (
-            <p className="su-card-paragraph su-leading-display su-font-serif su-mt-02em">
+            <p className="su-card-paragraph su-leading-display su-font-serif su-rs-mb-0">
               <span className="su-italic">from</span> {source}
             </p>
           )}
@@ -144,7 +144,7 @@ const StoryCardView = ({
           )}
           {(teaser || intro) && (
             <p
-              className={dcnb("su-rs-mt-0 su-mb-0 su-leading-snug", teaserSize)}
+              className={dcnb("su-mb-0 su-leading-snug", teaserSize)}
             >
               {teaser || intro}
             </p>

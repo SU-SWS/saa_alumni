@@ -11,7 +11,7 @@ module.exports = function () {
       },
       30: {
         opacity: {
-          30: "rgba(192, 192, 191, 30%)", // For card borders
+          40: "rgba(192, 192, 191, 40%)", // For card borders
         },
       },
     },
