@@ -7,6 +7,7 @@ import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
+import HeroIcon from "../../simple/heroIcon";
 
 const StoryCardView = ({
   blok: {
@@ -74,21 +75,6 @@ const StoryCardView = ({
     teaserSize = "su-card-paragraph lg:su-text-25";
   }
 
-  // Add leading icon and screen reader text to headline if story type is podcast or video
-  let TypeIcon;
-  let typeIconClasses;
-  let typeSrText;
-
-  if (storyType === "video") {
-    TypeIcon = VideoCameraIcon;
-    typeIconClasses = "su-mt-[-0.2em]";
-    typeSrText = "Video";
-  } else if (storyType === "podcast") {
-    TypeIcon = MicrophoneIcon;
-    typeIconClasses = "su-mt-[-0.25em]";
-    typeSrText = "Podcast";
-  }
-
   // Default icon is right arrow for internal links
   // HeadlineIcon starts with uppercase letter because it's a component
   let HeadlineIcon = ArrowRightIcon;
@@ -144,20 +130,16 @@ const StoryCardView = ({
               tracking="normal"
               className="su-relative su-inline su-type-0"
             >
-              {TypeIcon && (
-                <TypeIcon
-                  className={dcnb(
-                    "su-inline-block su-mr-02em su-w-08em",
-                    typeIconClasses
-                  )}
-                  aria-hidden="true"
-                />
-              )}
               {tabText &&
                 !hideTab &&
-                storyType !== "podcast" &&
-                storyType !== "video" && <SrOnlyText srText={`${tabText}: `} />}
-              {typeSrText && <SrOnlyText srText={`${typeSrText}: `} />}
+                tabText !== "podcast" &&
+                tabText !== "video" && <SrOnlyText srText={`${tabText}: `} />}
+              {(storyType === "podcast" || storyType === "video") && (
+                <HeroIcon
+                  iconType={storyType}
+                  className="su-inline-block su-mr-02em su-w-08em"
+                />
+              )}
               {shortTitle || title}
               {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>

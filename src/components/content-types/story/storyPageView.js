@@ -11,6 +11,7 @@ import getNumBloks from "../../../utilities/getNumBloks";
 import RichTextRenderer from "../../../utilities/richTextRenderer";
 import WidthBox from "../../layout/widthBox";
 import CardImage from "../../media/cardImage";
+import HeroIcon from "../../simple/heroIcon";
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -44,21 +45,6 @@ const StoryPageView = (props) => {
     .setZone("America/Los_Angeles")
     .setLocale("en-us");
   const nicePublishedDate = luxonPublished.toFormat("DDD");
-
-  // Add leading icon and screen reader text to headline if story type is podcast or video
-  let TypeIcon;
-  let typeIconClasses;
-  let typeSrText;
-
-  if (storyType === "video") {
-    TypeIcon = VideoCameraIcon;
-    typeIconClasses = "su-mt-[-0.2em]";
-    typeSrText = "Video";
-  } else if (storyType === "podcast") {
-    TypeIcon = MicrophoneIcon;
-    typeIconClasses = "su-mt-[-0.25em]";
-    typeSrText = "Podcast";
-  }
 
   let heroImage;
 
@@ -123,16 +109,12 @@ const StoryPageView = (props) => {
                   font="serif"
                   className="su-max-w-1200 su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
-                  {TypeIcon && (
-                    <TypeIcon
-                      className={dcnb(
-                        "su-inline-block su-mr-02em su-w-08em",
-                        typeIconClasses
-                      )}
-                      aria-hidden="true"
+                  {(storyType === "podcast" || storyType === "video") && (
+                    <HeroIcon
+                      iconType={storyType}
+                      className="su-inline-block su-mr-02em su-w-08em"
                     />
                   )}
-                  {typeSrText && <SrOnlyText srText={`${typeSrText}: `} />}
                   {title}
                 </Heading>
                 {intro && (
@@ -140,9 +122,9 @@ const StoryPageView = (props) => {
                     {intro}
                   </p>
                 )}
-                {(nicePublishedDate || manualDate) && (
+                {(manualDate || nicePublishedDate) && (
                   <p className="su-card-paragraph su-leading-display su-mb-02em su-text-black-70">
-                    {nicePublishedDate || manualDate}
+                    {manualDate || nicePublishedDate}
                   </p>
                 )}
                 {source && (
