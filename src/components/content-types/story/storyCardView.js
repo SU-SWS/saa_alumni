@@ -1,7 +1,6 @@
 import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading, SrOnlyText } from "decanter-react";
-import { ArrowRightIcon, ArrowUpIcon } from "@heroicons/react/solid";
 import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
@@ -74,19 +73,6 @@ const StoryCardView = ({
     teaserSize = "su-card-paragraph lg:su-text-25";
   }
 
-  // Default icon is right arrow for internal links
-  // HeadlineIcon starts with uppercase letter because it's a component
-  let HeadlineIcon = ArrowRightIcon;
-  let headlineIconClasses =
-    "su-ml-03em su-w-08em su--mt-01em group-hocus:su-translate-x-02em";
-
-  // Change headline icon to diagonal arrow if card link is external
-  if (pubLink) {
-    HeadlineIcon = ArrowUpIcon;
-    headlineIconClasses =
-      "su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
-  }
-
   return (
     <SbEditable content={blok}>
       <FlexBox
@@ -142,13 +128,10 @@ const StoryCardView = ({
               {shortTitle || title}
               {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
-            <HeadlineIcon
-              className={dcnb(
-                "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight",
-                headlineIconClasses,
-                headlineIconColor
-              )}
-              aria-hidden="true"
+            <HeroIcon
+              iconType={pubLink ? "external" : "internal"}
+              className={`su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight ${headlineIconColor}`}
+              hideSrText
             />
           </SbLink>
           {source && (
