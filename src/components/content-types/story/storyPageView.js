@@ -6,10 +6,10 @@ import Layout from "../../partials/layout";
 import CreateBloks from "../../../utilities/createBloks";
 import FullWidthImage from "../../media/fullWidthImage";
 import getNumBloks from "../../../utilities/getNumBloks";
-import RichTextRenderer from "../../../utilities/richTextRenderer";
 import WidthBox from "../../layout/widthBox";
 import CardImage from "../../media/cardImage";
 import HeroIcon from "../../simple/heroIcon";
+import CaptionMedia from "../../media/captionMedia";
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -49,7 +49,13 @@ const StoryPageView = (props) => {
   // Default hero image is edge to edge
   if (filename) {
     heroImage = (
-      <figure className="su-rs-mb-6">
+      <CaptionMedia
+        mediaWidth="edge-to-edge"
+        caption={caption}
+        isInsetCaption
+        captionAlign="right"
+        className="su-rs-mb-6"
+      >
         <div className="su-relative su-overflow-hidden su-w-full md:su-h-[50vw] 2xl:su-h-900">
           <FullWidthImage
             filename={filename}
@@ -59,33 +65,20 @@ const StoryPageView = (props) => {
             loading="eager"
           />
         </div>
-        {caption && (
-          <figcaption className="su-cc">
-            <RichTextRenderer
-              wysiwyg={caption}
-              className="su-caption su-text-black-70 su-max-w-prose su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
-            />
-          </figcaption>
-        )}
-      </figure>
+      </CaptionMedia>
     );
   }
 
   if (notFullwidthImage && filename) {
     heroImage = (
-      <WidthBox width="10" className="su-rs-mb-6">
-        <figure>
-          <CardImage filename={filename} alt={alt ?? ""} loading="eager" />
-          {caption && (
-            <figcaption>
-              <RichTextRenderer
-                wysiwyg={caption}
-                className="su-caption su-text-black-70 su-max-w-prose su-mt-06em su-mr-0 su-ml-auto su-text-right children:su-leading-snug"
-              />
-            </figcaption>
-          )}
-        </figure>
-      </WidthBox>
+      <CaptionMedia
+        mediaWidth="10"
+        caption={caption}
+        captionAlign="right"
+        className="su-rs-mb-6"
+      >
+        <CardImage filename={filename} alt={alt ?? ""} loading="eager" />
+      </CaptionMedia>
     );
   }
 
