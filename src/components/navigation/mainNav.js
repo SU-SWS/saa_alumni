@@ -31,18 +31,19 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
     }
   });
 
+  UseOnClickOutside(ref, () => setMenuOpened(false));
+
   return (
     <SbEditable content={blok}>
       <nav
         className={dcnb("main-nav-desktop su-hidden lg:su-block", className)}
         aria-label="Main Menu"
-        ref={ref}
       >
         <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
           <CreateBloks blokSection={mainMenuGroups} />
         </ul>
       </nav>
-      <nav className="main-nav-mobile lg:su-hidden" aria-label="Main Menu">
+      <nav className="main-nav-mobile lg:su-hidden" aria-label="Main Menu" ref={ref}>
         <Button
           variant="unset"
           size="minimal"
