@@ -95,6 +95,7 @@ export const ctaLinkIconColor = {
     "su-text-digital-red-light group-hocus:su-text-cardinal-red",
   "bright-red-hover-white":
     "su-text-digital-red-xlight group-hocus:su-text-black-20",
+  "white-hover-cardinal-red": "su-text-white group-hocus:su-text-digital-red",
   black: "su-text-black group-hocus:su-text-black",
   white: "su-text-black-20 group-hocus:su-text-black-20",
 };
