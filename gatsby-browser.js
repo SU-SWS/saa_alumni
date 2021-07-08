@@ -16,3 +16,10 @@ import "./src/styles/global.css";
 export const wrapRootElement = ({ element }) => (
   <GlobalStateProvider>{element}</GlobalStateProvider>
 );
+
+export const shouldUpdateScroll = ({ routerProps: { location } }) => {
+  // Prevent scrolling when user clicks on filters on Areas to Support page.
+  if (location.pathname == '/search') {
+    return false;
+  }
+};
