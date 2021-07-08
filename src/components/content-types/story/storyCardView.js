@@ -2,7 +2,6 @@ import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading, SrOnlyText } from "decanter-react";
 import { ArrowRightIcon, ArrowUpIcon } from "@heroicons/react/solid";
-import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
 import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";

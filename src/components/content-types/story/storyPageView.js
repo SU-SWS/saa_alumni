@@ -1,9 +1,7 @@
 import SbEditable from "storyblok-react";
 import React from "react";
-import { Container, Heading, SrOnlyText } from "decanter-react";
-import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
+import { Container, Heading } from "decanter-react";
 import { DateTime } from "luxon";
-import { dcnb } from "cnbuilder";
 import Layout from "../../partials/layout";
 import CreateBloks from "../../../utilities/createBloks";
 import FullWidthImage from "../../media/fullWidthImage";
