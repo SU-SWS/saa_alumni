@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import SbEditable from "storyblok-react";
 import { dcnb } from "cnbuilder";
-import { MenuIcon } from "@heroicons/react/outline";
+import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Button } from "decanter-react";
 import CreateBloks from "../../utilities/createBloks";
 import UseEscape from "../../hooks/useEscape";
@@ -12,13 +12,21 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
   };
+  const ref = useRef(null);
+  const burgerRef = useRef(null);
+  const isExpanded = (x) => x.getAttribute("aria-expanded") === "true";
+
+  let NavIcon = MenuIcon;
+  if (burgerRef.current && isExpanded(burgerRef.current)) {
+    NavIcon = XIcon;
+  }
 
   return (
     <SbEditable content={blok}>
       <nav
         className={dcnb("main-nav-desktop su-hidden lg:su-block", className)}
         aria-label="Main Menu"
-
+        ref={ref}
       >
         <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
           <CreateBloks blokSection={mainMenuGroups} />
@@ -28,12 +36,13 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
         <Button
           variant="unset"
           size="minimal"
-          className="su-group su-flex su-flex-col su-w-40 su-items-center su-rs-ml-0 su-text-14 su-font-semibold lg:su-hidden"
+          className="su-group su-flex su-flex-col su-w-40 su-items-center su-rs-ml-0 su-text-14 su-font-semibold lg:su-hidden hocus:su-shadow-none"
           onClick={toggleMenu}
           aria-expanded={menuOpened}
           aria-label={menuOpened ? "Close Menu" : "Open Menu"}
+          ref={burgerRef}
         >
-          <MenuIcon
+          <NavIcon
             aria-hidden="true"
             className="su-transition-colors su-w-[2.4rem] group-hocus:su-text-digital-red-xlight"
           />
