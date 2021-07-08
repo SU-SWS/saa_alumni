@@ -24,7 +24,7 @@ const CtaCard = React.forwardRef(
     }
 
     // Icon color
-    const iconColor = ctaLinkIconColor["white-hover-cardinal-red"];
+    const iconColor = ctaLinkIconColor["white-hover-digital-red"];
 
     // Icon animation
     let iconAnimate = "su-transition-transform group-hocus:su-transform-gpu";
@@ -45,7 +45,7 @@ const CtaCard = React.forwardRef(
       <SbEditable content={blok}>
         <div
           className={dcnb(
-            "cta-card su-w-full su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark su-basefont-23 su-break-words su-pb-50 su-px-50 su-h-[50rem] su-flex su-flex-col su-justify-end"
+            "cta-card su-w-full su-relative su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark su-basefont-23 su-break-words su-p-50 su-h-[50rem] su-max-h-full su-flex su-flex-col su-justify-end"
           )}
         >
           <Heading
@@ -62,7 +62,7 @@ const CtaCard = React.forwardRef(
             ref={ref}
             link={link}
             attributes={rel ? { rel } : {}}
-            classes="su-block su-stretch-link su-group su-transition-colors su-no-underline su-underline-offset su-text-white hocus:su-underline hocus:su-text-digital-red children:hocus:su-text-digital-red"
+            classes="su-block su-stretched-link su-group su-transition-colors su-no-underline su-underline-offset su-text-white hocus:su-underline hocus:su-text-digital-red-xlight children:hocus:su-text-digital-red su-mt-[4rem]"
           >
             {linkText}
             {srText && <SrOnlyText srText={srText} />}
