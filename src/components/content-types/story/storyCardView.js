@@ -122,7 +122,7 @@ const StoryCardView = ({
               {(storyType === "podcast" || storyType === "video") && (
                 <HeroIcon
                   iconType={storyType}
-                  className="su-inline-block su-mr-02em su-w-08em"
+                  className="su-inline-block su-mr-02em"
                 />
               )}
               {shortTitle || title}
