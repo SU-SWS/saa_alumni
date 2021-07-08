@@ -9,6 +9,7 @@ const FullWidthImage = ({
   className,
   alt,
   imageFocus,
+  smartFocus,
   loading,
   ...props
 }) => {
@@ -31,18 +32,18 @@ const FullWidthImage = ({
       imgWidth = getImageWidth(filename);
     }
 
-    originalImg = transformImage(filename, "");
+    originalImg = transformImage(filename, "", smartFocus);
 
     if (imgWidth >= 800) {
-      smallImg = transformImage(filename, "/800x0");
+      smallImg = transformImage(filename, "/800x0", smartFocus);
     }
 
     if (imgWidth >= 1200) {
-      mediumImg = transformImage(filename, "/1200x0");
+      mediumImg = transformImage(filename, "/1200x0", smartFocus);
     }
 
     if (imgWidth >= 2000) {
-      largeImg = transformImage(filename, "/2000x0");
+      largeImg = transformImage(filename, "/2000x0", smartFocus);
     }
 
     imgSrcset = smallImg ? `${smallImg} 800w` : "";

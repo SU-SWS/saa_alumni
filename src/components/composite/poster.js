@@ -17,7 +17,7 @@ const Poster = ({
   blok: {
     cta,
     borderColor,
-    image: { filename, alt } = {},
+    image: { filename, alt, focus } = {},
     bgImage: { filename: bgFilename } = {},
     vCrop,
     imageFocus,
@@ -88,6 +88,7 @@ const Poster = ({
           <CircularImage
             borderColor={borderColor}
             filename={filename}
+            smartFocus={focus}
             imageFocus={imageFocus}
             className={imageWrapper}
             loading="lazy"

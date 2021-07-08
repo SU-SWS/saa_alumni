@@ -19,7 +19,7 @@ const Hero = ({
     isDarkGradient,
     imageFocus,
     cta,
-    image: { filename } = {},
+    image: { filename, focus } = {},
     sansSuper,
     sansSub,
     serifSuper,
@@ -57,6 +57,7 @@ const Hero = ({
             <FullWidthImage
               filename={filename}
               imageFocus={imageFocus}
+              smartFocus={focus}
               className="su-w-full su-h-full su-object-cover"
               loading="eager"
             />
