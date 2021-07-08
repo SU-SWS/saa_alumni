@@ -9,17 +9,27 @@ import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
 const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   const [menuOpened, setMenuOpened] = useState(false);
+  const ref = useRef(null);
+  const burgerRef = useRef(null);
+
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
   };
-  const ref = useRef(null);
-  const burgerRef = useRef(null);
+
   const isExpanded = (x) => x.getAttribute("aria-expanded") === "true";
 
   let NavIcon = MenuIcon;
-  if (burgerRef.current && isExpanded(burgerRef.current)) {
+  if (menuOpened) {
     NavIcon = XIcon;
   }
+
+  // Close menu if escape key is pressed and return focus to the menu button
+  UseEscape(() => {
+    if (burgerRef.current && isExpanded(burgerRef.current)) {
+      setMenuOpened(false);
+      burgerRef.current.focus();
+    }
+  });
 
   return (
     <SbEditable content={blok}>
