@@ -8,6 +8,7 @@ const buildPager = (nbPages, maxLinks, activePage) => {
     }
   } else {
     // Special handling if first page is active.
+    // eslint-disable-next-line no-lonely-if
     if (activePage === 0) {
       for (let i = 0; i < maxLinks - 1; i += 1) {
         pagerLinks.push(i);
@@ -25,12 +26,21 @@ const buildPager = (nbPages, maxLinks, activePage) => {
     }
     // If the active page is any of the middle links.
     else {
+      // Calculate the start and end index for links between the ellipsis.
       const nbMiddleLinks = maxLinks - 2;
-      const nbLinksToLeft = Math.floor(nbMiddleLinks / 2);
-      const nbLinksToRight = Math.ceil(nbMiddleLinks / 2);
-      const middleLinksStart = activePage - nbLinksToLeft;
-      const middleLinksEnd = activePage + nbLinksToRight;
+      let middleLinksStart = 0;
+      let middleLinksEnd = nbMiddleLinks;
 
+      if (activePage >= 4 && activePage < nbPages - nbMiddleLinks) {
+        const offset = Math.floor((nbMiddleLinks - 1) / 2);
+        middleLinksStart = activePage - offset;
+        middleLinksEnd = middleLinksStart + nbMiddleLinks - offset;
+      } else if (activePage >= nbPages - nbMiddleLinks) {
+        middleLinksStart = nbPages - nbMiddleLinks;
+        middleLinksEnd = nbPages - 1;
+      }
+
+      // Pack link of page numbers which will be included.
       for (let i = 0; i < nbPages; i += 1) {
         if (
           i === 0 ||
@@ -40,6 +50,8 @@ const buildPager = (nbPages, maxLinks, activePage) => {
           pagerLinks.push(i);
         }
       }
+
+      // Splice in the ellipsis. 
       if (pagerLinks.indexOf(middleLinksEnd) < pagerLinks.length - 1) {
         pagerLinks.splice(pagerLinks.indexOf(middleLinksEnd) + 1, 0, "...");
       }
