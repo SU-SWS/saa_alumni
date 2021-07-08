@@ -143,9 +143,7 @@ const StoryCardView = ({
             <TabLabel text={tabText} aria-hidden="true" />
           )}
           {(teaser || intro) && (
-            <p
-              className={dcnb("su-mb-0 su-leading-snug", teaserSize)}
-            >
+            <p className={dcnb("su-mb-0 su-leading-snug", teaserSize)}>
               {teaser || intro}
             </p>
           )}
