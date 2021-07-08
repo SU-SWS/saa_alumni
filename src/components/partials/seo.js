@@ -19,7 +19,7 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
   if (!blok.canonicalURL) return canonicalUrl;
 
   // If an absolute URL was specified...
-  if (blok.canonicalURL.linktype == "url") {
+  if (blok.canonicalURL.linktype === "url") {
     canonicalUrl = blok.canonicalURL.url;
   }
   // If the user referenced another page within Storyblok...
