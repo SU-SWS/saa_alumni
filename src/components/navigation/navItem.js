@@ -1,10 +1,16 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import SbLink from "../../utilities/sbLink";
+import { dcnb } from "cnbuilder";
 
-const NavItem = ({ blok: { classes, link, text }, blok, hasExternalIcon }) => (
+const NavItem = ({
+  blok: { classes, link, text },
+  blok,
+  hasExternalIcon,
+  className,
+}) => (
   <SbEditable content={blok}>
-    <li className={classes}>
+    <li className={dcnb(classes, className)}>
       <SbLink
         link={link}
         activeClass="active"
