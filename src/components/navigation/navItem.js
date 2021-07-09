@@ -1,7 +1,7 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import SbLink from "../../utilities/sbLink";
 import { dcnb } from "cnbuilder";
+import SbLink from "../../utilities/sbLink";
 
 const NavItem = ({
   blok: { classes, link, text },

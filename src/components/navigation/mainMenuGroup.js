@@ -21,7 +21,7 @@ const MainMenuGroup = ({
   return (
     <Popover
       as="li"
-      className="lg:su-inline-block su-relative su-border-b su-border-solid su-border-digital-red-xlight last:su-border-none lg:su-border-none"
+      className="lg:su-inline-block su-relative su-border-b su-border-solid su-border-digital-red-light last:su-border-none lg:su-border-none"
     >
       {({ open }) => (
         <>
