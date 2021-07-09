@@ -73,7 +73,7 @@ const Event = ({
   }
 
   let wrapperClasses =
-    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-30-opacity-20 su-bg-clip-padding su-shadow-sm";
+    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm";
   let headlinePadding = "su-rs-px-2";
   let detailsPadding = "su-rs-px-2";
 
@@ -148,7 +148,7 @@ const Event = ({
         <SbLink
           link={eventLink}
           classes={dcnb(
-            "su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+            "su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-text-black hocus:su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
             headlineSize,
             headlinePadding
           )}
@@ -162,7 +162,7 @@ const Event = ({
             {title}
           </Heading>
           <ArrowUpIcon
-            className="su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em su-text-digital-red-xlight group-hocus:su-text-cardinal-red"
+            className="su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em su-text-digital-red-xlight"
             aria-hidden="true"
           />
         </SbLink>

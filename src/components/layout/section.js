@@ -14,7 +14,6 @@ import SbLink from "../../utilities/sbLink";
 
 const Section = ({
   blok: {
-    isLeftAlign,
     superhead,
     superLink,
     title,
@@ -22,7 +21,10 @@ const Section = ({
     intro,
     cta,
     content,
+    isLeftAlign,
+    isSmallTitle,
     isSrOnlyTitle,
+    isLessHeaderSpacing,
     bgColor,
     spacingTop,
     spacingBottom,
@@ -48,6 +50,18 @@ const Section = ({
     isDarkSection = true;
   }
 
+  let headlineSize = "su-type-4 lg:su-type-5";
+
+  if (isSmallTitle) {
+    headlineSize = "su-type-3";
+  }
+
+  let headerSpacing = "su-rs-mb-5";
+
+  if (isLessHeaderSpacing) {
+    headerSpacing = "su-rs-mb-3";
+  }
+
   if (isLeftAlign) {
     alignment = "su-text-left";
     bodyAlign = "";
@@ -69,7 +83,7 @@ const Section = ({
         )}
         id={id}
       >
-        <header className={dcnb("su-cc su-rs-mb-5", alignment)}>
+        <header className={dcnb("su-cc", alignment, headerSpacing)}>
           {superhead && (
             <SbLink
               link={superLink}
@@ -87,8 +101,9 @@ const Section = ({
               font="serif"
               weight="bold"
               className={dcnb(
-                "su-mb-02em su-type-4 lg:su-type-5 su-max-w-800",
-                headlineAlign
+                "su-mb-02em su-max-w-800",
+                headlineAlign,
+                headlineSize
               )}
               srOnly={isSrOnlyTitle}
             >

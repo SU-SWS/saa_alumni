@@ -1,24 +1,24 @@
 import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading, SrOnlyText } from "decanter-react";
-import { ArrowRightIcon, ArrowUpIcon } from "@heroicons/react/solid";
 import { dcnb } from "cnbuilder";
 import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
+import HeroIcon from "../../simple/heroIcon";
 
 const StoryCardView = ({
   blok: {
     cardImage: { filename: cardFilename } = {},
     image: { filename } = {},
     imageFocus,
+    storyType,
     title,
     shortTitle,
     teaser,
     intro,
     source,
     pubLink,
-    tabText,
   },
   blok,
   storyLink,
@@ -29,23 +29,33 @@ const StoryCardView = ({
   headingLevel,
   cardImageFocus,
   isDark,
+  tabText,
 }) => {
-  let wrapperClasses =
-    "su-bg-white su-border su-border-solid su-border-black-30-opacity-20 su-bg-clip-padding su-shadow-sm";
+  // Use structure of Storyblok Link so we can pass this to our SbLink component
+  const internalLink = { linktype: "story", cached_url: `${storyLink}/` };
+  let externalLink;
 
-  let contentPadding = "su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
+  if (pubLink) {
+    externalLink = { linktype: "url", url: pubLink };
+  }
+
+  let wrapperClasses =
+    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm";
+
+  let contentClasses = "su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
-    contentPadding = "su-rs-pt-1";
+    contentClasses = "su-rs-pt-1";
 
-    if (hideImage) {
-      contentPadding = "";
+    // No top padding if there are no images uploaded or the hide image option is checked
+    if (hideImage || (!cardFilename && !filename)) {
+      contentClasses = "";
     }
   }
 
-  let headlineColor = "su-text-black";
-  let headlineIconColor = "group-hocus:su-text-cardinal-red";
+  let headlineColor = "su-text-black hocus:su-text-black";
+  let headlineIconColor = "";
   let textColor = "su-text-black";
 
   // Use different text color if card has minimal style and is placed in a dark region
@@ -63,19 +73,6 @@ const StoryCardView = ({
     teaserSize = "su-card-paragraph lg:su-text-25";
   }
 
-  // Default icon is right arrow for internal links
-  // HeadlineIcon starts with uppercase letter because it's a component
-  let HeadlineIcon = ArrowRightIcon;
-  let headlineIconClasses =
-    "su-ml-03em su-w-08em su--mt-01em group-hocus:su-translate-x-02em";
-
-  // Change headline icon to diagonal arrow if card link is external
-  if (pubLink) {
-    HeadlineIcon = ArrowUpIcon;
-    headlineIconClasses =
-      "su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em";
-  }
-
   return (
     <SbEditable content={blok}>
       <FlexBox
@@ -87,7 +84,7 @@ const StoryCardView = ({
           textColor
         )}
       >
-        {!hideImage && (
+        {!hideImage && (cardFilename || filename) && (
           <div
             className="story-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
             aria-hidden="true"
@@ -103,11 +100,11 @@ const StoryCardView = ({
             </figure>
           </div>
         )}
-        <div className={dcnb("story-card-content", contentPadding)}>
+        <div className={dcnb("story-card-content", contentClasses)}>
           <SbLink
-            link={pubLink || storyLink}
+            link={externalLink || internalLink}
             classes={dcnb(
-              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-0 su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
               headlineSize,
               headlineColor
             )}
@@ -118,31 +115,35 @@ const StoryCardView = ({
               tracking="normal"
               className="su-relative su-inline su-type-0"
             >
-              {tabText && !hideTab && <SrOnlyText srText={`${tabText}: `} />}
+              {tabText &&
+                !hideTab &&
+                tabText !== "podcast" &&
+                tabText !== "video" && <SrOnlyText srText={`${tabText}: `} />}
+              {(storyType === "podcast" || storyType === "video") && (
+                <HeroIcon
+                  iconType={storyType}
+                  className="su-inline-block su-mr-02em"
+                />
+              )}
               {shortTitle || title}
               {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
-            <HeadlineIcon
-              className={dcnb(
-                "su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight",
-                headlineIconClasses,
-                headlineIconColor
-              )}
-              aria-hidden="true"
+            <HeroIcon
+              iconType={pubLink ? "external" : "internal"}
+              className={`su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight ${headlineIconColor}`}
+              hideSrText
             />
           </SbLink>
           {source && (
-            <p className="su-card-paragraph su-font-serif su-mt-02em">
+            <p className="su-card-paragraph su-leading-display su-font-serif su-rs-mb-0">
               <span className="su-italic">from</span> {source}
             </p>
           )}
-          {!hideTab && !hideImage && (
+          {!hideTab && !hideImage && tabText && (cardFilename || filename) && (
             <TabLabel text={tabText} aria-hidden="true" />
           )}
           {(teaser || intro) && (
-            <p
-              className={dcnb("su-rs-mt-0 su-mb-0 su-leading-snug", teaserSize)}
-            >
+            <p className={dcnb("su-mb-0 su-leading-snug", teaserSize)}>
               {teaser || intro}
             </p>
           )}
