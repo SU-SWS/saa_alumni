@@ -51,7 +51,7 @@ const buildPager = (nbPages, maxLinks, activePage) => {
         }
       }
 
-      // Splice in the ellipsis. 
+      // Splice in the ellipsis.
       if (pagerLinks.indexOf(middleLinksEnd) < pagerLinks.length - 1) {
         pagerLinks.splice(pagerLinks.indexOf(middleLinksEnd) + 1, 0, "...");
       }

@@ -31,10 +31,10 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
         )}
         <ul className="su-list-none su-flex su-space-x-3 md:su-space-x-15 su-p-0">
           {pagerLinks.map((i) => {
-            if (i === '...') {
+            if (i === "...") {
               return <li>...</li>;
             }
-            else return (
+            return (
               <li className="su-mb-0" key={`search-pager-link-${i}`}>
                 <a
                   className={`su-text-24 su-font-bold su-px-5 md:su-px-11 su-no-underline
@@ -46,7 +46,7 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
                   {i + 1}
                 </a>
               </li>
-            )
+            );
           })}
         </ul>
 
