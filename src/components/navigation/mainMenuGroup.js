@@ -14,7 +14,7 @@ const MainMenuGroup = ({
 
   // Styles for the down chevron
   const chevronMobile =
-    "su-absolute su-right-0 su-w-30 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-15";
+    "su-absolute su-right-0 su-w-[3.4rem] su-pt-3 su-pb-1 su-px-2 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-15";
   const chevronDesktop =
     "lg:su-relative lg:su-mr-0 lg:su-w-[1.2em] lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent";
 
@@ -48,28 +48,28 @@ const MainMenuGroup = ({
           </Popover.Button>
           <Transition
             as={Fragment}
-            enter="su-transition su-duration su-ease-out"
-            enterFrom={`su-transform-gpu ${
+            enter="lg:su-transition lg:su-duration lg:su-ease-out"
+            enterFrom={`lg:su-transform-gpu ${
               panelFacing === "left"
                 ? "su-origin-top-right"
                 : "su-origin-top-left"
-            } su-scale-y-50 lg:su-scale-75 su-opacity-0`}
-            enterTo={`su-transform-gpu ${
+            } lg:su-scale-75 lg:su-opacity-0`}
+            enterTo={`lg:su-transform-gpu ${
               panelFacing === "left"
                 ? "su-origin-top-right"
                 : "su-origin-top-left"
-            } su-scale-y-100 lg:su-scale-100 su-opacity-100`}
-            leave="su-transition su-duration su-ease-out"
-            leaveFrom={`su-transform-gpu ${
+            } lg:su-scale-100 lg:su-opacity-100`}
+            leave="lg:su-transition lg:su-duration lg:su-ease-out"
+            leaveFrom={`lg:su-transform-gpu ${
               panelFacing === "left"
                 ? "su-origin-top-right"
                 : "su-origin-top-left"
-            } su-scale-y-100 lg:su-scale-100 su-opacity-100`}
-            leaveTo={`su-transform-gpu ${
+            } lg:su-scale-100 lg:su-opacity-100`}
+            leaveTo={`lg:su-transform-gpu ${
               panelFacing === "left"
                 ? "su-origin-top-right"
                 : "su-origin-top-left"
-            } su-scale-y-50 lg:su-scale-75 su-opacity-0`}
+            } lg:su-scale-75 lg:su-opacity-0`}
           >
             <Popover.Panel
               as="ul"
