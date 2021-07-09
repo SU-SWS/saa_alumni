@@ -24,18 +24,22 @@ const buildPager = (nbPages, maxLinks, activePage) => {
         pagerLinks.push(i);
       }
     }
-    // If the active page is any of the middle links.
+    // Calculate link array for all other cases.
     else {
-      // Calculate the start and end index for links between the ellipsis.
       const nbMiddleLinks = maxLinks - 2;
+
+      // Case #1: 1 [2 _3_ 4 5] ... 9
       let middleLinksStart = 0;
       let middleLinksEnd = nbMiddleLinks;
 
-      if (activePage >= 4 && activePage < nbPages - nbMiddleLinks) {
+      // Case #2: 1 ...[4 _5_ 6 7]... 9
+      if (activePage >= nbMiddleLinks && activePage < nbPages - nbMiddleLinks) {
         const offset = Math.floor((nbMiddleLinks - 1) / 2);
         middleLinksStart = activePage - offset;
         middleLinksEnd = middleLinksStart + nbMiddleLinks - offset;
-      } else if (activePage >= nbPages - nbMiddleLinks) {
+      }
+      // Case #3: 1 ...[5 _6_ 7 8] 9
+      else if (activePage >= nbPages - nbMiddleLinks) {
         middleLinksStart = nbPages - nbMiddleLinks;
         middleLinksEnd = nbPages - 1;
       }
@@ -51,11 +55,11 @@ const buildPager = (nbPages, maxLinks, activePage) => {
         }
       }
 
-      // Splice in the ellipsis.
+      // Splice in the first ellipsis if applicable.
       if (pagerLinks.indexOf(middleLinksEnd) < pagerLinks.length - 1) {
         pagerLinks.splice(pagerLinks.indexOf(middleLinksEnd) + 1, 0, "...");
       }
-
+      // Splice in the second ellipsis if applicable.
       if (middleLinksStart > 1) {
         pagerLinks.splice(pagerLinks.indexOf(middleLinksStart), 0, "...");
       }

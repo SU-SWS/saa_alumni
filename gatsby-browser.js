@@ -18,8 +18,8 @@ export const wrapRootElement = ({ element }) => (
 );
 
 export const shouldUpdateScroll = ({ routerProps: { location } }) => {
-  // Prevent scrolling when user clicks on filters on Areas to Support page.
-  if (location.pathname == '/search') {
+  // Prevent scrolling when user clicks on pager or filters on search page.
+  if (location.pathname === "/search") {
     return false;
   }
 };
