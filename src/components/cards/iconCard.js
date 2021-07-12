@@ -35,7 +35,7 @@ const IconCard = ({
     <SbEditable content={blok}>
       <div
         className={dcnb(
-          "icon-card su-group su-relative su-block su-w-full su-rs-px-2 su-rs-py-4 su-basefont-23 su-break-words su-border su-border-solid su-border-black-30-opacity-40 su-shadow-sm hover:su-shadow",
+          "icon-card su-group su-relative su-block su-w-full su-rs-px-3 su-rs-py-4 su-basefont-23 su-break-words su-border su-border-solid su-border-black-30-opacity-40 su-shadow-sm hover:su-shadow-md",
           cardStyles
         )}
       >
@@ -45,11 +45,11 @@ const IconCard = ({
         >
           <FontAwesomeIcon
             icon={[isOutline ? "far" : icon.type, faIcon]}
-            className={dcnb("su-text-m2", iconColor)}
+            className={dcnb("su-text-m2 su-transition-colors", iconColor)}
           />
           <SbLink
             classes={dcnb(
-              "su-group su-stretched-link su-z-20 su-rs-mt-0 su-no-underline hocus:su-underline su-underline-offset",
+              "su-group su-stretched-link su-z-20 su-rs-mt-0 su-no-underline hocus:su-underline su-underline-offset su-text-m1",
               headlineColor
             )}
           >
@@ -57,7 +57,7 @@ const IconCard = ({
               level={parseInt(headingLevel, 10) ?? 3}
               font="sans"
               weight="semibold"
-              className={dcnb("su-mb-0 su-text-m2")}
+              className={dcnb("su-mb-0 su-text-m0")}
             >
               {headline}
             </Heading>

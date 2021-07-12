@@ -4,6 +4,7 @@ import { Container, Heading } from "decanter-react";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
+import Ankle from "../partials/ankle";
 import BasicContentNoSidebar from "../partials/basicContentNoSidebar";
 import BasicContentLeftSidebar from "../partials/basicContentLeftSidebar";
 
@@ -12,11 +13,14 @@ const BasicPage = (props) => {
   const {
     blok: {
       pageLayout,
+      title,
+      isSrOnlyTitle,
       hero,
       aboveContent,
       belowContent,
-      title,
-      isSrOnlyTitle,
+      ankleContent,
+      ankleTitle,
+      isAnkleTitleSrOnly,
     },
     blok,
   } = props;
@@ -24,6 +28,7 @@ const BasicPage = (props) => {
   const numHero = getNumBloks(hero);
   const numAbove = getNumBloks(aboveContent);
   const numBelow = getNumBloks(belowContent);
+  const numAnkle = getNumBloks(ankleContent);
 
   // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
   let contentPadding = "su-rs-pb-7";
@@ -72,6 +77,7 @@ const BasicPage = (props) => {
               <CreateBloks blokSection={belowContent} />
             </div>
           )}
+          {numAnkle > 0 && <Ankle {...props} />}
         </Container>
       </Layout>
     </SbEditable>

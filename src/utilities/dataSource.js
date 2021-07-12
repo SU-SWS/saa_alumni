@@ -25,6 +25,7 @@ export const bgColors = {
 
 export const bgTextColorPairs = {
   "foggy-light": "su-bg-foggy-light su-text-black",
+  "black-10": "su-bg-black-10 su-text-black",
   white: "su-bg-white su-text-black",
   black: "su-bg-saa-black su-text-white",
   "cardinal-red": "su-bg-cardinal-red su-text-white",
