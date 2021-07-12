@@ -18,7 +18,12 @@ const Ankle = ({
   let ankleBgStyles = bgTextColorPairs[ankleBgColor ?? "white"];
   let isAnkleDark;
 
-  if (ankleBgStyles === "black") {
+  if (ankleBgColor === "black") {
+    isAnkleDark = true;
+  }
+
+  if (isDark) {
+    ankleBgStyles = bgTextColorPairs.black;
     isAnkleDark = true;
   }
 
