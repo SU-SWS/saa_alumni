@@ -13,15 +13,23 @@ import { bgTextColorPairs } from "../../utilities/dataSource";
 
 const Ankle = ({
   blok: { ankleContent, ankleTitle, isAnkleTitleSrOnly, ankleBgColor },
-  blok,
   isDark,
 }) => {
-  const ankleBgStyles = bgTextColorPairs[ankleBgColor ?? "white"];
-  const ankleWrapperStyles = dcnb("su-relative su-rs-py-7", ankleBgStyles);
+  let ankleBgStyles = bgTextColorPairs[ankleBgColor ?? "white"];
+  let isAnkleDark;
+
+  if (ankleBgStyles === "black") {
+    isAnkleDark = true;
+  }
+
+  const ankleWrapperStyles = dcnb(
+    "ankle su-relative su-rs-py-7",
+    ankleBgStyles
+  );
 
   return (
-    <SbEditable content={blok}>
-      <WidthBox width="" className={ankleWrapperStyles}>
+    <WidthBox width="" className={ankleWrapperStyles}>
+      {ankleTitle && (
         <Heading
           srOnly={isAnkleTitleSrOnly}
           level={2}
@@ -33,18 +41,16 @@ const Ankle = ({
         >
           {ankleTitle}
         </Heading>
-        <DrGrid
-          xs={1}
-          md={3}
-          gap
-          className={dcnb(
-            "su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]"
-          )}
-        >
-          <CreateBloks blokSection={ankleContent} isDark={isDark} />
-        </DrGrid>
-      </WidthBox>
-    </SbEditable>
+      )}
+      <DrGrid
+        xs={1}
+        md={3}
+        gap
+        className={dcnb("su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]")}
+      >
+        <CreateBloks blokSection={ankleContent} isDark={isAnkleDark} />
+      </DrGrid>
+    </WidthBox>
   );
 };
 

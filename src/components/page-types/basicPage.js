@@ -19,8 +19,6 @@ const BasicPage = (props) => {
       aboveContent,
       belowContent,
       ankleContent,
-      ankleTitle,
-      isAnkleTitleSrOnly,
     },
     blok,
   } = props;
