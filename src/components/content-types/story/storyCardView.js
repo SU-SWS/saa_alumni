@@ -79,7 +79,7 @@ const StoryCardView = ({
         direction="col"
         element="article"
         className={dcnb(
-          "story-card su-group su-relative su-overflow-hidden su-break-words su-basefont-23 su-w-full",
+          "story-card su-group su-relative su-overflow-hidden su-break-words su-basefont-23 su-w-full sm:su-max-w-[42rem] md:su-max-w-full",
           wrapperClasses,
           textColor
         )}
