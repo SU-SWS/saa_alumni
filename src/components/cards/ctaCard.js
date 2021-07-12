@@ -45,11 +45,11 @@ const CtaCard = React.forwardRef(
       <SbEditable content={blok}>
         <div
           className={dcnb(
-            "cta-card su-w-full su-relative su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark su-basefont-23 su-break-words su-p-50 su-min-h-[50rem] su-h-full su-flex su-flex-col su-justify-end"
+            "cta-card su-w-full su-relative su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark su-basefont-23 su-break-words su-p-50 su-flex su-flex-col su-justify-end"
           )}
         >
           <Heading
-            level={headingLevel ?? "3"}
+            level={parseInt(headingLevel, 10) ?? "3"}
             font="sans"
             weight="bold"
             className={dcnb(
@@ -62,7 +62,7 @@ const CtaCard = React.forwardRef(
             ref={ref}
             link={link}
             attributes={rel ? { rel } : {}}
-            classes="su-block su-stretched-link su-group su-transition-colors su-no-underline su-underline-offset su-text-white hocus:su-underline hocus:su-text-digital-red-xlight children:hocus:su-text-digital-red su-mt-[4rem]"
+            classes="su-block su-stretched-link su-group su-transition-colors su-no-underline su-underline-offset su-text-white hocus:su-underline hocus:su-text-digital-red-xlight children:hocus:su-text-digital-red su-rs-mt-3"
           >
             {linkText}
             {srText && <SrOnlyText srText={srText} />}
