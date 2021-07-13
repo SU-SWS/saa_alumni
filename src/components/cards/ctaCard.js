@@ -14,32 +14,26 @@ const CtaCard = React.forwardRef(
     },
     ref
   ) => {
-    let iconClasses;
-
-    if (icon === "external") {
-      iconClasses =
-        "su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform-gpu su-rotate-45 group-hocus:su-rotate-45";
-    } else {
-      iconClasses = "su-h-1em su-w-1em su-ml-04em su--mt-2";
-    }
+    // Icon classes
+    let iconClasses = "su-h-1em su-w-1em su-ml-04em su--mt-2";
 
     // Icon color
     const iconColor = ctaLinkIconColor["white-hover-digital-red"];
 
     // Icon animation
-    let iconAnimate = "su-transition-transform group-hocus:su-transform-gpu";
-
-    if (icon === "external") {
-      iconAnimate = dcnb(
-        iconAnimate,
-        "group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em"
-      );
-    } else {
-      iconAnimate = dcnb(iconAnimate, "group-hocus:su-translate-x-02em");
-    }
+    let iconAnimate =
+      "su-transition-transform group-hocus:su-transform-gpu group-hocus:su-translate-x-02em";
 
     // Heroicon option
-    const linkIcon = heroicon[icon] ?? heroicon["arrow-right"];
+    let linkIcon = heroicon["arrow-right"];
+
+    if (link.linktype === "url") {
+      iconClasses =
+        "su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform-gpu su-rotate-45 group-hocus:su-rotate-45";
+      iconAnimate =
+        "su-transition-transform group-hocus:su-transform-gpu group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em";
+      linkIcon = heroicon["external"];
+    }
 
     return (
       <SbEditable content={blok}>
