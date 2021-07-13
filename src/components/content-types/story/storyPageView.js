@@ -105,7 +105,7 @@ const StoryPageView = (props) => {
                   level={1}
                   align="center"
                   font="serif"
-                  className="su-max-w-1200 su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
+                  className="su-max-w-[120rem] su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
                   {(storyType === "podcast" || storyType === "video") && (
                     <HeroIcon
