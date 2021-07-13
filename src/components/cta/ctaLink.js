@@ -40,13 +40,11 @@ const CtaLink = React.forwardRef(
 
     // Link text color
     const textColor =
-      ctaLinkColor[propsTextColor] ??
-      ctaLinkColor["bright-red-hover-cardinal-red"];
+      ctaLinkColor[propsTextColor ?? "bright-red-hover-cardinal-red"];
 
     // Icon color
     const iconColor =
-      ctaLinkIconColor[propsIconColor] ??
-      ctaLinkIconColor["bright-red-hover-cardinal-red"];
+      ctaLinkIconColor[propsIconColor ?? "bright-red-hover-cardinal-red"];
 
     // Icon size/position finetuning based on icon choice
     let iconClasses;
@@ -95,7 +93,10 @@ const CtaLink = React.forwardRef(
               ref={ref}
               link={link}
               attributes={rel ? { rel } : {}}
-              classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline ${textColor}`}
+              classes={dcnb(
+                "su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline",
+                textColor
+              )}
             >
               {propsIcon && (
                 <FaIcon
@@ -112,7 +113,12 @@ const CtaLink = React.forwardRef(
                   icon={linkIcon}
                   type="solid"
                   aria-hidden="true"
-                  className={`su-inline-block ${iconClasses} ${iconColor} ${iconAnimate}`}
+                  className={dcnb(
+                    "su-inline-block",
+                    iconClasses,
+                    iconColor,
+                    iconAnimate
+                  )}
                 />
               )}
             </SbLink>
