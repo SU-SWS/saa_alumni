@@ -25,7 +25,7 @@ const BasicContentLeftSidebar = ({
         xs={12}
         lg={4}
         xxl={3}
-        className="basic-page-left-sidebar su-basefont-21 su-mx-auto lg:su-ml-0 su-rs-mb-2"
+        className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2"
       >
         <CreateBloks blokSection={sidebar} />
       </GridCell>
