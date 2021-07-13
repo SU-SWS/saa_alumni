@@ -4,7 +4,13 @@ import CreateBloks from "../../utilities/createBloks";
 
 const LinkList = ({ blok }) => (
   <div>
-    <Heading level={parseInt(blok.headingLevel, 10)} size={1}>
+    <Heading
+      level={parseInt(blok.headingLevel, 10)}
+      size={1}
+      className={`${
+        blok.headingColor ? `su-text-${blok.headingColor}` : "su-text-black"
+      }`}
+    >
       {blok.title}
     </Heading>
     <CreateBloks blokSection={blok.links} />
