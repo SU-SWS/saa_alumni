@@ -51,7 +51,6 @@ const CtaCard = ({
         </Heading>
         {link && (
           <SbLink
-            ref={ref}
             link={link}
             attributes={rel ? { rel } : {}}
             classes="su-block su-stretched-link su-group su-transition-colors su-no-underline su-underline-offset su-text-white hocus:su-underline hocus:su-text-digital-red-xlight children:hocus:su-text-digital-red su-rs-mt-3"
