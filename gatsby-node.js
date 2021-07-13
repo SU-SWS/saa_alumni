@@ -57,6 +57,7 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               slug: entry.node.full_slug,
               story: entry.node,
+              isCanonical: isCanonical,
             },
           });
         });
