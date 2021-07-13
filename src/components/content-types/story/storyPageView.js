@@ -10,6 +10,7 @@ import WidthBox from "../../layout/widthBox";
 import CardImage from "../../media/cardImage";
 import HeroIcon from "../../simple/heroIcon";
 import CaptionMedia from "../../media/captionMedia";
+import Ankle from "../../partials/ankle";
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -28,11 +29,13 @@ const StoryPageView = (props) => {
       manualDate,
       content,
       belowContent,
+      ankleContent,
     },
     blok,
   } = props;
 
   const numBelow = getNumBloks(belowContent);
+  const numAnkle = getNumBloks(ankleContent);
 
   // The date/time string we get from Storyblok is in UTC
   // Convert string to luxon DateTime object and format the pieces for display
@@ -141,6 +144,7 @@ const StoryPageView = (props) => {
                 <CreateBloks blokSection={belowContent} />
               </div>
             )}
+            {numAnkle > 0 && <Ankle {...props} />}
           </article>
         </Container>
       </Layout>
