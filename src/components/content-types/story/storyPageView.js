@@ -100,7 +100,7 @@ const StoryPageView = (props) => {
         >
           <article>
             <header className="su-basefont-23">
-              <Container className="su-rs-pt-9 su-rs-pb-4 su-text-center">
+              <Container className="su-rs-pt-7 xl:su-rs-pt-9 su-rs-pb-4 su-text-center">
                 <Heading
                   level={1}
                   align="center"
