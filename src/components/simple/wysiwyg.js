@@ -6,9 +6,10 @@ import {
   smallPaddingTop,
 } from "../../utilities/dataSource";
 import RichTextRenderer from "../../utilities/richTextRenderer";
+import WidthBox from "../layout/widthBox";
 
 const Wysiwyg = ({
-  blok: { content, spacingTop, spacingBottom, isLightText },
+  blok: { content, width, spacingTop, spacingBottom, isLightText },
   blok,
 }) => {
   const mySpacingTop = smallPaddingTop[spacingTop] ?? "";
@@ -16,13 +17,13 @@ const Wysiwyg = ({
 
   return (
     <SbEditable content={blok}>
-      <div className={dcnb(mySpacingTop, mySpacingBottom)}>
+      <WidthBox width={width} className={dcnb(mySpacingTop, mySpacingBottom)}>
         <RichTextRenderer
           isDark={isLightText}
           wysiwyg={content}
           className="su-heading-link-icon"
         />
-      </div>
+      </WidthBox>
     </SbEditable>
   );
 };
