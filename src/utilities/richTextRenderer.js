@@ -21,6 +21,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
     textColor = "su-text-black-20";
     linkColor = "su-text-digital-red-xlight hocus:su-text-white";
   }
+
   let rendered = render(wysiwyg, {
     markResolvers: {
       [MARK_BOLD]: (children) => <strong>{children}</strong>,
@@ -109,24 +110,32 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
 
         return null;
       },
-      [NODE_IMAGE]: (children, { src, alt }) => (
-        <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
-      ),
+      [NODE_IMAGE]: (children, { src, alt }) => {
+        // Rewrite the URL to the redirect link to mask the API endpoint.
+        let srcUrl = src;
+        if (config.isNetlify) {
+          srcUrl = srcUrl.replace(
+            /http?(s)\:\/\/a\.storyblok\.com/gi,
+            config.assetCdn + "a"
+          );
+          srcUrl = srcUrl.replace(
+            /http?(s)\:\/\/img?[0-9]\.storyblok\.com/gi,
+            config.assetCdn + "i"
+          );
+        }
+
+        return (
+          <CardImage
+            size="horizontal"
+            filename={srcUrl}
+            alt={alt}
+            loading="lazy"
+          />
+        );
+      },
     },
     defaultStringResolver: (str) => <p>{str}</p>,
   });
-
-  // Rewrite the URL to the redirect link to mask the API endpoint.
-  if (config.isNetlify) {
-    rendered = rendered.replace(
-      /http?(s)\:\/\/a\.storyblok\.com/gi,
-      config.assetCdn + "a"
-    );
-    rendered = rendered.replace(
-      /http?(s)\:\/\/img?[0-9]\.storyblok\.com/gi,
-      config.assetCdn + "i"
-    );
-  }
 
   return (
     <div className={dcnb("su-wysiwyg", textColor, className)}>{rendered}</div>
