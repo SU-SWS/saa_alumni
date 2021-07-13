@@ -110,6 +110,8 @@ const SearchPage = (props) => {
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
    su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
 
+  const autocompleteLinkFocusClasses = `su-bg-black-20 su-text-digital-red`;
+
   const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-white su-p-10 su-shadow-md su-w-full su-border
    su-border-digital-red-light su-rounded-b-[0.5rem]`;
 
@@ -141,6 +143,7 @@ const SearchPage = (props) => {
                 inputClasses={inputClasses}
                 submitBtnClasses={submitBtnClasses}
                 autocompleteLinkClasses={autocompleteLinkClasses}
+                autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
                 autocompleteContainerClasses={autocompleteContainerClasses}
               />
             </FlexCell>

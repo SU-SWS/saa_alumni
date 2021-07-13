@@ -26,11 +26,13 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50
   focus:su-bg-transparent focus:su-text-black-70`;
 
-  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
-   su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
+  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
+   su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-white su-p-10 su-shadow-md su-w-full su-border
-   su-border-digital-red-light su-rounded-b-[0.5rem]`;
+  const autocompleteLinkFocusClasses = `su-bg-digital-red`;
+
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border
+   su-border-digital-red su-rounded-b-[0.5rem]`;
 
   // Update autocomplete suggestions when search input changes.
   const updateAutocomplete = (queryText) => {
@@ -59,6 +61,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
         inputClasses={inputClasses}
         submitBtnClasses={submitBtnClasses}
         autocompleteLinkClasses={autocompleteLinkClasses}
+        autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
         autocompleteContainerClasses={autocompleteContainerClasses}
         ref={ref}
       />

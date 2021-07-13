@@ -8,6 +8,7 @@ const searchAutocomplete = ({
   selectedSuggestion,
   autocompleteContainerClasses,
   autocompleteLinkClasses,
+  autocompleteLinkFocusClasses,
 }) => (
   <div
     className={`${autocompleteContainerClasses}
@@ -25,7 +26,7 @@ const searchAutocomplete = ({
                         ${autocompleteLinkClasses}
                         ${
                           index === selectedSuggestion
-                            ? "su-bg-black-20 su-text-digital-red"
+                            ? autocompleteLinkFocusClasses
                             : ""
                         }
                       `}

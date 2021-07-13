@@ -5,17 +5,21 @@ import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
 const SearchField = React.forwardRef(
-  ({ 
-    onSubmit, 
-    onInput, 
-    autocompleteSuggestions, 
-    defaultValue, 
-    inputClasses, 
-    submitBtnClasses, 
-    clearBtnClasses,
-    autocompleteLinkClasses, 
-    autocompleteContainerClasses 
-  }, ref) => {
+  (
+    {
+      onSubmit,
+      onInput,
+      autocompleteSuggestions,
+      defaultValue,
+      inputClasses,
+      submitBtnClasses,
+      clearBtnClasses,
+      autocompleteLinkClasses,
+      autocompleteLinkFocusClasses,
+      autocompleteContainerClasses,
+    },
+    ref
+  ) => {
     const [query, setQuery] = useState(defaultValue || "");
     const [showAutocomplete, setShowAutocomplete] = useState(false);
     const [selectedSuggestion, setSelectedSuggestion] = useState(0);
@@ -104,6 +108,7 @@ const SearchField = React.forwardRef(
                 selectedSuggestion={selectedSuggestion}
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 autocompleteLinkClasses={autocompleteLinkClasses}
+                autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
               />
             </div>
             <button type="submit" className={submitBtnClasses}>
