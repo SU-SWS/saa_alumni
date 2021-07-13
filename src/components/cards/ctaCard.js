@@ -28,7 +28,7 @@ const CtaCard = ({
       "su-h-08em su-w-08em su-ml-4 su--mt-2 su-transform-gpu su-rotate-45 group-hocus:su-rotate-45";
     iconAnimate =
       "su-transition-transform group-hocus:su-transform-gpu group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em";
-    linkIcon = heroicon["external"];
+    linkIcon = heroicon.external;
   }
 
   return (
