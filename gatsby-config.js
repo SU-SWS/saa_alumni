@@ -63,7 +63,7 @@ module.exports = {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
         homeSlug: "home",
         resolveRelations: storyblokRelations,
-        version: process.env.NODE_ENV === "production" ? "published" : "draft",
+        version: activeEnv === "production" ? "published" : "draft",
         // version: 'draft'  // would show any including drafts
       },
     },
