@@ -40,7 +40,7 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
  * and thus returns a string, not an object like the new asset block.
  */
 
-const Seo = ({ blok: { title: theTitle, seo }, blok }) => {
+const Seo = ({ blok: { title: theTitle, seo }, blok }, props) => {
   const { title, description, siteUrl } = UseSiteMetadata();
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
@@ -71,7 +71,7 @@ const Seo = ({ blok: { title: theTitle, seo }, blok }) => {
     twitterImage = transformImage(twitterImage, "/1200x600");
   }
 
-  const canonicalUrl = getCanonicalUrl(blok, siteUrl, location);
+  const canonicalUrl = getCanonicalUrl(blok, siteUrl, props.location);
 
   return (
     <SbEditable content={blok}>
