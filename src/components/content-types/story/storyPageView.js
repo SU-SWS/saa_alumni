@@ -37,15 +37,19 @@ const StoryPageView = (props) => {
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
 
+  let luxonPublished;
+  let nicePublishedDate;
+
   // The date/time string we get from Storyblok is in UTC
-  // Convert string to luxon DateTime object and format the pieces for display
-  // Start date and time
-  const luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", {
-    zone: "UTC",
-  })
-    .setZone("America/Los_Angeles")
-    .setLocale("en-us");
-  const nicePublishedDate = luxonPublished.toFormat("DDD");
+  // Convert string to luxon DateTime object and format published date
+  if (publishedDate) {
+    luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", {
+      zone: "UTC",
+    })
+      .setZone("America/Los_Angeles")
+      .setLocale("en-us");
+    nicePublishedDate = luxonPublished.toFormat("DDD");
+  }
 
   let heroImage;
 
@@ -116,7 +120,7 @@ const StoryPageView = (props) => {
                     {intro}
                   </p>
                 )}
-                {(manualDate || nicePublishedDate) && (
+                {(manualDate || publishedDate) && (
                   <p className="su-card-paragraph su-leading-display su-mb-02em su-text-black-70">
                     {manualDate || nicePublishedDate}
                   </p>
@@ -136,7 +140,7 @@ const StoryPageView = (props) => {
                 </WidthBox>
               )}
             </header>
-            <div className="story-content su-rs-mt-4 su-rs-mb-9">
+            <div className="story-content su-rs-mt-4 su-rs-mb-7 last:su-rs-mb-9">
               <CreateBloks blokSection={content} />
             </div>
             {numBelow > 0 && (
