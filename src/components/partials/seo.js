@@ -40,7 +40,7 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
  * and thus returns a string, not an object like the new asset block.
  */
 
-const Seo = ({ blok: { title: theTitle, seo }, location, blok }) => {
+const Seo = ({ blok: { title: theTitle, seo }, blok }) => {
   const { title, description, siteUrl } = UseSiteMetadata();
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
