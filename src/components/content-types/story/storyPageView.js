@@ -100,12 +100,12 @@ const StoryPageView = (props) => {
         >
           <article>
             <header className="su-basefont-23">
-              <Container className="su-rs-pt-9 su-rs-pb-4 su-text-center">
+              <Container className="su-rs-pt-7 xl:su-rs-pt-9 su-rs-pb-4 su-text-center">
                 <Heading
                   level={1}
                   align="center"
                   font="serif"
-                  className="su-max-w-1200 su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
+                  className="su-max-w-[120rem] su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
                   {(storyType === "podcast" || storyType === "video") && (
                     <HeroIcon
