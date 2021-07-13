@@ -12,6 +12,7 @@ import {
   tinyMarginBottom,
 } from "../../utilities/dataSource";
 import SbLink from "../../utilities/sbLink";
+import FaIcon from "../simple/faIcon";
 
 const CtaLink = React.forwardRef(
   (
@@ -19,6 +20,8 @@ const CtaLink = React.forwardRef(
       blok: {
         size,
         textColor: propsTextColor,
+        leadingIcon: { icon: propsIcon, type } = {},
+        isOutlineFaIcon,
         iconColor: propsIconColor,
         icon,
         align: propsAlign,
@@ -94,6 +97,14 @@ const CtaLink = React.forwardRef(
               attributes={rel ? { rel } : {}}
               classes={`su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline ${textColor}`}
             >
+              {propsIcon && (
+                <FaIcon
+                  iconChoice={propsIcon}
+                  iconType={type}
+                  isOutline={isOutlineFaIcon}
+                  className="su-mr-06em su-backface-hidden su-text-black-80"
+                />
+              )}
               {linkText}
               {srText && <SrOnlyText srText={srText} />}
               {icon !== "none" && (
