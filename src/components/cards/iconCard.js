@@ -8,9 +8,10 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SbLink from "../../utilities/sbLink";
+import HeroIcon from "../simple/heroIcon";
 
 const IconCard = ({
-  blok: { headline, headingLevel, icon = {}, isOutline },
+  blok: { headline, headingLevel, icon = {}, link = {}, isOutline },
   blok,
   isDark,
 }) => {
@@ -23,12 +24,17 @@ const IconCard = ({
   let cardStyles = "su-bg-white su-border-black-30-opacity-40";
   let iconColor = "su-text-digital-red group-hocus:!su-text-digital-red-light";
   let headlineColor = "su-text-black hocus:su-text-digital-red-light";
+  let headlineIconColor = "su-text-black group-hocus:su-text-digital-red-light";
 
+
+  // isDark prop is passed from the parent ankle component
+  // If isDark is true, then the dark themed icon card will be used automatically
   if (isDark) {
+    cardStyles = "su-bg-saa-black su-border-black-90";
     iconColor =
       "su-text-digital-red-light group-hocus:su-text-digital-red-xlight";
-    headlineColor = "su-text-white hocus:su-text-digital-red-xlight";
-    cardStyles = "su-bg-saa-black su-border-black-90";
+    headlineColor = "su-text-black-10 hocus:su-text-digital-red-xlight";
+    headlineIconColor = "su-text-black-10 group-hocus:su-text-digital-red-xlight";
   }
 
   return (
@@ -63,6 +69,11 @@ const IconCard = ({
               className={dcnb("su-mb-0 su-text-m0")}
             >
               {headline}
+              <HeroIcon
+                iconType={link.linktype === "url" ? "external" : "internal"}
+                className={`su-relative su-inline-block su-transition su-transform-gpu ${headlineIconColor}`}
+                hideSrText
+              />
             </Heading>
           </SbLink>
         </FlexBox>
