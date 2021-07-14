@@ -27,7 +27,7 @@ const HeroIcon = ({
     },
     video: {
       heroicon: PlayIcon,
-      baseStyle: "su-w-08em su-ml-7 su--mt-2",
+      baseStyle: "su-w-08em su-ml-7 su--mt-3",
       animate: "group-hocus:su-translate-x-02em",
     },
     podcast: {
@@ -43,7 +43,7 @@ const HeroIcon = ({
     },
     "arrow-right": {
       heroicon: ArrowRightIcon,
-      baseStyle: "su-w-08em su-ml-03em su--mt-01em",
+      baseStyle: "su-w-08em su-ml-03em su--mt-02em",
       animate: "group-hocus:su-translate-x-02em",
     },
     download: {
@@ -63,7 +63,7 @@ const HeroIcon = ({
     },
     "chevron-right": {
       heroicon: ChevronRightIcon,
-      baseStyle: "su-w-1em su-ml-04em su--mt-2",
+      baseStyle: "su-w-1em su-ml-02em su--mt-4",
       animate: "group-hocus:su-translate-x-02em",
     },
   };

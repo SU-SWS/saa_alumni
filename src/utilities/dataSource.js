@@ -71,17 +71,6 @@ export const ctaGroupDisplay = {
   stack: "su-flex-col",
 };
 
-export const heroicon = {
-  none: "none",
-  "arrow-right": "arrow-right",
-  "chevron-down": "chevron-down",
-  "chevron-right": "chevron-right",
-  download: "download",
-  email: "mail",
-  external: "arrow-up",
-  video: "play",
-};
-
 export const ctaLinkColor = {
   "bright-red-hover-cardinal-red":
     "su-text-digital-red-light hocus:su-text-cardinal-red",
