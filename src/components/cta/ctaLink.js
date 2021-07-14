@@ -54,13 +54,13 @@ const CtaLink = React.forwardRef(
     return (
       <SbEditable content={blok}>
         {linkText && (
-          <div className={`su-block ${align} ${textSize} ${marginBottom}`}>
+          <div className={dcnb("su-block", align, textSize, marginBottom)}>
             <SbLink
               ref={ref}
               link={link}
               attributes={rel ? { rel } : {}}
               classes={dcnb(
-                "su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline",
+                "su-flex su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline",
                 textColor
               )}
             >
@@ -72,16 +72,18 @@ const CtaLink = React.forwardRef(
                   className="su-mr-06em su-backface-hidden su-text-black-80"
                 />
               )}
-              {linkText}
-              {srText && <SrOnlyText srText={srText} />}
-              {icon !== "none" && (
-                <HeroIcon
-                  iconType={icon}
-                  className={dcnb("su-inline-block", iconColor)}
-                  isAnimate
-                  hideSrText
-                />
-              )}
+              <div>
+                {linkText}
+                {srText && <SrOnlyText srText={srText} />}
+                {icon !== "none" && (
+                  <HeroIcon
+                    iconType={icon}
+                    className={dcnb("su-inline-block", iconColor)}
+                    isAnimate
+                    hideSrText
+                  />
+                )}
+              </div>
             </SbLink>
           </div>
         )}

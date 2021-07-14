@@ -65,10 +65,10 @@ export const buttonStyles = {
 
 export const ctaGroupDisplay = {
   adjacent:
-    "su-flex-col lg:su-flex-row lg:su-flex-wrap lg:su-justify-center lg:su--mb-20",
+    "su-flex-col su-items-center lg:su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-center children:su-mx-10",
   "adjacent-left":
-    "su-flex-col su-items-start su--ml-10 lg:su-flex-row lg:su-flex-wrap lg:su-justify-start lg:su--mb-20",
-  stack: "su-flex-col",
+    "su-flex-col su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-start su--ml-10 children:su-mx-10 ",
+  stack: "su-flex-col su-items-center children:su-mx-auto",
 };
 
 export const ctaLinkColor = {
