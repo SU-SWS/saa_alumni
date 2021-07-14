@@ -7,7 +7,7 @@ const SearchResults = ({ results }) => {
   }
 
   return (
-    <div>
+    <div id="search-results">
       <div className="su-text-21 lg:su-mb-[4rem]">
         <span className="su-font-semibold">{results.nbHits}</span> results:
       </div>
