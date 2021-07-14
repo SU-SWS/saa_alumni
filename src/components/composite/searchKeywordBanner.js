@@ -27,8 +27,9 @@ const SearchKeywordBanner = ({ queryText }) => (
       return (
         <>
           {allStoryblokEntry.edges.map(({ node: { name, content, field_keywords_string } }) => {
-            console.log(queryText)
-            return name;
+            let split = field_keywords_string.split(',')
+            let newSplit = split.map(str => str.trim());
+            return newSplit.indexOf(queryText) >= 0 ? name : '';
           })}
         </>
       );
