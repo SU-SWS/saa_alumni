@@ -9,7 +9,7 @@ const SearchModal = ({ isOpen, onClose }) => {
   const searchFieldRef = React.createRef();
   const data = useStaticQuery(graphql`
     {
-      storyblokEntry(id:{eq: "storyblokentry-60728388-default"}) {
+      storyblokEntry(id: { eq: "storyblokentry-60728388-default" }) {
         field_title_string
         content
       }
@@ -38,10 +38,7 @@ const SearchModal = ({ isOpen, onClose }) => {
         <SearchFieldModal ref={searchFieldRef} />
         {story && content && (
           <div className="su-mt-108">
-            <SearchSuggestions
-              title={content.title}
-              content={content.content}
-            />
+            <SearchSuggestions blok={content} />
           </div>
         )}
       </div>

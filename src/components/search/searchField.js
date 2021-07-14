@@ -17,6 +17,7 @@ const SearchField = React.forwardRef(
       autocompleteLinkClasses,
       autocompleteLinkFocusClasses,
       autocompleteContainerClasses,
+      placeholder,
     },
     ref
   ) => {
@@ -90,6 +91,7 @@ const SearchField = React.forwardRef(
                   onChange={inputHandler}
                   onKeyDown={handleArrowKeys}
                   className={inputClasses}
+                  placeholder={placeholder || ""}
                   value={query}
                   ref={ref}
                 />
@@ -112,7 +114,7 @@ const SearchField = React.forwardRef(
               />
             </div>
             <button type="submit" className={submitBtnClasses}>
-              <Search className="su-text-white" />
+              <Search className="su-text-white su-w-full su-h-full" />
             </button>
           </div>
         </form>

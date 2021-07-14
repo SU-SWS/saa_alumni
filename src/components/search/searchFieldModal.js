@@ -16,15 +16,15 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   const [suggestions, setSuggestions] = useState([]);
   const [query, setQuery] = useState("");
 
-  const inputClasses = `su-bg-transparent su-text-30 su-text-black-40 su-font-semibold su-w-full su-flex-1 su-border-0 su-border-b-2
-  su-border-solid su-border-black-10 su-pl-20 su-pr-70 xl:su-pr-126 su-py-10 su-text-m2 focus:su-outline-none`;
+  const inputClasses = `su-bg-transparent su-text-44 su-text-black-40 su-font-semibold su-w-full su-flex-1 su-border-0 su-border-b-2
+  su-border-solid su-border-black-10 su-pl-20 su-pr-70 xl:su-pr-126 su-py-10 su-text-m4 focus:su-outline-none`;
 
   const submitBtnClasses = `su-w-70 su-h-70 su-rounded-full su-bg-digital-red
-   su-p-20 su-origin-center su-transform su-rotate-90 su-ml-20`;
+   su-p-13 su-origin-center su-transform su-rotate-90 su-ml-20`;
 
-  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
-  hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50
-  focus:su-bg-transparent focus:su-text-black-70`;
+  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent hover:su-text-digital-red-xlight hover:su-no-underline focus:su-no-underline su-text-21 su-font-semibold
+  su-border-none su-text-white su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50
+  focus:su-bg-transparent`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
    su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
@@ -63,6 +63,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
         autocompleteLinkClasses={autocompleteLinkClasses}
         autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
         autocompleteContainerClasses={autocompleteContainerClasses}
+        placeholder="Search"
         ref={ref}
       />
     </div>
