@@ -178,6 +178,12 @@ export const textAlign = {
   right: "su-text-right",
 };
 
+export const horizontalAlign = {
+  left: "",
+  center: "su-mx-auto",
+  right: "su-ml-auto",
+};
+
 export const containerAlign = {
   left: "children:su-mr-auto",
   center: "children:su-mx-auto",

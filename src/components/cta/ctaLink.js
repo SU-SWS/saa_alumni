@@ -8,6 +8,7 @@ import {
   ctaLinkIconColor,
   textAlign,
   tinyMarginBottom,
+  horizontalAlign,
 } from "../../utilities/dataSource";
 import SbLink from "../../utilities/sbLink";
 import FaIcon from "../simple/faIcon";
@@ -47,6 +48,7 @@ const CtaLink = React.forwardRef(
 
     // Horizontal alignment
     const align = textAlign[propsAlign] ?? textAlign.left;
+    const justifyLink = horizontalAlign[propsAlign] ?? horizontalAlign.left;
 
     // Margin bottom
     const marginBottom = tinyMarginBottom[spacingBottom] ?? tinyMarginBottom.md;
@@ -61,7 +63,8 @@ const CtaLink = React.forwardRef(
               attributes={rel ? { rel } : {}}
               classes={dcnb(
                 "su-flex su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline",
-                textColor
+                textColor,
+                justifyLink
               )}
             >
               {propsIcon && (
