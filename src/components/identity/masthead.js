@@ -28,7 +28,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           className="su-w-full su-text-right su-bg-digital-red"
         >
           <ul className="su-cc su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-14 sm:su-text-16 children:su-inline-block children:su-ml-[2em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset">
-            <CreateBloks blokSection={utilityNav} hasExternalIcon />
+            <CreateBloks
+              blokSection={utilityNav}
+              className="first:su-ml-0"
+              hasExternalIcon
+            />
           </ul>
         </nav>
         <FlexBox className="su-cc" alignItems="center">
@@ -68,21 +72,25 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
                 className="su-inline-block su-text-right su-flex-grow"
               >
                 <ul className="su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-leading-[3.4rem] children:su-mr-[2em] children:su-mb-0 su-underline-offset">
-                  <CreateBloks blokSection={utilityNav} hasExternalIcon />
+                  <CreateBloks
+                    blokSection={utilityNav}
+                    className="first:su-ml-0"
+                    hasExternalIcon
+                  />
                 </ul>
               </nav>
               <OpenSearchModalButton />
             </FlexBox>
             <CreateBloks
               blokSection={mainNav}
-              className="su-hidden xl:su-flex xl:su-mt-12 2xl:su-mt-27"
+              className="su-hidden lg:su-hidden xl:su-flex xl:su-mt-12 2xl:su-mt-27"
             />
           </FlexCell>
         </FlexBox>
         <CreateBloks
           blokSection={mainNav}
           className={dcnb(
-            "su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90",
+            "lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90",
             mainNavBgColorLg
           )}
         />

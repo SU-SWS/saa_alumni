@@ -2,13 +2,22 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { Container, Heading } from "decanter-react";
 import Layout from "../partials/layout";
+import Ankle from "../partials/ankle";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 
 const DarkPage = (props) => {
   // Destructure.
   const {
-    blok: { hero, aboveContent, content, belowContent, title, isSrOnlyTitle },
+    blok: {
+      hero,
+      aboveContent,
+      content,
+      belowContent,
+      ankleContent,
+      title,
+      isSrOnlyTitle,
+    },
     blok,
   } = props;
 
@@ -16,6 +25,7 @@ const DarkPage = (props) => {
   const numAbove = getNumBloks(aboveContent);
   const numContent = getNumBloks(content);
   const numBelow = getNumBloks(belowContent);
+  const numAnkle = getNumBloks(ankleContent);
 
   return (
     <SbEditable content={blok}>
@@ -35,7 +45,7 @@ const DarkPage = (props) => {
                 font="serif"
                 srOnly={isSrOnlyTitle}
                 id="page-title"
-                className="su-max-w-900 su-mb-0 su-rs-py-7 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
+                className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
               >
                 {title}
               </Heading>
@@ -56,6 +66,7 @@ const DarkPage = (props) => {
               <CreateBloks blokSection={belowContent} />
             </div>
           )}
+          {numAnkle > 0 && <Ankle isDark {...props} />}
         </Container>
       </Layout>
     </SbEditable>

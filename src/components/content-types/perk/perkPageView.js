@@ -7,7 +7,7 @@ import Layout from "../../partials/layout";
 const PerkPageView = (props) => {
   // Destructure props
   const {
-    blok: { image: { filename } = {}, imageFocus, isNew, title, intro },
+    blok: { image: { filename } = {}, imageFocus, title, intro },
     blok,
   } = props;
 

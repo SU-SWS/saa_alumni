@@ -17,7 +17,10 @@ const Wysiwyg = ({
 
   return (
     <SbEditable content={blok}>
-      <WidthBox width={width} className={dcnb(mySpacingTop, mySpacingBottom)}>
+      <WidthBox
+        width={width ?? "edge-to-edge"}
+        className={dcnb(mySpacingTop, mySpacingBottom)}
+      >
         <RichTextRenderer
           isDark={isLightText}
           wysiwyg={content}

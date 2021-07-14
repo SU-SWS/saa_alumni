@@ -10,6 +10,7 @@ import WidthBox from "../../layout/widthBox";
 import CardImage from "../../media/cardImage";
 import HeroIcon from "../../simple/heroIcon";
 import CaptionMedia from "../../media/captionMedia";
+import Ankle from "../../partials/ankle";
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -28,21 +29,27 @@ const StoryPageView = (props) => {
       manualDate,
       content,
       belowContent,
+      ankleContent,
     },
     blok,
   } = props;
 
   const numBelow = getNumBloks(belowContent);
+  const numAnkle = getNumBloks(ankleContent);
+
+  let luxonPublished;
+  let nicePublishedDate;
 
   // The date/time string we get from Storyblok is in UTC
-  // Convert string to luxon DateTime object and format the pieces for display
-  // Start date and time
-  const luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", {
-    zone: "UTC",
-  })
-    .setZone("America/Los_Angeles")
-    .setLocale("en-us");
-  const nicePublishedDate = luxonPublished.toFormat("DDD");
+  // Convert string to luxon DateTime object and format published date
+  if (publishedDate) {
+    luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", {
+      zone: "UTC",
+    })
+      .setZone("America/Los_Angeles")
+      .setLocale("en-us");
+    nicePublishedDate = luxonPublished.toFormat("DDD");
+  }
 
   let heroImage;
 
@@ -93,12 +100,12 @@ const StoryPageView = (props) => {
         >
           <article>
             <header className="su-basefont-23">
-              <Container className="su-rs-pt-9 su-rs-pb-4 su-text-center">
+              <Container className="su-rs-pt-7 xl:su-rs-pt-9 su-rs-pb-4 su-text-center">
                 <Heading
                   level={1}
                   align="center"
                   font="serif"
-                  className="su-max-w-1200 su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
+                  className="su-max-w-[120rem] su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
                   {(storyType === "podcast" || storyType === "video") && (
                     <HeroIcon
@@ -113,7 +120,7 @@ const StoryPageView = (props) => {
                     {intro}
                   </p>
                 )}
-                {(manualDate || nicePublishedDate) && (
+                {(manualDate || publishedDate) && (
                   <p className="su-card-paragraph su-leading-display su-mb-02em su-text-black-70">
                     {manualDate || nicePublishedDate}
                   </p>
@@ -133,7 +140,7 @@ const StoryPageView = (props) => {
                 </WidthBox>
               )}
             </header>
-            <div className="story-content su-rs-mt-4 su-rs-mb-9">
+            <div className="story-content su-rs-mt-4 su-rs-mb-7 last:su-rs-mb-9">
               <CreateBloks blokSection={content} />
             </div>
             {numBelow > 0 && (
@@ -141,6 +148,7 @@ const StoryPageView = (props) => {
                 <CreateBloks blokSection={belowContent} />
               </div>
             )}
+            {numAnkle > 0 && <Ankle {...props} />}
           </article>
         </Container>
       </Layout>

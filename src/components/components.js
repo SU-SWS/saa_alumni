@@ -4,6 +4,7 @@ import BasicCard from "./cards/basicCard";
 import BasicPage from "./page-types/basicPage";
 import ComponentNotFound from "./component_not_found";
 import CtaButton from "./cta/ctaButton";
+import CtaCard from "./cards/ctaCard";
 import CtaLink from "./cta/ctaLink";
 import CtaGroup from "./cta/ctaGroup";
 import DarkPage from "./page-types/darkPage";
@@ -15,6 +16,7 @@ import EventCard from "./cards/eventCard";
 import Grid from "./layout/grid";
 import Heading from "./simple/heading";
 import Hero from "./composite/hero";
+import IconCard from "./cards/iconCard";
 import LinkGroup from "./navigation/linkGroup";
 import LinkList from "./simple/linkList";
 import LocalFooter from "./identity/localFooter";
@@ -48,6 +50,7 @@ const ComponentList = {
   basicCard: BasicCard,
   basicPage: BasicPage,
   ctaButton: CtaButton,
+  ctaCard: CtaCard,
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,
   darkPage: DarkPage,
@@ -59,6 +62,7 @@ const ComponentList = {
   grid: Grid,
   heading: Heading,
   hero: Hero,
+  iconCard: IconCard,
   linkGroup: LinkGroup,
   linkList: LinkList,
   localFooter: LocalFooter,
