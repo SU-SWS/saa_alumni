@@ -2,6 +2,7 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { Container, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
+import { render } from "storyblok-rich-text-react-renderer";
 import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import getNumBloks from "../../utilities/getNumBloks";
@@ -33,6 +34,9 @@ const Section = ({
   blok,
 }) => {
   const numCta = getNumBloks(cta);
+  const renderedIntro = render(intro);
+  const numIntro = getNumBloks(renderedIntro);
+  const hasHeader = (title && !isSrOnlyTitle) || numIntro > 0 || superhead;
 
   const sectionBgColor = bgTextColorPairs[bgColor] ?? bgTextColorPairs.white;
   let alignment = "su-text-center";
@@ -83,41 +87,47 @@ const Section = ({
         )}
         id={id}
       >
-        <header className={dcnb("su-cc", alignment, headerSpacing)}>
-          {superhead && (
-            <SbLink
-              link={superLink}
-              classes={dcnb(
-                "su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border",
-                superLinkColor
-              )}
-            >
-              {superhead}
-            </SbLink>
-          )}
-          {title && (
-            <Heading
-              level={parseInt(headingLevel, 10) ?? 2}
-              font="serif"
-              weight="bold"
-              className={dcnb(
-                "su-mb-02em su-max-w-800",
-                headlineAlign,
-                headlineSize
-              )}
-              srOnly={isSrOnlyTitle}
-            >
-              {title}
-            </Heading>
-          )}
-          <div className={dcnb("su-big-paragraph su-max-w-prose", bodyAlign)}>
-            <RichTextRenderer
-              wysiwyg={intro}
-              className="children:su-leading-display"
-              isDark={isDarkSection}
-            />
-          </div>
-        </header>
+        {hasHeader && (
+          <header className={dcnb("su-cc", alignment, headerSpacing)}>
+            {superhead && (
+              <SbLink
+                link={superLink}
+                classes={dcnb(
+                  "su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border",
+                  superLinkColor
+                )}
+              >
+                {superhead}
+              </SbLink>
+            )}
+            {title && (
+              <Heading
+                level={parseInt(headingLevel, 10) ?? 2}
+                font="serif"
+                weight="bold"
+                className={dcnb(
+                  "su-mb-02em su-max-w-800",
+                  headlineAlign,
+                  headlineSize
+                )}
+                srOnly={isSrOnlyTitle}
+              >
+                {title}
+              </Heading>
+            )}
+            {numIntro > 0 && (
+              <div
+                className={dcnb("su-big-paragraph su-max-w-prose", bodyAlign)}
+              >
+                <RichTextRenderer
+                  wysiwyg={intro}
+                  className="children:su-leading-display"
+                  isDark={isDarkSection}
+                />
+              </div>
+            )}
+          </header>
+        )}
         <CreateBloks blokSection={content} isDark={isDarkSection} />
         {numCta > 0 && (
           <Container width="site" className="su-rs-mt-6">

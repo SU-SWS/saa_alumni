@@ -43,11 +43,11 @@ export const bgPositionVertical = {
 
 export const buttonSizes = {
   small:
-    "su-px-20 su-pt-10 su-pb-11 sm:su-px-20 sm:su-pt-10 sm:su-pb-12 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20",
+    "su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20",
   default:
-    "su-px-20 su-pt-10 su-pb-11 sm:su-px-20 sm:su-pt-14 sm:su-pb-16 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24",
+    "su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24",
   large:
-    "su-px-20 su-pt-10 su-pb-11 sm:su-px-26 sm:su-pt-16 sm:su-pb-18 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24",
+    "su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24",
 };
 
 export const buttonStyles = {
@@ -65,21 +65,10 @@ export const buttonStyles = {
 
 export const ctaGroupDisplay = {
   adjacent:
-    "su-flex-col lg:su-flex-row lg:su-flex-wrap lg:su-justify-center lg:su--mb-20",
+    "su-flex-col su-items-center lg:su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-center children:su-mx-10",
   "adjacent-left":
-    "su-flex-col su-items-start su--ml-10 lg:su-flex-row lg:su-flex-wrap lg:su-justify-start lg:su--mb-20",
-  stack: "su-flex-col",
-};
-
-export const heroicon = {
-  none: "none",
-  "arrow-right": "arrow-right",
-  "chevron-down": "chevron-down",
-  "chevron-right": "chevron-right",
-  download: "download",
-  email: "mail",
-  external: "arrow-up",
-  video: "play",
+    "su-flex-col su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-start su--ml-10 children:su-mx-10 ",
+  stack: "su-flex-col su-items-center children:su-mx-auto",
 };
 
 export const ctaLinkColor = {
@@ -103,8 +92,8 @@ export const ctaLinkIconColor = {
 };
 
 export const ctaLinkTextSize = {
-  default: "su-text-20 md:su-text-21 xl:su-text-23",
-  large: "su-text-22 md:su-text-23 xl:su-text-25",
+  default: "su-text-19 md:su-text-21 xl:su-text-23",
+  large: "su-text-19 md:su-text-23 xl:su-text-25",
   small: "su-text-19 md:su-text-20 xl:su-text-21",
 };
 
@@ -187,6 +176,12 @@ export const textAlign = {
   left: "su-text-left",
   center: "su-text-center",
   right: "su-text-right",
+};
+
+export const horizontalAlign = {
+  left: "",
+  center: "su-mx-auto",
+  right: "su-ml-auto",
 };
 
 export const containerAlign = {
