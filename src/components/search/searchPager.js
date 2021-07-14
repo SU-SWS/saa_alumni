@@ -1,4 +1,5 @@
 import React from "react";
+import buildPager from "../../utilities/buildPager";
 
 const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
   if (activePage === undefined || nbPages === undefined) {
@@ -9,11 +10,7 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
   const activeLinkClasses =
     "su-text-black su-border-b-4 su-cursor-default su-pointer-events-none";
 
-  const pagerLinks = [];
-
-  for (let i = 0; i < Math.min(maxLinks - 1, nbPages - 1); i += 1) {
-    pagerLinks.push(i);
-  }
+  const pagerLinks = buildPager(nbPages, maxLinks, activePage);
 
   const linkHandler = (e, page) => {
     e.preventDefault();
@@ -33,31 +30,24 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
           </a>
         )}
         <ul className="su-list-none su-flex su-space-x-3 md:su-space-x-15 su-p-0">
-          {pagerLinks.map((i) => (
-            <li className="su-mb-0" key={`search-pager-link-${i}`}>
-              <a
-                className={`su-text-24 su-font-bold su-px-5 md:su-px-11 su-no-underline
-                    ${activePage === i ? activeLinkClasses : linkClasses}
-                  `}
-                href={`?page=${i}`}
-                onClick={(e) => linkHandler(e, i)}
-              >
-                {i + 1}
-              </a>
-            </li>
-          ))}
-          {nbPages > maxLinks && <li className="su-mb-0 su-font-bold">...</li>}
-          <li>
-            <a
-              className={`su-text-24 su-font-bold su-px-5 md:su-px-11 su-no-underline
-                ${activePage === nbPages - 1 ? activeLinkClasses : linkClasses}
-              `}
-              href={`?page=${nbPages - 1}`}
-              onClick={(e) => linkHandler(e, nbPages - 1)}
-            >
-              {nbPages}
-            </a>
-          </li>
+          {pagerLinks.map((i) => {
+            if (i === "...") {
+              return <li>...</li>;
+            }
+            return (
+              <li className="su-mb-0" key={`search-pager-link-${i}`}>
+                <a
+                  className={`su-text-24 su-font-bold su-px-5 md:su-px-11 su-no-underline
+                      ${activePage === i ? activeLinkClasses : linkClasses}
+                    `}
+                  href={`?page=${i}`}
+                  onClick={(e) => linkHandler(e, i)}
+                >
+                  {i + 1}
+                </a>
+              </li>
+            );
+          })}
         </ul>
 
         {activePage < nbPages - 1 && (

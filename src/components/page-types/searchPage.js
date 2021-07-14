@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
+import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
   NumberParam,
@@ -61,6 +62,7 @@ const SearchPage = (props) => {
   const updatePage = (pageNumber) => {
     setPage(pageNumber);
     setPageParam(pageNumber);
+    scrollTo("#search-results");
   };
 
   // Update facet values when facet is selected.
