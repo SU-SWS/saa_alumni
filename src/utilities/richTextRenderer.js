@@ -22,7 +22,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
     linkColor = "su-text-digital-red-xlight hocus:su-text-white";
   }
 
-  let rendered = render(wysiwyg, {
+  const rendered = render(wysiwyg, {
     markResolvers: {
       [MARK_BOLD]: (children) => <strong>{children}</strong>,
       [MARK_ITALIC]: (children) => <em>{children}</em>,
@@ -112,15 +112,15 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
       },
       [NODE_IMAGE]: (children, { src, alt }) => {
         // Rewrite the URL to the redirect link to mask the API endpoint.
-        let srcUrl = src;
+        let srcUrl = { ...src };
         if (config.isNetlify) {
           srcUrl = srcUrl.replace(
-            /http?(s)\:\/\/a\.storyblok\.com/gi,
-            config.assetCdn + "a"
+            /http?(s)\\:\/\/a\.storyblok\.com/gi,
+            `${config.assetCdn}a`
           );
           srcUrl = srcUrl.replace(
-            /http?(s)\:\/\/img?[0-9]\.storyblok\.com/gi,
-            config.assetCdn + "i"
+            /http?(s)\\:\/\/img?[0-9]\.storyblok\.com/gi,
+            `${config.assetCdn}i`
           );
         }
 
