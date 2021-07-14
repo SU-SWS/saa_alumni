@@ -43,8 +43,6 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
 const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
   const { title, description, siteUrl } = UseSiteMetadata();
 
-  console.log(location);
-
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
   if (seo == null) {
     return (
