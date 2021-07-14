@@ -67,11 +67,8 @@ module.exports = {
           }
         }
         `,
-        resolvePages: ({ allSitePage: { edges: allPages } }) => {
-          return allPages.map((page) => {
-            return { ...page.node };
-          });
-        },
+        resolvePages: ({ allSitePage: { edges: allPages } }) =>
+          allPages.map((page) => ({ ...page.node })),
         excludes: [
           `/editor/**`,
           `/editor`,
