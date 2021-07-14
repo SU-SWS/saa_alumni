@@ -112,7 +112,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
       },
       [NODE_IMAGE]: (children, { src, alt }) => {
         // Rewrite the URL to the redirect link to mask the API endpoint.
-        let srcUrl = { ...src };
+        let srcUrl = src;
         if (config.isNetlify) {
           srcUrl = srcUrl.replace(
             /http?(s)\\:\/\/a\.storyblok\.com/gi,
