@@ -2,25 +2,21 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import { FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { fab } from "@fortawesome/free-brands-svg-icons";
-import { fas } from "@fortawesome/free-solid-svg-icons";
-import { far } from "@fortawesome/free-regular-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SbLink from "../../utilities/sbLink";
 import HeroIcon from "../simple/heroIcon";
+import FaIcon from "../simple/faIcon";
 
 const IconCard = ({
-  blok: { headline, headingLevel, icon = {}, link = {}, isOutline },
+  blok: {
+    headline,
+    headingLevel,
+    icon: { icon: propsIcon, type } = {},
+    isOutline,
+    link,
+  },
   blok,
   isDark,
 }) => {
-  // Add all 3 types of FA icons to the library so you can use any of them
-  library.add(fab, far, fas);
-
-  // Remove "fa-" from Storyblok FA plugin to use Fontawesome React format
-  const faIcon = icon.icon.replace("fa-", "");
-
   let cardStyles = "su-bg-white su-border-black-30-opacity-40";
   let iconColor = "su-text-digital-red group-hocus:!su-text-digital-red-light";
   let headlineColor = "su-text-black hocus:su-text-digital-red-light";
@@ -49,8 +45,10 @@ const IconCard = ({
           cardStyles
         )}
       >
-        <FontAwesomeIcon
-          icon={[isOutline ? "far" : icon.type, faIcon]}
+        <FaIcon
+          iconChoice={propsIcon}
+          iconType={type}
+          isOutline={isOutline}
           className={dcnb(
             "su-mb-02em su-text-m2 su-transition-colors",
             iconColor
