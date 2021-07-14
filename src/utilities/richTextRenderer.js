@@ -115,11 +115,11 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
         let srcUrl = src;
         if (config.isNetlify) {
           srcUrl = srcUrl.replace(
-            /http?(s)\\:\/\/a\.storyblok\.com/gi,
+            /http?(s):\/\/a\.storyblok\.com/gi,
             `${config.assetCdn}a`
           );
           srcUrl = srcUrl.replace(
-            /http?(s)\\:\/\/img?[0-9]\.storyblok\.com/gi,
+            /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
             `${config.assetCdn}i`
           );
         }
