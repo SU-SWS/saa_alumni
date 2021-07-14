@@ -4,6 +4,7 @@ import CreateStories from "../../utilities/createStories";
 const StoryCard = ({
   blok: {
     storyPicker,
+    tabText,
     isMinimal,
     isBigText,
     hideTab,
@@ -15,6 +16,7 @@ const StoryCard = ({
 }) => (
   <CreateStories
     stories={storyPicker}
+    tabText={tabText ?? "Story"}
     layout="card"
     isBigText={isBigText}
     hideTab={hideTab}

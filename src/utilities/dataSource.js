@@ -25,6 +25,7 @@ export const bgColors = {
 
 export const bgTextColorPairs = {
   "foggy-light": "su-bg-foggy-light su-text-black",
+  "black-10": "su-bg-black-10 su-text-black",
   white: "su-bg-white su-text-black",
   black: "su-bg-saa-black su-text-white",
   "cardinal-red": "su-bg-cardinal-red su-text-white",
@@ -95,6 +96,8 @@ export const ctaLinkIconColor = {
     "su-text-digital-red-light group-hocus:su-text-cardinal-red",
   "bright-red-hover-white":
     "su-text-digital-red-xlight group-hocus:su-text-black-20",
+  "white-hover-digital-red":
+    "su-text-white group-hocus:su-text-digital-red-xlight",
   black: "su-text-black group-hocus:su-text-black",
   white: "su-text-black-20 group-hocus:su-text-black-20",
 };
@@ -184,6 +187,12 @@ export const textAlign = {
   left: "su-text-left",
   center: "su-text-center",
   right: "su-text-right",
+};
+
+export const containerAlign = {
+  left: "children:su-mr-auto",
+  center: "children:su-mx-auto",
+  right: "children:su-ml-auto",
 };
 
 export const mediaAspectRatio = {
