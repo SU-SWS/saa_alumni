@@ -120,11 +120,11 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
             `${config.assetCdn}a`
           );
 
-          console.log(`Before second: ${srcUrl}`);
-          srcUrl = srcUrl.replace(
-            /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-            `${config.assetCdn}i`
-          );
+          // console.log(`Before second: ${srcUrl}`);
+          // srcUrl = srcUrl.replace(
+          //   /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
+          //   `${config.assetCdn}i`
+          // );
 
           console.log(`Results: ${srcUrl}`);
 
