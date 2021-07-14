@@ -138,10 +138,12 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
           );
         }
 
+        console.log(`Original Url: ${src}`);
+
         return (
           <CardImage
             size="horizontal"
-            filename={srcUrl}
+            filename={src}
             alt={alt}
             loading="lazy"
           />
