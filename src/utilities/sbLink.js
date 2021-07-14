@@ -83,6 +83,7 @@ const SbLink = React.forwardRef((props, ref) => {
         iconType="external"
         isAnimate
         className={dcnb("su-relative su-inline-block", extIconClasses)}
+        hideSrText
       />
     );
   }

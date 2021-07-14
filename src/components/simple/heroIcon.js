@@ -20,12 +20,12 @@ const HeroIcon = ({
   ...props
 }) => {
   const heroIconMap = {
-    "video-camera": {
+    video: {
       heroicon: VideoCameraIcon,
       baseStyle: "su-w-08em su-mt-[-0.2em]",
       animate: "group-hocus:su-translate-x-02em",
     },
-    video: {
+    play: {
       heroicon: PlayIcon,
       baseStyle: "su-w-08em su-ml-7 su--mt-3",
       animate: "group-hocus:su-translate-x-02em",
