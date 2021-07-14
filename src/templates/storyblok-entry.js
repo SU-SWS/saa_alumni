@@ -33,6 +33,8 @@ class StoryblokEntry extends React.Component {
           // eslint-disable-next-line no-underscore-dangle
           key: content._uid,
           blok: content,
+          // eslint-disable-next-line react/destructuring-assignment
+          location: this.props.location,
         })}
       </>
     );

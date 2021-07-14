@@ -48,6 +48,27 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage(filter: {context: {isCanonical: {eq: true}}}) {
+            edges {
+              node {
+                path
+                context {
+                  isCanonical
+                }
+              }
+            }
+          }
+        }
+        `,
+        resolvePages: ({ allSitePage: { edges: allPages } }) =>
+          allPages.map((page) => ({ ...page.node })),
         excludes: [
           `/editor/**`,
           `/editor`,
