@@ -143,7 +143,7 @@ const SearchPage = (props) => {
                 )}
               </FlexCell>
             )}
-            <FlexCell xs="full" lg={8} id="search-results">
+            <FlexCell xs="full" lg={8}>
               {results.nbHits > 0 && (
                 <>
                   <SearchResults results={results} />
