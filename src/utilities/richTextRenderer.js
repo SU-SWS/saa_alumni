@@ -22,7 +22,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
     linkColor = "su-text-digital-red-xlight hocus:su-text-white";
   }
 
-  const rendered = render(wysiwyg, {
+  let rendered = render(wysiwyg, {
     markResolvers: {
       [MARK_BOLD]: (children) => <strong>{children}</strong>,
       [MARK_ITALIC]: (children) => <em>{children}</em>,
@@ -110,48 +110,24 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
 
         return null;
       },
-      [NODE_IMAGE]: (children, { src, alt }) => {
-        // Rewrite the URL to the redirect link to mask the API endpoint.
-        let srcUrl = src;
-        if (config.isNetlify) {
-          console.log(`Before initial: ${srcUrl}`);
-          srcUrl = srcUrl.replace(
-            /http?(s):\/\/a\.storyblok\.com/gi,
-            `${config.assetCdn}a`
-          );
-
-          // console.log(`Before second: ${srcUrl}`);
-          // srcUrl = srcUrl.replace(
-          //   /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-          //   `${config.assetCdn}i`
-          // );
-
-          console.log(`Results: ${srcUrl}`);
-
-          return (
-            <CardImage
-              size="horizontal"
-              filename={srcUrl}
-              alt={alt}
-              loading="lazy"
-            />
-          );
-        }
-
-        console.log(`Original Url: ${src}`);
-
-        return (
-          <CardImage
-            size="horizontal"
-            filename={src}
-            alt={alt}
-            loading="lazy"
-          />
-        );
-      },
+      [NODE_IMAGE]: (children, { src, alt }) => (
+        <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
+      ),
     },
     defaultStringResolver: (str) => <p>{str}</p>,
   });
+
+  // Rewrite the URL to the redirect link to mask the API endpoint.
+  if (config.isNetlify) {
+    rendered = rendered.replace(
+      /http?(s):\/\/a\.storyblok\.com/gi,
+      `${config.assetCdn}a`
+    );
+    rendered = rendered.replace(
+      /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
+      `${config.assetCdn}i`
+    );
+  }
 
   return (
     <div className={dcnb("su-wysiwyg", textColor, className)}>{rendered}</div>
