@@ -127,6 +127,15 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
           );
 
           console.log(`Results: ${srcUrl}`);
+
+          return (
+            <CardImage
+              size="horizontal"
+              filename={srcUrl}
+              alt={alt}
+              loading="lazy"
+            />
+          );
         }
 
         return (
