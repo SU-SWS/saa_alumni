@@ -34,8 +34,9 @@ const CtaCard = ({
           {linkText}
           {srText && <SrOnlyText srText={srText} />}
           <HeroIcon
-            iconType={link.linktype === "url" ? "external" : "internal"}
-            className="su-relative su-inline-block su-transition su-transform-gpu su-text-white group-hover:su-text-digital-red-xlight group-focus:su-text-white"
+            iconType={link.linktype === "url" ? "external" : "arrow-right"}
+            className="su-relative su-inline-block su-text-white group-hover:su-text-digital-red-xlight group-focus:su-text-white"
+            isAnimate
             hideSrText
           />
         </SbLink>

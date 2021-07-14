@@ -163,7 +163,8 @@ const Event = ({
           </Heading>
           <HeroIcon
             iconType="external"
-            className="su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight"
+            className="su-relative su-inline-block su-text-digital-red-xlight"
+            isAnimate
             hideSrText
           />
         </SbLink>

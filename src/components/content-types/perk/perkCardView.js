@@ -106,8 +106,9 @@ const PerkCardView = ({
               {title}
             </Heading>
             <HeroIcon
-              iconType={cardUrl.linktype === "url" ? "external" : "internal"}
-              className="su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight group-hocus:su-text-white"
+              iconType={cardUrl.linktype === "url" ? "external" : "arrow-right"}
+              className="su-relative su-inline-block su-text-digital-red-xlight group-hocus:su-text-white"
+              isAnimate
               hideSrText
             />
           </SbLink>

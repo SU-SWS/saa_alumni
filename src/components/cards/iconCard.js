@@ -24,8 +24,7 @@ const IconCard = ({
   let cardStyles = "su-bg-white su-border-black-30-opacity-40";
   let iconColor = "su-text-digital-red group-hocus:!su-text-digital-red-light";
   let headlineColor = "su-text-black hocus:su-text-digital-red-light";
-  let headlineIconStyles =
-    "su-relative su-inline-block su-transition su-transform-gpu";
+  let headlineIconStyles = "su-relative su-inline-block";
   let headlineIconColor = "su-text-black group-hocus:su-text-digital-red-light";
 
   // isDark prop is passed from the parent ankle component
@@ -72,8 +71,9 @@ const IconCard = ({
           >
             {headline}
             <HeroIcon
-              iconType={link.linktype === "url" ? "external" : "internal"}
+              iconType={link.linktype === "url" ? "external" : "arrow-right"}
               className={headlineIconStyles}
+              isAnimate
               hideSrText
             />
           </Heading>

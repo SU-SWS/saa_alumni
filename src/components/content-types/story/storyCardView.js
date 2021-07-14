@@ -129,8 +129,9 @@ const StoryCardView = ({
               {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
             <HeroIcon
-              iconType={pubLink ? "external" : "internal"}
-              className={`su-relative su-inline-block su-transition su-transform-gpu ${headlineIconColor}`}
+              iconType={pubLink ? "external" : "arrow-right"}
+              className={`su-relative su-inline-block ${headlineIconColor}`}
+              isAnimate
               hideSrText
             />
           </SbLink>
