@@ -10,7 +10,7 @@ module.exports = {
   soundcloud: {
     podcastFeeds: [
       "https://feeds.simplecast.com/r4JJTrrW",
-      //"https://feeds.soundcloud.com/users/soundcloud:users:357652052/sounds.rss",
+      "https://feeds.soundcloud.com/users/soundcloud:users:357652052/sounds.rss",
       "https://feeds.soundcloud.com/users/soundcloud:users:146499962/sounds.rss",
     ],
   },
