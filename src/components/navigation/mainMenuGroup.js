@@ -1,11 +1,15 @@
-import React, { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
+import React, { useState, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import CreateBloks from "../../utilities/createBloks";
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
 }) => {
+  const [panelOpened, setPanelOpened] = useState(false);
+  const togglePanel = () => {
+    setPanelOpened(!panelOpened);
+  };
+
   // Styles for 1st level parent item buttons
   const buttonMobile =
     "su-flex su-items-center su-w-full hocus:su-bg-cardinal-red-xxdark hocus:su-shadow-none su-py-20 su-pl-20 su-pr-80 su-text-20";
@@ -19,74 +23,44 @@ const MainMenuGroup = ({
     "lg:su-relative lg:su-mr-0 lg:su-w-[1.2em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent";
 
   return (
-    <Popover
-      as="li"
-      className="lg:su-inline-block su-relative su-border-b su-border-solid su-border-digital-red-light last:su-border-none lg:su-border-none"
-    >
-      {({ open }) => (
-        <>
-          <Popover.Button
-            className={`${
-              open
-                ? "lg:hocus:su-text-white !su-bg-cardinal-red-xxdark lg:!su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark hover:!su-bg-digital-red lg:hover:!su-bg-cardinal-red-xdark"
-                : ""
-            } su-group ${buttonMobile} ${buttonDesktop} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
-          >
-            {parentText}
-            {parentTextSecond && (
-              <>
-                <br className="su-hidden xl:su-inline 2xl:su-hidden" />
-                {parentTextSecond}
-              </>
-            )}
-            <ChevronDownIcon
-              className={`su-inline-block su-text-white su-transition ${
-                open ? "su-transform-gpu su-rotate-180" : ""
-              } ${chevronMobile} ${chevronDesktop}`}
-              aria-hidden="true"
-            />
-          </Popover.Button>
-          <Transition
-            as={Fragment}
-            enter="lg:su-transition lg:su-duration lg:su-ease-out"
-            enterFrom={`lg:su-transform-gpu ${
-              panelFacing === "left"
-                ? "su-origin-top-right"
-                : "su-origin-top-left"
-            } lg:su-scale-75 lg:su-opacity-0`}
-            enterTo={`lg:su-transform-gpu ${
-              panelFacing === "left"
-                ? "su-origin-top-right"
-                : "su-origin-top-left"
-            } lg:su-scale-100 lg:su-opacity-100`}
-            leave="lg:su-transition lg:su-duration lg:su-ease-out"
-            leaveFrom={`lg:su-transform-gpu ${
-              panelFacing === "left"
-                ? "su-origin-top-right"
-                : "su-origin-top-left"
-            } lg:su-scale-100 lg:su-opacity-100`}
-            leaveTo={`lg:su-transform-gpu ${
-              panelFacing === "left"
-                ? "su-origin-top-right"
-                : "su-origin-top-left"
-            } lg:su-scale-75 lg:su-opacity-0`}
-          >
-            <Popover.Panel
-              as="ul"
-              className={`su-list-unstyled ${
-                panelFacing === "left" ? "lg:su-right-0" : ""
-              } ${
-                open
-                  ? "su-bg-cardinal-red-xxdark su-w-full lg:su-bg-cardinal-red-xdark"
-                  : ""
-              } lg:su-shadow-md lg:su-w-[29rem] su-px-20 su-pt-2 su-pb-10 lg:su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
-            >
-              <CreateBloks blokSection={menuItems} />
-            </Popover.Panel>
-          </Transition>
-        </>
-      )}
-    </Popover>
+    <li className="lg:su-inline-block su-relative su-border-b su-border-solid su-border-digital-red-light last:su-border-none lg:su-border-none">
+      <button
+        type="button"
+        onClick={togglePanel}
+        aria-expanded={panelOpened}
+        className={`${
+          panelOpened
+            ? "lg:hocus:su-text-white !su-bg-cardinal-red-xxdark lg:!su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark hover:!su-bg-digital-red lg:hover:!su-bg-cardinal-red-xdark"
+            : ""
+        } su-group ${buttonMobile} ${buttonDesktop} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
+      >
+        {parentText}
+        {parentTextSecond && (
+          <>
+            <br className="su-hidden xl:su-inline 2xl:su-hidden" />
+            {parentTextSecond}
+          </>
+        )}
+        <ChevronDownIcon
+          className={`su-inline-block su-text-white su-transition ${
+            panelOpened ? "su-transform-gpu su-rotate-180" : ""
+          } ${chevronMobile} ${chevronDesktop}`}
+          aria-hidden="true"
+        />
+      </button>
+      <ul
+        className={`su-list-unstyled ${
+          panelFacing === "left" ? "lg:su-right-0" : ""
+        } ${
+          panelOpened
+            ? "su-bg-cardinal-red-xxdark su-w-full lg:su-bg-cardinal-red-xdark su-scale-y-100 su-opacity-100 su-visible su-pb-10"
+            : "su-invisible !su-scale-y-0 su-opacity-0 children:su-hidden su-pb-0"
+        } su-transform-gpu su-transition su-origin-top lg:su-shadow-md lg:su-w-[29rem] su-px-20 su-pt-2 lg:su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
+        aria-hidden={!panelOpened}
+      >
+        <CreateBloks blokSection={menuItems} />
+      </ul>
+    </li>
   );
 };
 
