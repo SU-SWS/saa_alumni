@@ -71,12 +71,14 @@ const MainMenuGroup = ({
       </button>
       <ul
         className={`su-list-unstyled ${
-          panelFacing === "left" ? "lg:su-right-0" : ""
+          panelFacing === "left"
+            ? "lg:su-right-0 lg:su-origin-top-right"
+            : "lg:su-origin-top-left"
         } ${
           panelOpened
-            ? "su-bg-cardinal-red-xxdark su-w-full lg:su-bg-cardinal-red-xdark su-scale-y-100 su-opacity-100 su-visible su-pb-10"
-            : "su-invisible !su-scale-y-0 su-opacity-0 children:su-hidden su-pb-0"
-        } su-transform-gpu su-transition su-origin-top lg:su-shadow-md lg:su-w-[29rem] su-px-20 su-pt-2 lg:su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
+            ? "su-bg-cardinal-red-xxdark su-w-full lg:su-bg-cardinal-red-xdark su-scale-y-100 lg:su-scale-100 su-opacity-100 su-visible su-pb-10"
+            : "su-invisible !su-scale-y-75 lg:!su-scale-75 su-opacity-0 children:su-hidden su-pb-0"
+        } su-transform-gpu su-transition su-ease-linear lg:su-ease-out su-origin-top lg:su-shadow-md lg:su-w-[29rem] su-px-20 su-pt-2 lg:su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0`}
         aria-hidden={!panelOpened}
       >
         <CreateBloks blokSection={menuItems} />
