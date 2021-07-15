@@ -1,27 +1,11 @@
 import React from "react";
-import { StaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import CreateBloks from "../../utilities/createBloks";
 
-// Get Search Keyword Banners.
-const query = graphql`
-  query {
-    allStoryblokEntry(
-      filter: { field_component: { eq: "searchKeywordBanner" } }
-    ) {
-      edges {
-        node {
-          content
-          created_at
-          field_keywords_string
-        }
-      }
-    }
-  }
-`;
 // Get most recently created Banner.
-const getBanner = (e, q) => {
+const getBanner = (data, q) => {
   const created = {};
-  e.edges.map(({ node }) => {
+  data.edges.map(({ node }) => {
     const blok = JSON.parse(node.content);
     const split = node.field_keywords_string.split(",");
     const newSplit = split.map((str) => str.trim());
@@ -35,19 +19,33 @@ const getBanner = (e, q) => {
   return created ? created[Math.max(...Object.keys(created))].content : "";
 };
 
-const SearchKeywordBanner = ({ queryText }) => (
-  <StaticQuery
-    query={query}
-    render={({ allStoryblokEntry }) => {
-      if (!allStoryblokEntry?.edges.length) return null;
-      const banner = getBanner(allStoryblokEntry, queryText);
-      if (banner) {
-        return <CreateBloks blokSection={banner} />;
+const SearchKeywordBanner = function ({ queryText }) {
+  // Get Search Keyword Banners.
+  const data = useStaticQuery(graphql`
+    query searchKeywordBanners {
+      allStoryblokEntry(
+        filter: { field_component: { eq: "searchKeywordBanner" } }
+      ) {
+        edges {
+          node {
+            content
+            created_at
+            field_keywords_string
+          }
+        }
       }
+    }
+  `);
+  if (!data.allStoryblokEntry?.edges.length) {
+    return null;
+  }
 
-      return "";
-    }}
-  />
-);
+  const banner = getBanner(data.allStoryblokEntry, queryText);
+  if (banner) {
+    return <CreateBloks blokSection={banner} />;
+  }
+
+  return null;
+};
 
 export default SearchKeywordBanner;
