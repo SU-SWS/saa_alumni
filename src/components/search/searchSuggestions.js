@@ -8,7 +8,7 @@ import {
 } from "../../utilities/dataSource";
 
 const SearchSuggestions = ({
-  blok: { content, title, titleColor, titleFont, spacingTop, spacingBottom },
+  blok: { content, title, titleColor, spacingTop, spacingBottom },
   blok,
 }) => (
   <SbEditable content={blok}>
@@ -19,10 +19,11 @@ const SearchSuggestions = ({
     `}
     >
       <Heading
-        font={titleFont}
+        font="serif"
         size={1}
         level={3}
         className={`
+        su-mb-50
         ${titleColor ? `su-text-${titleColor}` : `su-text-black`}
       `}
       >
