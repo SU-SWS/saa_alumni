@@ -1,14 +1,31 @@
 import React, { useState, useRef } from "react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import CreateBloks from "../../utilities/createBloks";
+import UseEscape from "../../hooks/useEscape";
+import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
 }) => {
   const [panelOpened, setPanelOpened] = useState(false);
+  const ref = useRef(null);
+  const parentRef = useRef(null);
+
   const togglePanel = () => {
     setPanelOpened(!panelOpened);
   };
+
+  const isExpanded = (x) => x.getAttribute("aria-expanded") === "true";
+
+  // Close dropdown if escape key is pressed and return focus to the parent item button
+  UseEscape(() => {
+    if (parentRef.current && isExpanded(parentRef.current)) {
+      setPanelOpened(false);
+      parentRef.current.focus();
+    }
+  });
+
+  UseOnClickOutside(ref, () => setPanelOpened(false));
 
   // Styles for 1st level parent item buttons
   const buttonMobile =
@@ -23,11 +40,15 @@ const MainMenuGroup = ({
     "lg:su-relative lg:su-mr-0 lg:su-w-[1.2em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent";
 
   return (
-    <li className="lg:su-inline-block su-relative su-border-b su-border-solid su-border-digital-red-light last:su-border-none lg:su-border-none">
+    <li
+      className="lg:su-inline-block su-relative su-border-b su-border-solid su-border-digital-red-light last:su-border-none lg:su-border-none"
+      ref={ref}
+    >
       <button
         type="button"
         onClick={togglePanel}
         aria-expanded={panelOpened}
+        ref={parentRef}
         className={`${
           panelOpened
             ? "lg:hocus:su-text-white !su-bg-cardinal-red-xxdark lg:!su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark hover:!su-bg-digital-red lg:hover:!su-bg-cardinal-red-xdark"
