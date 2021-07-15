@@ -19,18 +19,18 @@ const query = graphql`
   }
 `;
 // Get most recently created Banner.
-const getBanner = (entry, query) => {
+const getBanner = (e, q) => {
   const created = {};
-  entry.edges.map(
-    ({ node: { content, created_at, field_keywords_string } }) => {
-      const blok = JSON.parse(content);
-      const split = field_keywords_string.split(",");
-      const newSplit = split.map((str) => str.trim());
-      if (newSplit.indexOf(query) >= 0) {
-        created[Date.parse(created_at)] = blok;
-      }
+  e.edges.map(({ node }) => {
+    const blok = JSON.parse(node.content);
+    const split = node.field_keywords_string.split(",");
+    const newSplit = split.map((str) => str.trim());
+    if (newSplit.indexOf(q) >= 0) {
+      created[Date.parse(node.created_at)] = blok;
     }
-  );
+
+    return created;
+  });
 
   return created ? created[Math.max(...Object.keys(created))].content : "";
 };
