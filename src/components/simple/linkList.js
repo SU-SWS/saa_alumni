@@ -2,6 +2,7 @@ import React from "react";
 import { Heading } from "decanter-react";
 import Icon from "react-hero-icon";
 import SbLink from "../../utilities/sbLink";
+import CreateBloks from "../../utilities/createBloks";
 
 const iconClasses = "su-h-1em su-w-1em su-ml-04em su--mt-2 ";
 
@@ -31,32 +32,7 @@ const LinkList = ({
     >
       {title}
     </Heading>
-    <ul className="su-list-none su-pl-0">
-      {links.map(({ link, linkText }) => (
-        <li>
-          <SbLink
-            link={link}
-            classes={`
-            su-font-regular
-            su-no-underline
-            ${linkColor ? `su-text-${linkColor}` : ""}
-            ${linkColor === "white" ? "hover:su-text-digital-red-xlight" : ""}
-            ${linkSize ? `su-text-${linkSize}` : "su-text-m0"}
-          `}
-          >
-            {linkText}
-            {linkStyle === "arrowLink" && (
-              <Icon
-                icon="arrow-right"
-                type="solid"
-                aria-hidden="true"
-                className={`su-inline-block ${iconClasses}`}
-              />
-            )}
-          </SbLink>
-        </li>
-      ))}
-    </ul>
+    <CreateBloks blokSection={links} />
   </div>
 );
 
