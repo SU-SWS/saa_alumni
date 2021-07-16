@@ -48,6 +48,27 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
+        query: `
+        {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+          allSitePage(filter: {context: {isCanonical: {eq: true}}}) {
+            edges {
+              node {
+                path
+                context {
+                  isCanonical
+                }
+              }
+            }
+          }
+        }
+        `,
+        resolvePages: ({ allSitePage: { edges: allPages } }) =>
+          allPages.map((page) => ({ ...page.node })),
         excludes: [
           `/editor/**`,
           `/editor`,
@@ -63,7 +84,7 @@ module.exports = {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
         homeSlug: "home",
         resolveRelations: storyblokRelations,
-        version: process.env.NODE_ENV === "production" ? "published" : "draft",
+        version: activeEnv === "production" ? "published" : "draft",
         // version: 'draft'  // would show any including drafts
       },
     },
@@ -83,6 +104,7 @@ module.exports = {
         mergeSecurityHeaders: false,
       },
     },
+    `gatsby-plugin-use-query-params`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
