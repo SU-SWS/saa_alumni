@@ -48,6 +48,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   const submitSearchQuery = (queryText) => {
     setQuery(queryText);
     navigate(`/search?q=${queryText}`);
+    props.onSubmit(queryText);
   };
 
   return (

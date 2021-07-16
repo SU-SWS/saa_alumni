@@ -5,7 +5,7 @@ import Modal from "../layout/modal";
 import SearchFieldModal from "./searchFieldModal";
 import SearchSuggestions from "./searchSuggestions";
 
-const SearchModal = ({ isOpen, onClose }) => {
+const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
   const searchFieldRef = React.createRef();
   const data = useStaticQuery(graphql`
     {
@@ -35,7 +35,10 @@ const SearchModal = ({ isOpen, onClose }) => {
         >
           Hello, what can we help you find today?
         </Heading>
-        <SearchFieldModal ref={searchFieldRef} />
+        <SearchFieldModal
+          ref={searchFieldRef}
+          onSubmit={() => setIsOpen(false)}
+        />
         {story && content && (
           <div className="su-mt-108">
             <SearchSuggestions blok={content} />
