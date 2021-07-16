@@ -15,7 +15,7 @@ import SearchResults from "../search/searchResults";
 import SearchPager from "../search/searchPager";
 import SearchFacet from "../search/searchFacet";
 import SearchNoResults from "../search/searchNoResults";
-import SearchKeywordBanner from "../composite/searchKeywordBanner";
+import SearchKeywordBanner from "../search/searchKeywordBanner";
 
 const SearchPage = (props) => {
   const { blok } = props;

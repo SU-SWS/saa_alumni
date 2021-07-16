@@ -16,7 +16,9 @@ const getBanner = (data, q) => {
     return created;
   });
 
-  return created ? created[Math.max(...Object.keys(created))].content : "";
+  const max = created ? Math.max(...Object.keys(created)) : false;
+
+  return max && created[max] ? created[max].content : "";
 };
 
 const SearchKeywordBanner = function ({ queryText }) {
