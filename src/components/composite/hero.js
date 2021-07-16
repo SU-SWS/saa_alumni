@@ -119,7 +119,7 @@ const Hero = ({
               >
                 <SrOnlyText srText="Jump to main content" />
                 <ArrowDownIcon
-                  className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red"
+                  className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark"
                   aria-hidden="true"
                 />
               </a>

@@ -55,14 +55,14 @@ const StoryCardView = ({
   }
 
   let headlineColor = "su-text-black hocus:su-text-black";
-  let headlineIconColor = "";
+  let headlineIconColor = "su-text-digital-red-xlight";
   let textColor = "su-text-black";
 
   // Use different text color if card has minimal style and is placed in a dark region
   if (isDark && isMinimal) {
     textColor = "su-text-black-20";
     headlineColor = "su-text-white hocus:su-text-white";
-    headlineIconColor = "group-hocus:su-text-white";
+    headlineIconColor = "su-text-digital-red-light group-hocus:su-text-white";
   }
 
   let headlineSize = "su-type-1";
@@ -129,8 +129,9 @@ const StoryCardView = ({
               {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
             <HeroIcon
-              iconType={pubLink ? "external" : "internal"}
-              className={`su-relative su-inline-block su-transition su-transform-gpu su-text-digital-red-xlight ${headlineIconColor}`}
+              iconType={pubLink ? "external" : "arrow-right"}
+              className={`su-relative su-inline-block ${headlineIconColor}`}
+              isAnimate
               hideSrText
             />
           </SbLink>
