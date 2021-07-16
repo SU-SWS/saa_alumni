@@ -13,7 +13,6 @@
     "@heroicons/react": "^1.0.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "algoliasearch": "^4.9.3",
-    "cheerio": "^1.0.0-rc.10",
     "decanter-react": "^1.0.7-alpha.0",
     "gatsby": "^3.4.2",
     "gatsby-plugin-anchor-links": "^1.2.1",
@@ -46,7 +45,8 @@
     "tabbable": "^5.2.0",
     "tailwindcss-children": "^2.1.0",
     "tailwindcss-interaction-variants": "^5.0.0",
-    "use-query-params": "^1.2.2"
+    "use-query-params": "^1.2.2",
+    "xml2js": "^0.4.23"
   },
   "keywords": [
     "Stanford"
