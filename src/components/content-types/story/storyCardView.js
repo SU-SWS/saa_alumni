@@ -40,7 +40,7 @@ const StoryCardView = ({
   }
 
   let wrapperClasses =
-    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm";
+    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md";
 
   let contentClasses = "su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
@@ -104,7 +104,7 @@ const StoryCardView = ({
           <SbLink
             link={externalLink || internalLink}
             classes={dcnb(
-              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+              "su-stretched-link su-group su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
               headlineSize,
               headlineColor
             )}
