@@ -64,6 +64,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
         autocompleteLinkClasses={autocompleteLinkClasses}
         autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
         autocompleteContainerClasses={autocompleteContainerClasses}
+        clearOnEscape={false}
         placeholder="Search"
         ref={ref}
       />

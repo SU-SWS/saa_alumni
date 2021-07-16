@@ -145,6 +145,7 @@ const SearchPage = (props) => {
                 autocompleteLinkClasses={autocompleteLinkClasses}
                 autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
                 autocompleteContainerClasses={autocompleteContainerClasses}
+                clearOnEscape
               />
             </FlexCell>
           </FlexBox>

@@ -18,6 +18,7 @@ const SearchField = React.forwardRef(
       autocompleteLinkFocusClasses,
       autocompleteContainerClasses,
       placeholder,
+      clearOnEscape,
     },
     ref
   ) => {
@@ -25,6 +26,7 @@ const SearchField = React.forwardRef(
     const [showAutocomplete, setShowAutocomplete] = useState(false);
     const [selectedSuggestion, setSelectedSuggestion] = useState(0);
     const inputWrapper = createRef();
+    const inputRef = ref || createRef();
 
     const submitHandler = (e) => {
       e.preventDefault();
@@ -69,7 +71,9 @@ const SearchField = React.forwardRef(
     };
 
     UseEscape(() => {
-      clearHandler();
+      if (clearOnEscape && document.activeElement === inputRef.current) {
+        clearHandler();
+      }
     });
 
     return (
@@ -93,7 +97,7 @@ const SearchField = React.forwardRef(
                   className={inputClasses}
                   placeholder={placeholder || ""}
                   value={query}
-                  ref={ref}
+                  ref={inputRef}
                 />
               </label>
               <button
