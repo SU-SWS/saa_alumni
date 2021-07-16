@@ -6,13 +6,14 @@ const searchAutocomplete = ({
   showAutocomplete,
   onSelect,
   selectedSuggestion,
+  setSelectedSuggestion,
   autocompleteContainerClasses,
   autocompleteLinkClasses,
   autocompleteLinkFocusClasses,
 }) => (
   <div
     className={`${autocompleteContainerClasses}
-    ${showAutocomplete ? "" : "su-hidden"}`}
+    ${showAutocomplete && autocompleteSuggestions.length ? "" : "su-hidden"}`}
   >
     {Array.isArray(autocompleteSuggestions) && (
       <div className="su-list-unstyled" role="listbox">
@@ -31,6 +32,13 @@ const searchAutocomplete = ({
                         }
                       `}
             onClick={(e) => onSelect(e, suggestion.query)}
+            onKeyDown={(e) => {
+              // On Enter or Spacebar
+              if (e.key === "Enter" || e.key === " ") {
+                onSelect(e, suggestion.query);
+              }
+            }}
+            onFocus={(e) => setSelectedSuggestion(index)}
             aria-selected={selectedSuggestion === index ? "true" : "false"}
             id="search-autocomplete-listbox"
           >
