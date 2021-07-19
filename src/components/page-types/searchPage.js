@@ -16,6 +16,7 @@ import SearchPager from "../search/searchPager";
 import SearchFacet from "../search/searchFacet";
 import SearchNoResults from "../search/searchNoResults";
 import SearchKeywordBanner from "../search/searchKeywordBanner";
+import CreateBloks from "../../utilities/createBloks";
 
 const SearchPage = (props) => {
   const { blok } = props;
@@ -152,6 +153,11 @@ const SearchPage = (props) => {
               />
             </FlexCell>
           </FlexBox>
+          {blok.aboveResultsContent && (
+            <div className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]">
+              <CreateBloks blokSection={blok.aboveResultsContent} />
+            </div>
+          )}
           <FlexBox
             wrap="wrap"
             justifyContent={results.facets ? "start" : "center"}
@@ -195,6 +201,12 @@ const SearchPage = (props) => {
               )}
             </FlexCell>
           </FlexBox>
+
+          {blok.belowResultsContent && (
+            <div>
+              <CreateBloks blokSection={blok.belowResultsContent} />
+            </div>
+          )}
         </Container>
       </Layout>
     </SbEditable>
