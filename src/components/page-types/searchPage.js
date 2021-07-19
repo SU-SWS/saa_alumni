@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
+import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
   NumberParam,
@@ -14,6 +15,7 @@ import SearchResults from "../search/searchResults";
 import SearchPager from "../search/searchPager";
 import SearchFacet from "../search/searchFacet";
 import SearchNoResults from "../search/searchNoResults";
+import SearchKeywordBanner from "../search/searchKeywordBanner";
 
 const SearchPage = (props) => {
   const { blok } = props;
@@ -61,6 +63,7 @@ const SearchPage = (props) => {
   const updatePage = (pageNumber) => {
     setPage(pageNumber);
     setPageParam(pageNumber);
+    scrollTo("#search-results");
   };
 
   // Update facet values when facet is selected.
@@ -97,6 +100,24 @@ const SearchPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
 
+  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
+  hover:su-text-black su-border-none su-text-black-70 su-p-0 su-absolute su-top-[1.5rem] su-right-0 xl:su-right-50
+  focus:su-bg-transparent focus:su-text-black-70`;
+
+  const inputClasses = `su-text-30 su-font-semibold su-w-full su-flex-1 su-border-0 su-border-b
+  su-border-solid su-border-black-60 su-pl-20 su-pr-70 xl:su-pr-126 su-py-10 su-text-m2`;
+
+  const submitBtnClasses = `su-w-40 su-h-40 su-rounded-full su-bg-digital-red-light
+   su-p-10 su-origin-center su-transform su-rotate-90 su-ml-10`;
+
+  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
+   su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
+
+  const autocompleteLinkFocusClasses = `su-bg-black-20 su-text-digital-red`;
+
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-white su-p-10 su-shadow-md su-w-full su-border
+   su-border-digital-red-light su-rounded-b-[0.5rem]`;
+
   return (
     <SbEditable content={blok}>
       <Layout hasHero={false} isDark {...props}>
@@ -121,6 +142,13 @@ const SearchPage = (props) => {
                 onSubmit={(queryText) => submitSearchQuery(queryText)}
                 defaultValue={query}
                 autocompleteSuggestions={suggestions}
+                clearBtnClasses={clearBtnClasses}
+                inputClasses={inputClasses}
+                submitBtnClasses={submitBtnClasses}
+                autocompleteLinkClasses={autocompleteLinkClasses}
+                autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
+                autocompleteContainerClasses={autocompleteContainerClasses}
+                clearOnEscape
               />
             </FlexCell>
           </FlexBox>
@@ -142,6 +170,7 @@ const SearchPage = (props) => {
               </FlexCell>
             )}
             <FlexCell xs="full" lg={8}>
+              <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
                   <SearchResults results={results} />

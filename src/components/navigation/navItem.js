@@ -2,9 +2,14 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import SbLink from "../../utilities/sbLink";
 
-const NavItem = ({ blok: { classes, link, text }, blok, hasExternalIcon }) => (
+const NavItem = ({
+  blok: { link, text },
+  blok,
+  hasExternalIcon,
+  className,
+}) => (
   <SbEditable content={blok}>
-    <li className={classes}>
+    <li className={className}>
       <SbLink
         link={link}
         activeClass="active"

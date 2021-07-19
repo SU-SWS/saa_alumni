@@ -2,10 +2,10 @@ import React from "react";
 import { useLocation } from "@reach/router";
 import { parse } from "query-string";
 import Link from "gatsby-link";
-import { ArrowUpIcon } from "@heroicons/react/outline";
 import { dcnb } from "cnbuilder";
 import { assetURL, isNetlify } from "../contexts/GlobalContext";
 import { config } from "./config";
+import HeroIcon from "../components/simple/heroIcon";
 
 /**
  * Reusable Storyblok Link component for various link types
@@ -64,7 +64,7 @@ const SbLink = React.forwardRef((props, ref) => {
       <Link
         ref={ref}
         to={linkUrl}
-        className={`${linkClasses} ${storyClasses}`}
+        className={dcnb(linkClasses, storyClasses)}
         activeClassName={activeClass}
         {...otherAttributes}
       >
@@ -80,12 +80,11 @@ const SbLink = React.forwardRef((props, ref) => {
 
   if (props.hasExternalIcon) {
     extLinkIcon = (
-      <ArrowUpIcon
-        className={dcnb(
-          "su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-09em group-hocus:su-translate-x-02em group-hocus:su--translate-y-02em",
-          extIconClasses
-        )}
-        aria-hidden="true"
+      <HeroIcon
+        iconType="external"
+        isAnimate
+        className={dcnb("su-relative su-inline-block", extIconClasses)}
+        hideSrText
       />
     );
   }
@@ -95,7 +94,7 @@ const SbLink = React.forwardRef((props, ref) => {
       <a
         ref={ref}
         href={linkUrl}
-        className={`${linkClasses} ${urlClasses}`}
+        className={dcnb(linkClasses, urlClasses)}
         {...otherAttributes}
       >
         {props.children}
@@ -124,7 +123,7 @@ const SbLink = React.forwardRef((props, ref) => {
       <a
         ref={ref}
         href={linkUrl}
-        className={`${linkClasses} ${assetClasses}`}
+        className={dcnb(linkClasses, assetClasses)}
         target="_blank"
         rel="noreferrer"
         {...otherAttributes}

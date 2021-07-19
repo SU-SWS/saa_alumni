@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const path = require("path");
 const webpack = require("webpack");
 
@@ -39,7 +40,7 @@ exports.createPages = ({ graphql, actions }) => {
         entries.forEach((entry, index) => {
           let slug = `${entry.node.full_slug}`;
           slug = slug.replace(/^\/|\/$/g, "");
-          let pagePath = entry.node.full_slug === "home" ? "" : slug + "/";
+          let pagePath = entry.node.full_slug === "home" ? "" : `${slug}/`;
 
           // Wire up the 404 page by setting the path to just 404 as Gatsby expects it.
           if (pagePath.match(/^404/)) {
@@ -51,12 +52,23 @@ exports.createPages = ({ graphql, actions }) => {
             pagePath = "403";
           }
 
+          // Determine if the page is canonical, or is using a custom canonical URL.
+          const content = JSON.parse(entry.node.content);
+          let isCanonical = true;
+          if (
+            content.canonicalURL &&
+            (content.canonicalURL.url || content.canonicalURL.cached_url)
+          ) {
+            isCanonical = false;
+          }
+
           createPage({
-            path: "/" + pagePath,
+            path: `/${pagePath}`,
             component: storyblokEntry,
             context: {
               slug: entry.node.full_slug,
               story: entry.node,
+              isCanonical,
             },
           });
         });
@@ -157,6 +169,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       field_from_string: String!
       field_enabled_boolean: Boolean!
       field_statusCode_string: String!
+      field_keywords_string: String!
     }
   `;
   createTypes(typeDefs);

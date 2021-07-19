@@ -1,7 +1,6 @@
 import SbEditable from "storyblok-react";
 import React from "react";
 import { FlexBox, Heading, SrOnlyText } from "decanter-react";
-import { ArrowUpIcon } from "@heroicons/react/solid";
 import {
   CalendarIcon,
   DesktopComputerIcon,
@@ -14,6 +13,7 @@ import SbLink from "../../../utilities/sbLink";
 import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
 import DateBlock from "../../simple/dateBlock";
+import HeroIcon from "../../simple/heroIcon";
 
 const Event = ({
   blok: {
@@ -107,7 +107,7 @@ const Event = ({
         direction="col"
         element="article"
         className={dcnb(
-          "event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-w-full",
+          "event-card su-group su-relative su-overflow-hidden sm:su-max-w-[42rem] md:su-max-w-full su-text-black su-break-words su-basefont-23 su-w-full",
           wrapperClasses
         )}
       >
@@ -161,9 +161,11 @@ const Event = ({
           >
             {title}
           </Heading>
-          <ArrowUpIcon
-            className="su-relative su-inline-block su-transition su-transform-gpu su-rotate-45 group-hocus:su-rotate-45 su-ml-02em su-w-08em group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em su-text-digital-red-xlight"
-            aria-hidden="true"
+          <HeroIcon
+            iconType="external"
+            className="su-relative su-inline-block su-text-digital-red-xlight"
+            isAnimate
+            hideSrText
           />
         </SbLink>
         {!isMinimal && <TabLabel text="Event" />}
