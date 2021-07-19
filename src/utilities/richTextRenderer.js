@@ -11,7 +11,6 @@ import { Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import Link from "gatsby-link";
 import CardImage from "../components/media/cardImage";
-import { config } from "./config";
 
 const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
   let textColor = "su-text-current";
@@ -116,18 +115,6 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
     },
     defaultStringResolver: (str) => <p>{str}</p>,
   });
-
-  // Rewrite the URL to the redirect link to mask the API endpoint.
-  if (config.isNetlify) {
-    rendered = rendered.replace(
-      /http?(s):\/\/a\.storyblok\.com/gi,
-      `${config.assetCdn}a`
-    );
-    rendered = rendered.replace(
-      /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-      `${config.assetCdn}i`
-    );
-  }
 
   return (
     <div className={dcnb("su-wysiwyg", textColor, className)}>{rendered}</div>

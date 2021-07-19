@@ -3,6 +3,7 @@
 // https://www.storyblok.com/docs/image-service
 
 import { isNetlify, imageURL } from "../contexts/GlobalContext";
+import { config } from "./config";
 
 const transformImage = (image, param = "") => {
   const imageService = imageURL.endsWith("/") ? imageURL.slice(0, -1) : "";
@@ -27,7 +28,19 @@ const transformImage = (image, param = "") => {
     return imageService + path;
   }
 
-  return imageService + myParams + path;
+  // Rewrite the URL to the redirect link to mask the API endpoint.
+  let imageUrl = imageService + myParams + path;
+
+  imageUrl = imageUrl.replace(
+    /http?(s):\/\/a\.storyblok\.com/gi,
+    `${config.assetCdn}a`
+  );
+  imageUrl = imageUrl.replace(
+    /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
+    `${config.assetCdn}i`
+  );
+
+  return imageUrl;
 };
 
 export default transformImage;
