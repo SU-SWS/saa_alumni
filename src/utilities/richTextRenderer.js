@@ -11,6 +11,7 @@ import { Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import Link from "gatsby-link";
 import CardImage from "../components/media/cardImage";
+import { config } from "./config";
 
 const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
   let textColor = "su-text-current";
@@ -45,8 +46,20 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
 
         if (linktype === "asset") {
           // Asset links: map to <a>
+          // Rewrite the URL to the redirect link to mask the API endpoint.
+          let linkUrl = href;
+          if (config.isNetlify) {
+            linkUrl = linkUrl.replace(
+              /http?(s):\/\/a\.storyblok\.com/gi,
+              `${config.assetCdn}a`
+            );
+            linkUrl = linkUrl.replace(
+              /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
+              `${config.assetCdn}i`
+            );
+          }
           return (
-            <a href={href} target={target} className={linkColor}>
+            <a href={linkUrl} target={target} className={linkColor}>
               {children}
             </a>
           );
