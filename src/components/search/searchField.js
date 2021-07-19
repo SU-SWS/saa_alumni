@@ -12,6 +12,7 @@ const SearchField = React.forwardRef(
       autocompleteSuggestions,
       defaultValue,
       inputClasses,
+      wrapperClasses,
       submitBtnClasses,
       clearBtnClasses,
       autocompleteLinkClasses,
@@ -82,7 +83,7 @@ const SearchField = React.forwardRef(
           <div className="su-flex su-items-center">
             <span className="" />
             <div
-              className="su-flex su-w-full su-items-center su-relative"
+              className={`su-flex su-w-full su-items-center su-relative ${wrapperClasses}`}
               ref={inputWrapper}
             >
               <label className="su-flex-grow su-max-w-full">
