@@ -33,7 +33,10 @@ async function checkCrawlerStatus() {
       "Content-Type": "application/json",
     },
   }).then((res) => res.json());
-  console.log(response);
+  console.log("Waiting for crawler to complete...");
+  console.log(
+    `Running: ${response.running}, Reindexing: ${response.reindexing}, Blocked: ${response.blocked}`
+  );
   return response;
 }
 
@@ -54,14 +57,18 @@ exports.handler = async function (event) {
 
   console.log("Starting crawl on Algolia search index...");
 
-  const response = await reindex();
+  await reindex();
 
-  // Poll status until crawl is complete. Timeout after 5 minutes.
+  // Poll status every 5 seconds until crawl is complete. Timeout after 14 minutes.
   console.log("Waiting for crawler to complete");
-  poll(checkCrawlerStatus, crawlComplete, 3000, 60 * 5 * 1000).then(
+  poll(checkCrawlerStatus, crawlComplete, 5000, 60 * 14 * 1000).then(
     (pollingResponse) => {
-      console.log("Crawl completed. Adding other items to index.");
-      indexMedia();
+      if (pollingResponse) {
+        console.log("Crawl completed. Adding other items to index.");
+        indexMedia();
+      } else {
+        console.error("Timed out waiting for crawler to finish.");
+      }
     }
   );
 };
