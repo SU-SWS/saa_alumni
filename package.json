@@ -13,6 +13,7 @@
     "@heroicons/react": "^1.0.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "algoliasearch": "^4.9.3",
+    "csv": "^5.5.0",
     "decanter-react": "^1.0.7-alpha.0",
     "gatsby": "^3.4.2",
     "gatsby-plugin-anchor-links": "^1.2.1",

@@ -2,14 +2,9 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 const fetch = require("node-fetch");
-const algoliasearch = require("algoliasearch");
 const xmlParser = require("xml2js").parseString;
+const csvStringify = require("csv-stringify/lib/sync");
 const config = require("./config/indexMedia.config");
-
-const client = algoliasearch(
-  process.env.GATSBY_ALGOLIA_APP_ID,
-  process.env.ALGOLIA_WRITE_KEY
-);
 
 async function getItunesPodcasts() {
   const podcastIds = config.itunes.podcasts;
@@ -23,13 +18,15 @@ async function getItunesPodcasts() {
       if (item.kind === "podcast-episode") {
         episodes.push({
           objectID: `itunes-${item.trackId}`,
-          podcast: item.collectionName,
+          domain: "podcasts.apple.com",
+          siteName: "Apple Podcasts",
+          collection: item.collectionName,
           title: item.trackName,
-          description: item.description,
+          body: item.description,
           url: item.trackViewUrl,
           image: item.artworkUrl160,
           releaseDate: item.releaseDate,
-          type: "itunes-podcast-episode",
+          fileType: "audio",
         });
       }
     }
@@ -53,13 +50,15 @@ async function getSoundcloudTracks() {
         const dateISO = dateObj.toISOString();
         soundcloudTracks.push({
           objectID: item.guid[0]._,
-          podcast: podcastName,
+          domain: "soundcloud.com",
+          siteName: "SoundCloud",
+          collection: podcastName,
           title: item.title[0],
-          description: item.description[0],
+          body: item.description[0],
           url: item.link[0],
           image,
           releaseDate: dateISO,
-          type: "soundcloud-podcast-episode",
+          fileType: "audio",
         });
       });
     });
@@ -82,13 +81,16 @@ async function getYoutubeVideos() {
       if (item.id.kind === "youtube#video") {
         videos.push({
           objectID: `youtube-${item.id.videoId}`,
+          domain: "www.youtube.com",
+          siteName: "YouTube",
+          collection: "",
           title: item.snippet.title,
           releaseDate: item.snippet.publishTime,
-          description: item.snippet.description,
+          body: item.snippet.description,
           // 120x90 thumbnail. 320x180 and 480x360 are also available.
           image: item.snippet.thumbnails.default.url,
           url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
-          type: "youtube-video",
+          fileType: "video",
         });
       }
     }
@@ -115,17 +117,29 @@ exports.handler = async (event, context) => {
     console.log("Fetching Youtube videos...");
     const youtubeVideos = await getYoutubeVideos();
 
-    console.log("Updating alumni_media index on Algolia...");
-    const index = client.initIndex("alumni_media");
-    await index.saveObjects(podcastEpisodes);
-    await index.saveObjects(soundcloudTracks);
-    await index.saveObjects(youtubeVideos);
+    const csv = await csvStringify(
+      podcastEpisodes.concat(soundcloudTracks, youtubeVideos),
+      {
+        header: true,
+        columns: [
+          "objectID",
+          "domain",
+          "siteName",
+          "collection",
+          "title",
+          "releaseDate",
+          "body",
+          "image",
+          "url",
+          "fileType",
+        ],
+      }
+    );
 
     return {
       statusCode: 200,
-      body: JSON.stringify({
-        message: "alumni_media index updated",
-      }),
+      headers: { "content-type": "text/csv" },
+      body: csv,
     };
   } catch (err) {
     console.log("Media indexing failed: ", err);
