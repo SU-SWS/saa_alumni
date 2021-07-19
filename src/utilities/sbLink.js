@@ -5,6 +5,7 @@ import Link from "gatsby-link";
 import { ArrowUpIcon } from "@heroicons/react/outline";
 import { dcnb } from "cnbuilder";
 import { assetURL, isNetlify } from "../contexts/GlobalContext";
+import { config } from "./config";
 
 /**
  * Reusable Storyblok Link component for various link types
@@ -106,16 +107,16 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // A link to a file or other asset.
   // ---------------------------------------------------------------------------
-  if (props.link?.linktype === "asset") {
+  if (props.link.linktype === "asset") {
     // Rewrite the URL to the redirect link to mask the API endpoint.
     if (isNetlify) {
       linkUrl = linkUrl.replace(
         /http?(s):\/\/a\.storyblok\.com/gi,
-        `${assetURL}a`
+        `${config.assetCdn}a`
       );
       linkUrl = linkUrl.replace(
         /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-        `${assetURL}i`
+        `${config.assetCdn}i`
       );
     }
 
