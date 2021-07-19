@@ -20,8 +20,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
     textColor = "su-text-black-20";
     linkColor = "su-text-digital-red-xlight hocus:su-text-white";
   }
-
-  let rendered = render(wysiwyg, {
+  const rendered = render(wysiwyg, {
     markResolvers: {
       [MARK_BOLD]: (children) => <strong>{children}</strong>,
       [MARK_ITALIC]: (children) => <em>{children}</em>,
