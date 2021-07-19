@@ -103,7 +103,7 @@ const SearchField = React.forwardRef(
                 />
               </label>
               <button
-                type="rest"
+                type="button"
                 onClick={clearHandler}
                 className={clearBtnClasses}
               >
