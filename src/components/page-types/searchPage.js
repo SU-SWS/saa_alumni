@@ -140,6 +140,7 @@ const SearchPage = (props) => {
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
                 onSubmit={(queryText) => submitSearchQuery(queryText)}
+                onReset={() => submitSearchQuery("")}
                 defaultValue={query}
                 autocompleteSuggestions={suggestions}
                 clearBtnClasses={clearBtnClasses}

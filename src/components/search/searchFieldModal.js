@@ -56,6 +56,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
       <SearchField
         onInput={(queryText) => updateAutocomplete(queryText)}
         onSubmit={(queryText) => submitSearchQuery(queryText)}
+        onReset={() => null}
         defaultValue={query}
         autocompleteSuggestions={suggestions}
         clearBtnClasses={clearBtnClasses}
