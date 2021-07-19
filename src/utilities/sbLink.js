@@ -4,7 +4,6 @@ import { parse } from "query-string";
 import Link from "gatsby-link";
 import { dcnb } from "cnbuilder";
 import { assetURL, isNetlify } from "../contexts/GlobalContext";
-import { config } from "./config";
 import HeroIcon from "../components/simple/heroIcon";
 
 /**
@@ -106,16 +105,16 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // A link to a file or other asset.
   // ---------------------------------------------------------------------------
-  if (props.link.linktype === "asset") {
+  if (props.link?.linktype === "asset") {
     // Rewrite the URL to the redirect link to mask the API endpoint.
     if (isNetlify) {
       linkUrl = linkUrl.replace(
         /http?(s):\/\/a\.storyblok\.com/gi,
-        `${config.assetCdn}a`
+        `${assetURL}a`
       );
       linkUrl = linkUrl.replace(
         /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-        `${config.assetCdn}i`
+        `${assetURL}i`
       );
     }
 
