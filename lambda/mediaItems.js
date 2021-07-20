@@ -23,7 +23,8 @@ async function getItunesPodcasts() {
           collection: item.collectionName,
           title: item.trackName,
           body: item.description,
-          url: item.trackViewUrl,
+          url: `https://media.alumni.stanford.edu/itunes/${item.trackId}`,
+          realUrl: item.trackViewUrl,
           image: item.artworkUrl160,
           releaseDate: item.releaseDate,
           fileType: "audio",
@@ -55,7 +56,8 @@ async function getSoundcloudTracks() {
           collection: podcastName,
           title: item.title[0],
           body: item.description[0],
-          url: item.link[0],
+          realUrl: item.link[0],
+          url: `https://media.alumni.stanford.edu/soundcloud/${item.guid[0]._}`,
           image,
           releaseDate: dateISO,
           fileType: "audio",
@@ -89,7 +91,8 @@ async function getYoutubeVideos() {
           body: item.snippet.description,
           // 120x90 thumbnail. 320x180 and 480x360 are also available.
           image: item.snippet.thumbnails.default.url,
-          url: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+          realUrl: `https://www.youtube.com/watch?v=${item.id.videoId}`,
+          url: `https://media.alumni.stanford.edu/youtube/${item.id.videoId}`,
           fileType: "video",
         });
       }
@@ -130,6 +133,7 @@ exports.handler = async (event, context) => {
           "releaseDate",
           "body",
           "image",
+          "realUrl",
           "url",
           "fileType",
         ],
