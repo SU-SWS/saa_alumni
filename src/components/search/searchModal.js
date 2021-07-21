@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Heading } from "decanter-react";
 import { useStaticQuery, graphql } from "gatsby";
 import Modal from "../layout/modal";
@@ -24,8 +24,25 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
     content = JSON.parse(story.content);
   }
 
+  const [showEmptyMessage, setShowEmptyMessage] = useState(false);
+  const searchSubmit = (queryText) => {
+    if (!queryText.length) {
+      setShowEmptyMessage(true);
+    } else {
+      setShowEmptyMessage(false);
+      setIsOpen(false);
+    }
+  };
+
   return (
-    <Modal isOpen={isOpen} onClose={onClose} initialFocus={searchFieldRef}>
+    <Modal
+      isOpen={isOpen}
+      onClose={() => {
+        onClose();
+        setShowEmptyMessage(false);
+      }}
+      initialFocus={searchFieldRef}
+    >
       <div className="su-max-w-1000 su-mx-auto">
         <Heading
           font="serif"
@@ -33,11 +50,15 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
           level={2}
           className="su-text-white su-text-center"
         >
-          Hello, what can we help you find today?
+          {!showEmptyMessage ? (
+            <div>{content.introduction}</div>
+          ) : (
+            <div>{content.emptySearchMessage}</div>
+          )}
         </Heading>
         <SearchFieldModal
           ref={searchFieldRef}
-          onSubmit={() => setIsOpen(false)}
+          onSubmit={(queryText) => searchSubmit(queryText)}
         />
         {story && content && (
           <div className="su-mt-108">
