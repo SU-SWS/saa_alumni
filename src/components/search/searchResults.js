@@ -14,12 +14,14 @@ const SearchResults = ({ results }) => {
       {results.hits.map((result) => (
         <div
           key={result.objectID}
-          className="su-p-30 sm:su-py-[4rem] su-border-b su-border-black-40"
+          className="su-py-30 sm:su-py-[4rem] lg:su-px-30 su-border-b su-border-black-40"
         >
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
             <div className="md:su-flex-1">
-              <div className="su-text-16 su-mb-10">{result.domain}</div>
-              <h3 className="su-text-24">
+              <div className="su-text-15 lg:su-text-16 su-mb-10">
+                {result.domain}
+              </div>
+              <h3 className="su-text-22 lg:su-text-24 su-pb-6">
                 <a
                   className="su-font-serif su-text-digital-red-light"
                   href={result.url}
@@ -28,6 +30,7 @@ const SearchResults = ({ results }) => {
                 </a>
               </h3>
               <div
+                className="su-text-16 lg:su-text-base"
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   // eslint-disable-next-line no-underscore-dangle
