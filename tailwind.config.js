@@ -57,7 +57,7 @@ module.exports = {
     require(dir + "/base/base.js")(),
 
     // @tailwind components;
-    require(decanter + "/components/form/input-base.js")(),
+    require(decanter + "/components/form/input.js")(),
     require(decanter + "/components/lists/lists.js")(),
     require(decanter + "/components/layout/centered-container.js")(),
     require(decanter + "/components/layout/grid-gap.js")(),
