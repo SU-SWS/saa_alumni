@@ -146,8 +146,9 @@ const SearchPage = (props) => {
           width="site"
           className="su-py-45 su-max-w-full md:su-py-80 "
         >
-
-          {showEmptyMessage && <p className="su-text-center">{blok.emptySearchMessage}</p>}
+          {showEmptyMessage && (
+            <p className="su-text-center">{blok.emptySearchMessage}</p>
+          )}
 
           <FlexBox gap justifyContent="center">
             <FlexCell xs="full" lg={results.facets ? 6 : 8}>
