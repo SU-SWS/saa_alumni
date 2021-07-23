@@ -21,7 +21,7 @@ const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
         return (
           <label
             key={option}
-            className={`su-flex su-items-center su-cursor-pointer su-text-19 ${
+            className={`su-label su-flex su-items-center su-cursor-pointer su-text-19 ${
               index ? "su-mt-20" : ""
             }`}
           >
@@ -30,7 +30,7 @@ const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
               value={option}
               name={attribute}
               defaultChecked={selectedOptions.includes(option)}
-              className="su-mr-15 su-max-w-[1.7rem] su-custom-checkbox su-max-h-[1.7rem] su-appearance-none !su-border su-rounded-[0.3rem]"
+              className="su-checkbox su-mr-15 su-max-w-[1.7rem] su-custom-checkbox su-max-h-[1.7rem] su-appearance-none !su-border su-rounded-[0.3rem]"
               onChange={(e) => handleCheckboxChange(e)}
             />
             <span>
