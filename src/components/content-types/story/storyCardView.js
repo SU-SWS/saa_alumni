@@ -140,8 +140,8 @@ const StoryCardView = ({
               <span className="su-italic">from</span> {source}
             </p>
           )}
-          {!hideTab && !hideImage && tabText && (cardFilename || filename) && (
-            <TabLabel text={tabText} aria-hidden="true" />
+          {!hideTab && !hideImage && (cardFilename || filename) && (
+            <TabLabel text={tabText || storyType} aria-hidden="true" />
           )}
           {(teaser || intro) && (
             <p className={dcnb("su-mb-0 su-leading-snug", teaserSize)}>

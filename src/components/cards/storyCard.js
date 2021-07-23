@@ -16,7 +16,7 @@ const StoryCard = ({
 }) => (
   <CreateStories
     stories={storyPicker}
-    tabText={tabText ?? "Story"}
+    tabText={tabText}
     layout="card"
     isBigText={isBigText}
     hideTab={hideTab}

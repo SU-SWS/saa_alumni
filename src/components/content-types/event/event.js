@@ -31,6 +31,8 @@ const Event = ({
   isBigHeadline,
   isMinimal,
   headingLevel,
+  tabText,
+  hideTab,
 }) => {
   // Link to external URL (always external for MVP)
   const eventLink = { linktype: "url", url: externalUrl } ?? "";
@@ -168,7 +170,7 @@ const Event = ({
             hideSrText
           />
         </SbLink>
-        {!isMinimal && <TabLabel text="Event" />}
+        {!isMinimal && !hideTab && <TabLabel text={tabText || "Event"} />}
         <div
           className={dcnb(
             "event-card-details su-card-paragraph",
