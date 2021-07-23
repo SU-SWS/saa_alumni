@@ -28,6 +28,7 @@ const Poster = ({
     isBigBodyText,
     layout,
     theme,
+    id,
   },
   blok,
 }) => {
@@ -83,6 +84,7 @@ const Poster = ({
           bgFilename,
           "linear-gradient(240deg, rgba(24, 29, 28) 10%, rgba(98, 0, 89, 0.85) 60%, rgb(177, 4, 14) 100%)"
         )}
+        id={id}
       >
         {filename?.startsWith("http") && (
           <CircularImage

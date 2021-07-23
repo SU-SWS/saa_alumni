@@ -9,7 +9,7 @@ import RichTextRenderer from "../../utilities/richTextRenderer";
 import WidthBox from "../layout/widthBox";
 
 const Wysiwyg = ({
-  blok: { content, width, spacingTop, spacingBottom, isLightText },
+  blok: { content, width, spacingTop, spacingBottom, isLightText, id },
   blok,
 }) => {
   const mySpacingTop = smallPaddingTop[spacingTop] ?? "";
@@ -20,6 +20,7 @@ const Wysiwyg = ({
       <WidthBox
         width={width ?? "edge-to-edge"}
         className={dcnb(mySpacingTop, mySpacingBottom)}
+        id={id}
       >
         <RichTextRenderer
           isDark={isLightText}
