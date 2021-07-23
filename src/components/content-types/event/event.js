@@ -75,7 +75,7 @@ const Event = ({
   }
 
   let wrapperClasses =
-    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm";
+    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md";
   let headlinePadding = "su-rs-px-2";
   let detailsPadding = "su-rs-px-2";
 
@@ -167,7 +167,6 @@ const Event = ({
             iconType="external"
             className="su-relative su-inline-block su-text-digital-red-xlight"
             isAnimate
-            hideSrText
           />
         </SbLink>
         {!isMinimal && !hideTab && <TabLabel text={tabText || "Event"} />}

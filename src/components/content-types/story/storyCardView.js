@@ -117,12 +117,18 @@ const StoryCardView = ({
             >
               {tabText &&
                 !hideTab &&
-                tabText !== "podcast" &&
-                tabText !== "video" && <SrOnlyText srText={`${tabText}: `} />}
+                !hideImage &&
+                tabText.toLowerCase() !== "podcast" &&
+                tabText.toLowerCase() !== "video" && (
+                  <SrOnlyText srText={`${tabText}: `} />
+                )}
               {(storyType === "podcast" || storyType === "video") && (
                 <HeroIcon
                   iconType={storyType}
                   className="su-inline-block su-mr-02em"
+                  srText={
+                    storyType !== tabText.toLowerCase() ? `${storyType}: ` : ""
+                  }
                 />
               )}
               {shortTitle || title}
@@ -132,7 +138,6 @@ const StoryCardView = ({
               iconType={pubLink ? "external" : "arrow-right"}
               className={`su-relative su-inline-block ${headlineIconColor}`}
               isAnimate
-              hideSrText
             />
           </SbLink>
           {source && (

@@ -57,7 +57,6 @@ const CtaButton = React.forwardRef(
                   iconType={icon}
                   className="su-inline-block"
                   isAnimate
-                  hideSrText
                 />
               )}
             </SbLink>
