@@ -3,13 +3,12 @@ import SbEditable from "storyblok-react";
 import ReactPlayer from "react-player";
 import { dcnb } from "cnbuilder";
 import WidthBox from "../layout/widthBox";
-import RichTextRenderer from "../../utilities/richTextRenderer";
 import {
   smallPaddingBottom,
   smallPaddingTop,
   mediaAspectRatio,
-  textAlign,
 } from "../../utilities/dataSource";
+import CaptionMedia from "./captionMedia";
 
 const VideoWrapper = ({
   blok: { spacingTop, spacingBottom, videoWidth },
@@ -49,7 +48,6 @@ const EmbedVideo = ({
 
   const convertToSecond = (min, sec) => min * 60 + sec;
   const aspectRatioStyle = mediaAspectRatio[aspectRatio ?? "16x9"];
-  const captionAlignment = textAlign[captionAlign ?? "left"];
 
   return (
     <SbEditable content={blok}>
@@ -68,15 +66,22 @@ const EmbedVideo = ({
             }}
           />
           {caption && (
-            <figcaption>
-              <RichTextRenderer
-                wysiwyg={caption}
-                className={dcnb(
-                  "su-caption su-mt-06em children:su-leading-snug",
-                  captionAlignment
-                )}
+            <>
+              <CaptionMedia
+                mediaWidth="edge-to-edge"
+                caption={caption}
+                captionAlign={captionAlign}
               />
-            </figcaption>
+            </>
+            // <figcaption>
+            //   <RichTextRenderer
+            //     wysiwyg={caption}
+            //     className={dcnb(
+            //       "su-caption su-mt-06em children:su-leading-snug",
+            //       captionAlignment
+            //     )}
+            //   />
+            // </figcaption>
           )}
         </figure>
       </VideoWrapper>
