@@ -9,12 +9,18 @@ import GlobalAlert from "../composite/globalAlert";
  * It incorporates the Local Header and the skip link, based on page settings.
  */
 
-const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => (
+const Header = ({
+  blok: { masthead, alert },
+  blok,
+  hasHero,
+  isDark,
+  mainContentId,
+}) => (
   <SbEditable content={blok}>
     <GlobalAlert />
     <CreateBloks blokSection={alert} />
     <Container element="header" width="full" className="su-relative su-z-20">
-      <Skiplink />
+      <Skiplink anchorLink={`#${mainContentId}`} />
       <CreateBloks blokSection={masthead} hasHero={hasHero} isDark={isDark} />
     </Container>
   </SbEditable>

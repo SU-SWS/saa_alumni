@@ -7,6 +7,7 @@ import getNumBloks from "../../utilities/getNumBloks";
 import Ankle from "../partials/ankle";
 import BasicContentNoSidebar from "../partials/basicContentNoSidebar";
 import BasicContentLeftSidebar from "../partials/basicContentLeftSidebar";
+import randomInteger from "../../utilities/randomInteger";
 
 const BasicPage = (props) => {
   // Destructure.
@@ -27,6 +28,7 @@ const BasicPage = (props) => {
   const numAbove = getNumBloks(aboveContent);
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
+  const mainContentSuffix = randomInteger(1000, 2000);
 
   // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
   let contentPadding = "su-rs-pb-7";
@@ -37,10 +39,14 @@ const BasicPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={numHero > 0} {...props}>
+      <Layout
+        hasHero={numHero > 0}
+        mainContentId={`main-content-${mainContentSuffix}`}
+        {...props}
+      >
         <Container
           element="main"
-          id="main-content"
+          id={`main-content-${mainContentSuffix}`}
           className="basic-page su-relative su-flex-grow su-w-full"
           width="full"
         >
