@@ -11,6 +11,7 @@ import CardImage from "../../media/cardImage";
 import HeroIcon from "../../simple/heroIcon";
 import CaptionMedia from "../../media/captionMedia";
 import Ankle from "../../partials/ankle";
+import randomInteger from "../../../utilities/randomInteger";
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -36,6 +37,7 @@ const StoryPageView = (props) => {
 
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
+  const uniqueIdSuffix = randomInteger(1000, 2000);
 
   let luxonPublished;
   let nicePublishedDate;
@@ -91,10 +93,10 @@ const StoryPageView = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout {...props}>
+      <Layout mainContentId={`main-content-${uniqueIdSuffix}`} {...props}>
         <Container
           element="main"
-          id="main-content"
+          id={`main-content-${uniqueIdSuffix}`}
           className="story-page su-relative su-flex-grow su-w-full su-basefont-23"
           width="full"
         >

@@ -5,6 +5,7 @@ import Layout from "../partials/layout";
 import Ankle from "../partials/ankle";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
+import randomInteger from "../../utilities/randomInteger";
 
 const DarkPage = (props) => {
   // Destructure.
@@ -26,25 +27,34 @@ const DarkPage = (props) => {
   const numContent = getNumBloks(content);
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
+  const uniqueIdSuffix = randomInteger(1000, 2000);
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={numHero > 0} isDark {...props}>
+      <Layout
+        hasHero={numHero > 0}
+        isDark
+        mainContentId={`main-content-${uniqueIdSuffix}`}
+        {...props}
+      >
         <Container
           element="main"
-          id="main-content"
+          id={`main-content-${uniqueIdSuffix}`}
           className="dark-page su-relative su-flex-grow su-w-full su-bg-saa-black su-text-white"
           width="full"
         >
           <header className="su-basefont-23">
-            <CreateBloks blokSection={hero} />
+            <CreateBloks
+              blokSection={hero}
+              pageTitleId={`page-title-${uniqueIdSuffix}`}
+            />
             <Container>
               <Heading
                 level={1}
                 align="center"
                 font="serif"
                 srOnly={isSrOnlyTitle}
-                id="page-title"
+                id={`page-title-${uniqueIdSuffix}`}
                 className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
               >
                 {title}
