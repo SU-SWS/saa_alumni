@@ -37,7 +37,7 @@ const StoryPageView = (props) => {
 
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
-  const uniqueIdSuffix = randomInteger(1000, 2000);
+  const uniqueIdSuffix = randomInteger(1000, 9999);
 
   let luxonPublished;
   let nicePublishedDate;

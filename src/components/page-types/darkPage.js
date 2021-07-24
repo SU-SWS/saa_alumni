@@ -27,7 +27,7 @@ const DarkPage = (props) => {
   const numContent = getNumBloks(content);
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
-  const uniqueIdSuffix = randomInteger(1000, 2000);
+  const uniqueIdSuffix = randomInteger(1000, 9999);
 
   return (
     <SbEditable content={blok}>

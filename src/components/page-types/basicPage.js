@@ -28,7 +28,7 @@ const BasicPage = (props) => {
   const numAbove = getNumBloks(aboveContent);
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
-  const uniqueIdSuffix = randomInteger(1000, 2000);
+  const uniqueIdSuffix = randomInteger(1000, 9999);
 
   // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
   let contentPadding = "su-rs-pb-7";
