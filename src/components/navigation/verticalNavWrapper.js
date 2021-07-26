@@ -1,6 +1,5 @@
 import React from 'react'
 import CreateBloks from "../../utilities/createBloks";
-import { dcnb } from "cnbuilder";
 
 const VerticalNavWrapper = ({blok: {items}}) => {
   
