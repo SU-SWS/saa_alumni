@@ -46,12 +46,7 @@ const SimpleImage = ({
 
   let processedImg = "";
   if (filename != null) {
-    let originalWidth = "";
-
-    // Get image width from URL of storyblok image
-    if (filename?.startsWith("http")) {
-      originalWidth = getImageWidth(filename);
-    }
+    const originalWidth = getImageWidth(filename);
 
     if (imageWidth === "edge-to-edge" && originalWidth > 2000) {
       processedImg = transformImage(filename, "/2000x0");
