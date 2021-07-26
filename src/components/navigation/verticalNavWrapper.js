@@ -6,7 +6,7 @@ const VerticalNavWrapper = ({blok: {items}}) => {
   
   return (
     <nav className='su-my-20' aria-label="Vertical Menu">
-      <ul class='su-list-none su-p-0'>
+      <ul className='su-list-none su-p-0'>
         <CreateBloks blokSection={items} />
       </ul>
     </nav>
