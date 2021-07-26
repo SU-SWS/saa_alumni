@@ -47,25 +47,24 @@ const SimpleImage = ({
   let processedImg = "";
   if (filename != null) {
     let originalWidth = "";
-    const imgWidth = getImageWidth(filename);
 
     // Get image width from URL of storyblok image
     if (filename?.startsWith("http")) {
-      // eslint-disable-next-line prefer-destructuring
-      originalWidth = filename.split("/")[5].split("x")[0];
+      originalWidth = getImageWidth(filename);
     }
 
-    if (imgWidth === "su-w-full" && originalWidth > 2000) {
+    if (imageWidth === "edge-to-edge" && originalWidth > 2000) {
       processedImg = transformImage(filename, "/2000x0");
-    } else if (imgWidth === "centered-container" && originalWidth > 1500) {
+    } else if (imageWidth === "center-container" && originalWidth > 1500) {
       processedImg = transformImage(filename, "/1500x0");
-    } else if (
-      (imgWidth === "su-w-story" || imgWidth === "fit-container") &&
-      originalWidth > 1000
-    ) {
+    } else if (imageWidth === "10" && originalWidth > 1300) {
+      processedImg = transformImage(filename, "/1300x0");
+    } else if (imageWidth === "8" && originalWidth > 1000) {
       processedImg = transformImage(filename, "/1000x0");
-    } else if (imgWidth === "su-w-inset" && originalWidth > 700) {
-      processedImg = transformImage(filename, "/700x0");
+    } else if (imageWidth === "6" && originalWidth > 800) {
+      processedImg = transformImage(filename, "/800x0");
+    } else if (imageWidth === "4" && originalWidth > 600) {
+      processedImg = transformImage(filename, "/600x0");
     }
     // If no downsizing is needed, just run it through transformImage to reduce jpg quality to 60%
     else {
