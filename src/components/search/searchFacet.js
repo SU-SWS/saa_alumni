@@ -49,6 +49,8 @@ const SearchFacet = ({
             </label>
           );
         }
+
+        return null;
       })}
     </div>
   );
