@@ -43,13 +43,10 @@ import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
 import Story from "./content-types/story/story";
 import StoryCard from "./cards/storyCard";
-import Wysiwyg from "./simple/wysiwyg";
-import Redirect from "./redirect/Redirect";
-import Alert from "./composite/alert";
-import AlertCtaLink from "./cta/alertCtaLink";
 import VerticalNav from "./navigation/verticalNav"
 import VerticalNavWrapper from "./navigation/verticalNavWrapper"
 import VerticalNavItem from "./navigation/verticalNavItem"
+import Wysiwyg from "./simple/wysiwyg";
 
 const ComponentList = {
   alert: Alert,
@@ -95,11 +92,11 @@ const ComponentList = {
   simpleImage: SimpleImage,
   story: Story,
   storyCard: StoryCard,
-  wysiwyg: Wysiwyg,
   redirect: Redirect,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
-  verticalNavItem: VerticalNavItem
+  verticalNavItem: VerticalNavItem,
+  wysiwyg: Wysiwyg
 };
 
 const Components = (type) => {
