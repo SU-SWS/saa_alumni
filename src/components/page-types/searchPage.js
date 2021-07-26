@@ -211,6 +211,7 @@ const SearchPage = (props) => {
                     selectedOptions={selectedFacets.fileType}
                     onChange={(values) => updateFileTypeFacet(values)}
                     className="su-mt-58"
+                    optionClasses="su-capitalize"
                     exclude={["html", "pdf"]}
                   />
                 )}

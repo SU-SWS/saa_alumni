@@ -7,6 +7,7 @@ const SearchFacet = ({
   selectedOptions,
   onChange,
   className,
+  optionClasses,
   exclude = [],
 }) => {
   const handleCheckboxChange = (e) => {
@@ -42,7 +43,7 @@ const SearchFacet = ({
                 className="su-mr-15 su-max-w-[1.7rem] su-custom-checkbox su-max-h-[1.7rem] su-appearance-none !su-border su-rounded-[0.3rem]"
                 onChange={(e) => handleCheckboxChange(e)}
               />
-              <span>
+              <span className={optionClasses}>
                 {option}
                 <span> ({count.toLocaleString("en-us")})</span>
               </span>

@@ -36,10 +36,10 @@ const SearchResults = ({ results }) => {
                     <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-top su-mt-4 su-inline-block" />
                   )}
                   {result.title}
-                  {result.domain.match(/stanford.edu/) && (
+                  {result.domain.match(/^alumni.stanford.edu/) && (
                     <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4" />
                   )}
-                  {!result.domain.match(/stanford.edu/) && (
+                  {!result.domain.match(/^alumni.stanford.edu/) && (
                     <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4 su-transform su--rotate-45" />
                   )}
                 </a>
