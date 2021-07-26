@@ -1,24 +1,9 @@
 import React, { useState } from 'react'
-import { useStaticQuery, graphql } from "gatsby";
 import VerticalNavWrapper from "./verticalNavWrapper";
 
-const VerticalNav = ({vertical_nav}) => {
-  const data = useStaticQuery(graphql`
-    {
-      storyblokEntry(uuid: { eq: "20d82df6-b631-4f94-aa52-83633a8133ea" }) {
-        content
-      }
-    }
-  `);
+const VerticalNav = ({blok: {vertical_nav}}) => {
 
-  let story;
-  let content;
-  
-  if (data) {
-    story = data.storyblokEntry;
-    content = JSON.parse(story.content);
-  }
-
+  // TODO: Add breakpoint function to toggle state of navigation based on the screensize
   const [toggleNav, setToggleNav]=useState(true)
   const showNav=()=> setToggleNav(!toggleNav);
 
@@ -28,7 +13,7 @@ const VerticalNav = ({vertical_nav}) => {
       aria-label='Open section menu' 
       aria-expanded={toggleNav ? true : false}>
         Section Menu</button>
-      {toggleNav && <VerticalNavWrapper className="su-hidden sm:su-block" blok={content} />}
+      {toggleNav && <VerticalNavWrapper className="su-hidden sm:su-block" blok={vertical_nav[0].content} />}
     </>
   )
 }
