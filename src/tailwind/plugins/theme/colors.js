@@ -34,5 +34,6 @@ module.exports = function () {
     instagram: "#d73676",
     linkedin: "#0077b5",
     youtube: "#FF0000",
+    gray: "#D5D5D4", // Used for top border in Vertical Navigation
   };
 };
