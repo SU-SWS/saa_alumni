@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Heading } from "decanter-react";
-import { useStaticQuery, graphql } from "gatsby";
+import {useStaticQuery, graphql, navigate} from "gatsby";
 import Modal from "../layout/modal";
 import SearchFieldModal from "./searchFieldModal";
 import SearchSuggestions from "./searchSuggestions";
@@ -30,6 +30,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
       setShowEmptyMessage(true);
     } else {
       setShowEmptyMessage(false);
+      navigate(`/search?q=${queryText}`);
       setIsOpen(false);
     }
   };
@@ -58,6 +59,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
         </Heading>
         <SearchFieldModal
           ref={searchFieldRef}
+          emptySearch={showEmptyMessage}
           onSubmit={(queryText) => searchSubmit(queryText)}
         />
         {story && content && (
