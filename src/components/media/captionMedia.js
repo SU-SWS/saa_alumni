@@ -9,6 +9,7 @@ const CaptionMedia = ({
   caption,
   isInsetCaption,
   captionAlign,
+  captionClass,
   ...props
 }) => {
   // Caption align is default to right-aligned
