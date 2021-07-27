@@ -1,5 +1,10 @@
 import React from "react";
 import sanitize from "sanitize-html";
+import {
+  VideoCameraIcon,
+  MicrophoneIcon,
+  ArrowRightIcon,
+} from "@heroicons/react/outline";
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -24,7 +29,19 @@ const SearchResults = ({ results }) => {
                   className="su-font-serif su-text-digital-red-light"
                   href={result.url}
                 >
+                  {result.fileType === "video" && (
+                    <VideoCameraIcon className="su-w-20 su-h-20 su-mr-5 su-align-top su-mt-2 su-inline-block" />
+                  )}
+                  {result.fileType === "audio" && (
+                    <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-top su-mt-4 su-inline-block" />
+                  )}
                   {result.title}
+                  {result.domain.match(/^alumni.stanford.edu/) && (
+                    <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4" />
+                  )}
+                  {!result.domain.match(/^alumni.stanford.edu/) && (
+                    <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4 su-transform su--rotate-45" />
+                  )}
                 </a>
               </h3>
               <div
