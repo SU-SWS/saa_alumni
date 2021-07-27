@@ -25,11 +25,14 @@ const SearchPage = (props) => {
   const [queryParam, setQueryParam] = useQueryParam("q", StringParam);
   const [pageParam, setPageParam] = useQueryParam("page", NumberParam);
   const [siteParam, setSiteParam] = useQueryParam("site", ArrayParam);
+  const [fileTypeParam, setFileTypeParam] = useQueryParam("type", ArrayParam);
   const [query, setQuery] = useState(queryParam || "");
   const [page, setPage] = useState(pageParam || 0);
   const [selectedFacets, setSelectedFacets] = useState({
     siteName: siteParam || [],
+    fileType: fileTypeParam || [],
   });
+  const [showEmptyMessage, setShowEmptyMessage] = useState(false);
 
   const client = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
@@ -53,11 +56,20 @@ const SearchPage = (props) => {
   };
 
   // Submit handler for search input.
-  const submitSearchQuery = (queryText) => {
-    setPageParam(undefined);
-    setQueryParam(queryText || undefined);
-    setPage(0);
-    setQuery(queryText);
+  const submitSearchQuery = (queryText, action = "submit") => {
+    if (!queryText.length) {
+      if (action === "submit") {
+        setShowEmptyMessage(true);
+      } else {
+        setShowEmptyMessage(false);
+      }
+    } else {
+      setShowEmptyMessage(false);
+      setPageParam(undefined);
+      setQueryParam(queryText || undefined);
+      setPage(0);
+      setQuery(queryText);
+    }
   };
 
   // Update page parameter when pager link is selected.
@@ -77,6 +89,16 @@ const SearchPage = (props) => {
     setSiteParam(values);
   };
 
+  // Update facet values when facet is selected.
+  const updateFileTypeFacet = (values) => {
+    const newFacets = { ...selectedFacets };
+    newFacets.fileType = values;
+    setSelectedFacets(newFacets);
+    setPageParam(undefined);
+    setPage(0);
+    setFileTypeParam(values);
+  };
+
   // Fetch search results from Algolia. (Typically triggered by state changes in useEffect())
   const updateSearchResults = () => {
     const facetFilters = Object.keys(selectedFacets).map((attribute) =>
@@ -87,7 +109,7 @@ const SearchPage = (props) => {
       .search(query, {
         hitsPerPage,
         page,
-        facets: ["domain", "siteName"],
+        facets: ["domain", "siteName", "fileType"],
         facetFilters,
       })
       .then((queryResults) => {
@@ -136,12 +158,16 @@ const SearchPage = (props) => {
           width="site"
           className="su-py-45 su-max-w-full md:su-py-80 "
         >
+          {showEmptyMessage && (
+            <p className="su-text-center">{blok.emptySearchMessage}</p>
+          )}
+
           <FlexBox gap justifyContent="center">
             <FlexCell xs="full" lg={results.facets ? 6 : 8}>
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
                 onSubmit={(queryText) => submitSearchQuery(queryText)}
-                onReset={() => submitSearchQuery("")}
+                onReset={() => submitSearchQuery("", "reset")}
                 defaultValue={query}
                 autocompleteSuggestions={suggestions}
                 clearBtnClasses={clearBtnClasses}
@@ -169,10 +195,23 @@ const SearchPage = (props) => {
               <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
                 {results.facets.siteName && (
                   <SearchFacet
+                    label="Sites"
                     attribute="siteName"
                     facetValues={results.facets.siteName}
                     selectedOptions={selectedFacets.siteName}
                     onChange={(values) => updateSiteFacet(values)}
+                    exclude={["YouTube", "SoundCloud", "Apple Podcasts"]}
+                  />
+                )}
+                {results.facets.fileType && (
+                  <SearchFacet
+                    label="Media"
+                    attribute="fileType"
+                    facetValues={results.facets.fileType}
+                    selectedOptions={selectedFacets.fileType}
+                    onChange={(values) => updateFileTypeFacet(values)}
+                    optionClasses="su-capitalize"
+                    exclude={["html", "pdf"]}
                   />
                 )}
               </FlexCell>
