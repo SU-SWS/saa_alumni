@@ -18,7 +18,10 @@ const WidthBox = ({ width, className, children, ...props }) => {
   // Options for grid width if not edge-to-edge
   let columnSpan = "";
 
-  if (width === "6") {
+  if (width === "4") {
+    columnSpan =
+      "su-col-span-12 sm:su-col-span-10 sm:su-col-start-2 md:su-col-span-8 md:su-col-start-3 lg:su-col-span-6 lg:su-col-start-4 xl:su-col-span-4 xl:su-col-start-5";
+  } else if (width === "6") {
     columnSpan =
       "su-col-span-12 md:su-col-span-10 md:su-col-start-2 lg:su-col-span-8 lg:su-col-start-3 xl:su-col-span-6 xl:su-col-start-4";
   } else if (width === "8") {

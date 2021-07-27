@@ -31,8 +31,7 @@ const CaptionMedia = ({
               wysiwyg={caption}
               className={dcnb(
                 "su-caption su-text-black-70 su-max-w-prose su-mt-08em children:su-leading-snug",
-                captionAlignStyles,
-                captionClass
+                captionAlignStyles
               )}
             />
           </figcaption>

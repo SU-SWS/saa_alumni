@@ -30,7 +30,7 @@ const SimpleImage = ({
 
   let wrapperHeight = "";
   let imageStyle = "";
-  let captionContainer = "";
+  let isInsetCaption = "";
   if (imageWidth === "edge-to-edge") {
     wrapperHeight = "su-relative su-w-full su-overflow-hidden";
     imageStyle = "su-h-full su-w-full su-object-cover";
@@ -40,7 +40,7 @@ const SimpleImage = ({
     }
 
     if (isCaptionCenter) {
-      captionContainer = "su-cc";
+      isInsetCaption = true;
     }
   }
 
@@ -73,8 +73,8 @@ const SimpleImage = ({
         mediaWidth={imageWidth}
         caption={caption}
         captionAlign={captionAlign}
-        captionClass={captionContainer}
         className={dcnb(spacingTopStyle, spacingBottomStyle)}
+        isInsetCaption={isInsetCaption}
       >
         <div className={wrapperHeight}>
           <img
