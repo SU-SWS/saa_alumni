@@ -38,6 +38,7 @@ import SearchField from "./search/searchField";
 import SearchPage from "./page-types/searchPage";
 import SearchPager from "./search/searchPager";
 import SearchResults from "./search/searchResults";
+import SearchSuggestions from "./search/searchSuggestions";
 import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
 import Story from "./content-types/story/story";
@@ -83,6 +84,7 @@ const ComponentList = {
   searchPage: SearchPage,
   searchPager: SearchPager,
   searchResults: SearchResults,
+  searchSuggestions: SearchSuggestions,
   section: Section,
   simpleImage: SimpleImage,
   story: Story,

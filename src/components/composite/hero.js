@@ -24,7 +24,6 @@ const Hero = ({
     sansSub,
     serifSuper,
     headline,
-    scrollTo,
   },
   blok,
 }) => {
@@ -115,7 +114,7 @@ const Hero = ({
             >
               <p className="su-mb-02em">Scroll to explore</p>
               <a
-                href={`#${scrollTo}`}
+                href="#page-title"
                 className="su-block su-mx-auto su-w-fit su-group"
               >
                 <SrOnlyText srText="Jump to main content" />

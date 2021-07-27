@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import SbEditable from "storyblok-react";
 import { Container, FlexBox, FlexCell } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import CreateBloks from "../../utilities/createBloks";
 import Logo from "./logo";
 import OpenSearchModalButton from "../search/openSearchModalButton";
+import SearchModal from "../search/searchModal";
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+
   let mainNavBgColorXl =
     "xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden";
   let mainNavBgColorLg =
@@ -39,7 +42,10 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           <FlexCell className="su-flex su-items-center su-rs-py-1">
             <Logo className="su-w-[18rem]" />
           </FlexCell>
-          <OpenSearchModalButton />
+          <OpenSearchModalButton
+            openOpen={modalOpen}
+            setModalOpen={setModalOpen}
+          />
           <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
         </FlexBox>
       </Container>
@@ -79,7 +85,10 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
                   />
                 </ul>
               </nav>
-              <OpenSearchModalButton />
+              <OpenSearchModalButton
+                openOpen={modalOpen}
+                setModalOpen={setModalOpen}
+              />
             </FlexBox>
             <CreateBloks
               blokSection={mainNav}
@@ -95,6 +104,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           )}
         />
       </Container>
+      <SearchModal
+        isOpen={modalOpen}
+        setIsOpen={setModalOpen}
+        onClose={() => setModalOpen(false)}
+      />
     </SbEditable>
   );
 };
