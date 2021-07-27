@@ -29,12 +29,6 @@ const SearchFacet = ({ facetValues, attribute, selectedOptions, onChange }) => {
     onChange(values);
   };
 
-  const handleKeyUp = (e) => {
-    if (e.key === "Enter") {
-      handleCheckboxChange(e);
-    }
-  };
-
   const filters = (
     <div className="filters">
       <p className="su-text-21 su-font-semibold">Filter by</p>
