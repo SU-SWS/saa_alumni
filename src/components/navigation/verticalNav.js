@@ -15,7 +15,9 @@ const VerticalNav = ({ blok: { verticalNav } }) => {
 
   return (
     <nav
-      className={`${navOpened ? "su-shadow-xl" : ""} su-relative su-mx-8 su-my-20`}
+      className={`${
+        navOpened ? "su-shadow-xl" : ""
+      } su-relative su-mx-8 su-my-20`}
       aria-label="Vertical Menu"
     >
       <button
