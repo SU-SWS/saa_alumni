@@ -1,5 +1,6 @@
 import React from "react";
 import sanitize from "sanitize-html";
+import { CtaLink } from "decanter-react";
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -18,16 +19,18 @@ const SearchResults = ({ results }) => {
         >
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
             <div className="md:su-flex-1">
-              <div className="su-text-15 lg:su-text-16 su-mb-10">
+              <div className="su-text-15 lg:su-text-16 su-pb-10">
                 {result.domain}
               </div>
               <h3 className="su-text-22 lg:su-text-24 su-pb-6">
-                <a
-                  className="su-font-serif su-text-digital-red-light"
+                <CtaLink
+                  text={result.title}
+                  srText={result.title}
+                  animate="top-right"
+                  className="su-text-22 lg:su-text-24 su-pb-6 su-font-serif su-text-digital-red-light hocus:su-underline"
+                  icon="external"
                   href={result.url}
-                >
-                  {result.title}
-                </a>
+                />
               </h3>
               <div
                 className="su-text-16 lg:su-text-base"
