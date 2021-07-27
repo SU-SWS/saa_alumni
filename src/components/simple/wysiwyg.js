@@ -22,7 +22,7 @@ const Wysiwyg = ({
       <WidthBox
         width={width ?? "edge-to-edge"}
         className={dcnb(mySpacingTop, mySpacingBottom)}
-        id={wysiwygId}
+        id={id ? wysiwygId : ""}
       >
         <RichTextRenderer
           isDark={isLightText}

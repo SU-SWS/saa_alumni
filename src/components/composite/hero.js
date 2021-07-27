@@ -26,7 +26,6 @@ const Hero = ({
     headline,
   },
   blok,
-  pageTitleId,
 }) => {
   let heroHeadlineSize =
     "su-text-m3 md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900";
@@ -114,7 +113,7 @@ const Hero = ({
             >
               <p className="su-mb-02em">Scroll to explore</p>
               <a
-                href={`#${pageTitleId}`}
+                href="#page-title"
                 className="su-block su-mx-auto su-w-fit su-group"
               >
                 <SrOnlyText srText="Jump to main content" />

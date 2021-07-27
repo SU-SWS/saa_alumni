@@ -87,7 +87,7 @@ const Section = ({
           paddingTop,
           paddingBottom
         )}
-        id={sectionId}
+        id={id ? sectionId : ""}
       >
         {hasHeader && (
           <header className={dcnb("su-cc", alignment, headerSpacing)}>
