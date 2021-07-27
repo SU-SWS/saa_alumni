@@ -15,7 +15,7 @@ const VerticalNav = ({ blok: { verticalNav } }) => {
 
   return (
     <nav
-      className={`${navOpened ? "su-shadow-lg" : ""}  su-my-20`}
+      className={`${navOpened ? "su-shadow-xl" : ""} su-relative su-mx-8 su-my-20`}
       aria-label="Vertical Menu"
     >
       <button
@@ -32,13 +32,13 @@ const VerticalNav = ({ blok: { verticalNav } }) => {
         />
       </button>
       <VerticalNavWrapper
-        className="su-hidden lg:su-block desktop-menu"
+        className="su-hidden lg:su-block"
         blok={verticalNav[0].content}
       />
 
       {navOpened && (
         <VerticalNavWrapper
-          className="lg:su-hidden su-block mobile-menu"
+          className="lg:su-hidden su-block su-absolute su-shadow-xl su-bg-white su-w-full"
           blok={verticalNav[0].content}
         />
       )}

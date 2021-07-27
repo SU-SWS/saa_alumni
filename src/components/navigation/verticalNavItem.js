@@ -6,8 +6,14 @@ const VerticalNavItem = ({
   blok: { text, link, childItems },
   showNestedLevels,
 }) => {
-  // Check if current link is active
-  const isActive = window.location.href.indexOf(link.cached_url) > -1;
+
+  let isActive;
+  const isBrowser = typeof window !== "undefined";
+ 
+  // Check is browser and if current link is active
+  if (isBrowser) {
+     isActive = window.location.href.indexOf(link.cached_url) > -1;
+  }
 
   return (
     <li className="su-m-0">
