@@ -1,28 +1,33 @@
-import React from 'react'
-import SbLink from '../../utilities/sbLink';
+import React from "react";
+import SbLink from "../../utilities/sbLink";
 import CreateBloks from "../../utilities/createBloks";
 
-const VerticalNavItem = ({blok: {text, link, child_items, is_top_level}}) => {
-  
+const VerticalNavItem = ({
+  blok: { text, link, childItems },
+  showNestedLevels,
+}) => {
   // Check if current link is active
-  const isActive = window.location.href.indexOf(link.cached_url) > -1 ? true : false;
+  const isActive = window.location.href.indexOf(link.cached_url) > -1;
 
   return (
-      <li className={`${ is_top_level ? "su-border-t su-border-solid su-border-gray su-basefont-21 su-py-12" : "su-py-4" } su-m-0 su-basefont-20`}>
-        <SbLink
-        classes={`su-no-underline su-py-2 su-block su-pl-15 su-transition-all hover:su-text-black ${ isActive ? "su-text-black su-border-l-4 su-border-black-90 " : "" }`}
+    <li className="su-m-0">
+      <SbLink
+        classes={`su-no-underline su-border-l-4 su-py-14 su-block su-pl-10 su-transition-all hover:su-text-cardinal-red-xdark hover:su-border-cardinal-red-xdark hover:su-underline focus:su-text-cardinal-red-xdark focus:su-border-cardinal-red-xdark focus:su-underline 
+        ${isActive ? "su-text-black su-border-black-90 " : "su-border-white"}
+        `}
         link={link}
       >
         {text}
       </SbLink>
-        
-        {!!child_items.length && isActive &&
-        <ul className={`${ is_top_level ? "su-py-12" : "" } su-list-none su-pl-30`}>
-          <CreateBloks blokSection={child_items} />
-          </ul>
-        }
-      </li>
-  )
-}
+
+      {((!!childItems.length && isActive) ||
+        (!!childItems.length && showNestedLevels)) && (
+        <ul className="su-pb-15 su-list-none su-pl-20 children:children:su-py-6 children:children:su-text-20">
+          <CreateBloks blokSection={childItems} />
+        </ul>
+      )}
+    </li>
+  );
+};
 
 export default VerticalNavItem;

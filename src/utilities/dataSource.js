@@ -8,7 +8,6 @@ export const borderColors = {
   "palo-verde": "su-border-palo-verde",
   plum: "su-border-plum",
   poppy: "su-border-poppy",
-  gray: "su-border-gray"
 };
 
 export const bgColors = {

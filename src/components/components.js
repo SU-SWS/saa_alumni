@@ -43,9 +43,9 @@ import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
 import Story from "./content-types/story/story";
 import StoryCard from "./cards/storyCard";
-import VerticalNav from "./navigation/verticalNav"
-import VerticalNavWrapper from "./navigation/verticalNavWrapper"
-import VerticalNavItem from "./navigation/verticalNavItem"
+import VerticalNav from "./navigation/verticalNav";
+import VerticalNavWrapper from "./navigation/verticalNavWrapper";
+import VerticalNavItem from "./navigation/verticalNavItem";
 import Wysiwyg from "./simple/wysiwyg";
 
 const ComponentList = {
@@ -96,7 +96,7 @@ const ComponentList = {
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,
-  wysiwyg: Wysiwyg
+  wysiwyg: Wysiwyg,
 };
 
 const Components = (type) => {

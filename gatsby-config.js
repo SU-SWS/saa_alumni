@@ -18,7 +18,7 @@ const storyblokRelations = [
   "perkCardHorizontal.perkPicker",
   "storyCard.storyPicker",
   "alertPicker.alert",
-  "verticalNav.vertical_nav",
+  "verticalNav.verticalNav",
 ];
 
 module.exports = {
