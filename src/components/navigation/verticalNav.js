@@ -18,13 +18,13 @@ const VerticalNav = ({ blok: { verticalNav } }) => {
       className={`${
         navOpened ? "su-shadow-xl" : ""
       } su-relative su-mx-8 su-my-20`}
-      aria-label="Vertical Menu"
+      aria-label="Section Menu"
     >
       <button
         type="button"
         className="lg:su-hidden su-w-full su-flex su-justify-between su-font-semibold su-items-center su-mt-20"
         onClick={toggleNav}
-        aria-label="Open section menu"
+        aria-label={`${navOpened ? "Close" : "Open"} section menu`}
         aria-expanded={!!navOpened}
       >
         <span>{navOpened ? "Close" : "Section menu"}</span>
@@ -33,12 +33,14 @@ const VerticalNav = ({ blok: { verticalNav } }) => {
           className="su-transition-colors su-w-[2.4rem] group-hocus:su-text-digital-red-xlight"
         />
       </button>
-      <VerticalNavWrapper
-        className="su-hidden lg:su-block"
-        blok={verticalNav[0].content}
-      />
+      {typeof verticalNav[0].content !== `undefined` && (
+        <VerticalNavWrapper
+          className="su-hidden lg:su-block"
+          blok={verticalNav[0].content}
+        />
+      )}
 
-      {navOpened && (
+      {navOpened && typeof verticalNav[0].content !== `undefined` && (
         <VerticalNavWrapper
           className="lg:su-hidden su-block su-absolute su-shadow-xl su-bg-white su-w-full"
           blok={verticalNav[0].content}

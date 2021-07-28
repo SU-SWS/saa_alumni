@@ -17,7 +17,7 @@ const VerticalNavItem = ({
   return (
     <li className="su-m-0">
       <SbLink
-        classes={`su-no-underline su-border-l-4 su-py-14 su-block su-pl-10 su-transition-all hover:su-text-cardinal-red-xdark hover:su-border-cardinal-red-xdark hover:su-underline focus:su-text-cardinal-red-xdark focus:su-border-cardinal-red-xdark focus:su-underline 
+        classes={`su-no-underline su-border-l-5 su-py-14 su-block su-pl-10 su-transition-all hocus:su-text-cardinal-red-xdark hocus:su-border-cardinal-red-xdark hocus:su-underline 
         ${isActive ? "su-text-black su-border-black-90 " : "su-border-white"}
         `}
         link={link}
