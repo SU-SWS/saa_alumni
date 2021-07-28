@@ -4,12 +4,15 @@ import { Grid as DrGrid } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import CreateBloks from "../../utilities/createBloks";
 import WidthBox from "./widthBox";
+import { justifyItems } from "../../utilities/dataSource";
 
 const Grid = ({
   blok: { removeGap, numCol, content, width, isStretchItems, alignment },
   blok,
   isDark,
 }) => {
+  const alignmentClasses = justifyItems[alignment] || justifyItems.center;
+
   // Options to have regular grid gap or 1px horizontal gaps
   let gapClasses = "su-grid-gap";
 
@@ -24,10 +27,6 @@ const Grid = ({
   if (isStretchItems) {
     itemClasses = "su-items-stretch";
   }
-
-  const alignmentClasses = alignment
-    ? `su-justify-items-${alignment}`
-    : "su-justify-items-center";
 
   let grid = (
     <DrGrid

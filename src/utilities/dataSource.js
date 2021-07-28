@@ -184,6 +184,12 @@ export const horizontalAlign = {
   right: "su-ml-auto",
 };
 
+export const justifyItems = {
+  start: "su-justify-items-start",
+  center: "su-justify-items-center",
+  end: "su-justify-items-end",
+};
+
 export const mediaAspectRatio = {
   "16x9": "su-aspect-w-16 su-aspect-h-9",
   "4x3": "su-aspect-w-4 su-aspect-h-3",
