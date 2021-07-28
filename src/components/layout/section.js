@@ -3,6 +3,7 @@ import SbEditable from "storyblok-react";
 import { Container, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import { render } from "storyblok-rich-text-react-renderer";
+import nextId from "react-id-generator";
 import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import getNumBloks from "../../utilities/getNumBloks";
@@ -33,6 +34,7 @@ const Section = ({
   },
   blok,
 }) => {
+  const sectionId = nextId(`${id}-`);
   const numCta = getNumBloks(cta);
   const renderedIntro = render(intro);
   const numIntro = getNumBloks(renderedIntro);
@@ -85,7 +87,7 @@ const Section = ({
           paddingTop,
           paddingBottom
         )}
-        id={id}
+        id={id ? sectionId : ""}
       >
         {hasHeader && (
           <header className={dcnb("su-cc", alignment, headerSpacing)}>

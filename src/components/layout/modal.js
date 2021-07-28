@@ -65,8 +65,8 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
 
   return (
     <div
-      className={`su-modal 
-      su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center 
+      className={`su-modal
+      su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center
       su-justify-center su-z-50 su-pointer-events-none
       ${isOpen ? "su-flex" : "su-hidden"}
     `}
@@ -83,7 +83,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
                 type="button"
                 ref={closeButton}
                 onClick={onClose}
-                className="su-bg-transparent hover:su-bg-transparent focus:su-bg-transparent"
+                className="su-bg-transparent su-text-white hover:su-bg-transparent focus:su-bg-transparent"
               >
                 Close&nbsp;
                 <XIcon

@@ -53,7 +53,7 @@ const MainMenuGroup = ({
           panelOpened
             ? "lg:hocus:su-text-white !su-bg-cardinal-red-xxdark lg:!su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark hover:!su-bg-digital-red lg:hover:!su-bg-cardinal-red-xdark"
             : ""
-        } su-group ${buttonMobile} ${buttonDesktop} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
+        } su-group su-text-white su-transition-colors ${buttonMobile} ${buttonDesktop} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
       >
         {parentText}
         {parentTextSecond && (
