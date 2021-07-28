@@ -32,7 +32,7 @@ const Grid = ({
   let grid = (
     <DrGrid
       xs={1}
-      md={2}
+      md={width === "4" || width === "6" ? 1 : 2}
       xl={parseInt(numCol, 10)}
       className={dcnb(
         "su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
