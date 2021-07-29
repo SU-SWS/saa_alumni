@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import VerticalNavWrapper from "./verticalNavWrapper";
 
-const VerticalNav = ({ blok: { verticalNav } }) => {
+const VerticalNav = ({ blok: { verticalNav }, className }) => {
   const [navOpened, setNavOpened] = useState(false);
   const toggleNav = () => {
     setNavOpened(!navOpened);
@@ -17,7 +17,9 @@ const VerticalNav = ({ blok: { verticalNav } }) => {
     <nav
       className={`${
         navOpened ? "su-shadow-xl" : ""
-      } su-relative su-mx-8 su-my-20`}
+      } 
+      ${className}
+      su-relative su-mx-20 su-my-20`}
       aria-label="Section Menu"
     >
       <button
@@ -42,7 +44,7 @@ const VerticalNav = ({ blok: { verticalNav } }) => {
 
       {navOpened && typeof verticalNav[0].content !== `undefined` && (
         <VerticalNavWrapper
-          className="lg:su-hidden su-block su-absolute su-shadow-xl su-bg-white su-w-full"
+          className="lg:su-hidden su-block su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full"
           blok={verticalNav[0].content}
         />
       )}
