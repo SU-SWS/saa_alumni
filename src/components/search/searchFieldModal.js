@@ -22,7 +22,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   su-rs-px-1 su-py-10 su-text-m4 focus:su-outline-none`;
 
   const submitBtnClasses = `su-w-70 su-h-70 su-rounded-full su-transition-colors su-bg-digital-red hocus:su-bg-black
-   su-p-13 su-origin-center su-transform su-rotate-90 su-ml-20`;
+   su-p-13 su-origin-center su-ml-20`;
 
   const clearBtnClasses = `su-flex su-items-center su-transition-colors su-bg-transparent hover:su-bg-transparent
   hover:su-text-digital-red-xlight hover:su-no-underline focus:su-no-underline su-text-21 su-font-semibold
