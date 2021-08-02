@@ -3,36 +3,27 @@ import SbLink from "../../utilities/sbLink";
 import CreateBloks from "../../utilities/createBloks";
 
 const VerticalNavItem = ({
-  blok: { text, link, childItems },
+  blok: { text, link, childItems, active, activeTrail },
   showNestedLevels,
-}) => {
-  let isActive;
-  const isBrowser = typeof window !== "undefined";
-
-  // Check is browser and if current link is active
-  if (isBrowser) {
-    isActive = window.location.href.indexOf(link.cached_url) > -1;
-  }
-
-  return (
-    <li className="su-m-0">
-      <SbLink
-        classes={`su-no-underline su-border-l-5 su-py-14 su-block su-pl-10 su-transition-all hocus:su-text-cardinal-red-xdark hocus:su-border-cardinal-red-xdark hocus:su-underline 
-        ${isActive ? "su-text-black su-border-black-90 " : "su-border-white"}
+}) => (
+  <li className="su-m-0">
+    <SbLink
+      classes={`su-no-underline su-border-l-5 su-py-14 su-block su-pl-10 su-transition-all hocus:su-text-cardinal-red-xdark hocus:su-border-cardinal-red-xdark hocus:su-underline 
+        ${active ? "su-text-black su-border-black-90 " : "su-border-white"}
         `}
-        link={link}
-      >
-        {text}
-      </SbLink>
+      link={link}
+    >
+      {text}
+    </SbLink>
 
-      {((!!childItems.length && isActive) ||
-        (!!childItems.length && showNestedLevels)) && (
-        <ul className="su-pb-15 su-list-none su-pl-20 children:children:su-py-6 children:children:su-text-20">
-          <CreateBloks blokSection={childItems} />
-        </ul>
-      )}
-    </li>
-  );
-};
+    {((!!childItems.length && active) ||
+      (!!childItems.length && activeTrail) ||
+      (!!childItems.length && showNestedLevels)) && (
+      <ul className="su-pb-15 su-list-none su-pl-20 children:children:su-py-6 children:children:su-text-20">
+        <CreateBloks blokSection={childItems} />
+      </ul>
+    )}
+  </li>
+);
 
 export default VerticalNavItem;

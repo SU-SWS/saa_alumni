@@ -19,6 +19,7 @@ const BasicPage = (props) => {
       aboveContent,
       belowContent,
       ankleContent,
+      sectionMenu,
     },
     blok,
   } = props;
@@ -34,7 +35,7 @@ const BasicPage = (props) => {
   if (numAbove > 0 || isSrOnlyTitle) {
     contentPadding = "su-rs-py-7";
   }
-console.log(props);
+
   return (
     <SbEditable content={blok}>
       <Layout hasHero={numHero > 0} {...props}>
@@ -44,7 +45,10 @@ console.log(props);
           className="basic-page su-relative su-flex-grow su-w-full"
           width="full"
         >
-          <CreateBloks blokSection={props.blok.sectionMenu} className='lg:su-hidden su-block su-my-30' />
+          <CreateBloks
+            blokSection={sectionMenu}
+            className="lg:su-hidden su-block su-my-30"
+          />
           <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
             <Container>

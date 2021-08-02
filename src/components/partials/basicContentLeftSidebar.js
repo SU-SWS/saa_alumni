@@ -27,7 +27,10 @@ const BasicContentLeftSidebar = ({
         xxl={3}
         className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2"
       >
-        <CreateBloks blokSection={sectionMenu} className='lg:su-block su-hidden' />
+        <CreateBloks
+          blokSection={sectionMenu}
+          className="lg:su-block su-hidden"
+        />
         <CreateBloks blokSection={sidebar} />
       </GridCell>
       <GridCell
