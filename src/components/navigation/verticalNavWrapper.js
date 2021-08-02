@@ -11,7 +11,7 @@ const VerticalNavWrapper = ({
   if (isBrowser) {
     const url = window.location.href;
 
-    // Loop through menu items and add active and activeTrail props 
+    // Loop through menu items and add active and activeTrail props
     // TODO: Update this to support unlimited levels
     for (let i = 0; i < items.length; i += 1) {
       const data = items;
