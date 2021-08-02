@@ -52,7 +52,7 @@ const SearchResults = ({ results }) => {
                 </CtaLink>
               </h3>
               <div
-                className="su-text-16 lg:su-text-base"
+                className="su-text-16 lg:su-text-20 su-leading-snug"
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   // eslint-disable-next-line no-underscore-dangle
