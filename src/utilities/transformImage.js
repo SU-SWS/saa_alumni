@@ -2,7 +2,7 @@
 // See all the "param" options on the website
 // https://www.storyblok.com/docs/image-service
 
-import { isNetlify, imageURL } from "../contexts/GlobalContext";
+import { imageURL } from "../contexts/GlobalContext";
 import { config } from "./config";
 
 const transformImage = (image, param = "") => {
@@ -11,10 +11,6 @@ const transformImage = (image, param = "") => {
 
   if (image === null) {
     return "";
-  }
-
-  if (!isNetlify) {
-    return image;
   }
 
   const path = image.replace("https://a.storyblok.com", "");

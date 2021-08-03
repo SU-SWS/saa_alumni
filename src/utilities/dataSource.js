@@ -184,10 +184,10 @@ export const horizontalAlign = {
   right: "su-ml-auto",
 };
 
-export const containerAlign = {
-  left: "children:su-mr-auto",
-  center: "children:su-mx-auto",
-  right: "children:su-ml-auto",
+export const justifyItems = {
+  start: "su-justify-items-start",
+  center: "su-justify-items-center",
+  end: "su-justify-items-end",
 };
 
 export const mediaAspectRatio = {
