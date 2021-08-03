@@ -12,6 +12,7 @@ const VerticalNavItem = ({
         ${active ? "su-text-black su-border-black-90 " : "su-border-white"}
         `}
       link={link}
+      hasExternalIcon
     >
       {text}
     </SbLink>

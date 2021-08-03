@@ -47,7 +47,7 @@ const BasicPage = (props) => {
         >
           <CreateBloks
             blokSection={sectionMenu}
-            className="lg:su-hidden su-block su-my-30"
+            className="lg:su-hidden su-block su-my-30 su-mx-auto su-max-w-[36rem]"
           />
           <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
