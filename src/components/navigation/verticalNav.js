@@ -44,7 +44,7 @@ const VerticalNav = ({ blok: { verticalNav }, className }) => {
       <button
         type="button"
         className={dcnb(
-          "lg:su-hidden su-w-full su-flex su-justify-between su-font-semibold su-items-center su-mt-20 su-border-solid su-border su-border-black-30-opacity-40 su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white",
+          "su-group lg:su-hidden su-w-full su-flex su-justify-between su-font-semibold su-items-center su-mt-20 su-transition-colors su-border-solid su-border su-border-black-30-opacity-40 su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white hocus:su-shadow-lg",
           navOpened
             ? "su-bg-digital-red su-text-white"
             : "su-text-digital-red-xlight"
@@ -57,7 +57,7 @@ const VerticalNav = ({ blok: { verticalNav }, className }) => {
         <span>{navOpened ? "Close" : "Section menu"}</span>
         <NavIcon
           aria-hidden="true"
-          className="su-transition-colors su-w-[2.4rem] group-hocus:su-text-digital-red-xlight"
+          className="su-transition-colors su-w-[2.4rem] group-hocus:su-text-white"
         />
       </button>
       {typeof verticalNav[0].content !== `undefined` && (
