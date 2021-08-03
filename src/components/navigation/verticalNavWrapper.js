@@ -5,6 +5,7 @@ import CreateBloks from "../../utilities/createBloks";
 const VerticalNavWrapper = ({
   blok: { items, showNestedLevels },
   className,
+  ...props
 }) => {
   const isBrowser = typeof window !== "undefined";
 
@@ -36,6 +37,7 @@ const VerticalNavWrapper = ({
         "su-list-none su-p-0 children:su-border-t children:su-border-solid children:su-border-black-20 children:children:su-text-21",
         className
       )}
+      {...props}
     >
       <CreateBloks blokSection={items} showNestedLevels={showNestedLevels} />
     </ul>

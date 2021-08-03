@@ -67,10 +67,13 @@ const VerticalNav = ({ blok: { verticalNav }, className }) => {
         />
       )}
 
-      {navOpened && typeof verticalNav[0].content !== `undefined` && (
+      {typeof verticalNav[0].content !== `undefined` && (
         <VerticalNavWrapper
-          className="lg:su-hidden su-block su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full"
+          className={`${
+            navOpened ? "su-block" : "su-hidden"
+          } lg:su-hidden su-block su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full`}
           blok={verticalNav[0].content}
+          aria-hidden={!navOpened}
         />
       )}
     </nav>
