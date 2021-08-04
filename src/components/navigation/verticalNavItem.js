@@ -8,11 +8,12 @@ const VerticalNavItem = ({
 }) => (
   <li className="su-m-0">
     <SbLink
-      classes={`su-no-underline su-border-l-5 su-py-14 su-block su-pl-10 su-transition-all hocus:su-text-cardinal-red-xdark hocus:su-border-cardinal-red-xdark hocus:su-underline 
+      classes={`su-group su-no-underline su-border-l-5 su-py-14 su-block su-pl-10 su-transition-all hocus:su-text-cardinal-red-xdark hocus:su-border-cardinal-red-xdark hocus:su-underline
         ${active ? "su-text-black su-border-black-90 " : "su-border-white"}
         `}
       link={link}
       hasExternalIcon
+      externalIconClasses="group-hocus:su-text-cardinal-red"
     >
       {text}
     </SbLink>
