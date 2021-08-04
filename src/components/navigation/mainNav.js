@@ -2,7 +2,6 @@ import React, { useState, useRef } from "react";
 import SbEditable from "storyblok-react";
 import { dcnb } from "cnbuilder";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { Button } from "decanter-react";
 import CreateBloks from "../../utilities/createBloks";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
@@ -48,9 +47,8 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
         aria-label="Main Menu"
         ref={ref}
       >
-        <Button
-          variant="unset"
-          size="minimal"
+        <button
+          type="button"
           className="su-group su-text-white su-flex su-flex-col su-pb-8 md:su-pb-15 su-mt-14 md:su-mt-19 su-w-40 su-items-center su-rs-ml-0 su-text-14 su-font-semibold lg:su-hidden hocus:su-shadow-none hocus:su-no-underline su-border-b-[5px] su-border-solid su-border-transparent hocus:su-border-digital-red-xlight"
           onClick={toggleMenu}
           aria-expanded={menuOpened}
@@ -62,7 +60,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
             className="su-transition-colors su-w-[2.4rem] group-hocus:su-text-digital-red-xlight"
           />
           {menuOpened ? "Close" : "Menu"}
-        </Button>
+        </button>
         <ul
           className={`${
             menuOpened
