@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { dcnb } from "cnbuilder";
-import VerticalNavWrapper from "./verticalNavWrapper";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
+import CreateStories from "../../utilities/createStories";
 
 const VerticalNav = ({ blok: { verticalNav }, className }) => {
   const [navOpened, setNavOpened] = useState(false);
@@ -60,22 +60,14 @@ const VerticalNav = ({ blok: { verticalNav }, className }) => {
           className="su-transition-colors su-w-[2.4rem] group-hocus:su-text-white"
         />
       </button>
-      {typeof verticalNav[0].content !== `undefined` && (
-        <VerticalNavWrapper
-          className="su-hidden lg:su-block"
-          blok={verticalNav[0].content}
-        />
-      )}
-
-      {typeof verticalNav[0].content !== `undefined` && (
-        <VerticalNavWrapper
-          className={`${
-            navOpened ? "su-block" : "su-hidden"
-          } lg:su-hidden su-block su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full`}
-          blok={verticalNav[0].content}
-          aria-hidden={!navOpened}
-        />
-      )}
+      <CreateStories stories={verticalNav} className="su-hidden lg:su-block" />
+      <CreateStories
+        stories={verticalNav}
+        className={`${
+          navOpened ? "su-block" : "su-hidden"
+        } lg:su-hidden su-block su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full`}
+        aria-hidden={!navOpened}
+      />
     </nav>
   );
 };
