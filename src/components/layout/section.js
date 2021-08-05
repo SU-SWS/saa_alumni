@@ -24,7 +24,7 @@ const Section = ({
     cta,
     content,
     isLeftAlign,
-    isSmallTitle,
+    titleSize,
     isSrOnlyTitle,
     isLessHeaderSpacing,
     bgColor,
@@ -58,8 +58,10 @@ const Section = ({
 
   let headlineSize = "su-type-4 lg:su-type-5";
 
-  if (isSmallTitle) {
+  if (titleSize === "sm") {
     headlineSize = "su-type-3";
+  } else if (titleSize === "md") {
+    headlineSize = "su-type-4";
   }
 
   let headerSpacing = "su-rs-mb-5";
