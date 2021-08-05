@@ -192,7 +192,7 @@ const SearchPage = (props) => {
             className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]"
           >
             {results.facets && (
-              <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
+              <FlexCell xs="full" lg={3} className="su-mb-[4rem]">
                 {results.facets.siteName && (
                   <SearchFacet
                     label="Sites"
@@ -216,7 +216,7 @@ const SearchPage = (props) => {
                 )}
               </FlexCell>
             )}
-            <FlexCell xs="full" lg={8}>
+            <FlexCell xs="full" lg={8} className="lg:su-pl-30">
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
