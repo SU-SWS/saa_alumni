@@ -10,7 +10,7 @@ import RichTextRenderer from "../../utilities/richTextRenderer";
 import WidthBox from "../layout/widthBox";
 
 const Wysiwyg = ({
-  blok: { content, width, spacingTop, spacingBottom, isLightText, id },
+  blok: { content, width, spacingTop, spacingBottom, isLightText, textPosition, id },
   blok,
 }) => {
   const wysiwygId = nextId(`${id}-`);
@@ -27,7 +27,7 @@ const Wysiwyg = ({
         <RichTextRenderer
           isDark={isLightText}
           wysiwyg={content}
-          className="su-heading-link-icon"
+          className={`su-heading-link-icon ${textPosition}`}
         />
       </WidthBox>
     </SbEditable>
