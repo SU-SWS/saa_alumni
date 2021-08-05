@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useImperativeHandle } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
 import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
@@ -28,6 +28,8 @@ const SearchPage = (props) => {
   const [fileTypeParam, setFileTypeParam] = useQueryParam("type", ArrayParam);
   const [query, setQuery] = useState(queryParam || "");
   const [page, setPage] = useState(pageParam || 0);
+  const [siteNameValues, setSiteNameValues] = useState(null);
+  const [fileTypeValues, setFileTypeValues] = useState(null);
   const [selectedFacets, setSelectedFacets] = useState({
     siteName: siteParam || [],
     fileType: fileTypeParam || [],
@@ -105,15 +107,62 @@ const SearchPage = (props) => {
       selectedFacets[attribute].map((value) => `${attribute}:${value}`)
     );
 
-    index
-      .search(query, {
-        hitsPerPage,
-        page,
-        facets: ["domain", "siteName", "fileType"],
-        facetFilters,
-      })
+    const siteNameFilters = [];
+    Object.keys(selectedFacets).forEach((attribute) => {
+      if (attribute !== "siteName") {
+        const filters = selectedFacets[attribute].map(
+          (value) => `${attribute}:${value}`
+        );
+        siteNameFilters.push(filters);
+      }
+    });
+
+    const fileTypeFilters = [];
+    Object.keys(selectedFacets).forEach((attribute) => {
+      if (attribute !== "fileType") {
+        const filters = selectedFacets[attribute].map(
+          (value) => `${attribute}:${value}`
+        );
+        fileTypeFilters.push(filters);
+      }
+    });
+
+    client
+      .multipleQueries([
+        // Query for search results.
+        {
+          indexName: "crawler_federated-search",
+          query,
+          params: {
+            hitsPerPage,
+            page,
+            facets: ["siteName", "fileType"],
+            facetFilters,
+          },
+        },
+        // Disjunctive query for siteName facet values.
+        {
+          indexName: "crawler_federated-search",
+          query,
+          params: {
+            facets: ["siteName", "fileType"],
+            facetFilters: siteNameFilters,
+          },
+        },
+        // Disjunctive query for fileType facet values.
+        {
+          indexName: "crawler_federated-search",
+          query,
+          params: {
+            facets: ["siteName", "fileType"],
+            facetFilters: fileTypeFilters,
+          },
+        },
+      ])
       .then((queryResults) => {
-        setResults(queryResults);
+        setResults(queryResults.results[0]);
+        setSiteNameValues(queryResults.results[1].facets.siteName);
+        setFileTypeValues(queryResults.results[2].facets.fileType);
       });
   };
 
@@ -193,21 +242,21 @@ const SearchPage = (props) => {
           >
             {results.facets && (
               <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
-                {results.facets.siteName && (
+                {siteNameValues && (
                   <SearchFacet
                     label="Sites"
                     attribute="siteName"
-                    facetValues={results.facets.siteName}
+                    facetValues={siteNameValues}
                     selectedOptions={selectedFacets.siteName}
                     onChange={(values) => updateSiteFacet(values)}
                     exclude={["YouTube", "SoundCloud", "Apple Podcasts"]}
                   />
                 )}
-                {results.facets.fileType && (
+                {fileTypeValues && (
                   <SearchFacet
                     label="Media"
                     attribute="fileType"
-                    facetValues={results.facets.fileType}
+                    facetValues={fileTypeValues}
                     selectedOptions={selectedFacets.fileType}
                     onChange={(values) => updateFileTypeFacet(values)}
                     optionClasses="su-capitalize"
