@@ -44,7 +44,7 @@ const VerticalNav = ({ blok: { verticalNav }, className }) => {
       <button
         type="button"
         className={dcnb(
-          "su-group lg:su-hidden su-w-full su-flex su-justify-between su-font-semibold su-items-center su-mt-20 su-transition-colors su-border-solid su-border su-border-black-30-opacity-40 su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white hocus:su-shadow-lg",
+          "su-group lg:su-hidden su-w-full su-flex su-justify-between su-font-semibold su-items-center su-mt-20 su-transition-colors su-border-solid su-border su-border-black-30 su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white hocus:su-shadow-lg",
           navOpened
             ? "su-bg-digital-red su-text-white"
             : "su-text-digital-red-xlight"
@@ -65,7 +65,7 @@ const VerticalNav = ({ blok: { verticalNav }, className }) => {
         stories={verticalNav}
         className={`${
           navOpened ? "su-block" : "su-hidden"
-        } lg:su-hidden su-block su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full`}
+        } lg:su-hidden su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full`}
         aria-hidden={!navOpened}
       />
     </nav>
