@@ -156,7 +156,7 @@ const SearchPage = (props) => {
         <Container
           element="section"
           width="site"
-          className="su-py-45 su-max-w-full md:su-py-80 "
+          className="su-py-45 su-max-w-full su-w-full md:su-py-80 "
         >
           {showEmptyMessage && (
             <p className="su-text-center">{blok.emptySearchMessage}</p>
