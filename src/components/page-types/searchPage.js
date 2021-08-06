@@ -131,7 +131,7 @@ const SearchPage = (props) => {
   const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2`;
 
   const submitBtnClasses = `su-w-40 su-h-40 su-rounded-full su-bg-digital-red-light
-   su-p-10 su-origin-center su-transform su-rotate-90 su-ml-10`;
+   su-p-10 su-origin-center su-transform su-ml-10`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
    su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
