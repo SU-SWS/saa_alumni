@@ -162,7 +162,7 @@ const SearchPage = (props) => {
             <p className="su-text-center">{blok.emptySearchMessage}</p>
           )}
 
-          <FlexBox gap justifyContent="center">
+          <FlexBox gap justifyContent="center" className="su-z-10 su-relative">
             <FlexCell xs="full" lg={results.facets ? 6 : 8}>
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
