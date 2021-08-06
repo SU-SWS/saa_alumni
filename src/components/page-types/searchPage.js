@@ -189,7 +189,7 @@ const SearchPage = (props) => {
           <FlexBox
             wrap="wrap"
             justifyContent={results.facets ? "start" : "center"}
-            className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]"
+            className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
           >
             {results.facets && (
               <FlexCell xs="full" lg={3} className="su-mb-[4rem]">
@@ -216,7 +216,7 @@ const SearchPage = (props) => {
                 )}
               </FlexCell>
             )}
-            <FlexCell xs="full" lg={8} className="lg:su-pl-30">
+            <FlexCell xs="full" lg={8}>
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
