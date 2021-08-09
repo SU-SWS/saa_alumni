@@ -276,7 +276,7 @@ const SearchPage = (props) => {
 
                   <div ref={ref}>
                     <button
-                      className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold
+                      className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center
                         ${
                         opened
                           ? "su-border-digital-red su-text-white su-bg-digital-red"
@@ -288,7 +288,7 @@ const SearchPage = (props) => {
                       onClick={() => setOpened(!opened)}
                     >
                       <span className="su-py-[14px] su-flex">
-                        {opened ? "Filter results" : " Filters"}
+                        {opened ? "Filters" : " Filter results"}
                       </span>
                       {opened ? (
                         <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18">
