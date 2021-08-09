@@ -34,7 +34,7 @@ const Grid = ({
       md={width === "4" || width === "6" ? 1 : 2}
       xl={parseInt(numCol, 10)}
       className={dcnb(
-        "su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+        "su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]",
         alignmentClasses,
         gapClasses,
         itemClasses
@@ -48,7 +48,7 @@ const Grid = ({
     grid = (
       <DrGrid
         className={dcnb(
-          "su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+          "su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]",
           alignmentClasses,
           gapClasses,
           itemClasses

@@ -177,10 +177,10 @@ const SearchPage = (props) => {
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
   hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1`;
 
-  const inputClasses = `su-text-30 su-font-semibold su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2`;
+  const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2`;
 
   const submitBtnClasses = `su-w-40 su-h-40 su-rounded-full su-bg-digital-red-light
-   su-p-10 su-origin-center su-transform su-rotate-90 su-ml-10`;
+   su-p-10 su-origin-center su-transform su-ml-10`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
    su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
@@ -205,13 +205,13 @@ const SearchPage = (props) => {
         <Container
           element="section"
           width="site"
-          className="su-py-45 su-max-w-full md:su-py-80 "
+          className="su-py-45 su-max-w-full su-w-full md:su-py-80 "
         >
           {showEmptyMessage && (
             <p className="su-text-center">{blok.emptySearchMessage}</p>
           )}
 
-          <FlexBox gap justifyContent="center">
+          <FlexBox gap justifyContent="center" className="su-z-10 su-relative">
             <FlexCell xs="full" lg={results.facets ? 6 : 8}>
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
@@ -238,7 +238,7 @@ const SearchPage = (props) => {
           <FlexBox
             wrap="wrap"
             justifyContent={results.facets ? "start" : "center"}
-            className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]"
+            className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
           >
             {results.facets && (
               <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
