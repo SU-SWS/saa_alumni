@@ -150,7 +150,7 @@ const Event = ({
         <SbLink
           link={eventLink}
           classes={dcnb(
-            "su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-text-black hocus:su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+            "su-stretched-link su-group su-z-20 su-rs-mt-0 su-mb-08em su-text-black hocus:su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
             headlineSize,
             headlinePadding
           )}
