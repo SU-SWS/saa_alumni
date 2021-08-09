@@ -7,15 +7,16 @@ import RichTextRenderer from "../../utilities/richTextRenderer";
 import getNumBloks from "../../utilities/getNumBloks";
 
 const BasicContentLeftSidebar = ({
-  blok: { content, sidebar, intro },
+  blok: { content, sidebar, intro, sectionMenu },
   className,
 }) => {
   const renderedIntro = render(intro);
   const hasIntro = getNumBloks(renderedIntro) > 0;
   const hasContent = getNumBloks(content) > 0;
   const hasSidebar = getNumBloks(sidebar) > 0;
+  const hasSectionMenu = getNumBloks(sectionMenu) > 0;
 
-  if (!hasIntro && !hasContent && !hasSidebar) {
+  if (!hasIntro && !hasContent && !hasSidebar && !hasSectionMenu) {
     return null;
   }
 
@@ -27,6 +28,10 @@ const BasicContentLeftSidebar = ({
         xxl={3}
         className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2"
       >
+        <CreateBloks
+          blokSection={sectionMenu}
+          className="lg:su-block su-hidden lg:su-rs-mb-2"
+        />
         <CreateBloks blokSection={sidebar} />
       </GridCell>
       <GridCell
