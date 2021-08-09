@@ -5,12 +5,13 @@ import nextId from "react-id-generator";
 import {
   smallPaddingBottom,
   smallPaddingTop,
+  textAlign,
 } from "../../utilities/dataSource";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import WidthBox from "../layout/widthBox";
 
 const Wysiwyg = ({
-  blok: { content, width, spacingTop, spacingBottom, isLightText, id },
+  blok: { content, width, spacingTop, spacingBottom, isLightText, align, id },
   blok,
 }) => {
   const wysiwygId = nextId(`${id}-`);
@@ -27,7 +28,10 @@ const Wysiwyg = ({
         <RichTextRenderer
           isDark={isLightText}
           wysiwyg={content}
-          className="su-heading-link-icon"
+          className={dcnb(
+            "su-heading-link-icon",
+            textAlign[align] ?? textAlign.left
+          )}
         />
       </WidthBox>
     </SbEditable>

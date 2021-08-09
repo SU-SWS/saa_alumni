@@ -4,15 +4,11 @@
 module.exports = function () {
   return {
     black: {
-      true: {
-        opacity: {
-          20: "rgba(0, 0, 0, 20%)", // For use in linear gradients
-        },
+      "true-opacity": {
+        20: "rgba(0, 0, 0, 20%)", // For use in linear gradients
       },
-      30: {
-        opacity: {
-          40: "rgba(192, 192, 191, 40%)", // For card borders
-        },
+      "30-opacity": {
+        40: "rgba(192, 192, 191, 40%)", // For card borders
       },
     },
     "masthead-black": {

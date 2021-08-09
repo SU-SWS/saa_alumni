@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "decanter-react";
+import { Container, Grid } from "decanter-react";
 import { dcnb } from "cnbuilder";
 
 /**
@@ -8,11 +8,13 @@ import { dcnb } from "cnbuilder";
  * */
 
 const WidthBox = ({ width, className, children, ...props }) => {
-  // Sets whether wrapper is edge-to-edge
-  let wrapperClasses = "";
-
-  if (width !== "edge-to-edge") {
-    wrapperClasses = "su-cc";
+  // If it is an edge-to-edge container, no need to use a grid
+  if (width === "edge-to-edge") {
+    return (
+      <Container width="full" className={className} {...props}>
+        {children}
+      </Container>
+    );
   }
 
   // Options for grid width if not edge-to-edge
@@ -34,7 +36,7 @@ const WidthBox = ({ width, className, children, ...props }) => {
   }
 
   return (
-    <Grid xs={12} gap className={dcnb(className, wrapperClasses)} {...props}>
+    <Grid xs={12} gap className={dcnb("su-cc", className)} {...props}>
       <div className={columnSpan}>{children}</div>
     </Grid>
   );
