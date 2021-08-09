@@ -276,7 +276,7 @@ const SearchPage = (props) => {
 
                   <div ref={ref}>
                     <button
-                      className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center
+                      className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-group
                         ${
                         opened
                           ? "su-border-digital-red su-text-white su-bg-digital-red"
@@ -291,7 +291,7 @@ const SearchPage = (props) => {
                         {opened ? "Filters" : " Filter results"}
                       </span>
                       {opened ? (
-                        <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18">
+                        <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18 group-hocus:su-underline">
                           Close
                           <Icon icon="x" className="su-w-14 su-ml-6" />
                         </span>
