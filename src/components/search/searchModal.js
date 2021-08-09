@@ -27,20 +27,22 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose} initialFocus={searchFieldRef}>
       <div className="su-max-w-1000 su-mx-auto">
-        <Heading
-          font="serif"
-          size={2}
-          level={2}
-          className="su-text-white su-text-center"
-        >
-          Hello, what can we help you find today?
-        </Heading>
+        <div className="su-mb-108">
+          <Heading
+            font="serif"
+            size={3}
+            level={2}
+            className="su-text-white su-text-center"
+          >
+            Hello, what can we help you find today?
+          </Heading>
+        </div>
         <SearchFieldModal
           ref={searchFieldRef}
           onSubmit={() => setIsOpen(false)}
         />
         {story && content && (
-          <div className="su-mt-108">
+          <div className="su-mt-78">
             <SearchSuggestions blok={content} />
           </div>
         )}

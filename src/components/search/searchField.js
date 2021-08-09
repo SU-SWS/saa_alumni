@@ -108,7 +108,7 @@ const SearchField = React.forwardRef(
                 onClick={clearHandler}
                 className={clearBtnClasses}
               >
-                Clear <X className="su-inline-block su-ml-3 su-mt-5" />
+                Clear <X className="su-inline-block su-ml-3 su-mt-5 su-h-[21px] su-w-[21px]" />
               </button>
               <SearchAutocomplete
                 autocompleteSuggestions={autocompleteSuggestions}
