@@ -83,7 +83,6 @@ const CtaLink = React.forwardRef(
                     iconType={icon}
                     className={dcnb("su-inline-block", iconColor)}
                     isAnimate
-                    hideSrText
                   />
                 )}
               </div>

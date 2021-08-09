@@ -24,18 +24,15 @@ const Hero = ({
     sansSub,
     serifSuper,
     headline,
-    scrollTo,
   },
   blok,
 }) => {
-  let heroHeadlineSize =
-    "su-text-m3 md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900";
+  let heroHeadlineSize = "md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900";
 
   if (headlineSize === "large") {
-    heroHeadlineSize = "su-text-m4 md:su-text-m6 lg:su-text-m8";
+    heroHeadlineSize = "md:su-text-m6 lg:su-text-m8";
   } else if (headlineSize === "small") {
-    heroHeadlineSize =
-      "su-text-m3 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900";
+    heroHeadlineSize = "md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900";
   }
 
   let gradientFrom = "su-from-transparent";
@@ -90,7 +87,7 @@ const Hero = ({
                     font="serif"
                     weight="bold"
                     className={dcnb(
-                      "su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em",
+                      "su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em su-text-m4",
                       heroHeadlineSize
                     )}
                   >
@@ -115,7 +112,7 @@ const Hero = ({
             >
               <p className="su-mb-02em">Scroll to explore</p>
               <a
-                href={`#${scrollTo}`}
+                href="#page-title"
                 className="su-block su-mx-auto su-w-fit su-group"
               >
                 <SrOnlyText srText="Jump to main content" />

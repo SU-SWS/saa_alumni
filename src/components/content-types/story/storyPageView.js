@@ -118,6 +118,7 @@ const StoryPageView = (props) => {
                     <HeroIcon
                       iconType={storyType}
                       className="su-inline-block su-mr-02em"
+                      srText={`${storyType}: `}
                     />
                   )}
                   {title}

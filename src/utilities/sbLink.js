@@ -1,9 +1,10 @@
 import React from "react";
 import { useLocation } from "@reach/router";
 import { parse } from "query-string";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import { dcnb } from "cnbuilder";
-import { assetURL, isNetlify } from "../contexts/GlobalContext";
+import { isNetlify } from "../contexts/GlobalContext";
+import { config } from "./config";
 import HeroIcon from "../components/simple/heroIcon";
 
 /**
@@ -83,7 +84,6 @@ const SbLink = React.forwardRef((props, ref) => {
         iconType="external"
         isAnimate
         className={dcnb("su-relative su-inline-block", extIconClasses)}
-        hideSrText
       />
     );
   }
@@ -110,11 +110,11 @@ const SbLink = React.forwardRef((props, ref) => {
     if (isNetlify) {
       linkUrl = linkUrl.replace(
         /http?(s):\/\/a\.storyblok\.com/gi,
-        `${assetURL}a`
+        `${config.assetCdn}a`
       );
       linkUrl = linkUrl.replace(
         /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-        `${assetURL}i`
+        `${config.assetCdn}i`
       );
     }
 

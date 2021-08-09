@@ -4,17 +4,25 @@ import { Grid as DrGrid } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import CreateBloks from "../../utilities/createBloks";
 import WidthBox from "./widthBox";
+import { justifyItems } from "../../utilities/dataSource";
 
 const Grid = ({
-  blok: { removeGap, numCol, content, width, isStretchItems, alignment },
+  blok: { numCol, content, width, isStretchItems, alignment, gapWidth },
   blok,
   isDark,
 }) => {
-  // Options to have regular grid gap or 1px horizontal gaps
-  let gapClasses = "su-grid-gap";
+  const alignmentClasses = justifyItems[alignment] || justifyItems.center;
 
-  if (removeGap) {
+  // Horizontal grid gap options
+  let gapClasses;
+
+  if (gapWidth === "none") {
     gapClasses = "su-gap-x-[1px]";
+  } else if (gapWidth === "large") {
+    gapClasses =
+      "su-gap-xs md:su-gap-x-lg lg:su-gap-x-2xl xl:su-gap-x-[6rem] 2xl:su-gap-x-[7rem]";
+  } else {
+    gapClasses = "su-grid-gap";
   }
 
   // By default, items in a row are top-aligned vertically
@@ -25,17 +33,13 @@ const Grid = ({
     itemClasses = "su-items-stretch";
   }
 
-  const alignmentClasses = alignment
-    ? `su-justify-items-${alignment}`
-    : "su-justify-items-center";
-
   let grid = (
     <DrGrid
       xs={1}
-      md={2}
+      md={width === "4" || width === "6" ? 1 : 2}
       xl={parseInt(numCol, 10)}
       className={dcnb(
-        "su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+        "su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]",
         alignmentClasses,
         gapClasses,
         itemClasses
@@ -49,7 +53,7 @@ const Grid = ({
     grid = (
       <DrGrid
         className={dcnb(
-          "su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]",
+          "su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]",
           alignmentClasses,
           gapClasses,
           itemClasses

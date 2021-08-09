@@ -18,6 +18,7 @@ const storyblokRelations = [
   "perkCardHorizontal.perkPicker",
   "storyCard.storyPicker",
   "alertPicker.alert",
+  "verticalNav.verticalNav",
 ];
 
 module.exports = {
@@ -33,7 +34,6 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-anchor-links`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {
