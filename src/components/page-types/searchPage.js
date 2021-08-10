@@ -186,8 +186,8 @@ const SearchPage = (props) => {
 
   const wrapperClasses = `su-border-0 su-border-b su-border-solid su-border-black-60`;
 
-  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
-  hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1  su-flex su-items-center`;
+  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-underline hover:su-bg-transparent su-text-21 su-font-semibold
+  hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1 su-flex su-items-center`;
 
   const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2`;
 
