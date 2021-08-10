@@ -182,13 +182,13 @@ const SearchPage = (props) => {
   const submitBtnClasses = `su-w-40 su-h-40 su-rounded-full su-bg-digital-red-light
    su-p-10 su-origin-center su-transform su-ml-10`;
 
-  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
-   su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
+  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
+   su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
 
-  const autocompleteLinkFocusClasses = `su-bg-black-20 su-text-digital-red`;
+  const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-white su-p-10 su-shadow-md su-w-full su-border
-   su-border-digital-red-light su-rounded-b-[0.5rem]`;
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border
+   su-border-digital-red su-rounded-b-[0.5rem]`;
 
   return (
     <SbEditable content={blok}>
