@@ -37,7 +37,6 @@ const CtaCard = ({
             iconType={link.linktype === "url" ? "external" : "arrow-right"}
             className="su-relative su-inline-block su-text-white group-hocus:su-text-digital-red-xlight"
             isAnimate
-            hideSrText
           />
         </SbLink>
       )}

@@ -68,12 +68,13 @@ const IconCard = ({
             className={dcnb("su-mb-0 su-text-m0")}
           >
             {headline}
-            <HeroIcon
-              iconType={link.linktype === "url" ? "external" : "arrow-right"}
-              className={headlineIconStyles}
-              isAnimate
-              hideSrText
-            />
+            {link.linktype === "url" && (
+              <HeroIcon
+                iconType="external"
+                className={headlineIconStyles}
+                isAnimate
+              />
+            )}
           </Heading>
         </SbLink>
       </FlexBox>
