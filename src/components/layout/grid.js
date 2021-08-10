@@ -7,17 +7,22 @@ import WidthBox from "./widthBox";
 import { justifyItems } from "../../utilities/dataSource";
 
 const Grid = ({
-  blok: { removeGap, numCol, content, width, isStretchItems, alignment },
+  blok: { numCol, content, width, isStretchItems, alignment, gapWidth },
   blok,
   isDark,
 }) => {
   const alignmentClasses = justifyItems[alignment] || justifyItems.center;
 
-  // Options to have regular grid gap or 1px horizontal gaps
-  let gapClasses = "su-grid-gap";
+  // Horizontal grid gap options
+  let gapClasses;
 
-  if (removeGap) {
+  if (gapWidth === "none") {
     gapClasses = "su-gap-x-[1px]";
+  } else if (gapWidth === "large") {
+    gapClasses =
+      "su-gap-xs md:su-gap-x-lg lg:su-gap-x-2xl xl:su-gap-x-[6rem] 2xl:su-gap-x-[7rem]";
+  } else {
+    gapClasses = "su-grid-gap";
   }
 
   // By default, items in a row are top-aligned vertically

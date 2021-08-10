@@ -40,7 +40,7 @@ const StoryCardView = ({
   }
 
   let wrapperClasses =
-    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm";
+    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md";
 
   let contentClasses = "su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
@@ -104,7 +104,7 @@ const StoryCardView = ({
           <SbLink
             link={externalLink || internalLink}
             classes={dcnb(
-              "su-stretched-link su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+              "su-stretched-link su-group su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
               headlineSize,
               headlineColor
             )}
@@ -117,12 +117,18 @@ const StoryCardView = ({
             >
               {tabText &&
                 !hideTab &&
-                tabText !== "podcast" &&
-                tabText !== "video" && <SrOnlyText srText={`${tabText}: `} />}
+                !hideImage &&
+                tabText.toLowerCase() !== "podcast" &&
+                tabText.toLowerCase() !== "video" && (
+                  <SrOnlyText srText={`${tabText}: `} />
+                )}
               {(storyType === "podcast" || storyType === "video") && (
                 <HeroIcon
                   iconType={storyType}
                   className="su-inline-block su-mr-02em"
+                  srText={
+                    storyType !== tabText.toLowerCase() ? `${storyType}: ` : ""
+                  }
                 />
               )}
               {shortTitle || title}
@@ -132,7 +138,6 @@ const StoryCardView = ({
               iconType={pubLink ? "external" : "arrow-right"}
               className={`su-relative su-inline-block ${headlineIconColor}`}
               isAnimate
-              hideSrText
             />
           </SbLink>
           {source && (
@@ -140,8 +145,8 @@ const StoryCardView = ({
               <span className="su-italic">from</span> {source}
             </p>
           )}
-          {!hideTab && !hideImage && tabText && (cardFilename || filename) && (
-            <TabLabel text={tabText} aria-hidden="true" />
+          {!hideTab && !hideImage && (cardFilename || filename) && (
+            <TabLabel text={tabText || storyType} aria-hidden="true" />
           )}
           {(teaser || intro) && (
             <p className={dcnb("su-mb-0 su-leading-snug", teaserSize)}>

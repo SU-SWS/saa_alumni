@@ -11,14 +11,7 @@ import {
   PlayIcon,
 } from "@heroicons/react/solid";
 
-const HeroIcon = ({
-  iconType,
-  srText,
-  hideSrText,
-  isAnimate,
-  className,
-  ...props
-}) => {
+const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
   const heroIconMap = {
     video: {
       heroicon: VideoCameraIcon,
@@ -88,7 +81,7 @@ const HeroIcon = ({
         className={dcnb(heroIconStyle, className)}
         {...props}
       />
-      {!hideSrText && <SrOnlyText srText={srText || ` ${iconType} `} />}
+      {srText && <SrOnlyText srText={srText} />}
     </>
   );
 };
