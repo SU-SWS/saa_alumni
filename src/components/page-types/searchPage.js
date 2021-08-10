@@ -17,6 +17,8 @@ import SearchFacet from "../search/searchFacet";
 import SearchNoResults from "../search/searchNoResults";
 import SearchKeywordBanner from "../search/searchKeywordBanner";
 import CreateBloks from "../../utilities/createBloks";
+import qs from "query-string";
+import { useLocation } from "@reach/router";
 
 const SearchPage = (props) => {
   const { blok } = props;
@@ -172,6 +174,16 @@ const SearchPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
 
+  const { search } = useLocation();
+
+  useEffect(() => {
+    const params = qs.parse(search);
+    setPageParam(undefined);
+    setQueryParam(params.q || undefined);
+    setPage(0);
+    setQuery(params.q);
+  }, [search]);
+
   const wrapperClasses = `su-border-0 su-border-b su-border-solid su-border-black-60`;
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
@@ -265,7 +277,7 @@ const SearchPage = (props) => {
                 )}
               </FlexCell>
             )}
-            <FlexCell xs="full" lg={8}>
+            <FlexCell xs="full" lg={!results.nbHits && query ? 12 : 8}>
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
