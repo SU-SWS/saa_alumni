@@ -30,10 +30,10 @@ const SearchResults = ({ results }) => {
                   href={result.url}
                 >
                   {result.fileType === "video" && (
-                    <VideoCameraIcon className="su-w-20 su-h-20 su-mr-5 su-align-middle su-mb-2 su-inline-block ttest" />
+                    <VideoCameraIcon className="su-w-20 su-h-20 su-mr-5 su-align-middle su-mb-3 su-inline-block" />
                   )}
                   {result.fileType === "audio" && (
-                    <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-baseline su--mb-1 su-inline-block ttest" />
+                    <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-baseline su--mb-1 su-inline-block" />
                   )}
                   {result.title}
                   {result.domain.match(/^alumni.stanford.edu/) && (
