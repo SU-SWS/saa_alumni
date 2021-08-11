@@ -5,6 +5,7 @@ import {
   MicrophoneIcon,
   ArrowRightIcon,
 } from "@heroicons/react/outline";
+import HeroIcon from "../simple/heroIcon";
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -26,7 +27,7 @@ const SearchResults = ({ results }) => {
               <div className="su-text-16 su-mb-10">{result.domain}</div>
               <h3 className="su-text-24">
                 <a
-                  className="su-font-serif su-text-digital-red-light"
+                  className="su-font-serif su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
                   href={result.url}
                 >
                   {result.fileType === "video" && (
@@ -36,13 +37,15 @@ const SearchResults = ({ results }) => {
                     <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-baseline su--mb-1 su-inline-block" />
                   )}
                   {result.title}
-                  {result.domain.match(/^alumni.stanford.edu/) && (
-                    <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4" />
-                  )}
-                  {!result.domain.match(/^alumni.stanford.edu/) && (
-                    <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4 su-transform su--rotate-45" />
-                  )}
+                  <HeroIcon
+                    iconType={result.domain.match(/^alumni.stanford.edu/) ? "arrow-right" : "external"}
+                    className="su-inline-block"
+                    isAnimate
+                  />
                 </a>
+
+
+
               </h3>
               <div
                 // eslint-disable-next-line react/no-danger
