@@ -10,6 +10,7 @@ const EventCard = ({
     hideTab,
     headingLevel,
   },
+  isDark,
 }) => (
   <CreateStories
     stories={eventPicker}
@@ -18,6 +19,7 @@ const EventCard = ({
     headingLevel={headingLevel}
     tabText={tabText}
     hideTab={hideTab}
+    isDark={isDark}
   />
 );
 

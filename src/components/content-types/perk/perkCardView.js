@@ -52,7 +52,7 @@ const PerkCardView = ({
         direction="col"
         element="article"
         className={dcnb(
-          "su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black",
+          "su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black su-backface-hidden",
           wrapperClasses,
           marginBottom
         )}

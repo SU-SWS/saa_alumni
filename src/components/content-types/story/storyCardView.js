@@ -40,7 +40,7 @@ const StoryCardView = ({
   }
 
   let wrapperClasses =
-    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md";
+    "su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden";
 
   let contentClasses = "su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
@@ -54,9 +54,14 @@ const StoryCardView = ({
     }
   }
 
+  let borderColor = "su-border-black-30-opacity-40";
   let headlineColor = "su-text-black hocus:su-text-black";
   let headlineIconColor = "su-text-digital-red-xlight";
   let textColor = "su-text-black";
+
+  if (isDark) {
+    borderColor = "su-border-black-90";
+  }
 
   // Use different text color if card has minimal style and is placed in a dark region
   if (isDark && isMinimal) {
@@ -81,6 +86,7 @@ const StoryCardView = ({
         className={dcnb(
           "story-card su-group su-relative su-overflow-hidden su-break-words su-basefont-23 su-w-full sm:su-max-w-[42rem] md:su-max-w-full",
           wrapperClasses,
+          borderColor,
           textColor
         )}
       >
