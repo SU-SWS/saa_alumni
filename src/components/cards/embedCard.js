@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable react/no-danger */
@@ -14,13 +15,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import SbEditable from "storyblok-react";
 import postscribe from "postscribe";
-import nextId from "react-id-generator";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const EmbedCard = ({ blok: { embed: html }, blok }) => {
   const myEmbed = useRef(null);
-  const uniqueId = nextId("su-alumni-");
+  const uniqueId = `su-alumni-${blok._uid}`;
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
   useEffect(() => {

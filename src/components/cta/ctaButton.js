@@ -32,6 +32,13 @@ const CtaButton = React.forwardRef(
 
     // Button style
     const ctaButtonStyle = buttonStyles[buttonStyle] ?? buttonStyles.primary;
+    let buttonIconColor;
+
+    if (buttonStyle === "secondary") {
+      buttonIconColor = "su-text-digital-red-light group-hocus:su-text-white";
+    } else if (buttonStyle === "secondary-gradient") {
+      buttonIconColor = "su-text-saa-electric-blue group-hocus:su-text-white";
+    }
 
     // Horizontal alignment
     const align = textAlign[propsAlign] ?? textAlign.left;
@@ -39,7 +46,7 @@ const CtaButton = React.forwardRef(
     return (
       <SbEditable content={blok}>
         {linkText && (
-          <div className={`cta-button su-block ${align}`}>
+          <div className={dcnb("cta-button su-block", align)}>
             <SbLink
               ref={ref}
               link={link}
@@ -55,9 +62,8 @@ const CtaButton = React.forwardRef(
               {icon !== "none" && (
                 <HeroIcon
                   iconType={icon}
-                  className="su-inline-block"
+                  className={dcnb("su-inline-block", buttonIconColor)}
                   isAnimate
-                  hideSrText
                 />
               )}
             </SbLink>

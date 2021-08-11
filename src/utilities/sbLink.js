@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "@reach/router";
 import { parse } from "query-string";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import { dcnb } from "cnbuilder";
 import { isNetlify } from "../contexts/GlobalContext";
 import { config } from "./config";
@@ -84,7 +84,6 @@ const SbLink = React.forwardRef((props, ref) => {
         iconType="external"
         isAnimate
         className={dcnb("su-relative su-inline-block", extIconClasses)}
-        hideSrText
       />
     );
   }

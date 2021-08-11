@@ -9,7 +9,7 @@ import {
 } from "storyblok-rich-text-react-renderer";
 import { Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
-import Link from "gatsby-link";
+import { Link } from "gatsby";
 import CardImage from "../components/media/cardImage";
 import { config } from "./config";
 

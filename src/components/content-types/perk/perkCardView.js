@@ -109,7 +109,6 @@ const PerkCardView = ({
               iconType={cardUrl.linktype === "url" ? "external" : "arrow-right"}
               className="su-relative su-inline-block su-text-digital-red-xlight group-hocus:su-text-white"
               isAnimate
-              hideSrText
             />
           </SbLink>
           <p

@@ -1,13 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import {
-  Container,
-  FlexCell,
-  FlexBox,
-  Heading,
-  Button,
-} from "decanter-react";
+import { Container, FlexCell, FlexBox, Heading, Button } from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
@@ -37,6 +31,8 @@ const SearchPage = (props) => {
   const [fileTypeParam, setFileTypeParam] = useQueryParam("type", ArrayParam);
   const [query, setQuery] = useState(queryParam || "");
   const [page, setPage] = useState(pageParam || 0);
+  const [siteNameValues, setSiteNameValues] = useState(null);
+  const [fileTypeValues, setFileTypeValues] = useState(null);
   const [selectedFacets, setSelectedFacets] = useState({
     siteName: siteParam || [],
     fileType: fileTypeParam || [],
@@ -151,15 +147,62 @@ const SearchPage = (props) => {
       selectedFacets[attribute].map((value) => `${attribute}:${value}`)
     );
 
-    index
-      .search(query, {
-        hitsPerPage,
-        page,
-        facets: ["domain", "siteName", "fileType"],
-        facetFilters,
-      })
+    const siteNameFilters = [];
+    Object.keys(selectedFacets).forEach((attribute) => {
+      if (attribute !== "siteName") {
+        const filters = selectedFacets[attribute].map(
+          (value) => `${attribute}:${value}`
+        );
+        siteNameFilters.push(filters);
+      }
+    });
+
+    const fileTypeFilters = [];
+    Object.keys(selectedFacets).forEach((attribute) => {
+      if (attribute !== "fileType") {
+        const filters = selectedFacets[attribute].map(
+          (value) => `${attribute}:${value}`
+        );
+        fileTypeFilters.push(filters);
+      }
+    });
+
+    client
+      .multipleQueries([
+        // Query for search results.
+        {
+          indexName: "crawler_federated-search",
+          query,
+          params: {
+            hitsPerPage,
+            page,
+            facets: ["siteName", "fileType"],
+            facetFilters,
+          },
+        },
+        // Disjunctive query for siteName facet values.
+        {
+          indexName: "crawler_federated-search",
+          query,
+          params: {
+            facets: ["siteName", "fileType"],
+            facetFilters: siteNameFilters,
+          },
+        },
+        // Disjunctive query for fileType facet values.
+        {
+          indexName: "crawler_federated-search",
+          query,
+          params: {
+            facets: ["siteName", "fileType"],
+            facetFilters: fileTypeFilters,
+          },
+        },
+      ])
       .then((queryResults) => {
-        setResults(queryResults);
+        setResults(queryResults.results[0]);
+        setSiteNameValues(queryResults.results[1].facets.siteName);
+        setFileTypeValues(queryResults.results[2].facets.fileType);
       });
   };
 
@@ -174,36 +217,36 @@ const SearchPage = (props) => {
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
   hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1`;
 
-  const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2`;
+  const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none`;
 
   const submitBtnClasses = `su-w-30 su-min-w-30 su-h-30 lg:su-w-40 lg:su-min-w-40 lg:su-h-40 su-rounded-full su-bg-digital-red-light
    su-p-8 lg:su-p-10 su-origin-center su-transform su-ml-10`;
 
-  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-black su-no-underline su-px-15
-   su-py-10 su-rounded-[1rem] hover:su-bg-black-20 hover:su-text-digital-red-light`;
+  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
+   su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
 
-  const autocompleteLinkFocusClasses = `su-bg-black-20 su-text-digital-red`;
+  const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-white su-p-10 su-shadow-md su-w-full su-border
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border
    su-border-digital-red-light su-rounded-b-[0.5rem]`;
   const facets = results.facets && (
     <React.Fragment>
-      {results.facets.siteName && (
+      {siteNameValues && (
         <SearchFacet
           label="Sites"
           attribute="siteName"
-          facetValues={results.facets.siteName}
+          facetValues={siteNameValues}
           selectedOptions={selectedFacets.siteName}
           onChange={(values) => updateSiteFacet(values)}
           className={!!selectedFacets.siteName.length && "su-mb-[16px]"}
           exclude={["YouTube", "SoundCloud", "Apple Podcasts"]}
         />
       )}
-      {results.facets.fileType && (
+      {fileTypeValues && (
         <SearchFacet
           label="Media"
           attribute="fileType"
-          facetValues={results.facets.fileType}
+          facetValues={fileTypeValues}
           selectedOptions={selectedFacets.fileType}
           onChange={(values) => updateFileTypeFacet(values)}
           optionClasses="su-capitalize"
@@ -273,16 +316,14 @@ const SearchPage = (props) => {
                     opened ? "su-shadow-xl" : ""
                   }`}
                 >
-
                   <div ref={ref}>
                     <button
                       className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-group
                         ${
-                        opened
-                          ? "su-border-digital-red su-text-white su-bg-digital-red"
-                          : "su-border-black-30 su-text-digital-red"
-                      }`}
-
+                          opened
+                            ? "su-border-digital-red su-text-white su-bg-digital-red"
+                            : "su-border-black-30 su-text-digital-red"
+                        }`}
                       aria-expanded={opened}
                       ref={filterOpenRef}
                       onClick={() => setOpened(!opened)}
