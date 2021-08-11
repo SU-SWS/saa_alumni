@@ -38,14 +38,15 @@ const SearchResults = ({ results }) => {
                   )}
                   {result.title}
                   <HeroIcon
-                    iconType={result.domain.match(/^alumni.stanford.edu/) ? "arrow-right" : "external"}
+                    iconType={
+                      result.domain.match(/^alumni.stanford.edu/)
+                        ? "arrow-right"
+                        : "external"
+                    }
                     className="su-inline-block"
                     isAnimate
                   />
                 </a>
-
-
-
               </h3>
               <div
                 // eslint-disable-next-line react/no-danger
