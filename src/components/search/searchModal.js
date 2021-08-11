@@ -9,7 +9,11 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
   const searchFieldRef = React.createRef();
   const data = useStaticQuery(graphql`
     {
-      storyblokEntry(id: { eq: "storyblokentry-60728388-default" }) {
+      storyblokEntry(
+        full_slug: {
+          eq: "search-configuration/search-modal/search-suggestions"
+        }
+      ) {
         field_title_string
         content
       }
