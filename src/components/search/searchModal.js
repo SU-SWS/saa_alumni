@@ -40,7 +40,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
           onSubmit={() => setIsOpen(false)}
         />
         {story && content && (
-          <div className="su-mt-108 su-rs-mb-6">
+          <div>
             <SearchSuggestions blok={content} />
           </div>
         )}
