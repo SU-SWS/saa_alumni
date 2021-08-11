@@ -77,6 +77,8 @@ const Event = ({
 
   let wrapperClasses =
     "su-rs-pb-3 su-bg-white su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden";
+
+  // This border works well for our light background colors
   let borderColor = "su-border-black-30-opacity-40";
   let headlinePadding = "su-rs-px-2";
   let detailsPadding = "su-rs-px-2";
@@ -85,21 +87,21 @@ const Event = ({
   let headlineIconColor = "su-text-digital-red-xlight";
   let textColor = "su-text-black";
 
-  if (isMinimal) {
-    wrapperClasses = "su-bg-transparent";
-    headlinePadding = "su-pt-01em";
-    detailsPadding = "";
-  }
-
   if (isDark) {
     borderColor = "su-border-black-90";
   }
 
-  // Use different text color if card has minimal style and is placed in a dark region
-  if (isDark && isMinimal) {
-    textColor = "su-text-black-20";
-    headlineColor = "su-text-white hocus:su-text-white";
-    headlineIconColor = "su-text-digital-red-light group-hocus:su-text-white";
+  if (isMinimal) {
+    wrapperClasses = "su-bg-transparent";
+    headlinePadding = "su-pt-01em";
+    detailsPadding = "";
+
+    // Use different text color if card has minimal style and is placed in a dark region
+    if (isDark) {
+      textColor = "su-text-black-20";
+      headlineColor = "su-text-white hocus:su-text-white";
+      headlineIconColor = "su-text-digital-red-light group-hocus:su-text-white";
+    }
   }
 
   headlineIconStyles = dcnb(headlineIconStyles, headlineIconColor);
@@ -145,7 +147,7 @@ const Event = ({
                   filename={filename}
                   imageFocus={imageFocus}
                   size="vertical"
-                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
                   loading="lazy"
                 />
               </figure>
