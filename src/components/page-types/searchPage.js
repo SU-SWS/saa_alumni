@@ -44,7 +44,6 @@ const SearchPage = (props) => {
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_API_KEY
   );
-  const index = client.initIndex("crawler_federated-search");
   const suggestionsIndex = client.initIndex(
     "crawler_federated-search_suggestions"
   );
@@ -125,7 +124,7 @@ const SearchPage = (props) => {
     if (filters) {
       Object.values(filters).forEach((set) => {
         Object.values(set.getElementsByTagName("input")).forEach((checkbox) => {
-          checkbox.checked = false;
+          checkbox.setAttribute("checked", false);
         });
       });
     }
@@ -318,6 +317,7 @@ const SearchPage = (props) => {
                 >
                   <div ref={ref}>
                     <button
+                      type="button"
                       className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-group
                         ${
                           opened
