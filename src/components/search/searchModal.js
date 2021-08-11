@@ -25,7 +25,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
   let introduction;
   let emptySearchMessage;
 
-  if (data && data.storyblokEntry && data.storyblokEntry.content) {
+  if (data && data?.storyblokEntry?.content) {
     story = data.storyblokEntry;
     content = JSON.parse(story.content);
     introduction = content.introduction;
