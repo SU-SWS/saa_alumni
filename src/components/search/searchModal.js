@@ -22,10 +22,14 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
 
   let story;
   let content;
+  let introduction;
+  let emptySearchMessage;
 
-  if (data) {
+  if (data && data.storyblokEntry && data.storyblokEntry.content) {
     story = data.storyblokEntry;
     content = JSON.parse(story.content);
+    introduction = content.introduction;
+    emptySearchMessage = content.emptySearchMessage;
   }
 
   const [showEmptyMessage, setShowEmptyMessage] = useState(false);
@@ -56,9 +60,9 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
           className="su-text-white su-text-center"
         >
           {!showEmptyMessage ? (
-            <div>{content.introduction}</div>
+            <div>{introduction}</div>
           ) : (
-            <div>{content.emptySearchMessage}</div>
+            <div>{emptySearchMessage}</div>
           )}
         </Heading>
         <SearchFieldModal
