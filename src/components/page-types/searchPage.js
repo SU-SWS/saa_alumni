@@ -218,7 +218,7 @@ const SearchPage = (props) => {
 
   const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none`;
 
-  const submitBtnClasses = `su-w-30 su-min-w-30 su-h-30 lg:su-w-40 lg:su-min-w-40 lg:su-h-40 su-rounded-full su-bg-digital-red-light
+  const submitBtnClasses = `su-w-30 su-min-w-[30px] su-h-30 lg:su-w-40 lg:su-min-w-40 lg:su-h-40 su-rounded-full su-bg-digital-red-light
    su-p-8 lg:su-p-10 su-origin-center su-transform su-ml-10`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
@@ -322,7 +322,7 @@ const SearchPage = (props) => {
                         ${
                           opened
                             ? "su-border-digital-red su-text-white su-bg-digital-red"
-                            : "su-border-black-30 su-text-digital-red"
+                            : "su-border-black-30 su-text-digital-red-xlight"
                         }`}
                       aria-expanded={opened}
                       ref={filterOpenRef}
@@ -337,7 +337,7 @@ const SearchPage = (props) => {
                           <Icon icon="x" className="su-w-14 su-ml-6" />
                         </span>
                       ) : (
-                        <span className="su-flex su-items-center su-mt-0 su-text-cardinal-red hocus:su-text-cardinal-red hocus:su-shadow-none">
+                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-shadow-none">
                           <Icon icon="chevron-down" />
                         </span>
                       )}
