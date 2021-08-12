@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import algoliasearch from "algoliasearch";
-import { navigate } from "gatsby";
 import SearchField from "./searchField";
 
 const SearchFieldModal = React.forwardRef((props, ref) => {
@@ -49,7 +48,6 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
 
   const submitSearchQuery = (queryText) => {
     setQuery(queryText);
-    navigate(`/search?q=${queryText}`);
     props.onSubmit(queryText);
   };
 

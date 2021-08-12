@@ -52,7 +52,7 @@ const PerkCardView = ({
         direction="col"
         element="article"
         className={dcnb(
-          "su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black",
+          "su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black su-backface-hidden",
           wrapperClasses,
           marginBottom
         )}
@@ -68,7 +68,7 @@ const PerkCardView = ({
             <CardImage
               filename={filename}
               imageFocus={cardImageFocus || imageFocus}
-              className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+              className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
               loading={orientation === "horizontal" ? "eager" : "lazy"}
               size={orientation === "horizontal" ? "horizontal" : "vertical"}
             />

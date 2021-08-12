@@ -1,4 +1,5 @@
 import React from "react";
+import { Heading } from "decanter-react";
 
 const SearchFacet = ({
   label,
@@ -39,8 +40,21 @@ const SearchFacet = ({
   }
 
   return (
-    <div className={`${className || "su-mb-58"}`}>
-      <p className="su-text-21 su-font-semibold">{label}</p>
+    <div
+      className={`${
+        className ||
+        "su-mb-[24px] lg:su-mb-[66px] su-pb-[28px] " +
+          "lg:su-pb-0 su-border-b lg:su-border-0 su-border-black-20"
+      }`}
+    >
+      <Heading
+        level={2}
+        weight="semibold"
+        className="su-text-18 lg:su-text-23 su-mb-18 lg:su-mb-21"
+      >
+        {label}
+      </Heading>
+
       {preparedFacetValues.map((option, index) => (
         <label
           key={option.name}
@@ -56,7 +70,7 @@ const SearchFacet = ({
             className="su-checkbox su-mr-15 su-max-w-[1.7rem] su-cursor-pointer su-custom-checkbox su-max-h-[1.7rem] su-appearance-none !su-border su-rounded-[0.3rem]"
             onChange={(e) => handleCheckboxChange(e)}
           />
-          <span className={optionClasses}>
+          <span className={`su-text-16 lg:su-text-19 ${optionClasses}`}>
             {option.name}
             <span> ({option.count.toLocaleString("en-us")})</span>
           </span>

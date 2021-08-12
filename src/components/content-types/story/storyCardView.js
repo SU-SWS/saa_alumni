@@ -40,9 +40,12 @@ const StoryCardView = ({
   }
 
   let wrapperClasses =
-    "su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md";
-
+    "su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden";
   let contentClasses = "su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
+  let borderColor = "su-border-black-30-opacity-40";
+  let headlineColor = "su-text-black hocus:su-text-black";
+  let headlineIconColor = "su-text-digital-red-xlight";
+  let textColor = "su-text-black";
 
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
@@ -52,17 +55,17 @@ const StoryCardView = ({
     if (hideImage || (!cardFilename && !filename)) {
       contentClasses = "";
     }
+
+    // Use different text color if card has minimal style and is placed in a dark region
+    if (isDark) {
+      textColor = "su-text-black-20";
+      headlineColor = "su-text-white hocus:su-text-white";
+      headlineIconColor = "su-text-digital-red-light group-hocus:su-text-white";
+    }
   }
 
-  let headlineColor = "su-text-black hocus:su-text-black";
-  let headlineIconColor = "su-text-digital-red-xlight";
-  let textColor = "su-text-black";
-
-  // Use different text color if card has minimal style and is placed in a dark region
-  if (isDark && isMinimal) {
-    textColor = "su-text-black-20";
-    headlineColor = "su-text-white hocus:su-text-white";
-    headlineIconColor = "su-text-digital-red-light group-hocus:su-text-white";
+  if (isDark) {
+    borderColor = "su-border-black-90";
   }
 
   let headlineSize = "su-type-1";
@@ -81,6 +84,7 @@ const StoryCardView = ({
         className={dcnb(
           "story-card su-group su-relative su-overflow-hidden su-break-words su-basefont-23 su-w-full sm:su-max-w-[42rem] md:su-max-w-full",
           wrapperClasses,
+          borderColor,
           textColor
         )}
       >
@@ -94,7 +98,7 @@ const StoryCardView = ({
                 filename={cardFilename || filename}
                 imageFocus={cardImageFocus || imageFocus}
                 size="vertical"
-                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
                 loading="lazy"
               />
             </figure>
