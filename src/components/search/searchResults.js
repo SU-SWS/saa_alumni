@@ -37,7 +37,12 @@ const SearchResults = ({ results }) => {
                   {result.fileType === "audio" && (
                     <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-baseline su--mb-1 su-inline-block" />
                   )}
-                  {result.title}
+                  <span
+                    dangerouslySetInnerHTML={{
+                      // eslint-disable-next-line no-underscore-dangle
+                      __html: sanitize(result.title, {decodeEntities: false}),
+                    }}
+                  ></span>
                   <HeroIcon
                     iconType={
                       result.domain.match(/^alumni.stanford.edu/)
