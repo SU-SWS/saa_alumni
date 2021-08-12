@@ -44,7 +44,7 @@ const SearchResults = ({ results }) => {
                         ? "arrow-right"
                         : "external"
                     }
-                    className="su-inline-block"
+                    className="su-inline-block group-hocus:su-text-cardinal-red"
                     isAnimate
                   />
                 </a>
