@@ -263,6 +263,7 @@ const SearchPage = (props) => {
           element="section"
           width="full"
           className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light su-flex-wrap"
+          id="main-content"
         >
           <Heading level={1} font="serif" weight="bold" className="su-mb-0">
             {blok.pageTitle}
