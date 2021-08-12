@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useImperativeHandle } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import { Container, FlexCell, FlexBox, Heading } from "decanter-react";
+import { Container, FlexCell, FlexBox, Heading, Button } from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
@@ -9,6 +9,7 @@ import {
   StringParam,
   ArrayParam,
 } from "use-query-params";
+import Icon from "react-hero-icon";
 import Layout from "../partials/layout";
 import SearchField from "../search/searchField";
 import SearchResults from "../search/searchResults";
@@ -17,6 +18,8 @@ import SearchFacet from "../search/searchFacet";
 import SearchNoResults from "../search/searchNoResults";
 import SearchKeywordBanner from "../search/searchKeywordBanner";
 import CreateBloks from "../../utilities/createBloks";
+import UseEscape from "../../hooks/useEscape";
+import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
 const SearchPage = (props) => {
   const { blok } = props;
@@ -35,16 +38,31 @@ const SearchPage = (props) => {
     fileType: fileTypeParam || [],
   });
   const [showEmptyMessage, setShowEmptyMessage] = useState(false);
+  const [opened, setOpened] = useState(false);
 
   const client = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_API_KEY
   );
-  const index = client.initIndex("crawler_federated-search");
   const suggestionsIndex = client.initIndex(
     "crawler_federated-search_suggestions"
   );
   const hitsPerPage = blok.itemsPerPage;
+
+  const ref = useRef(null);
+  const filterOpenRef = useRef(null);
+
+  const isExpanded = (x) => x.getAttribute("aria-expanded") === "true";
+
+  // Close menu if escape key is pressed and return focus to the menu button
+  UseEscape(() => {
+    if (filterOpenRef.current && isExpanded(filterOpenRef.current)) {
+      setOpened(false);
+      filterOpenRef.current.focus();
+    }
+  });
+
+  UseOnClickOutside(ref, () => setOpened(false));
 
   // Update autocomplete suggestions when search input changes.
   const updateAutocomplete = (queryText) => {
@@ -99,6 +117,27 @@ const SearchPage = (props) => {
     setPageParam(undefined);
     setPage(0);
     setFileTypeParam(values);
+  };
+
+  const clearFilters = (e) => {
+    const filters = document.getElementsByClassName("filters");
+    if (filters) {
+      Object.values(filters).forEach((set) => {
+        Object.values(set.getElementsByTagName("input")).forEach((checkbox) => {
+          checkbox.setAttribute("checked", false);
+        });
+      });
+    }
+
+    setSelectedFacets({
+      siteName: [],
+      fileType: [],
+    });
+
+    setPageParam(undefined);
+    setPage(0);
+    setFileTypeParam([]);
+    setSiteParam([]);
   };
 
   // Fetch search results from Algolia. (Typically triggered by state changes in useEffect())
@@ -172,15 +211,15 @@ const SearchPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
 
-  const wrapperClasses = `su-border-0 su-border-b su-border-solid su-border-black-60`;
+  const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
   hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1`;
 
   const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none`;
 
-  const submitBtnClasses = `su-w-40 su-h-40 su-rounded-full su-bg-digital-red-light
-   su-p-10 su-origin-center su-transform su-ml-10`;
+  const submitBtnClasses = `su-w-30 su-min-w-[30px] su-h-30 lg:su-w-40 lg:su-min-w-40 lg:su-h-40 su-rounded-full su-bg-digital-red-light
+   su-p-8 lg:su-p-10 su-origin-center su-transform su-ml-10`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
    su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
@@ -188,7 +227,34 @@ const SearchPage = (props) => {
   const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
   const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border
-   su-border-digital-red su-rounded-b-[0.5rem]`;
+   su-border-digital-red-light su-rounded-b-[0.5rem]`;
+  const facets = results.facets && (
+    <React.Fragment>
+      {siteNameValues && (
+        <SearchFacet
+          label="Sites"
+          attribute="siteName"
+          facetValues={siteNameValues}
+          selectedOptions={selectedFacets.siteName}
+          onChange={(values) => updateSiteFacet(values)}
+          className={!!selectedFacets.siteName.length && "su-mb-[16px]"}
+          exclude={["YouTube", "SoundCloud", "Apple Podcasts"]}
+        />
+      )}
+      {fileTypeValues && (
+        <SearchFacet
+          label="Media"
+          attribute="fileType"
+          facetValues={fileTypeValues}
+          selectedOptions={selectedFacets.fileType}
+          onChange={(values) => updateFileTypeFacet(values)}
+          optionClasses="su-capitalize"
+          className="su-mb-[16px]"
+          exclude={["html", "pdf"]}
+        />
+      )}
+    </React.Fragment>
+  );
 
   return (
     <SbEditable content={blok}>
@@ -238,32 +304,83 @@ const SearchPage = (props) => {
           <FlexBox
             wrap="wrap"
             justifyContent={results.facets ? "start" : "center"}
-            className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
+            className="filters su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
           >
             {results.facets && (
-              <FlexCell xs="full" lg={3} className="su-mb-[4rem] ">
-                {siteNameValues && (
-                  <SearchFacet
-                    label="Sites"
-                    attribute="siteName"
-                    facetValues={siteNameValues}
-                    selectedOptions={selectedFacets.siteName}
-                    onChange={(values) => updateSiteFacet(values)}
-                    exclude={["YouTube", "SoundCloud", "Apple Podcasts"]}
-                  />
-                )}
-                {fileTypeValues && (
-                  <SearchFacet
-                    label="Media"
-                    attribute="fileType"
-                    facetValues={fileTypeValues}
-                    selectedOptions={selectedFacets.fileType}
-                    onChange={(values) => updateFileTypeFacet(values)}
-                    optionClasses="su-capitalize"
-                    exclude={["html", "pdf"]}
-                  />
-                )}
-              </FlexCell>
+              <React.Fragment>
+                <FlexCell
+                  xs="full"
+                  lg={3}
+                  className={`lg:su-hidden su-relative su-mb-[4rem] ${
+                    opened ? "su-shadow-xl" : ""
+                  }`}
+                >
+                  <div ref={ref}>
+                    <button
+                      type="button"
+                      className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-group
+                        ${
+                          opened
+                            ? "su-border-digital-red su-text-white su-bg-digital-red"
+                            : "su-border-black-30 su-text-digital-red-xlight"
+                        }`}
+                      aria-expanded={opened}
+                      ref={filterOpenRef}
+                      onClick={() => setOpened(!opened)}
+                    >
+                      <span className="su-py-[14px] su-flex">
+                        {opened ? "Filters" : " Filter results"}
+                      </span>
+                      {opened ? (
+                        <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18 group-hocus:su-underline">
+                          Close
+                          <Icon icon="x" className="su-w-14 su-ml-6" />
+                        </span>
+                      ) : (
+                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-shadow-none">
+                          <Icon icon="chevron-down" />
+                        </span>
+                      )}
+                    </button>
+
+                    {opened && (
+                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl">
+                        <div className="su-p-16">{facets}</div>
+
+                        <div className="su-flex su-justify-between su-px-[17px] su-pb-[27px] su-pt-18 su-bg-foggy-light su-border-t su-border-black-20">
+                          <Button
+                            text="Clear all"
+                            variant="unset"
+                            onClick={() => clearFilters()}
+                            className="su-rs-mt-0 su-text-cardinal-red su-text-18 md:su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none"
+                          >
+                            Clear all
+                          </Button>
+
+                          <Button
+                            animate="right"
+                            icon="more"
+                            variant="solid"
+                            size="default"
+                            className="su-rs-mt-0 su-text-18 md:su-text-18"
+                            onClick={() => setOpened(false)}
+                          >
+                            View Results
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </FlexCell>
+
+                <FlexCell
+                  xs="full"
+                  lg={3}
+                  className="su-mb-[4rem] su-hidden lg:su-flex"
+                >
+                  <div>{facets}</div>
+                </FlexCell>
+              </React.Fragment>
             )}
             <FlexCell xs="full" lg={8}>
               <SearchKeywordBanner queryText={query} />

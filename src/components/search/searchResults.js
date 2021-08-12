@@ -5,6 +5,7 @@ import {
   MicrophoneIcon,
   ArrowRightIcon,
 } from "@heroicons/react/outline";
+import { CtaLink } from "decanter-react";
 import HeroIcon from "../simple/heroIcon";
 
 const SearchResults = ({ results }) => {
@@ -20,7 +21,7 @@ const SearchResults = ({ results }) => {
       {results.hits.map((result) => (
         <div
           key={result.objectID}
-          className="su-p-30 sm:su-py-[4rem] su-border-b su-border-black-40"
+          className="su-py-30 sm:su-py-[4rem] lg:su-px-30 su-border-b su-border-black-40"
         >
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
             <div className="md:su-flex-1">
@@ -49,6 +50,7 @@ const SearchResults = ({ results }) => {
                 </a>
               </h3>
               <div
+                className="su-text-16 lg:su-text-20 su-leading-snug"
                 // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   // eslint-disable-next-line no-underscore-dangle
