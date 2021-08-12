@@ -3,7 +3,6 @@ import SbEditable from "storyblok-react";
 import { Container, FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import { render } from "storyblok-rich-text-react-renderer";
-import nextId from "react-id-generator";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
@@ -33,7 +32,6 @@ const Poster = ({
   },
   blok,
 }) => {
-  const posterId = nextId(`${id}-`);
   const numCta = getNumBloks(cta);
   const rendered = render(text);
   const numText = getNumBloks(rendered);
@@ -86,7 +84,7 @@ const Poster = ({
           bgFilename,
           "linear-gradient(240deg, rgba(24, 29, 28) 10%, rgba(98, 0, 89, 0.85) 60%, rgb(177, 4, 14) 100%)"
         )}
-        id={id ? posterId : ""}
+        id={id || ""}
       >
         {filename?.startsWith("http") && (
           <CircularImage

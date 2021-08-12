@@ -1,7 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import { dcnb } from "cnbuilder";
-import nextId from "react-id-generator";
 import {
   smallPaddingBottom,
   smallPaddingTop,
@@ -14,7 +13,6 @@ const Wysiwyg = ({
   blok: { content, width, spacingTop, spacingBottom, isLightText, align, id },
   blok,
 }) => {
-  const wysiwygId = nextId(`${id}-`);
   const mySpacingTop = smallPaddingTop[spacingTop] ?? "";
   const mySpacingBottom = smallPaddingBottom[spacingBottom] ?? "";
 
@@ -23,7 +21,7 @@ const Wysiwyg = ({
       <WidthBox
         width={width ?? "edge-to-edge"}
         className={dcnb(mySpacingTop, mySpacingBottom)}
-        id={id ? wysiwygId : ""}
+        id={id || ""}
       >
         <RichTextRenderer
           isDark={isLightText}
