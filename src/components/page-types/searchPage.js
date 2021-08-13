@@ -10,6 +10,8 @@ import {
   ArrayParam,
 } from "use-query-params";
 import Icon from "react-hero-icon";
+import qs from "query-string";
+import { useLocation } from "@reach/router";
 import Layout from "../partials/layout";
 import SearchField from "../search/searchField";
 import SearchResults from "../search/searchResults";
@@ -18,8 +20,6 @@ import SearchFacet from "../search/searchFacet";
 import SearchNoResults from "../search/searchNoResults";
 import SearchKeywordBanner from "../search/searchKeywordBanner";
 import CreateBloks from "../../utilities/createBloks";
-import qs from "query-string";
-import { useLocation } from "@reach/router";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
 
@@ -221,6 +221,7 @@ const SearchPage = (props) => {
     setQueryParam(params.q || undefined);
     setPage(0);
     setQuery(params.q);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;

@@ -1,9 +1,8 @@
-import React, {useState, createRef, useEffect} from "react";
+import React, { useState, createRef, useEffect } from "react";
 import { X, Search } from "react-hero-icon/solid";
 import SearchAutocomplete from "./searchAutocomplete";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
-import qs from "query-string";
 
 const SearchField = React.forwardRef(
   (
@@ -61,7 +60,6 @@ const SearchField = React.forwardRef(
       setQuery(defaultValue);
     }, [defaultValue]);
 
-
     UseOnClickOutside(inputWrapper, () => {
       setShowAutocomplete(false);
     });
@@ -114,7 +112,8 @@ const SearchField = React.forwardRef(
                 onClick={clearHandler}
                 className={clearBtnClasses}
               >
-                Clear <X className="su-inline-block su-ml-3 su-mt-5 su-h-[21px] su-w-[21px]" />
+                Clear
+                <X className="su-inline-block su-ml-3 su-mt-5 su-h-[21px] su-w-[21px]" />
               </button>
               <SearchAutocomplete
                 autocompleteSuggestions={autocompleteSuggestions}
