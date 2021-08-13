@@ -1,11 +1,6 @@
 import React from "react";
 import sanitize from "sanitize-html";
-import {
-  VideoCameraIcon,
-  MicrophoneIcon,
-  ArrowRightIcon,
-} from "@heroicons/react/outline";
-import { CtaLink } from "decanter-react";
+import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
 import HeroIcon from "../simple/heroIcon";
 
 const SearchResults = ({ results }) => {
@@ -49,6 +44,7 @@ const SearchResults = ({ results }) => {
                   />
                 </a>
               </h3>
+              {/* eslint-disable-next-line no-underscore-dangle */}
               {result._snippetResult.body.value && (
                 <div
                   className="su-text-16 lg:su-text-20 su-leading-snug su-mb-15"
