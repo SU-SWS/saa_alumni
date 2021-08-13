@@ -27,6 +27,23 @@ const MainMenuGroup = ({
 
   UseOnClickOutside(ref, () => setPanelOpened(false));
 
+  const isBrowser = typeof window !== "undefined";
+  let activeButtonStyles = "";
+  let activeChevronStyles = "";
+
+  if (isBrowser) {
+    const browserUrl = window.location.href;
+
+    // Loop through menu items and add active styles to parent button if any child items are active
+    for (let i = 0; i < menuItems.length; i += 1) {
+      const data = menuItems;
+      if (browserUrl.indexOf(data[i].link.cached_url) > -1) {
+        activeButtonStyles = "lg:!su-text-digital-red-xlight lg:su-border-digital-red-xlight";
+        activeChevronStyles = "lg:!su-text-digital-red-xlight";
+      }
+    }
+  }
+
   // Styles for 1st level parent item buttons
   const buttonMobile =
     "su-flex su-items-center su-w-full hocus:su-bg-cardinal-red-xxdark hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-20 su-pr-80 su-text-20";
@@ -53,7 +70,7 @@ const MainMenuGroup = ({
           panelOpened
             ? "lg:hocus:!su-text-white !su-bg-cardinal-red-xxdark lg:!su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark hover:!su-bg-digital-red lg:hover:!su-bg-cardinal-red-xdark"
             : ""
-        } su-group su-text-white su-transition-colors ${buttonMobile} ${buttonDesktop} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
+        } su-group su-text-white su-transition-colors ${buttonMobile} ${buttonDesktop} ${activeButtonStyles} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
       >
         {parentText}
         {parentTextSecond && (
@@ -65,7 +82,7 @@ const MainMenuGroup = ({
         <ChevronDownIcon
           className={`su-inline-block su-text-white su-transition ${
             panelOpened ? "su-transform-gpu su-rotate-180" : ""
-          } ${chevronMobile} ${chevronDesktop}`}
+          } ${chevronMobile} ${chevronDesktop} ${activeChevronStyles}`}
           aria-hidden="true"
         />
       </button>
