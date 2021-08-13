@@ -66,8 +66,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   return (
     <div
       className={`su-modal
-      su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center
-      su-justify-center su-z-50 su-pointer-events-none
+      su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center su-justify-center su-z-50
       ${isOpen ? "su-flex" : "su-hidden"}
     `}
       aria-label={ariaLabel}
@@ -75,7 +74,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
       role="dialog"
       tabIndex="-1"
     >
-      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-opacity-95 su-pt-70">
+      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-95 su-pt-70 su-overflow-auto">
         <Container>
           <div className="su-pt-8 su-pointer-events-auto">
             <div className="su-flex su-justify-end">
