@@ -1,11 +1,6 @@
 import React from "react";
 import sanitize from "sanitize-html";
-import {
-  VideoCameraIcon,
-  MicrophoneIcon,
-  ArrowRightIcon,
-} from "@heroicons/react/outline";
-import { CtaLink } from "decanter-react";
+import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
 import HeroIcon from "../simple/heroIcon";
 
 const SearchResults = ({ results }) => {
@@ -24,7 +19,7 @@ const SearchResults = ({ results }) => {
           className="su-py-30 sm:su-py-[4rem] lg:su-px-30 su-border-b su-border-black-40"
         >
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
-            <div className="md:su-flex-1">
+            <div className="md:su-flex-1 su-w-full">
               <div className="su-text-16 su-mb-10">{result.domain}</div>
               <h3 className="su-text-24">
                 <a
@@ -49,19 +44,22 @@ const SearchResults = ({ results }) => {
                   />
                 </a>
               </h3>
-              <div
-                className="su-text-16 lg:su-text-20 su-leading-snug"
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  // eslint-disable-next-line no-underscore-dangle
-                  __html: sanitize(result._snippetResult.body.value),
-                }}
-              />
+              {/* eslint-disable-next-line no-underscore-dangle */}
+              {result._snippetResult.body.value && (
+                <div
+                  className="su-text-16 lg:su-text-20 su-leading-snug su-mb-15"
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    // eslint-disable-next-line no-underscore-dangle
+                    __html: sanitize(result._snippetResult.body.value),
+                  }}
+                />
+              )}
             </div>
             {result.image && (
-              <div className="md:su-w-[225px] su-h-[150px] su-mx-auto su-mt-15 md:su-mx-0 md:su-mt-0 md:su-ml-30">
+              <div className="su-w-[150px] su-h-[100px] md:su-w-[225px] md:su-h-[150px] md:su-ml-30">
                 <img
-                  className="su-block su-object-cover su-object-center su-h-full"
+                  className="su-block su-object-cover su-object-center su-h-full su-w-full"
                   src={result.image}
                   alt={result.title}
                 />
