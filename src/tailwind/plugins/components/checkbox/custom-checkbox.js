@@ -16,6 +16,10 @@ module.exports = function () {
       ".custom-checkbox[type='checkbox']": {
         borderColor: theme("colors.black.40"),
       },
+      ".custom-checkbox[type='checkbox']:hover:not(:checked), .custom-checkbox[type='checkbox']:focus:not(:checked)": {
+        borderColor: theme("colors.digital-red.light"),
+        borderWidth: "3px",
+      },
     };
 
     addComponents(components);

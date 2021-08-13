@@ -124,7 +124,7 @@ const SearchPage = (props) => {
     if (filters) {
       Object.values(filters).forEach((set) => {
         Object.values(set.getElementsByTagName("input")).forEach((checkbox) => {
-          checkbox.setAttribute("checked", false);
+          checkbox.checked = false
         });
       });
     }
