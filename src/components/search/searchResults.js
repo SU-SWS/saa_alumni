@@ -33,11 +33,12 @@ const SearchResults = ({ results }) => {
                     <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-baseline su--mb-1 su-inline-block" />
                   )}
                   <span
+                    // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML={{
                       // eslint-disable-next-line no-underscore-dangle
-                      __html: sanitize(result.title, {decodeEntities: false}),
+                      __html: sanitize(result.title, { decodeEntities: false }),
                     }}
-                  ></span>
+                  />
                   <HeroIcon
                     iconType={
                       result.domain.match(/^alumni.stanford.edu/)
