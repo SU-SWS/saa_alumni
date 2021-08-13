@@ -38,8 +38,10 @@ const MainMenuGroup = ({
     for (let i = 0; i < menuItems.length; i += 1) {
       const data = menuItems;
       if (browserUrl.indexOf(data[i].link.cached_url) > -1) {
-        activeButtonStyles = "lg:!su-text-digital-red-xlight lg:su-border-digital-red-xlight";
-        activeChevronStyles = "lg:!su-text-digital-red-xlight";
+        activeButtonStyles =
+          "su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:su-border-digital-red-xlight";
+        activeChevronStyles =
+          "su-bg-digital-red-light lg:su-text-digital-red-xlight";
       }
     }
   }
