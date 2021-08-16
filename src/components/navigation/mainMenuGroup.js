@@ -28,8 +28,8 @@ const MainMenuGroup = ({
   UseOnClickOutside(ref, () => setPanelOpened(false));
 
   const isBrowser = typeof window !== "undefined";
-  let activeButtonStyles = "";
-  let activeChevronStyles = "";
+  let activeButton = "";
+  let activeChevron = "";
 
   if (isBrowser) {
     const browserUrl = window.location.href;
@@ -38,10 +38,9 @@ const MainMenuGroup = ({
     for (let i = 0; i < menuItems.length; i += 1) {
       const data = menuItems;
       if (browserUrl.includes(data[i].link?.cached_url)) {
-        activeButtonStyles =
+        activeButton =
           "su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight";
-        activeChevronStyles =
-          "su-bg-digital-red-light lg:su-text-digital-red-xlight";
+        activeChevron = "su-bg-digital-red-light lg:su-text-digital-red-xlight";
       }
     }
   }
@@ -72,7 +71,7 @@ const MainMenuGroup = ({
           panelOpened
             ? "lg:hocus:!su-text-white !su-bg-cardinal-red-xxdark lg:!su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark hover:!su-bg-digital-red lg:hover:!su-bg-cardinal-red-xdark lg:!su-border-transparent"
             : ""
-        } su-group su-text-white su-transition-colors ${buttonMobile} ${buttonDesktop} ${activeButtonStyles} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
+        } su-group su-text-white su-transition-colors ${buttonMobile} ${buttonDesktop} ${activeButton} su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset`}
       >
         {parentText}
         {parentTextSecond && (
@@ -84,7 +83,7 @@ const MainMenuGroup = ({
         <ChevronDownIcon
           className={`su-inline-block su-text-white su-transition ${
             panelOpened ? "su-transform-gpu su-rotate-180" : ""
-          } ${chevronMobile} ${chevronDesktop} ${activeChevronStyles}`}
+          } ${chevronMobile} ${chevronDesktop} ${activeChevron}`}
           aria-hidden="true"
         />
       </button>
