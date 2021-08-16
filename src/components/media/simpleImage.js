@@ -4,11 +4,11 @@ import { dcnb } from "cnbuilder";
 import {
   smallPaddingBottom,
   smallPaddingTop,
-  objectPosition,
 } from "../../utilities/dataSource";
 import transformImage from "../../utilities/transformImage";
 import getImageWidth from "../../utilities/getImageWidth";
 import CaptionMedia from "./captionMedia";
+import FullWidthImage from "./fullWidthImage";
 
 const SimpleImage = ({
   blok: {
@@ -26,7 +26,6 @@ const SimpleImage = ({
 }) => {
   const spacingTopStyle = smallPaddingTop[spacingTop];
   const spacingBottomStyle = smallPaddingBottom[spacingBottom];
-  const imageFocusPosition = objectPosition[imageFocus ?? "center"];
 
   let wrapperHeight = "";
   let imageStyle = "";
@@ -48,9 +47,7 @@ const SimpleImage = ({
   if (filename != null) {
     const originalWidth = getImageWidth(filename);
 
-    if (imageWidth === "edge-to-edge" && originalWidth > 2000) {
-      processedImg = transformImage(filename, "/2000x0");
-    } else if (imageWidth === "center-container" && originalWidth > 1500) {
+    if (imageWidth === "center-container" && originalWidth > 1500) {
       processedImg = transformImage(filename, "/1500x0");
     } else if (imageWidth === "10" && originalWidth > 1300) {
       processedImg = transformImage(filename, "/1300x0");
@@ -77,11 +74,16 @@ const SimpleImage = ({
         isInsetCaption={isInsetCaption}
       >
         <div className={wrapperHeight}>
-          <img
-            src={processedImg}
-            alt={alt ?? ""}
-            className={dcnb("su-w-full", imageStyle, imageFocusPosition)}
-          />
+          {imageWidth === "edge-to-edge" ? (
+            <FullWidthImage
+              filename={filename}
+              className={dcnb("su-w-full", imageStyle)}
+              alt={alt ?? ""}
+              imageFocus={imageFocus}
+            />
+          ) : (
+            <img src={processedImg} alt={alt ?? ""} className="su-w-full" />
+          )}
         </div>
       </CaptionMedia>
     </SbEditable>
