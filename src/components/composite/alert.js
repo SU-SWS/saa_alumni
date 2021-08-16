@@ -44,9 +44,14 @@ const Alert = ({
     />
   );
 
+  let bodyStyle = "su-alert-body-link-dark";
+  if (isLinkDark) {
+    bodyStyle = "su-alert-body-link-light";
+  }
+
   const customStyles = {
     footerWrapper: "su-rs-mt-1",
-    body: "su-alert-body-link-light",
+    body: bodyStyle,
   };
 
   if (!isAlertDismissed) return null;
