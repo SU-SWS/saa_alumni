@@ -58,7 +58,6 @@ const BasicCard = ({
       <CircularImage
         borderColor={borderColor}
         filename={filename}
-        imageFocus={imageFocus}
         smartFocus={focus}
         className={isMinimal ? "" : "su-rs-ml-2"}
         loading="lazy"

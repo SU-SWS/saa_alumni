@@ -8,7 +8,6 @@ const CircularImage = ({
   filename = "",
   alt,
   className,
-  imageFocus,
   smartFocus,
   loading,
   ...props
@@ -32,7 +31,6 @@ const CircularImage = ({
         filename={filename}
         size="thumb"
         smartFocus={smartFocus}
-        imageFocus={imageFocus}
         className="su-object-cover su-w-full su-h-full"
         loading={loading ?? "lazy"}
         alt={alt ?? ""}

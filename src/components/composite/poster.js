@@ -20,7 +20,6 @@ const Poster = ({
     image: { filename, alt, focus } = {},
     bgImage: { filename: bgFilename } = {},
     vCrop,
-    imageFocus,
     headline,
     isBigHeadline,
     headingLevel,
@@ -91,7 +90,6 @@ const Poster = ({
             borderColor={borderColor}
             filename={filename}
             smartFocus={focus}
-            imageFocus={imageFocus}
             className={imageWrapper}
             loading="lazy"
             alt={alt ?? ""}
