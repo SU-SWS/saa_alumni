@@ -46,7 +46,7 @@ const SearchFacet = ({
         "su-mb-[24px] lg:su-mb-[66px] su-pb-[28px] lg:su-pb-0 su-border-b lg:su-border-0 su-border-black-20"
       }`}
     >
-      <Heading level={2} weight="semibold" size={0} className="su-rs-mb-0">
+      <Heading level={2} weight="semibold" className="su-rs-mb-0 su-text-m0">
         {label}
       </Heading>
 
@@ -62,7 +62,7 @@ const SearchFacet = ({
             value={option.name}
             name={attribute}
             defaultChecked={selectedOptions.includes(option.name)}
-            className="su-form-checkbox su-text-digital-red-light su-mr-10 su-w-[1.5rem] su-h-[1.5rem] su-cursor-pointer su-rounded su-border-black-40 focus:su-ring-0"
+            className="su-form-checkbox su-text-digital-red-light su-mr-10 su-w-[1.5rem] su-h-[1.5rem] su-cursor-pointer su-rounded su-border-black-40 focus:su-ring-0 focus:su-ring-transparent"
             onChange={(e) => handleCheckboxChange(e)}
           />
           <span className={`su-text-16 lg:su-text-19 ${optionClasses}`}>
