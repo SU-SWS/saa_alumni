@@ -281,11 +281,9 @@ const SearchPage = (props) => {
           <Grid gap xs={12} className="su-z-10 su-relative">
             <GridCell
               xs={12}
-              lg={results.nbHits > 0 && query ? 6 : 8}
+              lg={results.nbHits > 0 ? 6 : 8}
               className={
-                results.nbHits > 0 && query
-                  ? "lg:su-col-start-4"
-                  : "lg:su-col-start-3"
+                results.nbHits > 0 ? "lg:su-col-start-4" : "lg:su-col-start-3"
               }
             >
               <SearchField
@@ -392,12 +390,10 @@ const SearchPage = (props) => {
             )}
             <GridCell
               xs={12}
-              lg={results.nbHits > 0 && query ? 9 : 8}
+              lg={results.nbHits > 0 ? 9 : 8}
               xxl={8}
               className={
-                results.nbHits > 0 && query
-                  ? ""
-                  : "lg:su-col-start-3 2xl:su-col-start-3"
+                results.nbHits > 0 ? "" : "lg:su-col-start-3 2xl:su-col-start-3"
               }
             >
               <SearchKeywordBanner queryText={query} />
