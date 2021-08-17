@@ -286,12 +286,12 @@ const SearchPage = (props) => {
             <p className="su-text-center">{blok.emptySearchMessage}</p>
           )}
 
-          <Grid gap className="su-z-10 su-relative">
+          <Grid gap xs={12} className="su-z-10 su-relative">
             <GridCell
               xs={12}
               lg={results.facets ? 6 : 8}
               className={
-                results.facets ? "lg:su-col-start-6" : "lg:su-col-start-5"
+                results.facets ? "lg:su-col-start-4" : "lg:su-col-start-3"
               }
             >
               <SearchField
