@@ -281,9 +281,11 @@ const SearchPage = (props) => {
           <Grid gap xs={12} className="su-z-10 su-relative">
             <GridCell
               xs={12}
-              lg={results.facets ? 6 : 8}
+              lg={results.nbHits > 0 && query ? 6 : 8}
               className={
-                results.facets ? "lg:su-col-start-4" : "lg:su-col-start-3"
+                results.nbHits > 0 && query
+                  ? "lg:su-col-start-4"
+                  : "lg:su-col-start-3"
               }
             >
               <SearchField
@@ -310,10 +312,9 @@ const SearchPage = (props) => {
           )}
           <Grid
             xs={12}
-            justifyContent={results.facets ? "start" : "center"}
             className="filters su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
           >
-            {results.facets && (
+            {results.nbHits > 0 && (
               <React.Fragment>
                 <GridCell
                   xs={12}
