@@ -6,8 +6,8 @@ module.exports = function () {
     const components = {
       ".form-checkbox[type='checkbox']:hover:not(:checked), .form-checkbox[type='checkbox']:focus:not(:checked)":
         {
-          borderColor: theme("colors.digital-red.light"),
-          borderWidth: "3px",
+          //borderColor: theme("colors.digital-red.light"),
+          //borderWidth: "3px",
         },
     };
 
