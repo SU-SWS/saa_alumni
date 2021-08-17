@@ -316,15 +316,15 @@ const SearchPage = (props) => {
               <CreateBloks blokSection={blok.aboveResultsContent} />
             </div>
           )}
-          <FlexBox
-            wrap="wrap"
+          <Grid
+            xs={12}
             justifyContent={results.facets ? "start" : "center"}
             className="filters su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
           >
             {results.facets && (
               <React.Fragment>
-                <FlexCell
-                  xs="full"
+                <GridCell
+                  xs={12}
                   lg={3}
                   className={`lg:su-hidden su-relative su-mb-[4rem] ${
                     opened ? "su-shadow-xl" : ""
@@ -386,18 +386,19 @@ const SearchPage = (props) => {
                       </div>
                     )}
                   </div>
-                </FlexCell>
+                </GridCell>
 
-                <FlexCell
-                  xs="full"
-                  lg={3}
+                <GridCell
+                  xs={12}
+                  lg={4}
+                  xxl={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
                   <div>{facets}</div>
-                </FlexCell>
+                </GridCell>
               </React.Fragment>
             )}
-            <FlexCell xs="full" lg={8}>
+            <GridCell xs={12} lg={8} className="su-ml-0 2xl:su-col-start-5">
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
@@ -421,8 +422,8 @@ const SearchPage = (props) => {
                   additionalContent={blok.noResultsAdditionalContent}
                 />
               )}
-            </FlexCell>
-          </FlexBox>
+            </GridCell>
+          </Grid>
 
           {blok.belowResultsContent && (
             <div>
