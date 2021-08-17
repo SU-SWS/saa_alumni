@@ -24,7 +24,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
    su-p-13 su-origin-center su-ml-20`;
 
   const clearBtnClasses = `su-flex su-items-center su-transition-colors su-bg-transparent hover:su-bg-transparent
-  hover:su-text-digital-red-xlight hocus:su-underline su-text-21 su-font-semibold
+  hover:su-text-digital-red-xlight hocus:su-no-underline focus:su-no-underline su-text-21 su-font-semibold
   su-border-none su-text-white su-p-0 focus:su-bg-transparent su-rs-mr-1 su-mt-4`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
