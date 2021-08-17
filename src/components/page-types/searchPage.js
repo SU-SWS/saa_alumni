@@ -216,7 +216,7 @@ const SearchPage = (props) => {
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
   hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1`;
 
-  const inputClasses = `su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none`;
+  const inputClasses = `su-border-0 su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
   const submitBtnClasses = `su-w-30 su-min-w-[30px] su-h-30 lg:su-w-40 lg:su-min-w-40 lg:su-h-40 su-rounded-full su-bg-digital-red-light
    su-p-8 lg:su-p-10 su-origin-center su-transform su-ml-10`;
