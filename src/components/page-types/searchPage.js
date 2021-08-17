@@ -397,7 +397,7 @@ const SearchPage = (props) => {
                 </GridCell>
               </React.Fragment>
             )}
-            <GridCell xs={12} lg={8} xxl={7}>
+            <GridCell xs={12} lg={9} xxl={8}>
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
