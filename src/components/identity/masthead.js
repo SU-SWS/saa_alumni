@@ -80,7 +80,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
                 <ul className="su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-leading-[3.4rem] children:su-mr-[2em] children:su-mb-0 su-underline-offset">
                   <CreateBloks
                     blokSection={utilityNav}
-                    className="first:su-ml-0"
+                    className="first:su-ml-0 children:hocus:su-underline-digital-red-xlight children:hocus:su-underline-thick"
                     hasExternalIcon
                   />
                 </ul>
