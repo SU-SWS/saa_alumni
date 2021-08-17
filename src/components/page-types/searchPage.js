@@ -1,15 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import {
-  Container,
-  FlexCell,
-  FlexBox,
-  Heading,
-  Button,
-  Grid,
-  GridCell,
-} from "decanter-react";
+import { Container, Heading, Button, Grid, GridCell } from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
