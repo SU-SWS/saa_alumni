@@ -62,7 +62,7 @@ const SearchFacet = ({
             value={option.name}
             name={attribute}
             defaultChecked={selectedOptions.includes(option.name)}
-            className="su-form-checkbox su-text-digital-red-light su-mr-10 su-w-[1.5rem] su-h-[1.5rem] su-cursor-pointer su-rounded su-border-black-40 focus:su-ring-0 focus:su-ring-transparent"
+            className="su-form-checkbox su-text-digital-red-light su-mr-10 su-w-[1.5rem] su-h-[1.5rem] su-cursor-pointer su-rounded su-border-black-40 focus:su-ring-0 focus:su-ring-transparent focus-visible:su-ring-2 focus-visible:su-ring-digital-blue-light"
             onChange={(e) => handleCheckboxChange(e)}
           />
           <span className={`su-text-16 lg:su-text-19 ${optionClasses}`}>
