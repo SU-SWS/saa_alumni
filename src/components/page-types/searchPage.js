@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import { Container, FlexCell, FlexBox, Heading, Button } from "decanter-react";
+import {
+  Container,
+  FlexCell,
+  FlexBox,
+  Heading,
+  Button,
+  Grid,
+  GridCell,
+} from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
@@ -278,8 +286,14 @@ const SearchPage = (props) => {
             <p className="su-text-center">{blok.emptySearchMessage}</p>
           )}
 
-          <FlexBox gap justifyContent="center" className="su-z-10 su-relative">
-            <FlexCell xs="full" lg={results.facets ? 6 : 8}>
+          <Grid gap className="su-z-10 su-relative">
+            <GridCell
+              xs={12}
+              lg={results.facets ? 6 : 8}
+              className={
+                results.facets ? "lg:su-col-start-6" : "lg:su-col-start-5"
+              }
+            >
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
                 onSubmit={(queryText) => submitSearchQuery(queryText)}
@@ -295,8 +309,8 @@ const SearchPage = (props) => {
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 clearOnEscape
               />
-            </FlexCell>
-          </FlexBox>
+            </GridCell>
+          </Grid>
           {blok.aboveResultsContent && (
             <div className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]">
               <CreateBloks blokSection={blok.aboveResultsContent} />
