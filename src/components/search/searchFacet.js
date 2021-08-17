@@ -53,7 +53,7 @@ const SearchFacet = ({
       {preparedFacetValues.map((option, index) => (
         <label
           key={option.name}
-          className={`su-label su-flex su-items-center su-cursor-pointer su-text-19 ${
+          className={`su-label su-flex su-items-center su-cursor-pointer su-text-19 hover:su-text-digital-red-xlight ${
             index ? "su-mt-20" : ""
           }`}
         >
