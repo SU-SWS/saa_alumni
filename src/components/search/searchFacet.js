@@ -62,11 +62,13 @@ const SearchFacet = ({
             value={option.name}
             name={attribute}
             defaultChecked={selectedOptions.includes(option.name)}
-            className="su-peer su-form-checkbox su-text-digital-red-light su-mr-10 su-w-[1.5rem] su-h-[1.5rem] su-cursor-pointer su-rounded su-border-black-40 focus:su-ring focus:su-ring-digital-red-light focus:su-ring-offset-0 hover:su-ring hover:su-ring-digital-red-light hover:su-ring-offset-0"
+            className="su-peer su-form-checkbox su-text-digital-red-light su-mr-10 su-w-[1.5rem] su-h-[1.5rem] su-cursor-pointer su-rounded su-border-black-40 hocus:su-ring hocus:su-ring-digital-red-light hocus:su-ring-offset-0"
             onChange={(e) => handleCheckboxChange(e)}
           />
           <span
-            className={`su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light ${optionClasses}`}
+            className={`su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light ${
+              optionClasses || ""
+            }`}
           >
             {option.name}
             <span> ({option.count.toLocaleString("en-us")})</span>
