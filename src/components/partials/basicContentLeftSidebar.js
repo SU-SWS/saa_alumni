@@ -28,6 +28,7 @@ const BasicContentLeftSidebar = ({
         xxl={3}
         className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2"
       >
+        <div id="section-menu-desktop" />
         <CreateBloks
           blokSection={sectionMenu}
           className="lg:su-block su-hidden lg:su-rs-mb-2"

@@ -46,7 +46,6 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
             openOpen={modalOpen}
             setModalOpen={setModalOpen}
           />
-          <div id="main-nav-mobile" />
           <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
         </FlexBox>
       </Container>
@@ -90,7 +89,6 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
                 openOpen={modalOpen}
                 setModalOpen={setModalOpen}
               />
-              <div id="main-nav-desktop" />
             </FlexBox>
             <CreateBloks
               blokSection={mainNav}

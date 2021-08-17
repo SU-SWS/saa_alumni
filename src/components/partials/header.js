@@ -15,10 +15,10 @@ const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => (
     <CreateBloks blokSection={alert} />
     <Container element="header" width="full" className="su-relative su-z-20">
       <Skiplink />
-      <Skiplink className="lg:su-hidden" anchorLink="#main-nav-mobile">
+      <Skiplink className="lg:su-hidden" anchorLink="#section-menu-mobile">
         Skip to section menu
       </Skiplink>
-      <Skiplink className="su-hidden lg:su-flex" anchorLink="#main-nav-desktop">
+      <Skiplink className="su-hidden lg:su-flex" anchorLink="#section-menu-desktop">
         Skip to section menu
       </Skiplink>
       <CreateBloks blokSection={masthead} hasHero={hasHero} isDark={isDark} />
