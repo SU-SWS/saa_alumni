@@ -390,7 +390,12 @@ const SearchPage = (props) => {
                 </GridCell>
               </React.Fragment>
             )}
-            <GridCell xs={12} lg={9} xxl={8}>
+            <GridCell
+              xs={12}
+              lg={results.nbHits > 0 && query ? 9 : 8}
+              xxl={8}
+              className={results.nbHits > 0 && query ? "" : "lg:su-col-start-3"}
+            >
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
