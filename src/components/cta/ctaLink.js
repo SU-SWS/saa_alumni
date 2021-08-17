@@ -23,7 +23,6 @@ const CtaLink = React.forwardRef(
         leadingIcon: { icon: propsIcon, type } = {},
         isOutlineFaIcon,
         icon,
-        iconColor: propsIconColor,
         align: propsAlign,
         spacingBottom,
         link,
@@ -44,7 +43,7 @@ const CtaLink = React.forwardRef(
 
     // Icon color
     const iconColor =
-      ctaLinkIconColor[propsIconColor ?? "bright-red-hover-cardinal-red"];
+      ctaLinkIconColor[propsTextColor ?? "bright-red-hover-cardinal-red"];
 
     // Horizontal alignment
     const align = textAlign[propsAlign] ?? textAlign.left;
