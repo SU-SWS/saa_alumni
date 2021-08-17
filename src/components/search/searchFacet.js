@@ -66,7 +66,7 @@ const SearchFacet = ({
             onChange={(e) => handleCheckboxChange(e)}
           />
           <span
-            className={`su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-hover:su-underline hover:su-underline hover:su-text-digital-red-light ${optionClasses}`}
+            className={`su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light ${optionClasses}`}
           >
             {option.name}
             <span> ({option.count.toLocaleString("en-us")})</span>
