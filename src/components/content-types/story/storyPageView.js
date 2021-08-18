@@ -85,13 +85,7 @@ const StoryPageView = (props) => {
         captionAlign="right"
         className="su-rs-mb-6"
       >
-        <CardImage
-          filename={filename}
-          alt={alt ?? ""}
-          loading="eager"
-          imageFocus={imageFocus}
-          smartFocus={focus}
-        />
+        <CardImage filename={filename} alt={alt ?? ""} loading="eager" />
       </CaptionMedia>
     );
   }
