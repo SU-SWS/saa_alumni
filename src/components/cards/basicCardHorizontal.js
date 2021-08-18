@@ -26,11 +26,11 @@ const BasicCardHorizontal = ({
     "su-bg-white su-text-black su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
   // Card content padding for non-minimal cards
-  let bodyPadding = "su-rs-pl-2";
+  let bodyPadding = "";
 
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (
-    <div className="su-w-400 su-flex-shrink-0" aria-hidden="true">
+    <div className="su-w-1/2" aria-hidden="true">
       <div className="su-aspect-w-3 su-aspect-h-2">
         <CardImage
           filename={filename}
@@ -50,7 +50,7 @@ const BasicCardHorizontal = ({
         filename={filename}
         imageFocus={imageFocus}
         smartFocus={focus}
-        className={isMinimal ? "su-flex-shrink-0" : "su-flex-shrink-0"}
+        className="su-flex-shrink-0"
         loading="lazy"
       />
     );
@@ -62,7 +62,7 @@ const BasicCardHorizontal = ({
 
     // Add left padding to content if the minimal card has an image
     if (filename) {
-      bodyPadding = "su-rs-pl-2";
+      //bodyPadding = "su-rs-pl-2";
     }
   }
 
@@ -70,9 +70,10 @@ const BasicCardHorizontal = ({
     <SbEditable content={blok}>
       <FlexBox
         element="article"
-        direction="row"
+        direction="col"
+        gap
         className={dcnb(
-          "basic-card su-w-full su-basefont-23 su-break-words",
+          "basic-card md:su-flex-row su-w-full su-basefont-23 su-break-words",
           wrapperClasses
         )}
       >
@@ -83,7 +84,10 @@ const BasicCardHorizontal = ({
           isBigHeadline={isBigHeadline}
           text={text}
           cta={cta}
-          className={bodyPadding}
+          className={dcnb(
+            `${isRound && filename ? "" : "su-w-1/2"}`,
+            bodyPadding
+          )}
         />
       </FlexBox>
     </SbEditable>
