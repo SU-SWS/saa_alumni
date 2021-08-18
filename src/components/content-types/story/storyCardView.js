@@ -10,7 +10,7 @@ import HeroIcon from "../../simple/heroIcon";
 const StoryCardView = ({
   blok: {
     cardImage: { filename: cardFilename } = {},
-    image: { filename } = {},
+    image: { filename, focus } = {},
     imageFocus,
     storyType,
     title,
@@ -97,6 +97,7 @@ const StoryCardView = ({
               <CardImage
                 filename={cardFilename || filename}
                 imageFocus={cardImageFocus || imageFocus}
+                smartFocus={focus}
                 size="vertical"
                 className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
                 loading="lazy"

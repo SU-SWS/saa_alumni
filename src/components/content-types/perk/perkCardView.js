@@ -10,7 +10,7 @@ import HeroIcon from "../../simple/heroIcon";
 
 const PerkCardView = ({
   blok: {
-    image: { filename } = {},
+    image: { filename, focus } = {},
     imageFocus,
     isNew,
     title,
@@ -67,6 +67,7 @@ const PerkCardView = ({
           {filename?.startsWith("http") && (
             <CardImage
               filename={filename}
+              smartFocus={focus}
               imageFocus={cardImageFocus || imageFocus}
               className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
               loading={orientation === "horizontal" ? "eager" : "lazy"}
