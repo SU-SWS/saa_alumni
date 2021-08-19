@@ -17,7 +17,7 @@ import HeroIcon from "../../simple/heroIcon";
 
 const Event = ({
   blok: {
-    image: { filename } = {},
+    image: { filename, focus } = {},
     imageFocus,
     title,
     start,
@@ -145,6 +145,7 @@ const Event = ({
               <figure className="su-overflow-hidden su-w-full su-h-full">
                 <CardImage
                   filename={filename}
+                  smartFocus={focus}
                   imageFocus={imageFocus}
                   size="vertical"
                   className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"

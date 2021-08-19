@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import { Container, FlexCell, FlexBox, Heading, Button } from "decanter-react";
+import { Container, Heading, Button, Grid, GridCell } from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
@@ -291,8 +291,14 @@ const SearchPage = (props) => {
             <p className="su-text-center">{blok.emptySearchMessage}</p>
           )}
 
-          <FlexBox gap justifyContent="center" className="su-z-10 su-relative">
-            <FlexCell xs="full" lg={results.facets ? 6 : 8}>
+          <Grid gap xs={12} className="su-z-10 su-relative">
+            <GridCell
+              xs={12}
+              lg={results.nbHits > 0 ? 6 : 8}
+              className={
+                results.nbHits > 0 ? "lg:su-col-start-4" : "lg:su-col-start-3"
+              }
+            >
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
                 onSubmit={(queryText) => submitSearchQuery(queryText)}
@@ -308,22 +314,21 @@ const SearchPage = (props) => {
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 clearOnEscape
               />
-            </FlexCell>
-          </FlexBox>
+            </GridCell>
+          </Grid>
           {blok.aboveResultsContent && (
             <div className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]">
               <CreateBloks blokSection={blok.aboveResultsContent} />
             </div>
           )}
-          <FlexBox
-            wrap="wrap"
-            justifyContent={results.facets ? "start" : "center"}
+          <Grid
+            xs={12}
             className="filters su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
           >
-            {results.facets && (
+            {results.nbHits > 0 && (
               <React.Fragment>
-                <FlexCell
-                  xs="full"
+                <GridCell
+                  xs={12}
                   lg={3}
                   className={`lg:su-hidden su-relative su-mb-[4rem] ${
                     opened ? "su-shadow-xl" : ""
@@ -385,18 +390,25 @@ const SearchPage = (props) => {
                       </div>
                     )}
                   </div>
-                </FlexCell>
+                </GridCell>
 
-                <FlexCell
-                  xs="full"
+                <GridCell
+                  xs={12}
                   lg={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
                   <div>{facets}</div>
-                </FlexCell>
+                </GridCell>
               </React.Fragment>
             )}
-            <FlexCell xs="full" lg={!results.nbHits && query ? 12 : 8}>
+            <GridCell
+              xs={12}
+              lg={results.nbHits > 0 ? 9 : 8}
+              xxl={8}
+              className={
+                results.nbHits > 0 ? "" : "lg:su-col-start-3 2xl:su-col-start-3"
+              }
+            >
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
@@ -420,8 +432,8 @@ const SearchPage = (props) => {
                   additionalContent={blok.noResultsAdditionalContent}
                 />
               )}
-            </FlexCell>
-          </FlexBox>
+            </GridCell>
+          </Grid>
 
           {blok.belowResultsContent && (
             <div>

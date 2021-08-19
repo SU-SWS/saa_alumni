@@ -10,6 +10,7 @@ const CardImage = ({
   size,
   className,
   imageFocus,
+  smartFocus,
   loading,
   ...props
 }) => {
@@ -27,14 +28,14 @@ const CardImage = ({
       imgWidth = getImageWidth(filename);
     }
 
-    originalImg = transformImage(filename, "");
+    originalImg = transformImage(filename, "", smartFocus, true);
 
     if (size === "vertical" && imgWidth > 800) {
-      imgSrc = transformImage(filename, "/800x0");
+      imgSrc = transformImage(filename, "/800x0", smartFocus);
     } else if (size === "thumb" && imgWidth > 200) {
-      imgSrc = transformImage(filename, "/200x0");
+      imgSrc = transformImage(filename, "/200x200", smartFocus, true);
     } else if (size === "horizontal" && imgWidth > 1200) {
-      imgSrc = transformImage(filename, "/1200x0");
+      imgSrc = transformImage(filename, "/1200x0", smartFocus);
     } else {
       imgSrc = originalImg;
     }

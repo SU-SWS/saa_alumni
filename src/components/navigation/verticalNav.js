@@ -5,7 +5,7 @@ import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
 import CreateStories from "../../utilities/createStories";
 
-const VerticalNav = ({ blok: { verticalNav }, className }) => {
+const VerticalNav = ({ blok: { verticalNav }, className, id }) => {
   const [navOpened, setNavOpened] = useState(false);
   const ref = useRef(null);
   const burgerRef = useRef(null);
@@ -38,6 +38,7 @@ const VerticalNav = ({ blok: { verticalNav }, className }) => {
         className,
         navOpened ? "su-shadow-xl" : ""
       )}
+      id={id}
       aria-label="Section Menu"
       ref={ref}
     >

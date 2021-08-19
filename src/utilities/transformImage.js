@@ -5,7 +5,7 @@
 import { imageURL } from "../contexts/GlobalContext";
 import { config } from "./config";
 
-const transformImage = (image, param = "") => {
+const transformImage = (image, param = "", smartFocus, autoFocus) => {
   const imageService = imageURL.endsWith("/") ? imageURL.slice(0, -1) : "";
   let myParams = param;
 
@@ -16,8 +16,15 @@ const transformImage = (image, param = "") => {
   const path = image.replace("https://a.storyblok.com", "");
 
   // If the image is a jpg, optimize it by changing the quality to 60% (quality loss is mostly unnoticeable)
-  if (image.endsWith(".jpg") || image.endsWith(".jpeg")) {
+  if (
+    image.toLowerCase().endsWith(".jpg") ||
+    image.toLowerCase().endsWith(".jpeg")
+  ) {
+    myParams += autoFocus && !smartFocus ? "/smart" : "";
     myParams += "/filters:quality(60)";
+    myParams += smartFocus ? `:focal(${smartFocus})` : "";
+  } else {
+    myParams += smartFocus ? `/filters:focal(${smartFocus})` : "";
   }
 
   if (myParams === "") {

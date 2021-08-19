@@ -8,7 +8,7 @@ const CircularImage = ({
   filename = "",
   alt,
   className,
-  imageFocus,
+  smartFocus,
   loading,
   ...props
 }) => {
@@ -30,7 +30,7 @@ const CircularImage = ({
       <CardImage
         filename={filename}
         size="thumb"
-        imageFocus={imageFocus}
+        smartFocus={smartFocus}
         className="su-object-cover su-w-full su-h-full"
         loading={loading ?? "lazy"}
         alt={alt ?? ""}
