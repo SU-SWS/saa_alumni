@@ -11,24 +11,54 @@ const VerticalNavWrapper = ({
 
   // Check if is browser and if current link is active
   if (isBrowser) {
-    const url = window.location.href;
+    // Check if menu item's url matches the current page url
+    const urlMatch = (link) => {
+      const url = window.location.href;
+      return url.indexOf(link) > -1 && (!url.split(link)[1] || url.split(link)[1] === "/")
+    }
 
-    // Loop through menu items and add active and activeTrail props
-    // TODO: Update this to support unlimited levels
-    for (let i = 0; i < items.length; i += 1) {
-      const data = items;
-      if (url.indexOf(data[i].link.cached_url) > -1) {
-        data[i].active = true;
-        break;
-      } else {
-        for (let k = 0; k < data[i].childItems.length; k += 1) {
-          if (url.indexOf(data[i].childItems[k].link.cached_url) > -1) {
-            data[i].childItems[k].active = true;
-            data[i].activeTrail = true;
-            break;
+    // Recursive function that will add active and activeTrail props to the active link, it's parents and the
+    // immediate children if available.
+    const setLinkProps = (obj) => {
+      if (obj) {
+        if (urlMatch(obj.link.cached_url)) {
+          obj.active = true;
+        } else {
+          if (obj.childItems.length > 0) {
+            obj.childItems.map((child) => {
+              obj.activeTrail = true;
+              if (urlMatch(child.link.cached_url)) {
+                child.active = true;
+              }
+              else {
+                setLinkProps(child);
+              }
+            })
           }
         }
       }
+    };
+
+    if (items.length > 0) {
+      items.map((item, key) => {
+        // Recursive function that will check which of the first level items have the active item and need to be opened.
+        const getActiveSubmenu = function (obj) {
+          if (urlMatch(obj.link.cached_url)) {
+            setLinkProps(items[key]);
+          } else if (obj.childItems.length > 0) {
+            obj.childItems.map((child) => {
+              if (urlMatch(child.link.cached_url)) {
+                setLinkProps(items[key]);
+              }
+              else {
+                getActiveSubmenu(child);
+              }
+            })
+          }
+        }
+
+        getActiveSubmenu(item);
+      })
     }
   }
   return (
