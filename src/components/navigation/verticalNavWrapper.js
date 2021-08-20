@@ -5,20 +5,15 @@ import CreateBloks from "../../utilities/createBloks";
 const VerticalNavWrapper = ({
   blok: { items, showNestedLevels },
   className,
+  pageLink,
   ...props
 }) => {
-  const isBrowser = typeof window !== "undefined";
-
-  // Check if is browser and if current link is active
-  if (isBrowser) {
+  // Check if current link is active
+  if (pageLink) {
     // Check if menu item's url matches the current page url
-    const urlMatch = (link) => {
-      const url = window.location.href;
-      return (
-        url.indexOf(link) > -1 &&
-        (!url.split(link)[1] || url.split(link)[1] === "/")
-      );
-    };
+    const urlMatch = (link) =>
+      pageLink.indexOf(link) > -1 &&
+      (!pageLink.split(link)[1] || pageLink.split(link)[1] === "/");
 
     // Recursive function that will add active and activeTrail props to the active link, it's parents and the
     // immediate children if available.
@@ -61,8 +56,11 @@ const VerticalNavWrapper = ({
             });
           }
         };
-
-        getActiveSubmenu(item);
+        if (!showNestedLevels) {
+          getActiveSubmenu(item);
+        } else {
+          setLinkProps(item);
+        }
       });
     }
   }
