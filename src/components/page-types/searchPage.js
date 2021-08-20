@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import { Container, FlexCell, FlexBox, Heading, Button } from "decanter-react";
+import { Container, Heading, Button, Grid, GridCell } from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
@@ -10,6 +10,8 @@ import {
   ArrayParam,
 } from "use-query-params";
 import Icon from "react-hero-icon";
+import qs from "query-string";
+import { useLocation } from "@reach/router";
 import Layout from "../partials/layout";
 import SearchField from "../search/searchField";
 import SearchResults from "../search/searchResults";
@@ -211,10 +213,21 @@ const SearchPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
 
+  const { search } = useLocation();
+
+  useEffect(() => {
+    const params = qs.parse(search);
+    setPageParam(undefined);
+    setQueryParam(params.q || undefined);
+    setPage(0);
+    setQuery(params.q);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [search]);
+
   const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
 
-  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hover:su-bg-transparent su-text-21 su-font-semibold
-  hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1`;
+  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-underline hover:su-bg-transparent su-text-21 su-font-semibold
+  hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1 su-flex su-items-center`;
 
   const inputClasses = `su-border-0 su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
@@ -278,8 +291,14 @@ const SearchPage = (props) => {
             <p className="su-text-center">{blok.emptySearchMessage}</p>
           )}
 
-          <FlexBox gap justifyContent="center" className="su-z-10 su-relative">
-            <FlexCell xs="full" lg={results.facets ? 6 : 8}>
+          <Grid gap xs={12} className="su-z-10 su-relative">
+            <GridCell
+              xs={12}
+              lg={results.nbHits > 0 ? 6 : 8}
+              className={
+                results.nbHits > 0 ? "lg:su-col-start-4" : "lg:su-col-start-3"
+              }
+            >
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
                 onSubmit={(queryText) => submitSearchQuery(queryText)}
@@ -295,22 +314,21 @@ const SearchPage = (props) => {
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 clearOnEscape
               />
-            </FlexCell>
-          </FlexBox>
+            </GridCell>
+          </Grid>
           {blok.aboveResultsContent && (
             <div className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]">
               <CreateBloks blokSection={blok.aboveResultsContent} />
             </div>
           )}
-          <FlexBox
-            wrap="wrap"
-            justifyContent={results.facets ? "start" : "center"}
+          <Grid
+            xs={12}
             className="filters su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
           >
-            {results.facets && (
+            {results.nbHits > 0 && (
               <React.Fragment>
-                <FlexCell
-                  xs="full"
+                <GridCell
+                  xs={12}
                   lg={3}
                   className={`lg:su-hidden su-relative su-mb-[4rem] ${
                     opened ? "su-shadow-xl" : ""
@@ -372,18 +390,25 @@ const SearchPage = (props) => {
                       </div>
                     )}
                   </div>
-                </FlexCell>
+                </GridCell>
 
-                <FlexCell
-                  xs="full"
+                <GridCell
+                  xs={12}
                   lg={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
                   <div>{facets}</div>
-                </FlexCell>
+                </GridCell>
               </React.Fragment>
             )}
-            <FlexCell xs="full" lg={8}>
+            <GridCell
+              xs={12}
+              lg={results.nbHits > 0 ? 9 : 8}
+              xxl={8}
+              className={
+                results.nbHits > 0 ? "" : "lg:su-col-start-3 2xl:su-col-start-3"
+              }
+            >
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
                 <>
@@ -407,8 +432,8 @@ const SearchPage = (props) => {
                   additionalContent={blok.noResultsAdditionalContent}
                 />
               )}
-            </FlexCell>
-          </FlexBox>
+            </GridCell>
+          </Grid>
 
           {blok.belowResultsContent && (
             <div>

@@ -82,11 +82,12 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
                 type="button"
                 ref={closeButton}
                 onClick={onClose}
-                className="su-bg-transparent su-text-white hover:su-bg-transparent focus:su-bg-transparent"
+                className="su-bg-transparent su-text-white hover:su-bg-transparent focus:su-bg-transparent
+                su-font-semibold hocus:su-underline su-text-18 su-flex su-items-center"
               >
-                Close&nbsp;
+                Close
                 <XIcon
-                  className="su-inline-block su-h-20 su-w-20"
+                  className="su-inline-block su-h-[21px] su-w-[21px] su-ml-4"
                   aria-hidden="true"
                 />
               </button>

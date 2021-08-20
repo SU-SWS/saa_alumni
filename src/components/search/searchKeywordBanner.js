@@ -44,7 +44,11 @@ const SearchKeywordBanner = function ({ queryText }) {
 
   const banner = getBanner(data.allStoryblokEntry, queryText);
   if (banner) {
-    return <CreateBloks blokSection={banner} />;
+    return (
+      <div className="su-rs-mb-5">
+        <CreateBloks blokSection={banner} />
+      </div>
+    );
   }
 
   return null;
