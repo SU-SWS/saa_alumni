@@ -7,7 +7,7 @@ import Layout from "../../partials/layout";
 const PerkPageView = (props) => {
   // Destructure props
   const {
-    blok: { image: { filename } = {}, imageFocus, title, intro },
+    blok: { image: { filename, focus } = {}, imageFocus, title, intro },
     blok,
   } = props;
 
@@ -22,6 +22,7 @@ const PerkPageView = (props) => {
                 <figure className="su-overflow-hidden su-w-full su-h-full">
                   <CardImage
                     filename={filename}
+                    smartFocus={focus}
                     imageFocus={imageFocus}
                     className="su-w-full su-h-full su-object-cover"
                     loading="lazy"

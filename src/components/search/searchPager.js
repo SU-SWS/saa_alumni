@@ -1,5 +1,5 @@
 import React from "react";
-import buildPager from "../../utilities/buildPager";
+import { buildPager, buildMobilePager } from "../../utilities/buildPager";
 
 const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
   if (activePage === undefined || nbPages === undefined) {
@@ -10,15 +10,16 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
   const activeLinkClasses =
     "su-text-cardinal-red su-border-b-4 su-cursor-default su-pointer-events-none";
 
-  const pagerLinks = buildPager(nbPages, maxLinks, activePage);
+  const desktopPagerLinks = buildPager(nbPages, maxLinks, activePage);
+  const mobilePagerLinks = buildMobilePager(nbPages, activePage);
 
   const linkHandler = (e, page) => {
     e.preventDefault();
     selectPage(page);
   };
 
-  return (
-    <div>
+  const Pager = ({ pagerLinks, className }) => (
+    <div className={className}>
       <div className="su-flex su-mt-70 lg:su-mt-90 su-mb-90 su-justify-center md:su-space-x-36">
         <ul className="su-list-none su-flex su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-text-[26px] su-font-bold">
           {activePage > 0 && (
@@ -64,6 +65,13 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
           )}
         </ul>
       </div>
+    </div>
+  );
+
+  return (
+    <div>
+      <Pager className="su-hidden md:su-block" pagerLinks={desktopPagerLinks} />
+      <Pager className="md:su-hidden" pagerLinks={mobilePagerLinks} />
     </div>
   );
 };

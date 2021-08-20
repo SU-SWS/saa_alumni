@@ -16,7 +16,7 @@ const StoryPageView = (props) => {
   // Destructure props
   const {
     blok: {
-      image: { filename, alt } = {},
+      image: { filename, alt, focus } = {},
       imageFocus,
       notFullwidthImage,
       caption,
@@ -67,6 +67,7 @@ const StoryPageView = (props) => {
           <FullWidthImage
             filename={filename}
             imageFocus={imageFocus}
+            smartFocus={focus}
             alt={alt ?? ""}
             className="su-w-full su-h-full su-object-cover"
             loading="eager"
