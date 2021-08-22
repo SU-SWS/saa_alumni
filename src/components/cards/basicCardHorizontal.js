@@ -59,11 +59,6 @@ const BasicCardHorizontal = ({
   if (isMinimal) {
     wrapperClasses = "";
     bodyPadding = "";
-
-    // Add left padding to content if the minimal card has an image
-    if (filename) {
-      //bodyPadding = "su-rs-pl-2";
-    }
   }
 
   return (

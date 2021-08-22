@@ -12,6 +12,7 @@ const BasicCardContent = ({
   text,
   cta,
   isBigHeadline,
+  isDark,
   className,
   ...props
 }) => {
@@ -35,13 +36,14 @@ const BasicCardContent = ({
         level={parseInt(headingLevel, 10) || 3}
         font="serif"
         weight="bold"
-        className={dcnb("su-mb-0", headlineSize)}
+        className={dcnb("su-mb-0 su-mt-[-0.16em]", headlineSize)}
       >
         {headline}
       </Heading>
       {hasText && (
         <RichTextRenderer
           wysiwyg={text}
+          isDark={isDark}
           className="su-card-paragraph su-rs-mt-neg1 children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
         />
       )}

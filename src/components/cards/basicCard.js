@@ -1,13 +1,9 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import { FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
-import { render } from "storyblok-rich-text-react-renderer";
 import CardImage from "../media/cardImage";
 import CircularImage from "../media/circularImage";
-import CreateBloks from "../../utilities/createBloks";
-import getNumBloks from "../../utilities/getNumBloks";
-import RichTextRenderer from "../../utilities/richTextRenderer";
+import BasicCardContent from "./basicCardContent";
 
 const BasicCard = ({
   blok: {
@@ -26,10 +22,6 @@ const BasicCard = ({
   },
   blok,
 }) => {
-  const numCta = getNumBloks(cta);
-  const renderedText = render(text);
-  const hasText = getNumBloks(renderedText) > 0;
-
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
     "su-bg-white su-text-black su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm";
@@ -80,13 +72,6 @@ const BasicCard = ({
     wrapperClasses = "su-bg-transparent su-text-white";
   }
 
-  // Option to make headline font larger
-  let headlineSize = "su-type-2";
-
-  if (isBigHeadline) {
-    headlineSize = "su-type-3";
-  }
-
   // Content alignment including image and CTA, default is left-align
   // This setting overrides the alignment option in the nested CTA
   let bodyAlign = "su-items-start";
@@ -105,31 +90,15 @@ const BasicCard = ({
         )}
       >
         {filename?.startsWith("http") && cardImage}
-        <FlexBox
-          direction="col"
+        <BasicCardContent
+          headline={headline}
+          headingLevel={headingLevel}
+          isBigHeadline={isBigHeadline}
+          isDark={isLightText}
+          text={text}
+          cta={cta}
           className={dcnb("card-body", bodyPadding, bodyAlign)}
-        >
-          <Heading
-            level={parseInt(headingLevel, 10) ?? 3}
-            font="serif"
-            weight="bold"
-            className={dcnb("su-mb-0", headlineSize)}
-          >
-            {headline}
-          </Heading>
-          {hasText && (
-            <RichTextRenderer
-              wysiwyg={text}
-              isDark={isLightText}
-              className="su-card-paragraph su-rs-mt-neg1 children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-            />
-          )}
-          {numCta > 0 && (
-            <div className="su-rs-mt-2">
-              <CreateBloks blokSection={cta} />
-            </div>
-          )}
-        </FlexBox>
+        />
       </div>
     </SbEditable>
   );
