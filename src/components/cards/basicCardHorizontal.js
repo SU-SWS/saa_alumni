@@ -20,6 +20,7 @@ const BasicCardHorizontal = ({
     text,
   },
   blok,
+  isDark,
 }) => {
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
@@ -30,7 +31,7 @@ const BasicCardHorizontal = ({
 
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (
-    <div className="su-w-1/2" aria-hidden="true">
+    <div className="md:su-w-1/2" aria-hidden="true">
       <div className="su-aspect-w-3 su-aspect-h-2">
         <CardImage
           filename={filename}
@@ -68,7 +69,7 @@ const BasicCardHorizontal = ({
         direction="col"
         gap
         className={dcnb(
-          "basic-card md:su-flex-row su-w-full su-basefont-23 su-break-words",
+          "basic-card-horizontal su-gap-x-xl md:su-flex-row su-w-full su-basefont-23 su-break-words",
           wrapperClasses
         )}
       >
@@ -77,10 +78,11 @@ const BasicCardHorizontal = ({
           headline={headline}
           headingLevel={headingLevel}
           isBigHeadline={isBigHeadline}
+          isDark={isDark && isMinimal}
           text={text}
           cta={cta}
           className={dcnb(
-            `${isRound && filename ? "" : "su-w-1/2"}`,
+            `${isRound && filename ? "" : "md:su-w-1/2"}`,
             bodyPadding
           )}
         />
