@@ -28,7 +28,7 @@ const BasicCardHorizontal = ({
 
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (
-    <div className="md:su-col-span-1" aria-hidden="true">
+    <div aria-hidden="true">
       <div className="su-aspect-w-3 su-aspect-h-2">
         <CardImage
           filename={filename}
@@ -75,7 +75,7 @@ const BasicCardHorizontal = ({
         className={dcnb(
           "basic-card-horizontal su-gap-x-xl su-w-full su-basefont-23 su-break-words",
           wrapperClasses,
-          cardGrid,
+          cardGrid
         )}
       >
         {filename?.startsWith("http") && cardImage}
