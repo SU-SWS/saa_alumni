@@ -85,7 +85,10 @@ const BasicCardHorizontal = ({
           isDark={isDark && isMinimal}
           text={text}
           cta={cta}
-          className="card-body"
+          className={dcnb(
+            "card-body",
+            `${isRound && filename ? "" : "su-mt-[-0.3em]"}`
+          )}
         />
       </DrGrid>
     </SbEditable>

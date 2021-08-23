@@ -36,7 +36,7 @@ const BasicCardContent = ({
         level={parseInt(headingLevel, 10) || 3}
         font="serif"
         weight="bold"
-        className={dcnb("su-mb-0 su-mt-[-0.16em]", headlineSize)}
+        className={dcnb("su-mb-0", headlineSize)}
       >
         {headline}
       </Heading>
