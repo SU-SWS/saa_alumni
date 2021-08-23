@@ -43,16 +43,17 @@ const loadStory = (sbResolveRelations, setStory) => {
   );
 };
 
-const findIdFieldsRecursive = (content) => {
+const findIdFields = (content) => {
   const returnValues = [];
 
+  // TODO: Make this function more generalized - This is hard-coded to check specifically for the ID field in the Section component.
   Object.keys(content).forEach((property) => {
     const item = content[property];
     if (Array.isArray(item)) {
       item.forEach((child) => {
-        if (child.component === 'section' && child.id) {
+        if (child.component === "section" && child.id) {
           returnValues.push({
-            field: 'section.id',
+            field: "section.id",
             value: child.id,
           });
         }
@@ -91,12 +92,14 @@ const initBridge = function (key, sbResolveRelations, setStory) {
       setStory(payload.story.content);
     });
 
-    const idFields = findIdFieldsRecursive(payload.story.content);
+    // Show a warning if there are duplicate IDs on the page.
+    const idFields = findIdFields(payload.story.content);
     idFields.forEach((idField) => {
       const matches = document.querySelectorAll(`[id='${idField.value}']`);
-      console.log('matches', matches);
       if (matches.length > 1) {
-        alert(`Field ${idField.field} duplicates an ID already on the page! Please choose a different ID.`)
+        alert(
+          `Field ${idField.field} duplicates an ID already on the page! Please choose a different ID.`
+        );
       }
     });
   });
