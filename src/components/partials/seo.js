@@ -76,8 +76,8 @@ const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
   return (
     <SbEditable content={blok}>
       <Helmet titleTemplate={`%s | ${title}`} title={seoTitle}>
-        <link rel="canonical" href={canonicalUrl} />
-
+        {!blok.noIndex && <link rel="canonical" href={canonicalUrl} />}
+        {blok.noIndex && <meta name="robots" content="noindex" />}
         {seoDescription !== "" && (
           <meta name="description" content={seoDescription} />
         )}
