@@ -52,18 +52,14 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
       }}
       initialFocus={searchFieldRef}
     >
-      <div className="su-max-w-1000 su-mx-auto">
+      <div className="su-max-w-1000 su-mx-auto su-basefont-19">
         <Heading
           font="serif"
-          size={2}
+          size={3}
           level={2}
-          className="su-text-white su-text-center"
+          className="su-text-white su-text-center su-rs-mt-5 su-rs-mb-4"
         >
-          {!showEmptyMessage ? (
-            <div>{introduction}</div>
-          ) : (
-            <div>{emptySearchMessage}</div>
-          )}
+          {!showEmptyMessage ? <>{introduction}</> : <>{emptySearchMessage}</>}
         </Heading>
         <SearchFieldModal
           ref={searchFieldRef}
