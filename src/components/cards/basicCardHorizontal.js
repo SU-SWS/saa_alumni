@@ -70,7 +70,6 @@ const BasicCardHorizontal = ({
   return (
     <SbEditable content={blok}>
       <DrGrid
-        element="article"
         gap
         className={dcnb(
           "basic-card-horizontal su-gap-x-xl su-w-full su-basefont-23 su-break-words",
@@ -86,6 +85,7 @@ const BasicCardHorizontal = ({
           isDark={isDark && isMinimal}
           text={text}
           cta={cta}
+          className="card-body"
         />
       </DrGrid>
     </SbEditable>

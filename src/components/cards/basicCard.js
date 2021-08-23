@@ -11,7 +11,6 @@ const BasicCard = ({
     borderColor,
     isRound,
     isMinimal,
-    isLightText,
     isBigHeadline,
     align,
     image: { filename, focus } = {},
@@ -21,6 +20,7 @@ const BasicCard = ({
     text,
   },
   blok,
+  isDark,
 }) => {
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
@@ -68,7 +68,7 @@ const BasicCard = ({
   }
 
   // Option to use light text (only for minimal card option)
-  if (isLightText) {
+  if (isDark) {
     wrapperClasses = "su-bg-transparent su-text-white";
   }
 
@@ -94,7 +94,7 @@ const BasicCard = ({
           headline={headline}
           headingLevel={headingLevel}
           isBigHeadline={isBigHeadline}
-          isDark={isLightText}
+          isDark={isDark}
           text={text}
           cta={cta}
           className={dcnb("card-body", bodyPadding, bodyAlign)}
