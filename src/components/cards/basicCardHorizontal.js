@@ -1,7 +1,7 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import { dcnb } from "cnbuilder";
-import { FlexBox } from "decanter-react";
+import { Grid as DrGrid } from "decanter-react";
 import CardImage from "../media/cardImage";
 import CircularImage from "../media/circularImage";
 import BasicCardContent from "./basicCardContent";
@@ -26,12 +26,9 @@ const BasicCardHorizontal = ({
   let wrapperClasses =
     "su-bg-white su-text-black su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
 
-  // Card content padding for non-minimal cards
-  let bodyPadding = "";
-
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (
-    <div className="md:su-w-1/2" aria-hidden="true">
+    <div className="md:su-col-span-1" aria-hidden="true">
       <div className="su-aspect-w-3 su-aspect-h-2">
         <CardImage
           filename={filename}
@@ -59,17 +56,19 @@ const BasicCardHorizontal = ({
 
   if (isMinimal) {
     wrapperClasses = "";
-    bodyPadding = "";
   }
 
   return (
     <SbEditable content={blok}>
-      <FlexBox
+      <DrGrid
         element="article"
-        direction="col"
         gap
         className={dcnb(
-          "basic-card-horizontal su-gap-x-xl md:su-flex-row su-w-full su-basefont-23 su-break-words",
+          `basic-card-horizontal ${
+            isRound
+              ? "md:su-grid-flow-col md:su-grid-cols-auto-1fr"
+              : "md:su-grid-cols-2"
+          } su-gap-x-xl su-w-full su-basefont-23 su-break-words`,
           wrapperClasses
         )}
       >
@@ -81,12 +80,8 @@ const BasicCardHorizontal = ({
           isDark={isDark && isMinimal}
           text={text}
           cta={cta}
-          className={dcnb(
-            `${isRound && filename ? "" : "md:su-w-1/2"}`,
-            bodyPadding
-          )}
         />
-      </FlexBox>
+      </DrGrid>
     </SbEditable>
   );
 };
