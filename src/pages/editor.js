@@ -43,6 +43,26 @@ const loadStory = (sbResolveRelations, setStory) => {
   );
 };
 
+const findIdFieldsRecursive = (content) => {
+  const returnValues = [];
+
+  Object.keys(content).forEach((property) => {
+    const item = content[property];
+    if (Array.isArray(item)) {
+      item.forEach((child) => {
+        if (child.component === 'section' && child.id) {
+          returnValues.push({
+            field: 'section.id',
+            value: child.id,
+          });
+        }
+      });
+    }
+  });
+
+  return returnValues;
+};
+
 /**
  * This is Sparta
  */
@@ -69,6 +89,15 @@ const initBridge = function (key, sbResolveRelations, setStory) {
     window.storyblok.addComments(payload.story.content, payload.story.id);
     window.storyblok.resolveRelations(payload.story, sbResolveRelations, () => {
       setStory(payload.story.content);
+    });
+
+    const idFields = findIdFieldsRecursive(payload.story.content);
+    idFields.forEach((idField) => {
+      const matches = document.querySelectorAll(`[id='${idField.value}']`);
+      console.log('matches', matches);
+      if (matches.length > 1) {
+        alert(`Field ${idField.field} duplicates an ID already on the page! Please choose a different ID.`)
+      }
     });
   });
 
