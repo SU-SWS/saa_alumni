@@ -48,7 +48,6 @@ const BasicCardHorizontal = ({
         filename={filename}
         imageFocus={imageFocus}
         smartFocus={focus}
-        className="su-flex-shrink-0"
         loading="lazy"
       />
     );
@@ -58,18 +57,25 @@ const BasicCardHorizontal = ({
     wrapperClasses = "";
   }
 
+  let cardGrid;
+
+  if (filename) {
+    cardGrid = "md:su-grid-cols-2";
+
+    if (isRound) {
+      cardGrid = "md:su-grid-flow-col md:su-grid-cols-auto-1fr";
+    }
+  }
+
   return (
     <SbEditable content={blok}>
       <DrGrid
         element="article"
         gap
         className={dcnb(
-          `basic-card-horizontal ${
-            isRound
-              ? "md:su-grid-flow-col md:su-grid-cols-auto-1fr"
-              : "md:su-grid-cols-2"
-          } su-gap-x-xl su-w-full su-basefont-23 su-break-words`,
-          wrapperClasses
+          "basic-card-horizontal su-gap-x-xl su-w-full su-basefont-23 su-break-words",
+          wrapperClasses,
+          cardGrid,
         )}
       >
         {filename?.startsWith("http") && cardImage}
