@@ -17,15 +17,15 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
 
   const wrapperClasses = `su-border-0 su-border-b-2 su-border-solid su-border-black-10`;
 
-  const inputClasses = `su-border-0 su-bg-transparent su-text-44 su-text-black-40 su-w-full su-flex-1
+  const inputClasses = `su-border-0 su-bg-transparent su-text-black-10 su-text-black-40::placeholder su-w-full su-flex-1
   su-rs-px-1 su-py-10 su-text-m4 focus:su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
-  const submitBtnClasses = `su-w-70 su-h-70 su-rounded-full su-transition-colors su-bg-digital-red hocus:su-bg-black
-   su-p-13 su-origin-center su-ml-20`;
+  const submitBtnClasses = `su-min-w-[70px] su-w-70 su-h-70 su-rounded-full su-transition-colors
+  su-bg-digital-red hocus:su-bg-digital-red-xlight su-p-13 su-origin-center su-ml-20`;
 
   const clearBtnClasses = `su-flex su-items-center su-transition-colors su-bg-transparent hover:su-bg-transparent
-  hover:su-text-digital-red-xlight hover:su-no-underline focus:su-no-underline su-text-21 su-font-semibold
-  su-border-none su-text-white su-p-0 focus:su-bg-transparent su-rs-mr-1`;
+  hover:su-text-digital-red-xlight hocus:su-no-underline focus:su-no-underline su-text-21 su-font-semibold
+  su-border-none su-text-white su-p-0 focus:su-bg-transparent su-rs-mr-1 su-mt-4`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
    su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;

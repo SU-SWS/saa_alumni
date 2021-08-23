@@ -36,8 +36,7 @@ const MainMenuGroup = ({
 
     // Loop through children menu items and add active styles to parent button if any childrem items are active
     for (let i = 0; i < menuItems.length; i += 1) {
-      const data = menuItems;
-      if (browserUrl.includes(data[i].link?.cached_url)) {
+      if (browserUrl.includes(menuItems[i].link?.cached_url)) {
         activeButton =
           "su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight";
         activeChevron = "su-bg-digital-red-light lg:su-text-digital-red-xlight";

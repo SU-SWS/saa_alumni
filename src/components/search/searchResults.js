@@ -68,6 +68,7 @@ const SearchResults = ({ results }) => {
                   className="su-block su-object-cover su-object-center su-h-full su-w-full"
                   src={result.image}
                   alt={result.title}
+                  loading="lazy"
                 />
               </div>
             )}
