@@ -66,12 +66,12 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
           emptySearch={showEmptyMessage}
           onSubmit={(queryText) => searchSubmit(queryText)}
         />
-        {!showEmptyMessage ? (
-          ""
-        ) : (
-          <p className="su-text-m1 su-text-white su-font-serif su-font-bold su-rs-mt-2">
+        {showEmptyMessage ? (
+          <p className="su-text-m1 su-text-white su-font-serif su-font-bold su-rs-mt-2 su-mb-0">
             {emptySearchMessage}
           </p>
+        ) : (
+          ""
         )}
         {story && content && (
           <div>

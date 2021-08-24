@@ -113,7 +113,7 @@ const SearchField = React.forwardRef(
                 className={clearBtnClasses}
               >
                 Clear
-                <X className="su-inline-block su-ml-3 su-mt-5 su-h-[21px] su-w-[21px]" />
+                <X className="su-inline-block su-ml-3 su-h-[1.1em] su-w-[1.1em]" />
               </button>
               <SearchAutocomplete
                 autocompleteSuggestions={autocompleteSuggestions}
@@ -127,7 +127,8 @@ const SearchField = React.forwardRef(
               />
             </div>
             <button type="submit" className={submitBtnClasses}>
-              <Search className="su-text-white su-w-full su-h-full" />
+              <Search className="su-text-white su-w-20 su-h-20 md:su-w-40 md:su-h-40" />
+              <span className="su-sr-only">Search</span>
             </button>
           </div>
         </form>

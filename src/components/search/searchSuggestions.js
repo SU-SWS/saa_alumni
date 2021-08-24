@@ -12,7 +12,7 @@ const SearchSuggestions = ({ blok: { content, title, titleColor }, blok }) => (
         size={2}
         level={3}
         className={dcnb(
-          "su-rs-mt-7 su-rs-mb-3",
+          "su-rs-mt-6 su-rs-mb-3",
           `${titleColor === "white" ? "su-text-white" : "su-text-black"}`
         )}
       >
