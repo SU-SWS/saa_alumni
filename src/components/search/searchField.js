@@ -26,7 +26,7 @@ const SearchField = React.forwardRef(
   ) => {
     const [query, setQuery] = useState(defaultValue || "");
     const [showAutocomplete, setShowAutocomplete] = useState(false);
-    const [selectedSuggestion, setSelectedSuggestion] = useState(0);
+    const [selectedSuggestion, setSelectedSuggestion] = useState(null);
     const inputWrapper = createRef();
     const inputRef = ref || createRef();
 
@@ -46,6 +46,7 @@ const SearchField = React.forwardRef(
       e.preventDefault();
       setQuery("");
       setShowAutocomplete(false);
+      setSelectedSuggestion(null);
       onReset();
     };
 
@@ -53,6 +54,7 @@ const SearchField = React.forwardRef(
       e.preventDefault();
       setQuery(suggestion);
       setShowAutocomplete(false);
+      setSelectedSuggestion(null);
       onSubmit(suggestion);
     };
 
