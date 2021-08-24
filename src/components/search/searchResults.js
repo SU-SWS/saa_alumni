@@ -1,8 +1,7 @@
 import React from "react";
 import sanitize from "sanitize-html";
-import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
-import HeroIcon from "../simple/heroIcon";
 import { Heading } from "decanter-react";
+import HeroIcon from "../simple/heroIcon";
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -28,10 +27,18 @@ const SearchResults = ({ results }) => {
                   href={result.url}
                 >
                   {result.fileType === "video" && (
-                    <VideoCameraIcon className="su-w-20 su-h-20 su-mr-5 su-align-middle su-mb-3 su-inline-block" />
+                    <HeroIcon
+                      iconType="video"
+                      className="su-inline-block"
+                      srText="Video: "
+                    />
                   )}
                   {result.fileType === "audio" && (
-                    <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-baseline su--mb-1 su-inline-block" />
+                    <HeroIcon
+                      iconType="podcast"
+                      className="su-inline-block"
+                      srText="Podcast: "
+                    />
                   )}
                   <span
                     // eslint-disable-next-line react/no-danger
@@ -48,6 +55,11 @@ const SearchResults = ({ results }) => {
                     }
                     className="su-inline-block group-hocus:su-text-cardinal-red"
                     isAnimate
+                    srText={
+                      result.domain.match(/^alumni.stanford.edu/)
+                        ? ""
+                        : " (external link)"
+                    }
                   />
                 </a>
               </Heading>
