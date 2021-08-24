@@ -76,7 +76,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
     >
       <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-95 su-rs-pt-5 su-overflow-auto su-basefont-19">
         <Container>
-          <div className="su-pt-8 su-pointer-events-auto">
+          <div className="su-pointer-events-auto">
             <div className="su-flex su-justify-end">
               <button
                 type="button"

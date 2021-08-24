@@ -9,7 +9,7 @@ const LinkList = ({ blok: { title, headingLevel, headingColor, links } }) => (
       level={parseInt(headingLevel, 10) || 4}
       className={dcnb(
         "su-rs-mb-2 su-font-semibold su-uppercase su-text-[1.1em] su-tracking-wide",
-        `${headingColor ? "su-text-white" : "su-text-black"}`
+        `${headingColor === "white" ? "su-text-white" : "su-text-black"}`
       )}
     >
       {title}
