@@ -17,12 +17,12 @@ const SearchResults = ({ results }) => {
       {results.hits.map((result) => (
         <div
           key={result.objectID}
-          className="su-rs-p-2 su-border-b su-border-black-40"
+          className="su-px-0 su-rs-py-2 md:su-rs-px-2 su-border-b su-border-black-40"
         >
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
             <div className="md:su-flex-1 su-w-full">
               <div className="su-text-16 su-mb-10">{result.domain}</div>
-              <Heading level={3} size={2} font="serif">
+              <Heading level={3} size={1} font="serif">
                 <a
                   className="su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
                   href={result.url}
