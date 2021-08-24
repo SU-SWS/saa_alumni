@@ -2,6 +2,7 @@ import React from "react";
 import sanitize from "sanitize-html";
 import { VideoCameraIcon, MicrophoneIcon } from "@heroicons/react/outline";
 import HeroIcon from "../simple/heroIcon";
+import { Heading } from "decanter-react";
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -21,9 +22,9 @@ const SearchResults = ({ results }) => {
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
             <div className="md:su-flex-1 su-w-full">
               <div className="su-text-16 su-mb-10">{result.domain}</div>
-              <h3 className="su-text-24">
+              <Heading level={3} size={2} font="serif">
                 <a
-                  className="su-font-serif su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
+                  className="su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
                   href={result.url}
                 >
                   {result.fileType === "video" && (
@@ -49,11 +50,11 @@ const SearchResults = ({ results }) => {
                     isAnimate
                   />
                 </a>
-              </h3>
+              </Heading>
               {/* eslint-disable-next-line no-underscore-dangle */}
               {result._snippetResult.body.value && (
                 <p
-                  className="su-text-16 lg:su-text-20 su-leading-snug su-mb-0"
+                  className="su-card-paragraph su-leading-snug su-mb-0"
                   // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
                     // eslint-disable-next-line no-underscore-dangle
@@ -63,7 +64,7 @@ const SearchResults = ({ results }) => {
               )}
             </div>
             {result.image && (
-              <div className="su-w-[150px] su-h-[100px] md:su-w-[225px] md:su-h-[150px] md:su-ml-30">
+              <div className="su-rs-mt-0 su-w-[15rem] su-h-[10rem] md:su-w-[22.5rem] md:su-h-[15rem] md:su-ml-30">
                 <img
                   className="su-block su-object-cover su-object-center su-h-full su-w-full"
                   src={result.image}
