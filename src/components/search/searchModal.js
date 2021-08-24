@@ -57,7 +57,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
           font="serif"
           size={3}
           level={2}
-          className="su-text-white su-text-center su-rs-mt-5 su-rs-mb-4"
+          className="su-text-white su-text-center su-rs-mt-5 su-mb-61 md:su-rs-mb-4"
         >
           {introduction}
         </Heading>
