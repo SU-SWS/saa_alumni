@@ -16,7 +16,7 @@ const SearchResults = ({ results }) => {
       {results.hits.map((result) => (
         <div
           key={result.objectID}
-          className="su-py-30 sm:su-py-[4rem] lg:su-px-30 su-border-b su-border-black-40"
+          className="su-rs-p-2 su-border-b su-border-black-40"
         >
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
             <div className="md:su-flex-1 su-w-full">
@@ -52,8 +52,8 @@ const SearchResults = ({ results }) => {
               </h3>
               {/* eslint-disable-next-line no-underscore-dangle */}
               {result._snippetResult.body.value && (
-                <div
-                  className="su-text-16 lg:su-text-20 su-leading-snug su-mb-15"
+                <p
+                  className="su-text-16 lg:su-text-20 su-leading-snug su-mb-0"
                   // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
                     // eslint-disable-next-line no-underscore-dangle
