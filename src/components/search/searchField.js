@@ -127,7 +127,7 @@ const SearchField = React.forwardRef(
               />
             </div>
             <button type="submit" className={submitBtnClasses}>
-              <Search className="su-text-white su-w-20 su-h-20 md:su-w-40 md:su-h-40" />
+              <Search className="su-text-white su-w-20 su-h-20" />
               <span className="su-sr-only">Search</span>
             </button>
           </div>
