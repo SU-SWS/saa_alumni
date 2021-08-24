@@ -59,13 +59,20 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
           level={2}
           className="su-text-white su-text-center su-rs-mt-5 su-rs-mb-4"
         >
-          {!showEmptyMessage ? <>{introduction}</> : <>{emptySearchMessage}</>}
+          {introduction}
         </Heading>
         <SearchFieldModal
           ref={searchFieldRef}
           emptySearch={showEmptyMessage}
           onSubmit={(queryText) => searchSubmit(queryText)}
         />
+        {!showEmptyMessage ? (
+          ""
+        ) : (
+          <p className="su-text-m1 su-text-white su-font-serif su-font-bold su-rs-mt-2">
+            {emptySearchMessage}
+          </p>
+        )}
         {story && content && (
           <div>
             <SearchSuggestions blok={content} />

@@ -4,7 +4,7 @@ import CreateBloks from "../../utilities/createBloks";
 
 const SearchNoResults = ({ heading, body, additionalContent }) => (
   <div>
-    <Heading size={2} font="serif">
+    <Heading level={2} size={3} font="serif">
       {heading}
     </Heading>
     <p>{body}</p>
