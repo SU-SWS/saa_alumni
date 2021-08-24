@@ -52,7 +52,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
       }}
       initialFocus={searchFieldRef}
     >
-      <div className="su-max-w-1000 su-mx-auto su-basefont-19">
+      <div className="su-max-w-1000 su-mx-auto">
         <Heading
           font="serif"
           size={3}

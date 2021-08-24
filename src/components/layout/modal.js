@@ -74,7 +74,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
       role="dialog"
       tabIndex="-1"
     >
-      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-95 su-rs-pt-5 su-overflow-auto">
+      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-95 su-rs-pt-5 su-overflow-auto su-basefont-19">
         <Container>
           <div className="su-pt-8 su-pointer-events-auto">
             <div className="su-flex su-justify-end">
@@ -83,11 +83,11 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
                 ref={closeButton}
                 onClick={onClose}
                 className="su-bg-transparent su-text-white hover:su-bg-transparent focus:su-bg-transparent
-                su-font-semibold hocus:su-underline su-text-18 su-flex su-items-center"
+                su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-center"
               >
                 Close
                 <XIcon
-                  className="su-inline-block su-h-[21px] su-w-[21px] su-ml-4"
+                  className="su-inline-block su-h-[1.1em] su-w-[1.1em] su-ml-4"
                   aria-hidden="true"
                 />
               </button>

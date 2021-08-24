@@ -20,10 +20,10 @@ const SearchSuggestions = ({
     >
       <Heading
         font="serif"
-        size={1}
+        size={2}
         level={3}
         className={`
-        su-mb-50
+        su-rs-mb-3
         ${titleColor ? `su-text-${titleColor}` : `su-text-black`}
       `}
       >
