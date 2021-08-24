@@ -70,7 +70,7 @@ const BasicCardHorizontal = ({
       <DrGrid
         gap
         className={dcnb(
-          "basic-card-horizontal su-gap-x-xl su-w-full su-basefont-23 su-break-words",
+          "basic-card-horizontal su-items-start su-gap-x-xl su-w-full su-basefont-23 su-break-words",
           wrapperClasses,
           cardGrid
         )}
