@@ -232,7 +232,7 @@ const SearchPage = (props) => {
 
   const inputClasses = `su-border-0 su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
-  const submitBtnClasses = `su-w-40 su-min-w-[4rem] su-h-40 md:children:su-w-20 md:children:su-h-20 su-rounded-full su-bg-digital-red-light hocus:su-bg-digital-cardinal-red su-ml-10`;
+  const submitBtnClasses = `su-flex su-items-center su-justify-center su-w-40 su-min-w-[4rem] su-h-40 md:children:su-w-20 md:children:su-h-20 su-rounded-full su-transition-colors su-bg-digital-red-light hocus:su-bg-cardinal-red-xdark su-ml-10`;
 
   const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
    su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
