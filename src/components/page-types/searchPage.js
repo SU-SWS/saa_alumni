@@ -228,10 +228,9 @@ const SearchPage = (props) => {
 
   const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
 
-  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-underline hover:su-bg-transparent su-text-21 su-font-semibold
-  hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1 su-flex su-items-center`;
+  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-underline hocus:su-bg-transparent su-text-m0 su-font-semibold su-border-none su-text-black-70 hocus:su-text-black su-p-0 su-rs-mr-1`;
 
-  const inputClasses = `su-border-0 su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
+  const inputClasses = `su-border-0 su-text-m2 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
   const submitBtnClasses = `su-flex su-items-center su-justify-center su-w-40 su-min-w-[4rem] su-h-40 md:children:su-w-20 md:children:su-h-20 su-rounded-full su-transition-colors su-bg-digital-red-light hocus:su-bg-cardinal-red-xdark su-ml-10`;
 
@@ -318,11 +317,11 @@ const SearchPage = (props) => {
             </GridCell>
           </Grid>
           {getNumBloks(blok.aboveResultsContent) > 0 && (
-            <div className="above-results-content su-rs-mt-6">
+            <div className="above-results-content su-rs-mt-7">
               <CreateBloks blokSection={blok.aboveResultsContent} />
             </div>
           )}
-          <Grid xs={12} className="filters su-rs-mt-6 lg:su-grid-gap">
+          <Grid xs={12} className="filters su-rs-mt-7 lg:su-grid-gap">
             {results.nbHits > 0 && (
               <React.Fragment>
                 <GridCell
