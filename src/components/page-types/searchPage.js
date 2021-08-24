@@ -22,6 +22,7 @@ import SearchKeywordBanner from "../search/searchKeywordBanner";
 import CreateBloks from "../../utilities/createBloks";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
+import getNumBloks from "../../utilities/getNumBloks";
 
 const SearchPage = (props) => {
   const { blok } = props;
@@ -316,15 +317,12 @@ const SearchPage = (props) => {
               />
             </GridCell>
           </Grid>
-          {blok.aboveResultsContent && (
-            <div className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]">
+          {getNumBloks(blok.aboveResultsContent) > 0 && (
+            <div className="above-results-content su-rs-mt-6">
               <CreateBloks blokSection={blok.aboveResultsContent} />
             </div>
           )}
-          <Grid
-            xs={12}
-            className="filters su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
-          >
+          <Grid xs={12} className="filters su-rs-mt-6 lg:su-grid-gap">
             {results.nbHits > 0 && (
               <React.Fragment>
                 <GridCell
@@ -435,8 +433,8 @@ const SearchPage = (props) => {
             </GridCell>
           </Grid>
 
-          {blok.belowResultsContent && (
-            <div>
+          {getNumBloks(blok.belowResultsContent) > 0 && (
+            <div className="below-results-content">
               <CreateBloks blokSection={blok.belowResultsContent} />
             </div>
           )}

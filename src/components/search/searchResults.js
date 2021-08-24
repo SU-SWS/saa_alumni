@@ -29,14 +29,14 @@ const SearchResults = ({ results }) => {
                   {result.fileType === "video" && (
                     <HeroIcon
                       iconType="video"
-                      className="su-inline-block"
+                      className="su-inline-block su-mr-02em"
                       srText="Video: "
                     />
                   )}
                   {result.fileType === "audio" && (
                     <HeroIcon
                       iconType="podcast"
-                      className="su-inline-block"
+                      className="su-inline-block su-ml-01em"
                       srText="Podcast: "
                     />
                   )}
