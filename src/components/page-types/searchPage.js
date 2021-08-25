@@ -333,7 +333,7 @@ const SearchPage = (props) => {
                   <div ref={ref}>
                     <button
                       type="button"
-                      className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center
+                      className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors
                         ${
                           opened
                             ? "su-border-digital-red su-text-white su-bg-digital-red"
@@ -367,7 +367,7 @@ const SearchPage = (props) => {
                             text="Clear all"
                             variant="unset"
                             onClick={() => clearFilters()}
-                            className="su-rs-mt-0 su-text-cardinal-red su-text-18 md:su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none"
+                            className="su-rs-mt-0 su-text-digital-red-light !su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none"
                           >
                             Clear all
                           </Button>
@@ -377,7 +377,7 @@ const SearchPage = (props) => {
                             icon="more"
                             variant="solid"
                             size="default"
-                            className="su-rs-mt-0 su-text-18 md:su-text-18"
+                            className="su-rs-mt-0 !su-text-18"
                             onClick={() => setOpened(false)}
                           >
                             View Results
