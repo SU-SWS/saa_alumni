@@ -367,7 +367,11 @@ const SearchPage = (props) => {
                             text="Clear all"
                             variant="unset"
                             onClick={() => clearFilters()}
-                            className="su-text-digital-red-light !su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none"
+                            className={{
+                              "su-text-16": false,
+                              "md:su-text-20": false,
+                              "su-text-digital-red-light su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none": true,
+                            }}
                           >
                             Clear all
                           </Button>
@@ -378,7 +382,8 @@ const SearchPage = (props) => {
                             variant="solid"
                             size="default"
                             className={{
-                              "su-text-18": false,
+                              "su-text-16": false,
+                              "md:su-text-20": false,
                               "su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark": true,
                             }}
                             onClick={() => setOpened(false)}
