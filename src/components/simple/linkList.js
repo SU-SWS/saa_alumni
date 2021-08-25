@@ -1,20 +1,16 @@
 import React from "react";
 import { Heading } from "decanter-react";
+import { dcnb } from "cnbuilder";
 import CreateBloks from "../../utilities/createBloks";
 
-const LinkList = ({
-  blok: { title, headingLevel, headingSize, headingColor, headingFont, links },
-}) => (
+const LinkList = ({ blok: { title, headingLevel, headingColor, links } }) => (
   <div>
     <Heading
-      level={parseInt(headingLevel, 10)}
-      font={headingFont}
-      className={`
-      su-mb-30
-      su-font-semibold
-      ${headingColor ? `su-text-${headingColor}` : "su-text-black"}
-      ${headingSize ? `su-text-${headingSize}` : "su-text-m0"}
-    `}
+      level={parseInt(headingLevel, 10) || 4}
+      className={dcnb(
+        "su-rs-mb-2 su-font-semibold su-text-m1",
+        `${headingColor === "white" ? "su-text-white" : "su-text-black"}`
+      )}
     >
       {title}
     </Heading>

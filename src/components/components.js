@@ -1,6 +1,7 @@
 import Alert from "./composite/alert";
 import AlertCtaLink from "./cta/alertCtaLink";
 import BasicCard from "./cards/basicCard";
+import BasicCardHorizontal from "./cards/basicCardHorizontal";
 import BasicPage from "./page-types/basicPage";
 import ComponentNotFound from "./component_not_found";
 import CtaButton from "./cta/ctaButton";
@@ -52,6 +53,7 @@ const ComponentList = {
   alert: Alert,
   alertCtaLink: AlertCtaLink,
   basicCard: BasicCard,
+  basicCardHorizontal: BasicCardHorizontal,
   basicPage: BasicPage,
   ctaButton: CtaButton,
   ctaCard: CtaCard,
