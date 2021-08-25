@@ -309,7 +309,7 @@ const SearchPage = (props) => {
                 clearOnEscape
               />
               {showEmptyMessage && (
-                <p className="su-text-m1 su-text-white su-font-serif su-font-bold su-rs-mt-2 su-mb-0">
+                <p className="su-text-m1 su-font-serif su-font-bold su-rs-mt-2 su-mb-0">
                   {blok.emptySearchMessage}
                 </p>
               )}
