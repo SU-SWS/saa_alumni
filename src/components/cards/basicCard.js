@@ -67,11 +67,6 @@ const BasicCard = ({
     }
   }
 
-  // Option to use light text (only for minimal card option)
-  if (isDark) {
-    wrapperClasses = "su-bg-transparent su-text-white";
-  }
-
   // Content alignment including image and CTA, default is left-align
   // This setting overrides the alignment option in the nested CTA
   let bodyAlign = "su-items-start";
@@ -94,7 +89,7 @@ const BasicCard = ({
           headline={headline}
           headingLevel={headingLevel}
           isBigHeadline={isBigHeadline}
-          isDark={isDark}
+          isDark={isDark && isMinimal}
           text={text}
           cta={cta}
           className={dcnb("card-body", bodyPadding, bodyAlign)}
