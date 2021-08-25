@@ -8,7 +8,7 @@ import getNumBloks from "../../utilities/getNumBloks";
 
 const BasicContentLeftSidebar = ({
   blok: { content, sidebar, intro, sectionMenu },
-  location: { pathname },
+  location,
   className,
 }) => {
   const renderedIntro = render(intro);
@@ -33,7 +33,7 @@ const BasicContentLeftSidebar = ({
           <CreateBloks
             id="section-menu-desktop"
             blokSection={sectionMenu}
-            pageLink={pathname}
+            pageLink={location?.pathname}
             className="lg:su-block su-hidden lg:su-rs-mb-2"
           />
         )}
