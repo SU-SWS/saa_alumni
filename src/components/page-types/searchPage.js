@@ -269,7 +269,7 @@ const SearchPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={false} isDark {...props}>
+      <Layout hasHero={false} {...props}>
         <Container
           element="section"
           width="full"
