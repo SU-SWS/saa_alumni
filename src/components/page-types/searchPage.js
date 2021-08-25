@@ -228,19 +228,17 @@ const SearchPage = (props) => {
 
   const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
 
-  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-underline hocus:su-bg-transparent su-text-m0 su-font-semibold su-border-none su-text-black-70 hocus:su-text-black su-p-0 su-rs-mr-1`;
+  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-bg-transparent su-text-black-70 hocus:su-text-black hocus:su-underline su-text-m0 su-font-semibold su-border-none  su-p-0 su-rs-mr-1 su-mt-03em`;
 
   const inputClasses = `su-border-0 su-text-m2 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
   const submitBtnClasses = `su-flex su-items-center su-justify-center su-w-40 su-min-w-[4rem] su-h-40 md:children:su-w-20 md:children:su-h-20 su-rounded-full su-transition-colors su-bg-digital-red-light hocus:su-bg-cardinal-red-xdark su-ml-10`;
 
-  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
-   su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
+  const autocompleteLinkClasses = `su-cursor-pointer su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15 su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
 
   const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border
-   su-border-digital-red-light su-rounded-b-[0.5rem]`;
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red-light su-rounded-b-[0.5rem]`;
   const facets = results.facets && (
     <React.Fragment>
       {siteNameValues && (
@@ -287,11 +285,7 @@ const SearchPage = (props) => {
           width="site"
           className="su-py-45 su-max-w-full su-w-full md:su-py-80 "
         >
-          {showEmptyMessage && (
-            <p className="su-text-center">{blok.emptySearchMessage}</p>
-          )}
-
-          <Grid gap xs={12} className="su-z-10 su-relative">
+          <Grid gap xs={12} className="su-z-10 su-relative su-basefont-19">
             <GridCell
               xs={12}
               lg={results.nbHits > 0 ? 6 : 8}
@@ -314,6 +308,11 @@ const SearchPage = (props) => {
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 clearOnEscape
               />
+              {showEmptyMessage && (
+                <p className="su-text-m1 su-text-white su-font-serif su-font-bold su-rs-mt-2 su-mb-0">
+                  {blok.emptySearchMessage}
+                </p>
+              )}
             </GridCell>
           </Grid>
           {getNumBloks(blok.aboveResultsContent) > 0 && (
@@ -338,7 +337,7 @@ const SearchPage = (props) => {
                         ${
                           opened
                             ? "su-border-digital-red su-text-white su-bg-digital-red"
-                            : "su-border-black-30 su-text-digital-red-xlight"
+                            : "su-border-black-30 su-text-digital-red-xlight hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg"
                         }`}
                       aria-expanded={opened}
                       ref={filterOpenRef}
