@@ -359,15 +359,15 @@ const SearchPage = (props) => {
                     </button>
 
                     {opened && (
-                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl">
-                        <div className="su-p-16">{facets}</div>
+                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-20">
+                        <div className="su-rs-p-0">{facets}</div>
 
-                        <div className="su-flex su-justify-between su-px-[17px] su-pb-[27px] su-pt-18 su-bg-foggy-light su-border-t su-border-black-20">
+                        <div className="su-flex su-justify-between su-rs-px-0 su-rs-pt-0 su-rs-pb-1 su-bg-foggy-light su-border-t su-border-black-20">
                           <Button
                             text="Clear all"
                             variant="unset"
                             onClick={() => clearFilters()}
-                            className="su-rs-mt-0 su-text-digital-red-light !su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none"
+                            className="su-text-digital-red-light !su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none"
                           >
                             Clear all
                           </Button>
@@ -377,7 +377,7 @@ const SearchPage = (props) => {
                             icon="more"
                             variant="solid"
                             size="default"
-                            className="su-rs-mt-0 !su-text-18"
+                            className="!su-text-18"
                             onClick={() => setOpened(false)}
                           >
                             View Results
