@@ -393,6 +393,7 @@ const SearchPage = (props) => {
                   lg={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
+                  <h2 className="su-sr-only">Filter Search Results</h2>
                   <div>{facets}</div>
                 </GridCell>
               </React.Fragment>
