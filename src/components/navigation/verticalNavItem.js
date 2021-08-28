@@ -18,11 +18,12 @@ const VerticalNavItem = ({
       {text}
     </SbLink>
 
-    {((!!childItems.length && active) ||
-      (!!childItems.length && activeTrail) ||
-      (!!childItems.length && showNestedLevels)) && (
+    {!!childItems.length && (active || activeTrail || showNestedLevels) && (
       <ul className="su-pb-15 su-list-none su-pl-20 children:children:su-py-6 children:children:su-text-20">
-        <CreateBloks blokSection={childItems} />
+        <CreateBloks
+          blokSection={childItems}
+          showNestedLevels={showNestedLevels}
+        />
       </ul>
     )}
   </li>
