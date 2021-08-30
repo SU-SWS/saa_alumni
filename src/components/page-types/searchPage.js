@@ -359,10 +359,10 @@ const SearchPage = (props) => {
                     </button>
 
                     {opened && (
-                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-20">
+                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-10">
                         <div className="su-rs-p-0">{facets}</div>
 
-                        <div className="su-flex su-justify-end su-rs-px-0 su-rs-pt-0 su-rs-pb-1 su-bg-foggy-light su-border-t su-border-black-20">
+                        <div className="su-flex su-justify-end su-rs-px-0 su-rs-pt-0 su-rs-pb-2 su-bg-foggy-light su-border-t su-border-black-20">
                           <Button
                             text="Clear all"
                             variant="unset"
