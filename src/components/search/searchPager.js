@@ -19,13 +19,13 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
   };
 
   const Pager = ({ pagerLinks, className }) => (
-    <div className={className}>
-      <div className="su-flex su-mt-70 lg:su-mt-90 su-mb-90 su-justify-center md:su-space-x-36">
+    <nav aria-label="Search results pagination" className={className}>
+      <div className="su-flex su-rs-mt-6 su-rs-mb-7 su-justify-center md:su-space-x-36">
         <ul className="su-list-none su-flex su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-text-[26px] su-font-bold">
           {activePage > 0 && (
             <li className="su-mb-0">
               <a
-                className={`${linkClasses} hover:su-border-b-0 su-text-20 su-no-underline su-font-regular su-self-center su-mr-9 md:su-mr-11`}
+                className={`${linkClasses} su-text-20 su-no-underline su-font-regular su-self-center su-mr-9 md:su-mr-11`}
                 href={`?page=${activePage - 1}`}
                 onClick={(e) => linkHandler(e, activePage - 1)}
               >
@@ -47,6 +47,9 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
                   onClick={(e) => linkHandler(e, i)}
                 >
                   {i + 1}
+                  {activePage === i && (
+                    <span className="su-sr-only">, current page</span>
+                  )}
                 </a>
               </li>
             );
@@ -55,7 +58,7 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
           {activePage < nbPages - 1 && (
             <li className="su-mb-0">
               <a
-                className={`${linkClasses} hover:su-border-b-0 su-text-20 su-no-underline su-font-regular su-self-center su-ml-9 md:su-ml-11`}
+                className={`${linkClasses} su-text-20 su-no-underline su-font-regular su-self-center su-ml-9 md:su-ml-11`}
                 href={`?page=${activePage + 1}`}
                 onClick={(e) => linkHandler(e, activePage + 1)}
               >
@@ -65,7 +68,7 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
           )}
         </ul>
       </div>
-    </div>
+    </nav>
   );
 
   return (
