@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "Stanford University | Alumni Association",
   "dependencies": {
+    "@fortawesome/fontawesome-pro": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-brands-svg-icons": "^5.15.3",
     "@fortawesome/free-regular-svg-icons": "^5.15.3",

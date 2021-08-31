@@ -63,3 +63,6 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+# FontAwesome Pro requires this for auth token
+.npmrc
