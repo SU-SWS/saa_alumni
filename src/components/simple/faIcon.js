@@ -20,7 +20,7 @@ const FaIcon = ({
 
   // Remove "fa-" from Storyblok FA plugin to use Fontawesome React format
   const faIcon = proFaIcon || iconChoice.replace("fa-", "");
-  const faStyle = iconStyle || (isOutline ? "far" : iconType);
+  const faStyle = iconStyle || (isOutline ? "far" : iconType) || "fas";
 
   return (
     <>
