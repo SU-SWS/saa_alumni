@@ -18,8 +18,12 @@ const FaIcon = ({
   // Add all 3 types of FA icons to the library so you can use any of them
   library.add(fab, far, fas);
 
+  // If proFaIcon (newer and PRO icon names) are provided, it overrides the older icon added using the Storyblok plugin
   // Remove "fa-" from Storyblok FA plugin to use Fontawesome React format
   const faIcon = proFaIcon || iconChoice.replace("fa-", "");
+
+  // If iconStyle (newer icon type options) is selected, it overrides the older icon type added using the Storyblok plugin
+  // It also orverrides the existing boolean option isOutline
   const faStyle = iconStyle || (isOutline ? "far" : iconType) || "fas";
 
   return (
