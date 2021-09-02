@@ -27,13 +27,11 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   hocus:su-text-digital-red-xlight hocus:su-underline su-text-m0 md:su-text-m1 su-font-semibold
   su-border-none su-text-white su-p-0 focus:su-bg-transparent su-rs-mr-1 su-mt-03em`;
 
-  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
-   su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
+  const autocompleteLinkClasses = `su-cursor-pointer su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15 su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
 
   const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border
-   su-border-digital-red su-rounded-b-[0.5rem]`;
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red su-rounded-b-[0.5rem]`;
 
   // Update autocomplete suggestions when search input changes.
   const updateAutocomplete = (queryText) => {

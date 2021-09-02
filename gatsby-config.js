@@ -85,7 +85,6 @@ module.exports = {
         homeSlug: "home",
         resolveRelations: storyblokRelations,
         version: activeEnv === "production" ? "published" : "draft",
-        // version: 'draft'  // would show any including drafts
       },
     },
     {

@@ -16,10 +16,10 @@ const searchAutocomplete = ({
     ${showAutocomplete && autocompleteSuggestions.length ? "" : "su-hidden"}`}
   >
     {Array.isArray(autocompleteSuggestions) && (
-      <div className="su-list-unstyled" role="listbox">
+      <ul className="su-list-unstyled" role="listbox">
         {autocompleteSuggestions.map((suggestion, index) => (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events
-          <div
+          <li
             key={`autocomplete-item-${suggestion.objectID}`}
             role="option"
             tabIndex={showAutocomplete ? 0 : -1}
@@ -56,9 +56,9 @@ const searchAutocomplete = ({
                 />
               )
             }
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     )}
   </div>
 );
