@@ -1,7 +1,5 @@
 import React from "react";
-import SbEditable from "storyblok-react";
 import { FlexBox, Grid as DrGrid, GridCell, Heading } from "decanter-react";
-import { dcnb } from "cnbuilder";
 import { DateTime } from "luxon";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import CreateBloks from "../../utilities/createBloks";
@@ -35,11 +33,12 @@ const ItineraryItem = ({
   const endHtmlDate = `${endDate}Z`;
 
   // Boolean to check if this is a same day event for dateblock display
-  const isSameDay = (startMonth === endMonth && startDay === endDay) || !endDate;
+  const isSameDay =
+    (startMonth === endMonth && startDay === endDay) || !endDate;
 
   return (
-    <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-hidden">
-      <DrGrid className="su-grid-flow-col su-grid-cols-auto-1fr su-items-stretch su-w-full su-break-words su-gap-x-xs md:su-gap-x-[6rem] xl:su-gap-x-[10rem]">
+    <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-hidden su-basefont-21">
+      <DrGrid className="su-grid-flow-col su-grid-cols-auto-1fr su-items-stretch su-w-full su-break-words su-gap-x-xs md:su-gap-x-[5rem] xl:su-gap-x-[9rem]">
         <GridCell aria-hidden="true">
           <FlexBox
             alignItems="center"
@@ -56,24 +55,30 @@ const ItineraryItem = ({
           <div className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] xl:su-mt-[-13rem] su-z-0" />
         </GridCell>
         <GridCell className="su-rs-pb-8">
-          <DateBlock
-            startMonth={startMonth}
-            startDay={startDay}
-            startHtmlDate={startHtmlDate}
-            endMonth={endMonth}
-            endDay={endDay}
-            endHtmlDate={endHtmlDate}
-            isSameDay={isSameDay}
-            isMinimal
-            isSmallText
-            className="su-rs-mb-0 su-mt-[-0.3em]"
-          />
-          <Heading level={3} font="serif" className="su-mb-03em">
+          {startDate && (
+            <DateBlock
+              startMonth={startMonth}
+              startDay={startDay}
+              startHtmlDate={startHtmlDate}
+              endMonth={endMonth}
+              endDay={endDay}
+              endHtmlDate={endHtmlDate}
+              isSameDay={isSameDay}
+              isMinimal
+              isSmallText
+              className="su-rs-mb-0 su-mt-[-0.3em]"
+            />
+          )}
+          <Heading
+            level={3}
+            font="serif"
+            className="su-mb-03em su-text-m3 xl:su-text-m4"
+          >
             {title}
           </Heading>
           <RichTextRenderer
             wysiwyg={description}
-            className="su-rs-mb-2 last:su-mb-0 children:su-leading-snug"
+            className="su-basefont-23 su-rs-mb-2 last:su-mb-0 children:su-leading-snug"
           />
           <CreateBloks blokSection={image} />
         </GridCell>
