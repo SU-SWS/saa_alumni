@@ -47,8 +47,8 @@ const VerticalNav = ({ blok: { verticalNav }, className, id, pageLink }) => {
         className={dcnb(
           "su-group lg:su-hidden su-w-full su-flex su-justify-between su-font-semibold su-items-center su-mt-20 su-transition-colors su-border-solid su-border su-border-black-30 su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg",
           navOpened
-            ? "su-bg-digital-red su-text-white"
-            : "su-text-digital-red-xlight"
+            ? "su-bg-digital-red su-text-white su-border-digital-red"
+            : "su-text-digital-red-light"
         )}
         onClick={toggleNav}
         aria-label={`${navOpened ? "Close" : "Open"} section menu`}
