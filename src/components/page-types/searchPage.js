@@ -22,6 +22,7 @@ import SearchKeywordBanner from "../search/searchKeywordBanner";
 import CreateBloks from "../../utilities/createBloks";
 import UseEscape from "../../hooks/useEscape";
 import UseOnClickOutside from "../../hooks/useOnClickOutside";
+import getNumBloks from "../../utilities/getNumBloks";
 
 const SearchPage = (props) => {
   const { blok } = props;
@@ -227,20 +228,17 @@ const SearchPage = (props) => {
 
   const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
 
-  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-underline hover:su-bg-transparent su-text-21 su-font-semibold
-  hover:su-text-black su-border-none su-text-black-70 su-p-0 focus:su-bg-transparent focus:su-text-black-70 su-rs-mr-1 su-flex su-items-center`;
+  const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-bg-transparent su-text-black-70 hocus:su-text-black hocus:su-underline su-text-m0 su-font-semibold su-border-none  su-p-0 su-rs-mr-1 su-mt-03em`;
 
-  const inputClasses = `su-border-0 su-text-30 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-text-m2 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
+  const inputClasses = `su-border-0 su-text-m2 su-w-full su-flex-1 su-rs-px-1 su-py-10 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
   const submitBtnClasses = `su-flex su-items-center su-justify-center su-w-40 su-min-w-[4rem] su-h-40 md:children:su-w-20 md:children:su-h-20 su-rounded-full su-transition-colors su-bg-digital-red-light hocus:su-bg-cardinal-red-xdark su-ml-10`;
 
-  const autocompleteLinkClasses = `su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15
-   su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
+  const autocompleteLinkClasses = `su-cursor-pointer su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15 su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
 
   const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border
-   su-border-digital-red-light su-rounded-b-[0.5rem]`;
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red-light su-rounded-b-[0.5rem]`;
   const facets = results.facets && (
     <React.Fragment>
       {siteNameValues && (
@@ -271,7 +269,7 @@ const SearchPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={false} isDark {...props}>
+      <Layout hasHero={false} {...props}>
         <Container
           element="section"
           width="full"
@@ -287,11 +285,7 @@ const SearchPage = (props) => {
           width="site"
           className="su-py-45 su-max-w-full su-w-full md:su-py-80 "
         >
-          {showEmptyMessage && (
-            <p className="su-text-center">{blok.emptySearchMessage}</p>
-          )}
-
-          <Grid gap xs={12} className="su-z-10 su-relative">
+          <Grid gap xs={12} className="su-z-10 su-relative su-basefont-19">
             <GridCell
               xs={12}
               lg={results.nbHits > 0 ? 6 : 8}
@@ -314,17 +308,19 @@ const SearchPage = (props) => {
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 clearOnEscape
               />
+              {showEmptyMessage && (
+                <p className="su-text-m1 su-font-serif su-font-bold su-rs-mt-2 su-mb-0">
+                  {blok.emptySearchMessage}
+                </p>
+              )}
             </GridCell>
           </Grid>
-          {blok.aboveResultsContent && (
-            <div className="su-mt-50 md:su-mt-70 xl:su-mt-[12rem]">
+          {getNumBloks(blok.aboveResultsContent) > 0 && (
+            <div className="above-results-content su-rs-mt-7">
               <CreateBloks blokSection={blok.aboveResultsContent} />
             </div>
           )}
-          <Grid
-            xs={12}
-            className="filters su-mt-50 md:su-mt-70 xl:su-mt-[12rem] lg:su-grid-gap"
-          >
+          <Grid xs={12} className="filters su-rs-mt-7 lg:su-grid-gap">
             {results.nbHits > 0 && (
               <React.Fragment>
                 <GridCell
@@ -337,11 +333,11 @@ const SearchPage = (props) => {
                   <div ref={ref}>
                     <button
                       type="button"
-                      className={`su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-group
+                      className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors
                         ${
                           opened
                             ? "su-border-digital-red su-text-white su-bg-digital-red"
-                            : "su-border-black-30 su-text-digital-red-xlight"
+                            : "su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg"
                         }`}
                       aria-expanded={opened}
                       ref={filterOpenRef}
@@ -356,22 +352,26 @@ const SearchPage = (props) => {
                           <Icon icon="x" className="su-w-14 su-ml-6" />
                         </span>
                       ) : (
-                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-xlight hocus:su-text-digital-red-xlight hocus:su-shadow-none">
+                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-light group-hocus:su-text-white hocus:su-shadow-none">
                           <Icon icon="chevron-down" />
                         </span>
                       )}
                     </button>
 
                     {opened && (
-                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl">
-                        <div className="su-p-16">{facets}</div>
+                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-10">
+                        <div className="su-rs-p-0">{facets}</div>
 
-                        <div className="su-flex su-justify-between su-px-[17px] su-pb-[27px] su-pt-18 su-bg-foggy-light su-border-t su-border-black-20">
+                        <div className="su-flex su-justify-end su-rs-px-0 su-rs-pt-0 su-rs-pb-2 su-bg-foggy-light su-border-t su-border-black-20">
                           <Button
                             text="Clear all"
                             variant="unset"
                             onClick={() => clearFilters()}
-                            className="su-rs-mt-0 su-text-cardinal-red su-text-18 md:su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none"
+                            className={{
+                              "su-text-16": false,
+                              "md:su-text-20": false,
+                              "su-text-digital-red-light su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none": true,
+                            }}
                           >
                             Clear all
                           </Button>
@@ -381,7 +381,11 @@ const SearchPage = (props) => {
                             icon="more"
                             variant="solid"
                             size="default"
-                            className="su-rs-mt-0 su-text-18 md:su-text-18"
+                            className={{
+                              "su-text-16": false,
+                              "md:su-text-20": false,
+                              "su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark": true,
+                            }}
                             onClick={() => setOpened(false)}
                           >
                             View Results
@@ -397,6 +401,7 @@ const SearchPage = (props) => {
                   lg={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
+                  <h2 className="su-sr-only">Filter Search Results</h2>
                   <div>{facets}</div>
                 </GridCell>
               </React.Fragment>
@@ -435,8 +440,8 @@ const SearchPage = (props) => {
             </GridCell>
           </Grid>
 
-          {blok.belowResultsContent && (
-            <div>
+          {getNumBloks(blok.belowResultsContent) > 0 && (
+            <div className="below-results-content">
               <CreateBloks blokSection={blok.belowResultsContent} />
             </div>
           )}

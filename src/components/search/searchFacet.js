@@ -43,10 +43,10 @@ const SearchFacet = ({
     <div
       className={`${
         className ||
-        "su-mb-[24px] lg:su-mb-[66px] su-pb-[28px] lg:su-pb-0 su-border-b lg:su-border-0 su-border-black-20"
+        "su-rs-mb-1 lg:su-rs-mb-3 su-rs-pb-3 lg:su-pb-0 su-border-b lg:su-border-0 su-border-black-20"
       }`}
     >
-      <Heading level={2} weight="semibold" className="su-rs-mb-0 su-text-m0">
+      <Heading level={3} weight="semibold" className="su-rs-mb-0 su-text-m0">
         {label}
       </Heading>
 
