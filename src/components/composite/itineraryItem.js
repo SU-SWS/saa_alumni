@@ -5,10 +5,20 @@ import RichTextRenderer from "../../utilities/richTextRenderer";
 import CreateBloks from "../../utilities/createBloks";
 import DateBlock from "../simple/dateBlock";
 import FaIcon from "../simple/faIcon";
+import CaptionMedia from "../media/captionMedia";
+import CardImage from "../media/cardImage";
+import transformImage from "../../utilities/transformImage";
 
 const ItineraryItem = ({
-  blok: { title, description, startDate, endDate, icon, image },
-  blok,
+  blok: {
+    title,
+    description,
+    startDate,
+    endDate,
+    icon,
+    image: { filename, focus } = {},
+    caption,
+  },
 }) => {
   // The date/time string we get from Storyblok is in UTC
   // Convert string to luxon DateTime object and format the pieces for display
@@ -49,7 +59,7 @@ const ItineraryItem = ({
               proFaIcon={icon}
               iconStyle="fas"
               className="su-text-m1 md:su-text-m2 su-text-digital-red"
-              aria-hidden="true"
+              rotation={icon === "shoe-prints" ? 270 : 0}
             />
           </FlexBox>
           <div className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] xl:su-mt-[-13rem] su-z-0" />
@@ -80,7 +90,18 @@ const ItineraryItem = ({
             wysiwyg={description}
             className="su-basefont-23 su-rs-mb-2 last:su-mb-0 children:su-leading-snug"
           />
-          <CreateBloks blokSection={image} />
+          <CaptionMedia
+            mediaWidth="edge-to-edge"
+            caption={caption}
+            captionAlign="right"
+          >
+            <CardImage
+              filename={filename}
+              size="medium_2x1"
+              loading="lazy"
+              smartFocus={focus}
+            />
+          </CaptionMedia>
         </GridCell>
       </DrGrid>
     </li>
