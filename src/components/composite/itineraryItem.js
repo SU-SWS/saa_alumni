@@ -1,6 +1,13 @@
 import React from "react";
-import { FlexBox, Grid as DrGrid, GridCell, Heading } from "decanter-react";
+import {
+  FlexBox,
+  Grid as DrGrid,
+  GridCell,
+  Heading,
+  SrOnlyText,
+} from "decanter-react";
 import { DateTime } from "luxon";
+import { LocationMarkerIcon } from "@heroicons/react/outline";
 import RichTextRenderer from "../../utilities/richTextRenderer";
 import DateBlock from "../simple/dateBlock";
 import FaIcon from "../simple/faIcon";
@@ -14,6 +21,7 @@ const ItineraryItem = ({
     startDate,
     endDate,
     icon,
+    location,
     image: { filename, focus } = {},
     caption,
   },
@@ -45,7 +53,7 @@ const ItineraryItem = ({
     (startMonth === endMonth && startDay === endDay) || !endDate;
 
   return (
-    <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-hidden su-basefont-21">
+    <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-hidden last:children:children:last:su-pb-0 su-basefont-21">
       <DrGrid className="su-grid-flow-col su-grid-cols-auto-1fr su-items-stretch su-w-full su-break-words su-gap-x-xs md:su-gap-x-[5rem] xl:su-gap-x-[9rem]">
         <GridCell aria-hidden="true">
           <FlexBox
@@ -86,20 +94,37 @@ const ItineraryItem = ({
           </Heading>
           <RichTextRenderer
             wysiwyg={description}
-            className="su-basefont-23 su-rs-mb-2 last:su-mb-0 children:su-leading-snug"
+            className="su-basefont-23 last:su-mb-0 children:su-leading-snug"
           />
-          <CaptionMedia
-            mediaWidth="edge-to-edge"
-            caption={caption}
-            captionAlign="right"
-          >
-            <CardImage
-              filename={filename}
-              size="medium_2x1"
-              loading="lazy"
-              smartFocus={focus}
-            />
-          </CaptionMedia>
+          {location && (
+            <FlexBox
+              direction="row"
+              alignItems="start"
+              className="su-rs-mt-1 su-mb-04em"
+            >
+              <LocationMarkerIcon
+                className="su-inline-block su-flex-shrink-0 su-mt-2 su-mr-03em su-w-[1em]"
+                aria-hidden="true"
+              />
+              <SrOnlyText srText="Location: " />
+              <span className="su-leading-display">{location}</span>
+            </FlexBox>
+          )}
+          {filename && (
+            <CaptionMedia
+              mediaWidth="edge-to-edge"
+              caption={caption}
+              captionAlign="right"
+              className="su-rs-mt-4"
+            >
+              <CardImage
+                filename={filename}
+                size="medium_2x1"
+                loading="lazy"
+                smartFocus={focus}
+              />
+            </CaptionMedia>
+          )}
         </GridCell>
       </DrGrid>
     </li>
