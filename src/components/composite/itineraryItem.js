@@ -97,11 +97,7 @@ const ItineraryItem = ({
             className="su-basefont-23 last:su-mb-0 children:su-leading-snug"
           />
           {location && (
-            <FlexBox
-              direction="row"
-              alignItems="start"
-              className="su-rs-mt-1"
-            >
+            <FlexBox direction="row" alignItems="start" className="su-rs-mt-1">
               <LocationMarkerIcon
                 className="su-inline-block su-flex-shrink-0 su-mt-2 su-mr-03em su-w-[1em]"
                 aria-hidden="true"
