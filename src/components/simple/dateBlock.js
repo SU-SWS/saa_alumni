@@ -78,7 +78,7 @@ const DateBlock = ({
         {!isSameDay && (
           <>
             <span
-              className="su-mt-14 su-text-m4 su-font-bold"
+              className="su-relative su-top-7 su-text-m4 su-font-bold su-leading-trim"
               aria-hidden="true"
             >
               &ndash;

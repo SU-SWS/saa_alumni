@@ -70,7 +70,7 @@ const ItineraryItem = ({
           </FlexBox>
           <div className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] xl:su-mt-[-13rem] su-z-0" />
         </GridCell>
-        <GridCell className="su-rs-pb-8">
+        <GridCell className="md:su-pt-02em su-rs-pb-8 su-flex su-flex-col">
           {startDate && (
             <DateBlock
               startMonth={startMonth}
@@ -82,7 +82,7 @@ const ItineraryItem = ({
               isSameDay={isSameDay}
               isMinimal
               isSmallText
-              className="su-rs-mb-0 su-mt-[-0.3em]"
+              className="su-rs-mb-0"
             />
           )}
           <Heading
