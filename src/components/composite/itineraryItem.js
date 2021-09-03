@@ -2,12 +2,10 @@ import React from "react";
 import { FlexBox, Grid as DrGrid, GridCell, Heading } from "decanter-react";
 import { DateTime } from "luxon";
 import RichTextRenderer from "../../utilities/richTextRenderer";
-import CreateBloks from "../../utilities/createBloks";
 import DateBlock from "../simple/dateBlock";
 import FaIcon from "../simple/faIcon";
 import CaptionMedia from "../media/captionMedia";
 import CardImage from "../media/cardImage";
-import transformImage from "../../utilities/transformImage";
 
 const ItineraryItem = ({
   blok: {
