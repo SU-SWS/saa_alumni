@@ -100,7 +100,7 @@ const ItineraryItem = ({
             <FlexBox
               direction="row"
               alignItems="start"
-              className="su-rs-mt-1 su-mb-04em"
+              className="su-rs-mt-0"
             >
               <LocationMarkerIcon
                 className="su-inline-block su-flex-shrink-0 su-mt-2 su-mr-03em su-w-[1em]"
@@ -115,7 +115,7 @@ const ItineraryItem = ({
               mediaWidth="edge-to-edge"
               caption={caption}
               captionAlign="right"
-              className="su-rs-mt-4"
+              className="su-rs-mt-3"
             >
               <CardImage
                 filename={filename}
