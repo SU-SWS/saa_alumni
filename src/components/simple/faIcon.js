@@ -4,6 +4,10 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { fab } from "@fortawesome/free-brands-svg-icons";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { far } from "@fortawesome/free-regular-svg-icons";
+import { fad } from "@fortawesome/pro-duotone-svg-icons";
+import { fal } from "@fortawesome/pro-light-svg-icons";
+import { far as pfar } from "@fortawesome/pro-regular-svg-icons";
+import { fas as pfas } from "@fortawesome/pro-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const FaIcon = ({
@@ -16,7 +20,7 @@ const FaIcon = ({
   ...props
 }) => {
   // Add all 3 types of FA icons to the library so you can use any of them
-  library.add(fab, far, fas);
+  library.add(fab, far, fas, fad, fal, pfar, pfas);
 
   // If proFaIcon (newer and PRO icon name) is provided, it overrides the older icon added using the Storyblok plugin
   // Remove "fa-" from Storyblok FA plugin to use Fontawesome React format
