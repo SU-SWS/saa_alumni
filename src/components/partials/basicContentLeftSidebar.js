@@ -1,6 +1,6 @@
 import React from "react";
 import { dcnb } from "cnbuilder";
-import { Grid, GridCell } from "decanter-react";
+import { Grid, GridCell, Skiplink } from "decanter-react";
 import { render } from "storyblok-rich-text-react-renderer";
 import CreateBloks from "../../utilities/createBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
@@ -29,6 +29,9 @@ const BasicContentLeftSidebar = ({
         xxl={3}
         className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2"
       >
+        <Skiplink anchorLink="#page-content" className="su-hidden lg:su-block">
+          Skip pass sidebar to page content
+        </Skiplink>
         {hasSectionMenu && (
           <CreateBloks
             id="section-menu-desktop"
@@ -43,6 +46,7 @@ const BasicContentLeftSidebar = ({
         xs={12}
         lg={8}
         className="basic-page-main-content su-basefont-23 su-ml-0 2xl:su-col-start-5"
+        id="page-content"
       >
         {hasIntro && (
           <RichTextRenderer
