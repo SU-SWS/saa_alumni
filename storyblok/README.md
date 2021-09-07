@@ -3,7 +3,7 @@
 This directory contains our Storyblok component schemas as pulled from the dev space.
 If you update a Storyblok component during your work please update the schema file.
 
-## Pull COmponents
+## Pull Components
 
 To generate the updated component schema do the following:
 
@@ -22,4 +22,4 @@ This will update the Storyblok component schema and preset files stored in the `
 
 ## Push Components
 
-We have not currently we have not integrated pushing components back to the production space at this time.
+We have not integrated pushing components back to the production space at this time.
