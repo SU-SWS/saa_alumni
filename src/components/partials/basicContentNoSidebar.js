@@ -18,6 +18,7 @@ const BasicContentNoSidebar = ({ blok: { content, intro }, className }) => {
   return (
     <WidthBox
       width="8"
+      id="main-content"
       className={dcnb(
         "basic-page-main-content su-basefont-23 su-mx-auto",
         className

@@ -41,7 +41,6 @@ const BasicPage = (props) => {
       <Layout hasHero={numHero > 0} {...props}>
         <Container
           element="main"
-          id="main-content"
           className="basic-page su-relative su-flex-grow su-w-full"
           width="full"
         >
