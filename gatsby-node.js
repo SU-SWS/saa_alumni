@@ -7,12 +7,24 @@ exports.createPages = ({ graphql, actions }) => {
 
   return new Promise((resolve, reject) => {
     const storyblokEntry = path.resolve("src/templates/storyblok-entry.js");
+    // Omit non-page entities from page generation
+    const contentTypesToOmit = [
+      "alert",
+      "localFooter",
+      "masthead",
+      "redirect", // NOTE: Redirects are omitted as they are specifically generated below
+      "searchEntry",
+      "searchKeywordBanner",
+      "searchSuggestions",
+      "verticalNavWrapper",
+    ];
+    const omittedComponentsArray = JSON.stringify(contentTypesToOmit);
 
     resolve(
       graphql(
         `
           {
-            allStoryblokEntry {
+            allStoryblokEntry (filter: { field_component: { nin: ${omittedComponentsArray} } }) {
               edges {
                 node {
                   id
