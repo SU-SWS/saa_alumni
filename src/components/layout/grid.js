@@ -49,7 +49,6 @@ const Grid = ({
           ? 1
           : 2
       }
-      lg={isMdLgOneColumn ? 1 : 2}
       xl={parseInt(numCol, 10)}
       className={dcnb(
         "su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]",
