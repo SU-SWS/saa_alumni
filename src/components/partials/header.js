@@ -29,12 +29,6 @@ const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => {
         {isSectionMenu && (
           <React.Fragment>
             <Skiplink
-              className="lg:su-hidden"
-              anchorLink="#section-menu-mobile"
-            >
-              Skip to section menu
-            </Skiplink>
-            <Skiplink
               className="su-hidden lg:su-flex"
               anchorLink="#section-menu-desktop"
             >
