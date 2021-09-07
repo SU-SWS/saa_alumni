@@ -1,4 +1,4 @@
-const buildPager = (nbPages, maxLinks, activePage) => {
+export const buildPager = (nbPages, maxLinks, activePage) => {
   const pagerLinks = [];
 
   // If nbPages is less or equal to maxlinks, just show pager links for all pages.
@@ -48,4 +48,15 @@ const buildPager = (nbPages, maxLinks, activePage) => {
   return pagerLinks;
 };
 
-export default buildPager;
+export const buildMobilePager = (nbPages, activePage) => {
+  let pagerLinks;
+
+  // If last page is active...
+  if (activePage === nbPages - 1) {
+    pagerLinks = [0, "...", nbPages - 1];
+  } else {
+    pagerLinks = [activePage, "...", nbPages - 1];
+  }
+
+  return pagerLinks;
+};

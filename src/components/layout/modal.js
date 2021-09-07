@@ -66,8 +66,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   return (
     <div
       className={`su-modal
-      su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center
-      su-justify-center su-z-50 su-pointer-events-none
+      su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center su-justify-center su-z-50
       ${isOpen ? "su-flex" : "su-hidden"}
     `}
       aria-label={ariaLabel}
@@ -75,19 +74,19 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
       role="dialog"
       tabIndex="-1"
     >
-      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-opacity-95 su-pt-70">
+      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-[97%] su-rs-pt-5 su-overflow-auto su-basefont-19">
         <Container>
-          <div className="su-pt-8 su-pointer-events-auto">
+          <div className="su-pointer-events-auto">
             <div className="su-flex su-justify-end">
               <button
                 type="button"
                 ref={closeButton}
                 onClick={onClose}
-                className="su-bg-transparent su-text-white hover:su-bg-transparent focus:su-bg-transparent"
+                className="su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end"
               >
-                Close&nbsp;
+                Close
                 <XIcon
-                  className="su-inline-block su-h-20 su-w-20"
+                  className="su-inline-block su-h-[1.1em] su-w-[1.1em] su-ml-4"
                   aria-hidden="true"
                 />
               </button>

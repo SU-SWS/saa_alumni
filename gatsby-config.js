@@ -55,7 +55,7 @@ module.exports = {
               siteUrl
             }
           }
-          allSitePage(filter: {context: {isCanonical: {eq: true}}}) {
+          allSitePage(filter: {context: {isCanonical: {eq: true}, noIndex: {eq: false}}}) {
             edges {
               node {
                 path

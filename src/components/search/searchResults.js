@@ -1,10 +1,7 @@
 import React from "react";
 import sanitize from "sanitize-html";
-import {
-  VideoCameraIcon,
-  MicrophoneIcon,
-  ArrowRightIcon,
-} from "@heroicons/react/outline";
+import { Heading } from "decanter-react";
+import HeroIcon from "../simple/heroIcon";
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -19,45 +16,72 @@ const SearchResults = ({ results }) => {
       {results.hits.map((result) => (
         <div
           key={result.objectID}
-          className="su-p-30 sm:su-py-[4rem] su-border-b su-border-black-40"
+          className="su-px-0 su-rs-py-2 md:su-rs-px-2 su-border-b su-border-black-40"
         >
           <div className="su-flex su-flex-wrap md:su-flex-nowrap">
-            <div className="md:su-flex-1">
+            <div className="md:su-flex-1 su-w-full">
               <div className="su-text-16 su-mb-10">{result.domain}</div>
-              <h3 className="su-text-24">
+              <Heading level={3} size={1} font="serif">
                 <a
-                  className="su-font-serif su-text-digital-red-light"
+                  className="su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
                   href={result.url}
                 >
                   {result.fileType === "video" && (
-                    <VideoCameraIcon className="su-w-20 su-h-20 su-mr-5 su-align-middle su-mb-3 su-inline-block" />
+                    <HeroIcon
+                      iconType="video"
+                      className="su-inline-block su-mr-02em"
+                      srText="Video: "
+                    />
                   )}
                   {result.fileType === "audio" && (
-                    <MicrophoneIcon className="su-w-20 su-h-20 su-mr-5 su-align-baseline su--mb-1 su-inline-block" />
+                    <HeroIcon
+                      iconType="podcast"
+                      className="su-inline-block su-ml-01em"
+                      srText="Podcast: "
+                    />
                   )}
-                  {result.title}
-                  {result.domain.match(/^alumni.stanford.edu/) && (
-                    <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4" />
-                  )}
-                  {!result.domain.match(/^alumni.stanford.edu/) && (
-                    <ArrowRightIcon className="su-w-20 su-inline-block su-ml-5 su-mb-4 su-transform su--rotate-45" />
-                  )}
+                  <span
+                    // eslint-disable-next-line react/no-danger
+                    dangerouslySetInnerHTML={{
+                      // eslint-disable-next-line no-underscore-dangle
+                      __html: sanitize(result.title, { decodeEntities: false }),
+                    }}
+                  />
+                  <HeroIcon
+                    iconType={
+                      result.domain.match(/^alumni.stanford.edu/)
+                        ? "arrow-right"
+                        : "external"
+                    }
+                    className="su-inline-block group-hocus:su-text-cardinal-red"
+                    isAnimate
+                    srText={
+                      result.domain.match(/^alumni.stanford.edu/)
+                        ? ""
+                        : " (external link)"
+                    }
+                  />
                 </a>
-              </h3>
-              <div
-                // eslint-disable-next-line react/no-danger
-                dangerouslySetInnerHTML={{
-                  // eslint-disable-next-line no-underscore-dangle
-                  __html: sanitize(result._snippetResult.body.value),
-                }}
-              />
+              </Heading>
+              {/* eslint-disable-next-line no-underscore-dangle */}
+              {result._snippetResult.body.value && (
+                <p
+                  className="su-card-paragraph su-leading-snug su-mb-0"
+                  // eslint-disable-next-line react/no-danger
+                  dangerouslySetInnerHTML={{
+                    // eslint-disable-next-line no-underscore-dangle
+                    __html: sanitize(result._snippetResult.body.value),
+                  }}
+                />
+              )}
             </div>
             {result.image && (
-              <div className="md:su-w-[225px] su-h-[150px] su-mx-auto su-mt-15 md:su-mx-0 md:su-mt-0 md:su-ml-30">
+              <div className="su-rs-mt-0 su-w-[15rem] su-h-[10rem] md:su-w-[22.5rem] md:su-h-[15rem] md:su-ml-30">
                 <img
-                  className="su-block su-object-cover su-object-center su-h-full"
+                  className="su-block su-object-cover su-object-center su-h-full su-w-full"
                   src={result.image}
                   alt={result.title}
+                  loading="lazy"
                 />
               </div>
             )}

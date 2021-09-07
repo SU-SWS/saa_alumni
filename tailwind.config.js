@@ -49,6 +49,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/aspect-ratio"),
+    require('@tailwindcss/forms'),
     require("tailwindcss-children"),
     require("tailwindcss-interaction-variants"),
 
@@ -75,7 +76,6 @@ module.exports = {
     require(dir + "/components/backface-visibility/backface-visibility.js")(),
     require(dir + "/components/link/stretched-link.js")(),
     require(dir + "/components/shadow/text-shadow.js")(),
-    require(dir + "/components/checkbox/custom-checkbox.js")(),
     require(dir + "/components/underline/custom-underline.js")(),
     require(dir + "/components/underline/link-underline.js")(),
     require(dir + "/components/wysiwyg/heading-link.js")(),
@@ -86,6 +86,7 @@ module.exports = {
     require(decanter + "/utilities/link/link-fontweight.js")(),
     require(decanter + "/utilities/scrolling/smooth-scroll.js")(),
     require(dir + "/utilities/gradient-border/gradient-border.js")(),
+    require(dir + "/utilities/grid/grid-cols.js")(),
     require(dir + "/utilities/typography/writing-mode.js")(),
     require(dir + "/utilities/break-words.js")(),
   ],

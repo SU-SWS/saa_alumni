@@ -5,7 +5,7 @@ import { dcnb } from "cnbuilder";
 const TabLabel = ({ text, srText, classes, ...props }) => {
   // Focus isn't on the card itself since we are using the stretched-link class for accessibility, so no need for group-focus styles
   const interactionClasses =
-    "group-hover:su-bg-none group-hover:su-bg-digital-red-light";
+    "group-hover:su-bg-none group-hover:su-bg-digital-red-light group-focus-within:su-bg-none group-focus-within:su-bg-digital-red-light";
 
   return (
     <div

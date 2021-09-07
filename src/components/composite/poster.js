@@ -3,7 +3,6 @@ import SbEditable from "storyblok-react";
 import { Container, FlexBox, Heading } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import { render } from "storyblok-rich-text-react-renderer";
-import nextId from "react-id-generator";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
 import RichTextRenderer from "../../utilities/richTextRenderer";
@@ -18,10 +17,9 @@ const Poster = ({
   blok: {
     cta,
     borderColor,
-    image: { filename, alt } = {},
+    image: { filename, alt, focus } = {},
     bgImage: { filename: bgFilename } = {},
     vCrop,
-    imageFocus,
     headline,
     isBigHeadline,
     headingLevel,
@@ -33,7 +31,6 @@ const Poster = ({
   },
   blok,
 }) => {
-  const posterId = nextId(`${id}-`);
   const numCta = getNumBloks(cta);
   const rendered = render(text);
   const numText = getNumBloks(rendered);
@@ -59,8 +56,7 @@ const Poster = ({
 
   if (layout === "left") {
     wrapperClasses = "su-flex su-flex-col su-justify-center md:su-flex-row";
-    imageWrapper =
-      "su-min-w-[14rem] su-rs-mb-2 su-mx-auto md:su-rs-mr-4 md:su-mb-0 md:su-ml-0";
+    imageWrapper = "su-rs-mb-2 su-mx-auto md:su-rs-mr-4 md:su-mb-0 md:su-ml-0";
     contentWrapper = "su-items-start md:su-flex-grow";
   } else {
     wrapperClasses = "su-flex su-flex-col su-items-center";
@@ -86,13 +82,13 @@ const Poster = ({
           bgFilename,
           "linear-gradient(240deg, rgba(24, 29, 28) 10%, rgba(98, 0, 89, 0.85) 60%, rgb(177, 4, 14) 100%)"
         )}
-        id={id ? posterId : ""}
+        id={id || ""}
       >
         {filename?.startsWith("http") && (
           <CircularImage
             borderColor={borderColor}
             filename={filename}
-            imageFocus={imageFocus}
+            smartFocus={focus}
             className={imageWrapper}
             loading="lazy"
             alt={alt ?? ""}

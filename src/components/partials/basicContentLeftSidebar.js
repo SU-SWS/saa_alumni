@@ -8,6 +8,7 @@ import getNumBloks from "../../utilities/getNumBloks";
 
 const BasicContentLeftSidebar = ({
   blok: { content, sidebar, intro, sectionMenu },
+  location,
   className,
 }) => {
   const renderedIntro = render(intro);
@@ -28,10 +29,14 @@ const BasicContentLeftSidebar = ({
         xxl={3}
         className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2"
       >
-        <CreateBloks
-          blokSection={sectionMenu}
-          className="lg:su-block su-hidden lg:su-rs-mb-2"
-        />
+        {hasSectionMenu && (
+          <CreateBloks
+            id="section-menu-desktop"
+            blokSection={sectionMenu}
+            pageLink={location?.pathname}
+            className="lg:su-block su-hidden lg:su-rs-mb-2"
+          />
+        )}
         <CreateBloks blokSection={sidebar} />
       </GridCell>
       <GridCell

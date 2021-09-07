@@ -8,7 +8,7 @@ const CircularImage = ({
   filename = "",
   alt,
   className,
-  imageFocus,
+  smartFocus,
   loading,
   ...props
 }) => {
@@ -19,7 +19,7 @@ const CircularImage = ({
   return (
     <div
       className={dcnb(
-        "su-w-[14rem] su-h-[14rem] su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden",
+        "su-w-[12rem] su-h-[12rem] md:su-w-[14rem] md:su-h-[14rem] su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden",
         imageBorderColor,
         imageBgColor,
         className
@@ -30,7 +30,7 @@ const CircularImage = ({
       <CardImage
         filename={filename}
         size="thumb"
-        imageFocus={imageFocus}
+        smartFocus={smartFocus}
         className="su-object-cover su-w-full su-h-full"
         loading={loading ?? "lazy"}
         alt={alt ?? ""}

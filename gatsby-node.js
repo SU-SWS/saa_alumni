@@ -61,6 +61,7 @@ exports.createPages = ({ graphql, actions }) => {
           ) {
             isCanonical = false;
           }
+          const noIndex = content.noIndex ? content.noIndex : false;
 
           createPage({
             path: `/${pagePath}`,
@@ -69,6 +70,7 @@ exports.createPages = ({ graphql, actions }) => {
               slug: entry.node.full_slug,
               story: entry.node,
               isCanonical,
+              noIndex,
             },
           });
         });

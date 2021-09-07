@@ -1,4 +1,5 @@
 import React from "react";
+import { Heading } from "decanter-react";
 
 const SearchFacet = ({
   label,
@@ -39,12 +40,20 @@ const SearchFacet = ({
   }
 
   return (
-    <div className={`${className || "su-mb-58"}`}>
-      <p className="su-text-21 su-font-semibold">{label}</p>
+    <div
+      className={`${
+        className ||
+        "su-rs-mb-1 lg:su-rs-mb-3 su-rs-pb-3 lg:su-pb-0 su-border-b lg:su-border-0 su-border-black-20"
+      }`}
+    >
+      <Heading level={3} weight="semibold" className="su-rs-mb-0 su-text-m0">
+        {label}
+      </Heading>
+
       {preparedFacetValues.map((option, index) => (
         <label
           key={option.name}
-          className={`su-label su-flex su-items-center su-cursor-pointer su-text-19 ${
+          className={`su-label su-flex su-items-center su-cursor-pointer su-text-19 hover:su-text-digital-red-xlight ${
             index ? "su-mt-20" : ""
           }`}
         >
@@ -53,10 +62,14 @@ const SearchFacet = ({
             value={option.name}
             name={attribute}
             defaultChecked={selectedOptions.includes(option.name)}
-            className="su-checkbox su-mr-15 su-max-w-[1.7rem] su-cursor-pointer su-custom-checkbox su-max-h-[1.7rem] su-appearance-none !su-border su-rounded-[0.3rem]"
+            className="su-peer su-form-checkbox su-text-digital-red-light su-mr-10 su-w-[1.5rem] su-h-[1.5rem] su-cursor-pointer su-rounded su-border-black-40 hocus:su-border-none hocus:su-ring hocus:su-ring-digital-red-light hocus:su-ring-offset-0"
             onChange={(e) => handleCheckboxChange(e)}
           />
-          <span className={optionClasses}>
+          <span
+            className={`su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light ${
+              optionClasses || ""
+            }`}
+          >
             {option.name}
             <span> ({option.count.toLocaleString("en-us")})</span>
           </span>

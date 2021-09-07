@@ -67,7 +67,7 @@ export const ctaGroupDisplay = {
   adjacent:
     "su-flex-col su-items-center lg:su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-center children:su-mx-10",
   "adjacent-left":
-    "su-flex-col su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-start su--ml-10 children:su-mx-10 ",
+    "su-flex-col su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-start su--ml-10 children:su-mx-10",
   stack: "su-flex-col su-items-center children:su-mx-auto",
 };
 
@@ -78,17 +78,6 @@ export const ctaLinkColor = {
   black: "su-text-black hocus:su-text-black !su-underline-digital-red-light",
   white:
     "su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight",
-};
-
-export const ctaLinkIconColor = {
-  "bright-red-hover-cardinal-red":
-    "su-text-digital-red-light group-hocus:su-text-cardinal-red",
-  "bright-red-hover-white":
-    "su-text-digital-red-xlight group-hocus:su-text-black-20",
-  "white-hover-digital-red":
-    "su-text-white group-hocus:su-text-digital-red-xlight",
-  black: "su-text-black group-hocus:su-text-black",
-  white: "su-text-black-20 group-hocus:su-text-black-20",
 };
 
 export const ctaLinkTextSize = {

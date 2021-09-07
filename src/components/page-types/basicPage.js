@@ -45,14 +45,17 @@ const BasicPage = (props) => {
           className="basic-page su-relative su-flex-grow su-w-full"
           width="full"
         >
-          <CreateBloks
-            blokSection={sectionMenu}
-            className={`${
-              numHero > 0
-                ? "su-rs-my-2"
-                : "su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]"
-            } lg:su-hidden su-block  su-mx-auto su-max-w-[35rem]`}
-          />
+          {getNumBloks(sectionMenu) > 0 && (
+            <CreateBloks
+              blokSection={sectionMenu}
+              id="section-menu-mobile"
+              className={`${
+                numHero > 0
+                  ? "su-rs-my-2"
+                  : "su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]"
+              } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
+            />
+          )}
           <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
             <Container>

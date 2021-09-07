@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, { useState, createRef, useEffect } from "react";
 import { X, Search } from "react-hero-icon/solid";
 import SearchAutocomplete from "./searchAutocomplete";
 import UseEscape from "../../hooks/useEscape";
@@ -26,7 +26,7 @@ const SearchField = React.forwardRef(
   ) => {
     const [query, setQuery] = useState(defaultValue || "");
     const [showAutocomplete, setShowAutocomplete] = useState(false);
-    const [selectedSuggestion, setSelectedSuggestion] = useState(0);
+    const [selectedSuggestion, setSelectedSuggestion] = useState(null);
     const inputWrapper = createRef();
     const inputRef = ref || createRef();
 
@@ -46,6 +46,7 @@ const SearchField = React.forwardRef(
       e.preventDefault();
       setQuery("");
       setShowAutocomplete(false);
+      setSelectedSuggestion(null);
       onReset();
     };
 
@@ -53,8 +54,13 @@ const SearchField = React.forwardRef(
       e.preventDefault();
       setQuery(suggestion);
       setShowAutocomplete(false);
+      setSelectedSuggestion(null);
       onSubmit(suggestion);
     };
+
+    useEffect(() => {
+      setQuery(defaultValue);
+    }, [defaultValue]);
 
     UseOnClickOutside(inputWrapper, () => {
       setShowAutocomplete(false);
@@ -108,7 +114,11 @@ const SearchField = React.forwardRef(
                 onClick={clearHandler}
                 className={clearBtnClasses}
               >
-                Clear <X className="su-inline-block su-ml-3 su-mt-5" />
+                Clear
+                <X
+                  className="su-inline-block su-ml-3 su-h-[1.1em] su-w-[1.1em]"
+                  aria-hidden="true"
+                />
               </button>
               <SearchAutocomplete
                 autocompleteSuggestions={autocompleteSuggestions}
@@ -122,7 +132,11 @@ const SearchField = React.forwardRef(
               />
             </div>
             <button type="submit" className={submitBtnClasses}>
-              <Search className="su-text-white su-w-full su-h-full" />
+              <Search
+                className="su-text-white su-w-20 su-h-20"
+                aria-hidden="true"
+              />
+              <span className="su-sr-only">Search</span>
             </button>
           </div>
         </form>

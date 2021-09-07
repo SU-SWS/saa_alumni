@@ -17,7 +17,7 @@ import HeroIcon from "../../simple/heroIcon";
 
 const Event = ({
   blok: {
-    image: { filename } = {},
+    image: { filename, focus } = {},
     imageFocus,
     title,
     start,
@@ -33,6 +33,7 @@ const Event = ({
   headingLevel,
   tabText,
   hideTab,
+  isDark,
 }) => {
   // Link to external URL (always external for MVP)
   const eventLink = { linktype: "url", url: externalUrl } ?? "";
@@ -75,15 +76,35 @@ const Event = ({
   }
 
   let wrapperClasses =
-    "su-rs-pb-3 su-bg-white su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md";
+    "su-rs-pb-3 su-bg-white su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden";
+
+  // This border works well for our light background colors
+  let borderColor = "su-border-black-30-opacity-40";
   let headlinePadding = "su-rs-px-2";
   let detailsPadding = "su-rs-px-2";
+  let headlineColor = "su-text-black hocus:su-text-black";
+  let headlineIconStyles = "su-relative su-inline-block";
+  let headlineIconColor = "su-text-digital-red-xlight";
+  let textColor = "su-text-black";
+
+  if (isDark) {
+    borderColor = "su-border-black-90";
+  }
 
   if (isMinimal) {
     wrapperClasses = "su-bg-transparent";
     headlinePadding = "su-pt-01em";
     detailsPadding = "";
+
+    // Use different text color if card has minimal style and is placed in a dark region
+    if (isDark) {
+      textColor = "su-text-black-20";
+      headlineColor = "su-text-white hocus:su-text-white";
+      headlineIconColor = "su-text-digital-red-light group-hocus:su-text-white";
+    }
   }
+
+  headlineIconStyles = dcnb(headlineIconStyles, headlineIconColor);
 
   let headlineSize = "su-type-1";
 
@@ -92,7 +113,7 @@ const Event = ({
   }
 
   const iconClasses =
-    "su-inline-block su-flex-shrink-0 su-mt-01em su-mr-06em su-w-[1.1em]";
+    "su-inline-block su-flex-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-[1em]";
   let locationIcon = (
     <LocationMarkerIcon className={iconClasses} aria-hidden="true" />
   );
@@ -110,7 +131,9 @@ const Event = ({
         element="article"
         className={dcnb(
           "event-card su-group su-relative su-overflow-hidden sm:su-max-w-[42rem] md:su-max-w-full su-text-black su-break-words su-basefont-23 su-w-full",
-          wrapperClasses
+          wrapperClasses,
+          borderColor,
+          textColor
         )}
       >
         {!isMinimal && (
@@ -122,9 +145,10 @@ const Event = ({
               <figure className="su-overflow-hidden su-w-full su-h-full">
                 <CardImage
                   filename={filename}
+                  smartFocus={focus}
                   imageFocus={imageFocus}
                   size="vertical"
-                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03]"
+                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
                   loading="lazy"
                 />
               </figure>
@@ -140,6 +164,7 @@ const Event = ({
           endHtmlDate={endHtmlDate}
           isSameDay={isSameDay}
           isMinimal={isMinimal}
+          isDark={isDark}
           aria-hidden="true"
           className={
             isMinimal
@@ -150,9 +175,10 @@ const Event = ({
         <SbLink
           link={eventLink}
           classes={dcnb(
-            "su-stretched-link su-group su-z-20 su-rs-mt-0 su-mb-08em su-text-black hocus:su-text-black su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
+            "su-stretched-link su-group su-z-20 su-rs-mt-0 su-mb-08em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight",
             headlineSize,
-            headlinePadding
+            headlinePadding,
+            headlineColor
           )}
         >
           <Heading
@@ -165,7 +191,7 @@ const Event = ({
           </Heading>
           <HeroIcon
             iconType="external"
-            className="su-relative su-inline-block su-text-digital-red-xlight"
+            className={headlineIconStyles}
             isAnimate
           />
         </SbLink>

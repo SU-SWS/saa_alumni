@@ -25,7 +25,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
   let introduction;
   let emptySearchMessage;
 
-  if (data && data.storyblokEntry && data.storyblokEntry.content) {
+  if (data && data?.storyblokEntry?.content) {
     story = data.storyblokEntry;
     content = JSON.parse(story.content);
     introduction = content.introduction;
@@ -55,23 +55,26 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
       <div className="su-max-w-1000 su-mx-auto">
         <Heading
           font="serif"
-          size={2}
+          size={3}
           level={2}
-          className="su-text-white su-text-center"
+          className="su-text-white su-text-center su-rs-mt-5 su-mb-61 md:su-rs-mb-4"
         >
-          {!showEmptyMessage ? (
-            <div>{introduction}</div>
-          ) : (
-            <div>{emptySearchMessage}</div>
-          )}
+          {introduction}
         </Heading>
         <SearchFieldModal
           ref={searchFieldRef}
           emptySearch={showEmptyMessage}
           onSubmit={(queryText) => searchSubmit(queryText)}
         />
+        {showEmptyMessage ? (
+          <p className="su-text-m1 su-text-white su-font-serif su-font-bold su-rs-mt-2 su-mb-0">
+            {emptySearchMessage}
+          </p>
+        ) : (
+          ""
+        )}
         {story && content && (
-          <div className="su-mt-108">
+          <div>
             <SearchSuggestions blok={content} />
           </div>
         )}

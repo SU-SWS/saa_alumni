@@ -1,11 +1,13 @@
+import { Heading } from "decanter-react";
 import React from "react";
 import CreateBloks from "../../utilities/createBloks";
 
 const SearchNoResults = ({ heading, body, additionalContent }) => (
   <div>
-    <h2>{heading}</h2>
-    <div>{body}</div>
-
+    <Heading level={2} size={3} font="serif">
+      {heading}
+    </Heading>
+    <p>{body}</p>
     <div>
       <CreateBloks blokSection={additionalContent} />
     </div>
