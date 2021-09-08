@@ -14,6 +14,7 @@
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
     "algoliasearch": "^4.9.3",
+    "cnbuilder": "^2.7.1",
     "decanter-react": "^1.0.7",
     "gatsby": "^3.4.2",
     "gatsby-link": "^3.12.0",
