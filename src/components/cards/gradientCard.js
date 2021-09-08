@@ -20,7 +20,7 @@ const GradientCard = ({
   spacingBottom,
   className,
 }) => {
-  let wrapperClasses = "perk-card su-max-w-500";
+  let wrapperClasses = "su-max-w-500";
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
   let gradientDirection = "su-bg-gradient-to-b";
   let contentWrapper = "su-flex-grow";
@@ -96,7 +96,7 @@ const GradientCard = ({
             tracking="normal"
             className="su-relative su-inline su-type-0"
           >
-            <SrOnlyText srText={`${tabText}: `} />
+            {tabText && <SrOnlyText srText={`${tabText}: `} />}
             {headline}
           </Heading>
           <HeroIcon

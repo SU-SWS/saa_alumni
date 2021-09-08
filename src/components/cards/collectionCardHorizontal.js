@@ -9,7 +9,6 @@ const CollectionCardHorizontal = ({
     link,
     image: { filename, focus } = {},
     imageFocus,
-    tabText,
     spacingBottom,
     headingLevel,
   },
@@ -20,13 +19,12 @@ const CollectionCardHorizontal = ({
       orientation="horizontal"
       headline={headline}
       description={description}
-      link={link}
+      link={link || ""}
       filename={filename}
       focus={focus}
       imageFocus={imageFocus}
       spacingBottom={spacingBottom}
       headingLevel={headingLevel}
-      tabText={tabText}
       className="collection-card-horizontal"
     />
   </SbEditable>

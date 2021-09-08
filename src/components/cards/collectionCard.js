@@ -8,7 +8,6 @@ const CollectionCard = ({
     description,
     link,
     image: { filename, focus } = {},
-    tabText,
     headingLevel,
   },
   blok,
@@ -18,11 +17,10 @@ const CollectionCard = ({
       orientation="vertical"
       headline={headline}
       description={description}
-      link={link}
+      link={link || ""}
       filename={filename}
       focus={focus}
       headingLevel={headingLevel}
-      tabText={tabText}
       className="collection-card"
     />
   </SbEditable>
