@@ -24,6 +24,7 @@ const Hero = ({
     sansSub,
     serifSuper,
     headline,
+    isHideScroll,
   },
   blok,
 }) => {
@@ -67,7 +68,11 @@ const Hero = ({
           )}
           aria-hidden="true"
         />
-        <Container className="su-relative su-rs-pt-9 su-rs-pb-4">
+        <Container
+          className={`su-relative su-rs-pt-9 ${
+            isHideScroll ? "su-rs-pb-8" : "su-rs-pb-4"
+          }`}
+        >
           <FlexBox direction="col" className="lg:su-mt-[190px]">
             {(sansSuper || serifSuper || headline || sansSub) && (
               <FlexCell className="su-text-center su-text-white">
@@ -106,22 +111,24 @@ const Hero = ({
                 <CreateBloks blokSection={cta} />
               </FlexCell>
             )}
-            <FlexCell
-              grow={false}
-              className="su-text-center su-text-white su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22"
-            >
-              <p className="su-mb-02em">Scroll to explore</p>
-              <a
-                href="#page-title"
-                className="su-block su-mx-auto su-w-fit su-group"
+            {!isHideScroll && (
+              <FlexCell
+                grow={false}
+                className="su-text-center su-text-white su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22"
               >
-                <SrOnlyText srText="Jump to main content" />
-                <ArrowDownIcon
-                  className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark"
-                  aria-hidden="true"
-                />
-              </a>
-            </FlexCell>
+                <p className="su-mb-02em">Scroll to explore</p>
+                <a
+                  href="#page-title"
+                  className="su-block su-mx-auto su-w-fit su-group"
+                >
+                  <SrOnlyText srText="Jump to main content" />
+                  <ArrowDownIcon
+                    className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark"
+                    aria-hidden="true"
+                  />
+                </a>
+              </FlexCell>
+            )}
           </FlexBox>
         </Container>
       </Container>
