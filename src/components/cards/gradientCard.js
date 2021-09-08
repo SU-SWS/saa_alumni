@@ -1,5 +1,5 @@
 import React from "react";
-import { FlexBox, Heading } from "decanter-react";
+import { FlexBox, Heading, SrOnlyText } from "decanter-react";
 import { dcnb } from "cnbuilder";
 import SbLink from "../../utilities/sbLink";
 import CardImage from "../media/cardImage";
@@ -18,6 +18,7 @@ const GradientCard = ({
   headingLevel,
   orientation,
   spacingBottom,
+  className,
 }) => {
   let wrapperClasses = "perk-card su-max-w-500";
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
@@ -46,6 +47,7 @@ const GradientCard = ({
       direction="col"
       element="article"
       className={dcnb(
+        className,
         "su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black su-backface-hidden",
         wrapperClasses,
         marginBottom
@@ -73,7 +75,7 @@ const GradientCard = ({
           aria-hidden="true"
         />
       </div>
-      {tabText && <TabLabel text={tabText} />}
+      {tabText && <TabLabel text={tabText} aria-hidden="true" />}
       <FlexBox
         direction="col"
         className={dcnb("su-rs-px-2 su-rs-pb-3", contentWrapper)}
@@ -92,6 +94,7 @@ const GradientCard = ({
             tracking="normal"
             className="su-relative su-inline su-type-0"
           >
+            <SrOnlyText srText={`${tabText}: `} />
             {headline}
           </Heading>
           <HeroIcon

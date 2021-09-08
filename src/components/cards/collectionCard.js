@@ -23,6 +23,7 @@ const CollectionCard = ({
       focus={focus}
       headingLevel={headingLevel}
       tabText={tabText}
+      className="collection-card"
     />
   </SbEditable>
 );
