@@ -7,6 +7,7 @@ import CardImage from "../../media/cardImage";
 import TabLabel from "../../simple/tabLabel";
 import { largeMarginBottom } from "../../../utilities/dataSource";
 import HeroIcon from "../../simple/heroIcon";
+import GradientCard from "../../cards/gradientCard";
 
 const PerkCardView = ({
   blok: {
@@ -48,6 +49,16 @@ const PerkCardView = ({
 
   return (
     <SbEditable content={blok}>
+      <GradientCard
+        orientation={orientation}
+        headline={title}
+        description={descriptionShort}
+        headlingLevel={headingLevel}
+        link={cardUrl}
+        filename={filename}
+        focus={focus}
+        tabText={isNew ? "New" : ""}
+      />
       <FlexBox
         direction="col"
         element="article"
