@@ -48,6 +48,7 @@ import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
 import Story from "./content-types/story/story";
 import StoryCard from "./cards/storyCard";
+import TripPage from "./page-types/TripPage";
 import VerticalNav from "./navigation/verticalNav";
 import VerticalNavWrapper from "./navigation/verticalNavWrapper";
 import VerticalNavItem from "./navigation/verticalNavItem";
@@ -92,6 +93,7 @@ const ComponentList = {
   perkCard: PerkCard,
   perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
+  redirect: Redirect,
   searchFacet: SearchFacet,
   searchField: SearchField,
   searchPage: SearchPage,
@@ -102,7 +104,7 @@ const ComponentList = {
   simpleImage: SimpleImage,
   story: Story,
   storyCard: StoryCard,
-  redirect: Redirect,
+  trip: TripPage,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,
