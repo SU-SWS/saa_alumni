@@ -18,6 +18,8 @@ import Grid from "./layout/grid";
 import Heading from "./simple/heading";
 import Hero from "./composite/hero";
 import IconCard from "./cards/iconCard";
+import Itinerary from "./composite/itinerary";
+import ItineraryItem from "./composite/itineraryItem";
 import LinkGroup from "./navigation/linkGroup";
 import LinkList from "./simple/linkList";
 import LocalFooter from "./identity/localFooter";
@@ -69,6 +71,8 @@ const ComponentList = {
   heading: Heading,
   hero: Hero,
   iconCard: IconCard,
+  itinerary: Itinerary,
+  itineraryItem: ItineraryItem,
   linkGroup: LinkGroup,
   linkList: LinkList,
   localFooter: LocalFooter,

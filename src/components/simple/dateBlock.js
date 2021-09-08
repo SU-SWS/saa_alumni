@@ -13,6 +13,7 @@ const DateBlock = ({
   isMinimal,
   className,
   isDark,
+  isSmallText,
   ...props
 }) => {
   // Check if the start and end day is the same
@@ -42,6 +43,12 @@ const DateBlock = ({
     textColor = "su-text-black";
   }
 
+  let monthFontSize = "su-text-m5 md:su-text-m4 lg:su-text-m5";
+
+  if (isSmallText) {
+    monthFontSize = "su-text-m4";
+  }
+
   return (
     <div className={dcnb(wrapperClasses, className)} {...props}>
       <div
@@ -59,14 +66,19 @@ const DateBlock = ({
           <span className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
             {startMonth}
           </span>
-          <span className="su-text-m5 md:su-text-m4 lg:su-text-m5 su-font-bold su-font-serif su-leading-trim">
+          <span
+            className={dcnb(
+              "su-font-bold su-font-serif su-leading-trim",
+              monthFontSize
+            )}
+          >
             {startDay}
           </span>
         </time>
         {!isSameDay && (
           <>
             <span
-              className="su-mt-14 su-text-m4 su-font-bold"
+              className="su-relative su-top-7 su-text-m4 su-font-bold su-leading-trim"
               aria-hidden="true"
             >
               &ndash;
@@ -79,7 +91,12 @@ const DateBlock = ({
               <span className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
                 {endMonth}
               </span>
-              <span className="su-text-m5 md:su-text-m4 lg:su-text-m5 su-font-bold su-font-serif su-leading-trim">
+              <span
+                className={dcnb(
+                  "su-font-bold su-font-serif su-leading-trim",
+                  monthFontSize
+                )}
+              >
                 {endDay}
               </span>
             </time>

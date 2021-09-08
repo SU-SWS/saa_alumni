@@ -63,7 +63,8 @@
     "clean": "gatsby clean",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "sb:pull": "storyblok pull-components --space=$STORYBLOK_SPACE_ID && mv components.*.json presets.*.json storyblok/"
   },
   "repository": {
     "type": "git",
@@ -91,6 +92,7 @@
     "prettier": "^2.3.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "storyblok": "^3.10.0",
     "tailwindcss": "^2.2.7"
   }
 }
