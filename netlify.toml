@@ -25,7 +25,7 @@
 [[headers]]
   for = "/editor"
   [headers.values]
-    X-Frame-Options = "ALLOW"
+    X-Frame-Options = "ALLOWALL"
 
 # REDIRECTS
 # ###############################################################################
