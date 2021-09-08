@@ -62,7 +62,7 @@ const GradientCard = ({
             imageFocus={imageFocus}
             className="su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
             loading={orientation === "horizontal" ? "eager" : "lazy"}
-            size={orientation === "horizontal" ? "horizontal" : "vertical_3x2"}
+            size={orientation === "horizontal" ? "large_3x2" : "vertical_3x2"}
           />
         )}
         <div

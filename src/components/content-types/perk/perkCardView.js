@@ -50,7 +50,7 @@ const PerkCardView = ({
   return (
     <SbEditable content={blok}>
       <GradientCard
-        orientation={orientation}
+        orientation="vertical"
         headline={title}
         description={descriptionShort}
         headlingLevel={headingLevel}

@@ -40,6 +40,8 @@ const CardImage = ({
       imgSrc = transformImage(filename, "/800x400", smartFocus, true);
     } else if (size === "vertical_3x2") {
       imgSrc = transformImage(filename, "/810x540", smartFocus, true);
+    } else if (size === "large_3x2") {
+      imgSrc = transformImage(filename, "/1200x800", smartFocus, true);
     } else {
       imgSrc = originalImg;
     }
