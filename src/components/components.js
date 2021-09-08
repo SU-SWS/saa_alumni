@@ -3,6 +3,8 @@ import AlertCtaLink from "./cta/alertCtaLink";
 import BasicCard from "./cards/basicCard";
 import BasicCardHorizontal from "./cards/basicCardHorizontal";
 import BasicPage from "./page-types/basicPage";
+import CollectionCard from "./cards/collectionCard";
+import CollectionCardHorizontal from "./cards/collectionCardHorizontal";
 import ComponentNotFound from "./component_not_found";
 import CtaButton from "./cta/ctaButton";
 import CtaCard from "./cards/ctaCard";
@@ -57,6 +59,8 @@ const ComponentList = {
   basicCard: BasicCard,
   basicCardHorizontal: BasicCardHorizontal,
   basicPage: BasicPage,
+  collectionCard: CollectionCard,
+  collectionCardHorizontal: CollectionCardHorizontal,
   ctaButton: CtaButton,
   ctaCard: CtaCard,
   ctaLink: CtaLink,

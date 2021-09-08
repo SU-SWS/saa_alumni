@@ -36,8 +36,12 @@ const CardImage = ({
       imgSrc = transformImage(filename, "/200x200", smartFocus, true);
     } else if (size === "horizontal" && imgWidth > 1200) {
       imgSrc = transformImage(filename, "/1200x0", smartFocus);
-    } else if (size === "medium_2x1" && imgWidth > 800) {
+    } else if (size === "medium_2x1") {
       imgSrc = transformImage(filename, "/800x400", smartFocus, true);
+    } else if (size === "vertical_3x2") {
+      imgSrc = transformImage(filename, "/600x400", smartFocus, true);
+    } else if (size === "large_3x2") {
+      imgSrc = transformImage(filename, "/1200x800", smartFocus, true);
     } else {
       imgSrc = originalImg;
     }
