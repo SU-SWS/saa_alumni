@@ -47,18 +47,17 @@ const IconCard = ({
           cardStyles
         )}
       >
-        <FaIcon
-          iconChoice={propsIcon}
-          iconType={type}
-          proFaIcon={proFaIcon}
-          iconStyle={iconStyle}
-          isOutline={isOutline}
-          fixedWidth
-          className={dcnb(
-            "su-mb-02em su-transition-colors !su-text-m2",
-            iconColor
-          )}
-        />
+        <div className="su-text-m2">
+          <FaIcon
+            iconChoice={propsIcon}
+            iconType={type}
+            proFaIcon={proFaIcon}
+            iconStyle={iconStyle}
+            isOutline={isOutline}
+            fixedWidth
+            className={dcnb("su-mb-02em su-transition-colors", iconColor)}
+          />
+        </div>
         <SbLink
           classes={dcnb(
             "su-group su-stretched-link su-z-20 su-rs-mt-0 su-no-underline hocus:su-underline su-underline-offset su-text-m1 md:su-text-[1.15em] lg:su-text-m1",
