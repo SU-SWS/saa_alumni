@@ -12,7 +12,6 @@ const IconCard = ({
     headingLevel,
     icon: { icon: propsIcon, type } = {},
     proFaIcon,
-    iconStyle,
     isOutline,
     link,
   },
@@ -52,7 +51,6 @@ const IconCard = ({
             iconChoice={propsIcon}
             iconType={type}
             proFaIcon={proFaIcon}
-            iconStyle={iconStyle}
             isOutline={isOutline}
             fixedWidth
             className={dcnb("su-mb-02em su-transition-colors", iconColor)}
