@@ -77,7 +77,8 @@ const CtaLink = React.forwardRef(
                   iconType={type}
                   iconStyle={iconStyle}
                   isOutline={isOutlineFaIcon}
-                  className="su-mr-06em su-backface-hidden su-text-black-80"
+                  className="su-mr-06em su-backface-hidden su-text-black-80 su-flex-shrink-0"
+                  fixedWidth
                 />
               )}
               <div>
