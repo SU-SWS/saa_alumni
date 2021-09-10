@@ -53,8 +53,9 @@ const IconCard = ({
           proFaIcon={proFaIcon}
           iconStyle={iconStyle}
           isOutline={isOutline}
+          fixedWidth
           className={dcnb(
-            "su-mb-02em su-text-m2 su-transition-colors",
+            "su-mb-02em su-transition-colors !su-text-m2",
             iconColor
           )}
         />
