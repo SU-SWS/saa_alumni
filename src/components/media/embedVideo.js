@@ -45,10 +45,14 @@ const EmbedVideo = ({
           width=""
           height=""
           url={videoUrl}
-          controls="true"
+          controls
+          light
           config={{
             youtube: {
-              playerVars: { start: convertToSecond(startMin, startSec) },
+              playerVars: {
+                start: convertToSecond(startMin, startSec),
+                autoplay: 1,
+              },
             },
           }}
         />

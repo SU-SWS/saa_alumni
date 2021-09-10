@@ -15,12 +15,7 @@ module.exports = {
   prefix: "su-",
 
   purge: {
-    content: [
-      "./src/**",
-      "./public/**",
-      "./node_modules/decanter-react/dist/**",
-      "./.cache/**",
-    ],
+    content: ["./src/**", "./node_modules/decanter-react/dist/**"],
   },
   theme: {
     borderRadius: require(decanter + "/theme/borderRadius.js")(),
@@ -49,7 +44,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/aspect-ratio"),
-    require('@tailwindcss/forms'),
+    require("@tailwindcss/forms"),
     require("tailwindcss-children"),
     require("tailwindcss-interaction-variants"),
 
