@@ -1,7 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
 import { Container, Heading } from "decanter-react";
-import { Helmet } from "react-helmet";
 import Layout from "../partials/layout";
 import CreateBloks from "../../utilities/createBloks";
 import getNumBloks from "../../utilities/getNumBloks";
@@ -21,7 +20,6 @@ const BasicPage = (props) => {
       belowContent,
       ankleContent,
       sectionMenu,
-      noIndex,
     },
     blok,
   } = props;
@@ -40,7 +38,6 @@ const BasicPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Helmet>{noIndex && <meta name="robots" content="noindex" />}</Helmet>
       <Layout hasHero={numHero > 0} {...props}>
         <Container
           element="main"

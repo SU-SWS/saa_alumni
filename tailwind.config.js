@@ -17,9 +17,7 @@ module.exports = {
   purge: {
     content: [
       "./src/**",
-      "./public/**",
       "./node_modules/decanter-react/dist/**",
-      "./.cache/**",
     ],
   },
   theme: {
@@ -86,6 +84,7 @@ module.exports = {
     require(decanter + "/utilities/link/link-fontweight.js")(),
     require(decanter + "/utilities/scrolling/smooth-scroll.js")(),
     require(dir + "/utilities/gradient-border/gradient-border.js")(),
+    require(dir + "/utilities/grid/grid-cols.js")(),
     require(dir + "/utilities/typography/writing-mode.js")(),
     require(dir + "/utilities/break-words.js")(),
   ],

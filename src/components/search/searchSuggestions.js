@@ -1,31 +1,20 @@
 import React from "react";
 import { Heading } from "decanter-react";
 import SbEditable from "storyblok-react";
+import { dcnb } from "cnbuilder";
 import CreateBloks from "../../utilities/createBloks";
-import {
-  largePaddingTop,
-  largePaddingBottom,
-} from "../../utilities/dataSource";
 
-const SearchSuggestions = ({
-  blok: { content, title, titleColor, spacingTop, spacingBottom },
-  blok,
-}) => (
+const SearchSuggestions = ({ blok: { content, title, titleColor }, blok }) => (
   <SbEditable content={blok}>
-    <div
-      className={`
-      ${largePaddingTop[spacingTop]}
-      ${largePaddingBottom[spacingBottom]}
-    `}
-    >
+    <div>
       <Heading
         font="serif"
-        size={1}
+        size={2}
         level={3}
-        className={`
-        su-mb-50
-        ${titleColor ? `su-text-${titleColor}` : `su-text-black`}
-      `}
+        className={dcnb(
+          "su-mt-108 md:su-rs-mt-7 su-rs-mb-3",
+          `${titleColor === "white" ? "su-text-white" : "su-text-black"}`
+        )}
       >
         {title}
       </Heading>

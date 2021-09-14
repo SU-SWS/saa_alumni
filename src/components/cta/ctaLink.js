@@ -5,7 +5,6 @@ import { SrOnlyText } from "decanter-react";
 import {
   ctaLinkColor,
   ctaLinkTextSize,
-  ctaLinkIconColor,
   textAlign,
   tinyMarginBottom,
   horizontalAlign,
@@ -21,6 +20,8 @@ const CtaLink = React.forwardRef(
         size,
         textColor: propsTextColor,
         leadingIcon: { icon: propsIcon, type } = {},
+        proFaIcon,
+        iconStyle,
         isOutlineFaIcon,
         icon,
         align: propsAlign,
@@ -42,8 +43,11 @@ const CtaLink = React.forwardRef(
       ctaLinkColor[propsTextColor ?? "bright-red-hover-cardinal-red"];
 
     // Icon color
-    const iconColor =
-      ctaLinkIconColor[propsTextColor ?? "bright-red-hover-cardinal-red"];
+    let iconColor = "su-text-digital-red-xlight group-hocus:su-text-black-20";
+
+    if (propsTextColor === "bright-red-hover-cardinal-red") {
+      iconColor = "su-text-digital-red-light group-hocus:su-text-cardinal-red";
+    }
 
     // Horizontal alignment
     const align = textAlign[propsAlign] ?? textAlign.left;
@@ -66,10 +70,12 @@ const CtaLink = React.forwardRef(
                 justifyLink
               )}
             >
-              {propsIcon && (
+              {(proFaIcon || propsIcon) && (
                 <FaIcon
+                  proFaIcon={proFaIcon}
                   iconChoice={propsIcon}
                   iconType={type}
+                  iconStyle={iconStyle}
                   isOutline={isOutlineFaIcon}
                   className="su-mr-06em su-backface-hidden su-text-black-80"
                 />
