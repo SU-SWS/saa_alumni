@@ -1,4 +1,3 @@
-// Because Tailwind classes are gross...
 export const root =
   "su-group su-relative su-overflow-hidden su-bg-black-true su-break-words su-border-su-border-black";
 export const content = "su-px-26 su-pb-34 su-text-white";
