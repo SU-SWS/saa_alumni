@@ -8,7 +8,7 @@ const SBImageType = PropTypes.shape({
   name: PropTypes.string,
   filename: PropTypes.string,
 });
-const CardTagType = PropTypes.oneOf(["Featured", "New", "Staff Pick"]);
+const CardTagType = PropTypes.oneOf(["Featured", "New", "Staff's pick"]);
 
 // TODO: Extract general SB types into reusable abstracts
 export const TripType = {
