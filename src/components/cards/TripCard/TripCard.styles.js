@@ -8,7 +8,7 @@ export const date =
 export const link =
   "su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight";
 export const heading =
-  "su-mt-32 su-type-4 su-font-bold su-relative su-inline su-text-white";
+  "su-mt-32 su-type-3 su-font-bold su-relative su-inline su-text-white";
 export const icon = "su-relative su-inline-block";
-export const subheading = "su-mt-4 su-type-1 su-font-semibold";
+export const subheading = "su-mt-4 su-type-0 su-font-semibold";
 export const description = "su-mt-19 su-card-paragraph";
