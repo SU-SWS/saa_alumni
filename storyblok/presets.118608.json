@@ -3311,6 +3311,46 @@
       "image": ""
     },
     {
+      "id": 1159629,
+      "name": "Temporary preset with default globals",
+      "preset": {
+        "_uid": "165adf1b-77b7-4d9c-886f-99f8b97c5b86",
+        "hero": [],
+        "masthead": [
+          {
+            "_uid": "4bfb6b91-fc87-45a6-af74-28d36458196f",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "component": "tripFilterPage",
+        "localFooter": [
+          {
+            "_uid": "26535cd2-4e18-4217-aa33-5ba60c170192",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "47b600e9-0140-498e-ae0d-80b4324fece9"
+            ]
+          }
+        ],
+        "aboveContent": [],
+        "belowContent": [],
+        "primaryFilter": {
+          "_uid": "3597be5f-c938-4db3-82d8-7af6acaff106",
+          "value": null,
+          "plugin": "multi-datasource-select",
+          "datasource": null
+        }
+      },
+      "component_id": 1784273,
+      "space_id": 118608,
+      "created_at": "2021-09-14T22:34:16.962Z",
+      "updated_at": "2021-09-14T22:34:16.962Z",
+      "image": ""
+    },
+    {
       "id": 1157671,
       "name": "Temp w/ globals",
       "preset": {

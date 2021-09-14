@@ -4166,7 +4166,7 @@
       "name": "section",
       "display_name": null,
       "created_at": "2021-06-29T05:39:41.763Z",
-      "updated_at": "2021-09-08T02:13:01.147Z",
+      "updated_at": "2021-09-14T20:14:05.655Z",
       "id": 1621492,
       "schema": {
         "headerOptions": {
@@ -5286,7 +5286,7 @@
       "name": "tripCard",
       "display_name": null,
       "created_at": "2021-09-08T22:24:45.791Z",
-      "updated_at": "2021-09-08T22:25:41.965Z",
+      "updated_at": "2021-09-14T23:22:50.497Z",
       "id": 1769760,
       "schema": {
         "trip": {
@@ -5295,6 +5295,14 @@
           "source": "internal_stories",
           "filter_content_type": "trip",
           "required": true
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-level",
+          "required": true,
+          "default_value": "3"
         }
       },
       "image": null,
@@ -5307,6 +5315,107 @@
       "real_name": "tripCard",
       "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
       "component_group_name": "Travel Study"
+    },
+    {
+      "name": "tripFilterPage",
+      "display_name": null,
+      "created_at": "2021-09-14T18:36:07.419Z",
+      "updated_at": "2021-09-14T22:31:31.942Z",
+      "id": 1784273,
+      "schema": {
+        "tab-23dfbd29-c427-4040-8fed-374cfbde4440": {
+          "type": "tab",
+          "display_name": "Page Content",
+          "keys": [
+            "hero",
+            "aboveContent",
+            "belowContent"
+          ],
+          "pos": 0
+        },
+        "tab-22e2b10a-891b-4b98-b84d-76158ec371b7": {
+          "type": "tab",
+          "display_name": "global",
+          "keys": [
+            "masthead",
+            "localFooter"
+          ],
+          "pos": 1
+        },
+        "primaryFilter": {
+          "type": "custom",
+          "field_type": "multi-datasource-select",
+          "options": [
+            {
+              "name": "datasources",
+              "value": "trip-region,trip-experience"
+            },
+            {
+              "name": "datasourceLabel",
+              "value": "Filter Type"
+            },
+            {
+              "name": "entryLabel",
+              "value": "FilterValue"
+            }
+          ],
+          "required_fields": "",
+          "description": "Select a primary filter type and value to pre-filter trips available for filtering on this page.",
+          "display_name": ""
+        },
+        "hero": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "hero"
+          ],
+          "maximum": "1"
+        },
+        "aboveContent": {
+          "type": "bloks",
+          "restrict_components": false,
+          "restrict_type": "",
+          "description": "Content to appear above the the trip filter section"
+        },
+        "belowContent": {
+          "type": "bloks",
+          "description": "Content to appear below the trip filter area"
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "required": true
+        },
+        "localFooter": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [
+        {
+          "id": 1159629,
+          "name": "Temporary preset with default globals",
+          "component_id": 1784273,
+          "image": ""
+        }
+      ],
+      "preset_id": null,
+      "real_name": "tripFilterPage",
+      "component_group_uuid": null
     },
     {
       "name": "verticalNav",

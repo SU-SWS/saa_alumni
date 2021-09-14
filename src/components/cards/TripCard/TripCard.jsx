@@ -7,10 +7,12 @@ import { Date } from "../../simple/Date/Date";
 import HeroIcon from "../../simple/heroIcon";
 import TabLabel from "../../simple/tabLabel";
 import { TripType } from "../../../types/TripType";
+import { HeadingLevelType } from "../../../types/HeadingLevelType";
 import * as styles from "./TripCard.styles";
 
 export const TripCardProps = {
   trip: PropTypes.shape(TripType),
+  headingLevel: HeadingLevelType,
 };
 
 const TripCard = ({
@@ -30,6 +32,7 @@ const TripCard = ({
       tag,
     },
   },
+  headingLevel = 3,
 }) => {
   // Resolve Card props
   const tripTitle = cardTitle || title;
@@ -58,7 +61,7 @@ const TripCard = ({
         <div>
           <Link to={tripURL} className={styles.link}>
             <Heading
-              level={3}
+              level={headingLevel}
               font="serif"
               tracking="normal"
               className={styles.heading}

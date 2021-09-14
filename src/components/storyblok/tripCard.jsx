@@ -4,7 +4,7 @@ import TripCard from "../cards/TripCard/TripCard";
 
 // TODO: Type props
 export const SBTripCard = ({ blok }) => {
-  const { trip = {} } = blok;
+  const { trip = {}, headingLevel } = blok;
 
   if (!trip.content) {
     // eslint-disable-next-line no-underscore-dangle
@@ -14,7 +14,7 @@ export const SBTripCard = ({ blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <TripCard trip={trip} />
+      <TripCard trip={trip} headingLevel={headingLevel} />
     </SbEditable>
   );
 };
