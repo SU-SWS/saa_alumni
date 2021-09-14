@@ -19,6 +19,7 @@ const storyblokRelations = [
   "storyCard.storyPicker",
   "alertPicker.alert",
   "verticalNav.verticalNav",
+  "tripCard.trip",
 ];
 
 module.exports = {

@@ -48,6 +48,7 @@ import Section from "./layout/section";
 import SimpleImage from "./media/simpleImage";
 import Story from "./content-types/story/story";
 import StoryCard from "./cards/storyCard";
+import { SBTripCard } from "./storyblok/tripCard";
 import TripPage from "./page-types/TripPage";
 import VerticalNav from "./navigation/verticalNav";
 import VerticalNavWrapper from "./navigation/verticalNavWrapper";
@@ -105,6 +106,7 @@ const ComponentList = {
   story: Story,
   storyCard: StoryCard,
   trip: TripPage,
+  tripCard: SBTripCard,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,

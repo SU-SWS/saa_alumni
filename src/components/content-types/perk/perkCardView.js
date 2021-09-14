@@ -35,4 +35,5 @@ const PerkCardView = ({
     />
   </SbEditable>
 );
+
 export default PerkCardView;
