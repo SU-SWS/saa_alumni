@@ -4,7 +4,13 @@ import TripCard from "../cards/TripCard/TripCard";
 
 // TODO: Type props
 export const SBTripCard = ({ blok }) => {
-  const { trip } = blok;
+  const { trip = {} } = blok;
+
+  if (!trip.content) {
+    // eslint-disable-next-line no-underscore-dangle
+    console.warn(`Missing trip entity content for trip ${blok._uid}`);
+    return null;
+  }
 
   return (
     <SbEditable content={blok}>
