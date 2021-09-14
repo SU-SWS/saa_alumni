@@ -38,11 +38,11 @@ export const buildPager = (nbPages, maxLinks, activePage) => {
 
     // Splice in the first ellipsis if applicable.
     if (pagerLinks.indexOf(middleLinksEnd) < pagerLinks.length - 1) {
-      pagerLinks.splice(pagerLinks.indexOf(middleLinksEnd) + 1, 0, "...");
+      pagerLinks.splice(pagerLinks.indexOf(middleLinksEnd) + 1, 0, '...');
     }
     // Splice in the second ellipsis if applicable.
     if (middleLinksStart > 1) {
-      pagerLinks.splice(pagerLinks.indexOf(middleLinksStart), 0, "...");
+      pagerLinks.splice(pagerLinks.indexOf(middleLinksStart), 0, '...');
     }
   }
   return pagerLinks;
@@ -53,9 +53,9 @@ export const buildMobilePager = (nbPages, activePage) => {
 
   // If last page is active...
   if (activePage === nbPages - 1) {
-    pagerLinks = [0, "...", nbPages - 1];
+    pagerLinks = [0, '...', nbPages - 1];
   } else {
-    pagerLinks = [activePage, "...", nbPages - 1];
+    pagerLinks = [activePage, '...', nbPages - 1];
   }
 
   return pagerLinks;

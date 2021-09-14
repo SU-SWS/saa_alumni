@@ -1,6 +1,6 @@
-import React from "react";
-import { SrOnlyText } from "decanter-react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import { SrOnlyText } from 'decanter-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SocialIconLink = ({ srText, icon, size, ...props }) => (
   <a {...props}>

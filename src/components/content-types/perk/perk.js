@@ -1,9 +1,9 @@
-import React from "react";
-import PerkCardView from "./perkCardView";
-import PerkPageView from "./perkPageView";
+import React from 'react';
+import PerkCardView from './perkCardView';
+import PerkPageView from './perkPageView';
 
 const Perk = ({ layout, ...props }) => {
-  if (layout === "card") {
+  if (layout === 'card') {
     return <PerkCardView {...props} />;
   }
   return <PerkPageView {...props} />;

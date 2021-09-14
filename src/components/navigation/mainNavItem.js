@@ -1,5 +1,5 @@
-import React from "react";
-import SbLink from "../../utilities/sbLink";
+import React from 'react';
+import SbLink from '../../utilities/sbLink';
 
 const MainNavItem = ({ blok: { link, text } }) => (
   <li className="lg:su-border-b su-border-solid su-border-digital-red-light last:su-border-none">

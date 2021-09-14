@@ -1,7 +1,7 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Heading } from "decanter-react";
-import CreateBloks from "../../utilities/createBloks";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Heading } from 'decanter-react';
+import CreateBloks from '../../utilities/createBloks';
 
 const LinkGroup = ({ blok: { heading, linkList }, blok }) => (
   <SbEditable content={blok}>

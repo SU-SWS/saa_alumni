@@ -1,19 +1,19 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Container, Grid, GridCell } from "decanter-react";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, Grid, GridCell } from 'decanter-react';
 import {
   faFacebookF,
   faInstagram,
   faTwitter,
   faLinkedinIn,
   faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import { dcnb } from "cnbuilder";
-import CreateBloks from "../../utilities/createBloks";
-import SocialIconLink from "../simple/socialIconLink";
-import { bgPositionVertical } from "../../utilities/dataSource";
-import addBgImage from "../../utilities/addBgImage";
-import Logo from "./logo";
+} from '@fortawesome/free-brands-svg-icons';
+import { dcnb } from 'cnbuilder';
+import CreateBloks from '../../utilities/createBloks';
+import SocialIconLink from '../simple/socialIconLink';
+import { bgPositionVertical } from '../../utilities/dataSource';
+import addBgImage from '../../utilities/addBgImage';
+import Logo from './logo';
 
 const LocalFooter = ({
   blok: {
@@ -48,7 +48,7 @@ const LocalFooter = ({
           style={addBgImage(filename)}
           width="site"
           className={dcnb(
-            "su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat",
+            'su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat',
             bgCrop
           )}
         >

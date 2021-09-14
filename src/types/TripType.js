@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 // TODO: Make more general types and abstract
 const SBImageType = PropTypes.shape({
@@ -8,7 +8,7 @@ const SBImageType = PropTypes.shape({
   name: PropTypes.string,
   filename: PropTypes.string,
 });
-const CardTagType = PropTypes.oneOf(["Featured", "New", "Staff's pick"]);
+const CardTagType = PropTypes.oneOf(['Featured', 'New', "Staff's pick"]);
 
 // TODO: Extract general SB types into reusable abstracts
 export const TripType = {

@@ -7,25 +7,25 @@
  *
  */
 
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext } from 'react';
 
 // Constants.
 export const isBrowser = typeof window !== `undefined`;
 export const assetURL =
-  process.env.GATSBY_ASSET_URL ?? "https://a.storyblok.com/";
+  process.env.GATSBY_ASSET_URL ?? 'https://a.storyblok.com/';
 export const imageURL =
-  process.env.GATSBY_IMAGE_URL ?? "https://img2.storyblok.com/";
+  process.env.GATSBY_IMAGE_URL ?? 'https://img2.storyblok.com/';
 export const isNetlify =
   process.env.GATSBY_NETLIFY || process.env.NETLIFY || false;
 export const isProduction = process.env.GATSBY_PRODUCTION ?? false;
 export const breakpoints = {
-  "2xs": 0,
+  '2xs': 0,
   xs: 320,
   sm: 576,
   md: 768,
   lg: 992,
   xl: 1200,
-  "2xl": 1500,
+  '2xl': 1500,
 };
 
 /**
@@ -53,19 +53,19 @@ function GlobalContextReducer(state, action) {
   }
 
   switch (action.type) {
-    case "set":
+    case 'set':
       myState[action.key] = action.val;
       return myState;
 
-    case "reset":
+    case 'reset':
       return defaultState;
 
-    case "del":
+    case 'del':
       delete myState[action.item];
       return myState;
 
     default:
-      throw new Error("Global Context does not have that action.");
+      throw new Error('Global Context does not have that action.');
   }
 }
 

@@ -1,16 +1,16 @@
-import { DateTime } from "luxon";
+import { DateTime } from 'luxon';
 
 // eslint-disable-next-line consistent-return
-export const getDate = (dateString = "") => {
+export const getDate = (dateString = '') => {
   if (dateString) {
-    const date = DateTime.fromFormat(dateString, "yyyy-MM-dd T", {
-      zone: "UTC",
+    const date = DateTime.fromFormat(dateString, 'yyyy-MM-dd T', {
+      zone: 'UTC',
     })
-      .setZone("America/Los_Angeles")
-      .setLocale("en-us");
+      .setZone('America/Los_Angeles')
+      .setLocale('en-us');
     return {
-      month: date.toFormat("LLL"),
-      day: date.toFormat("dd"),
+      month: date.toFormat('LLL'),
+      day: date.toFormat('dd'),
       dateTime: `${dateString}Z`,
     };
   }

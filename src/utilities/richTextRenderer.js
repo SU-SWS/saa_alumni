@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   render,
   MARK_BOLD,
@@ -6,20 +6,20 @@ import {
   MARK_LINK,
   NODE_HEADING,
   NODE_IMAGE,
-} from "storyblok-rich-text-react-renderer";
-import { Heading } from "decanter-react";
-import { dcnb } from "cnbuilder";
-import { Link } from "gatsby";
-import CardImage from "../components/media/cardImage";
-import { config } from "./config";
+} from 'storyblok-rich-text-react-renderer';
+import { Heading } from 'decanter-react';
+import { dcnb } from 'cnbuilder';
+import { Link } from 'gatsby';
+import CardImage from '../components/media/cardImage';
+import { config } from './config';
 
 const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
-  let textColor = "su-text-current";
-  let linkColor = "";
+  let textColor = 'su-text-current';
+  let linkColor = '';
 
   if (isDark) {
-    textColor = "su-text-black-20";
-    linkColor = "su-text-digital-red-xlight hocus:su-text-white";
+    textColor = 'su-text-black-20';
+    linkColor = 'su-text-digital-red-xlight hocus:su-text-white';
   }
   const rendered = render(wysiwyg, {
     markResolvers: {
@@ -27,7 +27,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
       [MARK_ITALIC]: (children) => <em>{children}</em>,
       [MARK_LINK]: (children, props) => {
         const { href, target, linktype } = props;
-        if (linktype === "email") {
+        if (linktype === 'email') {
           // Email links: add `mailto:` scheme and map to <a>
           return (
             <a href={`mailto:${href}`} className={linkColor}>
@@ -35,7 +35,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
             </a>
           );
         }
-        if (linktype === "story") {
+        if (linktype === 'story') {
           // Internal links: map to gatsby <Link>
           return (
             <Link to={href} className={linkColor}>
@@ -44,7 +44,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
           );
         }
 
-        if (linktype === "asset") {
+        if (linktype === 'asset') {
           // Asset links: map to <a>
           // Rewrite the URL to the redirect link to mask the API endpoint.
           let linkUrl = href;
@@ -69,7 +69,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
           <a
             href={href}
             target={target}
-            className={dcnb("su-external-link", linkColor)}
+            className={dcnb('su-external-link', linkColor)}
           >
             {children}
           </a>
@@ -129,7 +129,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
   });
 
   return (
-    <div className={dcnb("su-wysiwyg", textColor, className)}>{rendered}</div>
+    <div className={dcnb('su-wysiwyg', textColor, className)}>{rendered}</div>
   );
 };
 

@@ -1,7 +1,7 @@
-import React from "react";
-import { dcnb } from "cnbuilder";
-import RichTextRenderer from "../../utilities/richTextRenderer";
-import WidthBox from "../layout/widthBox";
+import React from 'react';
+import { dcnb } from 'cnbuilder';
+import RichTextRenderer from '../../utilities/richTextRenderer';
+import WidthBox from '../layout/widthBox';
 
 const CaptionMedia = ({
   children,
@@ -13,12 +13,12 @@ const CaptionMedia = ({
   ...props
 }) => {
   // Caption align is default to right-aligned
-  let captionAlignStyles = "su-mr-0 su-ml-auto su-text-right";
+  let captionAlignStyles = 'su-mr-0 su-ml-auto su-text-right';
 
-  if (captionAlign === "left") {
-    captionAlignStyles = "su-ml-0 su-mr-auto su-text-left";
-  } else if (captionAlign === "center") {
-    captionAlignStyles = "su-mx-auto su-text-center";
+  if (captionAlign === 'left') {
+    captionAlignStyles = 'su-ml-0 su-mr-auto su-text-left';
+  } else if (captionAlign === 'center') {
+    captionAlignStyles = 'su-mx-auto su-text-center';
   }
 
   return (
@@ -26,11 +26,11 @@ const CaptionMedia = ({
       <figure>
         {children}
         {caption && (
-          <figcaption className={isInsetCaption ? "su-cc" : ""}>
+          <figcaption className={isInsetCaption ? 'su-cc' : ''}>
             <RichTextRenderer
               wysiwyg={caption}
               className={dcnb(
-                "su-caption su-text-black-70 su-max-w-prose su-mt-08em children:su-leading-snug",
+                'su-caption su-text-black-70 su-max-w-prose su-mt-08em children:su-leading-snug',
                 captionAlignStyles
               )}
             />

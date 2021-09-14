@@ -1,9 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Container } from "decanter-react";
-import { tabbable } from "tabbable";
-import { XIcon } from "@heroicons/react/solid";
-import UseFocusTrap from "../../hooks/useFocusTrap";
-import UseEscape from "../../hooks/useEscape";
+import React, { useEffect, useRef, useState } from 'react';
+import { Container } from 'decanter-react';
+import { tabbable } from 'tabbable';
+import { XIcon } from '@heroicons/react/solid';
+import UseFocusTrap from '../../hooks/useFocusTrap';
+import UseEscape from '../../hooks/useEscape';
 
 const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   const closeButton = useRef();
@@ -36,17 +36,17 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   });
 
   const lockScroll = () => {
-    const overlay = document.querySelector(".su-modal");
+    const overlay = document.querySelector('.su-modal');
     const scrollbarWidth = `${overlay.offsetWidth - overlay.clientWidth}px`;
 
-    document.getElementsByTagName("html")[0].style.overflowY = "hidden";
-    document.getElementsByTagName("body")[0].style.paddingRight =
+    document.getElementsByTagName('html')[0].style.overflowY = 'hidden';
+    document.getElementsByTagName('body')[0].style.paddingRight =
       scrollbarWidth;
   };
 
   const unlockScroll = () => {
-    document.getElementsByTagName("html")[0].style.overflowY = "scroll";
-    document.getElementsByTagName("body")[0].style.paddingRight = "0";
+    document.getElementsByTagName('html')[0].style.overflowY = 'scroll';
+    document.getElementsByTagName('body')[0].style.paddingRight = '0';
   };
 
   useEffect(() => {
@@ -67,10 +67,10 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
     <div
       className={`su-modal
       su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center su-justify-center su-z-50
-      ${isOpen ? "su-flex" : "su-hidden"}
+      ${isOpen ? 'su-flex' : 'su-hidden'}
     `}
       aria-label={ariaLabel}
-      aria-hidden={isOpen ? "false" : "true"}
+      aria-hidden={isOpen ? 'false' : 'true'}
       role="dialog"
       tabIndex="-1"
     >

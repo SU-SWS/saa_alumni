@@ -1,7 +1,7 @@
-import React from "react";
-import sanitize from "sanitize-html";
-import { Heading } from "decanter-react";
-import HeroIcon from "../simple/heroIcon";
+import React from 'react';
+import sanitize from 'sanitize-html';
+import { Heading } from 'decanter-react';
+import HeroIcon from '../simple/heroIcon';
 
 const SearchResults = ({ results }) => {
   if (!results.hits) {
@@ -26,14 +26,14 @@ const SearchResults = ({ results }) => {
                   className="su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
                   href={result.url}
                 >
-                  {result.fileType === "video" && (
+                  {result.fileType === 'video' && (
                     <HeroIcon
                       iconType="video"
                       className="su-inline-block su-mr-02em"
                       srText="Video: "
                     />
                   )}
-                  {result.fileType === "audio" && (
+                  {result.fileType === 'audio' && (
                     <HeroIcon
                       iconType="podcast"
                       className="su-inline-block su-ml-01em"
@@ -50,15 +50,15 @@ const SearchResults = ({ results }) => {
                   <HeroIcon
                     iconType={
                       result.domain.match(/^alumni.stanford.edu/)
-                        ? "arrow-right"
-                        : "external"
+                        ? 'arrow-right'
+                        : 'external'
                     }
                     className="su-inline-block group-hocus:su-text-cardinal-red"
                     isAnimate
                     srText={
                       result.domain.match(/^alumni.stanford.edu/)
-                        ? ""
-                        : " (external link)"
+                        ? ''
+                        : ' (external link)'
                     }
                   />
                 </a>
