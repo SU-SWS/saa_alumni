@@ -1,5 +1,5 @@
-import React from "react";
-import sanitize from "sanitize-html";
+import React from 'react';
+import sanitize from 'sanitize-html';
 
 const searchAutocomplete = ({
   autocompleteSuggestions,
@@ -13,7 +13,7 @@ const searchAutocomplete = ({
 }) => (
   <div
     className={`${autocompleteContainerClasses}
-    ${showAutocomplete && autocompleteSuggestions.length ? "" : "su-hidden"}`}
+    ${showAutocomplete && autocompleteSuggestions.length ? '' : 'su-hidden'}`}
   >
     {Array.isArray(autocompleteSuggestions) && (
       <ul className="su-list-unstyled" role="listbox">
@@ -28,18 +28,18 @@ const searchAutocomplete = ({
                         ${
                           index === selectedSuggestion
                             ? autocompleteLinkFocusClasses
-                            : ""
+                            : ''
                         }
                       `}
             onClick={(e) => onSelect(e, suggestion.query)}
             onKeyDown={(e) => {
               // On Enter or Spacebar
-              if (e.key === "Enter" || e.key === " ") {
+              if (e.key === 'Enter' || e.key === ' ') {
                 onSelect(e, suggestion.query);
               }
             }}
             onFocus={(e) => setSelectedSuggestion(index)}
-            aria-selected={selectedSuggestion === index ? "true" : "false"}
+            aria-selected={selectedSuggestion === index ? 'true' : 'false'}
             id="search-autocomplete-listbox"
           >
             {

@@ -1,7 +1,7 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Container, GlobalFooter } from "decanter-react";
-import CreateBloks from "../../utilities/createBloks";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, GlobalFooter } from 'decanter-react';
+import CreateBloks from '../../utilities/createBloks';
 
 /**
  * The Footer component is referenced and used in the Layout component.
@@ -18,7 +18,7 @@ const Footer = ({ blok: { localFooter }, blok }) => (
       <CreateBloks blokSection={localFooter} />
       <GlobalFooter
         color="black"
-        className={{ "su-bg-black": false, "su-bg-saa-black": true }}
+        className={{ 'su-bg-black': false, 'su-bg-saa-black': true }}
       />
     </Container>
   </SbEditable>

@@ -1,14 +1,14 @@
-import React from "react";
-import { buildPager, buildMobilePager } from "../../utilities/buildPager";
+import React from 'react';
+import { buildPager, buildMobilePager } from '../../utilities/buildPager';
 
 const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
   if (activePage === undefined || nbPages === undefined) {
     return <div />;
   }
 
-  const linkClasses = "su-text-digital-red-light hover:su-border-b-4";
+  const linkClasses = 'su-text-digital-red-light hover:su-border-b-4';
   const activeLinkClasses =
-    "su-text-cardinal-red su-border-b-4 su-cursor-default su-pointer-events-none";
+    'su-text-cardinal-red su-border-b-4 su-cursor-default su-pointer-events-none';
 
   const desktopPagerLinks = buildPager(nbPages, maxLinks, activePage);
   const mobilePagerLinks = buildMobilePager(nbPages, activePage);
@@ -34,7 +34,7 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
             </li>
           )}
           {pagerLinks.map((i) => {
-            if (i === "...") {
+            if (i === '...') {
               return <li className="su-mb-0 su-px-9 md:su-px-11">...</li>;
             }
             return (

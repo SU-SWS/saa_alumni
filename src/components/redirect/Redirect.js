@@ -1,16 +1,16 @@
-import React from "react";
-import SbEditable from "storyblok-react";
+import React from 'react';
+import SbEditable from 'storyblok-react';
 
 const Redirect = ({ blok: { from, to, statusCode, enabled }, blok }) => {
   const mapping = {
-    "From Path": from || "N/A",
-    "To Path": to || "N/A",
-    "Status Code": statusCode || "301",
-    Enabled: enabled ? "TRUE" : "FALSE",
+    'From Path': from || 'N/A',
+    'To Path': to || 'N/A',
+    'Status Code': statusCode || '301',
+    Enabled: enabled ? 'TRUE' : 'FALSE',
   };
   const map = function (type) {
     return Object[type](mapping).map((str) =>
-      type === "keys" ? <th>{str}</th> : <td>{str}</td>
+      type === 'keys' ? <th>{str}</th> : <td>{str}</td>
     );
   };
 
@@ -20,10 +20,10 @@ const Redirect = ({ blok: { from, to, statusCode, enabled }, blok }) => {
         <section className="ood-redirect-info">
           <table>
             <thead>
-              <tr>{map("keys")}</tr>
+              <tr>{map('keys')}</tr>
             </thead>
             <tbody>
-              <tr>{map("values")}</tr>
+              <tr>{map('values')}</tr>
             </tbody>
           </table>
         </section>

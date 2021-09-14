@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import SbEditable from "storyblok-react";
-import { Container, FlexBox, FlexCell } from "decanter-react";
-import { dcnb } from "cnbuilder";
-import CreateBloks from "../../utilities/createBloks";
-import Logo from "./logo";
-import OpenSearchModalButton from "../search/openSearchModalButton";
-import SearchModal from "../search/searchModal";
+import React, { useState } from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, FlexBox, FlexCell } from 'decanter-react';
+import { dcnb } from 'cnbuilder';
+import CreateBloks from '../../utilities/createBloks';
+import Logo from './logo';
+import OpenSearchModalButton from '../search/openSearchModalButton';
+import SearchModal from '../search/searchModal';
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   let mainNavBgColorXl =
-    "xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden";
+    'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
   let mainNavBgColorLg =
-    "su-bg-transparent su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden";
+    'su-bg-transparent su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden';
 
   if (isDark && !hasHero) {
-    mainNavBgColorXl = "xl:su-bg-saa-black";
-    mainNavBgColorLg = "su-bg-saa-black";
+    mainNavBgColorXl = 'xl:su-bg-saa-black';
+    mainNavBgColorLg = 'su-bg-saa-black';
   }
 
   return (
@@ -51,7 +51,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
       </Container>
       <Container
         className={`masthead-desktop su-hidden lg:su-block ${
-          hasHero ? "su-absolute" : "su-relative"
+          hasHero ? 'su-absolute' : 'su-relative'
         }  su-z-20`}
         width="full"
       >
@@ -65,7 +65,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           <FlexCell
             grow
             className={dcnb(
-              "su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90",
+              'su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90',
               mainNavBgColorXl
             )}
           >
@@ -99,7 +99,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
         <CreateBloks
           blokSection={mainNav}
           className={dcnb(
-            "lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90",
+            'lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90',
             mainNavBgColorLg
           )}
         />

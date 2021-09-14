@@ -1,9 +1,9 @@
-import React from "react";
-import SbEditable from "storyblok-react";
+import React from 'react';
+import SbEditable from 'storyblok-react';
 import {
   CtaLink as DecanterCtaLink,
   CtaButton as DecanterCtaButton,
-} from "decanter-react";
+} from 'decanter-react';
 
 const AlertCtaLink = ({ blok, ...rest }) => {
   const btnOptions = {
@@ -14,28 +14,28 @@ const AlertCtaLink = ({ blok, ...rest }) => {
 
   const setCtaLink = (type) => {
     switch (type) {
-      case "button":
+      case 'button':
         return (
           <DecanterCtaButton
             {...btnOptions}
-            variant={`${rest.isLinkDark ? "unset" : "ghost"}`}
+            variant={`${rest.isLinkDark ? 'unset' : 'ghost'}`}
             size="default"
             className={`${
               rest.isLinkDark &&
-              "su-text-black su-border-black su-border-2 hover:su-text-black"
+              'su-text-black su-border-black su-border-2 hover:su-text-black'
             }`}
           />
         );
-      case "link":
+      case 'link':
         return (
           <DecanterCtaLink
             {...btnOptions}
             color="unset"
-            className={`${rest.isLinkDark ? "su-text-black" : "su-text-white"}`}
+            className={`${rest.isLinkDark ? 'su-text-black' : 'su-text-white'}`}
           />
         );
       default:
-        return "Please chose Type for the CTA Link";
+        return 'Please chose Type for the CTA Link';
     }
   };
 

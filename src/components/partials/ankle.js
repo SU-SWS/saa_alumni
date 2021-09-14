@@ -1,10 +1,10 @@
-import { Heading, Grid as DrGrid } from "decanter-react";
-import React from "react";
-import { dcnb } from "cnbuilder";
-import CreateBloks from "../../utilities/createBloks";
-import WidthBox from "../layout/widthBox";
-import { bgTextColorPairs } from "../../utilities/dataSource";
-import getNumBloks from "../../utilities/getNumBloks";
+import { Heading, Grid as DrGrid } from 'decanter-react';
+import React from 'react';
+import { dcnb } from 'cnbuilder';
+import CreateBloks from '../../utilities/createBloks';
+import WidthBox from '../layout/widthBox';
+import { bgTextColorPairs } from '../../utilities/dataSource';
+import getNumBloks from '../../utilities/getNumBloks';
 
 /**
  * The ankle component is referenced and used in the page type components.
@@ -16,11 +16,11 @@ const Ankle = ({
   isDark,
 }) => {
   const numItems = getNumBloks(ankleContent);
-  let ankleBgStyles = bgTextColorPairs[ankleBgColor ?? "white"];
+  let ankleBgStyles = bgTextColorPairs[ankleBgColor ?? 'white'];
   let isAnkleDark;
 
   // When black is selected as the background color, set the child component nested in the region to use their dark themed versions
-  if (ankleBgColor === "black") {
+  if (ankleBgColor === 'black') {
     isAnkleDark = true;
   }
 
@@ -31,16 +31,16 @@ const Ankle = ({
   }
 
   const ankleWrapperStyles = dcnb(
-    "ankle su-relative su-rs-py-7",
+    'ankle su-relative su-rs-py-7',
     ankleBgStyles
   );
 
-  let ankleWidth = "12";
+  let ankleWidth = '12';
 
   if (numItems === 1) {
-    ankleWidth = "6";
+    ankleWidth = '6';
   } else if (numItems === 2) {
-    ankleWidth = "10";
+    ankleWidth = '10';
   }
 
   return (
@@ -64,7 +64,7 @@ const Ankle = ({
           md={numItems}
           gap
           className={dcnb(
-            "su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]"
+            'su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]'
           )}
         >
           <CreateBloks blokSection={ankleContent} isDark={isAnkleDark} />

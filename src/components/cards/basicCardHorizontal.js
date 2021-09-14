@@ -1,10 +1,10 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { dcnb } from "cnbuilder";
-import { Grid as DrGrid } from "decanter-react";
-import CardImage from "../media/cardImage";
-import CircularImage from "../media/circularImage";
-import BasicCardContent from "./basicCardContent";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { dcnb } from 'cnbuilder';
+import { Grid as DrGrid } from 'decanter-react';
+import CardImage from '../media/cardImage';
+import CircularImage from '../media/circularImage';
+import BasicCardContent from './basicCardContent';
 
 const BasicCardHorizontal = ({
   blok: {
@@ -24,7 +24,7 @@ const BasicCardHorizontal = ({
 }) => {
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
-    "su-bg-white su-text-black su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm su-rs-pt-2 su-rs-px-2 su-rs-pb-3";
+    'su-bg-white su-text-black su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
 
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (
@@ -52,16 +52,16 @@ const BasicCardHorizontal = ({
   }
 
   if (isMinimal) {
-    wrapperClasses = "";
+    wrapperClasses = '';
   }
 
   let cardGrid;
 
   if (filename) {
-    cardGrid = "md:su-grid-cols-2";
+    cardGrid = 'md:su-grid-cols-2';
 
     if (isRound) {
-      cardGrid = "md:su-grid-flow-col md:su-grid-cols-auto-1fr";
+      cardGrid = 'md:su-grid-flow-col md:su-grid-cols-auto-1fr';
     }
   }
 
@@ -70,12 +70,12 @@ const BasicCardHorizontal = ({
       <DrGrid
         gap
         className={dcnb(
-          "basic-card-horizontal su-items-start su-gap-x-xl su-w-full su-basefont-23 su-break-words",
+          'basic-card-horizontal su-items-start su-gap-x-xl su-w-full su-basefont-23 su-break-words',
           wrapperClasses,
           cardGrid
         )}
       >
-        {filename?.startsWith("http") && cardImage}
+        {filename?.startsWith('http') && cardImage}
         <BasicCardContent
           headline={headline}
           headingLevel={headingLevel}
@@ -84,8 +84,8 @@ const BasicCardHorizontal = ({
           text={text}
           cta={cta}
           className={dcnb(
-            "card-body",
-            `${isRound && filename ? "" : "su-mt-[-0.3em]"}`
+            'card-body',
+            `${isRound && filename ? '' : 'su-mt-[-0.3em]'}`
           )}
         />
       </DrGrid>

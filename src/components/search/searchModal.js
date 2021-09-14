@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Heading } from "decanter-react";
-import { useStaticQuery, graphql, navigate } from "gatsby";
-import Modal from "../layout/modal";
-import SearchFieldModal from "./searchFieldModal";
-import SearchSuggestions from "./searchSuggestions";
+import React, { useState } from 'react';
+import { Heading } from 'decanter-react';
+import { useStaticQuery, graphql, navigate } from 'gatsby';
+import Modal from '../layout/modal';
+import SearchFieldModal from './searchFieldModal';
+import SearchSuggestions from './searchSuggestions';
 
 const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
   const searchFieldRef = React.createRef();
@@ -71,7 +71,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
             {emptySearchMessage}
           </p>
         ) : (
-          ""
+          ''
         )}
         {story && content && (
           <div>

@@ -1,5 +1,5 @@
-import React from "react";
-import Components from "../components/components";
+import React from 'react';
+import Components from '../components/components';
 
 // Create references to stories (entries) in Storyblok
 // Useful for rendering global elements, e.g., global footer, menus, that are used on multiple pages

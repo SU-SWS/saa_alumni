@@ -1,7 +1,7 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import CreateBloks from "../utilities/createBloks";
-import Footer from "./partials/footer";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import CreateBloks from '../utilities/createBloks';
+import Footer from './partials/footer';
 
 const Page = ({ blok: { body }, blok, ...rest }) => (
   <SbEditable content={blok}>

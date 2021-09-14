@@ -1,6 +1,6 @@
-import React from "react";
-import { dcnb } from "cnbuilder";
-import { SrOnlyText } from "decanter-react";
+import React from 'react';
+import { dcnb } from 'cnbuilder';
+import { SrOnlyText } from 'decanter-react';
 
 const DateBlock = ({
   startDay,
@@ -18,42 +18,42 @@ const DateBlock = ({
 }) => {
   // Check if the start and end day is the same
   let dateBlockMinWidth;
-  let startDatePadding = "su-pl-20 su-pr-12";
+  let startDatePadding = 'su-pl-20 su-pr-12';
 
   if (isSameDay) {
-    dateBlockMinWidth = "su-min-w-[10rem] lg:su-min-w-[11.4rem]";
-    startDatePadding = "";
+    dateBlockMinWidth = 'su-min-w-[10rem] lg:su-min-w-[11.4rem]';
+    startDatePadding = '';
   }
 
   let wrapperClasses =
-    "su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-w-fit group-hover:su-from-digital-red group-hover:su-to-digital-red-light";
+    'su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-w-fit group-hover:su-from-digital-red group-hover:su-to-digital-red-light';
   let dateClasses =
-    "su-justify-center su-w-fit su-h-100 lg:su-h-[11.4rem] su-bg-cardinal-red su-rounded-full";
+    'su-justify-center su-w-fit su-h-100 lg:su-h-[11.4rem] su-bg-cardinal-red su-rounded-full';
 
-  let textColor = "su-text-white";
+  let textColor = 'su-text-white';
 
   if (isMinimal) {
-    wrapperClasses = "su-bg-transparent";
-    dateClasses = "su-justify-start su-bg-transparent";
-    startDatePadding = "su-pl-0 su-pr-12";
+    wrapperClasses = 'su-bg-transparent';
+    dateClasses = 'su-justify-start su-bg-transparent';
+    startDatePadding = 'su-pl-0 su-pr-12';
   }
 
   // Change text color to black if card is minimal and if only if it's not dark themed
   if (!isDark && isMinimal) {
-    textColor = "su-text-black";
+    textColor = 'su-text-black';
   }
 
-  let monthFontSize = "su-text-m5 md:su-text-m4 lg:su-text-m5";
+  let monthFontSize = 'su-text-m5 md:su-text-m4 lg:su-text-m5';
 
   if (isSmallText) {
-    monthFontSize = "su-text-m4";
+    monthFontSize = 'su-text-m4';
   }
 
   return (
     <div className={dcnb(wrapperClasses, className)} {...props}>
       <div
         className={dcnb(
-          "su-flex su-flex-row su-items-center",
+          'su-flex su-flex-row su-items-center',
           dateClasses,
           dateBlockMinWidth,
           textColor
@@ -61,14 +61,14 @@ const DateBlock = ({
       >
         <time
           dateTime={startHtmlDate}
-          className={dcnb("su-flex su-flex-col", startDatePadding)}
+          className={dcnb('su-flex su-flex-col', startDatePadding)}
         >
           <span className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
             {startMonth}
           </span>
           <span
             className={dcnb(
-              "su-font-bold su-font-serif su-leading-trim",
+              'su-font-bold su-font-serif su-leading-trim',
               monthFontSize
             )}
           >
@@ -93,7 +93,7 @@ const DateBlock = ({
               </span>
               <span
                 className={dcnb(
-                  "su-font-bold su-font-serif su-leading-trim",
+                  'su-font-bold su-font-serif su-leading-trim',
                   monthFontSize
                 )}
               >

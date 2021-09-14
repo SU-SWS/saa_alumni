@@ -4,8 +4,8 @@
 module.exports = function () {
   return function ({ addComponents }) {
     const components = {
-      ".backface-hidden": {
-        backfaceVisibility: "hidden",
+      '.backface-hidden': {
+        backfaceVisibility: 'hidden',
       },
     };
 

@@ -1,17 +1,17 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Container, Heading } from "decanter-react";
-import { dcnb } from "cnbuilder";
-import { render } from "storyblok-rich-text-react-renderer";
-import CreateBloks from "../../utilities/createBloks";
-import RichTextRenderer from "../../utilities/richTextRenderer";
-import getNumBloks from "../../utilities/getNumBloks";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, Heading } from 'decanter-react';
+import { dcnb } from 'cnbuilder';
+import { render } from 'storyblok-rich-text-react-renderer';
+import CreateBloks from '../../utilities/createBloks';
+import RichTextRenderer from '../../utilities/richTextRenderer';
+import getNumBloks from '../../utilities/getNumBloks';
 import {
   largePaddingTop,
   largePaddingBottom,
   bgTextColorPairs,
-} from "../../utilities/dataSource";
-import SbLink from "../../utilities/sbLink";
+} from '../../utilities/dataSource';
+import SbLink from '../../utilities/sbLink';
 
 const Section = ({
   blok: {
@@ -39,39 +39,39 @@ const Section = ({
   const hasHeader = (title && !isSrOnlyTitle) || numIntro > 0 || superhead;
 
   const sectionBgColor = bgTextColorPairs[bgColor] ?? bgTextColorPairs.white;
-  let alignment = "su-text-center";
-  let bodyAlign = "su-mx-auto";
-  let headlineAlign = "su-mx-auto";
+  let alignment = 'su-text-center';
+  let bodyAlign = 'su-mx-auto';
+  let headlineAlign = 'su-mx-auto';
 
   let superLinkColor =
-    "su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue";
+    'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue';
 
   let isDarkSection = false;
 
-  if (bgColor === "black") {
+  if (bgColor === 'black') {
     superLinkColor =
-      "su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light";
+      'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light';
     isDarkSection = true;
   }
 
-  let headlineSize = "su-type-4 lg:su-type-5";
+  let headlineSize = 'su-type-4 lg:su-type-5';
 
-  if (titleSize === "sm") {
-    headlineSize = "su-type-3";
-  } else if (titleSize === "md") {
-    headlineSize = "su-type-4";
+  if (titleSize === 'sm') {
+    headlineSize = 'su-type-3';
+  } else if (titleSize === 'md') {
+    headlineSize = 'su-type-4';
   }
 
-  let headerSpacing = "su-rs-mb-5";
+  let headerSpacing = 'su-rs-mb-5';
 
   if (isLessHeaderSpacing) {
-    headerSpacing = "su-rs-mb-3";
+    headerSpacing = 'su-rs-mb-3';
   }
 
   if (isLeftAlign) {
-    alignment = "su-text-left";
-    bodyAlign = "";
-    headlineAlign = "su-ml-0";
+    alignment = 'su-text-left';
+    bodyAlign = '';
+    headlineAlign = 'su-ml-0';
   }
 
   const paddingTop = largePaddingTop[spacingTop] ?? largePaddingTop.lg;
@@ -82,20 +82,20 @@ const Section = ({
     <SbEditable content={blok}>
       <section
         className={dcnb(
-          "section su-basefont-23",
+          'section su-basefont-23',
           sectionBgColor,
           paddingTop,
           paddingBottom
         )}
-        id={id || ""}
+        id={id || ''}
       >
         {hasHeader && (
-          <header className={dcnb("su-cc", alignment, headerSpacing)}>
+          <header className={dcnb('su-cc', alignment, headerSpacing)}>
             {superhead && (
               <SbLink
                 link={superLink}
                 classes={dcnb(
-                  "su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border",
+                  'su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border',
                   superLinkColor
                 )}
               >
@@ -108,7 +108,7 @@ const Section = ({
                 font="serif"
                 weight="bold"
                 className={dcnb(
-                  "su-mb-02em su-max-w-800",
+                  'su-mb-02em su-max-w-800',
                   headlineAlign,
                   headlineSize
                 )}
@@ -119,7 +119,7 @@ const Section = ({
             )}
             {numIntro > 0 && (
               <div
-                className={dcnb("su-big-paragraph su-max-w-prose", bodyAlign)}
+                className={dcnb('su-big-paragraph su-max-w-prose', bodyAlign)}
               >
                 <RichTextRenderer
                   wysiwyg={intro}

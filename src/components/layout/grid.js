@@ -1,10 +1,10 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Grid as DrGrid } from "decanter-react";
-import { dcnb } from "cnbuilder";
-import CreateBloks from "../../utilities/createBloks";
-import WidthBox from "./widthBox";
-import { justifyItems } from "../../utilities/dataSource";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Grid as DrGrid } from 'decanter-react';
+import { dcnb } from 'cnbuilder';
+import CreateBloks from '../../utilities/createBloks';
+import WidthBox from './widthBox';
+import { justifyItems } from '../../utilities/dataSource';
 
 const Grid = ({
   blok: {
@@ -24,34 +24,34 @@ const Grid = ({
   // Horizontal grid gap options
   let gapClasses;
 
-  if (gapWidth === "none") {
-    gapClasses = "su-gap-x-[1px]";
-  } else if (gapWidth === "large") {
+  if (gapWidth === 'none') {
+    gapClasses = 'su-gap-x-[1px]';
+  } else if (gapWidth === 'large') {
     gapClasses =
-      "su-gap-xs md:su-gap-x-lg lg:su-gap-x-2xl xl:su-gap-x-[6rem] 2xl:su-gap-x-[7rem]";
+      'su-gap-xs md:su-gap-x-lg lg:su-gap-x-2xl xl:su-gap-x-[6rem] 2xl:su-gap-x-[7rem]';
   } else {
-    gapClasses = "su-grid-gap";
+    gapClasses = 'su-grid-gap';
   }
 
   // By default, items in a row are top-aligned vertically
-  let itemClasses = "su-items-start";
+  let itemClasses = 'su-items-start';
 
   // Option to force items in the same row to stretch to the height of the tallest item
   if (isStretchItems) {
-    itemClasses = "su-items-stretch";
+    itemClasses = 'su-items-stretch';
   }
 
   let grid = (
     <DrGrid
       xs={1}
       md={
-        width === "4" || width === "6" || numCol === "1" || isMdLgOneColumn
+        width === '4' || width === '6' || numCol === '1' || isMdLgOneColumn
           ? 1
           : 2
       }
       xl={parseInt(numCol, 10)}
       className={dcnb(
-        "su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]",
+        'su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]',
         alignmentClasses,
         gapClasses,
         itemClasses
@@ -61,11 +61,11 @@ const Grid = ({
     </DrGrid>
   );
 
-  if (numCol === "auto") {
+  if (numCol === 'auto') {
     grid = (
       <DrGrid
         className={dcnb(
-          "su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]",
+          'su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]',
           alignmentClasses,
           gapClasses,
           itemClasses

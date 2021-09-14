@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 import {
   FlexBox,
   Grid as DrGrid,
   GridCell,
   Heading,
   SrOnlyText,
-} from "decanter-react";
-import { DateTime } from "luxon";
-import { LocationMarkerIcon } from "@heroicons/react/outline";
-import RichTextRenderer from "../../utilities/richTextRenderer";
-import DateBlock from "../simple/dateBlock";
-import FaIcon from "../simple/faIcon";
-import CaptionMedia from "../media/captionMedia";
-import CardImage from "../media/cardImage";
+} from 'decanter-react';
+import { DateTime } from 'luxon';
+import { LocationMarkerIcon } from '@heroicons/react/outline';
+import RichTextRenderer from '../../utilities/richTextRenderer';
+import DateBlock from '../simple/dateBlock';
+import FaIcon from '../simple/faIcon';
+import CaptionMedia from '../media/captionMedia';
+import CardImage from '../media/cardImage';
 
 const ItineraryItem = ({
   blok: {
@@ -29,23 +29,23 @@ const ItineraryItem = ({
   // The date/time string we get from Storyblok is in UTC
   // Convert string to luxon DateTime object and format the pieces for display
   // Start date and time
-  const luxonStart = DateTime.fromFormat(startDate, "yyyy-MM-dd T", {
-    zone: "UTC",
+  const luxonStart = DateTime.fromFormat(startDate, 'yyyy-MM-dd T', {
+    zone: 'UTC',
   })
-    .setZone("America/Los_Angeles")
-    .setLocale("en-us");
-  const startMonth = luxonStart.toFormat("LLL");
-  const startDay = luxonStart.toFormat("dd");
+    .setZone('America/Los_Angeles')
+    .setLocale('en-us');
+  const startMonth = luxonStart.toFormat('LLL');
+  const startDay = luxonStart.toFormat('dd');
 
   // Valid datetime for HTML Time element
   const startHtmlDate = `${startDate}Z`;
 
   // End date and time
-  const luxonEnd = DateTime.fromFormat(endDate, "yyyy-MM-dd T", { zone: "UTC" })
-    .setZone("America/Los_Angeles")
-    .setLocale("en-us");
-  const endMonth = luxonEnd.toFormat("LLL");
-  const endDay = luxonEnd.toFormat("dd");
+  const luxonEnd = DateTime.fromFormat(endDate, 'yyyy-MM-dd T', { zone: 'UTC' })
+    .setZone('America/Los_Angeles')
+    .setLocale('en-us');
+  const endMonth = luxonEnd.toFormat('LLL');
+  const endDay = luxonEnd.toFormat('dd');
   const endHtmlDate = `${endDate}Z`;
 
   // Boolean to check if this is a same day event for dateblock display
@@ -65,7 +65,7 @@ const ItineraryItem = ({
               proFaIcon={icon}
               iconStyle="fas"
               className="su-text-m1 md:su-text-m2 su-text-digital-red"
-              rotation={icon === "shoe-prints" ? 270 : 0}
+              rotation={icon === 'shoe-prints' ? 270 : 0}
             />
           </FlexBox>
           <div className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] xl:su-mt-[-13rem] su-z-0" />

@@ -1,23 +1,23 @@
-import transformImage from "./transformImage";
-import getImageWidth from "./getImageWidth";
+import transformImage from './transformImage';
+import getImageWidth from './getImageWidth';
 
 const addBgImage = (
   imageUrl,
-  gradientOverlay = "linear-gradient(to bottom, transparent, #181D1C)"
+  gradientOverlay = 'linear-gradient(to bottom, transparent, #181D1C)'
 ) => {
   let bgImage = {};
-  let imgSrc = "";
+  let imgSrc = '';
 
   // Process image and set inline background image if image exists
   if (imageUrl != null) {
-    if (imageUrl.startsWith("http")) {
+    if (imageUrl.startsWith('http')) {
       const originalWidth = getImageWidth(imageUrl);
 
       // Downsize image if it's wider than 2000px, otherwise just reduce jpg quality to 60%
       if (originalWidth > 2000) {
-        imgSrc = transformImage(imageUrl, "/2000x0");
+        imgSrc = transformImage(imageUrl, '/2000x0');
       } else {
-        imgSrc = transformImage(imageUrl, "");
+        imgSrc = transformImage(imageUrl, '');
       }
 
       // Set background image style

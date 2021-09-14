@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import SbEditable from "storyblok-react";
-import { Container, Skiplink } from "decanter-react";
-import CreateBloks from "../../utilities/createBloks";
-import GlobalAlert from "../composite/globalAlert";
+import React, { useState, useEffect } from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, Skiplink } from 'decanter-react';
+import CreateBloks from '../../utilities/createBloks';
+import GlobalAlert from '../composite/globalAlert';
 
 /**
  * The Header component is referenced and used in the Layout component.
@@ -14,8 +14,8 @@ const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => {
 
   useEffect(() => {
     setIsSectionMenu(
-      document.getElementById("section-menu-desktop") ||
-        document.getElementById("section-menu-mobile")
+      document.getElementById('section-menu-desktop') ||
+        document.getElementById('section-menu-mobile')
     );
   }, []);
 

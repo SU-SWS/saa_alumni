@@ -3,6 +3,6 @@
  */
 module.exports = function () {
   return {
-    "3xl": "1700px",
+    '3xl': '1700px',
   };
 };

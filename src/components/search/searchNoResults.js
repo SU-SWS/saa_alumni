@@ -1,6 +1,6 @@
-import { Heading } from "decanter-react";
-import React from "react";
-import CreateBloks from "../../utilities/createBloks";
+import { Heading } from 'decanter-react';
+import React from 'react';
+import CreateBloks from '../../utilities/createBloks';
 
 const SearchNoResults = ({ heading, body, additionalContent }) => (
   <div>

@@ -1,6 +1,6 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import GradientCard from "./gradientCard";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import GradientCard from './gradientCard';
 
 const CollectionCard = ({
   blok: {
@@ -17,7 +17,7 @@ const CollectionCard = ({
       orientation="vertical"
       headline={headline}
       description={description}
-      link={link || ""}
+      link={link || ''}
       filename={filename}
       focus={focus}
       headingLevel={headingLevel}

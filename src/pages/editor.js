@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
-import React, { useState, useEffect } from "react";
-import SbEditable from "storyblok-react";
-import Loader from "react-loader-spinner";
-import { useStaticQuery, graphql } from "gatsby";
-import Components from "../components/components";
+import React, { useState, useEffect } from 'react';
+import SbEditable from 'storyblok-react';
+import Loader from 'react-loader-spinner';
+import { useStaticQuery, graphql } from 'gatsby';
+import Components from '../components/components';
 
 /**
  *
@@ -11,14 +11,14 @@ import Components from "../components/components";
  * @returns
  */
 const getParam = function (val) {
-  let result = "";
+  let result = '';
   let tmp = [];
 
   window.location.search
     .substr(1)
-    .split("&")
+    .split('&')
     .forEach((item) => {
-      tmp = item.split("=");
+      tmp = item.split('=');
       if (tmp[0] === val) {
         result = decodeURIComponent(tmp[1]);
       }
@@ -33,8 +33,8 @@ const getParam = function (val) {
 const loadStory = (sbResolveRelations, setStory) => {
   window.storyblok.get(
     {
-      slug: window.storyblok.getParam("path"),
-      version: "draft",
+      slug: window.storyblok.getParam('path'),
+      version: 'draft',
       resolve_relations: sbResolveRelations || [],
     },
     (data) => {
@@ -59,12 +59,12 @@ const initBridge = function (key, sbResolveRelations, setStory) {
   });
 
   // Listens on multiple events and does a basic website refresh
-  window.storyblok.on(["change", "published", "unpublished"], () => {
+  window.storyblok.on(['change', 'published', 'unpublished'], () => {
     window.location.reload();
   });
 
   // When the content author does stuff.
-  window.storyblok.on("input", (payload) => {
+  window.storyblok.on('input', (payload) => {
     // Add _editable properties to keep the Storyblok JS Bridge active after the content updates.
     window.storyblok.addComments(payload.story.content, payload.story.id);
     window.storyblok.resolveRelations(payload.story, sbResolveRelations, () => {
@@ -114,20 +114,20 @@ const StoryblokEntry = (props) => {
     // One time load only.
     if (!mounted) {
       // Storyblok Preview API access key.
-      const key = getParam("access_key");
+      const key = getParam('access_key');
 
       // Must have the API Access key.
-      if (key.length === 0 || typeof key !== "string") {
+      if (key.length === 0 || typeof key !== 'string') {
         return;
       }
 
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = "//app.storyblok.com/f/storyblok-latest.js";
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = '//app.storyblok.com/f/storyblok-latest.js';
       script.onload = () => {
         initBridge(key, sbResolveRelations, setStory);
       };
-      document.getElementsByTagName("head")[0].appendChild(script);
+      document.getElementsByTagName('head')[0].appendChild(script);
     }
 
     setMounted(true);

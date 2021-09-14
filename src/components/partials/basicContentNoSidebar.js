@@ -1,10 +1,10 @@
-import React from "react";
-import { dcnb } from "cnbuilder";
-import { render } from "storyblok-rich-text-react-renderer";
-import CreateBloks from "../../utilities/createBloks";
-import RichTextRenderer from "../../utilities/richTextRenderer";
-import WidthBox from "../layout/widthBox";
-import getNumBloks from "../../utilities/getNumBloks";
+import React from 'react';
+import { dcnb } from 'cnbuilder';
+import { render } from 'storyblok-rich-text-react-renderer';
+import CreateBloks from '../../utilities/createBloks';
+import RichTextRenderer from '../../utilities/richTextRenderer';
+import WidthBox from '../layout/widthBox';
+import getNumBloks from '../../utilities/getNumBloks';
 
 const BasicContentNoSidebar = ({ blok: { content, intro }, className }) => {
   const renderedIntro = render(intro);
@@ -19,7 +19,7 @@ const BasicContentNoSidebar = ({ blok: { content, intro }, className }) => {
     <WidthBox
       width="8"
       className={dcnb(
-        "basic-page-main-content su-basefont-23 su-mx-auto",
+        'basic-page-main-content su-basefont-23 su-mx-auto',
         className
       )}
     >

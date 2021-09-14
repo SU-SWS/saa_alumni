@@ -4,8 +4,8 @@
 module.exports = function () {
   return function ({ addUtilities }) {
     const newUtilities = {
-      ".grid-cols-auto-1fr": {
-        gridTemplateColumns: "auto 1fr",
+      '.grid-cols-auto-1fr': {
+        gridTemplateColumns: 'auto 1fr',
       },
     };
 

@@ -1,6 +1,6 @@
-import React from "react";
-import { StaticQuery, graphql } from "gatsby";
-import Alert from "./alert";
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import Alert from './alert';
 
 const query = graphql`
   query {
@@ -36,7 +36,7 @@ const GlobalAlert = () => (
           {allStoryblokEntry.edges.map(({ node: { content, uuid } }) => {
             const blok = JSON.parse(content);
             // eslint-disable-next-line dot-notation
-            blok["_uid"] = uuid;
+            blok['_uid'] = uuid;
             return <Alert blok={blok} key={uuid} />;
           })}
         </>

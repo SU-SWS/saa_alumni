@@ -1,6 +1,6 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import SbLink from "../../utilities/sbLink";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import SbLink from '../../utilities/sbLink';
 
 const NavItem = ({
   blok: { link, text },
