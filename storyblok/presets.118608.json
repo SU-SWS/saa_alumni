@@ -808,6 +808,584 @@
       "image": ""
     },
     {
+      "id": 1149034,
+      "name": "Default Local Footer",
+      "preset": {
+        "_uid": "4b502b36-c091-4352-b52b-5ff66f94260d",
+        "vCrop": "center",
+        "fbLink": "https://www.facebook.com/stanfordalumni",
+        "igLink": "https://www.instagram.com/stanfordalumni",
+        "bgImage": {
+          "id": 2114427,
+          "alt": "Campus sunset",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/1999x1000/69c797554b/campus-sunset-2x1-2000.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "mapLink": [
+          {
+            "rel": "nofollow noopener",
+            "_uid": "83664f70-02c3-472f-9117-2d67c4b47603",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://www.google.com/maps/place/Frances%20C.%20Arrillaga%20Alumni%20Center/@37.430725,-122.1648,15z/data=!4m5!3m4!1s0x0:0x778a60994d7a5e4c!8m2!3d37.430725!4d-122.1648?shorturl=1",
+              "_uid": "27a24376-bc96-44cd-b3f7-8435f09a5c05",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://www.google.com/maps/place/Frances%20C.%20Arrillaga%20Alumni%20Center/@37.430725,-122.1648,15z/data=!4m5!3m4!1s0x0:0x778a60994d7a5e4c!8m2!3d37.430725!4d-122.1648?shorturl=1"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "on Google",
+            "linkText": "Map",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "d51e171b-fce0-4a91-b4c9-02f43d4eeee2",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "none",
+            "isOutlineFaIcon": false
+          }
+        ],
+        "address1": "Frances C. Arrillaga Alumni Center",
+        "address2": "326 Galvez Street",
+        "address3": "Stanford, CA 94305-6105",
+        "component": "localFooter",
+        "legalLinks": [
+          {
+            "_uid": "60b86ba8-1794-439d-865c-0ad94fd614d0",
+            "link": {
+              "id": "908206e7-d02e-4912-8534-f9efbefa85bf",
+              "url": "",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "accessibility"
+            },
+            "text": "Accessibility",
+            "component": "navItem"
+          },
+          {
+            "_uid": "fff6c13d-c43e-4921-ba51-dcf067fa392e",
+            "link": {
+              "id": "177435d1-cb8f-440f-a4dd-1a60459deae9",
+              "url": "",
+              "_uid": "8a7c71e1-e3d9-464e-ba50-0a8d083047e8",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "privacy"
+            },
+            "text": "Privacy Policy",
+            "component": "navItem"
+          },
+          {
+            "_uid": "89065e06-e447-4085-b17c-b0550b82e64f",
+            "link": {
+              "id": "3840ef46-1681-499c-b7a9-3efc49333b91",
+              "url": "",
+              "_uid": "5c585131-443f-4888-b64f-323023431cb1",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "terms"
+            },
+            "text": "Terms of Use",
+            "component": "navItem"
+          },
+          {
+            "_uid": "c25244c5-4cdf-4d86-8cb7-76cf060ce535",
+            "link": {
+              "id": "1a20e3a4-0c81-466a-87d1-d7f31bd0288b",
+              "url": "",
+              "_uid": "499af142-0ce8-4304-8601-78dd439baf04",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "code-of-conduct"
+            },
+            "text": "Code of Conduct",
+            "component": "navItem"
+          }
+        ],
+        "linkGroups": [
+          {
+            "_uid": "d0bd7b87-d05d-4c57-a89d-88e0a098ec4c",
+            "heading": "Event",
+            "linkList": [
+              {
+                "_uid": "76326ff7-5492-4f72-a765-1a75b8c16e2d",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/events",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/events"
+                },
+                "text": "Explore all events",
+                "component": "navItem"
+              },
+              {
+                "_uid": "5ada0352-15e9-4faa-bd03-ddc72068fe87",
+                "link": {
+                  "id": "",
+                  "url": "https://reunion.stanford.edu/",
+                  "_uid": "c6284651-2f1b-42fd-9bbd-d1a19e6c0ea3",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://reunion.stanford.edu/"
+                },
+                "text": "Reunion Homecoming",
+                "component": "navItem"
+              },
+              {
+                "_uid": "094ddea0-c87c-4d27-8001-99173b95d024",
+                "link": {
+                  "id": "587848d1-85b0-4d28-8c41-f3feea855f83",
+                  "url": "",
+                  "_uid": "b2a9ff2e-30da-44e8-bfbb-19bfe072209f",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "resources/learn"
+                },
+                "text": "Virtual events",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "d5484b01-8b99-4c75-801f-50095432885f",
+            "heading": "Communities",
+            "linkList": [
+              {
+                "_uid": "4ecf625f-9d17-40ab-8a86-65d2d6c734ca",
+                "link": {
+                  "id": "3d1880a1-d44b-406a-9fcf-3b13655915f2",
+                  "url": "",
+                  "_uid": "edb77f77-c658-40e1-87c1-366a095a083c",
+                  "anchor": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "groups/"
+                },
+                "text": "Clubs & groups",
+                "component": "navItem"
+              },
+              {
+                "_uid": "c871ac44-2246-4dd1-b250-107bc4764ed7",
+                "link": {
+                  "id": "",
+                  "url": "https://youngalumni.alumni.stanford.edu/",
+                  "_uid": "ea31f08c-caaf-47c2-8487-716195600c27",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://youngalumni.alumni.stanford.edu/"
+                },
+                "text": "Young alumni",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e18c2f58-93c2-4ebf-9fb3-83a1c75bdcab",
+                "link": {
+                  "id": "",
+                  "url": "https://students.alumni.stanford.edu/",
+                  "_uid": "412d8eae-d0c4-49d8-9d7c-ca468eb567d0",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://students.alumni.stanford.edu/"
+                },
+                "text": "Students",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "13c404d8-f750-4f93-b312-ac217e429e19",
+            "heading": "Reading & resources",
+            "linkList": [
+              {
+                "_uid": "260374d9-1926-4c32-b220-794f911eac57",
+                "link": {
+                  "id": "587848d1-85b0-4d28-8c41-f3feea855f83",
+                  "url": "",
+                  "_uid": "579fd7f2-469d-4743-a265-8869d6937049",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "resources/learn"
+                },
+                "text": "Webcasts & podcasts",
+                "component": "navItem"
+              },
+              {
+                "_uid": "4c4a10fa-7bf2-4302-8367-3e22c11e9ee3",
+                "link": {
+                  "id": "",
+                  "url": "https://stanfordmag.org/",
+                  "_uid": "b374fcd6-792d-4098-9e84-c7a8190ace33",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://stanfordmag.org/"
+                },
+                "text": "STANFORD magazine",
+                "component": "navItem"
+              },
+              {
+                "_uid": "b3a13fc6-1234-429c-be43-d69f5f10fc86",
+                "link": {
+                  "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                  "url": "",
+                  "_uid": "af049d33-266f-4cf2-8916-987488f6e03a",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "home"
+                },
+                "text": "Career connections",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e2493561-f0ce-444f-8520-58e02ea30b47",
+                "link": {
+                  "id": "1871c9ab-27ca-402a-9701-1559a986b14c",
+                  "url": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "resources/newsletters"
+                },
+                "text": "Newsletters",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "c71f16b8-3a30-4c71-837c-445fd9e592e1",
+            "heading": "Programs & perks",
+            "linkList": [
+              {
+                "_uid": "1cb4e548-07ed-439a-8b63-5d832eda6bba",
+                "link": {
+                  "id": "dfecf357-be16-4fc4-8cd4-03e12a175da9",
+                  "url": "",
+                  "_uid": "655d75a7-f722-4006-a9dc-77532d951feb",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "perks/"
+                },
+                "text": "Alumni perks",
+                "component": "navItem"
+              },
+              {
+                "_uid": "5586d263-0a95-43a8-8529-ee79c6e18b2c",
+                "link": {
+                  "id": "79e0450f-d62f-45e7-be22-0acd8119451e",
+                  "url": "",
+                  "_uid": "d0b49e1d-dd4a-4911-9ea0-2e7e053e3e92",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "membership/"
+                },
+                "text": "Alumni membership",
+                "component": "navItem"
+              },
+              {
+                "_uid": "a110603e-6c2a-45d1-8c79-5d0747598286",
+                "link": {
+                  "id": "",
+                  "url": "https://sierracamp.alumni.stanford.edu/",
+                  "_uid": "07944a55-69c2-4471-8453-3fbc02736da3",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://sierracamp.alumni.stanford.edu/"
+                },
+                "text": "Sierra programs",
+                "component": "navItem"
+              },
+              {
+                "_uid": "8ad1b2f8-9445-482b-8388-81423d46a47a",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/travel-study/overview",
+                  "_uid": "4d3a6d80-69c1-4859-957c-23604f0c412c",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/travel-study/overview"
+                },
+                "text": "Travel/Study",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e11955e2-62a5-460e-ac78-a3a50ca5713a",
+                "link": {
+                  "id": "",
+                  "url": "https://partners.vinoshipper.com/stanford",
+                  "_uid": "c845bd91-c2ab-41b7-97a3-5d47a214bea2",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://partners.vinoshipper.com/stanford"
+                },
+                "text": "Wine Collection",
+                "component": "navItem"
+              },
+              {
+                "_uid": "b0a8b3e4-29d0-4a0f-8548-115da6fa6af3",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/resources/shop/home",
+                  "_uid": "202f10a5-e46e-4108-92bd-3664d8a18a41",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/resources/shop/home"
+                },
+                "text": "Alumni store",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "fddaefa3-87a6-47e0-8f1e-3db187d1202d",
+            "heading": "Volunteer",
+            "linkList": [
+              {
+                "_uid": "7fafdcdc-df31-49b7-a051-a5378032d54d",
+                "link": {
+                  "id": "a76b6abb-6816-4a61-92ca-30662bd37cb8",
+                  "url": "",
+                  "_uid": "2021a2b1-a861-4baf-9c18-359b25bff415",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "volunteer/"
+                },
+                "text": "Getting started",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e8ee42af-bb98-4fea-8bca-35ee2fbd4f43",
+                "link": {
+                  "id": "",
+                  "url": "https://associates.alumni.stanford.edu/",
+                  "_uid": "7501634e-29de-424f-a93f-dad8d3785ab8",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://associates.alumni.stanford.edu/"
+                },
+                "text": "Stanford Associates",
+                "component": "navItem"
+              },
+              {
+                "_uid": "82957b21-58d4-4cde-9fe6-8c760ded2833",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/volunteering/beyondthefarm/",
+                  "_uid": "249cc6e7-366c-4f66-b1b1-07ba695c5ea7",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/volunteering/beyondthefarm/"
+                },
+                "text": "Beyond the Farm",
+                "component": "navItem"
+              },
+              {
+                "_uid": "237ec7ea-ce11-4537-bf3f-802920995819",
+                "link": {
+                  "id": "",
+                  "url": "https://trusteenominations.alumni.stanford.edu/",
+                  "_uid": "de307a3b-66c2-4515-b8e5-314883c90dbd",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://trusteenominations.alumni.stanford.edu/"
+                },
+                "text": "Trustee nominations",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "75d5bcdf-7adc-432c-a26f-fa925d1aa469",
+            "heading": "About",
+            "linkList": [
+              {
+                "_uid": "0f38744f-86c8-45e9-8512-f30335f50086",
+                "link": {
+                  "id": "00210970-1134-4fd3-b6da-314c5bbf3f33",
+                  "url": "",
+                  "_uid": "13dadc05-fddd-483e-8f90-edc6753fdca4",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "about/"
+                },
+                "text": "About SAA",
+                "component": "navItem"
+              },
+              {
+                "_uid": "f80a374f-d436-47e5-93d4-cd4bafce2691",
+                "link": {
+                  "id": "",
+                  "url": "https://alumnicenter.alumni.stanford.edu/",
+                  "_uid": "dd151feb-16a7-41cc-8ed5-fc37d12c222b",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumnicenter.alumni.stanford.edu/"
+                },
+                "text": "Frances C. Arrillaga Alumni Center",
+                "component": "navItem"
+              },
+              {
+                "_uid": "c6e45a1b-2af3-41e7-ab0b-b55e0d52229e",
+                "link": {
+                  "id": "",
+                  "url": "https://alumnicenterevents.alumni.stanford.edu/",
+                  "_uid": "8a72936a-2d97-4fa8-adb2-744e6859e0da",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumnicenterevents.alumni.stanford.edu/"
+                },
+                "text": "Reserve event space",
+                "component": "navItem"
+              },
+              {
+                "_uid": "7a4c4e03-0db4-460e-a16f-c2bbb7fa2c06",
+                "link": {
+                  "id": "5b96dd1f-3194-4801-b84c-40fb908b2f9b",
+                  "url": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "about/contact"
+                },
+                "text": "Contact us",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          }
+        ],
+        "actionLinks": [
+          {
+            "rel": "",
+            "_uid": "e96081da-01ae-462c-8ad4-b4db3897ad19",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "",
+              "_uid": "edf41d5c-ae69-4953-bf7c-1ac295fc758d",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": ""
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Help",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "5fb13dcd-5ea7-441b-bafe-307374fe75a6",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "md",
+            "isOutlineFaIcon": false
+          },
+          {
+            "rel": "",
+            "_uid": "9c43d17a-dd35-4d4a-bf1e-30b6f8091dae",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://alumni.stanford.edu/get/page/directory/search?pgOrg=saa",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://alumni.stanford.edu/get/page/directory/search?pgOrg=saa"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Find an alum",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "f3e33ef4-40de-41a5-8979-8f963a4804e9",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "md",
+            "isOutlineFaIcon": false
+          },
+          {
+            "rel": "nofollow",
+            "_uid": "66e3bd30-0a80-49df-b6b0-65b35b51f5e0",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://alumni.stanford.edu/tools/mail?level=12&groupname=saa&pgOrg=saa&dbc=y",
+              "_uid": "fcff8d90-3dfa-482c-8af5-9a585e2e95bb",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://alumni.stanford.edu/tools/mail?level=12&groupname=saa&pgOrg=saa&dbc=y"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Check your alumni email",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "876bf8ec-128c-4e84-a8e4-6419462ca042",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "md",
+            "isOutlineFaIcon": false
+          },
+          {
+            "rel": "nofollow",
+            "_uid": "74afaf9e-d297-4271-9406-64170054a216",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://giving.stanford.edu",
+              "_uid": "9515c17a-fdbf-4b10-a1eb-64a7f04bf31c",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://giving.stanford.edu"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Give to Stanford",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "766fb2b1-b063-4094-a9d1-9c69b7493f92",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "none",
+            "isOutlineFaIcon": false
+          }
+        ],
+        "twitterLink": "https://twitter.com/stanfordalumni",
+        "youtubeLink": "https://www.youtube.com/user/StanfordAlumni/",
+        "linkedinLink": "https://www.linkedin.com/groups/74186/",
+        "organization": "Stanford Alumni Association"
+      },
+      "component_id": 1621493,
+      "space_id": 118608,
+      "created_at": "2021-09-08T00:57:04.192Z",
+      "updated_at": "2021-09-08T23:37:58.296Z",
+      "image": ""
+    },
+    {
       "id": 1063038,
       "name": "Event (multi-day)",
       "preset": {
@@ -1384,6 +1962,42 @@
       "space_id": 118608,
       "created_at": "2021-06-29T05:39:43.556Z",
       "updated_at": "2021-08-11T04:11:05.732Z",
+      "image": ""
+    },
+    {
+      "id": 1149221,
+      "name": "Horizontal Collection Card",
+      "preset": {
+        "_uid": "c480c621-5fe0-4e93-9dc6-608e6aa34925",
+        "link": {
+          "id": "3840ef46-1681-499c-b7a9-3efc49333b91",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "terms"
+        },
+        "image": {
+          "id": 2839321,
+          "alt": "",
+          "name": "",
+          "focus": "511x427:512x428",
+          "title": "",
+          "filename": "https://a.storyblok.com/f/118608/1291x751/8650e5928e/family.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "tabText": "Featured",
+        "headline": "Family adventures",
+        "component": "collectionCardHorizontal",
+        "imageFocus": "left",
+        "description": "On a Stanford family adventure, you and your loved ones will find yourselves immersed in new countries and cultures with hands-on activities, faculty lectures and unique learning opportunities for all ages.",
+        "headingLevel": "3",
+        "spacingBottom": "sm"
+      },
+      "component_id": 1766890,
+      "space_id": 118608,
+      "created_at": "2021-09-08T05:23:12.264Z",
+      "updated_at": "2021-09-08T05:23:12.264Z",
       "image": ""
     },
     {
@@ -2694,6 +3308,141 @@
       "space_id": 118608,
       "created_at": "2021-08-11T04:11:25.351Z",
       "updated_at": "2021-08-11T04:11:25.351Z",
+      "image": ""
+    },
+    {
+      "id": 1157671,
+      "name": "Temp w/ globals",
+      "preset": {
+        "seo": {
+          "_uid": "f43ca642-1c45-4733-9d10-e5ac8087b751",
+          "title": "",
+          "plugin": "seo_metatags",
+          "og_image": "",
+          "og_title": "",
+          "description": "",
+          "twitter_image": "",
+          "twitter_title": "",
+          "og_description": "",
+          "twitter_description": ""
+        },
+        "tag": "",
+        "_uid": "986d4ea4-210b-4b14-99ee-86f9f163a7a9",
+        "cost": "",
+        "title": "",
+        "region": "",
+        "endDate": "",
+        "noindex": false,
+        "masthead": [
+          {
+            "_uid": "322d44c7-7f2c-4f52-9baf-ad0071134d29",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "subtitle": "",
+        "cardImage": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "cardTitle": "",
+        "component": "trip",
+        "heroImage": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "startDate": "",
+        "detailsBody": "",
+        "experiences": [],
+        "facultyBody": "",
+        "localFooter": [
+          {
+            "_uid": "91c6a417-b5a7-4d03-a0ed-ba312c001556",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "47b600e9-0140-498e-ae0d-80b4324fece9"
+            ]
+          }
+        ],
+        "canonicalURL": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "cardSubtitle": "",
+        "overviewBody": "",
+        "relatedTrips": [],
+        "itineraryBody": "",
+        "detailsHeading": "",
+        "facultyHeading": "",
+        "itineraryItems": [],
+        "reservationURL": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "cardDescription": "",
+        "overviewHeading": "",
+        "itineraryHeading": "",
+        "shortDescription": ""
+      },
+      "component_id": 1766413,
+      "space_id": 118608,
+      "created_at": "2021-09-13T23:37:06.333Z",
+      "updated_at": "2021-09-13T23:37:06.333Z",
+      "image": ""
+    },
+    {
+      "id": 1149222,
+      "name": "Vertical Collection Card",
+      "preset": {
+        "_uid": "ead6057d-82b8-4ec4-95ba-e8d2772e867c",
+        "link": {
+          "id": "177435d1-cb8f-440f-a4dd-1a60459deae9",
+          "url": "",
+          "anchor": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "privacy"
+        },
+        "image": {
+          "id": 2839216,
+          "alt": "",
+          "name": "",
+          "focus": "501x215:502x216",
+          "title": "",
+          "filename": "https://a.storyblok.com/f/118608/986x1000/d335aa4e0c/tree.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "tabText": "Popular",
+        "headline": "Africa",
+        "component": "collectionCard",
+        "description": "See the pyramids, witness the Great Wildebeest Migration, and discover the various cultural, religious, and artistic traditions of this biodiverse region. ",
+        "headingLevel": "3"
+      },
+      "component_id": 1766707,
+      "space_id": 118608,
+      "created_at": "2021-09-08T05:23:51.695Z",
+      "updated_at": "2021-09-08T05:23:51.695Z",
       "image": ""
     },
     {

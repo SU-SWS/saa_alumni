@@ -779,6 +779,171 @@
       "component_group_name": "Page Types"
     },
     {
+      "name": "collectionCard",
+      "display_name": null,
+      "created_at": "2021-09-07T23:14:51.982Z",
+      "updated_at": "2021-09-08T18:20:59.921Z",
+      "id": 1766707,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "link": {
+          "type": "multilink",
+          "display_name": "",
+          "pos": 2
+        },
+        "tab-0d242ee1-3dcd-49f8-a2d4-1c1b914ec69c": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image"
+          ],
+          "pos": 5
+        },
+        "tab-eee16a22-fa16-4376-b1d1-f5fa8b9b8b6b": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel"
+          ],
+          "pos": 6
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "display_name": "Heading level",
+          "default_value": "3",
+          "pos": 7
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1149222,
+          "name": "Vertical Collection Card",
+          "component_id": 1766707,
+          "image": ""
+        }
+      ],
+      "preset_id": 1149222,
+      "real_name": "collectionCard",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "collectionCardHorizontal",
+      "display_name": "Horizontal Collection Card",
+      "created_at": "2021-09-08T02:03:30.730Z",
+      "updated_at": "2021-09-08T19:21:30.164Z",
+      "id": 1766890,
+      "schema": {
+        "spacingBottom": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "large-spacing",
+          "display_name": "Bottom spacing",
+          "exclude_empty_option": true,
+          "default_value": "sm",
+          "pos": 0
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "display_name": "Heading level",
+          "default_value": "3",
+          "pos": 1
+        },
+        "headline": {
+          "type": "text",
+          "pos": 2
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 3,
+          "max_length": "240"
+        },
+        "link": {
+          "type": "multilink",
+          "display_name": "",
+          "pos": 4
+        },
+        "tab-0d242ee1-3dcd-49f8-a2d4-1c1b914ec69c": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image",
+            "imageFocus"
+          ],
+          "pos": 6
+        },
+        "tab-eee16a22-fa16-4376-b1d1-f5fa8b9b8b6b": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel",
+            "spacingBottom"
+          ],
+          "pos": 7
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 8
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "display_name": "Image focus",
+          "default_value": "center",
+          "exclude_empty_option": true,
+          "source": "internal",
+          "datasource_slug": "object-position"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1149221,
+          "name": "Horizontal Collection Card",
+          "component_id": 1766890,
+          "image": ""
+        }
+      ],
+      "preset_id": 1149221,
+      "real_name": "Horizontal Collection Card",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
       "name": "ctaButton",
       "display_name": "CTA Button Link",
       "created_at": "2021-06-29T05:39:47.175Z",
@@ -1413,7 +1578,7 @@
       "name": "embedVideo",
       "display_name": "Embed Media",
       "created_at": "2021-08-11T04:11:01.992Z",
-      "updated_at": "2021-08-11T04:11:01.992Z",
+      "updated_at": "2021-09-09T13:22:01.533Z",
       "id": 1701712,
       "schema": {
         "videoWidth": {
@@ -1543,6 +1708,9 @@
             "spacingBottom"
           ],
           "pos": 9
+        },
+        "videoTitle": {
+          "type": "text"
         }
       },
       "image": null,
@@ -1748,7 +1916,7 @@
       "name": "grid",
       "display_name": null,
       "created_at": "2021-06-29T05:39:41.410Z",
-      "updated_at": "2021-09-02T00:52:52.202Z",
+      "updated_at": "2021-09-08T22:28:03.175Z",
       "id": 1621491,
       "schema": {
         "numCol": {
@@ -1883,7 +2051,9 @@
             "embedCard",
             "linkList",
             "iconCard",
-            "ctaGroup"
+            "ctaGroup",
+            "collectionCard",
+            "tripCard"
           ],
           "restrict_type": "",
           "component_group_whitelist": [],
@@ -1987,7 +2157,7 @@
       "name": "hero",
       "display_name": null,
       "created_at": "2021-06-29T05:39:43.204Z",
-      "updated_at": "2021-08-11T04:11:05.383Z",
+      "updated_at": "2021-09-07T21:46:55.940Z",
       "id": 1621496,
       "schema": {
         "sansSuper": {
@@ -2095,9 +2265,14 @@
           "keys": [
             "headingLevel",
             "isNotTop",
-            "scrollTo"
+            "scrollTo",
+            "isHideScroll"
           ],
           "pos": 13
+        },
+        "isHideScroll": {
+          "type": "boolean",
+          "display_name": "Hide \"Scroll to explore\" link"
         }
       },
       "image": null,
@@ -2128,26 +2303,42 @@
       "name": "iconCard",
       "display_name": null,
       "created_at": "2021-08-11T04:11:06.190Z",
-      "updated_at": "2021-08-11T04:11:06.190Z",
+      "updated_at": "2021-09-09T19:02:02.835Z",
       "id": 1701714,
       "schema": {
         "icon": {
           "type": "custom",
           "field_type": "fontawesome-selector",
           "options": [],
-          "display_name": "FontAwesome Icon"
+          "display_name": "FontAwesome Icon",
+          "pos": 0
         },
         "isOutline": {
           "type": "boolean",
           "display_name": "Use outline icon style",
-          "description": "Note: Not all icons have outline style available. If outline style is not available for an icon, it will not show up in the preview."
+          "description": "Note: Not all icons have outline style available. If outline style is not available for an icon, it will not show up in the preview.",
+          "pos": 1
+        },
+        "proFaIcon": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Newer FontAwesome icon name"
+        },
+        "iconStyle": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "fontawesome-icon-styles"
         },
         "headline": {
-          "type": "text"
+          "type": "text",
+          "pos": 4
         },
         "link": {
           "type": "multilink",
-          "display_name": ""
+          "display_name": "",
+          "pos": 5
         },
         "tab-b42db95d-5695-4d73-9118-4870820c05bd": {
           "type": "tab",
@@ -2155,7 +2346,7 @@
           "keys": [
             "headingLevel"
           ],
-          "pos": 0
+          "pos": 6
         },
         "headingLevel": {
           "type": "option",
@@ -2164,7 +2355,8 @@
           "datasource_slug": "heading-level",
           "display_name": "Heading level",
           "default_value": "3",
-          "exclude_empty_option": true
+          "exclude_empty_option": true,
+          "pos": 7
         }
       },
       "image": null,
@@ -2435,7 +2627,7 @@
       "name": "localFooter",
       "display_name": null,
       "created_at": "2021-06-29T05:39:42.142Z",
-      "updated_at": "2021-08-11T04:11:08.894Z",
+      "updated_at": "2021-09-08T00:57:08.518Z",
       "id": 1621493,
       "schema": {
         "contact": {
@@ -2601,8 +2793,15 @@
       "is_root": true,
       "preview_tmpl": "{{image(options.bgImage.filename)/}}",
       "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
+      "all_presets": [
+        {
+          "id": 1149034,
+          "name": "Default Local Footer",
+          "component_id": 1621493,
+          "image": ""
+        }
+      ],
+      "preset_id": 1149034,
       "real_name": "localFooter",
       "component_group_uuid": "cee4493f-3b73-425a-8b31-d13004a95ad1",
       "component_group_name": "Identity"
@@ -2611,7 +2810,7 @@
       "name": "localFooterPicker",
       "display_name": null,
       "created_at": "2021-06-29T05:39:48.275Z",
-      "updated_at": "2021-06-29T05:39:48.275Z",
+      "updated_at": "2021-09-08T23:39:54.365Z",
       "id": 1621510,
       "schema": {
         "localFooter": {
@@ -2623,7 +2822,7 @@
           ],
           "use_uuid": true,
           "source": "internal_stories",
-          "folder_slug": "global-components/local-footer/",
+          "folder_slug": "",
           "filter_content_type": "localFooter",
           "display_name": "Select Local Footer to display for this page",
           "max_options": "1",
@@ -2800,13 +2999,13 @@
       "name": "mastheadPicker",
       "display_name": null,
       "created_at": "2021-06-29T05:39:43.929Z",
-      "updated_at": "2021-06-29T05:39:43.929Z",
+      "updated_at": "2021-09-09T18:40:23.824Z",
       "id": 1621498,
       "schema": {
         "masthead": {
           "type": "options",
           "source": "internal_stories",
-          "folder_slug": "global-components/masthead/",
+          "folder_slug": "",
           "filter_content_type": "masthead",
           "min_options": "",
           "max_options": "1"
@@ -3967,7 +4166,7 @@
       "name": "section",
       "display_name": null,
       "created_at": "2021-06-29T05:39:41.763Z",
-      "updated_at": "2021-09-02T00:53:19.624Z",
+      "updated_at": "2021-09-08T02:13:01.147Z",
       "id": 1621492,
       "schema": {
         "headerOptions": {
@@ -4146,7 +4345,8 @@
             "wysiwyg",
             "ctaGroup",
             "perkCardHorizontal",
-            "itinerary"
+            "itinerary",
+            "collectionCardHorizontal"
           ],
           "component_group_whitelist": []
         }
@@ -4823,7 +5023,7 @@
       "name": "trip",
       "display_name": null,
       "created_at": "2021-09-07T18:19:23.039Z",
-      "updated_at": "2021-09-07T19:05:12.712Z",
+      "updated_at": "2021-09-13T23:37:14.103Z",
       "id": 1766413,
       "schema": {
         "tab-b91213dd-2341-41be-8861-5e1295979f0d": {
@@ -4838,16 +5038,6 @@
           ],
           "pos": 0
         },
-        "tab-babcd683-54d9-416e-8bac-ec9fa6526944": {
-          "type": "tab",
-          "display_name": "SEO & Social",
-          "keys": [
-            "seo",
-            "noindex",
-            "canonicalURL"
-          ],
-          "pos": 1
-        },
         "tab-90a06277-61f4-4974-a73d-0c369a6672db": {
           "type": "tab",
           "display_name": "Overview",
@@ -4857,7 +5047,7 @@
             "overviewHeading",
             "overviewBody"
           ],
-          "pos": 2
+          "pos": 1
         },
         "tab-471ef45d-81ec-454b-871c-43e4869f02cc": {
           "type": "tab",
@@ -4866,7 +5056,7 @@
             "facultyHeading",
             "facultyBody"
           ],
-          "pos": 3
+          "pos": 2
         },
         "tab-a9154f03-03ad-4023-ab23-d02739bf769c": {
           "type": "tab",
@@ -4876,7 +5066,7 @@
             "itineraryBody",
             "itineraryItems"
           ],
-          "pos": 4
+          "pos": 3
         },
         "tab-88f5017a-5bf3-4c00-98bf-76bf9a70b4b1": {
           "type": "tab",
@@ -4885,6 +5075,16 @@
             "detailsHeading",
             "detailsBody",
             "relatedTrips"
+          ],
+          "pos": 4
+        },
+        "tab-babcd683-54d9-416e-8bac-ec9fa6526944": {
+          "type": "tab",
+          "display_name": "SEO & Social",
+          "keys": [
+            "seo",
+            "noindex",
+            "canonicalURL"
           ],
           "pos": 5
         },
@@ -5035,6 +5235,33 @@
             "images"
           ],
           "description": "Set to override the trip hero image when displayed as a Card"
+        },
+        "tab-75916c06-bd2e-45c6-87f1-93ced3ca2482": {
+          "type": "tab",
+          "display_name": "global",
+          "keys": [
+            "masthead",
+            "localFooter"
+          ],
+          "pos": 0
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "required": true
+        },
+        "localFooter": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "required": true
         }
       },
       "image": null,
@@ -5042,9 +5269,42 @@
       "is_root": true,
       "preview_tmpl": null,
       "is_nestable": false,
+      "all_presets": [
+        {
+          "id": 1157671,
+          "name": "Temp w/ globals",
+          "component_id": 1766413,
+          "image": ""
+        }
+      ],
+      "preset_id": 1157671,
+      "real_name": "trip",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "tripCard",
+      "display_name": null,
+      "created_at": "2021-09-08T22:24:45.791Z",
+      "updated_at": "2021-09-08T22:25:41.965Z",
+      "id": 1769760,
+      "schema": {
+        "trip": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal_stories",
+          "filter_content_type": "trip",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "trip",
+      "real_name": "tripCard",
       "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
       "component_group_name": "Travel Study"
     },
