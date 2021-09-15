@@ -25,17 +25,6 @@ const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => {
       <CreateBloks blokSection={alert} />
       <Container element="header" width="full" className="su-relative su-z-20">
         <Skiplink />
-
-        {isSectionMenu && (
-          <React.Fragment>
-            <Skiplink
-              className="su-hidden lg:su-flex"
-              anchorLink="#section-menu-desktop"
-            >
-              Skip to section menu
-            </Skiplink>
-          </React.Fragment>
-        )}
         <CreateBloks blokSection={masthead} hasHero={hasHero} isDark={isDark} />
       </Container>
     </SbEditable>

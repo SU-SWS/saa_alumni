@@ -27,7 +27,7 @@ const BasicContentLeftSidebar = ({
         xs={12}
         lg={4}
         xxl={3}
-        className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2"
+        className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2 su-hidden lg:su-block"
       >
         <Skiplink anchorLink="#page-content" className="su-hidden lg:su-block">
           Skip pass sidebar to page content
@@ -40,7 +40,11 @@ const BasicContentLeftSidebar = ({
             className="lg:su-block su-hidden lg:su-rs-mb-2"
           />
         )}
-        <CreateBloks blokSection={sidebar} />
+        {hasSidebar && (
+          <div className="su-hidden lg:su-block">
+            <CreateBloks blokSection={sidebar} />
+          </div>
+        )}
       </GridCell>
       <GridCell
         xs={12}
@@ -55,6 +59,9 @@ const BasicContentLeftSidebar = ({
           />
         )}
         <CreateBloks blokSection={content} />
+        <div className="lg:su-hidden su-rs-mt-5">
+          <CreateBloks blokSection={sidebar} />
+        </div>
       </GridCell>
     </Grid>
   );
