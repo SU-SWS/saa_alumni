@@ -26,6 +26,10 @@
   for = "/editor"
   [headers.values]
     X-Frame-Options = "ALLOWALL"
+[[headers]]
+  for = "/user-guide/*"
+  [headers.values]
+    Basic-Auth = "saa:@lumn1@ss0c1@t10n"
 
 # REDIRECTS
 # ###############################################################################
