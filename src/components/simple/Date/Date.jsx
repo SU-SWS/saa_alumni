@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
-import PropTypes from "prop-types";
-import { SrOnlyText } from "decanter-react";
-import * as styles from "./Date.styles";
-import { getDate } from "./getDate";
+import React, { useMemo } from 'react';
+import PropTypes from 'prop-types';
+import { SrOnlyText } from 'decanter-react';
+import * as styles from './Date.styles';
+import { getDate } from './getDate';
 
 export const DateProps = {
   startDate: PropTypes.string.isRequired,

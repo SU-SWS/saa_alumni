@@ -1,14 +1,14 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import { FlexBox, Heading } from "decanter-react";
-import CardImage from "../../media/cardImage";
-import { Date } from "../../simple/Date/Date";
-import HeroIcon from "../../simple/heroIcon";
-import TabLabel from "../../simple/tabLabel";
-import { TripType } from "../../../types/TripType";
-import { HeadingLevelType } from "../../../types/HeadingLevelType";
-import * as styles from "./TripCard.styles";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import { FlexBox, Heading } from 'decanter-react';
+import CardImage from '../../media/cardImage';
+import { Date } from '../../simple/Date/Date';
+import HeroIcon from '../../simple/heroIcon';
+import TabLabel from '../../simple/tabLabel';
+import { TripType } from '../../../types/TripType';
+import { HeadingLevelType } from '../../../types/HeadingLevelType';
+import * as styles from './TripCard.styles';
 
 export const TripCardProps = {
   trip: PropTypes.shape(TripType),
@@ -39,7 +39,7 @@ const TripCard = ({
   const tripSubtitle = cardSubtitle || subtitle;
   const description = cardDescription || shortDescription;
   const image = cardImage?.filename ? cardImage : heroImage;
-  const tripURL = `/${fullSlug.replace(/^\//, "")}`;
+  const tripURL = `/${fullSlug.replace(/^\//, '')}`;
 
   return (
     <FlexBox direction="col" element="article" className={styles.root}>

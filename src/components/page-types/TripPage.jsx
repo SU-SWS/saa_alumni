@@ -1,7 +1,7 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Container } from "decanter-react";
-import Layout from "../partials/layout";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Container } from 'decanter-react';
+import Layout from '../partials/layout';
 
 const TripPage = (props) => {
   const { blok } = props;
