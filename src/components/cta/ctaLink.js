@@ -21,7 +21,6 @@ const CtaLink = React.forwardRef(
         textColor: propsTextColor,
         leadingIcon: { icon: propsIcon, type } = {},
         proFaIcon,
-        iconStyle,
         isOutlineFaIcon,
         icon,
         align: propsAlign,
@@ -71,14 +70,16 @@ const CtaLink = React.forwardRef(
               )}
             >
               {(proFaIcon || propsIcon) && (
-                <FaIcon
-                  proFaIcon={proFaIcon}
-                  iconChoice={propsIcon}
-                  iconType={type}
-                  iconStyle={iconStyle}
-                  isOutline={isOutlineFaIcon}
-                  className="su-mr-06em su-backface-hidden su-text-black-80"
-                />
+                <div className="su-w-fit su-max-w-3rem su-flex-shrink-0">
+                  <FaIcon
+                    proFaIcon={proFaIcon}
+                    iconChoice={propsIcon}
+                    iconType={type}
+                    isOutline={isOutlineFaIcon}
+                    className="su-mr-06em su-backface-hidden su-text-black-80"
+                    fixedWidth
+                  />
+                </div>
               )}
               <div>
                 {linkText}
