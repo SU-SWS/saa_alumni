@@ -1,6 +1,6 @@
 export const root =
-  'su-group su-relative su-overflow-hidden su-bg-black-true su-break-words su-border-su-border-black';
-export const content = 'su-rs-px-1 su-rs-pb-3 su-text-white';
+  'su-group su-relative su-overflow-hidden su-bg-black-true su-break-words su-border-black';
+export const content = 'su-rs-px-2 su-rs-pb-3 su-text-white';
 export const image =
   'su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]';
 export const date =
@@ -10,5 +10,5 @@ export const link =
 export const heading =
   'su-mt-32 su-type-0 su-font-bold su-relative su-inline su-text-white';
 export const icon = 'su-relative su-inline-block group-hocus:su-text-white';
-export const subheading = 'su-mt-4 su-type-0 su-font-semibold';
-export const description = 'su-mt-19 su-card-paragraph';
+export const subheading = 'su-mt-4 su-mb-0 su-type-0 su-font-semibold';
+export const description = 'su-rs-mt-0 su-mb-0 su-card-paragraph ';
