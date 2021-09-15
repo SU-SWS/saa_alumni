@@ -8,6 +8,7 @@ import {
   mediaAspectRatio,
 } from "../../utilities/dataSource";
 import CaptionMedia from "./captionMedia";
+import { Heading } from "decanter-react";
 
 const EmbedVideo = ({
   blok: {
@@ -20,6 +21,8 @@ const EmbedVideo = ({
     spacingTop,
     spacingBottom,
     videoWidth,
+    srTitle,
+    headingLevel,
   },
   blok,
 }) => {
@@ -34,6 +37,9 @@ const EmbedVideo = ({
 
   return (
     <SbEditable content={blok}>
+      <Heading level={parseInt(headingLevel, 10) || 3} srOnly>
+        {srTitle}
+      </Heading>
       <CaptionMedia
         mediaWidth={videoWidth}
         caption={caption}
