@@ -4,7 +4,7 @@ export const content = 'su-rs-px-2 su-rs-pb-3 su-text-white';
 export const image =
   'su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]';
 export const date =
-  'su-relative su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-mb-26 su-z-10';
+  'su-relative su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-mb-26 su-z-1';
 export const link =
   'su-stretched-link su-z-20 su-rs-mt-0 su-mb-08em su-type-3 su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight';
 export const heading =
