@@ -2,13 +2,13 @@ import React from "react";
 import SbEditable from "storyblok-react";
 import ReactPlayer from "react-player";
 import { dcnb } from "cnbuilder";
+import { Heading } from "decanter-react";
 import {
   smallPaddingBottom,
   smallPaddingTop,
   mediaAspectRatio,
 } from "../../utilities/dataSource";
 import CaptionMedia from "./captionMedia";
-import { Heading } from "decanter-react";
 
 const EmbedVideo = ({
   blok: {
@@ -37,9 +37,11 @@ const EmbedVideo = ({
 
   return (
     <SbEditable content={blok}>
-      <Heading level={parseInt(headingLevel, 10) || 3} srOnly>
-        {srTitle}
-      </Heading>
+      {srTitle && (
+        <Heading level={parseInt(headingLevel, 10) || 3} srOnly>
+          {srTitle}
+        </Heading>
+      )}
       <CaptionMedia
         mediaWidth={videoWidth}
         caption={caption}
