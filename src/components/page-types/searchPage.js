@@ -409,7 +409,7 @@ const SearchPage = (props) => {
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
                   <Skiplink
-                    anchorLink="#search-results"
+                    anchorLink="#search-results-section"
                     className="su-hidden lg:su-block"
                   >
                     Skip pass filters to search results
@@ -426,6 +426,7 @@ const SearchPage = (props) => {
               className={
                 results.nbHits > 0 ? "" : "lg:su-col-start-3 2xl:su-col-start-3"
               }
+              id="search-results-section"
             >
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (
