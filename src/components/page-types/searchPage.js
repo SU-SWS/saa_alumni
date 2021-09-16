@@ -389,6 +389,7 @@ const SearchPage = (props) => {
                             onClick={() => {
                               setOpened(false);
                               scrollTo("#search-results");
+                              document.getElementById("search-results").focus();
                             }}
                           >
                             View Results
