@@ -77,27 +77,24 @@ const Hero = ({
             {(sansSuper || serifSuper || headline || sansSub) && (
               <FlexCell className="su-text-center su-text-white">
                 {sansSuper && (
-                  <p className="su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-01em">
+                  <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-01em">
                     {sansSuper}
-                  </p>
+                  </span>
                 )}
                 {serifSuper && (
-                  <p className="su-max-w-prose su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mx-auto su-mb-05em">
+                  <span className="su-block su-max-w-prose su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mx-auto su-mb-05em">
                     {serifSuper}
-                  </p>
+                  </span>
                 )}
                 {headline && (
-                  <Heading
-                    level={2}
-                    font="serif"
-                    weight="bold"
+                  <span
                     className={dcnb(
-                      "su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em su-text-m4",
+                      "su-block su-font-bold su-font-serif su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em su-text-m4",
                       heroHeadlineSize
                     )}
                   >
                     {headline}
-                  </Heading>
+                  </span>
                 )}
                 {sansSub && (
                   <p className="su-max-w-prose su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mx-auto su-mb-0">
