@@ -67,7 +67,7 @@ const LocalFooter = ({
               </address>
               <CreateBloks blokSection={mapLink} />
               <ul className="su-list-unstyled su-rs-mt-3 su-rs-mb-4 children:su-mb-05em children:last:su-mb-0 children:su-leading-none">
-                <CreateBloks blokSection={actionLinks} isListItem />
+                <CreateBloks blokSection={actionLinks} as="li" />
               </ul>
               <ul className="su-flex su-list-unstyled">
                 <li className="su-mr-1em">
