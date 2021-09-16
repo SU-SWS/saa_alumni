@@ -19,8 +19,7 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "origin-when-cross-origin"
     Strict-Transport-Security = "max-age=2592000"
-    Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
-    X-Robots-Tag = "noindex, nofollow"
+    Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=(), interest-cohort()"
     X-Frame-Options = "DENY"
 [[headers]]
   for = "/editor"
@@ -28,10 +27,14 @@
     X-Frame-Options = "ALLOWALL"
 
 # REDIRECTS
-# ###############################################################################
+# ##############################################################################
+#
+# More redirects can be found in static/_redirects
+#
 
-# API redirect for lambda functions.
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+# PLUGINS
+# ##############################################################################
+[[plugins]]
+package = "/plugins/netlify-plugin-wildcard-404-redirect"
+  [plugins.inputs]
+  destination = "https://cardinalalumni.stanford.edu/:splat"

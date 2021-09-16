@@ -1,0 +1,10 @@
+# DOMAIN LEVEL WILDCARD REDIRECTS
+################################################################################
+# https://makeagift.stanford.edu/* https://give.stanford.edu/:splat 301!
+
+# WILDCARD FOR API LAMBDA FUNCTIONS
+################################################################################
+/api/* /.netlify/functions/:splat 200!
+
+# PLUGINS ADD MORE REDIRECTS BELOW
+################################################################################

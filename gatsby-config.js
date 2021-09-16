@@ -21,12 +21,18 @@ const storyblokRelations = [
   "verticalNav.verticalNav",
 ];
 
+const siteUrl =
+  process.env.GATSBY_SITE_URL ||
+  (process.env.CONTEXT === "production"
+    ? process.env.URL
+    : process.env.DEPLOY_PRIME_URL);
+
 module.exports = {
   siteMetadata: {
     title: `Stanford Alumni Association`,
     description: `Stanford Alumni Association`,
     author: `Stanford University Alumni Association`,
-    siteUrl: `https://alumni-preview.stanford.edu`,
+    siteUrl,
 
     // This key is for metadata only and can be statically queried
     storyblok: {
@@ -80,6 +86,23 @@ module.exports = {
       },
     },
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-TJ9MSJ3",
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        //
+        // Defaults to null
+        defaultDataLayer: { platform: "gatsby" },
+      },
+    },
+    {
       resolve: "gatsby-source-storyblok",
       options: {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
@@ -92,7 +115,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Alumni`,
+        name: `Stanford Alumni Association`,
         start_url: `/`,
         include_favicon: false,
         crossOrigin: `use-credentials`,
