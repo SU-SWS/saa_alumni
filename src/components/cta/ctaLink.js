@@ -31,9 +31,16 @@ const CtaLink = React.forwardRef(
         srText,
       },
       blok,
+      isListItem,
     },
     ref
   ) => {
+    let Element = "div";
+
+    if (isListItem) {
+      Element = "li";
+    }
+
     // Link text size
     const textSize = ctaLinkTextSize[size] ?? ctaLinkTextSize.default;
 
@@ -58,7 +65,7 @@ const CtaLink = React.forwardRef(
     return (
       <SbEditable content={blok}>
         {linkText && (
-          <div className={dcnb("su-block", align, textSize, marginBottom)}>
+          <Element className={dcnb("su-block", align, textSize, marginBottom)}>
             <SbLink
               ref={ref}
               link={link}
@@ -93,7 +100,7 @@ const CtaLink = React.forwardRef(
                 )}
               </div>
             </SbLink>
-          </div>
+          </Element>
         )}
       </SbEditable>
     );
