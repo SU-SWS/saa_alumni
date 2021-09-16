@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import { Container, Heading, Button, Grid, GridCell } from "decanter-react";
+import {
+  Container,
+  Heading,
+  Button,
+  Grid,
+  GridCell,
+  Skiplink,
+} from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
@@ -401,6 +408,12 @@ const SearchPage = (props) => {
                   lg={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
+                  <Skiplink
+                    anchorLink="#search-results"
+                    className="su-hidden lg:su-block"
+                  >
+                    Skip pass filters to search results
+                  </Skiplink>
                   <h2 className="su-sr-only">Filter Search Results</h2>
                   <div>{facets}</div>
                 </GridCell>
