@@ -98,7 +98,6 @@ const SearchField = React.forwardRef(
       if (clearOnEscape && document.activeElement === inputRef.current) {
         clearHandler();
       }
-      setShowAutocomplete(false);
     });
 
     return (
