@@ -1,12 +1,6 @@
 import React from "react";
 import SbEditable from "storyblok-react";
-import {
-  Container,
-  FlexBox,
-  FlexCell,
-  Heading,
-  SrOnlyText,
-} from "decanter-react";
+import { Container, FlexBox, FlexCell, SrOnlyText } from "decanter-react";
 import { ArrowDownIcon } from "@heroicons/react/outline";
 import { dcnb } from "cnbuilder";
 import FullWidthImage from "../media/fullWidthImage";

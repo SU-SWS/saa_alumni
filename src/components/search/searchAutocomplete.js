@@ -16,13 +16,17 @@ const searchAutocomplete = ({
     ${showAutocomplete && autocompleteSuggestions.length ? "" : "su-hidden"}`}
   >
     {Array.isArray(autocompleteSuggestions) && (
-      <ul className="su-list-unstyled" role="listbox">
+      <ul
+        className="su-list-unstyled"
+        role="listbox"
+        id="search-autocomplete-listbox"
+      >
         {autocompleteSuggestions.map((suggestion, index) => (
           // eslint-disable-next-line jsx-a11y/click-events-have-key-events
           <li
             key={`autocomplete-item-${suggestion.objectID}`}
             role="option"
-            tabIndex={showAutocomplete ? 0 : -1}
+            tabIndex={index === selectedSuggestion ? 0 : -1}
             className={`su-mb-0
                         ${autocompleteLinkClasses}
                         ${
@@ -40,7 +44,7 @@ const searchAutocomplete = ({
             }}
             onFocus={(e) => setSelectedSuggestion(index)}
             aria-selected={selectedSuggestion === index ? "true" : "false"}
-            id="search-autocomplete-listbox"
+            id={`search-autocomplete-listbox-${index}`}
           >
             {
               // eslint-disable-next-line no-underscore-dangle
