@@ -66,15 +66,26 @@ const SearchField = React.forwardRef(
       setShowAutocomplete(false);
     });
 
+    // If no suggestion is selected, or if the last suggested item is selected,
+    // using the down arrow will set focus on the first suggestion
     const handleArrowKeys = (e) => {
       if (e.key === "ArrowDown") {
-        if (selectedSuggestion === null) {
+        if (
+          selectedSuggestion === null ||
+          selectedSuggestion === autocompleteSuggestions.length - 1
+        ) {
           setSelectedSuggestion(0);
         } else {
           setSelectedSuggestion(selectedSuggestion + 1);
         }
+        // if the first suggested selection is selected,
+        // using the up arrow will set the suggested sulection to null again
       } else if (e.key === "ArrowUp") {
-        setSelectedSuggestion(selectedSuggestion - 1);
+        if (selectedSuggestion === 0) {
+          setSelectedSuggestion(null);
+        } else {
+          setSelectedSuggestion(selectedSuggestion - 1);
+        }
       } else if (
         e.key === "Enter" &&
         autocompleteSuggestions[selectedSuggestion]
