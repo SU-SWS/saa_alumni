@@ -68,7 +68,11 @@ const SearchField = React.forwardRef(
 
     const handleArrowKeys = (e) => {
       if (e.key === "ArrowDown") {
-        setSelectedSuggestion(selectedSuggestion + 1);
+        if (selectedSuggestion === null) {
+          setSelectedSuggestion(0);
+        } else {
+          setSelectedSuggestion(selectedSuggestion + 1);
+        }
       } else if (e.key === "ArrowUp") {
         setSelectedSuggestion(selectedSuggestion - 1);
       } else if (
@@ -103,7 +107,7 @@ const SearchField = React.forwardRef(
                   aria-controls="search-autocomplete-listbox"
                   aria-expanded={showAutocomplete ? "true" : "false"}
                   aria-activedescendant={
-                    selectedSuggestion >= 0
+                    selectedSuggestion !== null
                       ? `search-autocomplete-listbox-${selectedSuggestion}`
                       : ""
                   }
