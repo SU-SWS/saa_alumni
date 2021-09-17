@@ -79,10 +79,10 @@ const SearchField = React.forwardRef(
           setSelectedSuggestion(selectedSuggestion + 1);
         }
         // if the first suggested selection is selected,
-        // using the up arrow will set the suggested sulection to null again
+        // using the up arrow will loop back to set focus on the last suggestion
       } else if (e.key === "ArrowUp") {
         if (selectedSuggestion === 0) {
-          setSelectedSuggestion(null);
+          setSelectedSuggestion(autocompleteSuggestions.length - 1);
         } else {
           setSelectedSuggestion(selectedSuggestion - 1);
         }
@@ -98,6 +98,7 @@ const SearchField = React.forwardRef(
       if (clearOnEscape && document.activeElement === inputRef.current) {
         clearHandler();
       }
+      setShowAutocomplete(false);
     });
 
     return (
