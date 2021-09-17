@@ -40,7 +40,7 @@ const searchAutocomplete = ({
             }}
             onFocus={(e) => setSelectedSuggestion(index)}
             aria-selected={selectedSuggestion === index ? "true" : "false"}
-            id={`search-autocomplete-listbox-${suggestion.objectID}`}
+            id={`search-autocomplete-listbox-${index}`}
           >
             {
               // eslint-disable-next-line no-underscore-dangle
