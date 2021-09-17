@@ -22,7 +22,7 @@ const searchAutocomplete = ({
           <li
             key={`autocomplete-item-${suggestion.objectID}`}
             role="option"
-            tabIndex={showAutocomplete ? 0 : -1}
+            tabIndex={index === selectedSuggestion ? 0 : -1}
             className={`su-mb-0
                         ${autocompleteLinkClasses}
                         ${
@@ -40,7 +40,7 @@ const searchAutocomplete = ({
             }}
             onFocus={(e) => setSelectedSuggestion(index)}
             aria-selected={selectedSuggestion === index ? "true" : "false"}
-            id="search-autocomplete-listbox"
+            id={`search-autocomplete-listbox-${suggestion.objectID}`}
           >
             {
               // eslint-disable-next-line no-underscore-dangle
