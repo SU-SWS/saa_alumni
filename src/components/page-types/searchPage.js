@@ -393,7 +393,13 @@ const SearchPage = (props) => {
                               "md:su-text-20": false,
                               "su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark": true,
                             }}
-                            onClick={() => setOpened(false)}
+                            onClick={() => {
+                              setOpened(false);
+                              scrollTo("#search-results");
+                              document
+                                .getElementById("number-search-results")
+                                .focus();
+                            }}
                           >
                             View Results
                           </Button>

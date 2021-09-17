@@ -14,6 +14,9 @@ const SearchResults = ({ results }) => {
         className="su-text-21 lg:su-mb-[4rem]"
         aria-live="polite"
         aria-atomic="true"
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+        id="number-search-results"
       >
         <span className="su-font-semibold">{results.nbHits}</span> results:
       </div>
