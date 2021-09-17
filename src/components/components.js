@@ -49,6 +49,7 @@ import SimpleImage from './media/simpleImage';
 import Story from './content-types/story/story';
 import StoryCard from './cards/storyCard';
 import { SBTripCard } from './storyblok/tripCard';
+import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
 import TripPage from './page-types/TripPage';
 import VerticalNav from './navigation/verticalNav';
 import VerticalNavWrapper from './navigation/verticalNavWrapper';
@@ -107,6 +108,7 @@ const ComponentList = {
   storyCard: StoryCard,
   trip: TripPage,
   tripCard: SBTripCard,
+  tripFilterPage: TripFilterPage,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,
