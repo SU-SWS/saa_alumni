@@ -122,6 +122,7 @@ const SearchField = React.forwardRef(
                       ? `search-autocomplete-listbox-${selectedSuggestion}`
                       : ""
                   }
+                  aria-haspopup="listbox"
                   onChange={inputHandler}
                   onKeyDown={handleArrowKeys}
                   className={inputClasses}
