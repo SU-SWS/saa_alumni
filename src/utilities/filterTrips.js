@@ -117,7 +117,7 @@ const tripSorter = (a, b) => {
   );
 };
 
-const filtersListToKeyedObj = (filterList) =>
+export const filtersListToKeyedObj = (filterList) =>
   filterList.reduce(
     (agg, filter) => ({
       ...agg,
@@ -227,7 +227,7 @@ export const buildFilterIndex = (allTrips, allFilters) => {
     });
   });
 
-  return filterIndex;
+  return { filterIndex, filterMap };
 };
 
 /**

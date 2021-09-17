@@ -1,6 +1,4 @@
 import { useCallback, useMemo } from 'react';
-import { navigate } from 'gatsby';
-import { useLocation } from '@reach/router';
 import {
   useQueryParams,
   NumberParam,
@@ -10,8 +8,9 @@ import {
 import { useTripFilterDatasources } from './useTripFilterDatasources';
 import { useTrips } from './useTrips';
 import {
-  filterTrips,
   buildFilterIndex,
+  filterTrips,
+  filtersListToKeyedObj,
   getFiltersForTrips,
 } from '../utilities/filterTrips';
 
@@ -26,27 +25,37 @@ export const getActiveFilters = (filterEntries = [], filterParams) => {
 };
 
 export const useTripFilters = (primaryFilter) => {
+  /**
+   * Base Data
+   */
+
   // useStaticQuery to have access all trip data
   const allTrips = useTrips();
 
   // Trip Filter Datasources keyed by filter type
   const allFilters = useTripFilterDatasources();
-  const filterIndex = useMemo(
+  // Additional trip indexed lookup table and value map
+  const { filterIndex, filterMap } = useMemo(
     () => buildFilterIndex(allTrips, allFilters),
     [allTrips, allFilters]
   );
 
   // const location = useLocation();
 
+  /**
+   * Filtering Data
+   */
+
   // URL query param filters
-  const [params] = useQueryParams({
+  const queryConfig = {
     page: withDefault(NumberParam, 1),
     'trip-region': ArrayParam,
     'trip-experience': ArrayParam,
     'trip-year': ArrayParam,
     'trip-month': ArrayParam,
     'trip-duration': ArrayParam,
-  });
+  };
+  const [params, setQuery] = useQueryParams(queryConfig);
   const { page } = params;
 
   const queryFilters = useMemo(
@@ -65,82 +74,105 @@ export const useTripFilters = (primaryFilter) => {
 
   // TODO: Handle Primary Filter
   const activeFilters = queryFilters;
+  const activeFiltersIndex = useMemo(
+    () => filtersListToKeyedObj(activeFilters),
+    [activeFilters]
+  );
 
-  // const filteredTrips = useMemo(
-  //   () => getFilteredTrips(activeFilters, tripIndex),
-  //   [activeFilters, tripIndex, getFilteredTrips]
-  // );
+  // Filtered list of trips
   const trips = useMemo(
     () => filterTrips(allTrips, activeFilters),
     [allTrips, activeFilters]
   );
 
-  console.log({ filteredTrips: trips });
+  // List of keyed/ordered filters with flags for selected/available/primary
+  const filters = useMemo(() => {
+    const availableFiltersObj = getFiltersForTrips(trips, filterIndex);
+    const filtersWithStatus = Object.keys(allFilters).reduce(
+      (agg, filterType) => ({
+        ...agg,
+        [filterType]: allFilters[filterType].map((filter) => ({
+          ...filter,
+          selected: !!activeFiltersIndex?.[filterType]?.[filter.value],
+          primary: false,
+          available: !!availableFiltersObj?.[filterType]?.[filter.value],
+        })),
+      }),
+      {}
+    );
 
-  const remainingFilters = useMemo(() => {
-    const availableFilters = getFiltersForTrips(trips, filterIndex);
-    return availableFilters;
-  }, [trips, filterIndex]);
-  console.log({ remainingFilters });
-
-  /**
-   * Filtered list of trips
-   * NOTE: individual filters are ORs while different filters are ANDs
-   */
-  // const trips = useMemo(() => {
-  //   // Only filter if we need to
-  //   if (!activeFilters.length) return allTrips;
-
-  //   return filterTrips(allTrips, activeFilters);
-  // }, [allTrips, activeFilters]);
-
-  // const availableFilters = useMemo(() => {
-  //   // Filter allFilters list to only those with remaining trips left
-  // }, [allFilters, trips]);
+    return filtersWithStatus;
+  }, [trips, filterIndex, allFilters, activeFiltersIndex]);
 
   /**
-   * NOTE: We'll probably need to return list of all filters by type with additional filter state: 'active'|'inactive'|'available' where:
-   * - active: filter is currently selected
-   * - inactive: filter is not selected and no additional trips are available
-   * - available: filter is not selected and there are additional trips available
-   */
-  // Filtered list of available filter types and their associated datasources (including count)
-  const filters = [];
-
-  /**
-   * URL query params will look like the following
-   * /travel-study/destinations?trip-region=region1,region2&trip-experience=exp1,exp2&page=2
-   * Get URL query params for the following:
-   * - various filter types
-   */
-  /**
-   * Generate dynamic filters for:
-   * - year
-   * - month
+   * Filtering Actions
    */
 
-  const toggleFilter = useCallback((filterType, filterValue) => undefined, []); // navigate with/without filter (ONLY if it matches an actual filter)
-  
-  const clearFilter = useCallback((filter) => filter, []); // Navigate with params removed. Unnecessary. Toggle
-  const clearAllFilters = useCallback(() => undefined, []); // Should just navigate without page params
-  const totalPages = useMemo(() => undefined, []);
-  const setPage = useCallback((pg) => undefined, []);
-  // Create getLink Helper to generate links with optional passed params
-  
-  console.log({
-    params,
-    activeFilters,
-    trips,
-  });
+  // navigate with/without filter (ONLY if it matches an actual filter)
+  // NOTE: We ALWAYS reset pagination on filter change
+  const toggleFilter = useCallback(
+    (filterType, filterValue) => {
+      // Make sure we have a valid filter
+      if (filterMap[filterType]?.[filterValue]) {
+        // Are we enabling or disabling the filter?
+        const isActive = !!activeFiltersIndex?.[filterType]?.[filterValue];
+
+        if (isActive) {
+          // Disable filter
+          setQuery({
+            ...params,
+            [filterType]: params[filterType].filter(
+              (filter) => filter !== filterValue
+            ),
+            page: 1,
+          });
+        } else {
+          // Enable Filter
+          setQuery({
+            ...params,
+            [filterType]: [...(params[filterType] || []), filterValue],
+            page: 1,
+          });
+        }
+      }
+    },
+    [filterMap, activeFiltersIndex, setQuery, params]
+  );
+  const clearAllFilters = useCallback(
+    () =>
+      setQuery({
+        page: undefined,
+        'trip-region': [],
+        'trip-experience': [],
+        'trip-year': [],
+        'trip-month': [],
+        'trip-duration': [],
+      }),
+    [setQuery]
+  ); // Should just navigate without page params
+
+  /**
+   * Pagination
+   */
+  const totalPages = useMemo(
+    () => Math.ceil(trips.length / TRIP_FILTER_PAGE_SIZE),
+    [trips]
+  );
+  // NOTE: We may want to expose a function that simply generates the page link rather than handling it programmatically
+  const setPage = useCallback(
+    (pageNum) => setQuery({ page: pageNum }),
+    [setQuery]
+  );
+  // Create getLink Helper to generate links with optional passed params?
 
   return {
     // Filtered Trips
     trips,
+
     // Filters
     filters,
-    toggleFilter,
     activeFilters,
-    clearFilter,
+    toggleFilter,
     clearAllFilters,
 
     // Pagination
