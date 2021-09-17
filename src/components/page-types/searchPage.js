@@ -17,8 +17,6 @@ import {
   ArrayParam,
 } from "use-query-params";
 import Icon from "react-hero-icon";
-import qs from "query-string";
-import { useLocation } from "@reach/router";
 import Layout from "../partials/layout";
 import SearchField from "../search/searchField";
 import SearchResults from "../search/searchResults";
@@ -35,12 +33,10 @@ const SearchPage = (props) => {
   const { blok } = props;
   const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
-  const [queryParam, setQueryParam] = useQueryParam("q", StringParam);
-  const [pageParam, setPageParam] = useQueryParam("page", NumberParam);
+  const [query, setQuery] = useQueryParam("q", StringParam);
+  const [page = 0, setPage] = useQueryParam("page", NumberParam);
   const [siteParam, setSiteParam] = useQueryParam("site", ArrayParam);
   const [fileTypeParam, setFileTypeParam] = useQueryParam("type", ArrayParam);
-  const [query, setQuery] = useState(queryParam || "");
-  const [page, setPage] = useState(pageParam || 0);
   const [siteNameValues, setSiteNameValues] = useState(null);
   const [fileTypeValues, setFileTypeValues] = useState(null);
   const [selectedFacets, setSelectedFacets] = useState({
@@ -95,9 +91,7 @@ const SearchPage = (props) => {
       }
     } else {
       setShowEmptyMessage(false);
-      setPageParam(undefined);
-      setQueryParam(queryText || undefined);
-      setPage(0);
+      setPage(undefined);
       setQuery(queryText);
     }
   };
@@ -105,7 +99,6 @@ const SearchPage = (props) => {
   // Update page parameter when pager link is selected.
   const updatePage = (pageNumber) => {
     setPage(pageNumber);
-    setPageParam(pageNumber);
     scrollTo("#search-results");
   };
 
@@ -114,8 +107,7 @@ const SearchPage = (props) => {
     const newFacets = { ...selectedFacets };
     newFacets.siteName = values;
     setSelectedFacets(newFacets);
-    setPageParam(undefined);
-    setPage(0);
+    setPage(undefined);
     setSiteParam(values);
   };
 
@@ -124,8 +116,7 @@ const SearchPage = (props) => {
     const newFacets = { ...selectedFacets };
     newFacets.fileType = values;
     setSelectedFacets(newFacets);
-    setPageParam(undefined);
-    setPage(0);
+    setPage(undefined);
     setFileTypeParam(values);
   };
 
@@ -145,8 +136,7 @@ const SearchPage = (props) => {
       fileType: [],
     });
 
-    setPageParam(undefined);
-    setPage(0);
+    setPage(undefined);
     setFileTypeParam([]);
     setSiteParam([]);
   };
@@ -221,17 +211,6 @@ const SearchPage = (props) => {
     updateSearchResults();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
-
-  const { search } = useLocation();
-
-  useEffect(() => {
-    const params = qs.parse(search);
-    setPageParam(undefined);
-    setQueryParam(params.q || undefined);
-    setPage(0);
-    setQuery(params.q);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search]);
 
   const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
 
