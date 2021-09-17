@@ -43,7 +43,7 @@ const TripCard = ({
 
   return (
     <FlexBox direction="col" element="article" className={styles.root}>
-      <div className={styles.imgWrapper}>
+      <div>
         <CardImage
           className={styles.image}
           filename={image.filename}
