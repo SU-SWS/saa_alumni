@@ -9,7 +9,7 @@ const SearchResults = ({ results }) => {
   }
 
   return (
-    <div id="search-results">
+    <div id="search-results" role="button" tabIndex={0}>
       <div
         className="su-text-21 lg:su-mb-[4rem]"
         aria-live="polite"
