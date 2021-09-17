@@ -1,3 +1,11 @@
+// Helper to return active filters array
+export const getActiveFilters = (filterEntries = [], filterParams) => {
+  const filters = filterParams
+    ? filterEntries.filter((ds) => filterParams.includes(ds.value))
+    : [];
+  return filters.reduce((list, filter) => [...list, filter], []);
+};
+
 // NOTE: These are the month values for storyblok datasource "trip-month"
 const monthValues = [
   'jan',

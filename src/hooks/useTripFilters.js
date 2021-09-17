@@ -11,22 +11,15 @@ import {
   buildFilterIndex,
   filterTrips,
   filtersListToKeyedObj,
+  getActiveFilters,
   getFiltersForTrips,
 } from '../utilities/filterTrips';
 
 export const TRIP_FILTER_PAGE_SIZE = 10;
 
-// Helper to return active filters array
-export const getActiveFilters = (filterEntries = [], filterParams) => {
-  const filters = filterParams
-    ? filterEntries.filter((ds) => filterParams.includes(ds.value))
-    : [];
-  return filters.reduce((list, filter) => [...list, filter], []);
-};
-
 export const useTripFilters = (primaryFilter) => {
   /**
-   * Base Data
+   * Base Trip/Filter Data
    */
 
   // useStaticQuery to have access all trip data
@@ -39,8 +32,6 @@ export const useTripFilters = (primaryFilter) => {
     () => buildFilterIndex(allTrips, allFilters),
     [allTrips, allFilters]
   );
-
-  // const location = useLocation();
 
   /**
    * Filtering Data
@@ -149,7 +140,7 @@ export const useTripFilters = (primaryFilter) => {
         'trip-duration': [],
       }),
     [setQuery]
-  ); // Should just navigate without page params
+  );
 
   /**
    * Pagination
