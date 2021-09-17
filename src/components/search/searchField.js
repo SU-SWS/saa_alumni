@@ -102,6 +102,11 @@ const SearchField = React.forwardRef(
                   aria-autocomplete="list"
                   aria-controls="search-autocomplete-listbox"
                   aria-expanded={showAutocomplete ? "true" : "false"}
+                  aria-activedescendant={
+                    selectedSuggestion
+                      ? `search-autocomplete-listbox-${selectedSuggestion}`
+                      : ""
+                  }
                   onChange={inputHandler}
                   onKeyDown={handleArrowKeys}
                   className={inputClasses}
