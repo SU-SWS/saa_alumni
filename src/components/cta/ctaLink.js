@@ -21,7 +21,6 @@ const CtaLink = React.forwardRef(
         textColor: propsTextColor,
         leadingIcon: { icon: propsIcon, type } = {},
         proFaIcon,
-        iconStyle,
         isOutlineFaIcon,
         icon,
         align: propsAlign,
@@ -32,9 +31,12 @@ const CtaLink = React.forwardRef(
         srText,
       },
       blok,
+      as,
     },
     ref
   ) => {
+    const WrapperElement = as || 'div';
+
     // Link text size
     const textSize = ctaLinkTextSize[size] ?? ctaLinkTextSize.default;
 
@@ -59,7 +61,9 @@ const CtaLink = React.forwardRef(
     return (
       <SbEditable content={blok}>
         {linkText && (
-          <div className={dcnb('su-block', align, textSize, marginBottom)}>
+          <WrapperElement
+            className={dcnb('su-block', align, textSize, marginBottom)}
+          >
             <SbLink
               ref={ref}
               link={link}
@@ -71,14 +75,16 @@ const CtaLink = React.forwardRef(
               )}
             >
               {(proFaIcon || propsIcon) && (
-                <FaIcon
-                  proFaIcon={proFaIcon}
-                  iconChoice={propsIcon}
-                  iconType={type}
-                  iconStyle={iconStyle}
-                  isOutline={isOutlineFaIcon}
-                  className="su-mr-06em su-backface-hidden su-text-black-80"
-                />
+                <div className="su-w-fit su-max-w-3rem su-flex-shrink-0">
+                  <FaIcon
+                    proFaIcon={proFaIcon}
+                    iconChoice={propsIcon}
+                    iconType={type}
+                    isOutline={isOutlineFaIcon}
+                    className="su-mr-06em su-backface-hidden su-text-black-80"
+                    fixedWidth
+                  />
+                </div>
               )}
               <div>
                 {linkText}
@@ -92,7 +98,7 @@ const CtaLink = React.forwardRef(
                 )}
               </div>
             </SbLink>
-          </div>
+          </WrapperElement>
         )}
       </SbEditable>
     );

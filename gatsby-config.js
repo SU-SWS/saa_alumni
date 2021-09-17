@@ -24,7 +24,7 @@ const storyblokRelations = [
 
 module.exports = {
   siteMetadata: {
-    title: `Stanford Alumni`,
+    title: `Stanford Alumni Association`,
     description: `Stanford Alumni Association`,
     author: `Stanford University Alumni Association`,
     siteUrl: `https://alumni-preview.stanford.edu`,
@@ -35,6 +35,7 @@ module.exports = {
     },
   },
   plugins: [
+    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {

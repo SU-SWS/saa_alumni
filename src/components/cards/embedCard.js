@@ -51,7 +51,12 @@ const EmbedCard = ({ blok: { embed: html }, blok }) => {
     <SbEditable content={blok}>
       {html.includes('script') ? (
         <>
-          <div id={uniqueId} aria-live="polite" aria-busy={!scriptLoaded} />
+          <div
+            id={uniqueId}
+            aria-live="polite"
+            aria-busy={!scriptLoaded}
+            className="su-w-full"
+          />
           {!scriptLoaded && (
             <>
               <Loader

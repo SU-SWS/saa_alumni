@@ -31,7 +31,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
 
   const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red su-rounded-b-[0.5rem]`;
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red su-rounded-b-[0.5rem] su-z-20`;
 
   // Update autocomplete suggestions when search input changes.
   const updateAutocomplete = (queryText) => {

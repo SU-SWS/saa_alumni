@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import algoliasearch from 'algoliasearch';
-import { Container, Heading, Button, Grid, GridCell } from 'decanter-react';
+import {
+  Container,
+  Heading,
+  Button,
+  Grid,
+  GridCell,
+  Skiplink,
+} from 'decanter-react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   useQueryParam,
@@ -10,8 +17,6 @@ import {
   ArrayParam,
 } from 'use-query-params';
 import Icon from 'react-hero-icon';
-import qs from 'query-string';
-import { useLocation } from '@reach/router';
 import Layout from '../partials/layout';
 import SearchField from '../search/searchField';
 import SearchResults from '../search/searchResults';
@@ -28,12 +33,10 @@ const SearchPage = (props) => {
   const { blok } = props;
   const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
-  const [queryParam, setQueryParam] = useQueryParam('q', StringParam);
-  const [pageParam, setPageParam] = useQueryParam('page', NumberParam);
+  const [query, setQuery] = useQueryParam('q', StringParam);
+  const [page = 0, setPage] = useQueryParam('page', NumberParam);
   const [siteParam, setSiteParam] = useQueryParam('site', ArrayParam);
   const [fileTypeParam, setFileTypeParam] = useQueryParam('type', ArrayParam);
-  const [query, setQuery] = useState(queryParam || '');
-  const [page, setPage] = useState(pageParam || 0);
   const [siteNameValues, setSiteNameValues] = useState(null);
   const [fileTypeValues, setFileTypeValues] = useState(null);
   const [selectedFacets, setSelectedFacets] = useState({
@@ -88,9 +91,7 @@ const SearchPage = (props) => {
       }
     } else {
       setShowEmptyMessage(false);
-      setPageParam(undefined);
-      setQueryParam(queryText || undefined);
-      setPage(0);
+      setPage(undefined);
       setQuery(queryText);
     }
   };
@@ -98,7 +99,6 @@ const SearchPage = (props) => {
   // Update page parameter when pager link is selected.
   const updatePage = (pageNumber) => {
     setPage(pageNumber);
-    setPageParam(pageNumber);
     scrollTo('#search-results');
   };
 
@@ -107,8 +107,7 @@ const SearchPage = (props) => {
     const newFacets = { ...selectedFacets };
     newFacets.siteName = values;
     setSelectedFacets(newFacets);
-    setPageParam(undefined);
-    setPage(0);
+    setPage(undefined);
     setSiteParam(values);
   };
 
@@ -117,8 +116,7 @@ const SearchPage = (props) => {
     const newFacets = { ...selectedFacets };
     newFacets.fileType = values;
     setSelectedFacets(newFacets);
-    setPageParam(undefined);
-    setPage(0);
+    setPage(undefined);
     setFileTypeParam(values);
   };
 
@@ -138,8 +136,7 @@ const SearchPage = (props) => {
       fileType: [],
     });
 
-    setPageParam(undefined);
-    setPage(0);
+    setPage(undefined);
     setFileTypeParam([]);
     setSiteParam([]);
   };
@@ -215,17 +212,6 @@ const SearchPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
 
-  const { search } = useLocation();
-
-  useEffect(() => {
-    const params = qs.parse(search);
-    setPageParam(undefined);
-    setQueryParam(params.q || undefined);
-    setPage(0);
-    setQuery(params.q);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search]);
-
   const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-bg-transparent su-text-black-70 hocus:su-text-black hocus:su-underline su-text-m0 su-font-semibold su-border-none  su-p-0 su-rs-mr-1 su-mt-03em`;
@@ -238,7 +224,7 @@ const SearchPage = (props) => {
 
   const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red-light su-rounded-b-[0.5rem]`;
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red-light su-rounded-b-[0.5rem] su-z-20`;
   const facets = results.facets && (
     <React.Fragment>
       {siteNameValues && (
@@ -386,7 +372,13 @@ const SearchPage = (props) => {
                               'md:su-text-20': false,
                               'su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark': true,
                             }}
-                            onClick={() => setOpened(false)}
+                            onClick={() => {
+                              setOpened(false);
+                              scrollTo('#search-results');
+                              document
+                                .getElementById('number-search-results')
+                                .focus();
+                            }}
                           >
                             View Results
                           </Button>
@@ -401,6 +393,12 @@ const SearchPage = (props) => {
                   lg={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
+                  <Skiplink
+                    anchorLink="#search-results-section"
+                    className="su-hidden lg:su-block"
+                  >
+                    Skip pass filters to search results
+                  </Skiplink>
                   <h2 className="su-sr-only">Filter Search Results</h2>
                   <div>{facets}</div>
                 </GridCell>
@@ -413,6 +411,7 @@ const SearchPage = (props) => {
               className={
                 results.nbHits > 0 ? '' : 'lg:su-col-start-3 2xl:su-col-start-3'
               }
+              id="search-results-section"
             >
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (

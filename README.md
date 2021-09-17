@@ -18,19 +18,23 @@ Installation
 
 *Development*
 ```
-cp example.env.development .env.development
-* Manually add the access token to .env.development *
+cp example.env .env.development
+* Get the Storyblok preview access token *
+* Get the FontAwesome NPM token from the Netlify site settings in environment variables *
+* Manually add the access tokens to .env.development *
 nvm use
-npm install
+FONTAWESOME_NPM_AUTH_TOKEN=MYFATOKEN npm install
 gatsby develop
 ```
 
 *Production*
 ```
-cp example.env.development .env.production
-* Manually add the access token to .env.production and remove the `GATSBY_HOT_LOADER=fast-refresh line`*
+cp example.env .env.production
+* Get the Storyblok public access token *
+* Get the FontAwesome NPM token from the Netlify site settings in environment variables *
+* Manually add the access tokens to .env.production and remove the `GATSBY_HOT_LOADER=fast-refresh line`*
 nvm use
-npm install
+FONTAWESOME_NPM_AUTH_TOKEN=MYFATOKEN npm install
 gatsby build
 ```
 
