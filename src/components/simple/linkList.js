@@ -16,7 +16,9 @@ const LinkList = ({ blok: { title, headingLevel, headingColor, links } }) => (
         {title}
       </Heading>
     )}
-    <CreateBloks blokSection={links} />
+    <ul className="su-list-unstyled children:su-mb-07em children:su-leading-none">
+      <CreateBloks blokSection={links} as="li" />
+    </ul>
   </div>
 );
 

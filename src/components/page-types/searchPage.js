@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import SbEditable from "storyblok-react";
 import algoliasearch from "algoliasearch";
-import { Container, Heading, Button, Grid, GridCell } from "decanter-react";
+import {
+  Container,
+  Heading,
+  Button,
+  Grid,
+  GridCell,
+  Skiplink,
+} from "decanter-react";
 import scrollTo from "gatsby-plugin-smoothscroll";
 import {
   useQueryParam,
@@ -238,7 +245,7 @@ const SearchPage = (props) => {
 
   const autocompleteLinkFocusClasses = `su-bg-digital-red`;
 
-  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red-light su-rounded-b-[0.5rem]`;
+  const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red-light su-rounded-b-[0.5rem] su-z-20`;
   const facets = results.facets && (
     <React.Fragment>
       {siteNameValues && (
@@ -405,6 +412,12 @@ const SearchPage = (props) => {
                   lg={3}
                   className="su-mb-[4rem] su-hidden lg:su-flex"
                 >
+                  <Skiplink
+                    anchorLink="#search-results-section"
+                    className="su-hidden lg:su-block"
+                  >
+                    Skip pass filters to search results
+                  </Skiplink>
                   <h2 className="su-sr-only">Filter Search Results</h2>
                   <div>{facets}</div>
                 </GridCell>
@@ -417,6 +430,7 @@ const SearchPage = (props) => {
               className={
                 results.nbHits > 0 ? "" : "lg:su-col-start-3 2xl:su-col-start-3"
               }
+              id="search-results-section"
             >
               <SearchKeywordBanner queryText={query} />
               {results.nbHits > 0 && (

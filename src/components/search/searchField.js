@@ -99,6 +99,7 @@ const SearchField = React.forwardRef(
                 <input
                   type="text"
                   role="combobox"
+                  aria-autocomplete="list"
                   aria-controls="search-autocomplete-listbox"
                   aria-expanded={showAutocomplete ? "true" : "false"}
                   onChange={inputHandler}
