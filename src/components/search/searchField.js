@@ -103,7 +103,7 @@ const SearchField = React.forwardRef(
                   aria-controls="search-autocomplete-listbox"
                   aria-expanded={showAutocomplete ? "true" : "false"}
                   aria-activedescendant={
-                    selectedSuggestion
+                    selectedSuggestion >= 0
                       ? `search-autocomplete-listbox-${selectedSuggestion}`
                       : ""
                   }
