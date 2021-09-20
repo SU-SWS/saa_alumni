@@ -143,7 +143,7 @@ export const useTripFilters = (primaryFilter) => {
           ...params,
           [filterType]: undefined,
           page: 1,
-        })
+        });
       }
     },
     [params, setQuery]
