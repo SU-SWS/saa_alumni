@@ -246,7 +246,21 @@ export const getFiltersForTrips = (filteredTrips, filterIndex) => {
     (agg, trip) => [...agg, ...filterIndex[trip.id]],
     []
   );
-  const filtersByType = filtersListToKeyedObj(filterList);
+  // const filtersByType = filtersListToKeyedObj(filterList);
+  const filtersByType = filterList.reduce(
+    (agg, filter) => ({
+      ...agg,
+      [filter.datasource]: {
+        ...(agg[filter.datasource] || {}),
+        [filter.value]: {
+          ...filter,
+          tripCount:
+            (agg?.[filter.datasource]?.[filter.value]?.tripCount || 0) + 1,
+        },
+      },
+    }),
+    {}
+  );
 
   return filtersByType;
 };

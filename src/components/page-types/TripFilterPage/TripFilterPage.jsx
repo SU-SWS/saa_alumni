@@ -14,6 +14,7 @@ const TripFilterPage = (props) => {
     filters,
     activeFilters,
     toggleFilter,
+    clearFilterType,
     clearAllFilters,
     page,
     setPage,
@@ -38,7 +39,17 @@ const TripFilterPage = (props) => {
                 <div key={filterType}>
                   <h3>{filterType}</h3>
                   <div>
-                    {filters[filterType].map((filter) => (
+                    <div>
+                      <label>
+                        <input
+                          type="checkbox"
+                          checked={!filters[filterType].active}
+                          onChange={() => clearFilterType(filterType)}
+                        />
+                        All
+                      </label>
+                    </div>
+                    {filters[filterType].filters.map((filter) => (
                       <div key={`${filterType}:${filter.value}`}>
                         <label>
                           <input

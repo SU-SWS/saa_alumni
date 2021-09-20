@@ -82,12 +82,18 @@ export const useTripFilters = (primaryFilter) => {
     const filtersWithStatus = Object.keys(allFilters).reduce(
       (agg, filterType) => ({
         ...agg,
-        [filterType]: allFilters[filterType].map((filter) => ({
-          ...filter,
-          selected: !!activeFiltersIndex?.[filterType]?.[filter.value],
-          primary: false,
-          available: !!availableFiltersObj?.[filterType]?.[filter.value],
-        })),
+        [filterType]: {
+          active: !!allFilters[filterType].find(
+            (filter) => !!activeFiltersIndex?.[filterType]?.[filter.value]
+          ),
+          filters: allFilters[filterType].map((filter) => ({
+            ...filter,
+            selected: !!activeFiltersIndex?.[filterType]?.[filter.value],
+            primary: false,
+            available:
+              availableFiltersObj?.[filterType]?.[filter.value]?.tripCount || 0,
+          })),
+        },
       }),
       {}
     );
@@ -129,6 +135,19 @@ export const useTripFilters = (primaryFilter) => {
     },
     [filterMap, activeFiltersIndex, setQuery, params]
   );
+  const clearFilterType = useCallback(
+    (filterType) => {
+      // Only Clear if existing filters already checked
+      if (params[filterType]) {
+        setQuery({
+          ...params,
+          [filterType]: undefined,
+          page: 1,
+        })
+      }
+    },
+    [params, setQuery]
+  );
   const clearAllFilters = useCallback(
     () =>
       setQuery({
@@ -164,6 +183,7 @@ export const useTripFilters = (primaryFilter) => {
     filters,
     activeFilters,
     toggleFilter,
+    clearFilterType,
     clearAllFilters,
 
     // Pagination
