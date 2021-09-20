@@ -93,8 +93,7 @@ module.exports = {
         // Include GTM in development.
         //
         // Defaults to false meaning GTM will only be loaded in production.
-        // TODO: UNCOMMENT BELOW AFTER FORREST HAS FINISHED TESTING.
-        // includeInDevelopment: false,
+        includeInDevelopment: false,
 
         // datalayer to be set before GTM is loaded
         // should be an object or a function that is executed in the browser
