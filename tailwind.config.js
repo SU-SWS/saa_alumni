@@ -15,10 +15,7 @@ module.exports = {
   prefix: "su-",
 
   purge: {
-    content: [
-      "./src/**",
-      "./node_modules/decanter-react/dist/**",
-    ],
+    content: ["./src/**", "./node_modules/decanter-react/dist/**"],
   },
   theme: {
     borderRadius: require(decanter + "/theme/borderRadius.js")(),
@@ -32,7 +29,7 @@ module.exports = {
     lineHeight: require(decanter + "/theme/lineHeight.js")(),
     maxHeight: require(decanter + "/theme/maxHeight.js")(),
     maxWidth: require(decanter + "/theme/maxWidth.js")(),
-    screens: require(decanter + "/theme/screens.js")(),
+    screens: require(dir + "/theme/screens.js")(),
     spacing: require(decanter + "/theme/spacing.js")(),
     transitionDuration: require(decanter + "/theme/transitionDuration.js")(),
     width: require(decanter + "/theme/width.js")(),
@@ -42,7 +39,6 @@ module.exports = {
     // SAA themes extending our Decanter ones
     extend: {
       colors: require(dir + "/theme/colors.js")(),
-      screens: require(dir + "/theme/screens.js")(),
     },
   },
   plugins: [

@@ -30,7 +30,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           aria-label="Utility Menu"
           className="su-w-full su-text-right su-bg-digital-red"
         >
-          <ul className="su-cc su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-14 sm:su-text-16 children:su-inline-block children:su-ml-[2em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset">
+          <ul className="su-cc su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-13 xs:su-text-14 sm:su-text-16 children:su-inline-block children:su-ml-[1.6em] xs:children:su-ml-[1.9em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset">
             <CreateBloks
               blokSection={utilityNav}
               className="first:su-ml-0"
