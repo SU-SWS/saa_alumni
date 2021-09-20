@@ -195,7 +195,9 @@ const Event = ({
             isAnimate
           />
         </SbLink>
-        {!isMinimal && !hideTab && <TabLabel text={tabText || "Event"} />}
+        {!isMinimal && !hideTab && (
+          <TabLabel text={tabText || "Event"} aria-hidden="true" />
+        )}
         <div
           className={dcnb(
             "event-card-details su-card-paragraph",
