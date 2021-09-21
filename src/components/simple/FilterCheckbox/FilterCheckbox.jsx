@@ -12,26 +12,20 @@ export const FilterCheckboxPropTypes = {
 };
 
 // NOTE: This will likely need some a11y massaging
-export const FilterCheckbox = ({ className, label, onChange, checked }) => {
-  if (className) {
-    // nothing
-  }
-
-  return (
-    <div className={dcnb(className, styles.root({ checked }))}>
-      <label className={styles.label}>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={onChange}
-          className={styles.input}
-        />
-        <div className={styles.icon({ checked })} aria-hidden>
-          <FaIcon iconChoice="check" isOutline />
-        </div>
-        <div>{label}</div>
-      </label>
-    </div>
-  );
-};
+export const FilterCheckbox = ({ className, label, onChange, checked }) => (
+  <div className={dcnb(className, styles.root({ checked }))}>
+    <label className={styles.label}>
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={onChange}
+        className={styles.input}
+      />
+      <div className={styles.icon({ checked })} aria-hidden>
+        <FaIcon iconChoice="check" isOutline />
+      </div>
+      <div>{label}</div>
+    </label>
+  </div>
+);
 FilterCheckbox.propTypes = FilterCheckboxPropTypes;
