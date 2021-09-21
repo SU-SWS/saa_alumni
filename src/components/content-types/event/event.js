@@ -187,6 +187,7 @@ const Event = ({
             tracking="normal"
             className="su-relative su-inline su-type-0"
           >
+            {!hideTab && <SrOnlyText srText={`${tabText || "Event"}: `} />}
             {title}
           </Heading>
           <HeroIcon
