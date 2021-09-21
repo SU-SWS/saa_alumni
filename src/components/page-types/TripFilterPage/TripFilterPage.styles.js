@@ -6,3 +6,4 @@ export const filterSidebar = 'su-bg-black-true su-p-27 su-pb-50';
 export const filterHeading = 'su-type-0 su-text-white su-font-semibold';
 export const filtersList = '';
 export const filteredContent = 'su-text-white su-col-span-3';
+export const trips = 'su-grid su-grid-cols-2 su-gap-lg';

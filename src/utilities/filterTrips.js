@@ -106,7 +106,7 @@ export const tripMatchesFilter = (trip, filters) => {
 const tripSorter = (a, b) => {
   // Handle Priority tag sorting first
   // NOTE: Reverse Priority order for sorting; higher idx = higher precedence
-  const priorityTags = ["Staff's Pick", 'New'];
+  const priorityTags = ['Staff Pick', 'New'];
   if (
     priorityTags.includes(a.content.tag) ||
     priorityTags.includes(b.content.tag)

@@ -5,6 +5,8 @@ import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';
 import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
+import TripCard from '../../cards/TripCard/TripCard';
+import { Pagination } from '../../composite/Pagination/Pagination';
 import * as styles from './TripFilterPage.styles';
 
 const TripFilterPage = (props) => {
@@ -19,7 +21,8 @@ const TripFilterPage = (props) => {
     clearFilterType,
     clearAllFilters,
     page,
-    setPage,
+    totalPages,
+    getPageLink,
   } = useTripFilters();
 
   return (
@@ -37,19 +40,21 @@ const TripFilterPage = (props) => {
           <Container width="site">
             <div className="above-content todo" />
             <div className={styles.filterSection}>
-              <div className={styles.filterSidebar}>
-                <Heading level={2} className={styles.filterHeading}>
-                  FILTER BY
-                </Heading>
-                <div className={styles.filtersList}>
-                  {filters.map((filter) => (
-                    <TripFilterList
-                      key={filter.key}
-                      filter={filter}
-                      clearFilterType={clearFilterType}
-                      toggleFilter={toggleFilter}
-                    />
-                  ))}
+              <div className="trip-filters">
+                <div className={styles.filterSidebar}>
+                  <Heading level={2} className={styles.filterHeading}>
+                    FILTER BY
+                  </Heading>
+                  <div className={styles.filtersList}>
+                    {filters.map((filter) => (
+                      <TripFilterList
+                        key={filter.key}
+                        filter={filter}
+                        clearFilterType={clearFilterType}
+                        toggleFilter={toggleFilter}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
               <div className={styles.filteredContent}>
@@ -71,19 +76,20 @@ const TripFilterPage = (props) => {
                     clear all
                   </button>
                 </div>
-                <div className="filtered-trips">
+                <div className={styles.trips}>
                   {trips.map((trip) => (
-                    <div key={trip.id}>{trip.name}</div>
+                    <TripCard key={trip.id} trip={trip} />
                   ))}
                 </div>
-                <div className="pagination">
-                  <button onClick={() => setPage(page - 1)} type="button">
-                    Previous
-                  </button>
-                  <button onClick={() => setPage(page + 1)} type="button">
-                    Next
-                  </button>
-                </div>
+                {totalPages > 1 && (
+                  <div className="pagination">
+                    <Pagination
+                      currentPage={page}
+                      totalPages={totalPages}
+                      pageLink={getPageLink}
+                    />
+                  </div>
+                )}
               </div>
             </div>
             <div className="below-content todo" />
