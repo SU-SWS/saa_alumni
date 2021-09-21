@@ -37,7 +37,10 @@ const PerkCardView = ({
     marginBottom = largeMarginBottom[spacingBottom] ?? largeMarginBottom.md;
     imageWrapper =
       "su-w-full su-mb-[-4em] md:su-mb-0 md:su-w-1/2 su-h-[60vw] sm:su-h-[50vw] lg:su-h-[40vw] xl:su-h-500 su-flex-shrink-0 su-h-full";
-    gradientDirection = dcnb("md:su-bg-gradient-to-r", gradientDirection);
+    gradientDirection = dcnb(
+      "md:su-bg-gradient-to-r md:su-h-full",
+      gradientDirection
+    );
     contentWrapper =
       "su-w-full md:su-w-9/12 lg:su-w-7/12 lg:su-max-w-[72rem] md:su-self-end md:su-rs-pt-3 md:su-pl-0 md:su-ml-[-7em]";
     descriptionClasses = dcnb(
@@ -76,7 +79,7 @@ const PerkCardView = ({
           )}
           <div
             className={dcnb(
-              "su-absolute su-block su-w-full su-h-full su-top-0 su-left-0 su-from-transparent su-to-saa-black su-backface-hidden",
+              "su-absolute su-block su-w-full su-h-[101%] su-top-0 su-left-0 su-from-transparent su-to-saa-black su-backface-hidden",
               gradientDirection
             )}
             aria-hidden="true"
