@@ -18,7 +18,7 @@ import {
   getFiltersForTrips,
 } from '../utilities/filterTrips';
 
-export const TRIP_FILTER_PAGE_SIZE = 16;
+export const TRIP_FILTER_PAGE_SIZE = 8;
 const filterTypes = [
   { key: 'trip-region', name: 'Region' },
   { key: 'trip-year', name: 'Year' },
