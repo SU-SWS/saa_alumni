@@ -22,8 +22,10 @@ const PerkCardView = ({
   orientation,
   spacingBottom,
   cardImageFocus,
+  isDark,
 }) => {
   let wrapperClasses = "perk-card su-max-w-500";
+  let borderColor = "su-border-black-30-opacity-40 hover:su-border-black-30 focus-within:su-border-black-30";
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
   let gradientDirection = "su-bg-gradient-to-b";
   let contentWrapper = "su-flex-grow";
@@ -49,14 +51,20 @@ const PerkCardView = ({
     );
   }
 
+  if (isDark || orientation === "horizontal") {
+    borderColor =
+      "su-border-black hover:su-border-black-90 focus-within:su-border-black-90";
+  }
+
   return (
     <SbEditable content={blok}>
       <FlexBox
         direction="col"
         element="article"
         className={dcnb(
-          "su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-border su-border-solid su-border-black su-backface-hidden",
+          "su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-bg-clip-padding su-border su-border-solid su-backface-hidden",
           wrapperClasses,
+          borderColor,
           marginBottom
         )}
       >
@@ -95,7 +103,7 @@ const PerkCardView = ({
         >
           <SbLink
             link={cardUrl}
-            classes={`su-block su-stretched-link su-stretched-link-hocus-outline-black-20 su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight ${
+            classes={`su-block su-stretched-link su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight ${
               orientation === "horizontal"
                 ? "su-type-2 md:su-type-1 lg:su-type-2 xl:su-type-3"
                 : "su-type-1"
