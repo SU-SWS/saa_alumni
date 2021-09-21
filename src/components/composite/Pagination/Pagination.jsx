@@ -63,7 +63,7 @@ export const Pagination = ({
               )}
             </li>
           ))}
-          {currentPage < totalPages - 1 && (
+          {currentPage < totalPages && (
             <li className={styles.pageItem()}>
               <Link
                 className={styles.pageNavigationLink}
