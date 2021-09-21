@@ -137,7 +137,6 @@ const StoryCardView = ({
                 />
               )}
               {shortTitle || title}
-              {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
             <HeroIcon
               iconType={pubLink ? "external" : "arrow-right"}

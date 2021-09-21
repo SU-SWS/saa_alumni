@@ -187,6 +187,7 @@ const Event = ({
             tracking="normal"
             className="su-relative su-inline su-type-0"
           >
+            {!hideTab && <SrOnlyText srText={`${tabText || "Event"}: `} />}
             {title}
           </Heading>
           <HeroIcon
@@ -195,7 +196,9 @@ const Event = ({
             isAnimate
           />
         </SbLink>
-        {!isMinimal && !hideTab && <TabLabel text={tabText || "Event"} />}
+        {!isMinimal && !hideTab && (
+          <TabLabel text={tabText || "Event"} aria-hidden="true" />
+        )}
         <div
           className={dcnb(
             "event-card-details su-card-paragraph",
