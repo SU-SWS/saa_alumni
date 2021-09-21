@@ -55,8 +55,8 @@ const BasicCard = ({
         smartFocus={focus}
         className={isMinimal ? "" : "su-rs-ml-2"}
         loading="lazy"
-        width="140"
-        height="140"
+        width="126"
+        height="126"
       />
     );
   }

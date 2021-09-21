@@ -6,7 +6,7 @@ import {
   smallPaddingTop,
 } from "../../utilities/dataSource";
 import transformImage from "../../utilities/transformImage";
-import getImageWidth from "../../utilities/getImageWidth";
+import getImageSize from "../../utilities/getImageSize";
 import CaptionMedia from "./captionMedia";
 import FullWidthImage from "./fullWidthImage";
 
@@ -45,7 +45,7 @@ const SimpleImage = ({
 
   let processedImg = "";
   if (filename != null) {
-    const originalWidth = getImageWidth(filename);
+    const originalWidth = getImageSize(filename).width;
 
     if (imageWidth === "center-container" && originalWidth > 1500) {
       processedImg = transformImage(filename, "/1500x0");

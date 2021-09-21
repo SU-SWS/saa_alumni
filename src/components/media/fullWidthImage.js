@@ -1,7 +1,7 @@
 import React from "react";
 import { dcnb } from "cnbuilder";
 import transformImage from "../../utilities/transformImage";
-import getImageWidth from "../../utilities/getImageWidth";
+import getImageSize from "../../utilities/getImageSize";
 import { objectPosition } from "../../utilities/dataSource";
 
 const FullWidthImage = ({
@@ -23,14 +23,13 @@ const FullWidthImage = ({
   let imgSrcset;
   let imgSizes;
   let imgSrc = "";
+  let imgWidth = "";
+  let imgHeight = "";
 
   if (filename != null) {
-    let imgWidth = "";
-
-    // Get image width from URL of storyblok image
-    if (filename?.startsWith("http")) {
-      imgWidth = getImageWidth(filename);
-    }
+    // Get image size from URL of storyblok image
+    imgWidth = getImageSize(filename).width;
+    imgHeight = getImageSize(filename).height;
 
     originalImg = transformImage(filename, "", smartFocus);
 
@@ -72,6 +71,8 @@ const FullWidthImage = ({
       className={dcnb(className, imgFocus)}
       alt={alt ?? ""}
       loading={imgLoading}
+      width="2000"
+      height={Math.round((imgHeight * 2000) / imgWidth)}
       {...props}
     />
   );

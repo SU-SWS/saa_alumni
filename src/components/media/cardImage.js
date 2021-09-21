@@ -1,7 +1,7 @@
 import React from "react";
 import { dcnb } from "cnbuilder";
 import transformImage from "../../utilities/transformImage";
-import getImageWidth from "../../utilities/getImageWidth";
+import getImageSize from "../../utilities/getImageSize";
 import { objectPosition } from "../../utilities/dataSource";
 
 const CardImage = ({
@@ -25,7 +25,7 @@ const CardImage = ({
 
     // Get image width from URL of storyblok image
     if (filename?.startsWith("http")) {
-      imgWidth = getImageWidth(filename);
+      imgWidth = getImageSize(filename).width;
     }
 
     originalImg = transformImage(filename, "", smartFocus, true);
