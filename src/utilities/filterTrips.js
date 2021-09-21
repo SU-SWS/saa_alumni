@@ -242,25 +242,19 @@ export const buildFilterIndex = (allTrips, allFilters) => {
  * Returns [datasource][value] keyed nested object of all tags for trips in list
  */
 export const getFiltersForTrips = (filteredTrips, filterIndex) => {
-  const filterList = filteredTrips.reduce(
-    (agg, trip) => [...agg, ...filterIndex[trip.id]],
-    []
-  );
-  // const filtersByType = filtersListToKeyedObj(filterList);
-  const filtersByType = filterList.reduce(
-    (agg, filter) => ({
-      ...agg,
-      [filter.datasource]: {
-        ...(agg[filter.datasource] || {}),
+  const filtersByType = filteredTrips.reduce((agg, trip) => {
+    const updatedAgg = agg;
+    filterIndex[trip.id].forEach((filter) => {
+      updatedAgg[filter.datasource] = {
+        ...(agg?.[filter.datasource] || {}),
         [filter.value]: {
-          ...filter,
-          tripCount:
-            (agg?.[filter.datasource]?.[filter.value]?.tripCount || 0) + 1,
+          ...(agg?.[filter.datasource]?.[filter.value] || {}),
+          [trip.id]: trip,
         },
-      },
-    }),
-    {}
-  );
+      };
+    });
+    return updatedAgg;
+  }, {});
 
   return filtersByType;
 };
