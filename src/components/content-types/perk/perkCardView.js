@@ -25,7 +25,8 @@ const PerkCardView = ({
   isDark,
 }) => {
   let wrapperClasses = "perk-card su-max-w-500";
-  let borderColor = "su-border-black-30-opacity-40 hover:su-border-black-30 focus-within:su-border-black-30";
+  let borderColor =
+    "su-border-black-30-opacity-40 hover:su-border-black-30 focus-within:su-border-black-30";
   let imageWrapper = "su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]";
   let gradientDirection = "su-bg-gradient-to-b";
   let contentWrapper = "su-flex-grow";
