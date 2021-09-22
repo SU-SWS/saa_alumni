@@ -29,6 +29,8 @@ const SimpleImage = ({
 
   let wrapperHeight = "";
   let imageStyle = "";
+  let imgWidth = "";
+  let imgHeight = "";
   let isInsetCaption = "";
   if (imageWidth === "edge-to-edge") {
     wrapperHeight = "su-relative su-w-full su-overflow-hidden";
@@ -46,17 +48,28 @@ const SimpleImage = ({
   let processedImg = "";
   if (filename != null) {
     const originalWidth = getImageSize(filename).width;
+    const originalHeight = getImageSize(filename).height;
 
     if (imageWidth === "center-container" && originalWidth > 1500) {
       processedImg = transformImage(filename, "/1500x0");
+      imgWidth = "1500";
+      imgHeight = Math.round((1500 * originalHeight) / originalWidth);
     } else if (imageWidth === "10" && originalWidth > 1300) {
       processedImg = transformImage(filename, "/1300x0");
+      imgWidth = "1300";
+      imgHeight = Math.round((1300 * originalHeight) / originalWidth);
     } else if (imageWidth === "8" && originalWidth > 1000) {
       processedImg = transformImage(filename, "/1000x0");
+      imgWidth = "1000";
+      imgHeight = Math.round((1000 * originalHeight) / originalWidth);
     } else if (imageWidth === "6" && originalWidth > 800) {
       processedImg = transformImage(filename, "/800x0");
+      imgWidth = "800";
+      imgHeight = Math.round((800 * originalHeight) / originalWidth);
     } else if (imageWidth === "4" && originalWidth > 600) {
       processedImg = transformImage(filename, "/600x0");
+      imgWidth = "600";
+      imgHeight = Math.round((600 * originalHeight) / originalWidth);
     }
     // If no downsizing is needed, just run it through transformImage to reduce jpg quality to 60%
     else {
@@ -82,7 +95,13 @@ const SimpleImage = ({
               imageFocus={imageFocus}
             />
           ) : (
-            <img src={processedImg} alt={alt ?? ""} className="su-w-full" />
+            <img
+              src={processedImg}
+              alt={alt ?? ""}
+              className="su-w-full"
+              width={imgWidth}
+              height={imgHeight}
+            />
           )}
         </div>
       </CaptionMedia>
