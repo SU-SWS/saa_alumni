@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
-import FaIcon from '../faIcon';
+import { CheckIcon } from '@heroicons/react/solid';
 import * as styles from './FilterCheckbox.styles';
 
 export const FilterCheckboxPropTypes = {
@@ -22,7 +22,7 @@ export const FilterCheckbox = ({ className, label, onChange, checked }) => (
         className={styles.input}
       />
       <div className={styles.icon({ checked })} aria-hidden>
-        <FaIcon iconChoice="check" isOutline />
+        <CheckIcon aria-hidden />
       </div>
       <div>{label}</div>
     </label>
