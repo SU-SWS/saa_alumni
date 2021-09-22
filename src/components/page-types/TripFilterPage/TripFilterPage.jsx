@@ -5,7 +5,9 @@ import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';
 import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
+import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterPage.styles';
+import FaIcon from '../../simple/faIcon';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -53,24 +55,39 @@ const TripFilterPage = (props) => {
                 </div>
               </div>
               <div className={styles.filteredContent}>
-                <div className="active-filters">
-                  <div className="filter-chips">
-                    {activeFilters.map((filter) => (
+                {activeFilters.length > 0 && (
+                  <div className={styles.activeFilters}>
+                    <div className={styles.filterChips}>
+                      {activeFilters.map((filter) => (
+                        <Chip
+                          key={`chip:${filter.datasource}:${filter.value}`}
+                          label={filter.name}
+                          aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                          onClick={() =>
+                            toggleFilter(filter.datasource, filter.value)
+                          }
+                        />
+                      ))}
+                    </div>
+                    <div className={styles.clearAll}>
                       <button
-                        key={`chip:${filter.datasource}:${filter.value}`}
+                        className={styles.clearAllBtn}
                         type="button"
-                        onClick={() =>
-                          toggleFilter(filter.datasource, filter.value)
-                        }
+                        onClick={clearAllFilters}
                       >
-                        {filter.name} &times;
+                        <span className={styles.clearAllText}>
+                          Clear all filters
+                          <span aria-hidden className={styles.clearAllHover} />
+                        </span>
+                        <FaIcon
+                          className={styles.clearAllIcon}
+                          iconChoice="times"
+                          isOutline
+                        />
                       </button>
-                    ))}
+                    </div>
                   </div>
-                  <button type="button" onClick={clearAllFilters}>
-                    clear all
-                  </button>
-                </div>
+                )}
                 <div className="filtered-trips">
                   {trips.map((trip) => (
                     <div key={trip.id}>{trip.name}</div>

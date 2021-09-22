@@ -30,6 +30,9 @@ module.exports = function () {
       DEFAULT: '#505EEC',
       light: '#6B77F5',
     },
+    'saa-electric-purple': {
+      DEFAULT: '#505EEC',
+    },
     facebook: '#4267B2',
     twitter: '#1da1f2',
     instagram: '#d73676',
