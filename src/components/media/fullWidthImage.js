@@ -23,25 +23,25 @@ const FullWidthImage = ({
   let imgSrcset;
   let imgSizes;
   let imgSrc = "";
-  let imgWidth = "";
-  let imgHeight = "";
+  let imgAspectRatio = "";
 
   if (filename != null) {
     // Get image size from URL of storyblok image
-    imgWidth = getImageSize(filename).width;
-    imgHeight = getImageSize(filename).height;
+    const originalWidth = getImageSize(filename).width;
+    const originalHeight = getImageSize(filename).height;
+    imgAspectRatio = originalWidth / originalHeight;
 
     originalImg = transformImage(filename, "", smartFocus);
 
-    if (imgWidth >= 800) {
+    if (originalWidth >= 800) {
       smallImg = transformImage(filename, "/800x0", smartFocus);
     }
 
-    if (imgWidth >= 1200) {
+    if (originalWidth >= 1200) {
       mediumImg = transformImage(filename, "/1200x0", smartFocus);
     }
 
-    if (imgWidth >= 2000) {
+    if (originalWidth >= 2000) {
       largeImg = transformImage(filename, "/2000x0", smartFocus);
     }
 
@@ -50,8 +50,8 @@ const FullWidthImage = ({
     imgSrcset += largeImg ? `,${largeImg} 2000w ` : "";
 
     // Include the original image in the srcset if its width is > 800px and < 2000px
-    if (imgWidth > 800 && imgWidth < 2000) {
-      imgSrcset += originalImg ? `,${originalImg} ${imgWidth}w ` : "";
+    if (originalWidth > 800 && originalWidth < 2000) {
+      imgSrcset += originalImg ? `,${originalImg} ${originalWidth}w ` : "";
     }
 
     // Set sizes attribute only if imgSrcset is not empty (imgSrcset is empty if image width is < 800px)
@@ -72,7 +72,7 @@ const FullWidthImage = ({
       alt={alt ?? ""}
       loading={imgLoading}
       width="2000"
-      height={Math.round((imgHeight * 2000) / imgWidth)}
+      height={Math.round(2000 / imgAspectRatio)}
       {...props}
     />
   );
