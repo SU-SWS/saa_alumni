@@ -23,6 +23,16 @@ export const shouldUpdateScroll = (ctx) => {
     prevRouterProps: { location: prevLocation = {} } = {},
   } = ctx;
 
+  // Allow query page changes to pass through
+  const params = new URLSearchParams(location.search);
+  const prevParams = new URLSearchParams(prevLocation.search || '');
+  const page = params.get('page');
+  const prevPage = prevParams.get('page');
+
+  if (page && page !== prevPage) {
+    return true;
+  }
+
   // Prevent scrolling trip filter pages
   const filterQueryParams = [
     'trip-region=',
