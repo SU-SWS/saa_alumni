@@ -25,7 +25,6 @@ export const shouldUpdateScroll = (ctx) => {
 
   // Prevent scrolling trip filter pages
   const filterQueryParams = [
-    'page=',
     'trip-region=',
     'trip-year=',
     'trip-month=',
