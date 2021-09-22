@@ -1,10 +1,12 @@
-import { Heading, Grid as DrGrid } from 'decanter-react';
+import { Heading, Grid as DrGrid, Container } from 'decanter-react';
 import React from 'react';
 import { dcnb } from 'cnbuilder';
+import { render } from 'storyblok-rich-text-react-renderer';
 import CreateBloks from '../../utilities/createBloks';
 import WidthBox from '../layout/widthBox';
 import { bgTextColorPairs } from '../../utilities/dataSource';
 import getNumBloks from '../../utilities/getNumBloks';
+import RichTextRenderer from '../../utilities/richTextRenderer';
 
 /**
  * The ankle component is referenced and used in the page type components.
@@ -12,10 +14,18 @@ import getNumBloks from '../../utilities/getNumBloks';
  */
 
 const Ankle = ({
-  blok: { ankleContent, ankleTitle, isAnkleTitleSrOnly, ankleBgColor },
+  blok: {
+    ankleContent,
+    ankleTitle,
+    isAnkleTitleSrOnly,
+    ankleIntro,
+    ankleBgColor,
+  },
   isDark,
 }) => {
   const numItems = getNumBloks(ankleContent);
+  const renderedIntro = render(ankleIntro);
+  const hasIntro = getNumBloks(renderedIntro) > 0;
   let ankleBgStyles = bgTextColorPairs[ankleBgColor ?? 'white'];
   let isAnkleDark;
 
@@ -45,18 +55,31 @@ const Ankle = ({
 
   return (
     <div className={ankleWrapperStyles}>
-      {ankleTitle && (
-        <Heading
-          srOnly={isAnkleTitleSrOnly}
-          level={2}
-          size={2}
-          font="serif"
-          weight="bold"
-          align="center"
-          className="su-rs-mb-3 su-mt-[-0.6em] su-mx-auto su-max-w-900"
-        >
-          {ankleTitle}
-        </Heading>
+      {(ankleTitle || ankleIntro) && (
+        <Container element="header">
+          {ankleTitle && (
+            <Heading
+              srOnly={isAnkleTitleSrOnly}
+              level={2}
+              size={2}
+              font="serif"
+              weight="bold"
+              align="center"
+              className="su-mb-06em su-mt-[-0.6em] su-mx-auto su-max-w-900"
+            >
+              {ankleTitle}
+            </Heading>
+          )}
+          {hasIntro && (
+            <div className="su-big-paragraph su-max-w-prose su-mx-auto su-text-center su-rs-mb-3">
+              <RichTextRenderer
+                wysiwyg={ankleIntro}
+                className="children:su-leading-display"
+                isDark={isAnkleDark}
+              />
+            </div>
+          )}
+        </Container>
       )}
       <WidthBox width={ankleWidth}>
         <DrGrid
