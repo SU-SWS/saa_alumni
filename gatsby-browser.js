@@ -23,11 +23,6 @@ export const shouldUpdateScroll = (ctx) => {
     prevRouterProps: { location: prevLocation = {} } = {},
   } = ctx;
 
-  // Prevent scrolling when user clicks on pager or filters on search page.
-  if (location.pathname.match(/^\/search/i)) {
-    return false;
-  }
-
   // Prevent scrolling trip filter pages
   const filterQueryParams = [
     'page=',
