@@ -2,9 +2,9 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ checked }) =>
   dcnb(
-    'su-group su-p-3 su-bg-black-true su-mt-6 focus-within:su-bg-gradient-to-tr hover:su-bg-gradient-to-tr focus-within:su-from-digital-blue hover:su-from-digital-blue focus-within:su-to-palo-verde-dark hover:su-to-palo-verde-dark su-cursor-pointer',
+    'su-group su-p-3 su-bg-black-true su-mt-6 focus-within:su-bg-gradient-to-bl hover:su-bg-gradient-to-bl focus-within:su-from-digital-blue hover:su-from-digital-blue focus-within:su-to-palo-verde-dark hover:su-to-palo-verde-dark su-cursor-pointer',
     {
-      'su-bg-gradient-to-tr su-from-digital-blue su-to-palo-verde-dark':
+      'su-bg-gradient-to-bl su-from-digital-blue su-to-palo-verde-dark':
         checked,
     }
   );
