@@ -5,6 +5,7 @@ import {
   ArrayParam,
   withDefault,
 } from 'use-query-params';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import { useTripFilterDatasources } from './useTripFilterDatasources';
 import { useTrips } from './useTrips';
 import {
@@ -16,6 +17,13 @@ import {
 } from '../utilities/filterTrips';
 
 export const TRIP_FILTER_PAGE_SIZE = 10;
+const filterTypes = [
+  { key: 'trip-region', name: 'Region' },
+  { key: 'trip-year', name: 'Year' },
+  { key: 'trip-month', name: 'Month' },
+  { key: 'trip-experience', name: 'Experience' },
+  { key: 'trip-duration', name: 'Duration' },
+];
 
 export const useTripFilters = (primaryFilter) => {
   /**
@@ -79,24 +87,40 @@ export const useTripFilters = (primaryFilter) => {
   // List of keyed/ordered filters with flags for selected/available/primary
   const filters = useMemo(() => {
     const availableFiltersObj = getFiltersForTrips(trips, filterIndex);
-    const filtersWithStatus = Object.keys(allFilters).reduce(
-      (agg, filterType) => ({
-        ...agg,
-        [filterType]: {
-          active: !!allFilters[filterType].find(
-            (filter) => !!activeFiltersIndex?.[filterType]?.[filter.value]
-          ),
-          filters: allFilters[filterType].map((filter) => ({
-            ...filter,
-            selected: !!activeFiltersIndex?.[filterType]?.[filter.value],
-            primary: false,
-            available:
-              availableFiltersObj?.[filterType]?.[filter.value]?.tripCount || 0,
-          })),
-        },
-      }),
-      {}
-    );
+    const filtersWithStatus = filterTypes.map(({ key, name }) => {
+      let availableTrips = {};
+      let typeIsActive = false;
+      const typeFilters = allFilters[key].map((filter) => {
+        const selected = !!activeFiltersIndex?.[key]?.[filter.value];
+        const available = Object.keys(
+          availableFiltersObj?.[key]?.[filter.value] || {}
+        ).length;
+
+        if (selected) {
+          typeIsActive = true;
+        }
+        if (available) {
+          availableTrips = {
+            ...availableTrips,
+            ...availableFiltersObj[key][filter.value],
+          };
+        }
+        return {
+          ...filter,
+          selected,
+          available,
+          primary: false,
+        };
+      });
+
+      return {
+        key,
+        name,
+        active: typeIsActive,
+        available: Object.keys(availableTrips).length,
+        filters: typeFilters,
+      };
+    });
 
     return filtersWithStatus;
   }, [trips, filterIndex, allFilters, activeFiltersIndex]);
@@ -170,7 +194,10 @@ export const useTripFilters = (primaryFilter) => {
   );
   // NOTE: We may want to expose a function that simply generates the page link rather than handling it programmatically
   const setPage = useCallback(
-    (pageNum) => setQuery({ page: pageNum }),
+    (pageNum) => {
+      setQuery({ page: pageNum });
+      scrollTo('body');
+    },
     [setQuery]
   );
   // Create getLink Helper to generate links with optional passed params?
