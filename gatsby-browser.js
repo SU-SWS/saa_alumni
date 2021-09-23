@@ -28,16 +28,6 @@ export const shouldUpdateScroll = (ctx) => {
     return false;
   }
 
-  // Allow query page changes to pass through
-  const params = new URLSearchParams(location.search);
-  const prevParams = new URLSearchParams(prevLocation.search || '');
-  const page = params.get('page');
-  const prevPage = prevParams.get('page');
-
-  if (page && page !== prevPage) {
-    return true;
-  }
-
   // Prevent scrolling trip filter pages
   const filterQueryParams = [
     'trip-region=',
@@ -48,7 +38,10 @@ export const shouldUpdateScroll = (ctx) => {
   ];
   if (
     location.pathname === prevLocation.pathname &&
-    filterQueryParams.find((q) => location.search.includes(q))
+    filterQueryParams.find(
+      (q) =>
+        location.search.includes(q) || (prevLocation.search || '').includes(q)
+    )
   ) {
     return false;
   }

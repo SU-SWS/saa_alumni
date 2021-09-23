@@ -5,6 +5,7 @@ import {
   ArrayParam,
   withDefault,
 } from 'use-query-params';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import { useTripFilterDatasources } from './useTripFilterDatasources';
 import { useTrips } from './useTrips';
 import {
@@ -193,7 +194,10 @@ export const useTripFilters = (primaryFilter) => {
   );
   // NOTE: We may want to expose a function that simply generates the page link rather than handling it programmatically
   const setPage = useCallback(
-    (pageNum) => setQuery({ page: pageNum }),
+    (pageNum) => {
+      setQuery({ page: pageNum });
+      scrollTo('body');
+    },
     [setQuery]
   );
   // Create getLink Helper to generate links with optional passed params?
