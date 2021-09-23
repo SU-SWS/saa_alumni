@@ -4,7 +4,7 @@ import { Container, Heading } from 'decanter-react';
 import Layout from '../partials/layout';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
-import Ankle from '../partials/ankle';
+import Ankle from '../partials/ankle/ankle';
 import BasicContentNoSidebar from '../partials/basicContentNoSidebar';
 import BasicContentLeftSidebar from '../partials/basicContentLeftSidebar';
 
