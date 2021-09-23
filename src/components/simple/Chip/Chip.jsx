@@ -25,7 +25,7 @@ export const Chip = ({
     onClick={onClick}
   >
     <div className={styles.inner}>
-      {label} <FaIcon iconChoice={icon} isOutline />
+      {label} <FaIcon className={styles.icon} iconChoice={icon} isOutline />
     </div>
   </button>
 );
