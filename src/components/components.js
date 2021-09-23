@@ -16,6 +16,7 @@ import EmbedCard from './cards/embedCard';
 import EmbedVideo from './media/embedVideo';
 import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
+import { SBGlobalHeader } from './storyblok/globalHeader';
 import Grid from './layout/grid';
 import Heading from './simple/heading';
 import Hero from './composite/hero';
@@ -74,6 +75,7 @@ const ComponentList = {
   embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
+  globalHeader: SBGlobalHeader,
   grid: Grid,
   heading: Heading,
   hero: Hero,
