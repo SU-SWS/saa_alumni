@@ -1,5 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
+import { dcnb } from 'cnbuilder';
 import { Container, Heading } from 'decanter-react';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
@@ -76,7 +77,11 @@ const TripFilterPage = (props) => {
                     clear all
                   </button>
                 </div>
-                <div className={styles.trips}>
+                <div
+                  className={dcnb('filtered-trips-list', styles.trips)}
+                  // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+                  tabIndex={0}
+                >
                   {trips.map((trip) => (
                     <TripCard key={trip.id} trip={trip} />
                   ))}

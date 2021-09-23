@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'gatsby-link';
-import scrollTo from 'gatsby-plugin-smoothscroll';
 import { usePaginationLinks } from '../../../hooks/usePaginationLinks';
+import { focusElement } from '../../../utilities/dom';
 import * as styles from './Pagination.styles';
 
 export const PaginationProps = {
@@ -38,7 +38,7 @@ export const Pagination = ({
               <Link
                 className={styles.pageNavigationLink}
                 to={pageLink(currentPage - 1)}
-                onClick={() => scrollTo('body')}
+                onClick={() => focusElement('.filtered-trips-list')}
               >
                 Previous
               </Link>
@@ -56,7 +56,9 @@ export const Pagination = ({
                 <Link
                   className={styles.pageLink({ active: page === currentPage })}
                   to={pageLink(page)}
-                  onClick={() => page !== currentPage && scrollTo('body')}
+                  onClick={() =>
+                    page !== currentPage && focusElement('.filtered-trips-list')
+                  }
                 >
                   {page}
                   {currentPage === page && (
@@ -71,7 +73,7 @@ export const Pagination = ({
               <Link
                 className={styles.pageNavigationLink}
                 to={pageLink(currentPage + 1)}
-                onClick={() => scrollTo('body')}
+                onClick={() => focusElement('.filtered-trips-list')}
               >
                 Next
               </Link>
