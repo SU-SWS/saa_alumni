@@ -37,7 +37,7 @@
 [[plugins]]
 package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [plugins.inputs]
-  destination = "https://cardinalalumni.stanford.edu/:splat"
+  destination = "https://cardinalalumni-test.stanford.edu/:splat"
 
 [[plugins]]
 package = "netlify-plugin-submit-sitemap"
