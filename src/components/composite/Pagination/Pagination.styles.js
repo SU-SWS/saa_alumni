@@ -10,7 +10,8 @@ export const pageItem = ({ page } = {}) =>
 export const pageLink = ({ active } = {}) =>
   dcnb('su-px-9 md:su-px-11', {
     'su-no-underline': !active,
-    'su-underline su-text-white su-cursor-default su-pointer-events-none': active,
+    'su-underline su-text-white su-cursor-default su-pointer-events-none':
+      active,
   });
 export const pageNavigationLink =
   'su-text-20 su-no-underline su-font-regular su-self-center su-mx-9 md:su-mx-11';
