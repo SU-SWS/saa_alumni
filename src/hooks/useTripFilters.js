@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   useQueryParams,
   NumberParam,
@@ -57,18 +57,31 @@ export const useTripFilters = (primaryFilter) => {
   const [params, setQuery] = useQueryParams(queryConfig);
   const { page } = params;
 
+  // Wait until first mount to return data to prevent poor hydration
+  const [mounted, setMounted] = useState();
+  useEffect(() => setMounted(true), []);
+
   const queryFilters = useMemo(
-    () => [
-      ...getActiveFilters(allFilters['trip-region'], params['trip-region']),
-      ...getActiveFilters(
-        allFilters['trip-experience'],
-        params['trip-experience']
-      ),
-      ...getActiveFilters(allFilters['trip-year'], params['trip-year']),
-      ...getActiveFilters(allFilters['trip-month'], params['trip-month']),
-      ...getActiveFilters(allFilters['trip-duration'], params['trip-duration']),
-    ],
-    [allFilters, params]
+    () =>
+      mounted
+        ? [
+            ...getActiveFilters(
+              allFilters['trip-region'],
+              params['trip-region']
+            ),
+            ...getActiveFilters(
+              allFilters['trip-experience'],
+              params['trip-experience']
+            ),
+            ...getActiveFilters(allFilters['trip-year'], params['trip-year']),
+            ...getActiveFilters(allFilters['trip-month'], params['trip-month']),
+            ...getActiveFilters(
+              allFilters['trip-duration'],
+              params['trip-duration']
+            ),
+          ]
+        : [],
+    [allFilters, params, mounted]
   );
 
   // TODO: Handle Primary Filter
