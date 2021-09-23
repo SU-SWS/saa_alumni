@@ -89,6 +89,7 @@ const TripFilterPage = (props) => {
                 {totalPages > 1 && (
                   <div className="pagination">
                     <Pagination
+                      aria-label="Filtered trips pagination"
                       currentPage={page}
                       totalPages={totalPages}
                       pageLink={getPageLink}
