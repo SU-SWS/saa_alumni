@@ -10,7 +10,7 @@ import WidthBox from '../../layout/widthBox';
 import CardImage from '../../media/cardImage';
 import HeroIcon from '../../simple/heroIcon';
 import CaptionMedia from '../../media/captionMedia';
-import Ankle from '../../partials/ankle';
+import Ankle from '../../partials/ankle/ankle';
 
 const StoryPageView = (props) => {
   // Destructure props

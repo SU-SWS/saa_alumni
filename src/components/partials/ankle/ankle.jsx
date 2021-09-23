@@ -2,11 +2,12 @@ import { Heading, Grid as DrGrid, Container } from 'decanter-react';
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import { render } from 'storyblok-rich-text-react-renderer';
-import CreateBloks from '../../utilities/createBloks';
-import WidthBox from '../layout/widthBox';
-import { bgTextColorPairs } from '../../utilities/dataSource';
-import getNumBloks from '../../utilities/getNumBloks';
-import RichTextRenderer from '../../utilities/richTextRenderer';
+import CreateBloks from '../../../utilities/createBloks';
+import WidthBox from '../../layout/widthBox';
+import { bgTextColorPairs } from '../../../utilities/dataSource';
+import getNumBloks from '../../../utilities/getNumBloks';
+import RichTextRenderer from '../../../utilities/richTextRenderer';
+import * as styles from './ankleStyles';
 
 /**
  * The ankle component is referenced and used in the page type components.
@@ -40,10 +41,7 @@ const Ankle = ({
     isAnkleDark = true;
   }
 
-  const ankleWrapperStyles = dcnb(
-    'ankle su-relative su-rs-py-7',
-    ankleBgStyles
-  );
+  const ankleWrapperStyles = dcnb(styles.root, ankleBgStyles);
 
   let ankleWidth = '12';
 
@@ -65,16 +63,16 @@ const Ankle = ({
               font="serif"
               weight="bold"
               align="center"
-              className="su-mb-06em su-mt-[-0.6em] su-mx-auto su-max-w-900"
+              className={styles.heading}
             >
               {ankleTitle}
             </Heading>
           )}
           {hasIntro && (
-            <div className="su-big-paragraph su-max-w-prose su-mx-auto su-text-center su-rs-mb-3">
+            <div className={styles.introWrapper}>
               <RichTextRenderer
                 wysiwyg={ankleIntro}
-                className="children:su-leading-display"
+                className={styles.intro}
                 isDark={isAnkleDark}
               />
             </div>
@@ -82,14 +80,7 @@ const Ankle = ({
         </Container>
       )}
       <WidthBox width={ankleWidth}>
-        <DrGrid
-          xs={1}
-          md={numItems}
-          gap
-          className={dcnb(
-            'su-gap-y-2xl md:su-gap-y-[80px] xl:su-gap-y-[100px]'
-          )}
-        >
+        <DrGrid xs={1} md={numItems} gap className={styles.iconCardGrid}>
           <CreateBloks blokSection={ankleContent} isDark={isAnkleDark} />
         </DrGrid>
       </WidthBox>

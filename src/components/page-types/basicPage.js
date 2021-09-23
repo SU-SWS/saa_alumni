@@ -4,7 +4,7 @@ import { Container, Heading } from 'decanter-react';
 import Layout from '../partials/layout';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
-import Ankle from '../partials/ankle';
+import Ankle from '../partials/ankle/ankle';
 import BasicContentNoSidebar from '../partials/basicContentNoSidebar';
 import BasicContentLeftSidebar from '../partials/basicContentLeftSidebar';
 
@@ -50,11 +50,10 @@ const BasicPage = (props) => {
               <CreateBloks
                 blokSection={sectionMenu}
                 id="section-menu-mobile"
-                className={`${
-                  numHero > 0
+                className={`${numHero > 0
                     ? 'su-rs-my-2'
                     : 'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]'
-                } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
+                  } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
               />
             )}
             <CreateBloks blokSection={hero} />
