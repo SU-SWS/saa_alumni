@@ -12,6 +12,9 @@ require("dotenv").config({
  */
 const storyblokRelations = [
   "eventCard.eventPicker",
+  "globalHeader.mainNav",
+  "globalHeader.utilityNav",
+  "globalHeaderPicker.globalHeader",
   "localFooterPicker.localFooter",
   "mastheadPicker.masthead",
   "perkCard.perkPicker",
