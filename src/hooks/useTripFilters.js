@@ -5,7 +5,9 @@ import {
   ArrayParam,
   withDefault,
 } from 'use-query-params';
-import scrollTo from 'gatsby-plugin-smoothscroll';
+import { encodeQueryParams } from 'serialize-query-params';
+import { stringify } from 'query-string';
+import { useLocation } from '@reach/router';
 import { useTripFilterDatasources } from './useTripFilterDatasources';
 import { useTrips } from './useTrips';
 import {
@@ -16,7 +18,7 @@ import {
   getFiltersForTrips,
 } from '../utilities/filterTrips';
 
-export const TRIP_FILTER_PAGE_SIZE = 10;
+export const TRIP_FILTER_PAGE_SIZE = 16;
 const filterTypes = [
   { key: 'trip-region', name: 'Region' },
   { key: 'trip-year', name: 'Year' },
@@ -24,6 +26,16 @@ const filterTypes = [
   { key: 'trip-experience', name: 'Experience' },
   { key: 'trip-duration', name: 'Duration' },
 ];
+
+// URL query param filters
+const queryConfig = {
+  page: withDefault(NumberParam, 1),
+  'trip-region': ArrayParam,
+  'trip-experience': ArrayParam,
+  'trip-year': ArrayParam,
+  'trip-month': ArrayParam,
+  'trip-duration': ArrayParam,
+};
 
 export const useTripFilters = (primaryFilter) => {
   /**
@@ -44,16 +56,6 @@ export const useTripFilters = (primaryFilter) => {
   /**
    * Filtering Data
    */
-
-  // URL query param filters
-  const queryConfig = {
-    page: withDefault(NumberParam, 1),
-    'trip-region': ArrayParam,
-    'trip-experience': ArrayParam,
-    'trip-year': ArrayParam,
-    'trip-month': ArrayParam,
-    'trip-duration': ArrayParam,
-  };
   const [params, setQuery] = useQueryParams(queryConfig);
   const { page } = params;
 
@@ -92,9 +94,17 @@ export const useTripFilters = (primaryFilter) => {
   );
 
   // Filtered list of trips
-  const trips = useMemo(
+  const filteredTrips = useMemo(
     () => filterTrips(allTrips, activeFilters),
     [allTrips, activeFilters]
+  );
+  const trips = useMemo(
+    () =>
+      filteredTrips.slice(
+        (page - 1) * TRIP_FILTER_PAGE_SIZE,
+        page * TRIP_FILTER_PAGE_SIZE
+      ),
+    [filteredTrips, page]
   );
 
   // List of keyed/ordered filters with flags for selected/available/primary
@@ -202,21 +212,25 @@ export const useTripFilters = (primaryFilter) => {
    * Pagination
    */
   const totalPages = useMemo(
-    () => Math.ceil(trips.length / TRIP_FILTER_PAGE_SIZE),
-    [trips]
-  );
-  // NOTE: We may want to expose a function that simply generates the page link rather than handling it programmatically
-  const setPage = useCallback(
-    (pageNum) => {
-      setQuery({ page: pageNum });
-      scrollTo('body');
-    },
-    [setQuery]
+    () => Math.ceil(filteredTrips.length / TRIP_FILTER_PAGE_SIZE),
+    [filteredTrips]
   );
   // Create getLink Helper to generate links with optional passed params?
+  const location = useLocation();
+  const getPageLink = useCallback(
+    (pg = 1) => {
+      const encodedParams = stringify(
+        encodeQueryParams(queryConfig, { ...params, page: pg })
+      );
+
+      return `${location.pathname}?${encodedParams}`;
+    },
+    [location.pathname, params]
+  );
 
   return {
     // Filtered Trips
+    filteredTrips,
     trips,
 
     // Filters
@@ -229,6 +243,6 @@ export const useTripFilters = (primaryFilter) => {
     // Pagination
     page,
     totalPages,
-    setPage,
+    getPageLink,
   };
 };
