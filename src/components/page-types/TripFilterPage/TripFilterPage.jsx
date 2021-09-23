@@ -14,7 +14,7 @@ import FaIcon from '../../simple/faIcon';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
-  const { hero } = blok;
+  const { hero, aboveContent, belowContent } = blok;
 
   const {
     trips,
@@ -40,8 +40,12 @@ const TripFilterPage = (props) => {
           <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
           </header>
+          {aboveContent && aboveContent.length > 0 && (
+            <div className="trip-filter-page-above-content">
+              <CreateBloks blokSection={aboveContent} />
+            </div>
+          )}
           <Container width="site">
-            <div className="above-content todo" />
             <div className={styles.filterSection}>
               <div className="trip-filters">
                 <div className={styles.filterSidebar}>
@@ -115,8 +119,12 @@ const TripFilterPage = (props) => {
                 )}
               </div>
             </div>
-            <div className="below-content todo" />
           </Container>
+          {belowContent && belowContent.length > 0 && (
+            <div className="trip-filter-page-below-content">
+              <CreateBloks blokSection={belowContent} />
+            </div>
+          )}
         </Container>
       </Layout>
     </SbEditable>
