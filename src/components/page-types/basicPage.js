@@ -50,10 +50,11 @@ const BasicPage = (props) => {
               <CreateBloks
                 blokSection={sectionMenu}
                 id="section-menu-mobile"
-                className={`${numHero > 0
+                className={`${
+                  numHero > 0
                     ? 'su-rs-my-2'
                     : 'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]'
-                  } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
+                } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
               />
             )}
             <CreateBloks blokSection={hero} />

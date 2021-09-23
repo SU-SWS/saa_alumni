@@ -63,7 +63,14 @@ const Ankle = ({
               font="serif"
               weight="bold"
               align="center"
-              className={styles.heading}
+              className={dcnb(
+                styles.heading,
+                `${
+                  hasIntro
+                    ? styles.headingMarginHasIntro
+                    : styles.headingMarginNoIntro
+                }`
+              )}
             >
               {ankleTitle}
             </Heading>
