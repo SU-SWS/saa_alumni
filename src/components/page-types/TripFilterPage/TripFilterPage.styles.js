@@ -13,5 +13,5 @@ export const clearAllBtn = 'su-group su-flex-row su-items-center';
 export const clearAllText = 'su-relative';
 export const clearAllHover =
   'su-absolute su-bottom-[-0.5rem] su-left-0 su-w-full su-pt-2 group-hocus:su-bg-gradient-to-r su-from-palo-verde-dark su-to-digital-blue';
-export const clearAllIcon = 'su-text-saa-electric-purple su-ml-8';
+export const clearAllIcon = 'su-text-saa-electric-blue su-ml-8';
 export const filteredContent = 'su-text-white su-col-span-3';
