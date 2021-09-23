@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import {
   useQueryParams,
   NumberParam,
@@ -201,6 +201,9 @@ export const useTripFilters = (primaryFilter) => {
     [setQuery]
   );
   // Create getLink Helper to generate links with optional passed params?
+
+  // Update on render to avoid bad first paints server side
+  useEffect(() => undefined, []);
 
   return {
     // Filtered Trips
