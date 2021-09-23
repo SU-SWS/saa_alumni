@@ -10,6 +10,8 @@ const CircularImage = ({
   className,
   smartFocus,
   loading,
+  width,
+  height,
   ...props
 }) => {
   // Option to display image as round thumbnail with colored border
@@ -34,6 +36,8 @@ const CircularImage = ({
         className="su-object-cover su-w-full su-h-full"
         loading={loading ?? "lazy"}
         alt={alt ?? ""}
+        width={width}
+        height={height}
       />
     </div>
   );

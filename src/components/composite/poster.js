@@ -93,6 +93,8 @@ const Poster = ({
             className={imageWrapper}
             loading="lazy"
             alt={alt ?? ""}
+            width="126"
+            height="126"
           />
         )}
         <FlexBox

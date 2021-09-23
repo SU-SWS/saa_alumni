@@ -8,6 +8,8 @@ const Logo = ({ className, ...props }) => (
       src={AlumniLogo}
       className={className}
       alt="Stanford Alumni Association"
+      width="260"
+      height="38"
     />
   </Link>
 );
