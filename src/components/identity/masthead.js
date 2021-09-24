@@ -48,8 +48,9 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
         </FlexBox>
       </Container>
       <Container
-        className={`masthead-desktop su-hidden lg:su-block ${hasHero ? 'su-absolute' : 'su-relative'
-          }  su-z-20`}
+        className={`masthead-desktop su-hidden lg:su-block ${
+          hasHero ? 'su-absolute' : 'su-relative'
+        }  su-z-20`}
         width="full"
       >
         <FlexBox>

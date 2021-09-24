@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, FlexBox } from 'decanter-react';
+import { Container } from 'decanter-react';
 import * as styles from './GlobalHeaderStyles';
 import CreateStories from '../../../utilities/createStories';
 
