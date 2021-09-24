@@ -10,13 +10,11 @@ export const UtilityNavProps = {
 };
 
 const UtilityNav = ({ menuItems }) => (
-  <FlexBox className={styles.root}>
-    <CreateBloks
-      blokSection={menuItems}
-      hasExternalIcon
-      className="su-list-unstyled"
-    />
-  </FlexBox>
+  <CreateBloks
+    blokSection={menuItems}
+    hasExternalIcon
+    className="su-list-unstyled children:su-font-regular children:su-text-white children:hocus:su-text-white children:su-no-underline"
+  />
 );
 UtilityNav.propTypes = UtilityNavProps;
 

@@ -1,1 +1,1 @@
-export const root = 'su-text-digital-red';
+export const root = 'su-bg-digital-red';
