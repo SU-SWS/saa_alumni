@@ -81,10 +81,10 @@ export const tripMatchesFilterType = (trip, filterType, filters = []) => {
 
   switch (filterType) {
     case 'trip-region':
-      // TODO: This will change at some point
       return (
-        filters.find((filter) => filter.value === trip.content.region) !==
-        undefined
+        filters.find((filter) =>
+          (trip.content.region || []).includes(filter.value)
+        ) !== undefined
       );
     case 'trip-experience':
       // Filter matches when all experiences match (drill-down)
@@ -292,7 +292,7 @@ export const getTripFacets = (trip, allFilters) => {
   const duration = getTripDurationFilters(trip, allFilters['trip-duration']);
 
   return {
-    'trip-region': [region],
+    'trip-region': region,
     'trip-experience': experiences,
     'trip-year': year,
     'trip-month': month,
