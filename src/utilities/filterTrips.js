@@ -32,31 +32,17 @@ const drillDownFilterTypes = ['trip-experience'];
 /**
  * Helper function to generate array of month values between 2 dates
  */
-export const getTripMonths = (startDate, endDate) => {
+export const getTripMonth = (startDate) => {
   const tripStartMonth = startDate.getMonth();
-  const tripEndMonth = endDate.getMonth();
-  const months = [];
-
-  for (let i = 0; months[months.length - 1] !== tripEndMonth; i += 1) {
-    months.push((tripStartMonth + i) % 12);
-  }
-
-  return months.map((monthIdx) => monthValues[monthIdx]);
+  return [monthValues[tripStartMonth]];
 };
 
 /**
  * Helper function to get array of year values between 2 dates
  */
-export const getTripYears = (startDate, endDate) => {
+export const getTripYear = (startDate) => {
   const tripStartYear = startDate.getFullYear();
-  const tripEndYear = endDate.getFullYear();
-  const years = [];
-
-  for (let i = 0; years[years.length - 1] !== tripEndYear; i += 1) {
-    years.push(tripStartYear + i);
-  }
-
-  return years.map((year) => year.toString());
+  return [tripStartYear.toString()];
 };
 
 /**
@@ -87,8 +73,8 @@ export const tripMatchesFilterType = (trip, filterType, filters = []) => {
 
   const tripStartDate = new Date(trip.content.startDate);
   const tripEndDate = new Date(trip.content.endDate);
-  const tripYears = getTripYears(tripStartDate, tripEndDate);
-  const tripMonths = getTripMonths(tripStartDate, tripEndDate);
+  const tripYears = getTripYear(tripStartDate);
+  const tripMonths = getTripMonth(tripStartDate);
   const tripDurationDays = getTripDuration(tripStartDate, tripEndDate);
 
   switch (filterType) {
@@ -297,11 +283,10 @@ export const getTripDurationFilters = (trip, durationFilters) => {
 // Given a trip, determine the filter facetss that it matches
 export const getTripFacets = (trip, allFilters) => {
   const startDate = new Date(trip.content.startDate);
-  const endDate = new Date(trip.content.endDate);
 
   const { region, experiences } = trip.content;
-  const year = getTripYears(startDate, endDate);
-  const month = getTripMonths(startDate, endDate);
+  const year = getTripYear(startDate);
+  const month = getTripMonth(startDate);
   const duration = getTripDurationFilters(trip, allFilters['trip-duration']);
 
   return {
