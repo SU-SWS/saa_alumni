@@ -29,9 +29,6 @@ const TripFilterPage = (props) => {
     getPageLink,
   } = useTripFilters(primaryFilter);
 
-  // TODO: Remove me. For testing/verification purposes only
-  if (typeof window !== 'undefined') window.trips = trips;
-
   return (
     <SbEditable content={blok}>
       <Layout hasHero {...props}>
