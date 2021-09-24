@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from 'decanter-react';
 import * as styles from './GlobalHeaderStyles';
-import CreateStories from '../../../utilities/createStories';
+import CreateBloks from '../../../utilities/createBloks';
 
 export const GlobalHeaderProps = {
   utilityNav: PropTypes.array,
@@ -16,13 +16,15 @@ const GlobalHeader = ({ utilityNav, mainNav, hasHero }) => (
     <Container width="full" className={styles.rootMobile}>
       <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
         <ul className={styles.utilNavMobileMenu}>
-          <CreateStories stories={utilityNav} />
+          <CreateBloks blokSection={utilityNav} />
         </ul>
       </nav>
     </Container>
     <Container width="full" className={styles.root}>
-      <nav aria-label="Utility Menu" className="su-bg-digital-red">
-        <CreateStories stories={utilityNav} />
+      <nav aria-label="Utility Menu" className={styles.utilNav}>
+        <ul className={styles.utilNavMenu}>
+          <CreateBloks blokSection={utilityNav} />
+        </ul>
       </nav>
     </Container>
   </>
