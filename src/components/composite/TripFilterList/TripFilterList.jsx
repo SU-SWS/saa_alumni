@@ -9,13 +9,13 @@ export const TripFilterProps = {
     key: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     active: PropTypes.bool,
-    available: PropTypes.number,
-    filters: PropTypes.arrayOf(
+    count: PropTypes.number,
+    facets: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired,
         selected: PropTypes.bool,
-        available: PropTypes.number,
+        count: PropTypes.number,
       })
     ).isRequired,
   }).isRequired,
@@ -23,10 +23,9 @@ export const TripFilterProps = {
   toggleFilter: PropTypes.func.isRequired,
 };
 export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
-  const filtersToRender = useMemo(
-    // Quite possibly the greatest, clearest line of code I've ever written... 👯
-    () => filter.filters.filter((f) => f.available),
-    [filter.filters]
+  const facetsToRender = useMemo(
+    () => filter.facets.filter((f) => f.count > 0),
+    [filter.facets]
   );
 
   return (
@@ -40,13 +39,15 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
           onChange={() => clearFilterType(filter.key)}
           checked={!filter.active}
         />
-        {filtersToRender.map((f) => (
+        {facetsToRender.map((facet) => (
           <FilterCheckbox
             className="su-w"
-            key={`${f.datasource}-${f.value}`}
-            label={f.name}
-            onChange={() => toggleFilter(f.datasource, f.value, toggleFilter)}
-            checked={f.selected}
+            key={`${facet.datasource}-${facet.value}`}
+            label={facet.name}
+            onChange={() =>
+              toggleFilter(facet.datasource, facet.value, toggleFilter)
+            }
+            checked={facet.active}
           />
         ))}
       </div>

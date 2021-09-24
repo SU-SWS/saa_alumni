@@ -21,7 +21,14 @@ const monthValues = [
   'nov',
   'dec',
 ];
-
+const allFilterTypes = [
+  'trip-region',
+  'trip-year',
+  'trip-month',
+  'trip-experience',
+  'trip-duration',
+];
+const drillDownFilterTypes = ['trip-experience'];
 /**
  * Helper function to generate array of month values between 2 dates
  */
@@ -72,36 +79,55 @@ export const tripWithinDuration = (durationInDays, durationFilter) => {
 };
 
 /**
- * Returns true if trip matches any of the passed filters
+ * Determine trip filterability given a list of facets for a given filterType
  */
-export const tripMatchesFilter = (trip, filters) => {
+export const tripMatchesFilterType = (trip, filterType, filters = []) => {
+  // No filters means it matches
+  if (filters.length === 0) return true;
+
   const tripStartDate = new Date(trip.content.startDate);
   const tripEndDate = new Date(trip.content.endDate);
   const tripYears = getTripYears(tripStartDate, tripEndDate);
   const tripMonths = getTripMonths(tripStartDate, tripEndDate);
   const tripDurationDays = getTripDuration(tripStartDate, tripEndDate);
 
-  const matchedFilter = filters.find((filter) => {
-    switch (filter.datasource) {
-      case 'trip-region':
-        return trip.content.region === filter.value;
-      case 'trip-experience':
-        return (trip.content.experiences || []).includes(filter.value);
-      case 'trip-year':
-        return tripYears.includes(filter.value);
-      case 'trip-month':
-        return tripMonths.includes(filter.value);
-      case 'trip-duration':
-        return tripWithinDuration(tripDurationDays, filter.value);
-      default:
-        return false;
-    }
-  });
-  return matchedFilter !== undefined;
+  switch (filterType) {
+    case 'trip-region':
+      // TODO: This will change at some point
+      return (
+        filters.find((filter) => filter.value === trip.content.region) !==
+        undefined
+      );
+    case 'trip-experience':
+      // Filter matches when all experiences match (drill-down)
+      return filters.reduce(
+        (matches, filter) =>
+          matches && (trip.content.experiences || []).includes(filter.value),
+        true
+      );
+    case 'trip-year':
+      return (
+        filters.find((filter) => tripYears.includes(filter.value)) !== undefined
+      );
+    case 'trip-month':
+      return (
+        filters.find((filter) => tripMonths.includes(filter.value)) !==
+        undefined
+      );
+    case 'trip-duration':
+      return (
+        filters.find((filter) =>
+          tripWithinDuration(tripDurationDays, filter.value)
+        ) !== undefined
+      );
+    default:
+      return false;
+  }
 };
 
 /**
- * Trip sorting function
+ * Trip sorting function sorts trips chronologically by startDate,
+ * while boosting by presence of priority tags
  */
 const tripSorter = (a, b) => {
   // Handle Priority tag sorting first
@@ -125,7 +151,10 @@ const tripSorter = (a, b) => {
   );
 };
 
-export const filtersListToKeyedObj = (filterList) =>
+/**
+ * Helper to transform list of facets into object keyed by [filterType][facet.value]
+ */
+export const facetListToKeyedObj = (filterList) =>
   filterList.reduce(
     (agg, filter) => ({
       ...agg,
@@ -138,30 +167,117 @@ export const filtersListToKeyedObj = (filterList) =>
   );
 
 /**
- * Get filtered list of Trips
+ * Get filtered list of Trips and available facets with trip counts
  */
-export const filterTrips = (allTrips, activeFilters = []) => {
-  // Sort filters by filter type for AND filtering
-  const filtersByType = filtersListToKeyedObj(activeFilters);
+export const filterTrips = (allTrips, activeFilters = [], facetIndex) => {
+  const activeFacetsByType = facetListToKeyedObj(activeFilters);
+  const filteredTrips = [];
+  const availableFacets = {};
 
-  const filteredTrips = allTrips.filter((trip) => {
-    // Only include trip if it matches one filter from ALL filter types
-    // NOTE: Short circuit filtering if we fail to match
-    const hasFailingFilterType = Object.values(filtersByType).find(
-      (typeFilters) => {
-        const matchesFilter = tripMatchesFilter(
+  // Inline helper to add trips to filter facets
+  const addTripToFacet = ({
+    facet: { datasource: filterType, value },
+    active = undefined,
+    addToFilterType = false,
+  }) => {
+    availableFacets[filterType] = {
+      ...(availableFacets[filterType] || {}),
+      ...(active ? { active } : {}),
+      count:
+        (availableFacets?.[filterType]?.count || 0) + (addToFilterType ? 1 : 0),
+      facets: {
+        ...(availableFacets?.[filterType]?.facets || {}),
+        [value]: {
+          ...(availableFacets?.[filterType]?.facets?.[value] || {}),
+          ...(active ? { active } : {}),
+          count:
+            (availableFacets?.[filterType]?.facets?.[value]?.count || 0) + 1,
+        },
+      },
+    };
+  };
+
+  allTrips.forEach((trip) => {
+    // Determine if trip matches for each of the filter types
+    const tripFilterTypeMatches = allFilterTypes.reduce(
+      (obj, filterType) => ({
+        ...obj,
+        [filterType]: tripMatchesFilterType(
           trip,
-          Object.values(typeFilters)
-        );
-
-        return !matchesFilter;
-      }
+          filterType,
+          Object.values(activeFacetsByType[filterType] || [])
+        ),
+      }),
+      {}
     );
 
-    return !hasFailingFilterType;
+    // Determine if trip matches all active filters
+    const tripMatchesAllActiveFilters = Object.values(
+      tripFilterTypeMatches
+    ).reduce((matchesAll, matchesType) => matchesAll && matchesType, true);
+    // Add trip if it matches
+    if (tripMatchesAllActiveFilters) {
+      filteredTrips.push(trip);
+    }
+
+    // Now to determine the active facets with trip count...
+
+    // Get all filters for this trip
+    const tripFacets = facetIndex[trip.id];
+    const tripAddedForFilterType = {};
+
+    // Determine if this trip should be added as available for each of it's facets
+    tripFacets.forEach((facet) => {
+      const facetIsActive =
+        !!activeFacetsByType?.[facet.datasource]?.[facet.value];
+
+      // Active facet
+      if (facetIsActive && tripMatchesAllActiveFilters) {
+        addTripToFacet({
+          facet,
+          active: true,
+          addToFilterType: !tripAddedForFilterType[facet.datasource],
+        });
+        tripAddedForFilterType[facet.datasource] = true;
+      }
+
+      // Inactive facet
+      if (!facetIsActive) {
+        const tripMatchesOtherFilterTypes = allFilterTypes.reduce(
+          (matchesOthers, filterType) =>
+            matchesOthers &&
+            (facet.datasource === filterType ||
+              tripFilterTypeMatches[filterType]),
+          true
+        );
+
+        // Drill-down filter types
+        if (drillDownFilterTypes.includes(facet.datasource)) {
+          if (
+            tripMatchesOtherFilterTypes &&
+            tripFilterTypeMatches[facet.datasource]
+          ) {
+            addTripToFacet({
+              facet,
+              addToFilterType: !tripAddedForFilterType[facet.datasource],
+            });
+            tripAddedForFilterType[facet.datasource] = true;
+          }
+        } else if (tripMatchesOtherFilterTypes) {
+          // Expand filter types
+          addTripToFacet({
+            facet,
+            addToFilterType: !tripAddedForFilterType[facet.datasource],
+          });
+          tripAddedForFilterType[facet.datasource] = true;
+        }
+      }
+    });
   });
 
-  return filteredTrips.sort(tripSorter);
+  filteredTrips.sort(tripSorter);
+
+  return { filteredTrips, availableFacets };
 };
 
 /**
@@ -178,8 +294,8 @@ export const getTripDurationFilters = (trip, durationFilters) => {
   return matchingFilters.map((filter) => filter.value);
 };
 
-// Given a trip, determine the filters that it matches
-export const getTripFilterValues = (trip, allFilters) => {
+// Given a trip, determine the filter facetss that it matches
+export const getTripFacets = (trip, allFilters) => {
   const startDate = new Date(trip.content.startDate);
   const endDate = new Date(trip.content.endDate);
 
@@ -198,11 +314,11 @@ export const getTripFilterValues = (trip, allFilters) => {
 };
 
 /**
- * Builds trip filter index for faster, more performant access to filters-by-trip
+ * Builds trip filter facet index for faster, more performant access to facets-by-trip
  */
-export const buildFilterIndex = (allTrips, allFilters) => {
+export const buildFacetIndex = (allTrips, allFilters) => {
   // Map filters by type/value
-  const filterMap = Object.keys(allFilters).reduce(
+  const facetMap = Object.keys(allFilters).reduce(
     (agg, filterType) => ({
       ...agg,
       [filterType]: allFilters[filterType].reduce(
@@ -215,46 +331,25 @@ export const buildFilterIndex = (allTrips, allFilters) => {
     }),
     {}
   );
-  const filterIndex = {};
+  const facetIndex = {};
 
   allTrips.forEach((trip) => {
     // map trip by id
-    filterIndex[trip.id] = [];
+    facetIndex[trip.id] = [];
 
-    // Get Filters associated with trip
-    const filters = getTripFilterValues(trip, allFilters);
+    // Get Filter facetss associated with trip
+    const filters = getTripFacets(trip, allFilters);
 
     Object.keys(filters).forEach((filterType) => {
-      filters[filterType].forEach((filterValue) => {
-        // Index filters by tripId
-        const filter = filterMap?.[filterType]?.[filterValue];
-        if (filter) {
-          filterIndex[trip.id].push(filter);
+      filters[filterType].forEach((facetValue) => {
+        // Index facets by tripId
+        const facet = facetMap?.[filterType]?.[facetValue];
+        if (facet) {
+          facetIndex[trip.id].push(facet);
         }
       });
     });
   });
 
-  return { filterIndex, filterMap };
-};
-
-/**
- * Returns [datasource][value] keyed nested object of all tags for trips in list
- */
-export const getFiltersForTrips = (filteredTrips, filterIndex) => {
-  const filtersByType = filteredTrips.reduce((agg, trip) => {
-    const updatedAgg = agg;
-    filterIndex[trip.id].forEach((filter) => {
-      updatedAgg[filter.datasource] = {
-        ...(agg?.[filter.datasource] || {}),
-        [filter.value]: {
-          ...(agg?.[filter.datasource]?.[filter.value] || {}),
-          [trip.id]: trip,
-        },
-      };
-    });
-    return updatedAgg;
-  }, {});
-
-  return filtersByType;
+  return { facetIndex, facetMap };
 };
