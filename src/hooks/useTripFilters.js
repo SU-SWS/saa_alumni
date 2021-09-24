@@ -15,16 +15,10 @@ import {
   filterTrips,
   facetListToKeyedObj,
   getActiveFilters,
+  filterTypes,
 } from '../utilities/filterTrips';
 
 export const TRIP_FILTER_PAGE_SIZE = 16;
-const filterTypes = [
-  { key: 'trip-region', name: 'Region' },
-  { key: 'trip-year', name: 'Year' },
-  { key: 'trip-month', name: 'Month' },
-  { key: 'trip-experience', name: 'Experience' },
-  { key: 'trip-duration', name: 'Duration' },
-];
 
 // URL query param filters
 const queryConfig = {
@@ -36,7 +30,7 @@ const queryConfig = {
   'trip-duration': ArrayParam,
 };
 
-export const useTripFilters = (primaryFilter) => {
+export const useTripFilters = (primaryPageFilter = {}) => {
   /**
    * Base Trip/Filter Data
    */
@@ -57,6 +51,15 @@ export const useTripFilters = (primaryFilter) => {
    */
   const [params, setQuery] = useQueryParams(queryConfig);
   const { page } = params;
+  const primaryFilter = useMemo(() => {
+    const { datasource, value } = primaryPageFilter;
+    // Verify filter
+    const filter = allFilters[datasource]?.find(
+      (facet) => facet.value === value
+    );
+
+    return filter;
+  }, [primaryPageFilter, allFilters]);
 
   // Wait until first mount to return data to prevent poor hydration
   const [mounted, setMounted] = useState();
@@ -85,8 +88,10 @@ export const useTripFilters = (primaryFilter) => {
     [allFilters, params, mounted]
   );
 
-  // TODO: Handle Primary Filter
-  const activeFilters = queryFilters;
+  const activeFilters = useMemo(
+    () => (primaryFilter ? [primaryFilter, ...queryFilters] : queryFilters),
+    [queryFilters, primaryFilter]
+  );
   const activeFiltersIndex = useMemo(
     () => facetListToKeyedObj(activeFilters),
     [activeFilters]
@@ -118,15 +123,20 @@ export const useTripFilters = (primaryFilter) => {
         key,
         name,
         active: availableFacets?.[key]?.active || false,
+        primary: primaryFilter && primaryFilter.datasource === key,
         count: availableFacets?.[key]?.count || 0,
         facets: allFilters[key].map((facet) => ({
           ...facet,
           active:
             availableFacets?.[key]?.facets?.[facet.value]?.active || false,
+          primary:
+            primaryFilter &&
+            primaryFilter.datasource === key &&
+            primaryFilter.value === facet.value,
           count: availableFacets?.[key]?.facets?.[facet.value]?.count || 0,
         })),
       })),
-    [availableFacets, allFilters]
+    [availableFacets, allFilters, primaryFilter]
   );
 
   /**
@@ -212,7 +222,7 @@ export const useTripFilters = (primaryFilter) => {
 
     // Filters
     filters,
-    activeFilters,
+    activeFilters: queryFilters,
     toggleFilter,
     clearFilterType,
     clearAllFilters,

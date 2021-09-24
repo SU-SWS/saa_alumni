@@ -24,7 +24,13 @@ export const TripFilterProps = {
 };
 export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
   const facetsToRender = useMemo(
-    () => filter.facets.filter((f) => f.count > 0),
+    () => filter.facets.filter((facet) => facet.count > 0 && !facet.primary),
+    [filter.facets]
+  );
+  const allIsActive = useMemo(
+    () =>
+      filter.facets.find((facet) => facet.active && !facet.primary) ===
+      undefined,
     [filter.facets]
   );
 
@@ -37,7 +43,7 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
         <FilterCheckbox
           label={`All ${filter.name.toLowerCase()}s`}
           onChange={() => clearFilterType(filter.key)}
-          checked={!filter.active}
+          checked={allIsActive}
         />
         {facetsToRender.map((facet) => (
           <FilterCheckbox

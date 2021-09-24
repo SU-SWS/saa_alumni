@@ -21,14 +21,16 @@ const monthValues = [
   'nov',
   'dec',
 ];
-const allFilterTypes = [
-  'trip-region',
-  'trip-year',
-  'trip-month',
-  'trip-experience',
-  'trip-duration',
+export const filterTypes = [
+  { key: 'trip-region', name: 'Region' },
+  { key: 'trip-year', name: 'Year' },
+  { key: 'trip-month', name: 'Month' },
+  { key: 'trip-experience', name: 'Experience' },
+  { key: 'trip-duration', name: 'Duration' },
 ];
-const drillDownFilterTypes = ['trip-experience'];
+const allFilterTypes = filterTypes.map(({ key }) => key);
+
+export const drillDownFilterTypes = ['trip-experience'];
 /**
  * Helper function to generate array of month values between 2 dates
  */
