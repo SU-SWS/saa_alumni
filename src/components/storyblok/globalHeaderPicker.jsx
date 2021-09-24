@@ -1,13 +1,8 @@
 import React from 'react';
-import SbEditable from 'storyblok-react';
-import CreateStories from '../../utilities/createStories';
+import CreateStory from '../../utilities/createStory';
 
-export const SBGlobalHeaderPicker = ({ blok }) => {
-  const { globalHeader = {} } = blok;
+export const SBGlobalHeaderPicker = ({ blok }, hasHero, isDark) => {
+  const { globalHeader } = blok;
 
-  return (
-    <SbEditable content={blok}>
-      <CreateStories stories={globalHeader} />
-    </SbEditable>
-  );
+  return <CreateStory story={globalHeader} hasHero={hasHero} isDark={isDark} />;
 };
