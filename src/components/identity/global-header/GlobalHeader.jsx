@@ -8,13 +8,9 @@ export const GlobalHeaderProps = {
   mainNav: PropTypes.element,
 };
 
-const GlobalHeader = ({ utilityNav, mainNav }) => {
-  return (
-    <FlexBox className={styles.root}>
-      test
-    </FlexBox>
-  );
-};
+const GlobalHeader = ({ utilityNav, mainNav }) => (
+  <FlexBox className={styles.root}>test</FlexBox>
+);
 GlobalHeader.propTypes = GlobalHeaderProps;
 
 export default GlobalHeader;

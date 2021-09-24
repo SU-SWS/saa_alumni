@@ -5,7 +5,8 @@ import * as styles from './UtilityNavStyles';
 import CreateBloks from '../../../utilities/createBloks';
 
 export const UtilityNavProps = {
-  menuItems: PropTypes.element,
+  // eslint-disable-next-line react/forbid-prop-types
+  menuItems: PropTypes.array,
 };
 
 const UtilityNav = ({ menuItems }) => (
