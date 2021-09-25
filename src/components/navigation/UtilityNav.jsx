@@ -1,11 +1,11 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import CreateBloks from '../../utilities/createBloks';
 
 export const UtilityNavProps = {
-  // eslint-disable-next-line react/forbid-prop-types
   menuItems: PropTypes.array,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 const UtilityNav = ({ menuItems, className }) => (

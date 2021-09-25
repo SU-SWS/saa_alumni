@@ -28,7 +28,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
         className="masthead-mobile su-relative lg:su-hidden su-bg-cardinal-red-xdark"
       >
         <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
-          <ul className={styles.utilNavMobileMenu}>
+          <ul className={styles.utilNavMenuMobile}>
             <CreateBloks
               blokSection={utilityNav}
               className="first:su-ml-0"
@@ -48,9 +48,8 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
         </FlexBox>
       </Container>
       <Container
-        className={`masthead-desktop su-hidden lg:su-block ${
-          hasHero ? 'su-absolute' : 'su-relative'
-        }  su-z-20`}
+        className={`masthead-desktop su-hidden lg:su-block ${hasHero ? 'su-absolute' : 'su-relative'
+          }  su-z-20`}
         width="full"
       >
         <FlexBox>
