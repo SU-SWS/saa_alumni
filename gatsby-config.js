@@ -1,9 +1,9 @@
 const activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
 console.log(`Using environment config: '${activeEnv}'`);
 
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${activeEnv}`,
 });
 
@@ -11,16 +11,16 @@ require("dotenv").config({
  * Resolve relations for storyblok.
  */
 const storyblokRelations = [
-  "eventCard.eventPicker",
-  "globalHeaderPicker.globalHeader",
-  "localFooterPicker.localFooter",
-  "mastheadPicker.masthead",
-  "perkCard.perkPicker",
-  "perkCardHorizontal.perkPicker",
-  "storyCard.storyPicker",
-  "alertPicker.alert",
-  "verticalNav.verticalNav",
-  "tripCard.trip",
+  'eventCard.eventPicker',
+  'globalHeaderPicker.globalHeader',
+  'localFooterPicker.localFooter',
+  'mastheadPicker.masthead',
+  'perkCard.perkPicker',
+  'perkCardHorizontal.perkPicker',
+  'storyCard.storyPicker',
+  'alertPicker.alert',
+  'verticalNav.verticalNav',
+  'tripCard.trip',
 ];
 
 module.exports = {
@@ -40,11 +40,11 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {
-      resolve: "gatsby-plugin-robots-txt",
+      resolve: 'gatsby-plugin-robots-txt',
       options: {
         policy: [
-          { userAgent: "*", allow: "/" },
-          { userAgent: "*", disallow: "/editor/" },
+          { userAgent: '*', allow: '/' },
+          { userAgent: '*', disallow: '/editor/' },
         ],
       },
     },
@@ -82,12 +82,12 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-storyblok",
+      resolve: 'gatsby-source-storyblok',
       options: {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
-        homeSlug: "home",
+        homeSlug: 'home',
         resolveRelations: storyblokRelations,
-        version: activeEnv === "production" ? "published" : "draft",
+        version: activeEnv === 'production' ? 'published' : 'draft',
       },
     },
     {
