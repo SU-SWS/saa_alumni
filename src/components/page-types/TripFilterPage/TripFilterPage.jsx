@@ -11,10 +11,11 @@ import { Pagination } from '../../composite/Pagination/Pagination';
 import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterPage.styles';
 import FaIcon from '../../simple/faIcon';
+import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
-  const { hero, aboveContent, belowContent } = blok;
+  const { hero, aboveContent, belowContent, primaryFilter } = blok;
 
   const {
     trips,
@@ -26,7 +27,7 @@ const TripFilterPage = (props) => {
     page,
     totalPages,
     getPageLink,
-  } = useTripFilters();
+  } = useTripFilters(primaryFilter);
 
   return (
     <SbEditable content={blok}>
@@ -53,14 +54,20 @@ const TripFilterPage = (props) => {
                     FILTER BY
                   </Heading>
                   <div className={styles.filtersList}>
-                    {filters.map((filter) => (
-                      <TripFilterList
-                        key={filter.key}
-                        filter={filter}
-                        clearFilterType={clearFilterType}
-                        toggleFilter={toggleFilter}
-                      />
-                    ))}
+                    {filters
+                      .filter(
+                        ({ key }) =>
+                          key !== primaryFilter.datasource ||
+                          drillDownFilterTypes.includes(key)
+                      )
+                      .map((filter) => (
+                        <TripFilterList
+                          key={filter.key}
+                          filter={filter}
+                          clearFilterType={clearFilterType}
+                          toggleFilter={toggleFilter}
+                        />
+                      ))}
                   </div>
                 </div>
               </div>

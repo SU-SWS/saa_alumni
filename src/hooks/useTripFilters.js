@@ -11,21 +11,14 @@ import { useLocation } from '@reach/router';
 import { useTripFilterDatasources } from './useTripFilterDatasources';
 import { useTrips } from './useTrips';
 import {
-  buildFilterIndex,
+  buildFacetIndex,
   filterTrips,
-  filtersListToKeyedObj,
+  facetListToKeyedObj,
   getActiveFilters,
-  getFiltersForTrips,
+  filterTypes,
 } from '../utilities/filterTrips';
 
 export const TRIP_FILTER_PAGE_SIZE = 16;
-const filterTypes = [
-  { key: 'trip-region', name: 'Region' },
-  { key: 'trip-year', name: 'Year' },
-  { key: 'trip-month', name: 'Month' },
-  { key: 'trip-experience', name: 'Experience' },
-  { key: 'trip-duration', name: 'Duration' },
-];
 
 // URL query param filters
 const queryConfig = {
@@ -37,7 +30,7 @@ const queryConfig = {
   'trip-duration': ArrayParam,
 };
 
-export const useTripFilters = (primaryFilter) => {
+export const useTripFilters = (primaryPageFilter = {}) => {
   /**
    * Base Trip/Filter Data
    */
@@ -48,8 +41,8 @@ export const useTripFilters = (primaryFilter) => {
   // Trip Filter Datasources keyed by filter type
   const allFilters = useTripFilterDatasources();
   // Additional trip indexed lookup table and value map
-  const { filterIndex, filterMap } = useMemo(
-    () => buildFilterIndex(allTrips, allFilters),
+  const { facetIndex, facetMap } = useMemo(
+    () => buildFacetIndex(allTrips, allFilters),
     [allTrips, allFilters]
   );
 
@@ -58,6 +51,15 @@ export const useTripFilters = (primaryFilter) => {
    */
   const [params, setQuery] = useQueryParams(queryConfig);
   const { page } = params;
+  const primaryFilter = useMemo(() => {
+    const { datasource, value } = primaryPageFilter;
+    // Verify filter
+    const filter = allFilters[datasource]?.find(
+      (facet) => facet.value === value
+    );
+
+    return filter;
+  }, [primaryPageFilter, allFilters]);
 
   // Wait until first mount to return data to prevent poor hydration
   const [mounted, setMounted] = useState();
@@ -86,18 +88,21 @@ export const useTripFilters = (primaryFilter) => {
     [allFilters, params, mounted]
   );
 
-  // TODO: Handle Primary Filter
-  const activeFilters = queryFilters;
+  const activeFilters = useMemo(
+    () => (primaryFilter ? [primaryFilter, ...queryFilters] : queryFilters),
+    [queryFilters, primaryFilter]
+  );
   const activeFiltersIndex = useMemo(
-    () => filtersListToKeyedObj(activeFilters),
+    () => facetListToKeyedObj(activeFilters),
     [activeFilters]
   );
 
   // Filtered list of trips
-  const filteredTrips = useMemo(
-    () => filterTrips(allTrips, activeFilters),
-    [allTrips, activeFilters]
+  const { filteredTrips, availableFacets } = useMemo(
+    () => filterTrips(allTrips, activeFilters, facetIndex),
+    [allTrips, activeFilters, facetIndex]
   );
+  // Paginate trips
   const trips = useMemo(
     () =>
       filteredTrips.slice(
@@ -106,47 +111,33 @@ export const useTripFilters = (primaryFilter) => {
       ),
     [filteredTrips, page]
   );
+  const totalPages = useMemo(
+    () => Math.ceil(filteredTrips.length / TRIP_FILTER_PAGE_SIZE),
+    [filteredTrips]
+  );
 
-  // List of keyed/ordered filters with flags for selected/available/primary
-  const filters = useMemo(() => {
-    const availableFiltersObj = getFiltersForTrips(trips, filterIndex);
-    const filtersWithStatus = filterTypes.map(({ key, name }) => {
-      let availableTrips = {};
-      let typeIsActive = false;
-      const typeFilters = allFilters[key].map((filter) => {
-        const selected = !!activeFiltersIndex?.[key]?.[filter.value];
-        const available = Object.keys(
-          availableFiltersObj?.[key]?.[filter.value] || {}
-        ).length;
-
-        if (selected) {
-          typeIsActive = true;
-        }
-        if (available) {
-          availableTrips = {
-            ...availableTrips,
-            ...availableFiltersObj[key][filter.value],
-          };
-        }
-        return {
-          ...filter,
-          selected,
-          available,
-          primary: false,
-        };
-      });
-
-      return {
+  // List of keyed/ordered filters with flags for active/trip count
+  const filters = useMemo(
+    () =>
+      filterTypes.map(({ key, name }) => ({
         key,
         name,
-        active: typeIsActive,
-        available: Object.keys(availableTrips).length,
-        filters: typeFilters,
-      };
-    });
-
-    return filtersWithStatus;
-  }, [trips, filterIndex, allFilters, activeFiltersIndex]);
+        active: availableFacets?.[key]?.active || false,
+        primary: primaryFilter && primaryFilter.datasource === key,
+        count: availableFacets?.[key]?.count || 0,
+        facets: allFilters[key].map((facet) => ({
+          ...facet,
+          active:
+            availableFacets?.[key]?.facets?.[facet.value]?.active || false,
+          primary:
+            primaryFilter &&
+            primaryFilter.datasource === key &&
+            primaryFilter.value === facet.value,
+          count: availableFacets?.[key]?.facets?.[facet.value]?.count || 0,
+        })),
+      })),
+    [availableFacets, allFilters, primaryFilter]
+  );
 
   /**
    * Filtering Actions
@@ -155,18 +146,18 @@ export const useTripFilters = (primaryFilter) => {
   // navigate with/without filter (ONLY if it matches an actual filter)
   // NOTE: We ALWAYS reset pagination on filter change
   const toggleFilter = useCallback(
-    (filterType, filterValue) => {
-      // Make sure we have a valid filter
-      if (filterMap[filterType]?.[filterValue]) {
+    (filterType, facetValue) => {
+      // Make sure we have a valid filter facet
+      if (facetMap[filterType]?.[facetValue]) {
         // Are we enabling or disabling the filter?
-        const isActive = !!activeFiltersIndex?.[filterType]?.[filterValue];
+        const isActive = !!activeFiltersIndex?.[filterType]?.[facetValue];
 
         if (isActive) {
           // Disable filter
           setQuery({
             ...params,
             [filterType]: params[filterType].filter(
-              (filter) => filter !== filterValue
+              (filter) => filter !== facetValue
             ),
             page: 1,
           });
@@ -174,13 +165,13 @@ export const useTripFilters = (primaryFilter) => {
           // Enable Filter
           setQuery({
             ...params,
-            [filterType]: [...(params[filterType] || []), filterValue],
+            [filterType]: [...(params[filterType] || []), facetValue],
             page: 1,
           });
         }
       }
     },
-    [filterMap, activeFiltersIndex, setQuery, params]
+    [facetMap, activeFiltersIndex, setQuery, params]
   );
   const clearFilterType = useCallback(
     (filterType) => {
@@ -211,11 +202,7 @@ export const useTripFilters = (primaryFilter) => {
   /**
    * Pagination
    */
-  const totalPages = useMemo(
-    () => Math.ceil(filteredTrips.length / TRIP_FILTER_PAGE_SIZE),
-    [filteredTrips]
-  );
-  // Create getLink Helper to generate links with optional passed params?
+  // Create getLink Helper to generate links with optional passed params
   const location = useLocation();
   const getPageLink = useCallback(
     (pg = 1) => {
@@ -235,7 +222,7 @@ export const useTripFilters = (primaryFilter) => {
 
     // Filters
     filters,
-    activeFilters,
+    activeFilters: queryFilters,
     toggleFilter,
     clearFilterType,
     clearAllFilters,
