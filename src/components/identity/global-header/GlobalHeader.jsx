@@ -15,7 +15,14 @@ export const GlobalHeaderProps = {
   hasHero: PropTypes.bool,
 };
 
-const GlobalHeader = ({ siteName, siteLink, utilityNav, mainNav, hasHero }) => {
+const GlobalHeader = ({
+  siteName,
+  siteLink,
+  utilityNav,
+  mainNav,
+  hasHero,
+  isDark,
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
@@ -27,7 +34,7 @@ const GlobalHeader = ({ siteName, siteLink, utilityNav, mainNav, hasHero }) => {
           </ul>
         </nav>
       </Container>
-      <Container className={styles.root}>
+      <Container className={styles.root({ hasHero, isDark })}>
         <FlexBox justifyContent="space-between" alignItems="start">
           <FlexCell className={styles.logoWrapper}>
             <Logo className={styles.logo} />

@@ -1,5 +1,14 @@
-export const root =
-  'global-header-desktop su-hidden lg:su-block su-border-b su-border-solid su-border-black-90 su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden';
+import { dcnb } from 'cnbuilder';
+
+export const root = ({ hasHero, isDark } = {}) =>
+  dcnb(
+    'global-header-desktop su-w-full su-hidden lg:su-block su-border-b su-border-solid su-border-black-90',
+    {
+      'su-bg-saa-black': !hasHero && isDark,
+      'su-absolute su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden':
+        hasHero,
+    }
+  );
 export const logo = 'su-w-[13rem] xl:su-w-[16.5rem]';
 export const logoWrapper =
   'su-w-fit su-px-16 su-pt-14 su-pb-12 su-bg-cardinal-red';
