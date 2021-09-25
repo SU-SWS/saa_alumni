@@ -6,6 +6,7 @@ import * as styles from './GlobalHeaderStyles';
 import CreateBloks from '../../../utilities/createBloks';
 import Logo from '../logo';
 import OpenSearchModalButton from '../../search/openSearchModalButton';
+import SbLink from '../../../utilities/sbLink';
 
 export const GlobalHeaderProps = {
   utilityNav: PropTypes.array,
@@ -13,7 +14,7 @@ export const GlobalHeaderProps = {
   hasHero: PropTypes.bool,
 };
 
-const GlobalHeader = ({ utilityNav, mainNav, hasHero }) => (
+const GlobalHeader = ({ siteName, siteLink, utilityNav, mainNav, hasHero }) => (
   <>
     <Container width="full" className={styles.rootMobile}>
       <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
@@ -23,19 +24,30 @@ const GlobalHeader = ({ utilityNav, mainNav, hasHero }) => (
       </nav>
     </Container>
     <Container className={styles.root}>
-      <FlexBox justifyContent="space-between" alignItems="center">
-        <FlexCell className="su-w-fit su-px-16 su-pt-12 su-pb-10 su-bg-cardinal-red">
-          <Logo className="su-w-[13rem] xl:su-w-[16.5rem]" />
+      <FlexBox justifyContent="space-between" alignItems="start">
+        <FlexCell className={styles.logoWrapper}>
+          <Logo className={styles.logo} />
         </FlexCell>
-        <FlexCell>
+        <FlexCell className="su-flex su-flex-grow su-rs-mt-0">
           <nav aria-label="Utility Menu" className={styles.utilNav}>
             <ul className={styles.utilNavMenu}>
-              <CreateBloks blokSection={utilityNav} />
+              <CreateBloks
+                blokSection={utilityNav}
+                className={styles.utilNavItem}
+              />
             </ul>
           </nav>
           <OpenSearchModalButton />
         </FlexCell>
       </FlexBox>
+      <div className="su-basefont-23 su-rs-mt-0">
+        <SbLink
+          link={siteLink}
+          classes="su-text-white su-font-bold hocus:su-text-white su-no-underline hocus:su-no-underline su-text-m3"
+        >
+          {siteName}
+        </SbLink>
+      </div>
     </Container>
   </>
 );

@@ -75,7 +75,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
                 <ul className={styles.utilNavMenu}>
                   <CreateBloks
                     blokSection={utilityNav}
-                    className="first:su-ml-0 children:hocus:su-underline-digital-red-xlight children:hocus:su-underline-thick"
+                    className={styles.utilNavItem}
                     hasExternalIcon
                   />
                 </ul>
