@@ -48,6 +48,8 @@ const GlobalHeader = ({
                 src={AlumniLogo}
                 className={styles.logoImageMobile}
                 alt="Stanford Alumni Association"
+                width="110"
+                height="16"
               />
               {siteName}
             </SbLink>
@@ -64,7 +66,7 @@ const GlobalHeader = ({
           <FlexCell className={styles.logoWrapper}>
             <Logo className={styles.logo} />
           </FlexCell>
-          <FlexCell className="su-flex su-flex-grow su-rs-mt-0">
+          <FlexCell className={styles.utilWrapper}>
             <nav aria-label="Utility Menu" className={styles.utilNav}>
               <ul className={styles.utilNavMenu}>
                 <CreateBloks
@@ -79,11 +81,8 @@ const GlobalHeader = ({
             />
           </FlexCell>
         </FlexBox>
-        <div className="su-basefont-23 su-rs-mt-0 su-rs-mb-1">
-          <SbLink
-            link={siteLink}
-            classes="su-text-white su-font-bold hocus:su-text-white su-no-underline hocus:su-no-underline su-text-m3"
-          >
+        <div className={styles.siteNameWrapper}>
+          <SbLink link={siteLink} classes={styles.siteName}>
             {siteName}
           </SbLink>
         </div>
