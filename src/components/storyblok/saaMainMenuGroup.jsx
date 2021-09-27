@@ -7,7 +7,7 @@ export const SBSAAMainMenuGroup = ({
   childMenuClasses,
   childItemClasses,
 }) => {
-  const { parentText, parentLink, childMenuItems } = blok;
+  const { parentText, parentLink, childMenuItems, panelFacing } = blok;
 
   return (
     <SbEditable content={blok}>
@@ -17,6 +17,7 @@ export const SBSAAMainMenuGroup = ({
         childMenuItems={childMenuItems}
         childMenuClasses={childMenuClasses}
         childItemClasses={childItemClasses}
+        panelFacing={panelFacing}
       />
     </SbEditable>
   );

@@ -57,7 +57,7 @@ const GlobalHeader = ({
             openOpen={modalOpen}
             setModalOpen={setModalOpen}
           />
-          <CreateBloks blokSection={mainNav} />
+          <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
         </FlexBox>
       </Container>
 
@@ -85,7 +85,7 @@ const GlobalHeader = ({
             {siteName}
           </SbLink>
         </div>
-        <CreateBloks blokSection={mainNav} />
+        <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
       </Container>
 
       <SearchModal
