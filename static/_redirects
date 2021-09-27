@@ -279,8 +279,8 @@
 /get/page/membership/visa /membership 301!
 /get/page/membership/visaemail /membership 301!
 /get/page/onlinecommunitypolicy /code-of-conduct 301!
-/get/page/perks/alumniemail /help/alumni-email 301!
-/get/page/perks/alumniemail/email-perks /perks/alumni-email 301!
+/get/page/perks/alumniemail /perks/email/ 301!
+/get/page/perks/alumniemail/email-perks /perks/email/ 301!
 /get/page/privacy /privacy 301!
 /get/page/saa/about-us/about-board /about/leadership/ 301!
 /get/page/saa/about-us/home /about 301!
@@ -316,14 +316,14 @@
 /get/page/sierra/healthyliving-faculty https://sierracamp.alumni.stanford.edu/spring-programs/healthy-living-retreat 301!
 /get/page/sierra/plan https://sierracamp.alumni.stanford.edu/ 301!
 /get/page/terms /terms 301!
-/get/page/perks/alumniemail/faq /help/alumni-email-faq/ 301!
-/get/page/perks/alumniemail/faqabout /help/alumni-email-faq/ 301!
-/get/page/perks/alumniemail/faqaccount /help/alumni-email-faq/ 301!
-/get/page/perks/alumniemail/faqapps /help/alumni-email-faq/ 301!
-/get/page/perks/alumniemail/faqemail /help/alumni-email-faq/ 301!
-/get/page/perks/alumniemail/faqmigration /help/alumni-email-faq/ 301!
-/get/page/perks/alumniemail/faqsettings /help/alumni-email-faq/ 301!
-/get/page/perks/alumniemail/faqtroubleshooting /help/alumni-email-faq/ 301!
+/get/page/perks/alumniemail/faq /help/alumni-email-faqs/ 301!
+/get/page/perks/alumniemail/faqabout /help/alumni-email-faqs/ 301!
+/get/page/perks/alumniemail/faqaccount /help/alumni-email-faqs/ 301!
+/get/page/perks/alumniemail/faqapps /help/alumni-email-faqs/ 301!
+/get/page/perks/alumniemail/faqemail /help/alumni-email-faqs/ 301!
+/get/page/perks/alumniemail/faqmigration /help/alumni-email-faqs/ 301!
+/get/page/perks/alumniemail/faqsettings /help/alumni-email-faqs/ 301!
+/get/page/perks/alumniemail/faqtroubleshooting /help/alumni-email-faqs/ 301!
 /get/page/life-long-learning/learn /resources/learn/ 301!
 /get/page/life-long-learning/learn-join /resources/newsletters/ 301!
 
