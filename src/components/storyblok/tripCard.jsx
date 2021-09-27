@@ -7,7 +7,7 @@ export const SBTripCard = ({ blok }) => {
   const { trip = {}, headingLevel } = blok;
 
   if (!trip.content) {
-    // eslint-disable-next-line no-underscore-dangle
+    // eslint-disable-next-line no-underscore-dangle, no-console
     console.warn(`Missing trip entity content for trip ${blok._uid}`);
     return null;
   }

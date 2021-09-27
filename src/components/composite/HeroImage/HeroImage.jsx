@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { dcnb } from 'cnbuilder';
-import { Container, FlexBox } from 'decanter-react';
+import { Container } from 'decanter-react';
 import FullWidthImage from '../../media/fullWidthImage';
 import * as styles from './HeroImage.styles';
 
