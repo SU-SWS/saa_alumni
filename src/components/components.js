@@ -40,6 +40,8 @@ import PerkCard from './cards/perkCard';
 import PerkCardHorizontal from './cards/perkCardHorizontal';
 import Poster from './composite/poster';
 import Redirect from './redirect/Redirect';
+import { SBSAAMainNav } from './storyblok/saaMainNav';
+import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
 import SearchFacet from './search/searchFacet';
 import SearchField from './search/searchField';
 import SearchPage from './page-types/searchPage';
@@ -101,6 +103,8 @@ const ComponentList = {
   perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
   redirect: Redirect,
+  saaMainNav: SBSAAMainNav,
+  saaMainMenuGroup: SBSAAMainMenuGroup,
   searchFacet: SearchFacet,
   searchField: SearchField,
   searchPage: SearchPage,
