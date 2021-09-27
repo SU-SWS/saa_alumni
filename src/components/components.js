@@ -52,7 +52,7 @@ import Story from './content-types/story/story';
 import StoryCard from './cards/storyCard';
 import { SBTripCard } from './storyblok/tripCard';
 import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
-import TripPage from './page-types/TripPage';
+import TripPage from './page-types/TripPage/TripPage';
 import { SBUtilityNav } from './storyblok/utilityNav';
 import VerticalNav from './navigation/verticalNav';
 import VerticalNavWrapper from './navigation/verticalNavWrapper';
