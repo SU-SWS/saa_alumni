@@ -7,6 +7,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import UseEscape from '../../../hooks/useEscape';
 import UseOnClickOutside from '../../../hooks/useOnClickOutside';
 import * as styles from './SAAMainNav.styles';
+import { isExpanded } from '../../../utilities/menuHelpers';
 
 export const SAAMainNavProps = {
   menuItems: PropTypes.array,
@@ -21,8 +22,6 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
   };
-
-  const isExpanded = (x) => x.getAttribute('aria-expanded') === 'true';
 
   let NavIcon = MenuIcon;
   if (menuOpened) {
@@ -66,11 +65,7 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
           {menuOpened ? 'Close' : 'Menu'}
         </button>
         <ul
-          className={`${
-            menuOpened
-              ? '!su-scale-y-100 !su-opacity-100 !su-visible'
-              : 'su-invisible'
-          } su-absolute su-rs-py-1 su-right-0 su-top-[107px] md:su-top-[119px] su-cc su-w-full su-bg-cardinal-red-xdark su-shadow-lg su-border-t su-border-solid su-border-digital-red-xlight su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden`}
+          className={styles.menuMobile({ menuOpened })}
           aria-hidden={!menuOpened}
         >
           <CreateBloks blokSection={menuItems} />
@@ -78,7 +73,7 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
       </nav>
     </>
   );
-}
+};
 SAAMainNav.propTypes = SAAMainNavProps;
 
 export default SAAMainNav;

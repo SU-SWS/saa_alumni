@@ -6,6 +6,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import UseEscape from '../../../hooks/useEscape';
 import UseOnClickOutside from '../../../hooks/useOnClickOutside';
+import SbLink from '../../../utilities/sbLink';
 
 export const SAAMainMenuGroupProps = {
   parentText: PropTypes.string.isRequired,
@@ -25,7 +26,11 @@ const SAAMainMenuGroup = ({
   panelFacing = 'right',
 }) => (
   <li>
-    <button type="button">{parentText}</button>
+    {parentLink?.url === '' && parentLink?.cached_url === '' ? (
+      <button type="button">{parentText}</button>
+    ) : (
+      <SbLink link={parentLink}>{parentText}</SbLink>
+    )}
     <ul className={childMenuClasses}>
       <CreateBloks
         blokSection={childMenuItems}

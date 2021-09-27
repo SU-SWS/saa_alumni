@@ -3,6 +3,7 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 import CreateBloks from '../../utilities/createBloks';
 import UseEscape from '../../hooks/useEscape';
 import UseOnClickOutside from '../../hooks/useOnClickOutside';
+import { isExpanded } from '../../utilities/menuHelpers';
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
@@ -14,8 +15,6 @@ const MainMenuGroup = ({
   const togglePanel = () => {
     setPanelOpened(!panelOpened);
   };
-
-  const isExpanded = (x) => x.getAttribute('aria-expanded') === 'true';
 
   // Close dropdown if escape key is pressed and return focus to the parent item button
   UseEscape(() => {

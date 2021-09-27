@@ -5,7 +5,8 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import CreateBloks from '../../utilities/createBloks';
 import UseEscape from '../../hooks/useEscape';
 import UseOnClickOutside from '../../hooks/useOnClickOutside';
-import * as styles from '../navigation/SAAMainNav/SAAMainNav.styles';
+import * as styles from './SAAMainNav/SAAMainNav.styles';
+import { isExpanded } from '../../utilities/menuHelpers';
 
 const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   const [menuOpened, setMenuOpened] = useState(false);
@@ -15,8 +16,6 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   const toggleMenu = () => {
     setMenuOpened(!menuOpened);
   };
-
-  const isExpanded = (x) => x.getAttribute('aria-expanded') === 'true';
 
   let NavIcon = MenuIcon;
   if (menuOpened) {
@@ -60,10 +59,11 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           {menuOpened ? 'Close' : 'Menu'}
         </button>
         <ul
-          className={`${menuOpened
-            ? '!su-scale-y-100 !su-opacity-100 !su-visible'
-            : 'su-invisible'
-            } su-absolute su-rs-py-1 su-right-0 su-top-[107px] md:su-top-[119px] su-cc su-w-full su-bg-cardinal-red-xdark su-shadow-lg su-border-t su-border-solid su-border-digital-red-xlight su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden`}
+          className={`${
+            menuOpened
+              ? '!su-scale-y-100 !su-opacity-100 !su-visible'
+              : 'su-invisible'
+          } su-absolute su-rs-py-1 su-right-0 su-top-[107px] md:su-top-[119px] su-cc su-w-full su-bg-cardinal-red-xdark su-shadow-lg su-border-t su-border-solid su-border-digital-red-xlight su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden`}
           aria-hidden={!menuOpened}
         >
           <CreateBloks blokSection={mainMenuGroups} />
