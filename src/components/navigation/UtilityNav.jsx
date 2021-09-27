@@ -5,11 +5,28 @@ import CreateBloks from '../../utilities/createBloks';
 
 export const UtilityNavProps = {
   menuItems: PropTypes.array,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  navClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  menuClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  itemClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  ariaLabel: PropTypes.string,
 };
 
-const UtilityNav = ({ menuItems, className }) => (
-  <CreateBloks blokSection={menuItems} className={className} hasExternalIcon />
+const UtilityNav = ({
+  menuItems,
+  navClasses,
+  menuClasses,
+  itemClasses,
+  ariaLabel,
+}) => (
+  <nav aria-label={ariaLabel} className={navClasses}>
+    <ul className={menuClasses}>
+      <CreateBloks
+        blokSection={menuItems}
+        className={itemClasses}
+        hasExternalIcon
+      />
+    </ul>
+  </nav>
 );
 UtilityNav.propTypes = UtilityNavProps;
 

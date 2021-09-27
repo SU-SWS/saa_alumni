@@ -33,14 +33,13 @@ const GlobalHeader = ({
   return (
     <>
       <Container width="full" className={styles.rootMobile}>
-        <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
-          <ul className={styles.utilNavMenuMobile}>
-            <CreateBloks
-              blokSection={utilityNav}
-              className={styles.utilNavItemMobile}
-            />
-          </ul>
-        </nav>
+        <CreateBloks
+          blokSection={utilityNav}
+          ariaLabel="Utility Menu"
+          navClasses={styles.utilNavMobile}
+          menuClasses={styles.utilNavMenuMobile}
+          itemClasses={styles.utilNavItemMobile}
+        />
         <FlexBox className={styles.bodyMobile} alignItems="center">
           <FlexCell className={styles.logoWrapperMobile}>
             <SbLink link={siteLink} classes={styles.logoMobile}>
@@ -67,14 +66,13 @@ const GlobalHeader = ({
             <Logo className={styles.logo} />
           </FlexCell>
           <FlexCell className={styles.utilWrapper}>
-            <nav aria-label="Utility Menu" className={styles.utilNav}>
-              <ul className={styles.utilNavMenu}>
-                <CreateBloks
-                  blokSection={utilityNav}
-                  className={styles.utilNavItem}
-                />
-              </ul>
-            </nav>
+            <CreateBloks
+              blokSection={utilityNav}
+              ariaLabel="Utility Menu"
+              navClasses={styles.utilNav}
+              menuClasses={styles.utilNavMenu}
+              itemClasses={styles.utilNavItem}
+            />
             <OpenSearchModalButton
               openOpen={modalOpen}
               setModalOpen={setModalOpen}
