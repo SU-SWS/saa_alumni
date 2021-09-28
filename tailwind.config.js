@@ -15,31 +15,30 @@ module.exports = {
   prefix: 'su-',
 
   purge: {
-    content: ['./src/**', './node_modules/decanter-react/dist/**'],
+    content: ["./src/**", "./node_modules/decanter-react/dist/**"],
   },
   theme: {
-    borderRadius: require(decanter + '/theme/borderRadius.js')(),
-    borderWidth: require(decanter + '/theme/borderWidth.js')(),
-    colors: require(decanter + '/theme/colors.js')(),
-    fontFamily: require(decanter + '/theme/fontFamily.js')(),
-    fontSize: require(decanter + '/theme/fontSize.js')(),
-    fontWeight: require(decanter + '/theme/fontWeight.js')(),
-    gap: require(decanter + '/theme/gap.js')(),
-    height: require(decanter + '/theme/height.js')(),
-    lineHeight: require(decanter + '/theme/lineHeight.js')(),
-    maxHeight: require(decanter + '/theme/maxHeight.js')(),
-    maxWidth: require(decanter + '/theme/maxWidth.js')(),
-    screens: require(decanter + '/theme/screens.js')(),
-    spacing: require(decanter + '/theme/spacing.js')(),
-    transitionDuration: require(decanter + '/theme/transitionDuration.js')(),
-    width: require(decanter + '/theme/width.js')(),
+    borderRadius: require(decanter + "/theme/borderRadius.js")(),
+    borderWidth: require(decanter + "/theme/borderWidth.js")(),
+    colors: require(decanter + "/theme/colors.js")(),
+    fontFamily: require(decanter + "/theme/fontFamily.js")(),
+    fontSize: require(decanter + "/theme/fontSize.js")(),
+    fontWeight: require(decanter + "/theme/fontWeight.js")(),
+    gap: require(decanter + "/theme/gap.js")(),
+    height: require(decanter + "/theme/height.js")(),
+    lineHeight: require(decanter + "/theme/lineHeight.js")(),
+    maxHeight: require(decanter + "/theme/maxHeight.js")(),
+    maxWidth: require(decanter + "/theme/maxWidth.js")(),
+    screens: require(dir + "/theme/screens.js")(),
+    spacing: require(decanter + "/theme/spacing.js")(),
+    transitionDuration: require(decanter + "/theme/transitionDuration.js")(),
+    width: require(decanter + "/theme/width.js")(),
     // Decanter Custom.
     decanter: require(decanter + '/theme/decanter.js')(),
 
     // SAA themes extending our Decanter ones
     extend: {
       colors: require(dir + '/theme/colors.js')(),
-      screens: require(dir + '/theme/screens.js')(),
     },
   },
   plugins: [

@@ -1,7 +1,7 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import transformImage from '../../utilities/transformImage';
-import getImageWidth from '../../utilities/getImageWidth';
+import getImageSize from '../../utilities/getImageSize';
 import { objectPosition } from '../../utilities/dataSource';
 
 const FullWidthImage = ({
@@ -23,26 +23,24 @@ const FullWidthImage = ({
   let imgSrcset;
   let imgSizes;
   let imgSrc = '';
+  let imgAspectRatio = '';
 
-  if (filename != null) {
-    let imgWidth = '';
-
-    // Get image width from URL of storyblok image
-    if (filename?.startsWith('http')) {
-      imgWidth = getImageWidth(filename);
-    }
+  if (filename) {
+    // Get image size from URL of storyblok image
+    const originalWidth = getImageSize(filename).width;
+    const originalHeight = getImageSize(filename).height;
+    imgAspectRatio = originalWidth / originalHeight;
 
     originalImg = transformImage(filename, '', smartFocus);
-
-    if (imgWidth >= 800) {
+    if (originalWidth >= 800) {
       smallImg = transformImage(filename, '/800x0', smartFocus);
     }
 
-    if (imgWidth >= 1200) {
+    if (originalWidth >= 1200) {
       mediumImg = transformImage(filename, '/1200x0', smartFocus);
     }
 
-    if (imgWidth >= 2000) {
+    if (originalWidth >= 2000) {
       largeImg = transformImage(filename, '/2000x0', smartFocus);
     }
 
@@ -51,8 +49,8 @@ const FullWidthImage = ({
     imgSrcset += largeImg ? `,${largeImg} 2000w ` : '';
 
     // Include the original image in the srcset if its width is > 800px and < 2000px
-    if (imgWidth > 800 && imgWidth < 2000) {
-      imgSrcset += originalImg ? `,${originalImg} ${imgWidth}w ` : '';
+    if (originalWidth > 800 && originalWidth < 2000) {
+      imgSrcset += originalImg ? `,${originalImg} ${originalWidth}w ` : '';
     }
 
     // Set sizes attribute only if imgSrcset is not empty (imgSrcset is empty if image width is < 800px)
@@ -72,6 +70,8 @@ const FullWidthImage = ({
       className={dcnb(className, imgFocus)}
       alt={alt ?? ''}
       loading={imgLoading}
+      width="2000"
+      height={Math.round(2000 / imgAspectRatio)}
       {...props}
     />
   );

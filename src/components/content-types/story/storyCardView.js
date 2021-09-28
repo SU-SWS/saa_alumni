@@ -41,7 +41,7 @@ const StoryCardView = ({
 
   let wrapperClasses =
     'su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
-  let contentClasses = 'su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
+  let contentClasses = 'su-flex-1 su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
   let borderColor = 'su-border-black-30-opacity-40';
   let headlineColor = 'su-text-black hocus:su-text-black';
   let headlineIconColor = 'su-text-digital-red-xlight';
@@ -101,6 +101,8 @@ const StoryCardView = ({
                 size="vertical"
                 className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
                 loading="lazy"
+                width="600"
+                height="400"
               />
             </figure>
           </div>
@@ -137,7 +139,6 @@ const StoryCardView = ({
                 />
               )}
               {shortTitle || title}
-              {pubLink && <SrOnlyText srText=" (link is external)" />}
             </Heading>
             <HeroIcon
               iconType={pubLink ? 'external' : 'arrow-right'}

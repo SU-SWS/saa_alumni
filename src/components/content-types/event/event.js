@@ -150,6 +150,8 @@ const Event = ({
                   size="vertical"
                   className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
                   loading="lazy"
+                  width="600"
+                  height="400"
                 />
               </figure>
             )}
@@ -187,6 +189,7 @@ const Event = ({
             tracking="normal"
             className="su-relative su-inline su-type-0"
           >
+            {!hideTab && <SrOnlyText srText={`${tabText || 'Event'}: `} />}
             {title}
           </Heading>
           <HeroIcon
@@ -195,7 +198,9 @@ const Event = ({
             isAnimate
           />
         </SbLink>
-        {!isMinimal && !hideTab && <TabLabel text={tabText || 'Event'} />}
+        {!isMinimal && !hideTab && (
+          <TabLabel text={tabText || 'Event'} aria-hidden="true" />
+        )}
         <div
           className={dcnb(
             'event-card-details su-card-paragraph',

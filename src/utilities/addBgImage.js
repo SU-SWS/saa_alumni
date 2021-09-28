@@ -1,5 +1,5 @@
 import transformImage from './transformImage';
-import getImageWidth from './getImageWidth';
+import getImageSize from './getImageSize';
 
 const addBgImage = (
   imageUrl,
@@ -11,7 +11,7 @@ const addBgImage = (
   // Process image and set inline background image if image exists
   if (imageUrl != null) {
     if (imageUrl.startsWith('http')) {
-      const originalWidth = getImageWidth(imageUrl);
+      const originalWidth = getImageSize(imageUrl).width;
 
       // Downsize image if it's wider than 2000px, otherwise just reduce jpg quality to 60%
       if (originalWidth > 2000) {

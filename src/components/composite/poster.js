@@ -56,7 +56,8 @@ const Poster = ({
 
   if (layout === 'left') {
     wrapperClasses = 'su-flex su-flex-col su-justify-center md:su-flex-row';
-    imageWrapper = 'su-rs-mb-2 su-mx-auto md:su-rs-mr-4 md:su-mb-0 md:su-ml-0';
+    imageWrapper =
+      'su-flex-shrink-0 su-rs-mb-2 su-mx-auto md:su-rs-mr-4 md:su-mb-0 md:su-ml-0';
     contentWrapper = 'su-items-start md:su-flex-grow';
   } else {
     wrapperClasses = 'su-flex su-flex-col su-items-center';
@@ -92,6 +93,8 @@ const Poster = ({
             className={imageWrapper}
             loading="lazy"
             alt={alt ?? ''}
+            width="126"
+            height="126"
           />
         )}
         <FlexBox

@@ -74,7 +74,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
       role="dialog"
       tabIndex="-1"
     >
-      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-[97%] su-rs-pt-5 su-overflow-auto su-basefont-19">
+      <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-[97%] su-rs-py-5 su-overflow-auto su-basefont-19">
         <Container>
           <div className="su-pointer-events-auto">
             <div className="su-flex su-justify-end">

@@ -18,7 +18,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   const wrapperClasses = `su-border-0 su-border-b-2 su-border-solid su-border-black-10`;
 
   const inputClasses = `su-border-0 su-bg-transparent su-text-black-10 su-text-black-40::placeholder su-w-full su-flex-1
-  su-rs-px-1 su-py-02em su-text-m2 md:su-text-m4 focus:su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
+  su-rs-px-1 su-py-02em su-text-m2 md:su-text-m4 su-leading-display focus:su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
 
   const submitBtnClasses = `su-flex su-items-center su-justify-center su-min-w-[4rem] su-w-40 su-h-40 md:su-min-w-[7rem] md:su-w-70 md:su-h-70 md:children:su-w-40 md:children:su-h-40 su-rounded-full su-transition-colors
   su-bg-digital-red hocus:su-bg-digital-red-xlight su-origin-center su-rs-ml-0`;
