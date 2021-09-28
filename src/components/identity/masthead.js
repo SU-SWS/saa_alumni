@@ -45,14 +45,14 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           <OpenSearchModalButton
             openOpen={modalOpen}
             setModalOpen={setModalOpen}
+            id="masthead-search-button"
           />
           <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
         </FlexBox>
       </Container>
       <Container
-        className={`masthead-desktop su-hidden lg:su-block ${
-          hasHero ? "su-absolute" : "su-relative"
-        }  su-z-20`}
+        className={`masthead-desktop su-hidden lg:su-block ${hasHero ? "su-absolute" : "su-relative"
+          }  su-z-20`}
         width="full"
       >
         <FlexBox>
@@ -88,6 +88,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
               <OpenSearchModalButton
                 openOpen={modalOpen}
                 setModalOpen={setModalOpen}
+                id="masthead-search-button"
               />
             </FlexBox>
             <CreateBloks

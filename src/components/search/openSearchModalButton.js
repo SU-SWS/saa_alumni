@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "decanter-react";
 import { SearchIcon } from "@heroicons/react/solid";
 
-const OpenSearchModalButton = ({ modalOpen, setModalOpen }) => (
+const OpenSearchModalButton = ({ modalOpen, setModalOpen, id }) => (
   <>
     <Button
       type="button"
@@ -15,6 +15,7 @@ const OpenSearchModalButton = ({ modalOpen, setModalOpen }) => (
       size="minimal"
       aria-label="Search Stanford Alumni sites"
       onClick={(e) => setModalOpen(true)}
+      id={id}
     >
       <span className="su-sr-only lg:su-not-sr-only su-leading-none">
         Search
