@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, FlexBox } from 'decanter-react';
+import React from 'react';
+import { FlexBox } from 'decanter-react';
 import { SBImageType } from '../../../types/storyblok/SBAssetType';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import * as styles from './TripPageHeroSection.styles';
@@ -20,16 +20,14 @@ export const TripPageHeroSection = ({
 }) => (
   <header>
     <HeroImage filename={filename} alt={alt} focus={focus} overlay="dark">
-      <Container width="site">
-        <FlexBox direction="col" className={styles.content}>
-          {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
-          {title && <h1 className={styles.title}>{title}</h1>}
-          {shortDescription && (
-            <span className={styles.description}>{shortDescription}</span>
-          )}
-          {/* TODO: Section Mav Here */}
-        </FlexBox>
-      </Container>
+      <FlexBox direction="col" className={styles.content}>
+        {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
+        {title && <h1 className={styles.title}>{title}</h1>}
+        {shortDescription && (
+          <span className={styles.description}>{shortDescription}</span>
+        )}
+        {/* TODO: Section Mav Here */}
+      </FlexBox>
     </HeroImage>
   </header>
 );
