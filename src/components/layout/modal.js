@@ -33,6 +33,14 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
 
   UseEscape(() => {
     closeButton.current.click();
+    const mastheadDesktop =
+      document.getElementsByClassName("masthead-desktop")[0];
+
+    if (getComputedStyle(mastheadDesktop, null).display === "none") {
+      document.getElementById("masthead-search-button-mobile").focus();
+    } else {
+      document.getElementById("masthead-search-button-desktop").focus();
+    }
   });
 
   const lockScroll = () => {

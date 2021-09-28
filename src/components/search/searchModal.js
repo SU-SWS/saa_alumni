@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Heading } from "decanter-react";
 import { useStaticQuery, graphql, navigate } from "gatsby";
 import Modal from "../layout/modal";
@@ -43,25 +43,11 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
     }
   };
 
-  const mastheadDesktop =
-    document.getElementsByClassName("masthead-desktop")[0];
-  const isMobile = () =>
-    getComputedStyle(mastheadDesktop, null).display === "none";
-
-  const focusSearchButton = () => {
-    if (isMobile()) {
-      document.getElementById("masthead-search-button-mobile").focus();
-    } else {
-      document.getElementById("masthead-search-button-desktop").focus();
-    }
-  };
-
   return (
     <Modal
       isOpen={isOpen}
       onClose={() => {
         onClose();
-        focusSearchButton();
         setShowEmptyMessage(false);
       }}
       initialFocus={searchFieldRef}
