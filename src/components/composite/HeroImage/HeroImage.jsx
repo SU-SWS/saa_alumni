@@ -11,7 +11,7 @@ export const HeroImageProps = {
   focus: PropTypes.string,
   className: PropTypes.string,
   children: PropTypes.element,
-  overlay: PropTypes.oneOf('normal', 'dark', false),
+  overlay: PropTypes.oneOf(['normal', 'dark', false]),
 };
 
 export const HeroImage = ({
