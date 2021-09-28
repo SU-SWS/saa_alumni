@@ -33,7 +33,6 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
 
   UseEscape(() => {
     closeButton.current.click();
-    document.getElementById("masthead-search-button").focus();
   });
 
   const lockScroll = () => {

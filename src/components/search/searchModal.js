@@ -48,6 +48,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
       isOpen={isOpen}
       onClose={() => {
         onClose();
+        document.getElementById("masthead-search-button").focus();
         setShowEmptyMessage(false);
       }}
       initialFocus={searchFieldRef}
