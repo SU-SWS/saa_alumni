@@ -43,12 +43,25 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
     }
   };
 
+  const mastheadDesktop =
+    document.getElementsByClassName("masthead-desktop")[0];
+  const isMobile = () =>
+    getComputedStyle(mastheadDesktop, null).display === "none";
+
+  const focusSearchButton = () => {
+    if (isMobile()) {
+      document.getElementById("masthead-search-button-mobile").focus();
+    } else {
+      document.getElementById("masthead-search-button-desktop").focus();
+    }
+  };
+
   return (
     <Modal
       isOpen={isOpen}
       onClose={() => {
         onClose();
-        document.getElementById("masthead-search-button").focus();
+        focusSearchButton();
         setShowEmptyMessage(false);
       }}
       initialFocus={searchFieldRef}

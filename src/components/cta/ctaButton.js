@@ -58,7 +58,7 @@ const CtaButton = React.forwardRef(
               )}
             >
               {linkText}
-              {srText && <SrOnlyText srText={srText} />}
+              {srText && <SrOnlyText srText={` ${srText}`} />}
               {icon !== "none" && (
                 <HeroIcon
                   iconType={icon}
