@@ -148,6 +148,7 @@ const SearchField = React.forwardRef(
                 showAutocomplete={showAutocomplete}
                 onSelect={selectSuggestion}
                 selectedSuggestion={selectedSuggestion}
+                setShowAutocomplete={setShowAutocomplete}
                 setSelectedSuggestion={setSelectedSuggestion}
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 autocompleteLinkClasses={autocompleteLinkClasses}
