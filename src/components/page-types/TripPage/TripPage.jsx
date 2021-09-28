@@ -57,7 +57,7 @@ const TripPage = (props) => {
               shortDescription={shortDescription}
               heroImage={heroImage}
             />
-            {/* TODO: Overview Section */}
+            {/* Overview Section */}
             <TripPageOverviewSection
               overviewHeading={overviewHeading}
               overviewBody={overviewBody}
