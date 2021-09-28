@@ -9,6 +9,7 @@ import * as styles from './TripPage.styles';
 
 import { TripPageHeroSection } from './TripPageHeroSection';
 import { TripPageOverviewSection } from './TripPageOverviewSection';
+import { TripPageItinerarySection } from './TripPageItinerarySection';
 
 export const TripPageProps = {
   blok: TripContent,
@@ -33,6 +34,12 @@ const TripPage = (props) => {
       inquireURL,
       reservationURL,
       overviewBelowContent,
+      // Itinerary Section
+      itineraryHeading,
+      itineraryBody,
+      itineraryAboveContent,
+      itineraryBelowContent,
+      itineraryItems,
     } = {},
   } = props;
   const printContainerRef = useRef(null);
@@ -71,7 +78,14 @@ const TripPage = (props) => {
               onPrint={printTrip}
             />
             {/* TODO: Faculty Section */}
-            {/* TODO: Itinerary Section */}
+            {/* Itinerary Section */}
+            <TripPageItinerarySection
+              itineraryHeading={itineraryHeading}
+              itineraryBody={itineraryBody}
+              itineraryItems={itineraryItems}
+              itineraryAboveContent={itineraryAboveContent}
+              itineraryBelowContent={itineraryBelowContent}
+            />
             {/* TODO: Details Section */}
             {/* TODO: Related Trips */}
           </Container>
