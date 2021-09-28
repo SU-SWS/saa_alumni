@@ -40,6 +40,7 @@ const SearchField = React.forwardRef(
       setQuery(e.target.value);
       onInput(e.target.value);
       setShowAutocomplete(true);
+      setSelectedSuggestion(null);
     };
 
     const clearHandler = (e) => {
