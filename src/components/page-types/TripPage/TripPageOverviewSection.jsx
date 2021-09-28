@@ -10,6 +10,7 @@ import RichTextRenderer from '../../../utilities/richTextRenderer';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
+import CreateBloks from '../../../utilities/createBloks';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -35,6 +36,7 @@ export const TripPageOverviewSection = (props) => {
     cost,
     reservationURL,
     inquireURL,
+    overviewBelowContent,
   } = props;
   const tripDates = useMemo(() => {
     const start = getDate(startDate);
@@ -135,6 +137,11 @@ export const TripPageOverviewSection = (props) => {
           </div>
         </div>
       </Container>
+      {overviewBelowContent && overviewBelowContent.length > 0 && (
+        <div className="trip-page-overview-below-content">
+          <CreateBloks blokSection={overviewBelowContent} />
+        </div>
+      )}
     </TripPageSectionWrapper>
   );
 };
