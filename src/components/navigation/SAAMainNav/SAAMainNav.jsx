@@ -65,7 +65,7 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
           {menuOpened ? 'Close' : 'Menu'}
         </button>
         <ul
-          className={styles.menuMobile({ menuOpened })}
+          className={styles.menuMobileSAA({ menuOpened })}
           aria-hidden={!menuOpened}
         >
           <CreateBloks blokSection={menuItems} />

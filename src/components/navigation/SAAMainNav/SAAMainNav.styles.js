@@ -19,9 +19,22 @@ export const burgerMobileHomesite = dcnb(
 );
 export const burgerIconMobile =
   'su-transition-colors su-w-[2.4rem] group-hocus:su-text-digital-red-xlight';
-export const menuMobile = ({ menuOpened } = {}) =>
+
+const menuMobileCommon =
+  'su-absolute su-rs-py-1 su-right-0 su-cc su-w-full su-shadow-lg su-border-t  su-border-solid su-border-digital-red-xlight su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden';
+export const menuMobileSAA = ({ menuOpened } = {}) =>
   dcnb(
-    'su-absolute su-rs-py-1 su-right-0 su-top-[117px] md:su-top-[123px] su-cc su-w-full su-bg-saa-black su-shadow-lg su-border-t su-border-b su-border-solid su-border-digital-red-xlight su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden',
+    menuMobileCommon,
+    'su-top-[117px] md:su-top-[123px] su-bg-saa-black su-border-b',
+    {
+      '!su-scale-y-100 !su-opacity-100 !su-visible': menuOpened,
+      'su-invisible': !menuOpened,
+    }
+  );
+export const menuMobileHomesite = ({ menuOpened } = {}) =>
+  dcnb(
+    menuMobileCommon,
+    'su-top-[107px] md:su-top-[119px] su-bg-cardinal-red-xdark',
     {
       '!su-scale-y-100 !su-opacity-100 !su-visible': menuOpened,
       'su-invisible': !menuOpened,

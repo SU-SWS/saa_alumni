@@ -59,11 +59,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           {menuOpened ? 'Close' : 'Menu'}
         </button>
         <ul
-          className={`${
-            menuOpened
-              ? '!su-scale-y-100 !su-opacity-100 !su-visible'
-              : 'su-invisible'
-          } su-absolute su-rs-py-1 su-right-0 su-top-[107px] md:su-top-[119px] su-cc su-w-full su-bg-cardinal-red-xdark su-shadow-lg su-border-t su-border-solid su-border-digital-red-xlight su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden`}
+          className={styles.menuMobileHomesite({ menuOpened })}
           aria-hidden={!menuOpened}
         >
           <CreateBloks blokSection={mainMenuGroups} />
