@@ -29,6 +29,7 @@
   for = "/user-guide/*"
   [headers.values]
     Basic-Auth = "saa:@lumn1@ss0c1@t10n"
+    X-Robots-Tag = "noindex, nofollow"
 
 # REDIRECTS
 # ##############################################################################
