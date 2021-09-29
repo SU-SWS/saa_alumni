@@ -55,7 +55,7 @@ const SAAMainMenuGroup = ({
   }
 
   return (
-    <li className={styles.root} ref={ref}>
+    <li className={styles.rootSAA} ref={ref}>
       {parentLink?.url === '' && parentLink?.cached_url === '' ? (
         <button
           type="button"

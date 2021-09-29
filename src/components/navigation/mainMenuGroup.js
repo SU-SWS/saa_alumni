@@ -41,7 +41,7 @@ const MainMenuGroup = ({
   }
 
   return (
-    <li className={styles.root} ref={ref}>
+    <li className={styles.rootHomesite} ref={ref}>
       <button
         type="button"
         onClick={togglePanel}

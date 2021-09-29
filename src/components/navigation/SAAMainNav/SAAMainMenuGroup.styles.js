@@ -18,8 +18,10 @@ const chevronMobile =
 const chevronDesktop =
   'lg:su-relative lg:su-mr-0 lg:su-w-[1.2em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent';
 
-export const root =
-  'su-relative su-border-b su-border-solid su-border-digital-red-light last:su-border-none lg:su-inline-block lg:su-border-none';
+const root =
+  'su-relative su-border-b su-border-solid last:su-border-none lg:su-inline-block lg:su-border-none';
+export const rootHomesite = dcnb(root, 'su-border-digital-red-light');
+export const rootSAA = dcnb(root, 'su-border-digital-red');
 export const parentButton = ({ panelOpened, isActiveButton } = {}) =>
   dcnb(
     'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset',
