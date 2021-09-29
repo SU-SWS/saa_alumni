@@ -49,7 +49,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
       >
         <button
           type="button"
-          className={styles.burgerMobile}
+          className={styles.burgerMobileHomesite}
           onClick={toggleMenu}
           aria-expanded={menuOpened}
           aria-label={menuOpened ? 'Close Menu' : 'Open Menu'}

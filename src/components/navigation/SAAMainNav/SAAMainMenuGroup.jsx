@@ -14,8 +14,6 @@ export const SAAMainMenuGroupProps = {
   parentText: PropTypes.string.isRequired,
   parentLink: SBLinkType,
   childMenuItems: PropTypes.array,
-  childMenuClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  childItemClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   panelFacing: PropTypes.string,
 };
 
@@ -23,7 +21,6 @@ const SAAMainMenuGroup = ({
   parentText,
   parentLink,
   childMenuItems,
-  childItemClasses,
   panelFacing = 'right',
 }) => {
   const [panelOpened, setPanelOpened] = useState(false);
@@ -44,7 +41,7 @@ const SAAMainMenuGroup = ({
 
   UseOnClickOutside(ref, () => setPanelOpened(false));
 
-  let activeButton;
+  let isActiveButton;
 
   if (isBrowser) {
     const browserUrl = window.location.href;
@@ -52,7 +49,7 @@ const SAAMainMenuGroup = ({
     // Loop through children menu items and add active styles to parent button if any childrem items are active
     for (let i = 0; i < childMenuItems.length; i += 1) {
       if (browserUrl.includes(childMenuItems[i].link?.cached_url)) {
-        activeButton = true;
+        isActiveButton = true;
       }
     }
   }
@@ -65,11 +62,11 @@ const SAAMainMenuGroup = ({
           onClick={togglePanel}
           aria-expanded={panelOpened}
           ref={parentRef}
-          className={styles.parentButton({ panelOpened, activeButton })}
+          className={styles.parentButton({ panelOpened, isActiveButton })}
         >
           {parentText}
           <ChevronDownIcon
-            className={styles.chevron({ panelOpened, activeButton })}
+            className={styles.chevron({ panelOpened, isActiveButton })}
             aria-hidden="true"
           />
         </button>
@@ -88,11 +85,7 @@ const SAAMainMenuGroup = ({
         className={styles.childMenu({ panelFacing, panelOpened })}
         aria-hidden={!panelOpened}
       >
-        <CreateBloks
-          blokSection={childMenuItems}
-          className={childItemClasses}
-          hasExternalIcon
-        />
+        <CreateBloks blokSection={childMenuItems} hasExternalIcon />
       </ul>
     </li>
   );

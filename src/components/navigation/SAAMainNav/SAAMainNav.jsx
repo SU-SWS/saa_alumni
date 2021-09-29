@@ -55,7 +55,7 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
       >
         <button
           type="button"
-          className={styles.burgerMobile}
+          className={styles.burgerMobileSAA}
           onClick={toggleMenu}
           aria-expanded={menuOpened}
           aria-label={menuOpened ? 'Close Menu' : 'Open Menu'}
