@@ -2,10 +2,10 @@ import { dcnb } from 'cnbuilder';
 
 // Syles for top level links
 const topLinkMobile =
-  'su-flex su-items-center hocus:su-underline su-p-20 su-text-20';
+  'su-flex su-items-center hocus:su-underline hocus:su-text-white hocus:su-bg-cardinal-red-xxdark su-p-20 su-text-20';
 
 const topLinkDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-19 2xl:su-text-21';
+  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-19 2xl:su-text-21';
 
 // Styles for top level buttons
 const buttonMobile =
@@ -32,11 +32,24 @@ export const parentButton = ({ panelOpened } = {}) =>
         panelOpened,
     }
   );
+export const chevron = ({ panelOpened } = {}) =>
+  dcnb(
+    'su-inline-block su-text-white su-transition',
+    chevronMobile,
+    chevronDesktop,
+    {
+      'su-transform-gpu su-rotate-180': panelOpened,
+    }
+  );
 export const topLink = dcnb(
-  'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-no-underline',
+  'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset',
   topLinkMobile,
   topLinkDesktop
 );
+
+export const activeTopLink =
+  'su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight';
+
 export const childMenu = ({ panelFacing, panelOpened } = {}) =>
   dcnb(
     'su-list-unstyled su-transform-gpu su-transition su-ease-linear lg:su-ease-out su-origin-top lg:su-shadow-md lg:su-w-[29rem] su-px-20 su-pt-2 lg:su-py-10 su-relative lg:su-absolute su-bg-cardinal-red-xdark children:su-mb-0',

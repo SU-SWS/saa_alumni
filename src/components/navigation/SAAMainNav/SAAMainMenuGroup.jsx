@@ -55,9 +55,17 @@ const SAAMainMenuGroup = ({
           className={styles.parentButton({ panelOpened })}
         >
           {parentText}
+          <ChevronDownIcon
+            className={styles.chevron({ panelOpened })}
+            aria-hidden="true"
+          />
         </button>
       ) : (
-        <SbLink link={parentLink} classes={styles.topLink}>
+        <SbLink
+          link={parentLink}
+          classes={styles.topLink}
+          activeClass={styles.activeTopLink}
+        >
           {parentText}
         </SbLink>
       )}
