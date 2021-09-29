@@ -12,7 +12,7 @@ const CtaCard = ({
   <SbEditable content={blok}>
     <div
       className={dcnb(
-        "cta-card su-w-full su-relative su-transition-colors su-bg-digital-red su-text-white hover:su-bg-cardinal-red-xxdark focus-within:su-bg-cardinal-red-xxdark su-basefont-23 su-break-words su-rs-py-3 su-rs-px-2 su-flex su-flex-col su-justify-end"
+        "cta-card su-w-full su-relative su-transition-colors su-bg-digital-red su-text-white hover:su-bg-black focus-within:su-bg-black su-basefont-23 su-break-words su-rs-py-3 su-rs-px-2 su-flex su-flex-col su-justify-end"
       )}
     >
       <Heading
