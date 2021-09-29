@@ -13,6 +13,7 @@ const searchAutocomplete = ({
   autocompleteLinkClasses,
   autocompleteLinkFocusClasses,
 }) => {
+  // Use Escape key to close autocomplete dropdown if it's currently open
   UseEscape(() => {
     if (showAutocomplete) {
       setShowAutocomplete(false);
