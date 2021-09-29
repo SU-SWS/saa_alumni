@@ -6,6 +6,7 @@ import { Container } from 'decanter-react';
 import Layout from '../../partials/layout';
 import { TripContent } from '../../../types/TripType';
 import * as styles from './TripPage.styles';
+import Ankle from '../../partials/ankle/ankle';
 
 import { TripPageHeroSection } from './TripPageHeroSection';
 import { TripPageOverviewSection } from './TripPageOverviewSection';
@@ -45,6 +46,8 @@ const TripPage = (props) => {
       itineraryAboveContent,
       itineraryBelowContent,
       itineraryItems,
+      // Ankle
+      ankleContent,
     } = {},
   } = props;
   const printContainerRef = useRef(null);
@@ -98,6 +101,9 @@ const TripPage = (props) => {
             />
             {/* TODO: Details Section */}
             {/* TODO: Related Trips */}
+            {ankleContent && ankleContent.length > 0 && (
+              <Ankle isDark {...props} />
+            )}
           </Container>
         </div>
       </Layout>
