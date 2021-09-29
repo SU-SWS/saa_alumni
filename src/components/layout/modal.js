@@ -33,14 +33,19 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
 
   UseEscape(() => {
     if (isOpen) {
-      closeButton.current.click();
+      const searchInputModal =
+        document.getElementsByClassName("search-input-modal")[0];
       const mastheadDesktop =
         document.getElementsByClassName("masthead-desktop")[0];
 
-      if (getComputedStyle(mastheadDesktop, null).display === "none") {
-        document.getElementById("masthead-search-button-mobile").focus();
-      } else {
-        document.getElementById("masthead-search-button-desktop").focus();
+      if (searchInputModal.getAttribute("aria-expanded") !== "true") {
+        closeButton.current.click();
+
+        if (getComputedStyle(mastheadDesktop, null).display === "none") {
+          document.getElementById("masthead-search-button-mobile").focus();
+        } else {
+          document.getElementById("masthead-search-button-desktop").focus();
+        }
       }
     }
   });
