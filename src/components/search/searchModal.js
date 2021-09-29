@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Heading } from "decanter-react";
 import { useStaticQuery, graphql, navigate } from "gatsby";
 import Modal from "../layout/modal";
