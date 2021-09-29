@@ -57,18 +57,7 @@ const EmbedCard = ({ blok: { embed: html }, blok }) => {
             aria-busy={!scriptLoaded}
             className="su-w-full"
           />
-          {!scriptLoaded && (
-            <>
-              // <Loader
-              //   type="TailSpin"
-              //   color="#00BFFF"
-              //   height={50}
-              //   width={50}
-              //   timeout={30000}
-              // />
-              <p>Loading...</p>
-            </>
-          )}
+          {!scriptLoaded && <p>Loading...</p>}
         </>
       ) : (
         <div ref={myEmbed} />
