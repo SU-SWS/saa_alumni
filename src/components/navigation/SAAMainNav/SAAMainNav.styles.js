@@ -1,6 +1,6 @@
 import { dcnb } from 'cnbuilder';
 
-export const root = 'su-hidden lg:su-block lg:su-flex children:su-mb-0';
+export const root = 'su-hidden lg:su-flex children:su-mb-0';
 export const menu =
   'su-flex su-flex-row su-items-end su-ml-auto su-list-unstyled children:su-mb-0';
 
