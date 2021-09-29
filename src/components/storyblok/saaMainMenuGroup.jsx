@@ -2,11 +2,7 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import SAAMainMenuGroup from '../navigation/SAAMainNav/SAAMainMenuGroup';
 
-export const SBSAAMainMenuGroup = ({
-  blok,
-  childMenuClasses,
-  childItemClasses,
-}) => {
+export const SBSAAMainMenuGroup = ({ blok }) => {
   const { parentText, parentLink, childMenuItems, panelFacing } = blok;
 
   return (
@@ -15,8 +11,6 @@ export const SBSAAMainMenuGroup = ({
         parentText={parentText}
         parentLink={parentLink}
         childMenuItems={childMenuItems}
-        childMenuClasses={childMenuClasses}
-        childItemClasses={childItemClasses}
         panelFacing={panelFacing}
       />
     </SbEditable>
