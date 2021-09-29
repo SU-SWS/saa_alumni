@@ -17,12 +17,14 @@ const buttonDesktop =
 // Styles for the down chevron
 const chevronMobile =
   'su-absolute su-right-0 su-w-[3.4rem] su-pt-3 su-pb-1 su-px-2 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-20';
+
 const chevronDesktop =
   'lg:su-relative lg:su-mr-0 lg:su-w-[1.2em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent';
 
 export const root =
   'su-relative su-border-b su-border-solid su-border-digital-red-light last:su-border-none lg:su-inline-block lg:su-border-none';
-export const parentButton = ({ panelOpened } = {}) =>
+
+export const parentButton = ({ panelOpened, activeButton } = {}) =>
   dcnb(
     'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset',
     buttonMobile,
@@ -30,17 +32,22 @@ export const parentButton = ({ panelOpened } = {}) =>
     {
       'lg:hocus:!su-text-white !su-bg-cardinal-red-xxdark lg:!su-bg-cardinal-red-xdark !su-border-cardinal-red-xdark hover:!su-bg-digital-red lg:hover:!su-bg-cardinal-red-xdark lg:!su-border-transparent':
         panelOpened,
+      'su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
+        activeButton,
     }
   );
-export const chevron = ({ panelOpened } = {}) =>
+
+export const chevron = ({ panelOpened, activeButton } = {}) =>
   dcnb(
     'su-inline-block su-text-white su-transition',
     chevronMobile,
     chevronDesktop,
     {
       'su-transform-gpu su-rotate-180': panelOpened,
+      'su-bg-digital-red-light lg:su-text-digital-red-xlight': activeButton,
     }
   );
+
 export const topLink = dcnb(
   'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset',
   topLinkMobile,
@@ -49,6 +56,9 @@ export const topLink = dcnb(
 
 export const activeTopLink =
   'su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight';
+
+export const topLinkIcon =
+  'su-top-2 lg:su-top-[-0.2rem] su-text-white group-hocus:su-text-digital-red-xlight';
 
 export const childMenu = ({ panelFacing, panelOpened } = {}) =>
   dcnb(

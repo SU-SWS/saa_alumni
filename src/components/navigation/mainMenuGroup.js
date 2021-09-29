@@ -3,7 +3,7 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 import CreateBloks from '../../utilities/createBloks';
 import UseEscape from '../../hooks/useEscape';
 import UseOnClickOutside from '../../hooks/useOnClickOutside';
-import { isExpanded } from '../../utilities/menuHelpers';
+import { isExpanded, isBrowser } from '../../utilities/menuHelpers';
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
@@ -26,7 +26,6 @@ const MainMenuGroup = ({
 
   UseOnClickOutside(ref, () => setPanelOpened(false));
 
-  const isBrowser = typeof window !== 'undefined';
   let activeButton = '';
   let activeChevron = '';
 

@@ -8,7 +8,7 @@ import UseEscape from '../../../hooks/useEscape';
 import UseOnClickOutside from '../../../hooks/useOnClickOutside';
 import SbLink from '../../../utilities/sbLink';
 import * as styles from './SAAMainMenuGroup.styles';
-import { isExpanded } from '../../../utilities/menuHelpers';
+import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 
 export const SAAMainMenuGroupProps = {
   parentText: PropTypes.string.isRequired,
@@ -44,6 +44,19 @@ const SAAMainMenuGroup = ({
 
   UseOnClickOutside(ref, () => setPanelOpened(false));
 
+  let activeButton;
+
+  if (isBrowser) {
+    const browserUrl = window.location.href;
+
+    // Loop through children menu items and add active styles to parent button if any childrem items are active
+    for (let i = 0; i < childMenuItems.length; i += 1) {
+      if (browserUrl.includes(childMenuItems[i].link?.cached_url)) {
+        activeButton = true;
+      }
+    }
+  }
+
   return (
     <li className={styles.root} ref={ref}>
       {parentLink?.url === '' && parentLink?.cached_url === '' ? (
@@ -52,11 +65,11 @@ const SAAMainMenuGroup = ({
           onClick={togglePanel}
           aria-expanded={panelOpened}
           ref={parentRef}
-          className={styles.parentButton({ panelOpened })}
+          className={styles.parentButton({ panelOpened, activeButton })}
         >
           {parentText}
           <ChevronDownIcon
-            className={styles.chevron({ panelOpened })}
+            className={styles.chevron({ panelOpened, activeButton })}
             aria-hidden="true"
           />
         </button>
@@ -65,6 +78,8 @@ const SAAMainMenuGroup = ({
           link={parentLink}
           classes={styles.topLink}
           activeClass={styles.activeTopLink}
+          externalIconClasses={styles.topLinkIcon}
+          hasExternalIcon
         >
           {parentText}
         </SbLink>
