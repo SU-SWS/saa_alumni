@@ -91,7 +91,6 @@ export const TripPageOverviewSection = (props) => {
                 <CtaButton
                   className={styles.ctaBtn}
                   href={reservationURL?.cached_url}
-                  target="_blank"
                   text="Reserve"
                   icon="more"
                   animate="right"
@@ -103,7 +102,6 @@ export const TripPageOverviewSection = (props) => {
                 <CtaButton
                   className={styles.ctaBtn}
                   href={inquireURL.cached_url}
-                  target="_blank"
                   text="Inquire"
                   icon="more"
                   animate="right"
