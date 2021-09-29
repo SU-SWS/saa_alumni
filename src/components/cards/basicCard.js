@@ -38,6 +38,8 @@ const BasicCard = ({
         imageFocus={imageFocus}
         smartFocus={focus}
         loading="lazy"
+        width="600"
+        height="400"
       />
     </div>
   );
@@ -53,6 +55,8 @@ const BasicCard = ({
         smartFocus={focus}
         className={isMinimal ? '' : 'su-rs-ml-2'}
         loading="lazy"
+        width="126"
+        height="126"
       />
     );
   }
