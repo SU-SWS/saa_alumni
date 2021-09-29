@@ -15,8 +15,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import SbEditable from "storyblok-react";
 import postscribe from "postscribe";
-import Loader from "react-loader-spinner";
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+// import Loader from "react-loader-spinner";
+// import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const EmbedCard = ({ blok: { embed: html }, blok }) => {
   const myEmbed = useRef(null);
@@ -59,13 +59,13 @@ const EmbedCard = ({ blok: { embed: html }, blok }) => {
           />
           {!scriptLoaded && (
             <>
-              <Loader
-                type="TailSpin"
-                color="#00BFFF"
-                height={50}
-                width={50}
-                timeout={30000}
-              />
+              // <Loader
+              //   type="TailSpin"
+              //   color="#00BFFF"
+              //   height={50}
+              //   width={50}
+              //   timeout={30000}
+              // />
               <p>Loading...</p>
             </>
           )}

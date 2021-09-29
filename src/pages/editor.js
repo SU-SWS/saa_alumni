@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import React, { useState, useEffect } from "react";
 import SbEditable from "storyblok-react";
-import Loader from "react-loader-spinner";
+// import Loader from "react-loader-spinner";
 import { useStaticQuery, graphql } from "gatsby";
 import Components from "../components/components";
 
@@ -156,7 +156,6 @@ const StoryblokEntry = (props) => {
   return (
     <div className="su-cc">
       <h1>Loading...</h1>
-      <Loader type="Oval" color="#00BFFF" height={125} width={125} />
     </div>
   );
 };
