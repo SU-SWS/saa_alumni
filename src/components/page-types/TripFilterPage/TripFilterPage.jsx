@@ -55,6 +55,7 @@ const TripFilterPage = (props) => {
               alt={alt}
               focus={focus}
               overlay={false}
+              className="su-aspect-w-5 su-aspect-h-2"
             />
             <Container className="su-rs-mt-6 su-rs-mb-8">
               <Heading

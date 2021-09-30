@@ -14,4 +14,4 @@ export const overlay = ({ overlay: overlayType }) =>
       'su-from-transparent': overlayType === 'normal',
     }
   );
-export const content = 'su-relative su-rs-pt-9 su-rs-pb-8';
+export const content = 'su-relative su-rs-pt-10 su-rs-pb-8';
