@@ -8,9 +8,10 @@ import UseEscape from '../../../hooks/useEscape';
 import UseOnClickOutside from '../../../hooks/useOnClickOutside';
 import * as styles from './SAAMainNav.styles';
 import { isExpanded } from '../../../utilities/menuHelpers';
+import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 
 export const SAAMainNavProps = {
-  menuItems: PropTypes.array,
+  menuItems: SBBlokType,
   ariaLabel: PropTypes.string,
 };
 

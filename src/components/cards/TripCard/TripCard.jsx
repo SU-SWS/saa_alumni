@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { FlexBox, Heading } from 'decanter-react';
+import { FlexBox, Heading, SrOnlyText } from 'decanter-react';
 import CardImage from '../../media/cardImage';
 import { Date } from '../../simple/Date/Date';
 import HeroIcon from '../../simple/heroIcon';
@@ -43,7 +43,7 @@ const TripCard = ({
 
   return (
     <FlexBox direction="col" element="article" className={styles.root}>
-      <div>
+      <div className={styles.imageWrapper}>
         <CardImage
           className={styles.image}
           filename={image.filename}
@@ -66,6 +66,7 @@ const TripCard = ({
               tracking="normal"
               className={styles.heading}
             >
+              {tag && <SrOnlyText srText={`${tag}: `} />}
               {tripTitle}
             </Heading>
             <HeroIcon
@@ -74,7 +75,7 @@ const TripCard = ({
               isAnimate
             />
           </Link>
-          {tag && <TabLabel text={tag} />}
+          {tag && <TabLabel text={tag} aria-hidden />}
           <p className={styles.subheading}>{tripSubtitle}</p>
           <p className={styles.description}>{description}</p>
         </div>

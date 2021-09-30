@@ -10,12 +10,13 @@ import OpenSearchModalButton from '../../search/openSearchModalButton';
 import SbLink from '../../../utilities/sbLink';
 import SearchModal from '../../search/searchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
+import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 
 export const GlobalHeaderProps = {
   siteName: PropTypes.string,
   siteLink: SBLinkType,
-  utilityNav: PropTypes.array,
-  mainNav: PropTypes.array,
+  utilityNav: SBBlokType,
+  mainNav: SBBlokType,
   hasHero: PropTypes.bool,
   isDark: PropTypes.bool,
 };

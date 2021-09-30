@@ -21,7 +21,6 @@ const TripFilterPage = (props) => {
     title,
     intro,
     heroImage: { filename, alt, focus } = {},
-    hero,
     belowContent,
     ankleContent,
     primaryFilter,
@@ -41,7 +40,7 @@ const TripFilterPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout isDark hasHero={filename || hero.length > 0} {...props}>
+      <Layout isDark hasHero={filename} {...props}>
         <Container
           element="main"
           id="main-content"
@@ -49,7 +48,6 @@ const TripFilterPage = (props) => {
           width="full"
         >
           <header className="su-basefont-23">
-            <CreateBloks blokSection={hero} />
             <HeroImage
               filename={filename}
               alt={alt}

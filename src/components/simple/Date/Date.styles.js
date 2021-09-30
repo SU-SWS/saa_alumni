@@ -3,7 +3,7 @@ import { dcnb } from 'cnbuilder';
 export const root = ({ className, isMinimal } = {}) =>
   dcnb(
     className,
-    'su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-saa-black su-to-saa-black-opacity-80 su-w-fit group-hover:su-from-digital-red group-hover:su-to-digital-red-light',
+    'su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-saa-black su-to-saa-black-opacity-80 su-w-fit group-hover:su-from-black group-hover:su-to-black',
     { 'su-bg-transparent': isMinimal }
   );
 

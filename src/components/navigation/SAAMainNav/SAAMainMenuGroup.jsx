@@ -9,11 +9,12 @@ import UseOnClickOutside from '../../../hooks/useOnClickOutside';
 import SbLink from '../../../utilities/sbLink';
 import * as styles from './SAAMainMenuGroup.styles';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
+import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 
 export const SAAMainMenuGroupProps = {
   parentText: PropTypes.string.isRequired,
   parentLink: SBLinkType,
-  childMenuItems: PropTypes.array,
+  childMenuItems: SBBlokType,
   panelFacing: PropTypes.string,
 };
 
