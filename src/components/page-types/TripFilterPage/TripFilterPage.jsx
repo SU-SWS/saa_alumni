@@ -54,7 +54,7 @@ const TripFilterPage = (props) => {
                 level={1}
                 font="serif"
                 weight="bold"
-                className="su-text-white su-text-m4 lg:su-text-m6 xl:su-text-m7 2xl:su-text-m8 su-mx-auto su-text-center su-mb-02em"
+                className="su-text-white su-text-m4 md:su-text-m6 xl:su-text-m7 2xl:su-text-m8 su-mx-auto su-text-center su-mb-02em"
               >
                 {title}
               </Heading>
@@ -66,7 +66,7 @@ const TripFilterPage = (props) => {
           <Grid xs={12} gap className={styles.filterSection}>
             <GridCell xs={12} lg={3} className={styles.filterSidebar}>
               <Heading level={2} className={styles.filterHeading}>
-                FILTER BY
+                Filter by
               </Heading>
               <div className={styles.filtersList}>
                 {filters
