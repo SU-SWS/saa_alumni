@@ -12,6 +12,7 @@ import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterPage.styles';
 import FaIcon from '../../simple/faIcon';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
+import Ankle from '../../partials/ankle/ankle';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -22,6 +23,7 @@ const TripFilterPage = (props) => {
     hero,
     aboveContent,
     belowContent,
+    ankleContent,
     primaryFilter,
   } = blok;
 
@@ -152,6 +154,9 @@ const TripFilterPage = (props) => {
             <div className="trip-filter-page-below-content">
               <CreateBloks blokSection={belowContent} />
             </div>
+          )}
+          {ankleContent && ankleContent.length > 0 && (
+            <Ankle isDark {...props} />
           )}
         </Container>
       </Layout>
