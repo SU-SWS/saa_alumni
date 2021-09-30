@@ -9,7 +9,7 @@ export const root = ({ checked }) =>
     }
   );
 export const label =
-  'su-relative su-p-10 su-flex su-flex-row su-items-center su-text-white su-bg-black-true focus-within:su-bg-transparent group-hover:su-bg-transparent su-cursor-pointer';
+  'su-relative su-text-16 xl:su-text-21 su-p-04em su-flex su-flex-row su-items-center su-text-white su-bg-black-true focus-within:su-bg-transparent group-hover:su-bg-transparent su-cursor-pointer';
 export const icon = ({ checked }) =>
-  dcnb('su-mr-8 su-w-[1em]', { 'su-opacity-0': !checked });
+  dcnb('su-mr-8 su-w-[1em] su-flex-shrink-0', { 'su-opacity-0': !checked });
 export const input = 'su-absolute su-opacity-0 su-w-[0] su-h-[0]';

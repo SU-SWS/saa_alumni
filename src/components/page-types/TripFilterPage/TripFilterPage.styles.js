@@ -1,8 +1,7 @@
 export const page =
   'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black';
-export const filterSection =
-  'su-grid su-grid-cols-4 su-gap-x-lg su-mt-108 su-mb-216';
-export const filterSidebar = 'su-bg-black-true su-p-27 su-pb-50';
+export const filterSection = 'su-cc su-rs-pb-6';
+export const filterSidebar = 'su-bg-black-true su-rs-px-2 su-rs-pt-2 su-rs-pb-4';
 export const filterHeading = 'su-type-0 su-text-white su-font-semibold';
 export const filtersList = '';
 export const activeFilters =
@@ -16,4 +15,4 @@ export const clearAllHover =
   'su-absolute su-bottom-[-0.5rem] su-left-0 su-w-full su-pt-2 group-hocus:su-bg-gradient-to-r su-from-palo-verde-dark su-to-digital-blue';
 export const clearAllIcon = 'su-text-saa-electric-blue su-ml-8';
 export const filteredContent = 'su-text-white su-col-span-3';
-export const trips = 'su-grid su-grid-cols-2 su-gap-lg';
+export const trips = '';

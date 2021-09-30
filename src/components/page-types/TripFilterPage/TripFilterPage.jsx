@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { Container, Heading } from 'decanter-react';
+import { Container, Heading, Grid, GridCell } from 'decanter-react';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';
@@ -21,7 +21,6 @@ const TripFilterPage = (props) => {
     intro,
     heroImage: { filename, focus } = {},
     hero,
-    aboveContent,
     belowContent,
     ankleContent,
     primaryFilter,
@@ -64,36 +63,29 @@ const TripFilterPage = (props) => {
               </p>
             </Container>
           </header>
-          {aboveContent && aboveContent.length > 0 && (
-            <div className="trip-filter-page-above-content">
-              <CreateBloks blokSection={aboveContent} />
-            </div>
-          )}
-          <Container width="site">
-            <div className={styles.filterSection}>
-              <div className="trip-filters">
-                <div className={styles.filterSidebar}>
-                  <Heading level={2} className={styles.filterHeading}>
-                    FILTER BY
-                  </Heading>
-                  <div className={styles.filtersList}>
-                    {filters
-                      .filter(
-                        ({ key }) =>
-                          key !== primaryFilter.datasource ||
-                          drillDownFilterTypes.includes(key)
-                      )
-                      .map((filter) => (
-                        <TripFilterList
-                          key={filter.key}
-                          filter={filter}
-                          clearFilterType={clearFilterType}
-                          toggleFilter={toggleFilter}
-                        />
-                      ))}
-                  </div>
-                </div>
+          <Grid xs={12} gap className={styles.filterSection}>
+            <GridCell xs={12} lg={3} className={styles.filterSidebar}>
+              <Heading level={2} className={styles.filterHeading}>
+                FILTER BY
+              </Heading>
+              <div className={styles.filtersList}>
+                {filters
+                  .filter(
+                    ({ key }) =>
+                      key !== primaryFilter.datasource ||
+                      drillDownFilterTypes.includes(key)
+                  )
+                  .map((filter) => (
+                    <TripFilterList
+                      key={filter.key}
+                      filter={filter}
+                      clearFilterType={clearFilterType}
+                      toggleFilter={toggleFilter}
+                    />
+                  ))}
               </div>
+            </GridCell>
+            <GridCell xs={12} lg={9} xxl={8}>
               <div className={styles.filteredContent}>
                 {activeFilters.length > 0 && (
                   <div className={styles.activeFilters}>
@@ -128,7 +120,10 @@ const TripFilterPage = (props) => {
                     </div>
                   </div>
                 )}
-                <div
+                <Grid
+                  xs={1}
+                  md={2}
+                  gap
                   className={dcnb('filtered-trips-list', styles.trips)}
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
                   tabIndex={0}
@@ -136,7 +131,7 @@ const TripFilterPage = (props) => {
                   {trips.map((trip) => (
                     <TripCard key={trip.id} trip={trip} />
                   ))}
-                </div>
+                </Grid>
                 {totalPages > 1 && (
                   <div className="pagination">
                     <Pagination
@@ -148,8 +143,8 @@ const TripFilterPage = (props) => {
                   </div>
                 )}
               </div>
-            </div>
-          </Container>
+            </GridCell>
+          </Grid>
           {belowContent && belowContent.length > 0 && (
             <div className="trip-filter-page-below-content">
               <CreateBloks blokSection={belowContent} />
