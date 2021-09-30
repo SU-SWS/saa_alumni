@@ -1,8 +1,10 @@
 export const page =
   'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black';
 export const filterSection = 'su-cc su-rs-pb-6';
-export const filterSidebar = 'su-bg-black-true su-px-18 xl:su-px-26 2xl:su-px-38 su-rs-pt-2 su-rs-pb-4';
-export const filterHeading = 'su-type-0 su-text-white su-font-semibold su-uppercase su-tracking-normal';
+export const filterSidebar =
+  'su-bg-black-true su-px-18 xl:su-px-26 2xl:su-px-38 su-rs-pt-2 su-rs-pb-4';
+export const filterHeading =
+  'su-type-0 su-text-white su-font-semibold su-uppercase su-tracking-normal';
 export const filtersList = '';
 export const activeFilters =
   'su-flex su-flex-row su-justify-between su-items-center su-mb-34';
