@@ -13,13 +13,14 @@ import * as styles from './TripFilterPage.styles';
 import FaIcon from '../../simple/faIcon';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 import Ankle from '../../partials/ankle/ankle';
+import { HeroImage } from '../../composite/HeroImage/HeroImage';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
   const {
     title,
     intro,
-    heroImage: { filename, focus } = {},
+    heroImage: { filename, alt, focus } = {},
     hero,
     belowContent,
     ankleContent,
@@ -49,6 +50,12 @@ const TripFilterPage = (props) => {
         >
           <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
+            <HeroImage
+              filename={filename}
+              alt={alt}
+              focus={focus}
+              overlay={false}
+            />
             <Container className="su-rs-mt-6 su-rs-mb-8">
               <Heading
                 level={1}

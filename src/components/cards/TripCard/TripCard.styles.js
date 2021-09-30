@@ -11,4 +11,4 @@ export const heading =
   'su-mt-32 su-type-0 su-font-bold su-relative su-inline su-text-white';
 export const icon = 'su-relative su-inline-block group-hocus:su-text-white';
 export const subheading = 'su-mt-4 su-mb-0 su-type-0 su-font-semibold';
-export const description = 'su-rs-mt-0 su-mb-0 su-card-paragraph ';
+export const description = 'su-rs-mt-0 su-mb-0 su-card-paragraph';

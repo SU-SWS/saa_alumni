@@ -24,7 +24,7 @@ export const HeroImage = ({
 }) => (
   <Container className={dcnb('hero', className, styles.root)} width="full">
     {filename && (
-      <figure className={styles.imgWrapper}>
+      <figure className={styles.imgWrapper({ children })}>
         <FullWidthImage
           filename={filename}
           smartFocus={focus}
@@ -34,7 +34,7 @@ export const HeroImage = ({
         />
       </figure>
     )}
-    <div className={styles.overlay({ overlay })} aria-hidden />
+    {overlay && <div className={styles.overlay({ overlay })} aria-hidden />}
     {children && <Container className={styles.content}>{children}</Container>}
   </Container>
 );
