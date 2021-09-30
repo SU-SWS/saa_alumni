@@ -15,7 +15,15 @@ import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
-  const { hero, aboveContent, belowContent, primaryFilter } = blok;
+  const {
+    title,
+    intro,
+    heroImage: { filename, focus } = {},
+    hero,
+    aboveContent,
+    belowContent,
+    primaryFilter,
+  } = blok;
 
   const {
     trips,
@@ -31,7 +39,7 @@ const TripFilterPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero {...props}>
+      <Layout isDark hasHero={filename || hero.length > 0} {...props}>
         <Container
           element="main"
           id="main-content"
@@ -40,6 +48,19 @@ const TripFilterPage = (props) => {
         >
           <header className="su-basefont-23">
             <CreateBloks blokSection={hero} />
+            <Container className="su-rs-mt-6 su-rs-mb-8">
+              <Heading
+                level={1}
+                font="serif"
+                weight="bold"
+                className="su-text-white su-text-m4 lg:su-text-m6 xl:su-text-m7 2xl:su-text-m8 su-mx-auto su-text-center su-mb-02em"
+              >
+                {title}
+              </Heading>
+              <p className="su-text-white su-mx-auto su-text-center su-max-w-prose su-subheading su-leading-display">
+                {intro}
+              </p>
+            </Container>
           </header>
           {aboveContent && aboveContent.length > 0 && (
             <div className="trip-filter-page-above-content">
