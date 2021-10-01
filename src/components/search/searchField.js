@@ -1,8 +1,8 @@
 import React, { useState, createRef, useEffect } from 'react';
 import { X, Search } from 'react-hero-icon/solid';
 import SearchAutocomplete from './searchAutocomplete';
-import UseEscape from '../../hooks/useEscape';
-import UseOnClickOutside from '../../hooks/useOnClickOutside';
+import useEscape from '../../hooks/useEscape';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const SearchField = React.forwardRef(
   (
@@ -62,7 +62,7 @@ const SearchField = React.forwardRef(
       setQuery(defaultValue);
     }, [defaultValue]);
 
-    UseOnClickOutside(inputWrapper, () => {
+    useOnClickOutside(inputWrapper, () => {
       setShowAutocomplete(false);
     });
 
@@ -94,7 +94,7 @@ const SearchField = React.forwardRef(
       }
     };
 
-    UseEscape(() => {
+    useEscape(() => {
       if (clearOnEscape && document.activeElement === inputRef.current) {
         clearHandler();
       }

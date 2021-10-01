@@ -1,9 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { dcnb } from 'cnbuilder';
-import UseEscape from '../../hooks/useEscape';
-import UseOnClickOutside from '../../hooks/useOnClickOutside';
+import useEscape from '../../hooks/useEscape';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 import CreateStories from '../../utilities/createStories';
+import { isExpanded } from '../../utilities/menuHelpers';
 
 const VerticalNav = ({ blok: { verticalNav }, className, id, pageLink }) => {
   const [navOpened, setNavOpened] = useState(false);
@@ -14,22 +15,20 @@ const VerticalNav = ({ blok: { verticalNav }, className, id, pageLink }) => {
     setNavOpened(!navOpened);
   };
 
-  const isExpanded = (x) => x.getAttribute('aria-expanded') === 'true';
-
   let NavIcon = MenuIcon;
   if (navOpened) {
     NavIcon = XIcon;
   }
 
   // Close menu if escape key is pressed and return focus to the menu button
-  UseEscape(() => {
+  useEscape(() => {
     if (burgerRef.current && isExpanded(burgerRef.current)) {
       setNavOpened(false);
       burgerRef.current.focus();
     }
   });
 
-  UseOnClickOutside(ref, () => setNavOpened(false));
+  useOnClickOutside(ref, () => setNavOpened(false));
 
   return (
     <nav
@@ -69,9 +68,10 @@ const VerticalNav = ({ blok: { verticalNav }, className, id, pageLink }) => {
       <CreateStories
         stories={verticalNav}
         pageLink={pageLink}
-        className={`${
-          navOpened ? 'su-block' : 'su-hidden'
-        } lg:su-hidden su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full`}
+        className={dcnb(
+          'lg:su-hidden su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full',
+          `${navOpened ? 'su-block' : 'su-hidden'}`
+        )}
         aria-hidden={!navOpened}
       />
     </nav>
