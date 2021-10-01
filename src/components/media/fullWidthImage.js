@@ -3,6 +3,7 @@ import { dcnb } from 'cnbuilder';
 import transformImage from '../../utilities/transformImage';
 import getImageSize from '../../utilities/getImageSize';
 import { objectPosition } from '../../utilities/dataSource';
+import { convertAspectRatio } from '../../utilities/convertAspectRatio';
 
 const FullWidthImage = ({
   filename,
@@ -30,10 +31,7 @@ const FullWidthImage = ({
 
   if (aspectRatio) {
     isCropped = true;
-  }
-
-  if (aspectRatio === '5x2') {
-    heightRatio = 2 / 5;
+    heightRatio = 1 / convertAspectRatio(aspectRatio);
   }
 
   if (filename) {

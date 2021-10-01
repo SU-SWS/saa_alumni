@@ -17,4 +17,5 @@ export const clearAllHover =
   'su-absolute su-bottom-[-0.5rem] su-left-0 su-w-full su-pt-2 group-hocus:su-bg-gradient-to-r su-from-palo-verde-dark su-to-digital-blue';
 export const clearAllIcon = 'su-text-saa-electric-blue su-ml-8';
 export const filteredContent = 'su-text-white su-col-span-3';
-export const trips = 'su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-justify-items-center';
+export const trips =
+  'su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-justify-items-center';
