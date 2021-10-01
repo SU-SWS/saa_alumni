@@ -12,6 +12,7 @@ export const HeroImageProps = {
   className: PropTypes.string,
   children: PropTypes.element,
   overlay: PropTypes.oneOf(['normal', 'dark', false]),
+  aspectRatio: PropTypes.string,
 };
 
 export const HeroImage = ({
@@ -21,6 +22,7 @@ export const HeroImage = ({
   className,
   children,
   overlay = 'normal',
+  aspectRatio,
 }) => (
   <Container className={dcnb('hero', className, styles.root)} width="full">
     {filename && (
@@ -30,6 +32,7 @@ export const HeroImage = ({
           smartFocus={focus}
           className={styles.img}
           loading="eager"
+          aspectRatio={aspectRatio}
           alt={alt}
         />
       </figure>

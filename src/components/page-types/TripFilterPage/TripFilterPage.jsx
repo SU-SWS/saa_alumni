@@ -53,6 +53,7 @@ const TripFilterPage = (props) => {
               alt={alt}
               focus={focus}
               overlay={false}
+              aspectRatio="5x2"
               className="su-aspect-w-5 su-aspect-h-2"
             />
             <Container className="su-rs-mt-6 su-rs-mb-8">

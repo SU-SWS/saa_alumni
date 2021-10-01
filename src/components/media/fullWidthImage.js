@@ -11,6 +11,7 @@ const FullWidthImage = ({
   imageFocus,
   smartFocus,
   loading,
+  aspectRatio,
   ...props
 }) => {
   const imgFocus = objectPosition[imageFocus] ?? objectPosition.center;
@@ -24,6 +25,16 @@ const FullWidthImage = ({
   let imgSizes;
   let imgSrc = '';
   let imgAspectRatio = '';
+  let heightRatio;
+  let isCropped = false;
+
+  if (aspectRatio) {
+    isCropped = true;
+  }
+
+  if (aspectRatio === '5x2') {
+    heightRatio = 2 / 5;
+  }
 
   if (filename) {
     // Get image size from URL of storyblok image
@@ -33,15 +44,30 @@ const FullWidthImage = ({
 
     originalImg = transformImage(filename, '', smartFocus);
     if (originalWidth >= 800) {
-      smallImg = transformImage(filename, '/800x0', smartFocus);
+      smallImg = transformImage(
+        filename,
+        `/800x${Math.floor(800 * heightRatio)}`,
+        smartFocus,
+        isCropped
+      );
     }
 
     if (originalWidth >= 1200) {
-      mediumImg = transformImage(filename, '/1200x0', smartFocus);
+      mediumImg = transformImage(
+        filename,
+        `/1200x${Math.floor(1200 * heightRatio)}`,
+        smartFocus,
+        isCropped
+      );
     }
 
     if (originalWidth >= 2000) {
-      largeImg = transformImage(filename, '/2000x0', smartFocus);
+      largeImg = transformImage(
+        filename,
+        `/2000x${Math.floor(2000 * heightRatio)}`,
+        smartFocus,
+        isCropped
+      );
     }
 
     imgSrcset = smallImg ? `${smallImg} 800w` : '';

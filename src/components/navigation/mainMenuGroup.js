@@ -61,12 +61,14 @@ const MainMenuGroup = ({
           aria-hidden="true"
         />
       </button>
-      <ul
-        className={styles.childMenu({ panelFacing, panelOpened })}
-        aria-hidden={!panelOpened}
-      >
-        <CreateBloks blokSection={menuItems} />
-      </ul>
+      {menuItems && menuItems.length > 0 && (
+        <ul
+          className={styles.childMenu({ panelFacing, panelOpened })}
+          aria-hidden={!panelOpened}
+        >
+          <CreateBloks blokSection={menuItems} />
+        </ul>
+      )}
     </li>
   );
 };
