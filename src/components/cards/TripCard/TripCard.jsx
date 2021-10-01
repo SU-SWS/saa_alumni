@@ -54,11 +54,11 @@ const TripCard = ({
           height="400"
         />
       </div>
-      <div className={styles.content}>
+      <div>
         <div className={styles.date}>
-          <Date startDate={startDate} endDate={endDate} />
+          <Date startDate={startDate} endDate={endDate} isSmall />
         </div>
-        <div>
+        <div className={styles.content}>
           <Link to={tripURL} className={styles.link}>
             <Heading
               level={headingLevel}

@@ -4,6 +4,9 @@
 module.exports = function () {
   return {
     black: {
+      opacity: {
+        80: 'rgba(46, 45, 41, 80%)', // For trip card date block
+      },
       'true-opacity': {
         20: 'rgba(0, 0, 0, 20%)', // For use in linear gradients
       },

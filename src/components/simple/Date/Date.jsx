@@ -8,10 +8,11 @@ export const DateProps = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string,
   isMinimal: PropTypes.bool,
+  isSmall: PropTypes.bool,
   className: PropTypes.string,
 };
 
-export const Date = ({ startDate, endDate, isMinimal, className }) => {
+export const Date = ({ startDate, endDate, isMinimal, isSmall, className }) => {
   const { start, end } = useMemo(
     () => ({ start: getDate(startDate), end: getDate(endDate) }),
     [startDate, endDate]
@@ -19,20 +20,20 @@ export const Date = ({ startDate, endDate, isMinimal, className }) => {
 
   return (
     <div className={styles.root({ className, isMinimal })}>
-      <div className={styles.dateWrapper({ isMinimal })}>
+      <div className={styles.dateWrapper({ isMinimal, isSmall })}>
         <time dateTime={start.dateTime} className={styles.date}>
           <span className={styles.month}> {start.month}</span>
-          <span className={styles.day}>{start.day}</span>
+          <span className={styles.day({ isSmall })}>{start.day}</span>
         </time>
         {end && (
           <>
-            <span className={styles.dash} aria-hidden="true">
+            <span className={styles.dash({ isSmall })} aria-hidden="true">
               &ndash;
             </span>
             <SrOnlyText srText="to" />
             <time dateTime={end.dateTime} className={styles.endDate}>
               <span className={styles.month}>{end.month}</span>
-              <span className={styles.day}>{end.day}</span>
+              <span className={styles.day({ isSmall })}>{end.day}</span>
             </time>
           </>
         )}
