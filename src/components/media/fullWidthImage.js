@@ -31,20 +31,30 @@ const FullWidthImage = ({
 
   if (aspectRatio) {
     isCropped = true;
-    heightRatio = 1 / convertAspectRatio(aspectRatio);
+    imgAspectRatio = convertAspectRatio(aspectRatio);
+    heightRatio = 1 / imgAspectRatio;
   }
 
   if (filename) {
     // Get image size from URL of storyblok image
     const originalWidth = getImageSize(filename).width;
     const originalHeight = getImageSize(filename).height;
-    imgAspectRatio = originalWidth / originalHeight;
 
-    originalImg = transformImage(filename, '', smartFocus);
+    if (!aspectRatio) {
+      imgAspectRatio = originalWidth / originalHeight;
+    }
+
+    originalImg = transformImage(
+      filename,
+      `/${originalWidth}x${Math.round(originalWidth * heightRatio)}`,
+      smartFocus,
+      isCropped
+    );
+
     if (originalWidth >= 800) {
       smallImg = transformImage(
         filename,
-        `/800x${Math.floor(800 * heightRatio)}`,
+        `/800x${Math.round(800 * heightRatio)}`,
         smartFocus,
         isCropped
       );
@@ -53,7 +63,7 @@ const FullWidthImage = ({
     if (originalWidth >= 1200) {
       mediumImg = transformImage(
         filename,
-        `/1200x${Math.floor(1200 * heightRatio)}`,
+        `/1200x${Math.round(1200 * heightRatio)}`,
         smartFocus,
         isCropped
       );
@@ -62,7 +72,7 @@ const FullWidthImage = ({
     if (originalWidth >= 2000) {
       largeImg = transformImage(
         filename,
-        `/2000x${Math.floor(2000 * heightRatio)}`,
+        `/2000x${Math.round(2000 * heightRatio)}`,
         smartFocus,
         isCropped
       );
