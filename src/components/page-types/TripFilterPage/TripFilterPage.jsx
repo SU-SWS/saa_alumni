@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { Container, Heading, Grid, GridCell } from 'decanter-react';
+import { Container, Heading, Grid, GridCell, Skiplink } from 'decanter-react';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';
@@ -72,6 +72,9 @@ const TripFilterPage = (props) => {
           </header>
           <Grid xs={12} gap className={styles.filterSection}>
             <GridCell xs={12} lg={3} className={styles.filterSidebar}>
+              <Skiplink anchorLink="#filtered-trips-list">
+                Skip pass filters to trip list
+              </Skiplink>
               <Heading level={2} className={styles.filterHeading}>
                 Filter by
               </Heading>
@@ -135,6 +138,9 @@ const TripFilterPage = (props) => {
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
                   tabIndex={0}
                 >
+                  <Heading level={2} srOnly id="filtered-trips-list">
+                    List of trips
+                  </Heading>
                   {trips.map((trip) => (
                     <TripCard key={trip.id} trip={trip} />
                   ))}
