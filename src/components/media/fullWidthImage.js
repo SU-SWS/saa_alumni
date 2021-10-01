@@ -26,7 +26,7 @@ const FullWidthImage = ({
   let imgSizes;
   let imgSrc = '';
   let imgAspectRatio = '';
-  let heightRatio;
+  let heightRatio = 0;
   let isCropped = false;
 
   if (aspectRatio) {
