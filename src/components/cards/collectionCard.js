@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import GradientCard from './gradientCard';
+import GradientCard from './GradientCard/GradientCard';
 
 const CollectionCard = ({
   blok: {
@@ -11,6 +11,7 @@ const CollectionCard = ({
     headingLevel,
   },
   blok,
+  isDark,
 }) => (
   <SbEditable content={blok}>
     <GradientCard
@@ -22,6 +23,7 @@ const CollectionCard = ({
       focus={focus}
       headingLevel={headingLevel}
       className="collection-card"
+      isDark={isDark}
     />
   </SbEditable>
 );

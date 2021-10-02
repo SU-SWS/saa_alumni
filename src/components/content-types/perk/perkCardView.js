@@ -1,6 +1,6 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import GradientCard from '../../cards/gradientCard';
+import GradientCard from '../../cards/GradientCard/GradientCard';
 
 const PerkCardView = ({
   blok: {
@@ -16,6 +16,7 @@ const PerkCardView = ({
   orientation,
   spacingBottom,
   cardImageFocus,
+  isDark,
 }) => (
   <SbEditable content={blok}>
     <GradientCard
@@ -29,9 +30,9 @@ const PerkCardView = ({
       headlingLevel={headingLevel}
       spacingBottom={spacingBottom}
       tabText={isNew ? 'New' : ''}
-      className={`perk-card${
-        orientation === 'horizontal' ? '-horizontal' : ''
-      }`}
+      isDark={isDark}
+      className={`perk-card${orientation === 'horizontal' ? '-horizontal' : ''
+        }`}
     />
   </SbEditable>
 );

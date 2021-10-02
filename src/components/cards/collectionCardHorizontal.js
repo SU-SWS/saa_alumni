@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import GradientCard from './gradientCard';
+import GradientCard from './GradientCard/GradientCard';
 
 const CollectionCardHorizontal = ({
   blok: {
