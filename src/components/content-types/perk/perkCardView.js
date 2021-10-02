@@ -31,8 +31,9 @@ const PerkCardView = ({
       spacingBottom={spacingBottom}
       tabText={isNew ? 'New' : ''}
       isDark={isDark}
-      className={`perk-card${orientation === 'horizontal' ? '-horizontal' : ''
-        }`}
+      className={`perk-card${
+        orientation === 'horizontal' ? '-horizontal' : ''
+      }`}
     />
   </SbEditable>
 );

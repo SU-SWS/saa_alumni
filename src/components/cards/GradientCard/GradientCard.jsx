@@ -54,7 +54,7 @@ const GradientCard = ({
         )}
         <div className={styles.gradient({ orientation })} aria-hidden="true" />
       </div>
-      {tabText && <TabLabel text={tabText} aria-hidden="true" />}
+      {tabText && <TabLabel text={tabText} aria-hidden />}
       <FlexBox
         direction="col"
         className={styles.contentWrapper({ orientation })}
