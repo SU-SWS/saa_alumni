@@ -1,0 +1,13 @@
+# manifest.yml
+
+name: netlify-plugin-wildcard-404-redirect
+inputs:
+  - name: file
+    description: path to `_redirects` file
+    default: 'public/_redirects'
+  - name: destination
+    description: The path the 404 should resolve to.
+    required: true
+  - name: code
+    description: HTTP status code. Eg. 301 (default)
+    default: 301

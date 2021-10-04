@@ -15,23 +15,37 @@
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
-    Content-Security-Policy = "form-action https:"
+    Content-Security-Policy = "default-src https: 'unsafe-inline'; form-action https:"
     X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "origin-when-cross-origin"
+    Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=2592000"
     Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
-    X-Robots-Tag = "noindex, nofollow"
     X-Frame-Options = "DENY"
 [[headers]]
   for = "/editor"
   [headers.values]
     X-Frame-Options = "ALLOWALL"
+[[headers]]
+  for = "/user-guide/*"
+  [headers.values]
+    Basic-Auth = "saa:@lumn1@ss0c1@t10n"
+    X-Robots-Tag = "noindex, nofollow"
 
 # REDIRECTS
-# ###############################################################################
+# ##############################################################################
+#
+# More redirects can be found in static/_redirects
+#
 
-# API redirect for lambda functions.
-[[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/:splat"
-  status = 200
+# PLUGINS
+# ##############################################################################
+[[plugins]]
+package = "/plugins/netlify-plugin-wildcard-404-redirect"
+  [plugins.inputs]
+  destination = "https://cardinalalumni.stanford.edu/:splat"
+
+[[plugins]]
+package = "netlify-plugin-submit-sitemap"
+  [plugins.inputs]
+  # Path to the sitemap URL (optional, default = /sitemap.xml)
+  sitemapPath = "/sitemap/sitemap-index.xml"

@@ -86,11 +86,6 @@ const HtmlHead = () => (
       name="msapplication-square310x310logo"
       content="https://www-media.stanford.edu/assets/favicon/mstile-310x310.png"
     />
-    <script
-      key="stripe"
-      src="https://js.stripe.com/v3"
-      type="text/javascript"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="preconnect"
