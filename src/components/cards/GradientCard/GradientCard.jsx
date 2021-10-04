@@ -1,5 +1,6 @@
 import React from 'react';
 import { FlexBox, Heading, SrOnlyText } from 'decanter-react';
+import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
@@ -7,16 +8,32 @@ import TabLabel from '../../simple/tabLabel';
 import { largeMarginBottom } from '../../../utilities/dataSource';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './GradientCard.styles';
+import { SBLinkType } from '../../../types/storyblok/SBLinkType';
+
+export const GradientCardProps = {
+  headline: PropTypes.string,
+  description: PropTypes.string,
+  link: SBLinkType,
+  filename: PropTypes.string,
+  focus: PropTypes.string,
+  imageFocus: PropTypes.string,
+  tabText: PropTypes.string,
+  headingLevel: PropTypes.number,
+  orientation: PropTypes.string,
+  spacingBottom: PropTypes.string,
+  isDark: PropTypes.bool,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+};
 
 const GradientCard = ({
+  headline,
+  headingLevel,
+  description,
+  link,
   filename,
   focus,
   imageFocus,
-  headline,
-  description,
-  link,
   tabText,
-  headingLevel,
   orientation,
   spacingBottom,
   isDark,
@@ -61,7 +78,7 @@ const GradientCard = ({
       >
         <SbLink link={link} classes={styles.link({ orientation })}>
           <Heading
-            level={parseInt(headingLevel, 10) ?? 3}
+            level={headingLevel}
             font="serif"
             tracking="normal"
             className={styles.heading}
@@ -80,4 +97,6 @@ const GradientCard = ({
     </FlexBox>
   );
 };
+GradientCard.propTypes = GradientCardProps;
+
 export default GradientCard;
