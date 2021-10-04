@@ -12,6 +12,7 @@ import { TripPageHeroSection } from './TripPageHeroSection';
 import { TripPageOverviewSection } from './TripPageOverviewSection';
 import { TripPageFacultySection } from './TripPageFacultySection';
 import { TripPageItinerarySection } from './TripPageItinerarySection';
+import { TripPageDetailsSection } from './TripPageDetailsSection';
 
 export const TripPageProps = {
   blok: TripContent,
@@ -46,6 +47,10 @@ const TripPage = (props) => {
       itineraryAboveContent,
       itineraryBelowContent,
       itineraryItems,
+      // Details Section
+      detailsHeading,
+      detailsBody,
+      detailsBelowContent,
       // Ankle
       ankleContent,
     } = {},
@@ -100,6 +105,11 @@ const TripPage = (props) => {
               itineraryBelowContent={itineraryBelowContent}
             />
             {/* TODO: Details Section */}
+            <TripPageDetailsSection
+              detailsHeading={detailsHeading}
+              detailsBody={detailsBody}
+              detailsBelowContent={detailsBelowContent}
+            />
             {/* TODO: Related Trips */}
             {ankleContent && ankleContent.length > 0 && (
               <Ankle isDark {...props} />

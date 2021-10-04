@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
-import { Button, CtaButton, Container } from 'decanter-react';
+import { Button, CtaButton, Container, Heading } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
@@ -10,6 +10,7 @@ import RichTextRenderer from '../../../utilities/richTextRenderer';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
+import * as commonStyles from './TripPage.styles';
 import CreateBloks from '../../../utilities/createBloks';
 
 export const TripPageOverviewSectionProps = {
@@ -67,8 +68,15 @@ export const TripPageOverviewSection = (props) => {
     <TripPageSectionWrapper heading="Overview">
       <Container width="site" className={styles.main}>
         <div className={styles.content}>
-          <h3 className={styles.heading}>{overviewHeading}</h3>
-          <RichTextRenderer wysiwyg={overviewBody} />
+          <Heading
+            level={3}
+            font="serif"
+            weight="semibold"
+            className={commonStyles.sectionHeading}
+          >
+            {overviewHeading}
+          </Heading>
+          <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
         </div>
         <div className={styles.summary}>
           <p className={styles.summaryItem}>
