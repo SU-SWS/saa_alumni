@@ -12,9 +12,15 @@ export const TripPageSectionWrapperProps = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
+  isCenter: PropTypes.bool,
 };
 
-export const TripPageSectionWrapper = ({ heading, className, children }) => (
+export const TripPageSectionWrapper = ({
+  heading,
+  className,
+  children,
+  isCenter,
+}) => (
   <Container
     id={`trip-${slugify(heading)}-section`}
     className={dcnb(className, styles.root)}
@@ -25,7 +31,7 @@ export const TripPageSectionWrapper = ({ heading, className, children }) => (
         level={2}
         size={1}
         weight="semibold"
-        className={styles.sectionHeading}
+        className={styles.sectionHeading({ isCenter })}
       >
         {heading}
       </Heading>

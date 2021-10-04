@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
-import { Container } from 'decanter-react';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
-import RichTextRenderer from '../../../utilities/richTextRenderer';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
-import * as styles from './TripPageItinerarySection.styles';
+import { TripPageSectionHeader } from './TripPageSectionHeader';
 
 export const TripPageItinerarySectionProps = {
   itineraryHeading: PropTypes.string,
@@ -15,6 +13,7 @@ export const TripPageItinerarySectionProps = {
   itineraryItems: SBBlokType,
   itineraryAboveContent: SBBlokType,
   itineraryBelowContent: SBBlokType,
+  isCenterItineraryHeader: PropTypes.bool,
 };
 
 export const TripPageItinerarySection = (props) => {
@@ -24,23 +23,26 @@ export const TripPageItinerarySection = (props) => {
     itineraryAboveContent,
     itineraryItems,
     itineraryBelowContent,
+    isCenterItineraryHeader,
   } = props;
 
   return (
-    <TripPageSectionWrapper heading="Itinerary">
-      <Container width="site" className={styles.main}>
-        <div className={styles.content}>
-          <h3 className={styles.heading}>{itineraryHeading}</h3>
-          <RichTextRenderer wysiwyg={itineraryBody} />
-        </div>
-      </Container>
+    <TripPageSectionWrapper
+      heading="Itinerary"
+      isCenter={isCenterItineraryHeader}
+    >
+      <TripPageSectionHeader
+        isCenter={isCenterItineraryHeader}
+        heading={itineraryHeading}
+        body={itineraryBody}
+      />
       {itineraryAboveContent && itineraryAboveContent.length > 0 && (
         <div className="trip-page-itinerary-above-content">
           <CreateBloks blokSection={itineraryAboveContent} />
         </div>
       )}
       {itineraryItems && itineraryItems.length > 0 && (
-        <div className={dcnb('trip-page-itinerary-items', styles.itinerary)}>
+        <div className="trip-page-itinerary-items">
           <CreateBloks blokSection={itineraryItems} />
         </div>
       )}

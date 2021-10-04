@@ -41,16 +41,19 @@ const TripPage = (props) => {
       facultyHeading,
       facultyBody,
       facultyBelowContent,
+      isCenterFacultyHeader,
       // Itinerary Section
       itineraryHeading,
       itineraryBody,
       itineraryAboveContent,
       itineraryBelowContent,
       itineraryItems,
+      isCenterItineraryHeader,
       // Details Section
       detailsHeading,
       detailsBody,
       detailsBelowContent,
+      isCenterDetailsHeader,
       // Ankle
       ankleContent,
     } = {},
@@ -77,6 +80,7 @@ const TripPage = (props) => {
               shortDescription={shortDescription}
               heroImage={heroImage}
             />
+            {/* TODO: Trip Details sticky nav */}
             {/* Overview Section */}
             <TripPageOverviewSection
               overviewHeading={overviewHeading}
@@ -95,6 +99,7 @@ const TripPage = (props) => {
               facultyHeading={facultyHeading}
               facultyBody={facultyBody}
               facultyBelowContent={facultyBelowContent}
+              isCenterFacultyHeader={isCenterFacultyHeader}
             />
             {/* Itinerary Section */}
             <TripPageItinerarySection
@@ -103,12 +108,14 @@ const TripPage = (props) => {
               itineraryItems={itineraryItems}
               itineraryAboveContent={itineraryAboveContent}
               itineraryBelowContent={itineraryBelowContent}
+              isCenterItineraryHeader={isCenterItineraryHeader}
             />
-            {/* TODO: Details Section */}
+            {/* Details Section */}
             <TripPageDetailsSection
               detailsHeading={detailsHeading}
               detailsBody={detailsBody}
               detailsBelowContent={detailsBelowContent}
+              isCenterDetailsHeader={isCenterDetailsHeader}
             />
             {/* TODO: Related Trips */}
             {ankleContent && ankleContent.length > 0 && (
