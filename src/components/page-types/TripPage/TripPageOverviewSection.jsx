@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
-import { Button, CtaButton, Container, Heading } from 'decanter-react';
+import { Button, CtaButton, Heading, Grid, GridCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
@@ -66,32 +66,38 @@ export const TripPageOverviewSection = (props) => {
 
   return (
     <TripPageSectionWrapper heading="Overview">
-      <Container width="site" className={styles.main}>
-        <div className={styles.content}>
+      <Grid gap xs={12} className={styles.main}>
+        <GridCell xs={12} md={7} xl={8} xxl={7} className={styles.content}>
           <Heading
             level={3}
             font="serif"
-            weight="semibold"
+            weight="bold"
             className={commonStyles.sectionHeading}
           >
             {overviewHeading}
           </Heading>
           <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
-        </div>
-        <div className={styles.summary}>
-          <p className={styles.summaryItem}>
-            <strong className={styles.summaryName}>Dates</strong>
+        </GridCell>
+        <GridCell xs={12} md={4} xl={3} className={styles.summary}>
+          <div className={styles.summaryItem}>
+            <Heading level={3} className={styles.summaryName}>
+              Dates
+            </Heading>
             <span className={styles.summaryValue}>{tripDates}</span>
-          </p>
-          <p className={styles.summaryItem}>
-            <strong className={styles.summaryName}>Duration</strong>
+          </div>
+          <div className={styles.summaryItem}>
+            <Heading level={3} className={styles.summaryName}>
+              Duration
+            </Heading>
             <span className={styles.summaryValue}>{tripDuration}</span>
-          </p>
+          </div>
           {cost && (
-            <p className={styles.summaryItem}>
-              <strong className={styles.summaryName}>Cost</strong>
+            <div className={styles.summaryItem}>
+              <Heading level={3} className={styles.summaryName}>
+                Cost
+              </Heading>
               <span className={styles.summaryValue}>{cost}</span>
-            </p>
+            </div>
           )}
           <div className={styles.actions}>
             {reservationURL?.cached_url && (
@@ -141,8 +147,8 @@ export const TripPageOverviewSection = (props) => {
               </CopyButton>
             </div>
           </div>
-        </div>
-      </Container>
+        </GridCell>
+      </Grid>
       {overviewBelowContent && overviewBelowContent.length > 0 && (
         <div className="trip-page-overview-below-content">
           <CreateBloks blokSection={overviewBelowContent} />
