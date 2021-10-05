@@ -105,7 +105,7 @@ module.exports = {
         homeSlug: 'home',
         resolveRelations: storyblokRelations,
         resolveLinks: 'story',
-        includeLinks: false,
+        includeLinks: true,
         version: activeEnv === 'production' ? 'published' : 'draft',
       },
     },
