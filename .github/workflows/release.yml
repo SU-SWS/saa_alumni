@@ -15,7 +15,11 @@ jobs:
       - uses: actions/checkout@v2
       # Specify a different token to allow pushing changes to main later
         with:
-          token: ${{ secrets.GH_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set Git user
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "Github Action"
       - name: Version Bump
         id: version_bump
         uses: 'phips28/gh-action-bump-version@master'
@@ -24,7 +28,7 @@ jobs:
           commit-message: "ci: version bump to {{version}} [skip ci]"
         # Specify a different token to allow pushing change to main
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish Release
         id: release
         uses: release-drafter/release-drafter@v5
@@ -39,4 +43,4 @@ jobs:
           type: now
           from_branch: main
           target_branch: dev
-          github_token: ${{ secrets.GH_ACCESS_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
