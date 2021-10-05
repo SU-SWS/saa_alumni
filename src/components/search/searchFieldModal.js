@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import algoliasearch from "algoliasearch";
-import SearchField from "./searchField";
+import React, { useState } from 'react';
+import algoliasearch from 'algoliasearch';
+import SearchField from './searchField';
 
 const SearchFieldModal = React.forwardRef((props, ref) => {
   const client = algoliasearch(
@@ -9,11 +9,11 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   );
 
   const suggestionsIndex = client.initIndex(
-    "crawler_federated-search_suggestions"
+    'crawler_federated-search_suggestions'
   );
 
   const [suggestions, setSuggestions] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState('');
 
   const wrapperClasses = `su-border-0 su-border-b-2 su-border-solid su-border-black-10`;
 

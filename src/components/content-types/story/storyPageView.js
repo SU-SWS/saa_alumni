@@ -1,16 +1,16 @@
-import SbEditable from "storyblok-react";
-import React from "react";
-import { Container, Heading } from "decanter-react";
-import { DateTime } from "luxon";
-import Layout from "../../partials/layout";
-import CreateBloks from "../../../utilities/createBloks";
-import FullWidthImage from "../../media/fullWidthImage";
-import getNumBloks from "../../../utilities/getNumBloks";
-import WidthBox from "../../layout/widthBox";
-import CardImage from "../../media/cardImage";
-import HeroIcon from "../../simple/heroIcon";
-import CaptionMedia from "../../media/captionMedia";
-import Ankle from "../../partials/ankle";
+import SbEditable from 'storyblok-react';
+import React from 'react';
+import { Container, Heading } from 'decanter-react';
+import { DateTime } from 'luxon';
+import Layout from '../../partials/layout';
+import CreateBloks from '../../../utilities/createBloks';
+import FullWidthImage from '../../media/fullWidthImage';
+import getNumBloks from '../../../utilities/getNumBloks';
+import WidthBox from '../../layout/widthBox';
+import CardImage from '../../media/cardImage';
+import HeroIcon from '../../simple/heroIcon';
+import CaptionMedia from '../../media/captionMedia';
+import Ankle from '../../partials/ankle/ankle';
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -43,12 +43,12 @@ const StoryPageView = (props) => {
   // The date/time string we get from Storyblok is in UTC
   // Convert string to luxon DateTime object and format published date
   if (publishedDate) {
-    luxonPublished = DateTime.fromFormat(publishedDate, "yyyy-MM-dd T", {
-      zone: "UTC",
+    luxonPublished = DateTime.fromFormat(publishedDate, 'yyyy-MM-dd T', {
+      zone: 'UTC',
     })
-      .setZone("America/Los_Angeles")
-      .setLocale("en-us");
-    nicePublishedDate = luxonPublished.toFormat("DDD");
+      .setZone('America/Los_Angeles')
+      .setLocale('en-us');
+    nicePublishedDate = luxonPublished.toFormat('DDD');
   }
 
   let heroImage;
@@ -68,7 +68,7 @@ const StoryPageView = (props) => {
             filename={filename}
             imageFocus={imageFocus}
             smartFocus={focus}
-            alt={alt ?? ""}
+            alt={alt ?? ''}
             className="su-w-full su-h-full su-object-cover"
             loading="eager"
           />
@@ -85,7 +85,7 @@ const StoryPageView = (props) => {
         captionAlign="right"
         className="su-rs-mb-6"
       >
-        <CardImage filename={filename} alt={alt ?? ""} loading="eager" />
+        <CardImage filename={filename} alt={alt ?? ''} loading="eager" />
       </CaptionMedia>
     );
   }
@@ -108,7 +108,7 @@ const StoryPageView = (props) => {
                   font="serif"
                   className="su-max-w-[120rem] su-mb-02em su-text-m3 md:su-text-m4 lg:su-text-m5 su-mx-auto su-max-w-1200"
                 >
-                  {(storyType === "podcast" || storyType === "video") && (
+                  {(storyType === 'podcast' || storyType === 'video') && (
                     <HeroIcon
                       iconType={storyType}
                       className="su-inline-block su-mr-02em"

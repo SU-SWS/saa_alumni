@@ -1,6 +1,6 @@
-import React from "react";
-import { dcnb } from "cnbuilder";
-import CreateBloks from "../../utilities/createBloks";
+import React from 'react';
+import { dcnb } from 'cnbuilder';
+import CreateBloks from '../../utilities/createBloks';
 
 const VerticalNavWrapper = ({
   blok: { items, showNestedLevels },
@@ -13,7 +13,7 @@ const VerticalNavWrapper = ({
     // Check if menu item's url matches the current page url
     const urlMatch = (link) =>
       pageLink.indexOf(link) > -1 &&
-      (!pageLink.split(link)[1] || pageLink.split(link)[1] === "/");
+      (!pageLink.split(link)[1] || pageLink.split(link)[1] === '/');
 
     // Recursive function that will add active and activeTrail props to the active link, it's parents and the
     // immediate children if available.
@@ -67,7 +67,7 @@ const VerticalNavWrapper = ({
   return (
     <ul
       className={dcnb(
-        "su-list-none su-p-0 su-border su-border-solid su-border-black-10 lg:su-border-none children:su-border-t children:su-border-solid children:su-border-black-20 children:children:su-text-21 children:first:su-border-t-0 lg:children:first:su-border-t",
+        'su-list-none su-p-0 su-border su-border-solid su-border-black-10 lg:su-border-none children:su-border-t children:su-border-solid children:su-border-black-20 children:children:su-text-21 children:first:su-border-t-0 lg:children:first:su-border-t',
         className
       )}
       {...props}

@@ -1,23 +1,24 @@
-import React, { useState } from "react";
-import SbEditable from "storyblok-react";
-import { Container, FlexBox, FlexCell } from "decanter-react";
-import { dcnb } from "cnbuilder";
-import CreateBloks from "../../utilities/createBloks";
-import Logo from "./logo";
-import OpenSearchModalButton from "../search/openSearchModalButton";
-import SearchModal from "../search/searchModal";
+import React, { useState } from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, FlexBox, FlexCell } from 'decanter-react';
+import { dcnb } from 'cnbuilder';
+import CreateBloks from '../../utilities/createBloks';
+import Logo from './logo';
+import OpenSearchModalButton from '../search/openSearchModalButton';
+import SearchModal from '../search/searchModal';
+import * as styles from './global-header/GlobalHeaderStyles';
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
   const [modalOpen, setModalOpen] = useState(false);
 
   let mainNavBgColorXl =
-    "xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden";
+    'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
   let mainNavBgColorLg =
-    "su-bg-transparent su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden";
+    'su-bg-transparent su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden';
 
   if (isDark && !hasHero) {
-    mainNavBgColorXl = "xl:su-bg-saa-black";
-    mainNavBgColorLg = "su-bg-saa-black";
+    mainNavBgColorXl = 'xl:su-bg-saa-black';
+    mainNavBgColorLg = 'su-bg-saa-black';
   }
 
   return (
@@ -26,11 +27,8 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
         width="full"
         className="masthead-mobile su-relative lg:su-hidden su-bg-cardinal-red-xdark"
       >
-        <nav
-          aria-label="Utility Menu"
-          className="su-w-full su-text-right su-bg-digital-red"
-        >
-          <ul className="su-cc su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-13 xs:su-text-14 sm:su-text-16 children:su-inline-block children:su-ml-[1.6em] xs:children:su-ml-[1.9em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset">
+        <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
+          <ul className={styles.utilNavMenuMobile}>
             <CreateBloks
               blokSection={utilityNav}
               className="first:su-ml-0"
@@ -51,7 +49,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
       </Container>
       <Container
         className={`masthead-desktop su-hidden lg:su-block ${
-          hasHero ? "su-absolute" : "su-relative"
+          hasHero ? 'su-absolute' : 'su-relative'
         }  su-z-20`}
         width="full"
       >
@@ -65,7 +63,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           <FlexCell
             grow
             className={dcnb(
-              "su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90",
+              'su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90',
               mainNavBgColorXl
             )}
           >
@@ -73,14 +71,11 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
               direction="row"
               className="su-rs-my-0 xl:su-mb-0 su-flex-grow"
             >
-              <nav
-                aria-label="Utility Menu"
-                className="su-inline-block su-text-right su-flex-grow"
-              >
-                <ul className="su-list-unstyled su-inline-block su-link-white su-link-no-underline su-link-regular su-text-18 children:su-inline-block children:su-leading-[3.4rem] children:su-mr-[2em] children:su-mb-0 su-underline-offset">
+              <nav aria-label="Utility Menu" className={styles.utilNav}>
+                <ul className={styles.utilNavMenu}>
                   <CreateBloks
                     blokSection={utilityNav}
-                    className="first:su-ml-0 children:hocus:su-underline-digital-red-xlight children:hocus:su-underline-thick"
+                    className={styles.utilNavItem}
                     hasExternalIcon
                   />
                 </ul>
@@ -99,7 +94,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
         <CreateBloks
           blokSection={mainNav}
           className={dcnb(
-            "lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90",
+            'lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90',
             mainNavBgColorLg
           )}
         />

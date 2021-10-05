@@ -1,0 +1,3526 @@
+{
+  "presets": [
+    {
+      "id": 1107157,
+      "name": "8-of-12 Column with Center-aligned Caption",
+      "preset": {
+        "_uid": "5af4dd80-071b-4073-8b42-ba2173b9858e",
+        "image": {
+          "id": 2295967,
+          "alt": "",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/1200x636/1ed12020f1/windhover_photo_credit-_matthew_millman_0.png",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "caption": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Windhover is a spiritual refuge on the StanfordUniversity campus meant to both inspire and promote personal renewal.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "isBanner": false,
+        "component": "simpleImage",
+        "imageFocus": "center",
+        "imageWidth": "8",
+        "spacingTop": "none",
+        "captionAlign": "center",
+        "spacingBottom": "none",
+        "isCaptionCenter": false
+      },
+      "component_id": 1621473,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:11:24.921Z",
+      "updated_at": "2021-08-11T04:11:24.921Z",
+      "image": ""
+    },
+    {
+      "id": 1107158,
+      "name": "Banner with Left-aligned Caption",
+      "preset": {
+        "_uid": "183ba640-0c83-4086-9c93-f11ad53f4e63",
+        "image": {
+          "id": 2344084,
+          "alt": "",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/1774x959/48ec34d686/reunion.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "caption": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Caption sed augue ipsum, egestas nec, vestibulum et, malesuada adipiscing, dui. Nam pretium turpis et arcu. Nam quam nunc.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "isBanner": true,
+        "component": "simpleImage",
+        "imageFocus": "bottom",
+        "imageWidth": "edge-to-edge",
+        "spacingTop": "none",
+        "captionAlign": "left",
+        "spacingBottom": "none",
+        "isCaptionCenter": true
+      },
+      "component_id": 1621473,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:11:25.137Z",
+      "updated_at": "2021-08-11T04:11:25.137Z",
+      "image": ""
+    },
+    {
+      "id": 1107152,
+      "name": "Basic Page (1-column plain content)",
+      "preset": {
+        "seo": {
+          "_uid": "e791b113-35bf-486d-839b-73c7dbd55f4c",
+          "title": "Stanford Alumni Email Service Policy | Stanford Alumni Association",
+          "plugin": "seo_metatags",
+          "og_image": "",
+          "og_title": "",
+          "description": "Learn more about the Stanford Alumni Email Service Policy for the Stanford Alumni Association.",
+          "twitter_image": "",
+          "twitter_title": "",
+          "og_description": "",
+          "twitter_description": ""
+        },
+        "_uid": "fe866db9-33bd-4691-af55-2b2eef3811a8",
+        "hero": [],
+        "alert": [],
+        "intro": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph"
+            }
+          ]
+        },
+        "title": "Stanford Alumni Email Service Policy",
+        "content": [
+          {
+            "id": "",
+            "_uid": "3e091064-0529-4078-98a4-753418105e6e",
+            "width": "edge-to-edge",
+            "content": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Stanford University currently offers an email account to all alumni who register on the alumni website, meet the Stanford Alumni Association definition or school-based definition of “alum” (by completing three or more quarters in a Stanford degree-granting program or by the completion of the GSB Stanford Executive Program) and enable the service, either at the time of alumni site registration or at a later time by enabling the service in their profile on the alumni site. The account will remain accessible to the alum as long as the alum complies with the ",
+                      "type": "text"
+                    },
+                    {
+                      "text": "Terms of Use ",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "/terms",
+                            "uuid": "3840ef46-1681-499c-b7a9-3efc49333b91",
+                            "anchor": null,
+                            "target": null,
+                            "linktype": "story"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": "which may be changed or amended from time-to-time. Stanford reserves the right to discontinue an alum's email access if the alum uses the account in a way that, in the sole discretion of Stanford, it deems inappropriate as defined in the Code of Conduct. Notwithstanding the above, Stanford reserves the right to terminate the webmail service at any time at its discretion.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Stanford does not view or access any content from your Alumni Email account unless explicitly requested to do so by the account owner to provide technical assistance, or in response to an automatic account suspension by Google, or in response to a compulsory legal process mandate.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Alumni Email, powered by Google, will provide strong security and privacy protections. Google has provided contractual guarantees that allow users the ability to use the services with the appropriate privacy protections. Google is contractually obligated to protect your confidential information and not to release it to other parties, absent compulsory legal process. You can view more about their specific privacy protections here:",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "https://policies.google.com/privacy",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "link",
+                          "attrs": {
+                            "href": "https://policies.google.com/privacy",
+                            "uuid": null,
+                            "anchor": null,
+                            "target": null,
+                            "linktype": "url"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "In order to provide essential core features for Stanford Alumni Email, Google runs completely automated scanning and indexing processes to offer spam filtering, anti-virus protection, and malware detection. Their systems also scan content to make sure Apps work better for users, enabling functionality like search in Gmail or Google Docs. This is completely automated and involves no humans.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "component": "wysiwyg",
+            "spacingTop": "none",
+            "isLightText": false,
+            "spacingBottom": "none"
+          }
+        ],
+        "sidebar": [
+          {
+            "cta": [],
+            "_uid": "a23f4a51-2b6d-4242-9981-e47146e101d9",
+            "text": "Optional. Section Menu will go here once the component is built.",
+            "align": "left",
+            "image": {
+              "id": 2114607,
+              "alt": "Building",
+              "_uid": "f6eb045e-941c-4d46-af72-c2f6f93869c0",
+              "name": "",
+              "focus": null,
+              "title": "",
+              "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+              "copyright": "",
+              "fieldtype": "asset"
+            },
+            "isRound": true,
+            "headline": "Left Sidebar",
+            "component": "basicCard",
+            "isMinimal": false,
+            "imageFocus": "center",
+            "borderColor": "electric-blue",
+            "isLightText": false,
+            "headingLevel": "4",
+            "isBigHeadline": false
+          }
+        ],
+        "masthead": [
+          {
+            "_uid": "5d566e14-7362-46b3-9ce6-f129e908999d",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "component": "basicPage",
+        "ankleTitle": "More information",
+        "pageLayout": "no-sidebar",
+        "localFooter": [
+          {
+            "_uid": "c42b5871-72b0-4a22-b7bd-efc95d2dd15a",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "2af8b554-7844-45f2-bd97-40cfcde29e50"
+            ]
+          }
+        ],
+        "sectionMenu": [],
+        "aboveContent": [],
+        "ankleBgColor": "white",
+        "ankleContent": [],
+        "belowContent": [],
+        "canonicalURL": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "isSrOnlyTitle": false,
+        "isAnkleTitleSrOnly": false
+      },
+      "component_id": 1621478,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:10:56.291Z",
+      "updated_at": "2021-08-11T04:10:56.291Z",
+      "image": ""
+    },
+    {
+      "id": 1063037,
+      "name": "Basic Page (with all sample regions)",
+      "preset": {
+        "seo": {
+          "_uid": "e791b113-35bf-486d-839b-73c7dbd55f4c",
+          "title": "",
+          "plugin": "seo_metatags",
+          "og_image": "",
+          "og_title": "",
+          "description": "",
+          "twitter_image": "",
+          "twitter_title": "",
+          "og_description": "",
+          "twitter_description": ""
+        },
+        "_uid": "fe866db9-33bd-4691-af55-2b2eef3811a8",
+        "hero": [],
+        "alert": [],
+        "intro": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Main Content Page Intro",
+                  "type": "text",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "text": " Content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tellus sem, fermentum elementum dolor et, tincidunt elementum ipsum.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "Page Title (H1)",
+        "content": [
+          {
+            "_uid": "3e091064-0529-4078-98a4-753418105e6e",
+            "width": "edge-to-edge",
+            "content": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Content Area WYSIWYG",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        }
+                      ]
+                    },
+                    {
+                      "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tellus sem, fermentum elementum dolor et, tincidunt elementum ipsum. Sed vestibulum, ipsum sed pharetra varius, diam augue porttitor ex, hendrerit fermentum ipsum mauris hendrerit mi. Nulla eleifend mollis dui ac porta. Aliquam ac lorem vitae nunc varius ullamcorper.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "component": "wysiwyg",
+            "spacingTop": "none",
+            "isLightText": false,
+            "spacingBottom": "none"
+          }
+        ],
+        "sidebar": [
+          {
+            "_uid": "4bed8c0e-74da-49f6-bb47-e00fb143ff3b",
+            "component": "verticalNav",
+            "verticalNav": [
+              "20d82df6-b631-4f94-aa52-83633a8133ea"
+            ]
+          }
+        ],
+        "masthead": [
+          {
+            "_uid": "5d566e14-7362-46b3-9ce6-f129e908999d",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "component": "basicPage",
+        "ankleTitle": "More information",
+        "pageLayout": "left-sidebar",
+        "localFooter": [
+          {
+            "_uid": "c42b5871-72b0-4a22-b7bd-efc95d2dd15a",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "2af8b554-7844-45f2-bd97-40cfcde29e50"
+            ]
+          }
+        ],
+        "sectionMenu": [],
+        "aboveContent": [
+          {
+            "cta": [
+              {
+                "rel": "",
+                "_uid": "bd7a145c-a4e6-4a83-9fdc-db0c2c96f43c",
+                "icon": "arrow-right",
+                "link": {
+                  "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                  "url": "",
+                  "_uid": "c929560e-954f-4a7f-a14a-859afc0601b3",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "home"
+                },
+                "size": "large",
+                "align": "left",
+                "srText": "",
+                "linkText": "Button Link",
+                "component": "ctaButton",
+                "buttonStyle": "secondary"
+              }
+            ],
+            "_uid": "76460536-049c-45c8-ac87-f0b3ac1474fd",
+            "text": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Optional. Sections and Posters can go into this region.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "image": {
+              "id": null,
+              "alt": null,
+              "name": "",
+              "focus": null,
+              "title": null,
+              "filename": null,
+              "copyright": null,
+              "fieldtype": "asset"
+            },
+            "theme": "foggy-light",
+            "vCrop": "top",
+            "layout": "center",
+            "bgImage": {
+              "id": null,
+              "alt": null,
+              "_uid": "8e7c069c-f49f-4331-a1dc-d79041cc9696",
+              "name": "",
+              "focus": null,
+              "title": null,
+              "filename": "",
+              "copyright": null,
+              "fieldtype": "asset"
+            },
+            "headline": "Above Content Region",
+            "component": "poster",
+            "imageFocus": "center",
+            "borderColor": "digital-red",
+            "headingLevel": "2",
+            "isBigBodyText": true,
+            "isBigHeadline": true
+          }
+        ],
+        "ankleBgColor": "white",
+        "ankleContent": [],
+        "belowContent": [
+          {
+            "cta": [
+              {
+                "rel": "",
+                "_uid": "05ba94b5-2be1-43ac-90b0-99cb83221a65",
+                "icon": "arrow-right",
+                "link": {
+                  "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                  "url": "",
+                  "_uid": "eaeea5c4-6a16-4b5a-829b-134e6b1f329d",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "home"
+                },
+                "size": "large",
+                "align": "left",
+                "srText": "",
+                "linkText": "Button Link",
+                "component": "ctaButton",
+                "buttonStyle": "secondary"
+              }
+            ],
+            "_uid": "b43cfa58-77d5-45ba-8b81-c9884d09c12a",
+            "text": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Optional. Sections and Posters can go into this region.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "image": {
+              "id": null,
+              "alt": null,
+              "_uid": "ccfaae96-d7d1-4739-8aac-73d3b9bb89a3",
+              "name": "",
+              "focus": null,
+              "title": null,
+              "filename": null,
+              "copyright": null,
+              "fieldtype": "asset"
+            },
+            "theme": "foggy-light",
+            "vCrop": "top",
+            "layout": "center",
+            "bgImage": {
+              "id": null,
+              "alt": null,
+              "_uid": "ea9921bb-b4b8-410d-a27b-c09bf4f366da",
+              "name": "",
+              "focus": null,
+              "title": null,
+              "filename": "",
+              "copyright": null,
+              "fieldtype": "asset"
+            },
+            "headline": "Below Content Region",
+            "component": "poster",
+            "imageFocus": "center",
+            "borderColor": "digital-red",
+            "headingLevel": "2",
+            "isBigBodyText": true,
+            "isBigHeadline": true
+          }
+        ],
+        "canonicalURL": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "isSrOnlyTitle": false,
+        "isAnkleTitleSrOnly": false
+      },
+      "component_id": 1621478,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:37.132Z",
+      "updated_at": "2021-08-11T04:10:56.553Z",
+      "image": ""
+    },
+    {
+      "id": 1063034,
+      "name": "Black background, left-aligned, default font sizes.",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "9177f7a3-f076-461d-ad17-d307f43bbc61",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "05e4367d-6dfd-444b-91a5-ee762c9f7816",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "default",
+            "align": "left",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "ghost"
+          }
+        ],
+        "_uid": "bc96983c-1792-472c-b5da-4c8b9ac535ae",
+        "text": {
+          "_uid": "f8237f01-05e6-47ae-b3db-bc7532bcb0cc",
+          "type": "doc",
+          "content": [
+            {
+              "_uid": "a0c4751a-6fec-499e-93f4-53ec6a23f8de",
+              "type": "paragraph",
+              "content": [
+                {
+                  "_uid": "ebe034c6-7960-4e72-8f09-0ac9b1fd9fc6",
+                  "text": "Default smaller body text. Praesent adipiscing. Ut varius ",
+                  "type": "text"
+                },
+                {
+                  "_uid": "a2dad0a0-b61c-435a-a31e-aed749ff3bfc",
+                  "text": "tincidunt",
+                  "type": "text",
+                  "marks": [
+                    {
+                      "_uid": "0c0b910e-65c5-4ec4-a9dd-085fe60ed2a5",
+                      "type": "italic"
+                    }
+                  ]
+                },
+                {
+                  "_uid": "cb704a09-fa1f-4e3c-bb21-dd3b5ba10a8e",
+                  "text": " libero.",
+                  "type": "text"
+                },
+                {
+                  "_uid": "f2a935b3-d62c-49ef-b250-1d1969d8bf49",
+                  "text": " Nullam cursus ",
+                  "type": "text",
+                  "marks": [
+                    {
+                      "_uid": "35fa2e5f-906f-459b-9fc9-6946c4bcb597",
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "_uid": "303c9fb1-a21d-4de3-a1fd-a222f83becfc",
+                  "text": "lacinia erat. Donec mi odio, faucibus at, scelerisque quis, convallis in, nisi. Ut a nisl id ante tempus hendrerit.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "id": 2310455,
+          "alt": "",
+          "_uid": "f3c4d618-9e69-44f6-a12d-87eb11059e8b",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/600x400/ab1652b364/clayborne.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "theme": "black",
+        "vCrop": "center",
+        "layout": "left",
+        "bgImage": {
+          "id": null,
+          "alt": null,
+          "_uid": "f0b697b4-9bdf-44fd-98d7-2316b8503c00",
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": null,
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "headline": "Default Headline. Black Background.",
+        "component": "poster",
+        "imageFocus": "left",
+        "borderColor": "digital-red-xlight",
+        "headingLevel": "2",
+        "isBigBodyText": false,
+        "isBigHeadline": false
+      },
+      "component_id": 1621476,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:36.381Z",
+      "updated_at": "2021-06-29T05:39:36.381Z",
+      "image": ""
+    },
+    {
+      "id": 1063054,
+      "name": "Bright red link (right arrow)",
+      "preset": {
+        "rel": "",
+        "_uid": "33034ac9-186d-46b5-bf18-18ff7f6a7d0f",
+        "icon": "arrow-right",
+        "link": {
+          "id": "57a2f091-5269-402e-bfc2-f26aac975266",
+          "url": "",
+          "_uid": "9095a600-e477-4a26-aea4-caf6f5f78e16",
+          "anchor": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "home"
+        },
+        "size": "default",
+        "align": "left",
+        "srText": "",
+        "linkText": "Test CTA link",
+        "component": "ctaLink",
+        "iconColor": "bright-red-hover-cardinal-red",
+        "textColor": "bright-red-hover-cardinal-red",
+        "leadingIcon": {
+          "_uid": "df496d18-bc20-4962-8d97-b16aa640b0cc",
+          "icon": "",
+          "type": "fas",
+          "plugin": "fontawesome-selector"
+        },
+        "spacingBottom": "md",
+        "isOutlineFaIcon": false
+      },
+      "component_id": 1621508,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:47.908Z",
+      "updated_at": "2021-08-11T04:11:00.009Z",
+      "image": ""
+    },
+    {
+      "id": 1063050,
+      "name": "Button group for Section footer",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "12778320-aa34-410c-a83c-0bfcb8185cd4",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "20a97f54-7b87-4fbc-8ada-4e3eb8f41c59",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "large",
+            "align": "center",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "primary"
+          },
+          {
+            "rel": "",
+            "_uid": "ccbb6f20-be31-4393-876a-22f28329765d",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "0301b6b7-2efa-4981-b49f-9f188da5af07",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "large",
+            "align": "center",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "primary"
+          }
+        ],
+        "_uid": "c1199a98-f4c3-4963-b65f-dca6d0c53f32",
+        "display": "adjacent",
+        "component": "ctaGroup"
+      },
+      "component_id": 1621506,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:47.165Z",
+      "updated_at": "2021-06-29T05:39:47.165Z",
+      "image": ""
+    },
+    {
+      "id": 1107155,
+      "name": "Contact us",
+      "preset": {
+        "_uid": "c382ef45-30ac-4fd8-814c-e517e51561cb",
+        "icon": {
+          "_uid": "745a06d9-91d5-45ba-a452-0aea90ce698e",
+          "icon": "fa-comments",
+          "type": "fas",
+          "plugin": "fontawesome-selector"
+        },
+        "link": {
+          "id": "5b96dd1f-3194-4801-b84c-40fb908b2f9b",
+          "url": "",
+          "_uid": "83370b93-8192-42a7-adea-9d42cff849f1",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "about/contact"
+        },
+        "headline": "Contact us if you need help",
+        "component": "iconCard",
+        "isOutline": true,
+        "headingLevel": "3"
+      },
+      "component_id": 1701714,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:11:06.398Z",
+      "updated_at": "2021-08-11T04:11:06.398Z",
+      "image": ""
+    },
+    {
+      "id": 1107153,
+      "name": "Default",
+      "preset": {
+        "_uid": "ff96ea4a-0340-442e-9c00-fd09c007de26",
+        "link": {
+          "id": "57a2f091-5269-402e-bfc2-f26aac975266",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "home"
+        },
+        "srText": "Optional screen reader text",
+        "headline": "I bet you’re thinking, what’s the difference between an Alumni perk and a member benfit?",
+        "linkText": "Alumni perks versus member  benefits",
+        "component": "ctaCard",
+        "headingLevel": "3"
+      },
+      "component_id": 1701711,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:10:58.275Z",
+      "updated_at": "2021-08-11T04:10:58.275Z",
+      "image": ""
+    },
+    {
+      "id": 1149034,
+      "name": "Default Local Footer",
+      "preset": {
+        "_uid": "4b502b36-c091-4352-b52b-5ff66f94260d",
+        "vCrop": "center",
+        "fbLink": "https://www.facebook.com/stanfordalumni",
+        "igLink": "https://www.instagram.com/stanfordalumni",
+        "bgImage": {
+          "id": 2114427,
+          "alt": "Campus sunset",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/1999x1000/69c797554b/campus-sunset-2x1-2000.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "mapLink": [
+          {
+            "rel": "nofollow noopener",
+            "_uid": "83664f70-02c3-472f-9117-2d67c4b47603",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://www.google.com/maps/place/Frances%20C.%20Arrillaga%20Alumni%20Center/@37.430725,-122.1648,15z/data=!4m5!3m4!1s0x0:0x778a60994d7a5e4c!8m2!3d37.430725!4d-122.1648?shorturl=1",
+              "_uid": "27a24376-bc96-44cd-b3f7-8435f09a5c05",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://www.google.com/maps/place/Frances%20C.%20Arrillaga%20Alumni%20Center/@37.430725,-122.1648,15z/data=!4m5!3m4!1s0x0:0x778a60994d7a5e4c!8m2!3d37.430725!4d-122.1648?shorturl=1"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "on Google",
+            "linkText": "Map",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "d51e171b-fce0-4a91-b4c9-02f43d4eeee2",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "none",
+            "isOutlineFaIcon": false
+          }
+        ],
+        "address1": "Frances C. Arrillaga Alumni Center",
+        "address2": "326 Galvez Street",
+        "address3": "Stanford, CA 94305-6105",
+        "component": "localFooter",
+        "legalLinks": [
+          {
+            "_uid": "60b86ba8-1794-439d-865c-0ad94fd614d0",
+            "link": {
+              "id": "908206e7-d02e-4912-8534-f9efbefa85bf",
+              "url": "",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "accessibility"
+            },
+            "text": "Accessibility",
+            "component": "navItem"
+          },
+          {
+            "_uid": "fff6c13d-c43e-4921-ba51-dcf067fa392e",
+            "link": {
+              "id": "177435d1-cb8f-440f-a4dd-1a60459deae9",
+              "url": "",
+              "_uid": "8a7c71e1-e3d9-464e-ba50-0a8d083047e8",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "privacy"
+            },
+            "text": "Privacy Policy",
+            "component": "navItem"
+          },
+          {
+            "_uid": "89065e06-e447-4085-b17c-b0550b82e64f",
+            "link": {
+              "id": "3840ef46-1681-499c-b7a9-3efc49333b91",
+              "url": "",
+              "_uid": "5c585131-443f-4888-b64f-323023431cb1",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "terms"
+            },
+            "text": "Terms of Use",
+            "component": "navItem"
+          },
+          {
+            "_uid": "c25244c5-4cdf-4d86-8cb7-76cf060ce535",
+            "link": {
+              "id": "1a20e3a4-0c81-466a-87d1-d7f31bd0288b",
+              "url": "",
+              "_uid": "499af142-0ce8-4304-8601-78dd439baf04",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "code-of-conduct"
+            },
+            "text": "Code of Conduct",
+            "component": "navItem"
+          }
+        ],
+        "linkGroups": [
+          {
+            "_uid": "d0bd7b87-d05d-4c57-a89d-88e0a098ec4c",
+            "heading": "Event",
+            "linkList": [
+              {
+                "_uid": "76326ff7-5492-4f72-a765-1a75b8c16e2d",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/events",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/events"
+                },
+                "text": "Explore all events",
+                "component": "navItem"
+              },
+              {
+                "_uid": "5ada0352-15e9-4faa-bd03-ddc72068fe87",
+                "link": {
+                  "id": "",
+                  "url": "https://reunion.stanford.edu/",
+                  "_uid": "c6284651-2f1b-42fd-9bbd-d1a19e6c0ea3",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://reunion.stanford.edu/"
+                },
+                "text": "Reunion Homecoming",
+                "component": "navItem"
+              },
+              {
+                "_uid": "094ddea0-c87c-4d27-8001-99173b95d024",
+                "link": {
+                  "id": "587848d1-85b0-4d28-8c41-f3feea855f83",
+                  "url": "",
+                  "_uid": "b2a9ff2e-30da-44e8-bfbb-19bfe072209f",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "resources/learn"
+                },
+                "text": "Virtual events",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "d5484b01-8b99-4c75-801f-50095432885f",
+            "heading": "Communities",
+            "linkList": [
+              {
+                "_uid": "4ecf625f-9d17-40ab-8a86-65d2d6c734ca",
+                "link": {
+                  "id": "3d1880a1-d44b-406a-9fcf-3b13655915f2",
+                  "url": "",
+                  "_uid": "edb77f77-c658-40e1-87c1-366a095a083c",
+                  "anchor": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "groups/"
+                },
+                "text": "Clubs & groups",
+                "component": "navItem"
+              },
+              {
+                "_uid": "c871ac44-2246-4dd1-b250-107bc4764ed7",
+                "link": {
+                  "id": "",
+                  "url": "https://youngalumni.alumni.stanford.edu/",
+                  "_uid": "ea31f08c-caaf-47c2-8487-716195600c27",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://youngalumni.alumni.stanford.edu/"
+                },
+                "text": "Young alumni",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e18c2f58-93c2-4ebf-9fb3-83a1c75bdcab",
+                "link": {
+                  "id": "",
+                  "url": "https://students.alumni.stanford.edu/",
+                  "_uid": "412d8eae-d0c4-49d8-9d7c-ca468eb567d0",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://students.alumni.stanford.edu/"
+                },
+                "text": "Students",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "13c404d8-f750-4f93-b312-ac217e429e19",
+            "heading": "Reading & resources",
+            "linkList": [
+              {
+                "_uid": "260374d9-1926-4c32-b220-794f911eac57",
+                "link": {
+                  "id": "587848d1-85b0-4d28-8c41-f3feea855f83",
+                  "url": "",
+                  "_uid": "579fd7f2-469d-4743-a265-8869d6937049",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "resources/learn"
+                },
+                "text": "Webcasts & podcasts",
+                "component": "navItem"
+              },
+              {
+                "_uid": "4c4a10fa-7bf2-4302-8367-3e22c11e9ee3",
+                "link": {
+                  "id": "",
+                  "url": "https://stanfordmag.org/",
+                  "_uid": "b374fcd6-792d-4098-9e84-c7a8190ace33",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://stanfordmag.org/"
+                },
+                "text": "STANFORD magazine",
+                "component": "navItem"
+              },
+              {
+                "_uid": "b3a13fc6-1234-429c-be43-d69f5f10fc86",
+                "link": {
+                  "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                  "url": "",
+                  "_uid": "af049d33-266f-4cf2-8916-987488f6e03a",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "home"
+                },
+                "text": "Career connections",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e2493561-f0ce-444f-8520-58e02ea30b47",
+                "link": {
+                  "id": "1871c9ab-27ca-402a-9701-1559a986b14c",
+                  "url": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "resources/newsletters"
+                },
+                "text": "Newsletters",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "c71f16b8-3a30-4c71-837c-445fd9e592e1",
+            "heading": "Programs & perks",
+            "linkList": [
+              {
+                "_uid": "1cb4e548-07ed-439a-8b63-5d832eda6bba",
+                "link": {
+                  "id": "dfecf357-be16-4fc4-8cd4-03e12a175da9",
+                  "url": "",
+                  "_uid": "655d75a7-f722-4006-a9dc-77532d951feb",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "perks/"
+                },
+                "text": "Alumni perks",
+                "component": "navItem"
+              },
+              {
+                "_uid": "5586d263-0a95-43a8-8529-ee79c6e18b2c",
+                "link": {
+                  "id": "79e0450f-d62f-45e7-be22-0acd8119451e",
+                  "url": "",
+                  "_uid": "d0b49e1d-dd4a-4911-9ea0-2e7e053e3e92",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "membership/"
+                },
+                "text": "Alumni membership",
+                "component": "navItem"
+              },
+              {
+                "_uid": "a110603e-6c2a-45d1-8c79-5d0747598286",
+                "link": {
+                  "id": "",
+                  "url": "https://sierracamp.alumni.stanford.edu/",
+                  "_uid": "07944a55-69c2-4471-8453-3fbc02736da3",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://sierracamp.alumni.stanford.edu/"
+                },
+                "text": "Sierra programs",
+                "component": "navItem"
+              },
+              {
+                "_uid": "8ad1b2f8-9445-482b-8388-81423d46a47a",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/travel-study/overview",
+                  "_uid": "4d3a6d80-69c1-4859-957c-23604f0c412c",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/travel-study/overview"
+                },
+                "text": "Travel/Study",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e11955e2-62a5-460e-ac78-a3a50ca5713a",
+                "link": {
+                  "id": "",
+                  "url": "https://partners.vinoshipper.com/stanford",
+                  "_uid": "c845bd91-c2ab-41b7-97a3-5d47a214bea2",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://partners.vinoshipper.com/stanford"
+                },
+                "text": "Wine Collection",
+                "component": "navItem"
+              },
+              {
+                "_uid": "b0a8b3e4-29d0-4a0f-8548-115da6fa6af3",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/resources/shop/home",
+                  "_uid": "202f10a5-e46e-4108-92bd-3664d8a18a41",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/resources/shop/home"
+                },
+                "text": "Alumni store",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "fddaefa3-87a6-47e0-8f1e-3db187d1202d",
+            "heading": "Volunteer",
+            "linkList": [
+              {
+                "_uid": "7fafdcdc-df31-49b7-a051-a5378032d54d",
+                "link": {
+                  "id": "a76b6abb-6816-4a61-92ca-30662bd37cb8",
+                  "url": "",
+                  "_uid": "2021a2b1-a861-4baf-9c18-359b25bff415",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "volunteer/"
+                },
+                "text": "Getting started",
+                "component": "navItem"
+              },
+              {
+                "_uid": "e8ee42af-bb98-4fea-8bca-35ee2fbd4f43",
+                "link": {
+                  "id": "",
+                  "url": "https://associates.alumni.stanford.edu/",
+                  "_uid": "7501634e-29de-424f-a93f-dad8d3785ab8",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://associates.alumni.stanford.edu/"
+                },
+                "text": "Stanford Associates",
+                "component": "navItem"
+              },
+              {
+                "_uid": "82957b21-58d4-4cde-9fe6-8c760ded2833",
+                "link": {
+                  "id": "",
+                  "url": "https://alumni.stanford.edu/get/page/volunteering/beyondthefarm/",
+                  "_uid": "249cc6e7-366c-4f66-b1b1-07ba695c5ea7",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumni.stanford.edu/get/page/volunteering/beyondthefarm/"
+                },
+                "text": "Beyond the Farm",
+                "component": "navItem"
+              },
+              {
+                "_uid": "237ec7ea-ce11-4537-bf3f-802920995819",
+                "link": {
+                  "id": "",
+                  "url": "https://trusteenominations.alumni.stanford.edu/",
+                  "_uid": "de307a3b-66c2-4515-b8e5-314883c90dbd",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://trusteenominations.alumni.stanford.edu/"
+                },
+                "text": "Trustee nominations",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          },
+          {
+            "_uid": "75d5bcdf-7adc-432c-a26f-fa925d1aa469",
+            "heading": "About",
+            "linkList": [
+              {
+                "_uid": "0f38744f-86c8-45e9-8512-f30335f50086",
+                "link": {
+                  "id": "00210970-1134-4fd3-b6da-314c5bbf3f33",
+                  "url": "",
+                  "_uid": "13dadc05-fddd-483e-8f90-edc6753fdca4",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "about/"
+                },
+                "text": "About SAA",
+                "component": "navItem"
+              },
+              {
+                "_uid": "f80a374f-d436-47e5-93d4-cd4bafce2691",
+                "link": {
+                  "id": "",
+                  "url": "https://alumnicenter.alumni.stanford.edu/",
+                  "_uid": "dd151feb-16a7-41cc-8ed5-fc37d12c222b",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumnicenter.alumni.stanford.edu/"
+                },
+                "text": "Frances C. Arrillaga Alumni Center",
+                "component": "navItem"
+              },
+              {
+                "_uid": "c6e45a1b-2af3-41e7-ab0b-b55e0d52229e",
+                "link": {
+                  "id": "",
+                  "url": "https://alumnicenterevents.alumni.stanford.edu/",
+                  "_uid": "8a72936a-2d97-4fa8-adb2-744e6859e0da",
+                  "linktype": "url",
+                  "fieldtype": "multilink",
+                  "cached_url": "https://alumnicenterevents.alumni.stanford.edu/"
+                },
+                "text": "Reserve event space",
+                "component": "navItem"
+              },
+              {
+                "_uid": "7a4c4e03-0db4-460e-a16f-c2bbb7fa2c06",
+                "link": {
+                  "id": "5b96dd1f-3194-4801-b84c-40fb908b2f9b",
+                  "url": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "about/contact"
+                },
+                "text": "Contact us",
+                "component": "navItem"
+              }
+            ],
+            "component": "linkGroup"
+          }
+        ],
+        "actionLinks": [
+          {
+            "rel": "",
+            "_uid": "e96081da-01ae-462c-8ad4-b4db3897ad19",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "",
+              "_uid": "edf41d5c-ae69-4953-bf7c-1ac295fc758d",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": ""
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Help",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "5fb13dcd-5ea7-441b-bafe-307374fe75a6",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "md",
+            "isOutlineFaIcon": false
+          },
+          {
+            "rel": "",
+            "_uid": "9c43d17a-dd35-4d4a-bf1e-30b6f8091dae",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://alumni.stanford.edu/get/page/directory/search?pgOrg=saa",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://alumni.stanford.edu/get/page/directory/search?pgOrg=saa"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Find an alum",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "f3e33ef4-40de-41a5-8979-8f963a4804e9",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "md",
+            "isOutlineFaIcon": false
+          },
+          {
+            "rel": "nofollow",
+            "_uid": "66e3bd30-0a80-49df-b6b0-65b35b51f5e0",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://alumni.stanford.edu/tools/mail?level=12&groupname=saa&pgOrg=saa&dbc=y",
+              "_uid": "fcff8d90-3dfa-482c-8af5-9a585e2e95bb",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://alumni.stanford.edu/tools/mail?level=12&groupname=saa&pgOrg=saa&dbc=y"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Check your alumni email",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "876bf8ec-128c-4e84-a8e4-6419462ca042",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "md",
+            "isOutlineFaIcon": false
+          },
+          {
+            "rel": "nofollow",
+            "_uid": "74afaf9e-d297-4271-9406-64170054a216",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "https://giving.stanford.edu",
+              "_uid": "9515c17a-fdbf-4b10-a1eb-64a7f04bf31c",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://giving.stanford.edu"
+            },
+            "size": "small",
+            "align": "left",
+            "srText": "",
+            "linkText": "Give to Stanford",
+            "component": "ctaLink",
+            "textColor": "white",
+            "leadingIcon": {
+              "_uid": "766fb2b1-b063-4094-a9d1-9c69b7493f92",
+              "icon": "",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "spacingBottom": "none",
+            "isOutlineFaIcon": false
+          }
+        ],
+        "twitterLink": "https://twitter.com/stanfordalumni",
+        "youtubeLink": "https://www.youtube.com/user/StanfordAlumni/",
+        "linkedinLink": "https://www.linkedin.com/groups/74186/",
+        "organization": "Stanford Alumni Association"
+      },
+      "component_id": 1621493,
+      "space_id": 118608,
+      "created_at": "2021-09-08T00:57:04.192Z",
+      "updated_at": "2021-09-08T23:37:58.296Z",
+      "image": ""
+    },
+    {
+      "id": 1063038,
+      "name": "Event (multi-day)",
+      "preset": {
+        "end": "2022-01-01 03:30",
+        "_uid": "a3e15bc3-153d-4473-ab40-963d33ca2e46",
+        "image": {
+          "id": 2412949,
+          "alt": "",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/4000x6000/88b4cd3bcb/adam-dutton-ryuyt0-1ro4-unsplash.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "start": "2021-12-30 08:00",
+        "title": "Stargazing on Mars",
+        "location": "Mars",
+        "component": "event",
+        "isVirtual": false,
+        "organizer": "The Martians",
+        "imageFocus": "bottom",
+        "externalUrl": "https://google.com"
+      },
+      "component_id": 1621481,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:38.202Z",
+      "updated_at": "2021-06-29T05:39:38.202Z",
+      "image": ""
+    },
+    {
+      "id": 1063039,
+      "name": "Event (single day)",
+      "preset": {
+        "end": "2030-12-01 23:43",
+        "_uid": "93a73bda-9c4f-444c-8e7b-0d11f7ee7f74",
+        "image": {
+          "id": 2310455,
+          "alt": "",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/600x400/ab1652b364/clayborne.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "start": "2030-12-01 20:56",
+        "title": "Virtual Conversation with Dr. Clayborne Carson - Stanford's MLK Institute",
+        "location": "Zoom",
+        "component": "event",
+        "isVirtual": true,
+        "organizer": "Stanford Women's Club of the East Bay",
+        "imageFocus": "center",
+        "externalUrl": "https://events.stanford.edu/events/908/90890/"
+      },
+      "component_id": 1621481,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:38.213Z",
+      "updated_at": "2021-08-11T04:11:03.010Z",
+      "image": ""
+    },
+    {
+      "id": 1107160,
+      "name": "Fullwidth hero image",
+      "preset": {
+        "seo": {
+          "_uid": "67e94d63-e16c-4291-aa6e-17ba58ea537a",
+          "title": "",
+          "plugin": "seo_metatags",
+          "og_image": "",
+          "og_title": "",
+          "description": "",
+          "twitter_image": "",
+          "twitter_title": "",
+          "og_description": "",
+          "twitter_description": ""
+        },
+        "_uid": "90fc72b1-b0a9-4ed1-8425-8714e6c9b926",
+        "tags": "",
+        "image": {
+          "id": 2533892,
+          "alt": "",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/2000x1300/4afab40590/nbabubble_main_final.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "intro": "Five swabs a day keeps COVID away, and other tales from the league’s unprecedented epidemiological experiment.",
+        "title": "The Doctor in Charge of the NBA Bubble",
+        "Alerts": [],
+        "author": "Kelli Anderson",
+        "source": "STANFORD Alumni Magazine",
+        "teaser": "",
+        "caption": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Illustration: Alex Nabaum",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "content": [
+          {
+            "_uid": "69686fb2-84c4-41be-a857-ddf7460b557d",
+            "width": "8",
+            "content": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The bubble was holding.",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "bold"
+                        },
+                        {
+                          "type": "styled",
+                          "attrs": {
+                            "class": "su-text-m1 xl:su-text-m2"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "text": " Through the first two months of the NBA’s astonishingly complex and expensive restart to the 2019–20 season at Disney World in Orlando, Fla., the league’s unprecedented social, sports and epidemiological experiment seemed to be working.",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "styled",
+                          "attrs": {
+                            "class": "su-text-m1 xl:su-text-m2"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The strict quarantines, the daily tests and health checks, the electronic checkpoints, the endless cleaning and sterilization, the mask wearing and hand washing—all the procedures that NBA vice president and events medical director Leroy Sims, ’01, MS ’02, MD ’07, and his colleagues had labored over for months and that hundreds of players, coaches, reporters, staff and resort workers complied with daily—had kept COVID-19 at bay. As the regular season ended and playoffs began, no player or other resident of the NBA campus had tested positive for the coronavirus, even as the pandemic raged across the state.",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "But as the end of August approached, a new and potentially troublesome variable loomed: little kids. The NBA had agreed to allow player guests—four per player, restricted largely to family—inside the bubble after the first round of playoffs. How well would the bio-fortress hold then? “It’s one thing to ask adults to get tested every day, wear masks and follow strict social distancing guidelines for the common good,” says Sims. “But a 5-year-old?”",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "component": "wysiwyg",
+            "spacingTop": "none",
+            "isLightText": false,
+            "spacingBottom": "lg"
+          },
+          {
+            "_uid": "d0fc2b66-0573-4748-8e25-78ac4358fc62",
+            "image": {
+              "id": 2533924,
+              "alt": "",
+              "name": "",
+              "focus": null,
+              "title": "",
+              "filename": "https://a.storyblok.com/f/103430/1000x750/8dbd9a162d/nbabubble_disneybus.jpeg",
+              "copyright": "",
+              "fieldtype": "asset"
+            },
+            "caption": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "DISEMBARKING: Sims approaches the arena for the first time, on July 19. (Photo: Leroy Sims)",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "isBanner": false,
+            "component": "simpleImage",
+            "imageFocus": "center",
+            "imageWidth": "8",
+            "spacingTop": "none",
+            "captionAlign": "right",
+            "spacingBottom": "lg",
+            "isCaptionCenter": false
+          },
+          {
+            "_uid": "773c4af0-87b7-4ed3-b195-e4ae3adf2226",
+            "width": "8",
+            "content": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The grade-school set’s tolerance for nasal swabs was just one of scores of questions keeping Sims up at night—that is, when he wasn’t already pulling an overnight shift as an emergency medicine doctor at Mills-Peninsula Medical Center in Burlingame, Calif. A Chicago native who loved the field of medicine as a kid and ran track at Stanford, Sims found himself juggling two high-adrenaline jobs, including the orchestration of a novel medical endeavor that his boss at the NBA, Jeannette Neyses, likens to “running a bunch of sprints, every day.”",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 2
+                  },
+                  "content": [
+                    {
+                      "text": "Heading Level 2",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "“Work in this bubble is harder than working in the ER because I’m so prepared for the ER,” said Sims in early September. He spent six weeks in the bubble early in the summer, flew back to California to his wife and two young daughters for three weeks—and six ER shifts—and then returned to Orlando to finish out the season. “There is no playbook for the bubble.”",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 3
+                  },
+                  "content": [
+                    {
+                      "text": "Heading Level 3",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Before COVID, Sims oversaw the operations of all things medical at NBA events worldwide, from the annual All-Star Game to a Global Game in Paris to an NBA Africa Game in Johannesburg. The bubble was a hybrid beast—both an event and the end of a season that was put on pause for four months due to the pandemic. In effect, it was an event of such long duration—from the restart in early July to the crowning of the Lakers as champions in mid-October—that, in addition to sourcing MRI machines and sussing out which local hospitals could provide private entry, Sims had to think about all the off-court medical needs people would normally handle themselves. What if one of the 1,500 or so bubble residents suddenly needed an ophthalmologist? Or had chest pains?",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 4
+                  },
+                  "content": [
+                    {
+                      "text": "Heading Level 4",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Then there was the matter of a global pandemic to repel. Before players arrived for the restart, Sims and his NBA colleagues spent months consulting with specialists in everything from mathematics to infectious disease to industrial hygiene. They talked with the NFL, the NHL, Major League Soccer, Major League Baseball, various European soccer leagues, the Fédération Internationale de Basketball and the Australian Football League. They wrestled with questions such as: What type of test should we do and how often? How do we do that without taking resources from the local community? (The NBA, in conjunction with BioReference Labs, provided free testing in the Orlando area.) How do we most reasonably limit the biggest COVID risk factor—exposure to other people—while playing basketball? “I know a lot of people give us kudos: The NBA is showing people how to do it in the bubble,” says Sims. “But the NBA didn’t sit in the room and come up with this de novo. We really did our homework and consulted folks.”",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "heading",
+                  "attrs": {
+                    "level": 5
+                  },
+                  "content": [
+                    {
+                      "text": "Heading Level 5",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "The resulting 113-page medical protocol spells out what would have happened if someone had tested positive (isolation housing and further testing) and is rife with rules and restrictions: no visits to teammates’ rooms, no caddies in golf, no doubles in table tennis. No reusing a deck of cards. No interaction with the outside world. (In July, Richaun Holmes of the Sacramento Kings inadvertently crossed the bubble border to grab a delivery of chicken wings and paid for his indiscretion with 10 extra days in quarantine.) COVID tests—three shallow swabs of the throat and one swab of each nostril—were mandatory daily, as were temperature and oxygen saturation readings and symptom checks that were uploaded into wearable devices that tracked bubble denizens’ health and accordingly granted or denied them access to entrances around the campus.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "component": "wysiwyg",
+            "spacingTop": "none",
+            "isLightText": false,
+            "spacingBottom": "none"
+          }
+        ],
+        "pubLink": "",
+        "audience": "",
+        "category": "",
+        "masthead": [
+          {
+            "_uid": "bd7c5d5f-aa56-4c5e-ae39-60c814e5a487",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "cardImage": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "component": "story",
+        "storyType": "story",
+        "ankleTitle": "More information",
+        "imageFocus": "center",
+        "manualDate": "",
+        "shortTitle": "",
+        "localFooter": [
+          {
+            "_uid": "a8c49d5d-52c0-414b-afff-4057ad9c793d",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "2af8b554-7844-45f2-bd97-40cfcde29e50"
+            ]
+          }
+        ],
+        "ankleBgColor": "white",
+        "ankleContent": [
+          {
+            "_uid": "279c01c2-b463-4df1-a329-51f202a872ab",
+            "icon": {
+              "_uid": "689b2e56-3dcb-4315-94a1-7ce916fb4661",
+              "icon": "fa-pencil-alt",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "link": {
+              "id": "",
+              "url": "https://stanford.edu",
+              "_uid": "c873abcc-ccd6-461b-b397-403a3226e456",
+              "linktype": "url",
+              "fieldtype": "multilink",
+              "cached_url": "https://stanford.edu"
+            },
+            "headline": "Sign up for membership",
+            "component": "iconCard",
+            "isOutline": false,
+            "headingLevel": "3"
+          },
+          {
+            "_uid": "08d2d336-7d8b-42fa-9f8b-b9f39e01a732",
+            "icon": {
+              "_uid": "69dae895-db1f-4961-8eed-3f054d51584c",
+              "icon": "fa-comments",
+              "type": "fas",
+              "plugin": "fontawesome-selector"
+            },
+            "link": {
+              "id": "5b96dd1f-3194-4801-b84c-40fb908b2f9b",
+              "url": "",
+              "_uid": "789b9fe6-480a-4008-b361-ffc8264df4d9",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "about/contact"
+            },
+            "headline": "Contact us if you need help",
+            "component": "iconCard",
+            "isOutline": true,
+            "headingLevel": "3"
+          }
+        ],
+        "belowContent": [
+          {
+            "id": "",
+            "cta": [
+              {
+                "rel": "",
+                "_uid": "e54a602e-ea14-4b83-9bb6-0f70236b94a9",
+                "icon": "arrow-right",
+                "link": {
+                  "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                  "url": "",
+                  "_uid": "a206c2bf-a423-4e9a-9d7b-71233e22ce9a",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "home"
+                },
+                "size": "default",
+                "align": "center",
+                "srText": "",
+                "linkText": "Explore other stories",
+                "component": "ctaButton",
+                "buttonStyle": "primary"
+              }
+            ],
+            "_uid": "55ff2226-44e2-4920-a051-d0f55329ef6c",
+            "intro": {
+              "_uid": "9507d0d7-71b8-4e50-a70b-e630f14b8c83",
+              "type": "doc",
+              "content": [
+                {
+                  "_uid": "896107e5-1e1c-44dc-94c6-6138b6d60937",
+                  "type": "paragraph"
+                }
+              ]
+            },
+            "title": "You may also like...",
+            "bgColor": "white",
+            "content": [
+              {
+                "_uid": "563b1ea1-718c-4d53-bb04-8d9ffae3635a",
+                "width": "12",
+                "numCol": "3",
+                "content": [
+                  {
+                    "_uid": "782bf507-5760-4fd4-b7d7-0ed58ec89754",
+                    "hideTab": true,
+                    "tabText": "Story",
+                    "cardTitle": " ",
+                    "component": "storyCard",
+                    "hideImage": false,
+                    "isBigText": false,
+                    "isMinimal": false,
+                    "storyPicker": [
+                      "a6cfc291-0309-42f0-b788-db277a4c33fd",
+                      "925074aa-cd4d-4f08-ac15-43a8c6a019d0"
+                    ],
+                    "headingLevel": "3",
+                    "cardImageFocus": "top"
+                  }
+                ],
+                "alignment": "center",
+                "component": "grid",
+                "removeGap": false,
+                "isStretchItems": false
+              }
+            ],
+            "component": "section",
+            "superLink": {
+              "id": "",
+              "url": "",
+              "_uid": "346fbd8a-560d-46cd-9fff-abd31dec497c",
+              "anchor": "",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": ""
+            },
+            "superhead": "",
+            "spacingTop": "none",
+            "isLeftAlign": true,
+            "headingLevel": "2",
+            "isSmallTitle": true,
+            "isSrOnlyTitle": false,
+            "spacingBottom": "xxs",
+            "isLessHeaderSpacing": true
+          }
+        ],
+        "canonicalURL": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "publishedDate": "2021-08-29 04:56",
+        "notFullwidthImage": false,
+        "isAnkleTitleSrOnly": false
+      },
+      "component_id": 1701720,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:11:25.971Z",
+      "updated_at": "2021-08-11T04:11:25.971Z",
+      "image": ""
+    },
+    {
+      "id": 1063043,
+      "name": "Hero with all fields",
+      "preset": {
+        "cta": [
+          {
+            "cta": [
+              {
+                "rel": "",
+                "_uid": "d89ffd8c-c45f-4013-ba91-becd3b26ade8",
+                "icon": "arrow-right",
+                "link": {
+                  "id": "bff9f183-85ab-4087-8f5b-5b28e32acd8f",
+                  "url": "",
+                  "_uid": "2bce33ca-16fc-4c11-86e0-969e98b2c295",
+                  "anchor": "",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "test/yvonne/test-section"
+                },
+                "size": "large",
+                "align": "center",
+                "srText": "",
+                "linkText": "Find your reunion",
+                "component": "ctaButton",
+                "buttonStyle": "primary"
+              },
+              {
+                "rel": "",
+                "_uid": "0c1b072c-b9eb-49f5-9f58-72250296451a",
+                "icon": "arrow-right",
+                "link": {
+                  "id": "bff9f183-85ab-4087-8f5b-5b28e32acd8f",
+                  "url": "",
+                  "_uid": "dfd73b5a-f6cf-4c60-9ca4-2c2e443fde71",
+                  "linktype": "story",
+                  "fieldtype": "multilink",
+                  "cached_url": "test/yvonne/test-section"
+                },
+                "size": "large",
+                "align": "center",
+                "srText": "",
+                "linkText": "Find your reunion",
+                "component": "ctaButton",
+                "buttonStyle": "ghost"
+              }
+            ],
+            "_uid": "1db75a75-60ed-456b-961c-5d9ea74ce520",
+            "display": "adjacent",
+            "component": "ctaGroup"
+          }
+        ],
+        "_uid": "c57dfc88-1fe4-42ac-b9c7-16dc2044bbeb",
+        "image": {
+          "id": 2170270,
+          "alt": "campus",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/3600x2403/4fe6b29a8c/151001-1536.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "sansSub": "The Stanford community is here to support you phasellus dolor. ",
+        "headline": "reunited at last",
+        "component": "hero",
+        "sansSuper": "It has been a long year",
+        "imageFocus": "top",
+        "serifSuper": "but we're finally here",
+        "headlineSize": "large",
+        "isDarkGradient": false
+      },
+      "component_id": 1621496,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:43.556Z",
+      "updated_at": "2021-08-11T04:11:05.732Z",
+      "image": ""
+    },
+    {
+      "id": 1149221,
+      "name": "Horizontal Collection Card",
+      "preset": {
+        "_uid": "c480c621-5fe0-4e93-9dc6-608e6aa34925",
+        "link": {
+          "id": "3840ef46-1681-499c-b7a9-3efc49333b91",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "terms"
+        },
+        "image": {
+          "id": 2839321,
+          "alt": "",
+          "name": "",
+          "focus": "511x427:512x428",
+          "title": "",
+          "filename": "https://a.storyblok.com/f/118608/1291x751/8650e5928e/family.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "tabText": "Featured",
+        "headline": "Family adventures",
+        "component": "collectionCardHorizontal",
+        "imageFocus": "left",
+        "description": "On a Stanford family adventure, you and your loved ones will find yourselves immersed in new countries and cultures with hands-on activities, faculty lectures and unique learning opportunities for all ages.",
+        "headingLevel": "3",
+        "spacingBottom": "sm"
+      },
+      "component_id": 1766890,
+      "space_id": 118608,
+      "created_at": "2021-09-08T05:23:12.264Z",
+      "updated_at": "2021-09-08T05:23:12.264Z",
+      "image": ""
+    },
+    {
+      "id": 1063044,
+      "name": "Interior page Hero, small headline, no CTA",
+      "preset": {
+        "cta": [],
+        "_uid": "864db2cb-dda6-4d24-a38e-445f79a3bb17",
+        "image": {
+          "id": 2429546,
+          "alt": "",
+          "_uid": "d78c77cd-ffa5-4cea-974e-dc296fa55685",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/1774x958/4f6cb33256/volunteer_20201103_vote19.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "sansSub": "",
+        "headline": "render the greatest possible service",
+        "component": "hero",
+        "sansSuper": "",
+        "imageFocus": "center",
+        "serifSuper": "At the heart of Stanford is a desire to",
+        "headlineSize": "small",
+        "isDarkGradient": false
+      },
+      "component_id": 1621496,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:43.566Z",
+      "updated_at": "2021-08-11T04:11:05.973Z",
+      "image": ""
+    },
+    {
+      "id": 1063045,
+      "name": "Large image",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "7965ebeb-b2b7-460e-9207-15c05a727c79",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "742ea775-dc16-44c1-bd18-6f6861436ac7",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "default",
+            "align": "left",
+            "srText": "",
+            "linkText": "Test link",
+            "component": "ctaLink",
+            "iconColor": "bright-red-hover-black",
+            "textColor": "bright-red-hover-cardinal-red",
+            "spacingBottom": "none"
+          }
+        ],
+        "_uid": "2671579f-d14e-4234-b606-a9399cb84ff9",
+        "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+        "align": "left",
+        "image": {
+          "id": 2114607,
+          "alt": "Building",
+          "_uid": "db5895f8-b385-45ef-833d-e6ca7191b910",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "isRound": false,
+        "headline": "Big Headline",
+        "component": "basicCard",
+        "isMinimal": false,
+        "imageFocus": "left",
+        "borderColor": "digital-red",
+        "isLightText": false,
+        "headingLevel": "5",
+        "isBigHeadline": true
+      },
+      "component_id": 1621504,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:46.401Z",
+      "updated_at": "2021-06-29T05:39:46.401Z",
+      "image": ""
+    },
+    {
+      "id": 1063035,
+      "name": "Light grey background, center-aligned, large font sizes",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "2434d618-8779-404d-9557-7a593062b692",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "fd44983a-e86d-4306-b3f9-8a2640234feb",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "large",
+            "align": "left",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "secondary"
+          }
+        ],
+        "_uid": "089cea79-c737-4bc8-b4bf-5e0c231dc61a",
+        "text": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Larger body text. Vestibulum ante ipsum primis in faucibus orci. Large button size seledted.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "id": 2310455,
+          "alt": "Faculty",
+          "_uid": "d25d4e24-242f-4e06-a6a1-4b497f12efa4",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/600x400/ab1652b364/clayborne.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "theme": "foggy-light",
+        "vCrop": "top",
+        "layout": "center",
+        "bgImage": {
+          "id": null,
+          "alt": null,
+          "_uid": "63f956c0-a5fe-466e-b4c1-14697c904249",
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "headline": "Large Headline, Centered",
+        "component": "poster",
+        "imageFocus": "center",
+        "borderColor": "digital-red",
+        "headingLevel": "2",
+        "isBigBodyText": true,
+        "isBigHeadline": true
+      },
+      "component_id": 1621476,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:36.392Z",
+      "updated_at": "2021-06-29T05:39:36.392Z",
+      "image": ""
+    },
+    {
+      "id": 1063055,
+      "name": "Local Footer CTA link style",
+      "preset": {
+        "rel": "",
+        "_uid": "9c43d17a-dd35-4d4a-bf1e-30b6f8091dae",
+        "icon": "arrow-right",
+        "link": {
+          "id": "",
+          "url": "https://alumni.stanford.edu/get/page/directory/search?pgOrg=saa",
+          "linktype": "url",
+          "fieldtype": "multilink",
+          "cached_url": "https://alumni.stanford.edu/get/page/directory/search?pgOrg=saa"
+        },
+        "size": "small",
+        "align": "left",
+        "srText": "",
+        "linkText": "Find an alum",
+        "component": "ctaLink",
+        "iconColor": "bright-red-hover-white",
+        "textColor": "white",
+        "spacingBottom": "md"
+      },
+      "component_id": 1621508,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:47.917Z",
+      "updated_at": "2021-06-29T05:39:47.917Z",
+      "image": ""
+    },
+    {
+      "id": 1063046,
+      "name": "Minimal, large image, left aligned content",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "bb152621-2f3c-40f5-8fce-b322f06410a2",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "default",
+            "align": "left",
+            "srText": "",
+            "linkText": "Test link",
+            "component": "ctaLink",
+            "iconColor": "bright-red-hover-black",
+            "textColor": "bright-red-hover-cardinal-red",
+            "spacingBottom": "none"
+          }
+        ],
+        "_uid": "35e5db0b-f769-4b2f-a8e0-cdf1e6e6adb4",
+        "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+        "align": "left",
+        "image": {
+          "id": 2114607,
+          "alt": "Building",
+          "_uid": "9b8c06b6-2809-4cdf-8f53-daa544131a09",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "isRound": false,
+        "headline": "Big Headline",
+        "component": "basicCard",
+        "isMinimal": true,
+        "imageFocus": "left",
+        "borderColor": "digital-red",
+        "isLightText": false,
+        "headingLevel": "5",
+        "isBigHeadline": true
+      },
+      "component_id": 1621504,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:46.423Z",
+      "updated_at": "2021-06-29T05:39:46.423Z",
+      "image": ""
+    },
+    {
+      "id": 1063047,
+      "name": "Minimal, round image, centered content",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "3ef4b43e-28f6-4e6d-8e69-9c920680631c",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "e2027c73-6ad4-4cfa-b5b7-bac0dedfd4d3",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "default",
+            "align": "left",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "secondary"
+          }
+        ],
+        "_uid": "165630bd-284f-4a9b-8517-124583bcfc98",
+        "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+        "align": "center",
+        "image": {
+          "id": 2114607,
+          "alt": "Building",
+          "_uid": "078a8a0f-661c-46be-ac30-26ad6804b192",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "isRound": true,
+        "headline": "Small Headline",
+        "component": "basicCard",
+        "isMinimal": true,
+        "imageFocus": "center",
+        "borderColor": "palo-verde",
+        "isLightText": false,
+        "headingLevel": "3",
+        "isBigHeadline": false
+      },
+      "component_id": 1621504,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:46.432Z",
+      "updated_at": "2021-06-29T05:39:46.432Z",
+      "image": ""
+    },
+    {
+      "id": 1107161,
+      "name": "Non fullwidth hero image",
+      "preset": {
+        "seo": {
+          "_uid": "c1bef20f-c102-4573-9f93-3db3086f91a9",
+          "title": "",
+          "plugin": "seo_metatags",
+          "og_image": "",
+          "og_title": "",
+          "description": "",
+          "twitter_image": "",
+          "twitter_title": "",
+          "og_description": "",
+          "twitter_description": ""
+        },
+        "_uid": "80169df3-9032-4698-a29c-7619fb8e1d57",
+        "tags": "Six",
+        "ankle": [],
+        "image": {
+          "id": 2521254,
+          "alt": "",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/2000x1328/5816b0ad08/dec20_wwa_elora1_bn-2000px.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "intro": "An evolutionary biologist dives into microscopic marine mysteries.",
+        "title": "Meet Elora  López-Nandam",
+        "Alerts": [
+          {
+            "_uid": "ccbfdaa4-c55b-44c8-b3a1-a47714be76b8",
+            "body": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "asdfasdfasdfasdfasd fasdfas dfasd fasdf asdfasdfasdfasd as fasdfas",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "dfa",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "sdfasdfasdfds",
+                      "type": "text"
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "asdf",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "type": "info",
+            "label": "Alert",
+            "heading": "Heading",
+            "alertCta": [],
+            "component": "alert",
+            "hasDismiss": false
+          }
+        ],
+        "author": "Jill Patton",
+        "source": "the Alumni Magazine",
+        "teaser": "Diving into microscopic marine mysteries.",
+        "caption": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Photography by Toni Bird",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "content": [
+          {
+            "_uid": "54ec8192-fd53-443f-ba63-f6b7e04a2a55",
+            "width": "8",
+            "content": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Tucked into the labyrinthine recesses of the American Museum of Natural History in New York, among 32 million specimens and cultural artifacts, is the slow loris. Rather, century-old specimens of the petite nocturnal primate from Southeast Asia, with whom Elora López-Nandam became quite acquainted.",
+                      "type": "text",
+                      "marks": [
+                        {
+                          "type": "styled",
+                          "attrs": {
+                            "class": "su-big-paragraph"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "After spending a summer extracting and decoding their DNA while an undergrad at Columbia, López-Nandam turned her attention to another sluggish creature, the sea cucumber, and the conservation implications of its genetic diversity in the coral reefs near Fiji. Along the way, she decided to devote her life to exploring big questions: how life on Earth has changed over the past 4 billion years, and what roles humans have played in those transformations.",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "component": "wysiwyg",
+            "spacingTop": "none",
+            "isLightText": false,
+            "spacingBottom": "lg"
+          },
+          {
+            "_uid": "c001af6a-0cbf-410b-958e-f47367052ccd",
+            "image": {
+              "id": 2529389,
+              "alt": "",
+              "name": "",
+              "focus": null,
+              "title": "",
+              "filename": "https://a.storyblok.com/f/103430/800x1067/b5e85cf2ef/dec20_wwa-undersea-800px.jpeg",
+              "copyright": "",
+              "fieldtype": "asset"
+            },
+            "caption": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "SNIP IT: López-Nandam takes a sample from an Acropora hyacinthus coral near Ofu, American Samoa. (Photo: Beth Sheets)",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "isBanner": false,
+            "component": "simpleImage",
+            "imageFocus": "left",
+            "imageWidth": "8",
+            "spacingTop": "none",
+            "captionAlign": "right",
+            "spacingBottom": "xl",
+            "isCaptionCenter": false
+          },
+          {
+            "_uid": "dfbbf5d1-c507-4fde-b330-908ce53cbe50",
+            "width": "8",
+            "content": {
+              "type": "doc",
+              "content": [
+                {
+                  "type": "paragraph",
+                  "content": [
+                    {
+                      "text": "Now a PhD candidate at Stanford in the lab of evolutionary biologist Stephen Palumbi, López-Nandam has spent the past six years in the Marshall Islands, American Samoa and Palau, and at Hopkins Marine Station in Monterey, Calif., analyzing the genetics of coral to determine how they have adapted to major stressors such as mass bleaching events and nuclear bombing. “We have such a poor understanding of basic coral cell biology,” López-Nandam says. “What I’m trying to do is ask really fundamental questions about how these animals grow and how they’re actually operating on the cellular level, in order to piece together why they’re dying now.”",
+                      "type": "text"
+                    }
+                  ]
+                }
+              ]
+            },
+            "component": "wysiwyg",
+            "spacingTop": "none",
+            "isLightText": false,
+            "spacingBottom": "none"
+          }
+        ],
+        "pubLink": "",
+        "audience": "Thing one, Thing two, Thing Three",
+        "category": "Four, Five",
+        "masthead": [
+          {
+            "_uid": "5719dc93-2d15-4087-8578-e1ce1beb63a4",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "cardImage": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": null,
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "component": "story",
+        "storyType": "story",
+        "ankleTitle": "",
+        "imageFocus": "top",
+        "manualDate": "December 2020",
+        "shortTitle": "Meet Elora  López-Nandam",
+        "localFooter": [
+          {
+            "_uid": "8921561d-227d-4153-a70d-02c95e8cceef",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "2af8b554-7844-45f2-bd97-40cfcde29e50"
+            ]
+          }
+        ],
+        "belowContent": [],
+        "publishedDate": "2021-08-01 03:56",
+        "notFullwidthImage": true
+      },
+      "component_id": 1701720,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:11:26.337Z",
+      "updated_at": "2021-08-11T04:11:26.337Z",
+      "image": ""
+    },
+    {
+      "id": 1063036,
+      "name": "Poster with background image and dark gradient overlay",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "1f8d49b6-1714-47fd-840c-ef0a52f97183",
+            "icon": "external",
+            "link": {
+              "id": "",
+              "url": "",
+              "_uid": "903dd5a0-b79b-49b3-a598-7162c31ea6aa",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": ""
+            },
+            "size": "default",
+            "align": "left",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "ghost-gradient"
+          }
+        ],
+        "_uid": "918fe1b9-3422-4a78-ba20-d564d8ab94ea",
+        "text": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Short centered content.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "image": {
+          "id": 2349104,
+          "alt": "",
+          "_uid": "514eed14-26c9-4b49-af34-fef7989532e4",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/7591x5063/900790fba3/20200218_art_sra7665.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "theme": "use-bg-image",
+        "vCrop": "center",
+        "layout": "center",
+        "bgImage": {
+          "id": 2303931,
+          "alt": "",
+          "_uid": "96f19ff6-3d45-4f13-aa22-a0e921c81005",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/2500x1661/6a29463fc7/180320-flying-car-aeromobil50-se-143p_ef949b16720b8720448e77eed87b1cc7.jpeg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "headline": "Super Short Headline",
+        "component": "poster",
+        "imageFocus": "center",
+        "borderColor": "electric-blue",
+        "headingLevel": "2",
+        "isBigBodyText": false,
+        "isBigHeadline": false
+      },
+      "component_id": 1621476,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:36.403Z",
+      "updated_at": "2021-06-29T05:39:36.403Z",
+      "image": ""
+    },
+    {
+      "id": 1063051,
+      "name": "Primary (solid red) button",
+      "preset": {
+        "rel": "",
+        "_uid": "22361352-87fd-415c-81f3-dd0a3d4deb4e",
+        "icon": "arrow-right",
+        "link": {
+          "id": "57a2f091-5269-402e-bfc2-f26aac975266",
+          "url": "",
+          "_uid": "64637a27-37d4-4922-bad6-2d2c6ea2ffb3",
+          "anchor": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "home"
+        },
+        "size": "default",
+        "align": "left",
+        "srText": "",
+        "linkText": "Button Link",
+        "component": "ctaButton",
+        "buttonStyle": "primary"
+      },
+      "component_id": 1621507,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:47.523Z",
+      "updated_at": "2021-08-11T04:10:57.279Z",
+      "image": ""
+    },
+    {
+      "id": 1063048,
+      "name": "Round image",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "309a0db3-3885-4d05-859f-93a87e6bb4f3",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "a62abd07-f323-434e-9090-c4ece1cefb76",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "default",
+            "align": "left",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "secondary-gradient"
+          }
+        ],
+        "_uid": "4d191439-d73b-479d-802e-685e79c7a92b",
+        "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+        "align": "left",
+        "image": {
+          "id": 2114607,
+          "alt": "Building",
+          "_uid": "66d492dc-7e23-474f-8b65-aa48e1f3fde7",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "isRound": true,
+        "headline": "Small Headline",
+        "component": "basicCard",
+        "isMinimal": false,
+        "imageFocus": "center",
+        "borderColor": "electric-blue",
+        "isLightText": false,
+        "headingLevel": "4",
+        "isBigHeadline": false
+      },
+      "component_id": 1621504,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:46.441Z",
+      "updated_at": "2021-06-29T05:39:46.441Z",
+      "image": ""
+    },
+    {
+      "id": 1063049,
+      "name": "Round image, centered content",
+      "preset": {
+        "cta": [
+          {
+            "rel": "",
+            "_uid": "cb3381df-fc1b-49cc-a79e-a88d7feab89f",
+            "icon": "arrow-right",
+            "link": {
+              "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+              "url": "",
+              "_uid": "106d1c31-b6a1-41d4-b5d0-fd999bf3b42e",
+              "linktype": "story",
+              "fieldtype": "multilink",
+              "cached_url": "home"
+            },
+            "size": "default",
+            "align": "left",
+            "srText": "",
+            "linkText": "Button Link",
+            "component": "ctaButton",
+            "buttonStyle": "secondary-gradient"
+          }
+        ],
+        "_uid": "7bb8675c-b15a-47f6-b1e9-862156133888",
+        "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+        "align": "center",
+        "image": {
+          "id": 2114607,
+          "alt": "Building",
+          "_uid": "b55c8659-71c5-4d01-98fd-2be179ece366",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "isRound": true,
+        "headline": "Small Headline",
+        "component": "basicCard",
+        "isMinimal": false,
+        "imageFocus": "center",
+        "borderColor": "plum",
+        "isLightText": false,
+        "headingLevel": "4",
+        "isBigHeadline": false
+      },
+      "component_id": 1621504,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:46.451Z",
+      "updated_at": "2021-06-29T05:39:46.451Z",
+      "image": ""
+    },
+    {
+      "id": 1063052,
+      "name": "Secondary (gradient outline) button, for light background",
+      "preset": {
+        "rel": "",
+        "_uid": "808df116-c394-42b4-8124-c3f669c00321",
+        "icon": "arrow-right",
+        "link": {
+          "id": "57a2f091-5269-402e-bfc2-f26aac975266",
+          "url": "",
+          "_uid": "85151bf0-ef98-40f7-8513-e375cd0feda4",
+          "anchor": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "home"
+        },
+        "size": "default",
+        "align": "left",
+        "srText": "",
+        "linkText": "Button Link",
+        "component": "ctaButton",
+        "buttonStyle": "secondary-gradient"
+      },
+      "component_id": 1621507,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:47.532Z",
+      "updated_at": "2021-08-11T04:10:57.628Z",
+      "image": ""
+    },
+    {
+      "id": 1063053,
+      "name": "Secondary (red outline) button, for light background",
+      "preset": {
+        "rel": "",
+        "_uid": "76ceac59-26ae-46b5-ba06-8042a1eee81a",
+        "icon": "arrow-right",
+        "link": {
+          "id": "57a2f091-5269-402e-bfc2-f26aac975266",
+          "url": "",
+          "_uid": "68eceb7c-7c40-4fd8-946d-3c1c49feb783",
+          "anchor": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "home"
+        },
+        "size": "default",
+        "align": "left",
+        "srText": "",
+        "linkText": "Button link",
+        "component": "ctaButton",
+        "buttonStyle": "secondary"
+      },
+      "component_id": 1621507,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:47.540Z",
+      "updated_at": "2021-08-11T04:10:57.844Z",
+      "image": ""
+    },
+    {
+      "id": 1063040,
+      "name": "Section with 2 event cards",
+      "preset": {
+        "id": "",
+        "cta": [],
+        "_uid": "5eecf3b5-1120-4d19-9a6b-cbd0c489a5f3",
+        "intro": "",
+        "title": "Upcoming Events",
+        "bgColor": "foggy-light",
+        "content": [
+          {
+            "_uid": "9e3b8483-edb7-467a-9634-aff2d216dfed",
+            "width": "8",
+            "numCol": "2",
+            "content": [
+              {
+                "_uid": "5c9335fb-19dd-4d25-b9ff-517f1cf6f64a",
+                "component": "eventCard",
+                "isMinimal": false,
+                "eventPicker": [
+                  "b75eb8a5-ec54-491b-9b76-5ef313773e63",
+                  "fcd03012-24f4-40ac-b57f-53b6cce8cc03"
+                ],
+                "headingLevel": "3",
+                "previewTitle": "",
+                "isBigHeadline": false
+              }
+            ],
+            "component": "grid",
+            "removeGap": false,
+            "isStretchItems": false
+          }
+        ],
+        "component": "section",
+        "superLink": {
+          "id": "e355b03a-9e78-4e2e-bc01-05c51aa17896",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "test/yvonne/test-events"
+        },
+        "superhead": "Featured Events",
+        "spacingTop": "md",
+        "isLeftAlign": false,
+        "headingLevel": "2",
+        "isSrOnlyTitle": false,
+        "spacingBottom": "md"
+      },
+      "component_id": 1621492,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:42.107Z",
+      "updated_at": "2021-06-29T05:39:42.107Z",
+      "image": ""
+    },
+    {
+      "id": 1063041,
+      "name": "Section with 2 minimal basic cards, center-aligned",
+      "preset": {
+        "id": "",
+        "cta": [],
+        "_uid": "197c0a28-6db0-4f1d-9895-df518fca1305",
+        "intro": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Volunteer right in your hometown alongside your local community of alumni.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "Volunteer with SAA",
+        "bgColor": "white",
+        "content": [
+          {
+            "_uid": "9211ab40-3507-4f95-8b52-abf80923a228",
+            "width": "10",
+            "numCol": "2",
+            "content": [
+              {
+                "cta": [
+                  {
+                    "rel": "",
+                    "_uid": "b11adf6f-8af9-4ca7-9a8e-b3e0f8f3f69c",
+                    "icon": "arrow-right",
+                    "link": {
+                      "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                      "url": "",
+                      "_uid": "92b4e1b0-e909-45e0-9f49-944d2580ac38",
+                      "linktype": "story",
+                      "fieldtype": "multilink",
+                      "cached_url": "home"
+                    },
+                    "size": "default",
+                    "align": "left",
+                    "srText": "",
+                    "linkText": "Button Link",
+                    "component": "ctaButton",
+                    "buttonStyle": "secondary-gradient"
+                  }
+                ],
+                "_uid": "d549ef24-bc3a-441d-b7ac-31dd69bbe8c9",
+                "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+                "align": "center",
+                "image": {
+                  "id": 2114607,
+                  "alt": "Building",
+                  "_uid": "327e1bb3-0df3-4de2-9bb7-6218e57d3c1a",
+                  "name": "",
+                  "focus": null,
+                  "title": "",
+                  "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+                  "copyright": "",
+                  "fieldtype": "asset"
+                },
+                "isRound": true,
+                "headline": "Small Headline",
+                "component": "basicCard",
+                "isMinimal": true,
+                "imageFocus": "center",
+                "borderColor": "poppy",
+                "isLightText": false,
+                "headingLevel": "4",
+                "isBigHeadline": false
+              },
+              {
+                "cta": [
+                  {
+                    "rel": "",
+                    "_uid": "d0c468ef-ff22-4d9c-b660-d26b840e8277",
+                    "icon": "arrow-right",
+                    "link": {
+                      "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                      "url": "",
+                      "_uid": "9ddb93c0-4924-4315-80f2-ce4054dc4bd2",
+                      "linktype": "story",
+                      "fieldtype": "multilink",
+                      "cached_url": "home"
+                    },
+                    "size": "default",
+                    "align": "left",
+                    "srText": "",
+                    "linkText": "Button Link",
+                    "component": "ctaButton",
+                    "buttonStyle": "secondary-gradient"
+                  }
+                ],
+                "_uid": "faee0ca7-9df6-4ec1-86b7-a88697a53200",
+                "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+                "align": "center",
+                "image": {
+                  "id": 2114607,
+                  "alt": "Building",
+                  "_uid": "bfb67462-8d89-43e1-82ca-6044ec84b18e",
+                  "name": "",
+                  "focus": null,
+                  "title": "",
+                  "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+                  "copyright": "",
+                  "fieldtype": "asset"
+                },
+                "isRound": true,
+                "headline": "Small Headline",
+                "component": "basicCard",
+                "isMinimal": true,
+                "imageFocus": "center",
+                "borderColor": "digital-red",
+                "isLightText": false,
+                "headingLevel": "4",
+                "isBigHeadline": false
+              }
+            ],
+            "component": "grid",
+            "removeGap": false,
+            "isStretchItems": false
+          }
+        ],
+        "component": "section",
+        "superLink": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "superhead": "",
+        "spacingTop": "md",
+        "isLeftAlign": false,
+        "headingLevel": "2",
+        "isSrOnlyTitle": false,
+        "spacingBottom": "lg"
+      },
+      "component_id": 1621492,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:42.117Z",
+      "updated_at": "2021-06-29T05:39:42.117Z",
+      "image": ""
+    },
+    {
+      "id": 1063042,
+      "name": "Section with 3 basic cards, left-aligned",
+      "preset": {
+        "id": "",
+        "cta": [],
+        "_uid": "d7390d10-6cea-4695-9b2b-51bb85054e3a",
+        "intro": {
+          "_uid": "51762374-f847-474e-9613-9ed378052cdf",
+          "type": "doc",
+          "content": [
+            {
+              "_uid": "bc7f4cc7-e52b-46a4-9871-ff6560e398a2",
+              "type": "paragraph",
+              "content": [
+                {
+                  "_uid": "0dbc824a-f229-4b8f-8183-bf9c7be7327e",
+                  "text": "Volunteer right in your hometown alongside your local community of alumni.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "title": "About SAA",
+        "bgColor": "white",
+        "content": [
+          {
+            "_uid": "716b8faa-9091-4154-b894-f2159eb4aa90",
+            "width": "12",
+            "numCol": "3",
+            "content": [
+              {
+                "cta": [
+                  {
+                    "rel": "",
+                    "_uid": "57047d9e-fd97-4891-9786-96b78270114e",
+                    "icon": "arrow-right",
+                    "link": {
+                      "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                      "url": "",
+                      "_uid": "e8dc23a3-21b4-4b66-b836-78d5c65a93ef",
+                      "linktype": "story",
+                      "fieldtype": "multilink",
+                      "cached_url": "home"
+                    },
+                    "size": "default",
+                    "align": "left",
+                    "srText": "",
+                    "linkText": "Test CTA link",
+                    "component": "ctaLink",
+                    "iconColor": "bright-red-hover-cardinal-red",
+                    "textColor": "bright-red-hover-cardinal-red",
+                    "spacingBottom": "none"
+                  }
+                ],
+                "_uid": "c7be9fab-f1f1-4d85-aed1-e434f6d89de0",
+                "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+                "align": "left",
+                "image": {
+                  "id": 2114607,
+                  "alt": "Building",
+                  "_uid": "d57b95f4-0bbe-4295-9c5f-8a019a324935",
+                  "name": "",
+                  "focus": null,
+                  "title": "",
+                  "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+                  "copyright": "",
+                  "fieldtype": "asset"
+                },
+                "isRound": true,
+                "headline": "Small Headline",
+                "component": "basicCard",
+                "isMinimal": false,
+                "imageFocus": "center",
+                "borderColor": "poppy",
+                "isLightText": false,
+                "headingLevel": "3",
+                "isBigHeadline": false
+              },
+              {
+                "cta": [
+                  {
+                    "rel": "",
+                    "_uid": "b9aa5808-37c7-4c9f-bd48-50bdb2c87c06",
+                    "icon": "arrow-right",
+                    "link": {
+                      "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                      "url": "",
+                      "_uid": "77d1e392-ae8c-4b93-9877-0288f26b2319",
+                      "linktype": "story",
+                      "fieldtype": "multilink",
+                      "cached_url": "home"
+                    },
+                    "size": "default",
+                    "align": "left",
+                    "srText": "",
+                    "linkText": "Test CTA link",
+                    "component": "ctaLink",
+                    "iconColor": "bright-red-hover-cardinal-red",
+                    "textColor": "bright-red-hover-cardinal-red",
+                    "spacingBottom": "none"
+                  }
+                ],
+                "_uid": "aefef7fa-2d1b-4355-86e8-1b04244d7d4c",
+                "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni.",
+                "align": "left",
+                "image": {
+                  "id": 2114607,
+                  "alt": "Building",
+                  "_uid": "e6c6e92d-1420-4e98-91ac-4680ae41636e",
+                  "name": "",
+                  "focus": null,
+                  "title": "",
+                  "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+                  "copyright": "",
+                  "fieldtype": "asset"
+                },
+                "isRound": true,
+                "headline": "Small Headline",
+                "component": "basicCard",
+                "isMinimal": false,
+                "imageFocus": "center",
+                "borderColor": "digital-red",
+                "isLightText": false,
+                "headingLevel": "3",
+                "isBigHeadline": false
+              },
+              {
+                "cta": [
+                  {
+                    "rel": "",
+                    "_uid": "a4ea0095-cff0-4b45-815c-3cf3415d3ded",
+                    "icon": "arrow-right",
+                    "link": {
+                      "id": "ef000b74-ad7f-4371-8092-a0d84dd9ceb0",
+                      "url": "",
+                      "_uid": "49799a7d-c50f-4b8a-b832-e4ee3aa74675",
+                      "linktype": "story",
+                      "fieldtype": "multilink",
+                      "cached_url": "home"
+                    },
+                    "size": "default",
+                    "align": "left",
+                    "srText": "",
+                    "linkText": "Test CTA link",
+                    "component": "ctaLink",
+                    "iconColor": "bright-red-hover-cardinal-red",
+                    "textColor": "bright-red-hover-cardinal-red",
+                    "spacingBottom": "none"
+                  }
+                ],
+                "_uid": "8047d6f2-ac37-488c-b42e-9c16fedde4a1",
+                "text": "Beyond the Farm Alumni Day of Service is an opportunity to connect with fellow Stanford alumni, friends and family while volunteering with a local community organization.",
+                "align": "left",
+                "image": {
+                  "id": 2114607,
+                  "alt": "Building",
+                  "_uid": "e197448e-3c7d-4414-af53-6c712fd035d2",
+                  "name": "",
+                  "focus": null,
+                  "title": "",
+                  "filename": "https://a.storyblok.com/f/103430/4800x3200/0e72347bb6/stanford_dsr_15-09_7675_.jpg",
+                  "copyright": "",
+                  "fieldtype": "asset"
+                },
+                "isRound": true,
+                "headline": "Small Headline",
+                "component": "basicCard",
+                "isMinimal": false,
+                "imageFocus": "center",
+                "borderColor": "lagunita-light",
+                "isLightText": false,
+                "headingLevel": "3",
+                "isBigHeadline": false
+              }
+            ],
+            "component": "grid",
+            "removeGap": false,
+            "isStretchItems": false
+          }
+        ],
+        "component": "section",
+        "superLink": {
+          "id": "",
+          "url": "",
+          "_uid": "3fc1337f-5aef-41e9-9be8-8609b083c14d",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "superhead": "",
+        "spacingTop": "md",
+        "isLeftAlign": true,
+        "headingLevel": "2",
+        "isSrOnlyTitle": false,
+        "spacingBottom": "lg"
+      },
+      "component_id": 1621492,
+      "space_id": 118608,
+      "created_at": "2021-06-29T05:39:42.129Z",
+      "updated_at": "2021-06-29T05:39:42.129Z",
+      "image": ""
+    },
+    {
+      "id": 1107156,
+      "name": "Sign up",
+      "preset": {
+        "_uid": "71122eec-36d3-4fb5-8153-637d98568be5",
+        "icon": {
+          "_uid": "ed93f671-391e-4e07-bbc6-8964dfc50428",
+          "icon": "fa-pencil-alt",
+          "type": "fas",
+          "plugin": "fontawesome-selector"
+        },
+        "link": {
+          "id": "",
+          "url": "https://stanford.edu",
+          "_uid": "65a93fbc-ad3d-4659-877a-be2531c30a71",
+          "linktype": "url",
+          "fieldtype": "multilink",
+          "cached_url": "https://stanford.edu"
+        },
+        "headline": "Sign up for membership",
+        "component": "iconCard",
+        "isOutline": false,
+        "headingLevel": "3"
+      },
+      "component_id": 1701714,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:11:06.668Z",
+      "updated_at": "2021-08-11T04:11:06.668Z",
+      "image": ""
+    },
+    {
+      "id": 1107159,
+      "name": "Site Container with Right-aligned Caption",
+      "preset": {
+        "_uid": "5af4dd80-071b-4073-8b42-ba2173b9858e",
+        "image": {
+          "id": 2295967,
+          "alt": "",
+          "name": "",
+          "focus": null,
+          "title": "",
+          "filename": "https://a.storyblok.com/f/103430/1200x636/1ed12020f1/windhover_photo_credit-_matthew_millman_0.png",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "caption": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "text": "Windhover is a spiritual refuge on the StanfordUniversity campus meant to both inspire and promote personal renewal.",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        },
+        "isBanner": false,
+        "component": "simpleImage",
+        "imageFocus": "center",
+        "imageWidth": "center-container",
+        "spacingTop": "none",
+        "captionAlign": "right",
+        "spacingBottom": "none",
+        "isCaptionCenter": false
+      },
+      "component_id": 1621473,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:11:25.351Z",
+      "updated_at": "2021-08-11T04:11:25.351Z",
+      "image": ""
+    },
+    {
+      "id": 1159629,
+      "name": "Temporary preset with default globals",
+      "preset": {
+        "_uid": "165adf1b-77b7-4d9c-886f-99f8b97c5b86",
+        "hero": [],
+        "masthead": [
+          {
+            "_uid": "4bfb6b91-fc87-45a6-af74-28d36458196f",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "component": "tripFilterPage",
+        "localFooter": [
+          {
+            "_uid": "26535cd2-4e18-4217-aa33-5ba60c170192",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "47b600e9-0140-498e-ae0d-80b4324fece9"
+            ]
+          }
+        ],
+        "aboveContent": [],
+        "belowContent": [],
+        "primaryFilter": {
+          "_uid": "3597be5f-c938-4db3-82d8-7af6acaff106",
+          "value": null,
+          "plugin": "multi-datasource-select",
+          "datasource": null
+        }
+      },
+      "component_id": 1784273,
+      "space_id": 118608,
+      "created_at": "2021-09-14T22:34:16.962Z",
+      "updated_at": "2021-09-14T22:34:16.962Z",
+      "image": ""
+    },
+    {
+      "id": 1157671,
+      "name": "Temp w/ globals",
+      "preset": {
+        "seo": {
+          "_uid": "f43ca642-1c45-4733-9d10-e5ac8087b751",
+          "title": "",
+          "plugin": "seo_metatags",
+          "og_image": "",
+          "og_title": "",
+          "description": "",
+          "twitter_image": "",
+          "twitter_title": "",
+          "og_description": "",
+          "twitter_description": ""
+        },
+        "tag": "",
+        "_uid": "986d4ea4-210b-4b14-99ee-86f9f163a7a9",
+        "cost": "",
+        "title": "",
+        "region": "",
+        "endDate": "",
+        "noindex": false,
+        "masthead": [
+          {
+            "_uid": "322d44c7-7f2c-4f52-9baf-ad0071134d29",
+            "masthead": [
+              "dec1d75e-1e81-45b8-b8a0-340957a1d7ee"
+            ],
+            "component": "mastheadPicker"
+          }
+        ],
+        "subtitle": "",
+        "cardImage": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "cardTitle": "",
+        "component": "trip",
+        "heroImage": {
+          "id": null,
+          "alt": null,
+          "name": "",
+          "focus": null,
+          "title": null,
+          "filename": "",
+          "copyright": null,
+          "fieldtype": "asset"
+        },
+        "startDate": "",
+        "detailsBody": "",
+        "experiences": [],
+        "facultyBody": "",
+        "localFooter": [
+          {
+            "_uid": "91c6a417-b5a7-4d03-a0ed-ba312c001556",
+            "component": "localFooterPicker",
+            "localFooter": [
+              "47b600e9-0140-498e-ae0d-80b4324fece9"
+            ]
+          }
+        ],
+        "canonicalURL": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "cardSubtitle": "",
+        "overviewBody": "",
+        "relatedTrips": [],
+        "itineraryBody": "",
+        "detailsHeading": "",
+        "facultyHeading": "",
+        "itineraryItems": [],
+        "reservationURL": {
+          "id": "",
+          "url": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": ""
+        },
+        "cardDescription": "",
+        "overviewHeading": "",
+        "itineraryHeading": "",
+        "shortDescription": ""
+      },
+      "component_id": 1766413,
+      "space_id": 118608,
+      "created_at": "2021-09-13T23:37:06.333Z",
+      "updated_at": "2021-09-13T23:37:06.333Z",
+      "image": ""
+    },
+    {
+      "id": 1149222,
+      "name": "Vertical Collection Card",
+      "preset": {
+        "_uid": "ead6057d-82b8-4ec4-95ba-e8d2772e867c",
+        "link": {
+          "id": "177435d1-cb8f-440f-a4dd-1a60459deae9",
+          "url": "",
+          "anchor": "",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "privacy"
+        },
+        "image": {
+          "id": 2839216,
+          "alt": "",
+          "name": "",
+          "focus": "501x215:502x216",
+          "title": "",
+          "filename": "https://a.storyblok.com/f/118608/986x1000/d335aa4e0c/tree.jpg",
+          "copyright": "",
+          "fieldtype": "asset"
+        },
+        "tabText": "Popular",
+        "headline": "Africa",
+        "component": "collectionCard",
+        "description": "See the pyramids, witness the Great Wildebeest Migration, and discover the various cultural, religious, and artistic traditions of this biodiverse region. ",
+        "headingLevel": "3"
+      },
+      "component_id": 1766707,
+      "space_id": 118608,
+      "created_at": "2021-09-08T05:23:51.695Z",
+      "updated_at": "2021-09-08T05:23:51.695Z",
+      "image": ""
+    },
+    {
+      "id": 1107154,
+      "name": "With leading FontAwesome icon, white link (for dark background)",
+      "preset": {
+        "rel": "",
+        "_uid": "f532a1b9-1b60-4a6c-86cc-ba53ed7fc744",
+        "icon": "arrow-right",
+        "link": {
+          "id": "e355b03a-9e78-4e2e-bc01-05c51aa17896",
+          "url": "",
+          "_uid": "bc2c61cc-fed1-4f13-85de-be89632cb309",
+          "linktype": "story",
+          "fieldtype": "multilink",
+          "cached_url": "test/yvonne/test-events"
+        },
+        "size": "large",
+        "align": "left",
+        "srText": "",
+        "linkText": "Attend an event",
+        "component": "ctaLink",
+        "iconColor": "bright-red-hover-white",
+        "textColor": "white",
+        "leadingIcon": {
+          "_uid": "4814ad71-9bc3-4e17-9c04-409893993b5c",
+          "icon": "fa-calendar-alt",
+          "type": "fas",
+          "plugin": "fontawesome-selector"
+        },
+        "spacingBottom": "none",
+        "isOutlineFaIcon": true
+      },
+      "component_id": 1621508,
+      "space_id": 118608,
+      "created_at": "2021-08-11T04:10:59.784Z",
+      "updated_at": "2021-08-11T04:10:59.784Z",
+      "image": ""
+    }
+  ]
+}

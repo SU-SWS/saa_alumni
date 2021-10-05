@@ -11,8 +11,8 @@
  * REACT as that can lead to irregularities and troubles.
  */
 
-import React, { useEffect, useRef } from "react";
-import SbEditable from "storyblok-react";
+import React, { useEffect, useRef } from 'react';
+import SbEditable from 'storyblok-react';
 
 const Embed = ({ blok: { markup, pre_markup, post_markup }, blok }) => {
   let premarkup;
@@ -47,7 +47,7 @@ const Embed = ({ blok: { markup, pre_markup, post_markup }, blok }) => {
     const miniDom = document.createRange().createContextualFragment(markup);
 
     // Force the scripts in the embed script field to load sync.
-    const scripts = miniDom.querySelectorAll("script");
+    const scripts = miniDom.querySelectorAll('script');
     if (scripts.length >= 1) {
       for (const item of scripts) {
         if (item.src && item.src.length > 1) {
@@ -58,7 +58,7 @@ const Embed = ({ blok: { markup, pre_markup, post_markup }, blok }) => {
     }
 
     // Clear the container.
-    myEmbed.current.innerHTML = "";
+    myEmbed.current.innerHTML = '';
 
     // Append the new content.
     myEmbed.current.appendChild(miniDom);

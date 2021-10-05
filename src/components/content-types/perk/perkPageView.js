@@ -1,8 +1,8 @@
-import SbEditable from "storyblok-react";
-import React from "react";
-import { Heading } from "decanter-react";
-import CardImage from "../../media/cardImage";
-import Layout from "../../partials/layout";
+import SbEditable from 'storyblok-react';
+import React from 'react';
+import { Heading } from 'decanter-react';
+import CardImage from '../../media/cardImage';
+import Layout from '../../partials/layout';
 
 const PerkPageView = (props) => {
   // Destructure props
@@ -16,7 +16,7 @@ const PerkPageView = (props) => {
       <Layout {...props}>
         <article className="perk-page">
           <Heading level={1}>{title}</Heading>
-          {filename?.startsWith("http") && (
+          {filename?.startsWith('http') && (
             <div className="su-max-w-800">
               <div className="perk-image-wrapper su-aspect-w-4 su-aspect-h-3">
                 <figure className="su-overflow-hidden su-w-full su-h-full">

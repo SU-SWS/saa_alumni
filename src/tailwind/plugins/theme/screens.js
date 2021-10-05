@@ -7,12 +7,12 @@
 
 module.exports = function () {
   return {
-    xs: "375px",
-    sm: "576px",
-    md: "768px",
-    lg: "992px",
-    xl: "1200px",
-    "2xl": "1500px",
-    "3xl": "1700px",
+    xs: '375px',
+    sm: '576px',
+    md: '768px',
+    lg: '992px',
+    xl: '1200px',
+    '2xl': '1500px',
+    '3xl': '1700px',
   };
 };

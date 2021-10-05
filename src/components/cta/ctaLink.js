@@ -1,17 +1,17 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { dcnb } from "cnbuilder";
-import { SrOnlyText } from "decanter-react";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { dcnb } from 'cnbuilder';
+import { SrOnlyText } from 'decanter-react';
 import {
   ctaLinkColor,
   ctaLinkTextSize,
   textAlign,
   tinyMarginBottom,
   horizontalAlign,
-} from "../../utilities/dataSource";
-import SbLink from "../../utilities/sbLink";
-import FaIcon from "../simple/faIcon";
-import HeroIcon from "../simple/heroIcon";
+} from '../../utilities/dataSource';
+import SbLink from '../../utilities/sbLink';
+import FaIcon from '../simple/faIcon';
+import HeroIcon from '../simple/heroIcon';
 
 const CtaLink = React.forwardRef(
   (
@@ -35,20 +35,20 @@ const CtaLink = React.forwardRef(
     },
     ref
   ) => {
-    const WrapperElement = as || "div";
+    const WrapperElement = as || 'div';
 
     // Link text size
     const textSize = ctaLinkTextSize[size] ?? ctaLinkTextSize.default;
 
     // Link text color
     const textColor =
-      ctaLinkColor[propsTextColor ?? "bright-red-hover-cardinal-red"];
+      ctaLinkColor[propsTextColor ?? 'bright-red-hover-cardinal-red'];
 
     // Icon color
-    let iconColor = "su-text-digital-red-xlight group-hocus:su-text-black-20";
+    let iconColor = 'su-text-digital-red-xlight group-hocus:su-text-black-20';
 
-    if (propsTextColor === "bright-red-hover-cardinal-red") {
-      iconColor = "su-text-digital-red-light group-hocus:su-text-cardinal-red";
+    if (propsTextColor === 'bright-red-hover-cardinal-red') {
+      iconColor = 'su-text-digital-red-light group-hocus:su-text-cardinal-red';
     }
 
     // Horizontal alignment
@@ -62,14 +62,14 @@ const CtaLink = React.forwardRef(
       <SbEditable content={blok}>
         {linkText && (
           <WrapperElement
-            className={dcnb("su-block", align, textSize, marginBottom)}
+            className={dcnb('su-block', align, textSize, marginBottom)}
           >
             <SbLink
               ref={ref}
               link={link}
               attributes={rel ? { rel } : {}}
               classes={dcnb(
-                "su-flex su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline",
+                'su-flex su-w-fit su-group su-transition-colors su-no-underline su-underline-offset hocus:su-underline',
                 textColor,
                 justifyLink
               )}
@@ -89,10 +89,10 @@ const CtaLink = React.forwardRef(
               <div>
                 {linkText}
                 {srText && <SrOnlyText srText={srText} />}
-                {icon !== "none" && (
+                {icon !== 'none' && (
                   <HeroIcon
                     iconType={icon}
-                    className={dcnb("su-inline-block", iconColor)}
+                    className={dcnb('su-inline-block', iconColor)}
                     isAnimate
                   />
                 )}

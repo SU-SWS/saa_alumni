@@ -1,11 +1,11 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Container, FlexBox, FlexCell, SrOnlyText } from "decanter-react";
-import { ArrowDownIcon } from "@heroicons/react/outline";
-import { dcnb } from "cnbuilder";
-import FullWidthImage from "../media/fullWidthImage";
-import CreateBloks from "../../utilities/createBloks";
-import getNumBloks from "../../utilities/getNumBloks";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, FlexBox, FlexCell, SrOnlyText } from 'decanter-react';
+import { ArrowDownIcon } from '@heroicons/react/outline';
+import { dcnb } from 'cnbuilder';
+import FullWidthImage from '../media/fullWidthImage';
+import CreateBloks from '../../utilities/createBloks';
+import getNumBloks from '../../utilities/getNumBloks';
 
 const Hero = ({
   blok: {
@@ -22,18 +22,18 @@ const Hero = ({
   },
   blok,
 }) => {
-  let heroHeadlineSize = "md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900";
+  let heroHeadlineSize = 'md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900';
 
-  if (headlineSize === "large") {
-    heroHeadlineSize = "md:su-text-m6 lg:su-text-m8";
-  } else if (headlineSize === "small") {
-    heroHeadlineSize = "md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900";
+  if (headlineSize === 'large') {
+    heroHeadlineSize = 'md:su-text-m6 lg:su-text-m8';
+  } else if (headlineSize === 'small') {
+    heroHeadlineSize = 'md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900';
   }
 
-  let gradientFrom = "su-from-transparent";
+  let gradientFrom = 'su-from-transparent';
 
   if (isDarkGradient) {
-    gradientFrom = "su-from-black-true-opacity-20";
+    gradientFrom = 'su-from-black-true-opacity-20';
   }
 
   const numCta = getNumBloks(cta);
@@ -44,7 +44,7 @@ const Hero = ({
         className="hero su-relative su-bg-saa-black lg:su-top-0"
         width="full"
       >
-        {filename?.startsWith("http") && (
+        {filename?.startsWith('http') && (
           <figure className="su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full">
             <FullWidthImage
               filename={filename}
@@ -57,14 +57,14 @@ const Hero = ({
         )}
         <div
           className={dcnb(
-            "su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black",
+            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black',
             gradientFrom
           )}
           aria-hidden="true"
         />
         <Container
           className={`su-relative su-rs-pt-9 ${
-            isHideScroll ? "su-rs-pb-8" : "su-rs-pb-4"
+            isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'
           }`}
         >
           <FlexBox direction="col" className="lg:su-mt-[190px]">
@@ -83,7 +83,7 @@ const Hero = ({
                 {headline && (
                   <span
                     className={dcnb(
-                      "su-block su-font-bold su-font-serif su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em su-text-m4",
+                      'su-block su-font-bold su-font-serif su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em su-text-m4',
                       heroHeadlineSize
                     )}
                   >
@@ -98,7 +98,7 @@ const Hero = ({
               </FlexCell>
             )}
             {numCta > 0 && (
-              <FlexCell className={sansSub ? "su-rs-mt-4" : ""}>
+              <FlexCell className={sansSub ? 'su-rs-mt-4' : ''}>
                 <CreateBloks blokSection={cta} />
               </FlexCell>
             )}

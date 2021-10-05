@@ -1,0 +1,5653 @@
+{
+  "components": [
+    {
+      "name": "alert",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:38.224Z",
+      "updated_at": "2021-08-11T04:10:51.946Z",
+      "id": 1621482,
+      "schema": {
+        "alertCta": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "alertCtaLink"
+          ],
+          "display_name": "CTA Button",
+          "pos": 0,
+          "default_value": "Cta link",
+          "component_group_whitelist": []
+        },
+        "type": {
+          "type": "option",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "error",
+              "name": "Error"
+            },
+            {
+              "value": "info",
+              "name": "Info"
+            },
+            {
+              "value": "warning",
+              "name": "Warning"
+            },
+            {
+              "value": "success",
+              "name": "Success"
+            }
+          ],
+          "description": "Choose display mode of Alert message",
+          "default_value": "info",
+          "pos": 1
+        },
+        "label": {
+          "type": "text",
+          "default_value": "Alert",
+          "pos": 2
+        },
+        "heading": {
+          "type": "text",
+          "default_value": "Heading",
+          "pos": 3
+        },
+        "body": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "link"
+          ],
+          "pos": 4
+        },
+        "tab-e6ef8f09-bcbd-4038-aeef-7fda6abfa8b6": {
+          "type": "tab",
+          "display_name": "CTA Options",
+          "keys": [
+            "alertCtaLink",
+            "alertCta"
+          ],
+          "pos": 6
+        },
+        "hasDismiss": {
+          "type": "boolean",
+          "display_name": "Show dismiss button?"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "alert",
+      "component_group_uuid": "647aec4e-3cad-4123-97a8-a5028dfd6299",
+      "component_group_name": "Composite"
+    },
+    {
+      "name": "alertCtaLink",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:38.573Z",
+      "updated_at": "2021-06-29T05:39:38.573Z",
+      "id": 1621483,
+      "schema": {
+        "ctaType": {
+          "type": "option",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "link",
+              "name": "CTA Link"
+            },
+            {
+              "value": "button",
+              "name": "CTA Button"
+            }
+          ],
+          "display_name": "CTA Type",
+          "default_value": "button",
+          "pos": 0
+        },
+        "text": {
+          "type": "text",
+          "display_name": "Link Text",
+          "default_value": "CTA Link",
+          "pos": 1
+        },
+        "srText": {
+          "type": "text",
+          "display_name": "Screen Reader Text",
+          "pos": 2
+        },
+        "link": {
+          "type": "multilink",
+          "display_name": "URL",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "alertCtaLink",
+      "component_group_uuid": "f1a07de8-af7d-4180-93d9-67e5f6f17867",
+      "component_group_name": "Call to Action"
+    },
+    {
+      "name": "alertPicker",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:37.498Z",
+      "updated_at": "2021-06-29T05:39:37.498Z",
+      "id": 1621480,
+      "schema": {
+        "alert": {
+          "type": "options",
+          "source": "internal_stories",
+          "folder_slug": "global-components/alerts/",
+          "filter_content_type": "alert"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "alertPicker",
+      "component_group_uuid": "647aec4e-3cad-4123-97a8-a5028dfd6299",
+      "component_group_name": "Composite"
+    },
+    {
+      "name": "basicCard",
+      "display_name": "Basic Card (Vertical)",
+      "created_at": "2021-06-29T05:39:46.051Z",
+      "updated_at": "2021-08-24T19:08:59.480Z",
+      "id": 1621504,
+      "schema": {
+        "cta": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaLink",
+            "ctaButton"
+          ],
+          "maximum": "1",
+          "display_name": "Add call-to-action link or link button",
+          "pos": 0,
+          "component_group_whitelist": []
+        },
+        "headline": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "isBigHeadline": {
+          "type": "boolean",
+          "display_name": "Use larger headline?",
+          "pos": 2
+        },
+        "text": {
+          "type": "richtext",
+          "pos": 3,
+          "display_name": "Card body text",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "paragraph",
+            "link"
+          ]
+        },
+        "tab-09c4067b-2878-46f1-9bdf-4ff288ce9337": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "imageFocus",
+            "image",
+            "isRound",
+            "borderColor"
+          ],
+          "pos": 4
+        },
+        "tab-b0da1e65-85f5-4b67-8f2e-33652ea19842": {
+          "type": "tab",
+          "display_name": "Call-to-action",
+          "keys": [
+            "cta"
+          ],
+          "pos": 5
+        },
+        "tab-09d3bbba-a73c-4e24-9a89-4ab058cfc7bf": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "align",
+            "headingLevel",
+            "isMinimal",
+            "isLightText"
+          ],
+          "pos": 6
+        },
+        "isMinimal": {
+          "type": "boolean",
+          "display_name": "Use \"Minimal\" card style",
+          "description": "\"Minimal\" card style has no padding around content and no drop shadow/border around card.",
+          "pos": 7
+        },
+        "align": {
+          "type": "option",
+          "use_uuid": true,
+          "datasource_slug": "text-align",
+          "default_value": "left",
+          "display_name": "Content alignment (horizontal)",
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            }
+          ],
+          "pos": 9
+        },
+        "headingLevel": {
+          "type": "option",
+          "pos": 10,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "default_value": "3",
+          "display_name": "Heading level for the headline (default is H3)"
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 11
+        },
+        "isRound": {
+          "type": "boolean",
+          "filetypes": [],
+          "display_name": "Show as round thumbnail?",
+          "pos": 12
+        },
+        "borderColor": {
+          "type": "option",
+          "pos": 13,
+          "max_length": "",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "basic-card-image-border-color",
+          "display_name": "Border color (for round image option only)",
+          "default_value": "digital-red"
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "object-position",
+          "default_value": "center",
+          "pos": 14
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}\n",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1063045,
+          "name": "Large image",
+          "component_id": 1621504,
+          "image": ""
+        },
+        {
+          "id": 1063046,
+          "name": "Minimal, large image, left aligned content",
+          "component_id": 1621504,
+          "image": ""
+        },
+        {
+          "id": 1063047,
+          "name": "Minimal, round image, centered content",
+          "component_id": 1621504,
+          "image": ""
+        },
+        {
+          "id": 1063048,
+          "name": "Round image",
+          "component_id": 1621504,
+          "image": ""
+        },
+        {
+          "id": 1063049,
+          "name": "Round image, centered content",
+          "component_id": 1621504,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063045,
+      "real_name": "Basic Card (Vertical)",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "basicCardHorizontal",
+      "display_name": "Basic Card (Horizontal)",
+      "created_at": "2021-08-24T20:32:14.690Z",
+      "updated_at": "2021-08-24T20:32:44.310Z",
+      "id": 1730681,
+      "schema": {
+        "cta": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaLink",
+            "ctaButton"
+          ],
+          "maximum": "1",
+          "display_name": "Add call-to-action link or link button",
+          "pos": 0,
+          "component_group_whitelist": []
+        },
+        "headline": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "isBigHeadline": {
+          "type": "boolean",
+          "display_name": "Use larger headline?",
+          "pos": 2
+        },
+        "text": {
+          "type": "richtext",
+          "pos": 3,
+          "display_name": "Card body text",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "paragraph",
+            "link"
+          ]
+        },
+        "tab-09c4067b-2878-46f1-9bdf-4ff288ce9337": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "imageFocus",
+            "image",
+            "isRound",
+            "borderColor"
+          ],
+          "pos": 4
+        },
+        "tab-b0da1e65-85f5-4b67-8f2e-33652ea19842": {
+          "type": "tab",
+          "display_name": "Call-to-action",
+          "keys": [
+            "cta"
+          ],
+          "pos": 5
+        },
+        "tab-09d3bbba-a73c-4e24-9a89-4ab058cfc7bf": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "align",
+            "headingLevel",
+            "isMinimal",
+            "isLightText"
+          ],
+          "pos": 6
+        },
+        "isMinimal": {
+          "type": "boolean",
+          "display_name": "Use \"Minimal\" card style",
+          "description": "\"Minimal\" card style has no padding around content and no drop shadow/border around card.",
+          "pos": 7
+        },
+        "headingLevel": {
+          "type": "option",
+          "pos": 10,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "default_value": "3",
+          "display_name": "Heading level for the headline (default is H3)"
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 11
+        },
+        "isRound": {
+          "type": "boolean",
+          "filetypes": [],
+          "display_name": "Show as round thumbnail?",
+          "pos": 12
+        },
+        "borderColor": {
+          "type": "option",
+          "pos": 13,
+          "max_length": "",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "basic-card-image-border-color",
+          "display_name": "Border color (for round image option only)",
+          "default_value": "digital-red"
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "object-position",
+          "default_value": "center",
+          "pos": 14
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}\n",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": 1063045,
+      "real_name": "Basic Card (Horizontal)",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "basicPage",
+      "display_name": "Basic Page",
+      "created_at": "2021-06-29T05:39:36.783Z",
+      "updated_at": "2021-08-11T04:10:56.060Z",
+      "id": 1621478,
+      "schema": {
+        "ankleTitle": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Ankle title",
+          "description": "",
+          "default_value": "More information"
+        },
+        "isAnkleTitleSrOnly": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Make ankle title screen reader only (not visible)"
+        },
+        "ankleBgColor": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "source": "internal",
+          "datasource_slug": "section-background-color",
+          "display_name": "Ankle region background color",
+          "default_value": "white"
+        },
+        "ankleContent": {
+          "type": "bloks",
+          "maximum": "3",
+          "restrict_components": true,
+          "component_whitelist": [
+            "iconCard"
+          ],
+          "display_name": "Content (add 1 to 3 icon cards)",
+          "pos": 3,
+          "component_group_whitelist": []
+        },
+        "sectionMenu": {
+          "type": "bloks",
+          "pos": 4,
+          "display_name": "Pick the section menu for this page",
+          "maximum": "1",
+          "restrict_components": true,
+          "component_whitelist": [
+            "verticalNav"
+          ],
+          "component_group_whitelist": []
+        },
+        "sidebar": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "basicCard",
+            "verticalNav"
+          ],
+          "pos": 5,
+          "display_name": "Left sidebar content (displays below the section menu)",
+          "component_group_whitelist": []
+        },
+        "belowContent": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "section",
+            "poster",
+            "perkFIlters"
+          ],
+          "pos": 6,
+          "display_name": "Below content (this region goes below the main content/sidebar)",
+          "component_group_whitelist": []
+        },
+        "tab-6ef57998-1b68-4e8e-9624-92a16f42b6df": {
+          "type": "tab",
+          "display_name": "Hero",
+          "keys": [
+            "hero"
+          ],
+          "pos": 7
+        },
+        "tab-fe607655-6252-4d0f-bd2e-f0173af80217": {
+          "type": "tab",
+          "display_name": "Above Content",
+          "keys": [
+            "aboveContent"
+          ],
+          "pos": 8
+        },
+        "tab-d3ddac04-af76-4b84-8fce-374bd55b3538": {
+          "type": "tab",
+          "display_name": "Main Content",
+          "keys": [
+            "content",
+            "introGroup",
+            "intro"
+          ],
+          "pos": 9
+        },
+        "tab-e8d504c4-cf24-4866-a0ca-b7b8b58107d7": {
+          "type": "tab",
+          "display_name": "Sidebar",
+          "keys": [
+            "sidebar",
+            "sectionMenu",
+            "ankle"
+          ],
+          "pos": 10
+        },
+        "tab-c1e17f66-d96f-4a5c-99f2-0c252f3968cd": {
+          "type": "tab",
+          "display_name": "Below Content",
+          "keys": [
+            "belowContent"
+          ],
+          "pos": 11
+        },
+        "tab-472547d3-9bc9-4c99-b2ff-f5fe9ef41fdb": {
+          "type": "tab",
+          "display_name": "Ankle",
+          "keys": [
+            "ankleContent",
+            "ankleTitle",
+            "isAnkleTitleSrOnly",
+            "ankleBgColor"
+          ],
+          "pos": 12
+        },
+        "tab-c6e9a7eb-729e-41cd-92cd-626d469e1cee": {
+          "type": "tab",
+          "display_name": "SEO & Social",
+          "keys": [
+            "seo",
+            "canonicalURL"
+          ],
+          "pos": 13
+        },
+        "tab-06aefd0e-3514-4d5b-b8ea-ac6c1b14f5d3": {
+          "type": "tab",
+          "display_name": "Site Identity",
+          "keys": [
+            "localFooter",
+            "masthead",
+            "masthead"
+          ],
+          "pos": 14
+        },
+        "tab-c8e473cd-a0a6-48af-baff-9759c3e8e438": {
+          "type": "tab",
+          "display_name": "Alert",
+          "keys": [
+            "alert"
+          ],
+          "pos": 15
+        },
+        "pageLayout": {
+          "type": "option",
+          "pos": 16,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "no-sidebar",
+              "name": "No sidebar"
+            },
+            {
+              "value": "left-sidebar",
+              "name": "Has left sidebar"
+            }
+          ],
+          "default_value": "no-sidebar",
+          "display_name": "Page layout"
+        },
+        "title": {
+          "type": "text",
+          "pos": 17,
+          "display_name": "Page title (H1)",
+          "default_value": "",
+          "description": "Also displayed in the browser tab with \" | Stanford Alumni\" added automatically after.",
+          "required": true
+        },
+        "isSrOnlyTitle": {
+          "type": "boolean",
+          "pos": 18,
+          "display_name": "Only check this if a Hero banner is present. Make page title screen reader only (not visible)"
+        },
+        "hero": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "hero"
+          ],
+          "maximum": "1",
+          "display_name": "Hero banner (optional)",
+          "pos": 19,
+          "component_group_whitelist": []
+        },
+        "intro": {
+          "type": "richtext",
+          "pos": 20,
+          "display_name": "Page intro (optional)",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "paragraph",
+            "link"
+          ]
+        },
+        "content": {
+          "type": "bloks",
+          "pos": 21,
+          "restrict_components": true,
+          "component_whitelist": [
+            "wysiwyg",
+            "ctaButton",
+            "ctaLink",
+            "ctaGroup",
+            "section",
+            "embedVideo"
+          ],
+          "display_name": "Content area (this region is next to the sidebar for pages with a sidebar; add your WYSIWYG content here)",
+          "component_group_whitelist": []
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "pos": 22,
+          "component_group_whitelist": []
+        },
+        "localFooter": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "pos": 23,
+          "component_group_whitelist": []
+        },
+        "seo": {
+          "type": "custom",
+          "field_type": "seo-metatags",
+          "options": [],
+          "pos": 24
+        },
+        "aboveContent": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "section",
+            "poster"
+          ],
+          "pos": 25,
+          "display_name": "Above content (this region goes below the page title but above the main content/sidebar)",
+          "component_group_whitelist": []
+        },
+        "alert": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "alert"
+          ],
+          "pos": 26,
+          "component_group_whitelist": []
+        },
+        "canonicalURL": {
+          "type": "multilink"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [
+        {
+          "id": 1107152,
+          "name": "Basic Page (1-column plain content)",
+          "component_id": 1621478,
+          "image": ""
+        },
+        {
+          "id": 1063037,
+          "name": "Basic Page (with all sample regions)",
+          "component_id": 1621478,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063037,
+      "real_name": "Basic Page",
+      "component_group_uuid": "2381e25a-375d-4647-b830-be9aa23c70b8",
+      "component_group_name": "Page Types"
+    },
+    {
+      "name": "collectionCard",
+      "display_name": null,
+      "created_at": "2021-09-07T23:14:51.982Z",
+      "updated_at": "2021-09-08T18:20:59.921Z",
+      "id": 1766707,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "link": {
+          "type": "multilink",
+          "display_name": "",
+          "pos": 2
+        },
+        "tab-0d242ee1-3dcd-49f8-a2d4-1c1b914ec69c": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image"
+          ],
+          "pos": 5
+        },
+        "tab-eee16a22-fa16-4376-b1d1-f5fa8b9b8b6b": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel"
+          ],
+          "pos": 6
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "display_name": "Heading level",
+          "default_value": "3",
+          "pos": 7
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1149222,
+          "name": "Vertical Collection Card",
+          "component_id": 1766707,
+          "image": ""
+        }
+      ],
+      "preset_id": 1149222,
+      "real_name": "collectionCard",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "collectionCardHorizontal",
+      "display_name": "Horizontal Collection Card",
+      "created_at": "2021-09-08T02:03:30.730Z",
+      "updated_at": "2021-09-08T19:21:30.164Z",
+      "id": 1766890,
+      "schema": {
+        "spacingBottom": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "large-spacing",
+          "display_name": "Bottom spacing",
+          "exclude_empty_option": true,
+          "default_value": "sm",
+          "pos": 0
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "display_name": "Heading level",
+          "default_value": "3",
+          "pos": 1
+        },
+        "headline": {
+          "type": "text",
+          "pos": 2
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 3,
+          "max_length": "240"
+        },
+        "link": {
+          "type": "multilink",
+          "display_name": "",
+          "pos": 4
+        },
+        "tab-0d242ee1-3dcd-49f8-a2d4-1c1b914ec69c": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image",
+            "imageFocus"
+          ],
+          "pos": 6
+        },
+        "tab-eee16a22-fa16-4376-b1d1-f5fa8b9b8b6b": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel",
+            "spacingBottom"
+          ],
+          "pos": 7
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 8
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "display_name": "Image focus",
+          "default_value": "center",
+          "exclude_empty_option": true,
+          "source": "internal",
+          "datasource_slug": "object-position"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1149221,
+          "name": "Horizontal Collection Card",
+          "component_id": 1766890,
+          "image": ""
+        }
+      ],
+      "preset_id": 1149221,
+      "real_name": "Horizontal Collection Card",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "ctaButton",
+      "display_name": "CTA Button Link",
+      "created_at": "2021-06-29T05:39:47.175Z",
+      "updated_at": "2021-06-29T05:39:47.175Z",
+      "id": 1621507,
+      "schema": {
+        "icon": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "cta-link-icon",
+          "exclude_empty_option": true,
+          "pos": 0,
+          "default_value": "arrow-right"
+        },
+        "buttonStyle": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "cta-link-button-styles",
+          "exclude_empty_option": true,
+          "default_value": "primary"
+        },
+        "size": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "cta-link-button-size",
+          "display_name": "Button size",
+          "default_value": "default"
+        },
+        "align": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "source": "internal",
+          "datasource_slug": "text-align",
+          "default_value": "left"
+        },
+        "linkText": {
+          "type": "text",
+          "pos": 4,
+          "display_name": "Button text"
+        },
+        "link": {
+          "type": "multilink",
+          "email_link_type": true,
+          "asset_link_type": true,
+          "translatable": true,
+          "show_anchor": true,
+          "pos": 5
+        },
+        "srText": {
+          "type": "text",
+          "display_name": "Optional screen reader only text (not visible)",
+          "pos": 6
+        },
+        "tab-268a535a-b4a6-49bc-a685-a03327b0617b": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "size",
+            "buttonStyle",
+            "icon",
+            "align"
+          ],
+          "pos": 7
+        },
+        "tab-e9c415fa-f74f-4a86-836b-705b41e1f7ed": {
+          "type": "tab",
+          "display_name": "Other Link Attributes",
+          "keys": [
+            "rel"
+          ],
+          "pos": 8
+        },
+        "rel": {
+          "type": "text",
+          "display_name": "rel",
+          "description": "Enter all values separated by an empty space, e.g., nofollow noopener",
+          "pos": 9
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div>{{linkText}}</div>",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1063051,
+          "name": "Primary (solid red) button",
+          "component_id": 1621507,
+          "image": ""
+        },
+        {
+          "id": 1063052,
+          "name": "Secondary (gradient outline) button, for light background",
+          "component_id": 1621507,
+          "image": ""
+        },
+        {
+          "id": 1063053,
+          "name": "Secondary (red outline) button, for light background",
+          "component_id": 1621507,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063051,
+      "real_name": "CTA Button Link",
+      "component_group_uuid": "f1a07de8-af7d-4180-93d9-67e5f6f17867",
+      "component_group_name": "Call to Action"
+    },
+    {
+      "name": "ctaCard",
+      "display_name": "Cta Card",
+      "created_at": "2021-08-11T04:10:58.050Z",
+      "updated_at": "2021-08-11T04:10:58.050Z",
+      "id": 1701711,
+      "schema": {
+        "headline": {
+          "type": "textarea",
+          "pos": 0,
+          "max_length": "150"
+        },
+        "headingLevel": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "default_value": "3",
+          "display_name": "Heading level for the headline (default is H3)",
+          "description": "",
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level"
+        },
+        "linkText": {
+          "type": "text",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaLink"
+          ],
+          "maximum": "1",
+          "display_name": "",
+          "description": "",
+          "link_scope": "",
+          "pos": 2
+        },
+        "link": {
+          "type": "multilink",
+          "translatable": true,
+          "email_link_type": false,
+          "asset_link_type": false,
+          "show_anchor": false,
+          "required": false,
+          "pos": 3
+        },
+        "srText": {
+          "type": "text",
+          "description": "This text will be read out by screen readers after the visible text.",
+          "display_name": "Optional screen reader only text (not visible)",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1107153,
+          "name": "Default",
+          "component_id": 1701711,
+          "image": ""
+        }
+      ],
+      "preset_id": 1105942,
+      "real_name": "Cta Card",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "ctaGroup",
+      "display_name": "CTA Group",
+      "created_at": "2021-06-29T05:39:46.819Z",
+      "updated_at": "2021-08-11T04:10:58.904Z",
+      "id": 1621506,
+      "schema": {
+        "display": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "",
+              "name": ""
+            }
+          ],
+          "source": "internal",
+          "datasource_slug": "display-type",
+          "default_value": "adjacent",
+          "display_name": "",
+          "exclude_empty_option": true
+        },
+        "cta": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaButton",
+            "ctaLink"
+          ],
+          "display_name": "Add CTA links or buttons",
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1063050,
+          "name": "Button group for Section footer",
+          "component_id": 1621506,
+          "image": ""
+        }
+      ],
+      "preset_id": null,
+      "real_name": "CTA Group",
+      "component_group_uuid": "f1a07de8-af7d-4180-93d9-67e5f6f17867",
+      "component_group_name": "Call to Action"
+    },
+    {
+      "name": "ctaLink",
+      "display_name": "CTA Link",
+      "created_at": "2021-06-29T05:39:47.549Z",
+      "updated_at": "2021-08-24T19:08:21.372Z",
+      "id": 1621508,
+      "schema": {
+        "leadingIcon": {
+          "type": "custom",
+          "pos": 0,
+          "display_name": "Leading icon (optional)",
+          "description": "Add an optional FontAwesome icon in front of the link. See link for list of icons available: https://fontawesome.com/v5.15/icons?d=gallery&p=2&s=brands,regular,solid&v=5.0.0,5.0.1,5.0.2,5.0.3,5.0.4,5.0.5,5.0.6,5.0.7,5.0.8,5.0.9&m=free",
+          "field_type": "fontawesome-selector",
+          "options": []
+        },
+        "isOutlineFaIcon": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Use outline style for leading icon (not available for all icons)"
+        },
+        "icon": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "cta-link-icon",
+          "default_value": "arrow-right",
+          "display_name": "Trailing icon"
+        },
+        "tab-fa0cf813-63b0-4c79-888e-4d78bc10bf95": {
+          "type": "tab",
+          "display_name": "Icons",
+          "keys": [
+            "icon",
+            "iconColor",
+            "leadingIcon",
+            "isOutlineFaIcon"
+          ],
+          "pos": 4
+        },
+        "tab-86ef12e3-c84c-451e-b305-a3c2f7d39a8d": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "align",
+            "linkStyle",
+            "size",
+            "linkColor",
+            "textColor",
+            "spacingBottom"
+          ],
+          "pos": 5
+        },
+        "tab-a0469773-94c7-42dd-bfcf-a3e9cecfcf19": {
+          "type": "tab",
+          "display_name": "Other Link Attributes",
+          "keys": [
+            "rel"
+          ],
+          "pos": 6
+        },
+        "textColor": {
+          "type": "option",
+          "pos": 7,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "cta-link-color",
+          "exclude_empty_option": true,
+          "default_value": "bright-red-hover-cardinal-red"
+        },
+        "size": {
+          "type": "option",
+          "pos": 8,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "cta-link-text-size",
+          "display_name": "Text size",
+          "default_value": "default",
+          "exclude_empty_option": true
+        },
+        "align": {
+          "type": "option",
+          "pos": 9,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "text-align",
+          "default_value": "left",
+          "display_name": "Horizontal Alignment",
+          "exclude_empty_option": true
+        },
+        "spacingBottom": {
+          "type": "option",
+          "pos": 10,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "tiny-spacing-bottom",
+          "display_name": "Bottom spacing",
+          "default_value": "md"
+        },
+        "linkText": {
+          "type": "text",
+          "pos": 11
+        },
+        "link": {
+          "type": "multilink",
+          "email_link_type": true,
+          "translatable": true,
+          "asset_link_type": true,
+          "show_anchor": true,
+          "pos": 12
+        },
+        "srText": {
+          "type": "text",
+          "display_name": "Optional screen reader only text (not visible)",
+          "pos": 13,
+          "default_value": "",
+          "description": "This text will be read out by screen readers after the visible text."
+        },
+        "rel": {
+          "type": "text",
+          "default_value": "",
+          "description": "Enter all values separated by an empty space, e.g., nofollow noopener",
+          "pos": 14,
+          "display_name": "rel"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div>{{linkText}}</div>",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1063054,
+          "name": "Bright red link (right arrow)",
+          "component_id": 1621508,
+          "image": ""
+        },
+        {
+          "id": 1063055,
+          "name": "Local Footer CTA link style",
+          "component_id": 1621508,
+          "image": ""
+        },
+        {
+          "id": 1107154,
+          "name": "With leading FontAwesome icon, white link (for dark background)",
+          "component_id": 1621508,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063054,
+      "real_name": "CTA Link",
+      "component_group_uuid": "f1a07de8-af7d-4180-93d9-67e5f6f17867",
+      "component_group_name": "Call to Action"
+    },
+    {
+      "name": "darkPage",
+      "display_name": "Dark Background Page",
+      "created_at": "2021-06-29T05:39:35.647Z",
+      "updated_at": "2021-08-11T04:11:00.645Z",
+      "id": 1621475,
+      "schema": {
+        "ankleTitle": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Title for the ankle"
+        },
+        "isAnkleTitleSrOnly": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Make ankle title screen reader only (not visible)"
+        },
+        "ankleContent": {
+          "type": "bloks",
+          "display_name": "Ankle (add 1 to 3 icon cards)",
+          "restrict_components": true,
+          "component_whitelist": [
+            "iconCard"
+          ],
+          "maximum": "3",
+          "pos": 2,
+          "component_group_whitelist": []
+        },
+        "tab-6ef57998-1b68-4e8e-9624-92a16f42b6df": {
+          "type": "tab",
+          "display_name": "Hero",
+          "keys": [
+            "hero"
+          ],
+          "pos": 3
+        },
+        "tab-fe607655-6252-4d0f-bd2e-f0173af80217": {
+          "type": "tab",
+          "display_name": "Above Content",
+          "keys": [
+            "aboveContent"
+          ],
+          "pos": 4
+        },
+        "tab-d3ddac04-af76-4b84-8fce-374bd55b3538": {
+          "type": "tab",
+          "display_name": "Main Content",
+          "keys": [
+            "content",
+            "introGroup",
+            "intro"
+          ],
+          "pos": 5
+        },
+        "tab-c1e17f66-d96f-4a5c-99f2-0c252f3968cd": {
+          "type": "tab",
+          "display_name": "Below Content",
+          "keys": [
+            "belowContent"
+          ],
+          "pos": 6
+        },
+        "tab-49daeee6-6e97-4d6e-bd4c-6eb813b35724": {
+          "type": "tab",
+          "display_name": "Ankle",
+          "keys": [
+            "ankleContent",
+            "ankleTitle",
+            "isAnkleTitleSrOnly"
+          ],
+          "pos": 7
+        },
+        "tab-c6e9a7eb-729e-41cd-92cd-626d469e1cee": {
+          "type": "tab",
+          "display_name": "SEO & Social",
+          "keys": [
+            "seo",
+            "canonicalURL"
+          ],
+          "pos": 8
+        },
+        "tab-06aefd0e-3514-4d5b-b8ea-ac6c1b14f5d3": {
+          "type": "tab",
+          "display_name": "Site Identity",
+          "keys": [
+            "localFooter",
+            "masthead",
+            "masthead"
+          ],
+          "pos": 9
+        },
+        "tab-c8e473cd-a0a6-48af-baff-9759c3e8e438": {
+          "type": "tab",
+          "display_name": "Alert",
+          "keys": [
+            "alert"
+          ],
+          "pos": 10
+        },
+        "title": {
+          "type": "text",
+          "pos": 11,
+          "display_name": "Page title (H1)",
+          "default_value": "",
+          "description": "Also displayed in the browser tab with \" | Stanford Alumni\" added automatically after.",
+          "required": true
+        },
+        "isSrOnlyTitle": {
+          "type": "boolean",
+          "pos": 12,
+          "display_name": "Make page title screen reader only (not visible)"
+        },
+        "hero": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "hero"
+          ],
+          "maximum": "1",
+          "display_name": "Hero banner (optional)",
+          "pos": 13,
+          "component_group_whitelist": []
+        },
+        "content": {
+          "type": "bloks",
+          "pos": 14,
+          "restrict_components": true,
+          "component_whitelist": [
+            "section",
+            "poster",
+            "perkCardHorizontal"
+          ],
+          "display_name": "Content area (this region is next to the sidebar for pages with a sidebar; add your WYSIWYG content here)",
+          "component_group_whitelist": []
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "pos": 15,
+          "component_group_whitelist": []
+        },
+        "localFooter": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "pos": 16,
+          "component_group_whitelist": []
+        },
+        "seo": {
+          "type": "custom",
+          "field_type": "seo-metatags",
+          "options": [],
+          "pos": 17
+        },
+        "aboveContent": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "section",
+            "poster"
+          ],
+          "pos": 18,
+          "display_name": "Above content (this region goes below the page title but above the main content/sidebar)",
+          "component_group_whitelist": []
+        },
+        "belowContent": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "section",
+            "poster"
+          ],
+          "pos": 19,
+          "display_name": "Below content (this region goes below the main content/sidebar)",
+          "component_group_whitelist": []
+        },
+        "alert": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "alert"
+          ],
+          "pos": 20,
+          "component_group_whitelist": []
+        },
+        "canonicalURL": {
+          "type": "multilink",
+          "pos": 21
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": 1047964,
+      "real_name": "Dark Background Page",
+      "component_group_uuid": "2381e25a-375d-4647-b830-be9aa23c70b8",
+      "component_group_name": "Page Types"
+    },
+    {
+      "name": "embedCard",
+      "display_name": "Embed Card",
+      "created_at": "2021-06-29T05:39:38.947Z",
+      "updated_at": "2021-06-29T05:39:38.947Z",
+      "id": 1621484,
+      "schema": {
+        "embed": {
+          "type": "textarea",
+          "customize_toolbar": true,
+          "toolbar": [],
+          "max_length": "",
+          "description": "Paste your script code including the script tags. Use this field when your script tag has a body and not just an src attribute",
+          "pos": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Embed Card",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "embedVideo",
+      "display_name": "Embed Media",
+      "created_at": "2021-08-11T04:11:01.992Z",
+      "updated_at": "2021-09-09T13:22:01.533Z",
+      "id": 1701712,
+      "schema": {
+        "videoWidth": {
+          "type": "option",
+          "pos": 0,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "12",
+              "name": "12 of 12 column (default)"
+            },
+            {
+              "value": "10",
+              "name": "10 of 12 columns"
+            },
+            {
+              "value": "8",
+              "name": "8 of 12 columns"
+            },
+            {
+              "value": "6",
+              "name": "6 of 12 columns"
+            },
+            {
+              "value": "edge-to-edge",
+              "name": "Fit Parent Container"
+            }
+          ],
+          "description": "Choose \"Fit Parent Container\" option for when nesting video within a Row component with 2 or 3 columns. The video will fill the width of the column.",
+          "default_value": "12"
+        },
+        "aspectRatio": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "16x9",
+              "name": "16 x 9 (Default)"
+            },
+            {
+              "value": "4x3",
+              "name": "4 x 3"
+            },
+            {
+              "value": "1x1",
+              "name": "Square"
+            }
+          ],
+          "description": "Most common aspect ratio for modern videos is 16:9. Some older videos might have aspect ratio 4:3 instead.",
+          "display_name": "Video Aspect Ratio",
+          "default_value": "16x9"
+        },
+        "spacingTop": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "source": "internal",
+          "display_name": "Top Spacing",
+          "default_value": "none",
+          "datasource_slug": "large-spacing"
+        },
+        "spacingBottom": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "display_name": "Bottom Spacing",
+          "default_value": "none",
+          "datasource_slug": "large-spacing"
+        },
+        "captionAlign": {
+          "type": "option",
+          "pos": 4,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "text-align",
+          "display_name": "Caption Text Alignment",
+          "default_value": "right"
+        },
+        "startMinute": {
+          "type": "text",
+          "pos": 5,
+          "display_name": "Start Minute (Optional, YouTube-only)",
+          "default_value": "0"
+        },
+        "startSecond": {
+          "type": "text",
+          "pos": 6,
+          "display_name": "Start Second (Optional, YouTube-only)",
+          "default_value": "0"
+        },
+        "videoUrl": {
+          "type": "text",
+          "required": true,
+          "description": "URL to the YouTube or Vimeo video, e.g., https://www.youtube.com/watch?v=0qHWub21h5c",
+          "display_name": "Video URL",
+          "default_value": "https://www.youtube.com/watch?v=0qHWub21h5c",
+          "pos": 7
+        },
+        "caption": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "paragraph",
+            "link"
+          ],
+          "pos": 8
+        },
+        "tab-5972af73-2b56-4f64-9397-7f37db8b79ce": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "videoWidth",
+            "aspectRatio",
+            "captionAlign",
+            "startMinute",
+            "startSecond",
+            "spacingTop",
+            "spacingBottom"
+          ],
+          "pos": 9
+        },
+        "videoTitle": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Embed Media",
+      "component_group_uuid": "07428450-f7d8-405d-a4f8-0c75440113bf",
+      "component_group_name": "Media"
+    },
+    {
+      "name": "event",
+      "display_name": "",
+      "created_at": "2021-06-29T05:39:37.850Z",
+      "updated_at": "2021-08-11T04:11:02.587Z",
+      "id": 1621481,
+      "schema": {
+        "start": {
+          "type": "datetime",
+          "display_name": "Start date and time",
+          "pos": 0,
+          "options": [],
+          "translatable": true,
+          "required": true
+        },
+        "end": {
+          "type": "datetime",
+          "pos": 1,
+          "display_name": "End date and time",
+          "required": true
+        },
+        "isVirtual": {
+          "type": "boolean",
+          "pos": 2,
+          "display_name": "Is this a virtual event?"
+        },
+        "location": {
+          "type": "text",
+          "pos": 3,
+          "display_name": "Location",
+          "default_value": "",
+          "description": "E.g., Cardinal Hall Conference Room, Zoom, Live streaming"
+        },
+        "organizer": {
+          "type": "text",
+          "pos": 4
+        },
+        "title": {
+          "type": "textarea",
+          "pos": 5,
+          "required": true
+        },
+        "externalUrl": {
+          "type": "text",
+          "display_name": "External URL of event details",
+          "pos": 6,
+          "required": true
+        },
+        "tab-5e568341-ee5b-464c-aa2c-29e8c781ee91": {
+          "type": "tab",
+          "display_name": "Event Details",
+          "keys": [
+            "start",
+            "end",
+            "isZoom",
+            "location",
+            "isVirtual",
+            "organizer"
+          ],
+          "pos": 7
+        },
+        "tab-ee479459-e35e-4033-875d-bb10ec152acf": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image",
+            "imageFocus"
+          ],
+          "pos": 8
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "",
+          "pos": 9,
+          "asset_folder_id": 79199
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "object-position",
+          "exclude_empty_option": true,
+          "default_value": "top",
+          "display_name": "Image focus",
+          "pos": 10,
+          "description": "If your uploaded image already has an aspect ratio of 3x2, then no need to touch this option."
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [
+        {
+          "id": 1063038,
+          "name": "Event (multi-day)",
+          "component_id": 1621481,
+          "image": ""
+        },
+        {
+          "id": 1063039,
+          "name": "Event (single day)",
+          "component_id": 1621481,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063039,
+      "real_name": "event",
+      "component_group_uuid": "f38bb86f-a534-495d-b5ee-3c083a11aa22",
+      "component_group_name": "Content Types"
+    },
+    {
+      "name": "eventCard",
+      "display_name": "Event Card (Vertical)",
+      "created_at": "2021-06-29T05:39:44.987Z",
+      "updated_at": "2021-08-11T04:11:03.414Z",
+      "id": 1621501,
+      "schema": {
+        "eventPicker": {
+          "type": "options",
+          "source": "internal_stories",
+          "folder_slug": "events/",
+          "filter_content_type": "event",
+          "min_options": "",
+          "pos": 0
+        },
+        "isMinimal": {
+          "type": "boolean",
+          "display_name": "Use \"minimal\" card style (text-only)",
+          "pos": 1
+        },
+        "isBigHeadline": {
+          "type": "boolean",
+          "use_uuid": true,
+          "description": "",
+          "display_name": "Make headline font size bigger",
+          "pos": 2
+        },
+        "tabText": {
+          "type": "text",
+          "pos": 3,
+          "display_name": "Custom tab label text",
+          "description": "Anything entered in this field will replace the default \"Event\" text on the tab label.",
+          "max_length": "12"
+        },
+        "hideTab": {
+          "type": "boolean",
+          "pos": 4,
+          "display_name": "Hide tab label"
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-level",
+          "display_name": "Heading level of the event title (default is H3)",
+          "default_value": "3",
+          "exclude_empty_option": true,
+          "pos": 5
+        },
+        "tab-e33bf4d1-8b79-4259-9dbc-27cb4ebc1e5a": {
+          "type": "tab",
+          "display_name": "Editor Only",
+          "keys": [
+            "previewTitle"
+          ],
+          "pos": 6
+        },
+        "previewTitle": {
+          "type": "textarea",
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<strong>{{ previewTitle }}</strong>",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Event Card (Vertical)",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "grid",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:41.410Z",
+      "updated_at": "2021-09-08T22:28:03.175Z",
+      "id": 1621491,
+      "schema": {
+        "numCol": {
+          "type": "option",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "display_name": "Number of items in a row",
+          "options": [
+            {
+              "value": "3",
+              "name": "3 in a row"
+            },
+            {
+              "value": "2",
+              "name": "2 in a row"
+            },
+            {
+              "value": "1",
+              "name": "1 in a row"
+            },
+            {
+              "value": "auto",
+              "name": "Auto"
+            }
+          ],
+          "default_value": "3",
+          "pos": 0
+        },
+        "width": {
+          "type": "option",
+          "pos": 1,
+          "display_name": "Width of the grid",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "12",
+              "name": "12 of 12 columns (default)"
+            },
+            {
+              "value": "10",
+              "name": "10 of 12 columns"
+            },
+            {
+              "value": "8",
+              "name": "8 of 12 columns"
+            },
+            {
+              "value": "6",
+              "name": "6 of 12 columns"
+            },
+            {
+              "value": "4",
+              "name": "4 of 12 columns"
+            },
+            {
+              "value": "edge-to-edge",
+              "name": "Edge-to-edge"
+            }
+          ],
+          "default_value": "12",
+          "description": "General width recommendations: For 3 cards in a row, use 12 of 12 columns; for 2 cards in a row, use either 10 or 8 of 12 columns; for 1 card in a row, use either 6 or 4 columns."
+        },
+        "isMdLgOneColumn": {
+          "type": "boolean",
+          "display_name": "Use 1-column grid for MD and LG breakpoints",
+          "pos": 2
+        },
+        "isStretchItems": {
+          "type": "boolean",
+          "display_name": "Force items in a row to have same height",
+          "pos": 3
+        },
+        "gapWidth": {
+          "type": "option",
+          "pos": 4,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "default",
+              "name": "Default"
+            },
+            {
+              "value": "large",
+              "name": "Large"
+            },
+            {
+              "value": "none",
+              "name": "No gap"
+            }
+          ],
+          "default_value": "default",
+          "display_name": "Grid gap width",
+          "description": "Use \"Large\" when placing minimal cards in a grid so they are slightly further apart.",
+          "exclude_empty_option": true
+        },
+        "alignment": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "start",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "end",
+              "name": "Right"
+            }
+          ],
+          "display_name": "Grid item horizontal alignment",
+          "default_value": "center",
+          "exclude_empty_option": true,
+          "pos": 5
+        },
+        "content": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "basicCard",
+            "ctaCard",
+            "perkCard",
+            "storyCard",
+            "eventCard",
+            "ctaLink",
+            "wysiwyg",
+            "simpleImage",
+            "embedVideo",
+            "embedCard",
+            "linkList",
+            "iconCard",
+            "ctaGroup",
+            "collectionCard",
+            "tripCard"
+          ],
+          "restrict_type": "",
+          "component_group_whitelist": [],
+          "pos": 6,
+          "display_name": "Add items to the grid"
+        },
+        "tab-83479d42-19d2-492b-995f-58824163f66e": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "removeGap",
+            "width",
+            "numCol",
+            "isSretchItems",
+            "isStretchItems",
+            "alignment",
+            "gapWidth",
+            "isMdLgOneColumn"
+          ],
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div>\n<strong>Number of items in a row:</strong> {{numCol}}</div>\n<div>\n<strong>Width of the grid:</strong> {{width}} of 12 columns</div>",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "grid",
+      "component_group_uuid": "4a2669d7-b102-4a71-aa8f-c506f688fcd3",
+      "component_group_name": "Layout"
+    },
+    {
+      "name": "heading",
+      "display_name": null,
+      "created_at": "2021-08-11T04:11:04.467Z",
+      "updated_at": "2021-08-11T04:11:04.467Z",
+      "id": 1701713,
+      "schema": {
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-level",
+          "default_value": "h2",
+          "pos": 0
+        },
+        "fontSize": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-font-size",
+          "description": "Select \"Default\" to use default font size for selected heading level.",
+          "default_value": "default",
+          "display_name": "",
+          "pos": 1
+        },
+        "spacingBottom": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "small-spacing",
+          "pos": 2
+        },
+        "spacingTop": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "small-spacing",
+          "pos": 3
+        },
+        "title": {
+          "type": "text",
+          "pos": 4
+        },
+        "tab-8275a801-401a-41c6-af76-8d49d10eab55": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel",
+            "fontSize",
+            "spacingTop",
+            "spacingBottom"
+          ],
+          "pos": 5
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "heading",
+      "component_group_uuid": "77e10748-5142-4efc-a3ca-c4e796d97bfb",
+      "component_group_name": "Simple"
+    },
+    {
+      "name": "hero",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:43.204Z",
+      "updated_at": "2021-09-07T21:46:55.940Z",
+      "id": 1621496,
+      "schema": {
+        "sansSuper": {
+          "type": "text",
+          "display_name": "Superheadline 1 (sans-serif)",
+          "pos": 2
+        },
+        "serifSuper": {
+          "type": "text",
+          "description": "",
+          "display_name": "Superheadline 2 (serif)",
+          "pos": 3
+        },
+        "headline": {
+          "type": "text",
+          "display_name": "Headline (large, serif)",
+          "pos": 4
+        },
+        "headlineSize": {
+          "type": "option",
+          "pos": 5,
+          "display_name": "Headline font size",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "large",
+              "name": "Large"
+            },
+            {
+              "value": "medium",
+              "name": "Medium"
+            },
+            {
+              "value": "small",
+              "name": "Small"
+            }
+          ],
+          "default_value": "medium"
+        },
+        "sansSub": {
+          "type": "textarea",
+          "display_name": "Subheadline (sans-serif)",
+          "pos": 6
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 7
+        },
+        "tab-fd4ad43e-0ce6-46a6-8625-3f769f45f921": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image",
+            "vCrop",
+            "image",
+            "hCrop",
+            "imageFocus",
+            "isDarkGradient"
+          ],
+          "pos": 8
+        },
+        "tab-b307bd35-3cd3-4bdf-a1a8-c86637529cb6": {
+          "type": "tab",
+          "display_name": "Call-to-action",
+          "keys": [
+            "cta",
+            "cta"
+          ],
+          "pos": 9
+        },
+        "cta": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaButton",
+            "ctaGroup"
+          ],
+          "display_name": "Add call-to-action link button(s) (optional)",
+          "maximum": "1",
+          "pos": 10,
+          "component_group_whitelist": []
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "object-position",
+          "display_name": "Image focus",
+          "default_value": "center",
+          "exclude_empty_option": true,
+          "pos": 11
+        },
+        "isDarkGradient": {
+          "type": "boolean",
+          "display_name": "Use darker gradient (if background image is bright)",
+          "pos": 12
+        },
+        "tab-feffeb97-accd-4620-aade-d26c3d6ad1bf": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel",
+            "isNotTop",
+            "scrollTo",
+            "isHideScroll"
+          ],
+          "pos": 13
+        },
+        "isHideScroll": {
+          "type": "boolean",
+          "display_name": "Hide \"Scroll to explore\" link"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1063043,
+          "name": "Hero with all fields",
+          "component_id": 1621496,
+          "image": ""
+        },
+        {
+          "id": 1063044,
+          "name": "Interior page Hero, small headline, no CTA",
+          "component_id": 1621496,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063044,
+      "real_name": "hero",
+      "component_group_uuid": "647aec4e-3cad-4123-97a8-a5028dfd6299",
+      "component_group_name": "Composite"
+    },
+    {
+      "name": "iconCard",
+      "display_name": null,
+      "created_at": "2021-08-11T04:11:06.190Z",
+      "updated_at": "2021-09-09T19:02:02.835Z",
+      "id": 1701714,
+      "schema": {
+        "icon": {
+          "type": "custom",
+          "field_type": "fontawesome-selector",
+          "options": [],
+          "display_name": "FontAwesome Icon",
+          "pos": 0
+        },
+        "isOutline": {
+          "type": "boolean",
+          "display_name": "Use outline icon style",
+          "description": "Note: Not all icons have outline style available. If outline style is not available for an icon, it will not show up in the preview.",
+          "pos": 1
+        },
+        "proFaIcon": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Newer FontAwesome icon name"
+        },
+        "iconStyle": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "fontawesome-icon-styles"
+        },
+        "headline": {
+          "type": "text",
+          "pos": 4
+        },
+        "link": {
+          "type": "multilink",
+          "display_name": "",
+          "pos": 5
+        },
+        "tab-b42db95d-5695-4d73-9118-4870820c05bd": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel"
+          ],
+          "pos": 6
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-level",
+          "display_name": "Heading level",
+          "default_value": "3",
+          "exclude_empty_option": true,
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1107155,
+          "name": "Contact us",
+          "component_id": 1701714,
+          "image": ""
+        },
+        {
+          "id": 1107156,
+          "name": "Sign up",
+          "component_id": 1701714,
+          "image": ""
+        }
+      ],
+      "preset_id": 1077782,
+      "real_name": "iconCard",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "Image",
+      "display_name": null,
+      "created_at": "2021-08-11T04:11:06.879Z",
+      "updated_at": "2021-08-11T04:11:06.879Z",
+      "id": 1701715,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Image",
+      "component_group_uuid": null
+    },
+    {
+      "name": "itinerary",
+      "display_name": null,
+      "created_at": "2021-09-01T23:58:12.508Z",
+      "updated_at": "2021-09-02T00:35:28.521Z",
+      "id": 1751956,
+      "schema": {
+        "itineraryItems": {
+          "type": "bloks",
+          "display_name": "Add itinerary items",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "itineraryItem"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "itinerary",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "itineraryItem",
+      "display_name": null,
+      "created_at": "2021-09-02T00:10:03.863Z",
+      "updated_at": "2021-09-03T05:59:14.789Z",
+      "id": 1751960,
+      "schema": {
+        "startDate": {
+          "type": "datetime",
+          "display_name": "Start Date",
+          "pos": 0
+        },
+        "endDate": {
+          "type": "datetime",
+          "display_name": "End Day (No need to enter if same as start day)",
+          "pos": 1
+        },
+        "title": {
+          "type": "text",
+          "display_name": "Title/Destination",
+          "pos": 2
+        },
+        "icon": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "travel-icons",
+          "default_value": "map-marker-alt",
+          "exclude_empty_option": true
+        },
+        "description": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "paragraph",
+            "list",
+            "olist",
+            "link"
+          ],
+          "pos": 4
+        },
+        "location": {
+          "type": "text",
+          "pos": 5
+        },
+        "image": {
+          "type": "asset",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "display_name": "Image (optional)",
+          "pos": 6,
+          "filetypes": [
+            "images"
+          ]
+        },
+        "tab-901497a6-7df0-4c30-aa9f-897f83ceac80": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image",
+            "caption"
+          ],
+          "pos": 7
+        },
+        "caption": {
+          "type": "richtext",
+          "display_name": "",
+          "customize_toolbar": true,
+          "toolbar": [
+            "paragraph",
+            "bold",
+            "italic",
+            "link"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div>{{title}}</div>",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "itineraryItem",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "linkGroup",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:45.700Z",
+      "updated_at": "2021-08-11T04:11:07.296Z",
+      "id": 1621503,
+      "schema": {
+        "heading": {
+          "type": "text"
+        },
+        "linkList": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "navItem"
+          ],
+          "display_name": "Link list (Click \"Add block\" to add link items)",
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "linkGroup",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "linkList",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:34.566Z",
+      "updated_at": "2021-08-24T20:34:05.759Z",
+      "id": 1621472,
+      "schema": {
+        "headingColor": {
+          "type": "option",
+          "pos": 0,
+          "use_uuid": true,
+          "datasource_slug": "cta-link-color",
+          "options": [
+            {
+              "value": "black",
+              "name": "Black"
+            },
+            {
+              "value": "white",
+              "name": "White"
+            }
+          ],
+          "default_value": "black"
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "datasource_slug": "heading-level",
+          "default_value": "4",
+          "pos": 1,
+          "options": [],
+          "source": "internal"
+        },
+        "title": {
+          "type": "text",
+          "pos": 7
+        },
+        "links": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaLink",
+            "link"
+          ],
+          "pos": 8,
+          "component_group_whitelist": []
+        },
+        "tab-263f3ddf-1cac-4346-bc83-733b321b6a84": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "headingLevel",
+            "headingColor",
+            "linkStyle",
+            "headingSize",
+            "linkSize",
+            "linkColor",
+            "headingFont"
+          ],
+          "pos": 9
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "linkList",
+      "component_group_uuid": "77e10748-5142-4efc-a3ca-c4e796d97bfb",
+      "component_group_name": "Simple"
+    },
+    {
+      "name": "localFooter",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:42.142Z",
+      "updated_at": "2021-09-08T00:57:08.518Z",
+      "id": 1621493,
+      "schema": {
+        "contact": {
+          "type": "section",
+          "pos": 0,
+          "keys": [
+            "organization",
+            "address1",
+            "address2",
+            "address3",
+            "mapLink"
+          ],
+          "display_name": "Contact info (expand to edit)"
+        },
+        "organization": {
+          "type": "text",
+          "pos": 1
+        },
+        "address1": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Address line 1"
+        },
+        "address2": {
+          "type": "text",
+          "pos": 3,
+          "display_name": "Address line 2"
+        },
+        "address3": {
+          "type": "text",
+          "pos": 4,
+          "display_name": "Address line 3"
+        },
+        "mapLink": {
+          "type": "bloks",
+          "pos": 5,
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaLink"
+          ],
+          "maximum": "1",
+          "component_group_whitelist": []
+        },
+        "bgImage": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 6,
+          "display_name": "Background Image"
+        },
+        "vCrop": {
+          "type": "option",
+          "use_uuid": true,
+          "display_name": "Background image focus (vertical)",
+          "default_value": "center",
+          "source": "internal",
+          "datasource_slug": "background-image-position-vertical",
+          "exclude_empty_option": true,
+          "pos": 7
+        },
+        "fbLink": {
+          "type": "text",
+          "display_name": "Facebook link",
+          "pos": 8
+        },
+        "linkedinLink": {
+          "type": "text",
+          "pos": 9,
+          "display_name": "LinkedIn link"
+        },
+        "twitterLink": {
+          "type": "text",
+          "pos": 10,
+          "display_name": "Twitter link"
+        },
+        "igLink": {
+          "type": "text",
+          "display_name": "Instagram link",
+          "pos": 11
+        },
+        "youtubeLink": {
+          "type": "text",
+          "pos": 12,
+          "display_name": "Youtube channel link"
+        },
+        "actionLinks": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaLink",
+            "ctaGroup"
+          ],
+          "display_name": "Action links (appears below the address)",
+          "pos": 13,
+          "component_group_whitelist": []
+        },
+        "tab-ff953c25-7968-4419-9dc6-9da0b44347f6": {
+          "type": "tab",
+          "display_name": "Action Links",
+          "keys": [
+            "actionLinks",
+            "linkLists"
+          ],
+          "pos": 14
+        },
+        "tab-6280fbe0-817a-4696-be39-6886a8e2b7d3": {
+          "type": "tab",
+          "display_name": "Social Media",
+          "keys": [
+            "fbLink",
+            "igLink",
+            "twitterLink",
+            "youtubeLink",
+            "LinkedinLink",
+            "linkedinLink"
+          ],
+          "pos": 15
+        },
+        "tab-9c6ef3ba-4a97-4722-9b6a-c26963d345f9": {
+          "type": "tab",
+          "display_name": "Link Groups",
+          "keys": [
+            "linkGroups",
+            "linkLists",
+            "heading1",
+            "linkList1",
+            "linkGroups"
+          ],
+          "pos": 16
+        },
+        "tab-4621c2a1-2b84-4341-aaeb-eb665b54a631": {
+          "type": "tab",
+          "display_name": "Legal Links",
+          "keys": [
+            "legalLinks"
+          ],
+          "pos": 17
+        },
+        "legalLinks": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "navItem"
+          ],
+          "display_name": "Legal links",
+          "pos": 18,
+          "component_group_whitelist": []
+        },
+        "linkGroups": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "linkGroup"
+          ],
+          "pos": 19,
+          "display_name": "Link groups (each with a heading and a list of links)",
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": "{{image(options.bgImage.filename)/}}",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1149034,
+          "name": "Default Local Footer",
+          "component_id": 1621493,
+          "image": ""
+        }
+      ],
+      "preset_id": 1149034,
+      "real_name": "localFooter",
+      "component_group_uuid": "cee4493f-3b73-425a-8b31-d13004a95ad1",
+      "component_group_name": "Identity"
+    },
+    {
+      "name": "localFooterPicker",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:48.275Z",
+      "updated_at": "2021-09-08T23:39:54.365Z",
+      "id": 1621510,
+      "schema": {
+        "localFooter": {
+          "type": "options",
+          "maximum": "1",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooter"
+          ],
+          "use_uuid": true,
+          "source": "internal_stories",
+          "folder_slug": "",
+          "filter_content_type": "localFooter",
+          "display_name": "Select Local Footer to display for this page",
+          "max_options": "1",
+          "min_options": "0"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "localFooterPicker",
+      "component_group_uuid": "cee4493f-3b73-425a-8b31-d13004a95ad1",
+      "component_group_name": "Identity"
+    },
+    {
+      "name": "mainMenuGroup",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:42.859Z",
+      "updated_at": "2021-08-11T04:11:10.263Z",
+      "id": 1621495,
+      "schema": {
+        "parentText": {
+          "type": "text",
+          "pos": 0
+        },
+        "parentTextSecond": {
+          "type": "text",
+          "pos": 1,
+          "display_name": "Parent text 2nd line (wrap to next line on smaller screens)"
+        },
+        "menuItems": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mainNavItem"
+          ],
+          "pos": 2,
+          "component_group_whitelist": []
+        },
+        "panelFacing": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "right",
+              "name": "Right (Default)"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "display_name": "Dropdown panel facing",
+          "default_value": "right",
+          "exclude_empty_option": true,
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "mainMenuGroup",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "mainNav",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:44.632Z",
+      "updated_at": "2021-08-11T04:11:10.917Z",
+      "id": 1621500,
+      "schema": {
+        "mainMenuGroups": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mainMenuGroup"
+          ],
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "mainNav",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "mainNavItem",
+      "display_name": "Main Menu Item",
+      "created_at": "2021-06-29T05:39:43.577Z",
+      "updated_at": "2021-08-11T04:11:11.839Z",
+      "id": 1621497,
+      "schema": {
+        "text": {
+          "type": "text",
+          "display_name": "Link Text",
+          "pos": 1
+        },
+        "link": {
+          "type": "multilink",
+          "email_link_type": true,
+          "asset_link_type": true,
+          "translatable": true,
+          "pos": 2,
+          "description": "Choose \"Url\" if you want to add an external link."
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Main Menu Item",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "masthead",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:44.279Z",
+      "updated_at": "2021-08-11T04:11:12.547Z",
+      "id": 1621499,
+      "schema": {
+        "utilityNav": {
+          "type": "bloks",
+          "pos": 0,
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "navItem"
+          ],
+          "default_value": "",
+          "display_name": "Utility menu (displayed at the top of the masthead next to the search bar)",
+          "component_group_whitelist": []
+        },
+        "mainNav": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mainNav"
+          ],
+          "maximum": "1",
+          "pos": 1,
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "masthead",
+      "component_group_uuid": "cee4493f-3b73-425a-8b31-d13004a95ad1",
+      "component_group_name": "Identity"
+    },
+    {
+      "name": "mastheadPicker",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:43.929Z",
+      "updated_at": "2021-09-09T18:40:23.824Z",
+      "id": 1621498,
+      "schema": {
+        "masthead": {
+          "type": "options",
+          "source": "internal_stories",
+          "folder_slug": "",
+          "filter_content_type": "masthead",
+          "min_options": "",
+          "max_options": "1"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "mastheadPicker",
+      "component_group_uuid": "cee4493f-3b73-425a-8b31-d13004a95ad1",
+      "component_group_name": "Identity"
+    },
+    {
+      "name": "navItem",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:47.926Z",
+      "updated_at": "2021-08-11T04:11:13.906Z",
+      "id": 1621509,
+      "schema": {
+        "text": {
+          "type": "text",
+          "display_name": "Link Text",
+          "pos": 1
+        },
+        "link": {
+          "type": "multilink",
+          "email_link_type": true,
+          "asset_link_type": true,
+          "translatable": true,
+          "pos": 2,
+          "description": "Choose \"Url\" if you want to add an external link."
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "navItem",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "page",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:39.300Z",
+      "updated_at": "2021-08-11T04:11:14.457Z",
+      "id": 1621485,
+      "schema": {
+        "body": {
+          "type": "bloks",
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "page",
+      "component_group_uuid": null
+    },
+    {
+      "name": "perk",
+      "display_name": "Perk or Benefit",
+      "created_at": "2021-06-29T05:39:42.496Z",
+      "updated_at": "2021-08-11T04:11:15.130Z",
+      "id": 1621494,
+      "schema": {
+        "partnerName": {
+          "type": "text",
+          "display_name": "Partner Name",
+          "description": "Name of partner (i.e. Geico, Stanford University Libraries, etc)",
+          "pos": 0
+        },
+        "name": {
+          "type": "text",
+          "required": true,
+          "display_name": "Perk Name",
+          "description": "Add a name for easy findability. This field does not display.",
+          "pos": 1
+        },
+        "title": {
+          "type": "text",
+          "pos": 2,
+          "description": "This is the headline for the Perk, e.g. \"Enjoy discounts of 20% with Geico\"",
+          "display_name": "Perk Headline",
+          "required": true,
+          "max_length": "60"
+        },
+        "perkType": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "benefit",
+              "name": "Member benefit"
+            },
+            {
+              "value": "alumni-perk",
+              "name": "Alumni perk"
+            }
+          ],
+          "display_name": "Perk Type",
+          "default_value": "alumni-perk",
+          "description": "Is this benefit only available to members? "
+        },
+        "descriptionShort": {
+          "type": "textarea",
+          "pos": 4,
+          "display_name": "Short Description",
+          "description": "This is a short description that will be used on Perk Cards and other locations that call for short text.",
+          "required": true,
+          "max_length": "300"
+        },
+        "descriptionLong": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "h2",
+            "h3",
+            "link"
+          ],
+          "restrict_components": false,
+          "description": "Long description of the Perk. This displays on the individual Perk page.",
+          "display_name": "Long Description",
+          "pos": 5
+        },
+        "isNew": {
+          "type": "boolean",
+          "pos": 7,
+          "display_name": "Mark this perk as \"New\"",
+          "description": "A \"New\" label will be added to the card view of this perk if this option is checked."
+        },
+        "topic": {
+          "type": "options",
+          "source": "internal",
+          "datasource_slug": "topic",
+          "description": "What topic(s) apply to this perk or benefit? NOTE: this field is not in use at this time.",
+          "display_name": "",
+          "pos": 8
+        },
+        "isFeatured": {
+          "type": "boolean",
+          "pos": 9,
+          "description": "Should this perk be featured in a sortable list? You can feature perks on a page using a card. Note: this field is not currently implemented."
+        },
+        "weight": {
+          "type": "number",
+          "description": "Use this field to rank order the perks for sorting. Note: this is not currently in use. The default value is 5.",
+          "display_name": "Perk Weight",
+          "default_value": "5",
+          "pos": 10
+        },
+        "feeBasis": {
+          "type": "options",
+          "options": [
+            {
+              "value": "free",
+              "name": "Free"
+            },
+            {
+              "value": "fee",
+              "name": "Fee"
+            },
+            {
+              "value": "discount",
+              "name": "Discount"
+            }
+          ],
+          "pos": 11
+        },
+        "tab-a4c1987d-d889-4358-a846-b5c20db269ec": {
+          "type": "tab",
+          "display_name": "Images",
+          "keys": [
+            "image",
+            "imageFocus",
+            "partnerLogo"
+          ],
+          "pos": 12
+        },
+        "tab-e7dcf470-1012-44e3-914d-32a9df72e604": {
+          "type": "tab",
+          "display_name": "Video",
+          "keys": [
+            "video"
+          ],
+          "pos": 13
+        },
+        "tab-df386fac-0378-4b48-a2ee-457a9b1e71bb": {
+          "type": "tab",
+          "display_name": "Metadata",
+          "keys": [
+            "weight",
+            "topic",
+            "isNew",
+            "feeBasis",
+            "isFeatured",
+            "partnerName"
+          ],
+          "pos": 14
+        },
+        "tab-45f3591c-84df-4251-87f0-f240a6d61180": {
+          "type": "tab",
+          "display_name": "SEO & Social",
+          "keys": [
+            "seo"
+          ],
+          "pos": 15
+        },
+        "tab-95eb3af0-45f4-4921-ba6b-c362a4c4a99a": {
+          "type": "tab",
+          "display_name": "Site Identity",
+          "keys": [
+            "localFooter"
+          ],
+          "pos": 16
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "",
+          "pos": 17,
+          "required": true,
+          "asset_folder_id": 79910
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "object-position",
+          "display_name": "",
+          "default_value": "top",
+          "exclude_empty_option": true,
+          "pos": 18
+        },
+        "partnerLogo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Enter a logo",
+          "asset_folder_id": 67589,
+          "pos": 19
+        },
+        "seo": {
+          "type": "custom",
+          "field_type": "seo-metatags",
+          "options": [],
+          "display_name": "",
+          "pos": 20
+        },
+        "localFooter": {
+          "type": "bloks",
+          "source": "internal_stories",
+          "min_options": "0",
+          "max_options": "1",
+          "filter_content_type": "localFooter",
+          "folder_slug": "global-components/local-footer/",
+          "display_name": "Local Footer picker",
+          "description": "Select Local Footer to display for this page",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "pos": 21,
+          "component_group_whitelist": []
+        },
+        "video": {
+          "type": "multilink",
+          "pos": 22
+        },
+        "cardUrl": {
+          "type": "multilink",
+          "description": "Enter the URL where you would like the card for this Perk to go (i.e. the PGNet page with promo codes, an external partner site, an internal homesite page, a Stanford website.)",
+          "pos": 6,
+          "display_name": "Card Link"
+        }
+      },
+      "image": null,
+      "preview_field": "",
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Perk or Benefit",
+      "component_group_uuid": "f38bb86f-a534-495d-b5ee-3c083a11aa22",
+      "component_group_name": "Content Types"
+    },
+    {
+      "name": "perkCard",
+      "display_name": "Perk Card (Vertical)",
+      "created_at": "2021-06-29T05:39:45.345Z",
+      "updated_at": "2021-06-29T05:39:45.345Z",
+      "id": 1621502,
+      "schema": {
+        "perkPicker": {
+          "type": "options",
+          "filetypes": [],
+          "source": "internal_stories",
+          "folder_slug": "perks/",
+          "filter_content_type": "perk",
+          "pos": 0
+        },
+        "cardImageFocus": {
+          "type": "option",
+          "pos": 1,
+          "display_name": "Image focus",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "object-position",
+          "default_value": "top",
+          "exclude_empty_option": true
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-level",
+          "display_name": "Headline heading level (default is H3)",
+          "default_value": "3",
+          "exclude_empty_option": true,
+          "pos": 2
+        },
+        "tab-fc757ddb-81d1-4d14-857d-70fb373df0c7": {
+          "type": "tab",
+          "display_name": "Editor-only",
+          "keys": [
+            "cardGroupTitle"
+          ],
+          "pos": 3
+        },
+        "cardGroupTitle": {
+          "type": "text",
+          "default_value": " ",
+          "description": "This editor-only option is for adding a title for this group of Perk Cards which makes the Storyblok preview easier to understand. This title won't show up on the website.",
+          "display_name": "Title for this group of cards (for Storyblok preview)",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div>{{cardGroupTitle}}</div>",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Perk Card (Vertical)",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "perkCardHorizontal",
+      "display_name": "Perk Card (Horizontal)",
+      "created_at": "2021-06-29T05:39:41.059Z",
+      "updated_at": "2021-06-29T05:39:41.059Z",
+      "id": 1621490,
+      "schema": {
+        "perkPicker": {
+          "type": "options",
+          "restrict_components": true,
+          "component_whitelist": [],
+          "source": "internal_stories",
+          "folder_slug": "perks/",
+          "filter_content_type": "perk",
+          "min_options": "",
+          "max_options": "",
+          "display_name": "Perk picker",
+          "pos": 0
+        },
+        "spacingBottom": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "large-spacing",
+          "display_name": "Bottom spacing",
+          "default_value": "sm",
+          "exclude_empty_option": true
+        },
+        "cardImageFocus": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "object-position",
+          "display_name": "Image focus",
+          "default_value": "top"
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "default_value": "2",
+          "description": "",
+          "display_name": "Heading level",
+          "pos": 3
+        },
+        "tab-2b1c1c9c-2e19-48a2-9ea5-ecf8f031e67f": {
+          "type": "tab",
+          "display_name": "Editor-only",
+          "keys": [
+            "cardTitle"
+          ],
+          "pos": 4
+        },
+        "cardTitle": {
+          "type": "text",
+          "pos": 5
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<span>{{cardTitle}}</span>",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Perk Card (Horizontal)",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "perkFIlters",
+      "display_name": null,
+      "created_at": "2021-08-11T04:11:16.788Z",
+      "updated_at": "2021-08-11T04:11:16.788Z",
+      "id": 1701716,
+      "schema": {
+        "perk": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "benefit",
+              "name": "Member benefit"
+            },
+            {
+              "value": "alumni-perk",
+              "name": "Alumni perk"
+            }
+          ]
+        },
+        "perkType": {
+          "type": "option",
+          "source": "internal",
+          "datasource_slug": "topic",
+          "use_uuid": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "perkFIlters",
+      "component_group_uuid": null
+    },
+    {
+      "name": "poster",
+      "display_name": "Poster with Round Thumbnail",
+      "created_at": "2021-06-29T05:39:36.008Z",
+      "updated_at": "2021-08-11T04:11:17.520Z",
+      "id": 1621476,
+      "schema": {
+        "cta": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "ctaGroup",
+            "ctaButton"
+          ],
+          "maximum": "1",
+          "display_name": "Add call-to-action link button(s)",
+          "pos": 0,
+          "component_group_whitelist": []
+        },
+        "headline": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "isBigHeadline": {
+          "type": "boolean",
+          "display_name": "Use larger headline?",
+          "pos": 2
+        },
+        "text": {
+          "type": "richtext",
+          "pos": 3,
+          "display_name": "Poster body text",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "list",
+            "olist",
+            "paragraph"
+          ],
+          "description": "This is the text field for the poster. The unordered list is only designed to work with left-aligned text. Please do not put a list in a centered text area."
+        },
+        "tab-970bc096-0ba1-40b1-9735-6e0709bf7b54": {
+          "type": "tab",
+          "display_name": "Call-to-action",
+          "keys": [
+            "cta"
+          ],
+          "pos": 5
+        },
+        "tab-09c4067b-2878-46f1-9bdf-4ff288ce9337": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "imageFocus",
+            "image",
+            "isRound",
+            "borderColor"
+          ],
+          "pos": 6
+        },
+        "tab-60e16c2e-069c-4a52-b0e5-64709e76f59c": {
+          "type": "tab",
+          "display_name": "Background Color/Image",
+          "keys": [
+            "bgImage",
+            "bgImageFocus",
+            "bgCrop",
+            "vCrop",
+            "theme",
+            "bgImageGroup"
+          ],
+          "pos": 7
+        },
+        "tab-09d3bbba-a73c-4e24-9a89-4ab058cfc7bf": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "align",
+            "headingLevel",
+            "isMinimal",
+            "isLightText",
+            "layout",
+            "id"
+          ],
+          "pos": 8
+        },
+        "theme": {
+          "type": "option",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [],
+          "default_value": "white",
+          "pos": 9,
+          "display_name": "Poster background options",
+          "source": "internal",
+          "datasource_slug": "card-background-colors"
+        },
+        "bgImageGroup": {
+          "type": "section",
+          "pos": 10,
+          "keys": [
+            "bgImage",
+            "vCrop"
+          ],
+          "display_name": "Background image (optional, expand to select image and option)"
+        },
+        "bgImage": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Background image (optional, comes with gradient overlay)",
+          "pos": 11
+        },
+        "vCrop": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "background-image-position-vertical",
+          "display_name": "Background image focus (Vertical)",
+          "default_value": "center",
+          "pos": 12,
+          "exclude_empty_option": true,
+          "description": "Select vertical background image focus if its aspect ratio is taller than the poster aspect ratio."
+        },
+        "layout": {
+          "type": "option",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "center",
+              "name": "Image and text in 1 column, center-aligned content"
+            },
+            {
+              "value": "left",
+              "name": "Image on the left, left-aligned content"
+            }
+          ],
+          "display_name": "",
+          "default_value": "center",
+          "pos": 13
+        },
+        "headingLevel": {
+          "type": "option",
+          "pos": 14,
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "heading-level",
+          "default_value": "2",
+          "display_name": "Heading level for the headline (default is H2)"
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 15,
+          "display_name": "Image (optional)"
+        },
+        "borderColor": {
+          "type": "option",
+          "pos": 16,
+          "max_length": "",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "basic-card-image-border-color",
+          "display_name": "Border color (for round image option only)",
+          "default_value": "digital-red"
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "object-position",
+          "default_value": "center",
+          "pos": 17
+        },
+        "isBigBodyText": {
+          "type": "boolean",
+          "display_name": "Use larger body text?",
+          "pos": 4
+        },
+        "id": {
+          "type": "text",
+          "display_name": "Optional unique ID (for use with anchor links)",
+          "description": "Letters, numbers, hyphen and underscores only. Must be unique for the page it is on, ie, no 2 WYSIWYGs or sections should have the same id's."
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{headline}}</strong></div>\n{{image(options.image.filename)/}}\n<div>{{theme}}</div>",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1063034,
+          "name": "Black background, left-aligned, default font sizes.",
+          "component_id": 1621476,
+          "image": ""
+        },
+        {
+          "id": 1063035,
+          "name": "Light grey background, center-aligned, large font sizes",
+          "component_id": 1621476,
+          "image": ""
+        },
+        {
+          "id": 1063036,
+          "name": "Poster with background image and dark gradient overlay",
+          "component_id": 1621476,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063035,
+      "real_name": "Poster with Round Thumbnail",
+      "component_group_uuid": "647aec4e-3cad-4123-97a8-a5028dfd6299",
+      "component_group_name": "Composite"
+    },
+    {
+      "name": "redirect",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:46.460Z",
+      "updated_at": "2021-06-29T05:39:46.460Z",
+      "id": 1621505,
+      "schema": {
+        "from": {
+          "type": "text",
+          "regex": "^\\/[a-zA-Z0-9\\_\\/\\-?&=]*$",
+          "required": true,
+          "display_name": "From Path"
+        },
+        "to": {
+          "type": "text",
+          "required": true,
+          "regex": "(https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})|(^\\/[a-zA-Z0-9\\_\\/\\-?&=]*$)",
+          "display_name": "To Path"
+        },
+        "statusCode": {
+          "type": "text",
+          "max_length": "3",
+          "regex": "(30[0-8])",
+          "display_name": "HTTP Status Code",
+          "default_value": "301"
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Use this to turn on/off this Redirect",
+          "display_name": "Enable/Disable this Redirect"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "redirect",
+      "component_group_uuid": null
+    },
+    {
+      "name": "searchEntry",
+      "display_name": "Custom Search Entry",
+      "created_at": "2021-08-11T04:11:18.971Z",
+      "updated_at": "2021-08-24T21:24:09.657Z",
+      "id": 1701717,
+      "schema": {
+        "title": {
+          "type": "text"
+        },
+        "url": {
+          "type": "text",
+          "description": "e.g. \"https://associates.alumni.stanford.edu/board-governors\""
+        },
+        "body": {
+          "type": "textarea",
+          "description": "Short one-paragraph excerpt or description to show in search results card. "
+        },
+        "domain": {
+          "type": "text",
+          "display_name": "",
+          "default_value": "",
+          "description": "e.g. \"associates.alumni.stanford.edu\""
+        },
+        "siteName": {
+          "type": "text",
+          "description": "e.g. \"Stanford Associates\""
+        },
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ]
+        },
+        "date": {
+          "type": "datetime",
+          "disable_time": true,
+          "description": "Date so that we can use this to sort by relevancy in the future"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": "",
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Custom Search Entry",
+      "component_group_uuid": "d12c31db-fa8f-490b-a91a-465c2d137d4f",
+      "component_group_name": "Search"
+    },
+    {
+      "name": "searchFacet",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:39.646Z",
+      "updated_at": "2021-06-29T05:39:39.646Z",
+      "id": 1621486,
+      "schema": {
+        "Label": {
+          "type": "text",
+          "pos": 0
+        },
+        "fieldName": {
+          "type": "text",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "searchFacet",
+      "component_group_uuid": "d12c31db-fa8f-490b-a91a-465c2d137d4f",
+      "component_group_name": "Search"
+    },
+    {
+      "name": "searchField",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:40.709Z",
+      "updated_at": "2021-06-29T05:39:40.709Z",
+      "id": 1621489,
+      "schema": {
+        "placeholderText": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "searchField",
+      "component_group_uuid": "d12c31db-fa8f-490b-a91a-465c2d137d4f",
+      "component_group_name": "Search"
+    },
+    {
+      "name": "searchKeywordBanner",
+      "display_name": null,
+      "created_at": "2021-08-11T04:11:20.562Z",
+      "updated_at": "2021-08-24T20:33:45.076Z",
+      "id": 1701718,
+      "schema": {
+        "content": {
+          "type": "bloks",
+          "maximum": "1",
+          "required": true,
+          "restrict_components": true,
+          "restrict_type": "",
+          "component_whitelist": [
+            "wysiwyg",
+            "basicCard",
+            "poster",
+            "basicCardHorizontal"
+          ],
+          "component_group_whitelist": []
+        },
+        "keywords": {
+          "type": "text",
+          "options": [],
+          "default_value": "",
+          "description": "Enter keywords or phrases, separated by a comma.",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "searchKeywordBanner",
+      "component_group_uuid": "d12c31db-fa8f-490b-a91a-465c2d137d4f",
+      "component_group_name": "Search"
+    },
+    {
+      "name": "searchPage",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:35.291Z",
+      "updated_at": "2021-08-11T04:11:21.364Z",
+      "id": 1621474,
+      "schema": {
+        "pageTitle": {
+          "type": "text",
+          "pos": 0
+        },
+        "itemsPerPage": {
+          "type": "number",
+          "default_value": "16",
+          "required": true,
+          "pos": 1,
+          "description": ""
+        },
+        "maxPagerLinks": {
+          "type": "number",
+          "display_name": "",
+          "default_value": "6",
+          "description": "Maximum number of page links to show in pager. If number of pages exceeds this, an ellipsis will be shown.",
+          "required": true,
+          "pos": 2
+        },
+        "maxPagerLinksMobile": {
+          "type": "number",
+          "pos": 3,
+          "max_length": "",
+          "description": "Maximum number of page links to show in pager on mobile breakpoints. If number of pages exceeds this, an ellipsis will be shown.",
+          "required": true,
+          "default_value": "2"
+        },
+        "emptySearchMessage": {
+          "type": "text",
+          "description": "Text that is displayed when no search term was entered",
+          "default_value": "Uh oh, it looks like nothing was submitted. Please enter your search terms above and hit enter or click the search icon.",
+          "pos": 4
+        },
+        "noResultsHeading": {
+          "type": "text",
+          "default_value": "",
+          "description": "Heading to be displayed when query returns no results.\nAvailable tokens: [query]",
+          "display_name": "",
+          "pos": 5
+        },
+        "noResultsBody": {
+          "type": "textarea",
+          "description": "Message to be displayed when query returns no results.\nAvailable Tokens: [query]",
+          "pos": 6
+        },
+        "tab-95587832-a10d-4918-87dc-ac2b7f0b6d62": {
+          "type": "tab",
+          "display_name": "No Results",
+          "keys": [
+            "noResultsHeading",
+            "noResultsBody",
+            "noResultsSuggestions",
+            "noResultsBody",
+            "noResultsAdditionalContent",
+            "emptyQueryHeading",
+            "emptyQueryBody",
+            "emptyQueryAdditionalContent"
+          ],
+          "pos": 7
+        },
+        "tab-4e90c4fc-a4f8-4651-99f8-e4c388cdfeac": {
+          "type": "tab",
+          "display_name": "Above Results",
+          "keys": [
+            "aboveResultsContent"
+          ],
+          "pos": 8
+        },
+        "aboveResultsContent": {
+          "type": "bloks",
+          "pos": 9,
+          "component_group_whitelist": []
+        },
+        "noResultsAdditionalContent": {
+          "type": "bloks",
+          "description": "Additional content to be displayed when query returns no results. (For example, Popular topic links)",
+          "pos": 10,
+          "component_group_whitelist": []
+        },
+        "tab-e5a67a59-ab51-4ca2-8905-b5f2be5c8396": {
+          "type": "tab",
+          "display_name": "Below Results",
+          "keys": [
+            "belowResultsContent"
+          ],
+          "pos": 11
+        },
+        "belowResultsContent": {
+          "type": "bloks",
+          "pos": 12,
+          "component_group_whitelist": []
+        },
+        "tab-35e9d81e-115d-4300-b021-f0cad184ed60": {
+          "type": "tab",
+          "display_name": "Site Identity",
+          "keys": [
+            "masthead",
+            "localFooter"
+          ],
+          "pos": 13
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "pos": 14,
+          "component_group_whitelist": []
+        },
+        "localFooter": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "pos": 15,
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "searchPage",
+      "component_group_uuid": "2381e25a-375d-4647-b830-be9aa23c70b8",
+      "component_group_name": "Page Types"
+    },
+    {
+      "name": "searchPager",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:40.005Z",
+      "updated_at": "2021-06-29T05:39:40.005Z",
+      "id": 1621487,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "searchPager",
+      "component_group_uuid": "d12c31db-fa8f-490b-a91a-465c2d137d4f",
+      "component_group_name": "Search"
+    },
+    {
+      "name": "searchResults",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:40.362Z",
+      "updated_at": "2021-06-29T05:39:40.362Z",
+      "id": 1621488,
+      "schema": {
+        "itemsPerPage": {
+          "type": "number",
+          "required": true,
+          "default_value": "16"
+        },
+        "tab-00f7e70e-358b-409a-8dcd-3c90dd6d657f": {
+          "type": "tab",
+          "display_name": "No Results",
+          "keys": [
+            "noResultsHeading",
+            "noResultsBody",
+            "noResultsSuggestions"
+          ],
+          "pos": 0
+        },
+        "noResultsHeading": {
+          "type": "text"
+        },
+        "noResultsBody": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "searchResults",
+      "component_group_uuid": "d12c31db-fa8f-490b-a91a-465c2d137d4f",
+      "component_group_name": "Search"
+    },
+    {
+      "name": "searchSuggestions",
+      "display_name": null,
+      "created_at": "2021-08-11T04:11:22.984Z",
+      "updated_at": "2021-08-24T20:33:22.044Z",
+      "id": 1701719,
+      "schema": {
+        "introduction": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "",
+          "description": "The text above the search input field",
+          "default_value": "Hello, what can we help you find today?"
+        },
+        "emptySearchMessage": {
+          "type": "text",
+          "pos": 1,
+          "default_value": "Uh oh, it looks like nothing was submitted. Please enter your search terms above and hit enter or click the search icon.",
+          "description": "Text that is displayed when no search term was entered"
+        },
+        "title": {
+          "type": "text",
+          "pos": 2
+        },
+        "content": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "grid",
+            "wysiwyg"
+          ],
+          "pos": 3,
+          "component_group_whitelist": []
+        },
+        "titleColor": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "black",
+              "name": "Black"
+            },
+            {
+              "value": "white",
+              "name": "White"
+            }
+          ],
+          "default_value": "black",
+          "pos": 4
+        },
+        "tab-d5e8e665-1840-40c9-808e-01e2e2c229c9": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "titleColor",
+            "spacingTop",
+            "spacingBottom",
+            "titleFont"
+          ],
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "searchSuggestions",
+      "component_group_uuid": "d12c31db-fa8f-490b-a91a-465c2d137d4f",
+      "component_group_name": "Search"
+    },
+    {
+      "name": "section",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:41.763Z",
+      "updated_at": "2021-09-14T20:14:05.655Z",
+      "id": 1621492,
+      "schema": {
+        "headerOptions": {
+          "type": "section",
+          "keys": [
+            "isLeftAlign",
+            "titleSize",
+            "isSmallTitle",
+            "isLessHeaderSpacing",
+            "isSrOnlyTitle",
+            "headingLevel"
+          ],
+          "display_name": "Section header (title, intro & superheadline) options",
+          "pos": 0
+        },
+        "isLeftAlign": {
+          "type": "boolean",
+          "description": "Horizontal alignment for section title, superheadline link and intro. Default is center alignment. Check for left alignment.",
+          "display_name": "Left-align section header",
+          "pos": 1
+        },
+        "titleSize": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "default",
+              "name": "Default"
+            },
+            {
+              "value": "md",
+              "name": "Medium"
+            },
+            {
+              "value": "sm",
+              "name": "Small"
+            }
+          ],
+          "display_name": "Title font size",
+          "default_value": "default"
+        },
+        "isLessHeaderSpacing": {
+          "type": "boolean",
+          "pos": 4,
+          "display_name": "Decrease spacing between section header and content"
+        },
+        "isSrOnlyTitle": {
+          "type": "boolean",
+          "pos": 5,
+          "display_name": "Make section title screen reader only (non-visible)"
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "display_name": "Heading level for the title (default is H2)",
+          "default_value": "2",
+          "datasource_slug": "heading-level",
+          "pos": 6
+        },
+        "bgColor": {
+          "type": "option",
+          "use_uuid": true,
+          "display_name": "Background color",
+          "exclude_empty_option": true,
+          "pos": 7,
+          "source": "internal",
+          "datasource_slug": "section-background-color",
+          "default_value": "white"
+        },
+        "spacingTop": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "large-spacing",
+          "default_value": "lg",
+          "pos": 8
+        },
+        "spacingBottom": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "large-spacing",
+          "default_value": "lg",
+          "pos": 9
+        },
+        "id": {
+          "type": "text",
+          "display_name": "Unique section ID (optional, for anchor links)",
+          "pos": 10,
+          "description": "Letters, numbers, hyphen and underscores only. Must be unique for the page it is on, ie, no 2 WYSIWYGs, sections or posters should have the same id's."
+        },
+        "superhead": {
+          "type": "text",
+          "pos": 11,
+          "display_name": "Superheadline link text (optional)"
+        },
+        "superLink": {
+          "type": "multilink",
+          "pos": 12,
+          "display_name": "Superheadline link (optional)"
+        },
+        "title": {
+          "type": "text",
+          "pos": 13
+        },
+        "intro": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic"
+          ],
+          "pos": 14
+        },
+        "cta": {
+          "type": "bloks",
+          "pos": 15,
+          "restrict_components": true,
+          "restrict_type": "",
+          "component_whitelist": [
+            "ctaGroup",
+            "ctaButton"
+          ],
+          "display_name": "Add optional call-to-action link buttons",
+          "component_group_whitelist": []
+        },
+        "tab-0c1589d4-b635-41e5-9030-b661d925d97f": {
+          "type": "tab",
+          "display_name": "Content",
+          "keys": [
+            "content"
+          ],
+          "pos": 16
+        },
+        "tab-b1cf6aa3-9bd7-4502-b01b-a7fb86a8387a": {
+          "type": "tab",
+          "display_name": "Call-to-action",
+          "keys": [
+            "cta"
+          ],
+          "pos": 17
+        },
+        "tab-86ed3c2c-d21b-4e2c-95d0-e0559d960d3f": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "bgColor",
+            "id",
+            "spacingTop",
+            "spacingBottom",
+            "headingLevel",
+            "isLeftAlign",
+            "isSrOnlyTitle",
+            "isSmallTitle",
+            "isLessHeaderSpacing",
+            "headerOptions",
+            "titleSize"
+          ],
+          "pos": 18
+        },
+        "content": {
+          "type": "bloks",
+          "display_name": "Add section content",
+          "pos": 19,
+          "restrict_components": true,
+          "component_whitelist": [
+            "grid",
+            "simpleImage",
+            "embedVideo",
+            "wysiwyg",
+            "ctaGroup",
+            "perkCardHorizontal",
+            "itinerary",
+            "collectionCardHorizontal"
+          ],
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div><strong>{{title}}</strong></div>",
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1063040,
+          "name": "Section with 2 event cards",
+          "component_id": 1621492,
+          "image": ""
+        },
+        {
+          "id": 1063041,
+          "name": "Section with 2 minimal basic cards, center-aligned",
+          "component_id": 1621492,
+          "image": ""
+        },
+        {
+          "id": 1063042,
+          "name": "Section with 3 basic cards, left-aligned",
+          "component_id": 1621492,
+          "image": ""
+        }
+      ],
+      "preset_id": 1063041,
+      "real_name": "section",
+      "component_group_uuid": "4a2669d7-b102-4a71-aa8f-c506f688fcd3",
+      "component_group_name": "Layout"
+    },
+    {
+      "name": "simpleImage",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:34.927Z",
+      "updated_at": "2021-08-11T04:11:24.710Z",
+      "id": 1621473,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Click on the image url above to add alt text and title.",
+          "display_name": "Image",
+          "pos": 0
+        },
+        "imageWidth": {
+          "type": "option",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "options": [
+            {
+              "value": "edge-to-edge",
+              "name": "Fit parent container"
+            },
+            {
+              "value": "center-container",
+              "name": "Site container width (12-of-12 columns)"
+            },
+            {
+              "value": "10",
+              "name": "10-of-12 columns"
+            },
+            {
+              "value": "8",
+              "name": "8-of-12 columns"
+            },
+            {
+              "value": "6",
+              "name": "6-of-12 columns"
+            },
+            {
+              "value": "4",
+              "name": "4-of-12 columns"
+            }
+          ],
+          "default_value": "edge-to-edge",
+          "pos": 1
+        },
+        "isBanner": {
+          "type": "boolean",
+          "description": "Fit Parent Container must be selected in order to utilize this option. This gives the banner a max height.",
+          "display_name": "Use banner style (only available for \"Fit Parent Container\" width)?",
+          "pos": 2
+        },
+        "imageFocus": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "object-position",
+          "exclude_empty_option": true,
+          "description": "If banner style is enabled, select an image focus point. Default image focus is center.",
+          "default_value": "center",
+          "pos": 3,
+          "display_name": "Image focus (for banner style only)"
+        },
+        "caption": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "paragraph",
+            "link"
+          ],
+          "description": "",
+          "display_name": "Caption (this field allows for longer caption with some rich text formatting)",
+          "pos": 4
+        },
+        "captionAlign": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "text-align",
+          "default_value": "left",
+          "pos": 5
+        },
+        "isCaptionCenter": {
+          "type": "boolean",
+          "description": "If Fit Parent Container is selected, caption can be adjusted to full width or center container aligned.",
+          "pos": 6,
+          "display_name": "If \"Fit Parent Container\" width is selected, add spacing between caption and container edge"
+        },
+        "tab-f8b3c40b-7c08-445a-874c-b3790d0e3872": {
+          "type": "tab",
+          "display_name": "Image",
+          "keys": [
+            "image",
+            "imageWidth",
+            "isBanner",
+            "imageFocus"
+          ],
+          "pos": 7
+        },
+        "tab-c3289e84-72f0-4892-ba3d-a7429fe4b744": {
+          "type": "tab",
+          "display_name": "Caption",
+          "keys": [
+            "caption",
+            "captionAlign",
+            "isCaptionCenter"
+          ],
+          "pos": 8
+        },
+        "tab-cae1990e-1cd8-4370-be8f-af00f12ebf23": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "spacingTop",
+            "spacingBottom"
+          ],
+          "pos": 9
+        },
+        "spacingTop": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "large-spacing",
+          "display_name": "Top Spacing",
+          "default_value": "none",
+          "pos": 10
+        },
+        "spacingBottom": {
+          "type": "option",
+          "use_uuid": true,
+          "exclude_empty_option": true,
+          "source": "internal",
+          "datasource_slug": "large-spacing",
+          "display_name": "Bottom Spacing",
+          "default_value": "none",
+          "pos": 11
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [
+        {
+          "id": 1107157,
+          "name": "8-of-12 Column with Center-aligned Caption",
+          "component_id": 1621473,
+          "image": ""
+        },
+        {
+          "id": 1107158,
+          "name": "Banner with Left-aligned Caption",
+          "component_id": 1621473,
+          "image": ""
+        },
+        {
+          "id": 1107159,
+          "name": "Site Container with Right-aligned Caption",
+          "component_id": 1621473,
+          "image": ""
+        }
+      ],
+      "preset_id": null,
+      "real_name": "simpleImage",
+      "component_group_uuid": null
+    },
+    {
+      "name": "story",
+      "display_name": null,
+      "created_at": "2021-08-11T04:11:25.573Z",
+      "updated_at": "2021-08-11T22:49:47.711Z",
+      "id": 1701720,
+      "schema": {
+        "seo": {
+          "type": "custom",
+          "field_type": "seo-metatags",
+          "options": [],
+          "display_name": "SEO",
+          "pos": 0
+        },
+        "canonicalURL": {
+          "type": "multilink",
+          "pos": 1
+        },
+        "ankleTitle": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Title for the ankle",
+          "default_value": ""
+        },
+        "isAnkleTitleSrOnly": {
+          "type": "boolean",
+          "pos": 3,
+          "display_name": "Make ankle title screen reader only (not visible)"
+        },
+        "ankleBgColor": {
+          "type": "option",
+          "pos": 4,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "section-background-color",
+          "exclude_empty_option": true,
+          "display_name": "Ankle region background color",
+          "default_value": "white"
+        },
+        "ankleContent": {
+          "type": "bloks",
+          "display_name": "Ankle content (add 1 to 3 icon cards)",
+          "restrict_components": true,
+          "component_whitelist": [
+            "iconCard"
+          ],
+          "maximum": "3",
+          "pos": 5,
+          "component_group_whitelist": []
+        },
+        "belowContent": {
+          "type": "bloks",
+          "pos": 6,
+          "component_group_whitelist": [],
+          "restrict_components": true,
+          "component_whitelist": [
+            "poster",
+            "section"
+          ]
+        },
+        "tab-2b493d8f-e55a-4652-a945-1a7ae547b865": {
+          "type": "tab",
+          "display_name": "Hero Image",
+          "keys": [
+            "image",
+            "notFullwidthImage",
+            "caption",
+            "imageFocus"
+          ],
+          "pos": 7
+        },
+        "tab-8593b76c-46b5-4595-8a56-1bc7d4bd5882": {
+          "type": "tab",
+          "display_name": "Story Content",
+          "keys": [
+            "content"
+          ],
+          "pos": 8
+        },
+        "tab-162a2e1f-1ca3-46fe-88b1-489f1a197d27": {
+          "type": "tab",
+          "display_name": "Below Content",
+          "keys": [
+            "belowContent",
+            "ankle"
+          ],
+          "pos": 9
+        },
+        "tab-a6f8af1a-8a91-4569-88ce-8cb3734d178c": {
+          "type": "tab",
+          "display_name": "Ankle",
+          "keys": [
+            "ankleContent",
+            "ankleTitle",
+            "isAnkleTitleSrOnly",
+            "ankleBgColor"
+          ],
+          "pos": 10
+        },
+        "tab-78e3ded2-7c23-40a2-a5ff-fa6c8f14f777": {
+          "type": "tab",
+          "display_name": "Card View",
+          "keys": [
+            "mediaIcon",
+            "shortTitle",
+            "teaser",
+            "cardImage",
+            "tabText"
+          ],
+          "pos": 11
+        },
+        "tab-c36ca081-6481-4734-b1f1-7446b850fca2": {
+          "type": "tab",
+          "display_name": "SEO & Social",
+          "keys": [
+            "seo",
+            "canonicalURL"
+          ],
+          "pos": 12
+        },
+        "tab-39e69d09-9c37-4b1c-a69e-7a441b12a890": {
+          "type": "tab",
+          "display_name": "Alerts",
+          "keys": [
+            "Alerts"
+          ],
+          "pos": 13
+        },
+        "tab-5b8d30cf-498e-409a-acad-5ead705a4520": {
+          "type": "tab",
+          "display_name": "Site Identity",
+          "keys": [
+            "masthead",
+            "localFooter"
+          ],
+          "pos": 14
+        },
+        "storyType": {
+          "type": "option",
+          "pos": 15,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "story",
+              "name": "Story"
+            },
+            {
+              "value": "podcast",
+              "name": "Podcast"
+            },
+            {
+              "value": "video",
+              "name": "VIdeo"
+            },
+            {
+              "value": "announcement",
+              "name": "Announcement"
+            }
+          ],
+          "default_value": "story",
+          "exclude_empty_option": true,
+          "display_name": "Story type"
+        },
+        "title": {
+          "type": "text",
+          "display_name": "Story title (H1)",
+          "required": true,
+          "pos": 16
+        },
+        "intro": {
+          "type": "textarea",
+          "display_name": "Subheading",
+          "pos": 17
+        },
+        "author": {
+          "type": "text",
+          "description": "Byline - prepended with \"by\"",
+          "pos": 18,
+          "display_name": "Author(s)"
+        },
+        "source": {
+          "type": "text",
+          "display_name": "Publication source",
+          "description": "Prepended with \"from\"",
+          "pos": 19
+        },
+        "dateGroup": {
+          "type": "section",
+          "pos": 20,
+          "display_name": "Published date",
+          "keys": [
+            "publishedDate",
+            "manualDate"
+          ]
+        },
+        "publishedDate": {
+          "type": "datetime",
+          "display_name": "Published date (date picker)",
+          "pos": 21
+        },
+        "manualDate": {
+          "type": "text",
+          "description": "The text entered here overrides the date picker \"Published date\" field above.",
+          "display_name": "Manually entered published date (if exact date is not known)",
+          "pos": 22
+        },
+        "externalStory": {
+          "type": "section",
+          "display_name": "For external stories only",
+          "pos": 23,
+          "keys": [
+            "pubLink"
+          ]
+        },
+        "pubLink": {
+          "type": "text",
+          "pos": 24,
+          "display_name": "Link to publication"
+        },
+        "taxonomy": {
+          "type": "section",
+          "keys": [
+            "audience",
+            "category",
+            "tags"
+          ],
+          "display_name": "Taxonomies",
+          "pos": 25
+        },
+        "audience": {
+          "type": "text",
+          "pos": 26
+        },
+        "category": {
+          "type": "text",
+          "pos": 27
+        },
+        "tags": {
+          "type": "text",
+          "pos": 28
+        },
+        "image": {
+          "type": "asset",
+          "pos": 29,
+          "display_name": "Hero image",
+          "filetypes": [
+            "images"
+          ],
+          "required": false,
+          "asset_folder_id": 79909
+        },
+        "notFullwidthImage": {
+          "type": "boolean",
+          "pos": 30,
+          "display_name": "Use non edge-to-edge image option",
+          "description": ""
+        },
+        "imageFocus": {
+          "type": "option",
+          "pos": 31,
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "object-position",
+          "display_name": "Image focus (only for edge-to-edge hero image)",
+          "default_value": "center",
+          "exclude_empty_option": true
+        },
+        "caption": {
+          "type": "richtext",
+          "pos": 32,
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "link",
+            "paragraph"
+          ]
+        },
+        "shortTitle": {
+          "type": "text",
+          "pos": 33,
+          "display_name": "Short title",
+          "default_value": "",
+          "description": "If not provided, the story title will be used instead."
+        },
+        "teaser": {
+          "type": "textarea",
+          "pos": 34,
+          "display_name": "Teaser description",
+          "default_value": "",
+          "description": "If not provided, the story intro/subheading will be used instead."
+        },
+        "cardImage": {
+          "type": "asset",
+          "pos": 35,
+          "filetypes": [
+            "images"
+          ],
+          "display_name": "Card image",
+          "description": "If not provided, the story hero image will be used instead."
+        },
+        "content": {
+          "type": "bloks",
+          "pos": 36,
+          "display_name": "Story content",
+          "restrict_components": true,
+          "component_whitelist": [
+            "wysiwyg",
+            "simpleImage",
+            "embedVideo"
+          ],
+          "component_group_whitelist": []
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "display_name": "",
+          "pos": 37,
+          "component_group_whitelist": []
+        },
+        "localFooter": {
+          "type": "bloks",
+          "maximum": "1",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "pos": 38,
+          "component_group_whitelist": []
+        },
+        "Alerts": {
+          "type": "bloks",
+          "description": "Alerts",
+          "default_value": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "alert"
+          ],
+          "pos": 39,
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [
+        {
+          "id": 1107160,
+          "name": "Fullwidth hero image",
+          "component_id": 1701720,
+          "image": ""
+        },
+        {
+          "id": 1107161,
+          "name": "Non fullwidth hero image",
+          "component_id": 1701720,
+          "image": ""
+        }
+      ],
+      "preset_id": 1085448,
+      "real_name": "story",
+      "component_group_uuid": "f38bb86f-a534-495d-b5ee-3c083a11aa22",
+      "component_group_name": "Content Types"
+    },
+    {
+      "name": "storyCard",
+      "display_name": "Story Card (Vertical)",
+      "created_at": "2021-08-11T04:11:26.551Z",
+      "updated_at": "2021-08-11T04:11:26.551Z",
+      "id": 1701721,
+      "schema": {
+        "storyPicker": {
+          "type": "options",
+          "filetypes": [],
+          "source": "internal_stories",
+          "folder_slug": "stories/",
+          "filter_content_type": "story",
+          "pos": 0,
+          "display_name": "Story picker"
+        },
+        "isBigText": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Make headline and teaser font larger"
+        },
+        "isMinimal": {
+          "type": "boolean",
+          "pos": 2,
+          "display_name": "Use \"minimal\" card style",
+          "description": ""
+        },
+        "tabText": {
+          "type": "text",
+          "pos": 3,
+          "max_length": "12",
+          "display_name": "Tab label text",
+          "default_value": "Story"
+        },
+        "hideImage": {
+          "type": "boolean",
+          "pos": 4,
+          "display_name": "Hide card image and tab label",
+          "description": ""
+        },
+        "hideTab": {
+          "type": "boolean",
+          "pos": 5,
+          "display_name": "Hide tab label only",
+          "description": ""
+        },
+        "cardImageFocus": {
+          "type": "option",
+          "pos": 6,
+          "display_name": "Image focus",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "object-position",
+          "default_value": "top",
+          "exclude_empty_option": true
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-level",
+          "display_name": "Headline heading level (default is H3)",
+          "default_value": "3",
+          "exclude_empty_option": true,
+          "pos": 7
+        },
+        "cardTitle": {
+          "type": "text",
+          "default_value": " ",
+          "description": "This editor-only option is for adding a title for this group of Perk Cards which makes the Storyblok preview easier to understand. This title won't show up on the website.",
+          "display_name": "Headline for this story card (for Storyblok preview)",
+          "pos": 8
+        },
+        "tab-fc757ddb-81d1-4d14-857d-70fb373df0c7": {
+          "type": "tab",
+          "display_name": "Editor-only",
+          "keys": [
+            "cardGroupTitle",
+            "cardTitle"
+          ],
+          "pos": 9
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": "<div>{{cardTitle}}</div>",
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Story Card (Vertical)",
+      "component_group_uuid": "af291fc9-172d-4b5b-961f-0a280294ffd0",
+      "component_group_name": "Cards"
+    },
+    {
+      "name": "trip",
+      "display_name": null,
+      "created_at": "2021-09-07T18:19:23.039Z",
+      "updated_at": "2021-09-13T23:37:14.103Z",
+      "id": 1766413,
+      "schema": {
+        "tab-b91213dd-2341-41be-8861-5e1295979f0d": {
+          "type": "tab",
+          "display_name": "Card",
+          "keys": [
+            "tag",
+            "cardTitle",
+            "cardDescription",
+            "cardSubtitle",
+            "cardImage"
+          ],
+          "pos": 0
+        },
+        "tab-90a06277-61f4-4974-a73d-0c369a6672db": {
+          "type": "tab",
+          "display_name": "Overview",
+          "keys": [
+            "heading",
+            "body",
+            "overviewHeading",
+            "overviewBody"
+          ],
+          "pos": 1
+        },
+        "tab-471ef45d-81ec-454b-871c-43e4869f02cc": {
+          "type": "tab",
+          "display_name": "Faculty",
+          "keys": [
+            "facultyHeading",
+            "facultyBody"
+          ],
+          "pos": 2
+        },
+        "tab-a9154f03-03ad-4023-ab23-d02739bf769c": {
+          "type": "tab",
+          "display_name": "Itinerary",
+          "keys": [
+            "itineraryHeading",
+            "itineraryBody",
+            "itineraryItems"
+          ],
+          "pos": 3
+        },
+        "tab-88f5017a-5bf3-4c00-98bf-76bf9a70b4b1": {
+          "type": "tab",
+          "display_name": "Details",
+          "keys": [
+            "detailsHeading",
+            "detailsBody",
+            "relatedTrips"
+          ],
+          "pos": 4
+        },
+        "tab-babcd683-54d9-416e-8bac-ec9fa6526944": {
+          "type": "tab",
+          "display_name": "SEO & Social",
+          "keys": [
+            "seo",
+            "noindex",
+            "canonicalURL"
+          ],
+          "pos": 5
+        },
+        "tag": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "card-tag",
+          "pos": 0
+        },
+        "cardTitle": {
+          "type": "text",
+          "pos": 1,
+          "description": "Set to override the trip title when displayed as a Card"
+        },
+        "cardSubtitle": {
+          "type": "text",
+          "pos": 2,
+          "description": "Set to override the trip subtitle when displayed as a Card"
+        },
+        "cardDescription": {
+          "type": "text",
+          "pos": 3,
+          "description": "Set to override the trip short description when displayed as a Card"
+        },
+        "seo": {
+          "type": "custom",
+          "field_type": "seo-metatags",
+          "options": [],
+          "display_name": "SEO",
+          "pos": 10
+        },
+        "canonicalURL": {
+          "type": "multilink",
+          "pos": 11
+        },
+        "noindex": {
+          "type": "boolean",
+          "display_name": "No Index",
+          "description": "Enable to remove from Algolia and search engine indexing",
+          "pos": 12
+        },
+        "overviewHeading": {
+          "type": "text",
+          "pos": 13
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "pos": 14
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 15
+        },
+        "shortDescription": {
+          "type": "text",
+          "pos": 16
+        },
+        "heroImage": {
+          "type": "asset",
+          "required": true,
+          "filetypes": [
+            "images"
+          ],
+          "pos": 17
+        },
+        "startDate": {
+          "type": "datetime",
+          "disable_time": true,
+          "required": true,
+          "pos": 18
+        },
+        "endDate": {
+          "type": "datetime",
+          "required": true,
+          "disable_time": true,
+          "pos": 19
+        },
+        "cost": {
+          "type": "text",
+          "pos": 20
+        },
+        "reservationURL": {
+          "type": "multilink",
+          "pos": 21
+        },
+        "region": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "trip-region",
+          "required": true,
+          "pos": 22
+        },
+        "experiences": {
+          "type": "options",
+          "source": "internal",
+          "datasource_slug": "trip-experience",
+          "description": "",
+          "pos": 23
+        },
+        "overviewBody": {
+          "type": "richtext",
+          "pos": 24
+        },
+        "facultyHeading": {
+          "type": "text",
+          "pos": 25
+        },
+        "facultyBody": {
+          "type": "richtext",
+          "pos": 26
+        },
+        "itineraryHeading": {
+          "type": "text",
+          "pos": 27
+        },
+        "itineraryBody": {
+          "type": "richtext",
+          "pos": 28
+        },
+        "itineraryItems": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "itinerary"
+          ],
+          "pos": 29
+        },
+        "detailsHeading": {
+          "type": "text",
+          "pos": 30
+        },
+        "detailsBody": {
+          "type": "richtext",
+          "pos": 31
+        },
+        "relatedTrips": {
+          "type": "bloks",
+          "description": "",
+          "display_name": "",
+          "pos": 32
+        },
+        "cardImage": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Set to override the trip hero image when displayed as a Card"
+        },
+        "tab-75916c06-bd2e-45c6-87f1-93ced3ca2482": {
+          "type": "tab",
+          "display_name": "global",
+          "keys": [
+            "masthead",
+            "localFooter"
+          ],
+          "pos": 0
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "required": true
+        },
+        "localFooter": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [
+        {
+          "id": 1157671,
+          "name": "Temp w/ globals",
+          "component_id": 1766413,
+          "image": ""
+        }
+      ],
+      "preset_id": 1157671,
+      "real_name": "trip",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "tripCard",
+      "display_name": null,
+      "created_at": "2021-09-08T22:24:45.791Z",
+      "updated_at": "2021-09-14T23:22:50.497Z",
+      "id": 1769760,
+      "schema": {
+        "trip": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal_stories",
+          "filter_content_type": "trip",
+          "required": true
+        },
+        "headingLevel": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal",
+          "datasource_slug": "heading-level",
+          "required": true,
+          "default_value": "3"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "tripCard",
+      "component_group_uuid": "348466f3-632e-46db-8932-e2234d11ab0f",
+      "component_group_name": "Travel Study"
+    },
+    {
+      "name": "tripFilterPage",
+      "display_name": null,
+      "created_at": "2021-09-14T18:36:07.419Z",
+      "updated_at": "2021-09-14T22:31:31.942Z",
+      "id": 1784273,
+      "schema": {
+        "tab-23dfbd29-c427-4040-8fed-374cfbde4440": {
+          "type": "tab",
+          "display_name": "Page Content",
+          "keys": [
+            "hero",
+            "aboveContent",
+            "belowContent"
+          ],
+          "pos": 0
+        },
+        "tab-22e2b10a-891b-4b98-b84d-76158ec371b7": {
+          "type": "tab",
+          "display_name": "global",
+          "keys": [
+            "masthead",
+            "localFooter"
+          ],
+          "pos": 1
+        },
+        "primaryFilter": {
+          "type": "custom",
+          "field_type": "multi-datasource-select",
+          "options": [
+            {
+              "name": "datasources",
+              "value": "trip-region,trip-experience"
+            },
+            {
+              "name": "datasourceLabel",
+              "value": "Filter Type"
+            },
+            {
+              "name": "entryLabel",
+              "value": "FilterValue"
+            }
+          ],
+          "required_fields": "",
+          "description": "Select a primary filter type and value to pre-filter trips available for filtering on this page.",
+          "display_name": ""
+        },
+        "hero": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "hero"
+          ],
+          "maximum": "1"
+        },
+        "aboveContent": {
+          "type": "bloks",
+          "restrict_components": false,
+          "restrict_type": "",
+          "description": "Content to appear above the the trip filter section"
+        },
+        "belowContent": {
+          "type": "bloks",
+          "description": "Content to appear below the trip filter area"
+        },
+        "masthead": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mastheadPicker"
+          ],
+          "maximum": "1",
+          "required": true
+        },
+        "localFooter": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "localFooterPicker"
+          ],
+          "maximum": "1",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [
+        {
+          "id": 1159629,
+          "name": "Temporary preset with default globals",
+          "component_id": 1784273,
+          "image": ""
+        }
+      ],
+      "preset_id": null,
+      "real_name": "tripFilterPage",
+      "component_group_uuid": null
+    },
+    {
+      "name": "verticalNav",
+      "display_name": null,
+      "created_at": "2021-06-30T12:30:52.865Z",
+      "updated_at": "2021-08-11T04:11:26.965Z",
+      "id": 1625135,
+      "schema": {
+        "verticalNav": {
+          "type": "options",
+          "source": "internal_stories",
+          "folder_slug": "global-components/vertical-navigation",
+          "filter_content_type": "verticalNavWrapper",
+          "restrict_components": true,
+          "component_whitelist": [
+            "verticalNavWrapper"
+          ],
+          "max_options": "1"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "verticalNav",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "verticalNavItem",
+      "display_name": null,
+      "created_at": "2021-06-30T12:32:09.295Z",
+      "updated_at": "2021-08-11T04:11:27.768Z",
+      "id": 1625136,
+      "schema": {
+        "text": {
+          "type": "text"
+        },
+        "link": {
+          "type": "multilink"
+        },
+        "childItems": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "verticalNavItem"
+          ],
+          "component_group_whitelist": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "verticalNavItem",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "verticalNavWrapper",
+      "display_name": "Section (Sidebar) Navigation",
+      "created_at": "2021-08-11T04:11:27.980Z",
+      "updated_at": "2021-08-11T04:11:27.980Z",
+      "id": 1701722,
+      "schema": {
+        "items": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "verticalNavItem"
+          ],
+          "component_group_whitelist": []
+        },
+        "showNestedLevels": {
+          "type": "boolean"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Section (Sidebar) Navigation",
+      "component_group_uuid": "76c1276a-c8c2-4feb-a112-9535aaae5f60",
+      "component_group_name": "Navigation"
+    },
+    {
+      "name": "wysiwyg",
+      "display_name": null,
+      "created_at": "2021-06-29T05:39:48.624Z",
+      "updated_at": "2021-08-12T20:56:24.775Z",
+      "id": 1621511,
+      "schema": {
+        "isLightText": {
+          "type": "boolean",
+          "pos": 0,
+          "display_name": "Use light text (for use on dark backgrounds)"
+        },
+        "width": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "8",
+              "name": "8 of 12 columns (default for story content)"
+            },
+            {
+              "value": "edge-to-edge",
+              "name": "Fit parent container"
+            }
+          ],
+          "display_name": "",
+          "default_value": "edge-to-edge",
+          "exclude_empty_option": true
+        },
+        "spacingTop": {
+          "type": "option",
+          "use_uuid": true,
+          "display_name": "Top spacing",
+          "description": "Add spacing above the WYSIWYG",
+          "source": "internal",
+          "datasource_slug": "large-spacing",
+          "default_value": "none",
+          "pos": 2,
+          "exclude_empty_option": true
+        },
+        "spacingBottom": {
+          "type": "option",
+          "display_name": "Bottom spacing",
+          "description": "Add spacing below the WYSIWYG",
+          "use_uuid": true,
+          "source": "internal",
+          "exclude_empty_option": true,
+          "datasource_slug": "large-spacing",
+          "default_value": "none",
+          "pos": 3
+        },
+        "align": {
+          "type": "option",
+          "pos": 4,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            }
+          ],
+          "default_value": "left",
+          "display_name": ""
+        },
+        "id": {
+          "type": "text",
+          "display_name": "Optional unique id (for use with anchor links)",
+          "description": "Letters, numbers, hyphen and underscores only. Must be unique for the page it is on, ie, no 2 WYSIWYGs or sections should have the same id's. Note: do not use \"page-title\" or \"main-content\" as your ID.",
+          "regex": "^(?!page-title$|main-content$).*",
+          "max_length": "",
+          "pos": 5
+        },
+        "content": {
+          "type": "richtext",
+          "customize_toolbar": true,
+          "toolbar": [
+            "bold",
+            "italic",
+            "strike",
+            "underline",
+            "paragraph",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "list",
+            "olist",
+            "link",
+            "h6",
+            "image"
+          ],
+          "pos": 6,
+          "style_options": [
+            {
+              "value": "su-big-paragraph",
+              "name": "Big paragraph"
+            },
+            {
+              "value": "su-card-paragraph",
+              "name": "Small paragraph"
+            },
+            {
+              "value": "su-text-m1 xl:su-text-m2",
+              "name": "Intro"
+            }
+          ]
+        },
+        "tab-49e24ae2-1443-4205-95a7-f580a14623cf": {
+          "type": "tab",
+          "display_name": "Options",
+          "keys": [
+            "spacingTop",
+            "spacingBottom",
+            "isLightText",
+            "width",
+            "id",
+            "textPosition",
+            "textAlign",
+            "align"
+          ],
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "wysiwyg",
+      "component_group_uuid": "77e10748-5142-4efc-a3ca-c4e796d97bfb",
+      "component_group_name": "Simple"
+    }
+  ]
+}

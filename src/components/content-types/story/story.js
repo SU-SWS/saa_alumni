@@ -1,9 +1,9 @@
-import React from "react";
-import StoryCardView from "./storyCardView";
-import StoryPageView from "./storyPageView";
+import React from 'react';
+import StoryCardView from './storyCardView';
+import StoryPageView from './storyPageView';
 
 const Story = ({ layout, ...props }) => {
-  if (layout === "card") {
+  if (layout === 'card') {
     return <StoryCardView {...props} />;
   }
   return <StoryPageView {...props} />;

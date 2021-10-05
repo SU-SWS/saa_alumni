@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from "react";
-import SbEditable from "storyblok-react";
-import algoliasearch from "algoliasearch";
+import React, { useState, useEffect, useRef } from 'react';
+import SbEditable from 'storyblok-react';
+import algoliasearch from 'algoliasearch';
 import {
   Container,
   Heading,
@@ -8,35 +8,35 @@ import {
   Grid,
   GridCell,
   Skiplink,
-} from "decanter-react";
-import scrollTo from "gatsby-plugin-smoothscroll";
+} from 'decanter-react';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   useQueryParam,
   NumberParam,
   StringParam,
   ArrayParam,
-} from "use-query-params";
-import Icon from "react-hero-icon";
-import Layout from "../partials/layout";
-import SearchField from "../search/searchField";
-import SearchResults from "../search/searchResults";
-import SearchPager from "../search/searchPager";
-import SearchFacet from "../search/searchFacet";
-import SearchNoResults from "../search/searchNoResults";
-import SearchKeywordBanner from "../search/searchKeywordBanner";
-import CreateBloks from "../../utilities/createBloks";
-import UseEscape from "../../hooks/useEscape";
-import UseOnClickOutside from "../../hooks/useOnClickOutside";
-import getNumBloks from "../../utilities/getNumBloks";
+} from 'use-query-params';
+import Icon from 'react-hero-icon';
+import Layout from '../partials/layout';
+import SearchField from '../search/searchField';
+import SearchResults from '../search/searchResults';
+import SearchPager from '../search/searchPager';
+import SearchFacet from '../search/searchFacet';
+import SearchNoResults from '../search/searchNoResults';
+import SearchKeywordBanner from '../search/searchKeywordBanner';
+import CreateBloks from '../../utilities/createBloks';
+import UseEscape from '../../hooks/useEscape';
+import UseOnClickOutside from '../../hooks/useOnClickOutside';
+import getNumBloks from '../../utilities/getNumBloks';
 
 const SearchPage = (props) => {
   const { blok } = props;
   const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
-  const [query, setQuery] = useQueryParam("q", StringParam);
-  const [page = 0, setPage] = useQueryParam("page", NumberParam);
-  const [siteParam, setSiteParam] = useQueryParam("site", ArrayParam);
-  const [fileTypeParam, setFileTypeParam] = useQueryParam("type", ArrayParam);
+  const [query, setQuery] = useQueryParam('q', StringParam);
+  const [page = 0, setPage] = useQueryParam('page', NumberParam);
+  const [siteParam, setSiteParam] = useQueryParam('site', ArrayParam);
+  const [fileTypeParam, setFileTypeParam] = useQueryParam('type', ArrayParam);
   const [siteNameValues, setSiteNameValues] = useState(null);
   const [fileTypeValues, setFileTypeValues] = useState(null);
   const [selectedFacets, setSelectedFacets] = useState({
@@ -51,14 +51,14 @@ const SearchPage = (props) => {
     process.env.GATSBY_ALGOLIA_API_KEY
   );
   const suggestionsIndex = client.initIndex(
-    "crawler_federated-search_suggestions"
+    'crawler_federated-search_suggestions'
   );
   const hitsPerPage = blok.itemsPerPage;
 
   const ref = useRef(null);
   const filterOpenRef = useRef(null);
 
-  const isExpanded = (x) => x.getAttribute("aria-expanded") === "true";
+  const isExpanded = (x) => x.getAttribute('aria-expanded') === 'true';
 
   // Close menu if escape key is pressed and return focus to the menu button
   UseEscape(() => {
@@ -82,9 +82,9 @@ const SearchPage = (props) => {
   };
 
   // Submit handler for search input.
-  const submitSearchQuery = (queryText, action = "submit") => {
+  const submitSearchQuery = (queryText, action = 'submit') => {
     if (!queryText.length) {
-      if (action === "submit") {
+      if (action === 'submit') {
         setShowEmptyMessage(true);
       } else {
         setShowEmptyMessage(false);
@@ -99,7 +99,7 @@ const SearchPage = (props) => {
   // Update page parameter when pager link is selected.
   const updatePage = (pageNumber) => {
     setPage(pageNumber);
-    scrollTo("#search-results");
+    scrollTo('#search-results');
   };
 
   // Update facet values when facet is selected.
@@ -121,10 +121,10 @@ const SearchPage = (props) => {
   };
 
   const clearFilters = (e) => {
-    const filters = document.getElementsByClassName("filters");
+    const filters = document.getElementsByClassName('filters');
     if (filters) {
       Object.values(filters).forEach((set) => {
-        Object.values(set.getElementsByTagName("input")).forEach((checkbox) => {
+        Object.values(set.getElementsByTagName('input')).forEach((checkbox) => {
           // eslint-disable-next-line no-param-reassign
           checkbox.checked = false;
         });
@@ -149,7 +149,7 @@ const SearchPage = (props) => {
 
     const siteNameFilters = [];
     Object.keys(selectedFacets).forEach((attribute) => {
-      if (attribute !== "siteName") {
+      if (attribute !== 'siteName') {
         const filters = selectedFacets[attribute].map(
           (value) => `${attribute}:${value}`
         );
@@ -159,7 +159,7 @@ const SearchPage = (props) => {
 
     const fileTypeFilters = [];
     Object.keys(selectedFacets).forEach((attribute) => {
-      if (attribute !== "fileType") {
+      if (attribute !== 'fileType') {
         const filters = selectedFacets[attribute].map(
           (value) => `${attribute}:${value}`
         );
@@ -171,30 +171,30 @@ const SearchPage = (props) => {
       .multipleQueries([
         // Query for search results.
         {
-          indexName: "crawler_federated-search",
+          indexName: 'crawler_federated-search',
           query,
           params: {
             hitsPerPage,
             page,
-            facets: ["siteName", "fileType"],
+            facets: ['siteName', 'fileType'],
             facetFilters,
           },
         },
         // Disjunctive query for siteName facet values.
         {
-          indexName: "crawler_federated-search",
+          indexName: 'crawler_federated-search',
           query,
           params: {
-            facets: ["siteName", "fileType"],
+            facets: ['siteName', 'fileType'],
             facetFilters: siteNameFilters,
           },
         },
         // Disjunctive query for fileType facet values.
         {
-          indexName: "crawler_federated-search",
+          indexName: 'crawler_federated-search',
           query,
           params: {
-            facets: ["siteName", "fileType"],
+            facets: ['siteName', 'fileType'],
             facetFilters: fileTypeFilters,
           },
         },
@@ -234,8 +234,8 @@ const SearchPage = (props) => {
           facetValues={siteNameValues}
           selectedOptions={selectedFacets.siteName}
           onChange={(values) => updateSiteFacet(values)}
-          className={!!selectedFacets.siteName.length && "su-mb-[16px]"}
-          exclude={["YouTube", "SoundCloud", "Apple Podcasts"]}
+          className={!!selectedFacets.siteName.length && 'su-mb-[16px]'}
+          exclude={['YouTube', 'SoundCloud', 'Apple Podcasts']}
         />
       )}
       {fileTypeValues && (
@@ -247,7 +247,7 @@ const SearchPage = (props) => {
           onChange={(values) => updateFileTypeFacet(values)}
           optionClasses="su-capitalize"
           className="su-mb-[16px]"
-          exclude={["html", "pdf"]}
+          exclude={['html', 'pdf']}
         />
       )}
     </React.Fragment>
@@ -276,13 +276,13 @@ const SearchPage = (props) => {
               xs={12}
               lg={results.nbHits > 0 ? 6 : 8}
               className={
-                results.nbHits > 0 ? "lg:su-col-start-4" : "lg:su-col-start-3"
+                results.nbHits > 0 ? 'lg:su-col-start-4' : 'lg:su-col-start-3'
               }
             >
               <SearchField
                 onInput={(queryText) => updateAutocomplete(queryText)}
                 onSubmit={(queryText) => submitSearchQuery(queryText)}
-                onReset={() => submitSearchQuery("", "reset")}
+                onReset={() => submitSearchQuery('', 'reset')}
                 defaultValue={query}
                 autocompleteSuggestions={suggestions}
                 clearBtnClasses={clearBtnClasses}
@@ -313,7 +313,7 @@ const SearchPage = (props) => {
                   xs={12}
                   lg={3}
                   className={`lg:su-hidden su-relative su-mb-[4rem] ${
-                    opened ? "su-shadow-xl" : ""
+                    opened ? 'su-shadow-xl' : ''
                   }`}
                 >
                   <div ref={ref}>
@@ -322,15 +322,15 @@ const SearchPage = (props) => {
                       className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors
                         ${
                           opened
-                            ? "su-border-digital-red su-text-white su-bg-digital-red"
-                            : "su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg"
+                            ? 'su-border-digital-red su-text-white su-bg-digital-red'
+                            : 'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg'
                         }`}
                       aria-expanded={opened}
                       ref={filterOpenRef}
                       onClick={() => setOpened(!opened)}
                     >
                       <span className="su-py-[14px] su-flex">
-                        {opened ? "Filters" : " Filter results"}
+                        {opened ? 'Filters' : ' Filter results'}
                       </span>
                       {opened ? (
                         <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18 group-hocus:su-underline">
@@ -354,9 +354,9 @@ const SearchPage = (props) => {
                             variant="unset"
                             onClick={() => clearFilters()}
                             className={{
-                              "su-text-16": false,
-                              "md:su-text-20": false,
-                              "su-text-digital-red-light su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none": true,
+                              'su-text-16': false,
+                              'md:su-text-20': false,
+                              'su-text-digital-red-light su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none': true,
                             }}
                           >
                             Clear all
@@ -368,15 +368,15 @@ const SearchPage = (props) => {
                             variant="solid"
                             size="default"
                             className={{
-                              "su-text-16": false,
-                              "md:su-text-20": false,
-                              "su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark": true,
+                              'su-text-16': false,
+                              'md:su-text-20': false,
+                              'su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark': true,
                             }}
                             onClick={() => {
                               setOpened(false);
-                              scrollTo("#search-results");
+                              scrollTo('#search-results');
                               document
-                                .getElementById("number-search-results")
+                                .getElementById('number-search-results')
                                 .focus();
                             }}
                           >
@@ -409,7 +409,7 @@ const SearchPage = (props) => {
               lg={results.nbHits > 0 ? 9 : 8}
               xxl={8}
               className={
-                results.nbHits > 0 ? "" : "lg:su-col-start-3 2xl:su-col-start-3"
+                results.nbHits > 0 ? '' : 'lg:su-col-start-3 2xl:su-col-start-3'
               }
               id="search-results-section"
             >
@@ -431,7 +431,7 @@ const SearchPage = (props) => {
 
               {!results.nbHits && query && (
                 <SearchNoResults
-                  heading={blok.noResultsHeading.replace("[query]", query)}
+                  heading={blok.noResultsHeading.replace('[query]', query)}
                   body={blok.noResultsBody}
                   additionalContent={blok.noResultsAdditionalContent}
                 />

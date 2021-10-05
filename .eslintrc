@@ -10,6 +10,11 @@
     "airbnb/hooks",
     "prettier"
   ],
+  "overrides": [
+    {
+      "files": ["./src/**/*.{js,jsx}"]
+    }
+  ],
   "rules": {
     "jsx-a11y/label-has-associated-control": [ 2, {
       "components": [ "Label" ],
@@ -22,7 +27,7 @@
       {
         "endOfLine": "lf",
         "semi": true,
-        "singleQuote": false,
+        "singleQuote": true,
         "tabWidth": 2,
         "trailingComma": "es5"
       }
@@ -56,7 +61,7 @@
     ],
     "import/export": 0,
     "func-names": 0,
-    "semi": [1, "always"] // 1 is for warning
+    "semi": [1, "always"]
   },
   "env": {
     "node": true,

@@ -1,12 +1,12 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { Container, Heading } from "decanter-react";
-import Layout from "../partials/layout";
-import CreateBloks from "../../utilities/createBloks";
-import getNumBloks from "../../utilities/getNumBloks";
-import Ankle from "../partials/ankle";
-import BasicContentNoSidebar from "../partials/basicContentNoSidebar";
-import BasicContentLeftSidebar from "../partials/basicContentLeftSidebar";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { Container, Heading } from 'decanter-react';
+import Layout from '../partials/layout';
+import CreateBloks from '../../utilities/createBloks';
+import getNumBloks from '../../utilities/getNumBloks';
+import Ankle from '../partials/ankle/ankle';
+import BasicContentNoSidebar from '../partials/basicContentNoSidebar';
+import BasicContentLeftSidebar from '../partials/basicContentLeftSidebar';
 
 const BasicPage = (props) => {
   // Destructure.
@@ -30,10 +30,10 @@ const BasicPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
 
   // Only add top padding to Main Content if the Above Content region is populated or if page title is visually hidden
-  let contentPadding = "su-rs-pb-7";
+  let contentPadding = 'su-rs-pb-7';
 
   if (numAbove > 0 || isSrOnlyTitle) {
-    contentPadding = "su-rs-py-7";
+    contentPadding = 'su-rs-py-7';
   }
 
   return (
@@ -52,8 +52,8 @@ const BasicPage = (props) => {
                 id="section-menu-mobile"
                 className={`${
                   numHero > 0
-                    ? "su-rs-my-2"
-                    : "su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]"
+                    ? 'su-rs-my-2'
+                    : 'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]'
                 } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
               />
             )}
@@ -76,10 +76,10 @@ const BasicPage = (props) => {
               <CreateBloks blokSection={aboveContent} />
             </div>
           )}
-          {pageLayout === "no-sidebar" && (
+          {pageLayout === 'no-sidebar' && (
             <BasicContentNoSidebar className={contentPadding} {...props} />
           )}
-          {pageLayout === "left-sidebar" && (
+          {pageLayout === 'left-sidebar' && (
             <BasicContentLeftSidebar className={contentPadding} {...props} />
           )}
           {numBelow > 0 && (

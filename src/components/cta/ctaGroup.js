@@ -1,16 +1,16 @@
-import React from "react";
-import SbEditable from "storyblok-react";
-import { dcnb } from "cnbuilder";
-import { Grid as DrGrid } from "decanter-react";
-import CreateBloks from "../../utilities/createBloks";
-import { ctaGroupDisplay } from "../../utilities/dataSource";
-import WidthBox from "../layout/widthBox";
+import React from 'react';
+import SbEditable from 'storyblok-react';
+import { dcnb } from 'cnbuilder';
+import { Grid as DrGrid } from 'decanter-react';
+import CreateBloks from '../../utilities/createBloks';
+import { ctaGroupDisplay } from '../../utilities/dataSource';
+import WidthBox from '../layout/widthBox';
 
 const ctaGroup = ({ blok: { display, cta } }, blok) => {
   // Display type
   const myDisplay = ctaGroupDisplay[display] ?? ctaGroupDisplay.adjacent;
 
-  if (display === "grid-col-3") {
+  if (display === 'grid-col-3') {
     return (
       <SbEditable content={blok}>
         <WidthBox width="10">
@@ -31,7 +31,7 @@ const ctaGroup = ({ blok: { display, cta } }, blok) => {
     <SbEditable content={blok}>
       <div
         className={dcnb(
-          "cta-group su-flex children:su-mb-20 children:last:su-mb-0",
+          'cta-group su-flex children:su-mb-20 children:last:su-mb-0',
           myDisplay
         )}
       >

@@ -1,10 +1,10 @@
-import React from "react";
-import { dcnb } from "cnbuilder";
-import { Grid, GridCell, Skiplink } from "decanter-react";
-import { render } from "storyblok-rich-text-react-renderer";
-import CreateBloks from "../../utilities/createBloks";
-import RichTextRenderer from "../../utilities/richTextRenderer";
-import getNumBloks from "../../utilities/getNumBloks";
+import React from 'react';
+import { dcnb } from 'cnbuilder';
+import { Grid, GridCell, Skiplink } from 'decanter-react';
+import { render } from 'storyblok-rich-text-react-renderer';
+import CreateBloks from '../../utilities/createBloks';
+import RichTextRenderer from '../../utilities/richTextRenderer';
+import getNumBloks from '../../utilities/getNumBloks';
 
 const BasicContentLeftSidebar = ({
   blok: { content, sidebar, intro, sectionMenu },
@@ -22,7 +22,7 @@ const BasicContentLeftSidebar = ({
   }
 
   return (
-    <Grid xs={12} gap className={dcnb("su-cc", className)}>
+    <Grid xs={12} gap className={dcnb('su-cc', className)}>
       <GridCell
         xs={12}
         lg={4}
