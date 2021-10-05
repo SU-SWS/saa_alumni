@@ -6,6 +6,7 @@ import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
 import { TripPageSectionHeader } from './TripPageSectionHeader';
+import * as styles from './TripPageItinerarySection.styles';
 
 export const TripPageItinerarySectionProps = {
   itineraryHeading: PropTypes.string,
@@ -42,7 +43,7 @@ export const TripPageItinerarySection = (props) => {
         </div>
       )}
       {itineraryItems && itineraryItems.length > 0 && (
-        <div className="trip-page-itinerary-items">
+        <div className={dcnb('trip-page-itinerary-items', styles.itinerary)}>
           <CreateBloks blokSection={itineraryItems} />
         </div>
       )}

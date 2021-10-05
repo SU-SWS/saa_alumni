@@ -10,7 +10,7 @@ import RichTextRenderer from '../../../utilities/richTextRenderer';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
-import * as commonStyles from './TripPage.styles';
+import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 
 export const TripPageOverviewSectionProps = {
@@ -72,7 +72,7 @@ export const TripPageOverviewSection = (props) => {
             level={3}
             font="serif"
             weight="bold"
-            className={commonStyles.sectionHeading}
+            className={headerStyles.sectionHeading}
           >
             {overviewHeading}
           </Heading>

@@ -13,6 +13,7 @@ import { TripPageOverviewSection } from './TripPageOverviewSection';
 import { TripPageFacultySection } from './TripPageFacultySection';
 import { TripPageItinerarySection } from './TripPageItinerarySection';
 import { TripPageDetailsSection } from './TripPageDetailsSection';
+import { TripPageSectionNav } from './TripPageSectionNav';
 
 export const TripPageProps = {
   blok: TripContent,
@@ -54,6 +55,8 @@ const TripPage = (props) => {
       detailsBody,
       detailsBelowContent,
       isCenterDetailsHeader,
+      // Related Trips,
+      relatedTrips,
       // Ankle
       ankleContent,
     } = {},
@@ -81,6 +84,11 @@ const TripPage = (props) => {
               heroImage={heroImage}
             />
             {/* TODO: Trip Details sticky nav */}
+            {/* <TripPageSectionNav
+              facultyHeading={facultyHeading}
+              itineraryHeading={itineraryHeading}
+              detailsHeading={detailsHeading}
+            /> */}
             {/* Overview Section */}
             <TripPageOverviewSection
               overviewHeading={overviewHeading}
@@ -95,28 +103,34 @@ const TripPage = (props) => {
               onPrint={printTrip}
             />
             {/* Faculty Section */}
-            <TripPageFacultySection
-              facultyHeading={facultyHeading}
-              facultyBody={facultyBody}
-              facultyBelowContent={facultyBelowContent}
-              isCenterFacultyHeader={isCenterFacultyHeader}
-            />
+            {facultyHeading && (
+              <TripPageFacultySection
+                facultyHeading={facultyHeading}
+                facultyBody={facultyBody}
+                facultyBelowContent={facultyBelowContent}
+                isCenterFacultyHeader={isCenterFacultyHeader}
+              />
+            )}
             {/* Itinerary Section */}
-            <TripPageItinerarySection
-              itineraryHeading={itineraryHeading}
-              itineraryBody={itineraryBody}
-              itineraryItems={itineraryItems}
-              itineraryAboveContent={itineraryAboveContent}
-              itineraryBelowContent={itineraryBelowContent}
-              isCenterItineraryHeader={isCenterItineraryHeader}
-            />
+            {itineraryHeading && (
+              <TripPageItinerarySection
+                itineraryHeading={itineraryHeading}
+                itineraryBody={itineraryBody}
+                itineraryItems={itineraryItems}
+                itineraryAboveContent={itineraryAboveContent}
+                itineraryBelowContent={itineraryBelowContent}
+                isCenterItineraryHeader={isCenterItineraryHeader}
+              />
+            )}
             {/* Details Section */}
-            <TripPageDetailsSection
-              detailsHeading={detailsHeading}
-              detailsBody={detailsBody}
-              detailsBelowContent={detailsBelowContent}
-              isCenterDetailsHeader={isCenterDetailsHeader}
-            />
+            {detailsHeading && (
+              <TripPageDetailsSection
+                detailsHeading={detailsHeading}
+                detailsBody={detailsBody}
+                detailsBelowContent={detailsBelowContent}
+                isCenterDetailsHeader={isCenterDetailsHeader}
+              />
+            )}
             {/* TODO: Related Trips */}
             {ankleContent && ankleContent.length > 0 && (
               <Ankle isDark {...props} />
