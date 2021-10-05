@@ -32,7 +32,13 @@ export const TripPageRelatedTripsSection = (props) => {
         heading={`Related Trip${numTrips > 1 ? 's' : ''}`}
       />
       <WidthBox width={tripGridWidth}>
-        <DrGrid xs={1} md={numColumns} gap className={styles.tripGrid}>
+        <DrGrid
+          xs={1}
+          md={numTrips > 1 ? 2 : 1}
+          xl={numColumns}
+          gap
+          className={styles.tripGrid}
+        >
           <CreateBloks blokSection={relatedTrips} />
         </DrGrid>
       </WidthBox>
