@@ -2,7 +2,6 @@ import React from 'react';
 import Components from '../components/components';
 
 class StoryblokEntry extends React.Component {
-
   /**
    *
    * @param {*} props
