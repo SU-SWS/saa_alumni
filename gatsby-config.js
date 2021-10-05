@@ -106,7 +106,7 @@ module.exports = {
         resolveRelations: storyblokRelations,
         resolveLinks: 'story',
         includeLinks: false,
-        version: 'draft',
+        version: activeEnv === 'production' ? 'published' : 'draft',
       },
     },
     {
