@@ -105,7 +105,6 @@ const SbLink = React.forwardRef((props, ref) => {
   // A link to a file or other asset.
   // ---------------------------------------------------------------------------
   if (props.link?.linktype === 'asset') {
-
     // Rewrite the URL to the redirect link to mask the API endpoint.
     linkUrl = linkUrl.replace(
       /http?(s):\/\/a\.storyblok\.com/gi,

@@ -45,6 +45,7 @@ export const CopyButton = ({
 
   // TODO: This is temporary until toast is implemented
   useEffect(() => {
+    // eslint-disable-next-line no-console
     if (copied) console.log(copySuccess);
   }, [copied, copySuccess]);
 
