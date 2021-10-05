@@ -14,6 +14,7 @@ import { TripPageFacultySection } from './TripPageFacultySection';
 import { TripPageItinerarySection } from './TripPageItinerarySection';
 import { TripPageDetailsSection } from './TripPageDetailsSection';
 import { TripPageSectionNav } from './TripPageSectionNav';
+import { TripPageRelatedTripsSection } from './TripPageRelatedTripsSection';
 
 export const TripPageProps = {
   blok: TripContent,
@@ -131,7 +132,10 @@ const TripPage = (props) => {
                 isCenterDetailsHeader={isCenterDetailsHeader}
               />
             )}
-            {/* TODO: Related Trips */}
+            {/* Related Trips */}
+            {relatedTrips && relatedTrips.length > 0 && (
+              <TripPageRelatedTripsSection relatedTrips={relatedTrips} />
+            )}
             {ankleContent && ankleContent.length > 0 && (
               <Ankle isDark {...props} />
             )}
