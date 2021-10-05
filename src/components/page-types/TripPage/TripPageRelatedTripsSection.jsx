@@ -1,7 +1,5 @@
 import React from 'react';
 import { Grid as DrGrid } from 'decanter-react';
-import PropTypes from 'prop-types';
-import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { TripPageSectionHeader } from './TripPageSectionHeader';
@@ -29,7 +27,10 @@ export const TripPageRelatedTripsSection = (props) => {
 
   return (
     <div className="su-rs-mb-9">
-      <TripPageSectionHeader isCenter heading="Related Trips" />
+      <TripPageSectionHeader
+        isCenter
+        heading={`Related Trip${numTrips > 1 ? 's' : ''}`}
+      />
       <WidthBox width={tripGridWidth}>
         <DrGrid xs={1} md={numColumns} gap className={styles.tripGrid}>
           <CreateBloks blokSection={relatedTrips} />
