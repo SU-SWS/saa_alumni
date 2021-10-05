@@ -23,17 +23,29 @@ const storyblokRelations = [
   'tripCard.trip',
 ];
 
-const siteUrl =
-  process.env.CONTEXT === 'production'
-    ? process.env.URL
-    : process.env.DEPLOY_PRIME_URL;
+// Support for Gatsby CLI
+let siteUrl = 'http://localhost:8000';
+
+// Support for Production site builds.
+if (process.env.CONTEXT === 'production') {
+  siteUrl = process.env.URL;
+}
+// Support for non-production netlify builds (branch/preview)
+else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY === true) {
+  siteUrl = process.env.DEPLOY_PRIME_URL;
+}
+// Support for Netlify CLI.
+else if (process.env.NETLIFY_DEV === true) {
+  siteUrl = 'http://localhost:64946';
+}
 
 module.exports = {
   siteMetadata: {
     title: `Stanford Alumni Association`,
     description: `Stanford Alumni Association`,
     author: `Stanford University Alumni Association`,
-    siteUrl,
+    // eslint-disable-next-line
+    siteUrl: siteUrl,
 
     // This key is for metadata only and can be statically queried
     storyblok: {
@@ -92,6 +104,8 @@ module.exports = {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
         homeSlug: 'home',
         resolveRelations: storyblokRelations,
+        resolveLinks: 'url',
+        includeLinks: true,
         version: activeEnv === 'production' ? 'published' : 'draft',
       },
     },

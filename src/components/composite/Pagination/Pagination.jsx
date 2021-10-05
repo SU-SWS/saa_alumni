@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'gatsby-link';
+import { Link } from 'gatsby';
 import { usePaginationLinks } from '../../../hooks/usePaginationLinks';
 import { focusElement } from '../../../utilities/dom';
 import * as styles from './Pagination.styles';
