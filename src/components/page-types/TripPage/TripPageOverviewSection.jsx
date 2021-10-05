@@ -12,6 +12,7 @@ import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
 import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
+import SbLink from '../../../utilities/sbLink';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -72,54 +73,60 @@ export const TripPageOverviewSection = (props) => {
             level={3}
             font="serif"
             weight="bold"
-            className={headerStyles.sectionHeading}
+            className={headerStyles.sectionHeading({ isCenter: false })}
           >
             {overviewHeading}
           </Heading>
           <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
         </GridCell>
         <GridCell xs={12} md={4} xl={3} className={styles.summary}>
-          <div className={styles.summaryItem}>
-            <Heading level={3} className={styles.summaryName}>
-              Dates
-            </Heading>
-            <span className={styles.summaryValue}>{tripDates}</span>
-          </div>
-          <div className={styles.summaryItem}>
-            <Heading level={3} className={styles.summaryName}>
-              Duration
-            </Heading>
-            <span className={styles.summaryValue}>{tripDuration}</span>
-          </div>
-          {cost && (
+          <div className={styles.summaryContent}>
             <div className={styles.summaryItem}>
               <Heading level={3} className={styles.summaryName}>
-                Cost
+                Dates
               </Heading>
-              <span className={styles.summaryValue}>{cost}</span>
+              <span className={styles.summaryValue}>{tripDates}</span>
+            </div>
+            <div className={styles.summaryItem}>
+              <Heading level={3} className={styles.summaryName}>
+                Duration
+              </Heading>
+              <span className={styles.summaryValue}>{tripDuration}</span>
+            </div>
+            {cost && (
+              <div className={styles.summaryItem}>
+                <Heading level={3} className={styles.summaryName}>
+                  Cost
+                </Heading>
+                <span className={styles.summaryValue}>{cost}</span>
+              </div>
+            )}
+          </div>
+          {!reservationURL?.cached_url && (
+            <div className={styles.summaryItem}>
+              <Heading level={3} className={styles.summaryName}>
+                Reservations are not yet open for this destination.
+              </Heading>
+              <span className={styles.summaryValue}>
+                Inquire now for the best chance at securing a spot. We’ll notify
+                you as soon as details are available and the trip is open for
+                registration.
+              </span>
             </div>
           )}
           <div className={styles.actions}>
             {reservationURL?.cached_url && (
               <div>
-                <CtaButton
-                  className={styles.ctaBtn}
-                  href={reservationURL?.cached_url}
-                  text="Reserve"
-                  icon="more"
-                  animate="right"
-                />
+                <SbLink className={styles.ctaBtn} link={reservationURL}>
+                  Reserve
+                </SbLink>
               </div>
             )}
             {!reservationURL?.cached_url && inquireURL?.cached_url && (
               <div>
-                <CtaButton
-                  className={styles.ctaBtn}
-                  href={inquireURL.cached_url}
-                  text="Inquire"
-                  icon="more"
-                  animate="right"
-                />
+                <SbLink className={styles.ctaBtn} link={inquireURL}>
+                  Inquire
+                </SbLink>
               </div>
             )}
             {onPrint && (

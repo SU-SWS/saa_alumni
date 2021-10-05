@@ -20,7 +20,7 @@ export const TripPageSectionHeader = (props) => {
         level={3}
         font="serif"
         weight="bold"
-        className={styles.sectionHeading}
+        className={styles.sectionHeading({ isCenter })}
       >
         {heading}
       </Heading>
