@@ -79,7 +79,8 @@ exports.createPages = ({ graphql, actions }) => {
             path: `/${pagePath}`,
             component: storyblokEntry,
             context: {
-              slug: entry.node.full_slug,
+              slug: entry.node.slug,
+              full_slug: entry.node.full_slug,
               story: entry.node,
               isCanonical,
               noIndex,

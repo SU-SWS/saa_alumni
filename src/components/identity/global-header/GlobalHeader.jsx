@@ -30,7 +30,6 @@ const GlobalHeader = ({
   isDark,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
-
   return (
     <>
       <Container width="full" className={styles.rootMobile}>

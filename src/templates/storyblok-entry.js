@@ -5,19 +5,6 @@ class StoryblokEntry extends React.Component {
   /**
    *
    * @param {*} props
-   * @param {*} state
-   * @returns
-   */
-  static getDerivedStateFromProps(props, state) {
-    if (state.story.uuid === props.pageContext.story.uuid) {
-      return null;
-    }
-    return StoryblokEntry.prepareStory(props);
-  }
-
-  /**
-   *
-   * @param {*} props
    * @returns
    */
   static prepareStory(props) {

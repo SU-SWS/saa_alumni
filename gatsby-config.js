@@ -104,9 +104,9 @@ module.exports = {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
         homeSlug: 'home',
         resolveRelations: storyblokRelations,
-        resolveLinks: 'url',
-        includeLinks: true,
-        version: activeEnv === 'production' ? 'published' : 'draft',
+        resolveLinks: 'story',
+        includeLinks: false,
+        version: 'draft',
       },
     },
     {

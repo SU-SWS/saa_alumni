@@ -14,8 +14,11 @@ import HeroIcon from '../components/simple/heroIcon';
 const SbLink = React.forwardRef((props, ref) => {
   // Storyblok link object either has a url (external links)
   // or cached_url (internal or asset links)
-  let linkUrl =
-    props.link?.story?.url || props.link?.url || props.link?.cached_url || '';
+  let linkUrl = props.link?.url || props.link?.cached_url || '';
+
+  if (props.link?.prep === true && props.link?.story?.full_slug) {
+    linkUrl = `/${props.link.story.full_slug}`;
+  }
 
   // Default Classes for all links.
   const linkClasses = props.classes ?? '';
