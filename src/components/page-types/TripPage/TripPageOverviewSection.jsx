@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
-import { Button, CtaButton, Heading, Grid, GridCell } from 'decanter-react';
+import { Button, Heading, Grid, GridCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
@@ -14,6 +14,7 @@ import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 import SbLink from '../../../utilities/sbLink';
 import SAALinkButton from '../../cta/SAALinkButton';
+import SAAButton from '../../simple/SAAButton';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -117,43 +118,40 @@ export const TripPageOverviewSection = (props) => {
           )}
           <div className={styles.actions}>
             {reservationURL?.cached_url && (
-              <div>
-                <SAALinkButton
-                  link={reservationURL}
-                  linkText="Reserve"
-                  className="su-w-full"
-                  align="center"
-                  size="small"
-                />
-              </div>
+              <SAALinkButton
+                link={reservationURL}
+                className={{ 'su-w-full': true, 'su-w-fit': false }}
+                align="center"
+                size="small"
+              >
+                Reserve
+              </SAALinkButton>
             )}
             {!reservationURL?.cached_url && inquireURL?.cached_url && (
-              <div>
-                <SbLink className={styles.ctaBtn} link={inquireURL}>
-                  Inquire
-                </SbLink>
-              </div>
+              <SAALinkButton
+                link={inquireURL}
+                className={{ 'su-w-full': true, 'su-w-fit': false }}
+                align="center"
+                size="small"
+              >
+                Nofity
+              </SAALinkButton>
             )}
             {onPrint && (
-              <div>
-                <Button
-                  className={styles.ctaBtn}
-                  icon="more"
-                  animate="right"
-                  onClick={onPrint}
-                  variant="outline"
-                >
-                  Print
-                </Button>
-              </div>
+              <SAAButton
+                className={{ 'su-w-full': true, 'su-w-fit': false }}
+                onClick={onPrint}
+                buttonStyle="secondary"
+                size="small-short"
+                align="center"
+              >
+                Print
+              </SAAButton>
             )}
             <div>
               <CopyButton
-                className={styles.ctaBtn}
-                icon="more"
-                animate="right"
+                className={{ 'su-w-full': true, 'su-w-fit': false }}
                 copyText={location.href}
-                variant="outline"
               >
                 Copy link to share
               </CopyButton>

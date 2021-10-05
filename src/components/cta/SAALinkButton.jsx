@@ -16,7 +16,7 @@ const SAALinkButton = React.forwardRef(
     buttonStyle,
     icon,
     align,
-    linkText,
+    children,
     link,
     rel,
     srText,
@@ -40,7 +40,7 @@ const SAALinkButton = React.forwardRef(
           attributes={rel ? { rel } : {}}
           classes={dcnb(styles.link, ctaButtonStyle, ctaButtonSize, className)}
         >
-          {linkText}
+          {children}
           {srText && <SrOnlyText srText={` ${srText}`} />}
           {icon !== 'none' && (
             <HeroIcon

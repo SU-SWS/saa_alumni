@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'decanter-react';
 import useClipboard from 'react-use-clipboard';
+import SAAButton from '../../simple/SAAButton';
 
 /**
  * This components extends all of the decanter-react props
@@ -49,8 +49,13 @@ export const CopyButton = ({
   }, [copied, copySuccess]);
 
   return (
-    <Button {...rest} onClick={handleClick}>
+    <SAAButton
+      size="small-short"
+      buttonStyle="secondary"
+      {...rest}
+      onClick={handleClick}
+    >
       {children}
-    </Button>
+    </SAAButton>
   );
 };
