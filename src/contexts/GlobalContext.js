@@ -15,8 +15,6 @@ export const assetURL =
   process.env.GATSBY_ASSET_URL ?? 'https://a.storyblok.com/';
 export const imageURL =
   process.env.GATSBY_IMAGE_URL ?? 'https://img2.storyblok.com/';
-export const isNetlify =
-  process.env.GATSBY_NETLIFY || process.env.NETLIFY || false;
 export const isProduction = process.env.GATSBY_PRODUCTION ?? false;
 export const breakpoints = {
   '2xs': 0,

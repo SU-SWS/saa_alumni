@@ -1,7 +1,6 @@
 // Global variables for this project.
 
 const config = {
-  isNetlify: process.env.GATSBY_NETLIFY ?? false,
   basePath:
     process.env.GATSBY_BASE_PATH === undefined
       ? '/'

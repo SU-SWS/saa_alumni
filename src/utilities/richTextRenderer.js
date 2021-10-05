@@ -48,16 +48,14 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
           // Asset links: map to <a>
           // Rewrite the URL to the redirect link to mask the API endpoint.
           let linkUrl = href;
-          if (config.isNetlify) {
-            linkUrl = linkUrl.replace(
-              /http?(s):\/\/a\.storyblok\.com/gi,
-              `${config.assetCdn}a`
-            );
-            linkUrl = linkUrl.replace(
-              /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
-              `${config.assetCdn}i`
-            );
-          }
+          linkUrl = linkUrl.replace(
+            /http?(s):\/\/a\.storyblok\.com/gi,
+            `${config.assetCdn}a`
+          );
+          linkUrl = linkUrl.replace(
+            /http?(s):\/\/img?[0-9]\.storyblok\.com/gi,
+            `${config.assetCdn}i`
+          );
           return (
             <a href={linkUrl} target={target} className={linkColor}>
               {children}

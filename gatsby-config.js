@@ -23,12 +23,17 @@ const storyblokRelations = [
   'tripCard.trip',
 ];
 
+const siteUrl =
+  process.env.CONTEXT === 'production'
+    ? process.env.URL
+    : process.env.DEPLOY_PRIME_URL;
+
 module.exports = {
   siteMetadata: {
     title: `Stanford Alumni Association`,
     description: `Stanford Alumni Association`,
     author: `Stanford University Alumni Association`,
-    siteUrl: `https://alumni-preview.stanford.edu`,
+    siteUrl,
 
     // This key is for metadata only and can be statically queried
     storyblok: {

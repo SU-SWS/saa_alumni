@@ -39,13 +39,21 @@
 
 # PLUGINS
 # ##############################################################################
+
+[[plugins]]
+  package = 'netlify-plugin-contextual-env'
+  [plugins.inputs]
+    mode = 'prefix'
+
 [[plugins]]
 package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [plugins.inputs]
   destination = "https://cardinalalumni.stanford.edu/:splat"
 
-[[plugins]]
+# CONTEXTUAL PLUGINS
+# ##############################################################################
+[[context.production.plugins]]
 package = "netlify-plugin-submit-sitemap"
-  [plugins.inputs]
+  [context.production.plugins.inputs]
   # Path to the sitemap URL (optional, default = /sitemap.xml)
   sitemapPath = "/sitemap/sitemap-index.xml"
