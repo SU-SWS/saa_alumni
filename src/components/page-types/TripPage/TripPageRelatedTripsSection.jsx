@@ -26,7 +26,7 @@ export const TripPageRelatedTripsSection = (props) => {
   }
 
   return (
-    <div className="su-rs-mb-9">
+    <div className="su-rs-mt-7 su-rs-mb-9">
       <TripPageSectionHeader
         isCenter
         heading={`Related Trip${numTrips > 1 ? 's' : ''}`}

@@ -13,6 +13,7 @@ import * as styles from './TripPageOverviewSection.styles';
 import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 import SbLink from '../../../utilities/sbLink';
+import SAALinkButton from '../../cta/SAALinkButton';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -117,9 +118,13 @@ export const TripPageOverviewSection = (props) => {
           <div className={styles.actions}>
             {reservationURL?.cached_url && (
               <div>
-                <SbLink className={styles.ctaBtn} link={reservationURL}>
-                  Reserve
-                </SbLink>
+                <SAALinkButton
+                  link={reservationURL}
+                  linkText="Reserve"
+                  className="su-w-full"
+                  align="center"
+                  size="small"
+                />
               </div>
             )}
             {!reservationURL?.cached_url && inquireURL?.cached_url && (
