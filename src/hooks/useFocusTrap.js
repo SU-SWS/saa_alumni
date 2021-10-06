@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-const UseFocusTrap = (firstElemRef, lastElemRef, isActive = true) => {
+const useFocusTrap = (firstElemRef, lastElemRef, isActive = true) => {
   /* eslint-disable-next-line consistent-return */
   useEffect(() => {
     const handleTabPress = ($event) => {
@@ -28,4 +28,4 @@ const UseFocusTrap = (firstElemRef, lastElemRef, isActive = true) => {
   }, [firstElemRef, lastElemRef, isActive]);
 };
 
-export default UseFocusTrap;
+export default useFocusTrap;

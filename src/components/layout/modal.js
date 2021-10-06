@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Container } from 'decanter-react';
 import { tabbable } from 'tabbable';
 import { XIcon } from '@heroicons/react/solid';
-import UseFocusTrap from '../../hooks/useFocusTrap';
-import UseEscape from '../../hooks/useEscape';
+import useFocusTrap from '../../hooks/useFocusTrap';
+import useEscape from '../../hooks/useEscape';
 
 const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   const closeButton = useRef();
@@ -29,9 +29,9 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
     setLastTabbableRef({ current: getLastTabbableItem() });
   }, [children]);
 
-  UseFocusTrap(closeButton, lastTabbableRef, isOpen);
+  useFocusTrap(closeButton, lastTabbableRef, isOpen);
 
-  UseEscape(() => {
+  useEscape(() => {
     closeButton.current.click();
   });
 
