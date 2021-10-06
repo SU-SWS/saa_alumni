@@ -102,9 +102,9 @@ const TripPage = (props) => {
             />
             {/* TODO: Trip Details sticky nav */}
             <TripPageSectionNav
-              facultyHeading={facultyHeading}
-              itineraryHeading={itineraryHeading}
-              detailsHeading={detailsHeading}
+              renderFacultySection={renderFacultySection}
+              renderItinerarySection={renderItinerarySection}
+              renderDetailsSection={renderDetailsSection}
               inquireURL={inquireURL}
               reservationURL={reservationURL}
               ariaLabel="Section Menu"

@@ -16,9 +16,9 @@ export const TripPageSectionNavProps = {
 
 export const TripPageSectionNav = (props) => {
   const {
-    facultyHeading,
-    itineraryHeading,
-    detailsHeading,
+    renderFacultySection,
+    renderItinerarySection,
+    renderDetailsSection,
     ariaLabel,
     inquireURL,
     reservationURL,
@@ -33,46 +33,46 @@ export const TripPageSectionNav = (props) => {
               Overview
             </a>
           </li>
-          {facultyHeading && (
-            <li>
+          {renderFacultySection && (
+            <li className={styles.listItem}>
               <a href="#trip-faculty-leader-section" className={styles.link}>
                 Faculty Leader
               </a>
             </li>
           )}
-          {itineraryHeading && (
+          {renderItinerarySection && (
             <li className={styles.listItem}>
               <a href="#trip-itinerary-section" className={styles.link}>
                 Itinerary
               </a>
             </li>
           )}
-          {detailsHeading && (
+          {renderDetailsSection && (
             <li className={styles.listItem}>
               <a href="#trip-details-section" className={styles.link}>
                 Details
               </a>
             </li>
           )}
-          {reservationURL?.cached_url && (
-            <SAALinkButton
-              link={reservationURL}
-              size="small"
-              className={styles.button}
-            >
-              Reserve
-            </SAALinkButton>
-          )}
-          {!reservationURL?.cached_url && inquireURL?.cached_url && (
-            <SAALinkButton
-              link={inquireURL}
-              size="small"
-              className={styles.button}
-            >
-              Nofity
-            </SAALinkButton>
-          )}
         </ul>
+        {reservationURL?.cached_url && (
+          <SAALinkButton
+            link={reservationURL}
+            size="small-short"
+            className={styles.button}
+          >
+            Reserve
+          </SAALinkButton>
+        )}
+        {!reservationURL?.cached_url && inquireURL?.cached_url && (
+          <SAALinkButton
+            link={inquireURL}
+            size="small-short"
+            className={styles.button}
+          >
+            Nofity
+          </SAALinkButton>
+        )}
       </nav>
 
       <nav aria-label={ariaLabel} className={styles.rootMobile}>
@@ -80,29 +80,29 @@ export const TripPageSectionNav = (props) => {
           <li className={styles.listItem}>
             <a href="#trip-overview-section">Overview</a>
           </li>
-          {facultyHeading && (
+          {renderFacultySection && (
             <li className={styles.listItem}>
               <a href="#trip-faculty-leaders-section">Faculty Leaders</a>
             </li>
           )}
-          {itineraryHeading && (
+          {renderItinerarySection && (
             <li className={styles.listItem}>
               <a href="#trip-itinerary-section">Itinerary</a>
             </li>
           )}
-          {detailsHeading && (
+          {renderDetailsSection && (
             <li className={styles.listItem}>
               <a href="#trip-details-section">Details</a>
             </li>
           )}
         </ul>
         {reservationURL?.cached_url && (
-          <SAALinkButton link={reservationURL} size="small">
+          <SAALinkButton link={reservationURL} size="small-short">
             Reserve
           </SAALinkButton>
         )}
         {!reservationURL?.cached_url && inquireURL?.cached_url && (
-          <SAALinkButton link={inquireURL} size="small">
+          <SAALinkButton link={inquireURL} size="small-short">
             Nofity
           </SAALinkButton>
         )}
