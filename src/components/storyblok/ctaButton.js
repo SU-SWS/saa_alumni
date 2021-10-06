@@ -2,7 +2,7 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import SAALinkButton from '../cta/SAALinkButton';
 
-export const SBCtaButton = React.forwardRef(({ blok }, ref) => {
+export const SBCtaButton = ({ blok }) => {
   const { size, buttonStyle, icon, align, linkText, link, rel, srText } = blok;
 
   return (
@@ -15,10 +15,9 @@ export const SBCtaButton = React.forwardRef(({ blok }, ref) => {
         link={link}
         rel={rel}
         srText={srText}
-        ref={ref}
       >
         {linkText}
       </SAALinkButton>
     </SbEditable>
   );
-});
+};
