@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { useEffect } from 'react';
 
-function UseOnClickOutside(ref, handler) {
+function useOnClickOutside(ref, handler) {
   useEffect(() => {
     const listener = (event) => {
       // Do nothing if clicking ref's element or descendent elements
@@ -24,4 +24,4 @@ function UseOnClickOutside(ref, handler) {
   }, [ref, handler]);
 }
 
-export default UseOnClickOutside;
+export default useOnClickOutside;

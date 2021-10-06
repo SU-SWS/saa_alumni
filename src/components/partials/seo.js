@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
-import UseSiteMetadata from '../../hooks/useSiteMetadata';
+import useSiteMetadata from '../../hooks/useSiteMetadata';
 import transformImage from '../../utilities/transformImage';
 
 /**
@@ -41,7 +41,7 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
  */
 
 const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
-  const { title, description, siteUrl } = UseSiteMetadata();
+  const { title, description, siteUrl } = useSiteMetadata();
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
   if (seo == null) {

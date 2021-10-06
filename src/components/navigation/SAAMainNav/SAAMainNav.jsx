@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import CreateBloks from '../../../utilities/createBloks';
-import UseEscape from '../../../hooks/useEscape';
-import UseOnClickOutside from '../../../hooks/useOnClickOutside';
+import useEscape from '../../../hooks/useEscape';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import * as styles from './SAAMainNav.styles';
 import { isExpanded } from '../../../utilities/menuHelpers';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
@@ -30,14 +30,14 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
   }
 
   // Close menu if escape key is pressed and return focus to the menu button
-  UseEscape(() => {
+  useEscape(() => {
     if (burgerRef.current && isExpanded(burgerRef.current)) {
       setMenuOpened(false);
       burgerRef.current.focus();
     }
   });
 
-  UseOnClickOutside(ref, () => setMenuOpened(false));
+  useOnClickOutside(ref, () => setMenuOpened(false));
 
   return (
     <>

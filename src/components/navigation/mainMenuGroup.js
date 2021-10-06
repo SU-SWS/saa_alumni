@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import CreateBloks from '../../utilities/createBloks';
-import UseEscape from '../../hooks/useEscape';
-import UseOnClickOutside from '../../hooks/useOnClickOutside';
+import useEscape from '../../hooks/useEscape';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 import { isExpanded, isBrowser } from '../../utilities/menuHelpers';
 import * as styles from './SAAMainNav/SAAMainMenuGroup.styles';
 
@@ -18,14 +18,14 @@ const MainMenuGroup = ({
   };
 
   // Close dropdown if escape key is pressed and return focus to the parent item button
-  UseEscape(() => {
+  useEscape(() => {
     if (parentRef.current && isExpanded(parentRef.current)) {
       setPanelOpened(false);
       parentRef.current.focus();
     }
   });
 
-  UseOnClickOutside(ref, () => setPanelOpened(false));
+  useOnClickOutside(ref, () => setPanelOpened(false));
 
   let isActiveButton;
 
