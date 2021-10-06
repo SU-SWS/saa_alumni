@@ -34,7 +34,6 @@ export const TripContent = PropTypes.shape({
   // TODO: Add additional SB trip entity field types for comprehensive type checking
 });
 
-// TODO: Extract general SB types into reusable abstracts
 export const TripType = {
   id: PropTypes.number.isRequired,
   slug: PropTypes.string.isRequired,

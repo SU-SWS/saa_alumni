@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 export const SBAssetType = PropTypes.shape({
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   alt: PropTypes.string,
   name: PropTypes.string,
   focus: PropTypes.string,

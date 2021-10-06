@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
-import { Button, Heading, Grid, GridCell } from 'decanter-react';
+import { Heading, Grid, GridCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
@@ -12,7 +12,6 @@ import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
 import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
-import SbLink from '../../../utilities/sbLink';
 import SAALinkButton from '../../cta/SAALinkButton';
 import SAAButton from '../../simple/SAAButton';
 

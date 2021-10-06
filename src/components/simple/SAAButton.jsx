@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import {
@@ -9,19 +10,33 @@ import {
 import HeroIcon from './heroIcon';
 import * as styles from '../cta/SAALinkButton.styles';
 
+export const SAAButtonProps = {
+  size: PropTypes.string,
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  buttonStyle: PropTypes.string,
+  icon: PropTypes.string,
+  align: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  srText: PropTypes.string,
+  ClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  onClick: PropTypes.func,
+};
+
 const SAAButton = React.forwardRef(
-  ({
-    size = 'default',
-    type = 'button',
-    buttonStyle = 'primary',
-    icon = 'arrow-right',
-    align = 'left',
-    children,
-    srText,
-    className,
-    ref,
-    onClick,
-  }) => {
+  (
+    {
+      size = 'default',
+      type = 'button',
+      buttonStyle = 'primary',
+      icon = 'arrow-right',
+      align = 'left',
+      children,
+      srText,
+      className,
+      onClick,
+    },
+    ref
+  ) => {
     // Button size
     const ctaButtonSize = buttonSizes[size];
 
@@ -34,6 +49,7 @@ const SAAButton = React.forwardRef(
     return (
       <div className={dcnb(styles.root, buttonAlign)}>
         <button
+          // eslint-disable-next-line react/button-has-type
           type={type}
           ref={ref}
           className={dcnb(
@@ -58,5 +74,6 @@ const SAAButton = React.forwardRef(
     );
   }
 );
+SAAButton.propTypes = SAAButtonProps;
 
 export default SAAButton;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import {
@@ -9,28 +10,43 @@ import {
 import SbLink from '../../utilities/sbLink';
 import HeroIcon from '../simple/heroIcon';
 import * as styles from './SAALinkButton.styles';
+import { SBLinkType } from '../../types/storyblok/SBLinkType';
+
+export const SAALinkButtonProps = {
+  size: PropTypes.string,
+  buttonStyle: PropTypes.string,
+  icon: PropTypes.string,
+  align: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  link: SBLinkType,
+  rel: PropTypes.string,
+  srText: PropTypes.string,
+  ClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+};
 
 const SAALinkButton = React.forwardRef(
-  ({
-    size,
-    buttonStyle,
-    icon,
-    align,
-    children,
-    link,
-    rel,
-    srText,
-    className,
-    ref,
-  }) => {
+  (
+    {
+      size = 'default',
+      buttonStyle = 'primary',
+      icon = 'arrow-right',
+      align = 'left',
+      children,
+      link,
+      rel,
+      srText,
+      className,
+    },
+    ref
+  ) => {
     // Button size
-    const ctaButtonSize = buttonSizes[size] || buttonSizes.default;
+    const ctaButtonSize = buttonSizes[size];
 
     // Button style
-    const ctaButtonStyle = buttonStyles[buttonStyle] || buttonStyles.primary;
+    const ctaButtonStyle = buttonStyles[buttonStyle];
 
     // Horizontal alignment
-    const buttonAlign = textAlign[align] || textAlign.left;
+    const buttonAlign = textAlign[align];
 
     return (
       <div className={dcnb(styles.root, buttonAlign)}>
@@ -44,7 +60,7 @@ const SAALinkButton = React.forwardRef(
           {srText && <SrOnlyText srText={` ${srText}`} />}
           {icon !== 'none' && (
             <HeroIcon
-              iconType={icon || 'arrow-right'}
+              iconType={icon}
               className={styles.icon({ buttonStyle })}
               isAnimate
             />
@@ -54,5 +70,6 @@ const SAALinkButton = React.forwardRef(
     );
   }
 );
+SAALinkButton.propTypes = SAALinkButtonProps;
 
 export default SAALinkButton;

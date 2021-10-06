@@ -35,6 +35,8 @@ const BasicCardHorizontal = ({
         imageFocus={imageFocus}
         smartFocus={focus}
         loading="lazy"
+        width="600"
+        height="400"
       />
     </div>
   );
@@ -44,9 +46,10 @@ const BasicCardHorizontal = ({
       <CircularImage
         borderColor={borderColor}
         filename={filename}
-        imageFocus={imageFocus}
         smartFocus={focus}
         loading="lazy"
+        width="126"
+        height="126"
       />
     );
   }

@@ -14,7 +14,7 @@ export const SBTripCard = ({ blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <TripCard trip={trip} headingLevel={headingLevel} />
+      <TripCard trip={trip} headingLevel={parseInt(headingLevel, 10)} />
     </SbEditable>
   );
 };
