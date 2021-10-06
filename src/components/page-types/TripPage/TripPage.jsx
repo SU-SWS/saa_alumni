@@ -15,6 +15,8 @@ import { TripPageItinerarySection } from './TripPageItinerarySection';
 import { TripPageDetailsSection } from './TripPageDetailsSection';
 import { TripPageSectionNav } from './TripPageSectionNav';
 import { TripPageRelatedTripsSection } from './TripPageRelatedTripsSection';
+import getNumBloks from '../../../utilities/getNumBloks';
+import hasRichText from '../../../utilities/hasRichText';
 
 export const TripPageProps = {
   blok: TripContent,
@@ -66,6 +68,20 @@ const TripPage = (props) => {
   const printTrip = useReactToPrint({
     content: () => printContainerRef.current,
   });
+  const renderFacultySection =
+    facultyHeading ||
+    hasRichText(facultyBody) ||
+    getNumBloks(facultyBelowContent) > 0;
+  const renderItinerarySection =
+    itineraryHeading ||
+    hasRichText(itineraryBody) ||
+    getNumBloks(itineraryItems) > 0 ||
+    getNumBloks(itineraryAboveContent) > 0 ||
+    getNumBloks(itineraryBelowContent) > 0;
+  const renderDetailsSection =
+    detailsHeading ||
+    hasRichText(detailsBody) ||
+    getNumBloks(detailsBelowContent) > 0;
 
   return (
     <SbEditable content={blok}>
@@ -107,7 +123,7 @@ const TripPage = (props) => {
               onPrint={printTrip}
             />
             {/* Faculty Section */}
-            {facultyHeading && (
+            {renderFacultySection && (
               <TripPageFacultySection
                 facultyHeading={facultyHeading}
                 facultyBody={facultyBody}
@@ -116,7 +132,7 @@ const TripPage = (props) => {
               />
             )}
             {/* Itinerary Section */}
-            {itineraryHeading && (
+            {renderItinerarySection && (
               <TripPageItinerarySection
                 itineraryHeading={itineraryHeading}
                 itineraryBody={itineraryBody}
@@ -127,7 +143,7 @@ const TripPage = (props) => {
               />
             )}
             {/* Details Section */}
-            {detailsHeading && (
+            {renderDetailsSection && (
               <TripPageDetailsSection
                 detailsHeading={detailsHeading}
                 detailsBody={detailsBody}
@@ -136,12 +152,10 @@ const TripPage = (props) => {
               />
             )}
             {/* Related Trips */}
-            {relatedTrips && relatedTrips.length > 0 && (
+            {getNumBloks(relatedTrips) > 0 && (
               <TripPageRelatedTripsSection relatedTrips={relatedTrips} />
             )}
-            {ankleContent && ankleContent.length > 0 && (
-              <Ankle isDark {...props} />
-            )}
+            {getNumBloks(ankleContent) > 0 && <Ankle isDark {...props} />}
           </Container>
         </div>
       </Layout>

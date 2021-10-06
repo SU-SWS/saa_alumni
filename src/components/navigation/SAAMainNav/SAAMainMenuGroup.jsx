@@ -4,8 +4,8 @@ import { ChevronDownIcon } from '@heroicons/react/solid';
 import PropTypes from 'prop-types';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
-import UseEscape from '../../../hooks/useEscape';
-import UseOnClickOutside from '../../../hooks/useOnClickOutside';
+import useEscape from '../../../hooks/useEscape';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import SbLink from '../../../utilities/sbLink';
 import * as styles from './SAAMainMenuGroup.styles';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
@@ -33,14 +33,14 @@ const SAAMainMenuGroup = ({
   };
 
   // Close dropdown if escape key is pressed and return focus to the parent item button
-  UseEscape(() => {
+  useEscape(() => {
     if (parentRef.current && isExpanded(parentRef.current)) {
       setPanelOpened(false);
       parentRef.current.focus();
     }
   });
 
-  UseOnClickOutside(ref, () => setPanelOpened(false));
+  useOnClickOutside(ref, () => setPanelOpened(false));
 
   let isActiveButton;
 
@@ -82,12 +82,14 @@ const SAAMainMenuGroup = ({
           {parentText}
         </SbLink>
       )}
-      <ul
-        className={styles.childMenu({ panelFacing, panelOpened })}
-        aria-hidden={!panelOpened}
-      >
-        <CreateBloks blokSection={childMenuItems} hasExternalIcon />
-      </ul>
+      {childMenuItems && childMenuItems.length > 0 && (
+        <ul
+          className={styles.childMenu({ panelFacing, panelOpened })}
+          aria-hidden={!panelOpened}
+        >
+          <CreateBloks blokSection={childMenuItems} hasExternalIcon />
+        </ul>
+      )}
     </li>
   );
 };

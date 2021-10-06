@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { useEffect } from 'react';
 
-const UseEscape = (onEscape) => {
+const useEscape = (onEscape) => {
   useEffect(() => {
     const handleEsc = (event) => {
       if (event.keyCode === 27) onEscape();
@@ -14,4 +14,4 @@ const UseEscape = (onEscape) => {
   }, [onEscape]);
 };
 
-export default UseEscape;
+export default useEscape;
