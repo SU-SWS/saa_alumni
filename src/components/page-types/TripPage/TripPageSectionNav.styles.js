@@ -1,5 +1,5 @@
 export const root =
-  'su-hidden lg:su-flex su-cc su-rs-pt-1 su-bg-saa-black su-justify-center';
+  'su-hidden lg:su-flex su-sticky su-top-0 su-z-20 su-cc su-pt-5 su-bg-saa-black su-justify-center su-items-center';
 export const menu = 'su-flex su-list-unstyled su-bg-saa-black';
 export const listItem = 'su-mb-0';
 export const link =

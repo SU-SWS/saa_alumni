@@ -7,6 +7,7 @@ module.exports = function () {
     addBase({
       html: {
         scrollBehavior: 'smooth',
+        overflowY: 'visible !important',
       },
       a: {
         color: config('theme.colors.digital-red.light'),
