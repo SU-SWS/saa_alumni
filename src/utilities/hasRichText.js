@@ -1,4 +1,5 @@
-// Find how many nested bloks are added in Storyblok when we use the CreateBloks utility.
+// Find out whether a WYSIWYG has content
+
 import { render } from 'storyblok-rich-text-react-renderer';
 import getNumBloks from './getNumBloks';
 
