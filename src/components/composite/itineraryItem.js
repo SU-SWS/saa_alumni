@@ -63,7 +63,6 @@ const ItineraryItem = ({
           >
             <FaIcon
               proFaIcon={icon}
-              iconStyle="fas"
               className="su-text-m1 md:su-text-m2 su-text-digital-red"
               rotation={icon === 'shoe-prints' ? 270 : 0}
             />
