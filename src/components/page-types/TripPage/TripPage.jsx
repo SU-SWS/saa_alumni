@@ -85,11 +85,14 @@ const TripPage = (props) => {
               heroImage={heroImage}
             />
             {/* TODO: Trip Details sticky nav */}
-            {/* <TripPageSectionNav
+            <TripPageSectionNav
               facultyHeading={facultyHeading}
               itineraryHeading={itineraryHeading}
               detailsHeading={detailsHeading}
-            /> */}
+              inquireURL={inquireURL}
+              reservationURL={reservationURL}
+              ariaLabel="Section Menu"
+            />
             {/* Overview Section */}
             <TripPageOverviewSection
               overviewHeading={overviewHeading}

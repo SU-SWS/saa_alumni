@@ -23,7 +23,7 @@ export const TripPageFacultySection = (props) => {
 
   return (
     <TripPageSectionWrapper
-      heading="Faculty leaders"
+      heading="Faculty leader"
       isCenter={isCenterFacultyHeader}
     >
       <TripPageSectionHeader

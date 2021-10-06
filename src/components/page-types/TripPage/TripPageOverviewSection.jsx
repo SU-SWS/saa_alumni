@@ -97,7 +97,7 @@ export const TripPageOverviewSection = (props) => {
             {cost && (
               <div className={styles.summaryItem}>
                 <Heading level={3} className={styles.summaryName}>
-                  Cost
+                  Price
                 </Heading>
                 <span className={styles.summaryValue}>{cost}</span>
               </div>
