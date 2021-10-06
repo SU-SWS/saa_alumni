@@ -31,11 +31,11 @@ const ItineraryItem = ({
         <FlexBox
           alignItems="center"
           justifyContent="center"
-          className="su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] xl:su-w-[13rem] xl:su-h-[13rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10"
+          className="su-text-m1 md:su-text-m2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] xl:su-w-[13rem] xl:su-h-[13rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10"
         >
           <FaIcon
             proFaIcon={icon}
-            className="su-text-m1 md:su-text-m2 su-text-digital-red"
+            className="su-text-digital-red"
             rotation={icon === 'shoe-prints' ? 270 : 0}
           />
         </FlexBox>
