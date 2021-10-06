@@ -1,20 +1,21 @@
 import { dcnb } from 'cnbuilder';
 
 export const root = ({ className, isMinimal } = {}) =>
-  dcnb(
-    className,
-    'su-p-6 su-rounded-full su-bg-gradient-to-tr su-from-saa-black su-to-saa-black-opacity-80 su-w-fit group-hover:su-from-black group-hover:su-to-black-opacity-80 group-focus-within:su-from-black group-focus-within:su-to-black-opacity-80',
-    { 'su-bg-transparent': isMinimal }
-  );
+  dcnb(className, 'su-rounded-full su-w-fit', {
+    'su-bg-transparent': isMinimal,
+    'su-p-6 su-bg-gradient-to-tr su-from-saa-black su-to-saa-black-opacity-80 group-hover:su-from-black group-hover:su-to-black-opacity-80 group-focus-within:su-from-black group-focus-within:su-to-black-opacity-80':
+      !isMinimal,
+  });
 export const dateWrapper = ({ isMinimal, isSmall }) =>
   dcnb(
-    'su-justify-center su-w-fit su-bg-black-true su-rounded-full',
-    'su-flex su-flex-row su-items-center su-px-20 su-text-white',
+    'su-justify-center su-w-fit su-rounded-full',
+    'su-flex su-flex-row su-items-center',
     {
-      'su-justify-start su-bg-transparent': isMinimal,
-      'su-min-w-[9rem] su-h-90': isSmall,
+      'su-justify-start su-bg-transparent su-text-black': isMinimal,
+      'su-bg-black-true su-text-white su-px-20': !isMinimal,
+      'su-min-w-[9rem] su-h-90': isSmall && !isMinimal,
       'su-h-100 su-min-w-[10rem] lg:su-min-w-[11.4rem] lg:su-h-[11.4rem]':
-        !isSmall,
+        !isSmall && !isMinimal,
     }
   );
 export const date = 'su-flex su-flex-col';
