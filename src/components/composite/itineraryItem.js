@@ -80,8 +80,7 @@ const ItineraryItem = ({
               endHtmlDate={endHtmlDate}
               isSameDay={isSameDay}
               isMinimal
-              isSmallText
-              className="su-rs-mb-0"
+              className="su-rs-mb-1"
             />
           )}
           <Heading
