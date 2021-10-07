@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { dcnb } from 'cnbuilder';
 import * as styles from './TripPageSectionNav.styles';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import SAALinkButton from '../../cta/SAALinkButton';

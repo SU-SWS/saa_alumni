@@ -32,7 +32,7 @@ export const CopyButton = ({
   successDuration = 5000,
   copySuccess = 'Link copied!',
   children,
-  className = {},
+  className,
   onClick = () => undefined,
   ...rest
 }) => {
