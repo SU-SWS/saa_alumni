@@ -100,15 +100,19 @@ const TripPage = (props) => {
               shortDescription={shortDescription}
               heroImage={heroImage}
             />
-            {/* TODO: Trip Details sticky nav */}
-            <TripPageSectionNav
-              renderFacultySection={renderFacultySection}
-              renderItinerarySection={renderItinerarySection}
-              renderDetailsSection={renderDetailsSection}
-              inquireURL={inquireURL}
-              reservationURL={reservationURL}
-              ariaLabel="Section Menu"
-            />
+            {/* Trip Section Sticky Nav */}
+            {(renderFacultySection ||
+              renderItinerarySection ||
+              renderDetailsSection) && (
+              <TripPageSectionNav
+                renderFacultySection={renderFacultySection}
+                renderItinerarySection={renderItinerarySection}
+                renderDetailsSection={renderDetailsSection}
+                inquireURL={inquireURL}
+                reservationURL={reservationURL}
+                ariaLabel="Section Menu"
+              />
+            )}
             {/* Overview Section */}
             <TripPageOverviewSection
               overviewHeading={overviewHeading}
