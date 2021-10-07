@@ -6,7 +6,7 @@ import BasicPage from './page-types/basicPage';
 import { SBCollectionCard } from './storyblok/cards/collectionCard';
 import { SBCollectionCardHorizontal } from './storyblok/cards/collectionCardHorizontal';
 import ComponentNotFound from './component_not_found';
-import CtaButton from './cta/ctaButton';
+import { SBCtaButton } from './storyblok/ctaButton';
 import CtaCard from './cards/ctaCard';
 import CtaLink from './cta/ctaLink';
 import CtaGroup from './cta/ctaGroup';
@@ -69,7 +69,7 @@ const ComponentList = {
   basicPage: BasicPage,
   collectionCard: SBCollectionCard,
   collectionCardHorizontal: SBCollectionCardHorizontal,
-  ctaButton: CtaButton,
+  ctaButton: SBCtaButton,
   ctaCard: CtaCard,
   ctaLink: CtaLink,
   ctaGroup: CtaGroup,

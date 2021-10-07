@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
-import { Container } from 'decanter-react';
+import { Container, Heading } from 'decanter-react';
 import { slugify } from '../../../utilities/slugify';
 import * as styles from './TripPageSectionWrapper.styles';
 
@@ -12,16 +12,29 @@ export const TripPageSectionWrapperProps = {
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
   ]),
+  isCenter: PropTypes.bool,
 };
 
-export const TripPageSectionWrapper = ({ heading, className, children }) => (
+export const TripPageSectionWrapper = ({
+  heading,
+  className,
+  children,
+  isCenter,
+}) => (
   <Container
     id={`trip-${slugify(heading)}-section`}
     className={dcnb(className, styles.root)}
     width="full"
   >
     <Container width="site">
-      <h2 className={styles.sectionHeading}>{heading}</h2>
+      <Heading
+        level={2}
+        size={1}
+        weight="semibold"
+        className={styles.sectionHeading({ isCenter })}
+      >
+        {heading}
+      </Heading>
     </Container>
     {children}
   </Container>

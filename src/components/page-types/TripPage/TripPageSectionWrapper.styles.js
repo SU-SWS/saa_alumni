@@ -1,2 +1,5 @@
-export const root = 'su-pt-126';
-export const sectionHeading = 'su-type-1 su-mb-45';
+import { dcnb } from 'cnbuilder';
+
+export const root = 'su-rs-mt-9';
+export const sectionHeading = ({ isCenter }) =>
+  dcnb('su-rs-mb-3', { 'su-text-center': isCenter });

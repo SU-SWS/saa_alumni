@@ -53,7 +53,7 @@ const EmbedVideo = ({
           width=""
           height=""
           url={videoUrl}
-          controls="true"
+          controls
           config={{
             youtube: {
               playerVars: { start: convertToSecond(startMin, startSec) },

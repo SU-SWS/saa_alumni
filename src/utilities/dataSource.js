@@ -44,6 +44,8 @@ export const bgPositionVertical = {
 export const buttonSizes = {
   small:
     'su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20',
+  'small-short':
+    'su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-10 md:su-pb-12 su-text-18 md:su-text-20',
   default:
     'su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24',
   large:
