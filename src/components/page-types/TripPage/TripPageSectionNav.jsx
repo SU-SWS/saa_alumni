@@ -29,20 +29,20 @@ export const TripPageSectionNav = (props) => {
       <nav aria-label={ariaLabel} className={styles.root}>
         <ul className={styles.menu}>
           <li className={styles.listItem}>
-            <a href="#trip-overview-section" className={styles.link}>
+            <a href="#overview-section" className={styles.link}>
               Overview
             </a>
           </li>
           {renderFacultySection && (
             <li className={styles.listItem}>
-              <a href="#trip-faculty-leader-section" className={styles.link}>
+              <a href="#faculty-leader-section" className={styles.link}>
                 Faculty Leader
               </a>
             </li>
           )}
           {renderItinerarySection && (
             <li className={styles.listItem}>
-              <a href="#trip-itinerary-section" className={styles.link}>
+              <a href="#itinerary-section" className={styles.link}>
                 Itinerary
               </a>
             </li>
@@ -50,7 +50,7 @@ export const TripPageSectionNav = (props) => {
           {renderDetailsSection && (
             <li className={styles.listItem}>
               <a href="#trip-details-section" className={styles.link}>
-                Details
+                Trip Details
               </a>
             </li>
           )}
@@ -78,21 +78,21 @@ export const TripPageSectionNav = (props) => {
       <nav aria-label={ariaLabel} className={styles.rootMobile}>
         <ul className={styles.menu}>
           <li className={styles.listItem}>
-            <a href="#trip-overview-section">Overview</a>
+            <a href="#overview-section">Overview</a>
           </li>
           {renderFacultySection && (
             <li className={styles.listItem}>
-              <a href="#trip-faculty-leaders-section">Faculty Leaders</a>
+              <a href="#faculty-leaders-section">Faculty Leaders</a>
             </li>
           )}
           {renderItinerarySection && (
             <li className={styles.listItem}>
-              <a href="#trip-itinerary-section">Itinerary</a>
+              <a href="#itinerary-section">Itinerary</a>
             </li>
           )}
           {renderDetailsSection && (
             <li className={styles.listItem}>
-              <a href="#trip-details-section">Details</a>
+              <a href="#trip-details-section">Trip Details</a>
             </li>
           )}
         </ul>
