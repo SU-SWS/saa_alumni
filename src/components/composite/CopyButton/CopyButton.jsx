@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import useClipboard from 'react-use-clipboard';
-import { dcnb } from 'cnbuilder';
 import SAAButton from '../../simple/SAAButton';
 
 /**
