@@ -11,7 +11,7 @@ import Seo from './seo';
 const Layout = ({ children, hasHero, isDark, ...rest }) => (
   <>
     <Seo {...rest} />
-    <FlexBox direction="col" className="su-min-h-screen su-overflow-x-hidden">
+    <FlexBox direction="col" className="su-min-h-screen">
       <Header hasHero={hasHero} isDark={isDark} {...rest} />
       {children}
       <Footer {...rest} />

@@ -4,16 +4,17 @@ import { useLocation } from '@reach/router';
 import { Heading, Grid, GridCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
+import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
 import { getDate, getDuration } from '../../../utilities/dates';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
-import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
 import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 import SAALinkButton from '../../cta/SAALinkButton';
 import SAAButton from '../../simple/SAAButton';
+import hasRichText from '../../../utilities/hasRichText';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -22,7 +23,8 @@ export const TripPageOverviewSectionProps = {
   startDate: PropTypes.string,
   endDate: PropTypes.string,
   durationText: PropTypes.string,
-  cost: PropTypes.string,
+  cost: SBRichTextType,
+  tripSize: PropTypes.string,
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
   overviewBelowContent: SBBlokType,
@@ -37,6 +39,7 @@ export const TripPageOverviewSection = (props) => {
     endDate,
     durationText,
     cost,
+    tripSize,
     reservationURL,
     inquireURL,
     overviewBelowContent,
@@ -78,7 +81,9 @@ export const TripPageOverviewSection = (props) => {
           >
             {overviewHeading}
           </Heading>
-          <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
+          {hasRichText(overviewBody) && (
+            <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
+          )}
         </GridCell>
         <GridCell xs={12} md={4} xl={3} className={styles.summary}>
           <div className={styles.summaryContent}>
@@ -94,12 +99,23 @@ export const TripPageOverviewSection = (props) => {
               </Heading>
               <span className={styles.summaryValue}>{tripDuration}</span>
             </div>
-            {cost && (
+            {hasRichText(cost) && (
               <div className={styles.summaryItem}>
                 <Heading level={3} className={styles.summaryName}>
-                  Cost
+                  Price
                 </Heading>
-                <span className={styles.summaryValue}>{cost}</span>
+                <RichTextRenderer
+                  wysiwyg={cost}
+                  className={styles.summaryCost}
+                />
+              </div>
+            )}
+            {tripSize && (
+              <div className={styles.summaryItem}>
+                <Heading level={3} className={styles.summaryName}>
+                  Trip size
+                </Heading>
+                <span className={styles.summaryValue}>{tripSize}</span>
               </div>
             )}
           </div>
@@ -149,8 +165,8 @@ export const TripPageOverviewSection = (props) => {
             )}
             <div>
               <CopyButton
-                className={{ 'su-w-full': true, 'su-w-fit': false }}
                 copyText={location.href}
+                className={{ 'su-w-full': true, 'su-w-fit': false }}
               >
                 Copy link to share
               </CopyButton>

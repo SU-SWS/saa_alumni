@@ -22,7 +22,7 @@ export const TripPageSectionWrapper = ({
   isCenter,
 }) => (
   <Container
-    id={`trip-${slugify(heading)}-section`}
+    id={`${slugify(heading)}-section`}
     className={dcnb(className, styles.root)}
     width="full"
   >

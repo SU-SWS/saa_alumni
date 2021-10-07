@@ -36,6 +36,7 @@ const SAALinkButton = React.forwardRef(
       rel,
       srText,
       className,
+      ...rest
     },
     ref
   ) => {
@@ -55,6 +56,7 @@ const SAALinkButton = React.forwardRef(
           link={link}
           attributes={rel ? { rel } : {}}
           classes={dcnb(styles.link, ctaButtonStyle, ctaButtonSize, className)}
+          {...rest}
         >
           {children}
           {srText && <SrOnlyText srText={` ${srText}`} />}

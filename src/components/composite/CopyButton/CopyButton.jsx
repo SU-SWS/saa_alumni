@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import useClipboard from 'react-use-clipboard';
 import SAAButton from '../../simple/SAAButton';
@@ -17,9 +17,9 @@ export const CopyButtonProps = {
   successDuration: PropTypes.number,
   /**
    * Copy success message
-   * TODO: Display in toast message or whatever design decides
    */
   copySuccess: PropTypes.node,
+  ClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
@@ -29,8 +29,9 @@ export const CopyButtonProps = {
 export const CopyButton = ({
   copyText,
   successDuration = 5000,
-  copySuccess = 'Copied!',
+  copySuccess = 'Link copied!',
   children,
+  className,
   onClick = () => undefined,
   ...rest
 }) => {
@@ -43,20 +44,16 @@ export const CopyButton = ({
     [copy, onClick]
   );
 
-  // TODO: This is temporary until toast is implemented
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    if (copied) console.log(copySuccess);
-  }, [copied, copySuccess]);
-
   return (
     <SAAButton
+      aria-live="polite"
       size="small-short"
-      buttonStyle="secondary"
-      {...rest}
+      buttonStyle={copied ? 'secondary-gradient' : 'secondary'}
       onClick={handleClick}
+      className={className}
+      {...rest}
     >
-      {children}
+      {copied ? copySuccess : children}
     </SAAButton>
   );
 };

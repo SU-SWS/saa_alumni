@@ -36,8 +36,9 @@ const TripPage = (props) => {
       overviewBody,
       startDate,
       endDate,
-      cost,
       durationText,
+      cost,
+      tripSize,
       inquireURL,
       reservationURL,
       overviewBelowContent,
@@ -100,20 +101,28 @@ const TripPage = (props) => {
               shortDescription={shortDescription}
               heroImage={heroImage}
             />
-            {/* TODO: Trip Details sticky nav */}
-            {/* <TripPageSectionNav
-              facultyHeading={facultyHeading}
-              itineraryHeading={itineraryHeading}
-              detailsHeading={detailsHeading}
-            /> */}
+            {/* Trip Section Sticky Nav */}
+            {(renderFacultySection ||
+              renderItinerarySection ||
+              renderDetailsSection) && (
+              <TripPageSectionNav
+                renderFacultySection={renderFacultySection}
+                renderItinerarySection={renderItinerarySection}
+                renderDetailsSection={renderDetailsSection}
+                inquireURL={inquireURL}
+                reservationURL={reservationURL}
+                ariaLabel="Section Menu"
+              />
+            )}
             {/* Overview Section */}
             <TripPageOverviewSection
               overviewHeading={overviewHeading}
               overviewBody={overviewBody}
               startDate={startDate}
               endDate={endDate}
-              cost={cost}
               durationText={durationText}
+              cost={cost}
+              tripSize={tripSize}
               inquireURL={inquireURL}
               reservationURL={reservationURL}
               overviewBelowContent={overviewBelowContent}
