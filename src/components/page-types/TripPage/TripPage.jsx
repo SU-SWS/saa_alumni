@@ -36,8 +36,9 @@ const TripPage = (props) => {
       overviewBody,
       startDate,
       endDate,
-      cost,
       durationText,
+      cost,
+      tripSize,
       inquireURL,
       reservationURL,
       overviewBelowContent,
@@ -119,8 +120,9 @@ const TripPage = (props) => {
               overviewBody={overviewBody}
               startDate={startDate}
               endDate={endDate}
-              cost={cost}
               durationText={durationText}
+              cost={cost}
+              tripSize={tripSize}
               inquireURL={inquireURL}
               reservationURL={reservationURL}
               overviewBelowContent={overviewBelowContent}

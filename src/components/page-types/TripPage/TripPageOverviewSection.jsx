@@ -14,6 +14,7 @@ import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 import SAALinkButton from '../../cta/SAALinkButton';
 import SAAButton from '../../simple/SAAButton';
+import hasRichText from '../../../utilities/hasRichText';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -23,6 +24,7 @@ export const TripPageOverviewSectionProps = {
   endDate: PropTypes.string,
   durationText: PropTypes.string,
   cost: PropTypes.string,
+  tripSize: PropTypes.string,
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
   overviewBelowContent: SBBlokType,
@@ -37,6 +39,7 @@ export const TripPageOverviewSection = (props) => {
     endDate,
     durationText,
     cost,
+    tripSize,
     reservationURL,
     inquireURL,
     overviewBelowContent,
@@ -78,7 +81,9 @@ export const TripPageOverviewSection = (props) => {
           >
             {overviewHeading}
           </Heading>
-          <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
+          {hasRichText(overviewBody) && (
+            <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
+          )}
         </GridCell>
         <GridCell xs={12} md={4} xl={3} className={styles.summary}>
           <div className={styles.summaryContent}>
@@ -94,12 +99,23 @@ export const TripPageOverviewSection = (props) => {
               </Heading>
               <span className={styles.summaryValue}>{tripDuration}</span>
             </div>
-            {cost && (
+            {hasRichText(cost) && (
               <div className={styles.summaryItem}>
                 <Heading level={3} className={styles.summaryName}>
                   Price
                 </Heading>
-                <span className={styles.summaryValue}>{cost}</span>
+                <RichTextRenderer
+                  wysiwyg={cost}
+                  className={styles.summaryCost}
+                />
+              </div>
+            )}
+            {tripSize && (
+              <div className={styles.summaryItem}>
+                <Heading level={3} className={styles.summaryName}>
+                  Trip size
+                </Heading>
+                <span className={styles.summaryValue}>{tripSize}</span>
               </div>
             )}
           </div>
