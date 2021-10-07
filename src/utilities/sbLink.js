@@ -16,12 +16,6 @@ const SbLink = React.forwardRef((props, ref) => {
   // or cached_url (internal or asset links)
   let linkUrl = props.link?.url || props.link?.cached_url || '';
 
-  // console.log(props);
-
-  if (props.link?.prep === true && props.link?.story?.full_slug) {
-    linkUrl = `/${props.link.story.full_slug}`;
-  }
-
   // Default Classes for all links.
   const linkClasses = props.classes ?? '';
   const storyClasses = props.internalClasses ?? '';
