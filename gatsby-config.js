@@ -99,12 +99,17 @@ module.exports = {
       },
     },
     {
+      /**
+       * NOTE: This needs to be updated, but we need to address the way storyblok
+       * links are resolved post v4.1.3. See the following PR comment for more details:
+       * https://github.com/SU-SWS/saa_alumni/pull/202#issuecomment-938025770
+       */
       resolve: 'gatsby-source-storyblok',
       options: {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
         homeSlug: 'home',
         resolveRelations: storyblokRelations,
-        resolveLinks: 'story',
+        resolveLinks: 'url',
         includeLinks: true,
         version: activeEnv === 'production' ? 'published' : 'draft',
       },

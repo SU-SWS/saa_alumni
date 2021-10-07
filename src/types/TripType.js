@@ -26,7 +26,7 @@ export const TripContent = PropTypes.shape({
   tag: CardTagType,
   overviewHeading: PropTypes.string,
   overviewBody: SBRichTextType,
-  cost: PropTypes.string,
+  cost: SBRichTextType,
   durationText: PropTypes.string,
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
