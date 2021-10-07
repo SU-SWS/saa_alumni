@@ -69,6 +69,7 @@ module.exports = {
     require(decanter + '/components/typography/wysiwyg.js')(),
     require(dir + '/components/backface-visibility/backface-visibility.js')(),
     require(dir + '/components/link/stretched-link.js')(),
+    require(dir + '/components/scroll-margin/scroll-margin.js'),
     require(dir + '/components/shadow/text-shadow.js')(),
     require(dir + '/components/underline/custom-underline.js')(),
     require(dir + '/components/underline/link-underline.js')(),
