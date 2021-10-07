@@ -23,7 +23,6 @@ export const CopyButtonProps = {
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),
-    PropTypes.string,
   ]),
 };
 

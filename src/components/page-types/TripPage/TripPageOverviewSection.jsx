@@ -4,10 +4,10 @@ import { useLocation } from '@reach/router';
 import { Heading, Grid, GridCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
+import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
 import { getDate, getDuration } from '../../../utilities/dates';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
-import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
 import * as headerStyles from './TripPageSectionHeader.styles';
@@ -23,7 +23,7 @@ export const TripPageOverviewSectionProps = {
   startDate: PropTypes.string,
   endDate: PropTypes.string,
   durationText: PropTypes.string,
-  cost: PropTypes.string,
+  cost: SBRichTextType,
   tripSize: PropTypes.string,
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
