@@ -110,7 +110,6 @@ module.exports = {
         homeSlug: 'home',
         resolveRelations: storyblokRelations,
         resolveLinks: 'url',
-        includeLinks: true,
         version: activeEnv === 'production' ? 'published' : 'draft',
       },
     },
