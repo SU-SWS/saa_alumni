@@ -149,8 +149,8 @@ export const TripPageOverviewSection = (props) => {
             )}
             <div>
               <CopyButton
-                className={{ 'su-w-full': true, 'su-w-fit': false }}
                 copyText={location.href}
+                className={{ 'su-w-full': true, 'su-w-fit': false }}
               >
                 Copy link to share
               </CopyButton>

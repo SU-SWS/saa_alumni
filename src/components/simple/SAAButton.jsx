@@ -34,6 +34,7 @@ const SAAButton = React.forwardRef(
       srText,
       className,
       onClick,
+      ...rest
     },
     ref
   ) => {
@@ -59,6 +60,7 @@ const SAAButton = React.forwardRef(
             className
           )}
           onClick={onClick}
+          {...rest}
         >
           {children}
           {srText && <SrOnlyText srText={` ${srText}`} />}
