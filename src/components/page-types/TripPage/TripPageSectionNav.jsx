@@ -24,8 +24,6 @@ export const TripPageSectionNav = (props) => {
     activeSection,
   } = props;
 
-  let isActive;
-
   return (
     <>
       <nav aria-label={ariaLabel} className={styles.root}>
@@ -33,7 +31,8 @@ export const TripPageSectionNav = (props) => {
           <li className={styles.listItem}>
             <a
               href="#overview-section"
-              className={styles.link({ isActive: activeSection === 0 })}
+              className={styles.link({ isActive: activeSection === 1 })}
+              aria-current={activeSection === 1}
             >
               Overview
             </a>
@@ -42,7 +41,8 @@ export const TripPageSectionNav = (props) => {
             <li className={styles.listItem}>
               <a
                 href="#faculty-leader-section"
-                className={styles.link({ isActive: activeSection === 1 })}
+                className={styles.link({ isActive: activeSection === 2 })}
+                aria-current={activeSection === 2}
               >
                 Faculty Leader
               </a>
@@ -52,7 +52,8 @@ export const TripPageSectionNav = (props) => {
             <li className={styles.listItem}>
               <a
                 href="#itinerary-section"
-                className={styles.link({ isActive: activeSection === 2 })}
+                className={styles.link({ isActive: activeSection === 3 })}
+                aria-current={activeSection === 3}
               >
                 Itinerary
               </a>
@@ -62,7 +63,8 @@ export const TripPageSectionNav = (props) => {
             <li className={styles.listItem}>
               <a
                 href="#trip-details-section"
-                className={styles.link({ isActive: activeSection === 3 })}
+                className={styles.link({ isActive: activeSection === 4 })}
+                aria-current={activeSection === 4}
               >
                 Trip Details
               </a>

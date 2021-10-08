@@ -88,7 +88,13 @@ const TripPage = (props) => {
     getNumBloks(detailsBelowContent) > 0;
 
   // For implementing scrollspy for the section nav
-  const sectionRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
+  const sectionRefs = [
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+    useRef(null),
+  ];
   const activeSection = useScrollSpy({
     sectionElementRefs: sectionRefs,
     offsetPx: -200,
@@ -105,12 +111,14 @@ const TripPage = (props) => {
             width="full"
           >
             {/* Hero Section */}
-            <TripPageHeroSection
-              title={title}
-              subtitle={subtitle}
-              shortDescription={shortDescription}
-              heroImage={heroImage}
-            />
+            <div ref={sectionRefs[0]}>
+              <TripPageHeroSection
+                title={title}
+                subtitle={subtitle}
+                shortDescription={shortDescription}
+                heroImage={heroImage}
+              />
+            </div>
             {/* Trip Section Sticky Nav */}
             {(renderFacultySection ||
               renderItinerarySection ||
@@ -138,7 +146,7 @@ const TripPage = (props) => {
               reservationURL={reservationURL}
               overviewBelowContent={overviewBelowContent}
               onPrint={printTrip}
-              ref={sectionRefs[0]}
+              ref={sectionRefs[1]}
             />
             {/* Faculty Section */}
             {renderFacultySection && (
@@ -147,7 +155,7 @@ const TripPage = (props) => {
                 facultyBody={facultyBody}
                 facultyBelowContent={facultyBelowContent}
                 isCenterFacultyHeader={isCenterFacultyHeader}
-                ref={sectionRefs[1]}
+                ref={sectionRefs[2]}
               />
             )}
             {/* Itinerary Section */}
@@ -159,7 +167,7 @@ const TripPage = (props) => {
                 itineraryAboveContent={itineraryAboveContent}
                 itineraryBelowContent={itineraryBelowContent}
                 isCenterItineraryHeader={isCenterItineraryHeader}
-                ref={sectionRefs[2]}
+                ref={sectionRefs[3]}
               />
             )}
             {/* Details Section */}
@@ -169,7 +177,7 @@ const TripPage = (props) => {
                 detailsBody={detailsBody}
                 detailsBelowContent={detailsBelowContent}
                 isCenterDetailsHeader={isCenterDetailsHeader}
-                ref={sectionRefs[3]}
+                ref={sectionRefs[4]}
               />
             )}
             {/* Related Trips */}

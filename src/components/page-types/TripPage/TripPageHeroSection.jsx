@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FlexBox } from 'decanter-react';
+import { FlexBox, Heading } from 'decanter-react';
 import { SBImageType } from '../../../types/storyblok/SBAssetType';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import * as styles from './TripPageHeroSection.styles';
 
-export const TripPageHeroSectinoProps = {
+export const TripPageHeroSectionProps = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   shortDescription: PropTypes.string,
@@ -22,7 +22,16 @@ export const TripPageHeroSection = ({
     <HeroImage filename={filename} alt={alt} focus={focus} overlay="dark">
       <FlexBox direction="col" className={styles.content}>
         {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
-        {title && <h1 className={styles.title}>{title}</h1>}
+        {title && (
+          <Heading
+            level={1}
+            font="serif"
+            weight="bold"
+            className={styles.title}
+          >
+            {title}
+          </Heading>
+        )}
         {shortDescription && (
           <span className={styles.description}>{shortDescription}</span>
         )}
@@ -31,3 +40,4 @@ export const TripPageHeroSection = ({
     </HeroImage>
   </header>
 );
+TripPageHeroSection.propTypes = TripPageHeroSectionProps;

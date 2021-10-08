@@ -86,7 +86,10 @@ export const TripPageOverviewSection = React.forwardRef(
                 {overviewHeading}
               </Heading>
               {hasRichText(overviewBody) && (
-                <RichTextRenderer wysiwyg={overviewBody} className={styles.body} />
+                <RichTextRenderer
+                  wysiwyg={overviewBody}
+                  className={styles.body}
+                />
               )}
             </GridCell>
             <GridCell xs={12} md={4} xl={3} className={styles.summary}>
