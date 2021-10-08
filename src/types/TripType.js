@@ -6,9 +6,9 @@ import { SBBlokType } from './storyblok/SBBlokType';
 
 // TODO: Make more general types and abstract
 const CardTagType = PropTypes.oneOf([
-  'Selling Fast',
+  'Selling fast',
   'New',
-  'Staff Pick',
+  'Staff pick',
   '',
   undefined,
 ]);
