@@ -13,11 +13,15 @@ export const TripPageFacultySectionProps = {
   isCenterFacultyHeader: PropTypes.bool,
 };
 
-export const TripPageFacultySection = React.forwardRef(
-  (
-    { facultyHeading, facultyBody, facultyBelowContent, isCenterFacultyHeader },
-    ref
-  ) => (
+export const TripPageFacultySection = React.forwardRef((props, ref) => {
+  const {
+    facultyHeading,
+    facultyBody,
+    facultyBelowContent,
+    isCenterFacultyHeader,
+  } = props;
+
+  return (
     <div ref={ref}>
       <TripPageSectionWrapper
         heading="Faculty leader"
@@ -35,6 +39,6 @@ export const TripPageFacultySection = React.forwardRef(
         )}
       </TripPageSectionWrapper>
     </div>
-  )
-);
+  );
+});
 TripPageFacultySection.propTypes = TripPageFacultySectionProps;

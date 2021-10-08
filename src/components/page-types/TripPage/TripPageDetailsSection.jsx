@@ -13,11 +13,15 @@ export const TripPageDetailsSectionProps = {
   isCenterDetailsHeader: PropTypes.bool,
 };
 
-export const TripPageDetailsSection = React.forwardRef(
-  (
-    { detailsHeading, detailsBody, detailsBelowContent, isCenterDetailsHeader },
-    ref
-  ) => (
+export const TripPageDetailsSection = React.forwardRef((props, ref) => {
+  const {
+    detailsHeading,
+    detailsBody,
+    detailsBelowContent,
+    isCenterDetailsHeader,
+  } = props;
+
+  return (
     <div ref={ref}>
       <TripPageSectionWrapper
         heading="Trip details"
@@ -35,6 +39,6 @@ export const TripPageDetailsSection = React.forwardRef(
         )}
       </TripPageSectionWrapper>
     </div>
-  )
-);
+  );
+});
 TripPageDetailsSection.propTypes = TripPageDetailsSectionProps;

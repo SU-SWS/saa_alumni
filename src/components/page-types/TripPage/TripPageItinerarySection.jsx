@@ -17,18 +17,17 @@ export const TripPageItinerarySectionProps = {
   isCenterItineraryHeader: PropTypes.bool,
 };
 
-export const TripPageItinerarySection = React.forwardRef(
-  (
-    {
-      itineraryHeading,
-      itineraryBody,
-      itineraryAboveContent,
-      itineraryItems,
-      itineraryBelowContent,
-      isCenterItineraryHeader,
-    },
-    ref
-  ) => (
+export const TripPageItinerarySection = React.forwardRef((props, ref) => {
+  const {
+    itineraryHeading,
+    itineraryBody,
+    itineraryAboveContent,
+    itineraryItems,
+    itineraryBelowContent,
+    isCenterItineraryHeader,
+  } = props;
+
+  return (
     <div ref={ref}>
       <TripPageSectionWrapper
         heading="Itinerary"
@@ -56,6 +55,6 @@ export const TripPageItinerarySection = React.forwardRef(
         )}
       </TripPageSectionWrapper>
     </div>
-  )
-);
+  );
+});
 TripPageItinerarySection.propTypes = TripPageItinerarySectionProps;
