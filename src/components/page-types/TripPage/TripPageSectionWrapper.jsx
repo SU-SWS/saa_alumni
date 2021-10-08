@@ -25,6 +25,7 @@ export const TripPageSectionWrapper = ({
     id={`${slugify(heading)}-section`}
     className={dcnb(className, styles.root)}
     width="full"
+    element="section"
   >
     <Container width="site">
       <Heading

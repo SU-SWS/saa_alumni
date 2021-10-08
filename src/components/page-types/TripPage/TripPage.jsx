@@ -111,14 +111,13 @@ const TripPage = (props) => {
             width="full"
           >
             {/* Hero Section */}
-            <div ref={sectionRefs[0]}>
-              <TripPageHeroSection
-                title={title}
-                subtitle={subtitle}
-                shortDescription={shortDescription}
-                heroImage={heroImage}
-              />
-            </div>
+            <TripPageHeroSection
+              title={title}
+              subtitle={subtitle}
+              shortDescription={shortDescription}
+              heroImage={heroImage}
+              ref={sectionRefs[0]}
+            />
             {/* Trip Section Sticky Nav */}
             {(renderFacultySection ||
               renderItinerarySection ||
