@@ -13,30 +13,28 @@ export const TripPageDetailsSectionProps = {
   isCenterDetailsHeader: PropTypes.bool,
 };
 
-export const TripPageDetailsSection = (props) => {
-  const {
-    detailsHeading,
-    detailsBody,
-    detailsBelowContent,
-    isCenterDetailsHeader,
-  } = props;
-
-  return (
-    <TripPageSectionWrapper
-      heading="Trip details"
-      isCenter={isCenterDetailsHeader}
-    >
-      <TripPageSectionHeader
+export const TripPageDetailsSection = React.forwardRef(
+  (
+    { detailsHeading, detailsBody, detailsBelowContent, isCenterDetailsHeader },
+    ref
+  ) => (
+    <div ref={ref}>
+      <TripPageSectionWrapper
+        heading="Trip details"
         isCenter={isCenterDetailsHeader}
-        heading={detailsHeading}
-        body={detailsBody}
-      />
-      {detailsBelowContent && detailsBelowContent.length > 0 && (
-        <div className="trip-page-faculty-below-content">
-          <CreateBloks blokSection={detailsBelowContent} />
-        </div>
-      )}
-    </TripPageSectionWrapper>
-  );
-};
+      >
+        <TripPageSectionHeader
+          isCenter={isCenterDetailsHeader}
+          heading={detailsHeading}
+          body={detailsBody}
+        />
+        {detailsBelowContent && detailsBelowContent.length > 0 && (
+          <div className="trip-page-faculty-below-content">
+            <CreateBloks blokSection={detailsBelowContent} />
+          </div>
+        )}
+      </TripPageSectionWrapper>
+    </div>
+  )
+);
 TripPageDetailsSection.propTypes = TripPageDetailsSectionProps;

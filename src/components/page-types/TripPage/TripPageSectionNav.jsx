@@ -21,34 +21,49 @@ export const TripPageSectionNav = (props) => {
     ariaLabel,
     inquireURL,
     reservationURL,
+    activeSection,
   } = props;
+
+  let isActive;
 
   return (
     <>
       <nav aria-label={ariaLabel} className={styles.root}>
         <ul className={styles.menu}>
           <li className={styles.listItem}>
-            <a href="#overview-section" className={styles.link}>
+            <a
+              href="#overview-section"
+              className={styles.link({ isActive: activeSection === 0 })}
+            >
               Overview
             </a>
           </li>
           {renderFacultySection && (
             <li className={styles.listItem}>
-              <a href="#faculty-leader-section" className={styles.link}>
+              <a
+                href="#faculty-leader-section"
+                className={styles.link({ isActive: activeSection === 1 })}
+              >
                 Faculty Leader
               </a>
             </li>
           )}
           {renderItinerarySection && (
             <li className={styles.listItem}>
-              <a href="#itinerary-section" className={styles.link}>
+              <a
+                href="#itinerary-section"
+                className={styles.link({ isActive: activeSection === 2 })}
+              >
                 Itinerary
               </a>
             </li>
           )}
           {renderDetailsSection && (
             <li className={styles.listItem}>
-              <a href="#trip-details-section" className={styles.link}>
+              <a
+                href="#trip-details-section"
+                className={styles.link({ isActive: activeSection === 3 })}
+              >
                 Trip Details
               </a>
             </li>

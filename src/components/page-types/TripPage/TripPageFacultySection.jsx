@@ -13,30 +13,28 @@ export const TripPageFacultySectionProps = {
   isCenterFacultyHeader: PropTypes.bool,
 };
 
-export const TripPageFacultySection = (props) => {
-  const {
-    facultyHeading,
-    facultyBody,
-    facultyBelowContent,
-    isCenterFacultyHeader,
-  } = props;
-
-  return (
-    <TripPageSectionWrapper
-      heading="Faculty leader"
-      isCenter={isCenterFacultyHeader}
-    >
-      <TripPageSectionHeader
+export const TripPageFacultySection = React.forwardRef(
+  (
+    { facultyHeading, facultyBody, facultyBelowContent, isCenterFacultyHeader },
+    ref
+  ) => (
+    <div ref={ref}>
+      <TripPageSectionWrapper
+        heading="Faculty leader"
         isCenter={isCenterFacultyHeader}
-        heading={facultyHeading}
-        body={facultyBody}
-      />
-      {facultyBelowContent && facultyBelowContent.length > 0 && (
-        <div className="trip-page-faculty-below-content">
-          <CreateBloks blokSection={facultyBelowContent} />
-        </div>
-      )}
-    </TripPageSectionWrapper>
-  );
-};
+      >
+        <TripPageSectionHeader
+          isCenter={isCenterFacultyHeader}
+          heading={facultyHeading}
+          body={facultyBody}
+        />
+        {facultyBelowContent && facultyBelowContent.length > 0 && (
+          <div className="trip-page-faculty-below-content">
+            <CreateBloks blokSection={facultyBelowContent} />
+          </div>
+        )}
+      </TripPageSectionWrapper>
+    </div>
+  )
+);
 TripPageFacultySection.propTypes = TripPageFacultySectionProps;
