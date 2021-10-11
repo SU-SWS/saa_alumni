@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { dcnb } from 'cnbuilder';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Container } from 'decanter-react';
 import * as styles from './TripPageSectionNav.styles';
@@ -11,12 +10,13 @@ import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { isExpanded } from '../../../utilities/menuHelpers';
 
 export const TripPageSectionNavProps = {
-  facultyHeading: PropTypes.string,
-  itineraryHeading: PropTypes.string,
-  detailsHeading: PropTypes.string,
+  renderFacultySection: PropTypes.bool,
+  renderItinerarySection: PropTypes.bool,
+  renderDetailsSection: PropTypes.bool,
   ariaLabel: PropTypes.string,
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
+  activeSection: PropTypes.number,
 };
 
 export const TripPageSectionNav = (props) => {

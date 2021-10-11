@@ -73,17 +73,17 @@ const TripPage = (props) => {
 
   // Check whether each of the sections have content
   const renderFacultySection =
-    facultyHeading ||
+    facultyHeading !== '' ||
     hasRichText(facultyBody) ||
     getNumBloks(facultyBelowContent) > 0;
   const renderItinerarySection =
-    itineraryHeading ||
+    itineraryHeading !== '' ||
     hasRichText(itineraryBody) ||
     getNumBloks(itineraryItems) > 0 ||
     getNumBloks(itineraryAboveContent) > 0 ||
     getNumBloks(itineraryBelowContent) > 0;
   const renderDetailsSection =
-    detailsHeading ||
+    detailsHeading !== '' ||
     hasRichText(detailsBody) ||
     getNumBloks(detailsBelowContent) > 0;
 
