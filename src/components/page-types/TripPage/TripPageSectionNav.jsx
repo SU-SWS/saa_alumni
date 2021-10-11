@@ -173,6 +173,7 @@ export const TripPageSectionNav = (props) => {
                 <SAALinkButton
                   link={reservationURL}
                   className={styles.buttonMobile}
+                  size="small"
                 >
                   Reserve
                 </SAALinkButton>
@@ -183,6 +184,7 @@ export const TripPageSectionNav = (props) => {
                 <SAALinkButton
                   link={inquireURL}
                   className={styles.buttonMobile}
+                  size="small"
                 >
                   Notify me
                 </SAALinkButton>
