@@ -152,7 +152,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                   align="center"
                   size="small"
                 >
-                  Nofity
+                  Notify me
                 </SAALinkButton>
               )}
               {onPrint && (
