@@ -14,11 +14,12 @@ export const link = ({ isActive }) =>
 export const button = 'su-ml-[8rem] su-mt-[-0.5rem]';
 
 // Mobile styles
-export const navWrapperMobile = 'su-bg-saa-black su-rs-pb-2';
-export const rootMobile = 'section-menu-desktop su-flex lg:su-hidden';
+export const navWrapperMobile = 'su-relative su-bg-saa-black su-rs-pb-2';
+export const rootMobile =
+  'section-menu-mobile su-relative su-block lg:su-hidden';
 export const burger = ({ navOpened }) =>
   dcnb(
-    'su-group su-w-full su-flex su-justify-between su-font-semibold su-items-center su-mt-20 su-transition-colors su-border-solid su-border su-border-black-70 su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg',
+    'su-group su-w-full su-flex su-justify-between su-font-semibold su-items-center su-transition-colors su-border-solid su-border su-border-black-70 su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg',
     {
       'su-bg-digital-red su-text-white su-border-digital-red': navOpened,
       'su-text-black-10': !navOpened,
@@ -27,16 +28,20 @@ export const burger = ({ navOpened }) =>
 export const burgerIcon = ({ navOpened }) =>
   dcnb('su-transition-colors su-w-[2.4rem] group-hocus:su-text-white', {
     'su-text-white': navOpened,
-    'su-text-digital-red-light': !navOpened,
+    'su-text-digital-red-xlight': !navOpened,
   });
 export const menuMobile = ({ navOpened }) =>
   dcnb(
-    'su-flex su-flex-col su-absolute su-z-20 su-shadow-xl su-bg-white su-w-full',
+    'su-flex su-flex-col su-absolute su-z-20 su-bg-saa-black su-shadow-xl su-bg-white su-w-full',
     {
       'su-block': navOpened,
       'su-hidden': !navOpened,
     }
   );
-export const listMobile = 'su-flex su-flex-col su-list-unstyled';
-export const listItemMobile = '';
-export const linkMobile = ({ isActive }) => '';
+export const listMobile =
+  'su-flex su-flex-col su-list-unstyled su-p-0 su-border su-border-solid lg:su-border-none children:su-border-t children:su-border-solid children:su-border-black-80 children:children:su-text-21 children:first:su-border-t-0 lg:children:first:su-border-t';
+export const listItemMobile = 'su-mb-0';
+export const linkMobile =
+  'su-group su-block su-no-underline su-border-l-5 su-border-saa-black su-py-14 su-pl-10 su-transition-all su-text-white hocus:su-text-digital-red-xlight hocus:su-border-digital-red-xlight hocus:su-underline';
+export const buttonWrapperMobile = 'su-px-20 md:su-px-30 su-rs-py-2';
+export const buttonMobile = '!su-w-full su-text-center su-text-21';

@@ -139,13 +139,7 @@ export const TripPageSectionNav = (props) => {
           >
             <ul className={styles.listMobile}>
               <li className={styles.listItemMobile}>
-                <a
-                  href="#overview-section"
-                  className={styles.linkMobile({
-                    isActive: activeSection === 1,
-                  })}
-                  aria-current={activeSection === 1}
-                >
+                <a href="#overview-section" className={styles.linkMobile}>
                   Overview
                 </a>
               </li>
@@ -153,10 +147,7 @@ export const TripPageSectionNav = (props) => {
                 <li className={styles.listItemMobile}>
                   <a
                     href="#faculty-leader-section"
-                    className={styles.linkMobile({
-                      isActive: activeSection === 2,
-                    })}
-                    aria-current={activeSection === 2}
+                    className={styles.linkMobile}
                   >
                     Faculty Leader
                   </a>
@@ -164,48 +155,38 @@ export const TripPageSectionNav = (props) => {
               )}
               {renderItinerarySection && (
                 <li className={styles.listItemMobile}>
-                  <a
-                    href="#itinerary-section"
-                    className={styles.linkMobile({
-                      isActive: activeSection === 3,
-                    })}
-                    aria-current={activeSection === 3}
-                  >
+                  <a href="#itinerary-section" className={styles.linkMobile}>
                     Itinerary
                   </a>
                 </li>
               )}
               {renderDetailsSection && (
                 <li className={styles.listItemMobile}>
-                  <a
-                    href="#trip-details-section"
-                    className={styles.linkMobile({
-                      isActive: activeSection === 4,
-                    })}
-                    aria-current={activeSection === 4}
-                  >
+                  <a href="#trip-details-section" className={styles.linkMobile}>
                     Trip Details
                   </a>
                 </li>
               )}
             </ul>
             {reservationURL?.cached_url && (
-              <SAALinkButton
-                link={reservationURL}
-                size="small-short"
-                className={styles.button}
-              >
-                Reserve
-              </SAALinkButton>
+              <div className={styles.buttonWrapperMobile}>
+                <SAALinkButton
+                  link={reservationURL}
+                  className={styles.buttonMobile}
+                >
+                  Reserve
+                </SAALinkButton>
+              </div>
             )}
             {!reservationURL?.cached_url && inquireURL?.cached_url && (
-              <SAALinkButton
-                link={inquireURL}
-                size="small-short"
-                className={styles.button}
-              >
-                Notify me
-              </SAALinkButton>
+              <div className={styles.buttonWrapperMobile}>
+                <SAALinkButton
+                  link={inquireURL}
+                  className={styles.buttonMobile}
+                >
+                  Notify me
+                </SAALinkButton>
+              </div>
             )}
           </div>
         </nav>
