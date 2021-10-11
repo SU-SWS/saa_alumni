@@ -35,7 +35,8 @@ export const menuMobile = ({ navOpened }) =>
     {
       'su-block': navOpened,
       'su-hidden': !navOpened,
-    });
+    }
+  );
 export const listMobile = 'su-flex su-flex-col su-list-unstyled';
 export const listItemMobile = '';
 export const linkMobile = ({ isActive }) => '';
