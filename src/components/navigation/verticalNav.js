@@ -56,7 +56,7 @@ const VerticalNav = ({ blok: { verticalNav }, className, id, pageLink }) => {
       >
         <span>{navOpened ? 'Close' : 'Section menu'}</span>
         <NavIcon
-          aria-hidden="true"
+          aria-hidden
           className="su-transition-colors su-w-[2.4rem] group-hocus:su-text-white"
         />
       </button>
