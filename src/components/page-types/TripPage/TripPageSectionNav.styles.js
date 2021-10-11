@@ -43,6 +43,6 @@ export const menuMobile = ({ navOpened }) =>
 export const listMobile = 'su-flex su-flex-col su-list-unstyled su-p-0';
 export const listItemMobile = 'su-mb-0 su-border-b su-border-black-80';
 export const linkMobile =
-  'su-group su-block su-no-underline su-border-l-5 su-border-saa-black su-py-14 su-pl-10 su-transition-all su-text-white su-text-21 hocus:su-text-digital-red-xlight hocus:su-border-digital-red-xlight hocus:su-underline';
+  'su-group su-block su-no-underline su-border-l-5 su-border-saa-black su-py-14 su-pl-10 su-pr-20 su-transition-all su-text-white su-text-21 hocus:su-text-digital-red-xlight hocus:su-border-digital-red-xlight hocus:su-underline';
 export const buttonWrapperMobile = 'su-px-20 md:su-px-30 su-rs-py-2';
 export const buttonMobile = '!su-w-full su-text-center su-text-21';
