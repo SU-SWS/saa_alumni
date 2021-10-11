@@ -40,6 +40,7 @@ const TripPage = (props) => {
       durationText,
       cost,
       tripSize,
+      status,
       inquireURL,
       reservationURL,
       overviewBelowContent,
@@ -126,6 +127,7 @@ const TripPage = (props) => {
                 renderFacultySection={renderFacultySection}
                 renderItinerarySection={renderItinerarySection}
                 renderDetailsSection={renderDetailsSection}
+                status={status}
                 inquireURL={inquireURL}
                 reservationURL={reservationURL}
                 activeSection={activeSection}
@@ -141,6 +143,7 @@ const TripPage = (props) => {
               durationText={durationText}
               cost={cost}
               tripSize={tripSize}
+              status={status}
               inquireURL={inquireURL}
               reservationURL={reservationURL}
               overviewBelowContent={overviewBelowContent}

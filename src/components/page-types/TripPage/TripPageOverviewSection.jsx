@@ -25,6 +25,7 @@ export const TripPageOverviewSectionProps = {
   durationText: PropTypes.string,
   cost: SBRichTextType,
   tripSize: PropTypes.string,
+  status: PropTypes.oneOf(['notify', 'reserve']),
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
   overviewBelowContent: SBBlokType,
@@ -40,6 +41,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     durationText,
     cost,
     tripSize,
+    status,
     reservationURL,
     inquireURL,
     overviewBelowContent,
@@ -123,19 +125,20 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                 </div>
               )}
             </div>
-            {!reservationURL?.cached_url && (
-              <div className={styles.summaryItem}>
-                <Heading level={3} className={styles.summaryName}>
-                  Reservations are not yet open for this destination.
-                </Heading>
-                <span className={styles.summaryValue}>
-                  Inquire now for the best chance at securing a spot. We’ll
-                  notify you as soon as open for registration.
-                </span>
-              </div>
-            )}
             <div className={styles.actions}>
-              {reservationURL?.cached_url && (
+              {status === 'notify' && inquireURL?.cached_url && (
+                <div>
+                  <Heading level={3} className={styles.summaryName}>
+                    Reservations are not yet open for this destination.
+                  </Heading>
+                  <span className={styles.summaryValue}>
+                    Inquire now for the best chance at securing a spot. We’ll
+                    notify you as soon as details are available and the trip is
+                    open for registration.
+                  </span>
+                </div>
+              )}
+              {status === 'reserve' && reservationURL?.cached_url && (
                 <SAALinkButton
                   link={reservationURL}
                   className={{ 'su-w-full': true, 'su-w-fit': false }}
@@ -145,7 +148,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                   Reserve
                 </SAALinkButton>
               )}
-              {!reservationURL?.cached_url && inquireURL?.cached_url && (
+              {status === 'notify' && inquireURL?.cached_url && (
                 <SAALinkButton
                   link={inquireURL}
                   className={{ 'su-w-full': true, 'su-w-fit': false }}

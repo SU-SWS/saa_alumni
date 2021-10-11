@@ -28,6 +28,7 @@ export const TripContent = PropTypes.shape({
   overviewBody: SBRichTextType,
   cost: SBRichTextType,
   durationText: PropTypes.string,
+  status: PropTypes.oneOf(['notify', 'reserve']),
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
   overviewBelowContent: SBBlokType,
