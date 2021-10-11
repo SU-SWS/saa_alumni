@@ -14,14 +14,16 @@ export const link = ({ isActive }) =>
 export const button = 'su-ml-[8rem] su-mt-[-0.5rem]';
 
 // Mobile styles
-export const navWrapperMobile = 'lg:su-hidden su-relative su-bg-saa-black su-rs-pb-2';
+export const navWrapperMobile =
+  'lg:su-hidden su-relative su-bg-saa-black su-rs-pb-2';
 export const rootMobile =
   'section-menu-mobile su-relative su-block lg:su-hidden su-max-w-[35rem] su-mx-auto';
 export const burger = ({ navOpened }) =>
   dcnb(
     'su-group su-w-full su-flex su-justify-between su-font-semibold su-items-center su-transition-colors su-border-solid su-border su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white hocus:su-shadow-lg',
     {
-      'su-bg-digital-red su-text-white su-border-black-80': navOpened,
+      'su-bg-digital-red su-text-white su-border-black-80 hover:!su-bg-cardinal-red-xdark':
+        navOpened,
       'su-text-black-10 su-border-black-70': !navOpened,
     }
   );
