@@ -22,8 +22,7 @@ export const burger = ({ navOpened }) =>
   dcnb(
     'su-group su-w-full su-flex su-justify-between su-font-semibold su-items-center su-transition-colors su-border-solid su-border su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white hocus:su-shadow-lg',
     {
-      'su-bg-digital-red su-text-white su-border-black-80 hover:!su-bg-cardinal-red-xdark':
-        navOpened,
+      'su-bg-digital-red su-text-white su-border-black-80': navOpened,
       'su-text-black-10 su-border-black-70': !navOpened,
     }
   );
