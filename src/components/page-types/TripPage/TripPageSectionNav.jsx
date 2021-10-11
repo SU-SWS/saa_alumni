@@ -139,7 +139,11 @@ export const TripPageSectionNav = (props) => {
           >
             <ul className={styles.listMobile}>
               <li className={styles.listItemMobile}>
-                <a href="#overview-section" className={styles.linkMobile}>
+                <a
+                  href="#overview-section"
+                  className={styles.linkMobile}
+                  onClick={() => setNavOpened(false)}
+                >
                   Overview
                 </a>
               </li>
@@ -148,6 +152,7 @@ export const TripPageSectionNav = (props) => {
                   <a
                     href="#faculty-leader-section"
                     className={styles.linkMobile}
+                    onClick={() => setNavOpened(false)}
                   >
                     Faculty Leader
                   </a>
@@ -155,14 +160,22 @@ export const TripPageSectionNav = (props) => {
               )}
               {renderItinerarySection && (
                 <li className={styles.listItemMobile}>
-                  <a href="#itinerary-section" className={styles.linkMobile}>
+                  <a
+                    href="#itinerary-section"
+                    className={styles.linkMobile}
+                    onClick={() => setNavOpened(false)}
+                  >
                     Itinerary
                   </a>
                 </li>
               )}
               {renderDetailsSection && (
                 <li className={styles.listItemMobile}>
-                  <a href="#trip-details-section" className={styles.linkMobile}>
+                  <a
+                    href="#trip-details-section"
+                    className={styles.linkMobile}
+                    onClick={() => setNavOpened(false)}
+                  >
                     Trip Details
                   </a>
                 </li>
