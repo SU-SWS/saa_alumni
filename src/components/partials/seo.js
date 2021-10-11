@@ -86,7 +86,7 @@ const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
           <meta property="og:description" content={ogDescription} />
         )}
         {ogImage !== '' && <meta property="og:image" content={ogImage} />}
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         {seo.twitter_title && (
           <meta name="twitter:title" content={seo.twitter_title} />
         )}
