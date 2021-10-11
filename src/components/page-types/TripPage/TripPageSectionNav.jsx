@@ -14,6 +14,7 @@ export const TripPageSectionNavProps = {
   renderItinerarySection: PropTypes.bool,
   renderDetailsSection: PropTypes.bool,
   ariaLabel: PropTypes.string,
+  status: PropTypes.oneOf(['notify', 'reserve']),
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
   activeSection: PropTypes.number,
@@ -25,6 +26,7 @@ export const TripPageSectionNav = (props) => {
     renderItinerarySection,
     renderDetailsSection,
     ariaLabel,
+    status,
     inquireURL,
     reservationURL,
     activeSection,
@@ -100,7 +102,7 @@ export const TripPageSectionNav = (props) => {
             </li>
           )}
         </ul>
-        {reservationURL?.cached_url && (
+        {status === 'reserve' && reservationURL?.cached_url && (
           <SAALinkButton
             link={reservationURL}
             size="small-short"
@@ -109,7 +111,7 @@ export const TripPageSectionNav = (props) => {
             Reserve
           </SAALinkButton>
         )}
-        {!reservationURL?.cached_url && inquireURL?.cached_url && (
+        {status === 'notify' && inquireURL?.cached_url && (
           <SAALinkButton
             link={inquireURL}
             size="small-short"
@@ -181,7 +183,7 @@ export const TripPageSectionNav = (props) => {
                 </li>
               )}
             </ul>
-            {reservationURL?.cached_url && (
+            {status === 'reserve' && reservationURL?.cached_url && (
               <div className={styles.buttonWrapperMobile}>
                 <SAALinkButton
                   link={reservationURL}
@@ -192,7 +194,7 @@ export const TripPageSectionNav = (props) => {
                 </SAALinkButton>
               </div>
             )}
-            {!reservationURL?.cached_url && inquireURL?.cached_url && (
+            {status === 'notify' && inquireURL?.cached_url && (
               <div className={styles.buttonWrapperMobile}>
                 <SAALinkButton
                   link={inquireURL}
