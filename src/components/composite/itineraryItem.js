@@ -50,11 +50,7 @@ const ItineraryItem = ({
             className="su-rs-mb-1"
           />
         )}
-        <Heading
-          level={3}
-          font="serif"
-          className="su-mb-03em su-text-m3 xl:su-text-m4"
-        >
+        <Heading level={3} font="serif" className="su-mb-03em su-type-4">
           {title}
         </Heading>
         <RichTextRenderer

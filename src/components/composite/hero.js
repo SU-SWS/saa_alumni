@@ -22,12 +22,12 @@ const Hero = ({
   },
   blok,
 }) => {
-  let heroHeadlineSize = 'md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900';
+  let heroHeadlineSize = 'su-type-7 su-mx-auto su-max-w-900';
 
   if (headlineSize === 'large') {
-    heroHeadlineSize = 'md:su-text-m6 lg:su-text-m8';
+    heroHeadlineSize = 'su-type-8';
   } else if (headlineSize === 'small') {
-    heroHeadlineSize = 'md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900';
+    heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
   let gradientFrom = 'su-from-transparent';
@@ -63,9 +63,8 @@ const Hero = ({
           aria-hidden="true"
         />
         <Container
-          className={`su-relative su-rs-pt-9 ${
-            isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'
-          }`}
+          className={`su-relative su-rs-pt-9 ${isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'
+            }`}
         >
           <FlexBox direction="col" className="lg:su-mt-[190px]">
             {(sansSuper || serifSuper || headline || sansSub) && (
