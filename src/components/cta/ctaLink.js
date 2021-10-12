@@ -88,8 +88,8 @@ const CtaLink = React.forwardRef(
               )}
               <div>
                 {linkText}
-                {srText && <SrOnlyText srText={srText} />}
-                {icon !== 'none' && (
+                {srText && <SrOnlyText srText={` ${srText}`} />}
+                {icon !== "none" && (
                   <HeroIcon
                     iconType={icon}
                     className={dcnb('su-inline-block', iconColor)}

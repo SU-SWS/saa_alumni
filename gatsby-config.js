@@ -116,7 +116,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Alumni`,
+        name: `Stanford Alumni Association`,
         start_url: `/`,
         include_favicon: false,
         crossOrigin: `use-credentials`,
