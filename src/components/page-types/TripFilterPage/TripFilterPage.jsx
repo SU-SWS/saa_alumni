@@ -61,7 +61,7 @@ const TripFilterPage = (props) => {
                 level={1}
                 font="serif"
                 weight="bold"
-                className="su-text-white su-text-m4 md:su-text-m6 xl:su-text-m7 2xl:su-text-m8 su-mx-auto su-text-center su-mb-02em"
+                className="su-text-white su-type-8 su-mx-auto su-text-center su-mb-02em"
               >
                 {title}
               </Heading>

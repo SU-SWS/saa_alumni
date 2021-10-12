@@ -1,6 +1,6 @@
 export const main = 'su-cc su-rs-mb-9';
 export const content = 'su-basefont-23';
-export const body = 'lg:su-text-m1';
+export const body = 'su-type-1';
 export const summary =
   'su-mt-36 md:su-mt-0 su-basefont-23 md:su-col-start-9 xl:su-col-start-10';
 export const summaryContent =

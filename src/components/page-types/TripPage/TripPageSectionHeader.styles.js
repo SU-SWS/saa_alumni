@@ -5,7 +5,7 @@ export const sectionHeader = ({ isCenter }) =>
     'su-text-center su-w-fit children:su-mx-auto': isCenter,
   });
 export const sectionHeading = ({ isCenter }) =>
-  dcnb('su-text-m3 md:su-text-m4 xl:su-text-m5 su-mb-07', {
+  dcnb('su-type-5 su-mb-07', {
     'su-max-w-[120rem]': isCenter,
     'su-max-w-800': !isCenter,
   });
