@@ -99,11 +99,28 @@ module.exports = {
       },
     },
     {
-      /**
-       * NOTE: This needs to be updated, but we need to address the way storyblok
-       * links are resolved post v4.1.3. See the following PR comment for more details:
-       * https://github.com/SU-SWS/saa_alumni/pull/202#issuecomment-938025770
-       */
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-TJ9MSJ3',
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        //
+        // Defaults to null
+        defaultDataLayer: { platform: 'gatsby' },
+      },
+    },
+    /**
+     * NOTE: This needs to be updated, but we need to address the way storyblok
+     * links are resolved post v4.1.3. See the following PR comment for more details:
+     * https://github.com/SU-SWS/saa_alumni/pull/202#issuecomment-938025770
+     */
+    {
       resolve: 'gatsby-source-storyblok',
       options: {
         accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
