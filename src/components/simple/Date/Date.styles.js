@@ -23,7 +23,7 @@ export const month =
   'su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22';
 export const day = ({ isSmall }) =>
   dcnb('su-font-bold su-font-serif su-leading-trim su-text-[4.1rem]', {
-    'md:su-text-m4 lg:su-text-m5': !isSmall,
+    'md:su-text-m4': !isSmall,
   });
 export const dash = ({ isSmall }) =>
   dcnb(

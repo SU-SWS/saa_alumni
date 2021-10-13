@@ -54,20 +54,18 @@ const TripFilterPage = (props) => {
               focus={focus}
               overlay={false}
               aspectRatio="5x2"
-              className="su-aspect-w-5 su-aspect-h-2"
+              className={styles.hero}
             />
             <Container className="su-rs-mt-6 su-rs-mb-8">
               <Heading
                 level={1}
                 font="serif"
                 weight="bold"
-                className="su-text-white su-text-m4 md:su-text-m6 xl:su-text-m7 2xl:su-text-m8 su-mx-auto su-text-center su-mb-02em"
+                className={styles.heading({ isShortTitle: title.length < 13 })}
               >
                 {title}
               </Heading>
-              <p className="su-text-white su-mx-auto su-text-center su-max-w-prose su-subheading su-leading-display">
-                {intro}
-              </p>
+              <p className={styles.intro}>{intro}</p>
             </Container>
           </header>
           <Grid xs={12} gap className={styles.filterSection}>
