@@ -28,7 +28,7 @@ const Poster = ({
     isBigBodyText,
     layout,
     theme = 'white',
-    gradientOption,
+    gradientOption = 'digital-red-plum-black',
     id,
   },
   blok,
