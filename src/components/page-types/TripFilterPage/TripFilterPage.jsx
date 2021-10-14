@@ -47,7 +47,7 @@ const TripFilterPage = (props) => {
           className={styles.page}
           width="full"
         >
-          <header className="su-basefont-23">
+          <header className={styles.header}>
             <HeroImage
               filename={filename}
               alt={alt}
@@ -56,7 +56,7 @@ const TripFilterPage = (props) => {
               aspectRatio="5x2"
               className={styles.hero}
             />
-            <Container className="su-rs-mt-6 su-rs-mb-8">
+            <Container className={styles.headerContent}>
               <Heading
                 level={1}
                 font="serif"

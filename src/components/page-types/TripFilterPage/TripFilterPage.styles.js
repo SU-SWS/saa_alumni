@@ -1,8 +1,10 @@
 import { dcnb } from 'cnbuilder';
 
 export const page =
-  'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black';
-export const hero = '';
+  'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black su-basefont-23';
+export const header = 'su-basefont-23';
+export const headerContent = 'su-rs-mt-6 su-rs-mb-8';
+export const hero = 'su-aspect-w-5 su-aspect-h-2';
 export const heading = ({ isShortTitle }) =>
   dcnb(
     'su-text-white su-text-m4 md:su-text-m6 xl:su-text-m7 su-mx-auto su-text-center su-mb-02em',
