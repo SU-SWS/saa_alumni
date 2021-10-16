@@ -77,9 +77,8 @@ const Section = ({
     headlineAlign = 'su-ml-0';
   }
 
-  const paddingTop = largePaddingTop[spacingTop] || largePaddingTop.lg;
-  const paddingBottom =
-    largePaddingBottom[spacingBottom] || largePaddingBottom.lg;
+  const paddingTop = largePaddingTop[spacingTop];
+  const paddingBottom = largePaddingBottom[spacingBottom];
 
   return (
     <SbEditable content={blok}>
