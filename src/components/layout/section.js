@@ -25,7 +25,7 @@ const Section = ({
     cta,
     content,
     isLeftAlign,
-    superheadStyle,
+    superheadStyle = 'gradient-underline',
     titleSize,
     isSrOnlyTitle,
     isLessHeaderSpacing,
