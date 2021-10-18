@@ -1,7 +1,6 @@
 import React, { useState, createRef, useEffect } from 'react';
 import { X, Search } from 'react-hero-icon/solid';
 import SearchAutocomplete from './searchAutocomplete';
-import useEscape from '../../hooks/useEscape';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const SearchField = React.forwardRef(
@@ -20,7 +19,6 @@ const SearchField = React.forwardRef(
       autocompleteLinkFocusClasses,
       autocompleteContainerClasses,
       placeholder,
-      clearOnEscape,
     },
     ref
   ) => {
@@ -40,6 +38,7 @@ const SearchField = React.forwardRef(
       setQuery(e.target.value);
       onInput(e.target.value);
       setShowAutocomplete(true);
+      setSelectedSuggestion(null);
     };
 
     const clearHandler = (e) => {
@@ -94,12 +93,6 @@ const SearchField = React.forwardRef(
       }
     };
 
-    useEscape(() => {
-      if (clearOnEscape && document.activeElement === inputRef.current) {
-        clearHandler();
-      }
-    });
-
     return (
       <div>
         <form onSubmit={submitHandler}>
@@ -147,6 +140,7 @@ const SearchField = React.forwardRef(
                 showAutocomplete={showAutocomplete}
                 onSelect={selectSuggestion}
                 selectedSuggestion={selectedSuggestion}
+                setShowAutocomplete={setShowAutocomplete}
                 setSelectedSuggestion={setSelectedSuggestion}
                 autocompleteContainerClasses={autocompleteContainerClasses}
                 autocompleteLinkClasses={autocompleteLinkClasses}

@@ -1,22 +1,25 @@
 /* eslint-disable no-console */
-const path = require("path");
-const webpack = require("webpack");
+const path = require('path');
+const webpack = require('webpack');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
 
   return new Promise((resolve, reject) => {
-    const storyblokEntry = path.resolve("src/templates/storyblok-entry.js");
+    const storyblokEntry = path.resolve('src/templates/storyblok-entry.js');
     // Omit non-page entities from page generation
     const contentTypesToOmit = [
-      "alert",
-      "localFooter",
-      "masthead",
-      "redirect", // NOTE: Redirects are omitted as they are specifically generated below
-      "searchEntry",
-      "searchKeywordBanner",
-      "searchSuggestions",
-      "verticalNavWrapper",
+      'alert',
+      'event',
+      'globalHeader',
+      'localFooter',
+      'masthead',
+      'perk',
+      'redirect', // NOTE: Redirects are omitted as they are specifically generated below
+      'searchEntry',
+      'searchKeywordBanner',
+      'searchSuggestions',
+      'verticalNavWrapper',
     ];
     const omittedComponentsArray = JSON.stringify(contentTypesToOmit);
 
@@ -51,17 +54,17 @@ exports.createPages = ({ graphql, actions }) => {
         const entries = result.data.allStoryblokEntry.edges;
         entries.forEach((entry, index) => {
           let slug = `${entry.node.full_slug}`;
-          slug = slug.replace(/^\/|\/$/g, "");
-          let pagePath = entry.node.full_slug === "home" ? "" : `${slug}/`;
+          slug = slug.replace(/^\/|\/$/g, '');
+          let pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
 
           // Wire up the 404 page by setting the path to just 404 as Gatsby expects it.
           if (pagePath.match(/^404/)) {
-            pagePath = "404";
+            pagePath = '404';
           }
 
           // Wire up the 403 page by setting the path to just 403 as Gatsby expects it.
           if (pagePath.match(/^403/)) {
-            pagePath = "403";
+            pagePath = '403';
           }
 
           // Determine if the page is canonical, or is using a custom canonical URL.
@@ -145,17 +148,17 @@ exports.onCreateWebpackConfig = ({
   actions.setWebpackConfig({
     resolve: {
       fallback: {
-        path: require.resolve("path-browserify"),
+        path: require.resolve('path-browserify'),
         fs: false,
       },
     },
     plugins: [
       new webpack.ProvidePlugin({
-        process: "process/browser",
+        process: 'process/browser',
       }),
     ],
   });
-  if (stage === "build-html") {
+  if (stage === 'build-html') {
     actions.setWebpackConfig({
       module: {
         rules: [
