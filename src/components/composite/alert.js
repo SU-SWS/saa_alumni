@@ -3,7 +3,6 @@ import SbEditable from 'storyblok-react';
 import { Alert as DecanterAlert, DismissButton } from 'decanter-react';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import CreateBloks from '../../utilities/createBloks';
-import '../../styles/alert.css';
 import getNumBloks from '../../utilities/getNumBloks';
 
 const Alert = ({
@@ -28,7 +27,7 @@ const Alert = ({
         'su-text-black su-font-bold hocus:su-text-black hocus:su-bg-digital-blue-light';
       break;
     default:
-      linkColor = 'su-text-white hocus:su-bg-white';
+      linkColor = 'su-text-white hocus:su-bg-white hocus:su-text-black';
   }
 
   useEffect(() => {
@@ -54,14 +53,8 @@ const Alert = ({
     />
   );
 
-  let bodyStyle = 'su-alert-body-link-dark';
-  if (isLinkDark) {
-    bodyStyle = 'su-alert-body-link-light';
-  }
-
   const customStyles = {
     footerWrapper: 'su-rs-mt-1',
-    body: bodyStyle,
   };
 
   if (!isAlertDismissed) return null;
