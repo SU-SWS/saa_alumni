@@ -123,15 +123,17 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                   <Heading level={3} className={styles.summaryName}>
                     Trip size
                   </Heading>
-                  <span className={styles.summaryValue}>{tripSize}</span>
+                  <span className={styles.summaryValue}>
+                    {tripSize} participants
+                  </span>
                 </div>
               )}
               {minAge && (
                 <div className={styles.summaryItem}>
                   <Heading level={3} className={styles.summaryName}>
-                    Minimum age
+                    Minimum age requirement
                   </Heading>
-                  <span className={styles.summaryValue}>{minAge}</span>
+                  <span className={styles.summaryValue}>{minAge} years</span>
                 </div>
               )}
             </div>
