@@ -38,7 +38,7 @@ jobs:
           version: ${{ steps.version_bump.outputs.newTag }}
           publish: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # The following var needs to correspond with what's used in the .npmrc file for fa pro
           FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FA_NPM_TOKEN }}
       - name: Merge release back into dev
