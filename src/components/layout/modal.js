@@ -32,7 +32,24 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   useFocusTrap(closeButton, lastTabbableRef, isOpen);
 
   useEscape(() => {
-    closeButton.current.click();
+    // Only do this if the search modal is open
+    if (isOpen) {
+      const searchInputModal =
+        document.getElementsByClassName('search-input-modal')[0];
+      const mastheadDesktop =
+        document.getElementsByClassName('masthead-desktop')[0];
+
+      // Only close the modal with Escape key if the autocomplete dropdown is not open
+      if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
+        closeButton.current.click();
+
+        if (getComputedStyle(mastheadDesktop, null).display === 'none') {
+          document.getElementById('masthead-search-button-mobile').focus();
+        } else {
+          document.getElementById('masthead-search-button-desktop').focus();
+        }
+      }
+    }
   });
 
   const lockScroll = () => {

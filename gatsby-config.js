@@ -31,7 +31,7 @@ if (process.env.CONTEXT === 'production') {
   siteUrl = process.env.URL;
 }
 // Support for non-production netlify builds (branch/preview)
-else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY === true) {
+else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY) {
   siteUrl = process.env.DEPLOY_PRIME_URL;
 }
 // Support for Netlify CLI.
@@ -44,8 +44,7 @@ module.exports = {
     title: `Stanford Alumni Association`,
     description: `Stanford Alumni Association`,
     author: `Stanford University Alumni Association`,
-    // eslint-disable-next-line
-    siteUrl: siteUrl,
+    siteUrl,
 
     // This key is for metadata only and can be statically queried
     storyblok: {
@@ -99,6 +98,23 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: 'GTM-TJ9MSJ3',
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+
+        // datalayer to be set before GTM is loaded
+        // should be an object or a function that is executed in the browser
+        //
+        // Defaults to null
+        defaultDataLayer: { platform: 'gatsby' },
+      },
+    },
+    {
       /**
        * NOTE: This needs to be updated, but we need to address the way storyblok
        * links are resolved post v4.1.3. See the following PR comment for more details:
@@ -116,7 +132,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Alumni`,
+        name: `Stanford Alumni Association`,
         start_url: `/`,
         include_favicon: false,
         crossOrigin: `use-credentials`,
