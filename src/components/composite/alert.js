@@ -21,6 +21,16 @@ const Alert = ({
     );
   }
 
+  let linkColor;
+  switch (type) {
+    case 'warning':
+      linkColor =
+        'su-text-black su-font-bold hocus:su-text-black hocus:su-bg-digital-blue-light';
+      break;
+    default:
+      linkColor = 'su-text-white hocus:su-bg-white';
+  }
+
   useEffect(() => {
     // eslint-disable-next-line no-undef
     const isDismissed = sessionStorage.getItem(_uid);
@@ -67,7 +77,7 @@ const Alert = ({
         dismissBtn={DismissBtn}
         hasDismiss={hasDismiss}
       >
-        <RichTextRenderer wysiwyg={body} />
+        <RichTextRenderer wysiwyg={body} linkColor={linkColor} />
       </DecanterAlert>
     </SbEditable>
   );
