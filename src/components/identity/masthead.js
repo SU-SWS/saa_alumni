@@ -43,6 +43,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           <OpenSearchModalButton
             openOpen={modalOpen}
             setModalOpen={setModalOpen}
+            id="masthead-search-button-mobile"
           />
           <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
         </FlexBox>
@@ -83,6 +84,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
               <OpenSearchModalButton
                 openOpen={modalOpen}
                 setModalOpen={setModalOpen}
+                id="masthead-search-button-desktop"
               />
             </FlexBox>
             <CreateBloks

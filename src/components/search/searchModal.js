@@ -51,6 +51,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
         setShowEmptyMessage(false);
       }}
       initialFocus={searchFieldRef}
+      ariaLabel="Search Stanford Alumni websites"
     >
       <div className="su-max-w-1000 su-mx-auto">
         <Heading
