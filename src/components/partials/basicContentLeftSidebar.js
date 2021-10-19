@@ -53,10 +53,7 @@ const BasicContentLeftSidebar = ({
         id="page-content"
       >
         {hasIntro && (
-          <RichTextRenderer
-            wysiwyg={intro}
-            className="su-text-m1 xl:su-text-m2 su-rs-mb-3"
-          />
+          <RichTextRenderer wysiwyg={intro} className="su-type-2 su-rs-mb-3" />
         )}
         <CreateBloks blokSection={content} />
         <div className="lg:su-hidden su-rs-mt-5">

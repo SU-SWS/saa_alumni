@@ -45,7 +45,7 @@ const DarkPage = (props) => {
                 font="serif"
                 srOnly={isSrOnlyTitle}
                 id="page-title"
-                className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-text-m4 md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-1200"
+                className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-type-6 su-mx-auto su-max-w-1200"
               >
                 {title}
               </Heading>
