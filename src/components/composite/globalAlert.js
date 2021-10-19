@@ -32,6 +32,7 @@ const GlobalAlert = () => (
       if (!allStoryblokEntry?.edges.length) return null;
       // Show Global Alerts only on Alumni Homesite and hide on Travel Study.
       const showAlerts =
+        typeof window !== 'undefined' &&
         window.location.pathname !== '/travel-study' &&
         window.location.href.indexOf('path=travel-study') < 0 &&
         window.location.href.indexOf('path=/travel-study') < 0;
