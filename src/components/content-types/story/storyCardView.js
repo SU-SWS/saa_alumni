@@ -72,7 +72,7 @@ const StoryCardView = ({
   let teaserSize = 'su-card-paragraph';
 
   if (isBigText) {
-    headlineSize = 'su-type-3';
+    headlineSize = 'su-type-2';
     teaserSize = 'su-card-paragraph lg:su-text-25';
   }
 
