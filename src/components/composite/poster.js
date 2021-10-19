@@ -2,7 +2,6 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import { Container, FlexBox, Heading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
-import { render } from 'storyblok-rich-text-react-renderer';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
@@ -10,8 +9,10 @@ import CircularImage from '../media/circularImage';
 import {
   bgPositionVertical,
   bgTextColorPairs,
+  posterGradients,
 } from '../../utilities/dataSource';
 import addBgImage from '../../utilities/addBgImage';
+import hasRichText from '../../utilities/hasRichText';
 
 const Poster = ({
   blok: {
@@ -19,23 +20,23 @@ const Poster = ({
     borderColor,
     image: { filename, alt, focus } = {},
     bgImage: { filename: bgFilename } = {},
-    vCrop,
+    vCrop = 'center',
     headline,
     isBigHeadline,
     headingLevel,
     text,
     isBigBodyText,
     layout,
-    theme,
+    theme = 'white',
+    gradientOption = 'digital-red-plum-black',
     id,
   },
   blok,
 }) => {
   const numCta = getNumBloks(cta);
-  const rendered = render(text);
-  const numText = getNumBloks(rendered);
-  const colorTheme = bgTextColorPairs[theme] ?? bgTextColorPairs.white;
-  const bgCrop = bgPositionVertical[vCrop] ?? bgPositionVertical.center;
+  const colorTheme = bgTextColorPairs[theme];
+  const bgCrop = bgPositionVertical[vCrop];
+  const bgGradient = posterGradients[gradientOption];
 
   let wrapperClasses;
   let imageWrapper;
@@ -66,7 +67,7 @@ const Poster = ({
   }
 
   // If text contains content, add margin bottom to heading
-  if (numText) {
+  if (hasRichText(text)) {
     headingSpacing = 'su-mb-04em';
   }
 
@@ -79,10 +80,7 @@ const Poster = ({
           bgCrop,
           colorTheme
         )}
-        style={addBgImage(
-          bgFilename,
-          'linear-gradient(240deg, rgba(24, 29, 28) 10%, rgba(98, 0, 89, 0.85) 60%, rgb(177, 4, 14) 100%)'
-        )}
+        style={addBgImage(bgFilename, bgGradient)}
         id={id || ''}
       >
         {filename?.startsWith('http') && (
@@ -104,12 +102,12 @@ const Poster = ({
           <Heading
             font="serif"
             weight="bold"
-            level={parseInt(headingLevel, 10) ?? 2}
+            level={parseInt(headingLevel, 10) || 2}
             className={dcnb(headingSpacing, headlineSize)}
           >
             {headline}
           </Heading>
-          {numText > 0 && (
+          {hasRichText(text) && (
             <RichTextRenderer wysiwyg={text} className={bodyText} />
           )}
           {numCta > 0 && (

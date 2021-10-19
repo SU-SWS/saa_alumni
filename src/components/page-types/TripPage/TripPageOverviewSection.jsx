@@ -25,6 +25,7 @@ export const TripPageOverviewSectionProps = {
   durationText: PropTypes.string,
   cost: SBRichTextType,
   tripSize: PropTypes.string,
+  minAge: PropTypes.string,
   status: PropTypes.oneOf(['notify', 'reserve']),
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
@@ -41,6 +42,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     durationText,
     cost,
     tripSize,
+    minAge,
     status,
     reservationURL,
     inquireURL,
@@ -121,7 +123,17 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                   <Heading level={3} className={styles.summaryName}>
                     Trip size
                   </Heading>
-                  <span className={styles.summaryValue}>{tripSize}</span>
+                  <span className={styles.summaryValue}>
+                    {tripSize} participants
+                  </span>
+                </div>
+              )}
+              {minAge && (
+                <div className={styles.summaryItem}>
+                  <Heading level={3} className={styles.summaryName}>
+                    Minimum age requirement
+                  </Heading>
+                  <span className={styles.summaryValue}>{minAge} years</span>
                 </div>
               )}
             </div>
