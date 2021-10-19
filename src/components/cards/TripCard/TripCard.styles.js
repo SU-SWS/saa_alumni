@@ -10,6 +10,7 @@ export const link =
 export const heading =
   'su-type-0 su-mt-0 su-font-bold su-relative su-inline su-text-white';
 export const icon = 'su-relative su-inline-block group-hocus:su-text-white';
-export const subheading = 'su-mt-4 su-mb-0 su-font-semibold su-text-white su-leading-display';
+export const subheading =
+  'su-mt-4 su-mb-0 su-font-semibold su-text-white su-leading-display';
 export const description =
   'su-rs-mt-0 su-mb-0 su-card-paragraph su-text-black-20';
