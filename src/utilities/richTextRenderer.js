@@ -13,13 +13,13 @@ import { Link } from 'gatsby';
 import CardImage from '../components/media/cardImage';
 import { config } from './config';
 
-const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
+const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
   let textColor = 'su-text-current';
-  let linkColor = '';
+  let bodyLinkColor = '';
 
   if (isDark) {
     textColor = 'su-text-black-20';
-    linkColor = 'su-text-digital-red-xlight hocus:su-text-white';
+    bodyLinkColor = 'su-text-digital-red-xlight hocus:su-text-white';
   }
   const rendered = render(wysiwyg, {
     markResolvers: {
@@ -30,7 +30,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
         if (linktype === 'email') {
           // Email links: add `mailto:` scheme and map to <a>
           return (
-            <a href={`mailto:${href}`} className={linkColor}>
+            <a href={`mailto:${href}`} className={linkColor || bodyLinkColor}>
               {children}
             </a>
           );
@@ -38,7 +38,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
         if (linktype === 'story') {
           // Internal links: map to gatsby <Link>
           return (
-            <Link to={href} className={linkColor}>
+            <Link to={href} className={linkColor || bodyLinkColor}>
               {children}
             </Link>
           );
@@ -57,7 +57,11 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
             `${config.assetCdn}i`
           );
           return (
-            <a href={linkUrl} target={target} className={linkColor}>
+            <a
+              href={linkUrl}
+              target={target}
+              className={linkColor || bodyLinkColor}
+            >
               {children}
             </a>
           );
@@ -67,7 +71,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className }) => {
           <a
             href={href}
             target={target}
-            className={dcnb('su-external-link', linkColor)}
+            className={dcnb('su-external-link', linkColor || bodyLinkColor)}
           >
             {children}
           </a>
