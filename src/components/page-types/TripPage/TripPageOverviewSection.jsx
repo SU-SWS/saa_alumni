@@ -141,12 +141,12 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
               {status === 'notify' && inquireURL?.cached_url && (
                 <div>
                   <Heading level={3} className={styles.summaryName}>
-                    Reservations are not yet open for this destination.
+                    Ready to go? Looking for more information?
                   </Heading>
                   <span className={styles.summaryValue}>
-                    Inquire now for the best chance at securing a spot. We’ll
-                    notify you as soon as details are available and the trip is
-                    open for registration.
+                    Reservations aren’t yet open for this trip. Request to be
+                    notified when more details are available and reservations
+                    open.
                   </span>
                 </div>
               )}

@@ -1,6 +1,5 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { dcnb } from 'cnbuilder';
 import { Grid, GridCell, Heading } from 'decanter-react';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
@@ -12,6 +11,7 @@ import * as overviewStyles from './TripPageOverviewSection.styles';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import { getDuration } from '../../../utilities/dates';
+import getNumBloks from '../../../utilities/getNumBloks';
 
 export const TripPageExtensionSectionProps = {
   extendHeading: PropTypes.string,
@@ -66,7 +66,7 @@ export const TripPageExtensionSection = (props) => {
           className={overviewStyles.content}
         >
           {hasRichText(extendBody) && (
-            <div className={dcnb('trip-extension-body')}>
+            <div className="trip-extension-body">
               <RichTextRenderer wysiwyg={extendBody} />
             </div>
           )}
@@ -96,12 +96,8 @@ export const TripPageExtensionSection = (props) => {
           )}
         </GridCell>
       </Grid>
-      {extendItinerary && extendItinerary.length > 0 && (
-        <div
-          className={dcnb('trip-extension-itinerary', overviewStyles.itinerary)}
-        >
-          <CreateBloks blokSection={extendItinerary} />
-        </div>
+      {getNumBloks(extendItinerary) > 0 && (
+        <CreateBloks blokSection={extendItinerary} />
       )}
     </TripPageSectionWrapper>
   );
