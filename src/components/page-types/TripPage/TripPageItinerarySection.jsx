@@ -13,7 +13,6 @@ export const TripPageItinerarySectionProps = {
   itineraryBody: SBRichTextType,
   itineraryItems: SBBlokType,
   itineraryAboveContent: SBBlokType,
-  itineraryBelowContent: SBBlokType,
   isCenterItineraryHeader: PropTypes.bool,
 };
 
@@ -23,7 +22,6 @@ export const TripPageItinerarySection = React.forwardRef((props, ref) => {
     itineraryBody,
     itineraryAboveContent,
     itineraryItems,
-    itineraryBelowContent,
     isCenterItineraryHeader,
   } = props;
 
@@ -46,11 +44,6 @@ export const TripPageItinerarySection = React.forwardRef((props, ref) => {
         {itineraryItems && itineraryItems.length > 0 && (
           <div className={dcnb('trip-page-itinerary-items', styles.itinerary)}>
             <CreateBloks blokSection={itineraryItems} />
-          </div>
-        )}
-        {itineraryBelowContent && itineraryBelowContent.length > 0 && (
-          <div className="trip-page-itinerary-below-content">
-            <CreateBloks blokSection={itineraryBelowContent} />
           </div>
         )}
       </TripPageSectionWrapper>
