@@ -61,7 +61,7 @@ const TripFilterPage = (props) => {
                 level={1}
                 font="serif"
                 weight="bold"
-                className={styles.heading({ isShortTitle: title.length < 15 })}
+                className={styles.heading}
               >
                 {title}
               </Heading>
