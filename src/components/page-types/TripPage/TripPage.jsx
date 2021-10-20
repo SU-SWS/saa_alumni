@@ -40,6 +40,7 @@ const TripPage = (props) => {
       durationText,
       cost,
       tripSize,
+      minAge,
       status,
       inquireURL,
       reservationURL,
@@ -143,6 +144,7 @@ const TripPage = (props) => {
               durationText={durationText}
               cost={cost}
               tripSize={tripSize}
+              minAge={minAge}
               status={status}
               inquireURL={inquireURL}
               reservationURL={reservationURL}

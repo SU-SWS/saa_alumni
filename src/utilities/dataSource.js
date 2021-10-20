@@ -32,7 +32,7 @@ export const bgTextColorPairs = {
   plum: 'su-bg-plum su-text-white',
   'gradient-red':
     'su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white',
-  'use-bg-image': 'su-text-white',
+  'use-bg-image': 'su-bg-black su-text-white',
 };
 
 export const bgPositionVertical = {
@@ -99,6 +99,15 @@ export const objectPosition = {
 export const pageTextColors = {
   dark: 'su-text-black su-link-digital-red hover:su-link-sky-dark focus:su-link-sky-dark',
   light: 'su-text-white su-link-white hover:su-link-white focus:su-link-white',
+};
+
+export const posterGradients = {
+  'digital-red-plum-black':
+    'linear-gradient(240deg, rgba(24, 29, 28, 0.95) 10%, rgba(98, 0, 89, 0.85) 60%, rgb(177, 4, 14) 100%)',
+  'sky-dark-lagunita-dark-black':
+    'linear-gradient(240deg, rgba(24, 29, 28, 0.95) 10%, rgba(0, 107, 129, 0.85) 60%, rgb(1, 104, 149) 100%)',
+  'palo-verde-dark-palo-alto-dark-black':
+    'linear-gradient(240deg, rgba(24, 29, 28, 0.95) 10%, rgba(1, 66, 64, 0.85) 60%, rgb(1, 126, 124) 100%)',
 };
 
 export const smallPaddingBottom = {

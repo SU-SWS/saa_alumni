@@ -1,5 +1,19 @@
+import { dcnb } from 'cnbuilder';
+
 export const page =
-  'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black';
+  'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black su-basefont-23';
+export const header = 'su-basefont-23';
+export const headerContent = 'su-rs-mt-6 su-rs-mb-8';
+export const hero = 'su-aspect-w-5 su-aspect-h-2';
+export const heading = ({ isShortTitle }) =>
+  dcnb(
+    'su-text-white su-text-m4 md:su-text-m6 xl:su-text-m7 su-mx-auto su-text-center su-mb-02em',
+    {
+      '2xl:su-text-m8': isShortTitle,
+    }
+  );
+export const intro =
+  'su-text-white su-mx-auto su-text-center su-max-w-prose su-subheading su-leading-display';
 export const filterSection = 'su-cc su-rs-pb-6 su-items-start';
 export const filterSidebar =
   'su-bg-black-true su-px-18 xl:su-px-26 2xl:su-px-38 su-rs-pt-2 su-rs-pb-4';
