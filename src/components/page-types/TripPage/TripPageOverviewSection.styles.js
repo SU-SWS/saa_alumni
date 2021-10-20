@@ -2,7 +2,7 @@ export const main = 'su-cc su-rs-mb-9';
 export const content = 'su-basefont-23';
 export const body = 'su-type-1';
 export const summary =
-  'su-mt-36 md:su-mt-0 su-basefont-23 md:su-col-start-9 xl:su-col-start-10 md:su-mt-[-3.5em]';
+  'su-mt-36 su-basefont-23 md:su-col-start-9 xl:su-col-start-10 md:su-mt-[-3.5em]';
 export const summaryContent =
   'children:su-border-solid children:su-border-black-20 children:su-border-b';
 export const summaryItem =

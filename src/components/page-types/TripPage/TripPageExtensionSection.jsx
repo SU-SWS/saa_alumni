@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
+import { Grid, GridCell, Heading } from 'decanter-react';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
 import { TripPageSectionHeader } from './TripPageSectionHeader';
 import * as styles from './TripPageExtensionSection.styles';
+import * as overviewStyles from './TripPageOverviewSection.styles';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
+import { getDuration } from '../../../utilities/dates';
 
 export const TripPageExtensionSectionProps = {
   extendHeading: PropTypes.string,
@@ -21,7 +24,7 @@ export const TripPageExtensionSectionProps = {
   isCenterExtendHeader: PropTypes.bool,
 };
 
-export const TripPageExtensionSection = React.forwardRef((props, ref) => {
+export const TripPageExtensionSection = (props) => {
   const {
     extendHeading,
     extendIntro,
@@ -33,26 +36,74 @@ export const TripPageExtensionSection = React.forwardRef((props, ref) => {
     isCenterExtendHeader,
   } = props;
 
+  const extendDuration = useMemo(() => {
+    const { days: dayDuration } = getDuration(extendStartDate, extendEndDate);
+
+    if (dayDuration && dayDuration > 0) {
+      const days = Math.ceil(dayDuration);
+      const nights = days - 1;
+
+      return `${days} day${days === 1 ? '' : 's'}, ${nights} night${
+        nights === 1 ? '' : 's'
+      }`;
+    }
+    return '';
+  }, [extendStartDate, extendEndDate]);
+
   return (
-    <div ref={ref}>
-      <TripPageSectionWrapper isCenter={isCenterExtendHeader}>
-        <TripPageSectionHeader
-          isCenter={isCenterExtendHeader}
-          heading={extendHeading}
-          body={extendIntro}
-        />
-        {extendItinerary && extendItinerary.length > 0 && (
-          <div className={dcnb('trip-extension-itinerary', styles.itinerary)}>
-            <CreateBloks blokSection={extendItinerary} />
+    <TripPageSectionWrapper isCenter={isCenterExtendHeader}>
+      <TripPageSectionHeader
+        isCenter={isCenterExtendHeader}
+        heading={extendHeading}
+        body={extendIntro}
+      />
+      <Grid gap xs={12} className={styles.main}>
+        <GridCell
+          xs={12}
+          md={7}
+          xl={8}
+          xxl={7}
+          className={overviewStyles.content}
+        >
+          {hasRichText(extendBody) && (
+            <div className={dcnb('trip-extension-body')}>
+              <RichTextRenderer wysiwyg={extendBody} />
+            </div>
+          )}
+        </GridCell>
+        <GridCell xs={12} md={4} xl={3} className={styles.summary}>
+          <div className={overviewStyles.summaryContent}>
+            <div className={overviewStyles.summaryItem}>
+              <Heading level={3} className={overviewStyles.summaryName}>
+                Duration
+              </Heading>
+              <span className={overviewStyles.summaryValue}>
+                {extendDuration}
+              </span>
+            </div>
           </div>
-        )}
-        {hasRichText(extendBody) && (
-          <div className={dcnb('trip-extension-body', styles.body)}>
-            <RichTextRenderer wysiwyg={extendBody} />
-          </div>
-        )}
-      </TripPageSectionWrapper>
-    </div>
+          {extendPrice && (
+            <div className={overviewStyles.summaryContent}>
+              <div className={overviewStyles.summaryItem}>
+                <Heading level={3} className={overviewStyles.summaryName}>
+                  Price
+                </Heading>
+                <span className={overviewStyles.summaryValue}>
+                  {extendPrice}
+                </span>
+              </div>
+            </div>
+          )}
+        </GridCell>
+      </Grid>
+      {extendItinerary && extendItinerary.length > 0 && (
+        <div
+          className={dcnb('trip-extension-itinerary', overviewStyles.itinerary)}
+        >
+          <CreateBloks blokSection={extendItinerary} />
+        </div>
+      )}
+    </TripPageSectionWrapper>
   );
-});
+};
 TripPageExtensionSection.propTypes = TripPageExtensionSectionProps;
