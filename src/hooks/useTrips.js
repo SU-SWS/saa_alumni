@@ -74,7 +74,7 @@ export const createTrip = (id, refDate = new Date()) => {
   };
 };
 
-const generateTrips = (tripCount = 75) => {
+const generateTrips = (tripCount = 120) => {
   const trips = [];
   Array.from({ length: tripCount }).forEach((_, id) => {
     // Get refDate

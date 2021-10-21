@@ -39,6 +39,7 @@ export const Pagination = ({
                 className={styles.pageNavigationLink}
                 to={pageLink(currentPage - 1)}
                 onClick={() => focusElement('.filtered-trips-list')}
+                rel="prev"
               >
                 Previous
               </Link>
@@ -74,6 +75,7 @@ export const Pagination = ({
                 className={styles.pageNavigationLink}
                 to={pageLink(currentPage + 1)}
                 onClick={() => focusElement('.filtered-trips-list')}
+                rel="next"
               >
                 Next
               </Link>
