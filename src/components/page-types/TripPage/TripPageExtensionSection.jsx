@@ -39,9 +39,9 @@ export const TripPageExtensionSection = (props) => {
   const extendDuration = useMemo(() => {
     const { days: dayDuration } = getDuration(extendStartDate, extendEndDate);
 
-    if (dayDuration && dayDuration > 0) {
-      const days = Math.ceil(dayDuration);
-      const nights = days - 1;
+    if (dayDuration >= 0) {
+      const days = dayDuration + 1;
+      const nights = dayDuration;
 
       return `${days} day${days === 1 ? '' : 's'}, ${nights} night${
         nights === 1 ? '' : 's'
