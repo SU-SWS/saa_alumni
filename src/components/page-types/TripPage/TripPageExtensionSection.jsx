@@ -4,7 +4,6 @@ import { Grid, GridCell, Heading } from 'decanter-react';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
-import { TripPageSectionWrapper } from './TripPageSectionWrapper';
 import { TripPageSectionHeader } from './TripPageSectionHeader';
 import * as styles from './TripPageExtensionSection.styles';
 import * as overviewStyles from './TripPageOverviewSection.styles';
@@ -51,7 +50,7 @@ export const TripPageExtensionSection = (props) => {
   }, [extendStartDate, extendEndDate]);
 
   return (
-    <TripPageSectionWrapper isCenter={isCenterExtendHeader}>
+    <section className={styles.root}>
       <TripPageSectionHeader
         isCenter={isCenterExtendHeader}
         heading={extendHeading}
@@ -99,7 +98,7 @@ export const TripPageExtensionSection = (props) => {
       {getNumBloks(extendItinerary) > 0 && (
         <CreateBloks blokSection={extendItinerary} />
       )}
-    </TripPageSectionWrapper>
+    </section>
   );
 };
 TripPageExtensionSection.propTypes = TripPageExtensionSectionProps;
