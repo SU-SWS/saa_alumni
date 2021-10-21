@@ -43,7 +43,9 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
+    require("@tailwindcss/forms")({
+      strategy: 'class',
+    }),
     require('tailwindcss-children'),
     require('tailwindcss-interaction-variants'),
 
