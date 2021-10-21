@@ -92,6 +92,11 @@ const TripPage = (props) => {
     hasRichText(itineraryBody) ||
     getNumBloks(itineraryItems) > 0 ||
     getNumBloks(itineraryAboveContent) > 0;
+  const renderExtensionSection =
+    extendHeading !== '' ||
+    hasRichText(extendIntro) ||
+    hasRichText(extendBody) ||
+    getNumBloks(extendItinerary) > 0;
   const renderDetailsSection =
     detailsHeading !== '' ||
     hasRichText(detailsBody) ||
@@ -182,7 +187,7 @@ const TripPage = (props) => {
               />
             )}
             {/* Trip Extension */}
-            {extendHeading && (
+            {renderExtensionSection && (
               <TripPageExtensionSection
                 extendHeading={extendHeading}
                 extendIntro={extendIntro}
