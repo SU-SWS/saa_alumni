@@ -131,7 +131,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
               {minAge && (
                 <div className={styles.summaryItem}>
                   <Heading level={3} className={styles.summaryName}>
-                    Minimum age requirement
+                    Minimum age
                   </Heading>
                   <span className={styles.summaryValue}>{minAge} years</span>
                 </div>
