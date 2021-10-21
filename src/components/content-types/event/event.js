@@ -109,7 +109,7 @@ const Event = ({
   let headlineSize = 'su-type-1';
 
   if (isBigHeadline) {
-    headlineSize = dcnb('lg:su-type-2 xl:su-type-3', headlineSize);
+    headlineSize = 'su-type-2';
   }
 
   const iconClasses =

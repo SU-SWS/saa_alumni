@@ -26,12 +26,12 @@ const ItineraryItem = ({
   },
 }) => (
   <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-hidden last:children:children:last:su-pb-0 su-basefont-21">
-    <DrGrid className="su-grid-flow-col su-grid-cols-auto-1fr su-items-stretch su-w-full su-break-words su-gap-x-xs md:su-gap-x-[5rem] xl:su-gap-x-[9rem]">
+    <DrGrid className="su-grid-flow-col su-grid-cols-auto-1fr su-items-stretch su-w-full su-break-words su-gap-x-xs md:su-gap-x-[5rem] xl:su-gap-x-[7rem]">
       <GridCell aria-hidden="true">
         <FlexBox
           alignItems="center"
           justifyContent="center"
-          className="su-text-m1 md:su-text-m2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] xl:su-w-[13rem] xl:su-h-[13rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10"
+          className="su-text-m1 md:su-text-m2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] xl:su-w-[12rem] xl:su-h-[12rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10"
         >
           <FaIcon
             proFaIcon={icon}
@@ -39,7 +39,10 @@ const ItineraryItem = ({
             rotation={icon === 'shoe-prints' ? 270 : 0}
           />
         </FlexBox>
-        <div className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] xl:su-mt-[-13rem] su-z-0" />
+        <div
+          className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] xl:su-mt-[-12rem] su-z-0"
+          aria-hidden
+        />
       </GridCell>
       <GridCell className="md:su-pt-02em su-rs-pb-8 su-flex su-flex-col">
         {startDate && (
@@ -50,11 +53,7 @@ const ItineraryItem = ({
             className="su-rs-mb-1"
           />
         )}
-        <Heading
-          level={3}
-          font="serif"
-          className="su-mb-03em su-text-m3 xl:su-text-m4"
-        >
+        <Heading level={3} size={3} font="serif" className="su-mb-03em">
           {title}
         </Heading>
         <RichTextRenderer

@@ -10,10 +10,11 @@ export const TripPageSectionHeaderProps = {
   heading: PropTypes.string,
   body: SBRichTextType,
   isCenter: PropTypes.bool,
+  headingSize: PropTypes.string,
 };
 
 export const TripPageSectionHeader = (props) => {
-  const { heading, body, isCenter } = props;
+  const { heading, body, isCenter, headingSize } = props;
 
   return (
     <Container width="site" className={styles.sectionHeader({ isCenter })}>
@@ -21,7 +22,7 @@ export const TripPageSectionHeader = (props) => {
         level={3}
         font="serif"
         weight="bold"
-        className={styles.sectionHeading({ isCenter })}
+        className={styles.sectionHeading({ isCenter, headingSize })}
       >
         {heading}
       </Heading>
