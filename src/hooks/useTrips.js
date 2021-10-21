@@ -67,7 +67,7 @@ export const createTrip = (id, refDate = new Date()) => {
         name: '',
         title: '',
       },
-      region,
+      region: [region],
       experiences,
       tag,
     },
