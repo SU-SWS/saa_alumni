@@ -14,6 +14,7 @@ export const pageLink = ({ active } = {}) =>
       'su-text-digital-red-xlight': !active,
       'su-border-b-4 su-border-white su-text-white su-cursor-default su-pointer-events-none':
         active,
-    });
+    }
+  );
 export const pageNavigationLink =
   'su-text-20 su-no-underline su-font-regular su-self-center su-text-digital-red-xlight hocus:su-text-white su-mx-9 md:su-mx-11 hocus:su-border-b-4 hocus:su-border-white';

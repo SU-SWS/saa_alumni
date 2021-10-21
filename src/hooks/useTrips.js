@@ -81,10 +81,10 @@ const generateTrips = (tripCount = 120) => {
     const lastTrip = trips[trips.length - 1];
     const refDate = lastTrip
       ? new Date(
-        faker.datatype.boolean
-          ? lastTrip.content.startDate
-          : lastTrip.content.endDate
-      )
+          faker.datatype.boolean
+            ? lastTrip.content.startDate
+            : lastTrip.content.endDate
+        )
       : undefined;
     trips.push(createTrip(id, refDate));
   });
