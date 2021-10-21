@@ -82,6 +82,8 @@ const ItineraryItem = ({
               size="medium_2x1"
               loading="lazy"
               smartFocus={focus}
+              width="814"
+              height="407"
             />
           </CaptionMedia>
         )}
