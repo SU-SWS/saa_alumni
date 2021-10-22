@@ -13,6 +13,7 @@ import { TripPageHeroSection } from './TripPageHeroSection';
 import { TripPageOverviewSection } from './TripPageOverviewSection';
 import { TripPageFacultySection } from './TripPageFacultySection';
 import { TripPageItinerarySection } from './TripPageItinerarySection';
+import { TripPageExtensionSection } from './TripPageExtensionSection';
 import { TripPageDetailsSection } from './TripPageDetailsSection';
 import { TripPageSectionNav } from './TripPageSectionNav';
 import { TripPageRelatedTripsSection } from './TripPageRelatedTripsSection';
@@ -54,9 +55,17 @@ const TripPage = (props) => {
       itineraryHeading,
       itineraryBody,
       itineraryAboveContent,
-      itineraryBelowContent,
       itineraryItems,
       isCenterItineraryHeader,
+      // Trip Extension Section
+      extendHeading,
+      extendIntro,
+      extendBody,
+      extendStartDate,
+      extendEndDate,
+      extendPrice,
+      extendItinerary,
+      isCenterExtendHeader,
       // Details Section
       detailsHeading,
       detailsBody,
@@ -82,8 +91,12 @@ const TripPage = (props) => {
     itineraryHeading !== '' ||
     hasRichText(itineraryBody) ||
     getNumBloks(itineraryItems) > 0 ||
-    getNumBloks(itineraryAboveContent) > 0 ||
-    getNumBloks(itineraryBelowContent) > 0;
+    getNumBloks(itineraryAboveContent) > 0;
+  const renderExtensionSection =
+    extendHeading !== '' ||
+    hasRichText(extendIntro) ||
+    hasRichText(extendBody) ||
+    getNumBloks(extendItinerary) > 0;
   const renderDetailsSection =
     detailsHeading !== '' ||
     hasRichText(detailsBody) ||
@@ -169,9 +182,21 @@ const TripPage = (props) => {
                 itineraryBody={itineraryBody}
                 itineraryItems={itineraryItems}
                 itineraryAboveContent={itineraryAboveContent}
-                itineraryBelowContent={itineraryBelowContent}
                 isCenterItineraryHeader={isCenterItineraryHeader}
                 ref={sectionRefs[3]}
+              />
+            )}
+            {/* Trip Extension */}
+            {renderExtensionSection && (
+              <TripPageExtensionSection
+                extendHeading={extendHeading}
+                extendIntro={extendIntro}
+                extendBody={extendBody}
+                extendItinerary={extendItinerary}
+                extendStartDate={extendStartDate}
+                extendEndDate={extendEndDate}
+                extendPrice={extendPrice}
+                isCenterExtendHeader={isCenterExtendHeader}
               />
             )}
             {/* Details Section */}
