@@ -30,9 +30,8 @@ export const Pagination = ({
     mobile,
   });
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    scrollTo('.filtered-trips-list');
+  const handleClick = () => {
+    scrollTo('#filtered-trips-list');
     focusElement('.filtered-trips-list');
   };
 
@@ -63,8 +62,8 @@ export const Pagination = ({
               ) : (
                 <Link
                   className={styles.pageLink({ active: page === currentPage })}
-                  to={pageLink(page)}
                   onClick={page !== currentPage && handleClick}
+                  to={pageLink(page)}
                 >
                   {page}
                   {currentPage === page && (
