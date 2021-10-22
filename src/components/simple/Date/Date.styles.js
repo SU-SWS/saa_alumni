@@ -26,9 +26,7 @@ export const day = ({ isSmall }) =>
     'md:su-text-m4': !isSmall,
   });
 export const dash = ({ isSmall }) =>
-  dcnb(
-    'su-relative su-px-03em su-font-bold su-leading-trim su-top-11 su-text-m2',
-    {
-      'md:su-top-7 md:su-text-m4': !isSmall,
-    }
-  );
+  dcnb('su-relative su-font-bold su-leading-trim su-top-11 su-text-m2', {
+    'su-px-03em': isSmall,
+    'md:su-top-7 md:su-text-m4 su-px-01em': !isSmall,
+  });
