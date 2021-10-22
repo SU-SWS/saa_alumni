@@ -43,7 +43,7 @@ export const Pagination = ({
             <li className={styles.pageItem()}>
               <Link
                 className={styles.pageNavigationLink}
-                to={pageLink(currentPage - 1)}
+                to={`${pageLink(currentPage - 1)}#filtered-trips-list`}
                 onClick={handleClick}
                 rel="prev"
               >
@@ -63,7 +63,7 @@ export const Pagination = ({
                 <Link
                   className={styles.pageLink({ active: page === currentPage })}
                   onClick={page !== currentPage && handleClick}
-                  to={pageLink(page)}
+                  to={`${pageLink(page)}#filtered-trips-list`}
                 >
                   {page}
                   {currentPage === page && (
@@ -77,7 +77,7 @@ export const Pagination = ({
             <li className={styles.pageItem()}>
               <Link
                 className={styles.pageNavigationLink}
-                to={pageLink(currentPage + 1)}
+                to={`${pageLink(currentPage + 1)}#filtered-trips-list`}
                 onClick={handleClick}
                 rel="next"
               >
