@@ -19,7 +19,6 @@
     "cnbuilder": "^2.7.1",
     "decanter": "^7.0.0-beta.2",
     "decanter-react": "^1.1.1",
-    "faker": "^5.5.3",
     "gatsby": "^3.14.0",
     "gatsby-link": "^3.14.0",
     "gatsby-plugin-fontawesome-css": "^1.1.0",
