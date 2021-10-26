@@ -26,18 +26,21 @@ const storyblokRelations = [
 // Support for Gatsby CLI
 let siteUrl = 'http://localhost:8000';
 
+console.log(`Using Netlify Context "${process.env.CONTEXT}"`);
 // Support for Production site builds.
 if (process.env.CONTEXT === 'production') {
   siteUrl = process.env.URL;
 }
 // Support for non-production netlify builds (branch/preview)
 else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY) {
+  console.log('DEPLOY_PRIME_URL', process.env.DEPLOY_PRIME_URL);
   siteUrl = process.env.DEPLOY_PRIME_URL;
 }
 // Support for Netlify CLI.
 else if (process.env.NETLIFY_DEV === true) {
   siteUrl = 'http://localhost:64946';
 }
+console.log(`Setting siteUrl to ${siteUrl}`);
 
 module.exports = {
   siteMetadata: {
