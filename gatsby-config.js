@@ -95,7 +95,8 @@ module.exports = {
         ],
         // eslint-disable-next-line consistent-return
         filterPages: (page) => {
-          if (page.pageContext.isCanonical && !page.pageContext.noIndex) {
+          // Return true excludes the path, false keeps it.
+          if (!page.pageContext.isCanonical && page.pageContext.noIndex) {
             return true;
           }
         },
