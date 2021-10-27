@@ -94,9 +94,19 @@ module.exports = {
           `/403`,
         ],
         // eslint-disable-next-line consistent-return
-        filterPages: (page) => {
+        filterPages: (page, excludedRoute, tools) => {
           // Return true excludes the path, false keeps it.
-          if (!page.pageContext.isCanonical && page.pageContext.noIndex) {
+          if (
+            // Exclude non-canonical pages.
+            !page.pageContext.isCanonical ||
+            // Exclude pages marked with "noindex"
+            page.pageContext.noIndex ||
+            // Exclude pages that match the "excludes" array. (default condition)
+            tools.minimatch(
+              tools.withoutTrailingSlash(tools.resolvePagePath(page)),
+              tools.withoutTrailingSlash(excludedRoute)
+            )
+          ) {
             return true;
           }
         },
