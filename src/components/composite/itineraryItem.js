@@ -31,7 +31,7 @@ const ItineraryItem = ({
         <FlexBox
           alignItems="center"
           justifyContent="center"
-          className="su-text-m1 md:su-text-m2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] xl:su-w-[12rem] xl:su-h-[12rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10"
+          className="su-text-m1 md:su-text-m2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10"
         >
           <FaIcon
             proFaIcon={icon}
@@ -40,7 +40,7 @@ const ItineraryItem = ({
           />
         </FlexBox>
         <div
-          className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] xl:su-mt-[-12rem] su-z-0"
+          className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] su-z-0"
           aria-hidden
         />
       </GridCell>
@@ -82,6 +82,8 @@ const ItineraryItem = ({
               size="medium_2x1"
               loading="lazy"
               smartFocus={focus}
+              width="814"
+              height="407"
             />
           </CaptionMedia>
         )}

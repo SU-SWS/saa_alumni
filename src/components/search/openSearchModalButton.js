@@ -12,7 +12,7 @@ const OpenSearchModalButton = ({ modalOpen, setModalOpen, id }) => (
     <span className="su-sr-only lg:su-not-sr-only su-leading-none">Search</span>
     <SearchIcon
       aria-hidden="true"
-      className="su-inline-block su-w-[2.2rem] lg:su-w-20 lg:su-ml-6"
+      className="su-inline-block su-relative su--top-1 su-w-[2.2rem] lg:su-w-20 lg:su-ml-6"
     />
   </button>
 );

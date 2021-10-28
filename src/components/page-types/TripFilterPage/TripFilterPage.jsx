@@ -14,6 +14,8 @@ import FaIcon from '../../simple/faIcon';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 import Ankle from '../../partials/ankle/ankle';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
+import useWindowSize from '../../../hooks/useWindowSize';
+import { breakpoints } from '../../../contexts/GlobalContext';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -37,6 +39,7 @@ const TripFilterPage = (props) => {
     totalPages,
     getPageLink,
   } = useTripFilters(primaryFilter);
+  const screenSize = useWindowSize();
 
   return (
     <SbEditable content={blok}>
@@ -61,7 +64,7 @@ const TripFilterPage = (props) => {
                 level={1}
                 font="serif"
                 weight="bold"
-                className={styles.heading({ isShortTitle: title.length < 13 })}
+                className={styles.heading}
               >
                 {title}
               </Heading>
@@ -150,6 +153,7 @@ const TripFilterPage = (props) => {
                       currentPage={page}
                       totalPages={totalPages}
                       pageLink={getPageLink}
+                      mobile={screenSize.width < breakpoints.md}
                     />
                   </div>
                 )}

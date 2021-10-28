@@ -30,7 +30,7 @@ export const TripPageHeroSection = React.forwardRef((props, ref) => {
               level={1}
               font="serif"
               weight="bold"
-              className={styles.title}
+              className={styles.title({ isShortTitle: title.length < 15 })}
             >
               {title}
             </Heading>

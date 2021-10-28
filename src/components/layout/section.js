@@ -54,7 +54,7 @@ const Section = ({
     isDarkSection = true;
   }
 
-  let headlineSize = 'su-type-4 lg:su-type-5';
+  let headlineSize = 'su-type-5';
 
   if (titleSize === 'sm') {
     headlineSize = 'su-type-3';

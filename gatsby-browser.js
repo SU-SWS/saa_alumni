@@ -35,6 +35,7 @@ export const shouldUpdateScroll = (ctx) => {
     'trip-month=',
     'trip-duration=',
     'trip-experience=',
+    'page=',
   ];
   if (
     location.pathname === prevLocation.pathname &&
