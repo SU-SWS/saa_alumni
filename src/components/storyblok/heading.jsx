@@ -6,7 +6,7 @@ import {
   smallPaddingBottom,
 } from '../../utilities/dataSource';
 
-const Heading = ({
+export const SBHeading = ({
   blok: { title, fontSize, headingLevel, spacingBottom, spacingTop },
 }) => {
   const paddingTop = smallPaddingTop[spacingTop] ?? smallPaddingTop.lg;
@@ -25,5 +25,3 @@ const Heading = ({
     </DecanterHeading>
   );
 };
-
-export default Heading;
