@@ -195,3 +195,16 @@ export const mediaAspectRatio = {
   '4x3': 'su-aspect-w-4 su-aspect-h-3',
   '1x1': 'su-aspect-w-1 su-aspect-h-1',
 };
+
+export const superheadStyles = {
+  'gradient-underline': {
+    light:
+      'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid hocus:su-no-gradient-border',
+    dark: 'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border',
+  },
+  'red-back-link': {
+    light:
+      'su-text-digital-red-light hocus:su-text-cardinal-red su-underline-offset hocus:su-underline',
+    dark: 'su-text-digital-red-xlight hocus:su-text-white su-underline-offset hocus:su-underline',
+  },
+};
