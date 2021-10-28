@@ -31,6 +31,11 @@ export const TripContent = PropTypes.shape({
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
   overviewBelowContent: SBBlokType,
+  hideFacultySection: PropTypes.bool,
+  hideItinerarySection: PropTypes.bool,
+  hideDetailsSection: PropTypes.bool,
+  hideExtensionSection: PropTypes.bool,
+  hideRelatedTrips: PropTypes.bool,
   // TODO: Add additional SB trip entity field types for comprehensive type checking
 });
 
