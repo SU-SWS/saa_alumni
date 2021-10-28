@@ -38,7 +38,6 @@ const TripPage = (props) => {
       overviewBody,
       startDate,
       endDate,
-      durationText,
       cost,
       tripSize,
       minAge,
@@ -64,6 +63,7 @@ const TripPage = (props) => {
       extendStartDate,
       extendEndDate,
       extendPrice,
+      extendTripSize,
       extendItinerary,
       isCenterExtendHeader,
       // Details Section
@@ -154,7 +154,6 @@ const TripPage = (props) => {
               overviewBody={overviewBody}
               startDate={startDate}
               endDate={endDate}
-              durationText={durationText}
               cost={cost}
               tripSize={tripSize}
               minAge={minAge}
@@ -196,6 +195,7 @@ const TripPage = (props) => {
                 extendStartDate={extendStartDate}
                 extendEndDate={extendEndDate}
                 extendPrice={extendPrice}
+                extendTripSize={extendTripSize}
                 isCenterExtendHeader={isCenterExtendHeader}
               />
             )}
