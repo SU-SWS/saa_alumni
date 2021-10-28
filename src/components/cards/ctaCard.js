@@ -16,10 +16,10 @@ const CtaCard = ({
       )}
     >
       <Heading
-        level={parseInt(headingLevel, 10) ?? '3'}
+        level={parseInt(headingLevel, 10) || 3}
         font="sans"
         weight="bold"
-        size="2"
+        size={2}
         className={dcnb(
           'su-mb-0 su-text-white hocus:su-text-white hocus:su-no-underline'
         )}

@@ -30,6 +30,7 @@ export const TripPageRelatedTripsSection = (props) => {
       <TripPageSectionHeader
         isCenter
         heading={`Related Trip${numTrips > 1 ? 's' : ''}`}
+        headingSize="small"
       />
       <WidthBox width={tripGridWidth}>
         <DrGrid

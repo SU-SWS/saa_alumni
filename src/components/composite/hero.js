@@ -22,12 +22,12 @@ const Hero = ({
   },
   blok,
 }) => {
-  let heroHeadlineSize = 'md:su-text-m5 lg:su-text-m7 su-mx-auto su-max-w-900';
+  let heroHeadlineSize = 'su-type-7 su-mx-auto su-max-w-900';
 
   if (headlineSize === 'large') {
-    heroHeadlineSize = 'md:su-text-m6 lg:su-text-m8';
+    heroHeadlineSize = 'su-type-8';
   } else if (headlineSize === 'small') {
-    heroHeadlineSize = 'md:su-text-m5 lg:su-text-m6 su-mx-auto su-max-w-900';
+    heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
   let gradientFrom = 'su-from-transparent';
@@ -71,19 +71,19 @@ const Hero = ({
             {(sansSuper || serifSuper || headline || sansSub) && (
               <FlexCell className="su-text-center su-text-white">
                 {sansSuper && (
-                  <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-m2 su-text-shadow-md md:su-text-m4 su-mx-auto su-mb-01em">
+                  <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
                     {sansSuper}
                   </span>
                 )}
                 {serifSuper && (
-                  <span className="su-block su-max-w-prose su-font-serif su-leading-display su-text-m1 md:su-text-m2 su-text-shadow su-mx-auto su-mb-05em">
+                  <span className="su-block su-max-w-prose su-font-serif su-leading-display su-type-2 su-text-shadow su-mx-auto su-mb-05em">
                     {serifSuper}
                   </span>
                 )}
                 {headline && (
                   <span
                     className={dcnb(
-                      'su-block su-font-bold su-font-serif su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em su-text-m4',
+                      'su-block su-font-bold su-font-serif su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em',
                       heroHeadlineSize
                     )}
                   >
@@ -91,7 +91,7 @@ const Hero = ({
                   </span>
                 )}
                 {sansSub && (
-                  <p className="su-max-w-prose su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mx-auto su-mb-0">
+                  <p className="su-max-w-prose su-type-1 su-leading-display su-text-shadow su-mx-auto su-mb-0">
                     {sansSub}
                   </p>
                 )}

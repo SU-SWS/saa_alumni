@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import { usePaginationLinks } from '../../../hooks/usePaginationLinks';
 import { focusElement } from '../../../utilities/dom';
 import * as styles from './Pagination.styles';
@@ -29,6 +30,11 @@ export const Pagination = ({
     mobile,
   });
 
+  const handleClick = () => {
+    scrollTo('#filtered-trips-list');
+    focusElement('.filtered-trips-list');
+  };
+
   return (
     <nav aria-label={ariaLabel} className={styles.root}>
       <div className={styles.listWrapper}>
@@ -38,7 +44,8 @@ export const Pagination = ({
               <Link
                 className={styles.pageNavigationLink}
                 to={pageLink(currentPage - 1)}
-                onClick={() => focusElement('.filtered-trips-list')}
+                onClick={handleClick}
+                rel="prev"
               >
                 Previous
               </Link>
@@ -55,10 +62,8 @@ export const Pagination = ({
               ) : (
                 <Link
                   className={styles.pageLink({ active: page === currentPage })}
+                  onClick={page !== currentPage && handleClick}
                   to={pageLink(page)}
-                  onClick={() =>
-                    page !== currentPage && focusElement('.filtered-trips-list')
-                  }
                 >
                   {page}
                   {currentPage === page && (
@@ -73,7 +78,8 @@ export const Pagination = ({
               <Link
                 className={styles.pageNavigationLink}
                 to={pageLink(currentPage + 1)}
-                onClick={() => focusElement('.filtered-trips-list')}
+                onClick={handleClick}
+                rel="next"
               >
                 Next
               </Link>

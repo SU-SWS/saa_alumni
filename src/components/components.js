@@ -53,6 +53,8 @@ import SimpleImage from './media/simpleImage';
 import Story from './content-types/story/story';
 import StoryCard from './cards/storyCard';
 import { SBTripCard } from './storyblok/tripCard';
+import { SBTsContentPicker } from './storyblok/tsContentPicker';
+import { SBTsContentTemplate } from './storyblok/tsContentTemplate';
 import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
 import TripPage from './page-types/TripPage/TripPage';
 import { SBUtilityNav } from './storyblok/utilityNav';
@@ -118,6 +120,8 @@ const ComponentList = {
   trip: TripPage,
   tripCard: SBTripCard,
   tripFilterPage: TripFilterPage,
+  tsContentPicker: SBTsContentPicker,
+  tsContentTemplate: SBTsContentTemplate,
   utilityNav: SBUtilityNav,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,

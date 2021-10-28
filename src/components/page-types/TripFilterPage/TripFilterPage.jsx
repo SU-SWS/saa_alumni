@@ -14,6 +14,8 @@ import FaIcon from '../../simple/faIcon';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 import Ankle from '../../partials/ankle/ankle';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
+import useWindowSize from '../../../hooks/useWindowSize';
+import { breakpoints } from '../../../contexts/GlobalContext';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -37,6 +39,7 @@ const TripFilterPage = (props) => {
     totalPages,
     getPageLink,
   } = useTripFilters(primaryFilter);
+  const screenSize = useWindowSize();
 
   return (
     <SbEditable content={blok}>
@@ -47,27 +50,25 @@ const TripFilterPage = (props) => {
           className={styles.page}
           width="full"
         >
-          <header className="su-basefont-23">
+          <header className={styles.header}>
             <HeroImage
               filename={filename}
               alt={alt}
               focus={focus}
               overlay={false}
               aspectRatio="5x2"
-              className="su-aspect-w-5 su-aspect-h-2"
+              className={styles.hero}
             />
-            <Container className="su-rs-mt-6 su-rs-mb-8">
+            <Container className={styles.headerContent}>
               <Heading
                 level={1}
                 font="serif"
                 weight="bold"
-                className="su-text-white su-text-m4 md:su-text-m6 xl:su-text-m7 2xl:su-text-m8 su-mx-auto su-text-center su-mb-02em"
+                className={styles.heading}
               >
                 {title}
               </Heading>
-              <p className="su-text-white su-mx-auto su-text-center su-max-w-prose su-subheading su-leading-display">
-                {intro}
-              </p>
+              <p className={styles.intro}>{intro}</p>
             </Container>
           </header>
           <Grid xs={12} gap className={styles.filterSection}>
@@ -152,6 +153,7 @@ const TripFilterPage = (props) => {
                       currentPage={page}
                       totalPages={totalPages}
                       pageLink={getPageLink}
+                      mobile={screenSize.width < breakpoints.md}
                     />
                   </div>
                 )}

@@ -32,7 +32,7 @@ export const bgTextColorPairs = {
   plum: 'su-bg-plum su-text-white',
   'gradient-red':
     'su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white',
-  'use-bg-image': 'su-text-white',
+  'use-bg-image': 'su-bg-black su-text-white',
 };
 
 export const bgPositionVertical = {
@@ -99,6 +99,15 @@ export const objectPosition = {
 export const pageTextColors = {
   dark: 'su-text-black su-link-digital-red hover:su-link-sky-dark focus:su-link-sky-dark',
   light: 'su-text-white su-link-white hover:su-link-white focus:su-link-white',
+};
+
+export const posterGradients = {
+  'digital-red-plum-black':
+    'linear-gradient(240deg, rgba(24, 29, 28, 0.95) 10%, rgba(98, 0, 89, 0.85) 60%, rgb(177, 4, 14) 100%)',
+  'sky-dark-lagunita-dark-black':
+    'linear-gradient(240deg, rgba(24, 29, 28, 0.95) 10%, rgba(0, 107, 129, 0.85) 60%, rgb(1, 104, 149) 100%)',
+  'palo-verde-dark-palo-alto-dark-black':
+    'linear-gradient(240deg, rgba(24, 29, 28, 0.95) 10%, rgba(1, 66, 64, 0.85) 60%, rgb(1, 126, 124) 100%)',
 };
 
 export const smallPaddingBottom = {
@@ -185,4 +194,17 @@ export const mediaAspectRatio = {
   '16x9': 'su-aspect-w-16 su-aspect-h-9',
   '4x3': 'su-aspect-w-4 su-aspect-h-3',
   '1x1': 'su-aspect-w-1 su-aspect-h-1',
+};
+
+export const superheadStyles = {
+  'gradient-underline': {
+    light:
+      'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid hocus:su-no-gradient-border',
+    dark: 'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border',
+  },
+  'red-back-link': {
+    light:
+      'su-text-digital-red-light hocus:su-text-cardinal-red su-underline-offset hocus:su-underline',
+    dark: 'su-text-digital-red-xlight hocus:su-text-white su-underline-offset hocus:su-underline',
+  },
 };

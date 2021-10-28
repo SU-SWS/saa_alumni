@@ -3,6 +3,7 @@ import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { VideoCameraIcon, MicrophoneIcon } from '@heroicons/react/outline';
 import {
+  ArrowLeftIcon,
   ArrowRightIcon,
   ChevronDownIcon,
   ChevronRightIcon,
@@ -34,6 +35,11 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
       animate:
         'group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em',
     },
+    'arrow-left': {
+      heroicon: ArrowLeftIcon,
+      baseStyle: 'su-w-08em su-mr-03em su--mt-02em',
+      animate: 'group-hocus:su--translate-x-02em',
+    },
     'arrow-right': {
       heroicon: ArrowRightIcon,
       baseStyle: 'su-w-08em su-ml-03em su--mt-02em',
@@ -61,7 +67,7 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
     },
   };
 
-  const Icon = heroIconMap[iconType].heroicon;
+  const Icon = heroIconMap[iconType]?.heroicon;
   let animateStyle = '';
 
   if (isAnimate) {

@@ -25,6 +25,7 @@ export const TripPageOverviewSectionProps = {
   durationText: PropTypes.string,
   cost: SBRichTextType,
   tripSize: PropTypes.string,
+  minAge: PropTypes.string,
   status: PropTypes.oneOf(['notify', 'reserve']),
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
@@ -41,6 +42,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     durationText,
     cost,
     tripSize,
+    minAge,
     status,
     reservationURL,
     inquireURL,
@@ -51,16 +53,18 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     const end = getDate(endDate);
     return `${start.month} ${start.day}${
       start.year !== end.year ? `, ${start.year}` : ''
-    } - ${end.month} ${end.day}, ${end.year}`;
+    } - ${
+      end.month === start.month && end.year === start.year ? '' : end.month
+    } ${end.day}, ${end.year}`;
   }, [startDate, endDate]);
   const tripDuration = useMemo(() => {
     if (durationText) return durationText;
 
     const { days: dayDuration } = getDuration(startDate, endDate);
 
-    if (dayDuration && dayDuration > 0) {
-      const days = dayDuration;
-      const nights = dayDuration - 1;
+    if (dayDuration >= 0) {
+      const days = dayDuration + 1;
+      const nights = dayDuration;
 
       return `${days} day${days === 1 ? '' : 's'}, ${nights} night${
         nights === 1 ? '' : 's'
@@ -121,7 +125,17 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                   <Heading level={3} className={styles.summaryName}>
                     Trip size
                   </Heading>
-                  <span className={styles.summaryValue}>{tripSize}</span>
+                  <span className={styles.summaryValue}>
+                    {tripSize} participants
+                  </span>
+                </div>
+              )}
+              {minAge && (
+                <div className={styles.summaryItem}>
+                  <Heading level={3} className={styles.summaryName}>
+                    Minimum age
+                  </Heading>
+                  <span className={styles.summaryValue}>{minAge} years</span>
                 </div>
               )}
             </div>
@@ -129,12 +143,12 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
               {status === 'notify' && inquireURL?.cached_url && (
                 <div>
                   <Heading level={3} className={styles.summaryName}>
-                    Reservations are not yet open for this destination.
+                    Ready to go? Looking for more information?
                   </Heading>
                   <span className={styles.summaryValue}>
-                    Inquire now for the best chance at securing a spot. We’ll
-                    notify you as soon as details are available and the trip is
-                    open for registration.
+                    Reservations aren’t yet open for this trip. Request to be
+                    notified when more details are available and reservations
+                    open.
                   </span>
                 </div>
               )}

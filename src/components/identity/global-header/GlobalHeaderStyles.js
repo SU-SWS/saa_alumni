@@ -12,7 +12,7 @@ export const root = ({ hasHero, isDark } = {}) =>
   );
 export const logo = 'su-w-[13rem] xl:su-w-[16.5rem]';
 export const logoWrapper =
-  'su-w-fit su-px-14 su-pt-12 su-pb-10 xl:su-px-16 xl:su-pt-14 xl:su-pb-12 su-bg-cardinal-red';
+  'su-w-fit su-px-14 su-py-12 xl:su-px-17 su-bg-cardinal-red';
 export const utilWrapper = 'su-flex su-flex-grow su-rs-mt-0';
 export const utilNav = 'su-inline-block su-text-right su-flex-grow';
 export const utilNavMenu =

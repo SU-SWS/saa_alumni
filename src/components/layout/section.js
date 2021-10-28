@@ -2,7 +2,6 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import { Container, Heading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
-import { render } from 'storyblok-rich-text-react-renderer';
 import CreateBloks from '../../utilities/createBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import getNumBloks from '../../utilities/getNumBloks';
@@ -10,8 +9,11 @@ import {
   largePaddingTop,
   largePaddingBottom,
   bgTextColorPairs,
+  superheadStyles,
 } from '../../utilities/dataSource';
 import SbLink from '../../utilities/sbLink';
+import hasRichText from '../../utilities/hasRichText';
+import HeroIcon from '../simple/heroIcon';
 
 const Section = ({
   blok: {
@@ -23,10 +25,11 @@ const Section = ({
     cta,
     content,
     isLeftAlign,
+    superheadStyle = 'gradient-underline',
     titleSize,
     isSrOnlyTitle,
     isLessHeaderSpacing,
-    bgColor,
+    bgColor = 'white',
     spacingTop,
     spacingBottom,
     id,
@@ -34,27 +37,27 @@ const Section = ({
   blok,
 }) => {
   const numCta = getNumBloks(cta);
-  const renderedIntro = render(intro);
-  const numIntro = getNumBloks(renderedIntro);
-  const hasHeader = (title && !isSrOnlyTitle) || numIntro > 0 || superhead;
+  const hasHeader =
+    (title && !isSrOnlyTitle) || hasRichText(intro) || superhead;
 
-  const sectionBgColor = bgTextColorPairs[bgColor] ?? bgTextColorPairs.white;
+  const sectionBgColor = bgTextColorPairs[bgColor];
   let alignment = 'su-text-center';
   let bodyAlign = 'su-mx-auto';
   let headlineAlign = 'su-mx-auto';
 
-  let superLinkColor =
-    'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue';
+  let superLinkStyle = superheadStyles[superheadStyle].light;
+  let backIconColor =
+    'su-text-digital-red-light group-hocus:su-text-cardinal-red';
 
   let isDarkSection = false;
 
   if (bgColor === 'black') {
-    superLinkColor =
-      'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light';
+    superLinkStyle = superheadStyles[superheadStyle].dark;
+    backIconColor = 'su-text-digital-red-xlight group-hocus:su-text-white';
     isDarkSection = true;
   }
 
-  let headlineSize = 'su-type-4 lg:su-type-5';
+  let headlineSize = 'su-type-5';
 
   if (titleSize === 'sm') {
     headlineSize = 'su-type-3';
@@ -74,9 +77,8 @@ const Section = ({
     headlineAlign = 'su-ml-0';
   }
 
-  const paddingTop = largePaddingTop[spacingTop] ?? largePaddingTop.lg;
-  const paddingBottom =
-    largePaddingBottom[spacingBottom] ?? largePaddingBottom.lg;
+  const paddingTop = largePaddingTop[spacingTop];
+  const paddingBottom = largePaddingBottom[spacingBottom];
 
   return (
     <SbEditable content={blok}>
@@ -91,20 +93,32 @@ const Section = ({
       >
         {hasHeader && (
           <header className={dcnb('su-cc', alignment, headerSpacing)}>
-            {superhead && (
+            {superhead && superLink?.cached_url && (
               <SbLink
                 link={superLink}
                 classes={dcnb(
-                  'su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border',
-                  superLinkColor
+                  'su-group su-inline-block su-rs-mb-6 su-pb-6 su-no-underline su-transition-colors',
+                  superLinkStyle
                 )}
               >
+                {superheadStyle === 'red-back-link' && (
+                  <HeroIcon
+                    iconType="arrow-left"
+                    className={dcnb('su-inline-block', backIconColor)}
+                    isAnimate
+                  />
+                )}
                 {superhead}
               </SbLink>
             )}
+            {superhead && !superLink?.cached_url && (
+              <span className="su-block su-font-semibold su-rs-mb-6">
+                {superhead}
+              </span>
+            )}
             {title && (
               <Heading
-                level={parseInt(headingLevel, 10) ?? 2}
+                level={parseInt(headingLevel, 10) || 2}
                 font="serif"
                 weight="bold"
                 className={dcnb(
@@ -117,7 +131,7 @@ const Section = ({
                 {title}
               </Heading>
             )}
-            {numIntro > 0 && (
+            {hasRichText(intro) && (
               <div
                 className={dcnb('su-big-paragraph su-max-w-prose', bodyAlign)}
               >
