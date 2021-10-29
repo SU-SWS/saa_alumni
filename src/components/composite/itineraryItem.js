@@ -59,24 +59,48 @@ const ItineraryItem = ({
             wysiwyg={description}
             className="su-basefont-23 last:su-mb-0 children:su-leading-snug"
           />
-          {hotel && (
-            <FlexBox direction="row" alignItems="start" className="su-rs-mt-1">
-              <div className="su-w-fit su-flex-shrink-0 su-mt-[-0.15em] su-mr-06em">
-                <FaIcon proFaIcon="bed" isOutline fixedWidth />
-              </div>
-              <span className="su-leading-display">Accommodation: {hotel}</span>
-            </FlexBox>
-          )}
-          {meals.length > 0 && (
-            <FlexBox direction="row" alignItems="start" className="su-rs-mt-1">
-              <div className="su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
-                <FaIcon proFaIcon="utensils" isOutline fixedWidth />
-              </div>
-              <span className="su-leading-display">
-                {`Included meal${meals.length > 1 ? 's' : ''}:
-                ${mealsFormatted}`}
-              </span>
-            </FlexBox>
+          {(hotel || meals.length > 0) && (
+            <div className="su-rs-mt-1">
+              {hotel && (
+                <FlexBox
+                  direction="row"
+                  alignItems="start"
+                  className="su-mb-04em last:su-mb-0"
+                >
+                  <div className="su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                    <FaIcon
+                      proFaIcon="bed"
+                      className="!su-w-[1.15em]"
+                      isOutline
+                      fixedWidth
+                    />
+                  </div>
+                  <span className="su-leading-display">
+                    Accommodation: {hotel}
+                  </span>
+                </FlexBox>
+              )}
+              {meals.length > 0 && (
+                <FlexBox
+                  direction="row"
+                  alignItems="start"
+                  className="su-mb-04em last:su-mb-0"
+                >
+                  <div className="su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                    <FaIcon
+                      proFaIcon="utensils"
+                      className="!su-w-[1.15em]"
+                      isOutline
+                      fixedWidth
+                    />
+                  </div>
+                  <span className="su-leading-display">
+                    {`Included meal${meals.length > 1 ? 's' : ''}:
+                    ${mealsFormatted}`}
+                  </span>
+                </FlexBox>
+              )}
+            </div>
           )}
           {filename && (
             <CaptionMedia
