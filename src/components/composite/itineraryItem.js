@@ -19,7 +19,10 @@ const ItineraryItem = ({
     caption,
   },
 }) => {
-  const mealsString = meals.join(', ');
+  const mealsString = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(
+    meals.length < 2 ? '' : ' and '
+  );
+
   const mealsFormatted =
     mealsString.charAt(0).toUpperCase() + mealsString.slice(1);
 
