@@ -106,7 +106,7 @@ export const TripPageSectionNav = (props) => {
           {renderPricingSection && (
             <li className={styles.listItem}>
               <a
-                href="#trip-pricing-section"
+                href="#pricing-section"
                 className={styles.link({ isActive: activeSection === 5 })}
                 aria-current={activeSection === 5}
               >
@@ -198,7 +198,7 @@ export const TripPageSectionNav = (props) => {
               {renderPricingSection && (
                 <li className={styles.listItemMobile}>
                   <a
-                    href="#trip-pricing-section"
+                    href="#pricing-section"
                     className={styles.linkMobile}
                     onClick={() => setNavOpened(false)}
                   >
