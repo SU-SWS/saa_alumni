@@ -17,6 +17,7 @@ import { TripPageFacultySection } from './TripPageFacultySection';
 import { TripPageItinerarySection } from './TripPageItinerarySection';
 import { TripPageExtensionSection } from './TripPageExtensionSection';
 import { TripPageDetailsSection } from './TripPageDetailsSection';
+import { TripPagePricingSection } from './TripPagePricingSection';
 import { TripPageSectionNav } from './TripPageSectionNav';
 import { TripPageRelatedTripsSection } from './TripPageRelatedTripsSection';
 
@@ -75,6 +76,12 @@ const TripPage = (props) => {
       detailsBody,
       detailsBelowContent,
       isCenterDetailsHeader,
+      // Pricing Section,
+      hidePricingSection,
+      pricingHeading,
+      pricingBody,
+      pricingBelowContent,
+      isCenterPricingHeader,
       // Related Trips,
       hideRelatedTrips,
       relatedTrips,
@@ -110,10 +117,16 @@ const TripPage = (props) => {
     (detailsHeading !== '' ||
       hasRichText(detailsBody) ||
       getNumBloks(detailsBelowContent) > 0);
+  const renderPricingSection =
+    !hidePricingSection &&
+    (pricingHeading !== '' ||
+      hasRichText(pricingBody) ||
+      getNumBloks(pricingBelowContent) > 0);
   const renderRelatedTrips = !hideRelatedTrips && getNumBloks(relatedTrips) > 0;
 
   // For implementing scrollspy for the section nav
   const sectionRefs = [
+    useRef(null),
     useRef(null),
     useRef(null),
     useRef(null),
@@ -146,11 +159,13 @@ const TripPage = (props) => {
             {/* Trip Section Sticky Nav */}
             {(renderFacultySection ||
               renderItinerarySection ||
-              renderDetailsSection) && (
+              renderDetailsSection ||
+              renderPricingSection) && (
               <TripPageSectionNav
                 renderFacultySection={renderFacultySection}
                 renderItinerarySection={renderItinerarySection}
                 renderDetailsSection={renderDetailsSection}
+                renderPricingSection={renderPricingSection}
                 status={status}
                 inquireURL={inquireURL}
                 reservationURL={reservationURL}
@@ -217,6 +232,16 @@ const TripPage = (props) => {
                 detailsBelowContent={detailsBelowContent}
                 isCenterDetailsHeader={isCenterDetailsHeader}
                 ref={sectionRefs[4]}
+              />
+            )}
+            {/* Pricing Section */}
+            {renderPricingSection && (
+              <TripPagePricingSection
+                pricingHeading={pricingHeading}
+                pricingBody={pricingBody}
+                pricingBelowContent={pricingBelowContent}
+                isCenterPricingHeader={isCenterPricingHeader}
+                ref={sectionRefs[5]}
               />
             )}
             {/* Related Trips */}
