@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useState, useRef } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';

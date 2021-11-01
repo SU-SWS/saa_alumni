@@ -4,7 +4,7 @@ import { dcnb } from 'cnbuilder';
 const topLinkMobile =
   'su-flex su-items-center hocus:su-underline hocus:su-text-white hocus:su-bg-cardinal-red-xxdark su-p-20 su-text-20';
 const topLinkDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-19 xl:su-text-21';
+  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-20 2xl:su-text-22';
 
 // Styles for top level buttons
 const buttonMobile =
@@ -14,9 +14,9 @@ const buttonDesktop =
 
 // Styles for the down chevron
 const chevronMobile =
-  'su-absolute su-right-0 su-w-[3.4rem] su-pt-3 su-pb-1 su-px-2 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-20';
+  'su-absolute su-right-0 su-w-[3.4rem] su-pt-5 su-pb-3 su-px-4 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-20';
 const chevronDesktop =
-  'lg:su-relative lg:su-mr-0 lg:su-w-[1.2em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent';
+  'lg:su-relative lg:su--top-2 lg:su-mr-0 lg:su-ml-02em lg:su-w-[1em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent';
 
 const root =
   'su-relative su-border-b su-border-solid last:su-border-none lg:su-inline-block lg:su-border-none';
