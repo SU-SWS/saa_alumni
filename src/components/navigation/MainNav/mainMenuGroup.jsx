@@ -70,7 +70,7 @@ const MainMenuGroup = ({
           })}
           aria-hidden={!panelOpened}
         >
-          <CreateBloks blokSection={menuItems} />
+          <CreateBloks blokSection={menuItems} isHomesite />
         </ul>
       )}
     </li>
