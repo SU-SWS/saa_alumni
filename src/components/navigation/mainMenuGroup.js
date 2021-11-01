@@ -41,7 +41,7 @@ const MainMenuGroup = ({
   }
 
   return (
-    <li className={styles.rootHomesite} ref={ref}>
+    <li className={styles.root({ isHomesite: true })} ref={ref}>
       <button
         type="button"
         onClick={togglePanel}
@@ -63,7 +63,11 @@ const MainMenuGroup = ({
       </button>
       {menuItems && menuItems.length > 0 && (
         <ul
-          className={styles.childMenu({ panelFacing, panelOpened })}
+          className={styles.childMenu({
+            panelFacing,
+            panelOpened,
+            isHomesite: true,
+          })}
           aria-hidden={!panelOpened}
         >
           <CreateBloks blokSection={menuItems} />

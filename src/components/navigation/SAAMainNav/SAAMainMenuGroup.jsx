@@ -56,14 +56,18 @@ const SAAMainMenuGroup = ({
   }
 
   return (
-    <li className={styles.rootSAA} ref={ref}>
+    <li className={styles.root({ isHomesite: false })} ref={ref}>
       {parentLink?.url === '' && parentLink?.cached_url === '' ? (
         <button
           type="button"
           onClick={togglePanel}
           aria-expanded={panelOpened}
           ref={parentRef}
-          className={styles.parentButton({ panelOpened, isActiveButton })}
+          className={styles.parentButton({
+            panelOpened,
+            isActiveButton,
+            isHomsite: false,
+          })}
         >
           {parentText}
           <ChevronDownIcon
@@ -84,7 +88,11 @@ const SAAMainMenuGroup = ({
       )}
       {childMenuItems && childMenuItems.length > 0 && (
         <ul
-          className={styles.childMenu({ panelFacing, panelOpened })}
+          className={styles.childMenu({
+            panelFacing,
+            panelOpened,
+            isHomesite: false,
+          })}
           aria-hidden={!panelOpened}
         >
           <CreateBloks blokSection={childMenuItems} hasExternalIcon />
