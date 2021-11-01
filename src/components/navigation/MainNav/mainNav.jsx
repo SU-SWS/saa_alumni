@@ -1,26 +1,19 @@
-/* eslint-disable react/forbid-prop-types */
 import React, { useState, useRef } from 'react';
-import PropTypes from 'prop-types';
+import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
-import * as styles from './SAAMainNav.styles';
+import * as styles from './mainNav.styles';
 import { isExpanded } from '../../../utilities/menuHelpers';
-import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 
 /**
- * This Main Nav is only used on the SAA subsites
- * For Main Nav used on the SAA Homesite, please see the mainNav component
+ * This Main Nav is only used on the SAA Homesite
+ * For Main Nav used on the subsites, e.g., Travel/Study, please see SAAMainNav
  */
 
-export const SAAMainNavProps = {
-  menuItems: SBBlokType,
-  ariaLabel: PropTypes.string,
-};
-
-const SAAMainNav = ({ menuItems, ariaLabel }) => {
+const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   const [menuOpened, setMenuOpened] = useState(false);
   const ref = useRef(null);
   const burgerRef = useRef(null);
@@ -45,23 +38,23 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
   useOnClickOutside(ref, () => setMenuOpened(false));
 
   return (
-    <>
+    <SbEditable content={blok}>
       <nav
-        aria-label={ariaLabel}
-        className={dcnb('saa-main-nav-desktop', styles.root)}
+        className={dcnb('main-nav-desktop su-hidden lg:su-block', className)}
+        aria-label="Main Menu"
       >
-        <ul className={styles.menu}>
-          <CreateBloks blokSection={menuItems} hasExternalIcon />
+        <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
+          <CreateBloks blokSection={mainMenuGroups} />
         </ul>
       </nav>
       <nav
-        className={dcnb('saa-main-nav-mobile', styles.rootMobile)}
-        aria-label={ariaLabel}
+        className="main-nav-mobile lg:su-hidden"
+        aria-label="Main Menu"
         ref={ref}
       >
         <button
           type="button"
-          className={styles.burgerMobileSAA}
+          className={styles.burgerMobileHomesite}
           onClick={toggleMenu}
           aria-expanded={menuOpened}
           aria-label={menuOpened ? 'Close Menu' : 'Open Menu'}
@@ -71,15 +64,14 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
           {menuOpened ? 'Close' : 'Menu'}
         </button>
         <ul
-          className={styles.menuMobileSAA({ menuOpened })}
+          className={styles.menuMobileHomesite({ menuOpened })}
           aria-hidden={!menuOpened}
         >
-          <CreateBloks blokSection={menuItems} />
+          <CreateBloks blokSection={mainMenuGroups} />
         </ul>
       </nav>
-    </>
+    </SbEditable>
   );
 };
-SAAMainNav.propTypes = SAAMainNavProps;
 
-export default SAAMainNav;
+export default MainNav;

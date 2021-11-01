@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/solid';
-import CreateBloks from '../../utilities/createBloks';
-import useEscape from '../../hooks/useEscape';
-import useOnClickOutside from '../../hooks/useOnClickOutside';
-import { isExpanded, isBrowser } from '../../utilities/menuHelpers';
-import * as styles from './SAAMainNav/SAAMainMenuGroup.styles';
+import CreateBloks from '../../../utilities/createBloks';
+import useEscape from '../../../hooks/useEscape';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
+import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
+import * as styles from './SAAMainMenuGroup.styles';
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
