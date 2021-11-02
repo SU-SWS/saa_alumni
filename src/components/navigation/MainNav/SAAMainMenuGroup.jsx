@@ -8,13 +8,13 @@ import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import SbLink from '../../../utilities/sbLink';
 import * as styles from './mainMenuGroup.styles';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
-import { SBBlokType } from '../../../types/storyblok/SBBlokType';
+import { NavItemType } from '../../../types/NavItemType';
 
 // Main Menu Group for the shared SAA Main Nav
 export const SAAMainMenuGroupProps = {
   parentText: PropTypes.string.isRequired,
   parentLink: SBLinkType,
-  childMenuItems: SBBlokType,
+  childMenuItems: PropTypes.arrayOf(PropTypes.shape(NavItemType)),
   panelFacing: PropTypes.string,
 };
 

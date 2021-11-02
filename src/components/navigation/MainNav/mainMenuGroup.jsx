@@ -1,18 +1,18 @@
 import React, { useState, useRef } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
-import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import * as styles from './mainMenuGroup.styles';
+import { NavItemType } from '../../../types/NavItemType';
 
 // SAA Homesite Main Menu Group
 export const MainMenuGroupProps = {
-  parentText: PropTypes.string.isRequired,
+  parentText: PropTypes.string,
   parentTextSecond: PropTypes.string,
-  menuItems: SBBlokType,
+  menuItems: PropTypes.arrayOf(PropTypes.shape(NavItemType)),
   panelFacing: PropTypes.string,
 };
 
