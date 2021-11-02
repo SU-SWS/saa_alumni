@@ -4,7 +4,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
-import * as styles from './SAAMainMenuGroup.styles';
+import * as styles from './mainMenuGroup.styles';
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
@@ -47,7 +47,11 @@ const MainMenuGroup = ({
         onClick={togglePanel}
         aria-expanded={panelOpened}
         ref={parentRef}
-        className={styles.parentButton({ panelOpened, isActiveButton })}
+        className={styles.parentButton({
+          panelOpened,
+          isActiveButton,
+          isHomesite: true,
+        })}
       >
         {parentText}
         {parentTextSecond && (

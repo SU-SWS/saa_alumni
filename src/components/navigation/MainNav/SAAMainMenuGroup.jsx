@@ -7,7 +7,7 @@ import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import SbLink from '../../../utilities/sbLink';
-import * as styles from './SAAMainMenuGroup.styles';
+import * as styles from './mainMenuGroup.styles';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 

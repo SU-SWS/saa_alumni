@@ -13,7 +13,7 @@ export const root = ({ isHomesite }) =>
 const buttonMobile =
   'su-flex su-items-center su-w-full hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-20 su-pr-80 su-text-20';
 const buttonDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-19 2xl:su-text-21';
+  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
 export const parentButton = ({
   panelOpened,
   isActiveButton,
@@ -24,16 +24,19 @@ export const parentButton = ({
     buttonMobile,
     buttonDesktop,
     {
-      '!su-bg-black-90 !su-border-cardinal-red-xdark hover:!su-bg-black-80 lg:hover:!su-bg-cardinal-red-xdark lg:hocus:!su-text-white lg:!su-bg-cardinal-red-xdark lg:!su-border-transparent':
-        panelOpened,
+      'hocus:su-bg-cardinal-red-xxdark lg:su-text-19 2xl:su-text-21':
+        isHomesite,
+      'hocus:su-bg-black-90 lg:su-text-20 2xl:su-text-22': !isHomesite,
+      '!su-bg-cardinal-red-xdark hover:!su-bg-digital-red !su-border-cardinal-red-xdark lg:hover:!su-bg-cardinal-red-xdark lg:hocus:!su-text-white lg:!su-bg-cardinal-red-xdark lg:!su-border-transparent':
+        panelOpened && isHomesite,
+      '!su-bg-black-90 hover:!su-bg-black-80': panelOpened && !isHomesite,
       'su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
-        isActiveButton,
-      'hocus:su-bg-cardinal-red-xxdark': isHomesite,
-      'hocus:su-bg-black-90': !isHomesite,
+        isActiveButton && isHomesite,
+      'su-bg-black-90': isActiveButton && !isHomesite,
     }
   );
 
-// Styles for the down chevron
+// Styles for the down chevron, same for shared SAA and Homesite Main Nav
 const chevronMobile =
   'su-absolute su-right-0 su-w-[3.4rem] su-pt-5 su-pb-3 su-px-4 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-20';
 const chevronDesktop =
@@ -49,7 +52,8 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
     }
   );
 
-// Syles for top level links
+// Styles for top level links for shared SAA Main Nav only
+// The Homesite Main Nav does not have top level links, only buttons
 const topLinkMobile =
   'su-flex su-items-center hocus:su-underline hocus:su-text-white hocus:su-bg-black-90 su-p-20 su-text-20';
 const topLinkDesktop =
@@ -60,7 +64,7 @@ export const topLink = dcnb(
   topLinkDesktop
 );
 export const activeTopLink =
-  'su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight';
+  'su-bg-black-90 lg:su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight';
 export const topLinkIcon =
   'su-top-2 lg:su-top-[-0.2rem] su-text-white group-hocus:su-text-digital-red-xlight';
 export const childMenu = ({ panelFacing, panelOpened, isHomesite } = {}) =>
