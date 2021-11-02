@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React, { useState, useRef } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
@@ -11,6 +10,7 @@ import * as styles from './mainMenuGroup.styles';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 
+// Main Menu Group for the shared SAA Main Nav
 export const SAAMainMenuGroupProps = {
   parentText: PropTypes.string.isRequired,
   parentLink: SBLinkType,

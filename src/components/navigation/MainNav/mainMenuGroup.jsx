@@ -1,10 +1,20 @@
 import React, { useState, useRef } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { ChevronDownIcon } from '@heroicons/react/outline';
+import PropTypes from 'prop-types';
+import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import * as styles from './mainMenuGroup.styles';
+
+// SAA Homesite Main Menu Group
+export const MainMenuGroupProps = {
+  parentText: PropTypes.string.isRequired,
+  parentTextSecond: PropTypes.string,
+  menuItems: SBBlokType,
+  panelFacing: PropTypes.string,
+};
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
@@ -56,7 +66,7 @@ const MainMenuGroup = ({
         {parentText}
         {parentTextSecond && (
           <>
-            <br className="su-hidden xl:su-inline 2xl:su-hidden" />
+            <br className={styles.parentTextLinebreak} />
             {parentTextSecond}
           </>
         )}
@@ -80,5 +90,6 @@ const MainMenuGroup = ({
     </li>
   );
 };
+MainMenuGroup.propTypes = MainMenuGroupProps;
 
 export default MainMenuGroup;

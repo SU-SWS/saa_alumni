@@ -29,7 +29,7 @@ export const parentButton = ({
       'hocus:su-bg-black-90 lg:su-text-20 2xl:su-text-22': !isHomesite,
       'lg:hover:!su-bg-cardinal-red-xdark lg:hocus:!su-text-white lg:!su-bg-cardinal-red-xdark lg:!su-border-transparent':
         panelOpened,
-      '!su-bg-cardinal-red-xdark hover:!su-bg-digital-red !su-border-cardinal-red-xdark ':
+      '!su-bg-cardinal-red-xxdark hover:!su-bg-digital-red !su-border-cardinal-red-xdark':
         panelOpened && isHomesite,
       '!su-bg-black-90 hover:!su-bg-black-80': panelOpened && !isHomesite,
       'lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
@@ -39,11 +39,13 @@ export const parentButton = ({
     }
   );
 
+export const parentTextLinebreak = 'su-hidden xl:su-inline 2xl:su-hidden';
+
 // Styles for the down chevron, same for shared SAA and Homesite Main Nav
 const chevronMobile =
   'su-absolute su-right-0 su-w-[3.4rem] su-pt-5 su-pb-3 su-px-4 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-20';
 const chevronDesktop =
-  'lg:su-relative lg:su--top-2 lg:su-mr-0 lg:su-ml-02em lg:su-w-[1em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent';
+  'lg:su-relative lg:su--top-3 lg:su-mr-0 lg:su-ml-02em lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent';
 export const chevron = ({ panelOpened, isActiveButton } = {}) =>
   dcnb(
     'su-inline-block su-text-white su-transition',
@@ -67,7 +69,7 @@ export const topLink = dcnb(
   topLinkDesktop
 );
 export const activeTopLink =
-  'su-bg-black-90 lg:su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight';
+  'su-bg-black-90 lg:su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:!su-bg-transparent lg:!su-border-digital-red-xlight';
 export const topLinkIcon =
   'su-top-2 lg:su-top-[-0.2rem] su-text-white group-hocus:su-text-digital-red-xlight';
 export const childMenu = ({ panelFacing, panelOpened, isHomesite } = {}) =>
