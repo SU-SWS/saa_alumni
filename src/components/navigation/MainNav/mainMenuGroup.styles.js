@@ -43,7 +43,7 @@ export const parentTextLinebreak = 'su-hidden xl:su-inline 2xl:su-hidden';
 
 // Styles for the down chevron, same for shared SAA and Homesite Main Nav
 const chevronMobile =
-  'su-absolute su-right-0 su-w-[3.4rem] su-pt-5 su-pb-3 su-px-4 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-20';
+  'su-absolute su-right-0 su-w-[3.4rem] su-pt-6 su-pb-5 su-px-5 su-bg-digital-red su-rounded-full group-hocus:!su-bg-digital-red-light su-mr-20';
 const chevronDesktop =
   'lg:su-relative lg:su--top-3 lg:su-mr-0 lg:su-ml-02em lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent';
 export const chevron = ({ panelOpened, isActiveButton } = {}) =>
