@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Container, Heading, Grid, GridCell, Skiplink } from 'decanter-react';
@@ -16,6 +16,7 @@ import Ankle from '../../partials/ankle/ankle';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import useWindowSize from '../../../hooks/useWindowSize';
 import { breakpoints } from '../../../contexts/GlobalContext';
+import Modal from '../../layout/modal';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -40,6 +41,7 @@ const TripFilterPage = (props) => {
     getPageLink,
   } = useTripFilters(primaryFilter);
   const screenSize = useWindowSize();
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <SbEditable content={blok}>
@@ -71,8 +73,22 @@ const TripFilterPage = (props) => {
               <p className={styles.intro}>{intro}</p>
             </Container>
           </header>
-          <Grid xs={12} gap className={styles.filterSection}>
-            <GridCell xs={12} lg={3} className={styles.filterSidebar}>
+          <Grid xs={1} lg={12} gap className={styles.filterSection}>
+            <GridCell xs={1} className={styles.filterSidebarMobile}>
+              <button
+                type="button"
+                className={styles.filterModalButton}
+                aria-label="Open trips filtering modal"
+                onClick={() => setModalOpen(true)}
+              >
+                <span>Filters</span>
+                <FaIcon proFaIcon="sliders-h" className={styles.filterIcon} />
+              </button>
+              <Modal ariaLabel="Trips filtering modal" isOpen={modalOpen}>
+                <Heading level={2}>Filter by</Heading>
+              </Modal>
+            </GridCell>
+            <GridCell xs={1} lg={3} className={styles.filterSidebar}>
               <Skiplink anchorLink="#filtered-trips-list">
                 Skip pass filters to trip list
               </Skiplink>
@@ -96,7 +112,7 @@ const TripFilterPage = (props) => {
                   ))}
               </div>
             </GridCell>
-            <GridCell xs={12} lg={9} xxl={8}>
+            <GridCell xs={1} lg={9} xxl={8}>
               <div className={styles.filteredContent}>
                 {activeFilters.length > 0 && (
                   <div className={styles.activeFilters}>
