@@ -27,11 +27,14 @@ export const parentButton = ({
       'hocus:su-bg-cardinal-red-xxdark lg:su-text-19 2xl:su-text-21':
         isHomesite,
       'hocus:su-bg-black-90 lg:su-text-20 2xl:su-text-22': !isHomesite,
-      '!su-bg-cardinal-red-xdark hover:!su-bg-digital-red !su-border-cardinal-red-xdark lg:hover:!su-bg-cardinal-red-xdark lg:hocus:!su-text-white lg:!su-bg-cardinal-red-xdark lg:!su-border-transparent':
+      'lg:hover:!su-bg-cardinal-red-xdark lg:hocus:!su-text-white lg:!su-bg-cardinal-red-xdark lg:!su-border-transparent':
+        panelOpened,
+      '!su-bg-cardinal-red-xdark hover:!su-bg-digital-red !su-border-cardinal-red-xdark ':
         panelOpened && isHomesite,
       '!su-bg-black-90 hover:!su-bg-black-80': panelOpened && !isHomesite,
-      'su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
-        isActiveButton && isHomesite,
+      'lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
+        isActiveButton,
+      'su-bg-cardinal-red-xxdark': isActiveButton && isHomesite,
       'su-bg-black-90': isActiveButton && !isHomesite,
     }
   );
