@@ -59,14 +59,14 @@ exports.createPages = ({ graphql, actions }) => {
           let pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
 
           // Wire up the 404 page by setting the path to just 404 as Gatsby expects it.
-          if (pagePath.match(/^404/)) {
-            pagePath = '404';
-          }
+          // if (pagePath.match(/^404/)) {
+          //   pagePath = '404';
+          // }
 
           // Wire up the 403 page by setting the path to just 403 as Gatsby expects it.
-          if (pagePath.match(/^403/)) {
-            pagePath = '403';
-          }
+          // if (pagePath.match(/^403/)) {
+          //   pagePath = '403';
+          // }
 
           // Determine if the page is canonical, or is using a custom canonical URL.
           const content = JSON.parse(entry.node.content);
