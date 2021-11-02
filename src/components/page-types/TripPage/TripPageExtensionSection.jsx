@@ -9,7 +9,7 @@ import * as styles from './TripPageExtensionSection.styles';
 import * as overviewStyles from './TripPageOverviewSection.styles';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
-import { getDuration } from '../../../utilities/dates';
+import { getDate, getDuration } from '../../../utilities/dates';
 import getNumBloks from '../../../utilities/getNumBloks';
 
 export const TripPageExtensionSectionProps = {
@@ -19,6 +19,7 @@ export const TripPageExtensionSectionProps = {
   extendStartDate: PropTypes.string,
   extendEndDate: PropTypes.string,
   extendPrice: PropTypes.string,
+  extendTripSize: PropTypes.string,
   extendItinerary: SBBlokType,
   isCenterExtendHeader: PropTypes.bool,
 };
@@ -31,20 +32,25 @@ export const TripPageExtensionSection = (props) => {
     extendStartDate,
     extendEndDate,
     extendPrice,
+    extendTripSize,
     extendItinerary,
     isCenterExtendHeader,
   } = props;
-
+  const extendDates = useMemo(() => {
+    const start = getDate(extendStartDate);
+    const end = getDate(extendEndDate);
+    return `${start.month} ${start.day}${
+      start.year !== end.year ? `, ${start.year}` : ''
+    } - ${
+      end.month === start.month && end.year === start.year ? '' : end.month
+    } ${end.day}, ${end.year}`;
+  }, [extendStartDate, extendEndDate]);
   const extendDuration = useMemo(() => {
     const { days: dayDuration } = getDuration(extendStartDate, extendEndDate);
 
     if (dayDuration >= 0) {
       const days = dayDuration + 1;
-      const nights = dayDuration;
-
-      return `${days} day${days === 1 ? '' : 's'}, ${nights} night${
-        nights === 1 ? '' : 's'
-      }`;
+      return `${days} day${days === 1 ? '' : 's'}`;
     }
     return '';
   }, [extendStartDate, extendEndDate]);
@@ -72,17 +78,27 @@ export const TripPageExtensionSection = (props) => {
         </GridCell>
         <GridCell xs={12} md={4} xl={3} className={styles.summary}>
           <div className={overviewStyles.summaryContent}>
-            <div className={overviewStyles.summaryItem}>
-              <Heading level={3} className={overviewStyles.summaryName}>
-                Duration
-              </Heading>
-              <span className={overviewStyles.summaryValue}>
-                {extendDuration}
-              </span>
-            </div>
-          </div>
-          {extendPrice && (
-            <div className={overviewStyles.summaryContent}>
+            {extendStartDate && (
+              <div className={overviewStyles.summaryItem}>
+                <Heading level={3} className={overviewStyles.summaryName}>
+                  Dates
+                </Heading>
+                <span className={overviewStyles.summaryValue}>
+                  {extendDates}
+                </span>
+              </div>
+            )}
+            {extendDuration && (
+              <div className={overviewStyles.summaryItem}>
+                <Heading level={3} className={overviewStyles.summaryName}>
+                  Duration
+                </Heading>
+                <span className={overviewStyles.summaryValue}>
+                  {extendDuration}
+                </span>
+              </div>
+            )}
+            {extendPrice && (
               <div className={overviewStyles.summaryItem}>
                 <Heading level={3} className={overviewStyles.summaryName}>
                   Price
@@ -91,8 +107,18 @@ export const TripPageExtensionSection = (props) => {
                   {extendPrice}
                 </span>
               </div>
-            </div>
-          )}
+            )}
+            {extendTripSize && (
+              <div className={overviewStyles.summaryItem}>
+                <Heading level={3} className={overviewStyles.summaryName}>
+                  Trip size
+                </Heading>
+                <span className={overviewStyles.summaryValue}>
+                  {extendTripSize} participants
+                </span>
+              </div>
+            )}
+          </div>
         </GridCell>
       </Grid>
       {getNumBloks(extendItinerary) > 0 && (

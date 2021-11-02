@@ -22,7 +22,6 @@ export const TripPageOverviewSectionProps = {
   overviewBody: SBRichTextType,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
-  durationText: PropTypes.string,
   cost: SBRichTextType,
   tripSize: PropTypes.string,
   minAge: PropTypes.string,
@@ -39,7 +38,6 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     overviewBody,
     startDate,
     endDate,
-    durationText,
     cost,
     tripSize,
     minAge,
@@ -58,21 +56,15 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     } ${end.day}, ${end.year}`;
   }, [startDate, endDate]);
   const tripDuration = useMemo(() => {
-    if (durationText) return durationText;
-
     const { days: dayDuration } = getDuration(startDate, endDate);
 
     if (dayDuration >= 0) {
       const days = dayDuration + 1;
-      const nights = dayDuration;
-
-      return `${days} day${days === 1 ? '' : 's'}, ${nights} night${
-        nights === 1 ? '' : 's'
-      }`;
+      return `${days} day${days === 1 ? '' : 's'}`;
     }
 
     return '';
-  }, [startDate, endDate, durationText]);
+  }, [startDate, endDate]);
   const location = useLocation();
 
   return (

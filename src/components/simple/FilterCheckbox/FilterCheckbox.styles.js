@@ -13,3 +13,4 @@ export const label =
 export const icon = ({ checked }) =>
   dcnb('su-mr-8 su-w-[1em] su-flex-shrink-0', { 'su-opacity-0': !checked });
 export const input = 'su-absolute su-opacity-0 su-w-[0] su-h-[0]';
+export const count = 'su-text-14 xl:su-text-16 2xl:su-text-18 su-ml-04em';

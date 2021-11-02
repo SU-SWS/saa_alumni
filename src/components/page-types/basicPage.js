@@ -7,6 +7,7 @@ import getNumBloks from '../../utilities/getNumBloks';
 import Ankle from '../partials/ankle/ankle';
 import BasicContentNoSidebar from '../partials/basicContentNoSidebar';
 import BasicContentLeftSidebar from '../partials/basicContentLeftSidebar';
+import { HeroImage } from '../composite/HeroImage/HeroImage';
 
 const BasicPage = (props) => {
   // Destructure.
@@ -16,6 +17,7 @@ const BasicPage = (props) => {
       title,
       isSrOnlyTitle,
       hero,
+      heroImage: { filename, alt, focus } = {},
       aboveContent,
       belowContent,
       ankleContent,
@@ -24,7 +26,7 @@ const BasicPage = (props) => {
     blok,
   } = props;
 
-  const numHero = getNumBloks(hero);
+  const hasHeroBanner = getNumBloks(hero) > 0 || filename;
   const numAbove = getNumBloks(aboveContent);
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);
@@ -38,7 +40,7 @@ const BasicPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={numHero > 0} {...props}>
+      <Layout hasHero={hasHeroBanner} {...props}>
         <Container
           element="main"
           id="main-content"
@@ -51,13 +53,23 @@ const BasicPage = (props) => {
                 blokSection={sectionMenu}
                 id="section-menu-mobile"
                 className={`${
-                  numHero > 0
+                  hasHeroBanner
                     ? 'su-rs-my-2'
                     : 'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]'
                 } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
               />
             )}
             <CreateBloks blokSection={hero} />
+            {filename && (
+              <HeroImage
+                filename={filename}
+                alt={alt}
+                focus={focus}
+                overlay={false}
+                aspectRatio="5x2"
+                className="su-aspect-w-5 su-aspect-h-2"
+              />
+            )}
             <Container>
               <Heading
                 level={1}

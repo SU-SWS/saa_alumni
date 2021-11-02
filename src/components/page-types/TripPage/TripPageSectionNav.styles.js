@@ -1,7 +1,7 @@
 import { dcnb } from 'cnbuilder';
 
 export const root =
-  'section-menu su-hidden lg:su-flex su-sticky su-top-0 su-z-30 su-cc su-pt-5 su-bg-saa-black su-justify-center su-items-center';
+  'section-menu su-hidden lg:su-flex su-sticky su-top-0 su-z-30 su-pt-5 su-bg-saa-black su-justify-center su-items-center';
 export const menu = 'su-flex su-list-unstyled su-bg-saa-black';
 export const listItem = 'su-mb-0';
 export const link = ({ isActive }) =>
@@ -11,7 +11,7 @@ export const link = ({ isActive }) =>
       'su-text-digital-red-xlight !su-border-digital-red-xlight': isActive,
     }
   );
-export const button = 'su-ml-[8rem] su-mt-[-0.5rem]';
+export const button = 'su-ml-[6rem] xl:su-ml-[8rem] su-mt-[-0.5rem]';
 
 // Mobile styles
 export const navWrapperMobile =

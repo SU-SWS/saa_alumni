@@ -13,6 +13,7 @@ export const TripPageSectionNavProps = {
   renderFacultySection: PropTypes.bool,
   renderItinerarySection: PropTypes.bool,
   renderDetailsSection: PropTypes.bool,
+  renderPricingSection: PropTypes.bool,
   ariaLabel: PropTypes.string,
   status: PropTypes.oneOf(['notify', 'reserve']),
   inquireURL: SBLinkType,
@@ -25,6 +26,7 @@ export const TripPageSectionNav = (props) => {
     renderFacultySection,
     renderItinerarySection,
     renderDetailsSection,
+    renderPricingSection,
     ariaLabel,
     status,
     inquireURL,
@@ -98,6 +100,17 @@ export const TripPageSectionNav = (props) => {
                 aria-current={activeSection === 4}
               >
                 Trip Details
+              </a>
+            </li>
+          )}
+          {renderPricingSection && (
+            <li className={styles.listItem}>
+              <a
+                href="#pricing-section"
+                className={styles.link({ isActive: activeSection === 5 })}
+                aria-current={activeSection === 5}
+              >
+                Pricing
               </a>
             </li>
           )}
@@ -179,6 +192,17 @@ export const TripPageSectionNav = (props) => {
                     onClick={() => setNavOpened(false)}
                   >
                     Trip Details
+                  </a>
+                </li>
+              )}
+              {renderPricingSection && (
+                <li className={styles.listItemMobile}>
+                  <a
+                    href="#pricing-section"
+                    className={styles.linkMobile}
+                    onClick={() => setNavOpened(false)}
+                  >
+                    Pricing
                   </a>
                 </li>
               )}

@@ -27,11 +27,16 @@ export const TripContent = PropTypes.shape({
   overviewHeading: PropTypes.string,
   overviewBody: SBRichTextType,
   cost: SBRichTextType,
-  durationText: PropTypes.string,
   status: PropTypes.oneOf(['notify', 'reserve']),
   inquireURL: SBLinkType,
   reservationURL: SBLinkType,
   overviewBelowContent: SBBlokType,
+  hideFacultySection: PropTypes.bool,
+  hideItinerarySection: PropTypes.bool,
+  hideExtensionSection: PropTypes.bool,
+  hideDetailsSection: PropTypes.bool,
+  hidePricingSection: PropTypes.bool,
+  hideRelatedTrips: PropTypes.bool,
   // TODO: Add additional SB trip entity field types for comprehensive type checking
 });
 
