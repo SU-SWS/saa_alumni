@@ -148,39 +148,44 @@ const TripFilterPage = (props) => {
             </GridCell>
             <GridCell xs={1} lg={9} xxl={8}>
               <div className={styles.filteredContent}>
-                {activeFilters.length > 0 && (
-                  <div className={styles.activeFilters}>
-                    <div className={styles.filterChips}>
-                      {activeFilters.map((filter) => (
-                        <Chip
-                          key={`chip:${filter.datasource}:${filter.value}`}
-                          label={filter.name}
-                          aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
-                          onClick={() =>
-                            toggleFilter(filter.datasource, filter.value)
-                          }
-                        />
-                      ))}
+                <div className={styles.chipsWrapper}>
+                  {activeFilters.length > 0 && (
+                    <div className={styles.activeFilters}>
+                      <div className={styles.filterChips}>
+                        {activeFilters.map((filter) => (
+                          <Chip
+                            key={`chip:${filter.datasource}:${filter.value}`}
+                            label={filter.name}
+                            aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                            onClick={() =>
+                              toggleFilter(filter.datasource, filter.value)
+                            }
+                          />
+                        ))}
+                      </div>
+                      <div className={styles.clearAll}>
+                        <button
+                          className={styles.clearAllBtn}
+                          type="button"
+                          onClick={clearAllFilters}
+                        >
+                          <span className={styles.clearAllText}>
+                            Clear all filters
+                            <span
+                              aria-hidden
+                              className={styles.clearAllHover}
+                            />
+                          </span>
+                          <FaIcon
+                            className={styles.clearAllIcon}
+                            iconChoice="times"
+                            isOutline
+                          />
+                        </button>
+                      </div>
                     </div>
-                    <div className={styles.clearAll}>
-                      <button
-                        className={styles.clearAllBtn}
-                        type="button"
-                        onClick={clearAllFilters}
-                      >
-                        <span className={styles.clearAllText}>
-                          Clear all filters
-                          <span aria-hidden className={styles.clearAllHover} />
-                        </span>
-                        <FaIcon
-                          className={styles.clearAllIcon}
-                          iconChoice="times"
-                          isOutline
-                        />
-                      </button>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
                 <Grid
                   xs={1}
                   md={2}

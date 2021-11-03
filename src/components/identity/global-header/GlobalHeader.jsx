@@ -34,24 +34,33 @@ const GlobalHeader = ({
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
 
+  const mastheadDesktop = document.getElementsByClassName(
+    'global-header-desktop'
+  )[0];
+
+  const returnFocus = () => {
+    if (getComputedStyle(mastheadDesktop, null).display === 'none') {
+      openSearchMobileRef.current.focus();
+    } else {
+      openSearchRef.current.focus();
+    }
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+    returnFocus();
+  };
+
   useEscape(() => {
     // Only do this if the search modal is open
     if (modalOpen) {
       const searchInputModal =
         document.getElementsByClassName('search-input-modal')[0];
-      const mastheadDesktop = document.getElementsByClassName(
-        'global-header-desktop'
-      )[0];
 
       // Only close the modal with Escape key if the autocomplete dropdown is not open
       if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
         setModalOpen(false);
-
-        if (getComputedStyle(mastheadDesktop, null).display === 'none') {
-          openSearchMobileRef.current.focus();
-        } else {
-          openSearchRef.current.focus();
-        }
+        returnFocus();
       }
     }
   });
@@ -121,7 +130,7 @@ const GlobalHeader = ({
       <SearchModal
         isOpen={modalOpen}
         setIsOpen={setModalOpen}
-        onClose={() => setModalOpen(false)}
+        onClose={() => handleClose()}
       />
     </>
   );
