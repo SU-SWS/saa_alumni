@@ -39,8 +39,9 @@ const GlobalHeader = ({
     if (modalOpen) {
       const searchInputModal =
         document.getElementsByClassName('search-input-modal')[0];
-      const mastheadDesktop =
-        document.getElementsByClassName('masthead-desktop')[0];
+      const mastheadDesktop = document.getElementsByClassName(
+        'global-header-desktop'
+      )[0];
 
       // Only close the modal with Escape key if the autocomplete dropdown is not open
       if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
