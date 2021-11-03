@@ -3,7 +3,6 @@ import { Container } from 'decanter-react';
 import { tabbable } from 'tabbable';
 import { XIcon } from '@heroicons/react/solid';
 import useFocusTrap from '../../hooks/useFocusTrap';
-import useEscape from '../../hooks/useEscape';
 
 const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   const closeButton = useRef();
@@ -30,27 +29,6 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   }, [children]);
 
   useFocusTrap(closeButton, lastTabbableRef, isOpen);
-
-  useEscape(() => {
-    // Only do this if the search modal is open
-    if (isOpen) {
-      const searchInputModal =
-        document.getElementsByClassName('search-input-modal')[0];
-      const mastheadDesktop =
-        document.getElementsByClassName('masthead-desktop')[0];
-
-      // Only close the modal with Escape key if the autocomplete dropdown is not open
-      if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
-        closeButton.current.click();
-
-        if (getComputedStyle(mastheadDesktop, null).display === 'none') {
-          document.getElementById('masthead-search-button-mobile').focus();
-        } else {
-          document.getElementById('masthead-search-button-desktop').focus();
-        }
-      }
-    }
-  });
 
   const lockScroll = () => {
     const overlay = document.querySelector('.su-modal');

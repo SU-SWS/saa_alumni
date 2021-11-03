@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Container, FlexBox, FlexCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
@@ -11,6 +11,7 @@ import SbLink from '../../../utilities/sbLink';
 import SearchModal from '../../search/searchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
+import useEscape from '../../../hooks/useEscape';
 
 export const GlobalHeaderProps = {
   siteName: PropTypes.string,
@@ -30,6 +31,30 @@ const GlobalHeader = ({
   isDark,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const openSearchRef = useRef(null);
+  const openSearchMobileRef = useRef(null);
+
+  useEscape(() => {
+    // Only do this if the search modal is open
+    if (modalOpen) {
+      const searchInputModal =
+        document.getElementsByClassName('search-input-modal')[0];
+      const mastheadDesktop =
+        document.getElementsByClassName('masthead-desktop')[0];
+
+      // Only close the modal with Escape key if the autocomplete dropdown is not open
+      if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
+        setModalOpen(false);
+
+        if (getComputedStyle(mastheadDesktop, null).display === 'none') {
+          openSearchMobileRef.current.focus();
+        } else {
+          openSearchRef.current.focus();
+        }
+      }
+    }
+  });
+
   return (
     <>
       <Container width="full" className={styles.rootMobile}>
@@ -56,6 +81,8 @@ const GlobalHeader = ({
           <OpenSearchModalButton
             openOpen={modalOpen}
             setModalOpen={setModalOpen}
+            id="masthead-search-button-mobile"
+            ref={openSearchMobileRef}
           />
           <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
         </FlexBox>
@@ -77,6 +104,8 @@ const GlobalHeader = ({
             <OpenSearchModalButton
               openOpen={modalOpen}
               setModalOpen={setModalOpen}
+              id="masthead-search-button-desktop"
+              ref={openSearchRef}
             />
           </FlexCell>
         </FlexBox>

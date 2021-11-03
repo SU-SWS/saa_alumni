@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import { Container, FlexBox, FlexCell } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
@@ -7,9 +7,12 @@ import Logo from './logo';
 import OpenSearchModalButton from '../search/openSearchModalButton';
 import SearchModal from '../search/searchModal';
 import * as styles from './global-header/GlobalHeaderStyles';
+import useEscape from '../../hooks/useEscape';
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const openSearchRef = useRef(null);
+  const openSearchMobileRef = useRef(null);
 
   let mainNavBgColorXl =
     'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
@@ -20,6 +23,27 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
     mainNavBgColorXl = 'xl:su-bg-saa-black';
     mainNavBgColorLg = 'su-bg-saa-black';
   }
+
+  useEscape(() => {
+    // Only do this if the search modal is open
+    if (modalOpen) {
+      const searchInputModal =
+        document.getElementsByClassName('search-input-modal')[0];
+      const mastheadDesktop =
+        document.getElementsByClassName('masthead-desktop')[0];
+
+      // Only close the modal with Escape key if the autocomplete dropdown is not open
+      if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
+        setModalOpen(false);
+
+        if (getComputedStyle(mastheadDesktop, null).display === 'none') {
+          openSearchMobileRef.current.focus();
+        } else {
+          openSearchRef.current.focus();
+        }
+      }
+    }
+  });
 
   return (
     <SbEditable content={blok}>
@@ -44,6 +68,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
             openOpen={modalOpen}
             setModalOpen={setModalOpen}
             id="masthead-search-button-mobile"
+            ref={openSearchMobileRef}
           />
           <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
         </FlexBox>
@@ -85,6 +110,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
                 openOpen={modalOpen}
                 setModalOpen={setModalOpen}
                 id="masthead-search-button-desktop"
+                ref={openSearchRef}
               />
             </FlexBox>
             <CreateBloks
