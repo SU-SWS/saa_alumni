@@ -40,7 +40,7 @@ const TripFilterModal = ({
 
   return (
     <>
-      <buttons
+      <button
         type="button"
         className={styles.filterModalButton}
         aria-label="Open trips filtering modal"
@@ -49,7 +49,7 @@ const TripFilterModal = ({
       >
         <span>Filters</span>
         <FaIcon proFaIcon="sliders-h" className={styles.filterIcon} />
-      </buttons>
+      </button>
 
       <Modal
         isOpen={modalOpen}
