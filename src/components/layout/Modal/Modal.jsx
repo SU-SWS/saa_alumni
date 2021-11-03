@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Container } from 'decanter-react';
 import { tabbable } from 'tabbable';
 import { XIcon } from '@heroicons/react/solid';
-import useFocusTrap from '../../hooks/useFocusTrap';
+import useFocusTrap from '../../../hooks/useFocusTrap';
 
 const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   const closeButton = useRef();

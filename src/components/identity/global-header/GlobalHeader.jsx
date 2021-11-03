@@ -3,7 +3,7 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FlexBox, FlexCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
-import * as styles from './GlobalHeaderStyles';
+import * as styles from './GlobalHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 import Logo from '../logo';
 import OpenSearchModalButton from '../../search/openSearchModalButton';

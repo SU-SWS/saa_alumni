@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
+import { dcnb } from 'cnbuilder';
 import { Heading } from 'decanter-react';
-import Modal from '../../layout/modal';
+import Modal from '../../layout/Modal/modal';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
 import { Chip } from '../../simple/Chip/Chip';
@@ -50,7 +51,11 @@ const TripFilterModal = ({
         <FaIcon proFaIcon="sliders-h" className={styles.filterIcon} />
       </button>
 
-      <Modal isOpen={modalOpen} onClose={handleClose}>
+      <Modal
+        isOpen={modalOpen}
+        onClose={handleClose}
+        ariaLabel="Trips filtering modal"
+      >
         <Heading
           level={2}
           size={1}
@@ -59,33 +64,35 @@ const TripFilterModal = ({
         >
           Filter by
         </Heading>
-        <div className={styles.filterChips}>
-          {activeFilters.map((filter) => (
-            <Chip
-              key={`chip:${filter.datasource}:${filter.value}`}
-              label={filter.name}
-              aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
-              onClick={() => toggleFilter(filter.datasource, filter.value)}
-            />
-          ))}
-        </div>
-        <div className={styles.filtersList}>
-          {filters
-            .filter(
-              ({ key }) =>
-                key !== primaryFilter.datasource ||
-                drillDownFilterTypes.includes(key)
-            )
-            .map((filter) => (
-              <TripFilterList
-                key={filter.key}
-                filter={filter}
-                clearFilterType={clearFilterType}
-                toggleFilter={toggleFilter}
+        <div className={dcnb('modal-body', styles.modalBody)}>
+          <div className={styles.filterChips}>
+            {activeFilters.map((filter) => (
+              <Chip
+                key={`chip:${filter.datasource}:${filter.value}`}
+                label={filter.name}
+                aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                onClick={() => toggleFilter(filter.datasource, filter.value)}
               />
             ))}
+          </div>
+          <div className={styles.filtersList}>
+            {filters
+              .filter(
+                ({ key }) =>
+                  key !== primaryFilter.datasource ||
+                  drillDownFilterTypes.includes(key)
+              )
+              .map((filter) => (
+                <TripFilterList
+                  key={filter.key}
+                  filter={filter}
+                  clearFilterType={clearFilterType}
+                  toggleFilter={toggleFilter}
+                />
+              ))}
+          </div>
         </div>
-        <div className={styles.footer}>
+        <div className={dcnb('modal-footer', styles.footer)}>
           <button
             className={styles.clearAllBtn}
             type="button"

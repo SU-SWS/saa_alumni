@@ -6,7 +6,7 @@ import CreateBloks from '../../utilities/createBloks';
 import Logo from './logo';
 import OpenSearchModalButton from '../search/openSearchModalButton';
 import SearchModal from '../search/searchModal';
-import * as styles from './global-header/GlobalHeaderStyles';
+import * as styles from './global-header/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
