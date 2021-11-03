@@ -1,10 +1,20 @@
 import React, { useState, useRef } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
-import CreateBloks from '../../utilities/createBloks';
-import useEscape from '../../hooks/useEscape';
-import useOnClickOutside from '../../hooks/useOnClickOutside';
-import { isExpanded, isBrowser } from '../../utilities/menuHelpers';
-import * as styles from './SAAMainNav/SAAMainMenuGroup.styles';
+import { ChevronDownIcon } from '@heroicons/react/outline';
+import PropTypes from 'prop-types';
+import CreateBloks from '../../../utilities/createBloks';
+import useEscape from '../../../hooks/useEscape';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
+import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
+import * as styles from './mainMenuGroup.styles';
+import { NavItemType } from '../../../types/NavItemType';
+
+// SAA Homesite Main Menu Group
+export const MainMenuGroupProps = {
+  parentText: PropTypes.string,
+  parentTextSecond: PropTypes.string,
+  menuItems: PropTypes.arrayOf(PropTypes.shape(NavItemType)),
+  panelFacing: PropTypes.string,
+};
 
 const MainMenuGroup = ({
   blok: { parentText, parentTextSecond, menuItems, panelFacing },
@@ -41,18 +51,22 @@ const MainMenuGroup = ({
   }
 
   return (
-    <li className={styles.rootHomesite} ref={ref}>
+    <li className={styles.root({ isHomesite: true })} ref={ref}>
       <button
         type="button"
         onClick={togglePanel}
         aria-expanded={panelOpened}
         ref={parentRef}
-        className={styles.parentButton({ panelOpened, isActiveButton })}
+        className={styles.parentButton({
+          panelOpened,
+          isActiveButton,
+          isHomesite: true,
+        })}
       >
         {parentText}
         {parentTextSecond && (
           <>
-            <br className="su-hidden xl:su-inline 2xl:su-hidden" />
+            <br className={styles.parentTextLinebreak} />
             {parentTextSecond}
           </>
         )}
@@ -63,14 +77,19 @@ const MainMenuGroup = ({
       </button>
       {menuItems && menuItems.length > 0 && (
         <ul
-          className={styles.childMenu({ panelFacing, panelOpened })}
+          className={styles.childMenu({
+            panelFacing,
+            panelOpened,
+            isHomesite: true,
+          })}
           aria-hidden={!panelOpened}
         >
-          <CreateBloks blokSection={menuItems} />
+          <CreateBloks blokSection={menuItems} isHomesite />
         </ul>
       )}
     </li>
   );
 };
+MainMenuGroup.propTypes = MainMenuGroupProps;
 
 export default MainMenuGroup;

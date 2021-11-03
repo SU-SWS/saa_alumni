@@ -1,20 +1,20 @@
-/* eslint-disable react/forbid-prop-types */
 import React, { useState, useRef } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import SbLink from '../../../utilities/sbLink';
-import * as styles from './SAAMainMenuGroup.styles';
+import * as styles from './mainMenuGroup.styles';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
-import { SBBlokType } from '../../../types/storyblok/SBBlokType';
+import { NavItemType } from '../../../types/NavItemType';
 
+// Main Menu Group for the shared SAA Main Nav
 export const SAAMainMenuGroupProps = {
   parentText: PropTypes.string.isRequired,
   parentLink: SBLinkType,
-  childMenuItems: SBBlokType,
+  childMenuItems: PropTypes.arrayOf(PropTypes.shape(NavItemType)),
   panelFacing: PropTypes.string,
 };
 
@@ -56,14 +56,18 @@ const SAAMainMenuGroup = ({
   }
 
   return (
-    <li className={styles.rootSAA} ref={ref}>
+    <li className={styles.root({ isHomesite: false })} ref={ref}>
       {parentLink?.url === '' && parentLink?.cached_url === '' ? (
         <button
           type="button"
           onClick={togglePanel}
           aria-expanded={panelOpened}
           ref={parentRef}
-          className={styles.parentButton({ panelOpened, isActiveButton })}
+          className={styles.parentButton({
+            panelOpened,
+            isActiveButton,
+            isHomsite: false,
+          })}
         >
           {parentText}
           <ChevronDownIcon
@@ -84,7 +88,11 @@ const SAAMainMenuGroup = ({
       )}
       {childMenuItems && childMenuItems.length > 0 && (
         <ul
-          className={styles.childMenu({ panelFacing, panelOpened })}
+          className={styles.childMenu({
+            panelFacing,
+            panelOpened,
+            isHomesite: false,
+          })}
           aria-hidden={!panelOpened}
         >
           <CreateBloks blokSection={childMenuItems} hasExternalIcon />

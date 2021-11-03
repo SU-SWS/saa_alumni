@@ -6,9 +6,14 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
-import * as styles from './SAAMainNav.styles';
+import * as styles from './mainNav.styles';
 import { isExpanded } from '../../../utilities/menuHelpers';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
+
+/**
+ * This Main Nav is only used on the SAA subsites
+ * For Main Nav used on the SAA Homesite, please see the mainNav component
+ */
 
 export const SAAMainNavProps = {
   menuItems: SBBlokType,
