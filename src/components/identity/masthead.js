@@ -138,7 +138,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
       <SearchModal
         isOpen={modalOpen}
         setIsOpen={setModalOpen}
-        onClose={() => handleClose()}
+        onClose={handleClose}
       />
     </SbEditable>
   );

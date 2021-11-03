@@ -33,7 +33,6 @@ const GlobalHeader = ({
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
-
   const mastheadDesktop = document.getElementsByClassName(
     'global-header-desktop'
   )[0];
@@ -130,7 +129,7 @@ const GlobalHeader = ({
       <SearchModal
         isOpen={modalOpen}
         setIsOpen={setModalOpen}
-        onClose={() => handleClose()}
+        onClose={handleClose}
       />
     </>
   );
