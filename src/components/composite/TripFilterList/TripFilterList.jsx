@@ -50,6 +50,7 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
             className="su-w"
             key={`${facet.datasource}-${facet.value}`}
             label={facet.name}
+            count={facet.count}
             onChange={() =>
               toggleFilter(facet.datasource, facet.value, toggleFilter)
             }

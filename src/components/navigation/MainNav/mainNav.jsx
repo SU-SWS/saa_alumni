@@ -2,11 +2,16 @@ import React, { useState, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import CreateBloks from '../../utilities/createBloks';
-import useEscape from '../../hooks/useEscape';
-import useOnClickOutside from '../../hooks/useOnClickOutside';
-import * as styles from './SAAMainNav/SAAMainNav.styles';
-import { isExpanded } from '../../utilities/menuHelpers';
+import CreateBloks from '../../../utilities/createBloks';
+import useEscape from '../../../hooks/useEscape';
+import useOnClickOutside from '../../../hooks/useOnClickOutside';
+import * as styles from './mainNav.styles';
+import { isExpanded } from '../../../utilities/menuHelpers';
+
+/**
+ * This Main Nav is only used on the SAA Homesite
+ * For Main Nav used on the subsites, e.g., Travel/Study, please see SAAMainNav
+ */
 
 const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   const [menuOpened, setMenuOpened] = useState(false);
