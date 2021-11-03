@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { dcnb } from 'cnbuilder';
 import { Heading } from 'decanter-react';
-import Modal from '../../layout/Modal/modal';
+import Modal from '../../layout/Modal/Modal';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
 import { Chip } from '../../simple/Chip/Chip';
@@ -40,7 +40,7 @@ const TripFilterModal = ({
 
   return (
     <>
-      <button
+      <buttons
         type="button"
         className={styles.filterModalButton}
         aria-label="Open trips filtering modal"
@@ -49,7 +49,7 @@ const TripFilterModal = ({
       >
         <span>Filters</span>
         <FaIcon proFaIcon="sliders-h" className={styles.filterIcon} />
-      </button>
+      </buttons>
 
       <Modal
         isOpen={modalOpen}

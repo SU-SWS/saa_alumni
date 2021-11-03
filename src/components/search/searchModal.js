@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Heading } from 'decanter-react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
-import Modal from '../layout/Modal/modal';
+import Modal from '../layout/Modal/Modal';
 import SearchFieldModal from './searchFieldModal';
 import SearchSuggestions from './searchSuggestions';
 
