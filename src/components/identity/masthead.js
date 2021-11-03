@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, FlexBox, FlexCell } from 'decanter-react';
+import { FlexBox, FlexCell } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../utilities/createBloks';
 import Logo from './logo';
@@ -13,6 +13,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
+  const mastheadRef = useRef(null);
 
   let mainNavBgColorXl =
     'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
@@ -24,11 +25,8 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
     mainNavBgColorLg = 'su-bg-saa-black';
   }
 
-  const mastheadDesktop =
-    document.getElementsByClassName('masthead-desktop')[0];
-
   const returnFocus = () => {
-    if (getComputedStyle(mastheadDesktop, null).display === 'none') {
+    if (getComputedStyle(mastheadRef.current, null).display === 'none') {
       openSearchMobileRef.current.focus();
     } else {
       openSearchRef.current.focus();
@@ -56,10 +54,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
 
   return (
     <SbEditable content={blok}>
-      <Container
-        width="full"
-        className="masthead-mobile su-relative lg:su-hidden su-bg-cardinal-red-xdark"
-      >
+      <div className="masthead-mobile su-relative su-w-full lg:su-hidden su-bg-cardinal-red-xdark">
         <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
           <ul className={styles.utilNavMenuMobile}>
             <CreateBloks
@@ -81,11 +76,12 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
           />
           <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
         </FlexBox>
-      </Container>
-      <Container
-        className={`masthead-desktop su-hidden lg:su-block ${hasHero ? 'su-absolute' : 'su-relative'
-          }  su-z-20`}
-        width="full"
+      </div>
+
+      <div
+        className={`masthead-desktop su-hidden lg:su-block su-w-full su-z-20
+        ${hasHero ? 'su-absolute' : 'su-relative'}`}
+        ref={mastheadRef}
       >
         <FlexBox>
           <FlexCell
@@ -134,7 +130,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
             mainNavBgColorLg
           )}
         />
-      </Container>
+      </div>
       <SearchModal
         isOpen={modalOpen}
         setIsOpen={setModalOpen}

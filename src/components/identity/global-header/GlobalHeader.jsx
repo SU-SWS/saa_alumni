@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Container, FlexBox, FlexCell } from 'decanter-react';
+import { FlexBox, FlexCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import * as styles from './GlobalHeaderStyles';
 import CreateBloks from '../../../utilities/createBloks';
@@ -33,12 +33,10 @@ const GlobalHeader = ({
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
-  const mastheadDesktop = document.getElementsByClassName(
-    'global-header-desktop'
-  )[0];
+  const mastheadRef = useRef(null);
 
   const returnFocus = () => {
-    if (getComputedStyle(mastheadDesktop, null).display === 'none') {
+    if (getComputedStyle(mastheadRef.current, null).display === 'none') {
       openSearchMobileRef.current.focus();
     } else {
       openSearchRef.current.focus();
@@ -66,7 +64,7 @@ const GlobalHeader = ({
 
   return (
     <>
-      <Container width="full" className={styles.rootMobile}>
+      <div className={styles.rootMobile}>
         <CreateBloks
           blokSection={utilityNav}
           ariaLabel="Utility Menu"
@@ -95,9 +93,9 @@ const GlobalHeader = ({
           />
           <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
         </FlexBox>
-      </Container>
+      </div>
 
-      <Container className={styles.root({ hasHero, isDark })}>
+      <div className={styles.root({ hasHero, isDark })} ref={mastheadRef}>
         <FlexBox justifyContent="space-between" alignItems="start">
           <FlexCell className={styles.logoWrapper}>
             <Logo className={styles.logo} />
@@ -124,7 +122,7 @@ const GlobalHeader = ({
           </SbLink>
         </div>
         <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
-      </Container>
+      </div>
 
       <SearchModal
         isOpen={modalOpen}
