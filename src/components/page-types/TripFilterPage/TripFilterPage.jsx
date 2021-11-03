@@ -84,8 +84,42 @@ const TripFilterPage = (props) => {
                 <span>Filters</span>
                 <FaIcon proFaIcon="sliders-h" className={styles.filterIcon} />
               </button>
-              <Modal ariaLabel="Trips filtering modal" isOpen={modalOpen}>
-                <Heading level={2}>Filter by</Heading>
+              <Modal
+                ariaLabel="Trips filtering modal"
+                isOpen={modalOpen}
+                onClose={() => setModalOpen(false)}
+              >
+                <Heading level={2} className={styles.modalHeading}>
+                  Filter by
+                </Heading>
+                <div className={styles.filterChips}>
+                  {activeFilters.map((filter) => (
+                    <Chip
+                      key={`chip:${filter.datasource}:${filter.value}`}
+                      label={filter.name}
+                      aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                      onClick={() =>
+                        toggleFilter(filter.datasource, filter.value)
+                      }
+                    />
+                  ))}
+                </div>
+                <div className={styles.filtersList}>
+                  {filters
+                    .filter(
+                      ({ key }) =>
+                        key !== primaryFilter.datasource ||
+                        drillDownFilterTypes.includes(key)
+                    )
+                    .map((filter) => (
+                      <TripFilterList
+                        key={filter.key}
+                        filter={filter}
+                        clearFilterType={clearFilterType}
+                        toggleFilter={toggleFilter}
+                      />
+                    ))}
+                </div>
               </Modal>
             </GridCell>
             <GridCell xs={1} lg={3} className={styles.filterSidebar}>

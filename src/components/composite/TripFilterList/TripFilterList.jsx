@@ -39,6 +39,9 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
       <Heading level={3} weight="semibold" className={styles.heading}>
         {filter.name}
       </Heading>
+      <button type="button" className={styles.toggle}>
+        {filter.name}
+      </button>
       <div className={styles.filterlist}>
         <FilterCheckbox
           label={`All ${filter.name.toLowerCase()}s`}
