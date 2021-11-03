@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Container, Heading, Grid, GridCell, Skiplink } from 'decanter-react';
@@ -16,7 +16,7 @@ import Ankle from '../../partials/ankle/ankle';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import useWindowSize from '../../../hooks/useWindowSize';
 import { breakpoints } from '../../../contexts/GlobalContext';
-import Modal from '../../layout/modal';
+import TripFilterModal from './TripFilterModal';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -41,7 +41,6 @@ const TripFilterPage = (props) => {
     getPageLink,
   } = useTripFilters(primaryFilter);
   const screenSize = useWindowSize();
-  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <SbEditable content={blok}>
@@ -75,52 +74,14 @@ const TripFilterPage = (props) => {
           </header>
           <Grid xs={1} lg={12} gap className={styles.filterSection}>
             <GridCell xs={1} className={styles.filterSidebarMobile}>
-              <button
-                type="button"
-                className={styles.filterModalButton}
-                aria-label="Open trips filtering modal"
-                onClick={() => setModalOpen(true)}
-              >
-                <span>Filters</span>
-                <FaIcon proFaIcon="sliders-h" className={styles.filterIcon} />
-              </button>
-              <Modal
-                ariaLabel="Trips filtering modal"
-                isOpen={modalOpen}
-                onClose={() => setModalOpen(false)}
-              >
-                <Heading level={2} className={styles.modalHeading}>
-                  Filter by
-                </Heading>
-                <div className={styles.filterChips}>
-                  {activeFilters.map((filter) => (
-                    <Chip
-                      key={`chip:${filter.datasource}:${filter.value}`}
-                      label={filter.name}
-                      aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
-                      onClick={() =>
-                        toggleFilter(filter.datasource, filter.value)
-                      }
-                    />
-                  ))}
-                </div>
-                <div className={styles.filtersList}>
-                  {filters
-                    .filter(
-                      ({ key }) =>
-                        key !== primaryFilter.datasource ||
-                        drillDownFilterTypes.includes(key)
-                    )
-                    .map((filter) => (
-                      <TripFilterList
-                        key={filter.key}
-                        filter={filter}
-                        clearFilterType={clearFilterType}
-                        toggleFilter={toggleFilter}
-                      />
-                    ))}
-                </div>
-              </Modal>
+              <TripFilterModal
+                primaryFilter={primaryFilter}
+                filters={filters}
+                activeFilters={activeFilters}
+                toggleFilter={toggleFilter}
+                clearFilterType={clearFilterType}
+                clearAllFilters={clearAllFilters}
+              />
             </GridCell>
             <GridCell xs={1} lg={3} className={styles.filterSidebar}>
               <Skiplink anchorLink="#filtered-trips-list">
