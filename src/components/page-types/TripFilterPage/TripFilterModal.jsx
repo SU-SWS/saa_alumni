@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Heading } from 'decanter-react';
 import Modal from '../../layout/modal';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
@@ -7,6 +7,8 @@ import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterModal.styles';
 import FaIcon from '../../simple/faIcon';
 import SAAButton from '../../simple/SAAButton';
+import { focusElement } from '../../../utilities/dom';
+import useEscape from '../../../hooks/useEscape';
 
 const TripFilterModal = ({
   primaryFilter,
@@ -17,6 +19,23 @@ const TripFilterModal = ({
   clearAllFilters,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const openModalBtnRef = useRef(null);
+
+  const handleClose = () => {
+    setModalOpen(false);
+    openModalBtnRef.current.focus();
+  };
+
+  const viewResults = () => {
+    setModalOpen(false);
+    focusElement('.filtered-trips-list');
+  };
+
+  useEscape(() => {
+    if (modalOpen) {
+      handleClose();
+    }
+  });
 
   return (
     <>
@@ -25,13 +44,19 @@ const TripFilterModal = ({
         className={styles.filterModalButton}
         aria-label="Open trips filtering modal"
         onClick={() => setModalOpen(true)}
+        ref={openModalBtnRef}
       >
         <span>Filters</span>
         <FaIcon proFaIcon="sliders-h" className={styles.filterIcon} />
       </button>
 
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-        <Heading level={2} className={styles.modalHeading}>
+      <Modal isOpen={modalOpen} onClose={handleClose}>
+        <Heading
+          level={2}
+          size={1}
+          weight="semibold"
+          className={styles.modalHeading}
+        >
           Filter by
         </Heading>
         <div className={styles.filterChips}>
@@ -81,7 +106,7 @@ const TripFilterModal = ({
             size="small-short"
             buttonStyle="palo-verde-gradient"
             className={styles.viewResultsBtn}
-            onClick={() => setModalOpen(false)}
+            onClick={viewResults}
           >
             View results
           </SAAButton>

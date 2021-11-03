@@ -79,7 +79,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
                 type="button"
                 ref={closeButton}
                 onClick={onClose}
-                className="su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end"
+                className="su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-z-30"
               >
                 Close
                 <XIcon
