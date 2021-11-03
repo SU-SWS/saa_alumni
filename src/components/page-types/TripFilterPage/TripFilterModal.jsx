@@ -6,6 +6,7 @@ import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
 import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterModal.styles';
 import FaIcon from '../../simple/faIcon';
+import SAAButton from '../../simple/SAAButton';
 
 const TripFilterModal = ({
   primaryFilter,
@@ -58,6 +59,32 @@ const TripFilterModal = ({
                 toggleFilter={toggleFilter}
               />
             ))}
+        </div>
+        <div className={styles.footer}>
+          <button
+            className={styles.clearAllBtn}
+            type="button"
+            onClick={clearAllFilters}
+            aria-label="Clear all filters"
+          >
+            <span className={styles.clearAllText}>
+              Clear all
+              <span aria-hidden className={styles.clearAllHover} />
+            </span>
+            <FaIcon
+              className={styles.clearAllIcon}
+              iconChoice="times"
+              isOutline
+            />
+          </button>
+          <SAAButton
+            size="small-short"
+            buttonStyle="palo-verde-gradient"
+            className={styles.viewResultsBtn}
+            onClick={() => setModalOpen(false)}
+          >
+            View results
+          </SAAButton>
         </div>
       </Modal>
     </>

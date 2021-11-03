@@ -63,6 +63,8 @@ export const buttonStyles = {
     'su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white',
   'ghost-gradient':
     'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+  'palo-verde-gradient':
+    'su-border-palo-verde-dark su-bg-palo-verde-dark su-text-white hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue',
 };
 
 export const ctaGroupDisplay = {
