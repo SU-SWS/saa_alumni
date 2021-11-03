@@ -34,13 +34,15 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
     const overlay = document.querySelector('.su-modal');
     const scrollbarWidth = `${overlay.offsetWidth - overlay.clientWidth}px`;
 
-    document.getElementsByTagName('html')[0].style.overflowY = 'hidden';
+    document
+      .getElementsByTagName('html')[0]
+      .setAttribute('style', 'overflow-y: hidden!important');
     document.getElementsByTagName('body')[0].style.paddingRight =
       scrollbarWidth;
   };
 
   const unlockScroll = () => {
-    document.getElementsByTagName('html')[0].style.overflowY = 'scroll';
+    document.getElementsByTagName('html')[0].style.overflowY = 'visible';
     document.getElementsByTagName('body')[0].style.paddingRight = '0';
   };
 
