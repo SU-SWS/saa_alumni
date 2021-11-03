@@ -11,7 +11,7 @@ export const root = ({ checked }) =>
 export const label =
   'su-relative su-text-16 xl:su-text-19 2xl:su-text-21 su-p-04em su-flex su-flex-row su-items-center su-text-white lg:su-bg-black-true focus-within:su-bg-transparent group-hover:su-bg-transparent su-cursor-pointer group-hover:su-underline';
 export const icon = ({ checked }) =>
-  dcnb('su-mr-8 su-w-[1.3em] lg:su-w-[1em] su-flex-shrink-0', {
+  dcnb('su-mr-8 su-w-[1.4em] lg:su-w-[1em] su-flex-shrink-0', {
     'su-opacity-0': !checked,
     'su-text-palo-verde-light group-focus-within:su-text-white group-hover:su-text-white lg:su-text-white':
       checked,
