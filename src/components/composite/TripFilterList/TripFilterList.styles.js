@@ -3,7 +3,7 @@ import { dcnb } from 'cnbuilder';
 export const root = 'su-hidden lg:su-block su-rs-mt-2';
 export const heading =
   'su-hidden lg:su-block su-rs-mb-0 su-type-1 su-text-white';
-export const filterlist = 'su-bg-black-true';
+export const filterlist = 'su-bg-saa-black-dark';
 
 export const rootMobile = 'su-block lg:su-hidden su-bg-saa-black';
 export const filterlistMobile = ({ panelOpened }) =>
@@ -14,7 +14,7 @@ export const filterlistMobile = ({ panelOpened }) =>
   });
 export const toggle = ({ panelOpened }) =>
   dcnb(
-    'su-group su-flex su-items-center su-w-full su-pl-20 sm:su-pl-30 md:su-pl-50 hocus:su-shadow-none hocus:su-underline hocus:su-bg-black-90 su-py-20 su-pl-20 su-pr-80 su-text-20 su-text-white',
+    'su-group su-flex su-items-center su-w-full su-pl-20 sm:su-pl-30 md:su-pl-50 su-underline-offset hocus:su-shadow-none hocus:su-underline hocus:su-bg-black-90 su-py-20 su-pl-20 su-pr-80 su-text-20 su-text-white',
     {
       'su-border-b su-border-black-80 su-bg-saa-black-dark': !panelOpened,
       '!su-bg-saa-black hover:!su-bg-black-80': panelOpened,

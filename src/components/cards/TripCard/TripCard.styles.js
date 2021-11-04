@@ -1,5 +1,5 @@
 export const root =
-  'su-group su-relative su-overflow-hidden su-bg-black-true su-break-words su-border-black su-w-full sm:su-max-w-[42rem] md:su-max-w-full';
+  'su-group su-relative su-overflow-hidden su-bg-saa-black-dark su-break-words su-border-black su-w-full sm:su-max-w-[42rem] md:su-max-w-full';
 export const content = 'su-rs-pt-1 su-rs-px-2 su-rs-pb-3';
 export const imageWrapper = 'su-aspect-w-3 su-aspect-h-2 su-overflow-hidden';
 export const image =
