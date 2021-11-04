@@ -68,6 +68,7 @@ const TripFilterModal = ({
         isOpen={modalOpen}
         onClose={handleClose}
         ariaLabel="Trips filtering modal"
+        type="trip-filter"
       >
         <Heading
           level={2}

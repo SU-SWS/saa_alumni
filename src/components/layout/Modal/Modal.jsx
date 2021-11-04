@@ -2,8 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import { tabbable } from 'tabbable';
 import { XIcon } from '@heroicons/react/solid';
 import useFocusTrap from '../../../hooks/useFocusTrap';
+import * as styles from './Modal.styles';
 
-const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
+const Modal = ({
+  children,
+  isOpen,
+  onClose,
+  ariaLabel,
+  initialFocus,
+  type = 'default',
+}) => {
   const closeButton = useRef();
   const modalBodyRef = useRef();
 
@@ -38,11 +46,13 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
       .setAttribute('style', 'overflow-y: hidden!important');
     document.getElementsByTagName('body')[0].style.paddingRight =
       scrollbarWidth;
+    document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
   };
 
   const unlockScroll = () => {
     document.getElementsByTagName('html')[0].style.overflowY = 'visible';
     document.getElementsByTagName('body')[0].style.paddingRight = '0';
+    document.getElementsByTagName('body')[0].style.overflowY = 'visible';
   };
 
   useEffect(() => {
@@ -61,33 +71,25 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
 
   return (
     <div
-      className={`su-modal
-      su-fixed su-w-screen su-h-screen su-overscroll-contain su-overflow-auto su-top-0 su-left-0 su-items-center su-justify-center su-z-50
-      ${isOpen ? 'su-flex' : 'su-hidden'}
-    `}
+      className={styles.root({ isOpen, type })}
       aria-label={ariaLabel}
       aria-hidden={isOpen ? 'false' : 'true'}
       role="dialog"
       tabIndex="-1"
     >
-      <div className="su-absolute su-w-screen su-h-screen su-bg-saa-black su-bg-opacity-[97%] su-rs-py-5 su-overflow-auto su-basefont-19">
-        <div className="su-pointer-events-auto">
-          <div className="su-cc su-flex su-justify-end">
-            <button
-              type="button"
-              ref={closeButton}
-              onClick={onClose}
-              className="su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-z-30"
-            >
-              Close
-              <XIcon
-                className="su-inline-block su-h-[1.1em] su-w-[1.1em] su-ml-4"
-                aria-hidden="true"
-              />
-            </button>
-          </div>
-          <div ref={modalBodyRef}>{children}</div>
+      <div className={styles.wrapper({ type })}>
+        <div className={styles.flexbox}>
+          <button
+            type="button"
+            ref={closeButton}
+            onClick={onClose}
+            className={styles.closeButton({ type })}
+          >
+            Close
+            <XIcon className={styles.closeIcon({ type })} aria-hidden="true" />
+          </button>
         </div>
+        <div ref={modalBodyRef}>{children}</div>
       </div>
     </div>
   );

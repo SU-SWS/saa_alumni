@@ -3,7 +3,7 @@ export const filterModalButton =
 export const filterIcon =
   'su-text-saa-electric-blue-light group-hocus:su-text-white';
 export const modalHeading =
-  'su-fixed su-top-0 su-left-0 su-z-20 su-w-full su-cc su-rs-py-1 su-text-black-20 su-bg-saa-black-dark su-border-b su-border-black-80';
+  'su-fixed su-top-0 su-left-0 su-z-20 su-w-full su-cc su-mb-0 su-rs-py-1 su-text-black-20 su-bg-saa-black-dark su-border-b su-border-black-80';
 export const modalBody = 'su-mt-20 su-mb-108 su-bg-saa-black-dark';
 export const filterChips = 'su-cc children:su-mr-13 children:su-mb-13';
 export const footer =
