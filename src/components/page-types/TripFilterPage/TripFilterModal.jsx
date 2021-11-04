@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
 import { Heading } from 'decanter-react';
 import Modal from '../../layout/Modal/Modal';
@@ -10,6 +10,8 @@ import FaIcon from '../../simple/faIcon';
 import SAAButton from '../../simple/SAAButton';
 import { focusElement } from '../../../utilities/dom';
 import useEscape from '../../../hooks/useEscape';
+import useWindowSize from '../../../hooks/useWindowSize';
+import { breakpoints } from '../../../contexts/GlobalContext';
 
 const TripFilterModal = ({
   primaryFilter,
@@ -22,14 +24,10 @@ const TripFilterModal = ({
   const [modalOpen, setModalOpen] = useState(false);
   const openModalBtnRef = useRef(null);
 
+  // If closing modal wth close button or escape key, return focus to open modal button
   const handleClose = () => {
     setModalOpen(false);
     openModalBtnRef.current.focus();
-  };
-
-  const viewResults = () => {
-    setModalOpen(false);
-    focusElement('.filtered-trips-list');
   };
 
   useEscape(() => {
@@ -37,6 +35,21 @@ const TripFilterModal = ({
       handleClose();
     }
   });
+
+  // If the view results button is clicked, close the modal and focus on the results list
+  const viewResults = () => {
+    setModalOpen(false);
+    focusElement('.filtered-trips-list');
+  };
+
+  const windowWidth = useWindowSize();
+
+  // If modal is open on mobile breakpoint, and the window is resized desktop width, close the modal
+  useEffect(() => {
+    if (windowWidth.width >= breakpoints.lg) {
+      setModalOpen(false);
+    }
+  }, [windowWidth.width]);
 
   return (
     <>
