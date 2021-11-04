@@ -2,7 +2,7 @@ import React from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
 
 const OpenSearchModalButton = React.forwardRef((props, ref) => {
-  const { modalOpen, setModalOpen, id } = props;
+  const { setModalOpen, id } = props;
 
   return (
     <button

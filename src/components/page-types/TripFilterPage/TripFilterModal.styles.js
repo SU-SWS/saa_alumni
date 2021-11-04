@@ -3,11 +3,11 @@ export const filterModalButton =
 export const filterIcon =
   'su-text-saa-electric-blue-light group-hocus:su-text-white';
 export const modalHeading =
-  'su-fixed su-top-0 su-left-0 su-z-20 su-w-full su-cc su-rs-py-1 su-text-black-20 su-bg-saa-black su-border-b su-border-black-80';
-export const modalBody = 'su-mt-20 su-mb-108 su-bg-saa-black';
-export const filterChips = 'su-flex-1 children:su-mr-13 children:su-mb-13';
+  'su-fixed su-top-0 su-left-0 su-z-20 su-w-full su-cc su-rs-py-1 su-text-black-20 su-bg-saa-black-dark su-border-b su-border-black-80';
+export const modalBody = 'su-mt-20 su-mb-108 su-bg-saa-black-dark';
+export const filterChips = 'su-cc children:su-mr-13 children:su-mb-13';
 export const footer =
-  'su-fixed su-overflow-hidden su-bottom-0 su-right-0 su-flex su-items-center su-justify-end su-rs-py-2 su-bg-gradient-to-b su-from-saa-black su-to-palo-alto-dark su-w-full su-cc su-border-t su-border-black-80 su-scroll';
+  'su-fixed su-overflow-hidden su-bottom-0 su-right-0 su-flex su-items-center su-justify-end su-rs-py-2 su-bg-gradient-to-b su-from-saa-black-dark su-to-palo-alto-dark su-w-full su-cc su-border-t su-border-black-80 su-scroll';
 export const clearAllBtn = 'su-group su-flex-row su-items-center su-block';
 export const clearAllText = 'su-relative su-text-white su-text-18';
 export const clearAllHover =

@@ -72,8 +72,12 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
       </div>
 
       <div className={styles.rootMobile}>
-        <button type="button" className={styles.toggle} onClick={togglePanel}>
-          <Heading level={3} weight="semibold">
+        <button
+          type="button"
+          className={styles.toggle({ panelOpened })}
+          onClick={togglePanel}
+        >
+          <Heading level={3} weight="semibold" className={styles.toggleHeading}>
             {filter.name}
           </Heading>
           <ChevronDownIcon
