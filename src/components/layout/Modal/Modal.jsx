@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Container } from 'decanter-react';
 import { tabbable } from 'tabbable';
 import { XIcon } from '@heroicons/react/solid';
 import useFocusTrap from '../../../hooks/useFocusTrap';
@@ -72,25 +71,23 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
       tabIndex="-1"
     >
       <div className="su-absolute su-w-full su-h-full su-bg-saa-black su-bg-opacity-[97%] su-rs-py-5 su-overflow-auto su-basefont-19">
-        <Container>
-          <div className="su-pointer-events-auto">
-            <div className="su-flex su-justify-end">
-              <button
-                type="button"
-                ref={closeButton}
-                onClick={onClose}
-                className="su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-z-30"
-              >
-                Close
-                <XIcon
-                  className="su-inline-block su-h-[1.1em] su-w-[1.1em] su-ml-4"
-                  aria-hidden="true"
-                />
-              </button>
-            </div>
-            <div ref={modalBodyRef}>{children}</div>
+        <div className="su-pointer-events-auto">
+          <div className="su-flex su-justify-end">
+            <button
+              type="button"
+              ref={closeButton}
+              onClick={onClose}
+              className="su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-z-30"
+            >
+              Close
+              <XIcon
+                className="su-inline-block su-h-[1.1em] su-w-[1.1em] su-ml-4"
+                aria-hidden="true"
+              />
+            </button>
           </div>
-        </Container>
+          <div ref={modalBodyRef}>{children}</div>
+        </div>
       </div>
     </div>
   );

@@ -53,7 +53,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
       initialFocus={searchFieldRef}
       ariaLabel="Search Stanford Alumni websites"
     >
-      <div className="su-max-w-1000 su-mx-auto">
+      <div className="su-cc su-max-w-1000 su-mx-auto">
         <Heading
           font="serif"
           size={3}

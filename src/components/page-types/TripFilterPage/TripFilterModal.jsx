@@ -65,16 +65,18 @@ const TripFilterModal = ({
           Filter by
         </Heading>
         <div className={dcnb('modal-body', styles.modalBody)}>
-          <div className={styles.filterChips}>
-            {activeFilters.map((filter) => (
-              <Chip
-                key={`chip:${filter.datasource}:${filter.value}`}
-                label={filter.name}
-                aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
-                onClick={() => toggleFilter(filter.datasource, filter.value)}
-              />
-            ))}
-          </div>
+          {activeFilters && activeFilters.length > 0 && (
+            <div className={styles.filterChips}>
+              {activeFilters.map((filter) => (
+                <Chip
+                  key={`chip:${filter.datasource}:${filter.value}`}
+                  label={filter.name}
+                  aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                  onClick={() => toggleFilter(filter.datasource, filter.value)}
+                />
+              ))}
+            </div>
+          )}
           <div className={styles.filtersList}>
             {filters
               .filter(
