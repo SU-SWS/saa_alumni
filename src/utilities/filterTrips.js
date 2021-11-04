@@ -1,3 +1,5 @@
+import { getDuration, luxonDate } from './dates';
+
 // Helper to return active filters array
 export const getActiveFilters = (filterEntries = [], filterParams) => {
   const filters = filterParams
@@ -35,7 +37,9 @@ export const drillDownFilterTypes = ['trip-experience'];
  * Helper function to generate array of month values between 2 dates
  */
 export const getTripMonth = (startDate) => {
-  const tripStartMonth = startDate.getMonth();
+  const date = luxonDate(startDate);
+  // NOTE: luxon months are 1-12 instead of 0-11
+  const tripStartMonth = date.month - 1;
   return [monthValues[tripStartMonth]];
 };
 
@@ -43,15 +47,9 @@ export const getTripMonth = (startDate) => {
  * Helper function to get array of year values between 2 dates
  */
 export const getTripYear = (startDate) => {
-  const tripStartYear = startDate.getFullYear();
-  return [tripStartYear.toString()];
+  const date = luxonDate(startDate);
+  return [date.year.toString()];
 };
-
-/**
- * Helper function to get inclusive number of days between 2 dates
- */
-export const getTripDuration = (startDate, endDate) =>
-  (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
 
 /**
  * Helper function to determine trip duration filter
@@ -73,11 +71,10 @@ export const tripMatchesFilterType = (trip, filterType, filters = []) => {
   // No filters means it matches
   if (filters.length === 0) return true;
 
-  const tripStartDate = new Date(trip.content.startDate);
-  const tripEndDate = new Date(trip.content.endDate);
-  const tripYears = getTripYear(tripStartDate);
-  const tripMonths = getTripMonth(tripStartDate);
-  const tripDurationDays = getTripDuration(tripStartDate, tripEndDate);
+  const { startDate, endDate } = trip.content;
+  const tripYears = getTripYear(startDate);
+  const tripMonths = getTripMonth(startDate);
+  const tripDurationDays = getDuration(startDate, endDate).days;
 
   switch (filterType) {
     case 'trip-region':
@@ -133,10 +130,7 @@ const tripSorter = (a, b) => {
   }
 
   // Sort by startDate
-  return (
-    new Date(a.content.startDate).getTime() -
-    new Date(b.content.startDate).getTime()
-  );
+  return luxonDate(a.content.startDate).ts - luxonDate(b.content.startDate).ts;
 };
 
 /**
@@ -272,9 +266,8 @@ export const filterTrips = (allTrips, activeFilters = [], facetIndex) => {
  * Get duration filter value for a trip
  */
 export const getTripDurationFilters = (trip, durationFilters) => {
-  const startDate = new Date(trip.content.startDate);
-  const endDate = new Date(trip.content.endDate);
-  const duration = (endDate - startDate) / (1000 * 60 * 60 * 24) + 1;
+  const { startDate, endDate } = trip.content;
+  const duration = getDuration(startDate, endDate).days;
 
   const matchingFilters = durationFilters.filter((filter) =>
     tripWithinDuration(duration, filter.value)
@@ -284,7 +277,7 @@ export const getTripDurationFilters = (trip, durationFilters) => {
 
 // Given a trip, determine the filter facetss that it matches
 export const getTripFacets = (trip, allFilters) => {
-  const startDate = new Date(trip.content.startDate);
+  const { startDate } = trip.content;
 
   const { region, experiences } = trip.content;
   const year = getTripYear(startDate);
