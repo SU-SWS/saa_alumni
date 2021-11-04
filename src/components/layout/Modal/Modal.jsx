@@ -50,9 +50,9 @@ const Modal = ({
   };
 
   const unlockScroll = () => {
-    document.getElementsByTagName('html')[0].style.overflowY = 'visible';
-    document.getElementsByTagName('body')[0].style.paddingRight = '0';
-    document.getElementsByTagName('body')[0].style.overflowY = 'visible';
+    document.getElementsByTagName('html')[0].style.overflowY = '';
+    document.getElementsByTagName('body')[0].style.paddingRight = '';
+    document.getElementsByTagName('body')[0].style.overflowY = '';
   };
 
   useEffect(() => {
@@ -73,20 +73,20 @@ const Modal = ({
     <div
       className={styles.root({ isOpen, type })}
       aria-label={ariaLabel}
-      aria-hidden={isOpen ? 'false' : 'true'}
+      aria-hidden={!isOpen}
       role="dialog"
       tabIndex="-1"
     >
       <div className={styles.wrapper({ type })}>
-        <div className={styles.flexbox}>
+        <div className={styles.closeButtonWrapper({ type })}>
           <button
             type="button"
             ref={closeButton}
             onClick={onClose}
-            className={styles.closeButton({ type })}
+            className={styles.closeButton}
           >
             Close
-            <XIcon className={styles.closeIcon({ type })} aria-hidden="true" />
+            <XIcon className={styles.closeIcon({ type })} aria-hidden />
           </button>
         </div>
         <div ref={modalBodyRef}>{children}</div>

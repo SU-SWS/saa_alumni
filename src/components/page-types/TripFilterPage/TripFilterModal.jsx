@@ -80,7 +80,7 @@ const TripFilterModal = ({
         </Heading>
         <div className={dcnb('modal-body', styles.modalBody)}>
           {activeFilters && activeFilters.length > 0 && (
-            <div className={styles.filterChips}>
+            <div className={styles.chipsWrapper}>
               {activeFilters.map((filter) => (
                 <Chip
                   key={`chip:${filter.datasource}:${filter.value}`}
