@@ -50,9 +50,11 @@ const Modal = ({
   };
 
   const unlockScroll = () => {
-    document.getElementsByTagName('html')[0].style.overflowY = '';
-    document.getElementsByTagName('body')[0].style.paddingRight = '';
-    document.getElementsByTagName('body')[0].style.overflowY = '';
+    document
+      .getElementsByTagName('html')[0]
+      .setAttribute('style', 'overflow-y: visible!important');
+    document.getElementsByTagName('body')[0].style.paddingRight = '0';
+    document.getElementsByTagName('body')[0].style.overflowY = 'visible';
   };
 
   useEffect(() => {

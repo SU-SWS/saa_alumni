@@ -13,7 +13,6 @@ export const filterSidebar =
   'su-hidden lg:su-block su-bg-saa-black-dark su-px-18 xl:su-px-26 2xl:su-px-38 su-rs-pt-2 su-rs-pb-4';
 export const filterHeading =
   'su-type-0 su-text-white su-font-semibold su-uppercase su-tracking-normal';
-export const filtersList = '';
 export const chipsWrapper = 'su-hidden lg:su-block';
 export const activeFilters =
   'su-flex su-flex-row su-justify-between su-items-center su-mb-34';
@@ -27,4 +26,4 @@ export const clearAllHover =
 export const clearAllIcon = 'su-text-saa-electric-blue-light su-ml-8';
 export const filteredContent = 'su-text-white su-col-span-3';
 export const trips =
-  'su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-justify-items-center';
+  'focus:su-outline-none su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-justify-items-center';

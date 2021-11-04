@@ -23,7 +23,7 @@ export const closeButtonWrapper = ({ type }) =>
       type === 'trip-filter',
   });
 export const closeButton =
-  'su-group su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end';
+  'su-group su-bg-transparent su-text-white hocus:su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end focus:su-outline-none';
 export const closeIcon = ({ type }) =>
   dcnb('su-inline-block su-h-[1.1em] su-w-[1.1em] su-ml-4', {
     'su-transition-colors group-hocus:su-text-palo-verde-light':
