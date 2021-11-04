@@ -49,7 +49,6 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
       />
       {facetsToRender.map((facet) => (
         <FilterCheckbox
-          className="su-w"
           key={`${facet.datasource}-${facet.value}`}
           label={facet.name}
           count={facet.count}
@@ -75,6 +74,7 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
         <button
           type="button"
           className={styles.toggle({ panelOpened })}
+          aria-expanded={panelOpened}
           onClick={togglePanel}
         >
           <Heading level={3} weight="semibold" className={styles.toggleHeading}>

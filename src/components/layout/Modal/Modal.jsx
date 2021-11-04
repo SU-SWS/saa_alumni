@@ -62,7 +62,7 @@ const Modal = ({ children, isOpen, onClose, ariaLabel, initialFocus }) => {
   return (
     <div
       className={`su-modal
-      su-fixed su-w-full su-h-full su-top-0 su-left-0 su-items-center su-justify-center su-z-50
+      su-fixed su-w-screen su-h-screen su-overscroll-contain su-top-0 su-left-0 su-items-center su-justify-center su-z-50
       ${isOpen ? 'su-flex' : 'su-hidden'}
     `}
       aria-label={ariaLabel}
