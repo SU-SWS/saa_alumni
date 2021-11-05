@@ -12,6 +12,7 @@ import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import useEscape from '../../../hooks/useEscape';
 import useMediaQuery from '../../../hooks/useMediaQuery';
+import { breakpoints } from '../../../contexts/GlobalContext';
 
 export const GlobalHeaderProps = {
   siteName: PropTypes.string,
@@ -32,7 +33,7 @@ const GlobalHeader = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
-  const isDesktop = useMediaQuery('(min-width: 992px)');
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   const handleClose = () => {
     setModalOpen(false);
@@ -55,7 +56,7 @@ const GlobalHeader = ({
 
   return (
     <>
-      {!isDesktop && (
+      {!isDesktop ? (
         <div className={styles.rootMobile}>
           <CreateBloks
             blokSection={utilityNav}
@@ -86,9 +87,7 @@ const GlobalHeader = ({
             <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
           </FlexBox>
         </div>
-      )}
-
-      {isDesktop && (
+      ) : (
         <div className={styles.root({ hasHero, isDark })}>
           <FlexBox justifyContent="space-between" alignItems="start">
             <FlexCell className={styles.logoWrapper}>
@@ -118,7 +117,6 @@ const GlobalHeader = ({
           <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
         </div>
       )}
-
       <SearchModal
         isOpen={modalOpen}
         setIsOpen={setModalOpen}

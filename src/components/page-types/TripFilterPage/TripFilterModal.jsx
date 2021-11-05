@@ -10,7 +10,7 @@ import FaIcon from '../../simple/faIcon';
 import SAAButton from '../../simple/SAAButton';
 import { focusElement } from '../../../utilities/dom';
 import useEscape from '../../../hooks/useEscape';
-import useWindowSize from '../../../hooks/useWindowSize';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 import { breakpoints } from '../../../contexts/GlobalContext';
 
 const TripFilterModal = ({
@@ -42,14 +42,14 @@ const TripFilterModal = ({
     focusElement('.filtered-trips-list');
   };
 
-  const windowWidth = useWindowSize();
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   // If modal is open on mobile breakpoint, and the window is resized desktop width, close the modal
   useEffect(() => {
-    if (windowWidth.width >= breakpoints.lg) {
+    if (isDesktop) {
       setModalOpen(false);
     }
-  }, [windowWidth.width]);
+  }, [isDesktop]);
 
   return (
     <>
