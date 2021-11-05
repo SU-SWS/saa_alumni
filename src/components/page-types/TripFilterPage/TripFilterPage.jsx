@@ -40,7 +40,7 @@ const TripFilterPage = (props) => {
     totalPages,
     getPageLink,
   } = useTripFilters(primaryFilter);
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.md}px)`);
 
   return (
     <SbEditable content={blok}>
