@@ -1,6 +1,6 @@
 import { dcnb } from 'cnbuilder';
 
-export const root = 'su-block';
+export const root = 'su-block print:su-hidden';
 export const link =
   'su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset su-font-regular hocus:su-underline hocus:su-shadow-md';
 export const icon = ({ buttonStyle }) =>
