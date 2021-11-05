@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 export default function useMedia(queries, values, defaultValue) {
   // Array containing a media query list for each query
-
   const mediaQueryLists = queries.map((q) => window.matchMedia(q));
 
   // Function that gets value based on matching media query
@@ -36,7 +35,7 @@ export default function useMedia(queries, values, defaultValue) {
     [] // Empty array ensures effect is only run on mount and unmount
   );
 
-  if (typeof window !== 'undefined') {
+  if (typeof window === 'undefined') {
     return null;
   }
 
