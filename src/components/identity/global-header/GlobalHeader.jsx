@@ -11,7 +11,7 @@ import SearchModal from '../../search/searchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import useEscape from '../../../hooks/useEscape';
-import useMedia from '../../../hooks/useMedia';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 
 export const GlobalHeaderProps = {
   siteName: PropTypes.string,
@@ -32,13 +32,7 @@ const GlobalHeader = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
-
-  const isDesktop = useMedia(
-    // Media queries
-    ['(max-width: 991px)', '(min-width: 992px)'],
-    // Boolean value correspond to the media queries above
-    [false, true]
-  );
+  const isDesktop = useMediaQuery('(min-width: 992px)');
 
   const handleClose = () => {
     setModalOpen(false);
