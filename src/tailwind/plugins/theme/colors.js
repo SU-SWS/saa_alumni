@@ -20,6 +20,7 @@ module.exports = function () {
     },
     'saa-black': {
       DEFAULT: '#181D1C',
+      dark: '#070B0A',
       opacity: {
         80: 'rgba(24, 29, 28, 0.8)',
       },

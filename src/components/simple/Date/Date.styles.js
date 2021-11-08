@@ -11,7 +11,7 @@ export const dateWrapper = ({ isMinimal, isSmall }) =>
     'su-flex su-flex-row su-items-center',
     {
       'su-justify-start su-text-black': isMinimal,
-      'su-bg-black-true su-text-white su-px-20': !isMinimal,
+      'su-bg-saa-black-dark su-text-white su-px-20': !isMinimal,
       'su-min-w-[9rem] su-h-90': isSmall && !isMinimal,
       'su-h-100 su-min-w-[10rem] lg:su-min-w-[11.4rem] lg:su-h-[11.4rem]':
         !isSmall && !isMinimal,
