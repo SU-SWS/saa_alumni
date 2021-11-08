@@ -7,7 +7,7 @@ import WidthBox from '../../layout/widthBox';
 import { bgTextColorPairs } from '../../../utilities/dataSource';
 import getNumBloks from '../../../utilities/getNumBloks';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
-import * as styles from './ankleStyles';
+import * as styles from './ankle.styles';
 
 /**
  * The ankle component is referenced and used in the page type components.

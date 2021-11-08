@@ -2,7 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ hasHero, isDark } = {}) =>
   dcnb(
-    'global-header-desktop su-cc su-w-full su-hidden lg:su-block su-border-b su-border-solid su-border-black-90',
+    'global-header-desktop su-cc su-w-full su-hidden lg:su-block su-border-b su-border-solid su-border-black-90 print:su-hidden',
     {
       'su-bg-saa-black': !hasHero && isDark,
       'su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden':

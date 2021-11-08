@@ -112,7 +112,7 @@ const ItineraryItem = ({
               mediaWidth="edge-to-edge"
               caption={caption}
               captionAlign="right"
-              className="su-rs-mt-4"
+              className="su-rs-mt-4 print:su-hidden"
             >
               <CardImage
                 filename={filename}
