@@ -22,8 +22,8 @@ const CaptionMedia = ({
   }
 
   return (
-    <WidthBox width={mediaWidth} className="print:su-hidden" {...props}>
-      <figure className="print:su-hidden">
+    <WidthBox width={mediaWidth} {...props}>
+      <figure>
         {children}
         {caption && (
           <figcaption className={isInsetCaption ? 'su-cc' : ''}>

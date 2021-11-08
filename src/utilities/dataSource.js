@@ -24,12 +24,13 @@ export const bgColors = {
 };
 
 export const bgTextColorPairs = {
-  'foggy-light': 'su-bg-foggy-light su-text-black',
-  'black-10': 'su-bg-black-10 su-text-black',
+  'foggy-light': 'su-bg-foggy-light su-text-black print:su-bg-white',
+  'black-10': 'su-bg-black-10 su-text-black print:su-bg-white',
   white: 'su-bg-white su-text-black',
-  black: 'su-bg-saa-black su-text-white',
-  'cardinal-red': 'su-bg-cardinal-red su-text-white',
-  plum: 'su-bg-plum su-text-white',
+  black: 'su-bg-saa-black su-text-white print:su-text-black print:su-bg-white',
+  'cardinal-red':
+    'su-bg-cardinal-red su-text-white print:su-text-black print:su-bg-white',
+  plum: 'su-bg-plum su-text-white print:su-text-black print:su-bg-white',
   'gradient-red':
     'su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white',
   'use-bg-image': 'su-bg-black su-text-white',

@@ -28,7 +28,10 @@ const BasicCardHorizontal = ({
 
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (
-    <div className="su-aspect-w-3 su-aspect-h-2" aria-hidden="true">
+    <div
+      className="su-aspect-w-3 su-aspect-h-2 print:su-hidden"
+      aria-hidden="true"
+    >
       <CardImage
         filename={filename}
         size="vertical"

@@ -13,6 +13,9 @@ module.exports = function () {
       '.text-shadow-lg': {
         textShadow: 'rgba(0, 0, 0, 30%) 0 0 12px',
       },
+      '.text-shadow-none': {
+        textShadow: 'none',
+      },
     };
 
     addComponents(components);

@@ -141,7 +141,7 @@ const TripPage = (props) => {
   return (
     <SbEditable content={blok}>
       <Layout hasHero {...props}>
-        <div ref={printContainerRef} className="print">
+        <div ref={printContainerRef} className={styles.printContainer}>
           <Container
             element="main"
             id="main-content"
