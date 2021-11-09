@@ -7,9 +7,10 @@ inputs:
     description: Password for http basic auth
     required: true
   - name: context
-    description: Which context should
+    description: Which context should have auth [production, deploy-preview, branch-deploy]
+    required: true
   - name: branch
-    description: Optional branch to match against for context 
+    description: Optional branch name to match against
   - name: path
     description: Header path match string for basic auth
     default: /*
