@@ -11,12 +11,9 @@ module.exports = {
     if (contextMatch && branchMatch) {
       try {
         // Add basic auth headers
-        const auth = `Basic ${Buffer.from(
-          `${inputs.username}:${inputs.password}`
-        ).toString('base64')}`;
         fs.appendFileSync(
           inputs.file,
-          `\n${inputs.path}\n  Authorization: ${auth}`
+          `\n${inputs.path}\n  Basic-Auth: ${inputs.username}:${inputs.password}`
         );
       } catch (error) {
         // Report a user error
@@ -27,9 +24,7 @@ module.exports = {
       console.log(
         `Added basic auth "${inputs.username}:${inputs.password} for path "${inputs.path}""`
       );
-      status.show({
-        summary: 'Success!',
-      });
+      status.show({ summary: 'Success!' });
     }
   },
 };
