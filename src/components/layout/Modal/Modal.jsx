@@ -76,6 +76,7 @@ const Modal = ({
       className={styles.root({ isOpen, type })}
       aria-label={ariaLabel}
       aria-hidden={!isOpen}
+      aria-modal
       role="dialog"
       tabIndex="-1"
     >
@@ -86,6 +87,7 @@ const Modal = ({
             ref={closeButton}
             onClick={onClose}
             className={styles.closeButton}
+            aria-label="Close modal"
           >
             Close
             <XIcon className={styles.closeIcon({ type })} aria-hidden />
