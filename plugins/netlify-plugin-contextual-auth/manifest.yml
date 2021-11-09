@@ -14,5 +14,5 @@ inputs:
     description: Header path match string for basic auth
     default: /*
   - name: file
-    description: path to `_redirects` file
-    default: 'public/_redirects'
+    description: path to `_headers` file
+    default: 'public/_headers'

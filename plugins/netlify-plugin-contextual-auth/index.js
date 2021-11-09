@@ -24,8 +24,11 @@ module.exports = {
       }
 
       // Display success information
+      console.log(
+        `Added basic auth "${inputs.username}:${inputs.password} for path "${inputs.path}""`
+      );
       status.show({
-        summary: `Added basic auth "${inputs.username}:${inputs.password} for path "${inputs.path}""`,
+        summary: 'Success!',
       });
     }
   },
