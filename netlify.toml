@@ -51,7 +51,7 @@
     username = 'adapt'
     password = 'letmein2021'
     context = 'branch-deploy'
-    branch = 'task/ADAPT-4026-staging-site'
+    branch = 'staging'
 
 [[plugins]]
 package = "/plugins/netlify-plugin-wildcard-404-redirect"
