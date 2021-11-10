@@ -76,7 +76,7 @@ const Modal = ({
       className={styles.root({ isOpen, type })}
       aria-label={ariaLabel}
       aria-hidden={!isOpen}
-      aria-modal
+      aria-modal={isOpen}
       role="dialog"
       tabIndex="-1"
     >
