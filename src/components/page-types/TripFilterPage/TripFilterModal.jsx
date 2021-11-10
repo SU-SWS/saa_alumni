@@ -39,7 +39,11 @@ const TripFilterModal = ({
   // If the view results button is clicked, close the modal and focus on the results list
   const viewResults = () => {
     setModalOpen(false);
-    focusElement('.filtered-trips-list');
+    // After the modal is closed, set a delay to make sure unlockscroll has changed body position from fixed to relative,
+    // then focus and scroll to the filtered trips list
+    setTimeout(() => {
+      focusElement('.filtered-trips-list');
+    }, 100);
   };
 
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
