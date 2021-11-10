@@ -21,7 +21,7 @@ export const GlobalHeaderProps = {
   mainNav: SBBlokType,
   hasHero: PropTypes.bool,
   isDark: PropTypes.bool,
-  searchBlockUrl: SBBlokType,
+  searchPageUrl: SBLinkType,
 };
 
 const GlobalHeader = ({

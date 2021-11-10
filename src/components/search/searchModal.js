@@ -38,7 +38,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
       setShowEmptyMessage(true);
     } else {
       setShowEmptyMessage(false);
-      navigate(`${searchPageUrl || '/search'}?q=${queryText}`);
+      navigate(`/${searchPageUrl.cached_url || 'search'}?q=${queryText}`);
       setIsOpen(false);
     }
   };
