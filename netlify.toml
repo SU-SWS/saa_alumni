@@ -46,6 +46,14 @@
     mode = 'prefix'
 
 [[plugins]]
+  package = '/plugins/netlify-plugin-contextual-auth'
+  [plugins.inputs]
+    username = 'adapt'
+    password = 'letmein2021'
+    context = 'branch-deploy'
+    branch = 'staging'
+
+[[plugins]]
 package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [plugins.inputs]
   destination = "https://cardinalalumni.stanford.edu/:splat"
