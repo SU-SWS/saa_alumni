@@ -5,7 +5,7 @@ export const filterIcon =
 export const modalHeading =
   'su-fixed su-top-0 su-left-0 su-z-20 su-w-full su-cc su-mb-0 su-rs-py-1 su-text-black-20 su-bg-saa-black-dark su-border-b su-border-black-80';
 export const modalBody =
-  'su-mt-[6.2rem] md:su-mt-[7.7rem] su-mb-108 md:su-mb-126 su-bg-saa-black-dark';
+  'su-mt-[6.2rem] md:su-mt-[7.7rem] su-pb-[10.1rem] md:su-pb-[11.9rem] su-bg-saa-black-dark';
 export const chipsWrapper =
   'su-pt-20 su-py-7 su-cc children:su-mr-13 children:su-mb-13';
 export const footer =
