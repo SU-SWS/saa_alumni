@@ -68,6 +68,7 @@ const TripPage = (props) => {
       extendEndDate,
       extendPrice,
       extendTripSize,
+      extendAboveContent,
       extendItinerary,
       isCenterExtendHeader,
       // Details Section
@@ -221,6 +222,7 @@ const TripPage = (props) => {
                 extendEndDate={extendEndDate}
                 extendPrice={extendPrice}
                 extendTripSize={extendTripSize}
+                extendAboveContent={extendAboveContent}
                 isCenterExtendHeader={isCenterExtendHeader}
               />
             )}
