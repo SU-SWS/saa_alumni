@@ -2,7 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ hasHero, isDark } = {}) =>
   dcnb(
-    'global-header-desktop su-w-full su-hidden lg:su-block su-border-b su-border-solid su-border-black-90',
+    'global-header-desktop su-cc su-w-full su-hidden lg:su-block su-border-b su-border-solid su-border-black-90',
     {
       'su-bg-saa-black': !hasHero && isDark,
       'su-bg-gradient-to-b su-from-masthead-black-top su-to-masthead-black-bottom su-backface-hidden':
@@ -25,7 +25,7 @@ export const siteName =
 
 // Mobile styles
 export const rootMobile =
-  'global-header-mobile su-relative lg:su-hidden su-bg-cardinal-red-xdark';
+  'global-header-mobile su-relative su-w-full lg:su-hidden su-bg-cardinal-red-xdark';
 export const bodyMobile = 'su-cc';
 export const logoWrapperMobile =
   'su-flex su-flex-col su-items-start su-rs-py-0 su-mr-1em';

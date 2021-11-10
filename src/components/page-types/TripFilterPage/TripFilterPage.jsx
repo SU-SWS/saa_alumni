@@ -14,8 +14,9 @@ import FaIcon from '../../simple/faIcon';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 import Ankle from '../../partials/ankle/ankle';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
-import useWindowSize from '../../../hooks/useWindowSize';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 import { breakpoints } from '../../../contexts/GlobalContext';
+import TripFilterModal from './TripFilterModal';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -39,7 +40,7 @@ const TripFilterPage = (props) => {
     totalPages,
     getPageLink,
   } = useTripFilters(primaryFilter);
-  const screenSize = useWindowSize();
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.md}px)`);
 
   return (
     <SbEditable content={blok}>
@@ -71,8 +72,18 @@ const TripFilterPage = (props) => {
               <p className={styles.intro}>{intro}</p>
             </Container>
           </header>
-          <Grid xs={12} gap className={styles.filterSection}>
-            <GridCell xs={12} lg={3} className={styles.filterSidebar}>
+          <Grid xs={1} lg={12} gap className={styles.filterSection}>
+            <GridCell xs={1} className={styles.filterSidebarMobile}>
+              <TripFilterModal
+                primaryFilter={primaryFilter}
+                filters={filters}
+                activeFilters={activeFilters}
+                toggleFilter={toggleFilter}
+                clearFilterType={clearFilterType}
+                clearAllFilters={clearAllFilters}
+              />
+            </GridCell>
+            <GridCell xs={1} lg={3} className={styles.filterSidebar}>
               <Skiplink anchorLink="#filtered-trips-list">
                 Skip pass filters to trip list
               </Skiplink>
@@ -96,41 +107,46 @@ const TripFilterPage = (props) => {
                   ))}
               </div>
             </GridCell>
-            <GridCell xs={12} lg={9} xxl={8}>
+            <GridCell xs={1} lg={9} xxl={8}>
               <div className={styles.filteredContent}>
-                {activeFilters.length > 0 && (
-                  <div className={styles.activeFilters}>
-                    <div className={styles.filterChips}>
-                      {activeFilters.map((filter) => (
-                        <Chip
-                          key={`chip:${filter.datasource}:${filter.value}`}
-                          label={filter.name}
-                          aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
-                          onClick={() =>
-                            toggleFilter(filter.datasource, filter.value)
-                          }
-                        />
-                      ))}
+                <div className={styles.chipsWrapper}>
+                  {activeFilters.length > 0 && (
+                    <div className={styles.activeFilters}>
+                      <div className={styles.filterChips}>
+                        {activeFilters.map((filter) => (
+                          <Chip
+                            key={`chip:${filter.datasource}:${filter.value}`}
+                            label={filter.name}
+                            aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                            onClick={() =>
+                              toggleFilter(filter.datasource, filter.value)
+                            }
+                          />
+                        ))}
+                      </div>
+                      <div className={styles.clearAll}>
+                        <button
+                          className={styles.clearAllBtn}
+                          type="button"
+                          onClick={clearAllFilters}
+                        >
+                          <span className={styles.clearAllText}>
+                            Clear all filters
+                            <span
+                              aria-hidden
+                              className={styles.clearAllHover}
+                            />
+                          </span>
+                          <FaIcon
+                            className={styles.clearAllIcon}
+                            iconChoice="times"
+                            isOutline
+                          />
+                        </button>
+                      </div>
                     </div>
-                    <div className={styles.clearAll}>
-                      <button
-                        className={styles.clearAllBtn}
-                        type="button"
-                        onClick={clearAllFilters}
-                      >
-                        <span className={styles.clearAllText}>
-                          Clear all filters
-                          <span aria-hidden className={styles.clearAllHover} />
-                        </span>
-                        <FaIcon
-                          className={styles.clearAllIcon}
-                          iconChoice="times"
-                          isOutline
-                        />
-                      </button>
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
                 <Grid
                   xs={1}
                   md={2}
@@ -153,7 +169,7 @@ const TripFilterPage = (props) => {
                       currentPage={page}
                       totalPages={totalPages}
                       pageLink={getPageLink}
-                      mobile={screenSize.width < breakpoints.md}
+                      mobile={!isDesktop}
                     />
                   </div>
                 )}

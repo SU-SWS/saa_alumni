@@ -1,8 +1,7 @@
 import React from 'react';
-import { Grid as DrGrid } from 'decanter-react';
+import { Grid as DrGrid, Heading } from 'decanter-react';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
-import { TripPageSectionHeader } from './TripPageSectionHeader';
 import * as styles from './TripPageRelatedTripsSection.styles';
 import getNumBloks from '../../../utilities/getNumBloks';
 import WidthBox from '../../layout/widthBox';
@@ -26,12 +25,16 @@ export const TripPageRelatedTripsSection = (props) => {
   }
 
   return (
-    <div className="su-rs-mt-7 su-rs-mb-9">
-      <TripPageSectionHeader
-        isCenter
-        heading={`Related Trip${numTrips > 1 ? 's' : ''}`}
-        headingSize="small"
-      />
+    <div className={styles.root}>
+      <Heading
+        level={3}
+        size={4}
+        align="center"
+        font="serif"
+        className={styles.heading}
+      >
+        {`Related Trip${numTrips > 1 ? 's' : ''}`}
+      </Heading>
       <WidthBox width={tripGridWidth}>
         <DrGrid
           xs={1}
