@@ -142,117 +142,114 @@ const TripPage = (props) => {
   return (
     <SbEditable content={blok}>
       <Layout hasHero {...props}>
-        <div ref={printContainerRef} className={styles.printContainer}>
-          <Container
-            element="main"
-            id="main-content"
-            className={dcnb('trip-page', styles.main)}
-            width="full"
-          >
-            {/* Hero Section */}
-            <TripPageHeroSection
-              title={title}
-              subtitle={subtitle}
-              shortDescription={shortDescription}
-              heroImage={heroImage}
-              ref={sectionRefs[0]}
-            />
-            {/* Trip Section Sticky Nav */}
-            {(renderFacultySection ||
-              renderItinerarySection ||
-              renderDetailsSection ||
-              renderPricingSection) && (
-              <TripPageSectionNav
-                renderFacultySection={renderFacultySection}
-                renderItinerarySection={renderItinerarySection}
-                renderDetailsSection={renderDetailsSection}
-                renderPricingSection={renderPricingSection}
-                status={status}
-                inquireURL={inquireURL}
-                reservationURL={reservationURL}
-                activeSection={activeSection}
-                ariaLabel="Section Menu"
-              />
-            )}
-            {/* Overview Section */}
-            <TripPageOverviewSection
-              overviewHeading={overviewHeading}
-              overviewBody={overviewBody}
-              startDate={startDate}
-              endDate={endDate}
-              cost={cost}
-              tripSize={tripSize}
-              minAge={minAge}
+        <main
+          id="main-content"
+          className={dcnb('trip-page', styles.main)}
+          ref={printContainerRef}
+        >
+          {/* Hero Section */}
+          <TripPageHeroSection
+            title={title}
+            subtitle={subtitle}
+            shortDescription={shortDescription}
+            heroImage={heroImage}
+            ref={sectionRefs[0]}
+          />
+          {/* Trip Section Sticky Nav */}
+          {(renderFacultySection ||
+            renderItinerarySection ||
+            renderDetailsSection ||
+            renderPricingSection) && (
+            <TripPageSectionNav
+              renderFacultySection={renderFacultySection}
+              renderItinerarySection={renderItinerarySection}
+              renderDetailsSection={renderDetailsSection}
+              renderPricingSection={renderPricingSection}
               status={status}
               inquireURL={inquireURL}
               reservationURL={reservationURL}
-              overviewBelowContent={overviewBelowContent}
-              onPrint={printTrip}
-              ref={sectionRefs[1]}
+              activeSection={activeSection}
+              ariaLabel="Section Menu"
             />
-            {/* Faculty Section */}
-            {renderFacultySection && (
-              <TripPageFacultySection
-                facultyHeading={facultyHeading}
-                facultyBody={facultyBody}
-                facultyBelowContent={facultyBelowContent}
-                isCenterFacultyHeader={isCenterFacultyHeader}
-                ref={sectionRefs[2]}
-              />
-            )}
-            {/* Itinerary Section */}
-            {renderItinerarySection && (
-              <TripPageItinerarySection
-                itineraryHeading={itineraryHeading}
-                itineraryBody={itineraryBody}
-                itineraryItems={itineraryItems}
-                itineraryAboveContent={itineraryAboveContent}
-                isCenterItineraryHeader={isCenterItineraryHeader}
-                ref={sectionRefs[3]}
-              />
-            )}
-            {/* Trip Extension */}
-            {renderExtensionSection && (
-              <TripPageExtensionSection
-                extendHeading={extendHeading}
-                extendIntro={extendIntro}
-                extendBody={extendBody}
-                extendItinerary={extendItinerary}
-                extendStartDate={extendStartDate}
-                extendEndDate={extendEndDate}
-                extendPrice={extendPrice}
-                extendTripSize={extendTripSize}
-                extendAboveContent={extendAboveContent}
-                isCenterExtendHeader={isCenterExtendHeader}
-              />
-            )}
-            {/* Details Section */}
-            {renderDetailsSection && (
-              <TripPageDetailsSection
-                detailsHeading={detailsHeading}
-                detailsBody={detailsBody}
-                detailsBelowContent={detailsBelowContent}
-                isCenterDetailsHeader={isCenterDetailsHeader}
-                ref={sectionRefs[4]}
-              />
-            )}
-            {/* Pricing Section */}
-            {renderPricingSection && (
-              <TripPagePricingSection
-                pricingHeading={pricingHeading}
-                pricingBody={pricingBody}
-                pricingBelowContent={pricingBelowContent}
-                isCenterPricingHeader={isCenterPricingHeader}
-                ref={sectionRefs[5]}
-              />
-            )}
-            {/* Related Trips */}
-            {renderRelatedTrips && (
-              <TripPageRelatedTripsSection relatedTrips={relatedTrips} />
-            )}
-            {getNumBloks(ankleContent) > 0 && <Ankle isDark {...props} />}
-          </Container>
-        </div>
+          )}
+          {/* Overview Section */}
+          <TripPageOverviewSection
+            overviewHeading={overviewHeading}
+            overviewBody={overviewBody}
+            startDate={startDate}
+            endDate={endDate}
+            cost={cost}
+            tripSize={tripSize}
+            minAge={minAge}
+            status={status}
+            inquireURL={inquireURL}
+            reservationURL={reservationURL}
+            overviewBelowContent={overviewBelowContent}
+            onPrint={printTrip}
+            ref={sectionRefs[1]}
+          />
+          {/* Faculty Section */}
+          {renderFacultySection && (
+            <TripPageFacultySection
+              facultyHeading={facultyHeading}
+              facultyBody={facultyBody}
+              facultyBelowContent={facultyBelowContent}
+              isCenterFacultyHeader={isCenterFacultyHeader}
+              ref={sectionRefs[2]}
+            />
+          )}
+          {/* Itinerary Section */}
+          {renderItinerarySection && (
+            <TripPageItinerarySection
+              itineraryHeading={itineraryHeading}
+              itineraryBody={itineraryBody}
+              itineraryItems={itineraryItems}
+              itineraryAboveContent={itineraryAboveContent}
+              isCenterItineraryHeader={isCenterItineraryHeader}
+              ref={sectionRefs[3]}
+            />
+          )}
+          {/* Trip Extension */}
+          {renderExtensionSection && (
+            <TripPageExtensionSection
+              extendHeading={extendHeading}
+              extendIntro={extendIntro}
+              extendBody={extendBody}
+              extendItinerary={extendItinerary}
+              extendStartDate={extendStartDate}
+              extendEndDate={extendEndDate}
+              extendPrice={extendPrice}
+              extendTripSize={extendTripSize}
+              extendAboveContent={extendAboveContent}
+              isCenterExtendHeader={isCenterExtendHeader}
+            />
+          )}
+          {/* Details Section */}
+          {renderDetailsSection && (
+            <TripPageDetailsSection
+              detailsHeading={detailsHeading}
+              detailsBody={detailsBody}
+              detailsBelowContent={detailsBelowContent}
+              isCenterDetailsHeader={isCenterDetailsHeader}
+              ref={sectionRefs[4]}
+            />
+          )}
+          {/* Pricing Section */}
+          {renderPricingSection && (
+            <TripPagePricingSection
+              pricingHeading={pricingHeading}
+              pricingBody={pricingBody}
+              pricingBelowContent={pricingBelowContent}
+              isCenterPricingHeader={isCenterPricingHeader}
+              ref={sectionRefs[5]}
+            />
+          )}
+          {/* Related Trips */}
+          {renderRelatedTrips && (
+            <TripPageRelatedTripsSection relatedTrips={relatedTrips} />
+          )}
+          {getNumBloks(ankleContent) > 0 && <Ankle isDark {...props} />}
+        </main>
       </Layout>
     </SbEditable>
   );
