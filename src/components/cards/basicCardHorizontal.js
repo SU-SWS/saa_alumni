@@ -28,10 +28,7 @@ const BasicCardHorizontal = ({
 
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (
-    <div
-      className="su-aspect-w-3 su-aspect-h-2 print:su-hidden"
-      aria-hidden="true"
-    >
+    <div className="su-aspect-w-3 su-aspect-h-2" aria-hidden="true">
       <CardImage
         filename={filename}
         size="vertical"
@@ -64,10 +61,11 @@ const BasicCardHorizontal = ({
   let cardGrid;
 
   if (filename) {
-    cardGrid = 'md:su-grid-cols-2';
+    cardGrid = 'md:su-grid-cols-2 print:su-grid-cols-2';
 
     if (isRound) {
-      cardGrid = 'md:su-grid-flow-col md:su-grid-cols-auto-1fr';
+      cardGrid =
+        'md:su-grid-flow-col print:su-grid-flow-col md:su-grid-cols-auto-1fr print:su-grid-cols-auto-1fr';
     }
   }
 

@@ -21,7 +21,7 @@ const CircularImage = ({
   return (
     <div
       className={dcnb(
-        'su-w-[12rem] su-h-[12rem] md:su-w-[14rem] md:su-h-[14rem] su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden',
+        'su-w-[12rem] su-h-[12rem] md:su-w-[14rem] md:su-h-[14rem] su-rounded-full su-border-[7px] su-border-solid su-overflow-hidden print:su-hidden',
         imageBorderColor,
         imageBgColor,
         className

@@ -15,4 +15,4 @@ export const overlay = ({ overlay: overlayType }) =>
     }
   );
 export const content =
-  'su-relative su-rs-pt-10 su-rs-pb-8 print:children:su-text-black print:children:children:su-text-shadow-none';
+  'su-relative su-rs-pt-10 su-rs-pb-8 print:su-pt-0 print-su-pb-0 print:children:su-text-black print:children:children:su-text-shadow-none';
