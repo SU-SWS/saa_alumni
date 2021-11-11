@@ -35,8 +35,7 @@ const GlobalHeader = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
-  let isDesktop = true;
-  isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   const handleClose = () => {
     setModalOpen(false);
