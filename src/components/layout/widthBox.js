@@ -7,7 +7,13 @@ import { dcnb } from 'cnbuilder';
  * E.g., Edge-to-edge, site container width (12 of 12 columns), 10 of 12, 8 of 12 columns etc.
  * */
 
-const WidthBox = ({ width, className, children, ...props }) => {
+const WidthBox = ({
+  width,
+  className,
+  children,
+  align = 'center',
+  ...props
+}) => {
   // If it is an edge-to-edge container, no need to use a grid
   if (width === 'edge-to-edge') {
     return (
@@ -18,26 +24,35 @@ const WidthBox = ({ width, className, children, ...props }) => {
   }
 
   // Options for grid width if not edge-to-edge
-  let columnSpan = '';
+  let column;
+  let columnStart;
 
   if (width === '4') {
-    columnSpan =
-      'su-col-span-12 sm:su-col-span-10 sm:su-col-start-2 md:su-col-span-8 md:su-col-start-3 lg:su-col-span-6 lg:su-col-start-4 2xl:su-col-span-4 2xl:su-col-start-5';
+    column =
+      'su-col-span-12 sm:su-col-span-10 md:su-col-span-8 lg:su-col-span-6 2xl:su-col-span-4';
+    columnStart =
+      'sm:su-col-start-2 md:su-col-start-3 lg:su-col-start-4 2xl:su-col-start-5';
   } else if (width === '6') {
-    columnSpan =
-      'su-col-span-12 md:su-col-span-10 md:su-col-start-2 lg:su-col-span-8 lg:su-col-start-3 xl:su-col-span-6 xl:su-col-start-4';
+    column =
+      'su-col-span-12 md:su-col-span-10 lg:su-col-span-8 xl:su-col-span-6';
+    columnStart = 'md:su-col-start-2 lg:su-col-start-3 xl:su-col-start-4';
   } else if (width === '8') {
-    columnSpan =
-      'su-col-span-12 lg:su-col-span-10 lg:su-col-start-2 xl:su-col-span-8 xl:su-col-start-3';
+    column = 'su-col-span-12 lg:su-col-span-10 xl:su-col-span-8';
+    columnStart = 'lg:su-col-start-2 xl:su-col-start-3';
   } else if (width === '10') {
-    columnSpan = 'su-col-span-12 xl:su-col-span-10 xl:su-col-start-2';
+    column = 'su-col-span-12 xl:su-col-span-10';
+    columnStart = 'xl:su-col-start-2';
   } else {
-    columnSpan = 'su-col-span-12';
+    column = 'su-col-span-12';
+  }
+
+  if (align === 'center') {
+    column = dcnb(column, columnStart);
   }
 
   return (
     <Grid xs={12} gap className={dcnb('su-cc', className)} {...props}>
-      <div className={columnSpan}>{children}</div>
+      <div className={column}>{children}</div>
     </Grid>
   );
 };
