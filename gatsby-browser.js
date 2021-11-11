@@ -24,7 +24,10 @@ export const shouldUpdateScroll = (ctx) => {
   } = ctx;
 
   // Prevent scrolling when user clicks on filters on search page.
-  if (location.pathname.match(/^\/search/i)) {
+  if (
+    location.pathname.match(/^\/search/i) ||
+    location.pathname.match(/^\/travel-study\/search/i)
+  ) {
     return false;
   }
 
