@@ -11,7 +11,12 @@ import useEscape from '../../hooks/useEscape';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { breakpoints } from '../../contexts/GlobalContext';
 
-const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
+const Masthead = ({
+  blok: { mainNav, utilityNav, searchPageUrl },
+  blok,
+  hasHero,
+  isDark,
+}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
@@ -129,6 +134,7 @@ const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
         isOpen={modalOpen}
         setIsOpen={setModalOpen}
         onClose={handleClose}
+        searchPageUrl={searchPageUrl}
       />
     </SbEditable>
   );

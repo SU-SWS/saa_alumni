@@ -21,6 +21,7 @@ export const GlobalHeaderProps = {
   mainNav: SBBlokType,
   hasHero: PropTypes.bool,
   isDark: PropTypes.bool,
+  searchPageUrl: SBLinkType,
 };
 
 const GlobalHeader = ({
@@ -30,6 +31,7 @@ const GlobalHeader = ({
   mainNav,
   hasHero,
   isDark,
+  searchPageUrl,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
@@ -120,6 +122,7 @@ const GlobalHeader = ({
       <SearchModal
         isOpen={modalOpen}
         setIsOpen={setModalOpen}
+        searchPageUrl={searchPageUrl}
         onClose={handleClose}
       />
     </>
