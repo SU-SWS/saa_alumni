@@ -92,10 +92,7 @@ const TripPage = (props) => {
   } = props;
   const hasTripStarted = useMemo(() => {
     const start = luxonDate(startDate);
-    if (luxonToday() > start) {
-      return true;
-    }
-    return false;
+    return luxonToday() > start;
   }, [startDate]);
 
   const printContainerRef = useRef(null);
