@@ -2,19 +2,18 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ type, isOpen }) =>
   dcnb(
-    'su-modal su-fixed su-w-screen su-h-screen su-overscroll-contain su-overflow-auto su-top-0 su-left-0 su-items-center su-justify-center su-z-50',
+    'su-modal su-fixed su-w-screen su-h-full su-overscroll-contain su-overflow-y-scroll su-overflow-x-hidden su-top-0 su-left-0 su-items-center su-justify-center su-z-50',
     {
       'su-flex': isOpen,
       'su-hidden': !isOpen,
       'su-bg-saa-black-dark': type === 'trip-filter',
+      'su-bg-saa-black su-bg-opacity-[97%]': type !== 'trip-filter',
     }
   );
 export const wrapper = ({ type }) =>
   dcnb(
-    'su-absolute su-w-screen su-h-screen su-overflow-auto su-basefont-19 su-pointer-events-auto',
-    {
-      'su-rs-py-5 su-bg-saa-black su-bg-opacity-[97%]': type !== 'trip-filter',
-    }
+    'su-absolute su-w-screen su-h-full su-basefont-19 su-pointer-events-auto',
+    { 'su-rs-py-5': type !== 'trip-filter' }
   );
 export const closeButtonWrapper = ({ type }) =>
   dcnb({

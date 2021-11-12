@@ -20,6 +20,7 @@ export const TripPageExtensionSectionProps = {
   extendEndDate: PropTypes.string,
   extendPrice: PropTypes.string,
   extendTripSize: PropTypes.string,
+  extendAboveContent: SBBlokType,
   extendItinerary: SBBlokType,
   isCenterExtendHeader: PropTypes.bool,
 };
@@ -33,6 +34,7 @@ export const TripPageExtensionSection = (props) => {
     extendEndDate,
     extendPrice,
     extendTripSize,
+    extendAboveContent,
     extendItinerary,
     isCenterExtendHeader,
   } = props;
@@ -41,7 +43,7 @@ export const TripPageExtensionSection = (props) => {
     const end = getDate(extendEndDate);
     return `${start.month} ${start.day}${
       start.year !== end.year ? `, ${start.year}` : ''
-    } - ${
+    } – ${
       end.month === start.month && end.year === start.year ? '' : end.month
     } ${end.day}, ${end.year}`;
   }, [extendStartDate, extendEndDate]);
@@ -121,8 +123,13 @@ export const TripPageExtensionSection = (props) => {
           </div>
         </GridCell>
       </Grid>
+      {getNumBloks(extendAboveContent) > 0 && (
+        <CreateBloks blokSection={extendAboveContent} />
+      )}
       {getNumBloks(extendItinerary) > 0 && (
-        <CreateBloks blokSection={extendItinerary} />
+        <div className={styles.itinerary}>
+          <CreateBloks blokSection={extendItinerary} />
+        </div>
       )}
     </section>
   );

@@ -35,7 +35,7 @@ const ItineraryItem = ({
           <FlexBox
             alignItems="center"
             justifyContent="center"
-            className="su-text-m1 md:su-text-m2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10"
+            className="su-text-m1 md:su-text-m2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10 print:su-hidden"
           >
             <FaIcon
               proFaIcon={icon}
@@ -44,7 +44,7 @@ const ItineraryItem = ({
             />
           </FlexBox>
           <div
-            className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] su-z-0"
+            className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] su-z-0 print:su-hidden"
             aria-hidden
           />
         </GridCell>
@@ -72,7 +72,7 @@ const ItineraryItem = ({
                   alignItems="start"
                   className="su-mb-04em last:su-mb-0"
                 >
-                  <div className="su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                  <div className="print:su-hidden su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
                     <FaIcon
                       proFaIcon="bed"
                       className="!su-w-[1.15em]"
@@ -91,7 +91,7 @@ const ItineraryItem = ({
                   alignItems="start"
                   className="su-mb-04em last:su-mb-0"
                 >
-                  <div className="su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                  <div className="print:su-hidden su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
                     <FaIcon
                       proFaIcon="utensils"
                       className="!su-w-[1.15em]"
@@ -112,7 +112,7 @@ const ItineraryItem = ({
               mediaWidth="edge-to-edge"
               caption={caption}
               captionAlign="right"
-              className="su-rs-mt-4"
+              className="su-rs-mt-4 print:su-hidden"
             >
               <CardImage
                 filename={filename}

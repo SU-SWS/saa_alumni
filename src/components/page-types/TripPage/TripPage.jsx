@@ -69,6 +69,7 @@ const TripPage = (props) => {
       extendEndDate,
       extendPrice,
       extendTripSize,
+      extendAboveContent,
       extendItinerary,
       isCenterExtendHeader,
       // Details Section
@@ -153,11 +154,10 @@ const TripPage = (props) => {
       )}
       <Layout hasHero {...props}>
         <div ref={printContainerRef}>
-          <Container
-            element="main"
+          <main
             id="main-content"
             className={dcnb('trip-page', styles.main)}
-            width="full"
+            ref={printContainerRef}
           >
             {/* Hero Section */}
             <TripPageHeroSection
@@ -234,6 +234,7 @@ const TripPage = (props) => {
                     extendEndDate={extendEndDate}
                     extendPrice={extendPrice}
                     extendTripSize={extendTripSize}
+                    extendAboveContent={extendAboveContent}
                     isCenterExtendHeader={isCenterExtendHeader}
                   />
                 )}
@@ -264,7 +265,7 @@ const TripPage = (props) => {
               </>
             )}
             {getNumBloks(ankleContent) > 0 && <Ankle isDark {...props} />}
-          </Container>
+          </main>
         </div>
       </Layout>
     </SbEditable>

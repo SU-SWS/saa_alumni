@@ -14,5 +14,6 @@ module.exports = function () {
     xl: '1200px',
     '2xl': '1500px',
     '3xl': '1700px',
+    print: { raw: 'print' },
   };
 };

@@ -18,7 +18,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
   let bodyLinkColor = '';
 
   if (isDark) {
-    textColor = 'su-text-black-20';
+    textColor = 'su-text-black-20 print:su-text-black';
     bodyLinkColor = 'su-text-digital-red-xlight hocus:su-text-white';
   }
   const rendered = render(wysiwyg, {

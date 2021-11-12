@@ -13,7 +13,7 @@ const Footer = ({ blok: { localFooter }, blok }) => (
     <Container
       element="footer"
       width="full"
-      className="su-flex-grow-0 su-relative"
+      className="su-flex-grow-0 su-relative print:su-hidden"
     >
       <CreateBloks blokSection={localFooter} />
       <GlobalFooter

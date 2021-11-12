@@ -51,7 +51,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     const end = getDate(endDate);
     return `${start.month} ${start.day}${
       start.year !== end.year ? `, ${start.year}` : ''
-    } - ${
+    } – ${
       end.month === start.month && end.year === start.year ? '' : end.month
     } ${end.day}, ${end.year}`;
   }, [startDate, endDate]);

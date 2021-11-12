@@ -1,7 +1,7 @@
 import { dcnb } from 'cnbuilder';
 
 export const root =
-  'section-menu su-hidden lg:su-flex su-sticky su-top-0 su-z-30 su-pt-5 su-bg-saa-black su-justify-center su-items-center';
+  'section-menu print:su-hidden su-hidden lg:su-flex su-sticky su-top-0 su-z-30 su-pt-5 su-bg-saa-black su-justify-center su-items-center';
 export const menu = 'su-flex su-list-unstyled su-bg-saa-black';
 export const listItem = 'su-mb-0';
 export const link = ({ isActive }) =>
@@ -15,7 +15,7 @@ export const button = 'su-ml-[6rem] xl:su-ml-[8rem] su-mt-[-0.5rem]';
 
 // Mobile styles
 export const navWrapperMobile =
-  'lg:su-hidden su-relative su-bg-saa-black su-rs-pb-2';
+  'print:su-hidden lg:su-hidden su-relative su-bg-saa-black su-rs-pb-2';
 export const rootMobile =
   'section-menu-mobile su-relative su-block lg:su-hidden su-max-w-[35rem] su-mx-auto';
 export const burger = ({ navOpened }) =>

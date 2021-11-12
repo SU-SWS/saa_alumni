@@ -1,4 +1,5 @@
-export const root = 'ankle su-relative su-rs-py-7';
+export const root =
+  'ankle su-relative su-rs-py-7 print:su-bg-white print:su-text-black';
 export const heading = 'su-mt-[-0.6em] su-mx-auto su-max-w-900';
 export const headingMarginNoIntro = 'su-rs-mb-3';
 export const headingMarginHasIntro = 'su-mb-06em';

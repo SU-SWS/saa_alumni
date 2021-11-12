@@ -10,7 +10,16 @@ import RichTextRenderer from '../../utilities/richTextRenderer';
 import WidthBox from '../layout/widthBox';
 
 const Wysiwyg = ({
-  blok: { content, width, spacingTop, spacingBottom, isLightText, align, id },
+  blok: {
+    content,
+    width,
+    spacingTop,
+    spacingBottom,
+    isLightText,
+    align = 'left',
+    blockAlign = 'center',
+    id,
+  },
   blok,
 }) => {
   const mySpacingTop = smallPaddingTop[spacingTop] ?? '';
@@ -22,13 +31,14 @@ const Wysiwyg = ({
         width={width ?? 'edge-to-edge'}
         className={dcnb(mySpacingTop, mySpacingBottom)}
         id={id || ''}
+        align={blockAlign}
       >
         <RichTextRenderer
           isDark={isLightText}
           wysiwyg={content}
           className={dcnb(
             'su-heading-link-icon',
-            textAlign[align] ?? textAlign.left
+            textAlign[align] || textAlign.left
           )}
         />
       </WidthBox>
