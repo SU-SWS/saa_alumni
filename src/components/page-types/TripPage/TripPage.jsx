@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { dcnb } from 'cnbuilder';
 import { useReactToPrint } from 'react-to-print';
 import SbEditable from 'storyblok-react';
-import { Container } from 'decanter-react';
 import useScrollSpy from 'react-use-scrollspy';
 import Layout from '../../partials/layout';
 import { TripContent } from '../../../types/TripType';

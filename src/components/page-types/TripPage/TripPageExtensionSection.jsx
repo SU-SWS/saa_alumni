@@ -43,7 +43,7 @@ export const TripPageExtensionSection = (props) => {
     const end = getDate(extendEndDate);
     return `${start.month} ${start.day}${
       start.year !== end.year ? `, ${start.year}` : ''
-    } - ${
+    } – ${
       end.month === start.month && end.year === start.year ? '' : end.month
     } ${end.day}, ${end.year}`;
   }, [extendStartDate, extendEndDate]);
