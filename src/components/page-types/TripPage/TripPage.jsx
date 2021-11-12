@@ -2,7 +2,7 @@ import React, { useRef, useMemo } from 'react';
 import { dcnb } from 'cnbuilder';
 import { useReactToPrint } from 'react-to-print';
 import SbEditable from 'storyblok-react';
-import { Container } from 'decanter-react';
+import { Alert, Container } from 'decanter-react';
 import useScrollSpy from 'react-use-scrollspy';
 import { luxonDate, luxonToday } from '../../../utilities/dates';
 import Layout from '../../partials/layout';
@@ -149,6 +149,11 @@ const TripPage = (props) => {
 
   return (
     <SbEditable content={blok}>
+      {hasTripStarted && (
+        <Alert type="warning" label="Warning:" hasDismiss>
+          <p className={styles.startAlert}>Too late...this trip has started.</p>
+        </Alert>
+      )}
       <Layout hasHero {...props}>
         <div ref={printContainerRef}>
           <Container
