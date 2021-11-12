@@ -24,3 +24,11 @@ export const getDuration = (startDate, endDate, unit = 'days') => {
 
   return duration;
 };
+
+export const luxonToday = () => {
+  const todayDatestring = new Date().toISOString().split('T')[0];
+  const today = DateTime.fromFormat(todayDatestring, 'yyyy-MM-dd', {
+    zone: 'UTC',
+  }).setLocale('en-us');
+  return today;
+};
