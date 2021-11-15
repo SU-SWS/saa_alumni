@@ -40,7 +40,11 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
  * and thus returns a string, not an object like the new asset block.
  */
 
-const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
+const Seo = ({
+  location,
+  blok: { title: theTitle, pageTitle, seo, noIndex },
+  blok,
+}) => {
   const { title, description, siteUrl } = useSiteMetadata();
   const siteTitle = isTravelStudy ? `Travel/Study | ${title}` : title;
 
@@ -54,7 +58,7 @@ const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
   }
 
   // Use the title in SEO component, otherwise use the page title
-  const seoTitle = seo.title || theTitle || '';
+  const seoTitle = seo.title || theTitle || pageTitle || '';
   const ogTitle = seo.og_title || seoTitle;
 
   // Use the description in SEO component, otherwise use the one from gatsby.config
@@ -77,8 +81,8 @@ const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
   return (
     <SbEditable content={blok}>
       <Helmet titleTemplate={`%s | ${siteTitle}`} title={seoTitle}>
-        {!blok.noIndex && <link rel="canonical" href={canonicalUrl} />}
-        {blok.noIndex && <meta name="robots" content="noindex" />}
+        {!noIndex && <link rel="canonical" href={canonicalUrl} />}
+        {noIndex && <meta name="robots" content="noindex" />}
         {seoDescription !== '' && (
           <meta name="description" content={seoDescription} />
         )}
