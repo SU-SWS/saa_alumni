@@ -1,6 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Alert from './alert';
+import { isTravelStudy } from '../../contexts/GlobalContext';
 
 const query = graphql`
   query {
@@ -31,11 +32,7 @@ const GlobalAlert = () => (
     render={({ allStoryblokEntry }) => {
       if (!allStoryblokEntry?.edges.length) return null;
       // Show Global Alerts only on Alumni Homesite and hide on Travel Study.
-      const showAlerts =
-        typeof window !== 'undefined' &&
-        window.location.pathname.indexOf('/travel-study') !== 0 &&
-        window.location.search.indexOf('path=travel-study') < 0 &&
-        window.location.search.indexOf('path=/travel-study') < 0;
+      const showAlerts = typeof window !== 'undefined' && !isTravelStudy;
 
       return showAlerts ? (
         <>

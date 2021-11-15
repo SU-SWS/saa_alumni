@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import useSiteMetadata from '../../hooks/useSiteMetadata';
 import transformImage from '../../utilities/transformImage';
-
+import { isTravelStudy } from '../../contexts/GlobalContext';
 /**
  * Get the canonical URL for the current page.
  *
@@ -42,6 +42,10 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
 
 const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
   const { title, description, siteUrl } = useSiteMetadata();
+  const siteTitle =
+    typeof window !== 'undefined' && isTravelStudy
+      ? `Travel/Study | ${title}`
+      : title;
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
   if (seo == null) {
@@ -75,7 +79,7 @@ const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <Helmet titleTemplate={`%s | ${title}`} title={seoTitle}>
+      <Helmet titleTemplate={`%s | ${siteTitle}`} title={seoTitle}>
         {!blok.noIndex && <link rel="canonical" href={canonicalUrl} />}
         {blok.noIndex && <meta name="robots" content="noindex" />}
         {seoDescription !== '' && (
