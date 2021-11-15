@@ -62,7 +62,12 @@ const CtaLink = React.forwardRef(
       <SbEditable content={blok}>
         {linkText && (
           <WrapperElement
-            className={dcnb('su-block', align, textSize, marginBottom)}
+            className={dcnb(
+              'su-block print:su-hidden',
+              align,
+              textSize,
+              marginBottom
+            )}
           >
             <SbLink
               ref={ref}

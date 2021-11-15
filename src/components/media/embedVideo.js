@@ -46,7 +46,7 @@ const EmbedVideo = ({
         mediaWidth={videoWidth}
         caption={caption}
         captionAlign={captionAlign}
-        className={dcnb(spacingTopStyle, spacingBottomStyle)}
+        className={dcnb('print:su-hidden', spacingTopStyle, spacingBottomStyle)}
       >
         <ReactPlayer
           className={dcnb('su-media__wrapper', aspectRatioStyle)}

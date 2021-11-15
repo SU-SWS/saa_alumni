@@ -5,7 +5,7 @@ import Modal from '../layout/Modal/Modal';
 import SearchFieldModal from './searchFieldModal';
 import SearchSuggestions from './searchSuggestions';
 
-const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
+const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
   const searchFieldRef = React.createRef();
   const data = useStaticQuery(graphql`
     {
@@ -38,7 +38,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose }) => {
       setShowEmptyMessage(true);
     } else {
       setShowEmptyMessage(false);
-      navigate(`/search?q=${queryText}`);
+      navigate(`/${searchPageUrl.cached_url || 'search'}?q=${queryText}`);
       setIsOpen(false);
     }
   };

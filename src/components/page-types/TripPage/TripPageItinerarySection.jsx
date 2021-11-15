@@ -7,6 +7,7 @@ import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
 import { TripPageSectionHeader } from './TripPageSectionHeader';
 import * as styles from './TripPageItinerarySection.styles';
+import getNumBloks from '../../../utilities/getNumBloks';
 
 export const TripPageItinerarySectionProps = {
   itineraryHeading: PropTypes.string,
@@ -36,12 +37,12 @@ export const TripPageItinerarySection = React.forwardRef((props, ref) => {
           heading={itineraryHeading}
           body={itineraryBody}
         />
-        {itineraryAboveContent && itineraryAboveContent.length > 0 && (
+        {getNumBloks(itineraryAboveContent) > 0 && (
           <div className="trip-page-itinerary-above-content">
             <CreateBloks blokSection={itineraryAboveContent} />
           </div>
         )}
-        {itineraryItems && itineraryItems.length > 0 && (
+        {getNumBloks(itineraryItems) > 0 && (
           <div className={dcnb('trip-page-itinerary-items', styles.itinerary)}>
             <CreateBloks blokSection={itineraryItems} />
           </div>

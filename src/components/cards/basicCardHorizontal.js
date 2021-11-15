@@ -61,10 +61,11 @@ const BasicCardHorizontal = ({
   let cardGrid;
 
   if (filename) {
-    cardGrid = 'md:su-grid-cols-2';
+    cardGrid = 'md:su-grid-cols-2 print:su-grid-cols-2';
 
     if (isRound) {
-      cardGrid = 'md:su-grid-flow-col md:su-grid-cols-auto-1fr';
+      cardGrid =
+        'md:su-grid-flow-col print:su-grid-flow-col md:su-grid-cols-auto-1fr print:su-grid-cols-auto-1fr';
     }
   }
 
