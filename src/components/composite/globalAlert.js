@@ -26,16 +26,16 @@ const query = graphql`
   }
 `;
 
+// Show Global Alerts only on Alumni Homesite and hide on Travel Study.
+const hideAlerts = isTravelStudy;
+
 const GlobalAlert = () => (
   <StaticQuery
     query={query}
     render={({ allStoryblokEntry }) => {
-      if (!allStoryblokEntry?.edges.length) return null;
-      // Show Global Alerts only on Alumni Homesite and hide on Travel Study.
-      let showAlerts = false;
-      showAlerts = !isTravelStudy;
+      if (!allStoryblokEntry?.edges.length || hideAlerts) return null;
 
-      return showAlerts ? (
+      return (
         <>
           {allStoryblokEntry.edges.map(({ node: { content, uuid } }) => {
             const blok = JSON.parse(content);
@@ -44,7 +44,7 @@ const GlobalAlert = () => (
             return <Alert blok={blok} key={uuid} />;
           })}
         </>
-      ) : null;
+      );
     }}
   />
 );
