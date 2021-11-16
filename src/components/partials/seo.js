@@ -42,7 +42,13 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
 
 const Seo = ({
   location,
-  blok: { title: theTitle, pageTitle, seo, noIndex },
+  blok: {
+    title: theTitle,
+    pageTitle,
+    seo,
+    noIndex,
+    heroImage: { filename: heroImg } = {},
+  },
   blok,
 }) => {
   const { title, description, siteUrl } = useSiteMetadata();
@@ -65,8 +71,8 @@ const Seo = ({
   const seoDescription = seo.description || description || '';
   const ogDescription = seo.og_description || seoDescription;
 
-  let ogImage = seo.og_image ?? '';
-  let twitterImage = seo.twitter_image ?? '';
+  let ogImage = seo.og_image || heroImg || '';
+  let twitterImage = seo.twitter_image || heroImg || '';
 
   if (ogImage !== '') {
     ogImage = transformImage(ogImage, '/1200x630');
