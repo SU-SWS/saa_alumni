@@ -149,7 +149,9 @@ const TripPage = (props) => {
     <SbEditable content={blok}>
       {hasTripStarted && (
         <Alert type="warning" label="Warning:" hasDismiss={false}>
-          <p className={styles.startAlert}>Too late...this trip has started.</p>
+          <p className={styles.startAlert}>
+            We missed you! This trip is no longer available for booking.
+          </p>
         </Alert>
       )}
       <Layout hasHero {...props}>

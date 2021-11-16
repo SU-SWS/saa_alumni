@@ -33,7 +33,7 @@ export const TripPageRelatedTripsSection = (props) => {
         font="serif"
         className={styles.heading}
       >
-        {`Related Trip${numTrips > 1 ? 's' : ''}`}
+        {`Related trip${numTrips > 1 ? 's' : ''}`}
       </Heading>
       <WidthBox width={tripGridWidth}>
         <DrGrid

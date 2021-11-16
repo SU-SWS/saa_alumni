@@ -48,6 +48,8 @@ const Modal = ({
       scrollbarWidth;
     document.getElementsByTagName('body')[0].style.overflowY = 'hidden';
     document.getElementsByTagName('body')[0].style.position = 'fixed';
+    document.getElementsByTagName('body')[0].style.left = '0';
+    document.getElementsByTagName('body')[0].style.right = '0';
   };
 
   const unlockScroll = () => {
@@ -57,6 +59,8 @@ const Modal = ({
     document.getElementsByTagName('body')[0].style.paddingRight = '0';
     document.getElementsByTagName('body')[0].style.overflowY = 'visible';
     document.getElementsByTagName('body')[0].style.position = 'relative';
+    document.getElementsByTagName('body')[0].style.left = 'unset';
+    document.getElementsByTagName('body')[0].style.right = 'unset';
   };
 
   useEffect(() => {
