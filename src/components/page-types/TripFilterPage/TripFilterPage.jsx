@@ -90,7 +90,7 @@ const TripFilterPage = (props) => {
               <Heading level={2} className={styles.filterHeading}>
                 Filter by
               </Heading>
-              <div className={styles.filtersList}>
+              <div>
                 {filters
                   .filter(
                     ({ key }) =>

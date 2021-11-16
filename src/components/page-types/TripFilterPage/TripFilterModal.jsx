@@ -95,7 +95,7 @@ const TripFilterModal = ({
               ))}
             </div>
           )}
-          <div className={styles.filtersList}>
+          <div>
             {filters
               .filter(
                 ({ key }) =>

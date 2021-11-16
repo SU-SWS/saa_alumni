@@ -33,7 +33,7 @@ export const FilterCheckbox = ({
       </div>
       <div>
         {label}
-        {count && <span className={styles.count}>({count})</span>}
+        {count && <span className={styles.count}> ({count})</span>}
       </div>
     </label>
   </div>
