@@ -10,7 +10,7 @@ const Alert = ({
   blok,
 }) => {
   const hasCta = getNumBloks(alertCta) > 0;
-  const [isAlertDismissed, setIsAlertDismissed] = useState(true);
+  const [showAlert, setShowAlert] = useState(false);
   const isLinkDark = type === 'warning';
   let footerContent = '';
 
@@ -31,15 +31,13 @@ const Alert = ({
   }
 
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    const isDismissed = sessionStorage.getItem(_uid);
-    if (isDismissed) setIsAlertDismissed(false);
+    const dismissedInSession = sessionStorage.getItem(_uid);
+    if (!dismissedInSession) setShowAlert(true);
   }, [_uid]);
 
   const dismissHandler = () => {
-    // eslint-disable-next-line no-undef
     sessionStorage.setItem(_uid, 'dismissed');
-    setIsAlertDismissed(false);
+    setShowAlert(false);
   };
 
   const DismissBtn = (
@@ -57,7 +55,7 @@ const Alert = ({
     footerWrapper: 'su-rs-mt-1',
   };
 
-  if (!isAlertDismissed) return null;
+  if (!showAlert) return null;
 
   return (
     <SbEditable content={blok}>
