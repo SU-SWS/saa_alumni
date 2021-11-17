@@ -81,7 +81,7 @@ const ItineraryItem = ({
                     />
                   </div>
                   <span className="su-leading-display">
-                    Accommodation: {hotel}
+                    Accommodations: {hotel}
                   </span>
                 </FlexBox>
               )}
