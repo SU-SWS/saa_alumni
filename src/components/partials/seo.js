@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import useSiteMetadata from '../../hooks/useSiteMetadata';
 import transformImage from '../../utilities/transformImage';
-import useIsTravelStudy from '../../hooks/useIsTravelStudy';
+import useSubsite from '../../hooks/useSubsite';
 /**
  * Get the canonical URL for the current page.
  *
@@ -52,7 +52,7 @@ const Seo = ({
   blok,
 }) => {
   const { title, description, siteUrl } = useSiteMetadata();
-  const isTravelStudy = useIsTravelStudy();
+  const isTravelStudy = useSubsite() === 'travel-study';
   const siteTitle = isTravelStudy ? `Travel/Study | ${title}` : title;
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title

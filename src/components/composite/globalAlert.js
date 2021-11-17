@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Alert from './alert';
-import useIsTravelStudy from '../../hooks/useIsTravelStudy';
+import useSubsite from '../../hooks/useSubsite';
 
 const query = graphql`
   query {
@@ -27,7 +27,7 @@ const query = graphql`
 `;
 
 const GlobalAlert = () => {
-  const hideAlerts = useIsTravelStudy();
+  const hideAlerts = useSubsite() !== 'homesite';
 
   return (
     <StaticQuery

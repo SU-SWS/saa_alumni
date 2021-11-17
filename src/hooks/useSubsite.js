@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from '@reach/router';
 
-// use useLocation hook to determine if we are on a travel study page
-const useIsTravelStudy = () => {
-  const [isTravelStudy, setIsTravelStudy] = useState(false);
+// Use useLocation hook to determine what subsite current page is on
+const useSubsite = () => {
+  const [subsite, setSubsite] = useState('homesite');
   const location = useLocation();
 
   useEffect(() => {
@@ -12,11 +12,11 @@ const useIsTravelStudy = () => {
       location.search.includes('path=travel-study') ||
       location.search.includes('path=/travel-study')
     ) {
-      setIsTravelStudy(true);
+      setSubsite('travel-study');
     }
   }, [location]);
 
-  return isTravelStudy;
+  return subsite;
 };
 
-export default useIsTravelStudy;
+export default useSubsite;
