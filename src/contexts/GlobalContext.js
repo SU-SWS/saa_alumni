@@ -26,13 +26,6 @@ export const breakpoints = {
   '2xl': 1500,
 };
 
-// Check if a page belongs to the Travel/Study subsite
-export const isTravelStudy =
-  typeof window !== 'undefined' &&
-  (window.location.pathname.startsWith('/travel-study') ||
-    window.location.search.includes('path=travel-study') ||
-    window.location.search.includes('path=/travel-study'));
-
 /**
  * The default state.
  */

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import Alert from './alert';
-import { isTravelStudy } from '../../contexts/GlobalContext';
+import useIsTravelStudy from '../../hooks/useIsTravelStudy';
 
 const query = graphql`
   query {
@@ -26,27 +26,27 @@ const query = graphql`
   }
 `;
 
-// Show Global Alerts only on Alumni Homesite and hide on Travel Study.
-const hideAlerts = isTravelStudy;
+const GlobalAlert = () => {
+  const hideAlerts = useIsTravelStudy();
 
-const GlobalAlert = () => (
-  <StaticQuery
-    query={query}
-    render={({ allStoryblokEntry }) => {
-      if (!allStoryblokEntry?.edges.length || hideAlerts) return null;
-
-      return (
-        <>
-          {allStoryblokEntry.edges.map(({ node: { content, uuid } }) => {
-            const blok = JSON.parse(content);
-            // eslint-disable-next-line dot-notation
-            blok['_uid'] = uuid;
-            return <Alert blok={blok} key={uuid} />;
-          })}
-        </>
-      );
-    }}
-  />
-);
+  return (
+    <StaticQuery
+      query={query}
+      render={({ allStoryblokEntry }) => {
+        if (!allStoryblokEntry?.edges.length || hideAlerts) return null;
+        return (
+          <>
+            {allStoryblokEntry.edges.map(({ node: { content, uuid } }) => {
+              const blok = JSON.parse(content);
+              // eslint-disable-next-line dot-notation
+              blok['_uid'] = uuid;
+              return <Alert blok={blok} key={uuid} />;
+            })}
+          </>
+        );
+      }}
+    />
+  );
+};
 
 export default GlobalAlert;
