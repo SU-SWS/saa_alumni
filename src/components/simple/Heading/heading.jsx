@@ -3,6 +3,14 @@ import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
 import { HeadingLevelType } from '../../../types/HeadingLevelType';
 import {
+  FontWeightType,
+  FontStackType,
+  ModularSizeType,
+  LeadingType,
+  TextAlignType,
+  TrackingType,
+} from '../../../types/TypographyType';
+import {
   fontStacks,
   fontWeights,
   fontLeadings,
@@ -13,37 +21,12 @@ import {
 
 const HeadingProps = {
   level: HeadingLevelType,
-  font: PropTypes.oneOf(['sans', 'serif', 'slab']),
-  size: PropTypes.oneOf([
-    1,
-    2,
-    3,
-    4,
-    5,
-    6,
-    7,
-    8,
-    'base',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-  ]),
-  align: PropTypes.oneOf(['left', 'center', 'right', 'justify']),
-  weight: PropTypes.oneOf(['light', 'regular', 'semibold', 'bold']),
-  leading: PropTypes.oneOf(['none', 'tight', 'display', 'snug']),
-  tracking: PropTypes.oneOf([
-    'tighter',
-    'tight',
-    'normal',
-    'wide',
-    'wider',
-    'widest',
-  ]),
+  font: FontStackType,
+  size: ModularSizeType,
+  align: TextAlignType,
+  weight: FontWeightType,
+  leading: LeadingType,
+  tracking: TrackingType,
   uppercase: PropTypes.bool,
   italic: PropTypes.bool,
   srOnly: PropTypes.bool,
