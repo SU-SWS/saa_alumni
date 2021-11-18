@@ -29,11 +29,11 @@ const EmbedVideo = ({
   const startMin = startMinute ? parseInt(startMinute, 10) : 0;
   const startSec = startSecond ? parseInt(startSecond, 10) : 0;
 
-  const spacingTopStyle = smallPaddingTop[spacingTop] ?? '';
-  const spacingBottomStyle = smallPaddingBottom[spacingBottom] ?? '';
+  const spacingTopStyle = smallPaddingTop[spacingTop] || '';
+  const spacingBottomStyle = smallPaddingBottom[spacingBottom] || '';
 
   const convertToSecond = (min, sec) => min * 60 + sec;
-  const aspectRatioStyle = mediaAspectRatio[aspectRatio ?? '16x9'];
+  const aspectRatioStyle = mediaAspectRatio[aspectRatio || '16x9'];
 
   return (
     <SbEditable content={blok}>

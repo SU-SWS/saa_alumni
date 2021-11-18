@@ -1,7 +1,8 @@
 import React from 'react';
-import { FlexBox, Heading, SrOnlyText } from 'decanter-react';
+import { FlexBox, SrOnlyText } from 'decanter-react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
+import { Heading } from '../../simple/Heading';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import TabLabel from '../../simple/tabLabel';
@@ -9,6 +10,7 @@ import { largeMarginBottom } from '../../../utilities/dataSource';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './GradientCard.styles';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
+import { HeadingLevelType } from '../../../types/HeadingLevelType';
 
 export const GradientCardProps = {
   headline: PropTypes.string,
@@ -18,7 +20,7 @@ export const GradientCardProps = {
   focus: PropTypes.string,
   imageFocus: PropTypes.string,
   tabText: PropTypes.string,
-  headingLevel: PropTypes.number,
+  headingLevel: HeadingLevelType,
   orientation: PropTypes.string,
   spacingBottom: PropTypes.string,
   isDark: PropTypes.bool,
@@ -27,7 +29,7 @@ export const GradientCardProps = {
 
 const GradientCard = ({
   headline,
-  headingLevel,
+  headingLevel = 3,
   description,
   link,
   filename,
