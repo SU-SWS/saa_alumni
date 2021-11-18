@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
-import { HeadingLevelType } from '../../../types/HeadingLevelType';
+import { HeadingLevelType } from '../../types/HeadingLevelType';
 import {
   FontWeightType,
   FontStackType,
@@ -9,7 +9,7 @@ import {
   LeadingType,
   TextAlignType,
   TrackingType,
-} from '../../../types/TypographyType';
+} from '../../types/TypographyType';
 import {
   fontStacks,
   fontWeights,
@@ -17,7 +17,7 @@ import {
   modularTypes,
   fontTrackings,
   textAlign,
-} from '../../../utilities/dataSource';
+} from '../../utilities/dataSource';
 
 const HeadingProps = {
   level: HeadingLevelType,
@@ -27,6 +27,7 @@ const HeadingProps = {
   weight: FontWeightType,
   leading: LeadingType,
   tracking: TrackingType,
+  id: PropTypes.string,
   uppercase: PropTypes.bool,
   italic: PropTypes.bool,
   srOnly: PropTypes.bool,
@@ -42,6 +43,7 @@ export const Heading = ({
   weight = 'bold',
   leading = 'display',
   tracking,
+  id,
   uppercase,
   italic,
   srOnly,
@@ -74,6 +76,7 @@ export const Heading = ({
         isSrOnly,
         className
       )}
+      id={id}
       {...props}
     >
       {children}

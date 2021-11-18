@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
-import { Heading, Grid, GridCell } from 'decanter-react';
+import { Grid, GridCell } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
@@ -77,7 +78,6 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
             <Heading
               level={3}
               font="serif"
-              weight="bold"
               className={headerStyles.sectionHeading({ isCenter: false })}
             >
               {overviewHeading}
@@ -92,20 +92,20 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
           <GridCell xs={12} md={4} xl={3} className={styles.summary}>
             <div className={styles.summaryContent}>
               <div className={styles.summaryItem}>
-                <Heading level={3} className={styles.summaryName}>
+                <Heading level={4} className={styles.summaryName}>
                   Dates
                 </Heading>
                 <span className={styles.summaryValue}>{tripDates}</span>
               </div>
               <div className={styles.summaryItem}>
-                <Heading level={3} className={styles.summaryName}>
+                <Heading level={4} className={styles.summaryName}>
                   Duration
                 </Heading>
                 <span className={styles.summaryValue}>{tripDuration}</span>
               </div>
               {hasRichText(cost) && (
                 <div className={styles.summaryItem}>
-                  <Heading level={3} className={styles.summaryName}>
+                  <Heading level={4} className={styles.summaryName}>
                     Price
                   </Heading>
                   <RichTextRenderer
@@ -116,7 +116,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
               )}
               {tripSize && (
                 <div className={styles.summaryItem}>
-                  <Heading level={3} className={styles.summaryName}>
+                  <Heading level={4} className={styles.summaryName}>
                     Trip size
                   </Heading>
                   <span className={styles.summaryValue}>
@@ -126,7 +126,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
               )}
               {minAge && (
                 <div className={styles.summaryItem}>
-                  <Heading level={3} className={styles.summaryName}>
+                  <Heading level={4} className={styles.summaryName}>
                     Minimum age
                   </Heading>
                   <span className={styles.summaryValue}>{minAge} years</span>
@@ -136,7 +136,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
             <div className={styles.actions}>
               {status === 'notify' && inquireURL?.cached_url && (
                 <div>
-                  <Heading level={3} className={styles.summaryName}>
+                  <Heading level={4} className={styles.summaryName}>
                     Ready to go? Looking for more information?
                   </Heading>
                   <span className={styles.summaryValue}>

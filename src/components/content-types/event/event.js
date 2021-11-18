@@ -1,6 +1,6 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import { FlexBox, Heading, SrOnlyText } from 'decanter-react';
+import { FlexBox, SrOnlyText } from 'decanter-react';
 import {
   CalendarIcon,
   DesktopComputerIcon,
@@ -9,6 +9,7 @@ import {
 } from '@heroicons/react/outline';
 import { DateTime } from 'luxon';
 import { dcnb } from 'cnbuilder';
+import { Heading } from '../../simple/Heading';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import TabLabel from '../../simple/tabLabel';
@@ -30,7 +31,7 @@ const Event = ({
   blok,
   isBigHeadline,
   isMinimal,
-  headingLevel,
+  headingLevel = 3,
   tabText,
   hideTab,
   isDark,
@@ -184,7 +185,7 @@ const Event = ({
           )}
         >
           <Heading
-            level={parseInt(headingLevel, 10) ?? 3}
+            level={headingLevel}
             font="serif"
             tracking="normal"
             className="su-relative su-inline su-type-0"

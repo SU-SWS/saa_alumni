@@ -1,5 +1,6 @@
 import React from 'react';
-import { Grid as DrGrid, Heading } from 'decanter-react';
+import { Grid as DrGrid } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import * as styles from './TripPageRelatedTripsSection.styles';
@@ -27,7 +28,7 @@ export const TripPageRelatedTripsSection = (props) => {
   return (
     <div className={styles.root}>
       <Heading
-        level={3}
+        level={2}
         size={4}
         align="center"
         font="serif"

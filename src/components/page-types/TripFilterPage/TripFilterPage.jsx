@@ -2,7 +2,7 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Container, Grid, GridCell, Skiplink } from 'decanter-react';
-import { Heading } from '../../simple/Heading/heading';
+import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';

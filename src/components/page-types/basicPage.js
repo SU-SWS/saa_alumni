@@ -1,6 +1,8 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, Heading } from 'decanter-react';
+import { dcnb } from 'cnbuilder';
+import { Container } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
@@ -52,11 +54,14 @@ const BasicPage = (props) => {
               <CreateBloks
                 blokSection={sectionMenu}
                 id="section-menu-mobile"
-                className={`${
-                  hasHeroBanner
-                    ? 'su-rs-my-2'
-                    : 'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]'
-                } lg:su-hidden su-block su-mx-auto su-max-w-[35rem]`}
+                className={dcnb(
+                  'lg:su-hidden su-block su-mx-auto su-max-w-[35rem]',
+                  {
+                    'su-rs-my-2': hasHeroBanner,
+                    'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]':
+                      !hasHeroBanner,
+                  }
+                )}
               />
             )}
             <CreateBloks blokSection={hero} />

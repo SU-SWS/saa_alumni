@@ -1,6 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, Heading } from 'decanter-react';
+import { Container } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
 import Ankle from '../partials/ankle/ankle';
 import CreateBloks from '../../utilities/createBloks';

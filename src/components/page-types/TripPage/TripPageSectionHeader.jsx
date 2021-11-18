@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Heading } from 'decanter-react';
+import { Container } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import * as styles from './TripPageSectionHeader.styles';
@@ -21,7 +22,6 @@ export const TripPageSectionHeader = (props) => {
       <Heading
         level={3}
         font="serif"
-        weight="bold"
         className={styles.sectionHeading({ isCenter, headingSize })}
       >
         {heading}

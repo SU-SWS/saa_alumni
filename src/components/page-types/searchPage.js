@@ -1,14 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import algoliasearch from 'algoliasearch';
-import {
-  Container,
-  Heading,
-  Button,
-  Grid,
-  GridCell,
-  Skiplink,
-} from 'decanter-react';
+import { Container, Button, Grid, GridCell, Skiplink } from 'decanter-react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   useQueryParam,
@@ -17,6 +10,7 @@ import {
   ArrayParam,
 } from 'use-query-params';
 import Icon from 'react-hero-icon';
+import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
 import SearchField from '../search/searchField';
 import SearchResults from '../search/searchResults';
@@ -262,7 +256,7 @@ const SearchPage = (props) => {
           className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light su-flex-wrap"
           id="main-content"
         >
-          <Heading level={1} font="serif" weight="bold" className="su-mb-0">
+          <Heading level={1} font="serif" className="su-mb-0">
             {blok.pageTitle}
           </Heading>
         </Container>

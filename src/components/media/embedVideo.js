@@ -2,7 +2,7 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import ReactPlayer from 'react-player';
 import { dcnb } from 'cnbuilder';
-import { Heading } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 import {
   smallPaddingBottom,
   smallPaddingTop,
@@ -22,7 +22,7 @@ const EmbedVideo = ({
     spacingBottom,
     videoWidth,
     srTitle,
-    headingLevel,
+    headingLevel = 3,
   },
   blok,
 }) => {
@@ -38,7 +38,7 @@ const EmbedVideo = ({
   return (
     <SbEditable content={blok}>
       {srTitle && (
-        <Heading level={parseInt(headingLevel, 10) || 3} srOnly>
+        <Heading level={headingLevel} srOnly>
           {srTitle}
         </Heading>
       )}

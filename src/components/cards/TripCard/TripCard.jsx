@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { FlexBox, Heading, SrOnlyText } from 'decanter-react';
+import { FlexBox, SrOnlyText } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import CardImage from '../../media/cardImage';
 import { Date } from '../../simple/Date/Date';
 import HeroIcon from '../../simple/heroIcon';
