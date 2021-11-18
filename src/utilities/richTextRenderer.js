@@ -123,7 +123,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
 
         return null;
       },
-      [NODE_IMAGE]: ({ src, alt }) => (
+      [NODE_IMAGE]: (children, { src, alt }) => (
         <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
       ),
     },
