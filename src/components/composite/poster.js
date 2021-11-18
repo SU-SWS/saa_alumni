@@ -75,7 +75,7 @@ const Poster = ({
     <SbEditable content={blok}>
       <Container
         className={dcnb(
-          'poster su-basefont-23 su-rs-pt-5 su-rs-pb-6 su-bg-cover su-bg-no-repeat',
+          'poster print:su-bg-white print:!su-bg-none print:su-text-black su-basefont-23 su-rs-pt-5 su-rs-pb-6 print:su-pt-0 print:su-pb-0 su-bg-cover su-bg-no-repeat',
           wrapperClasses,
           bgCrop,
           colorTheme

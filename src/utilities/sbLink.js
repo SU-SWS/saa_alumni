@@ -15,6 +15,9 @@ const SbLink = React.forwardRef((props, ref) => {
   // Storyblok link object either has a url (external links)
   // or cached_url (internal or asset links)
   let linkUrl = props.link?.url || props.link?.cached_url || '';
+  if (props.link?.linktype === 'email') {
+    linkUrl = `mailto:${props.link?.email}`;
+  }
 
   // Default Classes for all links.
   const linkClasses = props.classes ?? '';

@@ -24,12 +24,13 @@ export const bgColors = {
 };
 
 export const bgTextColorPairs = {
-  'foggy-light': 'su-bg-foggy-light su-text-black',
-  'black-10': 'su-bg-black-10 su-text-black',
+  'foggy-light': 'su-bg-foggy-light su-text-black print:su-bg-white',
+  'black-10': 'su-bg-black-10 su-text-black print:su-bg-white',
   white: 'su-bg-white su-text-black',
-  black: 'su-bg-saa-black su-text-white',
-  'cardinal-red': 'su-bg-cardinal-red su-text-white',
-  plum: 'su-bg-plum su-text-white',
+  black: 'su-bg-saa-black su-text-white print:su-text-black print:su-bg-white',
+  'cardinal-red':
+    'su-bg-cardinal-red su-text-white print:su-text-black print:su-bg-white',
+  plum: 'su-bg-plum su-text-white print:su-text-black print:su-bg-white',
   'gradient-red':
     'su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-text-white',
   'use-bg-image': 'su-bg-black su-text-white',
@@ -45,7 +46,7 @@ export const buttonSizes = {
   small:
     'su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20',
   'small-short':
-    'su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-10 md:su-pb-12 su-text-18 md:su-text-20',
+    'su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-8 md:su-pb-10 su-text-18 md:su-text-20',
   default:
     'su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24',
   large:
@@ -63,6 +64,8 @@ export const buttonStyles = {
     'su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white',
   'ghost-gradient':
     'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+  'palo-verde-gradient':
+    'su-border-palo-verde-dark su-bg-palo-verde-dark su-text-white hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue',
 };
 
 export const ctaGroupDisplay = {

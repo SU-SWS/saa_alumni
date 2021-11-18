@@ -3,7 +3,7 @@ import SbEditable from 'storyblok-react';
 import GlobalHeader from '../identity/global-header/GlobalHeader';
 
 export const SBGlobalHeader = ({ blok, hasHero, isDark }) => {
-  const { siteName, siteLink, utilityNav, mainNav } = blok;
+  const { siteName, siteLink, utilityNav, mainNav, searchPageUrl } = blok;
 
   return (
     <SbEditable content={blok}>
@@ -14,6 +14,7 @@ export const SBGlobalHeader = ({ blok, hasHero, isDark }) => {
         mainNav={mainNav}
         hasHero={hasHero}
         isDark={isDark}
+        searchPageUrl={searchPageUrl}
       />
     </SbEditable>
   );

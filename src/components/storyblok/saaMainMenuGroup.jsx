@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import SAAMainMenuGroup from '../navigation/SAAMainNav/SAAMainMenuGroup';
+import SAAMainMenuGroup from '../navigation/MainNav/SAAMainMenuGroup';
 
 export const SBSAAMainMenuGroup = ({ blok }) => {
   const { parentText, parentLink, childMenuItems, panelFacing } = blok;

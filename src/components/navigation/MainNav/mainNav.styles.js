@@ -20,16 +20,12 @@ export const burgerIconMobile =
   'su-transition-colors su-w-[2.4rem] group-hocus:su-text-digital-red-xlight';
 
 const menuMobileCommon =
-  'su-absolute su-rs-py-1 su-right-0 su-cc su-w-full su-shadow-lg su-border-t  su-border-solid su-border-digital-red-xlight su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden';
+  'su-absolute su-rs-py-1 su-right-0 su-cc su-w-full su-shadow-lg su-border-t su-border-solid su-border-digital-red su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden';
 export const menuMobileSAA = ({ menuOpened } = {}) =>
-  dcnb(
-    menuMobileCommon,
-    'su-top-[117px] md:su-top-[123px] su-bg-saa-black su-border-b',
-    {
-      '!su-scale-y-100 !su-opacity-100 !su-visible': menuOpened,
-      'su-invisible': !menuOpened,
-    }
-  );
+  dcnb(menuMobileCommon, 'su-top-[117px] md:su-top-[123px] su-bg-black', {
+    '!su-scale-y-100 !su-opacity-100 !su-visible': menuOpened,
+    'su-invisible': !menuOpened,
+  });
 export const menuMobileHomesite = ({ menuOpened } = {}) =>
   dcnb(
     menuMobileCommon,

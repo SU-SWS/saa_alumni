@@ -1,4 +1,5 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
 import { Heading } from 'decanter-react';
 import { FilterCheckbox } from '../../simple/FilterCheckbox/FilterCheckbox';
@@ -34,31 +35,64 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
     [filter.facets]
   );
 
-  return (
-    <div className={styles.root}>
-      <Heading level={3} weight="semibold" className={styles.heading}>
-        {filter.name}
-      </Heading>
-      <div className={styles.filterlist}>
+  const [panelOpened, setPanelOpened] = useState(false);
+  const togglePanel = () => {
+    setPanelOpened(!panelOpened);
+  };
+
+  const CheckboxList = (
+    <>
+      <FilterCheckbox
+        label={`All ${filter.name.toLowerCase()}s`}
+        onChange={() => clearFilterType(filter.key)}
+        checked={allIsActive}
+      />
+      {facetsToRender.map((facet) => (
         <FilterCheckbox
-          label={`All ${filter.name.toLowerCase()}s`}
-          onChange={() => clearFilterType(filter.key)}
-          checked={allIsActive}
+          key={`${facet.datasource}-${facet.value}`}
+          label={facet.name}
+          count={facet.count}
+          onChange={() =>
+            toggleFilter(facet.datasource, facet.value, toggleFilter)
+          }
+          checked={facet.active}
         />
-        {facetsToRender.map((facet) => (
-          <FilterCheckbox
-            className="su-w"
-            key={`${facet.datasource}-${facet.value}`}
-            label={facet.name}
-            count={facet.count}
-            onChange={() =>
-              toggleFilter(facet.datasource, facet.value, toggleFilter)
-            }
-            checked={facet.active}
-          />
-        ))}
+      ))}
+    </>
+  );
+
+  return (
+    <>
+      <div className={styles.root}>
+        <Heading level={3} weight="semibold" className={styles.heading}>
+          {filter.name}
+        </Heading>
+        <div className={styles.filterlist}>{CheckboxList}</div>
       </div>
-    </div>
+
+      <div className={styles.rootMobile}>
+        <button
+          type="button"
+          className={styles.toggle({ panelOpened })}
+          aria-expanded={panelOpened}
+          onClick={togglePanel}
+        >
+          <Heading level={3} weight="semibold" className={styles.toggleHeading}>
+            {filter.name}
+          </Heading>
+          <ChevronDownIcon
+            className={styles.chevron({ panelOpened })}
+            aria-hidden="true"
+          />
+        </button>
+        <div
+          className={styles.filterlistMobile({ panelOpened })}
+          aria-hidden={!panelOpened}
+        >
+          {CheckboxList}
+        </div>
+      </div>
+    </>
   );
 };
 TripFilterList.propTypes = TripFilterProps;

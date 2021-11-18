@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import useSiteMetadata from '../../hooks/useSiteMetadata';
 import transformImage from '../../utilities/transformImage';
-
+import useSubsite from '../../hooks/useSubsite';
 /**
  * Get the canonical URL for the current page.
  *
@@ -40,8 +40,20 @@ function getCanonicalUrl(blok, siteUrl, location = {}) {
  * and thus returns a string, not an object like the new asset block.
  */
 
-const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
+const Seo = ({
+  location,
+  blok: {
+    title: theTitle,
+    pageTitle,
+    seo,
+    noIndex,
+    heroImage: { filename: heroImg } = {},
+  },
+  blok,
+}) => {
   const { title, description, siteUrl } = useSiteMetadata();
+  const isTravelStudy = useSubsite() === 'travel-study';
+  const siteTitle = isTravelStudy ? `Travel/Study | ${title}` : title;
 
   // If no SEO fields are filled in, use site default description from gatsby.config and page title
   if (seo == null) {
@@ -53,15 +65,15 @@ const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
   }
 
   // Use the title in SEO component, otherwise use the page title
-  const seoTitle = seo.title || theTitle || '';
+  const seoTitle = seo.title || theTitle || pageTitle || '';
   const ogTitle = seo.og_title || seoTitle;
 
   // Use the description in SEO component, otherwise use the one from gatsby.config
   const seoDescription = seo.description || description || '';
   const ogDescription = seo.og_description || seoDescription;
 
-  let ogImage = seo.og_image ?? '';
-  let twitterImage = seo.twitter_image ?? '';
+  let ogImage = seo.og_image || heroImg || '';
+  let twitterImage = seo.twitter_image || heroImg || '';
 
   if (ogImage !== '') {
     ogImage = transformImage(ogImage, '/1200x630');
@@ -75,9 +87,9 @@ const Seo = ({ location, blok: { title: theTitle, seo }, blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <Helmet titleTemplate={`%s | ${title}`} title={seoTitle}>
-        {!blok.noIndex && <link rel="canonical" href={canonicalUrl} />}
-        {blok.noIndex && <meta name="robots" content="noindex" />}
+      <Helmet titleTemplate={`%s | ${siteTitle}`} title={seoTitle}>
+        {!noIndex && <link rel="canonical" href={canonicalUrl} />}
+        {noIndex && <meta name="robots" content="noindex" />}
         {seoDescription !== '' && (
           <meta name="description" content={seoDescription} />
         )}
