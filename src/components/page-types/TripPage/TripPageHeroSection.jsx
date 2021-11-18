@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FlexBox, Heading } from 'decanter-react';
+import { FlexBox } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import { SBImageType } from '../../../types/storyblok/SBAssetType';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import * as styles from './TripPageHeroSection.styles';
@@ -29,8 +30,10 @@ export const TripPageHeroSection = React.forwardRef((props, ref) => {
             <Heading
               level={1}
               font="serif"
-              weight="bold"
-              className={styles.title({ isShortTitle: title.length < 15 })}
+              size={title.length < 15 ? 8 : 7}
+              leading="tight"
+              tracking="normal"
+              className={styles.title}
             >
               {title}
             </Heading>
@@ -38,7 +41,6 @@ export const TripPageHeroSection = React.forwardRef((props, ref) => {
           {shortDescription && (
             <span className={styles.description}>{shortDescription}</span>
           )}
-          {/* TODO: Section Mav Here */}
         </FlexBox>
       </HeroImage>
     </header>
