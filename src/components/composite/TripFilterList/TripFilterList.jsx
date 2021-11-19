@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
-import { Heading } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import { FilterCheckbox } from '../../simple/FilterCheckbox/FilterCheckbox';
 import * as styles from './TripFilterList.styles';
 
@@ -64,7 +64,12 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
   return (
     <>
       <div className={styles.root}>
-        <Heading level={3} weight="semibold" className={styles.heading}>
+        <Heading
+          level={3}
+          size={1}
+          weight="semibold"
+          className={styles.heading}
+        >
           {filter.name}
         </Heading>
         <div className={styles.filterlist}>{CheckboxList}</div>
@@ -77,7 +82,12 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
           aria-expanded={panelOpened}
           onClick={togglePanel}
         >
-          <Heading level={3} weight="semibold" className={styles.toggleHeading}>
+          <Heading
+            level={3}
+            size="base"
+            weight="semibold"
+            className={styles.toggleHeading}
+          >
             {filter.name}
           </Heading>
           <ChevronDownIcon

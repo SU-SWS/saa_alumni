@@ -1,5 +1,6 @@
 import React from 'react';
-import { FlexBox, Grid as DrGrid, GridCell, Heading } from 'decanter-react';
+import { FlexBox, Grid as DrGrid, GridCell } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import FaIcon from '../simple/faIcon';
 import CaptionMedia from '../media/captionMedia';
@@ -57,7 +58,7 @@ const ItineraryItem = ({
               className="su-rs-mb-1"
             />
           )}
-          <Heading level={3} size={3} font="serif" className="su-mb-03em">
+          <Heading level={4} size={3} font="serif" className="su-mb-03em">
             {title}
           </Heading>
           <RichTextRenderer

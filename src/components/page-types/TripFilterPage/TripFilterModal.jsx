@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
-import { Heading } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import Modal from '../../layout/Modal/Modal';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
 import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
