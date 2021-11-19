@@ -7,11 +7,16 @@ import {
 } from '../../utilities/dataSource';
 
 export const SBHeading = ({
-  blok: { title, fontSize, headingLevel = 2, spacingBottom, spacingTop },
+  blok: {
+    title,
+    fontSize,
+    headingLevel = 2,
+    spacingBottom = 'lg',
+    spacingTop = 'none',
+  },
 }) => {
-  const paddingTop = smallPaddingTop[spacingTop] || smallPaddingTop.lg;
-  const paddingBottom =
-    smallPaddingBottom[spacingBottom] || smallPaddingBottom.lg;
+  const paddingTop = smallPaddingTop[spacingTop];
+  const paddingBottom = smallPaddingBottom[spacingBottom];
 
   return (
     <Heading

@@ -224,7 +224,6 @@ export const textAlign = {
   left: 'su-text-left',
   center: 'su-text-center',
   right: 'su-text-right',
-  justify: 'su-text-justify',
 };
 
 export const horizontalAlign = {

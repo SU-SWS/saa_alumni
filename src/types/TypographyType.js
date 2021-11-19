@@ -47,9 +47,4 @@ export const TrackingType = PropTypes.oneOf([
   'widest',
 ]);
 
-export const TextAlignType = PropTypes.oneOf([
-  'left',
-  'right',
-  'center',
-  'justify',
-]);
+export const TextAlignType = PropTypes.oneOf(['left', 'right', 'center']);
