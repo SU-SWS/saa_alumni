@@ -1,27 +1,26 @@
 import React from 'react';
-import { Heading as DecanterHeading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { Heading } from '../simple/Heading';
 import {
   smallPaddingTop,
   smallPaddingBottom,
 } from '../../utilities/dataSource';
 
 export const SBHeading = ({
-  blok: { title, fontSize, headingLevel, spacingBottom, spacingTop },
+  blok: { title, fontSize, headingLevel = 2, spacingBottom, spacingTop },
 }) => {
-  const paddingTop = smallPaddingTop[spacingTop] ?? smallPaddingTop.lg;
+  const paddingTop = smallPaddingTop[spacingTop] || smallPaddingTop.lg;
   const paddingBottom =
-    smallPaddingBottom[spacingBottom] ?? smallPaddingBottom.lg;
+    smallPaddingBottom[spacingBottom] || smallPaddingBottom.lg;
 
   return (
-    <DecanterHeading
-      level={parseInt(headingLevel, 10) || 2}
+    <Heading
+      level={headingLevel}
       size={fontSize === 'default' ? null : fontSize}
       font="serif"
-      weight="bold"
       className={dcnb(paddingTop, paddingBottom)}
     >
       {title}
-    </DecanterHeading>
+    </Heading>
   );
 };
