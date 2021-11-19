@@ -1,6 +1,3 @@
-import { dcnb } from 'cnbuilder';
-
-export const root = '';
 export const content = 'su-text-white lg:su-mt-[190px] su-text-center';
 export const subtitle =
   'su-block su-max-w-prose su-font-serif su-leading-display su-type-2 su-text-shadow su-mx-auto su-mb-05em';
