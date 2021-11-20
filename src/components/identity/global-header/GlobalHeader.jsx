@@ -11,7 +11,7 @@ import SearchModal from '../../search/searchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import useEscape from '../../../hooks/useEscape';
-import useMediaQuery from '../../../hooks/useMediaQuery';
+import useWindowSize from '../../../hooks/useWindowSize';
 import { breakpoints } from '../../../contexts/GlobalContext';
 
 export const GlobalHeaderProps = {
@@ -35,7 +35,7 @@ const GlobalHeader = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
+  const isDesktop = useWindowSize().width >= breakpoints.lg;
 
   const handleClose = () => {
     setModalOpen(false);

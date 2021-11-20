@@ -8,7 +8,7 @@ import OpenSearchModalButton from '../search/openSearchModalButton';
 import SearchModal from '../search/searchModal';
 import * as styles from './global-header/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
-import useMediaQuery from '../../hooks/useMediaQuery';
+import useWindowSize from '../../hooks/useWindowSize';
 import { breakpoints } from '../../contexts/GlobalContext';
 
 const Masthead = ({
@@ -19,7 +19,7 @@ const Masthead = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
+  const isDesktop = useWindowSize().width >= breakpoints.lg;
 
   let mainNavBgColorXl =
     'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
