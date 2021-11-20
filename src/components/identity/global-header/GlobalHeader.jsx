@@ -11,7 +11,7 @@ import SearchModal from '../../search/searchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import useEscape from '../../../hooks/useEscape';
-import useWindowSize from '../../../hooks/useWindowSize';
+import useMediaQuery from '../../../hooks/useMediaQuery';
 import { breakpoints } from '../../../contexts/GlobalContext';
 
 export const GlobalHeaderProps = {
@@ -35,7 +35,7 @@ const GlobalHeader = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
-  const isDesktop = useWindowSize().width >= breakpoints.lg;
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   const handleClose = () => {
     setModalOpen(false);
@@ -58,67 +58,67 @@ const GlobalHeader = ({
 
   return (
     <>
-      {!isDesktop ? (
-        <div className={styles.rootMobile}>
-          <CreateBloks
-            blokSection={utilityNav}
-            ariaLabel="Utility Menu"
-            navClasses={styles.utilNavMobile}
-            menuClasses={styles.utilNavMenuMobile}
-            itemClasses={styles.utilNavItemMobile}
-          />
-          <FlexBox className={styles.bodyMobile} alignItems="center">
-            <FlexCell className={styles.logoWrapperMobile}>
-              <SbLink link={siteLink} classes={styles.logoMobile}>
-                <img
-                  src={AlumniLogo}
-                  className={styles.logoImageMobile}
-                  alt="Stanford Alumni Association"
-                  width="110"
-                  height="16"
-                />
-                {siteName}
-              </SbLink>
-            </FlexCell>
+      <div className={styles.rootMobile}>
+        <CreateBloks
+          blokSection={utilityNav}
+          ariaLabel="Utility Menu"
+          navClasses={styles.utilNavMobile}
+          menuClasses={styles.utilNavMenuMobile}
+          itemClasses={styles.utilNavItemMobile}
+        />
+        <FlexBox className={styles.bodyMobile} alignItems="center">
+          <FlexCell className={styles.logoWrapperMobile}>
+            <SbLink link={siteLink} classes={styles.logoMobile}>
+              <img
+                src={AlumniLogo}
+                className={styles.logoImageMobile}
+                alt="Stanford Alumni Association"
+                width="110"
+                height="16"
+              />
+              {siteName}
+            </SbLink>
+          </FlexCell>
+          {!isDesktop && (
             <OpenSearchModalButton
               openOpen={modalOpen}
               setModalOpen={setModalOpen}
-              id="masthead-search-button-mobile"
               ref={openSearchRef}
             />
-            <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
-          </FlexBox>
-        </div>
-      ) : (
-        <div className={styles.root({ hasHero, isDark })}>
-          <FlexBox justifyContent="space-between" alignItems="start">
-            <FlexCell className={styles.logoWrapper}>
-              <Logo className={styles.logo} />
-            </FlexCell>
-            <FlexCell className={styles.utilWrapper}>
-              <CreateBloks
-                blokSection={utilityNav}
-                ariaLabel="Utility Menu"
-                navClasses={styles.utilNav}
-                menuClasses={styles.utilNavMenu}
-                itemClasses={styles.utilNavItem}
-              />
+          )}
+          <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
+        </FlexBox>
+      </div>
+
+      <div className={styles.root({ hasHero, isDark })}>
+        <FlexBox justifyContent="space-between" alignItems="start">
+          <FlexCell className={styles.logoWrapper}>
+            <Logo className={styles.logo} />
+          </FlexCell>
+          <FlexCell className={styles.utilWrapper}>
+            <CreateBloks
+              blokSection={utilityNav}
+              ariaLabel="Utility Menu"
+              navClasses={styles.utilNav}
+              menuClasses={styles.utilNavMenu}
+              itemClasses={styles.utilNavItem}
+            />
+            {isDesktop && (
               <OpenSearchModalButton
                 openOpen={modalOpen}
                 setModalOpen={setModalOpen}
-                id="masthead-search-button-desktop"
                 ref={openSearchRef}
               />
-            </FlexCell>
-          </FlexBox>
-          <div className={styles.siteNameWrapper}>
-            <SbLink link={siteLink} classes={styles.siteName}>
-              {siteName}
-            </SbLink>
-          </div>
-          <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
+            )}
+          </FlexCell>
+        </FlexBox>
+        <div className={styles.siteNameWrapper}>
+          <SbLink link={siteLink} classes={styles.siteName}>
+            {siteName}
+          </SbLink>
         </div>
-      )}
+        <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
+      </div>
       <SearchModal
         isOpen={modalOpen}
         setIsOpen={setModalOpen}
