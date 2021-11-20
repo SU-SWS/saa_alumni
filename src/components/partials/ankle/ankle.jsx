@@ -1,7 +1,8 @@
-import { Heading, Grid as DrGrid, Container } from 'decanter-react';
 import React from 'react';
+import { Grid as DrGrid, Container } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { render } from 'storyblok-rich-text-react-renderer';
+import { Heading } from '../../simple/Heading';
 import CreateBloks from '../../../utilities/createBloks';
 import WidthBox from '../../layout/widthBox';
 import { bgTextColorPairs } from '../../../utilities/dataSource';
@@ -61,7 +62,6 @@ const Ankle = ({
               level={2}
               size={2}
               font="serif"
-              weight="bold"
               align="center"
               className={dcnb(
                 styles.heading,

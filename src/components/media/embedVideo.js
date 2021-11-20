@@ -2,7 +2,7 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import ReactPlayer from 'react-player';
 import { dcnb } from 'cnbuilder';
-import { Heading } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 import {
   smallPaddingBottom,
   smallPaddingTop,
@@ -22,23 +22,23 @@ const EmbedVideo = ({
     spacingBottom,
     videoWidth,
     srTitle,
-    headingLevel,
+    headingLevel = 3,
   },
   blok,
 }) => {
   const startMin = startMinute ? parseInt(startMinute, 10) : 0;
   const startSec = startSecond ? parseInt(startSecond, 10) : 0;
 
-  const spacingTopStyle = smallPaddingTop[spacingTop] ?? '';
-  const spacingBottomStyle = smallPaddingBottom[spacingBottom] ?? '';
+  const spacingTopStyle = smallPaddingTop[spacingTop] || '';
+  const spacingBottomStyle = smallPaddingBottom[spacingBottom] || '';
 
   const convertToSecond = (min, sec) => min * 60 + sec;
-  const aspectRatioStyle = mediaAspectRatio[aspectRatio ?? '16x9'];
+  const aspectRatioStyle = mediaAspectRatio[aspectRatio || '16x9'];
 
   return (
     <SbEditable content={blok}>
       {srTitle && (
-        <Heading level={parseInt(headingLevel, 10) || 3} srOnly>
+        <Heading level={headingLevel} srOnly>
           {srTitle}
         </Heading>
       )}

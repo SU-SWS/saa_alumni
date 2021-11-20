@@ -1,6 +1,6 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import { Heading } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import CardImage from '../../media/cardImage';
 import Layout from '../../partials/layout';
 

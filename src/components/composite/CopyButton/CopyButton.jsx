@@ -19,7 +19,7 @@ export const CopyButtonProps = {
    * Copy success message
    */
   copySuccess: PropTypes.node,
-  ClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),

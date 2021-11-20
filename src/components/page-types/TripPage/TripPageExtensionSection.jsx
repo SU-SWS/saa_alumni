@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridCell, Heading } from 'decanter-react';
+import { Grid, GridCell } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
@@ -84,7 +85,7 @@ export const TripPageExtensionSection = (props) => {
           <div className={overviewStyles.summaryContent}>
             {extendStartDate && (
               <div className={overviewStyles.summaryItem}>
-                <Heading level={3} className={overviewStyles.summaryName}>
+                <Heading level={4} className={overviewStyles.summaryName}>
                   Dates
                 </Heading>
                 <span className={overviewStyles.summaryValue}>
@@ -94,7 +95,7 @@ export const TripPageExtensionSection = (props) => {
             )}
             {extendDuration && (
               <div className={overviewStyles.summaryItem}>
-                <Heading level={3} className={overviewStyles.summaryName}>
+                <Heading level={4} className={overviewStyles.summaryName}>
                   Duration
                 </Heading>
                 <span className={overviewStyles.summaryValue}>
@@ -104,7 +105,7 @@ export const TripPageExtensionSection = (props) => {
             )}
             {extendPrice && (
               <div className={overviewStyles.summaryItem}>
-                <Heading level={3} className={overviewStyles.summaryName}>
+                <Heading level={4} className={overviewStyles.summaryName}>
                   Price
                 </Heading>
                 <span className={overviewStyles.summaryValue}>
@@ -114,7 +115,7 @@ export const TripPageExtensionSection = (props) => {
             )}
             {extendTripSize && (
               <div className={overviewStyles.summaryItem}>
-                <Heading level={3} className={overviewStyles.summaryName}>
+                <Heading level={4} className={overviewStyles.summaryName}>
                   Trip size
                 </Heading>
                 <span className={overviewStyles.summaryValue}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heading } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 
 const SearchFacet = ({
   label,
@@ -41,10 +41,10 @@ const SearchFacet = ({
 
   return (
     <div
-      className={`${
+      className={
         className ||
         'su-rs-mb-1 lg:su-rs-mb-3 su-rs-pb-3 lg:su-pb-0 su-border-b lg:su-border-0 su-border-black-20'
-      }`}
+      }
     >
       <Heading level={3} weight="semibold" className="su-rs-mb-0 su-text-m0">
         {label}
@@ -53,9 +53,8 @@ const SearchFacet = ({
       {preparedFacetValues.map((option, index) => (
         <label
           key={option.name}
-          className={`su-label su-flex su-items-center su-cursor-pointer su-text-19 hover:su-text-digital-red-xlight ${
-            index ? 'su-mt-20' : ''
-          }`}
+          className={`su-label su-flex su-items-center su-cursor-pointer su-text-19 hover:su-text-digital-red-xlight
+          ${index ? 'su-mt-20' : ''}`}
         >
           <input
             type="checkbox"
@@ -66,9 +65,8 @@ const SearchFacet = ({
             onChange={(e) => handleCheckboxChange(e)}
           />
           <span
-            className={`su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light ${
-              optionClasses || ''
-            }`}
+            className={`su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light
+            ${optionClasses || ''}`}
           >
             {option.name}
             <span> ({option.count.toLocaleString('en-us')})</span>

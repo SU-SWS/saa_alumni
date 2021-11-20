@@ -1,14 +1,15 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-import { FlexBox, Heading } from 'decanter-react';
-import { render } from 'storyblok-rich-text-react-renderer';
+import { FlexBox } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
+import hasRichText from '../../utilities/hasRichText';
 
 const BasicCardContent = ({
   headline,
-  headingLevel,
+  headingLevel = 3,
   text,
   cta,
   isBigHeadline,
@@ -17,14 +18,6 @@ const BasicCardContent = ({
   ...props
 }) => {
   const hasCta = getNumBloks(cta) > 0;
-  const renderedText = render(text);
-  const hasText = getNumBloks(renderedText) > 0;
-  // Option to make headline font larger
-  let headlineSize = 'su-type-2';
-
-  if (isBigHeadline) {
-    headlineSize = 'su-type-3';
-  }
 
   return (
     <FlexBox
@@ -34,19 +27,15 @@ const BasicCardContent = ({
     >
       {headline && (
         <Heading
-          level={parseInt(headingLevel, 10) || 3}
+          level={headingLevel}
           font="serif"
-          weight="bold"
-          className={dcnb(
-            'su-mb-0',
-            `${isDark ? 'su-text-white' : ''}`,
-            headlineSize
-          )}
+          size={isBigHeadline ? 3 : 2}
+          className={dcnb('su-mb-0', `${isDark ? 'su-text-white' : ''}`)}
         >
           {headline}
         </Heading>
       )}
-      {hasText && (
+      {hasRichText(text) && (
         <RichTextRenderer
           wysiwyg={text}
           isDark={isDark}

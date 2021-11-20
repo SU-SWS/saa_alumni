@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, GlobalFooter } from 'decanter-react';
+import { GlobalFooter } from '../identity/GlobalFooter/GlobalFooter';
 import CreateBloks from '../../utilities/createBloks';
 
 /**
@@ -10,17 +10,10 @@ import CreateBloks from '../../utilities/createBloks';
 
 const Footer = ({ blok: { localFooter }, blok }) => (
   <SbEditable content={blok}>
-    <Container
-      element="footer"
-      width="full"
-      className="su-flex-grow-0 su-relative print:su-hidden"
-    >
+    <footer className="su-w-full su-flex-grow-0 su-relative">
       <CreateBloks blokSection={localFooter} />
-      <GlobalFooter
-        color="black"
-        className={{ 'su-bg-black': false, 'su-bg-saa-black': true }}
-      />
-    </Container>
+      <GlobalFooter />
+    </footer>
   </SbEditable>
 );
 

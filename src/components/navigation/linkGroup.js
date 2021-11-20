@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Heading } from 'decanter-react';
+import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 
 const LinkGroup = ({ blok: { heading, linkList }, blok }) => (
@@ -9,7 +9,6 @@ const LinkGroup = ({ blok: { heading, linkList }, blok }) => (
       <Heading
         level={2}
         font="serif"
-        weight="bold"
         className="su-text-18 su-tracking-normal su-rs-mb-1"
       >
         {heading}

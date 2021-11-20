@@ -1,7 +1,7 @@
 import React from 'react';
-import { Heading } from 'decanter-react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
+import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 
 const SearchSuggestions = ({ blok: { content, title, titleColor }, blok }) => (

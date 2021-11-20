@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
-import { Container, Heading } from 'decanter-react';
+import { Container } from 'decanter-react';
+import { Heading } from '../../simple/Heading';
 import { slugify } from '../../../utilities/slugify';
 import * as styles from './TripPageSectionWrapper.styles';
 

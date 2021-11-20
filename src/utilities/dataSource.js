@@ -91,6 +91,51 @@ export const ctaLinkTextSize = {
   small: 'su-text-19 md:su-text-20 xl:su-text-21',
 };
 
+// Line heights
+export const fontLeadings = {
+  none: 'su-leading-none', // 1
+  tight: 'su-leading-tight', // 1.1
+  display: 'su-leading-display', // 1.2
+  snug: 'su-leading-snug', // 1.3
+  cozy: 'su-leading-cozy', // 1.4
+  normal: 'su-leading', // 1.5
+};
+
+export const fontStacks = {
+  sans: 'su-font-sans',
+  serif: 'su-font-serif',
+  slab: 'su-font-slab',
+};
+
+// Letter spacing
+export const fontTrackings = {
+  tighter: 'su-tracking-tighter', // -0.05em
+  tight: 'su-tracking-tight', // 0.025em;
+  normal: 'su-tracking-normal', // 0
+  wide: 'su-tracking-wide', // 0.025em;
+  wider: 'su-tracking-wider', // 0.05em;
+  widest: 'su-tracking-widest', // 0.1em;
+};
+
+export const fontWeights = {
+  light: 'su-font-light',
+  regular: 'su-font-regular',
+  semibold: 'su-font-semibold',
+  bold: 'su-font-bold',
+};
+
+export const modularTypes = {
+  base: 'su-type-0',
+  1: 'su-type-1',
+  2: 'su-type-2',
+  3: 'su-type-3',
+  4: 'su-type-4',
+  5: 'su-type-5',
+  6: 'su-type-6',
+  7: 'su-type-7',
+  8: 'su-type-8',
+};
+
 export const objectPosition = {
   top: 'su-object-top',
   center: 'su-object-center',

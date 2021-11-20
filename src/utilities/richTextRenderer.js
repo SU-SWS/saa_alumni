@@ -7,9 +7,9 @@ import {
   NODE_HEADING,
   NODE_IMAGE,
 } from 'storyblok-rich-text-react-renderer';
-import { Heading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
+import { Heading } from '../components/simple/Heading';
 import CardImage from '../components/media/cardImage';
 import { config } from './config';
 
@@ -115,7 +115,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
 
         if (level === 6) {
           return (
-            <Heading level={6} font="serif" size={0}>
+            <Heading level={6} font="serif" size="base">
               {children}
             </Heading>
           );

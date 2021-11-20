@@ -1,7 +1,8 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, Heading } from 'decanter-react';
+import { Container } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import getNumBloks from '../../utilities/getNumBloks';
@@ -20,7 +21,7 @@ const Section = ({
     superhead,
     superLink,
     title,
-    headingLevel,
+    headingLevel = 2,
     intro,
     cta,
     content,
@@ -118,9 +119,8 @@ const Section = ({
             )}
             {title && (
               <Heading
-                level={parseInt(headingLevel, 10) || 2}
+                level={headingLevel}
                 font="serif"
-                weight="bold"
                 className={dcnb(
                   'su-mb-02em su-max-w-800',
                   headlineAlign,

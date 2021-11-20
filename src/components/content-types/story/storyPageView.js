@@ -1,7 +1,8 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import { Container, Heading } from 'decanter-react';
+import { Container } from 'decanter-react';
 import { DateTime } from 'luxon';
+import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import FullWidthImage from '../../media/fullWidthImage';

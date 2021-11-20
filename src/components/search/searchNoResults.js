@@ -1,5 +1,5 @@
-import { Heading } from 'decanter-react';
 import React from 'react';
+import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 
 const SearchNoResults = ({ heading, body, additionalContent }) => (

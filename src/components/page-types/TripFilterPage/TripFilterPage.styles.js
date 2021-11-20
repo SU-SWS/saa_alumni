@@ -3,16 +3,14 @@ export const page =
 export const header = 'su-basefont-23';
 export const headerContent = 'su-rs-mt-6 su-rs-mb-7';
 export const hero = 'su-aspect-w-5 su-aspect-h-2';
-export const heading =
-  'su-text-white su-leading-tight su-tracking-normal su-mx-auto su-text-center su-mb-02em su-max-w-[120rem] su-type-7';
+export const heading = 'su-text-white su-mx-auto su-mb-02em su-max-w-[120rem]';
 export const intro =
   'su-text-white su-mx-auto su-text-center su-max-w-prose su-subheading su-leading-display';
 export const filterSection = 'su-cc su-rs-pb-6 su-items-start';
 export const filterSidebarMobile = 'lg:su-hidden';
 export const filterSidebar =
   'su-hidden lg:su-block su-bg-saa-black-dark su-px-18 xl:su-px-26 2xl:su-px-38 su-rs-pt-2 su-rs-pb-4';
-export const filterHeading =
-  'su-type-0 su-text-white su-font-semibold su-uppercase su-tracking-normal';
+export const filterHeading = 'su-text-white';
 export const chipsWrapper = 'su-hidden lg:su-block';
 export const activeFilters =
   'su-flex su-flex-row su-justify-between su-items-center su-mb-34';

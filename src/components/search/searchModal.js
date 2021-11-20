@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Container, Heading } from 'decanter-react';
+import { Container } from 'decanter-react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { Heading } from '../simple/Heading';
 import Modal from '../layout/Modal/Modal';
 import SearchFieldModal from './searchFieldModal';
 import SearchSuggestions from './searchSuggestions';
@@ -59,7 +60,8 @@ const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
             font="serif"
             size={3}
             level={2}
-            className="su-text-white su-text-center su-rs-mt-5 su-mb-61 md:su-rs-mb-4"
+            align="center"
+            className="su-text-white su-rs-mt-5 su-mb-61 md:su-rs-mb-4"
             aria-label="Search Stanford Alumni websites"
           >
             {introduction}
@@ -77,7 +79,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
             ''
           )}
           {story && content && (
-            <div>
+            <div className="su-rs-pb-7">
               <SearchSuggestions blok={content} />
             </div>
           )}
