@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { FlexBox, FlexCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
@@ -35,11 +35,18 @@ const GlobalHeader = ({
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const openSearchRef = useRef(null);
+  const openSearchMobileRef = useRef(null);
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
+  const desktopRef = useRef(null);
+  const mobileRef = useRef(null);
 
   const handleClose = () => {
     setModalOpen(false);
-    openSearchRef.current.focus();
+    if (openSearchRef.current) {
+      openSearchRef.current.focus();
+    } else if (openSearchMobileRef.current) {
+      openSearchMobileRef.current.focus();
+    }
   };
 
   useEscape(() => {
@@ -51,15 +58,34 @@ const GlobalHeader = ({
       // Only close the modal with Escape key if the autocomplete dropdown is not open
       if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
         setModalOpen(false);
-        openSearchRef.current.focus();
+
+        if (openSearchRef.current) {
+          openSearchRef.current.focus();
+        } else if (openSearchMobileRef.current) {
+          openSearchMobileRef.current.focus();
+        }
       }
     }
   });
 
+  // Initially display both the desktop and mobile masthead
+  const [hideDesktop, setHideDesktop] = useState(false);
+  const [hideMobile, setHideMobile] = useState(false);
+
+  useLayoutEffect(() => {
+    if (isDesktop) {
+      setHideDesktop(false);
+      setHideMobile(true);
+    } else {
+      setHideDesktop(true);
+      setHideMobile(false);
+    }
+  }, [isDesktop]);
+
   return (
     <>
-      {!isDesktop ? (
-        <div className={styles.rootMobile}>
+      {!hideMobile && (
+        <div className={styles.rootMobile} ref={mobileRef}>
           <CreateBloks
             blokSection={utilityNav}
             ariaLabel="Utility Menu"
@@ -83,14 +109,14 @@ const GlobalHeader = ({
             <OpenSearchModalButton
               openOpen={modalOpen}
               setModalOpen={setModalOpen}
-              id="masthead-search-button-mobile"
-              ref={openSearchRef}
+              ref={openSearchMobileRef}
             />
             <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
           </FlexBox>
         </div>
-      ) : (
-        <div className={styles.root({ hasHero, isDark })}>
+      )}
+      {!hideDesktop && (
+        <div className={styles.root({ hasHero, isDark })} ref={desktopRef}>
           <FlexBox justifyContent="space-between" alignItems="start">
             <FlexCell className={styles.logoWrapper}>
               <Logo className={styles.logo} />
@@ -106,7 +132,6 @@ const GlobalHeader = ({
               <OpenSearchModalButton
                 openOpen={modalOpen}
                 setModalOpen={setModalOpen}
-                id="masthead-search-button-desktop"
                 ref={openSearchRef}
               />
             </FlexCell>
