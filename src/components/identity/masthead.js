@@ -18,11 +18,11 @@ const Masthead = ({
   isDark,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const desktopRef = useRef(null);
+  const mobileRef = useRef(null);
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
-  const desktopRef = useRef(null);
-  const mobileRef = useRef(null);
 
   let mainNavBgColorXl =
     'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
@@ -34,13 +34,17 @@ const Masthead = ({
     mainNavBgColorLg = 'su-bg-saa-black';
   }
 
-  const handleClose = () => {
-    setModalOpen(false);
+  const returnFocus = () => {
     if (openSearchRef.current) {
       openSearchRef.current.focus();
     } else if (openSearchMobileRef.current) {
       openSearchMobileRef.current.focus();
     }
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+    returnFocus();
   };
 
   useEscape(() => {
@@ -52,33 +56,28 @@ const Masthead = ({
       // Only close the modal with Escape key if the autocomplete dropdown is not open
       if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
         setModalOpen(false);
-
-        if (openSearchRef.current) {
-          openSearchRef.current.focus();
-        } else if (openSearchMobileRef.current) {
-          openSearchMobileRef.current.focus();
-        }
+        returnFocus();
       }
     }
   });
 
   // Initially display both the desktop and mobile masthead
-  const [hideDesktop, setHideDesktop] = useState(false);
-  const [hideMobile, setHideMobile] = useState(false);
+  const [showDesktop, setShowDesktop] = useState(true);
+  const [showMobile, setShowMobile] = useState(true);
 
   useLayoutEffect(() => {
     if (isDesktop) {
-      setHideDesktop(false);
-      setHideMobile(true);
+      setShowDesktop(true);
+      setShowMobile(false);
     } else {
-      setHideDesktop(true);
-      setHideMobile(false);
+      setShowDesktop(false);
+      setShowMobile(true);
     }
   }, [isDesktop]);
 
   return (
     <SbEditable content={blok}>
-      {!hideMobile && (
+      {showMobile && (
         <div
           className="masthead-mobile su-relative su-w-full lg:su-hidden su-bg-cardinal-red-xdark"
           ref={mobileRef}
@@ -105,7 +104,7 @@ const Masthead = ({
           </FlexBox>
         </div>
       )}
-      {!hideDesktop && (
+      {showDesktop && (
         <div
           className={`masthead-desktop su-hidden lg:su-block su-w-full su-z-20
           ${hasHero ? 'su-absolute' : 'su-relative'}`}
@@ -141,7 +140,6 @@ const Masthead = ({
                 <OpenSearchModalButton
                   openOpen={modalOpen}
                   setModalOpen={setModalOpen}
-                  id="masthead-search-button-desktop"
                   ref={openSearchRef}
                 />
               </FlexBox>

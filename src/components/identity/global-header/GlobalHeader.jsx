@@ -34,19 +34,23 @@ const GlobalHeader = ({
   searchPageUrl,
 }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const desktopRef = useRef(null);
+  const mobileRef = useRef(null);
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
   const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
-  const desktopRef = useRef(null);
-  const mobileRef = useRef(null);
 
-  const handleClose = () => {
-    setModalOpen(false);
+  const returnFocus = () => {
     if (openSearchRef.current) {
       openSearchRef.current.focus();
     } else if (openSearchMobileRef.current) {
       openSearchMobileRef.current.focus();
     }
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+    returnFocus();
   };
 
   useEscape(() => {
@@ -58,33 +62,28 @@ const GlobalHeader = ({
       // Only close the modal with Escape key if the autocomplete dropdown is not open
       if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
         setModalOpen(false);
-
-        if (openSearchRef.current) {
-          openSearchRef.current.focus();
-        } else if (openSearchMobileRef.current) {
-          openSearchMobileRef.current.focus();
-        }
+        returnFocus();
       }
     }
   });
 
   // Initially display both the desktop and mobile masthead
-  const [hideDesktop, setHideDesktop] = useState(false);
-  const [hideMobile, setHideMobile] = useState(false);
+  const [showDesktop, setShowDesktop] = useState(true);
+  const [showMobile, setShowMobile] = useState(true);
 
   useLayoutEffect(() => {
     if (isDesktop) {
-      setHideDesktop(false);
-      setHideMobile(true);
+      setShowDesktop(true);
+      setShowMobile(false);
     } else {
-      setHideDesktop(true);
-      setHideMobile(false);
+      setShowDesktop(false);
+      setShowMobile(true);
     }
   }, [isDesktop]);
 
   return (
     <>
-      {!hideMobile && (
+      {showMobile && (
         <div className={styles.rootMobile} ref={mobileRef}>
           <CreateBloks
             blokSection={utilityNav}
@@ -115,7 +114,7 @@ const GlobalHeader = ({
           </FlexBox>
         </div>
       )}
-      {!hideDesktop && (
+      {showDesktop && (
         <div className={styles.root({ hasHero, isDark })} ref={desktopRef}>
           <FlexBox justifyContent="space-between" alignItems="start">
             <FlexCell className={styles.logoWrapper}>
