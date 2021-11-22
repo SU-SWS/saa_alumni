@@ -66,7 +66,7 @@ const GlobalHeader = ({
   });
 
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
-  const { showDesktop, showMobile } = useDisplay('lg');
+  const { showDesktop, showMobile } = useDisplay();
 
   return (
     <>
