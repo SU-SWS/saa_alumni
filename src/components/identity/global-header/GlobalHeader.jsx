@@ -1,4 +1,4 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FlexBox, FlexCell } from 'decanter-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
@@ -11,8 +11,7 @@ import SearchModal from '../../search/searchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import useEscape from '../../../hooks/useEscape';
-import useMediaQuery from '../../../hooks/useMediaQuery';
-import { breakpoints } from '../../../contexts/GlobalContext';
+import useDisplay from '../../../hooks/useDisplay';
 
 export const GlobalHeaderProps = {
   siteName: PropTypes.string,
@@ -38,7 +37,6 @@ const GlobalHeader = ({
   const mobileRef = useRef(null);
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   const returnFocus = () => {
     if (openSearchRef.current) {
@@ -67,19 +65,8 @@ const GlobalHeader = ({
     }
   });
 
-  // Initially display both the desktop and mobile masthead
-  const [showDesktop, setShowDesktop] = useState(true);
-  const [showMobile, setShowMobile] = useState(true);
-
-  useLayoutEffect(() => {
-    if (isDesktop) {
-      setShowDesktop(true);
-      setShowMobile(false);
-    } else {
-      setShowDesktop(false);
-      setShowMobile(true);
-    }
-  }, [isDesktop]);
+  // Use the useDisplay hook to determine whether to display the desktop of mobile header
+  const { showDesktop, showMobile } = useDisplay('lg');
 
   return (
     <>

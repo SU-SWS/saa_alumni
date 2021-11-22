@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import { FlexBox, FlexCell } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
@@ -8,8 +8,7 @@ import OpenSearchModalButton from '../search/openSearchModalButton';
 import SearchModal from '../search/searchModal';
 import * as styles from './global-header/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
-import useMediaQuery from '../../hooks/useMediaQuery';
-import { breakpoints } from '../../contexts/GlobalContext';
+import useDisplay from '../../hooks/useDisplay';
 
 const Masthead = ({
   blok: { mainNav, utilityNav, searchPageUrl },
@@ -22,7 +21,6 @@ const Masthead = ({
   const mobileRef = useRef(null);
   const openSearchRef = useRef(null);
   const openSearchMobileRef = useRef(null);
-  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   let mainNavBgColorXl =
     'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
@@ -61,19 +59,8 @@ const Masthead = ({
     }
   });
 
-  // Initially display both the desktop and mobile masthead
-  const [showDesktop, setShowDesktop] = useState(true);
-  const [showMobile, setShowMobile] = useState(true);
-
-  useLayoutEffect(() => {
-    if (isDesktop) {
-      setShowDesktop(true);
-      setShowMobile(false);
-    } else {
-      setShowDesktop(false);
-      setShowMobile(true);
-    }
-  }, [isDesktop]);
+  // Use the useDisplay hook to determine whether to display the desktop of mobile header
+  const { showDesktop, showMobile } = useDisplay('lg');
 
   return (
     <SbEditable content={blok}>
