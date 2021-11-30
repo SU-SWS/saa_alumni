@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
+import { ClassNameType } from '../../types/CommonType';
 
 const SkiplinkProps = {
   anchorLink: PropTypes.string.isRequired,
   children: PropTypes.string.isRequired,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: ClassNameType,
 };
 
 export const Skiplink = ({

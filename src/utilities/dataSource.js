@@ -232,10 +232,50 @@ export const horizontalAlign = {
   right: 'su-ml-auto',
 };
 
+export const flexDirection = {
+  row: 'su-flex-row',
+  'row-reverse': 'su-flex-row-reverse',
+  col: 'su-flex-col',
+  'col-reverse': 'su-flex-col-reverse',
+};
+
+export const flexWrap = {
+  wrap: 'su-flex-wrap',
+  'wrap-reverse': 'su-flex-wrap-reverse',
+  nowrap: 'su-flex-nowrap',
+};
+
+export const alignContent = {
+  start: 'su-content-start',
+  end: 'su-content-end',
+  center: 'su-content-center',
+  between: 'su-content-between',
+  around: 'su-content-around',
+  evenly: 'su-content-evenly',
+};
+
+export const alignItems = {
+  start: 'su-items-start',
+  end: 'su-items-end',
+  center: 'su-items-center',
+  baseline: 'su-items-baseline',
+  stretch: 'su-items-stretch',
+};
+
+export const justifyContent = {
+  start: 'su-justify-start',
+  end: 'su-justify-end',
+  center: 'su-justify-center',
+  between: 'su-justify-between',
+  around: 'su-justify-around',
+  evenly: 'su-justify-evenly',
+};
+
 export const justifyItems = {
   start: 'su-justify-items-start',
   center: 'su-justify-items-center',
   end: 'su-justify-items-end',
+  stretch: 'su-justify-items-stretch',
 };
 
 export const mediaAspectRatio = {

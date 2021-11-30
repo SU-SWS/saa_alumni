@@ -1,21 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
+import { BoxElementType } from '../../types/LayoutType';
+import { ClassNameType } from '../../types/CommonType';
 
 const ContainerProps = {
-  as: PropTypes.oneOf([
-    'div',
-    'section',
-    'article',
-    'main',
-    'header',
-    'footer',
-    'aside',
-    'nav',
-    'form',
-  ]).isRequired,
+  as: BoxElementType.isRequired,
   width: PropTypes.oneOf(['full', 'screen', 'site']).isRequired,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: ClassNameType,
   children: PropTypes.node,
 };
 

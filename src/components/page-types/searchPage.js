@@ -308,16 +308,18 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className={`lg:su-hidden su-relative su-mb-[4rem] ${opened ? 'su-shadow-xl' : ''
-                    }`}
+                  className={`lg:su-hidden su-relative su-mb-[4rem] ${
+                    opened ? 'su-shadow-xl' : ''
+                  }`}
                 >
                   <div ref={ref}>
                     <button
                       type="button"
                       className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors
-                        ${opened
-                          ? 'su-border-digital-red su-text-white su-bg-digital-red'
-                          : 'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg'
+                        ${
+                          opened
+                            ? 'su-border-digital-red su-text-white su-bg-digital-red'
+                            : 'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg'
                         }`}
                       aria-expanded={opened}
                       ref={filterOpenRef}

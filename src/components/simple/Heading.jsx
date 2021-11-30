@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
 import { HeadingLevelType } from '../../types/HeadingLevelType';
+import { ClassNameType } from '../../types/CommonType';
 import {
   FontWeightType,
   FontStackType,
@@ -31,7 +32,7 @@ const HeadingProps = {
   uppercase: PropTypes.bool,
   italic: PropTypes.bool,
   srOnly: PropTypes.bool,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: ClassNameType,
   children: PropTypes.node,
 };
 
