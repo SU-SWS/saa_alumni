@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Container } from 'decanter-react';
 import { useStaticQuery, graphql, navigate } from 'gatsby';
+import { Container } from '../layout/Container';
 import { Heading } from '../simple/Heading';
 import Modal from '../layout/Modal/Modal';
 import SearchFieldModal from './searchFieldModal';

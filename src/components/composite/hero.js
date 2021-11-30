@@ -1,8 +1,10 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, FlexBox, FlexCell, SrOnlyText } from 'decanter-react';
+import { FlexBox, FlexCell } from 'decanter-react';
 import { ArrowDownIcon } from '@heroicons/react/outline';
 import { dcnb } from 'cnbuilder';
+import { Container } from '../layout/Container';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 import FullWidthImage from '../media/fullWidthImage';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
@@ -63,9 +65,8 @@ const Hero = ({
           aria-hidden="true"
         />
         <Container
-          className={`su-relative su-rs-pt-9 ${
-            isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'
-          }`}
+          className={`su-relative su-rs-pt-9
+          ${isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'}`}
         >
           <FlexBox direction="col" className="lg:su-mt-[190px]">
             {(sansSuper || serifSuper || headline || sansSub) && (
@@ -112,7 +113,7 @@ const Hero = ({
                   href="#page-title"
                   className="su-block su-mx-auto su-w-fit su-group"
                 >
-                  <SrOnlyText srText="Jump to main content" />
+                  <SrOnlyText>Jump to main content</SrOnlyText>
                   <ArrowDownIcon
                     className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark"
                     aria-hidden="true"

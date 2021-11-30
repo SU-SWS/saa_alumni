@@ -1,13 +1,14 @@
 import React from 'react';
-import { Grid as DrGrid, Container } from 'decanter-react';
+import { Grid as DrGrid } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
-import { render } from 'storyblok-rich-text-react-renderer';
+import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import CreateBloks from '../../../utilities/createBloks';
 import WidthBox from '../../layout/widthBox';
 import { bgTextColorPairs } from '../../../utilities/dataSource';
 import getNumBloks from '../../../utilities/getNumBloks';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
+import hasRichText from '../../../utilities/hasRichText';
 import * as styles from './ankle.styles';
 
 /**
@@ -26,8 +27,6 @@ const Ankle = ({
   isDark,
 }) => {
   const numItems = getNumBloks(ankleContent);
-  const renderedIntro = render(ankleIntro);
-  const hasIntro = getNumBloks(renderedIntro) > 0;
   let ankleBgStyles = bgTextColorPairs[ankleBgColor ?? 'white'];
   let isAnkleDark;
 
@@ -55,7 +54,7 @@ const Ankle = ({
   return (
     <div className={ankleWrapperStyles}>
       {(ankleTitle || ankleIntro) && (
-        <Container element="header">
+        <Container as="header">
           {ankleTitle && (
             <Heading
               srOnly={isAnkleTitleSrOnly}
@@ -66,7 +65,7 @@ const Ankle = ({
               className={dcnb(
                 styles.heading,
                 `${
-                  hasIntro
+                  hasRichText(ankleIntro)
                     ? styles.headingMarginHasIntro
                     : styles.headingMarginNoIntro
                 }`
@@ -75,7 +74,7 @@ const Ankle = ({
               {ankleTitle}
             </Heading>
           )}
-          {hasIntro && (
+          {hasRichText(ankleIntro) && (
             <div className={styles.introWrapper}>
               <RichTextRenderer
                 wysiwyg={ankleIntro}

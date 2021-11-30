@@ -1,8 +1,10 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { Container, Grid, GridCell, Skiplink } from 'decanter-react';
+import { Grid, GridCell } from 'decanter-react';
+import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
+import { Skiplink } from '../../accessibility/Skiplink';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';
@@ -47,7 +49,7 @@ const TripFilterPage = (props) => {
     <SbEditable content={blok}>
       <Layout isDark hasHero={filename} {...props}>
         <Container
-          element="main"
+          as="main"
           id="main-content"
           className={styles.page}
           width="full"

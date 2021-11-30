@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, Grid, GridCell } from 'decanter-react';
+import { Grid, GridCell } from 'decanter-react';
 import {
   faFacebookF,
   faInstagram,
@@ -9,6 +9,7 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { dcnb } from 'cnbuilder';
+import { Container } from '../layout/Container';
 import CreateBloks from '../../utilities/createBloks';
 import SocialIconLink from '../simple/socialIconLink';
 import { bgPositionVertical } from '../../utilities/dataSource';

@@ -18,7 +18,7 @@ export const SAAButtonProps = {
   align: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   srText: PropTypes.string,
-  ClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClick: PropTypes.func,
 };
 

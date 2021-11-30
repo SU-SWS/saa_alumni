@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { Container } from 'decanter-react';
+import { Container } from '../layout/Container';
 import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
 import CreateBloks from '../../utilities/createBloks';
@@ -44,7 +44,7 @@ const BasicPage = (props) => {
     <SbEditable content={blok}>
       <Layout hasHero={hasHeroBanner} {...props}>
         <Container
-          element="main"
+          as="main"
           id="main-content"
           className="basic-page su-relative su-flex-grow su-w-full"
           width="full"

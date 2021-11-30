@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import { Container } from 'decanter-react';
+import { Container } from '../../layout/Container';
 import * as styles from './TripPageSectionNav.styles';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import SAALinkButton from '../../cta/SAALinkButton';

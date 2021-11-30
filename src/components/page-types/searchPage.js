@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import algoliasearch from 'algoliasearch';
-import { Container, Button, Grid, GridCell, Skiplink } from 'decanter-react';
+import { Button, Grid, GridCell } from 'decanter-react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   useQueryParam,
@@ -10,6 +10,8 @@ import {
   ArrayParam,
 } from 'use-query-params';
 import Icon from 'react-hero-icon';
+import { Container } from '../layout/Container';
+import { Skiplink } from '../accessibility/Skiplink';
 import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
 import SearchField from '../search/searchField';
@@ -19,8 +21,8 @@ import SearchFacet from '../search/searchFacet';
 import SearchNoResults from '../search/searchNoResults';
 import SearchKeywordBanner from '../search/searchKeywordBanner';
 import CreateBloks from '../../utilities/createBloks';
-import UseEscape from '../../hooks/useEscape';
-import UseOnClickOutside from '../../hooks/useOnClickOutside';
+import useEscape from '../../hooks/useEscape';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 import getNumBloks from '../../utilities/getNumBloks';
 
 const SearchPage = (props) => {
@@ -55,14 +57,14 @@ const SearchPage = (props) => {
   const isExpanded = (x) => x.getAttribute('aria-expanded') === 'true';
 
   // Close menu if escape key is pressed and return focus to the menu button
-  UseEscape(() => {
+  useEscape(() => {
     if (filterOpenRef.current && isExpanded(filterOpenRef.current)) {
       setOpened(false);
       filterOpenRef.current.focus();
     }
   });
 
-  UseOnClickOutside(ref, () => setOpened(false));
+  useOnClickOutside(ref, () => setOpened(false));
 
   // Update autocomplete suggestions when search input changes.
   const updateAutocomplete = (queryText) => {
@@ -251,7 +253,7 @@ const SearchPage = (props) => {
     <SbEditable content={blok}>
       <Layout hasHero={false} {...props}>
         <Container
-          element="section"
+          as="section"
           width="full"
           className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light su-flex-wrap"
           id="main-content"
@@ -261,7 +263,7 @@ const SearchPage = (props) => {
           </Heading>
         </Container>
         <Container
-          element="section"
+          as="section"
           width="site"
           className="su-py-45 su-max-w-full su-w-full md:su-py-80 "
         >
@@ -306,18 +308,16 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className={`lg:su-hidden su-relative su-mb-[4rem] ${
-                    opened ? 'su-shadow-xl' : ''
-                  }`}
+                  className={`lg:su-hidden su-relative su-mb-[4rem] ${opened ? 'su-shadow-xl' : ''
+                    }`}
                 >
                   <div ref={ref}>
                     <button
                       type="button"
                       className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors
-                        ${
-                          opened
-                            ? 'su-border-digital-red su-text-white su-bg-digital-red'
-                            : 'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg'
+                        ${opened
+                          ? 'su-border-digital-red su-text-white su-bg-digital-red'
+                          : 'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg'
                         }`}
                       aria-expanded={opened}
                       ref={filterOpenRef}
