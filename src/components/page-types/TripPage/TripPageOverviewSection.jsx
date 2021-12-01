@@ -14,8 +14,8 @@ import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
 import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
-import SAALinkButton from '../../cta/SAALinkButton';
-import SAAButton from '../../simple/SAAButton';
+import { SAALinkButton } from '../../cta/SAALinkButton';
+import { SAAButton } from '../../simple/SAAButton';
 import hasRichText from '../../../utilities/hasRichText';
 import getNumBloks from '../../../utilities/getNumBloks';
 

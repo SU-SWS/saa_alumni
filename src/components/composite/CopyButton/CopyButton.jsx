@@ -1,7 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import useClipboard from 'react-use-clipboard';
-import SAAButton from '../../simple/SAAButton';
+import { SAAButton } from '../../simple/SAAButton';
+import { ClassNameType } from '../../../types/CommonType';
 
 /**
  * This components extends all of the decanter-react props
@@ -19,7 +20,7 @@ export const CopyButtonProps = {
    * Copy success message
    */
   copySuccess: PropTypes.node,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: ClassNameType,
   children: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.arrayOf(PropTypes.node),

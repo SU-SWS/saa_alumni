@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Alert from './alert';
+import { SBAlert } from '../storyblok/alert';
 import useSubsite from '../../hooks/useSubsite';
 
 const query = graphql`
@@ -40,7 +40,7 @@ const GlobalAlert = () => {
               const blok = JSON.parse(content);
               // eslint-disable-next-line dot-notation
               blok['_uid'] = uuid;
-              return <Alert blok={blok} key={uuid} />;
+              return <SBAlert blok={blok} key={uuid} />;
             })}
           </>
         );

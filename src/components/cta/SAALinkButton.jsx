@@ -25,7 +25,7 @@ const SAALinkButtonProps = {
   className: ClassNameType,
 };
 
-const SAALinkButton = React.forwardRef(
+export const SAALinkButton = React.forwardRef(
   (
     {
       size = 'default',
@@ -74,5 +74,3 @@ const SAALinkButton = React.forwardRef(
   }
 );
 SAALinkButton.propTypes = SAALinkButtonProps;
-
-export default SAALinkButton;

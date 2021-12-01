@@ -22,7 +22,7 @@ export const SAAButtonProps = {
   onClick: PropTypes.func,
 };
 
-const SAAButton = React.forwardRef(
+export const SAAButton = React.forwardRef(
   (
     {
       size = 'default',
@@ -77,5 +77,3 @@ const SAAButton = React.forwardRef(
   }
 );
 SAAButton.propTypes = SAAButtonProps;
-
-export default SAAButton;

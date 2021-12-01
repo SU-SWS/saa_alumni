@@ -1,4 +1,4 @@
-import Alert from './composite/alert';
+import { SBAlert } from './storyblok/alert';
 import AlertCtaLink from './cta/alertCtaLink';
 import BasicCard from './cards/basicCard';
 import BasicCardHorizontal from './cards/basicCardHorizontal';
@@ -64,7 +64,7 @@ import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
 
 const ComponentList = {
-  alert: Alert,
+  alert: SBAlert,
   alertCtaLink: AlertCtaLink,
   basicCard: BasicCard,
   basicCardHorizontal: BasicCardHorizontal,

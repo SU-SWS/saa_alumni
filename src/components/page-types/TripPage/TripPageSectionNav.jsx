@@ -4,7 +4,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline';
 import { Container } from '../../layout/Container';
 import * as styles from './TripPageSectionNav.styles';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
-import SAALinkButton from '../../cta/SAALinkButton';
+import { SAALinkButton } from '../../cta/SAALinkButton';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { isExpanded } from '../../../utilities/menuHelpers';

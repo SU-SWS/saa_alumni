@@ -17,8 +17,8 @@ const CtaLink = React.forwardRef(
   (
     {
       blok: {
-        size,
-        textColor: propsTextColor,
+        size = 'default',
+        textColor: propsTextColor = 'bright-red-hover-cardinal-red',
         leadingIcon: { icon: propsIcon, type } = {},
         proFaIcon,
         isOutlineFaIcon,
@@ -31,18 +31,15 @@ const CtaLink = React.forwardRef(
         srText,
       },
       blok,
-      as,
+      as: Element = 'div',
     },
     ref
   ) => {
-    const WrapperElement = as || 'div';
-
     // Link text size
-    const textSize = ctaLinkTextSize[size] ?? ctaLinkTextSize.default;
+    const textSize = ctaLinkTextSize[size];
 
     // Link text color
-    const textColor =
-      ctaLinkColor[propsTextColor ?? 'bright-red-hover-cardinal-red'];
+    const textColor = ctaLinkColor[propsTextColor];
 
     // Icon color
     let iconColor = 'su-text-digital-red-xlight group-hocus:su-text-black-20';
@@ -61,7 +58,7 @@ const CtaLink = React.forwardRef(
     return (
       <SbEditable content={blok}>
         {linkText && (
-          <WrapperElement
+          <Element
             className={dcnb(
               'su-block print:su-hidden',
               align,
@@ -103,7 +100,7 @@ const CtaLink = React.forwardRef(
                 )}
               </div>
             </SbLink>
-          </WrapperElement>
+          </Element>
         )}
       </SbEditable>
     );

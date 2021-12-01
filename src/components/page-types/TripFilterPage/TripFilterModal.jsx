@@ -7,7 +7,7 @@ import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
 import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterModal.styles';
 import FaIcon from '../../simple/faIcon';
-import SAAButton from '../../simple/SAAButton';
+import { SAAButton } from '../../simple/SAAButton';
 import { focusElement } from '../../../utilities/dom';
 import useEscape from '../../../hooks/useEscape';
 import useMediaQuery from '../../../hooks/useMediaQuery';

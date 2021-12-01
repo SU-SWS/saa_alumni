@@ -5,7 +5,7 @@ import RichTextRenderer from '../../utilities/richTextRenderer';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 
-const Alert = ({
+export const SBAlert = ({
   blok: { type, alertCta, label, heading, body, hasDismiss, _uid },
   blok,
 }) => {
@@ -73,4 +73,3 @@ const Alert = ({
     </SbEditable>
   );
 };
-export default Alert;

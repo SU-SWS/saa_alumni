@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import algoliasearch from 'algoliasearch';
-import { Button } from 'decanter-react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   useQueryParam,
@@ -11,6 +10,7 @@ import {
 } from 'use-query-params';
 import Icon from 'react-hero-icon';
 import { dcnb } from 'cnbuilder';
+import { SAAButton } from '../simple/SAAButton';
 import { Container } from '../layout/Container';
 import { Grid } from '../layout/Grid';
 import { GridCell } from '../layout/GridCell';
@@ -344,35 +344,21 @@ const SearchPage = (props) => {
                         </span>
                       )}
                     </button>
-
                     {opened && (
                       <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-10">
                         <div className="su-rs-p-0">{facets}</div>
 
                         <div className="su-flex su-justify-end su-rs-px-0 su-rs-pt-0 su-rs-pb-2 su-bg-foggy-light su-border-t su-border-black-20">
-                          <Button
-                            text="Clear all"
-                            variant="unset"
+                          <button
+                            type="button"
                             onClick={() => clearFilters()}
-                            className={{
-                              'su-text-16': false,
-                              'md:su-text-20': false,
-                              'su-text-digital-red-light su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none': true,
-                            }}
+                            className="su-text-digital-red-light su-text-18 md:su-text-20 hocus:su-text-cardinal-red hocus:su-shadow-none"
                           >
                             Clear all
-                          </Button>
-
-                          <Button
-                            animate="right"
-                            icon="more"
-                            variant="solid"
-                            size="default"
-                            className={{
-                              'su-text-16': false,
-                              'md:su-text-20': false,
-                              'su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark': true,
-                            }}
+                          </button>
+                          <SAAButton
+                            buttonStyle="primary"
+                            size="small-short"
                             onClick={() => {
                               setOpened(false);
                               scrollTo('#search-results');
@@ -382,7 +368,7 @@ const SearchPage = (props) => {
                             }}
                           >
                             View Results
-                          </Button>
+                          </SAAButton>
                         </div>
                       </div>
                     )}
