@@ -4,8 +4,8 @@ import { dcnb } from 'cnbuilder';
 import { ClassNameType } from '../../types/CommonType';
 
 const SkiplinkProps = {
-  anchorLink: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+  anchorLink: PropTypes.string,
+  children: PropTypes.string,
   className: ClassNameType,
 };
 

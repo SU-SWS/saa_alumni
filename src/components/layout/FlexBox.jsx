@@ -21,7 +21,7 @@ import {
 } from '../../utilities/dataSource';
 
 const FlexBoxProps = {
-  as: BoxElementType.isRequired,
+  as: BoxElementType,
   direction: FlexDirectionType,
   wrap: FlexWrapType,
   gap: PropTypes.bool,

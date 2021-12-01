@@ -5,8 +5,8 @@ import { BoxElementType } from '../../types/LayoutType';
 import { ClassNameType } from '../../types/CommonType';
 
 const ContainerProps = {
-  as: BoxElementType.isRequired,
-  width: PropTypes.oneOf(['full', 'screen', 'site']).isRequired,
+  as: BoxElementType,
+  width: PropTypes.oneOf(['full', 'screen', 'site']),
   className: ClassNameType,
   children: PropTypes.node,
 };

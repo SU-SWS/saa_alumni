@@ -30,25 +30,7 @@ export const SBGrid = ({
     gapClasses = 'su-grid-gap';
   }
 
-  let grid = (
-    <Grid
-      xs={1}
-      md={
-        width === '4' || width === '6' || numCol === '1' || isMdLgOneColumn
-          ? 1
-          : 2
-      }
-      xl={parseInt(numCol, 10)}
-      alignItems={isStretchItems ? 'stretch' : 'start'}
-      justifyItems={alignment}
-      className={dcnb(
-        'su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]',
-        gapClasses
-      )}
-    >
-      <CreateBloks blokSection={content} isDark={isDark} />
-    </Grid>
-  );
+  let grid;
 
   if (numCol === 'auto') {
     grid = (
@@ -57,6 +39,26 @@ export const SBGrid = ({
         justifyItems={alignment}
         className={dcnb(
           'su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]',
+          gapClasses
+        )}
+      >
+        <CreateBloks blokSection={content} isDark={isDark} />
+      </Grid>
+    );
+  } else {
+    grid = (
+      <Grid
+        xs={1}
+        md={
+          width === '4' || width === '6' || numCol === '1' || isMdLgOneColumn
+            ? 1
+            : 2
+        }
+        xl={numCol}
+        alignItems={isStretchItems ? 'stretch' : 'start'}
+        justifyItems={alignment}
+        className={dcnb(
+          'su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]',
           gapClasses
         )}
       >

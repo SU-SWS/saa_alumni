@@ -6,7 +6,7 @@ import { ClassNameType } from '../../types/CommonType';
 import { gridColSpan } from '../../utilities/dataSource';
 
 const GridCellProps = {
-  as: BoxElementType.isRequired,
+  as: BoxElementType,
   xs: GridColumnSpanType,
   sm: GridColumnSpanType,
   md: GridColumnSpanType,

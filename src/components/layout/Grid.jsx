@@ -19,7 +19,7 @@ import {
 } from '../../utilities/dataSource';
 
 const GridProps = {
-  as: BoxElementType.isRequired,
+  as: BoxElementType,
   xs: NumColumnsType,
   sm: NumColumnsType,
   md: NumColumnsType,
