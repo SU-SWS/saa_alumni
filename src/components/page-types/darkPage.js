@@ -8,7 +8,6 @@ import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 
 const DarkPage = (props) => {
-  // Destructure.
   const {
     blok: {
       hero,

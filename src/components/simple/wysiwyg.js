@@ -12,7 +12,7 @@ import WidthBox from '../layout/widthBox';
 const Wysiwyg = ({
   blok: {
     content,
-    width,
+    width = 'edge-to-edge',
     spacingTop,
     spacingBottom,
     isLightText,
@@ -28,7 +28,7 @@ const Wysiwyg = ({
   return (
     <SbEditable content={blok}>
       <WidthBox
-        width={width ?? 'edge-to-edge'}
+        width={width}
         className={dcnb(mySpacingTop, mySpacingBottom)}
         id={id || ''}
         align={blockAlign}
@@ -36,10 +36,7 @@ const Wysiwyg = ({
         <RichTextRenderer
           isDark={isLightText}
           wysiwyg={content}
-          className={dcnb(
-            'su-heading-link-icon',
-            textAlign[align] || textAlign.left
-          )}
+          className={dcnb('su-heading-link-icon', textAlign[align])}
         />
       </WidthBox>
     </SbEditable>

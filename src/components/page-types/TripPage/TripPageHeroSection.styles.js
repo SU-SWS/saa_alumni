@@ -4,4 +4,4 @@ export const subtitle =
 export const title =
   'su-text-shadow-lg su-mb-02em su-max-w-[120rem] su-mx-auto';
 export const description =
-  'su-max-w-prose su-text-20 md:su-text-m1 su-leading-display su-text-shadow su-mx-auto su-mb-0';
+  'su-max-w-prose su-type-1 su-leading-display su-text-shadow su-mx-auto su-mb-0';

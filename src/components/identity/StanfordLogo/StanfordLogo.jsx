@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
 import * as styles from './StanfordLogo.styles';
+import { ClassNameType } from '../../../types/CommonType';
 
 export const StanfordLogoProps = {
   type: PropTypes.oneOf(['full', 'short', 'stacked']),
   color: PropTypes.oneOf(['cardinal-red', 'black', 'white']),
   isLink: PropTypes.bool,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: ClassNameType,
 };
 
 export const StanfordLogo = ({

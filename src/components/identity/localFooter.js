@@ -1,6 +1,5 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Grid, GridCell } from 'decanter-react';
 import {
   faFacebookF,
   faInstagram,
@@ -9,6 +8,8 @@ import {
   faYoutube,
 } from '@fortawesome/free-brands-svg-icons';
 import { dcnb } from 'cnbuilder';
+import { Grid } from '../layout/Grid';
+import { GridCell } from '../layout/GridCell';
 import { Container } from '../layout/Container';
 import CreateBloks from '../../utilities/createBloks';
 import SocialIconLink from '../simple/socialIconLink';
@@ -19,7 +20,7 @@ import Logo from './logo';
 const LocalFooter = ({
   blok: {
     bgImage: { filename } = {},
-    vCrop,
+    vCrop = 'center',
     organization,
     address1,
     address2,
@@ -37,7 +38,7 @@ const LocalFooter = ({
   blok,
 }) => {
   // Background image vertical focus
-  const bgCrop = bgPositionVertical[vCrop] ?? bgPositionVertical.center;
+  const bgCrop = bgPositionVertical[vCrop];
 
   return (
     <SbEditable content={blok}>
@@ -47,7 +48,6 @@ const LocalFooter = ({
       >
         <Container
           style={addBgImage(filename)}
-          width="site"
           className={dcnb(
             'su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat',
             bgCrop
@@ -126,7 +126,7 @@ const LocalFooter = ({
               className="su-link-black-20 su-underline-offset !su-link-underline-digital-red-xlight"
             >
               <Grid
-                element="nav"
+                as="nav"
                 xs={1}
                 md={2}
                 xl={3}

@@ -9,14 +9,14 @@ const FullWidthImage = ({
   filename,
   className,
   alt,
-  imageFocus,
+  imageFocus = 'center',
   smartFocus,
-  loading,
+  loading = 'auto',
   aspectRatio,
   ...props
 }) => {
-  const imgFocus = objectPosition[imageFocus] ?? objectPosition.center;
-  const imgLoading = loading ?? 'auto';
+  const imgFocus = objectPosition[imageFocus];
+  const imgLoading = loading;
 
   let largeImg;
   let mediumImg;

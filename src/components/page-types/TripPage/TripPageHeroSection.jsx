@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { FlexBox } from 'decanter-react';
+import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import { SBImageType } from '../../../types/storyblok/SBAssetType';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
@@ -24,7 +24,7 @@ export const TripPageHeroSection = React.forwardRef((props, ref) => {
   return (
     <header ref={ref}>
       <HeroImage filename={filename} alt={alt} focus={focus} overlay="dark">
-        <FlexBox direction="col" className={styles.content}>
+        <FlexBox as="section" direction="col" className={styles.content}>
           {subtitle && <span className={styles.subtitle}>{subtitle}</span>}
           {title && (
             <Heading
@@ -39,7 +39,7 @@ export const TripPageHeroSection = React.forwardRef((props, ref) => {
             </Heading>
           )}
           {shortDescription && (
-            <span className={styles.description}>{shortDescription}</span>
+            <p className={styles.description}>{shortDescription}</p>
           )}
         </FlexBox>
       </HeroImage>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import algoliasearch from 'algoliasearch';
-import { Button, Grid, GridCell } from 'decanter-react';
+import { Button } from 'decanter-react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   useQueryParam,
@@ -10,7 +10,10 @@ import {
   ArrayParam,
 } from 'use-query-params';
 import Icon from 'react-hero-icon';
+import { dcnb } from 'cnbuilder';
 import { Container } from '../layout/Container';
+import { Grid } from '../layout/Grid';
+import { GridCell } from '../layout/GridCell';
 import { Skiplink } from '../accessibility/Skiplink';
 import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
@@ -308,19 +311,21 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className={`lg:su-hidden su-relative su-mb-[4rem] ${
-                    opened ? 'su-shadow-xl' : ''
-                  }`}
+                  className={`lg:su-hidden su-relative su-mb-[4rem]
+                  ${opened ? 'su-shadow-xl' : ''}`}
                 >
                   <div ref={ref}>
                     <button
                       type="button"
-                      className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors
-                        ${
-                          opened
-                            ? 'su-border-digital-red su-text-white su-bg-digital-red'
-                            : 'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg'
-                        }`}
+                      className={dcnb(
+                        'su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors',
+                        {
+                          'su-border-digital-red su-text-white su-bg-digital-red':
+                            opened,
+                          'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg':
+                            !opened,
+                        }
+                      )}
                       aria-expanded={opened}
                       ref={filterOpenRef}
                       onClick={() => setOpened(!opened)}
@@ -393,9 +398,11 @@ const SearchPage = (props) => {
                     anchorLink="#search-results-section"
                     className="su-hidden lg:su-block"
                   >
-                    Skip pass filters to search results
+                    Skip past filters to search results
                   </Skiplink>
-                  <h2 className="su-sr-only">Filter Search Results</h2>
+                  <Heading level={2} srOnly>
+                    Filter Search Results
+                  </Heading>
                   <div>{facets}</div>
                 </GridCell>
               </React.Fragment>

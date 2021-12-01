@@ -9,13 +9,13 @@ const CardImage = ({
   alt,
   size,
   className,
-  imageFocus,
+  imageFocus = 'center',
   smartFocus,
-  loading,
+  loading = 'auto',
   ...props
 }) => {
-  const imgFocus = objectPosition[imageFocus] ?? objectPosition.center;
-  const imgLoading = loading ?? 'auto';
+  const imgFocus = objectPosition[imageFocus];
+  const imgLoading = loading;
 
   let originalImg = '';
   let imgSrc = '';

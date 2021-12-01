@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Grid, GridCell } from 'decanter-react';
+import { Grid } from '../../layout/Grid';
+import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';

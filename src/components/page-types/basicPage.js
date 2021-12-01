@@ -12,7 +12,6 @@ import BasicContentLeftSidebar from '../partials/basicContentLeftSidebar';
 import { HeroImage } from '../composite/HeroImage/HeroImage';
 
 const BasicPage = (props) => {
-  // Destructure.
   const {
     blok: {
       pageLayout,

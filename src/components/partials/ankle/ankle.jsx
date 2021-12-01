@@ -1,7 +1,7 @@
 import React from 'react';
-import { Grid as DrGrid } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { Container } from '../../layout/Container';
+import { Grid } from '../../layout/Grid';
 import { Heading } from '../../simple/Heading';
 import CreateBloks from '../../../utilities/createBloks';
 import WidthBox from '../../layout/widthBox';
@@ -86,9 +86,9 @@ const Ankle = ({
         </Container>
       )}
       <WidthBox width={ankleWidth}>
-        <DrGrid xs={1} md={numItems} gap className={styles.iconCardGrid}>
+        <Grid xs={1} md={numItems} gap className={styles.iconCardGrid}>
           <CreateBloks blokSection={ankleContent} isDark={isAnkleDark} />
-        </DrGrid>
+        </Grid>
       </WidthBox>
     </div>
   );

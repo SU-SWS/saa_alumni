@@ -1,8 +1,8 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { FlexBox } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { Container } from '../layout/Container';
+import { FlexBox } from '../layout/FlexBox';
 import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';

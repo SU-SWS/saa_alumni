@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { SrOnlyText } from 'decanter-react';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 import {
   ctaLinkColor,
   ctaLinkTextSize,
@@ -93,7 +93,7 @@ const CtaLink = React.forwardRef(
               )}
               <div>
                 {linkText}
-                {srText && <SrOnlyText srText={` ${srText}`} />}
+                {srText && <SrOnlyText> {srText}</SrOnlyText>}
                 {icon !== 'none' && (
                   <HeroIcon
                     iconType={icon}
