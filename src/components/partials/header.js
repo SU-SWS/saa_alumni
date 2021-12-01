@@ -3,7 +3,7 @@ import SbEditable from 'storyblok-react';
 import { Container } from '../layout/Container';
 import { Skiplink } from '../accessibility/Skiplink';
 import CreateBloks from '../../utilities/createBloks';
-import GlobalAlert from '../composite/globalAlert';
+import GlobalAlert from '../composite/Alert/globalAlert';
 
 /**
  * The Header component is referenced and used in the Layout component.

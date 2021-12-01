@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { SBAlert } from '../storyblok/alert';
-import useSubsite from '../../hooks/useSubsite';
+import { SBAlert } from '../../storyblok/alert/alert';
+import useSubsite from '../../../hooks/useSubsite';
 
 const query = graphql`
   query {

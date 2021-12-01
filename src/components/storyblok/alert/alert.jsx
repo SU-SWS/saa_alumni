@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import SbEditable from 'storyblok-react';
-import { Alert } from '../composite/Alert/Alert';
-import RichTextRenderer from '../../utilities/richTextRenderer';
-import CreateBloks from '../../utilities/createBloks';
-import getNumBloks from '../../utilities/getNumBloks';
+import { Alert } from '../../composite/Alert/Alert';
+import RichTextRenderer from '../../../utilities/richTextRenderer';
+import CreateBloks from '../../../utilities/createBloks';
+import getNumBloks from '../../../utilities/getNumBloks';
 
 export const SBAlert = ({
   blok: { type, alertCta, label, heading, body, hasDismiss, _uid },
   blok,
 }) => {
   const [showAlert, setShowAlert] = useState(false);
-  const isLinkDark = type === 'warning';
+  const isCtaDark = type === 'warning';
 
   let linkColor;
   switch (type) {
@@ -50,7 +50,7 @@ export const SBAlert = ({
         />
         {getNumBloks(alertCta) > 0 && (
           <div className="su-rs-mt-1">
-            <CreateBloks blokSection={alertCta} isLinkDark={isLinkDark} />
+            <CreateBloks blokSection={alertCta} isCtaDark={isCtaDark} />
           </div>
         )}
       </Alert>

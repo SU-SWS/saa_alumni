@@ -60,6 +60,10 @@ export const buttonStyles = {
     'su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red-xdark hocus:su-text-white',
   'secondary-gradient':
     'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+  'secondary-white':
+    'su-border-white su-text-white hocus:su-bg-transparent hocus:su-text-white',
+  'secondary-black':
+    'su-border-black su-text-black hocus:su-bg-transparent hocus:su-text-black',
   ghost:
     'su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white',
   'ghost-gradient':
@@ -84,6 +88,7 @@ export const ctaLinkColor = {
   white:
     'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
   'all-white': 'su-text-white hocus:su-text-white',
+  'all-black': 'su-text-black hocus:su-text-black',
 };
 
 export const ctaLinkTextSize = {

@@ -1,5 +1,5 @@
-import { SBAlert } from './storyblok/alert';
-import AlertCtaLink from './composite/Alert/alertCtaLink';
+import { SBAlert } from './storyblok/alert/alert';
+import { SBAlertCtaLink } from './storyblok/alert/alertCtaLink';
 import BasicCard from './cards/basicCard';
 import BasicCardHorizontal from './cards/basicCardHorizontal';
 import BasicPage from './page-types/basicPage';
@@ -65,7 +65,7 @@ import Wysiwyg from './simple/wysiwyg';
 
 const ComponentList = {
   alert: SBAlert,
-  alertCtaLink: AlertCtaLink,
+  alertCtaLink: SBAlertCtaLink,
   basicCard: BasicCard,
   basicCardHorizontal: BasicCardHorizontal,
   basicPage: BasicPage,
