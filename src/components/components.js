@@ -1,5 +1,5 @@
 import { SBAlert } from './storyblok/alert';
-import AlertCtaLink from './cta/alertCtaLink';
+import AlertCtaLink from './composite/Alert/alertCtaLink';
 import BasicCard from './cards/basicCard';
 import BasicCardHorizontal from './cards/basicCardHorizontal';
 import BasicPage from './page-types/basicPage';
@@ -8,7 +8,7 @@ import { SBCollectionCardHorizontal } from './storyblok/cards/collectionCardHori
 import ComponentNotFound from './component_not_found';
 import { SBCtaButton } from './storyblok/ctaButton';
 import CtaCard from './cards/ctaCard';
-import CtaLink from './cta/ctaLink';
+import { SBCtaLink } from './storyblok/ctaLink';
 import CtaGroup from './cta/ctaGroup';
 import DarkPage from './page-types/darkPage';
 import Embed from './embed/embed';
@@ -73,7 +73,7 @@ const ComponentList = {
   collectionCardHorizontal: SBCollectionCardHorizontal,
   ctaButton: SBCtaButton,
   ctaCard: CtaCard,
-  ctaLink: CtaLink,
+  ctaLink: SBCtaLink,
   ctaGroup: CtaGroup,
   darkPage: DarkPage,
   embed: Embed,

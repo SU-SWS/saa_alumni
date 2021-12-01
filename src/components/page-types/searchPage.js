@@ -348,17 +348,18 @@ const SearchPage = (props) => {
                       <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-10">
                         <div className="su-rs-p-0">{facets}</div>
 
-                        <div className="su-flex su-justify-end su-rs-px-0 su-rs-pt-0 su-rs-pb-2 su-bg-foggy-light su-border-t su-border-black-20">
+                        <div className="su-flex su-justify-end su-rs-px-0 su-rs-py-1 su-bg-foggy-light su-border-t su-border-black-20">
                           <button
                             type="button"
                             onClick={() => clearFilters()}
-                            className="su-text-digital-red-light su-text-18 md:su-text-20 hocus:su-text-cardinal-red hocus:su-shadow-none"
+                            className="su-text-digital-red-light su-text-18 md:su-text-20 hocus:su-text-cardinal-red hocus:su-shadow-none hocus:su-underline su-transition-colors"
                           >
                             Clear all
                           </button>
                           <SAAButton
                             buttonStyle="primary"
                             size="small-short"
+                            className="su-ml-36"
                             onClick={() => {
                               setOpened(false);
                               scrollTo('#search-results');
@@ -367,7 +368,7 @@ const SearchPage = (props) => {
                                 .focus();
                             }}
                           >
-                            View Results
+                            View results
                           </SAAButton>
                         </div>
                       </div>

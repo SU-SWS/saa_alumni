@@ -83,6 +83,7 @@ export const ctaLinkColor = {
   black: 'su-text-black hocus:su-text-black !su-underline-digital-red-light',
   white:
     'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
+  'all-white': 'su-text-white hocus:su-text-white',
 };
 
 export const ctaLinkTextSize = {

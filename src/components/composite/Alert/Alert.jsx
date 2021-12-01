@@ -14,14 +14,23 @@ import { FlexBox } from '../../layout/FlexBox';
 
 const AlertProps = {
   type: PropTypes.oneOf(['success', 'info', 'warning', 'error']),
-  hasDismiss: PropTypes.bool,
   label: PropTypes.string,
   heading: PropTypes.string,
+  hasDismiss: PropTypes.bool,
+  dismissFunction: PropTypes.func,
   children: PropTypes.node,
 };
 
 export const Alert = (props) => {
-  const { type, hasDismiss, label, heading, children, ...rest } = props;
+  const {
+    type,
+    label,
+    heading,
+    hasDismiss,
+    dismissFunction,
+    children,
+    ...rest
+  } = props;
 
   let Icon;
   switch (type) {
@@ -50,7 +59,7 @@ export const Alert = (props) => {
       <FlexBox wrap="wrap" className={styles.wrapper}>
         {hasDismiss && (
           <div className={styles.dismissWrapper}>
-            <DismissButton />
+            <DismissButton onclick={dismissFunction} />
           </div>
         )}
         {label && (

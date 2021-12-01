@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SbEditable from 'storyblok-react';
-import { Alert as DecanterAlert, DismissButton } from 'decanter-react';
+import { Alert } from '../composite/Alert/Alert';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
@@ -9,16 +9,8 @@ export const SBAlert = ({
   blok: { type, alertCta, label, heading, body, hasDismiss, _uid },
   blok,
 }) => {
-  const hasCta = getNumBloks(alertCta) > 0;
   const [showAlert, setShowAlert] = useState(false);
   const isLinkDark = type === 'warning';
-  let footerContent = '';
-
-  if (hasCta) {
-    footerContent = (
-      <CreateBloks blokSection={alertCta} isLinkDark={isLinkDark} />
-    );
-  }
 
   let linkColor;
   switch (type) {
@@ -40,36 +32,28 @@ export const SBAlert = ({
     setShowAlert(false);
   };
 
-  const DismissBtn = (
-    <DismissButton
-      iconProps={{ className: 'su-ml-02em' }}
-      text="Dismiss"
-      srText="alert"
-      onClick={dismissHandler}
-      color={isLinkDark ? 'black' : 'white'}
-      className="su-text-17 su-uppercase su-font-bold su-inline-block su-tracking-widest su-mr-0 su-ml-auto"
-    />
-  );
-
-  const customStyles = {
-    footerWrapper: 'su-rs-mt-1',
-  };
-
   if (!showAlert) return null;
 
   return (
     <SbEditable content={blok}>
-      <DecanterAlert
+      <Alert
         type={type}
         label={label}
         heading={heading}
-        footer={footerContent}
-        classes={customStyles}
-        dismissBtn={DismissBtn}
+        dismissFunction={dismissHandler}
         hasDismiss={hasDismiss}
       >
-        <RichTextRenderer wysiwyg={body} linkColor={linkColor} />
-      </DecanterAlert>
+        <RichTextRenderer
+          wysiwyg={body}
+          linkColor={linkColor}
+          className="su-card-paragraph"
+        />
+        {getNumBloks(alertCta) > 0 && (
+          <div className="su-rs-mt-1">
+            <CreateBloks blokSection={alertCta} isLinkDark={isLinkDark} />
+          </div>
+        )}
+      </Alert>
     </SbEditable>
   );
 };
