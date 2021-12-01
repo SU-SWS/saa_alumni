@@ -18,7 +18,7 @@ import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
 import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
-import Grid from './layout/grid';
+import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
@@ -83,7 +83,7 @@ const ComponentList = {
   eventCard: EventCard,
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
-  grid: Grid,
+  grid: SBGrid,
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,

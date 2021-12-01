@@ -1,8 +1,8 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { FlexBox, FlexCell } from 'decanter-react';
 import { ArrowDownIcon } from '@heroicons/react/outline';
 import { dcnb } from 'cnbuilder';
+import { FlexBox } from '../layout/FlexBox';
 import { Container } from '../layout/Container';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 import FullWidthImage from '../media/fullWidthImage';
@@ -70,7 +70,7 @@ const Hero = ({
         >
           <FlexBox direction="col" className="lg:su-mt-[190px]">
             {(sansSuper || serifSuper || headline || sansSub) && (
-              <FlexCell className="su-text-center su-text-white">
+              <div className="su-text-center su-text-white">
                 {sansSuper && (
                   <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
                     {sansSuper}
@@ -96,15 +96,15 @@ const Hero = ({
                     {sansSub}
                   </p>
                 )}
-              </FlexCell>
+              </div>
             )}
             {numCta > 0 && (
-              <FlexCell className={sansSub ? 'su-rs-mt-4' : ''}>
+              <div className={sansSub ? 'su-rs-mt-4' : ''}>
                 <CreateBloks blokSection={cta} />
-              </FlexCell>
+              </div>
             )}
             {!isHideScroll && (
-              <FlexCell
+              <div
                 grow={false}
                 className="su-text-center su-text-white su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22"
               >
@@ -119,7 +119,7 @@ const Hero = ({
                     aria-hidden="true"
                   />
                 </a>
-              </FlexCell>
+              </div>
             )}
           </FlexBox>
         </Container>
