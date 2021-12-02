@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
 import { Heading } from '../../simple/Heading';
@@ -36,8 +36,10 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
   );
 
   const [panelOpened, setPanelOpened] = useState(false);
+  const buttonRef = useRef(null);
   const togglePanel = () => {
     setPanelOpened(!panelOpened);
+    buttonRef.current.scrollIntoView();
   };
 
   const CheckboxList = (
@@ -81,6 +83,7 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
           className={styles.toggle({ panelOpened })}
           aria-expanded={panelOpened}
           onClick={togglePanel}
+          ref={buttonRef}
         >
           <Heading
             level={3}

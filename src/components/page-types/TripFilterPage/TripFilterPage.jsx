@@ -161,6 +161,14 @@ const TripFilterPage = (props) => {
                     </div>
                   )}
                 </div>
+                <span className="su-sr-only" aria-live="polite" aria-atomic>
+                  {`There are ${trips.length} trip${
+                    trips.length > 1 ? 's' : ''
+                  } available.`}
+                </span>
+                <Heading level={2} srOnly id="filtered-trips-list">
+                  List of trips
+                </Heading>
                 <Grid
                   xs={1}
                   md={2}
@@ -169,9 +177,6 @@ const TripFilterPage = (props) => {
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
                   tabIndex={0}
                 >
-                  <Heading level={2} srOnly id="filtered-trips-list">
-                    List of trips
-                  </Heading>
                   {trips.map((trip) => (
                     <TripCard key={trip.id} trip={trip} />
                   ))}

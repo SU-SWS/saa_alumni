@@ -60,7 +60,7 @@ const TripFilterModal = ({
       <button
         type="button"
         className={styles.filterModalButton}
-        aria-label="Open trips filtering modal"
+        aria-label="Filters"
         onClick={() => setModalOpen(true)}
         ref={openModalBtnRef}
       >
