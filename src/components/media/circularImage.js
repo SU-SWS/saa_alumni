@@ -16,7 +16,7 @@ const CircularImage = ({
 }) => {
   // Option to display image as round thumbnail with colored border
   const imageBorderColor = borderColors[borderColor];
-  const imageBgColor = bgColors[borderColor || 'digital-red'];
+  const imageBgColor = bgColors[borderColor];
 
   return (
     <div

@@ -9,7 +9,8 @@ const LinkGroup = ({ blok: { heading, linkList }, blok }) => (
       <Heading
         level={2}
         font="serif"
-        className="su-text-18 su-tracking-normal su-rs-mb-1"
+        tracking="normal"
+        className="su-text-18 su-rs-mb-1"
       >
         {heading}
       </Heading>
