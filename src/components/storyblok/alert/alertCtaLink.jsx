@@ -35,6 +35,7 @@ export const SBAlertCtaLink = ({ blok, isCtaDark }) => {
         linkText={text}
         srText={srText}
         textColor={isCtaDark ? 'all-black' : 'all-white'}
+        trailingIcon="chevron-right"
         size="small"
       />
     );

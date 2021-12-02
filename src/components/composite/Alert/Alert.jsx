@@ -7,7 +7,7 @@ import {
   InformationCircleIcon,
 } from '@heroicons/react/solid';
 import { dcnb } from 'cnbuilder';
-import { DismissButton } from 'decanter-react';
+import { DismissButton } from '../../simple/DismissButton/DismissButton';
 import { Heading } from '../../simple/Heading';
 import * as styles from './Alert.styles';
 import { FlexBox } from '../../layout/FlexBox';
@@ -59,14 +59,22 @@ export const Alert = (props) => {
       <FlexBox wrap="wrap" className={styles.wrapper}>
         {hasDismiss && (
           <div className={styles.dismissWrapper}>
-            <DismissButton onclick={dismissFunction} />
+            <DismissButton
+              text="Dismiss"
+              icon="x-circle"
+              srText="alert"
+              color={type === 'warning' ? 'black' : 'white'}
+              onclick={dismissFunction}
+              className={styles.dismissButton}
+              iconClass={styles.dismissIcon}
+            />
           </div>
         )}
-        {label && (
-          <div className={styles.labelWrapper}>
-            <span className={styles.iconWrapper} aria-hidden>
-              <Icon aria-hidden height="20" width="20" />
-            </span>
+        <div className={styles.labelWrapper}>
+          <span className={styles.iconWrapper} aria-hidden>
+            <Icon aria-hidden height="20" width="20" />
+          </span>
+          {label && (
             <Heading
               level={2}
               tracking="widest"
@@ -75,8 +83,8 @@ export const Alert = (props) => {
             >
               {label}
             </Heading>
-          </div>
-        )}
+          )}
+        </div>
         <div className={styles.contentWrapper}>
           {heading && (
             <Heading level={label ? 2 : 3} size={1} className={styles.heading}>

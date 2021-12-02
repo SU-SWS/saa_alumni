@@ -10,7 +10,9 @@ export const trailingIcon = ({ textColor }) =>
     'su-text-digital-red-light group-hocus:su-text-cardinal-red':
       textColor === 'bright-red-hover-cardinal-red',
     'su-text-white group-hocus:su-text-white': textColor === 'all-white',
+    'su-text-black group-hocus:su-text-black': textColor === 'all-black',
     'su-text-digital-red-xlight group-hocus:su-text-black-20':
-      textColor !== 'bright-red-hover-cardinal-red' &&
-      textColor !== 'all-white',
+      textColor === 'bright-red-hover-white' ||
+      textColor === 'white' ||
+      textColor === 'black',
   });
