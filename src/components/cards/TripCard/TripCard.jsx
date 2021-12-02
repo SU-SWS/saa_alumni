@@ -68,7 +68,7 @@ const TripCard = ({
               tracking="normal"
               className={styles.heading}
             >
-              {tag && <SrOnlyText>{tag}: </SrOnlyText>}
+              {tag && <SrOnlyText>{`${tag}: `}</SrOnlyText>}
               {tripTitle}
             </Heading>
             <HeroIcon

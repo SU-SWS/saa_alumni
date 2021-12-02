@@ -129,7 +129,7 @@ const StoryCardView = ({
                 !hideImage &&
                 tabText.toLowerCase() !== 'podcast' &&
                 tabText.toLowerCase() !== 'video' && (
-                  <SrOnlyText>{tabText}: </SrOnlyText>
+                  <SrOnlyText>{`${tabText}: `}</SrOnlyText>
                 )}
               {(storyType === 'podcast' || storyType === 'video') && (
                 <HeroIcon
