@@ -87,7 +87,7 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
         className={dcnb(heroIconStyle, className)}
         {...props}
       />
-      {srText && <SrOnlyText>srText</SrOnlyText>}
+      {srText && <SrOnlyText>{srText}</SrOnlyText>}
     </>
   );
 };

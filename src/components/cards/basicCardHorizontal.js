@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { Grid as DrGrid } from 'decanter-react';
+import { Grid } from '../layout/Grid';
 import CardImage from '../media/cardImage';
 import CircularImage from '../media/circularImage';
 import BasicCardContent from './basicCardContent';
@@ -71,10 +71,11 @@ const BasicCardHorizontal = ({
 
   return (
     <SbEditable content={blok}>
-      <DrGrid
+      <Grid
         gap
+        alignItems="start"
         className={dcnb(
-          'basic-card-horizontal su-items-start su-gap-x-xl su-w-full su-basefont-23 su-break-words',
+          'basic-card-horizontal su-gap-x-xl su-w-full su-basefont-23 su-break-words',
           wrapperClasses,
           cardGrid
         )}
@@ -92,7 +93,7 @@ const BasicCardHorizontal = ({
             `${isRound && filename ? '' : 'su-mt-[-0.3em]'}`
           )}
         />
-      </DrGrid>
+      </Grid>
     </SbEditable>
   );
 };

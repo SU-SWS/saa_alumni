@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { FlexBox } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { FlexBox } from '../layout/FlexBox';
 import { Heading } from '../simple/Heading';
 import SbLink from '../../utilities/sbLink';
 import HeroIcon from '../simple/heroIcon';

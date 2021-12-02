@@ -30,7 +30,7 @@ export const Date = ({ startDate, endDate, isMinimal, isSmall, className }) => {
             <span className={styles.dash({ isSmall })} aria-hidden="true">
               &ndash;
             </span>
-            <SrOnlyText> to </SrOnlyText>
+            <SrOnlyText>to</SrOnlyText>
             <time dateTime={end.dateTime} className={styles.endDate}>
               <span className={styles.month}>{end.month}</span>
               <span className={styles.day({ isSmall })}>{end.day}</span>

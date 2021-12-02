@@ -83,7 +83,7 @@ const DateBlock = ({
             >
               &ndash;
             </span>
-            <SrOnlyText> to </SrOnlyText>
+            <SrOnlyText>to</SrOnlyText>
             <time
               dateTime={endHtmlDate}
               className="su-flex su-flex-col su-pl-12 su-pr-20"

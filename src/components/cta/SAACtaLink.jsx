@@ -98,7 +98,7 @@ export const SAACtaLink = React.forwardRef((props, ref) => {
         )}
         <div>
           {linkText}
-          {srText && <SrOnlyText> {srText}</SrOnlyText>}
+          {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
           {trailingIcon !== 'none' && (
             <HeroIcon
               iconType={trailingIcon}

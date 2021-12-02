@@ -17,7 +17,7 @@ const TabLabel = ({ text, srText, classes, ...props }) => {
       {...props}
     >
       {text}
-      {srText && <SrOnlyText> {srText}</SrOnlyText>}
+      {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
     </div>
   );
 };

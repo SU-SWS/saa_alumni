@@ -60,7 +60,7 @@ export const SAALinkButton = React.forwardRef(
           {...rest}
         >
           {children}
-          {srText && <SrOnlyText> {srText}</SrOnlyText>}
+          {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
           {icon !== 'none' && (
             <HeroIcon
               iconType={icon}
