@@ -2,7 +2,6 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import TripCard from '../cards/TripCard/TripCard';
 
-// TODO: Type props
 export const SBTripCard = ({ blok }) => {
   const { trip = {}, headingLevel } = blok;
 
@@ -14,7 +13,7 @@ export const SBTripCard = ({ blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <TripCard trip={trip} headingLevel={parseInt(headingLevel, 10)} />
+      <TripCard trip={trip} headingLevel={headingLevel} />
     </SbEditable>
   );
 };

@@ -51,7 +51,7 @@ export const SAACtaLink = React.forwardRef((props, ref) => {
     isOutlineFaIcon,
     trailingIcon,
     align: alignProp = 'left',
-    spacingBottom = 'md',
+    spacingBottom,
     link,
     rel,
     linkText,

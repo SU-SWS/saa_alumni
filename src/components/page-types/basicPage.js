@@ -27,7 +27,7 @@ const BasicPage = (props) => {
     blok,
   } = props;
 
-  const hasHeroBanner = getNumBloks(hero) > 0 || filename;
+  const hasHeroBanner = getNumBloks(hero) > 0 || filename !== '';
   const numAbove = getNumBloks(aboveContent);
   const numBelow = getNumBloks(belowContent);
   const numAnkle = getNumBloks(ankleContent);

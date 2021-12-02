@@ -6,7 +6,7 @@ import Logo from './logo';
 import { FlexBox } from '../layout/FlexBox';
 import OpenSearchModalButton from '../search/openSearchModalButton';
 import SearchModal from '../search/searchModal';
-import * as styles from './global-header/GlobalHeader.styles';
+import * as styles from './GlobalHeader/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
 import useDisplay from '../../hooks/useDisplay';
 

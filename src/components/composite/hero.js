@@ -104,10 +104,7 @@ const Hero = ({
               </div>
             )}
             {!isHideScroll && (
-              <div
-                grow={false}
-                className="su-text-center su-text-white su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22"
-              >
+              <div className="su-text-center su-text-white su-flex-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22">
                 <p className="su-mb-02em">Scroll to explore</p>
                 <a
                   href="#page-title"
