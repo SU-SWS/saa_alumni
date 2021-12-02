@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Heading } from '../../simple/Heading';
 import { FilterCheckbox } from '../../simple/FilterCheckbox/FilterCheckbox';
 import * as styles from './TripFilterList.styles';
+import useMediaQuery from '../../../hooks/useMediaQuery';
+import { breakpoints } from '../../../contexts/GlobalContext';
 
 export const TripFilterProps = {
   filter: PropTypes.shape({
@@ -39,8 +41,8 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
   const buttonRef = useRef(null);
   const togglePanel = () => {
     setPanelOpened(!panelOpened);
-    buttonRef.current.scrollIntoView();
   };
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   const CheckboxList = (
     <>
@@ -48,6 +50,7 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
         label={`All ${filter.name.toLowerCase()}s`}
         onChange={() => clearFilterType(filter.key)}
         checked={allIsActive}
+        isScrollIntoView={!isDesktop}
       />
       {facetsToRender.map((facet) => (
         <FilterCheckbox
@@ -58,6 +61,7 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
             toggleFilter(facet.datasource, facet.value, toggleFilter)
           }
           checked={facet.active}
+          isScrollIntoView={!isDesktop}
         />
       ))}
     </>
@@ -82,8 +86,9 @@ export const TripFilterList = ({ filter, clearFilterType, toggleFilter }) => {
           type="button"
           className={styles.toggle({ panelOpened })}
           aria-expanded={panelOpened}
-          onClick={togglePanel}
           ref={buttonRef}
+          onClick={togglePanel}
+          onFocus={() => buttonRef.current.scrollIntoView()}
         >
           <Heading
             level={3}

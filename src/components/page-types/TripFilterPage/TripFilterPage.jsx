@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Grid } from '../../layout/Grid';
@@ -91,7 +91,10 @@ const TripFilterPage = (props) => {
               />
             </GridCell>
             <GridCell xs={1} lg={3} className={styles.filterSidebar}>
-              <Skiplink anchorLink="#filtered-trips-list" className="focus:su-relative su-left-0 su-block">
+              <Skiplink
+                anchorLink="#filtered-trips-list"
+                className={styles.filterSkiplink}
+              >
                 Skip past filters to trip list
               </Skiplink>
               <Heading
