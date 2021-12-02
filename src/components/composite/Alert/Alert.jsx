@@ -87,7 +87,7 @@ export const Alert = (props) => {
         </div>
         <div className={styles.contentWrapper}>
           {heading && (
-            <Heading level={label ? 2 : 3} size={1} className={styles.heading}>
+            <Heading level={label ? 3 : 2} size={1} className={styles.heading}>
               {heading}
             </Heading>
           )}
