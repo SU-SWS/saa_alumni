@@ -43,7 +43,7 @@ const FaIcon = ({
   return (
     <>
       <FontAwesomeIcon icon={[faStyle, faIcon]} {...props} />
-      {srText && <SrOnlyText>srText</SrOnlyText>}
+      {srText && <SrOnlyText>{srText}</SrOnlyText>}
     </>
   );
 };

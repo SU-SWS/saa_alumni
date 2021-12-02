@@ -2,7 +2,7 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import { SAACtaLink } from '../cta/SAACtaLink';
 
-export const SBCtaLink = ({ blok }) => {
+export const SBCtaLink = ({ blok, as }) => {
   const {
     size,
     textColor,
@@ -21,6 +21,7 @@ export const SBCtaLink = ({ blok }) => {
   return (
     <SbEditable content={blok}>
       <SAACtaLink
+        as={as}
         size={size}
         textColor={textColor}
         leadingIcon={leadingIconChoice}

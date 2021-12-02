@@ -1,11 +1,9 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { SrOnlyText } from '../accessibility/SrOnlyText';
+import FaIcon from './faIcon';
 
 const SocialIconLink = ({ srText, icon, size, ...props }) => (
   <a {...props}>
-    <SrOnlyText>SrText</SrOnlyText>
-    <FontAwesomeIcon icon={icon} size={size} aria-hidden="true" />
+    <FaIcon iconChoice={icon} iconType="fab" size={size} srText={srText} />
   </a>
 );
 

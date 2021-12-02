@@ -1,12 +1,5 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import {
-  faFacebookF,
-  faInstagram,
-  faTwitter,
-  faLinkedinIn,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
 import { dcnb } from 'cnbuilder';
 import { Grid } from '../layout/Grid';
 import { GridCell } from '../layout/GridCell';
@@ -73,7 +66,7 @@ const LocalFooter = ({
               <ul className="su-flex su-list-unstyled">
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faFacebookF}
+                    icon="fa-facebook-f"
                     size="lg"
                     srText="Facebook Page"
                     href={fbLink}
@@ -82,7 +75,7 @@ const LocalFooter = ({
                 </li>
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faLinkedinIn}
+                    icon="fa-linkedin-in"
                     size="lg"
                     srText="LinkedIn Page"
                     href={linkedinLink}
@@ -91,7 +84,7 @@ const LocalFooter = ({
                 </li>
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faTwitter}
+                    icon="fa-twitter"
                     size="lg"
                     srText="Twitter Page"
                     href={twitterLink}
@@ -100,7 +93,7 @@ const LocalFooter = ({
                 </li>
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faInstagram}
+                    icon="fa-instagram"
                     size="lg"
                     srText="Instagram Page"
                     href={igLink}
@@ -109,7 +102,7 @@ const LocalFooter = ({
                 </li>
                 <li>
                   <SocialIconLink
-                    icon={faYoutube}
+                    icon="fa-youtube"
                     size="lg"
                     srText="Youtube Channel"
                     href={youtubeLink}

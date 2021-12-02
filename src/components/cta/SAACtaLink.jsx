@@ -17,6 +17,7 @@ import { ClassNameType } from '../../types/CommonType';
 import * as styles from './SAACtaLink.styles';
 
 const SAACtaLinkProps = {
+  as: PropTypes.oneOf(['div', 'li']),
   size: PropTypes.oneOf(['default', 'small', 'large']),
   textColor: PropTypes.oneOf([
     'bright-red-hover-cardinal-red',
@@ -41,6 +42,7 @@ const SAACtaLinkProps = {
 
 export const SAACtaLink = React.forwardRef((props, ref) => {
   const {
+    as: Element = 'div',
     size = 'default',
     textColor = 'bright-red-hover-cardinal-red',
     leadingIcon,
@@ -72,7 +74,10 @@ export const SAACtaLink = React.forwardRef((props, ref) => {
   const marginBottom = tinyMarginBottom[spacingBottom];
 
   return (
-    <div className={dcnb(styles.root, align, textSize, marginBottom)} {...rest}>
+    <Element
+      className={dcnb(styles.root, align, textSize, marginBottom)}
+      {...rest}
+    >
       <SbLink
         ref={ref}
         link={link}
@@ -103,7 +108,7 @@ export const SAACtaLink = React.forwardRef((props, ref) => {
           )}
         </div>
       </SbLink>
-    </div>
+    </Element>
   );
 });
 SAACtaLink.propTypes = SAACtaLinkProps;
