@@ -191,7 +191,7 @@ const Event = ({
             tracking="normal"
             className="su-relative su-inline su-type-0"
           >
-            {!hideTab && <SrOnlyText>{tabText || 'Event'}: </SrOnlyText>}
+            {!hideTab && <SrOnlyText>{`${tabText || 'Event'}: `}</SrOnlyText>}
             {title}
           </Heading>
           <HeroIcon

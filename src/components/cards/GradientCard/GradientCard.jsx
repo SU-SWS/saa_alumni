@@ -87,7 +87,7 @@ const GradientCard = ({
             tracking="normal"
             className={styles.heading}
           >
-            {tabText && <SrOnlyText>{tabText}: </SrOnlyText>}
+            {tabText && <SrOnlyText>{`${tabText}: `}</SrOnlyText>}
             {headline}
           </Heading>
           <HeroIcon
