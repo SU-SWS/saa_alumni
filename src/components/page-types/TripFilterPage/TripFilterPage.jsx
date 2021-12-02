@@ -91,7 +91,7 @@ const TripFilterPage = (props) => {
               />
             </GridCell>
             <GridCell xs={1} lg={3} className={styles.filterSidebar}>
-              <Skiplink anchorLink="#filtered-trips-list">
+              <Skiplink anchorLink="#filtered-trips-list" className="focus:su-relative su-left-0 su-block">
                 Skip past filters to trip list
               </Skiplink>
               <Heading
@@ -131,7 +131,10 @@ const TripFilterPage = (props) => {
                           <Chip
                             key={`chip:${filter.datasource}:${filter.value}`}
                             label={filter.name}
-                            aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                            aria-label={`Clear ${filter.datasource.replace(
+                              /-/g,
+                              ' '
+                            )} ${filter.name} filter`}
                             onClick={() =>
                               toggleFilter(filter.datasource, filter.value)
                             }
@@ -162,7 +165,7 @@ const TripFilterPage = (props) => {
                   )}
                 </div>
                 <span className="su-sr-only" aria-live="polite" aria-atomic>
-                  {`There are ${trips.length} trip${
+                  {`${trips.length} trip${
                     trips.length > 1 ? 's' : ''
                   } available.`}
                 </span>
@@ -174,8 +177,6 @@ const TripFilterPage = (props) => {
                   md={2}
                   gap
                   className={dcnb('filtered-trips-list', styles.trips)}
-                  // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                  tabIndex={0}
                 >
                   {trips.map((trip) => (
                     <TripCard key={trip.id} trip={trip} />
