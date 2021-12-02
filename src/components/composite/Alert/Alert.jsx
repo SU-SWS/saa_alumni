@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {
   BanIcon,
@@ -64,7 +64,7 @@ export const Alert = (props) => {
               icon="x-circle"
               srText="alert"
               color={type === 'warning' ? 'black' : 'white'}
-              onclick={dismissFunction}
+              onClick={dismissFunction}
               className={styles.dismissButton}
               iconClass={styles.dismissIcon}
             />

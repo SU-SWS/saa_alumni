@@ -40,8 +40,8 @@ export const SBAlert = ({
         type={type}
         label={label}
         heading={heading}
-        dismissFunction={dismissHandler}
         hasDismiss={hasDismiss}
+        dismissFunction={dismissHandler}
       >
         <RichTextRenderer
           wysiwyg={body}
