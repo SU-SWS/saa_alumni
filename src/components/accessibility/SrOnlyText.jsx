@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const SrOnlyTextProps = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export const SrOnlyText = ({ children = '(link is external)' }) => (
