@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Grid } from '../../layout/Grid';
