@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Heading } from '../../simple/Heading';
 import Modal from '../../layout/Modal/Modal';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
@@ -8,7 +9,6 @@ import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterModal.styles';
 import FaIcon from '../../simple/faIcon';
 import { SAAButton } from '../../simple/SAAButton';
-import { focusElement } from '../../../utilities/dom';
 import useEscape from '../../../hooks/useEscape';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { breakpoints } from '../../../contexts/GlobalContext';
@@ -40,9 +40,9 @@ const TripFilterModal = ({
   const viewResults = () => {
     setModalOpen(false);
     // After the modal is closed, set a delay to make sure unlockscroll has changed body position from fixed to relative,
-    // then focus and scroll to the filtered trips list
+    // then scroll to the filtered trips list
     setTimeout(() => {
-      focusElement('.filtered-trips-list');
+      scrollTo('#filtered-trips-list');
     }, 100);
   };
 
