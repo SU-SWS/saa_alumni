@@ -29,7 +29,10 @@ const BasicContentLeftSidebar = ({
         xxl={3}
         className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2 su-hidden lg:su-block"
       >
-        <Skiplink anchorLink="#page-content" className="su-hidden lg:su-block">
+        <Skiplink
+          anchorLink="#page-content"
+          className="su-hidden lg:su-block focus:su-relative su-left-0 su-block su-rs-mb-1 su-transition-none"
+        >
           Skip past sidebar to page content
         </Skiplink>
         {hasSectionMenu && (
