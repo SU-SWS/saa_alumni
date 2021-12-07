@@ -79,9 +79,7 @@ module.exports = {
             edges {
               node {
                 path
-                context {
-                  isCanonical
-                }
+                pageContext
               }
             }
           }
@@ -97,6 +95,22 @@ module.exports = {
           `/test/**`,
           `/403-access-denied`,
         ],
+        filterPages: (page, excludedRoute, tools) => {
+          // Return true excludes the path, false keeps it.
+          if (
+            // Exclude non-canonical pages.
+            !page.pageContext.isCanonical ||
+            // Exclude pages marked with "noindex"
+            page.pageContext.noIndex ||
+            // Exclude pages that match the "excludes" array. (default condition)
+            tools.minimatch(
+              tools.withoutTrailingSlash(tools.resolvePagePath(page)),
+              tools.withoutTrailingSlash(excludedRoute)
+            )
+          ) {
+            return true;
+          }
+        },
       },
     },
     {
