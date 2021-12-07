@@ -95,6 +95,7 @@ module.exports = {
           `/test/**`,
           `/403-access-denied`,
         ],
+        // eslint-disable-next-line consistent-return
         filterPages: (page, excludedRoute, tools) => {
           // Return true excludes the path, false keeps it.
           if (
