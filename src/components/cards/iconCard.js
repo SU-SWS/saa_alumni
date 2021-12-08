@@ -9,7 +9,6 @@ import FaIcon from '../simple/faIcon';
 const IconCard = ({
   blok: {
     headline,
-    headingLevel = 3,
     icon: { icon: propsIcon, type } = {},
     proFaIcon,
     isOutline,
