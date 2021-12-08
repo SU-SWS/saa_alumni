@@ -4,19 +4,19 @@ import { borderColors, bgColors } from '../../utilities/dataSource';
 import CardImage from './cardImage';
 
 const CircularImage = ({
-  borderColor,
+  borderColor = 'digital-red',
   filename = '',
   alt,
   className,
   smartFocus,
-  loading,
+  loading = 'lazy',
   width,
   height,
   ...props
 }) => {
   // Option to display image as round thumbnail with colored border
-  const imageBorderColor = borderColors[borderColor ?? 'digital-red'];
-  const imageBgColor = bgColors[borderColor ?? 'digital-red'];
+  const imageBorderColor = borderColors[borderColor];
+  const imageBgColor = bgColors[borderColor];
 
   return (
     <div
@@ -34,7 +34,7 @@ const CircularImage = ({
         size="thumb"
         smartFocus={smartFocus}
         className="su-object-cover su-w-full su-h-full"
-        loading={loading ?? 'lazy'}
+        loading={loading}
         alt={alt ?? ''}
         width={width}
         height={height}

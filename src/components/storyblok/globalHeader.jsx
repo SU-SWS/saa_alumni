@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import GlobalHeader from '../identity/global-header/GlobalHeader';
+import GlobalHeader from '../identity/GlobalHeader/GlobalHeader';
 
 export const SBGlobalHeader = ({ blok, hasHero, isDark }) => {
   const { siteName, siteLink, utilityNav, mainNav, searchPageUrl } = blok;

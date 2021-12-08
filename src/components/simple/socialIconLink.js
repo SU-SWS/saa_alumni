@@ -1,11 +1,9 @@
 import React from 'react';
-import { SrOnlyText } from 'decanter-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import FaIcon from './faIcon';
 
 const SocialIconLink = ({ srText, icon, size, ...props }) => (
   <a {...props}>
-    <SrOnlyText srText={srText} />
-    <FontAwesomeIcon icon={icon} size={size} aria-hidden="true" />
+    <FaIcon iconChoice={icon} iconType="fab" size={size} srText={srText} />
   </a>
 );
 

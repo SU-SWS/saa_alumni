@@ -1,7 +1,7 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import { Container } from 'decanter-react';
 import { DateTime } from 'luxon';
+import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
@@ -95,7 +95,7 @@ const StoryPageView = (props) => {
     <SbEditable content={blok}>
       <Layout {...props}>
         <Container
-          element="main"
+          as="main"
           id="main-content"
           className="story-page su-relative su-flex-grow su-w-full su-basefont-23"
           width="full"

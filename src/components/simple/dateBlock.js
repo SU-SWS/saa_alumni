@@ -1,6 +1,6 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-import { SrOnlyText } from 'decanter-react';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 
 const DateBlock = ({
   startDay,
@@ -83,7 +83,7 @@ const DateBlock = ({
             >
               &ndash;
             </span>
-            <SrOnlyText srText="to" />
+            <SrOnlyText>to</SrOnlyText>
             <time
               dateTime={endHtmlDate}
               className="su-flex su-flex-col su-pl-12 su-pr-20"

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { usePaginationLinks } from '../../../hooks/usePaginationLinks';
-import { focusElement } from '../../../utilities/dom';
 import * as styles from './Pagination.styles';
 
 export const PaginationProps = {
@@ -32,7 +31,6 @@ export const Pagination = ({
 
   const handleClick = () => {
     scrollTo('#filtered-trips-list');
-    focusElement('.filtered-trips-list');
   };
 
   return (

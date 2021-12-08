@@ -1,8 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { FlexBox } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
-import { Heading } from '../simple/Heading';
+import { FlexBox } from '../layout/FlexBox';
 import SbLink from '../../utilities/sbLink';
 import HeroIcon from '../simple/heroIcon';
 import FaIcon from '../simple/faIcon';
@@ -10,7 +9,6 @@ import FaIcon from '../simple/faIcon';
 const IconCard = ({
   blok: {
     headline,
-    headingLevel = 3,
     icon: { icon: propsIcon, type } = {},
     proFaIcon,
     isOutline,
@@ -64,12 +62,7 @@ const IconCard = ({
           )}
           link={link}
         >
-          <Heading
-            level={headingLevel}
-            size="base"
-            weight="semibold"
-            className="su-mb-0"
-          >
+          <span className="su-block su-leading-display su-font-semibold">
             {headline}
             {link.linktype === 'url' && (
               <HeroIcon
@@ -78,7 +71,7 @@ const IconCard = ({
                 isAnimate
               />
             )}
-          </Heading>
+          </span>
         </SbLink>
       </FlexBox>
     </SbEditable>

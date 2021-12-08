@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Grid } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { Container } from './Container';
+import { Grid } from './Grid';
 
 /**
  * A component for use as a wrapper container that sets the width

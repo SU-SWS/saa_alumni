@@ -1,12 +1,13 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Heading, SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { Heading } from '../simple/Heading';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 import SbLink from '../../utilities/sbLink';
 import HeroIcon from '../simple/heroIcon';
 
 const CtaCard = ({
-  blok: { headline, headingLevel, linkText, link, srText },
+  blok: { headline, headingLevel = 3, linkText, link, srText },
   blok,
 }) => (
   <SbEditable content={blok}>
@@ -16,9 +17,7 @@ const CtaCard = ({
       )}
     >
       <Heading
-        level={parseInt(headingLevel, 10) || 3}
-        font="sans"
-        weight="bold"
+        level={headingLevel}
         size={2}
         className={dcnb(
           'su-mb-0 su-text-white hocus:su-text-white hocus:su-no-underline'
@@ -32,7 +31,7 @@ const CtaCard = ({
           classes="su-block su-stretched-link su-group su-transition-colors su-font-regular su-no-underline su-underline-offset su-text-white hocus:su-underline hocus:su-text-white su-rs-mt-3"
         >
           {linkText}
-          {srText && <SrOnlyText srText={srText} />}
+          {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
           <HeroIcon
             iconType={link.linktype === 'url' ? 'external' : 'arrow-right'}
             className="su-relative su-inline-block su-text-white group-hocus:su-text-white"

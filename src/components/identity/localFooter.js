@@ -1,14 +1,9 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, Grid, GridCell } from 'decanter-react';
-import {
-  faFacebookF,
-  faInstagram,
-  faTwitter,
-  faLinkedinIn,
-  faYoutube,
-} from '@fortawesome/free-brands-svg-icons';
 import { dcnb } from 'cnbuilder';
+import { Grid } from '../layout/Grid';
+import { GridCell } from '../layout/GridCell';
+import { Container } from '../layout/Container';
 import CreateBloks from '../../utilities/createBloks';
 import SocialIconLink from '../simple/socialIconLink';
 import { bgPositionVertical } from '../../utilities/dataSource';
@@ -18,7 +13,7 @@ import Logo from './logo';
 const LocalFooter = ({
   blok: {
     bgImage: { filename } = {},
-    vCrop,
+    vCrop = 'center',
     organization,
     address1,
     address2,
@@ -36,7 +31,7 @@ const LocalFooter = ({
   blok,
 }) => {
   // Background image vertical focus
-  const bgCrop = bgPositionVertical[vCrop] ?? bgPositionVertical.center;
+  const bgCrop = bgPositionVertical[vCrop];
 
   return (
     <SbEditable content={blok}>
@@ -46,7 +41,6 @@ const LocalFooter = ({
       >
         <Container
           style={addBgImage(filename)}
-          width="site"
           className={dcnb(
             'su-rs-pt-10 su-rs-pb-6 su-bg-cover su-bg-no-repeat',
             bgCrop
@@ -72,7 +66,7 @@ const LocalFooter = ({
               <ul className="su-flex su-list-unstyled">
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faFacebookF}
+                    icon="fa-facebook-f"
                     size="lg"
                     srText="Facebook Page"
                     href={fbLink}
@@ -81,7 +75,7 @@ const LocalFooter = ({
                 </li>
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faLinkedinIn}
+                    icon="fa-linkedin-in"
                     size="lg"
                     srText="LinkedIn Page"
                     href={linkedinLink}
@@ -90,7 +84,7 @@ const LocalFooter = ({
                 </li>
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faTwitter}
+                    icon="fa-twitter"
                     size="lg"
                     srText="Twitter Page"
                     href={twitterLink}
@@ -99,7 +93,7 @@ const LocalFooter = ({
                 </li>
                 <li className="su-mr-1em">
                   <SocialIconLink
-                    icon={faInstagram}
+                    icon="fa-instagram"
                     size="lg"
                     srText="Instagram Page"
                     href={igLink}
@@ -108,7 +102,7 @@ const LocalFooter = ({
                 </li>
                 <li>
                   <SocialIconLink
-                    icon={faYoutube}
+                    icon="fa-youtube"
                     size="lg"
                     srText="Youtube Channel"
                     href={youtubeLink}
@@ -125,7 +119,7 @@ const LocalFooter = ({
               className="su-link-black-20 su-underline-offset !su-link-underline-digital-red-xlight"
             >
               <Grid
-                element="nav"
+                as="nav"
                 xs={1}
                 md={2}
                 xl={3}

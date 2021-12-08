@@ -1,7 +1,9 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import { FlexBox, Heading, SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { FlexBox } from '../../layout/FlexBox';
+import { Heading } from '../../simple/Heading';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import TabLabel from '../../simple/tabLabel';
@@ -26,7 +28,7 @@ const StoryCardView = ({
   isBigText,
   hideTab,
   hideImage,
-  headingLevel,
+  headingLevel = 3,
   cardImageFocus,
   isDark,
   tabText,
@@ -80,7 +82,7 @@ const StoryCardView = ({
     <SbEditable content={blok}>
       <FlexBox
         direction="col"
-        element="article"
+        as="article"
         className={dcnb(
           'story-card su-group su-relative su-overflow-hidden su-break-words su-basefont-23 su-w-full sm:su-max-w-[42rem] md:su-max-w-full',
           wrapperClasses,
@@ -117,7 +119,7 @@ const StoryCardView = ({
             )}
           >
             <Heading
-              level={parseInt(headingLevel, 10) || 3}
+              level={headingLevel}
               font="serif"
               tracking="normal"
               className="su-relative su-inline su-type-0"
@@ -127,7 +129,7 @@ const StoryCardView = ({
                 !hideImage &&
                 tabText.toLowerCase() !== 'podcast' &&
                 tabText.toLowerCase() !== 'video' && (
-                  <SrOnlyText srText={`${tabText}: `} />
+                  <SrOnlyText>{`${tabText}: `}</SrOnlyText>
                 )}
               {(storyType === 'podcast' || storyType === 'video') && (
                 <HeroIcon

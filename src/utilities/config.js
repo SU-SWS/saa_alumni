@@ -8,4 +8,4 @@ const config = {
   assetCdn: process.env.GATSBY_ASSET_CDN ?? 'https://assets.stanford.edu/',
 };
 
-export { config };
+module.exports = { config };

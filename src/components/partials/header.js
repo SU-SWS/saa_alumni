@@ -1,8 +1,9 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, Skiplink } from 'decanter-react';
+import { Container } from '../layout/Container';
+import { Skiplink } from '../accessibility/Skiplink';
 import CreateBloks from '../../utilities/createBloks';
-import GlobalAlert from '../composite/globalAlert';
+import GlobalAlert from '../composite/Alert/globalAlert';
 
 /**
  * The Header component is referenced and used in the Layout component.
@@ -13,7 +14,7 @@ const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => (
   <SbEditable content={blok}>
     <GlobalAlert />
     <CreateBloks blokSection={alert} />
-    <Container element="header" width="full" className="su-relative su-z-50">
+    <Container as="header" width="full" className="su-relative su-z-50">
       <Skiplink />
       <CreateBloks blokSection={masthead} hasHero={hasHero} isDark={isDark} />
     </Container>

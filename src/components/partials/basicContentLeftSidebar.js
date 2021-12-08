@@ -1,7 +1,9 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-import { Grid, GridCell, Skiplink } from 'decanter-react';
-import { render } from 'storyblok-rich-text-react-renderer';
+import { Grid } from '../layout/Grid';
+import { GridCell } from '../layout/GridCell';
+import { Skiplink } from '../accessibility/Skiplink';
+import hasRichText from '../../utilities/hasRichText';
 import CreateBloks from '../../utilities/createBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import getNumBloks from '../../utilities/getNumBloks';
@@ -11,13 +13,11 @@ const BasicContentLeftSidebar = ({
   location,
   className,
 }) => {
-  const renderedIntro = render(intro);
-  const hasIntro = getNumBloks(renderedIntro) > 0;
   const hasContent = getNumBloks(content) > 0;
   const hasSidebar = getNumBloks(sidebar) > 0;
   const hasSectionMenu = getNumBloks(sectionMenu) > 0;
 
-  if (!hasIntro && !hasContent && !hasSidebar && !hasSectionMenu) {
+  if (!hasRichText(intro) && !hasContent && !hasSidebar && !hasSectionMenu) {
     return null;
   }
 
@@ -29,8 +29,11 @@ const BasicContentLeftSidebar = ({
         xxl={3}
         className="basic-page-left-sidebar su-basefont-21 lg:su-ml-0 su-rs-mb-2 su-hidden lg:su-block"
       >
-        <Skiplink anchorLink="#page-content" className="su-hidden lg:su-block">
-          Skip pass sidebar to page content
+        <Skiplink
+          anchorLink="#page-content"
+          className="su-hidden lg:su-block focus:su-relative su-left-0 su-block su-rs-mb-1 su-transition-none"
+        >
+          Skip past sidebar to page content
         </Skiplink>
         {hasSectionMenu && (
           <CreateBloks
@@ -52,7 +55,7 @@ const BasicContentLeftSidebar = ({
         className="basic-page-main-content su-basefont-23 su-ml-0 2xl:su-col-start-5"
         id="page-content"
       >
-        {hasIntro && (
+        {hasRichText(intro) && (
           <RichTextRenderer wysiwyg={intro} className="su-type-2 su-rs-mb-3" />
         )}
         <CreateBloks blokSection={content} />

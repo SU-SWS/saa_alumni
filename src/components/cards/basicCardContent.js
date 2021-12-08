@@ -1,6 +1,6 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-import { FlexBox } from 'decanter-react';
+import { FlexBox } from '../layout/FlexBox';
 import { Heading } from '../simple/Heading';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import CreateBloks from '../../utilities/createBloks';

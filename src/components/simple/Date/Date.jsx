@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { SrOnlyText } from 'decanter-react';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import * as styles from './Date.styles';
 import { getDate } from './getDate';
 
@@ -30,7 +30,7 @@ export const Date = ({ startDate, endDate, isMinimal, isSmall, className }) => {
             <span className={styles.dash({ isSmall })} aria-hidden="true">
               &ndash;
             </span>
-            <SrOnlyText srText="to" />
+            <SrOnlyText>to</SrOnlyText>
             <time dateTime={end.dateTime} className={styles.endDate}>
               <span className={styles.month}>{end.month}</span>
               <span className={styles.day({ isSmall })}>{end.day}</span>

@@ -10,6 +10,8 @@ export const filterSection = 'su-cc su-rs-pb-6 su-items-start';
 export const filterSidebarMobile = 'lg:su-hidden';
 export const filterSidebar =
   'su-hidden lg:su-block su-bg-saa-black-dark su-px-18 xl:su-px-26 2xl:su-px-38 su-rs-pt-2 su-rs-pb-4';
+export const filterSkiplink =
+  'focus:su-relative su-left-0 su-block su-rs-mb-1 su-transition-none';
 export const filterHeading = 'su-text-white';
 export const chipsWrapper = 'su-hidden lg:su-block';
 export const activeFilters =

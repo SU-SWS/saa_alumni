@@ -1,5 +1,5 @@
-import Alert from './composite/alert';
-import AlertCtaLink from './cta/alertCtaLink';
+import { SBAlert } from './storyblok/alert/alert';
+import { SBAlertCtaLink } from './storyblok/alert/alertCtaLink';
 import BasicCard from './cards/basicCard';
 import BasicCardHorizontal from './cards/basicCardHorizontal';
 import BasicPage from './page-types/basicPage';
@@ -8,7 +8,7 @@ import { SBCollectionCardHorizontal } from './storyblok/cards/collectionCardHori
 import ComponentNotFound from './component_not_found';
 import { SBCtaButton } from './storyblok/ctaButton';
 import CtaCard from './cards/ctaCard';
-import CtaLink from './cta/ctaLink';
+import { SBCtaLink } from './storyblok/ctaLink';
 import CtaGroup from './cta/ctaGroup';
 import DarkPage from './page-types/darkPage';
 import Embed from './embed/embed';
@@ -18,7 +18,7 @@ import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
 import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
-import Grid from './layout/grid';
+import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
@@ -64,8 +64,8 @@ import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
 
 const ComponentList = {
-  alert: Alert,
-  alertCtaLink: AlertCtaLink,
+  alert: SBAlert,
+  alertCtaLink: SBAlertCtaLink,
   basicCard: BasicCard,
   basicCardHorizontal: BasicCardHorizontal,
   basicPage: BasicPage,
@@ -73,7 +73,7 @@ const ComponentList = {
   collectionCardHorizontal: SBCollectionCardHorizontal,
   ctaButton: SBCtaButton,
   ctaCard: CtaCard,
-  ctaLink: CtaLink,
+  ctaLink: SBCtaLink,
   ctaGroup: CtaGroup,
   darkPage: DarkPage,
   embed: Embed,
@@ -83,7 +83,7 @@ const ComponentList = {
   eventCard: EventCard,
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
-  grid: Grid,
+  grid: SBGrid,
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,

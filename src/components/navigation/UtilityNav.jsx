@@ -3,12 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import CreateBloks from '../../utilities/createBloks';
 import { SBBlokType } from '../../types/storyblok/SBBlokType';
+import { ClassNameType } from '../../types/CommonType';
 
 export const UtilityNavProps = {
   menuItems: SBBlokType,
-  navClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  menuClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  itemClasses: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  navClasses: ClassNameType,
+  menuClasses: ClassNameType,
+  itemClasses: ClassNameType,
   ariaLabel: PropTypes.string,
 };
 

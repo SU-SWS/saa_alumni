@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { FlexBox, FlexCell } from 'decanter-react';
+import { FlexBox } from '../../layout/FlexBox';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import * as styles from './GlobalHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
@@ -80,7 +80,7 @@ const GlobalHeader = ({
             itemClasses={styles.utilNavItemMobile}
           />
           <FlexBox className={styles.bodyMobile} alignItems="center">
-            <FlexCell className={styles.logoWrapperMobile}>
+            <div className={styles.logoWrapperMobile}>
               <SbLink link={siteLink} classes={styles.logoMobile}>
                 <img
                   src={AlumniLogo}
@@ -91,7 +91,7 @@ const GlobalHeader = ({
                 />
                 {siteName}
               </SbLink>
-            </FlexCell>
+            </div>
             <OpenSearchModalButton
               openOpen={modalOpen}
               setModalOpen={setModalOpen}
@@ -103,11 +103,11 @@ const GlobalHeader = ({
       )}
       {showDesktop && (
         <div className={styles.root({ hasHero, isDark })} ref={desktopRef}>
-          <FlexBox justifyContent="space-between" alignItems="start">
-            <FlexCell className={styles.logoWrapper}>
+          <FlexBox justifyContent="between" alignItems="start">
+            <div className={styles.logoWrapper}>
               <Logo className={styles.logo} />
-            </FlexCell>
-            <FlexCell className={styles.utilWrapper}>
+            </div>
+            <div className={styles.utilWrapper}>
               <CreateBloks
                 blokSection={utilityNav}
                 ariaLabel="Utility Menu"
@@ -120,7 +120,7 @@ const GlobalHeader = ({
                 setModalOpen={setModalOpen}
                 ref={openSearchRef}
               />
-            </FlexCell>
+            </div>
           </FlexBox>
           <div className={styles.siteNameWrapper}>
             <SbLink link={siteLink} classes={styles.siteName}>

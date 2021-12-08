@@ -1,6 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container } from 'decanter-react';
+import { Container } from '../layout/Container';
 import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
 import Ankle from '../partials/ankle/ankle';
@@ -8,7 +8,6 @@ import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 
 const DarkPage = (props) => {
-  // Destructure.
   const {
     blok: {
       hero,
@@ -32,7 +31,7 @@ const DarkPage = (props) => {
     <SbEditable content={blok}>
       <Layout hasHero={numHero > 0} isDark {...props}>
         <Container
-          element="main"
+          as="main"
           id="main-content"
           className="dark-page su-relative su-flex-grow su-w-full su-bg-saa-black su-text-white"
           width="full"

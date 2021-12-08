@@ -1,8 +1,9 @@
 import React from 'react';
-import { FlexBox, SrOnlyText } from 'decanter-react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
+import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import TabLabel from '../../simple/tabLabel';
@@ -11,6 +12,7 @@ import HeroIcon from '../../simple/heroIcon';
 import * as styles from './GradientCard.styles';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { HeadingLevelType } from '../../../types/HeadingLevelType';
+import { ClassNameType } from '../../../types/CommonType';
 
 export const GradientCardProps = {
   headline: PropTypes.string,
@@ -24,7 +26,7 @@ export const GradientCardProps = {
   orientation: PropTypes.string,
   spacingBottom: PropTypes.string,
   isDark: PropTypes.bool,
-  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: ClassNameType,
 };
 
 const GradientCard = ({
@@ -51,7 +53,7 @@ const GradientCard = ({
   return (
     <FlexBox
       direction="col"
-      element="article"
+      as="article"
       className={dcnb(
         styles.root({ orientation, isDark }),
         marginBottom,
@@ -85,7 +87,7 @@ const GradientCard = ({
             tracking="normal"
             className={styles.heading}
           >
-            {tabText && <SrOnlyText srText={`${tabText}: `} />}
+            {tabText && <SrOnlyText>{`${tabText}: `}</SrOnlyText>}
             {headline}
           </Heading>
           <HeroIcon

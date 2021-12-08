@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { Container } from './Container';
 import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
@@ -83,7 +83,7 @@ const Section = ({
 
   return (
     <SbEditable content={blok}>
-      <section
+      <div
         className={dcnb(
           'section su-basefont-23',
           sectionBgColor,
@@ -150,7 +150,7 @@ const Section = ({
             <CreateBloks blokSection={cta} />
           </Container>
         )}
-      </section>
+      </div>
     </SbEditable>
   );
 };

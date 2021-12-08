@@ -1,12 +1,12 @@
 import React, { useState, useRef } from 'react';
 import SbEditable from 'storyblok-react';
-import { FlexBox, FlexCell } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../utilities/createBloks';
 import Logo from './logo';
+import { FlexBox } from '../layout/FlexBox';
 import OpenSearchModalButton from '../search/openSearchModalButton';
 import SearchModal from '../search/searchModal';
-import * as styles from './global-header/GlobalHeader.styles';
+import * as styles from './GlobalHeader/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
 import useDisplay from '../../hooks/useDisplay';
 
@@ -79,9 +79,9 @@ const Masthead = ({
             </ul>
           </nav>
           <FlexBox className="su-cc" alignItems="center">
-            <FlexCell className="su-flex su-items-center su-rs-py-1">
+            <FlexBox alignItems="center" className="su-rs-py-1">
               <Logo className="su-w-[18rem]" />
-            </FlexCell>
+            </FlexBox>
             <OpenSearchModalButton
               openOpen={modalOpen}
               setModalOpen={setModalOpen}
@@ -98,16 +98,16 @@ const Masthead = ({
           ref={desktopRef}
         >
           <FlexBox>
-            <FlexCell
-              shrink={false}
-              className="su-flex su-items-center lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-pl-61 3xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red"
+            <FlexBox
+              alignItems="center"
+              className="su-flex-shrink-0 lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-pl-61 3xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red"
             >
               <Logo className="su-w-[18rem] lg:su-w-[20rem] xl:su-w-[19vw] 2xl:su-w-[26rem]" />
-            </FlexCell>
-            <FlexCell
-              grow
+            </FlexBox>
+            <FlexBox
+              direction="col"
               className={dcnb(
-                'su-flex su-flex-col lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90',
+                'su-flex-grow lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90',
                 mainNavBgColorXl
               )}
             >
@@ -134,7 +134,7 @@ const Masthead = ({
                 blokSection={mainNav}
                 className="su-hidden lg:su-hidden xl:su-flex xl:su-mt-12 2xl:su-mt-27"
               />
-            </FlexCell>
+            </FlexBox>
           </FlexBox>
           <CreateBloks
             blokSection={mainNav}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
-import { Container } from 'decanter-react';
+import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import { slugify } from '../../../utilities/slugify';
 import * as styles from './TripPageSectionWrapper.styles';
@@ -26,9 +26,9 @@ export const TripPageSectionWrapper = ({
     id={`${slugify(heading)}-section`}
     className={dcnb(className, styles.root)}
     width="full"
-    element="section"
+    as="section"
   >
-    <Container width="site">
+    <Container>
       <Heading
         level={2}
         size={1}

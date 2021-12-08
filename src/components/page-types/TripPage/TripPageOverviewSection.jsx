@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
-import { Grid, GridCell } from 'decanter-react';
+import { Grid } from '../../layout/Grid';
+import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
@@ -13,9 +14,10 @@ import { CopyButton } from '../../composite/CopyButton/CopyButton';
 import * as styles from './TripPageOverviewSection.styles';
 import * as headerStyles from './TripPageSectionHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
-import SAALinkButton from '../../cta/SAALinkButton';
-import SAAButton from '../../simple/SAAButton';
+import { SAALinkButton } from '../../cta/SAALinkButton';
+import { SAAButton } from '../../simple/SAAButton';
 import hasRichText from '../../../utilities/hasRichText';
+import getNumBloks from '../../../utilities/getNumBloks';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -188,7 +190,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
             </div>
           </GridCell>
         </Grid>
-        {overviewBelowContent && overviewBelowContent.length > 0 && (
+        {getNumBloks(overviewBelowContent) > 0 && (
           <div className="trip-page-overview-below-content">
             <CreateBloks blokSection={overviewBelowContent} />
           </div>

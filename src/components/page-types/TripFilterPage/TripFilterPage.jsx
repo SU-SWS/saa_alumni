@@ -1,8 +1,11 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { Container, Grid, GridCell, Skiplink } from 'decanter-react';
+import { Grid } from '../../layout/Grid';
+import { GridCell } from '../../layout/GridCell';
+import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
+import { Skiplink } from '../../accessibility/Skiplink';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';
@@ -45,9 +48,9 @@ const TripFilterPage = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout isDark hasHero={filename} {...props}>
+      <Layout isDark hasHero={filename !== ''} {...props}>
         <Container
-          element="main"
+          as="main"
           id="main-content"
           className={styles.page}
           width="full"
@@ -67,7 +70,6 @@ const TripFilterPage = (props) => {
                 font="serif"
                 size={7}
                 align="center"
-                weight="bold"
                 leading="tight"
                 tracking="normal"
                 className={styles.heading}
@@ -89,8 +91,11 @@ const TripFilterPage = (props) => {
               />
             </GridCell>
             <GridCell xs={1} lg={3} className={styles.filterSidebar}>
-              <Skiplink anchorLink="#filtered-trips-list">
-                Skip pass filters to trip list
+              <Skiplink
+                anchorLink="#filtered-trips-list"
+                className={styles.filterSkiplink}
+              >
+                Skip past filters to trip list
               </Skiplink>
               <Heading
                 level={2}
@@ -129,7 +134,10 @@ const TripFilterPage = (props) => {
                           <Chip
                             key={`chip:${filter.datasource}:${filter.value}`}
                             label={filter.name}
-                            aria-label={`Clear ${filter.datasource}=${filter.name} filter`}
+                            aria-label={`Clear ${filter.datasource.replace(
+                              /-/g,
+                              ' '
+                            )} ${filter.name} filter`}
                             onClick={() =>
                               toggleFilter(filter.datasource, filter.value)
                             }
@@ -159,17 +167,20 @@ const TripFilterPage = (props) => {
                     </div>
                   )}
                 </div>
+                <span className="su-sr-only" aria-live="polite" aria-atomic>
+                  {`${trips.length} trip${
+                    trips.length > 1 ? 's' : ''
+                  } available.`}
+                </span>
+                <Heading level={2} srOnly id="filtered-trips-list">
+                  List of trips
+                </Heading>
                 <Grid
                   xs={1}
                   md={2}
                   gap
                   className={dcnb('filtered-trips-list', styles.trips)}
-                  // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                  tabIndex={0}
                 >
-                  <Heading level={2} srOnly id="filtered-trips-list">
-                    List of trips
-                  </Heading>
                   {trips.map((trip) => (
                     <TripCard key={trip.id} trip={trip} />
                   ))}

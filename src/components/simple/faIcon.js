@@ -1,5 +1,4 @@
 import React from 'react';
-import { SrOnlyText } from 'decanter-react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faFacebookF,
@@ -12,6 +11,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { fal } from '@fortawesome/pro-light-svg-icons';
 import { fas as pfas } from '@fortawesome/pro-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 
 const FaIcon = ({
   iconChoice,
@@ -43,7 +43,7 @@ const FaIcon = ({
   return (
     <>
       <FontAwesomeIcon icon={[faStyle, faIcon]} {...props} />
-      {srText && <SrOnlyText srText={srText} />}
+      {srText && <SrOnlyText>{srText}</SrOnlyText>}
     </>
   );
 };

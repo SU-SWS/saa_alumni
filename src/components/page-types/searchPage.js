@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import algoliasearch from 'algoliasearch';
-import { Container, Button, Grid, GridCell, Skiplink } from 'decanter-react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   useQueryParam,
@@ -10,6 +9,12 @@ import {
   ArrayParam,
 } from 'use-query-params';
 import Icon from 'react-hero-icon';
+import { dcnb } from 'cnbuilder';
+import { SAAButton } from '../simple/SAAButton';
+import { Container } from '../layout/Container';
+import { Grid } from '../layout/Grid';
+import { GridCell } from '../layout/GridCell';
+import { Skiplink } from '../accessibility/Skiplink';
 import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
 import SearchField from '../search/searchField';
@@ -19,8 +24,8 @@ import SearchFacet from '../search/searchFacet';
 import SearchNoResults from '../search/searchNoResults';
 import SearchKeywordBanner from '../search/searchKeywordBanner';
 import CreateBloks from '../../utilities/createBloks';
-import UseEscape from '../../hooks/useEscape';
-import UseOnClickOutside from '../../hooks/useOnClickOutside';
+import useEscape from '../../hooks/useEscape';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 import getNumBloks from '../../utilities/getNumBloks';
 
 const SearchPage = (props) => {
@@ -55,14 +60,14 @@ const SearchPage = (props) => {
   const isExpanded = (x) => x.getAttribute('aria-expanded') === 'true';
 
   // Close menu if escape key is pressed and return focus to the menu button
-  UseEscape(() => {
+  useEscape(() => {
     if (filterOpenRef.current && isExpanded(filterOpenRef.current)) {
       setOpened(false);
       filterOpenRef.current.focus();
     }
   });
 
-  UseOnClickOutside(ref, () => setOpened(false));
+  useOnClickOutside(ref, () => setOpened(false));
 
   // Update autocomplete suggestions when search input changes.
   const updateAutocomplete = (queryText) => {
@@ -251,7 +256,7 @@ const SearchPage = (props) => {
     <SbEditable content={blok}>
       <Layout hasHero={false} {...props}>
         <Container
-          element="section"
+          as="section"
           width="full"
           className="su-px-15 su-py-45 md:su-py-70 xl:su-py-108 su-text-center su-bg-foggy-light su-flex-wrap"
           id="main-content"
@@ -261,7 +266,7 @@ const SearchPage = (props) => {
           </Heading>
         </Container>
         <Container
-          element="section"
+          as="section"
           width="site"
           className="su-py-45 su-max-w-full su-w-full md:su-py-80 "
         >
@@ -306,19 +311,21 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className={`lg:su-hidden su-relative su-mb-[4rem] ${
-                    opened ? 'su-shadow-xl' : ''
-                  }`}
+                  className={`lg:su-hidden su-relative su-mb-[4rem]
+                  ${opened ? 'su-shadow-xl' : ''}`}
                 >
                   <div ref={ref}>
                     <button
                       type="button"
-                      className={`su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors
-                        ${
-                          opened
-                            ? 'su-border-digital-red su-text-white su-bg-digital-red'
-                            : 'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg'
-                        }`}
+                      className={dcnb(
+                        'su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors',
+                        {
+                          'su-border-digital-red su-text-white su-bg-digital-red':
+                            opened,
+                          'su-border-black-30 su-text-digital-red-light hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-lg':
+                            !opened,
+                        }
+                      )}
                       aria-expanded={opened}
                       ref={filterOpenRef}
                       onClick={() => setOpened(!opened)}
@@ -337,35 +344,22 @@ const SearchPage = (props) => {
                         </span>
                       )}
                     </button>
-
                     {opened && (
                       <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-10">
                         <div className="su-rs-p-0">{facets}</div>
 
-                        <div className="su-flex su-justify-end su-rs-px-0 su-rs-pt-0 su-rs-pb-2 su-bg-foggy-light su-border-t su-border-black-20">
-                          <Button
-                            text="Clear all"
-                            variant="unset"
+                        <div className="su-flex su-justify-end su-rs-px-0 su-rs-py-1 su-bg-foggy-light su-border-t su-border-black-20">
+                          <button
+                            type="button"
                             onClick={() => clearFilters()}
-                            className={{
-                              'su-text-16': false,
-                              'md:su-text-20': false,
-                              'su-text-digital-red-light su-text-18 hocus:su-text-cardinal-red hocus:su-shadow-none': true,
-                            }}
+                            className="su-text-digital-red-light su-text-18 md:su-text-20 hocus:su-text-cardinal-red hocus:su-shadow-none hocus:su-underline su-transition-colors"
                           >
                             Clear all
-                          </Button>
-
-                          <Button
-                            animate="right"
-                            icon="more"
-                            variant="solid"
-                            size="default"
-                            className={{
-                              'su-text-16': false,
-                              'md:su-text-20': false,
-                              'su-text-18 hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark': true,
-                            }}
+                          </button>
+                          <SAAButton
+                            buttonStyle="primary"
+                            size="small-short"
+                            className="su-ml-36"
                             onClick={() => {
                               setOpened(false);
                               scrollTo('#search-results');
@@ -374,8 +368,8 @@ const SearchPage = (props) => {
                                 .focus();
                             }}
                           >
-                            View Results
-                          </Button>
+                            View results
+                          </SAAButton>
                         </div>
                       </div>
                     )}
@@ -391,9 +385,11 @@ const SearchPage = (props) => {
                     anchorLink="#search-results-section"
                     className="su-hidden lg:su-block"
                   >
-                    Skip pass filters to search results
+                    Skip past filters to search results
                   </Skiplink>
-                  <h2 className="su-sr-only">Filter Search Results</h2>
+                  <Heading level={2} srOnly>
+                    Filter Search Results
+                  </Heading>
                   <div>{facets}</div>
                 </GridCell>
               </React.Fragment>

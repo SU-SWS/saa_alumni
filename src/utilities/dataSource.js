@@ -55,15 +55,19 @@ export const buttonSizes = {
 
 export const buttonStyles = {
   primary:
-    'su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark',
+    'su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md',
   secondary:
-    'su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red-xdark hocus:su-text-white',
+    'su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-shadow-md',
   'secondary-gradient':
-    'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+    'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md',
+  'secondary-white':
+    'su-border-white su-text-white hocus:su-bg-transparent hocus:su-text-white',
+  'secondary-black':
+    'su-border-black su-text-black hocus:su-bg-transparent hocus:su-text-black',
   ghost:
-    'su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white',
+    'su-border-digital-red-xlight su-bg-transparent su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-shadow-md',
   'ghost-gradient':
-    'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue',
+    'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md',
   'palo-verde-gradient':
     'su-border-palo-verde-dark su-bg-palo-verde-dark su-text-white hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue',
 };
@@ -83,6 +87,8 @@ export const ctaLinkColor = {
   black: 'su-text-black hocus:su-text-black !su-underline-digital-red-light',
   white:
     'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
+  'all-white': 'su-text-white hocus:su-text-white',
+  'all-black': 'su-text-black hocus:su-text-black',
 };
 
 export const ctaLinkTextSize = {
@@ -232,10 +238,236 @@ export const horizontalAlign = {
   right: 'su-ml-auto',
 };
 
+export const flexDirection = {
+  row: 'su-flex-row',
+  'row-reverse': 'su-flex-row-reverse',
+  col: 'su-flex-col',
+  'col-reverse': 'su-flex-col-reverse',
+};
+
+export const flexWrap = {
+  wrap: 'su-flex-wrap',
+  'wrap-reverse': 'su-flex-wrap-reverse',
+  nowrap: 'su-flex-nowrap',
+};
+
+export const alignContent = {
+  start: 'su-content-start',
+  end: 'su-content-end',
+  center: 'su-content-center',
+  between: 'su-content-between',
+  around: 'su-content-around',
+  evenly: 'su-content-evenly',
+};
+
+export const alignItems = {
+  start: 'su-items-start',
+  end: 'su-items-end',
+  center: 'su-items-center',
+  baseline: 'su-items-baseline',
+  stretch: 'su-items-stretch',
+};
+
+export const justifyContent = {
+  start: 'su-justify-start',
+  end: 'su-justify-end',
+  center: 'su-justify-center',
+  between: 'su-justify-between',
+  around: 'su-justify-around',
+  evenly: 'su-justify-evenly',
+};
+
 export const justifyItems = {
   start: 'su-justify-items-start',
   center: 'su-justify-items-center',
   end: 'su-justify-items-end',
+  stretch: 'su-justify-items-stretch',
+};
+
+export const gridCols = {
+  xs: {
+    1: 'su-grid-cols-1',
+    2: 'su-grid-cols-2',
+    3: 'su-grid-cols-3',
+    4: 'su-grid-cols-4',
+    5: 'su-grid-cols-5',
+    6: 'su-grid-cols-6',
+    7: 'su-grid-cols-7',
+    8: 'su-grid-cols-8',
+    9: 'su-grid-cols-9',
+    10: 'su-grid-cols-10',
+    11: 'su-grid-cols-11',
+    12: 'su-grid-cols-12',
+  },
+  sm: {
+    1: 'sm:su-grid-cols-1',
+    2: 'sm:su-grid-cols-2',
+    3: 'sm:su-grid-cols-3',
+    4: 'sm:su-grid-cols-4',
+    5: 'sm:su-grid-cols-5',
+    6: 'sm:su-grid-cols-6',
+    7: 'sm:su-grid-cols-7',
+    8: 'sm:su-grid-cols-8',
+    9: 'sm:su-grid-cols-9',
+    10: 'sm:su-grid-cols-10',
+    11: 'sm:su-grid-cols-11',
+    12: 'sm:su-grid-cols-12',
+  },
+  md: {
+    1: 'md:su-grid-cols-1',
+    2: 'md:su-grid-cols-2',
+    3: 'md:su-grid-cols-3',
+    4: 'md:su-grid-cols-4',
+    5: 'md:su-grid-cols-5',
+    6: 'md:su-grid-cols-6',
+    7: 'md:su-grid-cols-7',
+    8: 'md:su-grid-cols-8',
+    9: 'md:su-grid-cols-9',
+    10: 'md:su-grid-cols-10',
+    11: 'md:su-grid-cols-11',
+    12: 'md:su-grid-cols-12',
+  },
+  lg: {
+    1: 'lg:su-grid-cols-1',
+    2: 'lg:su-grid-cols-2',
+    3: 'lg:su-grid-cols-3',
+    4: 'lg:su-grid-cols-4',
+    5: 'lg:su-grid-cols-5',
+    6: 'lg:su-grid-cols-6',
+    7: 'lg:su-grid-cols-7',
+    8: 'lg:su-grid-cols-8',
+    9: 'lg:su-grid-cols-9',
+    10: 'lg:su-grid-cols-10',
+    11: 'lg:su-grid-cols-11',
+    12: 'lg:su-grid-cols-12',
+  },
+  xl: {
+    1: 'xl:su-grid-cols-1',
+    2: 'xl:su-grid-cols-2',
+    3: 'xl:su-grid-cols-3',
+    4: 'xl:su-grid-cols-4',
+    5: 'xl:su-grid-cols-5',
+    6: 'xl:su-grid-cols-6',
+    7: 'xl:su-grid-cols-7',
+    8: 'xl:su-grid-cols-8',
+    9: 'xl:su-grid-cols-9',
+    10: 'xl:su-grid-cols-10',
+    11: 'xl:su-grid-cols-11',
+    12: 'xl:su-grid-cols-12',
+  },
+  xxl: {
+    1: '2xl:su-grid-cols-1',
+    2: '2xl:su-grid-cols-2',
+    3: '2xl:su-grid-cols-3',
+    4: '2xl:su-grid-cols-4',
+    5: '2xl:su-grid-cols-5',
+    6: '2xl:su-grid-cols-6',
+    7: '2xl:su-grid-cols-7',
+    8: '2xl:su-grid-cols-8',
+    9: '2xl:su-grid-cols-9',
+    10: '2xl:su-grid-cols-10',
+    11: '2xl:su-grid-cols-11',
+    12: '2xl:su-grid-cols-12',
+  },
+};
+
+export const gridColSpan = {
+  xs: {
+    auto: 'su-col-auto',
+    full: 'su-col-span-full',
+    1: 'su-col-span-1',
+    2: 'su-col-span-2',
+    3: 'su-col-span-3',
+    4: 'su-col-span-4',
+    5: 'su-col-span-5',
+    6: 'su-col-span-6',
+    7: 'su-col-span-7',
+    8: 'su-col-span-8',
+    9: 'su-col-span-9',
+    10: 'su-col-span-10',
+    11: 'su-col-span-11',
+    12: 'su-col-span-12',
+  },
+  sm: {
+    auto: 'sm:su-col-auto',
+    full: 'sm:su-col-span-full',
+    1: 'sm:su-col-span-1',
+    2: 'sm:su-col-span-2',
+    3: 'sm:su-col-span-3',
+    4: 'sm:su-col-span-4',
+    5: 'sm:su-col-span-5',
+    6: 'sm:su-col-span-6',
+    7: 'sm:su-col-span-7',
+    8: 'sm:su-col-span-8',
+    9: 'sm:su-col-span-9',
+    10: 'sm:su-col-span-10',
+    11: 'sm:su-col-span-11',
+    12: 'sm:su-col-span-12',
+  },
+  md: {
+    auto: 'md:su-col-auto',
+    full: 'md:su-col-span-full',
+    1: 'md:su-col-span-1',
+    2: 'md:su-col-span-2',
+    3: 'md:su-col-span-3',
+    4: 'md:su-col-span-4',
+    5: 'md:su-col-span-5',
+    6: 'md:su-col-span-6',
+    7: 'md:su-col-span-7',
+    8: 'md:su-col-span-8',
+    9: 'md:su-col-span-9',
+    10: 'md:su-col-span-10',
+    11: 'md:su-col-span-11',
+    12: 'md:su-col-span-12',
+  },
+  lg: {
+    auto: 'lg:su-col-auto',
+    full: 'lg:su-col-span-full',
+    1: 'lg:su-col-span-1',
+    2: 'lg:su-col-span-2',
+    3: 'lg:su-col-span-3',
+    4: 'lg:su-col-span-4',
+    5: 'lg:su-col-span-5',
+    6: 'lg:su-col-span-6',
+    7: 'lg:su-col-span-7',
+    8: 'lg:su-col-span-8',
+    9: 'lg:su-col-span-9',
+    10: 'lg:su-col-span-10',
+    11: 'lg:su-col-span-11',
+    12: 'lg:su-col-span-12',
+  },
+  xl: {
+    auto: 'xl:su-col-auto',
+    full: 'xl:su-col-span-full',
+    1: 'xl:su-col-span-1',
+    2: 'xl:su-col-span-2',
+    3: 'xl:su-col-span-3',
+    4: 'xl:su-col-span-4',
+    5: 'xl:su-col-span-5',
+    6: 'xl:su-col-span-6',
+    7: 'xl:su-col-span-7',
+    8: 'xl:su-col-span-8',
+    9: 'xl:su-col-span-9',
+    10: 'xl:su-col-span-10',
+    11: 'xl:su-col-span-11',
+    12: 'xl:su-col-span-12',
+  },
+  xxl: {
+    auto: '2xl:su-col-auto',
+    full: '2xl:su-col-span-full',
+    1: '2xl:su-col-span-1',
+    2: '2xl:su-col-span-2',
+    3: '2xl:su-col-span-3',
+    4: '2xl:su-col-span-4',
+    5: '2xl:su-col-span-5',
+    6: '2xl:su-col-span-6',
+    7: '2xl:su-col-span-7',
+    8: '2xl:su-col-span-8',
+    9: '2xl:su-col-span-9',
+    10: '2xl:su-col-span-10',
+    11: '2xl:su-col-span-11',
+    12: '2xl:su-col-span-12',
+  },
 };
 
 export const mediaAspectRatio = {

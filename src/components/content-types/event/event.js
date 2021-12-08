@@ -1,6 +1,5 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import { FlexBox, SrOnlyText } from 'decanter-react';
 import {
   CalendarIcon,
   DesktopComputerIcon,
@@ -10,6 +9,8 @@ import {
 import { DateTime } from 'luxon';
 import { dcnb } from 'cnbuilder';
 import { Heading } from '../../simple/Heading';
+import { FlexBox } from '../../layout/FlexBox';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import TabLabel from '../../simple/tabLabel';
@@ -129,7 +130,7 @@ const Event = ({
     <SbEditable content={blok}>
       <FlexBox
         direction="col"
-        element="article"
+        as="article"
         className={dcnb(
           'event-card su-group su-relative su-overflow-hidden sm:su-max-w-[42rem] md:su-max-w-full su-text-black su-break-words su-basefont-23 su-w-full',
           wrapperClasses,
@@ -190,7 +191,7 @@ const Event = ({
             tracking="normal"
             className="su-relative su-inline su-type-0"
           >
-            {!hideTab && <SrOnlyText srText={`${tabText || 'Event'}: `} />}
+            {!hideTab && <SrOnlyText>{`${tabText || 'Event'}: `}</SrOnlyText>}
             {title}
           </Heading>
           <HeroIcon
@@ -210,7 +211,7 @@ const Event = ({
         >
           <FlexBox direction="row" alignItems="start" className="su-mb-04em">
             <CalendarIcon className={iconClasses} aria-hidden="true" />
-            <SrOnlyText srText="Date: " />
+            <SrOnlyText>Date: </SrOnlyText>
             <span>
               {longStartDate}
               {!isSameDay && ` - ${longEndDate}`}
@@ -220,9 +221,9 @@ const Event = ({
           {location && (
             <FlexBox direction="row" alignItems="start" className="su-mb-04em">
               {locationIcon}
-              <SrOnlyText
-                srText={isVirtual ? 'This event is virtual: ' : 'Location: '}
-              />
+              <SrOnlyText>
+                {isVirtual ? 'This event is virtual: ' : 'Location: '}
+              </SrOnlyText>
               <span>{location}</span>
             </FlexBox>
           )}

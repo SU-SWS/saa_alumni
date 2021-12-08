@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
-import { FlexBox, SrOnlyText } from 'decanter-react';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
+import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import CardImage from '../../media/cardImage';
 import { Date } from '../../simple/Date/Date';
@@ -43,7 +44,7 @@ const TripCard = ({
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
 
   return (
-    <FlexBox direction="col" element="article" className={styles.root}>
+    <FlexBox direction="col" as="article" className={styles.root}>
       <div className={styles.imageWrapper}>
         <CardImage
           className={styles.image}
@@ -67,7 +68,7 @@ const TripCard = ({
               tracking="normal"
               className={styles.heading}
             >
-              {tag && <SrOnlyText srText={`${tag}: `} />}
+              {tag && <SrOnlyText>{`${tag}: `}</SrOnlyText>}
               {tripTitle}
             </Heading>
             <HeroIcon

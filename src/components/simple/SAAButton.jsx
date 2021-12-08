@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import {
   buttonSizes,
@@ -8,6 +7,7 @@ import {
   textAlign,
 } from '../../utilities/dataSource';
 import HeroIcon from './heroIcon';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 import * as styles from '../cta/SAALinkButton.styles';
 
 export const SAAButtonProps = {
@@ -18,11 +18,11 @@ export const SAAButtonProps = {
   align: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   srText: PropTypes.string,
-  ClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   onClick: PropTypes.func,
 };
 
-const SAAButton = React.forwardRef(
+export const SAAButton = React.forwardRef(
   (
     {
       size = 'default',
@@ -63,7 +63,7 @@ const SAAButton = React.forwardRef(
           {...rest}
         >
           {children}
-          {srText && <SrOnlyText srText={` ${srText}`} />}
+          {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
           {icon !== 'none' && (
             <HeroIcon
               iconType={icon}
@@ -77,5 +77,3 @@ const SAAButton = React.forwardRef(
   }
 );
 SAAButton.propTypes = SAAButtonProps;
-
-export default SAAButton;

@@ -20,7 +20,7 @@ export const SBCollectionCard = ({ blok, isDark }) => {
         link={link || ''}
         filename={filename}
         focus={focus}
-        headingLevel={parseInt(headingLevel, 10)}
+        headingLevel={headingLevel}
         className="collection-card"
         isDark={isDark}
       />

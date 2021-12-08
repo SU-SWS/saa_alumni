@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 import {
   buttonSizes,
   buttonStyles,
@@ -11,20 +11,21 @@ import SbLink from '../../utilities/sbLink';
 import HeroIcon from '../simple/heroIcon';
 import * as styles from './SAALinkButton.styles';
 import { SBLinkType } from '../../types/storyblok/SBLinkType';
+import { ClassNameType } from '../../types/CommonType';
 
-export const SAALinkButtonProps = {
+const SAALinkButtonProps = {
   size: PropTypes.string,
   buttonStyle: PropTypes.string,
   icon: PropTypes.string,
   align: PropTypes.string,
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  children: PropTypes.node,
   link: SBLinkType,
   rel: PropTypes.string,
   srText: PropTypes.string,
-  ClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  className: ClassNameType,
 };
 
-const SAALinkButton = React.forwardRef(
+export const SAALinkButton = React.forwardRef(
   (
     {
       size = 'default',
@@ -59,7 +60,7 @@ const SAALinkButton = React.forwardRef(
           {...rest}
         >
           {children}
-          {srText && <SrOnlyText srText={` ${srText}`} />}
+          {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
           {icon !== 'none' && (
             <HeroIcon
               iconType={icon}
@@ -73,5 +74,3 @@ const SAALinkButton = React.forwardRef(
   }
 );
 SAALinkButton.propTypes = SAALinkButtonProps;
-
-export default SAALinkButton;

@@ -1,5 +1,4 @@
 import React from 'react';
-import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
 import { VideoCameraIcon, MicrophoneIcon } from '@heroicons/react/outline';
 import {
@@ -11,6 +10,7 @@ import {
   MailIcon,
   PlayIcon,
 } from '@heroicons/react/solid';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 
 const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
   const heroIconMap = {
@@ -87,7 +87,7 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
         className={dcnb(heroIconStyle, className)}
         {...props}
       />
-      {srText && <SrOnlyText srText={srText} />}
+      {srText && <SrOnlyText>{srText}</SrOnlyText>}
     </>
   );
 };

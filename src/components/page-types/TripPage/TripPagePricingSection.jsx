@@ -5,6 +5,7 @@ import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import { SBRichTextType } from '../../../types/storyblok/SBRichTextType';
 import { TripPageSectionWrapper } from './TripPageSectionWrapper';
 import { TripPageSectionHeader } from './TripPageSectionHeader';
+import getNumBloks from '../../../utilities/getNumBloks';
 
 export const TripPagePricingSectionProps = {
   pricingHeading: PropTypes.string,
@@ -32,7 +33,7 @@ export const TripPagePricingSection = React.forwardRef((props, ref) => {
           heading={pricingHeading}
           body={pricingBody}
         />
-        {pricingBelowContent && pricingBelowContent.length > 0 && (
+        {getNumBloks(pricingBelowContent) > 0 && (
           <div className="trip-page-pricing-below-content">
             <CreateBloks blokSection={pricingBelowContent} />
           </div>

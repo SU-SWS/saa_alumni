@@ -1,6 +1,6 @@
 import React from 'react';
-import { SrOnlyText } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 
 const TabLabel = ({ text, srText, classes, ...props }) => {
   // Focus isn't on the card itself since we are using the stretched-link class for accessibility, so no need for group-focus styles
@@ -17,7 +17,7 @@ const TabLabel = ({ text, srText, classes, ...props }) => {
       {...props}
     >
       {text}
-      {srText && <SrOnlyText srText={` ${srText}`} />}
+      {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
     </div>
   );
 };

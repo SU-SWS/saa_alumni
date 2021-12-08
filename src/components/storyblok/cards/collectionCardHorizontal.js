@@ -24,7 +24,7 @@ export const SBCollectionCardHorizontal = ({ blok }) => {
         focus={focus}
         imageFocus={imageFocus}
         spacingBottom={spacingBottom}
-        headingLevel={parseInt(headingLevel, 10)}
+        headingLevel={headingLevel}
         className="collection-card-horizontal"
       />
     </SbEditable>

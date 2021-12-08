@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid as DrGrid } from 'decanter-react';
+import { Grid } from '../../layout/Grid';
 import { Heading } from '../../simple/Heading';
 import CreateBloks from '../../../utilities/createBloks';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
@@ -37,7 +37,7 @@ export const TripPageRelatedTripsSection = (props) => {
         {`Related trip${numTrips > 1 ? 's' : ''}`}
       </Heading>
       <WidthBox width={tripGridWidth}>
-        <DrGrid
+        <Grid
           xs={1}
           md={numTrips > 1 ? 2 : 1}
           xl={numColumns}
@@ -45,7 +45,7 @@ export const TripPageRelatedTripsSection = (props) => {
           className={styles.tripGrid}
         >
           <CreateBloks blokSection={relatedTrips} />
-        </DrGrid>
+        </Grid>
       </WidthBox>
     </div>
   );

@@ -1,7 +1,8 @@
 import React from 'react';
-import { SrOnlyText } from 'decanter-react';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import { StanfordLogo } from '../StanfordLogo/StanfordLogo';
 import * as styles from './GlobalFooter.styles';
+import { Container } from '../../layout/Container';
 
 /**
  * Stanford Global Footer Component.
@@ -10,7 +11,7 @@ import * as styles from './GlobalFooter.styles';
  */
 
 export const GlobalFooter = () => (
-  <div className={styles.root}>
+  <Container className={styles.root}>
     <div className={styles.wrapper} title="Common Stanford resources">
       <div className={styles.logoWrapper}>
         <StanfordLogo className={styles.logo} type="stacked" />
@@ -126,5 +127,5 @@ export const GlobalFooter = () => (
         </div>
       </div>
     </div>
-  </div>
+  </Container>
 );

@@ -1,7 +1,9 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { Container, FlexBox, Heading } from 'decanter-react';
 import { dcnb } from 'cnbuilder';
+import { Container } from '../layout/Container';
+import { FlexBox } from '../layout/FlexBox';
+import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 import RichTextRenderer from '../../utilities/richTextRenderer';
@@ -23,7 +25,7 @@ const Poster = ({
     vCrop = 'center',
     headline,
     isBigHeadline,
-    headingLevel,
+    headingLevel = 2,
     text,
     isBigBodyText,
     layout,
@@ -101,8 +103,7 @@ const Poster = ({
         >
           <Heading
             font="serif"
-            weight="bold"
-            level={parseInt(headingLevel, 10) || 2}
+            level={headingLevel}
             className={dcnb(headingSpacing, headlineSize)}
           >
             {headline}
