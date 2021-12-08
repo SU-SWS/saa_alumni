@@ -6,6 +6,7 @@ import {
   MARK_LINK,
   NODE_HEADING,
   NODE_IMAGE,
+  NODE_QUOTE,
 } from 'storyblok-rich-text-react-renderer';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
@@ -125,6 +126,11 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
       },
       [NODE_IMAGE]: (children, { src, alt }) => (
         <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
+      ),
+      [NODE_QUOTE]: (children) => (
+        <blockquote className="su-font-serif su-font-bold su-type-2 children:su-leading-cozy children:last:su-mb-06em">
+          {children}
+        </blockquote>
       ),
     },
     defaultStringResolver: (str) => <p>{str}</p>,

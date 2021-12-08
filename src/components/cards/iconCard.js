@@ -64,12 +64,7 @@ const IconCard = ({
           )}
           link={link}
         >
-          <Heading
-            level={headingLevel}
-            size="base"
-            weight="semibold"
-            className="su-mb-0"
-          >
+          <span className="su-block su-leading-display su-font-semibold">
             {headline}
             {link.linktype === 'url' && (
               <HeroIcon
@@ -78,7 +73,7 @@ const IconCard = ({
                 isAnimate
               />
             )}
-          </Heading>
+          </span>
         </SbLink>
       </FlexBox>
     </SbEditable>
