@@ -56,7 +56,7 @@ const SbLink = React.forwardRef((props, ref) => {
   if (props.link?.linktype === 'story') {
     // Handle the home slug.
     linkUrl = linkUrl === 'home' ? '/' : `/${linkUrl}`;
-    linkUrl += linkUrl.endsWith('/') ? '' : '/';
+    linkUrl += linkUrl.endsWith('/') || props.link?.anchor ? '' : '/';
 
     if (linkUrl.match(/\?/) && utms.length) {
       linkUrl += `&${utms}`;
