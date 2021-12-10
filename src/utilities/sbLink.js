@@ -16,7 +16,7 @@ const SbLink = React.forwardRef((props, ref) => {
   // or cached_url (internal or asset links)
   let linkUrl = props.link?.url || props.link?.cached_url || '';
   if (props.link?.anchor) {
-    linkUrl = `#${props.link?.anchor}`;
+    linkUrl = `${linkUrl}#${props.link?.anchor}`;
   } else if (props.link?.linktype === 'email') {
     linkUrl = `mailto:${props.link?.email}`;
   }
@@ -54,7 +54,6 @@ const SbLink = React.forwardRef((props, ref) => {
   // Story or Internal type link.
   // ---------------------------------------------------------------------------
   if (props.link?.linktype === 'story') {
-    if (!props.link?.anchor) {
       // Handle the home slug.
       linkUrl = linkUrl === 'home' ? '/' : `/${linkUrl}`;
       linkUrl += linkUrl.endsWith('/') ? '' : '/';
@@ -64,7 +63,6 @@ const SbLink = React.forwardRef((props, ref) => {
       } else if (utms.length) {
         linkUrl += `?${utms}`;
       }
-    }
 
     return (
       <Link
