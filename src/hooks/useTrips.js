@@ -10,7 +10,12 @@ export const useTrips = () => {
   const result = useStaticQuery(
     graphql`
       query TripsQuery {
-        trips: allStoryblokEntry(filter: { field_component: { eq: "trip" } }) {
+        trips: allStoryblokEntry(
+          filter: {
+            field_component: { eq: "trip" }
+            field_hideFromFilter_boolean: { ne: true }
+          }
+        ) {
           nodes {
             id
             name
