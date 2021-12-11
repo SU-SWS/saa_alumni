@@ -15,7 +15,9 @@ const SbLink = React.forwardRef((props, ref) => {
   // Storyblok link object either has a url (external links)
   // or cached_url (internal or asset links)
   let linkUrl = props.link?.url || props.link?.cached_url || '';
-  if (props.link?.linktype === 'email') {
+  if (props.link?.anchor) {
+    linkUrl = `${linkUrl}#${props.link?.anchor}`;
+  } else if (props.link?.linktype === 'email') {
     linkUrl = `mailto:${props.link?.email}`;
   }
 
@@ -54,7 +56,7 @@ const SbLink = React.forwardRef((props, ref) => {
   if (props.link?.linktype === 'story') {
     // Handle the home slug.
     linkUrl = linkUrl === 'home' ? '/' : `/${linkUrl}`;
-    linkUrl += linkUrl.endsWith('/') ? '' : '/';
+    linkUrl += linkUrl.endsWith('/') || props.link?.anchor ? '' : '/';
 
     if (linkUrl.match(/\?/) && utms.length) {
       linkUrl += `&${utms}`;
