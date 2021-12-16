@@ -188,6 +188,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       field_enabled_boolean: Boolean!
       field_statusCode_string: String!
       field_keywords_string: String!
+      field_hideFromFilter_boolean: Boolean!
     }
   `;
   createTypes(typeDefs);
