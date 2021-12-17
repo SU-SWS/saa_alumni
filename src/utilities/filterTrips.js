@@ -74,7 +74,7 @@ export const tripMatchesFilterType = (trip, filterType, filters = []) => {
   const { startDate, endDate } = trip.content;
   const tripYears = getTripYear(startDate);
   const tripMonths = getTripMonth(startDate);
-  const tripDurationDays = getDuration(startDate, endDate).days;
+  const tripDurationDays = getDuration(startDate, endDate).days + 1;
 
   switch (filterType) {
     case 'trip-region':
@@ -267,7 +267,7 @@ export const filterTrips = (allTrips, activeFilters = [], facetIndex) => {
  */
 export const getTripDurationFilters = (trip, durationFilters) => {
   const { startDate, endDate } = trip.content;
-  const duration = getDuration(startDate, endDate).days;
+  const duration = getDuration(startDate, endDate).days + 1;
 
   const matchingFilters = durationFilters.filter((filter) =>
     tripWithinDuration(duration, filter.value)
