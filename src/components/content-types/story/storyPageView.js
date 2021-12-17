@@ -11,7 +11,7 @@ import WidthBox from '../../layout/widthBox';
 import CardImage from '../../media/cardImage';
 import HeroIcon from '../../simple/heroIcon';
 import CaptionMedia from '../../media/captionMedia';
-import Ankle from '../../partials/ankle/ankle';
+import IconCards from '../../composite/IconCards/iconCards';
 
 const StoryPageView = (props) => {
   // Destructure props
@@ -151,7 +151,7 @@ const StoryPageView = (props) => {
                 <CreateBloks blokSection={belowContent} />
               </div>
             )}
-            {numAnkle > 0 && <Ankle {...props} />}
+            {numAnkle > 0 && <IconCards isAnkle {...props} />}
           </article>
         </Container>
       </Layout>

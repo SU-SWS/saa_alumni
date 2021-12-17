@@ -62,6 +62,7 @@ import VerticalNav from './navigation/verticalNav';
 import VerticalNavWrapper from './navigation/verticalNavWrapper';
 import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
+import IconCards from './composite/IconCards/iconCards';
 
 const ComponentList = {
   alert: SBAlert,
@@ -127,6 +128,7 @@ const ComponentList = {
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,
   wysiwyg: Wysiwyg,
+  iconCards: IconCards,
 };
 
 const Components = (type) => {

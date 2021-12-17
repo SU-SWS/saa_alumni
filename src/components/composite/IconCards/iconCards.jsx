@@ -9,39 +9,34 @@ import { bgTextColorPairs } from '../../../utilities/dataSource';
 import getNumBloks from '../../../utilities/getNumBloks';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
-import * as styles from './ankle.styles';
+import * as styles from './iconCards.styles';
 
-/**
- * The ankle component is referenced and used in the page type components.
- * It allows for placing 1 to 3 icon cards above the local footer.
- */
+const IconCards = ({ blok, isDark, isAnkle }) => {
+  let { content, title, isTitleSrOnly, intro, bgColor } = blok;
 
-const Ankle = ({
-  blok: {
-    ankleContent,
-    ankleTitle,
-    isAnkleTitleSrOnly,
-    ankleIntro,
-    ankleBgColor,
-  },
-  isDark,
-}) => {
-  const numItems = getNumBloks(ankleContent);
-  let ankleBgStyles = bgTextColorPairs[ankleBgColor ?? 'white'];
-  let isAnkleDark;
+  // Ankle has a different schema.
+  if (isAnkle) {
+    title = blok.ankleTitle;
+    content = blok.ankleContent;
+    isTitleSrOnly = blok.isAnkleTitleSrOnly;
+    intro = blok.ankleIntro;
+    bgColor = blok.ankleBgColor;
+  }
+  const numItems = getNumBloks(content);
+  let bgStyles = bgTextColorPairs[bgColor ?? 'white'];
+  let isDarkVar = isDark;
 
   // When black is selected as the background color, set the child component nested in the region to use their dark themed versions
-  if (ankleBgColor === 'black') {
-    isAnkleDark = true;
+  if (bgColor === 'black') {
+    isDarkVar = true;
   }
 
   // This is for when "isDark" boolean prop is passed from parent component, eg., dark background page only allows for dark ankle region
   if (isDark) {
-    ankleBgStyles = bgTextColorPairs.black;
-    isAnkleDark = true;
+    bgStyles = bgTextColorPairs.black;
   }
 
-  const ankleWrapperStyles = dcnb(styles.root, ankleBgStyles);
+  const ankleWrapperStyles = dcnb(styles.root, bgStyles);
 
   let ankleWidth = '12';
 
@@ -53,11 +48,11 @@ const Ankle = ({
 
   return (
     <div className={ankleWrapperStyles}>
-      {(ankleTitle || ankleIntro) && (
+      {(title || intro) && (
         <Container as="header">
-          {ankleTitle && (
+          {title && (
             <Heading
-              srOnly={isAnkleTitleSrOnly}
+              srOnly={isTitleSrOnly}
               level={2}
               size={2}
               font="serif"
@@ -65,21 +60,21 @@ const Ankle = ({
               className={dcnb(
                 styles.heading,
                 `${
-                  hasRichText(ankleIntro)
+                  hasRichText(intro)
                     ? styles.headingMarginHasIntro
                     : styles.headingMarginNoIntro
                 }`
               )}
             >
-              {ankleTitle}
+              {title}
             </Heading>
           )}
-          {hasRichText(ankleIntro) && (
+          {hasRichText(intro) && (
             <div className={styles.introWrapper}>
               <RichTextRenderer
-                wysiwyg={ankleIntro}
+                wysiwyg={intro}
                 className={styles.intro}
-                isDark={isAnkleDark}
+                isDark={isDarkVar}
               />
             </div>
           )}
@@ -87,11 +82,11 @@ const Ankle = ({
       )}
       <WidthBox width={ankleWidth}>
         <Grid xs={1} md={numItems} gap className={styles.iconCardGrid}>
-          <CreateBloks blokSection={ankleContent} isDark={isAnkleDark} />
+          <CreateBloks blokSection={content} isDark={isDarkVar} />
         </Grid>
       </WidthBox>
     </div>
   );
 };
 
-export default Ankle;
+export default IconCards;

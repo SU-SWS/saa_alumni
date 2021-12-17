@@ -16,11 +16,11 @@ import { Chip } from '../../simple/Chip/Chip';
 import * as styles from './TripFilterPage.styles';
 import FaIcon from '../../simple/faIcon';
 import { drillDownFilterTypes } from '../../../utilities/filterTrips';
-import Ankle from '../../partials/ankle/ankle';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import useMediaQuery from '../../../hooks/useMediaQuery';
 import { breakpoints } from '../../../contexts/GlobalContext';
 import TripFilterModal from './TripFilterModal';
+import IconCards from '../../composite/IconCards/iconCards';
 
 const TripFilterPage = (props) => {
   const { blok } = props;
@@ -205,7 +205,7 @@ const TripFilterPage = (props) => {
             </div>
           )}
           {ankleContent && ankleContent.length > 0 && (
-            <Ankle isDark {...props} />
+            <IconCards isAnkle isDark {...props} />
           )}
         </Container>
       </Layout>

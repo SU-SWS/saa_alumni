@@ -8,7 +8,7 @@ import { luxonDate, luxonToday } from '../../../utilities/dates';
 import Layout from '../../partials/layout';
 import { TripContent } from '../../../types/TripType';
 import * as styles from './TripPage.styles';
-import Ankle from '../../partials/ankle/ankle';
+import IconCards from '../../composite/IconCards/iconCards';
 import getNumBloks from '../../../utilities/getNumBloks';
 import hasRichText from '../../../utilities/hasRichText';
 
@@ -265,7 +265,9 @@ const TripPage = (props) => {
               )}
             </>
           )}
-          {getNumBloks(ankleContent) > 0 && <Ankle isDark {...props} />}
+          {getNumBloks(ankleContent) > 0 && (
+            <IconCards isAnkle isDark {...props} />
+          )}
         </main>
       </Layout>
     </SbEditable>

@@ -3,7 +3,7 @@ import SbEditable from 'storyblok-react';
 import { Container } from '../layout/Container';
 import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
-import Ankle from '../partials/ankle/ankle';
+import IconCards from '../composite/IconCards/iconCards';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 
@@ -66,7 +66,7 @@ const DarkPage = (props) => {
               <CreateBloks blokSection={belowContent} />
             </div>
           )}
-          {numAnkle > 0 && <Ankle isDark {...props} />}
+          {numAnkle > 0 && <IconCards isAnkle isDark {...props} />}
         </Container>
       </Layout>
     </SbEditable>
