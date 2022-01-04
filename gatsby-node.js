@@ -54,9 +54,10 @@ exports.createPages = ({ graphql, actions }) => {
 
         const entries = result.data.allStoryblokEntry.edges;
         entries.forEach((entry, index) => {
+          let render = true;
           let slug = `${entry.node.full_slug}`;
           slug = slug.replace(/^\/|\/$/g, '');
-          let pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
+          const pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
 
           // Wire up the 404 page by setting the path to just 404 as Gatsby expects it.
           // if (pagePath.match(/^404/)) {
@@ -78,17 +79,30 @@ exports.createPages = ({ graphql, actions }) => {
             isCanonical = false;
           }
           const noIndex = content.noIndex ? content.noIndex : false;
+          // Don't create page for past trips.
+          if (content.component === 'trip') {
+            const start = new Date();
+            start.setHours(0, 0, 0, 0);
+            const now = Date.parse(start);
 
-          createPage({
-            path: `/${pagePath}`,
-            component: storyblokEntry,
-            context: {
-              slug: entry.node.full_slug,
-              story: entry.node,
-              isCanonical,
-              noIndex,
-            },
-          });
+            const tripDate = Date.parse(content.startDate);
+            if (now > tripDate) {
+              render = false;
+            }
+          }
+
+          if (render) {
+            createPage({
+              path: `/${pagePath}`,
+              component: storyblokEntry,
+              context: {
+                slug: entry.node.full_slug,
+                story: entry.node,
+                isCanonical,
+                noIndex,
+              },
+            });
+          }
         });
       })
     );
