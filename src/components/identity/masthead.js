@@ -122,6 +122,9 @@ const Masthead = ({
                       className={styles.utilNavItem}
                       hasExternalIcon
                     />
+                    <li className="su-text-white">
+                      <button>Login</button>
+                    </li>
                   </ul>
                 </nav>
                 <OpenSearchModalButton
