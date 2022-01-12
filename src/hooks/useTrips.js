@@ -1,4 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
+import { luxonToday, luxonDate } from '../utilities/dates';
 
 /**
  * Hook to fetch trip content for filtering
@@ -26,10 +27,20 @@ export const useTrips = () => {
       }
     `
   );
-  const trips = result.trips.nodes.map((trip) => ({
-    ...trip,
-    content: JSON.parse(trip.content),
-  }));
 
+  let trips = result.trips.nodes.map((trip) => {
+    const tripObj = {
+      ...trip,
+      content: JSON.parse(trip.content),
+    };
+
+    // Check if trip didn't start yet
+    // Only show future trips.
+    const tripDate = luxonDate(tripObj.content.startDate);
+    return luxonToday().startOf('day') < tripDate.startOf('day')
+      ? tripObj
+      : false;
+  });
+  trips = trips.filter((trip) => trip !== false);
   return trips;
 };
