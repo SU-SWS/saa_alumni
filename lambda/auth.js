@@ -10,10 +10,8 @@ app.use(cookieParser());
 
 app.get('/api/auth/login', auth.initiate());
 app.get('/api/auth/logout', auth.destroySession());
-//app.get('/api/auth/session', auth.authorize());
-app.get('/api/auth/session', async (req, res, next) => {
-  const user = await auth.validateSessionCookie(req);
-  res.status(200).send(user);
+app.get('/api/auth/session', auth.authorize(), async (req, res, next) => {
+  res.json(req.user);
 });
 app.post('/api/auth/callback', auth.authenticate());
 

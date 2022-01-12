@@ -1,31 +1,11 @@
-import React, { useState } from 'react';
-import fetch from 'node-fetch';
+import React from 'react';
+import AuthenticatedPage from '../components/auth/AuthenticatedPage';
 
-const ProtectedPage = (props) => {
-  const [loggedIn, setLoggedIn] = useState(false);
-  fetch('/api/auth/session')
-    .then((res) => res.json())
-    .then((session) => {
-      if (session.email) {
-        setLoggedIn(true);
-      } else {
-        setLoggedIn(false);
-      }
-    });
-
-  if (loggedIn) {
-    return (
-      <div>
-        <h1>Protected Page</h1>
-        <div>This page should only be accessible to authenticated users.</div>
-      </div>
-    );
-  }
-  return (
-    <div>
-      <h1>Access Denied</h1>
-    </div>
-  );
-};
+const ProtectedPage = (props) => (
+  <AuthenticatedPage>
+    <h1>Authenticated Page Demo</h1>
+    <div>This page should only be visible to authenticated users.</div>
+  </AuthenticatedPage>
+);
 
 export default ProtectedPage;
