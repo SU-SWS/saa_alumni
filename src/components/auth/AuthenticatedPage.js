@@ -1,21 +1,14 @@
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
+
 const AuthenticatedPage = ({ children }) => {
-  const { isAuthenticated, isAuthenticating, user } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   if (isAuthenticated) {
     return <>{children}</>;
   }
 
-  if (!isAuthenticated && !isAuthenticating) {
-    return (
-      <>
-        <h1>Access Denied</h1>
-      </>
-    );
-  }
-
-  return <div>Checking authenticating status...</div>;
+  return <div>Redirecting to login page...</div>;
 };
 
 export default AuthenticatedPage;
