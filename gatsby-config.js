@@ -1,3 +1,5 @@
+const getSiteUrl = require('./src/utilities/getSiteUrl');
+
 const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
@@ -24,28 +26,12 @@ const storyblokRelations = [
   'tsContentPicker.contentPicker',
 ];
 
-// Support for Gatsby CLI
-let siteUrl = 'http://localhost:8000';
-
-// Support for Production site builds.
-if (process.env.CONTEXT === 'production') {
-  siteUrl = process.env.URL;
-}
-// Support for non-production netlify builds (branch/preview)
-else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY) {
-  siteUrl = process.env.DEPLOY_PRIME_URL;
-}
-// Support for Netlify CLI.
-else if (process.env.NETLIFY_DEV === true) {
-  siteUrl = 'http://localhost:64946';
-}
-
 module.exports = {
   siteMetadata: {
     title: `Stanford Alumni Association`,
     description: `Stanford Alumni Association`,
     author: `Stanford University Alumni Association`,
-    siteUrl,
+    siteUrl: getSiteUrl(),
 
     // This key is for metadata only and can be statically queried
     storyblok: {
