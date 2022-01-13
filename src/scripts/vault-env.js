@@ -3,9 +3,16 @@ const activeEnv =
 
 console.log(`Using environment config: '${activeEnv}'`);
 
+let envFile = '.env';
+
+if (activeEnv !== 'production') {
+  envFile = `.env.${activeEnv}`;
+}
+
 require('dotenv').config({
-  path: `.env.${activeEnv}`,
+  path: envFile,
 });
+
 const fs = require('fs');
 const path = require('path');
 const Vault = require('node-vault');
@@ -19,7 +26,7 @@ const vaultEnv = async () => {
   // Overwrite existing values if present
   const overwrite = !!process.env.VAULT_OVERWRITE;
 
-  const envFilePath = path.join(__dirname, '../../.env');
+  const envFilePath = path.join(__dirname, `../../${envFile}`);
 
   // Fetch Vault Secrets
   try {
