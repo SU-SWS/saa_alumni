@@ -99,6 +99,7 @@ const TripPage = (props) => {
   const printContainerRef = useRef(null);
   const printTrip = useReactToPrint({
     content: () => printContainerRef.current,
+    pageStyle: '@page { margin: 0.4in; }',
   });
 
   // Check whether each of the sections have content

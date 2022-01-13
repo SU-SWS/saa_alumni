@@ -56,7 +56,7 @@ exports.createPages = ({ graphql, actions }) => {
         entries.forEach((entry, index) => {
           let slug = `${entry.node.full_slug}`;
           slug = slug.replace(/^\/|\/$/g, '');
-          let pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
+          const pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
 
           // Wire up the 404 page by setting the path to just 404 as Gatsby expects it.
           // if (pagePath.match(/^404/)) {
