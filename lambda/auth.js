@@ -19,13 +19,9 @@ app.use(cookieParser());
 
 app.get('/api/auth/login', authInstance.initiate());
 app.get('/api/auth/logout', authInstance.destroySession());
-app.get(
-  '/api/auth/session',
-  authInstance.authorize(),
-  async (req, res, next) => {
-    res.json(req.user);
-  }
-);
+app.get('/api/auth/session', authInstance.authorize(), (req, res, next) => {
+  res.json(req.user);
+});
 app.post('/api/auth/callback', authInstance.authenticate());
 
 exports.handler = serverless(app);
