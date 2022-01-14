@@ -3,11 +3,7 @@ const activeEnv =
 
 console.log(`Using environment config: '${activeEnv}'`);
 
-let envFile = '.env';
-
-if (activeEnv !== 'production') {
-  envFile = `.env.${activeEnv}`;
-}
+const envFile = `.env.${activeEnv}`;
 
 require('dotenv').config({
   path: envFile,
