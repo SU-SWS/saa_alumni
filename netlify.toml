@@ -58,6 +58,10 @@ package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [plugins.inputs]
   destination = "https://cardinalalumni.stanford.edu/:splat"
 
+[[plugins]]
+package = "netlify-plugin-inline-functions-env"
+  [plugins.inputs]
+  buildEvent = "onBuild"
 # CONTEXTUAL PLUGINS
 # ##############################################################################
 [[context.production.plugins]]
