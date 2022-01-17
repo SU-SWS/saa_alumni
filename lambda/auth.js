@@ -1,3 +1,10 @@
+const activeEnv =
+  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
+
+require('dotenv').config({
+  path: `.env.${activeEnv}`,
+});
+
 const serverless = require('serverless-http');
 const { AdaptAuth } = require('adapt-auth-sdk');
 const express = require('express');
