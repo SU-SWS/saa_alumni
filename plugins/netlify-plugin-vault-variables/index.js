@@ -5,10 +5,6 @@ const fs = require('fs');
 const path = require('path');
 const vaultReq = require('node-vault');
 
-const activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
-const envFile = `.env.${activeEnv}`;
-
 /* eslint-disable no-unused-vars */
 module.exports = {
   async onPreBuild({
@@ -23,9 +19,7 @@ module.exports = {
     };
 
     // Need some environment variables to run.
-    dotenv.config({
-      path: envFile,
-    });
+    dotenv.config();
 
     // Initialize the vault client with the config options.
     const vault = vaultReq(options);
@@ -79,7 +73,7 @@ module.exports = {
     });
 
     let existingSecrets = '';
-    const envFilePath = path.resolve(process.cwd(), envFile);
+    const envFilePath = path.resolve(process.cwd(), '.env');
     console.log(`Environment file path: ${envFilePath}`);
 
     // Read existing env file.
@@ -95,9 +89,7 @@ module.exports = {
     fs.writeFileSync(envFilePath, allSecretsString);
 
     // Put the new vars back into the env.
-    dotenv.config({
-      path: envFile,
-    });
+    dotenv.config();
 
     // Display success information
     status.show({
