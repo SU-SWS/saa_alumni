@@ -1,14 +1,3 @@
-const activeEnv =
-  process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
-
-require('dotenv').config({
-  path: `.env.${activeEnv}`,
-});
-
-const fs = require('fs');
-
-fs.readdir('.', (err, files) => console.log(files));
-
 const serverless = require('serverless-http');
 const { AdaptAuth } = require('adapt-auth-sdk');
 const express = require('express');
@@ -20,7 +9,17 @@ const getSiteUrl = require('../src/utilities/getSiteUrl');
 const siteUrl = getSiteUrl();
 const authInstance = new AdaptAuth({
   saml: {
+    cert: process.env.ADAPT_AUTH_SAML_CERT || 'you-must-pass-cert',
+    decryptionKey: process.env.ADAPT_AUTH_SAML_DECRYPTION_KEY,
+    returnTo: process.env.ADAPT_AUTH_SAML_RETURN_URL,
     returnToOrigin: process.env.ADAPT_AUTH_SAML_RETURN_ORIGIN || siteUrl,
+    returnToPath: process.env.ADAPT_AUTH_SAML_RETURN_PATH || '',
+  },
+  session: {
+    secret: process.env.ADAPT_AUTH_SESSION_SECRET || '',
+    logoutRedirectUrl: process.env.ADAPT_AUTH_SESSION_LOGOUT_URL || '/',
+    loginRedirectUrl: process.env.ADAPT_AUTH_SESSION_LOGIN_URL,
+    unauthorizedRedirectUrl: process.env.ADAPT_AUTH_SESSION_UNAUTHORIZED_URL,
   },
 });
 
