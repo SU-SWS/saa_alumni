@@ -44,11 +44,10 @@
   [plugins.inputs]
     endpoint = 'https://vault.stanford.edu'
     # Order doesn't matter here as these will be fetch asyncronously. Try not to have dupes.
-    secrets = ['secret/data/projects/adapt/certs', 'secret/data/projects/adapt/give']
+    secrets = ['secret/data/projects/adapt/myaccount']
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
-    
 [[plugins]]
   package = 'netlify-plugin-contextual-env'
   [plugins.inputs]
