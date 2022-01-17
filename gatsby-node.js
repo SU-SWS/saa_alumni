@@ -159,24 +159,7 @@ exports.onCreateWebpackConfig = ({
       }),
     ],
   });
-  if (process.env.NETLIFY) {
-    actions.setWebpackConfig({
-      plugins: [
-        new webpack.EnvironmentPlugin({
-          ADAPT_AUTH_SAML_RETURN_PATH: '',
-          ADAPT_AUTH_SAML_SP_URL: '',
-          ADAPT_AUTH_SAML_ENTITY: '',
-          ADAPT_AUTH_SAML_CERT: '',
-          ADAPT_AUTH_SAML_DECRYPTION_KEY: '',
-          ADAPT_AUTH_SESSION_SECRET: '',
-          ADAPT_AUTH_SESSION_EXPIRES_IN: '',
-          ADAPT_AUTH_SESSION_LOGOUT_URL: '',
-          ADAPT_AUTH_SESSION_LOGIN_URL: '',
-          ADAPT_AUTH_SESSION_UNAUTHORIZED_URL: '',
-        }),
-      ],
-    });
-  }
+
   if (stage === 'build-html') {
     actions.setWebpackConfig({
       module: {

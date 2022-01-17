@@ -1,3 +1,4 @@
+const dotenv = require('dotenv');
 const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
@@ -5,7 +6,7 @@ console.log(`Using environment config: '${activeEnv}'`);
 
 const envFile = `.env.${activeEnv}`;
 
-require('dotenv').config({
+dotenv.config({
   path: envFile,
 });
 
@@ -52,6 +53,9 @@ const vaultEnv = async () => {
     const vaultSecretsString = secretsToWrite.join('\n');
     const allSecretsString = `${existingSecrets}\n${vaultSecretsString}`;
     fs.writeFileSync(envFilePath, allSecretsString);
+
+    // Read new variables into environment.
+    dotenv.config();
   } catch (err) {
     console.log(err);
   }
