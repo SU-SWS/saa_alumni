@@ -5,6 +5,10 @@ require('dotenv').config({
   path: `.env.${activeEnv}`,
 });
 
+const fs = require('fs');
+
+fs.readdir('.', (err, files) => console.log(files));
+
 const serverless = require('serverless-http');
 const { AdaptAuth } = require('adapt-auth-sdk');
 const express = require('express');
