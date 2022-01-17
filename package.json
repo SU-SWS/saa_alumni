@@ -70,12 +70,12 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "npm run vault && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "dev": "npm run develop",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "vault": "node -r dotenv/config src/scripts/vault-env",
+    "vault": "node ./plugins/netlify-plugin-vault-variables/script.js",
     "clean": "gatsby clean",
     "lint": "NODE_ENV=test eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "NODE_ENV=test eslint \"./src/**/*.{js,jsx,ts,tsx}\" --fix",
@@ -111,6 +111,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "storyblok": "^3.10.0",
-    "tailwindcss": "^2.2.17"
+    "tailwindcss": "^2.2.17",
+    "toml": "^3.0.0"
   }
 }
