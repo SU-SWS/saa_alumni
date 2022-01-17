@@ -2,7 +2,8 @@ import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 
 const AuthenticatedPage = ({ children }) => {
-  const { isAuthenticated } = useAuth();
+  const redirectToLogin = true;
+  const { isAuthenticated } = useAuth(redirectToLogin);
 
   if (isAuthenticated) {
     return <>{children}</>;

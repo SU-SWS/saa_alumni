@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import fetch from 'node-fetch';
 
-export const useAuth = () => {
+export const useAuth = (redirectToLogin) => {
   // Initialize variables.
   const [user, setUser] = useState(null);
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -12,16 +12,21 @@ export const useAuth = () => {
       .then((res) => res.json())
       .then((body) => {
         if (body === 'UNAUTHORIZED') {
-          const returnUrl = window.location.pathname;
-          const query = new URLSearchParams({ final_destination: returnUrl });
-          window.location = `/api/auth/login?${query.toString()}`;
+          setIsAuthenticating(false);
+          setAuthenticated(false);
+          setUser(null);
+          if (redirectToLogin) {
+            const returnUrl = window.location.pathname;
+            const query = new URLSearchParams({ final_destination: returnUrl });
+            window.location = `/api/auth/login?${query.toString()}`;
+          }
         } else {
           setIsAuthenticating(false);
           setUser(body);
           setAuthenticated(true);
         }
       });
-  }, []);
+  }, [redirectToLogin]);
 
   return {
     user,
