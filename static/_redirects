@@ -2,6 +2,9 @@
 ################################################################################
 # https://makeagift.stanford.edu/* https://give.stanford.edu/:splat 301!
 
+# This redirect is here because the vanity url service does not allow for multipart subdomains.
+https://trusteenominations.alumni.stanford.edu https://alumni.stanford.edu/volunteer/trustee-nominations 301!
+
 # WILDCARD FOR API LAMBDA FUNCTIONS
 ################################################################################
 /api/* /.netlify/functions/:splat 200!

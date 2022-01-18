@@ -1,7 +1,7 @@
 {
   "name": "saa-alumni",
   "description": "Stanford Alumni Association",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "author": "Stanford University | Alumni Association",
   "dependencies": {
     "@fortawesome/fontawesome-pro": "^5.15.4",
