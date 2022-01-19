@@ -81,15 +81,15 @@ https://trusteenominations.alumni.stanford.edu https://alumni.stanford.edu/volun
 /get/page/students/student-alumni-council https://students.alumni.stanford.edu/student-alumni-council 301!
 /get/page/students/team-leaders https://students.alumni.stanford.edu/team-leaders 301!
 /get/page/volunteering/board https://associates.alumni.stanford.edu/board-governors 301!
-/get/page/volunteering/leadership https://associates.alumni.stanford.edu/volunteer-leadership 301!
+/get/page/volunteering/leadership /volunteer/volunteer-leadership/ 301!
 /get/page/volunteering/recognition/home https://associates.alumni.stanford.edu 301!
 /get/page/volunteering/recognition/members https://associates.alumni.stanford.edu/directory 301!
-/get/page/volunteering/trustee/about https://trusteenominations.alumni.stanford.edu/board-facts 301!
-/get/page/volunteering/trustee/faq https://trusteenominations.alumni.stanford.edu/faq 301!
-/get/page/volunteering/trustee/home https://trusteenominations.alumni.stanford.edu 301!
-/get/page/volunteering/trustee/rules https://trusteenominations.alumni.stanford.edu/rules 301!
+/get/page/volunteering/trustee/about /volunteer/board-facts 301!
+/get/page/volunteering/trustee/faq /help/trustee-nominations-faqs 301!
+/get/page/volunteering/trustee/home /volunteer/trustee-nominations 301!
+/get/page/volunteering/trustee/rules /volunteer/becoming-a-trustee 301!
 /get/page/youngalumni/home https://youngalumni.alumni.stanford.edu 301!
-/get/page/aboutus/staff https://alumni-preview.stanford.edu/about/leadership/ 301!
+/get/page/aboutus/staff /about/leadership/ 301!
 /get/page/codeofconduct /code-of-conduct 301!
 /get/page/emailservicepolicy /emailservicepolicy  301!
 /get/page/events/bowlgame/eventlisting /404 301!
@@ -330,6 +330,10 @@ https://trusteenominations.alumni.stanford.edu https://alumni.stanford.edu/volun
 /get/page/perks/alumniemail/faqtroubleshooting /help/alumni-email-faqs/ 301!
 /get/page/life-long-learning/learn /resources/learn/ 301!
 /get/page/life-long-learning/learn-join /resources/newsletters/ 301!
+/get/page/volunteering/beyondthefarm/ /volunteer/beyond-the-farm/ 301!
+/get/page/saa/volunteering/beyondthefarm/ /volunteer/beyond-the-farm/ 301!
+/get/page/m/volunteering/beyondthefarm/home /volunteer/beyond-the-farm/ 301!
+/get/page/m/volunteering/beyondthefarm/home /volunteer/beyond-the-farm/ 301!
 
 # PLUGINS ADD MORE REDIRECTS BELOW
 ################################################################################
