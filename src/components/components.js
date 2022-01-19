@@ -52,7 +52,7 @@ import Section from './layout/section';
 import SimpleImage from './media/simpleImage';
 import Story from './content-types/story/story';
 import StoryCard from './cards/storyCard';
-import SaaStoryCard from './cards/storyCardManual';
+import StoryCardView from './content-types/story/storyCardView';
 import { SBTripCard } from './storyblok/tripCard';
 import { SBTsContentPicker } from './storyblok/tsContentPicker';
 import { SBTsContentTemplate } from './storyblok/tsContentTemplate';
@@ -118,7 +118,7 @@ const ComponentList = {
   simpleImage: SimpleImage,
   story: Story,
   storyCard: StoryCard,
-  saaStoryCard: SaaStoryCard,
+  saaStoryCard: StoryCardView,
   trip: TripPage,
   tripCard: SBTripCard,
   tripFilterPage: TripFilterPage,
