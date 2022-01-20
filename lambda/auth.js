@@ -9,14 +9,13 @@ const getSiteUrl = require('../src/utilities/getSiteUrl');
 const siteUrl = getSiteUrl();
 const authInstance = new AdaptAuth({
   saml: {
-    cert: [process.env.IDP_CERT_PROD, process.env.IDP_CERT_UAT],
-    decryptionKey: process.env.SP_ENCRYPTION_KEY,
+    cert: process.env.ADAPT_AUTH_SAML_CERT,
+    decryptionKey: process.env.ADAPT_AUTH_SAML_DECRYPTION_KEY,
     returnToOrigin: siteUrl,
-    returnToPath: '/api/auth/callback',
+    returnToPath: process.env.ADAPT_AUTH_SAML_RETURN_PATH,
   },
   session: {
-    secret: process.env.JWT_SECRET,
-    logoutRedirectUrl: '/',
+    secret: process.env.ADAPT_AUTH_SESSION_SECRET,
   },
 });
 
@@ -26,9 +25,17 @@ app.use(cookieParser());
 
 app.get('/api/auth/login', authInstance.initiate());
 app.get('/api/auth/logout', authInstance.destroySession());
-app.get('/api/auth/session', authInstance.authorize(), (req, res, next) => {
-  res.json(req.user);
-});
+app.get(
+  '/api/auth/session',
+  authInstance.authorize({ allowUnauthorized: true }),
+  (req, res, next) => {
+    if (req.user) {
+      res.json(req.user);
+    } else {
+      res.status(401).json('UNAUTHORIZED');
+    }
+  }
+);
 app.post('/api/auth/callback', authInstance.authenticate());
 
 exports.handler = serverless(app);

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useAuth } from '../../hooks/useAuth';
 
-const AuthenticatedPage = ({ children }) => {
-  const redirectToLogin = true;
-  const { isAuthenticated } = useAuth(redirectToLogin);
+const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
+  const { isAuthenticated } = useAuth(redirectUnauthorized);
 
   if (isAuthenticated) {
     return <>{children}</>;
