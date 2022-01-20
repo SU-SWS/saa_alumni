@@ -16,6 +16,7 @@ const authInstance = new AdaptAuth({
   },
   session: {
     secret: process.env.ADAPT_AUTH_SESSION_SECRET,
+    loginRedirectUrl: process.env.ADAPT_AUTH_SESSION_LOGIN_URL || '/',
   },
 });
 
