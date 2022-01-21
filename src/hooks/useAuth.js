@@ -15,11 +15,11 @@ export const useAuth = (redirectUnauthorized) => {
           setIsAuthenticating(false);
           setAuthenticated(false);
           setUser(null);
-          // if (redirectUnauthorized) {
-          //   const returnUrl = window.location.pathname;
-          //   const query = new URLSearchParams({ final_destination: returnUrl });
-          //   window.location = `/api/auth/login?${query.toString()}`;
-          // }
+          if (redirectUnauthorized) {
+            const returnUrl = window.location.pathname;
+            const query = new URLSearchParams({ final_destination: returnUrl });
+            window.location = `/api/auth/login?${query.toString()}`;
+          }
         } else {
           setIsAuthenticating(false);
           setUser(body);
