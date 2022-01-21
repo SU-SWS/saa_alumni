@@ -8,7 +8,8 @@ export const useAuth = (redirectUnauthorized) => {
   const [isAuthenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    fetch('/api/auth/session')
+    const url = `${window.location.protocol}//${window.location.host}/api/auth/session`;
+    fetch(url)
       .then((res) => res.json())
       .then((body) => {
         if (body === 'UNAUTHORIZED') {

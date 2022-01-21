@@ -16,9 +16,7 @@ const AccountLinks = (props) => {
   const ref = createRef();
   const [expanded, setExpanded] = useState(false);
   const redirectUnauthenticated = false;
-  // const { user, isAuthenticated } = useAuth(redirectUnauthenticated);
-  const isAuthenticated = false;
-  const user = null;
+  const { user, isAuthenticated } = useAuth(redirectUnauthenticated);
 
   useOnClickOutside(ref, () => {
     setExpanded(false);
