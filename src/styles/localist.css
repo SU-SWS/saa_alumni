@@ -1,0 +1,62 @@
+.event-list {
+  padding: 0;
+  @apply su-grid su-grid-cols-1 md:su-grid-cols-2 xl:su-grid-cols-3 su-justify-items-center su-items-stretch su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-grid-gap;
+}
+
+.event {
+  @apply su-flex su-flex-col su-relative su-overflow-hidden sm:su-max-w-[42rem] md:su-max-w-full su-text-black su-break-words su-w-full su-rs-pb-3 su-bg-white su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden su-border-black-30-opacity-40;
+  font-size: 2.1rem;
+}
+
+.event-img__wrapper {
+  @apply su-relative su-aspect-w-3 su-aspect-h-2;
+}
+
+.event-short-date {
+  @apply su-relative su-flex su-flex-col su-text-white su-items-center su-justify-center su-mb-08em su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-w-fit su-z-10 su-rs-ml-1 su-w-[11.2rem] lg:su-w-[12.6rem] su-h-[11.2rem] lg:su-h-[12.6rem];
+}
+
+.event-short-date:before {
+  @apply su-rounded-full su-bg-gradient-to-tr su-from-cardinal-red su-to-digital-red su-absolute su-h-full su-w-full su-inset-0;
+  content: '';
+}
+
+.event:hover .event-short-date:before {
+  @apply su-from-digital-red su-to-digital-red-light;
+}
+
+.event-short-date:after {
+  @apply su-absolute su-flex su-w-fit su-bg-cardinal-red su-rounded-full su-w-[10rem] lg:su-w-[11.4rem] su-h-[10rem] lg:su-h-[11.4rem] su-left-[.6rem] su-top-[.6rem];
+  content: '';
+}
+
+.event-short-date .month {
+  @apply su-mb-8 su-ml-2 su-uppercase su-leading-trim su-text-20 lg:su-text-22 su-z-10;
+}
+
+.event-short-date .day {
+  @apply su-font-bold su-font-serif su-leading-trim su-text-m5 md:su-text-m4 lg:su-text-m5 su-z-10;
+}
+
+.event-type {
+  @apply su-font-sans su-font-semibold su-rs-px-2;
+}
+
+.event-title {
+  @apply su-z-20 su-rs-mt-0 su-mb-08em su-type-1 su-rs-px-2;
+}
+
+.event-title__link {
+  @apply su-stretched-link su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight su-text-black hocus:su-text-black;
+}
+
+.start-time {
+  @apply su-card-paragraph su-rs-px-2 su-flex su-flex-row su-items-center md:su-items-start su-mb-04em;
+}
+
+.start-time::before {
+  content: "";
+  background-image: url("../asseets/calendar.svg");
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-[1.7rem] su-h-[1.7rem] md:su-w-[2rem] md:su-h-[2rem];
+ }
+
