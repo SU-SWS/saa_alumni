@@ -1,6 +1,5 @@
 .event-list {
-  padding: 0;
-  @apply su-grid su-grid-cols-1 md:su-grid-cols-2 xl:su-grid-cols-3 su-justify-items-center su-items-stretch su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-grid-gap;
+  @apply su-grid su-grid-cols-1 md:su-grid-cols-2 xl:su-grid-cols-3 su-justify-items-center su-items-stretch su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-grid-gap su-p-0;
 }
 
 .event {
