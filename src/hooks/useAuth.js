@@ -9,7 +9,7 @@ export const useAuth = (redirectUnauthorized) => {
 
   useEffect(() => {
     const url = `${window.location.protocol}//${window.location.host}/api/session`;
-    fetch(url)
+    fetch(url, { follow: 0 })
       .then((res) => res.json())
       .then((body) => {
         if (body === 'UNAUTHORIZED') {
