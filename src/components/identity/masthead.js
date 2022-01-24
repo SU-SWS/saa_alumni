@@ -9,6 +9,7 @@ import SearchModal from '../search/searchModal';
 import * as styles from './GlobalHeader/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
 import useDisplay from '../../hooks/useDisplay';
+import AccountLinks from '../navigation/accountLinks';
 
 const Masthead = ({
   blok: { mainNav, utilityNav, searchPageUrl },
@@ -122,6 +123,7 @@ const Masthead = ({
                       className={styles.utilNavItem}
                       hasExternalIcon
                     />
+                    <AccountLinks />
                   </ul>
                 </nav>
                 <OpenSearchModalButton
