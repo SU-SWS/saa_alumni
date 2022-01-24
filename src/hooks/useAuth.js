@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 export const useAuth = (redirectUnauthorized) => {
   // Initialize variables.
@@ -10,25 +10,25 @@ export const useAuth = (redirectUnauthorized) => {
   useEffect(() => {
     let isMounted = true;
     const url = `${window.location.protocol}//${window.location.host}/api/session`;
-    fetch(url, { follow: 0 })
-      .then((res) => res.json())
-      .then((body) => {
-        if (!isMounted) return;
-        if (body === 'UNAUTHORIZED') {
-          setIsAuthenticating(false);
-          setAuthenticated(false);
-          setUser(null);
-          // if (redirectUnauthorized) {
-          //   const returnUrl = window.location.pathname;
-          //   const query = new URLSearchParams({ final_destination: returnUrl });
-          //   window.location = `/api/login?${query.toString()}`;
-          // }
-        } else {
-          setIsAuthenticating(false);
-          setUser(body);
-          setAuthenticated(true);
-        }
-      });
+    axios.get(url).then((res) => {
+      if (!isMounted) return;
+
+      if (res.status === 200) {
+        setIsAuthenticating(false);
+        setUser(res.data);
+        setAuthenticated(true);
+      } else {
+        setIsAuthenticating(false);
+        setAuthenticated(false);
+        setUser(null);
+        // if (redirectUnauthorized) {
+        //   const returnUrl = window.location.pathname;
+        //   const query = new URLSearchParams({ final_destination: returnUrl });
+        //   window.location = `/api/login?${query.toString()}`;
+        // }
+      }
+    });
+
     return () => {
       isMounted = false;
     };
