@@ -8,10 +8,12 @@ export const useAuth = (redirectUnauthorized) => {
   const [isAuthenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
+    let isMounted = true;
     const url = `${window.location.protocol}//${window.location.host}/api/session`;
     fetch(url, { follow: 0 })
       .then((res) => res.json())
       .then((body) => {
+        if (!isMounted) return;
         if (body === 'UNAUTHORIZED') {
           setIsAuthenticating(false);
           setAuthenticated(false);
@@ -27,6 +29,9 @@ export const useAuth = (redirectUnauthorized) => {
           setAuthenticated(true);
         }
       });
+    return () => {
+      isMounted = false;
+    };
   }, [redirectUnauthorized]);
 
   return {
