@@ -4,10 +4,8 @@ import fetch from 'node-fetch';
 export const useAuth = (redirectUnauthorized) => {
   // Initialize variables.
   const [user, setUser] = useState(null);
-  //const [isAuthenticating, setIsAuthenticating] = useState(true);
-  //const [isAuthenticated, setAuthenticated] = useState(false);
-  const isAuthenticating = true;
-  const isAuthenticated = false;
+  const [isAuthenticating, setIsAuthenticating] = useState(true);
+  const [isAuthenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
     // const url = `${window.location.protocol}//${window.location.host}/api/session`;
