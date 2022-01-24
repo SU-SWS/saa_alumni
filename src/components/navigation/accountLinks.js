@@ -1,6 +1,6 @@
 import React, { useState, createRef } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
-//import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 const Initial = ({ string }) => {
@@ -16,9 +16,7 @@ const AccountLinks = (props) => {
   const ref = createRef();
   const [expanded, setExpanded] = useState(false);
   const redirectUnauthenticated = false;
-  //const { user, isAuthenticated } = useAuth(redirectUnauthenticated);
-  const user = null;
-  const isAuthenticated = false;
+  const { user, isAuthenticated } = useAuth(redirectUnauthenticated);
 
   useOnClickOutside(ref, () => {
     setExpanded(false);
