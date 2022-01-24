@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import fetch from 'node-fetch';
 
 export const useAuth = (redirectUnauthorized) => {
   // Initialize variables.
@@ -7,20 +8,25 @@ export const useAuth = (redirectUnauthorized) => {
   const [isAuthenticated, setAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Simulate auth lookup without making a fetch request.
-    setTimeout(() => {
-      setIsAuthenticating(false);
-      setAuthenticated(true);
-      setUser({
-        email: 'john-doe@list.stanford.edu',
-        firstName: 'John',
-        lastName: 'Doe',
-        SUID: '000123456',
-        encodedSUID: '12347589',
-        iat: 1642797776,
-        exp: 1642840976,
+    const url = `${window.location.protocol}//${window.location.host}/api/session`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((body) => {
+        if (body === 'UNAUTHORIZED') {
+          setIsAuthenticating(false);
+          setAuthenticated(false);
+          setUser(null);
+          if (redirectUnauthorized) {
+            const returnUrl = window.location.pathname;
+            const query = new URLSearchParams({ final_destination: returnUrl });
+            window.location = `/api/login?${query.toString()}`;
+          }
+        } else {
+          setIsAuthenticating(false);
+          setUser(body);
+          setAuthenticated(true);
+        }
       });
-    }, 2000);
   }, [redirectUnauthorized]);
 
   return {
