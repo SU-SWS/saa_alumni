@@ -44,9 +44,7 @@ const AccountLinks = (props) => {
         `}
         >
           <li>
-            <a href="/api/auth/logout" className={linkClasses}>
-              Log out
-            </a>
+            <span className={linkClasses}>Log out</span>
           </li>
         </ul>
       </li>
@@ -54,7 +52,7 @@ const AccountLinks = (props) => {
   }
   return (
     <li>
-      <a href="/api/auth/login">Login</a>
+      <span>Login</span>
     </li>
   );
 };
