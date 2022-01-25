@@ -13,9 +13,9 @@ app.get(
   authInstance.authorize({ allowUnauthorized: true }),
   (req, res, next) => {
     if (req.user) {
-      res.json(req.user);
+      res.status(200).json(req.user);
     } else {
-      res.json('UNAUTHORIZED');
+      res.status(200).json('UNAUTHORIZED');
     }
   }
 );
