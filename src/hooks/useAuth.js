@@ -9,23 +9,9 @@ export const useAuth = (redirectUnauthorized) => {
 
   useEffect(() => {
     let isMounted = true;
-    const url = `${window.location.protocol}//${window.location.host}/api/session`;
+    const url = `${window.location.protocol}//${window.location.host}/events`;
     axios.get(url).then((res) => {
-      if (!isMounted) return;
-      if (res.data === 'UNAUTHORIZED') {
-        setIsAuthenticating(false);
-        setAuthenticated(false);
-        setUser(null);
-        // if (redirectUnauthorized) {
-        //   const returnUrl = window.location.pathname;
-        //   const query = new URLSearchParams({ final_destination: returnUrl });
-        //   window.location = `/api/login?${query.toString()}`;
-        // }
-      } else {
-        setIsAuthenticating(false);
-        setUser(res.data);
-        setAuthenticated(true);
-      }
+      console.log(res.status);
     });
 
     return () => {
