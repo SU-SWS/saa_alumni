@@ -12,12 +12,7 @@ export const useAuth = (redirectUnauthorized) => {
     const url = `${window.location.protocol}//${window.location.host}/api/session`;
     axios.get(url).then((res) => {
       if (!isMounted) return;
-
-      if (res.status === 200) {
-        setIsAuthenticating(false);
-        setUser(res.data);
-        setAuthenticated(true);
-      } else {
+      if (res.data === 'UNAUTHORIZED') {
         setIsAuthenticating(false);
         setAuthenticated(false);
         setUser(null);
@@ -26,6 +21,10 @@ export const useAuth = (redirectUnauthorized) => {
         //   const query = new URLSearchParams({ final_destination: returnUrl });
         //   window.location = `/api/login?${query.toString()}`;
         // }
+      } else {
+        setIsAuthenticating(false);
+        setUser(res.data);
+        setAuthenticated(true);
       }
     });
 
