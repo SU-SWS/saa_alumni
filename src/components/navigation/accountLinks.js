@@ -18,7 +18,7 @@ const AccountLinks = (props) => {
   const redirectUnauthenticated = false;
   const { user, isAuthenticated } = useAuth(redirectUnauthenticated);
   const loginDestination =
-    window !== 'undefined' ? window.location.pathname : null;
+    typeof window !== 'undefined' ? window.location.pathname : null;
   const loginParams = new URLSearchParams({
     final_destination: loginDestination,
   });
