@@ -77,6 +77,7 @@ const Masthead = ({
                 className="first:su-ml-0"
                 hasExternalIcon
               />
+              <AccountLinks />
             </ul>
           </nav>
           <FlexBox className="su-cc" alignItems="center">

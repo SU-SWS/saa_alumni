@@ -6,7 +6,7 @@ import useOnClickOutside from '../../hooks/useOnClickOutside';
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
   return (
-    <div className="su-inline-block su-text-center su-ml-12 su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-light su-rounded-full">
+    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-light su-rounded-full">
       {initial}
     </div>
   );
@@ -17,6 +17,11 @@ const AccountLinks = (props) => {
   const [expanded, setExpanded] = useState(false);
   const redirectUnauthenticated = false;
   const { user, isAuthenticated } = useAuth(redirectUnauthenticated);
+  const loginDestination =
+    window !== 'undefined' ? window.location.pathname : null;
+  const loginParams = new URLSearchParams({
+    final_destination: loginDestination,
+  });
 
   useOnClickOutside(ref, () => {
     setExpanded(false);
@@ -29,11 +34,15 @@ const AccountLinks = (props) => {
     return (
       // eslint-disable-next-line prettier/prettier
       <li className="su-text-white su-relative" ref={ref}>
-        <button type="button" onClick={() => setExpanded(!expanded)}>
-          <span>{`Hi, ${user.firstName} ${user.lastName}`}</span>
+        <button
+          type="button"
+          onClick={() => setExpanded(!expanded)}
+          className="su-flex su-items-center su-py-8"
+        >
+          <span className="su-sr-only lg:su-inline-block">{`Hi, ${user.firstName} ${user.lastName}`}</span>
           <Initial string={user.firstName} />
           <ChevronDownIcon
-            className={`su-inline-block lg:su-relative lg:su--top-3 lg:su-mr-0 lg:su-ml-8 lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent su-transition
+            className={`su-inline-block lg:su-relative lg:su--top-3 su-ml-8 su-w-[0.9em] lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent su-transition
             ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
             aria-hidden="true"
           />
@@ -54,7 +63,13 @@ const AccountLinks = (props) => {
   }
   return (
     <li>
-      <a href="/api/auth/login">Login</a>
+      <a
+        href={`/api/auth/login${
+          loginParams ? `?${loginParams.toString()}` : ''
+        }`}
+      >
+        Login
+      </a>
     </li>
   );
 };
