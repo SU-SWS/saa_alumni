@@ -156,6 +156,7 @@ module.exports = {
       resolve: `gatsby-plugin-netlify`,
       options: {
         mergeSecurityHeaders: false,
+        generateMatchPathRewrites: false,
       },
     },
     `gatsby-plugin-use-query-params`,
