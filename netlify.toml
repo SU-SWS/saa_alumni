@@ -74,6 +74,7 @@ package = "/plugins/netlify-plugin-wildcard-404-redirect"
 package = "netlify-plugin-inline-functions-env"
   [plugins.inputs]
   buildEvent = "onBuild"
+  verbose = "true"
 
 # CONTEXTUAL PLUGINS
 # ##############################################################################
