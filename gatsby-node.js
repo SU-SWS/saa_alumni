@@ -124,7 +124,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
 
         const entries = result.data.allStoryblokEntry.edges;
-        console.log(`Found redirects: ${  entries.length}`);
+        console.log(`Found redirects: ${entries.length}`);
         entries.forEach((entry, index) => {
           console.log(`Creating redirect for: ${entry.node.name}`);
           createRedirect({
