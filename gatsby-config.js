@@ -156,8 +156,6 @@ module.exports = {
       options: {
         mergeSecurityHeaders: false,
         generateMatchPathRewrites: false,
-        mergeLinkHeaders: false,
-        mergeCachingHeaders: false,
       },
     },
     `gatsby-plugin-use-query-params`,
