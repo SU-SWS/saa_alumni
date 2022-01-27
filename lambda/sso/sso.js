@@ -28,6 +28,6 @@ app.get('/api/sso/login', authInstance.initiate());
 app.get('/api/sso/logout', authInstance.destroySession());
 
 // Auth callback.
-app.post('/api/sso/auth-callback', authInstance.authenticate());
+app.post('/api/sso/auth', authInstance.authenticate());
 
 exports.handler = serverless(app);

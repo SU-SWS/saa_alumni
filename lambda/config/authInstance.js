@@ -8,7 +8,7 @@ const authInstance = new AdaptAuth({
     cert: process.env.ADAPT_AUTH_SAML_CERT,
     decryptionKey: process.env.ADAPT_AUTH_SAML_DECRYPTION_KEY,
     returnToOrigin: siteUrl,
-    returnToPath: process.env.ADAPT_AUTH_SAML_RETURN_PATH,
+    returnToPath: '/api/sso/auth',
   },
   session: {
     secret: process.env.ADAPT_AUTH_SESSION_SECRET,
