@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-console.log(process.env.ADAPT_AUTH_SAML_CERT);
+console.log("CERT IS:" + process.env.ADAPT_AUTH_SAML_CERT);
 
 app.get(
   '/api/sso/session',
