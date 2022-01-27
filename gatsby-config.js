@@ -148,7 +148,6 @@ module.exports = {
         name: `Stanford Alumni Association`,
         start_url: `/`,
         include_favicon: false,
-        crossOrigin: `use-credentials`,
         icons: [],
       },
     },
@@ -157,6 +156,8 @@ module.exports = {
       options: {
         mergeSecurityHeaders: false,
         generateMatchPathRewrites: false,
+        mergeLinkHeaders: false,
+        mergeCachingHeaders: false,
       },
     },
     `gatsby-plugin-use-query-params`,
