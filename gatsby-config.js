@@ -21,19 +21,27 @@ const storyblokRelations = [
 ];
 
 // Support for Gatsby CLI
-let siteUrl = 'http://localhost:8000';
+const {
+  NETLIFY,
+  NODE_ENV,
+  URL: NETLIFY_SITE_URL = 'https://alumni.stanford.edu',
+  DEPLOY_PRIME_URL: NETLIFY_DEPLOY_URL = NETLIFY_SITE_URL,
+  CONTEXT: NETLIFY_ENV = NODE_ENV,
+  NETLIFY_DEV,
+} = process.env;
+let siteUrl;
 
-// Support for Production site builds.
-if (process.env.CONTEXT === 'production') {
-  siteUrl = process.env.URL;
-}
-// Support for non-production netlify builds (branch/preview)
-else if (process.env.CONTEXT !== 'production' && process.env.NETLIFY) {
-  siteUrl = process.env.DEPLOY_PRIME_URL;
+if (NETLIFY) {
+  const isNetlifyProduction = NETLIFY_ENV === 'production';
+  siteUrl = isNetlifyProduction ? NETLIFY_SITE_URL : NETLIFY_DEPLOY_URL;
 }
 // Support for Netlify CLI.
-else if (process.env.NETLIFY_DEV === true) {
+else if (NETLIFY_DEV) {
   siteUrl = 'http://localhost:64946';
+}
+// Default to Gatsby Develop.
+else {
+  siteUrl = 'http://localhost:8000';
 }
 
 module.exports = {
@@ -148,7 +156,6 @@ module.exports = {
         name: `Stanford Alumni Association`,
         start_url: `/`,
         include_favicon: false,
-        crossOrigin: `use-credentials`,
         icons: [],
       },
     },

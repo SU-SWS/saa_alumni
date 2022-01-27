@@ -8,18 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Session handling.
-app.get(
-  '/api/sso',
-  authInstance.authorize({ allowUnauthorized: true }),
-  (req, res, next) => {
-    if (req.user) {
-      res.status(200).json(req.user);
-    } else {
-      res.status(200).json('UNAUTHORIZED');
-    }
-  }
-);
+console.log(process.env.ADAPT_AUTH_SAML_CERT);
 
 app.get(
   '/api/sso/session',
