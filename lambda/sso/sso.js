@@ -8,6 +8,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// Session handling.
 app.get(
   '/api/sso',
   authInstance.authorize({ allowUnauthorized: true }),
@@ -19,5 +20,14 @@ app.get(
     }
   }
 );
+
+// Login.
+app.get('/api/sso/login', authInstance.initiate());
+
+// Logout.
+app.get('/api/sso/logout', authInstance.destroySession());
+
+// Auth callback.
+app.post('/api/sso/auth-callback', authInstance.authenticate());
 
 exports.handler = serverless(app);
