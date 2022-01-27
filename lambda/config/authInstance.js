@@ -12,7 +12,7 @@ const authInstance = new AdaptAuth({
   },
   session: {
     secret: process.env.ADAPT_AUTH_SESSION_SECRET,
-    loginRedirectUrl: process.env.ADAPT_AUTH_SESSION_LOGIN_URL || '/',
+    loginRedirectUrl: '/home',
     unauthorizedRedirectUrl: '/403-access-denied',
   },
 });
