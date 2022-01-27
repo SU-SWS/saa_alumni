@@ -21,6 +21,18 @@ app.get(
   }
 );
 
+app.get(
+  '/api/sso/session',
+  authInstance.authorize({ allowUnauthorized: true }),
+  (req, res, next) => {
+    if (req.user) {
+      res.status(200).json(req.user);
+    } else {
+      res.status(200).json('UNAUTHORIZED');
+    }
+  }
+);
+
 // Login.
 app.get('/api/sso/login', authInstance.initiate());
 
