@@ -1,11 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 import fetch from 'node-fetch';
+import AuthContext from '../contexts/AuthContext';
 
 export const useAuth = (redirectUnauthorized) => {
-  // Initialize variables.
-  const [user, setUser] = useState(null);
-  const [isAuthenticating, setIsAuthenticating] = useState(true);
-  const [isAuthenticated, setAuthenticated] = useState(false);
+  const { isAuthenticated, isAuthenticating, user, setAuthState } =
+    useContext(AuthContext);
 
   useEffect(() => {
     let isMounted = true;
@@ -16,25 +15,30 @@ export const useAuth = (redirectUnauthorized) => {
         if (!isMounted) return;
 
         if (body === 'UNAUTHORIZED') {
-          setIsAuthenticating(false);
-          setAuthenticated(false);
-          setUser(null);
+          setAuthState({
+            isAuthenticated: false,
+            isAuthenticating: false,
+            user: null,
+          });
+
           if (redirectUnauthorized) {
             const returnUrl = window.location.pathname;
             const query = new URLSearchParams({ final_destination: returnUrl });
             window.location = `/api/auth/login?${query.toString()}`;
           }
         } else {
-          setIsAuthenticating(false);
-          setUser(body);
-          setAuthenticated(true);
+          setAuthState({
+            isAuthenticated: true,
+            isAuthenticating: false,
+            user: body,
+          });
         }
       });
 
     return () => {
       isMounted = false;
     };
-  }, [redirectUnauthorized]);
+  }, [redirectUnauthorized, setAuthState]);
 
   return {
     user,
