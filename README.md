@@ -18,12 +18,12 @@ _Development_
 
 ```
 cp example.env .env
-* Manually add the vault secret and role id to .env
-* You can also get the vault secret and role id by first running `netlify login` then `netlify link`.
-* Then use the `netlify env:get VAR_NAME` and `netlify env:set VAR_NAME value` commands to retrieve and set the `VAULT_ROLE_ID` and `VAULT_ROLE_ID`.
-* After the `VAULT_ROLE_ID` and `VAULT_SECRET_ID` environment variables have been set,
-get the FontAwesome NPM token from the Netlify site settings in environment variables *
+* Manually find and add the `VAULT_ROLE_ID` and `VAULT_ROLE_ID` to .env
+* Or, you can retrieve the `VAULT_ROLE_ID` and `VAULT_ROLE_ID` by first running `netlify login` then `netlify link`, then use the `netlify env:get VAR_NAME` command. After that manually add them to .env
+* After the `VAULT_ROLE_ID` and `VAULT_SECRET_ID` environment variables have been added to .env,
+get the FontAwesome NPM token from the Netlify site settings in environment variables and install the packages
 FONTAWESOME_NPM_AUTH_TOKEN=MYFATOKEN npm install
+* Retrieve all other environment variables from the vault
 npm run vault
 * Then fire up your development server using gatsby
 npm run dev
