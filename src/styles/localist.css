@@ -49,7 +49,21 @@
 }
 
 .event-title__link {
-  @apply su-stretched-link su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight su-text-black hocus:su-text-black su-font-serif;
+  @apply su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight su-text-black hocus:su-text-black su-font-serif;
+}
+
+.event-title__link:before {
+  @apply su-block su-absolute su-z-[1] su-inset-0 su-pointer-events-auto su-bg-transparent su-align-middle;
+  content: "";
+}
+
+.event-title__link:after {
+  content: url("../assets/arrow-right.svg");
+  @apply su-transition su-w-08em su-ml-02em su--rotate-45 su-transform-gpu su-inline-block su-text-digital-red-light;
+}
+
+.event-title__link:hover:after {
+  @apply su-translate-x-01em su--translate-y-01em su-text-cardinal-red;
 }
 
 .start-time {
