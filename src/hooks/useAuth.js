@@ -1,5 +1,4 @@
 import { useEffect, useContext } from 'react';
-import fetch from 'node-fetch';
 import AuthContext from '../contexts/AuthContext';
 
 export const useAuth = (redirectUnauthorized) => {
