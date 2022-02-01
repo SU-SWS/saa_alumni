@@ -51,10 +51,6 @@
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
-
-[[plugins]]
-  package = 'netlify-plugin-contextual-env'
-  [plugins.inputs]
     mode = 'prefix'
 
 [[plugins]]
@@ -69,11 +65,6 @@
 package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [plugins.inputs]
   destination = "https://cardinalalumni.stanford.edu/:splat"
-
-[[plugins]]
-package = "netlify-plugin-inline-functions-env"
-  [plugins.inputs]
-  buildEvent = "onBuild"
 
 # CONTEXTUAL PLUGINS
 # ##############################################################################

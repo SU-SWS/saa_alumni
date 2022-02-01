@@ -16,10 +16,22 @@ On success, you may now change and alter values in `.env` if you need to. To res
 ## Environment Variable Strategy with Vault.
 
 Environment variable file: `.env`
-We are no longer using `production` and `development` environment variable files. We use the [netlify-plugin-contextual-env](https://www.npmjs.com/package/netlify-plugin-contextual-env) plugin to support different environments. See below for more.
+We are no longer using `production` and `development` environment variable files.
 
-*Netlify-plugin-contextual-env*
-We use this plugin to set the environment variables in the various different environments. See [the plugin page](https://www.npmjs.com/package/netlify-plugin-contextual-env) for a full set of configuration options. We are use the `prefix` option to separate out the different configuration.
+This plugin swaps out ENV vars on Netlify at build time. Here's how it works:
+
+Say you have an ENV in your API code called DATABASE_URL. If you use this plugin, you'll be able to override that value based on a Context or Branch name.
+
+For example:
+
+A staging branch, would automatically set DATABASE_URL to the value of STAGING_DATABASE_URL if it exists.
+A production context would automatically set DATABASE_URL to the value of PRODUCTION_DATABASE_URL if it exists.
+A deploy-preview context (used for Pull Requests) would automatically set DATABASE_URL to the value of DEPLOY_PREVIEW_DATABASE_URL if it exists.
+This allows you to have per-environment or per-context environment variables, without exposing those variables in your netlify.toml config.
+
+If you'd rather use a suffix rather than the default prefix configuration, pass suffix to the inputs below.
+
+For the examples above, it would use the values DATABASE_URL_STAGING, DATABASE_URL_PRODUCTION, and DATABASE_URL_DEPLOY_PREVIEW respectively.
 
 ## Contextual Environment Variables in LAMBDA functions
 The contextual-env plugin from Netlify runs on build time and does not provide runtime support for LAMBDA functions. To get those to work we have to add an additional plugin that inlines the values of the environment variables into your LAMBDA functions.

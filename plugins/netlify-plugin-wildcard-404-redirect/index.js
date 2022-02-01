@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require('fs');
 
 // This is the main file for the Netlify Build plugin {{netlify-plugin-wildcard-404-redirect}}.
 // Please read the comments to learn more about the Netlify Build plugin syntax.
@@ -74,22 +74,21 @@ module.exports = {
   }) {
     try {
       // Commands are printed in Netlify logs
+      fs.appendFileSync(inputs.file, '\n/ index.html 301\n');
+
+      // Commands are printed in Netlify logs
       fs.appendFileSync(
         inputs.file,
-        "\n/* " + inputs.destination + " " + inputs.code + "\n"
+        `\n/* ${inputs.destination} ${inputs.code}\n`
       );
-    } catch (error) {
+    } catch (err) {
       // Report a user error
-      build.failBuild("Error message", { error });
+      build.failBuild('Error message', { err });
     }
 
     // Display success information
     status.show({
-      summary:
-        "Added wildcard redirect to destination: " +
-        inputs.destination +
-        " " +
-        inputs.code,
+      summary: `Added wildcard redirect to destination: ${inputs.destination} ${inputs.code}`,
     });
   },
 
