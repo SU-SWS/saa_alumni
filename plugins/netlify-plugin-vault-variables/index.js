@@ -9,7 +9,7 @@ const util = require('util');
 /**
  * Fetches and sets the variables from the Vault.
  */
-const setVaultVars = async (inputs, build, status, netlifyConfig) => {
+const setVaultVars = async (inputs, build, netlifyConfig) => {
   // Vault client config options.
   const options = {
     apiVersion: 'v1',
@@ -65,7 +65,9 @@ const setVaultVars = async (inputs, build, status, netlifyConfig) => {
     if (!process.env[key] || overwrite) {
       console.log(`Adding ${key} to env`);
       const val = JSON.stringify(secrets[key]);
-      netlifyConfig.build.environment[key] = val;
+      if (process.env.NETLIFY) {
+        netlifyConfig.build.environment[key] = val;
+      }
       secretsToWrite.push(`${key}=${val}`);
     }
   });
@@ -90,9 +92,7 @@ const setVaultVars = async (inputs, build, status, netlifyConfig) => {
   dotenv.config();
 
   // Display success information
-  status.show({
-    summary: `Added environment variables from vault to .env`,
-  });
+  return `Added environment variables from vault to .env`;
 }
 
 /**
@@ -109,7 +109,9 @@ const setVaultVars = async (inputs, build, status, netlifyConfig) => {
   }
 
   console.log('Replacing ' + key + ' with ' + envVar);
-  netlifyConfig.build.environment[key] = process.env[envVar];
+  if (process.env.NETLIFY) {
+    netlifyConfig.build.environment[key] = process.env[envVar];
+  }
 
   return `${key}=${process.env[envVar]}\n`;
 }
@@ -119,7 +121,7 @@ const setVaultVars = async (inputs, build, status, netlifyConfig) => {
  *
  * @param {*} inputs
  */
-const contextualizeVars = (inputs, status, netlifyConfig) => {
+const contextualizeVars = (inputs, netlifyConfig) => {
   const context = `${process.env.CONTEXT}`.toUpperCase().replace(/-/g, '_');
   const branch = `${process.env.BRANCH}`.toUpperCase().replace(/-/g, '_');
   const { mode } = inputs;
@@ -132,13 +134,9 @@ const contextualizeVars = (inputs, status, netlifyConfig) => {
   const replaced = [].concat(...envOverrides).filter(Boolean);
 
   if (replaced.length) {
-    status.show({
-      summary: `Replaced ${replaced.length} ENVs`,
-    });
+    return `Replaced ${replaced.length} ENVs`;
   } else {
-    status.show({
-      summary: `Nothing found... keeping default ENVs`,
-    });
+    return `Nothing found... keeping default ENVs`;
   }
 }
 
@@ -151,10 +149,15 @@ module.exports = {
     netlifyConfig
   }) {
 
+    let summary = [];
     // First set the variables from vault.
-    setVaultVars(inputs, build, status, netlifyConfig);
-
+    summary.push(await setVaultVars(inputs, build, netlifyConfig));
     // Then contextualize them.
-    contextualizeVars(inputs, status, netlifyConfig);
+    summary.push(contextualizeVars(inputs, netlifyConfig));
+    // Print status.
+    status.show({
+      summary: summary.join('\n'),
+    });
+
   },
 };
