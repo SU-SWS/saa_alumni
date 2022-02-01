@@ -19,13 +19,11 @@ const AuthIdleTimeoutOverlay = ({
     onTimeout: handleLogout,
   });
 
-  // eslint-disable-next-line no-undef
   const handleCancelClose = useCallback(() => {
     modalTimer.reset();
     setOpen(false);
   }, [modalTimer, setOpen]);
 
-  // eslint-disable-next-line no-undef
   const startModalTimer = useCallback(() => {
     setOpen(true);
     modalTimer.start();
