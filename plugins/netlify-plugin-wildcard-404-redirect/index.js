@@ -74,7 +74,7 @@ module.exports = {
   }) {
     try {
       // Commands are printed in Netlify logs
-      fs.appendFileSync(inputs.file, '\n/ index.html 301\n');
+      fs.appendFileSync(inputs.file, '\n/index.html / 301\n');
 
       // Commands are printed in Netlify logs
       fs.appendFileSync(

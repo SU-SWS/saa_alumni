@@ -9,7 +9,7 @@ const util = require('util');
 /**
  * Fetches and sets the variables from the Vault.
  */
-const setVaultVars = (inputs, build, status) => {
+const setVaultVars = async (inputs, build, status, netlifyConfig) => {
   // Vault client config options.
   const options = {
     apiVersion: 'v1',
@@ -64,7 +64,9 @@ const setVaultVars = (inputs, build, status) => {
   Object.keys(secrets).forEach((key) => {
     if (!process.env[key] || overwrite) {
       console.log(`Adding ${key} to env`);
-      secretsToWrite.push(`${key}=${JSON.stringify(secrets[key])}`);
+      const val = JSON.stringify(secrets[key]);
+      netlifyConfig.build.environment[key] = val;
+      secretsToWrite.push(`${key}=${val}`);
     }
   });
 
@@ -101,7 +103,14 @@ const setVaultVars = (inputs, build, status) => {
  */
  function setEnvWithValue(key, contextOrBranch, mode, netlifyConfig) {
   const envVar = mode === 'prefix' ? `${contextOrBranch}_${key}` : `${key}_${contextOrBranch}`;
-  netlifyConfig.build.enviroment[key] = process.env[envVar];
+
+  if (!process.env[envVar]) {
+    return;
+  }
+
+  console.log('Replacing ' + key + ' with ' + envVar);
+  netlifyConfig.build.environment[key] = process.env[envVar];
+
   return `${key}=${process.env[envVar]}\n`;
 }
 
@@ -146,6 +155,6 @@ module.exports = {
     setVaultVars(inputs, build, status, netlifyConfig);
 
     // Then contextualize them.
-    contextualizeVars(inputs, build, status);
+    contextualizeVars(inputs, status, netlifyConfig);
   },
 };
