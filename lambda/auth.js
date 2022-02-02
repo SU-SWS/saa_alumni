@@ -34,7 +34,7 @@ app.get(
     if (req.user) {
       res.json(req.user);
     } else {
-      res.status(401).json('UNAUTHORIZED');
+      res.status(401).send('UNAUTHORIZED');
     }
   }
 );
