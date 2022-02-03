@@ -37,7 +37,7 @@
 }
 
 .event-short-date .month {
-  @apply su-mb-8 su-uppercase su-leading-trim su-text-20 lg:su-text-22 su-z-[1] su-leading-none su-no-underline su-ml-[-1.2em];
+  @apply su-mb-8 su-uppercase su-leading-trim su-text-20 lg:su-text-22 su-z-[1] su-leading-none su-no-underline su-ml-[-1.2em] md:su-ml-[-1.6em];
 }
 
 .event-short-date .day {
@@ -72,11 +72,11 @@
 }
 
 .start-time {
-  @apply su-card-paragraph su-rs-px-2 su-flex su-flex-row su-items-center md:su-items-start su-mb-04em;
+  @apply su-card-paragraph su-rs-px-2 su-flex su-flex-row su-items-center su-items-start su-mb-04em;
 }
 
 .start-time::before {
   content: "";
   background-image: url("../assets/calendar.svg");
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-[1em];
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-[1em] su-h-[1em];
 }
