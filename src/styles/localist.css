@@ -72,7 +72,7 @@
 }
 
 .start-time {
-  @apply su-card-paragraph su-rs-px-2 su-flex su-flex-row su-items-center su-items-start su-mb-04em;
+  @apply su-card-paragraph su-rs-px-2 su-flex su-flex-row su-items-start su-mb-04em;
 }
 
 .start-time::before {
