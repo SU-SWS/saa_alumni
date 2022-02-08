@@ -17,7 +17,6 @@ const authInstance = new AdaptAuth({
   session: {
     secret: process.env.ADAPT_AUTH_SESSION_SECRET,
     loginRedirectUrl: process.env.ADAPT_AUTH_SESSION_LOGIN_URL || '/',
-    unauthorizedRedirectUrl: '/403-access-denied',
   },
 });
 
@@ -27,17 +26,9 @@ app.use(cookieParser());
 
 app.get('/api/auth/login', authInstance.initiate());
 app.get('/api/auth/logout', authInstance.destroySession());
-app.get(
-  '/api/auth/session',
-  authInstance.authorize({ allowUnauthorized: true }),
-  (req, res, next) => {
-    if (req.user) {
-      res.json(req.user);
-    } else {
-      res.status(401).send('UNAUTHORIZED');
-    }
-  }
-);
+app.get('/api/auth/session', authInstance.authorize(), (req, res, next) => {
+  res.json(req.user);
+});
 app.post('/api/auth/callback', authInstance.authenticate());
 
 exports.handler = serverless(app);
