@@ -1,4 +1,5 @@
 import React from 'react';
+import PulseLoader from 'react-spinners/PulseLoader';
 import AuthContext from '../../contexts/AuthContext';
 
 const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
@@ -17,7 +18,11 @@ const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
       {(authState) => {
         // Still waiting for authentication state to be checked.
         if (authState.isAuthenticating) {
-          return <div>Checking authentication status...</div>;
+          return (
+            <div className="su-flex su-justify-center su-py-16">
+              <PulseLoader color="#820000" size={16}></PulseLoader>
+            </div>
+          )
         }
         // User is logged in. Render page.
         if (authState.isAuthenticated && !authState.isAuthenticating) {
