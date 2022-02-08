@@ -20,9 +20,9 @@ const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
         if (authState.isAuthenticating) {
           return (
             <div className="su-flex su-justify-center su-py-16">
-              <PulseLoader color="#820000" size={16}></PulseLoader>
+              <PulseLoader color="#820000" size={16} />
             </div>
-          )
+          );
         }
         // User is logged in. Render page.
         if (authState.isAuthenticated && !authState.isAuthenticating) {
