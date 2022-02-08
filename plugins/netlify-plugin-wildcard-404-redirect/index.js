@@ -76,6 +76,7 @@ module.exports = {
       // Commands are printed in Netlify logs
       fs.appendFileSync(
         inputs.file,
+        "\n/index.html / 200\n" +
         "\n/* " + inputs.destination + " " + inputs.code + "\n"
       );
     } catch (error) {
