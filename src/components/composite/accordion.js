@@ -32,6 +32,8 @@ const Accordion = ({
 
   const spacingTopStyle = smallPaddingTop[spacingTop];
   const spacingBottomStyle = smallPaddingBottom[spacingBottom];
+  const buttonsStyle =
+    'su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset su-font-regular hocus:su-underline su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-10 md:su-px-26 su-text-18 md:su-text-20 su-rs-mb-3 su-rs-ml-1';
 
   return (
     <SbEditable content={blok}>
@@ -42,7 +44,12 @@ const Accordion = ({
         {...(id ? { id } : {})}
       >
         {title && (
-          <Heading level={blok.headingLevel} font="serif" weight="bold">
+          <Heading
+            level={blok.headingLevel}
+            className="su-type-3"
+            font="serif"
+            weight="bold"
+          >
             {blok.title}
           </Heading>
         )}
@@ -50,17 +57,12 @@ const Accordion = ({
           <div className="su-flex su-justify-end">
             <button
               type="button"
-              className="su-button su-rs-mb-3 su-rs-ml-1"
+              className={buttonsStyle}
               onClick={collapseAll}
             >
               Collapse all
             </button>
-
-            <button
-              type="button"
-              className="su-button su-rs-mb-3 su-rs-ml-1"
-              onClick={expandAll}
-            >
+            <button type="button" className={buttonsStyle} onClick={expandAll}>
               Expand all
             </button>
           </div>

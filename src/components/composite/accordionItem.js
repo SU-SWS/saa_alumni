@@ -1,20 +1,12 @@
 import React, { useState, useImperativeHandle } from 'react';
 import SbEditable from 'storyblok-react';
 import { Heading } from '../simple/Heading';
-import RichTextField from '../../utilities/richTextField';
+import RichTextRenderer from '../../utilities/richTextRenderer';
+import hasRichText from '../../utilities/hasRichText';
 
 const AccordionItem = React.forwardRef(
   (
-    {
-      blok: {
-        headingLevel,
-        id,
-        title,
-        content: { content },
-      },
-      blok,
-      accordionFont,
-    },
+    { blok: { headingLevel, id, title, content }, blok, accordionFont },
     ref
   ) => {
     const [expanded, setExpanded] = useState(false);
@@ -34,29 +26,41 @@ const AccordionItem = React.forwardRef(
 
     return (
       <SbEditable content={blok}>
-        <li className="su-border-b su-border-digital-red">
+        <li className="su-border-b su-border-digital-red su-mb-0">
           <Heading
             level={headingLevel || 'h4'}
             font="serif"
+            className="su-type-1 su-m-0"
             {...(id ? { id } : {})}
           >
             <button
               type="button"
-              className="su-w-full su-text-left su-font-bold su-flex su-flex-wrap"
+              className={`su-w-full su-px-15 su-py-7 su-text-left su-font-bold su-flex after:su-block after:su-text-digital-red
+              su-justify-between after:su-text-[36px] after:su-font-light su-items-center
+              su-group su-relative
+                ${
+                  expanded
+                    ? 'after:su-content-["\\2212"]'
+                    : 'after:su-content-["+"]'
+                }`}
               aria-expanded={expanded}
               onClick={toggle}
             >
-              {title}
-              <span className="su-ml-auto su-font-regular" aria-hidden>
-                {expanded ? '-' : '+'}
+              <span className="su-h-0 group-hocus:su-h-full su-block su-w-[6px] su-absolute su-top-0 su-left-0 su-bg-digital-red" />
+              <span className="su-pr-20 su-w-full group-hocus:su-underline">
+                {title}
               </span>
             </button>
           </Heading>
 
           {expanded && (
-            <div className="su-rs-pb-1" aria-hidden={!expanded}>
-              {content &&
-                content.map((paragraph) => <RichTextField data={paragraph} />)}
+            <div className="su-px-19 su-pt-19 su-pb-36" aria-hidden={!expanded}>
+              {hasRichText(content) && (
+                <RichTextRenderer
+                  wysiwyg={content}
+                  className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                />
+              )}
             </div>
           )}
         </li>
