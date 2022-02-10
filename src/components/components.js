@@ -39,6 +39,7 @@ import Perk from './content-types/perk/perk';
 import PerkCard from './cards/perkCard';
 import PerkCardHorizontal from './cards/perkCardHorizontal';
 import Poster from './composite/poster';
+import ProtectedPage from './page-types/protectedPage';
 import Redirect from './redirect/Redirect';
 import { SBSAAMainNav } from './storyblok/saaMainNav';
 import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
@@ -105,6 +106,7 @@ const ComponentList = {
   perkCard: PerkCard,
   perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
+  protectedPage: ProtectedPage,
   redirect: Redirect,
   saaMainNav: SBSAAMainNav,
   saaMainMenuGroup: SBSAAMainMenuGroup,
