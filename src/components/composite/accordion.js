@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import { Heading } from '../simple/Heading';
 import Components from '../components';
+import { SAAButton } from '../simple/SAAButton';
 import {
   smallPaddingBottom,
   smallPaddingTop,
@@ -32,8 +33,7 @@ const Accordion = ({
 
   const spacingTopStyle = smallPaddingTop[spacingTop];
   const spacingBottomStyle = smallPaddingBottom[spacingBottom];
-  const buttonsStyle =
-    'su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset su-font-regular hocus:su-underline su-border-digital-red su-text-digital-red-light hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-10 md:su-px-26 su-text-18 md:su-text-20 su-rs-mb-3 su-rs-ml-1';
+  const buttonsStyle = 'su-pt-12 su-pb-12 md:su-pt-10 md:su-pb-10 su-rs-ml-1';
 
   return (
     <SbEditable content={blok}>
@@ -55,16 +55,24 @@ const Accordion = ({
         )}
         {blok.accordionItems.length > 1 && (
           <div className="su-flex su-justify-end">
-            <button
-              type="button"
+            <SAAButton
+              buttonStyle="secondary"
+              size="small"
               className={buttonsStyle}
+              icon="none"
               onClick={collapseAll}
             >
               Collapse all
-            </button>
-            <button type="button" className={buttonsStyle} onClick={expandAll}>
+            </SAAButton>
+            <SAAButton
+              buttonStyle="secondary"
+              size="small"
+              className={buttonsStyle}
+              icon="none"
+              onClick={expandAll}
+            >
               Expand all
-            </button>
+            </SAAButton>
           </div>
         )}
         <ul className="su-list-none su-p-0">
