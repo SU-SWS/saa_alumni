@@ -35,20 +35,17 @@ const AccordionItem = React.forwardRef(
           >
             <button
               type="button"
-              className={`su-w-full su-px-15 su-py-7 su-text-left su-font-bold su-flex after:su-block after:su-text-digital-red
-              su-justify-between after:su-text-[36px] after:su-font-light su-items-center
-              su-group su-relative
-                ${
-                  expanded
-                    ? 'after:su-content-["\\2212"]'
-                    : 'after:su-content-["+"]'
-                }`}
+              className="su-w-full su-px-15 su-py-7 su-text-left su-font-bold su-flex su-justify-between su-items-center
+              su-group su-relative"
               aria-expanded={expanded}
               onClick={toggle}
             >
-              <span className="su-h-0 group-hocus:su-h-full su-block su-w-[6px] su-absolute su-top-0 su-left-0 su-bg-digital-red" />
+              <span className="su-h-0 group-hocus:su-h-full su-block su-w-[6px] su-absolute su-top-0 su-left-0 su-bg-black" />
               <span className="su-pr-20 su-w-full group-hocus:su-underline">
                 {title}
+              </span>
+              <span className="su-font-light su-text-[36px] su-text-digital-red su-block">
+                {expanded ? <span>&#8722;</span> : '+'}
               </span>
             </button>
           </Heading>
