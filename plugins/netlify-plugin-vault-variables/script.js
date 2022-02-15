@@ -50,6 +50,7 @@ const main = async () => {
     inputs: pluginConfig.inputs,
     // Core utilities
     utils: { build, status },
+    netlifyConfig: { build: { environment: {} } },
   };
 
   // Run the plugin.
