@@ -54,7 +54,7 @@ const Accordion = ({
           </Heading>
         )}
         {blok.accordionItems.length > 1 && (
-          <div className="su-flex su-justify-end">
+          <div className="su-flex su-justify-end su-rs-mb-2">
             <SAAButton
               buttonStyle="secondary"
               size="small"
