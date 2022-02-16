@@ -75,7 +75,7 @@ const Accordion = ({
             </SAAButton>
           </div>
         )}
-        <ul className="su-list-none su-p-0">
+        <ul className="su-list-none su-p-0 su-border-t su-border-digital-red">
           {blok.accordionItems.map((item, index) =>
             React.createElement(Components('accordionItem'), {
               // eslint-disable-next-line no-underscore-dangle
