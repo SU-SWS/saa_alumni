@@ -7,7 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
   // Exclude the page from the build step and instead generate it during the first HTTP request
   createPage({
     path: '/api/hello-world.js',
-    component: './src/api/hello-world.js',
+    component: path.resolve('./src/api/hello-world.js'),
     context: {},
     defer: true,
   });
