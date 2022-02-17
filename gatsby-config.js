@@ -48,6 +48,9 @@ module.exports = {
       resolveRelations: storyblokRelations,
     },
   },
+  flags: {
+    FUNCTIONS: true,
+  },
   plugins: [
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
