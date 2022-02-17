@@ -95,7 +95,6 @@ exports.createPages = ({ graphql, actions }) => {
               isCanonical,
               noIndex,
             },
-            defer: entry.node.slug !== 'hello-world',
           });
         });
       })
