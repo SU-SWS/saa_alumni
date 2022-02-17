@@ -4,13 +4,6 @@ const webpack = require('webpack');
 
 exports.createPages = ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions;
-  // Exclude the page from the build step and instead generate it during the first HTTP request
-  // createPage({
-  //   path: '/api/hello-world.js',
-  //   component: path.resolve('./src/api/hello-world.js'),
-  //   context: {},
-  //   defer: true,
-  // });
 
   return new Promise((resolve, reject) => {
     const storyblokEntry = path.resolve('src/templates/storyblok-entry.js');
