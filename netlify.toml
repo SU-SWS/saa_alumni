@@ -2,6 +2,7 @@
 # ##############################################################################
 [build]
   publish = "public"
+  functions = "lambda"
 
 [dev]
   publish = "public"
