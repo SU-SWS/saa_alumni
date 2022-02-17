@@ -67,7 +67,7 @@ const Seo = ({
   // Use the title in SEO component, otherwise use the page title
   const seoTitle = seo.title || theTitle || pageTitle || '';
   let ogTitle = seo.og_title || seoTitle;
-  if (location.pathname.match(/^\/travel-study\/.*/)) {
+  if (location?.pathname.match(/^\/travel-study\/.*/)) {
     ogTitle += ' | Stanford Travel/Study';
   }
 
