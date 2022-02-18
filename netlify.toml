@@ -15,7 +15,7 @@
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
-    Content-Security-Policy = "default-src https: 'unsafe-inline'; form-action https:; img-src https: data:"
+    Content-Security-Policy = "default-src https: 'unsafe-inline' 'unsafe-eval'; form-action https:; img-src https: data:"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Strict-Transport-Security = "max-age=2592000"
@@ -69,6 +69,9 @@
 package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [plugins.inputs]
   destination = "https://cardinalalumni.stanford.edu/:splat"
+
+[[plugins]]
+package = "@netlify/plugin-gatsby"
 
 [[plugins]]
 package = "netlify-plugin-inline-functions-env"
