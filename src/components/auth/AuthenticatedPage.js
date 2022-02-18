@@ -6,7 +6,7 @@ const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
   function redirectUnuauthorized() {
     const returnUrl = window.location.pathname;
     const query = new URLSearchParams({ final_destination: returnUrl });
-    window.location = `/api/auth/login?${query.toString()}`;
+    window.location = `/auth/login?${query.toString()}`;
   }
 
   function accessDenied() {

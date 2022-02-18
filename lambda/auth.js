@@ -24,11 +24,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.get('/api/auth/login', authInstance.initiate());
-app.get('/api/auth/logout', authInstance.destroySession());
-app.get('/api/auth/session', authInstance.authorize(), (req, res, next) => {
+app.get('/auth/login', authInstance.initiate());
+app.get('/auth/logout', authInstance.destroySession());
+app.get('/auth/session', authInstance.authorize(), (req, res, next) => {
   res.json(req.user);
 });
-app.post('/api/auth/callback', authInstance.authenticate());
+app.post('/auth/callback', authInstance.authenticate());
 
 exports.handler = serverless(app);
