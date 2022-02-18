@@ -11,7 +11,7 @@ const AuthIdleTimeoutOverlay = ({
 }) => {
   const [open, setOpen] = useState(false);
   const handleLogout = () => {
-    window.location.replace('/api/auth/logout');
+    window.location.replace('/auth/logout');
   };
 
   const modalTimer = useTimer({
