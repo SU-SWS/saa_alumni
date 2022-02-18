@@ -96,7 +96,7 @@ const Masthead = ({
       {showDesktop && (
         <div
           className={`masthead-desktop su-hidden lg:su-block su-w-full su-z-20
-          ${hasHero ? 'su-absolute' : 'su-relative'}`}
+                  ${hasHero ? 'su-absolute' : 'su-relative'}`}
           ref={desktopRef}
         >
           <FlexBox>
@@ -124,7 +124,7 @@ const Masthead = ({
                       className={styles.utilNavItem}
                       hasExternalIcon
                     />
-                    <AccountLinks />
+                    <AccountLinks mainLinkClasses={styles.utilNavItem} />
                   </ul>
                 </nav>
                 <OpenSearchModalButton

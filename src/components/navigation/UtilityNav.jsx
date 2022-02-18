@@ -28,7 +28,7 @@ const UtilityNav = ({
         className={itemClasses}
         hasExternalIcon
       />
-      <AccountLinks />
+      <AccountLinks mainLinkClasses={itemClasses} />
     </ul>
   </nav>
 );
