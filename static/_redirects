@@ -9,7 +9,6 @@ https://trusteenominations.alumni.stanford.edu https://alumni.stanford.edu/volun
 ################################################################################
 /api/auth /.netlify/functions/auth 200
 /api/auth/* /.netlify/functions/auth/:splat 200
-/api/hello-world /api/hello-world 200!
 
 # PATH REDIRECTS
 ################################################################################
