@@ -62,7 +62,7 @@ const AccountLinks = (props) => {
           )}
           {!authState.isAuthenticated && (
             <a
-              href={`/api/auth/login${
+              href={`/auth/login${
                 loginParams ? `?${loginParams.toString()}` : ''
               }`}
             >
