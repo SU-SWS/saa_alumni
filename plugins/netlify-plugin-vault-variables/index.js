@@ -11,6 +11,7 @@ module.exports = {
     inputs,
     // Core utilities
     utils: { build, status },
+    netlifyConfig,
   }) {
     // Vault client config options.
     const options = {
@@ -69,6 +70,7 @@ module.exports = {
       if (!process.env[key] || overwrite) {
         console.log(`Adding ${key} to env`);
         secretsToWrite.push(`${key}=${JSON.stringify(secrets[key])}`);
+        netlifyConfig.build.environment[key] = secrets[key];
       }
     });
 
