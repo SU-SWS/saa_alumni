@@ -39,6 +39,8 @@
 
 # PLUGINS
 # ##############################################################################
+[[plugins]]
+package = "@netlify/plugin-gatsby"
 
 # Fetch vault plugin needs to come before any of the contextual environment
 # variable plugins so they can act on the new vars.
@@ -74,9 +76,6 @@ package = "/plugins/netlify-plugin-wildcard-404-redirect"
 package = "netlify-plugin-inline-functions-env"
   [plugins.inputs]
   buildEvent = "onBuild"
-
-[[plugins]]
-package = "@netlify/plugin-gatsby"
 
 # CONTEXTUAL PLUGINS
 # ##############################################################################
