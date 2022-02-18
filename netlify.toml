@@ -66,26 +66,25 @@
     branch = 'staging'
 
 [[plugins]]
-package = "/plugins/netlify-plugin-wildcard-404-redirect"
+  package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [plugins.inputs]
   destination = "https://cardinalalumni.stanford.edu/:splat"
 
 [[plugins]]
-package = "@netlify/plugin-gatsby"
+  package = "@netlify/plugin-gatsby"
 
 [[plugins]]
-package = "netlify-plugin-inline-functions-env"
+  package = "netlify-plugin-inline-functions-env"
   [plugins.inputs]
   buildEvent = "onBuild"
 
 # CONTEXTUAL PLUGINS
 # ##############################################################################
 [[context.production.plugins]]
-package = "netlify-plugin-submit-sitemap"
+  package = "netlify-plugin-submit-sitemap"
   [context.production.plugins.inputs]
   # Path to the sitemap URL (optional, default = /sitemap.xml)
   sitemapPath = "/sitemap/sitemap-index.xml"
-
 
 ## ########################## ##
 ## REMOVE BEFORE MERGE TO DEV ##
