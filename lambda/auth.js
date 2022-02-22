@@ -31,4 +31,18 @@ app.get('/api/auth/session', authInstance.authorize(), (req, res, next) => {
 });
 app.post('/api/auth/callback', authInstance.authenticate());
 
-exports.handler = serverless(app);
+// Export the handler
+app.get('/api/auth/test', (req, res) => {
+  res.json({
+    message: 'Hello from the serverless-http lambda!',
+  });
+});
+
+// Export the handler
+app.get('/api/auth', (req, res) => {
+  res.json({
+    message: 'Hello from the serverless-http lambda auTH!',
+  });
+});
+
+module.exports.handler = serverless(app);
