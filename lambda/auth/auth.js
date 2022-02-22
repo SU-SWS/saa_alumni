@@ -3,7 +3,7 @@ const { AdaptAuth } = require('adapt-auth-sdk');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const getSiteUrl = require('../src/utilities/getSiteUrl');
+const getSiteUrl = require('../../src/utilities/getSiteUrl');
 
 // Automatically set origin, if not passed explicitly.
 const siteUrl = getSiteUrl();
