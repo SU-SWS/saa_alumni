@@ -71,6 +71,7 @@ package = "@netlify/plugin-gatsby"
 #   [plugins.inputs]
 #   destination = "https://cardinalalumni.stanford.edu/:splat"
 
+# Thing stuff.
 [[plugins]]
 package = "netlify-plugin-inline-functions-env"
   [plugins.inputs]
