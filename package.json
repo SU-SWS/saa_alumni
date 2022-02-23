@@ -16,7 +16,7 @@
     "@heroicons/react": "^1.0.4",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.4",
-    "adapt-auth-sdk": "^1.0.3",
+    "adapt-auth-sdk": "^1.0.5",
     "algoliasearch": "^4.9.3",
     "body-parser": "^1.19.1",
     "cnbuilder": "^2.7.1",
