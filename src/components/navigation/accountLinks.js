@@ -9,7 +9,7 @@ import HeroIcon from '../simple/heroIcon';
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
   return (
-    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-light su-rounded-full">
+    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-xlight lg:su-border-digital-red-light su-rounded-full su-bg-cardinal-red-xdark group-hocus:su-bg-transparent">
       {initial}
     </div>
   );
@@ -32,7 +32,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
   });
 
   const linkClasses =
-    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white su-font-regular hocus:su-underline hocus:su-text-white lg:hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight hocus:su-bg-digital-red';
+    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white su-font-regular hocus:su-underline hocus:su-text-white lg:hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight hocus:su-bg-digital-red su-text-20';
 
   const links = [
     {
@@ -70,7 +70,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
               <button
                 type="button"
                 onClick={() => setExpanded(!expanded)}
-                className="su-flex su-items-center su-py-8"
+                className="su-flex su-items-center su-py-8 su-group"
               >
                 <span
                   className={`su-inline-block su-mr-10 ${
@@ -79,7 +79,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                 >{`Hi, ${authState.user.firstName} ${authState.user.lastName}`}</span>
                 <Initial string={authState.user.firstName} />
                 <ChevronDownIcon
-                  className={`su-inline-block lg:su-relative lg:su--top-3 su-ml-8 su-w-[0.9em] lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent su-transition
+                  className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent su-transition
             ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
                   aria-hidden="true"
                 />
