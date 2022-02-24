@@ -1,3 +1,5 @@
+import Accordion from './composite/accordion';
+import AccordionItem from './composite/accordionItem';
 import { SBAlert } from './storyblok/alert/alert';
 import { SBAlertCtaLink } from './storyblok/alert/alertCtaLink';
 import BasicCard from './cards/basicCard';
@@ -67,6 +69,8 @@ import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
 
 const ComponentList = {
+  accordion: Accordion,
+  accordionItem: AccordionItem,
   alert: SBAlert,
   alertCtaLink: SBAlertCtaLink,
   basicCard: BasicCard,

@@ -66,7 +66,10 @@ const Seo = ({
 
   // Use the title in SEO component, otherwise use the page title
   const seoTitle = seo.title || theTitle || pageTitle || '';
-  const ogTitle = seo.og_title || seoTitle;
+  let ogTitle = seo.og_title || seoTitle;
+  if (isTravelStudy) {
+    ogTitle += ' | Stanford Travel/Study';
+  }
 
   // Use the description in SEO component, otherwise use the one from gatsby.config
   const seoDescription = seo.description || description || '';
