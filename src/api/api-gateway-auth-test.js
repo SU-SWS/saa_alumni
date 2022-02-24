@@ -12,6 +12,6 @@ export default async function handler(req, res) {
     const token = await apiGatewayAuth.authenticate();
     res.status(200).json(token);
   } catch (e) {
-    res.status(500).json(e);
+    res.status(500).json(e.response.data);
   }
 }
