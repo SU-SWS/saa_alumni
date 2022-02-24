@@ -39,8 +39,6 @@
 
 # PLUGINS
 # ##############################################################################
-[[plugins]]
-package = "@netlify/plugin-gatsby"
 
 # Fetch vault plugin needs to come before any of the contextual environment
 # variable plugins so they can act on the new vars.
