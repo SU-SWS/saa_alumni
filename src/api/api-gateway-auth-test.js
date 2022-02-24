@@ -6,6 +6,7 @@ import { ApiGatewayAuth } from '../utilities/ApiGatewayAuth';
 // -----------------------------------------------------------------------------
 
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   try {
     const apiGatewayAuth = new ApiGatewayAuth();
     const token = await apiGatewayAuth.authenticate();
