@@ -5,6 +5,7 @@ exports.handler = async function (event, context) {
     statusCode: 200,
     body: JSON.stringify({
       ADAPT_AUTH_SAML_RETURN_PATH: process.env.ADAPT_AUTH_SAML_RETURN_PATH,
+      TEST_VAR: process.env.TEST_VAR,
     }),
   };
 };
