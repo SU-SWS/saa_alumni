@@ -1,4 +1,6 @@
-exports.handler = function (event, context) {
+require('regenerator-runtime/runtime');
+
+exports.handler = async function (event, context) {
   return {
     statusCode: 200,
     body: JSON.stringify({
