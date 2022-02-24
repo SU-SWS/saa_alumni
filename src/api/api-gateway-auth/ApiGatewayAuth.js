@@ -30,7 +30,7 @@ export class ApiGatewayAuth {
 
 // Get A Token.
 // Do not enable for public use. This is for development/debugging purposes only.
-// Token can be viewed at http://localhost:8000/api/api-gateway-auth/ApiGatewayAuth
+// Token can be viewed at /api/api-gateway-auth/ApiGatewayAuth
 // -----------------------------------------------------------------------------
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
