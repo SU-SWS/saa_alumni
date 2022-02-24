@@ -7,7 +7,7 @@ https://trusteenominations.alumni.stanford.edu https://alumni.stanford.edu/volun
 
 # WILDCARD FOR API LAMBDA FUNCTIONS
 ################################################################################
-/api/* /.netlify/functions/:splat 200!
+/api/auth/* /.netlify/functions/auth/:splat 200
 
 # PATH REDIRECTS
 ################################################################################

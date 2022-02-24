@@ -22,6 +22,7 @@ import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
+import GiveGabForm from './embed/giveGabForm';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
 import Itinerary from './composite/itinerary';
@@ -41,6 +42,7 @@ import Perk from './content-types/perk/perk';
 import PerkCard from './cards/perkCard';
 import PerkCardHorizontal from './cards/perkCardHorizontal';
 import Poster from './composite/poster';
+import ProtectedPage from './page-types/protectedPage';
 import Redirect from './redirect/Redirect';
 import { SBSAAMainNav } from './storyblok/saaMainNav';
 import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
@@ -86,6 +88,7 @@ const ComponentList = {
   embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
+  giveGabForm: GiveGabForm,
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
   grid: SBGrid,
@@ -109,6 +112,7 @@ const ComponentList = {
   perkCard: PerkCard,
   perkCardHorizontal: PerkCardHorizontal,
   poster: Poster,
+  protectedPage: ProtectedPage,
   redirect: Redirect,
   saaMainNav: SBSAAMainNav,
   saaMainMenuGroup: SBSAAMainMenuGroup,
