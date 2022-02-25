@@ -9,7 +9,7 @@ import HeroIcon from '../simple/heroIcon';
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
   return (
-    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-xlight lg:su-border-digital-red-light su-rounded-full su-bg-cardinal-red-xdark group-hocus:su-bg-transparent">
+    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-xlight lg:su-border-digital-red-light su-rounded-full group-hocus:su-bg-cardinal-red-xdark">
       {initial}
     </div>
   );
@@ -32,7 +32,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
   });
 
   const linkClasses =
-    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white su-font-regular hocus:su-underline hocus:su-text-white lg:hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight hocus:su-bg-digital-red su-text-20';
+    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white lg:hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight hocus:su-bg-digital-red su-text-20';
 
   const links = [
     {
@@ -53,11 +53,13 @@ const AccountLinks = ({ mainLinkClasses }) => {
     {
       text: 'Help',
       url: 'https://alumni.stanford.edu/help/',
-      classes: 'su-border-t su-border-digital-red-xlight su-pt-[9px]',
+      classes:
+        'su-border-t su-border-digital-red-xlight su-pt-[9px] su-link-regular',
     },
     {
       text: 'Log out',
       url: '/api/auth/logout',
+      classes: 'su-link-regular',
     },
   ];
 
@@ -79,13 +81,13 @@ const AccountLinks = ({ mainLinkClasses }) => {
                 >{`Hi, ${authState.user.firstName} ${authState.user.lastName}`}</span>
                 <Initial string={authState.user.firstName} />
                 <ChevronDownIcon
-                  className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hocus:su-text-digital-red-xlight lg:group-hocus:!su-bg-transparent su-transition
+                  className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hocus:su-text-digital-red-xlight su-transition
             ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
                   aria-hidden="true"
                 />
               </button>
               <ul
-                className={`su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-py-8 su-px-8 su-w-screen su-mr-[-20px] sm:su-mr-[-30px] md:su-mr-0 md:su-w-[300px] su-right-0 su-text-left
+                className={`su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-py-[24px] su-px-[24px] su-w-screen su-mr-[-20px] sm:su-mr-[-30px] md:su-w-[300px] su-right-0 su-text-left
                   ${expanded ? 'su-block' : 'su-hidden'}
                 `}
               >

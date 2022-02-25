@@ -27,11 +27,7 @@ export const menuMobileSAA = ({ menuOpened } = {}) =>
     'su-invisible': !menuOpened,
   });
 export const menuMobileHomesite = ({ menuOpened } = {}) =>
-  dcnb(
-    menuMobileCommon,
-    'su-top-[107px] md:su-top-[119px] su-bg-cardinal-red-xdark',
-    {
-      '!su-scale-y-100 !su-opacity-100 !su-visible': menuOpened,
-      'su-invisible': !menuOpened,
-    }
-  );
+  dcnb(menuMobileCommon, 'su-top-full su-bg-cardinal-red-xdark', {
+    '!su-scale-y-100 !su-opacity-100 !su-visible': menuOpened,
+    'su-invisible': !menuOpened,
+  });

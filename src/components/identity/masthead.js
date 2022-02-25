@@ -74,7 +74,7 @@ const Masthead = ({
             <ul className={styles.utilNavMenuMobile}>
               <CreateBloks
                 blokSection={utilityNav}
-                className="first:su-ml-0"
+                className="first:su-ml-0 su-link-regular"
                 hasExternalIcon
               />
               <AccountLinks />
@@ -121,7 +121,7 @@ const Masthead = ({
                   <ul className={styles.utilNavMenu}>
                     <CreateBloks
                       blokSection={utilityNav}
-                      className={styles.utilNavItem}
+                      className={`${styles.utilNavItem} su-link-regular`}
                       hasExternalIcon
                     />
                     <AccountLinks mainLinkClasses={styles.utilNavItem} />
