@@ -29,6 +29,9 @@ app.get('/api/auth/logout', authInstance.destroySession());
 app.get('/api/auth/session', authInstance.authorize(), (req, res, next) => {
   res.json(req.user);
 });
-app.post('/api/auth/callback', authInstance.authenticate());
+app.post('/api/auth/callback', authInstance.authenticate(), (req, res) => {
+  const redirectUrl = req.samlRelayState.finalDestination || '/';
+  res.redirect(redirectUrl);
+});
 
 exports.handler = serverless(app);
