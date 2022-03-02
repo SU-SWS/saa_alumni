@@ -7,7 +7,6 @@ import { Container } from '../layout/Container';
 import Embed from './embed';
 import DynaScript from './dynaScript';
 import setGiveGabVars from '../../utilities/giveGabVars';
-// TODO: Import user auth information from AuthContext.js
 import AuthContext from '../../contexts/AuthContext';
 
 // Give Gab Form Component
@@ -33,17 +32,29 @@ const GiveGabForm = ({
   const { user, isAuthenticated, isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
-  console.log(blok);
 
   useEffect(() => {
     // Information from StoryBlok GiveGabForm Component
+    // TODO: The ciid is subject to change. Please update once the final name has been confirmed
     window.su_ciid = tripId || '';
     window.su_amt = depositAmount || '';
-    // TODO: The following fields does not exist within the GG form
+    // TODO: The following fields does not exist within the GG form yet.
     window.su_trip_name = tripName || '';
     window.su_extension = extension || '';
     window.su_extension_amount = extensionAmount || '';
-  }, [tripId, tripName, depositAmount, extension, extensionAmount]);
+
+    // Add query params to the current URL
+    // TODO: Confirm what params need to be appended to the current URL for forms
+    const params = `
+    dname=${user.firstName} ${user.lastName}
+    &first_name=${user.firstName}
+    &last_name=${user.lastName}
+    `;
+    const refresh = `${window.location.protocol}//${window.location.host}${
+      window.location.pathname
+    }?${params.replace(/\s\s+/g, ' ')}`;
+    window.history.pushState({ path: refresh }, '', refresh);
+  }, [tripId, tripName, depositAmount, extension, extensionAmount, user]);
 
   if (isAuthenticating) {
     return (
