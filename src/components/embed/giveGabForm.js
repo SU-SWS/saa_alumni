@@ -33,12 +33,14 @@ const GiveGabForm = ({
   const { user, isAuthenticated, isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
+  console.log(blok);
 
   useEffect(() => {
     // Information from StoryBlok GiveGabForm Component
-    window.su_trip_id = tripId || '';
+    window.su_ciid = tripId || '';
+    window.su_amt = depositAmount || '';
+    // TODO: The following fields does not exist within the GG form
     window.su_trip_name = tripName || '';
-    window.su_deposit_amount = depositAmount || '';
     window.su_extension = extension || '';
     window.su_extension_amount = extensionAmount || '';
   }, [tripId, tripName, depositAmount, extension, extensionAmount]);
