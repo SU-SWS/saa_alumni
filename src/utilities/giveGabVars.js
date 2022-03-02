@@ -165,7 +165,7 @@ const setGiveGabVars = (user) => {
     .trim();
 
   // Used within the Registration, Additional Payment, Notify Me, and Journey request form
-  // TODO: Determine the final structure of firstName and lastName. (e.g. user?.registrationNameFirst or user?.fullNameParsed?.firstName)
+  // TODO: Finalize structure of firstName and lastName. (e.g. user?.registrationNameFirst or user?.fullNameParsed?.firstName)
   window.su_dname = user?.digitalName || user?.firstName + user?.lastName || '';
   window.su_first_name = user?.firstName || '';
   window.su_last_name = user?.lastName || '';
