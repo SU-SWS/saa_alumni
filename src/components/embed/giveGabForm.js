@@ -45,7 +45,7 @@ const GiveGabForm = ({
 
     // Add query params to the current URL
     // TODO: Confirm what params need to be appended to the current URL for forms
-    const params = `dname=${user.firstName}`;
+    const params = `dname=${user.firstName} ${user.lastName}`;
     // eslint-disable-next-line prettier/prettier
     const refresh = `${window.location.protocol}//${window.location.host}${window.location.pathname.replace(/\/+$/, '')}?${params.replace(/\s\s+/g, ' ')}
     `;
