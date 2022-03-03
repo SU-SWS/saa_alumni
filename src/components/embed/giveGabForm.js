@@ -36,8 +36,8 @@ const GiveGabForm = ({
   useEffect(() => {
     // Information from StoryBlok GiveGabForm Component
     // TODO: The ciid is subject to change. Please update once the final name has been confirmed
-    window.su_ciid = tripId || '';
-    window.su_amt = depositAmount || '';
+    window.ciid = tripId || '';
+    window.amt = depositAmount || '';
     // TODO: The following fields does not exist within the GG form yet.
     window.su_trip_name = tripName || '';
     window.su_extension = extension || '';
