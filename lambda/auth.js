@@ -9,6 +9,7 @@ const getSiteUrl = require('../src/utilities/getSiteUrl');
 const siteUrl = getSiteUrl();
 const authInstance = new AdaptAuth({
   saml: {
+    serviceProviderLoginUrl: process.env.ADAPT_AUTH_SAML_SP_URL,
     cert: process.env.ADAPT_AUTH_SAML_CERT,
     decryptionKey: process.env.ADAPT_AUTH_SAML_DECRYPTION_KEY,
     returnToOrigin: siteUrl,
