@@ -166,9 +166,12 @@ const setGiveGabVars = (user) => {
 
   // Used within the Registration, Additional Payment, Notify Me, and Journey request form
   // TODO: Finalize structure of firstName and lastName. (e.g. user?.registrationNameFirst or user?.fullNameParsed?.firstName)
-  window.su_dname = user?.digitalName || user?.firstName + user?.lastName || '';
-  window.su_first_name = user?.firstName || '';
-  window.su_last_name = user?.lastName || '';
+  window.su_dname =
+    user?.name?.digitalName || user?.firstName + user?.lastName || '';
+  window.su_first_name =
+    user?.name?.fullNameParsed.firstName || user?.firstName || '';
+  window.su_last_name =
+    user?.name?.fullNameParsed.lastName || user?.lastName || '';
   window.su_birthDate = user?.birthDate || '';
   window.su_email = user?.email || '';
   window.su_phone = user?.phoneNumber || '';
