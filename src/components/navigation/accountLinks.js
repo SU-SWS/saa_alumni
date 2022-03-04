@@ -25,14 +25,15 @@ const AccountLinks = ({ mainLinkClasses }) => {
   });
 
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
-  const { showMobile } = useDisplay();
+  const { showDesktop } = useDisplay('xl');
 
   useOnClickOutside(ref, () => {
     setExpanded(false);
   });
 
   const linkClasses =
-    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white lg:hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight hocus:su-bg-digital-red su-text-20';
+    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white ' +
+    'hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight su-text-20';
 
   const links = [
     {
@@ -76,7 +77,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
               >
                 <span
                   className={`su-inline-block su-mr-10 ${
-                    showMobile ? 'su-sr-only' : ''
+                    showDesktop ? '' : 'su-sr-only'
                   }`}
                 >{`Hi, ${authState.user.firstName} ${authState.user.lastName}`}</span>
                 <Initial string={authState.user.firstName} />
@@ -99,7 +100,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         <HeroIcon
                           iconType="arrow-right"
                           isAnimate
-                          className="su-relative su-inline-block"
+                          className="su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hocus:su-text-white"
                         />
                       )}
                     </a>
@@ -112,7 +113,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
           {!authState.isAuthenticated && (
             <>
               <NavItem
-                className={mainLinkClasses}
+                className={`${mainLinkClasses} su-link-regular`}
                 blok={{
                   link: {
                     url: 'https://alumni.stanford.edu/get/page/my-account/profile',
