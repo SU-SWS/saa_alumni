@@ -18,6 +18,7 @@ export class MegaProfile {
         token: this.authenticate(),
       },
     });
+    this.authenticate();
   }
 
   /**
