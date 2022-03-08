@@ -46,7 +46,8 @@
   package = "/plugins/netlify-plugin-vault-variables"
   [plugins.inputs]
     endpoint = 'https://vault.stanford.edu'
-    # Order doesn't matter here as these will be fetch asyncronously. Try not to have dupes.
+    # Order doesn't matter here as these will be fetched asyncronously.
+    # Try not to have dupes.
     secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/perks']
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
@@ -65,10 +66,10 @@
     context = 'branch-deploy'
     branch = 'staging'
 
-[[plugins]]
-  package = "/plugins/netlify-plugin-wildcard-404-redirect"
-  [plugins.inputs]
-  destination = "https://cardinalalumni.stanford.edu/:splat"
+# [[plugins]]
+# package = "/plugins/netlify-plugin-wildcard-404-redirect"
+#  [plugins.inputs]
+#  destination = "https://cardinalalumni.stanford.edu/:splat"
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"

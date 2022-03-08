@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CreateBloks from '../../utilities/createBloks';
 import { SBBlokType } from '../../types/storyblok/SBBlokType';
 import { ClassNameType } from '../../types/CommonType';
+import AccountLinks from './accountLinks';
 
 export const UtilityNavProps = {
   menuItems: SBBlokType,
@@ -24,9 +25,10 @@ const UtilityNav = ({
     <ul className={menuClasses}>
       <CreateBloks
         blokSection={menuItems}
-        className={itemClasses}
+        className={`${itemClasses} su-link-regular`}
         hasExternalIcon
       />
+      <AccountLinks mainLinkClasses={itemClasses} />
     </ul>
   </nav>
 );

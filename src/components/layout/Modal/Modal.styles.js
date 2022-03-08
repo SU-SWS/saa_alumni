@@ -2,7 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ type, isOpen }) =>
   dcnb(
-    'su-modal su-fixed su-w-screen su-h-full su-overscroll-contain su-overflow-y-scroll su-overflow-x-hidden su-top-0 su-left-0 su-items-center su-justify-center su-z-50',
+    'su-modal su-fixed su-w-screen su-h-full su-overscroll-contain su-overflow-y-scroll su-overflow-x-hidden su-top-0 su-left-0 su-items-center su-justify-center su-z-[60]',
     {
       'su-flex': isOpen,
       'su-hidden': !isOpen,

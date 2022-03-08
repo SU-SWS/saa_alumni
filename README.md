@@ -1,4 +1,4 @@
-# [ADAPT SAA Alumni](https://github.com/SU-SWS/saa_alumni)
+# [ADAPT SAA Alumni - TSGG DEV](https://github.com/SU-SWS/saa_alumni)
 ##### Version: 1.0.0
 
 <a href="https://codeclimate.com/github/SU-SWS/saa_alumni/maintainability"><img src="https://api.codeclimate.com/v1/badges/6545d64d90025f75e2c8/maintainability" /></a>

@@ -9,6 +9,7 @@ import SearchModal from '../search/searchModal';
 import * as styles from './GlobalHeader/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
 import useDisplay from '../../hooks/useDisplay';
+import AccountLinks from '../navigation/accountLinks';
 
 const Masthead = ({
   blok: { mainNav, utilityNav, searchPageUrl },
@@ -73,9 +74,10 @@ const Masthead = ({
             <ul className={styles.utilNavMenuMobile}>
               <CreateBloks
                 blokSection={utilityNav}
-                className="first:su-ml-0"
+                className="first:su-ml-0 su-link-regular"
                 hasExternalIcon
               />
+              <AccountLinks />
             </ul>
           </nav>
           <FlexBox className="su-cc" alignItems="center">
@@ -94,7 +96,7 @@ const Masthead = ({
       {showDesktop && (
         <div
           className={`masthead-desktop su-hidden lg:su-block su-w-full su-z-20
-          ${hasHero ? 'su-absolute' : 'su-relative'}`}
+                  ${hasHero ? 'su-absolute' : 'su-relative'}`}
           ref={desktopRef}
         >
           <FlexBox>
@@ -119,9 +121,10 @@ const Masthead = ({
                   <ul className={styles.utilNavMenu}>
                     <CreateBloks
                       blokSection={utilityNav}
-                      className={styles.utilNavItem}
+                      className={`${styles.utilNavItem} su-link-regular`}
                       hasExternalIcon
                     />
+                    <AccountLinks mainLinkClasses={styles.utilNavItem} />
                   </ul>
                 </nav>
                 <OpenSearchModalButton
