@@ -88,8 +88,8 @@ const AccountLinks = ({ mainLinkClasses }) => {
                 />
               </button>
               <ul
-                className={`su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-py-[24px] su-px-[24px] su-w-screen su-mr-[-20px] sm:su-mr-[-30px] md:su-w-[300px] su-right-0 su-text-left
-                  ${expanded ? 'su-block' : 'su-hidden'}
+                className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-py-[24px] su-px-[24px] su-w-screen su-mr-[-20px] sm:su-mr-[-30px] md:su-w-[300px] su-right-0 su-text-left
+                  ${expanded ? 'su-scale-y-100 md:su-scale-x-100 su-opacity-100 su-visible' : 'su-scale-y-0 md:su-scale-x-0 su-opacity-0 su-invisible'}
                 `}
               >
                 {links.map((link) => (
