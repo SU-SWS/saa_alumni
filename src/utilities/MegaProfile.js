@@ -20,17 +20,12 @@ export class MegaProfile {
     });
   }
 
-  // Set Token
-  setToken = () => {
-    this.client.defaults.params.token = this.auth.token.access_token;
-  };
-
   /**
    * Auth handler
    */
   authenticate = async () => {
     await this.auth.authenticate();
-    return this.setToken();
+     this.client.defaults.params.token = this.auth.token.access_token;
   };
 
   // Generic request handler w/ auth check
