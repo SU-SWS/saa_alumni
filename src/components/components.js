@@ -18,6 +18,7 @@ import EmbedCard from './cards/embedCard';
 import EmbedVideo from './media/embedVideo';
 import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
+import FormPage from './page-types/formPage';
 import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
@@ -88,6 +89,7 @@ const ComponentList = {
   embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
+  formPage: FormPage,
   giveGabForm: GiveGabForm,
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
