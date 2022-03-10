@@ -41,23 +41,4 @@ export class MegaProfile {
   // Method wrapped request handlers
   get = async (url, config = {}) =>
     this.request({ ...config, method: 'GET', url });
-
-  post = async (url, data, config = {}) =>
-    this.request({
-      ...config,
-      method: 'POST',
-      url,
-      data,
-    });
-
-  put = async (url, data, config = {}) =>
-    this.request({
-      ...config,
-      method: 'PUT',
-      url,
-      data,
-    });
-
-  delete = async (url, config = {}) =>
-    this.request({ ...config, method: 'DELETE', url });
 }
