@@ -14,9 +14,10 @@ export class MegaProfile {
     this.client = axios.create({
       baseURL: this.url,
       params: {
-        token: this.authenticate(),
+        token: '',
       },
     });
+    this.authenticate();
   }
 
   /**
