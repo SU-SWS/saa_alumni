@@ -19,10 +19,21 @@ export class ApiGatewayAuth {
       client_secret: this.clientSecret,
       grant_type: this.grantType,
     };
-    const result = await axios.post(this.url, qs.stringify(body), {
-      headers: { 'Content-type': 'application/x-www-form-urlencoded' },
-    });
-    this.token = result.data;
-    return this.token;
+    await axios
+      .post(this.url, qs.stringify(body))
+      .then((response) => {
+        this.token = response.data;
+        return this.token;
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log('Error:', error.response.status, error.response.data);
+        } else if (error.request) {
+          console.log('Error:', error.request);
+        } else {
+          console.log('Error:', error.message);
+        }
+        console.log('Error:', error.config);
+      });
   };
 }
