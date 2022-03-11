@@ -27,16 +27,17 @@ export class ApiGatewayAuth {
       })
       .catch((error) => {
         console.log('Error:', error.config);
+        console.log('Error:', error.message);
+
         if (error.response) {
           console.log('Error:', error.response.status, error.response.data);
-          return error;
         }
+
         if (error.request) {
           console.log('Error:', error.request);
-          return error;
         }
-        console.log('Error:', error.message);
-        return error;
+
+        Promise.reject(error);
       });
   };
 }
