@@ -1,6 +1,5 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { dcnb } from 'cnbuilder';
 import { Container } from '../layout/Container';
 import { Heading } from '../simple/Heading';
 import Layout from '../partials/layout';
@@ -39,30 +38,30 @@ const FormPage = (props) => {
               filename={filename}
               alt={alt}
               focus={focus}
-              overlay={false}
+              overlay="formDark"
               aspectRatio="5x2"
               className="su-object-cover su-h-full su-w-full"
             />
           </div>
-          <Grid
-            gap={false}
-            xs={12}
-            className="su-relative su-cc su-z-10 su-justify-between"
-          >
-            <GridCell xs={12} lg={5} xl={5} className="su-h-fit su-sticky">
-              <Heading
-                level={1}
-                align="center"
-                font="serif"
-                srOnly={isSrOnlyTitle}
-                id="page-title"
-                className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-type-6 su-mx-auto su-max-w-1200"
-              >
-                {title}
-              </Heading>
-              <CreateBloks blokSection={formContent} />
-            </GridCell>
+          <Grid gap xs={12} className="su-relative su-cc su-z-10 su-rs-pb-8">
             <GridCell xs={12} lg={5} xl={5}>
+              <div className="su-sticky su-top-0 su-h-fit su-text-white su-rs-pt-6">
+                {/* Back to Link place holder */}
+                <a href="/">Back to Italy</a>
+                <Heading
+                  level={1}
+                  align="left"
+                  font="serif"
+                  srOnly={isSrOnlyTitle}
+                  id="page-title"
+                  className="su-rs-mt-6"
+                >
+                  {title}
+                </Heading>
+                <CreateBloks blokSection={formContent} className="su-rs-mt-2" />
+              </div>
+            </GridCell>
+            <GridCell xs={12} lg={5} xl={5} className=" su-rs-pt-6 su-rs-mt-5">
               <CreateBloks blokSection={giveGabForm} />
             </GridCell>
           </Grid>
