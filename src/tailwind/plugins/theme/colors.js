@@ -22,7 +22,15 @@ module.exports = function () {
       DEFAULT: '#181D1C',
       dark: '#070B0A',
       opacity: {
+        40: 'rgba(24, 29, 28, 0.4)',
         80: 'rgba(24, 29, 28, 0.8)',
+      },
+    },
+    'saa-black-new': {
+      DEFAULT: '#100F0D',
+      opacity: {
+        40: 'rgba(24, 29, 28, 0.4)',
+        64: 'rgba(24, 29, 28, 0.64)',
       },
     },
     'digital-red-xlight': '#F83535', // Passed contrast test for black background
