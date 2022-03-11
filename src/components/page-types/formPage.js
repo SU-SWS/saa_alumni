@@ -54,11 +54,14 @@ const FormPage = (props) => {
                   font="serif"
                   srOnly={isSrOnlyTitle}
                   id="page-title"
-                  className="su-rs-mt-6"
+                  className="su-rs-mt-6 su-drop-shadow"
                 >
                   {title}
                 </Heading>
-                <CreateBloks blokSection={formContent} className="su-rs-mt-2" />
+                <CreateBloks
+                  blokSection={formContent}
+                  className="su-rs-mt-2 su-drop-shadow"
+                />
               </div>
             </GridCell>
             <GridCell xs={12} lg={5} xl={5} className=" su-rs-pt-6 su-rs-mt-5">
