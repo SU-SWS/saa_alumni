@@ -13,11 +13,10 @@ export class MegaProfile {
     // Create Client
     this.client = axios.create({
       baseURL: this.url,
-      params: {
-        token: '',
-      },
     });
-    this.authenticate();
+    if (this.auth.isAuthenticated()) {
+      this.setAuthParams();
+    }
   }
 
   /**
@@ -25,7 +24,7 @@ export class MegaProfile {
    */
   authenticate = async () => {
     await this.auth.authenticate();
-    this.client.defaults.params.token = this.auth.token.access_token;
+    this.client.defaults.params = { token: this.auth?.token?.access_token };
   };
 
   // Generic request handler w/ auth check

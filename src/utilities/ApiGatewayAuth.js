@@ -20,7 +20,7 @@ export class ApiGatewayAuth {
       grant_type: this.grantType,
     };
     await axios
-      .post(this.url, body)
+      .post(this.url, qs.stringify(body))
       .then((response) => {
         this.token = response.data;
         return this.token;
@@ -29,14 +29,14 @@ export class ApiGatewayAuth {
         console.log('Error:', error.config);
         if (error.response) {
           console.log('Error:', error.response.status, error.response.data);
-          Promise.reject(error);
+          return error;
         }
         if (error.request) {
           console.log('Error:', error.request);
-          Promise.reject(error);
+          return error;
         }
         console.log('Error:', error.message);
-        Promise.reject(error);
+        return error;
       });
   };
 }
