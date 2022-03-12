@@ -14,15 +14,15 @@ const megaprofileHandler = async (req, res) => {
     const { data: contact } = await mp.get(
       `/${req.user.encodedSUID}/profiles/contact`
     );
-    const mpUser = { user, contact };
+    const { addresses } = await mp.get(
+      `${user.encodedSUID}/profiles/addresses`
+    );
+    const { emails } = await mp.get(`${user.encodedSUID}/profiles/emails`);
+    const { phoneNumbers } = await mp.get(
+      `${user.encodedSUID}/profiles/phonenumbers`
+    );
+    const mpUser = { user, contact, addresses, emails, phoneNumbers };
     return res.status(200).json(mpUser);
-    // TODO: ADAPT-4438 Once we have the user data, we can append the megaprofile data.
-    // const { addresses } = await mp.get(`${user.encodedSUID}/profiles/addresses`);
-    // const { emails } = await mp.get(`${user.encodedSUID}/profiles/emails`);
-    // const { phoneNumbers } = await mp.get(`${user.encodedSUID}/profiles/phonenumbers`);
-    // ...additional endpoints here
-    // const mpUser = { user, contact, addresses, emails, phoneNumbers, ...additional endpoints here };
-    // res.status(200).json(mpUser);
   } catch (err) {
     return ExceptionHandler(res, err);
   }
