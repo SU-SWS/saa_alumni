@@ -5,7 +5,7 @@ import { Heading } from '../../simple/Heading';
 
 import { SAACtaLink } from '../../cta/SAACtaLink';
 
-const tripNotifyMe = (props) => {
+const TripNotifyMe = (props) => {
   const {
     blok: {
       heading,
@@ -68,4 +68,4 @@ const tripNotifyMe = (props) => {
   );
 };
 
-export default tripNotifyMe;
+export default TripNotifyMe;

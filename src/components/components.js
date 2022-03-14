@@ -18,7 +18,7 @@ import EmbedCard from './cards/embedCard';
 import EmbedVideo from './media/embedVideo';
 import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
-import FormPage from './page-types/formPage';
+import FormPage from './page-types/formPage/formPage';
 import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
@@ -62,6 +62,7 @@ import { SBTripCard } from './storyblok/tripCard';
 import { SBTsContentPicker } from './storyblok/tsContentPicker';
 import { SBTsContentTemplate } from './storyblok/tsContentTemplate';
 import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
+import TripNotifyMe from './page-types/formPage/tripNotifyMe';
 import TripPage from './page-types/TripPage/TripPage';
 import { SBUtilityNav } from './storyblok/utilityNav';
 import VerticalNav from './navigation/verticalNav';
@@ -134,6 +135,7 @@ const ComponentList = {
   tripFilterPage: TripFilterPage,
   tsContentPicker: SBTsContentPicker,
   tsContentTemplate: SBTsContentTemplate,
+  tripNotifyMe: TripNotifyMe,
   utilityNav: SBUtilityNav,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
