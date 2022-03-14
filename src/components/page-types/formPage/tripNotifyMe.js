@@ -5,6 +5,7 @@ import { getDate, getDuration } from '../../../utilities/dates';
 import { Heading } from '../../simple/Heading';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
+import * as styles from './tripNotifyMe.styles';
 import { SAACtaLink } from '../../cta/SAACtaLink';
 import CreateBloks from '../../../utilities/createBloks';
 
@@ -67,13 +68,19 @@ const TripNotifyMe = (props) => {
           className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
         />
       )}
-      <div>
-        <Heading level={4}>Dates</Heading>
-        <span>{tripDates}</span>
-      </div>
-      <div>
-        <Heading level={4}>Duration</Heading>
-        <span>{tripDuration}</span>
+      <div className={styles.summaryContent}>
+        <div className={styles.summaryItem}>
+          <Heading level={4} className={styles.summaryName}>
+            Dates
+          </Heading>
+          <span className={styles.summaryValue}>{tripDates}</span>
+        </div>
+        <div className={styles.summaryItem}>
+          <Heading level={4} className={styles.summaryName}>
+            Duration
+          </Heading>
+          <span className={styles.summaryValue}>{tripDuration}</span>
+        </div>
       </div>
     </SbEditable>
   );
