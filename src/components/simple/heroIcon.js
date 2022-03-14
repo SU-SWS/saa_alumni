@@ -1,6 +1,6 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-import { VideoCameraIcon, MicrophoneIcon } from '@heroicons/react/outline';
+import { VideoCameraIcon, MicrophoneIcon, DocumentDuplicateIcon } from '@heroicons/react/outline';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -9,6 +9,7 @@ import {
   DownloadIcon,
   MailIcon,
   PlayIcon,
+  CheckIcon,
 } from '@heroicons/react/solid';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 
@@ -63,6 +64,16 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
     'chevron-right': {
       heroicon: ChevronRightIcon,
       baseStyle: 'su-w-1em su-ml-02em su--mt-4',
+      animate: 'group-hocus:su-translate-x-02em',
+    },
+    'document-duplicate': {
+      heroicon: DocumentDuplicateIcon,
+      baseStyle: 'su-w-1em',
+      animate: 'group-hocus:su-translate-x-02em',
+    },
+    'check': {
+      heroicon: CheckIcon,
+      baseStyle: 'su-w-1em',
       animate: 'group-hocus:su-translate-x-02em',
     },
   };
