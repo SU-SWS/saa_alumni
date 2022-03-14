@@ -1,15 +1,19 @@
 import React, { useMemo } from 'react';
 import SbEditable from 'storyblok-react';
+import { Link } from 'gatsby';
 import { getDate, getDuration } from '../../../utilities/dates';
 import { Heading } from '../../simple/Heading';
-
+import RichTextRenderer from '../../../utilities/richTextRenderer';
+import hasRichText from '../../../utilities/hasRichText';
 import { SAACtaLink } from '../../cta/SAACtaLink';
+import CreateBloks from '../../../utilities/createBloks';
 
 const TripNotifyMe = (props) => {
   const {
     blok: {
-      heading,
-      body,
+      notifyMeText: {
+        content: { body },
+      },
       trip: {
         full_slug: fullSlug,
         content: { title: tripTitle, startDate, endDate },
@@ -43,19 +47,26 @@ const TripNotifyMe = (props) => {
   return (
     <SbEditable content={blok}>
       {/* TODO: Temporary Back to trip Link placeholder */}
-      <SAACtaLink
-        textColor="bright-red-hover-cardinal-red"
-        leadingIcon="arrow-left"
+      <Link to={tripURL} className="su-rs-mb-6">
+        Back to {tripTitle}
+      </Link>
+      {/* <SAACtaLink
+        // leadingIcon="arrow-left"
         size="default"
         link={tripURL}
         className="su-rs-mb-6"
       >
         Back to {tripTitle}
-      </SAACtaLink>
-      <Heading>
-        {heading} {tripTitle}
+      </SAACtaLink> */}
+      <Heading level={1} align="left" font="serif">
+        Receive notifiations: {tripTitle}
       </Heading>
-      <p>{body}</p>
+      {hasRichText(body) && (
+        <RichTextRenderer
+          wysiwyg={body}
+          className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+        />
+      )}
       <div>
         <Heading level={4}>Dates</Heading>
         <span>{tripDates}</span>
