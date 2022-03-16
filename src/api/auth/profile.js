@@ -1,6 +1,6 @@
-// Get MP User Data and append to User
+// Get MP User Data and append to Auth User Data
 // Do not enable for public use. This is for development/debugging purposes only.
-// Data can be viewed at /api/auth/megaprofile-data
+// Data can be viewed at /api/auth/profile
 // -----------------------------------------------------------------------------
 import connect from 'next-connect';
 import { MegaProfile } from '../../utilities/MegaProfile';

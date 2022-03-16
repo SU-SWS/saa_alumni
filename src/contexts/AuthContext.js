@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 
 const initialAuthState = {
-  user: null,
+  userProfile: null,
   isAuthenticated: false,
   isAuthenticating: true,
 };
@@ -13,8 +13,8 @@ function authReducer(state, action) {
       return { ...state, isAuthenticating: action.payload };
     case 'setAuthenticated':
       return { ...state, isAuthenticated: action.payload };
-    case 'setUser':
-      return { ...state, user: action.payload };
+    case 'setUserProfile':
+      return { ...state, userProfile: action.payload };
     default:
       return state;
   }
@@ -31,18 +31,16 @@ class AuthContextProvider extends React.Component {
   }
 
   componentDidMount() {
-    const url = `${window.location.protocol}//${window.location.host}/api/auth/session`;
-    // TODO: If user is authenticated and the MPdata has been set, set the state.
-    // const url = `${window.location.protocol}//${window.location.host}/api/megaprofile-data`;
+    const url = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
     fetch(url).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
         this.dispatch({ type: 'setAuthenticated', payload: true });
-        this.dispatch({ type: 'setUser', payload: body });
+        this.dispatch({ type: 'setUserProfile', payload: body });
         this.dispatch({ type: 'setAuthenticating', payload: false });
       } else {
         this.dispatch({ type: 'setAuthenticated', payload: false });
-        this.dispatch({ type: 'setUser', payload: null });
+        this.dispatch({ type: 'setUserProfile', payload: null });
         this.dispatch({ type: 'setAuthenticating', payload: false });
       }
     });
@@ -59,11 +57,11 @@ class AuthContextProvider extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { user, isAuthenticated, isAuthenticating } = this.state;
+    const { userProfile, isAuthenticated, isAuthenticating } = this.state;
     return (
       <AuthContext.Provider
         value={{
-          user,
+          userProfile,
           isAuthenticated,
           isAuthenticating,
           setAuthState: this.setAuthState,
