@@ -38,7 +38,7 @@ const Accordion = ({
   return (
     <SbEditable content={blok}>
       <div
-        className={`su-cc
+        className={`su-w-full
             ${spacingTop !== 'none' ? spacingTopStyle : ''}
             ${spacingBottom !== 'none' ? spacingBottomStyle : ''}`}
         {...(id ? { id } : {})}

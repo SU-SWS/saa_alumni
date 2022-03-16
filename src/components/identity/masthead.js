@@ -74,7 +74,7 @@ const Masthead = ({
             <ul className={styles.utilNavMenuMobile}>
               <CreateBloks
                 blokSection={utilityNav}
-                className="first:su-ml-0"
+                className="first:su-ml-0 su-link-regular"
                 hasExternalIcon
               />
               <AccountLinks />
@@ -96,7 +96,7 @@ const Masthead = ({
       {showDesktop && (
         <div
           className={`masthead-desktop su-hidden lg:su-block su-w-full su-z-20
-          ${hasHero ? 'su-absolute' : 'su-relative'}`}
+                  ${hasHero ? 'su-absolute' : 'su-relative'}`}
           ref={desktopRef}
         >
           <FlexBox>
@@ -121,10 +121,10 @@ const Masthead = ({
                   <ul className={styles.utilNavMenu}>
                     <CreateBloks
                       blokSection={utilityNav}
-                      className={styles.utilNavItem}
+                      className={`${styles.utilNavItem} su-link-regular`}
                       hasExternalIcon
                     />
-                    <AccountLinks />
+                    <AccountLinks mainLinkClasses={styles.utilNavItem} />
                   </ul>
                 </nav>
                 <OpenSearchModalButton

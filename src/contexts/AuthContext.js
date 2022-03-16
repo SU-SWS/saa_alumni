@@ -32,6 +32,8 @@ class AuthContextProvider extends React.Component {
 
   componentDidMount() {
     const url = `${window.location.protocol}//${window.location.host}/api/auth/session`;
+    // TODO: If user is authenticated and the MPdata has been set, set the state.
+    // const url = `${window.location.protocol}//${window.location.host}/api/megaprofile-data`;
     fetch(url).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
