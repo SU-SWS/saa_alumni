@@ -13,8 +13,8 @@ const ProtectedContentWrapper = ({ blok }) => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       fetch(
-        // Temporarily there is no way to know yet if the user is an alumni or not, waiting on that, for now manually
-        // uncommenting for testing
+        // Temporarily there is no way to know yet if the user is an alumni or not, waiting on that.
+        // For now manually uncommenting for testing
         `http://localhost:64946/api/private-proxy?slug=${protectedContent}`
         // `http://localhost:64946/api/private-proxy?slug=${protectedContentInactive}`
       )
