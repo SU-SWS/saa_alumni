@@ -14,11 +14,13 @@ const megaprofileHandler = async (req, res) => {
     const { data: contact } = await mp.get(
       `/${req.user.encodedSUID}/profiles/contact`
     );
-    const { addresses } = await mp.get(
+    const { data: addresses } = await mp.get(
       `${req.user.encodedSUID}/profiles/addresses`
     );
-    const { emails } = await mp.get(`${req.user.encodedSUID}/profiles/emails`);
-    const { phoneNumbers } = await mp.get(
+    const { data: emails } = await mp.get(
+      `${req.user.encodedSUID}/profiles/emails`
+    );
+    const { data: phoneNumbers } = await mp.get(
       `${req.user.encodedSUID}/profiles/phonenumbers`
     );
     const mpUser = { user, contact, addresses, emails, phoneNumbers };
