@@ -9,6 +9,7 @@ import Ankle from '../../partials/ankle/ankle';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
+// import AuthenticatedPage from '../../auth/AuthenticatedPage';
 
 const FormPage = (props) => {
   const {
@@ -25,6 +26,7 @@ const FormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
 
   return (
+    // <AuthenticatedPage>
     <SbEditable content={blok}>
       <Layout {...props}>
         <Container
@@ -46,16 +48,17 @@ const FormPage = (props) => {
           <Grid gap xs={12} className="su-relative su-cc su-z-10 su-rs-pb-8">
             <GridCell xs={12} lg={5} xl={5}>
               <div className="su-sticky su-top-0 su-h-fit su-text-white su-rs-pt-6">
-                <Heading
-                  level={1}
-                  align="left"
-                  font="serif"
-                  srOnly={isSrOnlyTitle}
-                  id="page-title"
-                  className="su-drop-shadow"
-                >
-                  {title}
-                </Heading>
+                {title && (
+                  <Heading
+                    level={1}
+                    align="left"
+                    font="serif"
+                    srOnly={isSrOnlyTitle}
+                    id="page-title"
+                  >
+                    {title}
+                  </Heading>
+                )}
                 <CreateBloks
                   blokSection={formContent}
                   className="su-rs-mt-2 su-drop-shadow"
@@ -70,6 +73,7 @@ const FormPage = (props) => {
         </Container>
       </Layout>
     </SbEditable>
+    // </AuthenticatedPage>
   );
 };
 

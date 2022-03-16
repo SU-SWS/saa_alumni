@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react';
+import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
-import { Link } from 'gatsby';
 import { getDate, getDuration } from '../../../utilities/dates';
 import { Heading } from '../../simple/Heading';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import * as styles from './tripNotifyMe.styles';
 import { SAACtaLink } from '../../cta/SAACtaLink';
-import CreateBloks from '../../../utilities/createBloks';
+import { Grid } from '../../layout/Grid';
+import { GridCell } from '../../layout/GridCell';
 
 const TripNotifyMe = (props) => {
   const {
@@ -22,6 +23,7 @@ const TripNotifyMe = (props) => {
     },
     blok,
   } = props;
+  const title = `Receive notifiations: ${tripTitle}`;
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
   const tripDates = useMemo(() => {
     const start = getDate(startDate);
@@ -47,20 +49,17 @@ const TripNotifyMe = (props) => {
 
   return (
     <SbEditable content={blok}>
-      {/* TODO: Temporary Back to trip Link placeholder */}
-      <Link to={tripURL} className="su-rs-mb-6">
-        Back to {tripTitle}
-      </Link>
       {/* <SAACtaLink
-        // leadingIcon="arrow-left"
+        leadingIcon="arrow-left"
         size="default"
         link={tripURL}
         className="su-rs-mb-6"
       >
         Back to {tripTitle}
       </SAACtaLink> */}
-      <Heading level={1} align="left" font="serif">
-        Receive notifiations: {tripTitle}
+      <Helmet titleTemplate={title} title={title} />
+      <Heading level={1} align="left" font="serif" id="page-title">
+        {title}
       </Heading>
       {hasRichText(body) && (
         <RichTextRenderer
@@ -68,20 +67,20 @@ const TripNotifyMe = (props) => {
           className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
         />
       )}
-      <div className={styles.summaryContent}>
-        <div className={styles.summaryItem}>
+      <Grid xl={5} className={styles.summaryContent}>
+        <GridCell xl={3} className={styles.summaryItem}>
           <Heading level={4} className={styles.summaryName}>
             Dates
           </Heading>
           <span className={styles.summaryValue}>{tripDates}</span>
-        </div>
-        <div className={styles.summaryItem}>
+        </GridCell>
+        <GridCell xl={3} className={styles.summaryItem}>
           <Heading level={4} className={styles.summaryName}>
             Duration
           </Heading>
           <span className={styles.summaryValue}>{tripDuration}</span>
-        </div>
-      </div>
+        </GridCell>
+      </Grid>
     </SbEditable>
   );
 };
