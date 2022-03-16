@@ -1,6 +1,10 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-import { VideoCameraIcon, MicrophoneIcon, DocumentDuplicateIcon } from '@heroicons/react/outline';
+import {
+  VideoCameraIcon,
+  MicrophoneIcon,
+  DocumentDuplicateIcon,
+} from '@heroicons/react/outline';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -71,7 +75,7 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
       baseStyle: 'su-w-1em',
       animate: 'group-hocus:su-translate-x-02em',
     },
-    'check': {
+    check: {
       heroicon: CheckIcon,
       baseStyle: 'su-w-1em',
       animate: 'group-hocus:su-translate-x-02em',

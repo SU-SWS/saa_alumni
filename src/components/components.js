@@ -116,7 +116,7 @@ const ComponentList = {
   perkCardHorizontal: PerkCardHorizontal,
   protectedContentWrapper: ProtectedContentWrapper,
   promoCodeBanner: PromoCodeBanner,
-  protectedContentItem: protectedContentItem,
+  protectedContentItem,
   poster: Poster,
   protectedPage: ProtectedPage,
   redirect: Redirect,
