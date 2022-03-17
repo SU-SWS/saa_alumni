@@ -6,7 +6,8 @@ import { Heading } from '../../simple/Heading';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import * as styles from './tripNotifyMe.styles';
-import { SAACtaLink } from '../../cta/SAACtaLink';
+import SbLink from '../../../utilities/sbLink';
+import HeroIcon from '../../simple/heroIcon';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 
@@ -49,14 +50,17 @@ const TripNotifyMe = (props) => {
 
   return (
     <SbEditable content={blok}>
-      {/* <SAACtaLink
-        leadingIcon="arrow-left"
-        size="default"
+      <SbLink
         link={tripURL}
-        className="su-rs-mb-6"
+        classes="su-group su-inline-block su-rs-mb-6 su-no-underline su-transition-colors"
       >
+        <HeroIcon
+          iconType="arrow-left"
+          className="su-inline-block su-text-digital-red-light group-hocus:su-text-cardinal-red"
+          isAnimate
+        />
         Back to {tripTitle}
-      </SAACtaLink> */}
+      </SbLink>
       <Helmet titleTemplate={title} title={title} />
       <Heading level={1} align="left" font="serif" id="page-title">
         {title}
