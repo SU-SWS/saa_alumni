@@ -9,8 +9,6 @@ import { ApiGatewayAuth } from '../../utilities/ApiGatewayAuth';
 const gatewayAuthHandler = async (req, res) => {
   const auth = new ApiGatewayAuth();
   // let tokenData;
-  const tokenData = await auth.authenticate();
-  res.status(200).json({ tokenData });
 
   // Token protect enpoint.
   // if (req.query.token !== process.env.STATUSCAKE_TOKEN) {
@@ -19,11 +17,12 @@ const gatewayAuthHandler = async (req, res) => {
   // }
 
   // Fetch the token from the API Gateway
-  // try {
-  // tokenData = await auth.token.access_token;
-  // } catch (error) {
-  //   res.status(500).send('Could not fetch bearer token.');
-  // }
+  try {
+    const tokenData = await auth.authenticate();
+    res.status(200).json({ tokenData });
+  } catch (error) {
+    res.status(500).send('Could not fetch bearer token.');
+  }
 
   // const userProfile = await profileFetcher('66530456105', tokenData);
 
