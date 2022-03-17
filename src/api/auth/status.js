@@ -9,7 +9,7 @@ import { ApiGatewayAuth } from '../../utilities/ApiGatewayAuth';
 const gatewayAuthHandler = async (req, res) => {
   const auth = new ApiGatewayAuth();
   // let tokenData;
-  const tokenData = await auth.token.access_token;
+  const tokenData = await auth.authenticate();
   res.status(200).json({ tokenData });
 
   // Token protect enpoint.
