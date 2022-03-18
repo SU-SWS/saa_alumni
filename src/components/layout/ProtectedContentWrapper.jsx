@@ -5,9 +5,9 @@ import CreateBloks from '../../utilities/createBloks';
 import AuthContext from '../../contexts/AuthContext';
 
 const ProtectedContentWrapper = ({ blok }) => {
-  const protectedContent = blok.protectedContent.story.full_slug;
+  const protectedContent = blok.protectedContent.story?.full_slug;
   const protectedContentInactive =
-    blok.protectedContentInactive.story.full_slug;
+    blok.protectedContentInactive.story?.full_slug;
   const [authenticatedContent, setAuthenticatedContent] = useState(null);
 
   useEffect(() => {
@@ -28,18 +28,21 @@ const ProtectedContentWrapper = ({ blok }) => {
 
   return (
     <AuthContext.Consumer>
-      {(authState) => (
-        <>
-          {authState.isAuthenticated &&
-            authState.user &&
-            authenticatedContent && (
-              <CreateStory story={authenticatedContent} />
-            )}
-          {!authState.isAuthenticated && (
-            <CreateBloks blokSection={blok.anonymousContent} />
-          )}
-        </>
-      )}
+      {/* eslint-disable-next-line consistent-return */}
+      {(authState) => {
+        if (!authState.isAuthenticating) {
+          if (
+            authState.isAuthenticated &&
+            authState.userProfile &&
+            authenticatedContent
+          ) {
+            return <CreateStory story={authenticatedContent} />;
+          }
+          if (!authState.isAuthenticated) {
+            return <CreateBloks blokSection={blok.anonymousContent} />;
+          }
+        }
+      }}
     </AuthContext.Consumer>
   );
 };
