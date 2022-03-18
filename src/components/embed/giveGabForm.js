@@ -49,7 +49,7 @@ const GiveGabForm = ({
       <div
         aria-live="polite"
         aria-busy="true"
-        className="su-bg-white su-rs-p-5"
+        className="su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm su-shadow-lg su-text-white su-rs-p-5"
       >
         <ClipLoader color="#00BFFF" height={50} width={50} />
         <p>Loading form...</p>
@@ -78,7 +78,7 @@ const GiveGabForm = ({
       )}
       <Container
         width="full"
-        className="children:su-bg-white children:su-shadow-lg"
+        className="children:su-bg-gradient-to-tl children:su-to-saa-black children:su-from-saa-black-opacity-40 children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white"
       >
         <div className="su-rs-p-5">
           <Embed blok={preBlok} />

@@ -18,6 +18,8 @@ const storyblokRelations = [
   'verticalNav.verticalNav',
   'tripCard.trip',
   'tsContentPicker.contentPicker',
+  'tripNotifyMe.trip',
+  'tripNotifyMe.notifyMeText',
 ];
 
 // Support for Gatsby CLI
