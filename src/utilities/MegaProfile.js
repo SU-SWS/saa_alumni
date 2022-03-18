@@ -38,7 +38,6 @@ export class MegaProfile {
       .request(config)
       .then((response) => response)
       .catch((error) => error);
-    console.log(result);
 
     if (result.status === 404) {
       result.data = {};
