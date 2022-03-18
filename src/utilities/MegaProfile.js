@@ -34,6 +34,7 @@ export class MegaProfile {
       await this.authenticate();
     }
     const result = await this.client.request(config);
+    console.log(result);
 
     if (result.status === 404) {
       result.data = {};
