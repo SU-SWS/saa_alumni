@@ -6,7 +6,6 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import { Container } from '../layout/Container';
 import Embed from './embed';
 import DynaScript from './dynaScript';
-import setGiveGabVars from '../../utilities/giveGabVars';
 import AuthContext from '../../contexts/AuthContext';
 
 // Give Gab Form Component
@@ -29,7 +28,7 @@ const GiveGabForm = ({
   blok,
 }) => {
   const htmlId = uuid;
-  const { user, isAuthenticated, isAuthenticating } = useContext(AuthContext);
+  const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
 
@@ -60,10 +59,6 @@ const GiveGabForm = ({
     );
   }
 
-  // If the user is logged in, provide the prefill variables to the window.
-  if (isAuthenticated) {
-    setGiveGabVars(user);
-  }
   return (
     <SbEditable content={blok}>
       {css_styles && (

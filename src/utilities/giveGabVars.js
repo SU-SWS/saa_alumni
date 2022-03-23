@@ -119,11 +119,11 @@ const findEmailType = (emails, type) => {
 /**
  * Set the window variables for the pre populated forms.
  * .
- * @param {*} user
+ * @param {*} userProfile
  */
-const setGiveGabVars = (user) => {
+const setGiveGabVars = (userProfile) => {
   // Set the `did` value to the encoded SUID variable.
-  window.did = user.encodedSUID || null;
+  window.did = userProfile?.user?.encodedSUID || null;
 
   // Logic for finding an address.
   //
@@ -131,31 +131,31 @@ const setGiveGabVars = (user) => {
   // If entity has no preference then use valid Home mailing address
   // If neither preferred or Home exist then use valid Business mailing address
   let address;
-  if (Array.isArray(user.addresses)) {
-    address = findPreferredAddress(user.addresses);
+  if (Array.isArray(userProfile?.addresses)) {
+    address = findPreferredAddress(userProfile?.addresses);
     if (!address) {
-      address = findAddressType(user.addresses, 'Home');
+      address = findAddressType(userProfile?.addresses, 'Home');
     }
     if (!address) {
-      address = findAddressType(user.addresses, 'Business');
+      address = findAddressType(userProfile?.addresses, 'Business');
     }
     if (!address) {
-      address = findAddressType(user.addresses, 'Other');
+      address = findAddressType(userProfile?.addresses, 'Other');
     }
   }
 
   // Find the preferred email address. If none, use the one they logged in with.
   let email;
-  if (Array.isArray(user.emails)) {
-    email = findPreferredEmail(user.emails);
+  if (Array.isArray(userProfile?.emails)) {
+    email = findPreferredEmail(userProfile?.emails);
     if (!email) {
-      email = findEmailType(user.emails, 'Home Email');
+      email = findEmailType(userProfile?.emails, 'Home Email');
     }
     if (!email) {
-      email = findEmailType(user.emails, 'Business Email');
+      email = findEmailType(userProfile?.emails, 'Business Email');
     }
     if (!email) {
-      email = findEmailType(user.emails, 'Other Email');
+      email = findEmailType(userProfile?.emails, 'Other Email');
     }
   }
 
@@ -167,20 +167,20 @@ const setGiveGabVars = (user) => {
   // Used within the Registration, Additional Payment, Notify Me, and Journey request form
   // TODO: Finalize structure of firstName and lastName. (e.g. user?.registrationNameFirst or user?.fullNameParsed?.firstName)
   window.dname =
-    user?.name?.digitalName || `${user?.firstName} ${user?.lastName}` || '';
+    userProfile?.user?.name?.digitalName ||
+    `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}` ||
+    '';
   window.su_first_name =
-    user?.name?.fullNameParsed.firstName || user?.firstName || '';
+    userProfile?.user?.name?.fullNameParsed.firstName ||
+    userProfile?.user?.firstName ||
+    '';
   window.su_last_name =
-    user?.name?.fullNameParsed.lastName || user?.lastName || '';
-  window.su_birthDate = user?.birthDate || '';
-  window.su_email = user?.email || '';
-  window.su_phone = user?.phoneNumber || '';
-
-  // Reservation Number does not exist in API
-  // window.su_res_conf_code = user?.registrationConfirmationCode || '';
-
-  // Used within the Registration and Additional Payment request form
-  // TODO: Determine if additional mapping is needed for different country/postal code formats.
+    userProfile?.user?.name?.fullNameParsed.lastName ||
+    userProfile?.user?.lastName ||
+    '';
+  window.su_birthDate = userProfile?.user?.birthDate || '';
+  window.su_email = userProfile?.user?.email || '';
+  window.su_phone = userProfile?.user?.phoneNumber || '';
   window.su_address = address?.streetAddress1 || '';
   window.su_address2 = street2 || '';
   window.su_city = address?.city || '';
