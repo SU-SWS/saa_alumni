@@ -6,7 +6,6 @@ import connect from 'next-connect';
 import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
-import setGiveGabVars from '../../utilities/giveGabVars';
 
 const megaprofileHandler = async (req, res) => {
   const mp = new MegaProfile();
@@ -25,7 +24,6 @@ const megaprofileHandler = async (req, res) => {
       `${req.user.encodedSUID}/profiles/phonenumbers`
     );
     const mpUser = { user, contact, addresses, emails, phoneNumbers };
-    setGiveGabVars(mpUser);
     return res.status(200).json(mpUser);
   } catch (err) {
     return ExceptionHandler(res, err);
