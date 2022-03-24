@@ -31,15 +31,18 @@ const GiveGabForm = ({
   const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
-  // TODO: The ciid is subject to change. Please update once the final name has been confirmed
-  const ggUrl = `${url}?ciid=${tripId}`;
+  // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
+  let ggUrl;
+  if (tripId) {
+    ggUrl = `${url}?ciid=${tripId}`;
+  }
 
   useEffect(() => {
     // Information from StoryBlok GiveGabForm Component
-    // TODO: The ciid is subject to change. Please update once the final name has been confirmed
+    // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
     window.ciid = tripId || '';
     window.amt = depositAmount || '';
-    // TODO: The following fields does not exist within the GG form yet.
+    // TODO: ADAPT-4681/ADAPT-4776 The following fields does not exist within the GG form yet.
     window.su_trip_name = tripName || '';
     window.su_extension = extension || '';
     window.su_extension_amount = extensionAmount || '';
@@ -79,7 +82,7 @@ const GiveGabForm = ({
       >
         <div className="su-rs-p-5">
           <Embed blok={preBlok} />
-          <DynaScript src={ggUrl} id={htmlId} errorText={errorText} />
+          <DynaScript src={url} id={htmlId} errorText={errorText} />
         </div>
         <div className="su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
           <Embed blok={postBlok} />
