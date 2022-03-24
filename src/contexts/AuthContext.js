@@ -1,6 +1,6 @@
 import React, { createContext } from 'react';
 import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
-import setGiveGabVars from '../../utilities/giveGabVars';
+import setGiveGabVars from '../utilities/giveGabVars';
 
 const initialAuthState = {
   userProfile: null,
