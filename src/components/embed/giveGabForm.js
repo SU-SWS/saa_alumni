@@ -31,7 +31,8 @@ const GiveGabForm = ({
   const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
-  const ggUrl = `${url}?trip_id=${tripId}`;
+  // TODO: The ciid is subject to change. Please update once the final name has been confirmed
+  const ggUrl = `${url}?ciid=${tripId}`;
 
   useEffect(() => {
     // Information from StoryBlok GiveGabForm Component
