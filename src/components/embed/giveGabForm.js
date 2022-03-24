@@ -31,6 +31,7 @@ const GiveGabForm = ({
   const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
+  const ggUrl = `${url}?trip_id=${tripId}`;
 
   useEffect(() => {
     // Information from StoryBlok GiveGabForm Component
@@ -77,7 +78,7 @@ const GiveGabForm = ({
       >
         <div className="su-rs-p-5">
           <Embed blok={preBlok} />
-          <DynaScript src={url} id={htmlId} errorText={errorText} />
+          <DynaScript src={ggUrl} id={htmlId} errorText={errorText} />
         </div>
         <div className="su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
           <Embed blok={postBlok} />
