@@ -51,7 +51,7 @@ const TripNotifyMe = (props) => {
   return (
     <SbEditable content={blok}>
       <Grid xs={12}>
-        <GridCell xs={6} lg={12}>
+        <GridCell xs={12} md={6} lg={12}>
           <SbLink
             link={tripURL}
             classes="su-group su-inline-block su-rs-mb-6 su-no-underline su-transition-colors"
@@ -75,7 +75,8 @@ const TripNotifyMe = (props) => {
           )}
         </GridCell>
         <GridCell
-          xs={4}
+          xs={12}
+          md={4}
           lg={12}
           className="xs:su-col-start-8 lg:su-col-start-1"
         >
