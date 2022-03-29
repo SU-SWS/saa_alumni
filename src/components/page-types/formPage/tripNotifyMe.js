@@ -64,7 +64,13 @@ const TripNotifyMe = (props) => {
             Back to {tripTitle}
           </SbLink>
           <Helmet titleTemplate={title} title={title} />
-          <Heading level={1} align="left" font="serif" id="page-title">
+          <Heading
+            level={1}
+            align="left"
+            font="serif"
+            id="page-title"
+            className="su-drop-shadow"
+          >
             {title}
           </Heading>
           {hasRichText(body) && (

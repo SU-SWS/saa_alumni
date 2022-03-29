@@ -61,6 +61,7 @@ import SaaStoryCard from './cards/saaStoryCard';
 import { SBTripCard } from './storyblok/tripCard';
 import { SBTsContentPicker } from './storyblok/tsContentPicker';
 import { SBTsContentTemplate } from './storyblok/tsContentTemplate';
+import TripCustomJourneys from './page-types/formPage/tripCustomJourneys';
 import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
 import TripFormInformation from './composite/tripFormInformation';
 import TripNotifyMe from './page-types/formPage/tripNotifyMe';
@@ -133,6 +134,7 @@ const ComponentList = {
   saaStoryCard: SaaStoryCard,
   trip: TripPage,
   tripCard: SBTripCard,
+  tripCustomJourneys: TripCustomJourneys,
   tripFilterPage: TripFilterPage,
   tsContentPicker: SBTsContentPicker,
   tsContentTemplate: SBTsContentTemplate,
