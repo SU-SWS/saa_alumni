@@ -1,0 +1,144 @@
+
+.additional-payment-form2 .su-digital-name {
+  @apply su-flex
+}
+
+.additional-payment-form2 .su-digital-name .ggeQuestion__label {
+  @apply su-mr-5 su-p-0;
+}
+
+.additional-payment-form2 .su-digital-name .ggeQuestion__field input {
+  @apply hocus:su-border-none;
+}
+
+.ggeWidget .ggeContent .ggeQuestion {
+  @apply su-p-0 su-mb-34 md:su-mb-45;
+}
+
+.ggeWidget .ggeContent .ggeQuestion:last-child {
+  @apply su-pb-0 md:su-pb-0;
+}
+
+.ggeQuestion:not(.ggeQuestion--error):not(.ggeQuestion--instructions) .ggeQuestion__field {
+  @apply su-flex su-flex-col-reverse;
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion.ggeQuestion--error .ggeQuestion__field {
+  @apply su-flex-col;
+}
+
+.ggeWidget .ggeQuestion--instructions a:after,
+.ggeWidget .ggeQuestion__error a:after {
+  content: "";
+  mask: url("../assets/arrow-right.svg");
+  -webkit-mask-size: contain;
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45  su-bg-white su-ml-4 su-relative su-top-2;
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion__field input,
+.ggeWidget .ggeQuestion .ggeQuestion__field select,
+.ggeWidget .ggeQuestion .ggeQuestion__field textarea {
+  @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8px] md:su-text-[2.1rem] su-border-0 su-border-b-2 su-border-black-50 su-rounded-[3px] su-box-border;
+  background: rgba(16, 15, 13, 0.5);
+}
+
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"] {
+  @apply su-border-0 su-border-b-2 su-border-black-50;
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion__field textarea {
+  @apply su-min-h-[138px];
+}
+
+.ggeWidget .ggeQuestion--error,
+.ggeWidget .ggeQuestion__error,
+.ggeWidget .ggePageNav--formError {
+  @apply su-bg-transparent su-text-digital-red-light;
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion__field select {
+  @apply su-bg-no-repeat;
+  background-position: right 22px center;
+  background-image: url("../assets/arrow-down.svg");
+  background-size: 21px;
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--error input,
+.ggeWidget .ggeQuestion.ggeQuestion--error select {
+  @apply su-border su-border-digital-red-light;
+}
+
+.ggeWidget .ggeQuestion input[readonly] {
+  @apply su-text-black-30 su-border-dashed su-border-foggy-light su-bg-transparent su-p-0;
+}
+
+.ggeWidget .ggeQuestion input,
+.ggeWidget .ggeQuestion textarea {
+  @apply su-px-[21px] md:su-px-[19px] su-py-[20px];
+}
+
+.ggeWidget .ggePageNav {
+  @apply su-flex su-justify-center;
+}
+
+.ggePageSet .ggeHidden ~ .ggePage .ggePageNav {
+  @apply su-justify-between;
+}
+
+.ggeWidget .ggePageNav--back {
+  @apply su-static su-translate-y-0;
+}
+
+.ggeWidget .ggeButton {
+  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45;
+}
+
+.ggeWidget .ggeButton--forward {
+  @apply su-border-solid su-border-3 su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-rounded-none
+}
+
+.ggeWidget .ggeButton--back {
+  @apply su-static su-border-2 su-border-solid su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
+}
+
+.ggeWidget .ggeButton--forward::after,
+.ggeWidget .ggeButton--back::before {
+  content: "";
+  mask: url("../assets/arrow-right.svg");
+  -webkit-mask-size: contain;
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1em] su-h-[1em];
+}
+
+.ggeWidget .ggeButton--forward::after {
+  @apply su-bg-current su-ml-8;
+}
+
+.ggeWidget .ggeButton--back::before {
+  @apply su-bg-[#000] su-rotate-180 su-mr-8;
+}
+
+.ggeWidget .ggeQuestion__label label {
+  @apply su-type-0 su-font-semibold;
+}
+
+.ggeWidget .ggeQuestion__caption,
+.ggeWidget .ggeQuestion__error {
+  @apply su-text-15 md:su-text-18;
+}
+
+.ggeWidget .ggeQuestion__caption {
+  @apply su-mb-11;
+}
+
+.ggeWidget .ggeQuestion__error {
+  @apply su-mt-11;
+}
+
+.ggeWidget .ggeTally--total {
+  @apply su-border-0
+}
+
+/* Confirmation page */
+.ggeConfirmationMessage {
+
+}
