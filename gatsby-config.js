@@ -20,6 +20,7 @@ const storyblokRelations = [
   'tsContentPicker.contentPicker',
   'tripNotifyMe.trip',
   'tripNotifyMe.notifyMeText',
+  'registrationFormPage.trip',
 ];
 
 // Support for Gatsby CLI
