@@ -28,7 +28,7 @@ const megaprofileHandler = async (req, res) => {
     );
 
     // TODO: ADAPT-4677 Remove fake data once relationships endpoint is working
-    if (relationships.length === 0) {
+    if (Object.keys(relationships).length === 0) {
       relationships = {
         relationships: [
           {
