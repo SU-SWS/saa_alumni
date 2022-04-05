@@ -1,36 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
+import { FormContext } from '../../../contexts/FormContext';
 
-const TripRelationShipCard = ({
-  name,
-  addRelationship = () => {},
-  removeRelationship = () => {},
-}) => {
+const TripRelationShipCard = ({ relationship }) => {
+  const [travelersData, setTravelersData] = useContext(FormContext);
+  console.log('Current travelers list: ', travelersData);
   const [removeBtn, setRemoveBtn] = useState(false);
-  // let addedStyle = 'su-none';
-  // let removedStyle = 'su-none';
-  // const addRelationship = (event) => {
-  //   const user = event.value;
-  //   setSelectedTravelers({ ...selectedTravelers, user });
-  //   addedStyle = 'su-inline';
-  //   setRemoveBtn(true);
-  // };
+  const addRelationship = () => {
+    setTravelersData({ ...travelersData, [relationship.id]: relationship });
+    setRemoveBtn(true);
+  };
 
-  // const removeRelationship = (e) => {
-  //   setSelectedTravelers({
-  //     ...selectedTravelers.filter((user) => user !== e.value),
-  //   });
-  //   addedStyle = 'su-none';
-  //   removedStyle = 'su-inline';
-  //   setRemoveBtn(false);
-  // };
-
-  const toggleBtn = () => {
-    console.log('Button remove: ', removeBtn);
-    setRemoveBtn(!removeBtn);
+  const removeRelationship = (e) => {
+    const travelers = Object.values(travelersData).filter(
+      (user) => user.id !== relationship.id
+    );
+    console.log('Removed: ', travelers);
+    setTravelersData(travelers);
+    setRemoveBtn(false);
   };
 
   return (
@@ -67,16 +57,13 @@ const TripRelationShipCard = ({
           id="page-title"
           className="su-text-m2"
         >
-          {name}
+          {relationship.digitalName}
         </Heading>
         {removeBtn ? (
           <button
             type="button"
             className="su-button"
-            onClick={() => {
-              removeRelationship();
-              toggleBtn();
-            }}
+            onClick={removeRelationship}
           >
             Remove
             <HeroIcon
@@ -85,14 +72,7 @@ const TripRelationShipCard = ({
             />
           </button>
         ) : (
-          <button
-            type="button"
-            className="su-button"
-            onClick={() => {
-              addRelationship();
-              toggleBtn();
-            }}
-          >
+          <button type="button" className="su-button" onClick={addRelationship}>
             Add
             <HeroIcon
               iconType="play"

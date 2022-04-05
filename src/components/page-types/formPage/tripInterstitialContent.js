@@ -1,15 +1,17 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import { Container } from '../../layout/Container';
 import TripRelationshipCard from './tripRelationshipCard';
-import AuthContext from '../../../contexts/AuthContext';
+import TripRelationshipList from './tripRelationshipList';
+// import AuthContext from '../../../contexts/AuthContext';
 import { Grid } from '../../layout/Grid';
+import { Heading } from '../../simple/Heading';
 
 const TripInterstitialContent = () => {
-  const [selectedTravelers, setSelectedTravelers] = useState({});
-  const { userProfile } = useContext(AuthContext);
+  // const { userProfile } = useContext(AuthContext);
 
   // TODO: Remove fake data once relationships endpoint is working
-  const relationships = userProfile?.relationships || {
+  // const relationships = userProfile?.relationships
+  const relationships = {
     relationships: [
       {
         id: '73c1d24d-e934-4ade-9101-397bec48fed0',
@@ -38,34 +40,27 @@ const TripInterstitialContent = () => {
     ],
   };
 
-  const addRelationship = (digitalName) => {
-    // setSelectedTravelers({ ...selectedTravelers, digitalName });
-    console.log(digitalName);
-  };
-
-  const removeRelationship = (digitalName) => {
-    console.log(digitalName);
-    // console.log(Object.values(selectedTravelers));
-    // setSelectedTravelers({
-    //   ...selectedTravelers.filter((user) => user !== digitalName),
-    // });
-  };
-
-  // TODO: Determine how to pass selectedTravelers to RegistrationForm GG Component
-  window.prefill = selectedTravelers;
-
   return (
     <Container>
       <Grid gap md={12}>
         {relationships.relationships.map((relationship) => (
           <TripRelationshipCard
             key={relationship.id}
-            name={relationship.digitalName}
-            addRelationship={addRelationship(relationship.digitalName)}
-            removeRelationship={removeRelationship(relationship.digitalName)}
+            relationship={relationship}
           />
         ))}
       </Grid>
+      {/* Relationship List */}
+      <Heading level={2} align="left" font="serif">
+        Your trip registrants
+      </Heading>
+      <p>
+        Please confirm that you would like to register the following people for
+        this trip. Please note that you will be able to add the above people
+        later if you choose, but you will have to enter their information
+        manually.
+      </p>
+      <TripRelationshipList />
     </Container>
   );
 };
