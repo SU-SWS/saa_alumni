@@ -11,7 +11,7 @@ const TripRelationshipListItem = ({ traveler }) => {
     const travelers = Object.values(travelersData).filter(
       (user) => user.id !== traveler.id
     );
-    console.log('Removed: ', travelers);
+    console.log('Removed from list: ', traveler.digitalName);
     setTravelersData(travelers);
   };
 

@@ -14,11 +14,11 @@ const TripRelationShipCard = ({ relationship }) => {
     setRemoveBtn(true);
   };
 
-  const removeRelationship = (e) => {
+  const removeRelationship = () => {
     const travelers = Object.values(travelersData).filter(
       (user) => user.id !== relationship.id
     );
-    console.log('Removed: ', travelers);
+    console.log('Removed: ', relationship.digitalName);
     setTravelersData(travelers);
     setRemoveBtn(false);
   };

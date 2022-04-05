@@ -8,9 +8,9 @@ import { Heading } from '../../simple/Heading';
 
 const TripInterstitialContent = () => {
   // const { userProfile } = useContext(AuthContext);
+  // const relationships = userProfile?.relationships
 
   // TODO: Remove fake data once relationships endpoint is working
-  // const relationships = userProfile?.relationships
   const relationships = {
     relationships: [
       {

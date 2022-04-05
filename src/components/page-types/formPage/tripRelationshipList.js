@@ -4,9 +4,13 @@ import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import TripRelationshipListItem from './tripRelationshipListItem';
 
-const TripRelationshipList = ({ relationship }) => {
+const TripRelationshipList = () => {
   const [travelersData] = useContext(FormContext);
   const travelers = Object.values(travelersData);
+
+  if (travelers.length === 0) {
+    return null;
+  }
 
   return (
     <Grid md={12}>
