@@ -7,7 +7,7 @@ import AuthContext from '../../../contexts/AuthContext';
 
 const TripInterstitialContent = () => {
   const { userProfile } = useContext(AuthContext);
-  const relationships = userProfile?.relationships;
+  const { relationships } = userProfile;
 
   return (
     <>
