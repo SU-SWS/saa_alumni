@@ -9,7 +9,7 @@ const TripRelationshipList = () => {
   const travelers = Object.values(travelersData);
 
   if (travelers.length === 0) {
-    return null;
+    return <p>No travelers have been selected</p>;
   }
 
   return (
