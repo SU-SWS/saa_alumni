@@ -44,6 +44,7 @@ const FormPage = (props) => {
 
   useEffect(() => {
     if (showForm) {
+      window.history.pushState(null, null, window.location.pathname);
       window.addEventListener('popstate', onBackButtonEvent);
     }
   }, [showForm]);
