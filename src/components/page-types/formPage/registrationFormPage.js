@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
@@ -35,8 +35,22 @@ const FormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
-
   const [showForm, setShowForm] = useState(false);
+
+  // const onBackButtonEvent = (e) => {
+  //   e.preventDefault();
+  //   setShowForm(false);
+  // };
+
+  useEffect(() => {
+    if (showForm) {
+      window.addEventListener('popstate', (e) => {
+        e.preventDefault();
+        setShowForm(false);
+      });
+    }
+  }, [showForm]);
+
   const toggleForm = () => {
     setShowForm(true);
   };
