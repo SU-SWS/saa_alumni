@@ -1,50 +1,52 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import fetch from 'node-fetch';
-import CreateStory from '../../utilities/createStory';
 import CreateBloks from '../../utilities/createBloks';
+import CreateStories from '../../utilities/createStories';
 import AuthContext from '../../contexts/AuthContext';
 
 const ProtectedContentWrapper = ({ blok }) => {
-  const protectedContent = blok.protectedContent.story?.full_slug;
-  const protectedContentInactive =
-    blok.protectedContentInactive.story?.full_slug;
   const [authenticatedContent, setAuthenticatedContent] = useState(null);
+  const authState = useContext(AuthContext);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      fetch(
-        // Temporarily there is no way to know yet if the user is an alumni or not, waiting on that.
-        // For now manually uncommenting for testing
-        `http://localhost:64946/api/private-proxy?slug=${protectedContent}`
-        // `http://localhost:64946/api/private-proxy?slug=${protectedContentInactive}`
-      )
-        .then((res) => res.json())
-        .then((pageContent) => {
-          setAuthenticatedContent(pageContent.story);
+      if (!authState.isAuthenticated || !authState.userProfile) return;
+
+      const requests = [];
+
+      blok.protectedContentRef.forEach((item) => {
+        const slug = item.protectedContentItem.story.full_slug;
+        const request = fetch(
+          // Temporarily there is no way to know yet if the user is an alumni or not, waiting on that.
+          // For now manually uncommenting for testing
+          `http://localhost:8000/api/private-proxy?slug=${slug}`
+        ).then((res) => {
+          if (res.status === 200) {
+            return res.json();
+          }
+          return false;
         });
+
+        requests.push(request);
+      });
+
+      Promise.all(requests).then((results) => {
+        const allowedItems = results.filter((item) => !!item.story);
+        const contentItems = allowedItems.map((item) => item.story);
+        setAuthenticatedContent(contentItems);
+      });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [authState.isAuthenticating]);
 
-  return (
-    <AuthContext.Consumer>
-      {/* eslint-disable-next-line consistent-return */}
-      {(authState) => {
-        if (!authState.isAuthenticating) {
-          if (
-            authState.isAuthenticated &&
-            authState.userProfile &&
-            authenticatedContent
-          ) {
-            return <CreateStory story={authenticatedContent} />;
-          }
-          if (!authState.isAuthenticated) {
-            return <CreateBloks blokSection={blok.anonymousContent} />;
-          }
-        }
-      }}
-    </AuthContext.Consumer>
-  );
+  if (!authState.isAuthenticating && authenticatedContent) {
+    return <CreateStories stories={authenticatedContent} />;
+  }
+  if (!authState.isAuthenticating && !authenticatedContent) {
+    return <CreateBloks blokSection={blok.anonymousContent} />;
+  }
+
+  return <div>Checking Authentication state...</div>;
 };
 
 export default ProtectedContentWrapper;
