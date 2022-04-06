@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ApiGatewayAuth } from './ApiGatewayAuth';
+import mockServer from './mockServer';
 
 export class MegaProfile {
   constructor(config = {}) {
@@ -9,11 +10,15 @@ export class MegaProfile {
     const builtUrl = `${host}${path}`;
     this.url = config.url || process.env.MEGAPROFILE_URL || builtUrl;
     this.auth = config.auth || new ApiGatewayAuth();
-
     // Create Client
     this.client = axios.create({
       baseURL: this.url,
     });
+
+    if (process.env.MEGAPROFILE_MOCK === 'true') {
+      mockServer(this.client);
+    }
+
     if (this.auth.isAuthenticated()) {
       this.setAuthParams();
     }
