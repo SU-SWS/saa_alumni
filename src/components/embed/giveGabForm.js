@@ -49,15 +49,10 @@ const GiveGabForm = ({
     window.su_extension = extension || '';
     window.su_extension_amount = extensionAmount || '';
 
-    if (isAuthenticated) {
-      // Set the window variables for the pre populated forms.
-      setGiveGabVars(userProfile);
-    }
-
     // Component unmount
-    // return () => {
-    //   unsetGiveGabVars();
-    // };
+    return () => {
+      unsetGiveGabVars();
+    };
   }, [
     userProfile,
     isAuthenticated,
