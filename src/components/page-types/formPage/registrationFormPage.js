@@ -37,12 +37,14 @@ const FormPage = (props) => {
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
   const [showForm, setShowForm] = useState(false);
 
+  const onBackButtonEvent = (e) => {
+    e.preventDefault();
+    setShowForm(false);
+  };
+
   useEffect(() => {
     if (showForm) {
-      window.addEventListener('popstate', (e) => {
-        e.preventDefault();
-        setShowForm(false);
-      });
+      window.addEventListener('popstate', onBackButtonEvent);
     }
   }, [showForm]);
 
