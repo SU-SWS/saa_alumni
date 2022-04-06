@@ -189,4 +189,20 @@ const setGiveGabVars = (userProfile) => {
   window.su_country = lookup.byCountry(address?.addressCountry)?.iso2;
 };
 
-export default setGiveGabVars;
+const unsetGiveGabVars = () => {
+  delete window.did;
+  delete window.dname;
+  delete window.su_first_name;
+  delete window.su_last_name;
+  delete window.su_birthDate;
+  delete window.su_email;
+  delete window.su_phone;
+  delete window.su_address;
+  delete window.su_address2;
+  delete window.su_city;
+  delete window.su_state;
+  delete window.su_zip;
+  delete window.su_country;
+};
+
+export { setGiveGabVars, unsetGiveGabVars };

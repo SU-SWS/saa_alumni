@@ -7,6 +7,7 @@ import { Container } from '../layout/Container';
 import Embed from './embed';
 import DynaScript from './dynaScript';
 import AuthContext from '../../contexts/AuthContext';
+import { setGiveGabVars, unsetGiveGabVars } from '../../utilities/giveGabVars';
 
 // Give Gab Form Component
 // -----------------------------------------------------------------------------
@@ -28,7 +29,8 @@ const GiveGabForm = ({
   blok,
 }) => {
   const htmlId = uuid;
-  const { isAuthenticating } = useContext(AuthContext);
+  const { userProfile, isAuthenticated, isAuthenticating } =
+    useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
   // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
@@ -46,7 +48,25 @@ const GiveGabForm = ({
     window.su_trip_name = tripName || '';
     window.su_extension = extension || '';
     window.su_extension_amount = extensionAmount || '';
-  }, [tripId, tripName, depositAmount, extension, extensionAmount]);
+
+    if (isAuthenticated) {
+      // Set the window variables for the pre populated forms.
+      setGiveGabVars(userProfile);
+    }
+
+    // Component unmount
+    return () => {
+      unsetGiveGabVars();
+    };
+  }, [
+    userProfile,
+    isAuthenticated,
+    tripId,
+    tripName,
+    depositAmount,
+    extension,
+    extensionAmount,
+  ]);
 
   if (isAuthenticating) {
     return (
