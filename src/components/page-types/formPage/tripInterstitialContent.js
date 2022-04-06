@@ -3,11 +3,53 @@ import TripRelationshipCard from './tripRelationshipCard';
 import TripRelationshipList from './tripRelationshipList';
 import { Grid } from '../../layout/Grid';
 import { Heading } from '../../simple/Heading';
-import AuthContext from '../../../contexts/AuthContext';
+// import AuthContext from '../../../contexts/AuthContext';
 
 const TripInterstitialContent = () => {
-  const { userProfile } = useContext(AuthContext);
-  const { relationships } = userProfile;
+  // TODO: ADAPT-4677 Remove fake data once relationships endpoint is working
+  // const { userProfile } = useContext(AuthContext);
+  // const { relationships } = userProfile;
+
+  const relationships = {
+    relationships: [
+      {
+        id: '4e98cb4e-77e5-491a-9786-11ddd20ee4b2',
+        type: 'Spouse/Partner',
+        digitalName: 'Max Dataton',
+        birthDate: '2015-02-10',
+      },
+      {
+        id: '62364aca-1e2c-47f5-9cc2-d83986a5edfe',
+        type: 'Child',
+        digitalName: 'Asha Yost',
+        birthDate: '1998-01-02',
+      },
+      {
+        id: 'af1104c0-c373-427b-b564-87ed991af420',
+        type: 'Child',
+        digitalName: 'Dino Okuneva',
+        birthDate: '1936-07-27',
+      },
+      {
+        id: '9ad905be-79cf-4faf-b2bb-c944aa9e6f87',
+        type: 'Child',
+        digitalName: 'Lou Beier',
+        birthDate: '2005-04-14',
+      },
+      {
+        id: '1014caad-8e28-4508-b2a0-0ad7f3cf4cf2',
+        type: 'Child',
+        digitalName: 'Alessia Jacobi',
+        birthDate: '1971-04-19',
+      },
+      {
+        id: 'd0a82cf2-9271-4e68-801f-755a3f2fee00',
+        type: 'Child',
+        digitalName: 'Michael Rotkowitz',
+        birthDate: '2006-02-17',
+      },
+    ],
+  };
 
   return (
     <>
