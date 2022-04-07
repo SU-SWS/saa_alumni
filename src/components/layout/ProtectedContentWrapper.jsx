@@ -16,11 +16,7 @@ const ProtectedContentWrapper = ({ blok }) => {
 
       blok.protectedContentRef.forEach((item) => {
         const slug = item.protectedContentItem.story.full_slug;
-        const request = fetch(
-          // Temporarily there is no way to know yet if the user is an alumni or not, waiting on that.
-          // For now manually uncommenting for testing
-          `http://localhost:8000/api/private-proxy?slug=${slug}`
-        ).then((res) => {
+        const request = fetch(`/api/private-proxy?slug=${slug}`).then((res) => {
           if (res.status === 200) {
             return res.json();
           }
