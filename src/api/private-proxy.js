@@ -32,6 +32,7 @@ const privateProxy = async (req, res) => {
   const { slug } = req.query;
   const storyblokRes = await storyblok.get(`cdn/stories/${slug}`);
   const { story } = storyblokRes.data;
+
   if (accessAllowed(affiliationsData.affiliations, story)) {
     res.status(200).json({ story });
   } else {
