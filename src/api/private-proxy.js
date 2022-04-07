@@ -22,7 +22,7 @@ const privateProxy = async (req, res) => {
   const mp = new MegaProfile();
 
   const storyblok = new StoryblokClient({
-    accessToken: process.env.GATSBY_STORYBLOK_ACCESS_TOKEN,
+    accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   });
   const { data: affiliationsData } = await mp.get(
     `/${req.user.encodedSUID}/profiles/affiliations`
