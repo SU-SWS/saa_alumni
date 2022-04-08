@@ -186,3 +186,14 @@ TODO
 #### View Modes for Components
 
 TODO
+
+### Megaprofile Mocking
+Megaprofile mocking can be enabled locally by running `npm run dev:local`, or by adding the following
+environment variable:
+```
+MEGAPROFILE_MOCK=true
+```
+This will return mocked responses rather than call the Megaprofile Profile API. 
+
+Mocks for additional endpoints can be added in ./src/utilties/mockServer.js.
+Mock data should generally be stored in separate files in ./src/utilities/mocks.
