@@ -17,7 +17,7 @@ import HeroIcon from '../../simple/heroIcon';
 import FormProvider from '../../../contexts/FormContext';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 
-const FormPage = (props) => {
+const RegistrationFormPage = (props) => {
   const {
     blok: {
       body,
@@ -151,4 +151,4 @@ const FormPage = (props) => {
   );
 };
 
-export default FormPage;
+export default RegistrationFormPage;
