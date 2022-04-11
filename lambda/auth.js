@@ -7,7 +7,7 @@ const getSiteUrl = require('../src/utilities/getSiteUrl');
 
 // Automatically set origin, if not passed explicitly.
 const siteUrl = getSiteUrl();
-export const authInstance = new AdaptAuth({
+const authInstance = new AdaptAuth({
   saml: {
     cert: process.env.ADAPT_AUTH_SAML_CERT,
     decryptionKey: process.env.ADAPT_AUTH_SAML_DECRYPTION_KEY,
@@ -38,6 +38,9 @@ app.get(
     }
   }
 );
-app.post('/api/auth/callback', authInstance.authenticate());
+app.post('/api/auth/callback', authInstance.authenticate(), (req, res) => {
+  const redirectUrl = req.samlRelayState.finalDestination || '/';
+  res.redirect(redirectUrl);
+});
 
 exports.handler = serverless(app);

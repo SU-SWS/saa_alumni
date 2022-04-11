@@ -12,32 +12,46 @@ const Url = require('url-parse');
 const { Headers } = require('node-fetch');
 const serverless = require('serverless-http');
 const { ClientCredentials } = require('simple-oauth2');
-const authInstance = require('./auth');
+const { AdaptAuth } = require('adapt-auth-sdk');
+const getSiteUrl = require('../src/utilities/getSiteUrl');
 
+// Express Configuration.
+// Configure express to be able to handle json and cookies.
+// -----------------------------------------------------------------------------
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
 
-const bearerUrl = Url(process.env.MEGAPROFILE_TOKEN_URL);
+// Automatically set origin, if not passed explicitly.
+const siteUrl = getSiteUrl();
+const authInstance = new AdaptAuth({
+  saml: {
+    cert: process.env.ADAPT_AUTH_SAML_CERT,
+    decryptionKey: process.env.ADAPT_AUTH_SAML_DECRYPTION_KEY,
+    returnToOrigin: siteUrl,
+    returnToPath: process.env.ADAPT_AUTH_SAML_RETURN_PATH,
+  },
+  session: {
+    secret: process.env.ADAPT_AUTH_SESSION_SECRET,
+    loginRedirectUrl: process.env.ADAPT_AUTH_SESSION_LOGIN_URL || '/',
+    unauthorizedRedirectUrl: '/403-access-denied',
+  },
+});
 
 // Bearer token fetcher through the simple-oauth2 package.
 // -----------------------------------------------------------------------------
+const bearerUrl = Url(process.env.MEGAPROFILE_TOKEN_URL);
 const megaTokenAuth = new ClientCredentials({
   client: {
     id: process.env.MEGAPROFILE_CLIENT_ID,
     secret: process.env.MEGAPROFILE_CLIENT_SECRET,
-    grant_type: 'client_credentials',
   },
   auth: {
     tokenHost: `${bearerUrl.protocol}//${bearerUrl.host}`,
     tokenPath: bearerUrl.pathname,
   },
 });
-
-// Express Configuration.
-// Configure express to be able to handle json and cookies.
-// -----------------------------------------------------------------------------
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cookieParser());
 
 /**
  * Get Bearer Token
@@ -122,7 +136,7 @@ app.get(`/api/mega/token`, async (req, res) => {
 //-----------------------------------------------------------------------------
 app.get(
   `/api/mega/profile`,
-  authInstance.authorize({ allowUnauthorized: true }),
+  authInstance.authorize({ allowUnauthorized: false }),
   async (req, res) => {
     res.setHeader(
       'Cache-Control',
@@ -156,4 +170,4 @@ app.get(
 
 // Start the express service as the serverless version by wrapping it.
 // -----------------------------------------------------------------------------
-module.exports.handler = serverless(app);
+exports.handler = serverless(app);
