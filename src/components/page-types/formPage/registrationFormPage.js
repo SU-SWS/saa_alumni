@@ -18,7 +18,7 @@ import FormProvider from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
 import TripRelationshipCard from './tripRelationshipCard';
 import TripRelationshipList from './tripRelationshipList';
-// import AuthenticatedPage from '../../auth/AuthenticatedPage';
+import AuthenticatedPage from '../../auth/AuthenticatedPage';
 
 const RegistrationFormPage = (props) => {
   const {
