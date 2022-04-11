@@ -5,20 +5,26 @@ import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
 
-const TripRelationShipCard = ({ relationship }) => {
+const TripRelationShipCard = ({ traveler }) => {
   const [travelersData, setTravelersData] = useContext(FormContext);
-  console.log('Current travelers list: ', travelersData);
   const [removeBtn, setRemoveBtn] = useState(false);
+  let fullName = '';
+  if (traveler && traveler?.digitalName) {
+    fullName = traveler.digitalName;
+  }
+  if (traveler && traveler?.firstName && traveler?.lastName) {
+    fullName = `${traveler?.firstName} ${traveler?.lastName}`;
+  }
+
   const addRelationship = () => {
-    setTravelersData({ ...travelersData, [relationship.id]: relationship });
+    setTravelersData({ ...travelersData, [traveler.id]: traveler });
     setRemoveBtn(true);
   };
 
   const removeRelationship = () => {
     const travelers = Object.values(travelersData).filter(
-      (user) => user.id !== relationship.id
+      (user) => user.id !== traveler.id
     );
-    console.log('Removed: ', relationship.digitalName);
     setTravelersData(travelers);
     setRemoveBtn(false);
   };
@@ -57,7 +63,7 @@ const TripRelationShipCard = ({ relationship }) => {
           id="page-title"
           className="su-text-m2"
         >
-          {relationship.digitalName}
+          {fullName}
         </Heading>
         {removeBtn ? (
           <button
