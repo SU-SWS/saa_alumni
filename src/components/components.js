@@ -63,7 +63,6 @@ import { SBTripCard } from './storyblok/tripCard';
 import { SBTsContentPicker } from './storyblok/tsContentPicker';
 import { SBTsContentTemplate } from './storyblok/tsContentTemplate';
 import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
-import TripInterstitialContent from './page-types/formPage/tripInterstitialContent';
 import TripFormInformation from './composite/tripFormInformation';
 import TripNotifyMe from './page-types/formPage/tripNotifyMe';
 import TripPage from './page-types/TripPage/TripPage';
@@ -137,7 +136,6 @@ const ComponentList = {
   trip: TripPage,
   tripCard: SBTripCard,
   tripFilterPage: TripFilterPage,
-  tripInterstitialContent: TripInterstitialContent,
   tsContentPicker: SBTsContentPicker,
   tsContentTemplate: SBTsContentTemplate,
   tripFormInformation: TripFormInformation,
