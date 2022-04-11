@@ -6,19 +6,26 @@ import { FlexBox } from '../../layout/FlexBox';
 
 const TripRelationshipListItem = ({ traveler }) => {
   const [travelersData, setTravelersData] = useContext(FormContext);
+  // TODO: ADAPT-4677 Determine how we want to handle the inconsitency between digitalName versus firstName lastName
+  let fullName = '';
+  if (traveler && traveler?.digitalName) {
+    fullName = traveler.digitalName;
+  }
+  if (traveler && traveler?.firstName && traveler?.lastName) {
+    fullName = `${traveler?.firstName} ${traveler?.lastName}`;
+  }
 
   const removeRelationship = () => {
     const travelers = Object.values(travelersData).filter(
       (user) => user.id !== traveler.id
     );
-    console.log('Removed from list: ', traveler.digitalName);
     setTravelersData(travelers);
   };
 
   return (
     <FlexBox direction="row">
       <Heading level={3} align="left" font="serif">
-        {traveler.digitalName}
+        {fullName}
       </Heading>
       <button type="button" onClick={removeRelationship}>
         Remove
