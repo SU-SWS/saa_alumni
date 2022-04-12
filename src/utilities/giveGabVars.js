@@ -123,7 +123,7 @@ const findEmailType = (emails, type) => {
  */
 const setGiveGabVars = (userProfile) => {
   // Set the `did` value to the encoded SUID variable.
-  window.did = userProfile?.user?.encodedSUID || null;
+  window.did = userProfile?.encodedSUID || null;
 
   // Logic for finding an address.
   //
@@ -166,27 +166,38 @@ const setGiveGabVars = (userProfile) => {
 
   // Used within the Registration, Additional Payment, Notify Me, and Journey request form
   // TODO: Finalize structure of firstName and lastName. (e.g. user?.registrationNameFirst or user?.fullNameParsed?.firstName)
+  // TODO: Switch back to individual MP endpoints
+  // window.dname =
+  //   userProfile?.user?.name?.digitalName ||
+  //   `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}` ||
+  //   '';
+  // window.su_first_name =
+  //   userProfile?.user?.name?.fullNameParsed.firstName ||
+  //   userProfile?.user?.firstName ||
+  //   '';
+  // window.su_last_name =
+  //   userProfile?.user?.name?.fullNameParsed.lastName ||
+  //   userProfile?.user?.lastName ||
+  //   '';
+  // window.su_birthDate = userProfile?.user?.birthDate || '';
+  // window.su_email = userProfile?.user?.email || '';
+  // window.su_phone = userProfile?.user?.phoneNumber || '';
   window.dname =
-    userProfile?.user?.name?.digitalName ||
-    `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}` ||
+    `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
     '';
   window.su_first_name =
-    userProfile?.user?.name?.fullNameParsed.firstName ||
-    userProfile?.user?.firstName ||
-    '';
-  window.su_last_name =
-    userProfile?.user?.name?.fullNameParsed.lastName ||
-    userProfile?.user?.lastName ||
-    '';
-  window.su_birthDate = userProfile?.user?.birthDate || '';
-  window.su_email = userProfile?.user?.email || '';
-  window.su_phone = userProfile?.user?.phoneNumber || '';
+    userProfile?.name?.name?.fullNameParsed?.firstName || '';
+  window.su_last_name = userProfile?.name?.name?.fullNameParsed?.lastName || '';
+  window.su_email = email || '';
   window.su_address = address?.streetAddress1 || '';
   window.su_address2 = street2 || '';
   window.su_city = address?.city || '';
   window.su_state = address?.stateProvince || '';
   window.su_zip = address?.zipPostalCode || '';
   window.su_country = lookup.byCountry(address?.addressCountry)?.iso2;
+  // THE FOLLOWING DOES NOT EXIST ON PROFILES/FULLGG ENDPOINT
+  // window.su_birthDate = userProfile?.name?.birthDate || '';
+  // window.su_phone = userProfile?.name?.phoneNumber || '';
 };
 
 export default setGiveGabVars;
