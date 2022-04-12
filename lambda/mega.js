@@ -74,7 +74,6 @@ const tokenFetcher = async () => {
  */
 const profileFetcher = async (profileID, token) => {
   let response;
-  let body;
   const endpoint = `${process.env.MEGAPROFILE_PROFILE_URL}/${profileID}/${process.env.MEGAPROFILE_PROFILE_TYPE}`;
   const client = await axios.create({
     baseURL: endpoint,
@@ -87,20 +86,9 @@ const profileFetcher = async (profileID, token) => {
 
   try {
     response = await client.get();
+    return response;
   } catch (error) {
     console.error(error);
-    return error;
-  }
-
-  try {
-    body = await response.json();
-  } catch (error) {
-    console.error(error);
-    return error;
-  }
-
-  if (body) {
-    return body;
   }
 
   return { error: true, message: 'Could not fetch profile from API' };
