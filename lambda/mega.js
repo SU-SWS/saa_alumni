@@ -7,11 +7,8 @@
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express = require('express');
-const fetch = require('node-fetch');
-const Url = require('url-parse');
-const { Headers } = require('node-fetch');
 const serverless = require('serverless-http');
-const { ClientCredentials } = require('simple-oauth2');
+const axios = require('axios');
 const { AdaptAuth } = require('adapt-auth-sdk');
 const getSiteUrl = require('../src/utilities/getSiteUrl');
 
@@ -39,20 +36,12 @@ const authInstance = new AdaptAuth({
   },
 });
 
-// Bearer token fetcher through the simple-oauth2 package.
-// -----------------------------------------------------------------------------
-const bearerUrl = Url(process.env.MEGAPROFILE_TOKEN_URL);
-const megaTokenAuth = new ClientCredentials({
-  client: {
-    id: process.env.MEGAPROFILE_CLIENT_ID,
-    secret: process.env.MEGAPROFILE_CLIENT_SECRET,
-  },
-  auth: {
-    tokenHost: `${bearerUrl.protocol}//${bearerUrl.host}`,
-    tokenPath: bearerUrl.pathname,
-  },
-});
-
+const baseUrl = process.env.MEGAPROFILE_TOKEN_URL;
+const params = {
+  client_id: process.env.MEGAPROFILE_CLIENT_ID,
+  client_secret: process.env.MEGAPROFILE_CLIENT_SECRET,
+  grant_type: 'client_credentials',
+};
 /**
  * Get Bearer Token
  *
@@ -62,19 +51,10 @@ const megaTokenAuth = new ClientCredentials({
  *   The bearer token string if successful or false if not.
  */
 const tokenFetcher = async () => {
-  let response;
-  const tokenParams = { scope: [] };
-  const tokenOpts = { json: true };
+  const response = await axios.post(baseUrl, null, { params });
 
-  try {
-    response = await megaTokenAuth.getToken(tokenParams, tokenOpts);
-  } catch (error) {
-    console.error(error.output);
-    return false;
-  }
-
-  if (response && response.token && response.token.access_token) {
-    return response.token.access_token;
+  if (response && response.data && response.data.access_token) {
+    return response.data.access_token;
   }
 
   console.error(response);
@@ -96,15 +76,19 @@ const profileFetcher = async (profileID, token) => {
   let response;
   let body;
   const endpoint = `${process.env.MEGAPROFILE_PROFILE_URL}/${profileID}/${process.env.MEGAPROFILE_PROFILE_TYPE}`;
-  const headers = new Headers({
-    Authorization: `Bearer ${token}`,
+  const client = await axios.create({
+    baseURL: endpoint,
+    headers: {
+      common: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
   });
 
+  console.log('Access token: ', token);
+
   try {
-    response = await fetch(endpoint, {
-      headers,
-      timeout: 9000,
-    });
+    response = await client.get();
   } catch (error) {
     console.error(error);
     return error;
