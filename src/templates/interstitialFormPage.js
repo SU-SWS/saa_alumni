@@ -43,8 +43,6 @@ class InterstitialFormPage extends React.Component {
     // eslint-disable-next-line react/destructuring-assignment
     const { content } = this.state.story;
 
-    console.log('Interstitial page content: ', content);
-
     return (
       <>
         {React.createElement(InterstitialPage, {

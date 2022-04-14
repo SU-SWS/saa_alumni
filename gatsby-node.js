@@ -108,7 +108,6 @@ exports.createPages = ({ graphql, actions }) => {
         });
 
         const registrationEntries = result.data.registration.edges;
-        console.log('registration: ', registrationEntries);
         registrationEntries.forEach((registrationEntry, index) => {
           let slug = `${registrationEntry.node.full_slug}`;
           slug = slug.replace(/^\/|\/$/g, '');

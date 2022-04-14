@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
+import { Link } from 'gatsby';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -25,6 +26,7 @@ const InterstitialPage = (props) => {
       ankleContent,
     },
     blok,
+    location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
@@ -120,9 +122,9 @@ const InterstitialPage = (props) => {
                 their information manually.
               </p>
               <TripRelationshipList />
-              <button type="button" className="su-button">
+              <Link to={`${location.pathname}/form`} className="su-button">
                 Next
-              </button>
+              </Link>
             </Container>
             {numAnkle > 0 && <Ankle isDark {...props} />}
           </Container>
