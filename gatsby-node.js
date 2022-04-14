@@ -44,6 +44,22 @@ exports.createPages = ({ graphql, actions }) => {
                 }
               }
             }
+            registration: allStoryblokEntry (filter: { field_component: { eq: "registrationFormPage" } }) {
+              edges {
+                node {
+                  id
+                  name
+                  created_at
+                  uuid
+                  slug
+                  full_slug
+                  content
+                  is_startpage
+                  parent_id
+                  group_id
+                }
+              }
+            }
           }
         `
       ).then((result) => {
@@ -85,6 +101,50 @@ exports.createPages = ({ graphql, actions }) => {
             context: {
               slug: entry.node.full_slug,
               story: entry.node,
+              isCanonical,
+              noIndex,
+            },
+          });
+        });
+
+        const registrationEntries = result.data.registration.edges;
+        console.log('registration: ', registrationEntries);
+        registrationEntries.forEach((registrationEntry, index) => {
+          let slug = `${registrationEntry.node.full_slug}`;
+          slug = slug.replace(/^\/|\/$/g, '');
+          const pagePath =
+            registrationEntry.node.full_slug === 'home' ? '' : `${slug}`;
+
+          const content = JSON.parse(registrationEntry.node.content);
+          let isCanonical = true;
+          if (
+            content.canonicalURL &&
+            (content.canonicalURL.url || content.canonicalURL.cached_url)
+          ) {
+            isCanonical = false;
+          }
+          const noIndex = content.noIndex ? content.noIndex : false;
+
+          createPage({
+            path: `/${pagePath}/form`,
+            component: storyblokEntry,
+            context: {
+              slug: `${registrationEntry.node.full_slug}/form`,
+              story: registrationEntry.node,
+              isCanonical,
+              noIndex,
+            },
+          });
+
+          const interstitialFormPage = path.resolve(
+            'src/templates/interstitialFormPage.js'
+          );
+          createPage({
+            path: `/${pagePath}`,
+            component: interstitialFormPage,
+            context: {
+              slug: registrationEntry.node.full_slug,
+              story: registrationEntry.node,
               isCanonical,
               noIndex,
             },
