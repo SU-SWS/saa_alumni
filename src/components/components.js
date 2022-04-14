@@ -26,6 +26,7 @@ import { SBHeading } from './storyblok/heading';
 import GiveGabForm from './embed/giveGabForm';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
+import InterstitialPage from './page-types/formPage/interstitialPage';
 import Itinerary from './composite/itinerary';
 import ItineraryItem from './composite/itineraryItem';
 import LinkGroup from './navigation/linkGroup';
@@ -100,6 +101,7 @@ const ComponentList = {
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
+  interstitialPage: InterstitialPage,
   itinerary: Itinerary,
   itineraryItem: ItineraryItem,
   linkGroup: LinkGroup,
