@@ -40,10 +40,10 @@ const GiveGabForm = ({
   useEffect(() => {
     // Information from StoryBlok GiveGabForm Component
     // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
-    window.ciid = tripId || '';
+    window.trip_id = tripId || '';
     window.amt = depositAmount || '';
     // TODO: ADAPT-4681/ADAPT-4776 The following fields does not exist within the GG form yet.
-    window.su_trip_name = tripName || '';
+    window.trip_name = tripName || '';
     window.su_extension = extension || '';
     window.su_extension_amount = extensionAmount || '';
   }, [tripId, tripName, depositAmount, extension, extensionAmount]);
