@@ -4,8 +4,10 @@ import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
+import AuthContext from '../../../contexts/AuthContext';
 
 const TripRelationShipCard = ({ traveler }) => {
+  const { userProfile } = useContext(AuthContext);
   const [travelersData, setTravelersData] = useContext(FormContext);
   const [removeBtn, setRemoveBtn] = useState(false);
   let fullName = '';
@@ -17,7 +19,11 @@ const TripRelationShipCard = ({ traveler }) => {
   }
 
   const addRelationship = () => {
-    setTravelersData([...travelersData, traveler]);
+    if (traveler?.SUID && traveler?.SUID === userProfile?.user?.SUID) {
+      setTravelersData([traveler, ...travelersData]);
+    } else {
+      setTravelersData([...travelersData, traveler]);
+    }
     setRemoveBtn(true);
   };
 
