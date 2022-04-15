@@ -17,7 +17,7 @@ const TripRelationShipCard = ({ traveler }) => {
   }
 
   const addRelationship = () => {
-    setTravelersData({ ...travelersData, [traveler.id]: traveler });
+    setTravelersData([...travelersData, traveler]);
     setRemoveBtn(true);
   };
 

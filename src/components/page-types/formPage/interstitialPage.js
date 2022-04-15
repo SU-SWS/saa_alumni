@@ -31,6 +31,8 @@ const InterstitialPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
   const { userProfile } = useContext(AuthContext);
+  const slug = location.pathname.replace(/\/$/, '');
+  console.log(slug);
   // TODO: ADAPT-4677 Remove fake data once relationships endpoint is working
   // const { relationships } = userProfile;
 
@@ -122,7 +124,7 @@ const InterstitialPage = (props) => {
                 their information manually.
               </p>
               <TripRelationshipList />
-              <Link to={`${location.pathname}/form`} className="su-button">
+              <Link to={`${slug}/form`} className="su-button">
                 Next
               </Link>
             </Container>
