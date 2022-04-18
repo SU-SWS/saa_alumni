@@ -39,7 +39,6 @@ class AuthContextProvider extends React.Component {
     fetch(userUrl).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
-        setGiveGabVars(body);
         this.dispatch({ type: 'setAuthenticated', payload: true });
         this.dispatch({ type: 'setUser', payload: body });
         this.dispatch({ type: 'setAuthenticating', payload: false });
