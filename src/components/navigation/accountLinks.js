@@ -68,7 +68,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
     <AuthContext.Consumer>
       {(authState) => (
         <>
-          {authState.isAuthenticated && authState.userProfile && (
+          {authState.isAuthenticated && authState.user && (
             <li className="su-text-white su-relative" ref={ref}>
               <button
                 type="button"
