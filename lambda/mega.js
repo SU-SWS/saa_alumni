@@ -97,10 +97,10 @@ const profileFetcher = async (profileID, token) => {
 // Get A Token.
 // Do not enable for public use. This is for debugging purposes only.
 // -----------------------------------------------------------------------------
-// app.get(`/api/mega/token`, async (req, res) => {
-//   const data = await tokenFetcher();
-//   res.send(JSON.stringify(data));
-// });
+app.get(`/api/mega/token`, async (req, res) => {
+  const data = await tokenFetcher();
+  res.send(JSON.stringify(data));
+});
 
 // Profile Data Endpoint
 //-----------------------------------------------------------------------------
