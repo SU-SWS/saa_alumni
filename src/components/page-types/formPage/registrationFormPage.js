@@ -31,7 +31,7 @@ const RegistrationFormPage = (props) => {
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
-  const guests = state.guests;
+  const { guests } = state;
   console.log(guests);
 
   return (
