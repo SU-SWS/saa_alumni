@@ -15,7 +15,8 @@ exports.createPages = ({ graphql, actions }) => {
       'localFooter',
       'masthead',
       'perk',
-      'redirect', // NOTE: Redirects are omitted as they are specifically generated below
+      'redirect', // NOTE: Redirects are are specifically generated below
+      'registrationFormPage', // Note: Handled separately
       'searchEntry',
       'searchKeywordBanner',
       'searchSuggestions',
@@ -24,27 +25,13 @@ exports.createPages = ({ graphql, actions }) => {
     ];
     const omittedComponentsArray = JSON.stringify(contentTypesToOmit);
 
+    // Content Pages
+    // /////////////////////////////////////////////////////////////////////////
     resolve(
       graphql(
         `
           {
             allStoryblokEntry (filter: { field_component: { nin: ${omittedComponentsArray} } }) {
-              edges {
-                node {
-                  id
-                  name
-                  created_at
-                  uuid
-                  slug
-                  full_slug
-                  content
-                  is_startpage
-                  parent_id
-                  group_id
-                }
-              }
-            }
-            registration: allStoryblokEntry (filter: { field_component: { eq: "registrationFormPage" } }) {
               edges {
                 node {
                   id
@@ -74,16 +61,6 @@ exports.createPages = ({ graphql, actions }) => {
           slug = slug.replace(/^\/|\/$/g, '');
           const pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
 
-          // Wire up the 404 page by setting the path to just 404 as Gatsby expects it.
-          // if (pagePath.match(/^404/)) {
-          //   pagePath = '404';
-          // }
-
-          // Wire up the 403 page by setting the path to just 403 as Gatsby expects it.
-          // if (pagePath.match(/^403/)) {
-          //   pagePath = '403';
-          // }
-
           // Determine if the page is canonical, or is using a custom canonical URL.
           const content = JSON.parse(entry.node.content);
           let isCanonical = true;
@@ -106,14 +83,46 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
         });
+      })
+    );
 
-        const registrationEntries = result.data.registration.edges;
+    // Registration Form Pages
+    // /////////////////////////////////////////////////////////////////////////
+    resolve(
+      graphql(
+        `
+          {
+            allStoryblokEntry(
+              filter: { field_component: { eq: "registrationFormPage" } }
+            ) {
+              edges {
+                node {
+                  id
+                  name
+                  created_at
+                  uuid
+                  slug
+                  full_slug
+                  content
+                  is_startpage
+                  parent_id
+                  group_id
+                }
+              }
+            }
+          }
+        `
+      ).then((result) => {
+        // No registration page forms.
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        const registrationEntries = result.data.allStoryblokEntry.edges;
         registrationEntries.forEach((registrationEntry, index) => {
-          let slug = `${registrationEntry.node.full_slug}`;
-          slug = slug.replace(/^\/|\/$/g, '');
-          const pagePath =
-            registrationEntry.node.full_slug === 'home' ? '' : `${slug}`;
-
+          const slug = `${registrationEntry.node.full_slug}`;
+          const pagePath = slug.replace(/^\/|\/$/g, '');
           const content = JSON.parse(registrationEntry.node.content);
           let isCanonical = true;
           if (
@@ -124,6 +133,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
           const noIndex = content.noIndex ? content.noIndex : false;
 
+          // Create the GG form page.
           createPage({
             path: `/${pagePath}/form`,
             component: storyblokEntry,
@@ -135,17 +145,15 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
 
-          const interstitialFormPage = path.resolve(
-            'src/templates/interstitialFormPage.js'
-          );
           createPage({
             path: `/${pagePath}`,
-            component: interstitialFormPage,
+            component: storyblokEntry,
             context: {
               slug: registrationEntry.node.full_slug,
               story: registrationEntry.node,
               isCanonical,
               noIndex,
+              interstitial: true,
             },
           });
         });
@@ -153,6 +161,7 @@ exports.createPages = ({ graphql, actions }) => {
     );
 
     // Add Redirects pre-configured in Storyblok.
+    // /////////////////////////////////////////////////////////////////////////
     resolve(
       graphql(
         `
