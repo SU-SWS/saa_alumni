@@ -9,8 +9,7 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const serverless = require('serverless-http');
 const axios = require('axios');
-const { AdaptAuth } = require('adapt-auth-sdk');
-const getSiteUrl = require('../src/utilities/getSiteUrl');
+const { authInstance } = require('./authInstance');
 
 // Express Configuration.
 // Configure express to be able to handle json and cookies.
@@ -19,22 +18,6 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
-
-// Automatically set origin, if not passed explicitly.
-const siteUrl = getSiteUrl();
-const authInstance = new AdaptAuth({
-  saml: {
-    cert: process.env.ADAPT_AUTH_SAML_CERT,
-    decryptionKey: process.env.ADAPT_AUTH_SAML_DECRYPTION_KEY,
-    returnToOrigin: siteUrl,
-    returnToPath: process.env.ADAPT_AUTH_SAML_RETURN_PATH,
-  },
-  session: {
-    secret: process.env.ADAPT_AUTH_SESSION_SECRET,
-    loginRedirectUrl: process.env.ADAPT_AUTH_SESSION_LOGIN_URL || '/',
-    unauthorizedRedirectUrl: '/403-access-denied',
-  },
-});
 
 const baseUrl = process.env.MEGAPROFILE_TOKEN_URL;
 const params = {
