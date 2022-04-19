@@ -32,7 +32,6 @@ const InterstitialPage = (props) => {
   const title = `Register for your trip: ${tripTitle}`;
   const { userProfile } = useContext(AuthContext);
   const slug = location.pathname.replace(/\/$/, '');
-  console.log(slug);
   // TODO: ADAPT-4677 Remove fake data once relationships endpoint is working
   // const { relationships } = userProfile;
 
@@ -124,7 +123,11 @@ const InterstitialPage = (props) => {
                   enter their information manually.
                 </p>
                 <TripRelationshipList />
-                <Link to={`${slug}/form`} className="su-button">
+                <Link
+                  to={`${slug}/form`}
+                  className="su-button"
+                  state={{ guests: relationships.relationships }}
+                >
                   Next
                 </Link>
               </Container>

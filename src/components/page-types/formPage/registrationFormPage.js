@@ -27,9 +27,12 @@ const RegistrationFormPage = (props) => {
       ankleContent,
     },
     blok,
+    location: { state },
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
+  const guests = state.guests;
+  console.log(guests);
 
   return (
     <AuthenticatedPage>
