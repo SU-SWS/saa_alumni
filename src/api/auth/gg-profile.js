@@ -1,4 +1,5 @@
 import axios from 'axios';
+import connect from 'next-connect';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
 
@@ -6,6 +7,12 @@ import { ExceptionHandler } from '../../utilities/ApiExceptions';
  * Get Bearer Token
  * Fetches and returns a bearer token string using the client/secret provided.
  */
+const baseUrl = process.env.MEGAPROFILE_TOKEN_URL;
+const params = {
+  client_id: process.env.MEGAPROFILE_CLIENT_ID,
+  client_secret: process.env.MEGAPROFILE_CLIENT_SECRET,
+  grant_type: 'client_credentials',
+};
 const tokenFetcher = async () => {
   const response = await axios.post(baseUrl, null, { params });
 
@@ -20,12 +27,6 @@ const tokenFetcher = async () => {
 /**
  * Get profile data from the MEGA PROFILE API
  */
-const baseUrl = process.env.MEGAPROFILE_TOKEN_URL;
-const params = {
-  client_id: process.env.MEGAPROFILE_CLIENT_ID,
-  client_secret: process.env.MEGAPROFILE_CLIENT_SECRET,
-  grant_type: 'client_credentials',
-};
 
 const profileFetcher = async (profileID, token) => {
   let response;
@@ -63,7 +64,10 @@ const ggProfileHandler = async (req, res) => {
   }
 
   try {
-    const {data: ggProfile} = await profileFetcher(req.user?.encodedSUID, tokenData);
+    const { data: ggProfile } = await profileFetcher(
+      req.user?.encodedSUID,
+      tokenData
+    );
     const ggUserData = { user, ggProfile };
     return res.status(200).json(ggUserData);
   } catch (err) {
