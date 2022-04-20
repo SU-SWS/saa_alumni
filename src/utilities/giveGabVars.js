@@ -272,7 +272,6 @@ const setGiveGabVars = (userProfile) => {
   window.su_state = address?.stateProvince || '';
   window.su_zip = address?.zipPostalCode || '';
   window.su_country = lookup.byCountry(address?.addressCountry)?.iso2;
-  // THE FOLLOWING DOES NOT EXIST ON PROFILES/FULLGG ENDPOINT
   window.su_birthDate = userProfile?.birthDate || '';
   window.su_phone = phoneNumber || '';
 };
