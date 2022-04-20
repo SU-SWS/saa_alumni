@@ -1,5 +1,9 @@
 import React, { createContext } from 'react';
 
+const initialFormState = {
+  travelersData: [],
+};
+
 function formReducer(state, action) {
   switch (action.type) {
     case 'setTravelersData':
@@ -9,13 +13,13 @@ function formReducer(state, action) {
   }
 }
 
-const FormContext = createContext();
+const FormContext = createContext(initialFormState);
 
 class FormContextProvider extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      travelersData: [],
+      ...initialFormState,
     };
   }
 

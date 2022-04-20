@@ -3,7 +3,7 @@ import { FlexBox } from '../../layout/FlexBox';
 import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
-import { FormContext } from '../../../contexts/FormContext';
+import FormContext from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
 
 const TripRelationShipCard = ({ traveler }) => {

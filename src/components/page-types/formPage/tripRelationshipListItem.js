@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
-import { FormContext } from '../../../contexts/FormContext';
+import FormContext from '../../../contexts/FormContext';
 import { FlexBox } from '../../layout/FlexBox';
 
 const TripRelationshipListItem = ({ traveler }) => {
