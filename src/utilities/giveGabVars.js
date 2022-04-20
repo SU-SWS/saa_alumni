@@ -27,6 +27,8 @@ const findPreferredPhoneNumber = (phoneNumbers) => {
     if (val?.phoneNumberType === pref) {
       ret = val.phoneNumber;
     }
+
+    return ret;
   });
 };
 
