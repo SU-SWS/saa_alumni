@@ -78,7 +78,7 @@ const GiveGabForm = ({
       )}
       <Container
         width="full"
-        className="children:su-bg-gradient-to-tl children:su-to-saa-black children:su-from-saa-black-opacity-40 children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white"
+        className="children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-to-saa-black children:su-from-saa-black-opacity-40 children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white"
       >
         <div className="su-rs-p-5">
           <Embed blok={preBlok} />
