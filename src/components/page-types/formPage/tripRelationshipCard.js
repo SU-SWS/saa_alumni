@@ -8,7 +8,7 @@ import AuthContext from '../../../contexts/AuthContext';
 
 const TripRelationShipCard = ({ traveler }) => {
   const { userProfile } = useContext(AuthContext);
-  const [travelersData, setTravelersData] = useContext(FormContext);
+  const { travelersData, setTravelersData } = useContext(FormContext);
   const [removeBtn, setRemoveBtn] = useState(false);
   let fullName = '';
   if (traveler && traveler?.digitalName) {
