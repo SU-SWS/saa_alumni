@@ -3,6 +3,7 @@ import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 import setGiveGabVars from '../utilities/giveGabVars';
 
 const initialAuthState = {
+  user: null,
   userProfile: null,
   isAuthenticated: false,
   isAuthenticating: true,
@@ -14,6 +15,8 @@ function authReducer(state, action) {
       return { ...state, isAuthenticating: action.payload };
     case 'setAuthenticated':
       return { ...state, isAuthenticated: action.payload };
+    case 'setUser':
+      return { ...state, user: action.payload };
     case 'setUserProfile':
       return { ...state, userProfile: action.payload };
     default:
@@ -32,18 +35,28 @@ class AuthContextProvider extends React.Component {
   }
 
   componentDidMount() {
-    const url = `${window.location.protocol}//${window.location.host}/api/auth/gg-profile`;
-    fetch(url).then(async (res) => {
+    const userUrl = `${window.location.protocol}//${window.location.host}/api/auth/session`;
+    fetch(userUrl).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
-        setGiveGabVars(body);
         this.dispatch({ type: 'setAuthenticated', payload: true });
-        this.dispatch({ type: 'setUserProfile', payload: body });
+        this.dispatch({ type: 'setUser', payload: body });
         this.dispatch({ type: 'setAuthenticating', payload: false });
       } else {
         this.dispatch({ type: 'setAuthenticated', payload: false });
-        this.dispatch({ type: 'setUserProfile', payload: null });
+        this.dispatch({ type: 'setUser', payload: null });
         this.dispatch({ type: 'setAuthenticating', payload: false });
+      }
+    });
+    const ggUrl = `${window.location.protocol}//${window.location.host}/api/auth/gg-profile`;
+    fetch(ggUrl).then(async (res) => {
+      if (res.status === 200) {
+        const body = await res.json();
+        setGiveGabVars(body);
+        this.dispatch({ type: 'setUserProfile', payload: body });
+      } else {
+        console.error('Could not load mega profile data.');
+        this.dispatch({ type: 'setUserProfile', payload: null });
       }
     });
   }
