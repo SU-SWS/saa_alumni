@@ -1,22 +1,43 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { createContext } from 'react';
 
-export const FormContext = createContext();
-
-export default function FormProvider({ children }) {
-  const [travelersData, setTravelersData] = useState([]);
-
-  useEffect(() => {
-    if (travelersData.length !== 0) {
-      // TODO: ADAPT-4677 - Determine how to cross-reference the travelers data with their associated addresses
-      console.log('Prefill form data: ', [...travelersData]);
-      // TODO: ADAPT-4677 - Update prefill obj with travelers
-      window.prefillData = [...travelersData];
-    }
-  }, [travelersData]);
-
-  return (
-    <FormContext.Provider value={[travelersData, setTravelersData]}>
-      {children}
-    </FormContext.Provider>
-  );
+function formReducer(state, action) {
+  switch (action.type) {
+    case 'setTravelersData':
+      return { ...state, travelersData: action.payload };
+    default:
+      return state;
+  }
 }
+
+const FormContext = createContext();
+
+class FormContextProvider extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      travelersData: [],
+    };
+  }
+
+  reducer(action) {
+    const prevState = this.state;
+    this.setState(formReducer(prevState, action));
+  }
+
+  dispatch(action) {
+    this.reducer(action);
+  }
+
+  render() {
+    const { children } = this.props;
+    const { travelersData } = this.state;
+    return (
+      <FormContext.Provider value={{ travelersData }}>
+        {children}
+      </FormContext.Provider>
+    );
+  }
+}
+
+export default FormContext;
+export { FormContextProvider };
