@@ -54,7 +54,6 @@ const profileFetcher = async (profileID, token) => {
 //-----------------------------------------------------------------------------
 const ggProfileHandler = async (req, res) => {
   let tokenData;
-  const { user } = req;
 
   // Fetch the bearer from the API Gateway
   try {
@@ -68,8 +67,7 @@ const ggProfileHandler = async (req, res) => {
       req.user?.encodedSUID,
       tokenData
     );
-    const ggUserData = { user, ggProfile };
-    return res.status(200).json(ggUserData);
+    return res.status(200).json(ggProfile);
   } catch (err) {
     return ExceptionHandler(res, err);
   }
