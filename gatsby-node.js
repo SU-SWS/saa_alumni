@@ -121,11 +121,8 @@ exports.createPages = ({ graphql, actions }) => {
 
         const registrationEntries = result.data.allStoryblokEntry.edges;
         registrationEntries.forEach((registrationEntry, index) => {
-          const slug = `${registrationEntry.node.full_slug}`.replace(
-            /^\/|\/$/g,
-            ''
-          );
-          const pagePath = slug;
+          const slug = `${registrationEntry.node.full_slug}`;
+          const pagePath = slug.replace(/^\/|\/$/g, '');
 
           const content = JSON.parse(registrationEntry.node.content);
 
@@ -139,16 +136,16 @@ exports.createPages = ({ graphql, actions }) => {
           const noIndex = content.noIndex ? content.noIndex : false;
 
           // Create the GG form page.
-          // createPage({
-          //   path: `/${pagePath}/form`,
-          //   component: storyblokEntry,
-          //   context: {
-          //     slug: `${registrationEntry.node.full_slug}/form`,
-          //     story: registrationEntry.node,
-          //     isCanonical,
-          //     noIndex,
-          //   },
-          // });
+          createPage({
+            path: `/${pagePath}/form`,
+            component: storyblokEntry,
+            context: {
+              slug: `${registrationEntry.node.full_slug}/form`,
+              story: registrationEntry.node,
+              isCanonical,
+              noIndex,
+            },
+          });
 
           createPage({
             path: `/${pagePath}`,
