@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
-import FormContext from '../../../contexts/FormContext';
 import { FlexBox } from '../../layout/FlexBox';
+import { FormContext } from '../../../contexts/FormContext';
 
 const TripRelationshipListItem = ({ traveler }) => {
-  const [travelersData, setTravelersData] = useContext(FormContext);
+  const [state, dispatch] = useContext(FormContext);
   // TODO: ADAPT-4677 Determine how we want to handle the inconsitency between digitalName versus firstName lastName
   let fullName = '';
   if (traveler && traveler?.digitalName) {
@@ -16,10 +16,10 @@ const TripRelationshipListItem = ({ traveler }) => {
   }
 
   const removeRelationship = () => {
-    const travelers = Object.values(travelersData).filter(
-      (user) => user.id !== traveler.id
-    );
-    setTravelersData(travelers);
+    dispatch({
+      type: 'removeTraveler',
+      payload: traveler.id,
+    });
   };
 
   return (

@@ -3,13 +3,12 @@ import { FlexBox } from '../../layout/FlexBox';
 import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
-import FormContext from '../../../contexts/FormContext';
-import AuthContext from '../../../contexts/AuthContext';
+import { FormContext } from '../../../contexts/FormContext';
 
 const TripRelationShipCard = ({ traveler }) => {
-  const { userProfile } = useContext(AuthContext);
-  const { travelersData, setTravelersData } = useContext(FormContext);
+  const [state, dispatch] = useContext(FormContext);
   const [removeBtn, setRemoveBtn] = useState(false);
+
   let fullName = '';
   if (traveler && traveler?.digitalName) {
     fullName = traveler.digitalName;
@@ -19,19 +18,18 @@ const TripRelationShipCard = ({ traveler }) => {
   }
 
   const addRelationship = () => {
-    if (traveler?.SUID && traveler?.SUID === userProfile?.user?.SUID) {
-      setTravelersData([traveler, ...travelersData]);
-    } else {
-      setTravelersData([...travelersData, traveler]);
-    }
+    dispatch({
+      type: 'addTraveler',
+      payload: traveler,
+    });
     setRemoveBtn(true);
   };
 
   const removeRelationship = () => {
-    const travelers = Object.values(travelersData).filter(
-      (user) => user.id !== traveler.id
-    );
-    setTravelersData(travelers);
+    dispatch({
+      type: 'removeTraveler',
+      payload: traveler?.id,
+    });
     setRemoveBtn(false);
   };
 
