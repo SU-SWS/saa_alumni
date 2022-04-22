@@ -35,8 +35,15 @@ const RegistrationFormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
 
-  const guests = state?.guests;
-  console.log('Travelers: ', guests);
+  const { guests } = state;
+  // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
+  console.log('Prefill Data Obj: ', guests);
+
+  useEffect(() => {
+    if (guests) {
+      window.prefillData = guests;
+    }
+  }, [guests]);
 
   return (
     // <AuthenticatedPage>

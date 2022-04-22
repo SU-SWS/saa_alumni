@@ -127,11 +127,11 @@ const InterstitialPage = (props) => {
               </p>
               <TripRelationshipList />
               <FormContext.Consumer>
-                {({ state }) => (
+                {(value) => (
                   <Link
                     to={`${slug}/form`}
                     className="su-button"
-                    state={{ guests: state?.travelersData }}
+                    state={{ guests: value[0].travelersData }}
                   >
                     Next
                   </Link>
