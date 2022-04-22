@@ -35,7 +35,7 @@ const RegistrationFormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
 
-  const { guests } = state;
+  const guests = state?.guests;
   // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
   console.log('Prefill Data Obj: ', guests);
 
