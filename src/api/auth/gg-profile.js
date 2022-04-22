@@ -13,6 +13,7 @@ const params = {
   client_secret: process.env.MEGAPROFILE_CLIENT_SECRET,
   grant_type: 'client_credentials',
 };
+
 const tokenFetcher = async () => {
   const response = await axios.post(baseUrl, null, { params });
 
@@ -30,7 +31,7 @@ const tokenFetcher = async () => {
 
 const profileFetcher = async (profileID, token) => {
   let response;
-  const endpoint = `${process.env.MEGAPROFILE_PROFILE_URL}/${profileID}/${process.env.MEGAPROFILE_PROFILE_TYPE}`;
+  const endpoint = `${process.env.MEGAPROFILE_PROFILE_URL}/${profileID}/profiles/fullgg`;
   const client = await axios.create({
     baseURL: endpoint,
     headers: {
@@ -54,6 +55,7 @@ const profileFetcher = async (profileID, token) => {
 //-----------------------------------------------------------------------------
 const ggProfileHandler = async (req, res) => {
   let tokenData;
+  const { user } = req;
 
   // Fetch the bearer from the API Gateway
   try {
@@ -67,7 +69,8 @@ const ggProfileHandler = async (req, res) => {
       req.user?.encodedSUID,
       tokenData
     );
-    return res.status(200).json(ggProfile);
+    const ggUserData = { user, ggProfile };
+    return res.status(200).json(ggUserData);
   } catch (err) {
     return ExceptionHandler(res, err);
   }
