@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
@@ -10,7 +10,10 @@ import Ankle from '../../partials/ankle/ankle';
 import { Grid } from '../../layout/Grid';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
-import { FormContextProvider } from '../../../contexts/FormContext';
+import {
+  FormContextProvider,
+  FormContext,
+} from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
 import TripRelationshipCard from './tripRelationshipCard';
 import TripRelationshipList from './tripRelationshipList';
@@ -34,8 +37,6 @@ const InterstitialPage = (props) => {
   const slug = location.pathname.replace(/\/$/, '');
   // TODO: ADAPT-4677 Remove fake data once relationships endpoint is working
   // const { relationships } = userProfile;
-  // const [state] = useContext(FormContext);
-  // console.log('state', state.travelersData);
 
   const relationships = {
     relationships: [
@@ -125,13 +126,17 @@ const InterstitialPage = (props) => {
                 their information manually.
               </p>
               <TripRelationshipList />
-              <Link
-                to={`${slug}/form`}
-                className="su-button"
-                state={{ guests: relationships.relationships }}
-              >
-                Next
-              </Link>
+              <FormContext.Consumer>
+                {({ state }) => (
+                  <Link
+                    to={`${slug}/form`}
+                    className="su-button"
+                    state={{ guests: state?.travelersData }}
+                  >
+                    Next
+                  </Link>
+                )}
+              </FormContext.Consumer>
             </Container>
             {numAnkle > 0 && <Ankle isDark {...props} />}
           </Container>

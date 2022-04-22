@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
@@ -36,7 +36,7 @@ const RegistrationFormPage = (props) => {
   const title = `Register for your trip: ${tripTitle}`;
 
   const guests = state?.guests;
-  if (guests) console.log(guests);
+  console.log('Travelers: ', guests);
 
   return (
     // <AuthenticatedPage>
