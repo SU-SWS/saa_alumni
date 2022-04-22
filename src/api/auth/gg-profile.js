@@ -69,7 +69,7 @@ const ggProfileHandler = async (req, res) => {
       req.user?.encodedSUID,
       tokenData
     );
-    const ggUserData = { user, ggProfile };
+    const ggUserData = { user, ...ggProfile };
     return res.status(200).json(ggUserData);
   } catch (err) {
     return ExceptionHandler(res, err);
