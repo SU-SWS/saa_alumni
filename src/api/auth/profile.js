@@ -9,6 +9,7 @@ import axios from 'axios';
 import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
+import mockServer from '../../utilities/mockServer';
 
 const fetchProfileToken = async () => {
   // The OAuth Bearer token granter.
@@ -51,12 +52,19 @@ const fetchProfileToken = async () => {
 
 const fetchLegacyProfile = async (profileId) => {
   const token = await fetchProfileToken();
-  const contact = await axios
-    .get(`${process.env.MEGAPROFILE_URL}${profileId}/profiles/fullgg`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+  const client = axios.create({
+    baseURL: process.env.MEGAPROFILE_URL,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (process.env.MEGAPROFILE_MOCK === 'true') {
+    mockServer(client);
+  }
+
+  const contact = await client
+    .get(`${profileId}/profiles/fullgg`)
     .then((result) => result.data)
     .catch((err) => {
       throw new Error('Failed to fetch legacy profile.');
