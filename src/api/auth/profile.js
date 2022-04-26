@@ -23,7 +23,18 @@ const megaprofileHandler = async (req, res) => {
     const { data: phoneNumbers } = await mp.get(
       `${req.user.encodedSUID}/profiles/phonenumbers`
     );
-    const mpUser = { user, contact, addresses, emails, phoneNumbers };
+    const { data: relationships } = await mp.get(
+      `${req.user.encodedSUID}/profiles/relationships`
+    );
+
+    const mpUser = {
+      user,
+      contact,
+      addresses,
+      emails,
+      phoneNumbers,
+      relationships,
+    };
     return res.status(200).json(mpUser);
   } catch (err) {
     return ExceptionHandler(res, err);

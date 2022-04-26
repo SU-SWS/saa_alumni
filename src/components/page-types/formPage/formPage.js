@@ -45,9 +45,13 @@ const FormPage = (props) => {
                 className="su-object-cover su-h-full su-w-full"
               />
             </div>
-            <Grid gap xs={12} className="su-relative su-cc su-z-10 su-rs-pb-8">
+            <Grid
+              gap
+              xs={12}
+              className="su-relative su-cc su-z-10 su-rs-pb-8 su-rs-pt-6"
+            >
               <GridCell xs={12} lg={5} xl={5}>
-                <div className="su-sticky su-top-0 su-h-fit su-text-white su-rs-pt-6">
+                <div className="su-sticky su-top-0 su-h-fit su-text-white">
                   {title && (
                     <Heading
                       level={1}
@@ -55,21 +59,19 @@ const FormPage = (props) => {
                       font="serif"
                       srOnly={isSrOnlyTitle}
                       id="page-title"
+                      className="su-rs-mt-5"
                     >
                       {title}
                     </Heading>
                   )}
-                  <CreateBloks
-                    blokSection={formContent}
-                    className="su-rs-mt-2 su-drop-shadow"
-                  />
+                  <CreateBloks blokSection={formContent} />
                 </div>
               </GridCell>
               <GridCell
                 xs={12}
-                lg={5}
+                lg={6}
                 xl={5}
-                className=" su-rs-pt-6 su-rs-mt-5"
+                className="su-rs-mt-5 lg:su-col-start-7 xl:su-col-start-7"
               >
                 <CreateBloks blokSection={giveGabForm} />
               </GridCell>

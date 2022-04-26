@@ -26,6 +26,7 @@ import { SBHeading } from './storyblok/heading';
 import GiveGabForm from './embed/giveGabForm';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
+import InterstitialPage from './page-types/formPage/interstitialPage';
 import Itinerary from './composite/itinerary';
 import ItineraryItem from './composite/itineraryItem';
 import LinkGroup from './navigation/linkGroup';
@@ -45,6 +46,7 @@ import PerkCardHorizontal from './cards/perkCardHorizontal';
 import Poster from './composite/poster';
 import ProtectedPage from './page-types/protectedPage';
 import Redirect from './redirect/Redirect';
+import RegistrationFormPage from './page-types/formPage/registrationFormPage';
 import { SBSAAMainNav } from './storyblok/saaMainNav';
 import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
 import SearchFacet from './search/searchFacet';
@@ -61,6 +63,7 @@ import SaaStoryCard from './cards/saaStoryCard';
 import { SBTripCard } from './storyblok/tripCard';
 import { SBTsContentPicker } from './storyblok/tsContentPicker';
 import { SBTsContentTemplate } from './storyblok/tsContentTemplate';
+import TripCustomJourneys from './page-types/formPage/tripCustomJourneys';
 import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
 import TripFormInformation from './composite/tripFormInformation';
 import TripNotifyMe from './page-types/formPage/tripNotifyMe';
@@ -99,6 +102,7 @@ const ComponentList = {
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
+  interstitialPage: InterstitialPage,
   itinerary: Itinerary,
   itineraryItem: ItineraryItem,
   linkGroup: LinkGroup,
@@ -118,6 +122,7 @@ const ComponentList = {
   poster: Poster,
   protectedPage: ProtectedPage,
   redirect: Redirect,
+  registrationFormPage: RegistrationFormPage,
   saaMainNav: SBSAAMainNav,
   saaMainMenuGroup: SBSAAMainMenuGroup,
   searchFacet: SearchFacet,
@@ -133,6 +138,7 @@ const ComponentList = {
   saaStoryCard: SaaStoryCard,
   trip: TripPage,
   tripCard: SBTripCard,
+  tripCustomJourneys: TripCustomJourneys,
   tripFilterPage: TripFilterPage,
   tsContentPicker: SBTsContentPicker,
   tsContentTemplate: SBTsContentTemplate,
