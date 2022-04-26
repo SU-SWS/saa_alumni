@@ -3,6 +3,7 @@ import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 
 const initialAuthState = {
   userProfile: null,
+  userSession: null,
   isAuthenticated: false,
   isAuthenticating: true,
 };
@@ -13,6 +14,8 @@ function authReducer(state, action) {
       return { ...state, isAuthenticating: action.payload };
     case 'setAuthenticated':
       return { ...state, isAuthenticated: action.payload };
+    case 'setUserSession':
+      return { ...state, userSession: action.payload };
     case 'setUserProfile':
       return { ...state, userProfile: action.payload };
     default:
@@ -31,18 +34,28 @@ class AuthContextProvider extends React.Component {
   }
 
   componentDidMount() {
-    const url = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
+    const sessionUrl = `${window.location.protocol}//${window.location.host}/api/auth/session`;
+    const profileUrl = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
 
-    fetch(url).then(async (res) => {
+    fetch(sessionUrl).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
         this.dispatch({ type: 'setAuthenticated', payload: true });
-        this.dispatch({ type: 'setUserProfile', payload: body });
+        this.dispatch({ type: 'setUserSession', payload: body });
         this.dispatch({ type: 'setAuthenticating', payload: false });
       } else {
         this.dispatch({ type: 'setAuthenticated', payload: false });
-        this.dispatch({ type: 'setUserProfile', payload: null });
+        this.dispatch({ type: 'setUserSession', payload: null });
         this.dispatch({ type: 'setAuthenticating', payload: false });
+      }
+    });
+
+    fetch(profileUrl).then(async (res) => {
+      if (res.status === 200) {
+        const body = await res.json();
+        this.dispatch({ type: 'setUserProfile', payload: body });
+      } else {
+        this.dispatch({ type: 'setUserProfile', payload: null });
       }
     });
   }
@@ -58,11 +71,13 @@ class AuthContextProvider extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { userProfile, isAuthenticated, isAuthenticating } = this.state;
+    const { userProfile, userSession, isAuthenticated, isAuthenticating } =
+      this.state;
     return (
       <AuthContext.Provider
         value={{
           userProfile,
+          userSession,
           isAuthenticated,
           isAuthenticating,
           setAuthState: this.setAuthState,
