@@ -6,12 +6,13 @@ import AuthContext from '../../contexts/AuthContext';
 
 const ProtectedContentWrapper = ({ blok }) => {
   const [authenticatedContent, setAuthenticatedContent] = useState(null);
+  const [checkingAccess, setCheckingAccess] = useState(false);
   const authState = useContext(AuthContext);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       if (!authState.isAuthenticated || !authState.userProfile) return;
-
+      setCheckingAccess(true);
       const requests = [];
 
       blok.protectedContentRef.forEach((item) => {
@@ -26,19 +27,24 @@ const ProtectedContentWrapper = ({ blok }) => {
         requests.push(request);
       });
 
-      Promise.all(requests).then((results) => {
-        const allowedItems = results.filter((item) => !!item.story);
-        const contentItems = allowedItems.map((item) => item.story);
-        setAuthenticatedContent(contentItems);
-      });
+      Promise.all(requests)
+        .then((results) => {
+          const allowedItems = results.filter((item) => !!item.story);
+          const contentItems = allowedItems.map((item) => item.story);
+          setCheckingAccess(false);
+          setAuthenticatedContent(contentItems);
+        })
+        .catch((err) => {
+          setCheckingAccess(false);
+        });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authState.isAuthenticating]);
+  }, [authState.isAuthenticating, authState.userProfile]);
 
   if (!authState.isAuthenticating && authenticatedContent) {
     return <CreateStories stories={authenticatedContent} />;
   }
-  if (!authState.isAuthenticating && !authenticatedContent) {
+  if (!authState.isAuthenticating && !checkingAccess && !authenticatedContent) {
     return <CreateBloks blokSection={blok.anonymousContent} />;
   }
 
