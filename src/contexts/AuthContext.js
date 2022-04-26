@@ -32,7 +32,7 @@ class AuthContextProvider extends React.Component {
   }
 
   componentDidMount() {
-    const url = `${window.location.protocol}//${window.location.host}/api/auth/gg-profile`;
+    const url = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
     fetch(url).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
