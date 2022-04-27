@@ -72,10 +72,12 @@ class AuthContextProvider extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { userProfile, isAuthenticated, isAuthenticating } = this.state;
+    const { userSession, userProfile, isAuthenticated, isAuthenticating } =
+      this.state;
     return (
       <AuthContext.Provider
         value={{
+          userSession,
           userProfile,
           isAuthenticated,
           isAuthenticating,
