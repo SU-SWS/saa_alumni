@@ -13,9 +13,9 @@ const megaprofileHandler = async (req, res) => {
   try {
     const { user } = req;
     // TODO: Comment back in multi-profile get requests
-    // const { data: contact } = await mp.get(
-    //   `/${req.user.encodedSUID}/profiles/contact`
-    // );
+    const { data: contact } = await mp.get(
+      `/${req.user.encodedSUID}/profiles/contact`
+    );
     // const { data: addresses } = await mp.get(
     //   `${req.user.encodedSUID}/profiles/addresses`
     // );
@@ -38,7 +38,7 @@ const megaprofileHandler = async (req, res) => {
     const mpUser = {
       user,
       // TODO: Comment back in multi-profile get requests
-      // contact,
+      contact,
       // addresses,
       // emails,
       // phoneNumbers,
