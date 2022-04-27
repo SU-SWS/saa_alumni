@@ -44,7 +44,12 @@ const ProtectedContentWrapper = ({ blok }) => {
   if (!authState.isAuthenticating && authenticatedContent) {
     return <CreateStories stories={authenticatedContent} />;
   }
-  if (!authState.isAuthenticating && !checkingAccess && !authenticatedContent) {
+  if (
+    !authState.isAuthenticating &&
+    !checkingAccess &&
+    !authState.isAuthenticated &&
+    !authenticatedContent
+  ) {
     return <CreateBloks blokSection={blok.anonymousContent} />;
   }
 
