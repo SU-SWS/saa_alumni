@@ -28,7 +28,6 @@ const privateProxy = async (req, res) => {
     `/${req.user.encodedSUID}/profiles/affiliations`
   );
 
-  // TODO: Check for JWT, decode it and confirm the user is authorized.
   const { slug } = req.query;
   const storyblokRes = await storyblok.get(`cdn/stories/${slug}`);
   const { story } = storyblokRes.data;

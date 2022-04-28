@@ -45,13 +45,4 @@ export class MegaProfile {
   // Method wrapped request handlers
   get = async (url, config = {}) =>
     this.request({ ...config, method: 'GET', url });
-
-  // TODO: Remove this method once test-405 is confirmed?
-  post = async (url, data, config = {}) =>
-    this.request({
-      ...config,
-      method: 'POST',
-      url,
-      data,
-    });
 }

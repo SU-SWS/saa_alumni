@@ -6,26 +6,24 @@ import connect from 'next-connect';
 import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
+import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
 
+/**
+ * Fetches the profile data from the MEGA PROFILE API endpoints.
+ */
 const megaprofileHandler = async (req, res) => {
   const mp = new MegaProfile();
   try {
-    const { user } = req;
-    const { data: contact } = await mp.get(
-      `/${req.user.encodedSUID}/profiles/contact`
-    );
+    const profileId = req.user.encodedSUID;
+    const token = await tokenFetcher();
+    const fullgg = await profileFetcher(profileId, token);
+
     const { data: affiliations } = await mp.get(
-      `/${req.user.encodedSUID}/profiles/affiliations`
+      `/${profileId}/profiles/affiliations`
     );
-    const mpUser = { user, contact, affiliations: affiliations.affiliations };
+
+    const mpUser = { ...fullgg, affiliations };
     return res.status(200).json(mpUser);
-    // TODO: ADAPT-4438 Once we have the user data, we can append the megaprofile data.
-    // const { addresses } = await mp.get(`${user.encodedSUID}/profiles/addresses`);
-    // const { emails } = await mp.get(`${user.encodedSUID}/profiles/emails`);
-    // const { phoneNumbers } = await mp.get(`${user.encodedSUID}/profiles/phonenumbers`);
-    // ...additional endpoints here
-    // const mpUser = { user, contact, addresses, emails, phoneNumbers, ...additional endpoints here };
-    // res.status(200).json(mpUser);
   } catch (err) {
     return ExceptionHandler(res, err);
   }

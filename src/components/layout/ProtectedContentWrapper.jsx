@@ -1,17 +1,21 @@
 import React, { useEffect, useState, useContext } from 'react';
 import fetch from 'node-fetch';
+import { PulseLoader } from 'react-spinners';
 import CreateBloks from '../../utilities/createBloks';
 import CreateStories from '../../utilities/createStories';
 import AuthContext from '../../contexts/AuthContext';
+import RichTextRenderer from '../../utilities/richTextRenderer';
+import hasRichText from '../../utilities/hasRichText';
 
 const ProtectedContentWrapper = ({ blok }) => {
   const [authenticatedContent, setAuthenticatedContent] = useState(null);
+  const [checkingAccess, setCheckingAccess] = useState(false);
   const authState = useContext(AuthContext);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      if (!authState.isAuthenticated || !authState.userProfile) return;
-
+      if (!authState.isAuthenticated) return;
+      setCheckingAccess(true);
       const requests = [];
 
       blok.protectedContentRef.forEach((item) => {
@@ -26,23 +30,80 @@ const ProtectedContentWrapper = ({ blok }) => {
         requests.push(request);
       });
 
-      Promise.all(requests).then((results) => {
-        const allowedItems = results.filter((item) => !!item.story);
-        const contentItems = allowedItems.map((item) => item.story);
-        setAuthenticatedContent(contentItems);
-      });
+      Promise.all(requests)
+        .then((results) => {
+          const allowedItems = results.filter((item) => !!item.story);
+          const contentItems = allowedItems.map((item) => item.story);
+          setCheckingAccess(false);
+          setAuthenticatedContent(contentItems);
+        })
+        .catch((err) => {
+          setCheckingAccess(false);
+        });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [authState.isAuthenticating]);
 
-  if (!authState.isAuthenticating && authenticatedContent) {
+  // Logged in and has access to protected content.
+  if (
+    !authState.isAuthenticating &&
+    authState.isAuthenticated &&
+    !checkingAccess &&
+    authenticatedContent?.length > 0
+  ) {
     return <CreateStories stories={authenticatedContent} />;
   }
-  if (!authState.isAuthenticating && !authenticatedContent) {
+
+  // No content or 403'd with custom access denied message.
+  if (
+    !authState.isAuthenticating &&
+    !checkingAccess &&
+    authState.isAuthenticated &&
+    authenticatedContent?.length === 0 &&
+    hasRichText(blok.accessDeniedContent)
+  ) {
+    return (
+      <RichTextRenderer
+        wysiwyg={blok.accessDeniedContent}
+        isDark
+        className="su-rs-px-2"
+      />
+    );
+  }
+
+  // No content or 403'd
+  if (
+    !authState.isAuthenticating &&
+    !checkingAccess &&
+    authState.isAuthenticated &&
+    authenticatedContent?.length === 0
+  ) {
+    return (
+      <p>
+        <strong>This content is restricted.</strong>
+      </p>
+    );
+  }
+
+  // Anonymous user, show anon content.
+  if (
+    !authState.isAuthenticating &&
+    !checkingAccess &&
+    !authState.isAuthenticated &&
+    !authenticatedContent
+  ) {
     return <CreateBloks blokSection={blok.anonymousContent} />;
   }
 
-  return <div>Checking Authentication state...</div>;
+  // Processing.
+  return (
+    <div>
+      <p>Checking your access...</p>
+      <p className="su-text-center">
+        <PulseLoader color="#820000" size={16} />
+      </p>
+    </div>
+  );
 };
 
 export default ProtectedContentWrapper;
