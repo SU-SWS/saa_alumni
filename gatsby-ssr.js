@@ -4,10 +4,10 @@
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
 
-import React from "react";
+import React from 'react';
 
 // Contexts.
-import { GlobalStateProvider } from "./src/contexts/GlobalContext";
+import { GlobalStateProvider } from './src/contexts/GlobalContext';
 
 // Exports.
 export const wrapRootElement = ({ element }) => (

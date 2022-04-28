@@ -1,3 +1,4 @@
+import { exit } from 'process';
 import React, { createContext } from 'react';
 import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 
@@ -37,27 +38,42 @@ class AuthContextProvider extends React.Component {
     const sessionUrl = `${window.location.protocol}//${window.location.host}/api/auth/session`;
     const profileUrl = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
 
-    fetch(sessionUrl).then(async (res) => {
+    // Get the session.
+    const sess = fetch(sessionUrl).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
-        this.dispatch({ type: 'setAuthenticated', payload: true });
-        this.dispatch({ type: 'setUserSession', payload: body });
-        this.dispatch({ type: 'setAuthenticating', payload: false });
-      } else {
-        this.dispatch({ type: 'setAuthenticated', payload: false });
-        this.dispatch({ type: 'setUserSession', payload: null });
-        this.dispatch({ type: 'setAuthenticating', payload: false });
+        return body;
       }
+      return false;
     });
 
-    fetch(profileUrl).then(async (res) => {
+    // Get the profile.
+    const prof = fetch(profileUrl).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
-        this.dispatch({ type: 'setUserProfile', payload: body });
-      } else {
-        this.dispatch({ type: 'setUserProfile', payload: null });
+        return body;
       }
+      return false;
     });
+
+    // To be logged in, both session and profile must be available.
+    Promise.all([sess, prof])
+      .then(([session, profile]) => {
+        if (!session || !profile) {
+          this.dispatch({ type: 'setAuthenticated', payload: false });
+          this.dispatch({ type: 'setAuthenticating', payload: false });
+          return;
+        }
+
+        this.dispatch({ type: 'setUserSession', payload: session });
+        this.dispatch({ type: 'setUserProfile', payload: profile });
+        this.dispatch({ type: 'setAuthenticated', payload: true });
+        this.dispatch({ type: 'setAuthenticating', payload: false });
+      })
+      .catch((err) => {
+        this.dispatch({ type: 'setAuthenticated', payload: false });
+        this.dispatch({ type: 'setAuthenticating', payload: false });
+      });
   }
 
   reducer(action) {
