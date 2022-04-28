@@ -1,4 +1,3 @@
-import { exit } from 'process';
 import React, { createContext } from 'react';
 import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 
