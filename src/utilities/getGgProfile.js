@@ -43,7 +43,6 @@ export const tokenFetcher = async () => {
 };
 
 export const profileFetcher = async (profileId, token) => {
-
   const client = axios.create({
     baseURL: process.env.MEGAPROFILE_URL,
     headers: {

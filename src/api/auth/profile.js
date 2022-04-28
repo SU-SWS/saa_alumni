@@ -25,7 +25,6 @@ const megaprofileHandler = async (req, res) => {
     const mpUser = { ...fullgg, affiliations };
     return res.status(200).json(mpUser);
   } catch (err) {
-    console.error(err);
     return ExceptionHandler(res, err);
   }
 };
