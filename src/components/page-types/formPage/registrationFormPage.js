@@ -13,10 +13,7 @@ import { GridCell } from '../../layout/GridCell';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import {
-  FormContextProvider,
-  FormContext,
-} from '../../../contexts/FormContext';
+import { FormContextProvider } from '../../../contexts/FormContext';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -40,8 +37,25 @@ const RegistrationFormPage = (props) => {
   console.log('Prefill Data Obj: ', guests);
 
   useEffect(() => {
+    const structureGuestsData = (selectedGuests) => {
+      const guestsData = [];
+      selectedGuests.map((guest) => {
+        const data = {
+          did: guest.SUNETID || '',
+          su_title: guest.title || '',
+          su_first_name: guest.firstName,
+          su_last_name: guest.lastName,
+          su_email: guest.email || '',
+        };
+        guestsData.push(data);
+      });
+      return guestsData;
+    };
     if (guests) {
-      window.prefillData = guests;
+      const guestsData = structureGuestsData(guests);
+      // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
+      console.log('Guests Data: ', guestsData);
+      window.prefillData = guestsData;
     }
   }, [guests]);
 
