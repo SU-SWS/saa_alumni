@@ -47,8 +47,10 @@ const RegistrationFormPage = (props) => {
           su_first_name:
             guest?.relatedContactFullNameParsed?.relatedContactFirstName,
           su_middle_name:
-            guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
-            ' ',
+            guest?.relatedContactFullNameParsed?.relatedContactMiddleName ===
+            null
+              ? ' '
+              : guest?.relatedContactFullNameParsed?.relatedContactMiddleName,
           su_last_name:
             guest?.relatedContactFullNameParsed?.relatedContactLastName,
         };
