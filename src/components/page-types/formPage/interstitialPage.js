@@ -109,7 +109,7 @@ const InterstitialPage = (props) => {
                     <TripRelationshipCard traveler={userProfile?.user} />
                     {relationships.relationships.map((relationship) => (
                       <TripRelationshipCard
-                        key={relationship.id}
+                        key={relationship.relationshipID}
                         traveler={relationship}
                       />
                     ))}

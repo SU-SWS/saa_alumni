@@ -10,8 +10,8 @@ const TripRelationShipCard = ({ traveler }) => {
   const [removeBtn, setRemoveBtn] = useState(false);
 
   let fullName = '';
-  if (traveler && traveler?.digitalName) {
-    fullName = traveler.digitalName;
+  if (traveler && traveler?.relatedContactFullNameParsed) {
+    fullName = `${traveler.relatedContactFullNameParsed.relatedContactFirstName} ${traveler.relatedContactFullNameParsed.relatedContactLastName}`;
   }
   if (traveler && traveler?.firstName && traveler?.lastName) {
     fullName = `${traveler?.firstName} ${traveler?.lastName}`;
