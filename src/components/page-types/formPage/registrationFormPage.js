@@ -39,16 +39,22 @@ const RegistrationFormPage = (props) => {
   useEffect(() => {
     const structureGuestsData = (selectedGuests) => {
       const guestsData = [];
-      selectedGuests.map((guest) => {
+      selectedGuests.forEach((guest) => {
         const data = {
-          did: guest.SUNETID || '',
-          su_title: guest.title || '',
-          su_first_name: guest.firstName,
-          su_last_name: guest.lastName,
-          su_email: guest.email || '',
+          did: guest?.relatedContactEncodedID || '',
+          su_title:
+            guest?.relatedContactFullNameParsed?.relatedContactPrefix || '',
+          su_first_name:
+            guest?.relatedContactFullNameParsed?.relatedContactFirstName,
+          su_middle_name:
+            guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
+            ' ',
+          su_last_name:
+            guest?.relatedContactFullNameParsed?.relatedContactLastName,
         };
         guestsData.push(data);
       });
+
       return guestsData;
     };
     if (guests) {
