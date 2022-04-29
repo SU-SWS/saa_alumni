@@ -16,7 +16,7 @@ function authReducer(state, action) {
     case 'setAuthenticated':
       return { ...state, isAuthenticated: action.payload };
     case 'setUserSession':
-      return { ...state, userProfile: action.payload };
+      return { ...state, userSession: action.payload };
     case 'setUserProfile':
       return { ...state, userProfile: action.payload };
     default:
