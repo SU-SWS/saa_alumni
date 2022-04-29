@@ -6,10 +6,10 @@ import { FormContext } from '../../../contexts/FormContext';
 
 const TripRelationshipListItem = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
-  // TODO: ADAPT-4677 Determine how we want to handle the inconsitency between digitalName versus firstName lastName
+
   let fullName = '';
-  if (traveler && traveler?.digitalName) {
-    fullName = traveler.digitalName;
+  if (traveler && traveler?.relatedContactFullNameParsed) {
+    fullName = `${traveler?.relatedContactFullNameParsed?.relatedContactFirstName} ${traveler?.relatedContactFullNameParsed?.relatedContactLastName}`;
   }
   if (traveler && traveler?.firstName && traveler?.lastName) {
     fullName = `${traveler?.firstName} ${traveler?.lastName}`;

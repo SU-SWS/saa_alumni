@@ -11,7 +11,7 @@ const TripRelationShipCard = ({ traveler }) => {
 
   let fullName = '';
   if (traveler && traveler?.relatedContactFullNameParsed) {
-    fullName = `${traveler.relatedContactFullNameParsed.relatedContactFirstName} ${traveler.relatedContactFullNameParsed.relatedContactLastName}`;
+    fullName = `${traveler?.relatedContactFullNameParsed?.relatedContactFirstName} ${traveler?.relatedContactFullNameParsed?.relatedContactLastName}`;
   }
   if (traveler && traveler?.firstName && traveler?.lastName) {
     fullName = `${traveler?.firstName} ${traveler?.lastName}`;
