@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
@@ -14,6 +14,7 @@ import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
+import AuthContext from '../../../contexts/AuthContext';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -31,6 +32,7 @@ const RegistrationFormPage = (props) => {
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
+  const { userProfile } = useContext(AuthContext);
 
   const guests = location?.state?.guests;
   // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
@@ -38,7 +40,7 @@ const RegistrationFormPage = (props) => {
 
   useEffect(() => {
     const structureGuestsData = (selectedGuests) => {
-      const guestsData = [];
+      let guestsData = [];
       selectedGuests.forEach((guest) => {
         const data = {
           did: guest?.relatedContactEncodedID || '',
@@ -54,18 +56,25 @@ const RegistrationFormPage = (props) => {
           su_last_name:
             guest?.relatedContactFullNameParsed?.relatedContactLastName,
         };
-        guestsData.push(data);
+
+        // Check if registrant is selected as a guest.
+        if (data.su_first_name === userProfile?.firstName) {
+          guestsData = [data, ...guestsData];
+        } else {
+          guestsData = [...guestsData, data];
+        }
       });
 
       return guestsData;
     };
+
     if (guests) {
       const guestsData = structureGuestsData(guests);
       // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
       console.log('Guests Data: ', guestsData);
       window.prefillData = guestsData;
     }
-  }, [guests]);
+  }, [guests, userProfile]);
 
   return (
     <AuthenticatedPage>
