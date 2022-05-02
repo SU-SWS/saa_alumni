@@ -18,7 +18,7 @@ const TripRelationshipListItem = ({ traveler }) => {
   const removeRelationship = () => {
     dispatch({
       type: 'removeTraveler',
-      payload: traveler.id,
+      payload: traveler.relationshipID,
     });
   };
 

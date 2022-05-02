@@ -28,7 +28,7 @@ const TripRelationShipCard = ({ traveler }) => {
   const removeRelationship = () => {
     dispatch({
       type: 'removeTraveler',
-      payload: traveler?.id,
+      payload: traveler.relationshipID,
     });
     setRemoveBtn(false);
   };

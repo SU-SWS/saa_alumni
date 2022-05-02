@@ -13,7 +13,7 @@ function formReducer(state, action) {
     case 'removeTraveler':
       return {
         travelersData: state.travelersData.filter(
-          (traveler) => traveler.id !== action.payload
+          (traveler) => traveler.relationshipID !== action.payload
         ),
       };
     default:
