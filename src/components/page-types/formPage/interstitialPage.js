@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
@@ -17,7 +17,6 @@ import {
 import AuthContext from '../../../contexts/AuthContext';
 import TripRelationshipCard from './tripRelationshipCard';
 import TripRelationshipList from './tripRelationshipList';
-import TripRelationshipListItem from './TripRelationshipListItem';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 
 const InterstitialPage = (props) => {
@@ -83,62 +82,54 @@ const InterstitialPage = (props) => {
   };
 
   return (
-    // <AuthenticatedPage>
-    <FormContextProvider>
-      <SbEditable content={blok}>
-        <Layout {...props}>
-          <Container
-            as="main"
-            id="main-content"
-            className="basic-page su-relative su-flex-grow su-w-full"
-            width="full"
-          >
-            <Helmet titleTemplate={title} title={title} />
-            <Container className="su-cc su-rs-pb-8">
-              <Heading level={1} align="left" font="serif" id="page-title">
-                {title}
-              </Heading>
-              {hasRichText(body) && (
-                <RichTextRenderer
-                  wysiwyg={body}
-                  className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                />
-              )}
-              {relationships.relationships.length > 0 ? (
-                <Grid gap md={12}>
-                  {/* TODO: ADAPT-4677 Determine how we want to pass the registrant's data (which must include their name, email, address) */}
-                  <TripRelationshipCard traveler={userProfile?.user} />
-                  {relationships.relationships.map((relationship) => (
-                    <TripRelationshipCard
-                      key={relationship.relationshipID}
-                      traveler={relationship}
-                    />
-                  ))}
-                </Grid>
-              ) : (
-                <p>No relationships are available at this time</p>
-              )}
-              {/* Relationship List */}
-              <Heading level={2} align="left" font="serif">
-                Your trip registrants
-              </Heading>
-              <p>
-                Please confirm that you would like to register the following
-                people for this trip. Please note that you will be able to add
-                the above people later if you choose, but you will have to enter
-                their information manually.
-              </p>
-
-              <FormContext.Consumer>
-                {(value) => (
-                  <>
-                    {value[0].travelersData.map((traveler) => (
-                      <TripRelationshipListItem
-                        key={traveler.relationshipID || traveler.id}
-                        traveler={traveler}
+    <AuthenticatedPage>
+      <FormContextProvider>
+        <SbEditable content={blok}>
+          <Layout {...props}>
+            <Container
+              as="main"
+              id="main-content"
+              className="basic-page su-relative su-flex-grow su-w-full"
+              width="full"
+            >
+              <Helmet titleTemplate={title} title={title} />
+              <Container className="su-cc su-rs-pb-8">
+                <Heading level={1} align="left" font="serif" id="page-title">
+                  {title}
+                </Heading>
+                {hasRichText(body) && (
+                  <RichTextRenderer
+                    wysiwyg={body}
+                    className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                  />
+                )}
+                {relationships.relationships.length > 0 ? (
+                  <Grid gap md={12}>
+                    {/* TODO: ADAPT-4677 Determine how we want to pass the registrant's data (which must include their name, email, address) */}
+                    <TripRelationshipCard traveler={userProfile?.user} />
+                    {relationships.relationships.map((relationship) => (
+                      <TripRelationshipCard
+                        key={relationship.relationshipID}
+                        traveler={relationship}
                       />
                     ))}
-                    {/* <TripRelationshipList /> */}
+                  </Grid>
+                ) : (
+                  <p>No relationships are available at this time</p>
+                )}
+                {/* Relationship List */}
+                <Heading level={2} align="left" font="serif">
+                  Your trip registrants
+                </Heading>
+                <p>
+                  Please confirm that you would like to register the following
+                  people for this trip. Please note that you will be able to add
+                  the above people later if you choose, but you will have to
+                  enter their information manually.
+                </p>
+                <TripRelationshipList />
+                <FormContext.Consumer>
+                  {(value) => (
                     <Link
                       to={`${slug}/form`}
                       className="su-button"
@@ -146,16 +137,15 @@ const InterstitialPage = (props) => {
                     >
                       Next
                     </Link>
-                  </>
-                )}
-              </FormContext.Consumer>
+                  )}
+                </FormContext.Consumer>
+              </Container>
+              {numAnkle > 0 && <Ankle isDark {...props} />}
             </Container>
-            {numAnkle > 0 && <Ankle isDark {...props} />}
-          </Container>
-        </Layout>
-      </SbEditable>
-    </FormContextProvider>
-    // </AuthenticatedPage>
+          </Layout>
+        </SbEditable>
+      </FormContextProvider>
+    </AuthenticatedPage>
   );
 };
 
