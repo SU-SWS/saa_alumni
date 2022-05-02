@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
@@ -27,12 +27,12 @@ const RegistrationFormPage = (props) => {
       ankleContent,
     },
     blok,
-    location: { state },
+    location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
 
-  const guests = state?.guests;
+  const guests = location?.state?.guests;
   // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
   console.log('Prefill Data Obj: ', guests);
 
