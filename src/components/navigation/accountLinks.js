@@ -66,9 +66,9 @@ const AccountLinks = ({ mainLinkClasses }) => {
 
   return (
     <AuthContext.Consumer>
-      {({ isAuthenticated, userSession }) => (
+      {({ isAuthenticated, userProfile }) => (
         <>
-          {isAuthenticated && userSession && (
+          {isAuthenticated && userProfile && (
             <li className="su-text-white su-relative" ref={ref}>
               <button
                 type="button"
@@ -79,8 +79,8 @@ const AccountLinks = ({ mainLinkClasses }) => {
                   className={`su-inline-block su-mr-10 ${
                     showDesktop ? '' : 'su-sr-only'
                   }`}
-                >{`Hi, ${userSession.firstName} ${userSession.lastName}`}</span>
-                <Initial string={userSession.firstName} />
+                >{`Hi, ${userProfile.name.fullNameParsed.firstName} ${userProfile.name.fullNameParsed.lastName}`}</span>
+                <Initial string={userProfile.name.fullNameParsed.firstName} />
                 <ChevronDownIcon
                   className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hocus:su-text-digital-red-xlight su-transition
             ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
