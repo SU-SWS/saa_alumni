@@ -78,13 +78,13 @@ const GiveGabForm = ({
       )}
       <Container
         width="full"
-        className="children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-to-saa-black children:su-from-saa-black-opacity-40 children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white"
+        className="children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white"
       >
-        <div className="su-rs-p-5">
+        <div className="form-gradient su-rs-p-5 2xl:su-pb-[10.8rem]">
           <Embed blok={preBlok} />
           <DynaScript src={url} id={htmlId} errorText={errorText} />
         </div>
-        <div className="su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
+        <div className="form-gradient su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
           <Embed blok={postBlok} />
         </div>
       </Container>
