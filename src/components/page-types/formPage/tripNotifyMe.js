@@ -17,13 +17,14 @@ const TripNotifyMe = (props) => {
       notifyMeText: {
         content: { body },
       },
-      trip: {
-        full_slug: fullSlug,
-        content: { title: tripTitle, startDate, endDate },
-      },
     },
     blok,
+    trip,
   } = props;
+  const {
+    full_slug: fullSlug,
+    content: { title: tripTitle, startDate, endDate },
+  } = trip;
   const title = `Notify me: ${tripTitle}`;
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
   const tripDates = useMemo(() => {

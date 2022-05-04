@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -18,11 +18,6 @@ const GiveGabForm = ({
     pre_markup,
     url,
     post_markup,
-    deposit_amount: depositAmount,
-    trip_id: tripId,
-    trip_name: tripName,
-    extension,
-    extension_amount: extensionAmount,
     uuid,
   },
   blok,
@@ -31,22 +26,6 @@ const GiveGabForm = ({
   const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
-  // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
-  let ggUrl;
-  if (tripId) {
-    ggUrl = `${url}?ciid=${tripId}`;
-  }
-
-  useEffect(() => {
-    // Information from StoryBlok GiveGabForm Component
-    // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
-    window.trip_id = tripId || '';
-    window.amt = depositAmount || '';
-    // TODO: ADAPT-4681/ADAPT-4776 The following fields does not exist within the GG form yet.
-    window.trip_name = tripName || '';
-    window.su_extension = extension || '';
-    window.su_extension_amount = extensionAmount || '';
-  }, [tripId, tripName, depositAmount, extension, extensionAmount]);
 
   if (isAuthenticating) {
     return (

@@ -13,13 +13,14 @@ const TripCustomJourneys = (props) => {
       customJourneysText: {
         content: { heading, body },
       },
-      trip: {
-        full_slug: fullSlug,
-        content: { title },
-      },
     },
     blok,
+    trip,
   } = props;
+  const {
+    full_slug: fullSlug,
+    content: { title },
+  } = trip;
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
 
   return (
