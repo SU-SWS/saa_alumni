@@ -10,9 +10,15 @@ const tripsCollection = async (req, res) => {
   let trips = [];
   const perpage = 25;
   const requests = [];
-  const storyblokRes = await storyblok.get(
-    `cdn/stories/?filter_query[component][in]=trip&per_page=${perpage}&page=${currentPage}`
-  );
+  const storyblokRes = await storyblok.get(`cdn/stories/`, {
+    filter_query: {
+      component: {
+        in: 'trip',
+      },
+    },
+    per_page: perpage,
+    page: currentPage,
+  });
 
   const { total } = storyblokRes;
   trips = trips.concat(storyblokRes.data.stories);
@@ -20,9 +26,15 @@ const tripsCollection = async (req, res) => {
   while (currentPage * perpage < total) {
     currentPage += 1;
     requests.push(
-      storyblok.get(
-        `cdn/stories/?filter_query[component][in]=trip&per_page=${perpage}&page=${currentPage}`
-      )
+      storyblok.get(`cdn/stories/`, {
+        filter_query: {
+          component: {
+            in: 'trip',
+          },
+        },
+        per_page: perpage,
+        page: currentPage,
+      })
     );
   }
 
