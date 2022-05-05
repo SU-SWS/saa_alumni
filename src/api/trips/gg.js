@@ -1,5 +1,7 @@
 import StoryblokClient from 'storyblok-js-client';
 
+const { EOL } = require('os');
+
 const storyblok = new StoryblokClient({
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 });
@@ -7,7 +9,7 @@ const storyblok = new StoryblokClient({
 const formatData = (data) => {
   let ret = '';
   data.forEach((row) => {
-    ret += `${row.concat(',')}\n`;
+    ret += `${row.concat(',')}${EOL}`;
   });
 
   return ret;
