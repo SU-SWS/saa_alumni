@@ -9,7 +9,7 @@ const storyblok = new StoryblokClient({
 const formatData = (data) => {
   let ret = '';
   data.forEach((row) => {
-    ret += `${row.concat(',')}${EOL}`;
+    ret += `${row.concat(',').slice(0, -1)}${EOL}`;
   });
 
   return ret;
@@ -64,25 +64,28 @@ const getTripFormStory = async (uuid) => {
  */
 export default async function handler(req, res) {
   // Get the trip ID out of the URL and sanitize it to number.
-  const tripId = Number(req?.query?.urlData);
+  const tripId = Number(req?.query?.data) ?? Number(req?.query?.urlData);
+
+  console.log(req.query);
+
   if (!tripId) {
     res.status(404).send(`Trip ID parameter not found`);
     return;
   }
 
   // Fetch the trip story from storyblok.
-  const trip = await getTripStory(tripId);
-  if (!trip) {
-    res.status(404).send(`Trip with id ${tripId} not found`);
-    return;
-  }
+  // const trip = await getTripStory(tripId);
+  // if (!trip) {
+  //   res.status(404).send(`Trip with id ${tripId} not found`);
+  //   return;
+  // }
 
-  // Fetch the trip form information from storyblok.
-  const registrationForm = await getTripFormStory(trip.uuid);
-  if (!registrationForm) {
-    res.status(404).send(`Registration Form with id ${tripId} not found`);
-    return;
-  }
+  // // Fetch the trip form information from storyblok.
+  // const registrationForm = await getTripFormStory(trip.uuid);
+  // if (!registrationForm) {
+  //   res.status(404).send(`Registration Form with id ${tripId} not found`);
+  //   return;
+  // }
 
   // Aggregate and compile it in the format that GG expects.
   const data = [];
@@ -95,7 +98,7 @@ export default async function handler(req, res) {
     'Single Bedroom',
     'TRUE',
     'USD',
-    0,
+    '',
     '',
     '',
     '',
@@ -112,7 +115,7 @@ export default async function handler(req, res) {
     'Double Bedroom',
     'TRUE',
     'USD',
-    0,
+    '',
     '',
     '',
     '',
@@ -127,9 +130,26 @@ export default async function handler(req, res) {
     'TRUE',
     '',
     'Queen Bedroom',
-    'TRUE',
+    'FALSE',
     'USD',
-    0,
+    '',
+    '',
+    '',
+    '',
+    '',
+    'FALSE',
+  ]);
+
+  data.push([
+    'prompt',
+    tripId,
+    'king',
+    'TRUE',
+    '',
+    'King Bedroom',
+    'FALSE',
+    'USD',
+    '',
     '',
     '',
     '',
@@ -138,11 +158,14 @@ export default async function handler(req, res) {
   ]);
 
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('X-Content-Type-Options', 'nosniff');
-  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-  res.setHeader('Content-Type', 'text/csv');
-  res.setHeader('X-Frame-Options', 'DENY');
+  // res.setHeader('Content-Type', 'text/csv');
   res.setHeader('Strict-Transport-Security', 'max-age=2592000');
+  res.setHeader('Cache-Control', [
+    'max-age=0',
+    'no-cache',
+    'no-store',
+    'must-revalidate',
+  ]);
 
   // Trip.
   res.status(200).send(formatData(data));
