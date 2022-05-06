@@ -75,7 +75,7 @@ const FormPage = (props) => {
                     font="serif"
                     srOnly={isSrOnlyTitle}
                     id="page-title"
-                    className="su-rs-mt-5"
+                    className={isSingleColumn ? 'su-rs-mt-5' : 'su-rs-mt-7'}
                   >
                     {title}
                   </Heading>

@@ -70,7 +70,7 @@ const GiveGabForm = ({
             'children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-backdrop-blur-sm children:su-shadow-lg'
         )}
       >
-        <div className="form-gradient su-rs-p-5 2xl:su-pb-[10.8rem]">
+        <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
           <Embed blok={preBlok} />
           <DynaScript src={url} id={htmlId} errorText={errorText} />
         </div>
