@@ -73,14 +73,15 @@ const getTripFormStory = async (uuid) => {
  */
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', ['text/csv', 'charset=utf-8']);
-  res.setHeader('Strict-Transport-Security', 'max-age=2592000');
-  res.setHeader('Cache-Control', [
-    'max-age=0',
-    'no-cache',
-    'no-store',
-    'must-revalidate',
-  ]);
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('x-robots-tag', ['noindex', 'nofollow', 'nosnippet']);
+  res.setHeader('x-content-type-options', 'nosniff');
+  res.setHeader('x-xss-protection', '1; mode=block');
+  res.setHeader('Cache-Control', ['max-age=300', 'private']);
+  res.setHeader('Expires', '0');
+  res.setHeader('date', new Date().toUTCString());
+  res.setHeader('accept-ranges', 'none');
+  res.setHeader('vary', 'Accept-Encoding');
 
   // const defaultArray = [
   //   'prompt', '', 'none', 'TRUE', '', 'No URLData or data query parameter provided.', 'TRUE', 'USD', '', '', '', '', '', 'TRUE',
@@ -88,6 +89,11 @@ export default async function handler(req, res) {
 
   // Get the trip ID out of the URL and sanitize it to number.
   const tripId = Number(req?.query?.data || req?.query?.urlData);
+  res.setHeader(
+    'content-disposition',
+    `attachment; filename="trip-${tripId}.csv"`
+  );
+
   console.log(req.query);
 
   // if (!tripId) {
