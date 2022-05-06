@@ -77,7 +77,9 @@ export default async function handler(req, res) {
   console.log(req.query);
 
   if (!tripId) {
-    res.status(200).send(`prompt,,nothing,TRUE,,No URL Param Passed,FALSE,USD,,,,,,TRUE`);
+    res
+      .status(200)
+      .send(`prompt,,nothing,TRUE,,No URL Param Passed,FALSE,USD,,,,,,TRUE`);
     return;
   }
 
@@ -164,7 +166,6 @@ export default async function handler(req, res) {
     '',
     'TRUE',
   ]);
-
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   // res.setHeader('Content-Type', 'text/csv');
