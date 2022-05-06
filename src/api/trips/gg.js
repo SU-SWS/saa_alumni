@@ -90,7 +90,7 @@ export default async function handler(req, res) {
   if (!tripId) {
     res
       .status(200)
-      .send(`prompt,,nothing,TRUE,,No URL Param Passed,FALSE,USD,,,,,,TRUE`);
+      .send(`prompt,,nothing,TRUE,,No URL Param Passed,TRUE,USD,,,,,,TRUE`);
     return;
   }
 
@@ -151,7 +151,7 @@ export default async function handler(req, res) {
     'TRUE',
     '',
     'Queen Bedroom',
-    'FALSE',
+    'TRUE',
     'USD',
     '',
     '',
@@ -168,7 +168,7 @@ export default async function handler(req, res) {
     'TRUE',
     '',
     'King Bedroom',
-    'FALSE',
+    'TRUE',
     'USD',
     '',
     '',
