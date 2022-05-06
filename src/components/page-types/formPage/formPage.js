@@ -11,7 +11,6 @@ import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import { content } from '../TripPage/TripPageHeroSection.styles';
 
 const FormPage = (props) => {
   const {
@@ -27,14 +26,12 @@ const FormPage = (props) => {
     blok,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
-  let fullWidth = false;
   let contentStyle = 'su-sticky su-top-0 su-h-fit';
   let formCardStyle = 'su-rs-mt-5 lg:su-col-start-7 xl:su-col-start-7';
 
   if (isSingleColumn) {
-    fullWidth = 12;
     contentStyle = '';
-    formCardStyle = '';
+    formCardStyle = 'lg:su-col-start-4 xl:su-col-start-4';
   }
 
   return (
@@ -62,7 +59,11 @@ const FormPage = (props) => {
             xs={12}
             className="su-relative su-cc su-z-10 su-rs-pb-8 su-rs-pt-6"
           >
-            <GridCell xs={12} lg={fullWidth || 5} xl={fullWidth || 5}>
+            <GridCell
+              xs={12}
+              lg={isSingleColumn ? 12 : 5}
+              xl={isSingleColumn ? 12 : 5}
+            >
               <div className={dcnb('su-text-white', contentStyle)}>
                 {title && (
                   <Heading
@@ -81,8 +82,8 @@ const FormPage = (props) => {
             </GridCell>
             <GridCell
               xs={12}
-              lg={fullWidth || 6}
-              xl={fullWidth || 5}
+              lg={6}
+              xl={isSingleColumn ? 6 : 5}
               className={formCardStyle}
             >
               <CreateBloks blokSection={giveGabForm} />
