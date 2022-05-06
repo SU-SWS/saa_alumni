@@ -72,6 +72,17 @@ const getTripFormStory = async (uuid) => {
  * @param {*} res
  */
 export default async function handler(req, res) {
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Strict-Transport-Security', 'max-age=2592000');
+  res.setHeader('Cache-Control', [
+    'max-age=0',
+    'no-cache',
+    'no-store',
+    'must-revalidate',
+  ]);
+
   // Get the trip ID out of the URL and sanitize it to number.
   const tripId = Number(req?.query?.data || req?.query?.urlData);
   console.log(req.query);
@@ -165,16 +176,6 @@ export default async function handler(req, res) {
     '',
     '',
     'TRUE',
-  ]);
-
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  // res.setHeader('Content-Type', 'text/csv');
-  res.setHeader('Strict-Transport-Security', 'max-age=2592000');
-  res.setHeader('Cache-Control', [
-    'max-age=0',
-    'no-cache',
-    'no-store',
-    'must-revalidate',
   ]);
 
   // Trip.
