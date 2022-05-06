@@ -36,7 +36,7 @@ const GiveGabForm = ({
         aria-live="polite"
         aria-busy="true"
         className={dcnb(
-          'su-shadow-lg su-text-white su-rs-p-5',
+          'su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6',
           bgCardStyle ||
             'su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm'
         )}
@@ -65,7 +65,7 @@ const GiveGabForm = ({
       <Container
         width="full"
         className={dcnb(
-          ' children:su-text-white',
+          'children:su-text-white',
           bgCardStyle ||
             'children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-backdrop-blur-sm children:su-shadow-lg'
         )}
