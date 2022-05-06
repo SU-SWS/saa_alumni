@@ -1,6 +1,64 @@
 const lookup = require('country-code-lookup');
 
 /**
+ * Find the user's preferred phone number.
+ *
+ * @param {array} phoneNumbers
+ *   An array of objects containing phone numbers.
+ *
+ * @returns {string|boolean}
+ *   The phone number when found or false
+ */
+const findPreferredPhoneNumber = (phoneNumbers) => {
+  let ret = false;
+
+  // Check the first email for the preferred type. Abort if anything is missing.
+  if (
+    !Array.isArray(phoneNumbers) ||
+    !phoneNumbers[0]?.preferredPhoneNumberType
+  ) {
+    return ret;
+  }
+
+  // The preferred email is nested as a key in each of the options and we have
+  // to loop through each of the phoneNumbers looking for it.
+  const pref = phoneNumbers[0].preferredPhoneNumberType;
+  phoneNumbers.forEach((val, ind, arr) => {
+    if (val?.phoneNumberType === pref) {
+      ret = val.phoneNumber;
+    }
+  });
+
+  return ret;
+};
+
+/**
+ * Find the user's phone number.
+ *
+ * @param {array} phoneNumbers
+ *   An array of objects containing phone numbers.
+ *
+ * @returns {string|boolean}
+ *   The phone number when found or false
+ */
+const findPhoneNumberType = (phoneNumbers, type) => {
+  let ret = false;
+  const BreakException = {};
+  try {
+    phoneNumbers.forEach((val, ind, arr) => {
+      if (val.phoneNumberType === type) {
+        ret = val.phoneNumber;
+        throw BreakException;
+      }
+    });
+  } catch (e) {
+    if (e !== BreakException) throw e;
+  }
+
+  return ret;
+};
+
+/**
  * Find the user's preferred email.
  *
  * @param {array} emails
@@ -25,6 +83,35 @@ const findPreferredEmail = (emails) => {
       ret = val.emailAddress;
     }
   });
+
+  return ret;
+};
+
+/**
+ * Find the email address information.
+ *
+ * @param {array} emails
+ *   An array of objects containing email information.
+ *
+ * @param {string} type
+ *   The keyword string to look for.
+ *
+ * @returns {string|boolean}
+ *   The email string when found or false
+ */
+const findEmailType = (emails, type) => {
+  let ret = false;
+  const BreakException = {};
+  try {
+    emails.forEach((val, ind, arr) => {
+      if (val.emailType === type && val.emailStatus === 'Active') {
+        ret = val.emailAddress;
+        throw BreakException;
+      }
+    });
+  } catch (e) {
+    if (e !== BreakException) throw e;
+  }
 
   return ret;
 };
@@ -88,42 +175,13 @@ const findAddressType = (addresses, type) => {
 };
 
 /**
- * Find the email address information.
- *
- * @param {array} emails
- *   An array of objects containing email information.
- *
- * @param {string} type
- *   The keyword string to look for.
- *
- * @returns {string|boolean}
- *   The email string when found or false
- */
-const findEmailType = (emails, type) => {
-  let ret = false;
-  const BreakException = {};
-  try {
-    emails.forEach((val, ind, arr) => {
-      if (val.emailType === type && val.emailStatus === 'Active') {
-        ret = val.emailAddress;
-        throw BreakException;
-      }
-    });
-  } catch (e) {
-    if (e !== BreakException) throw e;
-  }
-
-  return ret;
-};
-
-/**
  * Set the window variables for the pre populated forms.
  * .
  * @param {*} userProfile
  */
 const setGiveGabVars = (userProfile) => {
   // Set the `did` value to the encoded SUID variable.
-  window.did = userProfile?.user?.encodedSUID || null;
+  window.did = userProfile?.encodedSUID || null;
 
   // Logic for finding an address.
   //
@@ -159,6 +217,27 @@ const setGiveGabVars = (userProfile) => {
     }
   }
 
+  // Find the preferred phone number.
+  let phoneNumber;
+  if (Array.isArray(userProfile?.phoneNumbers)) {
+    phoneNumber = findPreferredPhoneNumber(userProfile?.phoneNumbers);
+    if (!phoneNumber) {
+      phoneNumber = findPhoneNumberType(
+        userProfile?.phoneNumbers,
+        'Home Phone'
+      );
+    }
+    if (!phoneNumber) {
+      phoneNumber = findPhoneNumberType(userProfile?.phoneNumbers, 'Mobile');
+    }
+    if (!phoneNumber) {
+      phoneNumber = findPhoneNumberType(
+        userProfile?.phoneNumbers,
+        'Business Phone'
+      );
+    }
+  }
+
   // Concatenate street address 2 and 3.
   const street2 = [address?.streetAddress2, address?.streetAddress3]
     .join(' ')
@@ -166,27 +245,37 @@ const setGiveGabVars = (userProfile) => {
 
   // Used within the Registration, Additional Payment, Notify Me, and Journey request form
   // TODO: Finalize structure of firstName and lastName. (e.g. user?.registrationNameFirst or user?.fullNameParsed?.firstName)
+  // TODO: Switch back to individual MP endpoints
+  // window.dname =
+  //   userProfile?.user?.name?.digitalName ||
+  //   `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}` ||
+  //   '';
+  // window.su_first_name =
+  //   userProfile?.user?.name?.fullNameParsed.firstName ||
+  //   userProfile?.user?.firstName ||
+  //   '';
+  // window.su_last_name =
+  //   userProfile?.user?.name?.fullNameParsed.lastName ||
+  //   userProfile?.user?.lastName ||
+  //   '';
+  // window.su_birthDate = userProfile?.user?.birthDate || '';
+  // window.su_email = userProfile?.user?.email || '';
+  // window.su_phone = userProfile?.user?.phoneNumber || '';
   window.dname =
-    userProfile?.user?.name?.digitalName ||
-    `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}` ||
+    `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
     '';
   window.su_first_name =
-    userProfile?.user?.name?.fullNameParsed.firstName ||
-    userProfile?.user?.firstName ||
-    '';
-  window.su_last_name =
-    userProfile?.user?.name?.fullNameParsed.lastName ||
-    userProfile?.user?.lastName ||
-    '';
-  window.su_birthDate = userProfile?.user?.birthDate || '';
-  window.su_email = userProfile?.user?.email || '';
-  window.su_phone = userProfile?.user?.phoneNumber || '';
+    userProfile?.name?.name?.fullNameParsed?.firstName || '';
+  window.su_last_name = userProfile?.name?.name?.fullNameParsed?.lastName || '';
+  window.su_email = email || '';
   window.su_address = address?.streetAddress1 || '';
   window.su_address2 = street2 || '';
   window.su_city = address?.city || '';
   window.su_state = address?.stateProvince || '';
   window.su_zip = address?.zipPostalCode || '';
   window.su_country = lookup.byCountry(address?.addressCountry)?.iso2;
+  window.su_birthDate = userProfile?.birthDate || '';
+  window.su_phone = phoneNumber || '';
 };
 
 export default setGiveGabVars;

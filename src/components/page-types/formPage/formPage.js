@@ -15,6 +15,7 @@ import AuthenticatedPage from '../../auth/AuthenticatedPage';
 const FormPage = (props) => {
   const {
     blok: {
+      trip,
       title,
       isSrOnlyTitle,
       heroImage: { filename, alt, focus } = {},
@@ -28,10 +29,12 @@ const FormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   let contentStyle = 'su-sticky su-top-0 su-h-fit';
   let formCardStyle = 'su-rs-mt-5 lg:su-col-start-7 xl:su-col-start-7';
+  let bgCardStyle = '';
 
   if (isSingleColumn) {
     contentStyle = '';
     formCardStyle = 'lg:su-col-start-4 xl:su-col-start-4';
+    bgCardStyle = 'su-bg-saa-black';
   }
 
   return (
@@ -77,7 +80,7 @@ const FormPage = (props) => {
                     {title}
                   </Heading>
                 )}
-                <CreateBloks blokSection={formContent} />
+                <CreateBloks blokSection={formContent} trip={trip} />
               </div>
             </GridCell>
             <GridCell
@@ -86,7 +89,7 @@ const FormPage = (props) => {
               xl={isSingleColumn ? 6 : 5}
               className={formCardStyle}
             >
-              <CreateBloks blokSection={giveGabForm} />
+              <CreateBloks blokSection={giveGabForm} props={bgCardStyle} />
             </GridCell>
           </Grid>
           {numAnkle > 0 && <Ankle isDark {...props} />}

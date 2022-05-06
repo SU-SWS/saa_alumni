@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import ClipLoader from 'react-spinners/ClipLoader';
@@ -18,11 +18,6 @@ const GiveGabForm = ({
     pre_markup,
     url,
     post_markup,
-    deposit_amount: depositAmount,
-    trip_id: tripId,
-    trip_name: tripName,
-    extension,
-    extension_amount: extensionAmount,
     uuid,
   },
   blok,
@@ -31,22 +26,6 @@ const GiveGabForm = ({
   const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
-  // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
-  let ggUrl;
-  if (tripId) {
-    ggUrl = `${url}?ciid=${tripId}`;
-  }
-
-  useEffect(() => {
-    // Information from StoryBlok GiveGabForm Component
-    // TODO: ADAPT-4776 The ciid is subject to change. Please update once the final name has been confirmed
-    window.trip_id = tripId || '';
-    window.amt = depositAmount || '';
-    // TODO: ADAPT-4681/ADAPT-4776 The following fields does not exist within the GG form yet.
-    window.trip_name = tripName || '';
-    window.su_extension = extension || '';
-    window.su_extension_amount = extensionAmount || '';
-  }, [tripId, tripName, depositAmount, extension, extensionAmount]);
 
   if (isAuthenticating) {
     return (
@@ -78,13 +57,13 @@ const GiveGabForm = ({
       )}
       <Container
         width="full"
-        className="children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-to-saa-black children:su-from-saa-black-opacity-40 children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white"
+        className="children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white"
       >
-        <div className="su-rs-p-5">
+        <div className="form-gradient su-rs-p-5 2xl:su-pb-[10.8rem]">
           <Embed blok={preBlok} />
           <DynaScript src={url} id={htmlId} errorText={errorText} />
         </div>
-        <div className="su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
+        <div className="form-gradient su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
           <Embed blok={postBlok} />
         </div>
       </Container>

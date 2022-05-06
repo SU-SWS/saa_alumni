@@ -3,6 +3,7 @@ import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 import setGiveGabVars from '../utilities/giveGabVars';
 
 const initialAuthState = {
+  userSession: null,
   userProfile: null,
   isAuthenticated: false,
   isAuthenticating: true,
@@ -14,6 +15,8 @@ function authReducer(state, action) {
       return { ...state, isAuthenticating: action.payload };
     case 'setAuthenticated':
       return { ...state, isAuthenticated: action.payload };
+    case 'setUserSession':
+      return { ...state, userSession: action.payload };
     case 'setUserProfile':
       return { ...state, userProfile: action.payload };
     default:
@@ -32,20 +35,48 @@ class AuthContextProvider extends React.Component {
   }
 
   componentDidMount() {
-    const url = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
-    fetch(url).then(async (res) => {
+    const sessionUrl = `${window.location.protocol}//${window.location.host}/api/auth/session`;
+    const profileUrl = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
+
+    // Get the session.
+    const sess = fetch(sessionUrl).then(async (res) => {
       if (res.status === 200) {
         const body = await res.json();
-        setGiveGabVars(body);
-        this.dispatch({ type: 'setAuthenticated', payload: true });
-        this.dispatch({ type: 'setUserProfile', payload: body });
-        this.dispatch({ type: 'setAuthenticating', payload: false });
-      } else {
-        this.dispatch({ type: 'setAuthenticated', payload: false });
-        this.dispatch({ type: 'setUserProfile', payload: null });
-        this.dispatch({ type: 'setAuthenticating', payload: false });
+        return body;
       }
+      return false;
     });
+
+    // Get the profile.
+    const prof = fetch(profileUrl).then(async (res) => {
+      if (res.status === 200) {
+        const body = await res.json();
+        return body;
+      }
+      return false;
+    });
+
+    // To be logged in, both session and profile must be available.
+    Promise.all([sess, prof])
+      .then(([session, profile]) => {
+        if (!session) {
+          this.dispatch({ type: 'setAuthenticated', payload: false });
+          this.dispatch({ type: 'setAuthenticating', payload: false });
+          return;
+        }
+        if (profile) {
+          setGiveGabVars(profile);
+          this.dispatch({ type: 'setUserProfile', payload: profile });
+        }
+
+        this.dispatch({ type: 'setUserSession', payload: session });
+        this.dispatch({ type: 'setAuthenticated', payload: true });
+        this.dispatch({ type: 'setAuthenticating', payload: false });
+      })
+      .catch((err) => {
+        this.dispatch({ type: 'setAuthenticated', payload: false });
+        this.dispatch({ type: 'setAuthenticating', payload: false });
+      });
   }
 
   reducer(action) {
@@ -59,10 +90,12 @@ class AuthContextProvider extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { userProfile, isAuthenticated, isAuthenticating } = this.state;
+    const { userSession, userProfile, isAuthenticated, isAuthenticating } =
+      this.state;
     return (
       <AuthContext.Provider
         value={{
+          userSession,
           userProfile,
           isAuthenticated,
           isAuthenticating,
