@@ -110,7 +110,24 @@ export default async function handler(req, res) {
   // }
 
   // Aggregate and compile it in the format that GG expects.
-  const data = [];
+  const data = [
+    [
+      'type',
+      'code',
+      'answer',
+      'available',
+      'description',
+      'label',
+      'price_fixed',
+      'currency',
+      'list_price_amount',
+      'minimum_price_amount',
+      'maximum_price_amount',
+      'invalid_after_uses',
+      'invalid_after_date',
+      'answer_fixed',
+    ],
+  ];
   data.push([
     'prompt',
     tripId,
