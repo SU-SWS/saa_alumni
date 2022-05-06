@@ -38,68 +38,68 @@ const FormPage = (props) => {
   }
 
   return (
-    // <AuthenticatedPage>
-    <SbEditable content={blok}>
-      <Layout {...props}>
-        <Container
-          as="main"
-          id="main-content"
-          className="basic-page su-relative su-flex-grow su-w-full"
-          width="full"
-        >
-          <div className="su-fixed su-top-0 su-z-0 su-h-full su-w-full">
-            <HeroImage
-              filename={filename}
-              alt={alt}
-              focus={focus}
-              overlay="formDark"
-              aspectRatio="5x2"
-              className="su-object-cover su-h-full su-w-full"
-            />
-          </div>
-          <Grid
-            gap
-            xs={12}
-            className="su-relative su-cc su-z-10 su-rs-pb-8 su-rs-pt-6"
+    <AuthenticatedPage>
+      <SbEditable content={blok}>
+        <Layout {...props}>
+          <Container
+            as="main"
+            id="main-content"
+            className="basic-page su-relative su-flex-grow su-w-full"
+            width="full"
           >
-            <GridCell
-              xs={12}
-              lg={isSingleColumn ? 12 : 5}
-              xl={isSingleColumn ? 12 : 5}
-            >
-              <div className={dcnb('su-text-white', contentStyle)}>
-                {title && (
-                  <Heading
-                    level={1}
-                    align="left"
-                    font="serif"
-                    srOnly={isSrOnlyTitle}
-                    id="page-title"
-                    className={isSingleColumn ? 'su-rs-mt-5' : 'su-rs-mt-7'}
-                  >
-                    {title}
-                  </Heading>
-                )}
-                <CreateBloks blokSection={formContent} trip={trip} />
-              </div>
-            </GridCell>
-            <GridCell
-              xs={12}
-              lg={6}
-              xl={isSingleColumn ? 6 : 5}
-              className={formCardStyle}
-            >
-              <CreateBloks
-                blokSection={giveGabForm}
-                bgCardStyle={bgCardStyle}
+            <div className="su-fixed su-top-0 su-z-0 su-h-full su-w-full">
+              <HeroImage
+                filename={filename}
+                alt={alt}
+                focus={focus}
+                overlay="formDark"
+                aspectRatio="5x2"
+                className="su-object-cover su-h-full su-w-full"
               />
-            </GridCell>
-          </Grid>
-          {numAnkle > 0 && <Ankle isDark {...props} />}
-        </Container>
-      </Layout>
-    </SbEditable>
-    // </AuthenticatedPage>
+            </div>
+            <Grid
+              gap
+              xs={12}
+              className="su-relative su-cc su-z-10 su-rs-pb-8 su-rs-pt-6"
+            >
+              <GridCell
+                xs={12}
+                lg={isSingleColumn ? 12 : 5}
+                xl={isSingleColumn ? 12 : 5}
+              >
+                <div className={dcnb('su-text-white', contentStyle)}>
+                  {title && (
+                    <Heading
+                      level={1}
+                      align="left"
+                      font="serif"
+                      srOnly={isSrOnlyTitle}
+                      id="page-title"
+                      className={isSingleColumn ? 'su-rs-mt-5' : 'su-rs-mt-7'}
+                    >
+                      {title}
+                    </Heading>
+                  )}
+                  <CreateBloks blokSection={formContent} trip={trip} />
+                </div>
+              </GridCell>
+              <GridCell
+                xs={12}
+                lg={6}
+                xl={isSingleColumn ? 6 : 5}
+                className={formCardStyle}
+              >
+                <CreateBloks
+                  blokSection={giveGabForm}
+                  bgCardStyle={bgCardStyle}
+                />
+              </GridCell>
+            </Grid>
+            {numAnkle > 0 && <Ankle isDark {...props} />}
+          </Container>
+        </Layout>
+      </SbEditable>
+    </AuthenticatedPage>
   );
 };
 
