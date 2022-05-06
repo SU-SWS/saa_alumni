@@ -82,18 +82,18 @@ export default async function handler(req, res) {
     'must-revalidate',
   ]);
 
-  const defaultArray = [
-    'prompt', '', 'none', 'TRUE', '', 'No URLData or data query parameter provided.', 'TRUE', 'USD', '', '', '', '', '', 'TRUE',
-  ];
+  // const defaultArray = [
+  //   'prompt', '', 'none', 'TRUE', '', 'No URLData or data query parameter provided.', 'TRUE', 'USD', '', '', '', '', '', 'TRUE',
+  // ];
 
   // Get the trip ID out of the URL and sanitize it to number.
   const tripId = Number(req?.query?.data || req?.query?.urlData);
   console.log(req.query);
 
-  if (!tripId) {
-    res.status(200).send(`${defaultArray.concat(',').slice(0, -1)}`);
-    return;
-  }
+  // if (!tripId) {
+  //   res.status(200).send(`${defaultArray.concat(',').slice(0, -1)}`);
+  //   return;
+  // }
 
   // Fetch the trip story from storyblok.
   // const trip = await getTripStory(tripId);
