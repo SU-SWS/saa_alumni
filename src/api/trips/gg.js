@@ -2,10 +2,19 @@ import StoryblokClient from 'storyblok-js-client';
 
 const { EOL } = require('os');
 
+/**
+ * The Storyblok API client.
+ */
 const storyblok = new StoryblokClient({
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
 });
 
+/**
+ * Format for CSV export.
+ * @param {*} data
+ *  Rows of arrays of strings
+ * @returns
+ */
 const formatData = (data) => {
   let ret = '';
   data.forEach((row) => {
@@ -68,7 +77,7 @@ export default async function handler(req, res) {
   console.log(req.query);
 
   if (!tripId) {
-    res.status(404).send(`Trip ID parameter not found`);
+    res.status(200).send(`prompt,,nothing,TRUE,,No URL Param Passed,FALSE,USD,,,,,,TRUE`);
     return;
   }
 
@@ -155,6 +164,7 @@ export default async function handler(req, res) {
     '',
     'TRUE',
   ]);
+
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   // res.setHeader('Content-Type', 'text/csv');
