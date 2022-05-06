@@ -91,7 +91,7 @@ export default async function handler(req, res) {
   console.log(req.query);
 
   if (!tripId) {
-    res.status(200).send(`${defaultArray.concat(',').slice(0, -1)}${EOL}`);
+    res.status(200).send(`${defaultArray.concat(',').slice(0, -1)}`);
     return;
   }
 
