@@ -64,8 +64,7 @@ const getTripFormStory = async (uuid) => {
  */
 export default async function handler(req, res) {
   // Get the trip ID out of the URL and sanitize it to number.
-  const tripId = Number(req?.query?.data) ?? Number(req?.query?.urlData);
-
+  const tripId = Number(req?.query?.data || req?.query?.urlData);
   console.log(req.query);
 
   if (!tripId) {
