@@ -24,7 +24,6 @@ const GiveGabForm = ({
   blok,
   bgCardStyle: bgCardProps,
 }) => {
-  console.log('bgCardStyle:', bgCardStyle);
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
