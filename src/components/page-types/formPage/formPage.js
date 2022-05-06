@@ -29,7 +29,7 @@ const FormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   let contentStyle = 'su-sticky su-top-0 su-h-fit';
   let formCardStyle = 'su-rs-mt-5 lg:su-col-start-7 xl:su-col-start-7';
-  let bgCardStyle = '';
+  let bgCardStyle = false;
 
   if (isSingleColumn) {
     contentStyle = '';
@@ -89,7 +89,10 @@ const FormPage = (props) => {
               xl={isSingleColumn ? 6 : 5}
               className={formCardStyle}
             >
-              <CreateBloks blokSection={giveGabForm} props={bgCardStyle} />
+              <CreateBloks
+                blokSection={giveGabForm}
+                bgCardStyle={bgCardStyle}
+              />
             </GridCell>
           </Grid>
           {numAnkle > 0 && <Ankle isDark {...props} />}
