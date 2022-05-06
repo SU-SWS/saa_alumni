@@ -72,7 +72,6 @@ const getTripFormStory = async (uuid) => {
  * @param {*} res
  */
 export default async function handler(req, res) {
-
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Content-Type', ['text/csv', 'charset=utf-8']);
   res.setHeader('Strict-Transport-Security', 'max-age=2592000');
@@ -90,7 +89,26 @@ export default async function handler(req, res) {
   if (!tripId) {
     res
       .status(200)
-      .send(`prompt,,nothing,TRUE,,No URL Param Passed,TRUE,USD,,,,,,TRUE`);
+      .send(
+        [
+          'prompt',
+          '',
+          'none',
+          'TRUE',
+          '',
+          'No URLData or data query parameter provided.',
+          'TRUE',
+          'USD',
+          '',
+          '',
+          '',
+          '',
+          '',
+          'TRUE',
+        ]
+          .concat(',')
+          .substring(0, -1)
+      );
     return;
   }
 
