@@ -22,15 +22,12 @@ const GiveGabForm = ({
     uuid,
   },
   blok,
-  bgCardStyle: bgCardProps,
+  bgCardStyle,
 }) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
-  const bgCardStyle =
-    bgCardProps ||
-    'su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-backdrop-blur-sm children:su-shadow-lg';
 
   if (isAuthenticating) {
     return (
@@ -38,7 +35,7 @@ const GiveGabForm = ({
         aria-live="polite"
         aria-busy="true"
         className={dcnb(
-          'su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6',
+          'su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm',
           bgCardStyle
         )}
       >
@@ -65,7 +62,10 @@ const GiveGabForm = ({
       )}
       <Container
         width="full"
-        className={dcnb('children:su-text-white', bgCardStyle)}
+        className={dcnb(
+          'children:su-text-white children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-backdrop-blur-sm children:su-shadow-lg',
+          bgCardStyle
+        )}
       >
         <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
           <Embed blok={preBlok} />
