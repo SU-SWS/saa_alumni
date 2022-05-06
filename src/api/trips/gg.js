@@ -74,7 +74,7 @@ const getTripFormStory = async (uuid) => {
 export default async function handler(req, res) {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Type', ['text/csv', 'charset=utf-8']);
   res.setHeader('Strict-Transport-Security', 'max-age=2592000');
   res.setHeader('Cache-Control', [
     'max-age=0',
