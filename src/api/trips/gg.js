@@ -137,6 +137,13 @@ export default async function handler(req, res) {
     'TRUE',
   ]);
 
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('X-Frame-Options', 'DENY');
+  res.setHeader('Strict-Transport-Security', 'max-age=2592000');
+
   // Trip.
   res.status(200).send(formatData(data));
 }
