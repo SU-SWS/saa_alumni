@@ -52,31 +52,43 @@ const RegistrationFormPage = (props) => {
       let guestsData = [];
       selectedGuests.forEach((guest) => {
         const data = {
-          did: guest?.relatedContactEncodedID || '',
-          dname: `${guest?.relatedContactFullNameParsed?.relatedContactFirstName} ${guest?.relatedContactFullNameParsed?.relatedContactLastName}`,
+          did: guest?.relatedContactEncodedID || guest?.encodedSUID || '',
+          dname:
+            `${guest?.relatedContactFullNameParsed?.relatedContactFirstName} ${guest?.relatedContactFullNameParsed?.relatedContactLastName}` ||
+            guest?.name?.digitalName ||
+            '',
           su_title:
-            guest?.relatedContactFullNameParsed?.relatedContactPrefix || '',
+            guest?.relatedContactFullNameParsed?.relatedContactPrefix ||
+            guest?.name?.fullnameParsed?.prefix ||
+            '',
           su_first_name:
-            guest?.relatedContactFullNameParsed?.relatedContactFirstName,
+            guest?.relatedContactFullNameParsed?.relatedContactFirstName ||
+            guest?.name?.fullnameParsed?.firstName ||
+            '',
           su_middle_name:
-            guest?.relatedContactFullNameParsed?.relatedContactMiddleName ===
-            null
+            (guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
+              guest?.name?.fullNameParsed?.middleName) === null
               ? '&nbsp;'
-              : guest?.relatedContactFullNameParsed?.relatedContactMiddleName,
+              : guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
+                guest?.name?.fullNameParsed?.middleName,
           su_last_name:
-            guest?.relatedContactFullNameParsed?.relatedContactLastName,
-          su_dob: guest?.relatedContactBirthDate || '',
+            guest?.relatedContactFullNameParsed?.relatedContactLastName ||
+            guest?.name?.fullNameParsed?.lastName ||
+            '',
+          su_dob: guest?.relatedContactBirthDate || guest?.birthDate || '',
           su_relation: guest?.relationshipType || '',
-          su_affiliation: guest?.category || '',
-          su_email: guest?.relatedContactEmail || '',
+          su_affiliation: guest?.affiliation || 'None',
           su_reg: 'Related contact',
         };
 
         // Check if registrant is selected as a guest.
         if (data.su_first_name === userProfile?.firstName) {
           guestsData.su_reg = 'Primary registrant';
+          guestsData.su_affiliation = userProfile?.affiliation;
           guestsData = [data, ...guestsData];
         } else {
+          guestsData.su_email = guest?.relatedContactEmail || null;
+          guestsData.su_phone = guest?.relatedContactPhone || null;
           guestsData = [...guestsData, data];
         }
       });
