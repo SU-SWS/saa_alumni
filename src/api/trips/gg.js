@@ -89,7 +89,10 @@ export default async function handler(req, res) {
   // ];
 
   // Get the trip ID out of the URL and sanitize it to number.
-  const tripId = Number(req?.query?.data || req?.query?.urlData);
+  let tripId = Number(req?.query?.data || req?.query?.urlData);
+
+  tripId = 123;
+
   res.setHeader(
     'content-disposition',
     `attachment; filename="trip-${tripId}.csv"`
