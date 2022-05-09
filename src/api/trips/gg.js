@@ -21,6 +21,7 @@ const formatData = (data) => {
     ret += `${row.concat(',').slice(0, -1)}${EOL}`;
   });
 
+  ret += EOL;
   return ret;
 };
 
