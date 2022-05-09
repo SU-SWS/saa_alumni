@@ -90,7 +90,7 @@ const RegistrationFormPage = (props) => {
       console.log('Guests Data: ', guestsData);
       window.prefillData = guestsData;
     }
-  }, [guests, userProfile]);
+  }, [guests, userProfile, blok]);
 
   return (
     <AuthenticatedPage>
@@ -117,9 +117,7 @@ const RegistrationFormPage = (props) => {
               <Grid
                 gap
                 xs={12}
-                lg={5}
-                xl={5}
-                className=" su-rs-pt-6 su-rs-mt-5"
+                className="su-relative su-cc su-z-10 su-rs-pb-8"
               >
                 <GridCell xs={12} lg={5} xl={5}>
                   <div className="su-sticky su-top-0 su-h-fit su-text-white su-rs-pt-6">
