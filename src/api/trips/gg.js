@@ -30,7 +30,7 @@ const formatData = (data) => {
  * @param {*} tripId
  * @returns
  */
-const getAllTrips = async () => {
+const getAllTrips = async (res) => {
   let currentPage = 1;
   let trips = [];
   const perpage = 25;
@@ -130,7 +130,7 @@ export default async function handler(req, res) {
   };
 
   // Fetch the trip stories from storyblok.
-  const trips = await getAllTrips();
+  const trips = await getAllTrips(res);
 
   if (!trips) {
     res.status(404).send(`Unable to find any trips`);
