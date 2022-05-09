@@ -39,7 +39,7 @@ const RegistrationFormPage = (props) => {
   console.log('Prefill Data Obj: ', guests);
 
   useEffect(() => {
-    // StoryBlok form related data
+    // StoryBlok trip related data
     window.trip_id = blok.trip.id;
     window.trip_name = blok.trip.content.title;
     window.trip_url = blok.trip.content.url;
@@ -68,6 +68,7 @@ const RegistrationFormPage = (props) => {
           su_dob: guest?.relatedContactBirthDate || '',
           su_relation: guest?.relationshipType || '',
           su_affiliation: guest?.category || '',
+          su_email: guest?.relatedContactEmail || '',
           su_reg: 'Related contact',
         };
 
