@@ -17,13 +17,14 @@ const TripNotifyMe = (props) => {
       notifyMeText: {
         content: { body },
       },
-      trip: {
-        full_slug: fullSlug,
-        content: { title: tripTitle, startDate, endDate },
-      },
     },
     blok,
+    trip,
   } = props;
+  const {
+    full_slug: fullSlug,
+    content: { title: tripTitle, startDate, endDate },
+  } = trip;
   const title = `Notify me: ${tripTitle}`;
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
   const tripDates = useMemo(() => {
@@ -82,9 +83,10 @@ const TripNotifyMe = (props) => {
         </GridCell>
         <GridCell
           xs={12}
+          sm={6}
           md={4}
           lg={12}
-          className="xs:su-col-start-8 lg:su-col-start-1"
+          className="md:su-col-start-8 lg:su-col-start-1 su-rs-mt-7 lg:su-mt-0"
         >
           <Grid xl={5} className={styles.summaryContent}>
             <GridCell xl={3} className={styles.summaryItem}>
