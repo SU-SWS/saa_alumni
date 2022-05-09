@@ -68,7 +68,7 @@ const InterstitialPage = (props) => {
         relatedContactGender: 'Female',
         relatedContactDigitalName: 'Hsu Fu',
         relatedContactMyFriendsCallMe: 'Hsu',
-        relatedContactBirthDate: '1996-04-25',
+        relatedContactBirthDate: '2010-04-25',
         relatedContactFullNameParsed: {
           relatedContactPrefix: 'Miss.',
           relatedContactFirstName: 'Hsu',

@@ -39,11 +39,21 @@ const RegistrationFormPage = (props) => {
   console.log('Prefill Data Obj: ', guests);
 
   useEffect(() => {
+    // StoryBlok form related data
+    window.trip_id = blok.trip.id;
+    window.trip_name = blok.trip.content.title;
+    window.trip_url = blok.trip.content.url;
+    window.trip_start_date = blok.trip.content.startDate;
+    window.trip_end_date = blok.trip.content.endDate;
+    window.trip_pre_extension = blok.trip.content.preExtension || '';
+    window.trip_post_extension = blok.trip.content.postExtension || '';
+
     const structureGuestsData = (selectedGuests) => {
       let guestsData = [];
       selectedGuests.forEach((guest) => {
         const data = {
           did: guest?.relatedContactEncodedID || '',
+          dname: `${guest?.relatedContactFullNameParsed?.relatedContactFirstName} ${guest?.relatedContactFullNameParsed?.relatedContactLastName}`,
           su_title:
             guest?.relatedContactFullNameParsed?.relatedContactPrefix || '',
           su_first_name:
@@ -51,14 +61,19 @@ const RegistrationFormPage = (props) => {
           su_middle_name:
             guest?.relatedContactFullNameParsed?.relatedContactMiddleName ===
             null
-              ? ' '
+              ? '&nbsp;'
               : guest?.relatedContactFullNameParsed?.relatedContactMiddleName,
           su_last_name:
             guest?.relatedContactFullNameParsed?.relatedContactLastName,
+          su_dob: guest?.relatedContactBirthDate || '',
+          su_relation: guest?.relationshipType || '',
+          su_affiliation: guest?.category || '',
+          su_reg: 'Related contact',
         };
 
         // Check if registrant is selected as a guest.
         if (data.su_first_name === userProfile?.firstName) {
+          guestsData.su_reg = 'Primary registrant';
           guestsData = [data, ...guestsData];
         } else {
           guestsData = [...guestsData, data];
@@ -101,7 +116,9 @@ const RegistrationFormPage = (props) => {
               <Grid
                 gap
                 xs={12}
-                className="su-relative su-cc su-z-10 su-rs-pb-8"
+                lg={5}
+                xl={5}
+                className=" su-rs-pt-6 su-rs-mt-5"
               >
                 <GridCell xs={12} lg={5} xl={5}>
                   <div className="su-sticky su-top-0 su-h-fit su-text-white su-rs-pt-6">
