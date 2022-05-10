@@ -12,7 +12,7 @@ import { AuthContextProvider } from './src/contexts/AuthContext';
 
 // CSS
 import './src/styles/global.css';
-// import './src/styles/localist.css';
+import './src/styles/localist.css';
 
 // Exports.
 export const wrapRootElement = ({ element }) => (

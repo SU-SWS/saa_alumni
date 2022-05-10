@@ -10,10 +10,9 @@ const path = require('path');
 const dir = path.resolve(__dirname, 'src/tailwind/plugins');
 
 module.exports = {
-  mode: 'jit',
   prefix: 'su-',
   presets: [require('decanter')],
-  content: ['./src/**'],
+  content: ['./src/**/*.{js,jsx,md,mdx,ts,tsx}'],
   theme: {
     screens: require(`${dir}/theme/screens.js`)(),
     // SAA themes extending our Decanter ones
@@ -22,10 +21,9 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/forms'),
-    require('tailwindcss-children'),
-    require('tailwindcss-interaction-variants'),
+    function ({ addVariant }) {
+      addVariant('children-hover', '& > *:hover');
+    },
 
     // @tailwind base;
     require(`${dir}/base/base.js`)(),
@@ -39,7 +37,7 @@ module.exports = {
     require(`${dir}/components/underline/link-underline.js`)(),
     require(`${dir}/components/wysiwyg/heading-link.js`)(),
 
-    // @tailwind utilities;
+    // // @tailwind utilities;
     require(`${dir}/utilities/gradient-border/gradient-border.js`)(),
     require(`${dir}/utilities/grid/grid-cols.js`)(),
     require(`${dir}/utilities/typography/writing-mode.js`)(),
