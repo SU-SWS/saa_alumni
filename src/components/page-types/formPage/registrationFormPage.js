@@ -56,8 +56,8 @@ const RegistrationFormPage = (props) => {
         if (guest?.encodedSUID === userProfile?.encodedSUID) {
           data = {
             did: userProfile?.encodedSUID,
-            su_title: userProfile?.name?.fullnameParsed?.prefix,
-            su_first_name: userProfile?.name?.fullnameParsed?.firstName,
+            su_title: userProfile?.name?.fullNameParsed?.prefix,
+            su_first_name: userProfile?.name?.fullNameParsed?.firstName,
             su_middle_name:
               userProfile?.name?.fullNameParsed?.middleName === null
                 ? '&nbsp;'
