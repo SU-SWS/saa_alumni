@@ -64,9 +64,9 @@ const RegistrationFormPage = (props) => {
                 : userProfile?.name?.fullNameParsed?.middleName,
             su_last_name: userProfile?.name?.fullNameParsed?.lastName,
             su_dob: userProfile?.birthDate,
-            su_relation: userProfile?.relationshipType,
+            su_relation: 'N/A',
             su_affiliation: userProfile?.affiliation || 'None',
-            su_reg: 'Primary Traveler',
+            su_reg: 'Primary registrant',
           };
           guestsData = [data, ...guestsData];
         } else {
