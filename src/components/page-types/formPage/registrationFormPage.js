@@ -87,8 +87,8 @@ const RegistrationFormPage = (props) => {
             su_relation: guest?.relationshipType,
             su_dob: guest?.relatedContactBirthDate,
             su_reg: 'Related contact',
-            su_email: null,
-            su_phone: null,
+            su_email: undefined,
+            su_phone: undefined,
           };
           guestsData = [...guestsData, data];
         }
