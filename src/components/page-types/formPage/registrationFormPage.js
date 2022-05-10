@@ -59,19 +59,13 @@ const RegistrationFormPage = (props) => {
             su_title: userProfile?.name?.fullnameParsed?.prefix,
             su_first_name: userProfile?.name?.fullnameParsed?.firstName,
             su_middle_name:
-              (guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
-                guest?.name?.fullNameParsed?.middleName) === null
+              userProfile?.name?.fullNameParsed?.middleName === null
                 ? '&nbsp;'
-                : guest?.relatedContactFullNameParsed
-                    ?.relatedContactMiddleName ||
-                  guest?.name?.fullNameParsed?.middleName,
-            su_last_name:
-              guest?.relatedContactFullNameParsed?.relatedContactLastName ||
-              guest?.name?.fullNameParsed?.lastName ||
-              '',
-            su_dob: guest?.relatedContactBirthDate || guest?.birthDate,
-            su_relation: guest?.relationshipType,
-            su_affiliation: guest?.affiliation || 'None',
+                : userProfile?.name?.fullNameParsed?.middleName,
+            su_last_name: userProfile?.name?.fullNameParsed?.lastName,
+            su_dob: userProfile?.birthDate,
+            su_relation: userProfile?.relationshipType,
+            su_affiliation: userProfile?.affiliation || 'None',
             su_reg: 'Primary Traveler',
           };
           guestsData = [data, ...guestsData];
