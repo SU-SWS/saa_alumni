@@ -264,9 +264,8 @@ const setGiveGabVars = (userProfile) => {
   window.dname =
     `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
     '';
-  window.su_first_name =
-    userProfile?.name?.name?.fullNameParsed?.firstName || '';
-  window.su_last_name = userProfile?.name?.name?.fullNameParsed?.lastName || '';
+  window.su_first_name = userProfile?.name?.fullNameParsed?.firstName || '';
+  window.su_last_name = userProfile?.name?.fullNameParsed?.lastName || '';
   window.su_email = email || '';
   window.su_address = address?.streetAddress1 || '';
   window.su_address2 = street2 || '';
