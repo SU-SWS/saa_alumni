@@ -68,8 +68,6 @@ package = "/plugins/netlify-plugin-wildcard-404-redirect"
 [[plugins]]
   package = "@netlify/plugin-gatsby"
 
-
-
 # CONTEXTUAL PLUGINS
 # ##############################################################################
 [[context.production.plugins]]
