@@ -14,7 +14,6 @@ import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
-import AuthContext from '../../../contexts/AuthContext';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -32,11 +31,10 @@ const RegistrationFormPage = (props) => {
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
-  const { userProfile } = useContext(AuthContext);
 
-  const guests = location?.state?.guests;
+  const tripTravelers = location?.state?.tripTravelers;
   // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-  console.log('Prefill Data Obj: ', guests);
+  console.log('Prefill Data Obj: ', tripTravelers);
 
   useEffect(() => {
     // StoryBlok trip related data
@@ -48,62 +46,12 @@ const RegistrationFormPage = (props) => {
     window.trip_pre_extension = blok.trip.content.preExtension || '';
     window.trip_post_extension = blok.trip.content.postExtension || '';
 
-    const structureGuestsData = (selectedGuests) => {
-      let guestsData = [];
-      let data = {};
-      selectedGuests.forEach((guest) => {
-        // Check if registrant is selected as a guest.
-        if (guest?.encodedSUID === userProfile?.encodedSUID) {
-          data = {
-            did: userProfile?.encodedSUID,
-            su_title: userProfile?.name?.fullNameParsed?.prefix,
-            su_first_name: userProfile?.name?.fullNameParsed?.firstName,
-            su_middle_name:
-              userProfile?.name?.fullNameParsed?.middleName === null
-                ? '&nbsp;'
-                : userProfile?.name?.fullNameParsed?.middleName,
-            su_last_name: userProfile?.name?.fullNameParsed?.lastName,
-            su_dob: userProfile?.birthDate,
-            su_relation: 'N/A',
-            su_affiliation: userProfile?.affiliation || 'None',
-            su_reg: 'Primary registrant',
-          };
-          guestsData = [data, ...guestsData];
-        } else {
-          data = {
-            did: guest?.relatedContactEncodedID,
-            dname: `${guest?.relatedContactFullNameParsed?.relatedContactFirstName} ${guest?.relatedContactFullNameParsed?.relatedContactLastName}`,
-            su_title: guest?.relatedContactFullNameParsed?.relatedContactPrefix,
-            su_first_name:
-              guest?.relatedContactFullNameParsed?.relatedContactFirstName,
-            su_middle_name:
-              guest?.relatedContactFullNameParsed?.relatedContactMiddleName ===
-              null
-                ? '&nbsp;'
-                : guest?.relatedContactFullNameParsed?.relatedContactMiddleName,
-            su_last_name:
-              guest?.relatedContactFullNameParsed?.relatedContactLastName,
-            su_affiliation: guest?.affiliation || 'None',
-            su_relation: guest?.relationshipType,
-            su_dob: guest?.relatedContactBirthDate,
-            su_reg: 'Related contact',
-            su_email: undefined,
-            su_phone: undefined,
-          };
-          guestsData = [...guestsData, data];
-        }
-      });
-
-      return guestsData;
-    };
-
-    if (guests) {
-      const guestsData = structureGuestsData(guests);
+    if (tripTravelers) {
       // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-      console.log('Guests Data: ', guestsData);
-      window.prefillData = guestsData;
+      console.log('Travelers Data: ', tripTravelers);
+      window.prefillData = tripTravelers;
     }
-  }, [guests, userProfile, blok]);
+  }, [tripTravelers, blok]);
 
   return (
     <AuthenticatedPage>

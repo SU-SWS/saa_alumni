@@ -35,49 +35,97 @@ const InterstitialPage = (props) => {
   const title = `Register for your trip: ${tripTitle}`;
   const slug = location.pathname.replace(/\/$/, '');
   const { userProfile } = useContext(AuthContext);
-  const { relationships } = userProfile;
-  // const relationships = {
-  //   relationships: [
-  //     {
-  //       relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Spouse/Partner',
-  //       category: 'Family',
-  //       relationshipType: 'Spouse/Partner',
-  //       relatedContact: '0034600000xKKeMAAW',
-  //       relatedContactEncodedID: '67392062457',
-  //       relatedContactGender: 'Female',
-  //       relatedContactDigitalName: 'Xiaojing Fu',
-  //       relatedContactMyFriendsCallMe: 'Xiaojing',
-  //       relatedContactBirthDate: '1981-01-02',
-  //       relatedContactFullNameParsed: {
-  //         relatedContactPrefix: 'Ms.',
-  //         relatedContactFirstName: 'Xiaojing',
-  //         relatedContactMiddleName: null,
-  //         relatedContactLastName: 'Fu',
-  //         relatedContactPersonalSuffix: null,
-  //         relatedContactProfessionalSuffix: null,
-  //       },
-  //     },
-  //     {
-  //       relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Child',
-  //       category: 'Family',
-  //       relationshipType: 'Child',
-  //       relatedContact: '0034600000xKKeMAAW',
-  //       relatedContactEncodedID: '67392062458',
-  //       relatedContactGender: 'Female',
-  //       relatedContactDigitalName: 'Hsu Fu',
-  //       relatedContactMyFriendsCallMe: 'Hsu',
-  //       relatedContactBirthDate: '2010-04-25',
-  //       relatedContactFullNameParsed: {
-  //         relatedContactPrefix: 'Miss.',
-  //         relatedContactFirstName: 'Hsu',
-  //         relatedContactMiddleName: null,
-  //         relatedContactLastName: 'Fu',
-  //         relatedContactPersonalSuffix: null,
-  //         relatedContactProfessionalSuffix: null,
-  //       },
-  //     },
-  //   ],
-  // };
+  // const { relationships } = userProfile;
+  const relationships = {
+    relationships: [
+      {
+        relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Spouse/Partner',
+        category: 'Family',
+        relationshipType: 'Spouse/Partner',
+        relatedContact: '0034600000xKKeMAAW',
+        relatedContactEncodedID: '67392062457',
+        relatedContactGender: 'Female',
+        relatedContactDigitalName: 'Xiaojing Fu',
+        relatedContactMyFriendsCallMe: 'Xiaojing',
+        relatedContactBirthDate: '1981-01-02',
+        relatedContactFullNameParsed: {
+          relatedContactPrefix: 'Ms.',
+          relatedContactFirstName: 'Xiaojing',
+          relatedContactMiddleName: null,
+          relatedContactLastName: 'Fu',
+          relatedContactPersonalSuffix: null,
+          relatedContactProfessionalSuffix: null,
+        },
+      },
+      {
+        relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Child',
+        category: 'Family',
+        relationshipType: 'Child',
+        relatedContact: '0034600000xKKeMAAW',
+        relatedContactEncodedID: '67392062458',
+        relatedContactGender: 'Female',
+        relatedContactDigitalName: 'Hsu Fu',
+        relatedContactMyFriendsCallMe: 'Hsu',
+        relatedContactBirthDate: '2010-04-25',
+        relatedContactFullNameParsed: {
+          relatedContactPrefix: 'Miss.',
+          relatedContactFirstName: 'Hsu',
+          relatedContactMiddleName: null,
+          relatedContactLastName: 'Fu',
+          relatedContactPersonalSuffix: null,
+          relatedContactProfessionalSuffix: null,
+        },
+      },
+    ],
+  };
+
+  const structureTravelerData = (relationshipsData) => {
+    let travelers = [];
+    let data = {};
+    relationshipsData.forEach((relationship) => {
+      data = {
+        did: relationship.relatedContactEncodedID,
+        dname: `${relationship.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship.relatedContactFullNameParsed?.relatedContactLastName}`,
+        su_title:
+          relationship.relatedContactFullNameParsed?.relatedContactPrefix,
+        su_first_name:
+          relationship.relatedContactFullNameParsed?.relatedContactFirstName,
+        su_middle_name:
+          relationship.relatedContactFullNameParsed
+            ?.relatedContactMiddleName === null
+            ? '&nbsp;'
+            : relationship.relatedContactFullNameParsed
+                ?.relatedContactMiddleName,
+        su_last_name:
+          relationship.relatedContactFullNameParsed?.relatedContactLastName,
+        su_affiliation: relationship.affiliation || 'None',
+        su_relation: relationship.relationshipType,
+        su_dob: relationship.relatedContactBirthDate,
+        su_reg: 'Related contact',
+        su_email: undefined,
+        su_phone: undefined,
+      };
+      travelers = [...travelers, data];
+      return travelers;
+    });
+  };
+
+  const travelers = structureTravelerData(relationships.relationships);
+  const primaryRegistrant = {
+    did: userProfile.encodedID,
+    dname: `${userProfile.fullNameParsed?.firstName} ${userProfile.fullNameParsed?.lastName}`,
+    su_title: userProfile.fullNameParsed?.prefix,
+    su_first_name: userProfile.fullNameParsed?.firstName,
+    su_middle_name:
+      userProfile.fullNameParsed?.middleName === null
+        ? '&nbsp;'
+        : userProfile.fullNameParsed?.middleName,
+    su_last_name: userProfile.fullNameParsed?.lastName,
+    su_affiliation: userProfile.affiliation || 'None',
+    su_relation: 'Primary registrant',
+    su_dob: userProfile.birthDate,
+    su_reg: 'Primary registrant',
+  };
 
   return (
     <AuthenticatedPage>
@@ -104,11 +152,11 @@ const InterstitialPage = (props) => {
                 {relationships.relationships.length > 0 ? (
                   <Grid gap md={12}>
                     {/* TODO: ADAPT-4677 Determine how we want to pass the registrant's data (which must include their name, email, address) */}
-                    <TripTravelerCard traveler={userProfile?.user} />
-                    {relationships.relationships.map((relationship) => (
+                    <TripTravelerCard traveler={primaryRegistrant} />
+                    {travelers.map((traveler) => (
                       <TripTravelerCard
-                        key={relationship.relationshipID}
-                        traveler={relationship}
+                        key={traveler.did}
+                        traveler={traveler}
                       />
                     ))}
                   </Grid>
@@ -131,7 +179,7 @@ const InterstitialPage = (props) => {
                     <Link
                       to={`${slug}/form`}
                       className="su-button"
-                      state={{ guests: value[0].travelersData }}
+                      state={{ tripTravelers: value[0].travelersData }}
                     >
                       Next
                     </Link>
