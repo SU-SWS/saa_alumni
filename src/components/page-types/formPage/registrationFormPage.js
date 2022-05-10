@@ -32,9 +32,9 @@ const RegistrationFormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
 
-  const tripTravelers = location?.state?.tripTravelers;
+  const travelers = location?.state?.travelers;
   // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-  console.log('Prefill Data Obj: ', tripTravelers);
+  console.log('Prefill Data Obj: ', travelers);
 
   useEffect(() => {
     // StoryBlok trip related data
@@ -46,12 +46,12 @@ const RegistrationFormPage = (props) => {
     window.trip_pre_extension = blok.trip.content.preExtension || '';
     window.trip_post_extension = blok.trip.content.postExtension || '';
 
-    if (tripTravelers) {
+    if (travelers) {
       // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-      console.log('Travelers Data: ', tripTravelers);
-      window.prefillData = tripTravelers;
+      console.log('Travelers Data: ', travelers);
+      window.prefillData = travelers;
     }
-  }, [tripTravelers, blok]);
+  }, [travelers, blok]);
 
   return (
     <AuthenticatedPage>

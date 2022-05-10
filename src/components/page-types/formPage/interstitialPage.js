@@ -80,7 +80,7 @@ const InterstitialPage = (props) => {
   };
 
   const structureTravelerData = (relationshipsData) => {
-    let travelers = [];
+    let relatedContacts = [];
     let data = {};
     relationshipsData.forEach((relationship) => {
       data = {
@@ -105,12 +105,12 @@ const InterstitialPage = (props) => {
         su_email: undefined,
         su_phone: undefined,
       };
-      travelers = [...travelers, data];
-      return travelers;
+      relatedContacts = [...relatedContacts, data];
+      return relatedContacts;
     });
   };
 
-  const travelers = structureTravelerData(relationships.relationships);
+  const relatedContacts = structureTravelerData(relationships.relationships);
   const primaryRegistrant = {
     did: userProfile.encodedID,
     dname: `${userProfile.fullNameParsed?.firstName} ${userProfile.fullNameParsed?.lastName}`,
@@ -153,10 +153,10 @@ const InterstitialPage = (props) => {
                   <Grid gap md={12}>
                     {/* TODO: ADAPT-4677 Determine how we want to pass the registrant's data (which must include their name, email, address) */}
                     <TripTravelerCard traveler={primaryRegistrant} />
-                    {travelers.map((traveler) => (
+                    {relatedContacts.map((relatedContact) => (
                       <TripTravelerCard
-                        key={traveler.did}
-                        traveler={traveler}
+                        key={relatedContact.did}
+                        traveler={relatedContact}
                       />
                     ))}
                   </Grid>
@@ -179,7 +179,7 @@ const InterstitialPage = (props) => {
                     <Link
                       to={`${slug}/form`}
                       className="su-button"
-                      state={{ tripTravelers: value[0].travelersData }}
+                      state={{ travelers: value[0].travelersData }}
                     >
                       Next
                     </Link>
