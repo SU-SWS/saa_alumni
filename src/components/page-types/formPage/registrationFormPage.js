@@ -50,45 +50,52 @@ const RegistrationFormPage = (props) => {
 
     const structureGuestsData = (selectedGuests) => {
       let guestsData = [];
+      let data = {};
       selectedGuests.forEach((guest) => {
-        const data = {
-          did: guest?.relatedContactEncodedID || guest?.encodedSUID || '',
-          dname:
-            `${guest?.relatedContactFullNameParsed?.relatedContactFirstName} ${guest?.relatedContactFullNameParsed?.relatedContactLastName}` ||
-            guest?.name?.digitalName ||
-            '',
-          su_title:
-            guest?.relatedContactFullNameParsed?.relatedContactPrefix ||
-            guest?.name?.fullnameParsed?.prefix ||
-            '',
-          su_first_name:
-            guest?.relatedContactFullNameParsed?.relatedContactFirstName ||
-            guest?.name?.fullnameParsed?.firstName ||
-            '',
-          su_middle_name:
-            (guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
-              guest?.name?.fullNameParsed?.middleName) === null
-              ? '&nbsp;'
-              : guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
-                guest?.name?.fullNameParsed?.middleName,
-          su_last_name:
-            guest?.relatedContactFullNameParsed?.relatedContactLastName ||
-            guest?.name?.fullNameParsed?.lastName ||
-            '',
-          su_dob: guest?.relatedContactBirthDate || guest?.birthDate || '',
-          su_relation: guest?.relationshipType || '',
-          su_affiliation: guest?.affiliation || 'None',
-          su_reg: 'Related contact',
-        };
-
         // Check if registrant is selected as a guest.
-        if (data.su_first_name === userProfile?.firstName) {
-          guestsData.su_reg = 'Primary registrant';
-          guestsData.su_affiliation = userProfile?.affiliation;
+        if (guest?.encodedSUID === userProfile?.encodedSUID) {
+          data = {
+            did: userProfile?.encodedSUID,
+            su_title: userProfile?.name?.fullnameParsed?.prefix,
+            su_first_name: userProfile?.name?.fullnameParsed?.firstName,
+            su_middle_name:
+              (guest?.relatedContactFullNameParsed?.relatedContactMiddleName ||
+                guest?.name?.fullNameParsed?.middleName) === null
+                ? '&nbsp;'
+                : guest?.relatedContactFullNameParsed
+                    ?.relatedContactMiddleName ||
+                  guest?.name?.fullNameParsed?.middleName,
+            su_last_name:
+              guest?.relatedContactFullNameParsed?.relatedContactLastName ||
+              guest?.name?.fullNameParsed?.lastName ||
+              '',
+            su_dob: guest?.relatedContactBirthDate || guest?.birthDate,
+            su_relation: guest?.relationshipType,
+            su_affiliation: guest?.affiliation || 'None',
+            su_reg: 'Primary Traveler',
+          };
           guestsData = [data, ...guestsData];
         } else {
-          guestsData.su_email = guest?.relatedContactEmail || null;
-          guestsData.su_phone = guest?.relatedContactPhone || null;
+          data = {
+            did: guest?.relatedContactEncodedID,
+            dname: `${guest?.relatedContactFullNameParsed?.relatedContactFirstName} ${guest?.relatedContactFullNameParsed?.relatedContactLastName}`,
+            su_title: guest?.relatedContactFullNameParsed?.relatedContactPrefix,
+            su_first_name:
+              guest?.relatedContactFullNameParsed?.relatedContactFirstName,
+            su_middle_name:
+              guest?.relatedContactFullNameParsed?.relatedContactMiddleName ===
+              null
+                ? '&nbsp;'
+                : guest?.relatedContactFullNameParsed?.relatedContactMiddleName,
+            su_last_name:
+              guest?.relatedContactFullNameParsed?.relatedContactLastName,
+            su_affiliation: guest?.affiliation || 'None',
+            su_relation: guest?.relationshipType,
+            su_dob: guest?.relatedContactBirthDate,
+            su_reg: 'Related contact',
+            su_email: null,
+            su_phone: null,
+          };
           guestsData = [...guestsData, data];
         }
       });
