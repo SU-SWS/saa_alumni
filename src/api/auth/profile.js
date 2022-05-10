@@ -3,7 +3,7 @@
 // Data can be viewed at /api/auth/profile
 // -----------------------------------------------------------------------------
 import connect from 'next-connect';
-import { MegaProfile } from '../../utilities/MegaProfile';
+// import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
 import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
@@ -11,7 +11,7 @@ import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
 const megaprofileHandler = async (req, res) => {
   // const mp = new MegaProfile();
   try {
-    const { user } = req;
+    const session = req.user;
     // TODO: Comment back in multi-profile get requests
     // const { data: contact } = await mp.get(
     //   `/${req.user.encodedSUID}/profiles/contact`
@@ -36,7 +36,7 @@ const megaprofileHandler = async (req, res) => {
     );
 
     const mpUser = {
-      user,
+      session,
       ...ggProfile,
       // TODO: Comment back in multi-profile get requests
       // contact,
