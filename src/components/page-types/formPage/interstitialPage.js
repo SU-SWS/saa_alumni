@@ -106,8 +106,8 @@ const InterstitialPage = (props) => {
         su_phone: undefined,
       };
       relatedContacts = [...relatedContacts, data];
-      return relatedContacts;
     });
+    return relatedContacts;
   };
 
   const relatedContacts = structureTravelerData(relationships.relationships);
