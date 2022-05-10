@@ -112,18 +112,18 @@ const InterstitialPage = (props) => {
 
   const relatedContacts = structureTravelerData(relationships.relationships);
   const primaryRegistrant = {
-    did: userProfile.encodedID,
-    dname: `${userProfile.fullNameParsed?.firstName} ${userProfile.fullNameParsed?.lastName}`,
-    su_title: userProfile.fullNameParsed?.prefix,
-    su_first_name: userProfile.fullNameParsed?.firstName,
+    did: userProfile?.encodedSUID,
+    dname: `${userProfile?.fullNameParsed?.firstName} ${userProfile?.fullNameParsed?.lastName}`,
+    su_title: userProfile?.fullNameParsed?.prefix,
+    su_first_name: userProfile?.fullNameParsed?.firstName,
     su_middle_name:
-      userProfile.fullNameParsed?.middleName === null
+      userProfile?.fullNameParsed?.middleName === null
         ? '&nbsp;'
-        : userProfile.fullNameParsed?.middleName,
-    su_last_name: userProfile.fullNameParsed?.lastName,
-    su_affiliation: userProfile.affiliation || 'None',
+        : userProfile?.fullNameParsed?.middleName,
+    su_last_name: userProfile?.fullNameParsed?.lastName,
+    su_affiliation: userProfile?.affiliation || 'None',
     su_relation: 'Primary registrant',
-    su_dob: userProfile.birthDate,
+    su_dob: userProfile?.birthDate,
     su_reg: 'Primary registrant',
   };
 
