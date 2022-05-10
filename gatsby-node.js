@@ -141,13 +141,7 @@ exports.createPages = ({ graphql, actions }) => {
 };
 
 // Alter Gatsby's webpack config.
-exports.onCreateWebpackConfig = ({
-  stage,
-  rules,
-  loaders,
-  plugins,
-  actions,
-}) => {
+exports.onCreateWebpackConfig = ({ stage, loaders, getConfig, actions }) => {
   actions.setWebpackConfig({
     resolve: {
       fallback: {
