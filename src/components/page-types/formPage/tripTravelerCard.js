@@ -1,36 +1,32 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
 
-const TripRelationShipCard = ({ traveler }) => {
+const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
-  const [removeBtn, setRemoveBtn] = useState(false);
-
-  let fullName = '';
-  if (traveler && traveler?.relatedContactFullNameParsed) {
-    fullName = `${traveler?.relatedContactFullNameParsed?.relatedContactFirstName} ${traveler?.relatedContactFullNameParsed?.relatedContactLastName}`;
-  }
-  if (traveler && traveler?.firstName && traveler?.lastName) {
-    fullName = `${traveler?.firstName} ${traveler?.lastName}`;
-  }
 
   const addRelationship = () => {
+    if (traveler.su_reg.includes('Primary')) {
+      dispatch({
+        type: 'addRegistrant',
+        payload: traveler,
+      });
+      return;
+    }
     dispatch({
       type: 'addTraveler',
       payload: traveler,
     });
-    setRemoveBtn(true);
   };
 
   const removeRelationship = () => {
     dispatch({
       type: 'removeTraveler',
-      payload: traveler.relationshipID || traveler.encodedSUID,
+      payload: traveler.did,
     });
-    setRemoveBtn(false);
   };
 
   return (
@@ -43,7 +39,7 @@ const TripRelationShipCard = ({ traveler }) => {
           iconType="play"
           className="su-mb-02em su-transition-colors su-text-m2"
         />
-        {removeBtn ? (
+        {state.removeButton ? (
           <span>
             <HeroIcon
               iconType="play"
@@ -67,9 +63,9 @@ const TripRelationShipCard = ({ traveler }) => {
           id="page-title"
           className="su-text-m2"
         >
-          {fullName}
+          {traveler.dname}
         </Heading>
-        {removeBtn ? (
+        {state.removeButton ? (
           <button
             type="button"
             className="su-button"
@@ -95,4 +91,4 @@ const TripRelationShipCard = ({ traveler }) => {
   );
 };
 
-export default TripRelationShipCard;
+export default TripTravelerCard;
