@@ -16,7 +16,7 @@ import {
 } from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
 import TripTravelerCard from './tripTravelerCard';
-import TripTravelerList from '../formPage/tripTravelerList';
+import TripTravelerList from './tripTravelerList';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 
 const InterstitialPage = (props) => {
