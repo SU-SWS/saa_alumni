@@ -40,8 +40,8 @@ const AccordionItem = React.forwardRef(
               aria-expanded={expanded}
               onClick={toggle}
             >
-              <span className="su-h-0 group-hocus:su-h-full su-block su-w-[6px] su-absolute su-top-0 su-left-0 su-bg-black" />
-              <span className="su-pr-20 su-w-full group-hocus:su-underline">
+              <span className="su-h-0 group-hover:su-h-full group-focus:su-h-full su-block su-w-[6px] su-absolute su-top-0 su-left-0 su-bg-black" />
+              <span className="su-pr-20 su-w-full group-hover:su-underline group-focus:su-underline">
                 {title}
               </span>
               <span className="su-font-light su-text-[36px] su-text-digital-red su-block">
@@ -55,7 +55,7 @@ const AccordionItem = React.forwardRef(
               {hasRichText(content) && (
                 <RichTextRenderer
                   wysiwyg={content}
-                  className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                  className="su-card-paragraph children:su-leading-snug children:!su-mb-06em last:children:!su-mb-0"
                 />
               )}
             </div>

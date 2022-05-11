@@ -27,7 +27,7 @@ export const burger = ({ navOpened }) =>
     }
   );
 export const burgerIcon = ({ navOpened }) =>
-  dcnb('su-transition-colors su-w-[2.4rem] group-hocus:su-text-white', {
+  dcnb('su-transition-colors su-w-[2.4rem] group-hover:su-text-white group-focus:su-text-white', {
     'su-text-white': navOpened,
     'su-text-digital-red-xlight': !navOpened,
   });

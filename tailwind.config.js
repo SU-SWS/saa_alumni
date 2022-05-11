@@ -22,9 +22,9 @@ module.exports = {
   },
   plugins: [
     function ({ addVariant }) {
+      addVariant('children', '& > *');
       addVariant('children-hover', '& > *:hover');
-      addVariant('first', '&:first');
-      addVariant('last', '&:last');
+      addVariant('children-hocus', '& > *:hover, & > *:focus');
     },
 
     // @tailwind base;
@@ -32,7 +32,6 @@ module.exports = {
 
     // @tailwind components;
     require(`${dir}/components/backface-visibility/backface-visibility.js`)(),
-    require(`${dir}/components/link/stretched-link.js`)(),
     require(`${dir}/components/scroll-margin/scroll-margin.js`)(),
     require(`${dir}/components/shadow/text-shadow.js`)(),
     require(`${dir}/components/underline/custom-underline.js`)(),

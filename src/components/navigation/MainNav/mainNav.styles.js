@@ -17,7 +17,7 @@ export const burgerMobileHomesite = dcnb(
   'su-pb-8 su-mt-14 md:su-pb-15 md:su-mt-19'
 );
 export const burgerIconMobile =
-  'su-transition-colors su-w-[2.4rem] group-hocus:su-text-digital-red-xlight';
+  'su-transition-colors su-w-[2.4rem] group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
 
 const menuMobileCommon =
   'su-absolute su-rs-py-1 su-right-0 su-cc su-w-full su-shadow-lg su-border-t su-border-solid su-border-digital-red su-flex su-flex-col su-list-unstyled children:su-mb-0 su-transform-gpu su-transition su-origin-top su-scale-y-0 su-opacity-0 su-backface-hidden';

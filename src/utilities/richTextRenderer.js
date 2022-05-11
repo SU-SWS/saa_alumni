@@ -129,7 +129,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
         <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
       ),
       [NODE_QUOTE]: (children) => (
-        <blockquote className="su-font-serif su-font-bold su-type-2 children:su-leading-cozy children:last:su-mb-06em">
+        <blockquote className="su-font-serif su-font-bold su-type-2 children:su-leading-cozy last:children:su-mb-06em">
           {children}
         </blockquote>
       ),
