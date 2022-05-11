@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
@@ -6,11 +6,11 @@ import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
 
 const TripTravelerCard = ({ traveler }) => {
-  const [state, dispatch] = useContext(FormContext);
+  const [dispatch] = useContext(FormContext);
+  const [removeBtn, setRemoveBtn] = useState(false);
 
   const addRelationship = () => {
-    // eslint-disable-next-line no-param-reassign
-    traveler.removeBtn = true;
+    setRemoveBtn(true);
     if (traveler.su_reg.includes('Primary')) {
       dispatch({
         type: 'addRegistrant',
@@ -41,7 +41,7 @@ const TripTravelerCard = ({ traveler }) => {
           iconType="play"
           className="su-mb-02em su-transition-colors su-text-m2"
         />
-        {state?.traveler?.removeBtn ? (
+        {removeBtn ? (
           <span>
             <HeroIcon
               iconType="play"
@@ -67,7 +67,7 @@ const TripTravelerCard = ({ traveler }) => {
         >
           {traveler.dname}
         </Heading>
-        {state?.traveler?.removeBtn ? (
+        {removeBtn ? (
           <button
             type="button"
             className="su-button"

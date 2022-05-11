@@ -104,7 +104,6 @@ const InterstitialPage = (props) => {
         su_reg: 'Related contact',
         su_email: undefined,
         su_phone: undefined,
-        removeBtn: false,
       };
       relatedContacts = [...relatedContacts, data];
     });
@@ -126,7 +125,6 @@ const InterstitialPage = (props) => {
     su_relation: 'Primary registrant',
     su_dob: userProfile?.birthDate,
     su_reg: 'Primary registrant',
-    removeBtn: false,
   };
 
   return (
