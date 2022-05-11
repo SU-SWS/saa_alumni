@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Notify Me</title>
+</head>
+
+<body>
+  <h1>Hello World</h1>
+  <div id="gg-form"><noscript>You must have JavaScript Enabled to view this content.</noscript></div>
+  <script src="./scripts/travel-study/gg-form.js"></script>
+  <script>
+    document.addEventListener('ggFormReady', function (event) {
+      const GG = new ggForm({
+        id: 'gg-form',
+        form: 'https://widgets2.kimbia.com/Widgets2/form2/form2.js?channel=stanfordtravelstudytestsandbox/notify-me-test',
+        tripApi: 'http://localhost:8000/api/travel-study/trips'
+      });
+      GG.init();
+    });
+  </script>
+</body>
+
+</html>
