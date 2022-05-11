@@ -51,7 +51,11 @@ const ProtectedContentWrapper = ({ blok }) => {
     !checkingAccess &&
     authenticatedContent?.length > 0
   ) {
-    return <CreateStories stories={authenticatedContent} />;
+    return (
+      <div aria-live="polite" role="status">
+        <CreateStories stories={authenticatedContent} />
+      </div>
+    );
   }
 
   // No content or 403'd with custom access denied message.
@@ -67,6 +71,8 @@ const ProtectedContentWrapper = ({ blok }) => {
         wysiwyg={blok.accessDeniedContent}
         isDark
         className="su-rs-px-2"
+        aria-live="polite"
+        role="status"
       />
     );
   }
@@ -79,9 +85,9 @@ const ProtectedContentWrapper = ({ blok }) => {
     authenticatedContent?.length === 0
   ) {
     return (
-      <p>
-        <strong>This content is restricted.</strong>
-      </p>
+      <div aria-live="polite" role="status">
+        <strong>This content is restricted. Please log in as a member.</strong>
+      </div>
     );
   }
 
@@ -92,12 +98,16 @@ const ProtectedContentWrapper = ({ blok }) => {
     !authState.isAuthenticated &&
     !authenticatedContent
   ) {
-    return <CreateBloks blokSection={blok.anonymousContent} />;
+    return (
+      <div aria-live="polite" role="status">
+        <CreateBloks blokSection={blok.anonymousContent} />
+      </div>
+    );
   }
 
   // Processing.
   return (
-    <div>
+    <div aria-live="polite" role="status">
       <p>Checking your access...</p>
       <p className="su-text-center">
         <PulseLoader color="#820000" size={16} />
