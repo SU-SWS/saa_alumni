@@ -163,7 +163,7 @@ const InterstitialPage = (props) => {
                     className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
                   />
                 )}
-                {relationships.length > 0 ? (
+                {relationships?.length > 0 ? (
                   <Grid gap md={12}>
                     {/* TODO: ADAPT-4677 Determine how we want to pass the registrant's data (which must include their name, email, address) */}
                     <TripTravelerCard traveler={primaryRegistrant} />
