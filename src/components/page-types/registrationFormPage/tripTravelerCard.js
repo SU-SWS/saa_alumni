@@ -6,7 +6,7 @@ import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
 
 const TripTravelerCard = ({ traveler }) => {
-  const [dispatch] = useContext(FormContext);
+  const [state, dispatch] = useContext(FormContext);
   const [removeBtn, setRemoveBtn] = useState(false);
 
   const addRelationship = () => {

@@ -5,7 +5,7 @@ import { FormContext } from '../../../contexts/FormContext';
 import TripTravelerListItem from './tripTravelerListItem';
 
 const TripTravelerList = () => {
-  const [state] = useContext(FormContext);
+  const [state, dispatch] = useContext(FormContext);
 
   if (state.travelersData.length === 0) {
     return <p>No travelers have been selected</p>;
