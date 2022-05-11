@@ -2,7 +2,6 @@ import React, { useReducer, createContext } from 'react';
 
 const initialFormState = {
   travelersData: [],
-  removeButton: false,
 };
 
 export const FormContext = createContext(initialFormState);
