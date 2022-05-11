@@ -139,7 +139,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
     },
     defaultBlokResolver: (name, props) => (
       <p className="su-font-bold">
-        Missing blok resolver for blok type "{name}".
+        Missing blok resolver for blok type {name}.
       </p>
     ),
     defaultStringResolver: (str) => <p>{str}</p>,
