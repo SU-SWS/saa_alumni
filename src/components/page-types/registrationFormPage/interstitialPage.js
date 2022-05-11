@@ -87,7 +87,7 @@ const InterstitialPage = (props) => {
   const structureTravelerData = (relationshipsData = []) => {
     let relatedContacts = [];
     let data = {};
-    relationshipsData.forEach((relationship) => {
+    relationshipsData?.forEach((relationship) => {
       data = {
         did: relationship?.relatedContactEncodedID,
         dname: `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
