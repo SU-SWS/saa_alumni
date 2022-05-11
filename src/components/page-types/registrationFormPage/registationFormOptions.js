@@ -1,5 +1,5 @@
 export const findSelectOption = (select = [], value) => {
-  if (select.contains(value)) {
+  if (select.includes(value)) {
     const index = select.indexOf(value);
     return select[index];
   }
