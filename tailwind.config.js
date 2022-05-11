@@ -25,6 +25,7 @@ module.exports = {
       addVariant('children', '& > *');
       addVariant('children-hover', '& > *:hover');
       addVariant('children-hocus', '& > *:hover, & > *:focus');
+      addVariant('group-hocus', [':merge(.group):focus &', ':merge(.group):hover &'])
     },
 
     // @tailwind base;
