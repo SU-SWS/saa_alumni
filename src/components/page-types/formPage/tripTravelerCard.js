@@ -9,6 +9,8 @@ const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
 
   const addRelationship = () => {
+    // eslint-disable-next-line no-param-reassign
+    traveler.removeBtn = true;
     if (traveler.su_reg.includes('Primary')) {
       dispatch({
         type: 'addRegistrant',
@@ -39,7 +41,7 @@ const TripTravelerCard = ({ traveler }) => {
           iconType="play"
           className="su-mb-02em su-transition-colors su-text-m2"
         />
-        {state.removeButton ? (
+        {state.traveler.removeBtn ? (
           <span>
             <HeroIcon
               iconType="play"
@@ -65,7 +67,7 @@ const TripTravelerCard = ({ traveler }) => {
         >
           {traveler.dname}
         </Heading>
-        {state.removeButton ? (
+        {state.traveler.removeBtn ? (
           <button
             type="button"
             className="su-button"

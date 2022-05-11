@@ -5,7 +5,7 @@ import { FlexBox } from '../../layout/FlexBox';
 import { FormContext } from '../../../contexts/FormContext';
 
 const TripTravelerListItem = ({ traveler }) => {
-  const [state, dispatch] = useContext(FormContext);
+  const [dispatch] = useContext(FormContext);
 
   const removeRelationship = () => {
     dispatch({

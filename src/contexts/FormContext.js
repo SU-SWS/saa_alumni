@@ -12,19 +12,16 @@ function formReducer(state, action) {
     case 'addRegistrant':
       return {
         travelersData: [action.payload, ...state.travelersData],
-        removeButton: true,
       };
     case 'addTraveler':
       return {
         travelersData: [...state.travelersData, action.payload],
-        removeButton: true,
       };
     case 'removeTraveler':
       return {
         travelersData: state.travelersData.filter(
           (traveler) => traveler.relationshipID !== action.payload
         ),
-        removeButton: false,
       };
     default:
       return state;
