@@ -1,4 +1,4 @@
-export const findSelectOption = (select, value) => {
+export const findSelectOption = (select = [], value) => {
   if (select.contains(value)) {
     const index = select.indexOf(value);
     return select[index];
