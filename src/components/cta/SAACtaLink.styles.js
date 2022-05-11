@@ -13,7 +13,7 @@ export const trailingIcon = ({ textColor }) =>
       textColor === 'all-white',
     'su-text-black group-hover:su-text-black group-focus:su-text-black':
       textColor === 'all-black',
-    'su-text-digital-red-xlight group-hover:su-text-black group-focus:su-text-black-20':
+    'su-text-digital-red-xlight group-hover:su-text-black-20 group-focus:su-text-black-20':
       textColor === 'bright-red-hover-white' ||
       textColor === 'white' ||
       textColor === 'black',
