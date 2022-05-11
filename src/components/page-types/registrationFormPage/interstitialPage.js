@@ -18,6 +18,13 @@ import AuthContext from '../../../contexts/AuthContext';
 import TripTravelerCard from './tripTravelerCard';
 import TripTravelerList from './tripTravelerList';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
+import {
+  findSelectOption,
+  regType,
+  prefixSelectList,
+  relationshipSelectList,
+  affiliationSelectList,
+} from './registationFormOptions';
 
 const InterstitialPage = (props) => {
   const {
@@ -86,8 +93,10 @@ const InterstitialPage = (props) => {
       data = {
         did: relationship.relatedContactEncodedID,
         dname: `${relationship.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship.relatedContactFullNameParsed?.relatedContactLastName}`,
-        su_title:
-          relationship.relatedContactFullNameParsed?.relatedContactPrefix,
+        su_title: findSelectOption(
+          prefixSelectList,
+          relationship.relatedContactFullNameParsed?.relatedContactPrefix
+        ),
         su_first_name:
           relationship.relatedContactFullNameParsed?.relatedContactFirstName,
         su_middle_name:
@@ -99,7 +108,10 @@ const InterstitialPage = (props) => {
         su_last_name:
           relationship.relatedContactFullNameParsed?.relatedContactLastName,
         su_affiliation: relationship.affiliation || 'None',
-        su_relation: relationship.relationshipType,
+        su_relation: findSelectOption(
+          relationshipSelectList,
+          relationship.relationshipType
+        ),
         su_dob: relationship.relatedContactBirthDate,
         su_reg: 'Related contact',
         su_email: undefined,
@@ -114,15 +126,19 @@ const InterstitialPage = (props) => {
   const primaryRegistrant = {
     did: userProfile?.encodedSUID,
     dname: `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`,
-    su_title: userProfile?.name?.fullNameParsed?.prefix,
+    su_title: findSelectOption(
+      prefixSelectList,
+      userProfile?.name?.fullNameParsed?.prefix
+    ),
     su_first_name: userProfile?.name?.fullNameParsed?.firstName,
     su_middle_name:
       userProfile?.name?.fullNameParsed?.middleName === null
         ? '&nbsp;'
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
-    su_affiliation: userProfile?.affiliation || 'None',
-    su_relation: 'Primary registrant',
+    su_affiliation:
+      findSelectOption(affiliationSelectList, userProfile?.affiliation) ||
+      'None',
     su_dob: userProfile?.birthDate,
     su_reg: 'Primary registrant',
   };
