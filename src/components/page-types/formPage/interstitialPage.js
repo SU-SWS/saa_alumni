@@ -35,49 +35,49 @@ const InterstitialPage = (props) => {
   const title = `Register for your trip: ${tripTitle}`;
   const slug = location.pathname.replace(/\/$/, '');
   const { userProfile } = useContext(AuthContext);
-  // const { relationships } = userProfile;
-  const relationships = {
-    relationships: [
-      {
-        relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Spouse/Partner',
-        category: 'Family',
-        relationshipType: 'Spouse/Partner',
-        relatedContact: '0034600000xKKeMAAW',
-        relatedContactEncodedID: '67392062457',
-        relatedContactGender: 'Female',
-        relatedContactDigitalName: 'Xiaojing Fu',
-        relatedContactMyFriendsCallMe: 'Xiaojing',
-        relatedContactBirthDate: '1981-01-02',
-        relatedContactFullNameParsed: {
-          relatedContactPrefix: 'Ms.',
-          relatedContactFirstName: 'Xiaojing',
-          relatedContactMiddleName: null,
-          relatedContactLastName: 'Fu',
-          relatedContactPersonalSuffix: null,
-          relatedContactProfessionalSuffix: null,
-        },
-      },
-      {
-        relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Child',
-        category: 'Family',
-        relationshipType: 'Child',
-        relatedContact: '0034600000xKKeMAAW',
-        relatedContactEncodedID: '67392062458',
-        relatedContactGender: 'Female',
-        relatedContactDigitalName: 'Hsu Fu',
-        relatedContactMyFriendsCallMe: 'Hsu',
-        relatedContactBirthDate: '2010-04-25',
-        relatedContactFullNameParsed: {
-          relatedContactPrefix: 'Miss.',
-          relatedContactFirstName: 'Hsu',
-          relatedContactMiddleName: null,
-          relatedContactLastName: 'Fu',
-          relatedContactPersonalSuffix: null,
-          relatedContactProfessionalSuffix: null,
-        },
-      },
-    ],
-  };
+  const { relationships } = userProfile;
+  // const relationships = {
+  //   relationships: [
+  //     {
+  //       relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Spouse/Partner',
+  //       category: 'Family',
+  //       relationshipType: 'Spouse/Partner',
+  //       relatedContact: '0034600000xKKeMAAW',
+  //       relatedContactEncodedID: '67392062457',
+  //       relatedContactGender: 'Female',
+  //       relatedContactDigitalName: 'Xiaojing Fu',
+  //       relatedContactMyFriendsCallMe: 'Xiaojing',
+  //       relatedContactBirthDate: '1981-01-02',
+  //       relatedContactFullNameParsed: {
+  //         relatedContactPrefix: 'Ms.',
+  //         relatedContactFirstName: 'Xiaojing',
+  //         relatedContactMiddleName: null,
+  //         relatedContactLastName: 'Fu',
+  //         relatedContactPersonalSuffix: null,
+  //         relatedContactProfessionalSuffix: null,
+  //       },
+  //     },
+  //     {
+  //       relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Child',
+  //       category: 'Family',
+  //       relationshipType: 'Child',
+  //       relatedContact: '0034600000xKKeMAAW',
+  //       relatedContactEncodedID: '67392062458',
+  //       relatedContactGender: 'Female',
+  //       relatedContactDigitalName: 'Hsu Fu',
+  //       relatedContactMyFriendsCallMe: 'Hsu',
+  //       relatedContactBirthDate: '2010-04-25',
+  //       relatedContactFullNameParsed: {
+  //         relatedContactPrefix: 'Miss.',
+  //         relatedContactFirstName: 'Hsu',
+  //         relatedContactMiddleName: null,
+  //         relatedContactLastName: 'Fu',
+  //         relatedContactPersonalSuffix: null,
+  //         relatedContactProfessionalSuffix: null,
+  //       },
+  //     },
+  //   ],
+  // };
 
   const structureTravelerData = (relationshipsData) => {
     let relatedContacts = [];
