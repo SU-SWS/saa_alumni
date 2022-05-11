@@ -1,6 +1,6 @@
 export const findSelectOption = (select = [], value) => {
   if (select.includes(value)) {
-    const index = select.findIndex(value);
+    const index = select.findIndex((item) => item.indexOf(value) !== -1);
     return select[index];
   }
   return null;
