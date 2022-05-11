@@ -23,6 +23,8 @@ module.exports = {
   plugins: [
     function ({ addVariant }) {
       addVariant('children-hover', '& > *:hover');
+      addVariant('first', '&:first');
+      addVariant('last', '&:last');
     },
 
     // @tailwind base;
