@@ -84,33 +84,33 @@ const InterstitialPage = (props) => {
   //   },
   // ];
 
-  const structureTravelerData = (relationshipsData) => {
+  const structureTravelerData = (relationshipsData = []) => {
     let relatedContacts = [];
     let data = {};
     relationshipsData.forEach((relationship) => {
       data = {
-        did: relationship.relatedContactEncodedID,
-        dname: `${relationship.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship.relatedContactFullNameParsed?.relatedContactLastName}`,
+        did: relationship?.relatedContactEncodedID,
+        dname: `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
         su_title: findSelectOption(
           prefixSelectList,
-          relationship.relatedContactFullNameParsed?.relatedContactPrefix
+          relationship?.relatedContactFullNameParsed?.relatedContactPrefix
         ),
         su_first_name:
-          relationship.relatedContactFullNameParsed?.relatedContactFirstName,
+          relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
         su_middle_name:
-          relationship.relatedContactFullNameParsed
+          relationship?.relatedContactFullNameParsed
             ?.relatedContactMiddleName === null
             ? '&nbsp;'
-            : relationship.relatedContactFullNameParsed
+            : relationship?.relatedContactFullNameParsed
                 ?.relatedContactMiddleName,
         su_last_name:
-          relationship.relatedContactFullNameParsed?.relatedContactLastName,
-        su_affiliation: relationship.affiliation || 'None',
+          relationship?.relatedContactFullNameParsed?.relatedContactLastName,
+        su_affiliation: relationship?.affiliation || 'None',
         su_relation: findSelectOption(
           relationshipSelectList,
-          relationship.relationshipType
+          relationship?.relationshipType
         ),
-        su_dob: relationship.relatedContactBirthDate,
+        su_dob: relationship?.relatedContactBirthDate,
         su_reg: 'Related contact',
         su_email: undefined,
         su_phone: undefined,
@@ -177,7 +177,7 @@ const InterstitialPage = (props) => {
                 ) : (
                   <p>No relationships are available at this time</p>
                 )}
-                {/* Relationship List */}
+                {/* Relationship? List */}
                 <Heading level={2} align="left" font="serif">
                   Your trip registrants
                 </Heading>
