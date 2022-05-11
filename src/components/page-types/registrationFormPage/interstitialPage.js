@@ -35,7 +35,7 @@ const InterstitialPage = (props) => {
   const title = `Register for your trip: ${tripTitle}`;
   const slug = location.pathname.replace(/\/$/, '');
   const { userProfile } = useContext(AuthContext);
-  const { relationships } = userProfile;
+  const relationships = userProfile?.relationships;
   // const relationships = {
   //   relationships: [
   //     {
