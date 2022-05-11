@@ -65,6 +65,8 @@ const tripsCollection = async (req, res) => {
       extendPrice: story.content.extendPrice,
     };
   });
+
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.status(200).json(ret);
 };
 
