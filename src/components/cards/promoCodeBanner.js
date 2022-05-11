@@ -27,28 +27,30 @@ const PromoCodeBanner = ({ blok }) => {
       >
         {blok.promoCode}
       </div>
-      <div className="su-relative">
-        <button
-          type="button"
-          className="su-flex su-justify-center su-items-center su-cursor-pointer su-rs-pb-6 su-mx-auto"
-          onClick={() => copy()}
-        >
-          <HeroIcon
-            iconType="document-duplicate"
-            className="su-text-[#585754] su-mr-12 su-mt-0"
-          />
-          Copy promo code
-          <HeroIcon
-            iconType="arrow-right"
-            className="su-text-digital-red-light su-relative su-top-4"
-          />
-        </button>
+      <div className="su-relative su-rs-mb-6">
+        {!showCopyText && (
+          <button
+            type="button"
+            className="su-group su-flex su-justify-center su-items-center su-cursor-pointer su-mx-auto su-transition-colors su-no-underline su-underline-offset hocus:su-underline hocus:su-text-black-20 !su-underline-digital-red-xlight"
+            onClick={() => copy()}
+          >
+            <HeroIcon
+              iconType="document-duplicate"
+              className="su-text-[#585754] su-mr-6 su-mt-0 group-hover:su-text-white group-focus:su-text-white"
+            />
+            Copy promo code
+            <HeroIcon
+              iconType="arrow-right"
+              className="su-text-digital-red-light su-relative su-top-4"
+            />
+          </button>
+        )}
 
         {showCopyText && (
-          <span className="su-flex su-absolute su-right-0 su-top-0">
+          <span className="su-flex su-justify-center su-items-center">
             <HeroIcon
               iconType="check"
-              className="su-text-palo-verde su-mr-[20px]"
+              className="su-text-palo-verde su-mr-[10px]"
             />
             Copied
           </span>
