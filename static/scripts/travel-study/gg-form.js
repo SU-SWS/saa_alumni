@@ -105,7 +105,7 @@ class ggForm {
    * Embed the trip information and form.
    */
   renderForm = () => {
-    const content = document.createElement('div');
+    const content = document.createElement('article');
     content.className = 'gg-form-wrapper';
     content.style.display = 'flex';
     content.style.gap = '3rem';
@@ -114,7 +114,7 @@ class ggForm {
     sidebar.className = 'gg-form-sidebar';
     sidebar.innerHTML += this.getTripInfoBox(this.trips, this.uuid);
 
-    const main = document.createElement('main');
+    const main = document.createElement('section');
     main.className = 'gg-form-main';
     main.appendChild(this.getGGScript());
 
