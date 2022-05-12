@@ -46,7 +46,7 @@ const RegistrationFormPage = (props) => {
     window.trip_end_date = blok.trip.content.endDate;
     window.trip_pre_extension = blok.trip.content.preExtension || '';
     window.trip_post_extension = blok.trip.content.postExtension || '';
-    unsetGiveGabVars();
+    // unsetGiveGabVars();
 
     if (travelers) {
       // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
