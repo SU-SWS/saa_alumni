@@ -10,6 +10,7 @@ import {
 } from 'storyblok-rich-text-react-renderer';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
+import { SBCtaButton } from '../components/storyblok/ctaButton';
 import { Heading } from '../components/simple/Heading';
 import CardImage from '../components/media/cardImage';
 import { config } from './config';
@@ -128,11 +129,19 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
         <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
       ),
       [NODE_QUOTE]: (children) => (
-        <blockquote className="su-font-serif su-font-bold su-type-2 children:su-leading-cozy children:last:su-mb-06em">
+        <blockquote className="su-font-serif su-font-bold su-type-2 children:su-leading-cozy last:children:su-mb-06em">
           {children}
         </blockquote>
       ),
     },
+    blokResolvers: {
+      ctaButton: (props) => <SBCtaButton blok={props} />,
+    },
+    defaultBlokResolver: (name, props) => (
+      <p className="su-font-bold">
+        Missing blok resolver for blok type {name}.
+      </p>
+    ),
     defaultStringResolver: (str) => <p>{str}</p>,
   });
 

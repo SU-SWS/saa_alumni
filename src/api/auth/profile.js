@@ -1,50 +1,29 @@
-// Get MP User Data and append to Auth User Data
+// Get MP User Data and append to User
 // Do not enable for public use. This is for development/debugging purposes only.
-// Data can be viewed at /api/auth/profile
+// Data can be viewed at /api/auth/megaprofile-data
 // -----------------------------------------------------------------------------
 import connect from 'next-connect';
-// import { MegaProfile } from '../../utilities/MegaProfile';
+import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
 import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
 
+/**
+ * Fetches the profile data from the MEGA PROFILE API endpoints.
+ */
 const megaprofileHandler = async (req, res) => {
-  // const mp = new MegaProfile();
+  const mp = new MegaProfile();
   try {
     const session = req.user;
-    // TODO: Comment back in multi-profile get requests
-    // const { data: contact } = await mp.get(
-    //   `/${req.user.encodedSUID}/profiles/contact`
-    // );
-    // const { data: addresses } = await mp.get(
-    //   `${req.user.encodedSUID}/profiles/addresses`
-    // );
-    // const { data: emails } = await mp.get(
-    //   `${req.user.encodedSUID}/profiles/emails`
-    // );
-    // const { data: phoneNumbers } = await mp.get(
-    //   `${req.user.encodedSUID}/profiles/phonenumbers`
-    // );
-    // const { data: relationships } = await mp.get(
-    //   `${req.user.encodedSUID}/profiles/relationships`
-    // );
+    const profileId = req.user.encodedSUID;
+    const token = await tokenFetcher();
+    const fullgg = await profileFetcher(profileId, token);
 
-    const tokenData = await tokenFetcher();
-    const { data: ggProfile } = await profileFetcher(
-      req.user?.encodedSUID,
-      tokenData
+    const { data: affiliations } = await mp.get(
+      `/${profileId}/profiles/affiliations`
     );
 
-    const mpUser = {
-      session,
-      ...ggProfile,
-      // TODO: Comment back in multi-profile get requests
-      // contact,
-      // addresses,
-      // emails,
-      // phoneNumbers,
-      // relationships,
-    };
+    const mpUser = { ...fullgg, affiliations, session };
     return res.status(200).json(mpUser);
   } catch (err) {
     return ExceptionHandler(res, err);

@@ -32,7 +32,7 @@ const ctaGroup = ({ blok: { display, cta } }, blok) => {
     <SbEditable content={blok}>
       <div
         className={dcnb(
-          'cta-group su-flex children:su-mb-20 children:last:su-mb-0',
+          'cta-group su-flex children:su-mb-20 last:children:su-mb-0',
           myDisplay
         )}
       >

@@ -334,12 +334,12 @@ const SearchPage = (props) => {
                         {opened ? 'Filters' : ' Filter results'}
                       </span>
                       {opened ? (
-                        <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18 group-hocus:su-underline">
+                        <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18 group-hover:su-underline group-focus:su-underline">
                           Close
                           <Icon icon="x" className="su-w-14 su-ml-6" />
                         </span>
                       ) : (
-                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-light group-hocus:su-text-white hocus:su-shadow-none">
+                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-light group-hover:su-text-white group-focus:su-text-white hocus:su-shadow-none">
                           <Icon icon="chevron-down" />
                         </span>
                       )}

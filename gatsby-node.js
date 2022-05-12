@@ -22,6 +22,8 @@ exports.createPages = ({ graphql, actions }) => {
       'searchSuggestions',
       'tsContentTemplate',
       'verticalNavWrapper',
+      'promoCodeBanner',
+      'protectedContentItem',
     ];
     const omittedComponentsArray = JSON.stringify(contentTypesToOmit);
 

@@ -1,49 +1,72 @@
+import Url from 'url-parse';
+import { ClientCredentials } from 'simple-oauth2';
 import axios from 'axios';
+import mockServer from './mockServer';
 
 /**
  * Get Bearer Token
  * Fetches and returns a bearer token string using the client/secret provided.
  */
-const baseUrl = process.env.MEGAPROFILE_TOKEN_URL;
-const params = {
-  client_id: process.env.MEGAPROFILE_CLIENT_ID,
-  client_secret: process.env.MEGAPROFILE_CLIENT_SECRET,
-  grant_type: 'client_credentials',
-};
-
 export const tokenFetcher = async () => {
-  const response = await axios.post(baseUrl, null, { params });
+  // The OAuth Bearer token granter.
+  const TOKEN_URL = process.env.MEGAPROFILE_TOKEN_URL;
 
-  if (response && response.data && response.data.access_token) {
-    return response.data.access_token;
+  const bearerUrl = Url(TOKEN_URL);
+  // These are required to operate and are not defaulted. Contact a developer for
+  // these credentials. These credentials are used to fetch a bearer token from
+  // the TOKEN_URL endpoint.
+  const CLIENT_ID = process.env.MEGAPROFILE_CLIENT_ID;
+  const CLIENT_SECRET = process.env.MEGAPROFILE_CLIENT_SECRET;
+
+  const megaTokenAuth = new ClientCredentials({
+    client: {
+      id: CLIENT_ID,
+      secret: CLIENT_SECRET,
+    },
+    auth: {
+      tokenHost: `${bearerUrl.protocol}//${bearerUrl.host}`,
+      tokenPath: bearerUrl.pathname,
+    },
+  });
+
+  let response;
+  const tokenParams = { scope: [] };
+  const tokenOpts = { json: true };
+
+  try {
+    response = await megaTokenAuth.getToken(tokenParams, tokenOpts);
+  } catch (error) {
+    return false;
   }
 
-  console.error(response);
+  if (response && response.token && response.token.access_token) {
+    return response.token.access_token;
+  }
+
   throw new Error('Response did not contain access token');
 };
 
 /**
  * Get profile data from the MEGA PROFILE API
  */
-
-export const profileFetcher = async (profileID, token) => {
-  let response;
-  const endpoint = `${process.env.MEGAPROFILE_PROFILE_URL}/${profileID}/profiles/fullgg`;
-  const client = await axios.create({
-    baseURL: endpoint,
+export const profileFetcher = async (profileId, token) => {
+  const client = axios.create({
+    baseURL: process.env.MEGAPROFILE_URL,
     headers: {
-      common: {
-        Authorization: `Bearer ${token}`,
-      },
+      Authorization: `Bearer ${token}`,
     },
   });
 
-  try {
-    response = await client.get();
-    return response;
-  } catch (error) {
-    console.error(error);
+  if (process.env.MEGAPROFILE_MOCK === 'true') {
+    mockServer(client);
   }
 
-  return { error: true, message: 'Could not fetch profile from API' };
+  const contact = await client
+    .get(`${profileId}/profiles/fullgg`)
+    .then((result) => result.data)
+    .catch((err) => {
+      throw new Error('Failed to fetch profile.');
+    });
+
+  return contact;
 };

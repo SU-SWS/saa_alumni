@@ -9,7 +9,8 @@ export const link =
   'su-stretched-link su-group su-z-20 su-mb-08em su-type-2 su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight';
 export const heading =
   'su-type-0 su-mt-0 su-font-bold su-relative su-inline su-text-white';
-export const icon = 'su-relative su-inline-block group-hocus:su-text-white';
+export const icon =
+  'su-relative su-inline-block group-hover:su-text-white group-focus:su-text-white';
 export const subheading =
   'su-mt-4 su-mb-0 su-font-semibold su-text-white su-leading-display';
 export const description =

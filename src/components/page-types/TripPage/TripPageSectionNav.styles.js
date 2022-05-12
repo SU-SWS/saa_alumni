@@ -27,10 +27,13 @@ export const burger = ({ navOpened }) =>
     }
   );
 export const burgerIcon = ({ navOpened }) =>
-  dcnb('su-transition-colors su-w-[2.4rem] group-hocus:su-text-white', {
-    'su-text-white': navOpened,
-    'su-text-digital-red-xlight': !navOpened,
-  });
+  dcnb(
+    'su-transition-colors su-w-[2.4rem] group-hover:su-text-white group-focus:su-text-white',
+    {
+      'su-text-white': navOpened,
+      'su-text-digital-red-xlight': !navOpened,
+    }
+  );
 export const menuMobile = ({ navOpened }) =>
   dcnb(
     'su-flex su-flex-col su-absolute su-z-20 su-bg-saa-black su-shadow-xl su-bg-white su-w-full',

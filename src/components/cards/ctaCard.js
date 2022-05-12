@@ -34,7 +34,7 @@ const CtaCard = ({
           {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
           <HeroIcon
             iconType={link.linktype === 'url' ? 'external' : 'arrow-right'}
-            className="su-relative su-inline-block su-text-white group-hocus:su-text-white"
+            className="su-relative su-inline-block su-text-white group-hover:su-text-white group-focus:su-text-white"
             isAnimate
           />
         </SbLink>

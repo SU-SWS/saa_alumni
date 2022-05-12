@@ -43,6 +43,9 @@ import Page from './page';
 import Perk from './content-types/perk/perk';
 import PerkCard from './cards/perkCard';
 import PerkCardHorizontal from './cards/perkCardHorizontal';
+import PromoCodeBanner from './cards/promoCodeBanner';
+import ProtectedContentWrapper from './layout/ProtectedContentWrapper';
+import protectedContentItem from './cards/protectedContentItem';
 import Poster from './composite/poster';
 import ProtectedPage from './page-types/protectedPage';
 import Redirect from './redirect/Redirect';
@@ -119,6 +122,9 @@ const ComponentList = {
   perk: Perk,
   perkCard: PerkCard,
   perkCardHorizontal: PerkCardHorizontal,
+  protectedContentWrapper: ProtectedContentWrapper,
+  promoCodeBanner: PromoCodeBanner,
+  protectedContentItem,
   poster: Poster,
   protectedPage: ProtectedPage,
   redirect: Redirect,

@@ -10,7 +10,7 @@ export const summaryItem =
 export const summaryName = 'su-text-m0 su-rs-mb-1 su-text-18';
 export const summaryValue = 'su-card-paragraph';
 export const summaryCost =
-  'su-card-paragraph children:!su-mb-08em children:last:!su-mb-0';
-export const actions = 'children:su-mb-20 children:last:su-mb-0';
+  'su-card-paragraph children:!su-mb-08em last:children:!su-mb-0';
+export const actions = 'children:su-mb-20 last:children:su-mb-0';
 export const ctaBtn =
   'su-flex su-min-w-full su-justify-center su-items-end su-py-14 su-mt-16';

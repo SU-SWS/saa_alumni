@@ -15,7 +15,7 @@ const VerticalNavItem = ({
       )}
       link={link}
       hasExternalIcon
-      externalIconClasses="group-hocus:su-text-cardinal-red"
+      externalIconClasses="group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red"
     >
       {text}
     </SbLink>
