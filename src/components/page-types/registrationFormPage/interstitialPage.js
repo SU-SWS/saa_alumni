@@ -25,6 +25,10 @@ import {
   relationshipSelectList,
   affiliationSelectList,
 } from './registationFormOptions';
+import {
+  findPreferredEmail,
+  findPreferredPhoneNumber,
+} from '../../../utilities/giveGabVars';
 
 const InterstitialPage = (props) => {
   const {
@@ -95,6 +99,8 @@ const InterstitialPage = (props) => {
         ? '&nbsp;'
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
+    su_email: findPreferredEmail(userProfile?.emails),
+    su_phone: findPreferredPhoneNumber(userProfile?.phones),
     su_affiliation:
       findSelectOption(affiliationSelectList, userProfile?.affiliation) ||
       'None',
