@@ -35,7 +35,9 @@ const GiveGabForm = ({
     if (userProfile) {
       setGiveGabVars(userProfile);
     }
-    return unsetGiveGabVars();
+    return () => {
+      unsetGiveGabVars();
+    };
   }, [userProfile]);
 
   if (isAuthenticating) {
