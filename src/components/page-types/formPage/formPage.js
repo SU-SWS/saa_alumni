@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Container } from '../../layout/Container';
@@ -11,6 +11,11 @@ import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
+import AuthContext from '../../../contexts/AuthContext';
+import {
+  setGiveGabVars,
+  unsetGiveGabVars,
+} from '../../../utilities/giveGabVars';
 
 const FormPage = (props) => {
   const {
@@ -36,6 +41,17 @@ const FormPage = (props) => {
     formCardStyle = 'lg:su-col-start-4 xl:su-col-start-4';
     bgCardStyle = 'su-bg-saa-black';
   }
+
+  const { userProfile } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (userProfile) {
+      setGiveGabVars(userProfile);
+    }
+    return () => {
+      unsetGiveGabVars();
+    };
+  }, [userProfile]);
 
   return (
     <AuthenticatedPage>
