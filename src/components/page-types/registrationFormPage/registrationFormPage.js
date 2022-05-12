@@ -14,14 +14,14 @@ import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
-import { unsetGiveGabVars } from '../../../utilities/giveGabVars';
 
 const RegistrationFormPage = (props) => {
   const {
     blok: {
       body,
       trip: {
-        content: { title: tripTitle },
+        full_slug: fullSlug,
+        content: { title: tripTitle, tripId, startDate, endDate, extendPrice },
       },
       heroImage: { filename, alt, focus } = {},
       giveGabForm,
@@ -38,22 +38,20 @@ const RegistrationFormPage = (props) => {
   console.log('Prefill Data Obj: ', travelers);
 
   useEffect(() => {
+    const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
     // StoryBlok trip related data
-    window.trip_id = blok.trip.id;
-    window.trip_name = blok.trip.content.title;
-    window.trip_url = blok.trip.content.url;
-    window.trip_start_date = blok.trip.content.startDate;
-    window.trip_end_date = blok.trip.content.endDate;
-    window.trip_pre_extension = blok.trip.content.preExtension || '';
-    window.trip_post_extension = blok.trip.content.postExtension || '';
-    // unsetGiveGabVars();
+    window.trip_id = tripId;
+    window.trip_name = tripTitle;
+    window.trip_url = tripUrl;
+    window.trip_start_date = startDate;
+    window.trip_end_date = endDate;
+    window.trip_pre_extension = extendPrice || '';
+    window.trip_post_extension = extendPrice || '';
 
     if (travelers) {
-      // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-      console.log('Travelers Data: ', travelers);
       window.prefillData = travelers;
     }
-  }, [travelers, blok]);
+  }, [travelers, fullSlug, tripId, tripTitle, startDate, endDate, extendPrice]);
 
   return (
     <AuthenticatedPage>
