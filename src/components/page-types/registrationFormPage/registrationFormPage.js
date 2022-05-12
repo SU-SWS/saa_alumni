@@ -14,6 +14,7 @@ import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
+import { unsetGiveGabVars } from '../../../utilities/giveGabVars';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -45,6 +46,7 @@ const RegistrationFormPage = (props) => {
     window.trip_end_date = blok.trip.content.endDate;
     window.trip_pre_extension = blok.trip.content.preExtension || '';
     window.trip_post_extension = blok.trip.content.postExtension || '';
+    unsetGiveGabVars();
 
     if (travelers) {
       // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
