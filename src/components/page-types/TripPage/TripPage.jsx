@@ -60,7 +60,7 @@ const TripPage = (props) => {
       itineraryAboveContent,
       itineraryItems,
       isCenterItineraryHeader,
-      // Trip Extension Section
+      // Trip Pre Extension Section
       hideExtensionSection,
       extendHeading,
       extendIntro,
@@ -72,6 +72,18 @@ const TripPage = (props) => {
       extendAboveContent,
       extendItinerary,
       isCenterExtendHeader,
+      // Trip Post Extension Section
+      hidePostExtensionSection,
+      postExtendHeading,
+      postExtendIntro,
+      postExtendBody,
+      postExtendStartDate,
+      postExtendEndDate,
+      postExtendPrice,
+      postExtendTripSize,
+      postExtendAboveContent,
+      postExtendItinerary,
+      isCenterPostExtendHeader,
       // Details Section
       hideDetailsSection,
       detailsHeading,
@@ -120,6 +132,12 @@ const TripPage = (props) => {
       hasRichText(extendIntro) ||
       hasRichText(extendBody) ||
       getNumBloks(extendItinerary) > 0);
+  const renderPostExtensionSection =
+    !hidePostExtensionSection &&
+    (extendHeading !== '' ||
+      hasRichText(postExtendIntro) ||
+      hasRichText(postExtendBody) ||
+      getNumBloks(postExtendItinerary) > 0);
   const renderDetailsSection =
     !hideDetailsSection &&
     (detailsHeading !== '' ||
@@ -236,8 +254,27 @@ const TripPage = (props) => {
                   extendEndDate={extendEndDate}
                   extendPrice={extendPrice}
                   extendTripSize={extendTripSize}
+                  postExtendStartDate={postExtendStartDate}
+                  postExtendEndDate={postExtendEndDate}
+                  postExtendPrice={postExtendPrice}
+                  postExtendTripSize={postExtendTripSize}
                   extendAboveContent={extendAboveContent}
                   isCenterExtendHeader={isCenterExtendHeader}
+                />
+              )}
+              {/* Trip Post Extension */}
+              {renderPostExtensionSection && (
+                <TripPageExtensionSection
+                  extendHeading={postExtendHeading}
+                  extendIntro={postExtendIntro}
+                  extendBody={postExtendBody}
+                  extendItinerary={postExtendItinerary}
+                  extendStartDate={postExtendStartDate}
+                  extendEndDate={postExtendEndDate}
+                  extendPrice={postExtendPrice}
+                  extendTripSize={postExtendTripSize}
+                  extendAboveContent={postExtendAboveContent}
+                  isCenterExtendHeader={isCenterPostExtendHeader}
                 />
               )}
               {/* Details Section */}
