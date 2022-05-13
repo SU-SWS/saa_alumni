@@ -26,7 +26,11 @@ const RegistrationFormPage = (props) => {
           tripId,
           startDate,
           endDate,
+          extendStartDate,
+          extendEndDate,
           extendPrice,
+          postExtendStartDate,
+          postExtendEndDate,
           postExtendPrice,
         },
       },
@@ -54,6 +58,11 @@ const RegistrationFormPage = (props) => {
     window.trip_end_date = endDate;
     window.trip_pre_extension = extendPrice;
     window.trip_post_extension = postExtendPrice;
+    window.pre_extension_start = extendStartDate;
+    window.pre_extension_end = extendEndDate;
+    window.post_extension_start = postExtendStartDate;
+    window.post_extension_end = postExtendEndDate;
+    window.trip_post_extension = postExtendPrice;
 
     if (travelers) {
       window.prefillData = travelers;
@@ -65,7 +74,11 @@ const RegistrationFormPage = (props) => {
     tripTitle,
     startDate,
     endDate,
+    extendStartDate,
+    extendEndDate,
     extendPrice,
+    postExtendStartDate,
+    postExtendEndDate,
     postExtendPrice,
   ]);
 
