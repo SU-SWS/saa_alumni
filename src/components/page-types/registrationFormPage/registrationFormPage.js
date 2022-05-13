@@ -21,7 +21,18 @@ const RegistrationFormPage = (props) => {
       body,
       trip: {
         full_slug: fullSlug,
-        content: { title: tripTitle, tripId, startDate, endDate, extendPrice },
+        content: {
+          title: tripTitle,
+          tripId,
+          startDate,
+          endDate,
+          extendStartDate,
+          extendEndDate,
+          extendPrice,
+          postExtendStartDate,
+          postExtendEndDate,
+          postExtendPrice,
+        },
       },
       heroImage: { filename, alt, focus } = {},
       giveGabForm,
@@ -34,8 +45,6 @@ const RegistrationFormPage = (props) => {
   const title = `Register for your trip: ${tripTitle}`;
 
   const travelers = location?.state?.travelers;
-  // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-  console.log('Prefill Data Obj: ', travelers);
 
   useEffect(() => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
@@ -45,13 +54,47 @@ const RegistrationFormPage = (props) => {
     window.trip_url = tripUrl;
     window.trip_start_date = startDate;
     window.trip_end_date = endDate;
-    window.trip_pre_extension = extendPrice || '';
-    window.trip_post_extension = extendPrice || '';
+
+    // StoryBlok trip extend related data
+    window.trip_pre_extension = extendPrice;
+    window.trip_post_extension = postExtendPrice;
+
+    // Trip extension related data
+    const extension = () => {
+      if (extendStartDate && postExtendEndDate) {
+        return 'Both';
+      }
+      if (extendStartDate) {
+        return 'Pre-trip only';
+      }
+      if (postExtendEndDate) {
+        return 'Post-trip only';
+      }
+      return 'None';
+    };
+    window.pre_extension_start = extendStartDate;
+    window.pre_extension_end = extendEndDate;
+    window.post_extension_start = postExtendStartDate;
+    window.post_extension_end = postExtendEndDate;
+    window.extension = extension();
 
     if (travelers) {
       window.prefillData = travelers;
     }
-  }, [travelers, fullSlug, tripId, tripTitle, startDate, endDate, extendPrice]);
+  }, [
+    travelers,
+    fullSlug,
+    tripId,
+    tripTitle,
+    startDate,
+    endDate,
+    extendStartDate,
+    extendEndDate,
+    extendPrice,
+    postExtendStartDate,
+    postExtendEndDate,
+    postExtendPrice,
+  ]);
 
   return (
     <AuthenticatedPage>
