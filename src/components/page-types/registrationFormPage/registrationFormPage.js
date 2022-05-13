@@ -21,7 +21,14 @@ const RegistrationFormPage = (props) => {
       body,
       trip: {
         full_slug: fullSlug,
-        content: { title: tripTitle, tripId, startDate, endDate, extendPrice },
+        content: {
+          title: tripTitle,
+          tripId,
+          startDate,
+          endDate,
+          extendPrice,
+          postExtendPrice,
+        },
       },
       heroImage: { filename, alt, focus } = {},
       giveGabForm,
@@ -45,13 +52,22 @@ const RegistrationFormPage = (props) => {
     window.trip_url = tripUrl;
     window.trip_start_date = startDate;
     window.trip_end_date = endDate;
-    window.trip_pre_extension = extendPrice || '';
-    window.trip_post_extension = extendPrice || '';
+    window.trip_pre_extension = extendPrice;
+    window.trip_post_extension = postExtendPrice;
 
     if (travelers) {
       window.prefillData = travelers;
     }
-  }, [travelers, fullSlug, tripId, tripTitle, startDate, endDate, extendPrice]);
+  }, [
+    travelers,
+    fullSlug,
+    tripId,
+    tripTitle,
+    startDate,
+    endDate,
+    extendPrice,
+    postExtendPrice,
+  ]);
 
   return (
     <AuthenticatedPage>
