@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
@@ -13,37 +13,45 @@ import { GridCell } from '../../layout/GridCell';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import {
-  FormContextProvider,
-  FormContext,
-} from '../../../contexts/FormContext';
+import { FormContextProvider } from '../../../contexts/FormContext';
 
 const RegistrationFormPage = (props) => {
   const {
     blok: {
       body,
       trip: {
-        content: { title: tripTitle },
+        full_slug: fullSlug,
+        content: { title: tripTitle, tripId, startDate, endDate, extendPrice },
       },
       heroImage: { filename, alt, focus } = {},
       giveGabForm,
       ankleContent,
     },
     blok,
-    location: { state },
+    location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
 
-  const guests = state?.guests;
+  const travelers = location?.state?.travelers;
   // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-  console.log('Prefill Data Obj: ', guests);
+  console.log('Prefill Data Obj: ', travelers);
 
   useEffect(() => {
-    if (guests) {
-      window.prefillData = guests;
+    const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
+    // StoryBlok trip related data
+    window.trip_id = tripId;
+    window.trip_name = tripTitle;
+    window.trip_url = tripUrl;
+    window.trip_start_date = startDate;
+    window.trip_end_date = endDate;
+    window.trip_pre_extension = extendPrice || '';
+    window.trip_post_extension = extendPrice || '';
+
+    if (travelers) {
+      window.prefillData = travelers;
     }
-  }, [guests]);
+  }, [travelers, fullSlug, tripId, tripTitle, startDate, endDate, extendPrice]);
 
   return (
     <AuthenticatedPage>

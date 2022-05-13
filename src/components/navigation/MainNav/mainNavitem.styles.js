@@ -16,4 +16,4 @@ export const activeLink = ({ isHomesite }) =>
     'su-bg-black-80': !isHomesite,
   });
 export const externalIcon =
-  'su-text-digital-red-xlight group-hocus:su-text-white';
+  'su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white';

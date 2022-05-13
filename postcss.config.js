@@ -1,7 +1,5 @@
+/* eslint-disable global-require */
 // postcss.config.js
-module.exports = {
-  plugins: {
-    tailwindcss: {},
-    autoprefixer: {},
-  }
-}
+module.exports = () => ({
+  plugins: [require('tailwindcss'), require('autoprefixer')],
+});

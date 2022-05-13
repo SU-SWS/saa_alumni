@@ -48,13 +48,14 @@ const Section = ({
 
   let superLinkStyle = superheadStyles[superheadStyle].light;
   let backIconColor =
-    'su-text-digital-red-light group-hocus:su-text-cardinal-red';
+    'su-text-digital-red-light group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red';
 
   let isDarkSection = false;
 
   if (bgColor === 'black') {
     superLinkStyle = superheadStyles[superheadStyle].dark;
-    backIconColor = 'su-text-digital-red-xlight group-hocus:su-text-white';
+    backIconColor =
+      'su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white';
     isDarkSection = true;
   }
 

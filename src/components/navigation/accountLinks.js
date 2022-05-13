@@ -9,7 +9,7 @@ import HeroIcon from '../simple/heroIcon';
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
   return (
-    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-xlight lg:su-border-digital-red-light su-rounded-full group-hocus:su-bg-cardinal-red-xdark">
+    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-xlight lg:su-border-digital-red-light su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark">
       {initial}
     </div>
   );
@@ -66,9 +66,9 @@ const AccountLinks = ({ mainLinkClasses }) => {
 
   return (
     <AuthContext.Consumer>
-      {(authState) => (
+      {({ isAuthenticated, userProfile, userSession }) => (
         <>
-          {authState.isAuthenticated && authState.userProfile && (
+          {isAuthenticated && (
             <li className="su-text-white su-relative" ref={ref}>
               <button
                 type="button"
@@ -79,10 +79,21 @@ const AccountLinks = ({ mainLinkClasses }) => {
                   className={`su-inline-block su-mr-10 ${
                     showDesktop ? '' : 'su-sr-only'
                   }`}
-                >{`Hi, ${authState.userProfile.user.firstName} ${authState.userProfile.user.lastName}`}</span>
-                <Initial string={authState.userProfile.user.firstName} />
+                >
+                  Hi,{' '}
+                  {userProfile
+                    ? `${userProfile.name.fullNameParsed.firstName} ${userProfile.name.fullNameParsed.lastName}`
+                    : `${userSession.firstName} ${userSession.lastName}`}
+                </span>
+                <Initial
+                  string={
+                    userProfile
+                      ? userProfile.name.fullNameParsed.firstName
+                      : userSession.firstName
+                  }
+                />
                 <ChevronDownIcon
-                  className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hocus:su-text-digital-red-xlight su-transition
+                  className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition
             ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
                   aria-hidden="true"
                 />
@@ -97,14 +108,14 @@ const AccountLinks = ({ mainLinkClasses }) => {
                 `}
               >
                 {links.map((link) => (
-                  <li className={link.classes}>
+                  <li className={link.classes} key={link.url}>
                     <a href={link.url} className={linkClasses}>
                       {link.text}
                       {link.icon && (
                         <HeroIcon
                           iconType="arrow-right"
                           isAnimate
-                          className="su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hocus:su-text-white"
+                          className="su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white"
                         />
                       )}
                     </a>
@@ -114,7 +125,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
             </li>
           )}
 
-          {!authState.isAuthenticated && (
+          {!isAuthenticated && (
             <>
               <NavItem
                 className={`${mainLinkClasses} su-link-regular`}

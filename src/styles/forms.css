@@ -252,7 +252,6 @@
   border-image-source: linear-gradient(140.61deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 53.2%, rgba(255, 255, 255, 0.5) 109.83%);
 }
 
-
 .ggeWidget .ggeQuestion.su-email input,
 .ggeWidget .ggeQuestion[data-name="DigitalName"] input {
   @apply su-bg-transparent su-p-0;

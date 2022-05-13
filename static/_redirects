@@ -4,7 +4,8 @@
 
 # This redirect is here because the vanity url service does not allow for multipart subdomains.
 https://trusteenominations.alumni.stanford.edu https://alumni.stanford.edu/volunteer/trustee-nominations 301!
-
+https://youngalumni.alumni.stanford.edu/Stanford10 https://alumni.stanford.edu/young-alumni/stanford-10 301!
+https://youngalumni.alumni.stanford.edu https://alumni.stanford.edu/young-alumni 301!
 
 # PATH REDIRECTS
 ################################################################################

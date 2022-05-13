@@ -18,10 +18,9 @@ const storyblokRelations = [
   'verticalNav.verticalNav',
   'tripCard.trip',
   'tsContentPicker.contentPicker',
-  'tripNotifyMe.trip',
   'tripNotifyMe.notifyMeText',
-  'tripCustomJourneys.trip',
   'tripCustomJourneys.customJourneysText',
+  'formPage.trip',
   'registrationFormPage.trip',
 ];
 

@@ -39,7 +39,7 @@ const BasicCardContent = ({
         <RichTextRenderer
           wysiwyg={text}
           isDark={isDark}
-          className={`su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0
+          className={`su-card-paragraph children:su-leading-snug children:!su-mb-06em last:children:!su-mb-0
           ${headline ? 'su-rs-mt-neg1' : 'su-mt-03em'}`}
         />
       )}

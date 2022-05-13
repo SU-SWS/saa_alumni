@@ -43,7 +43,7 @@ export const link = ({ orientation }) =>
   );
 export const heading = 'su-relative su-inline su-type-0';
 export const icon =
-  'su-relative su-inline-block su-text-digital-red-xlight group-hocus:su-text-white';
+  'su-relative su-inline-block su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white';
 export const description = ({ orientation }) =>
   dcnb('su-relative su-text-black-20 su-flex-grow su-mb-0 su-card-paragraph', {
     'xl:su-big-paragraph xl:su-leading-snug': orientation === 'horizontal',

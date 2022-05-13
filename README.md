@@ -1,5 +1,4 @@
-# [ADAPT SAA Alumni - TSGG DEV](https://github.com/SU-SWS/saa_alumni)
-##### Version: 1.0.0
+# [ADAPT SAA Alumni](https://github.com/SU-SWS/saa_alumni)
 
 <a href="https://codeclimate.com/github/SU-SWS/saa_alumni/maintainability"><img src="https://api.codeclimate.com/v1/badges/6545d64d90025f75e2c8/maintainability" /></a>
 
@@ -24,7 +23,7 @@ cp example.env .env
 get the FontAwesome NPM token from the Netlify site settings in environment variables and install the packages
 FONTAWESOME_NPM_AUTH_TOKEN=MYFATOKEN npm install
 * Retrieve all other environment variables from the vault
-npm run vault
+npm run vault:local
 * Then fire up your development server using gatsby
 npm run dev
 * Or a netlify development server
@@ -113,7 +112,7 @@ Vault source paths:
 
 Environment variables are stored (and versioned) in vault.stanford.edu. You can fetch them and have them written to `.env` by running `npm run vault`. You will need to add the vault role id and vault secret into the `.env` file first. You can likely find those values in the Netlify environment variables UI. If you can't find them. Please ask another developer.
 
-The script that fetches the secrets is in the netlify plugin 'plugins/netlify-plugin-vault-variables/script.js'. It is exectued by running `npm run vault`.
+The script that fetches the secrets is 'netlify-plugin-vault-variables'. It is exectued by running `npm run vault:local`.
 
 When the script runs, it should only append new values to your `.env` file. This means you can have your own local environment variables or overwrite ones that are coming from vault. You can change this so that vault overwrite all values by setting the environment variable VAULT_OVERWRITE=true.
 
@@ -186,3 +185,14 @@ TODO
 #### View Modes for Components
 
 TODO
+
+### Megaprofile Mocking
+Megaprofile mocking can be enabled locally by running `npm run dev:local`, or by adding the following
+environment variable:
+```
+MEGAPROFILE_MOCK=true
+```
+This will return mocked responses rather than call the Megaprofile Profile API. 
+
+Mocks for additional endpoints can be added in ./src/utilties/mockServer.js.
+Mock data should generally be stored in separate files in ./src/utilities/mocks.

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { ApiGatewayAuth } from './ApiGatewayAuth';
+import mockServer from './mockServer';
 
 export class MegaProfile {
   constructor(config = {}) {
@@ -14,6 +15,11 @@ export class MegaProfile {
     this.client = axios.create({
       baseURL: this.url,
     });
+
+    if (process.env.MEGAPROFILE_MOCK === 'true') {
+      mockServer(this.client);
+    }
+
     if (this.auth.isAuthenticated()) {
       this.setAuthParams();
     }
@@ -49,13 +55,4 @@ export class MegaProfile {
   // Method wrapped request handlers
   get = async (url, config = {}) =>
     this.request({ ...config, method: 'GET', url });
-
-  // TODO: Remove this method once test-405 is confirmed?
-  post = async (url, data, config = {}) =>
-    this.request({
-      ...config,
-      method: 'POST',
-      url,
-      data,
-    });
 }
