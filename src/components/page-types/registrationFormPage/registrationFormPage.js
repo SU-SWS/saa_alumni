@@ -45,8 +45,6 @@ const RegistrationFormPage = (props) => {
   const title = `Register for your trip: ${tripTitle}`;
 
   const travelers = location?.state?.travelers;
-  // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-  console.log('Prefill Data Obj: ', travelers);
 
   useEffect(() => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
@@ -56,28 +54,24 @@ const RegistrationFormPage = (props) => {
     window.trip_url = tripUrl;
     window.trip_start_date = startDate;
     window.trip_end_date = endDate;
+
+    // StoryBlok trip extend related data
     window.trip_pre_extension = extendPrice;
     window.trip_post_extension = postExtendPrice;
 
     // Trip extension related data
     const extension = () => {
-      if (
-        extendStartDate &&
-        extendEndDate &&
-        postExtendStartDate &&
-        postExtendEndDate
-      ) {
+      if (extendStartDate && postExtendEndDate) {
         return 'Both';
       }
-      if (extendStartDate && extendEndDate) {
+      if (extendStartDate) {
         return 'Pre-trip only';
       }
-      if (postExtendStartDate && postExtendEndDate) {
+      if (postExtendEndDate) {
         return 'Post-trip only';
       }
       return 'None';
     };
-    window.trip_post_extension = postExtendPrice;
     window.pre_extension_start = extendStartDate;
     window.pre_extension_end = extendEndDate;
     window.post_extension_start = postExtendStartDate;
