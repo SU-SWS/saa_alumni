@@ -58,11 +58,31 @@ const RegistrationFormPage = (props) => {
     window.trip_end_date = endDate;
     window.trip_pre_extension = extendPrice;
     window.trip_post_extension = postExtendPrice;
+
+    // Trip extension related data
+    const extension = () => {
+      if (
+        extendStartDate &&
+        extendEndDate &&
+        postExtendStartDate &&
+        postExtendEndDate
+      ) {
+        return 'Both';
+      }
+      if (extendStartDate && extendEndDate) {
+        return 'Pre-trip only';
+      }
+      if (postExtendStartDate && postExtendEndDate) {
+        return 'Post-trip only';
+      }
+      return 'None';
+    };
+    window.trip_post_extension = postExtendPrice;
     window.pre_extension_start = extendStartDate;
     window.pre_extension_end = extendEndDate;
     window.post_extension_start = postExtendStartDate;
     window.post_extension_end = postExtendEndDate;
-    window.trip_post_extension = postExtendPrice;
+    window.extension = extension;
 
     if (travelers) {
       window.prefillData = travelers;
