@@ -82,7 +82,7 @@ const RegistrationFormPage = (props) => {
     window.pre_extension_end = extendEndDate;
     window.post_extension_start = postExtendStartDate;
     window.post_extension_end = postExtendEndDate;
-    window.extension = extension;
+    window.extension = extension();
 
     if (travelers) {
       window.prefillData = travelers;
