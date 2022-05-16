@@ -63,9 +63,9 @@ class ggForm {
   setADCVariables = () => {
     const uuid = document.getElementById(`${this.id}-select`).value;
     this.uuid = uuid;
-    window.trip_id = this.trips[uuid].tripId;
-    window.trip_name = this.trips[uuid].title;
-    window.dname = this.user.su_display_name;
+    window.su_trip_id = this.trips[uuid].tripId;
+    window.su_trip_name = this.trips[uuid].title;
+    window.su_dname = this.user.su_display_name;
     window.su_email = this.user.mail;
   };
 
