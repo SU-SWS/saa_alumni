@@ -6,7 +6,7 @@ const categoryDatasource = async (req, res) => {
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   });
   const storyblokRes = await storyblok.get(`cdn/datasource_entries`, {
-    datasource: 'registration-category',
+    datasource: 'room-category',
   });
 
   const { data } = storyblokRes;

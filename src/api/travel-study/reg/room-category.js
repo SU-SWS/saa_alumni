@@ -116,11 +116,11 @@ export default async function handler(req, res) {
   res.setHeader('vary', 'Accept-Encoding');
 
   // TMP: for testing
-  // const options = {
-  //   'category-aa': 'Category AA',
-  //   'category-b': 'Category B',
-  //   'category-c': 'Category C',
-  // };
+  const options = {
+    'category-aa': 'Category AA',
+    'category-b': 'Category B',
+    'category-c': 'Category C',
+  };
 
   // Fetch the trip stories from storyblok.
   const trips = await getAllTrips(res);
@@ -165,20 +165,19 @@ export default async function handler(req, res) {
     if (!Number(trip.content.tripId)) {
       return;
     }
-    console.log('Room Category', trip?.content?.roomCategory);
 
     // Loop through the bed types in our temporary array. In the future we will
     // pull the options right from the trip information.
     // Object.entries(options).forEach((option) => {
-    Object.entries(trip?.content?.roomCategory).forEach((option) => {
-      const [categoryKey, categoryValue] = option;
+    trip?.content?.roomCategory?.forEach((option) => {
+      console.log('Room Category', option);
       data.push([
         'prompt',
         trip.content.tripId,
-        categoryKey,
+        option,
         'TRUE',
         '',
-        categoryValue,
+        option,
         'TRUE',
         'USD',
         '',
