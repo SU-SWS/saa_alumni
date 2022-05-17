@@ -99,6 +99,21 @@ const getTripFormStory = async (uuid) => {
 };
 
 /**
+ * Get Rooom Category Object from Storyblok.
+ * @param {*} req
+ * @param {*} res
+ * @returns
+ */
+const getRoomCategory = async (req, res) => {
+  const storyblokRes = await storyblok.get(`cdn/datasource_entries`, {
+    datasource: 'room-category',
+  });
+
+  const { data } = storyblokRes;
+  return data;
+};
+
+/**
  * Export Handler.
  * @param {*} req
  * @param {*} res
@@ -114,13 +129,6 @@ export default async function handler(req, res) {
   res.setHeader('date', new Date().toUTCString());
   res.setHeader('accept-ranges', 'none');
   res.setHeader('vary', 'Accept-Encoding');
-
-  // TMP: for testing
-  const options = {
-    'category-aa': 'Category AA',
-    'category-b': 'Category B',
-    'category-c': 'Category C',
-  };
 
   // Fetch the trip stories from storyblok.
   const trips = await getAllTrips(res);
@@ -160,6 +168,8 @@ export default async function handler(req, res) {
     ],
   ];
 
+  const roomCategory = await getRoomCategory();
+
   trips.forEach((trip) => {
     // No trip Id. No Entry.
     if (!Number(trip.content.tripId)) {
@@ -169,15 +179,18 @@ export default async function handler(req, res) {
     // Loop through the bed types in our temporary array. In the future we will
     // pull the options right from the trip information.
     // Object.entries(options).forEach((option) => {
-    trip?.content?.roomCategory?.forEach((option) => {
-      console.log('Room Category', option);
+    trip?.content?.roomCategory?.forEach((categoryValue) => {
+      console.log('Room Category', categoryValue);
+      const categoryKey = Object.keys(roomCategory).find(
+        (key) => roomCategory[key] === categoryValue
+      );
       data.push([
         'prompt',
         trip.content.tripId,
-        option,
+        categoryKey,
         'TRUE',
         '',
-        option,
+        categoryValue,
         'TRUE',
         'USD',
         '',
