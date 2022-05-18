@@ -174,7 +174,7 @@ export default async function handler(req, res) {
         `$${dollarValue}.00`,
         'TRUE',
         '',
-        ``,
+        `$${dollarValue}.00`,
         'TRUE',
         'USD',
         `${dollarValue}00`,
