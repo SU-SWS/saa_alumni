@@ -184,6 +184,22 @@ export default async function handler(req, res) {
         '',
         'TRUE',
       ]);
+      data.push([
+        'prompt',
+        'No',
+        dollarValue,
+        'TRUE',
+        '',
+        0,
+        'TRUE',
+        'USD',
+        '',
+        '',
+        '',
+        '',
+        '',
+        'TRUE',
+      ]);
     }
   });
 
