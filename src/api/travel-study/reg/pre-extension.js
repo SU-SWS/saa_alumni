@@ -171,7 +171,7 @@ export default async function handler(req, res) {
       data.push([
         'prompt',
         trip.content.tripId,
-        dollarValue,
+        `$${dollarValue}.00`,
         'TRUE',
         '',
         ``,
