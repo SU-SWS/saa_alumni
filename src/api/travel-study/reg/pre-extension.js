@@ -166,17 +166,15 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Loop through the bed types in our temporary array. In the future we will
-    // pull the options right from the trip information.
-    // Object.entries(options).forEach((option) => {
-    trip?.content?.extendPrice?.forEach((priceValue) => {
+    if (trip?.content?.extendPrice) {
+      const dollarValue = trip.content.extendPrice.replace(/\D/g, '');
       data.push([
         'prompt',
         trip.content.tripId,
-        'fee',
+        dollarValue,
         'TRUE',
         '',
-        priceValue,
+        dollarValue,
         'TRUE',
         'USD',
         '',
@@ -186,7 +184,7 @@ export default async function handler(req, res) {
         '',
         'TRUE',
       ]);
-    });
+    }
   });
 
   // Trip.
