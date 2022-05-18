@@ -171,6 +171,22 @@ export default async function handler(req, res) {
       data.push([
         'prompt',
         trip.content.tripId,
+        'No',
+        'TRUE',
+        '',
+        'No',
+        'TRUE',
+        'USD',
+        '0',
+        '',
+        '',
+        '',
+        '',
+        'TRUE',
+      ]);
+      data.push([
+        'prompt',
+        trip.content.tripId,
         'Yes',
         'TRUE',
         '',
