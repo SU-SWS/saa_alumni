@@ -188,10 +188,10 @@ export default async function handler(req, res) {
       data.push([
         'prompt',
         trip.content.tripId,
-        categoryKey,
+        categoryValue,
         'TRUE',
         '',
-        categoryValue,
+        categoryKey,
         'TRUE',
         'USD',
         '',
