@@ -170,11 +170,11 @@ export default async function handler(req, res) {
       const dollarValue = trip.content.extendPrice.replace(/\D/g, '');
       data.push([
         'prompt',
-        `Yes - $${trip.content.tripId}`,
-        dollarValue,
+        trip.content.tripId,
+        'No',
         'TRUE',
         '',
-        dollarValue,
+        0,
         'TRUE',
         'USD',
         '',
@@ -186,11 +186,11 @@ export default async function handler(req, res) {
       ]);
       data.push([
         'prompt',
-        'No',
-        dollarValue,
+        trip.content.tripId,
+        `Yes - $${dollarValue}`,
         'TRUE',
         '',
-        0,
+        dollarValue,
         'TRUE',
         'USD',
         '',
