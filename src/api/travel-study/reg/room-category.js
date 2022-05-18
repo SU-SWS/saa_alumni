@@ -100,17 +100,19 @@ const getTripFormStory = async (uuid) => {
 
 /**
  * Get Rooom Category Object from Storyblok.
- * @param {*} req
- * @param {*} res
  * @returns
  */
-const getRoomCategory = async (req, res) => {
-  const storyblokRes = await storyblok.get(`cdn/datasource_entries`, {
+const getRoomCategory = async () => {
+  const roomCategoryRes = await storyblok.get(`cdn/datasource_entries`, {
     datasource: 'room-category',
   });
 
-  const { data } = storyblokRes;
-  return data;
+  const { data } = roomCategoryRes;
+  const roomCategory = {};
+  data.datasource_entries.forEach((category) => {
+    roomCategory[category.name] = category.value;
+  });
+  return roomCategory;
 };
 
 /**
@@ -180,7 +182,6 @@ export default async function handler(req, res) {
     // pull the options right from the trip information.
     // Object.entries(options).forEach((option) => {
     trip?.content?.roomCategory?.forEach((categoryValue) => {
-      console.log('Room Category', categoryValue);
       const categoryKey = Object.keys(roomCategory).find(
         (key) => roomCategory[key] === categoryValue
       );
