@@ -166,28 +166,25 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Loop through the bed types in our temporary array. In the future we will
-    // pull the options right from the trip information.
-    // Object.entries(options).forEach((option) => {
-    Object.entries(trip?.content?.postExtensionPrice).forEach((option) => {
-      const [categoryKey, categoryValue] = option;
+    if (trip?.content?.postExtendPrice) {
+      const dollarValue = trip.content.postExtendPrice.replace(/\D/g, '');
       data.push([
         'prompt',
         trip.content.tripId,
-        categoryKey,
+        `$${dollarValue}.00`,
         'TRUE',
         '',
-        categoryValue,
+        ``,
         'TRUE',
         'USD',
-        '',
+        `${dollarValue}00`,
         '',
         '',
         '',
         '',
         'TRUE',
       ]);
-    });
+    }
   });
 
   // Trip.
