@@ -1,18 +1,9 @@
-import StoryblokClient from 'storyblok-js-client';
-
-/**
- * The Storyblok API client.
- */
-const storyblok = new StoryblokClient({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-});
-
 /**
  * Fetch the Trip Form from Storyblok.
  * @param {*} tripId
  * @returns
  */
-const getTripFormStory = async (uuid) => {
+const getTripFormStory = async (storyblok, uuid) => {
   const formRes = await storyblok.get(`cdn/stories`, {
     filter_query: {
       component: {

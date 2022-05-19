@@ -44,7 +44,7 @@ export default async function handler(req, res) {
   res.setHeader('vary', 'Accept-Encoding');
 
   // Fetch the trip stories from storyblok.
-  const trips = await getAllTrips(res);
+  const trips = await getAllTrips(storyblok, res);
 
   if (!trips) {
     res.status(404).send(`Unable to find any trips`);

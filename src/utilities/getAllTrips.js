@@ -1,18 +1,9 @@
-import StoryblokClient from 'storyblok-js-client';
-
-/**
- * The Storyblok API client.
- */
-const storyblok = new StoryblokClient({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-});
-
 /**
  * Fetch the Trip from Storyblok.
  * @param {*} tripId
  * @returns
  */
-const getAllTrips = async (res) => {
+const getAllTrips = async (storyblok, res) => {
   let currentPage = 1;
   let trips = [];
   const perpage = 25;
