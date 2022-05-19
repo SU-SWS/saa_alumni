@@ -22,6 +22,7 @@ const GiveGabForm = ({
     uuid,
   },
   blok,
+  tripId,
   bgCardStyle,
 }) => {
   const htmlId = uuid;
