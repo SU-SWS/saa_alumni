@@ -29,7 +29,7 @@ export class MegaProfile {
    */
   authenticate = async () => {
     await this.auth.authenticate();
-    this.client.defaults.params = { token: this.auth?.token?.access_token };
+    this.client.defaults.headers.common = { 'Authorization': `Bearer ${this.auth?.token?.access_token}` };
   };
 
   // Generic request handler w/ auth check
