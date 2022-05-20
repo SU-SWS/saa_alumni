@@ -54,8 +54,6 @@ export default async function handler(req, res) {
     ],
   ];
 
-  const roomCategory = await getRoomCategory();
-
   trips.forEach((trip) => {
     // No trip Id. No Entry.
     if (!Number(trip.content.tripId)) {
