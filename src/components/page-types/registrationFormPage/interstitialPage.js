@@ -27,7 +27,7 @@ import {
 } from './registationFormOptions';
 import {
   findPreferredEmail,
-  findPreferedEmailType,
+  findPreferredEmailType,
   findPreferredPhoneNumber,
   findPreferredPhoneNumberType,
 } from '../../../utilities/giveGabVars';
@@ -102,7 +102,7 @@ const InterstitialPage = (props) => {
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
     su_email: findPreferredEmail(userProfile?.emails),
-    su_email_type: findPreferedEmailType(userProfile?.emails),
+    su_email_type: findPreferredEmailType(userProfile?.emails),
     su_phone: findPreferredPhoneNumber(userProfile?.phoneNumbers),
     su_phone_type: findPreferredPhoneNumberType(userProfile?.phoneNumbers),
     su_affiliation:
