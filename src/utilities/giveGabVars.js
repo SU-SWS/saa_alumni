@@ -59,6 +59,32 @@ const findPhoneNumberType = (phoneNumbers, type) => {
 };
 
 /**
+ * Find the preferred phone number type
+ *
+ * @param {array} phoneNumbers
+ *   An array of objects containing phone number information.
+ *
+ * @returns {string}
+ *   The preferred phone number type
+ */
+export const findPreferredPhoneNumberType = (phoneNumbers) => {
+  let phoneNumber;
+  if (Array.isArray(phoneNumbers)) {
+    phoneNumber = findPreferredPhoneNumber(phoneNumbers);
+    if (!phoneNumber) {
+      phoneNumber = findPhoneNumberType(phoneNumbers, 'Home Phone');
+    }
+    if (!phoneNumber) {
+      phoneNumber = findPhoneNumberType(phoneNumbers, 'Mobile');
+    }
+    if (!phoneNumber) {
+      phoneNumber = findPhoneNumberType(phoneNumbers, 'Business Phone');
+    }
+  }
+  return phoneNumber;
+};
+
+/**
  * Find the user's preferred email.
  *
  * @param {array} emails
@@ -114,6 +140,32 @@ const findEmailType = (emails, type) => {
   }
 
   return ret;
+};
+
+/**
+ * Find the preferred email type
+ *
+ * @param {array} emails
+ *   An array of objects containing email information.
+ *
+ * @returns {string}
+ *   The preferred email type
+ */
+export const findPreferredEmailType = (emails) => {
+  let email;
+  if (Array.isArray(emails)) {
+    email = findPreferredEmail(emails);
+    if (!email) {
+      email = findEmailType(emails, 'Home Email');
+    }
+    if (!email) {
+      email = findEmailType(emails, 'Business Email');
+    }
+    if (!email) {
+      email = findEmailType(emails, 'Other Email');
+    }
+  }
+  return email;
 };
 
 /**
@@ -175,6 +227,32 @@ const findAddressType = (addresses, type) => {
 };
 
 /**
+ * Find the preferred address type
+ *
+ * @param {array} addresses
+ *   An array of objects containing address information.
+ *
+ * @returns {string}
+ *   The preferred address type
+ */
+export const findPreferredAddressType = (addresses) => {
+  let address;
+  if (Array.isArray(addresses)) {
+    address = findPreferredAddress(addresses);
+    if (!address) {
+      address = findAddressType(addresses, 'Home');
+    }
+    if (!address) {
+      address = findAddressType(addresses, 'Business');
+    }
+    if (!address) {
+      address = findAddressType(addresses, 'Other');
+    }
+  }
+  return address;
+};
+
+/**
  * Set the window variables for the pre populated forms.
  * .
  * @param {*} userProfile
@@ -188,79 +266,19 @@ const setGiveGabVars = (userProfile) => {
   // If entity has preferred valid mailing address (either Home or Business), use that address first
   // If entity has no preference then use valid Home mailing address
   // If neither preferred or Home exist then use valid Business mailing address
-  let address;
-  if (Array.isArray(userProfile?.addresses)) {
-    address = findPreferredAddress(userProfile?.addresses);
-    if (!address) {
-      address = findAddressType(userProfile?.addresses, 'Home');
-    }
-    if (!address) {
-      address = findAddressType(userProfile?.addresses, 'Business');
-    }
-    if (!address) {
-      address = findAddressType(userProfile?.addresses, 'Other');
-    }
-  }
+  const address = findPreferredAddressType(userProfile?.addresses);
 
   // Find the preferred email address. If none, use the one they logged in with.
-  let email;
-  if (Array.isArray(userProfile?.emails)) {
-    email = findPreferredEmail(userProfile?.emails);
-    if (!email) {
-      email = findEmailType(userProfile?.emails, 'Home Email');
-    }
-    if (!email) {
-      email = findEmailType(userProfile?.emails, 'Business Email');
-    }
-    if (!email) {
-      email = findEmailType(userProfile?.emails, 'Other Email');
-    }
-  }
+  const email = findPreferredEmailType(userProfile?.emails);
 
   // Find the preferred phone number.
-  let phoneNumber;
-  if (Array.isArray(userProfile?.phoneNumbers)) {
-    phoneNumber = findPreferredPhoneNumber(userProfile?.phoneNumbers);
-    if (!phoneNumber) {
-      phoneNumber = findPhoneNumberType(
-        userProfile?.phoneNumbers,
-        'Home Phone'
-      );
-    }
-    if (!phoneNumber) {
-      phoneNumber = findPhoneNumberType(userProfile?.phoneNumbers, 'Mobile');
-    }
-    if (!phoneNumber) {
-      phoneNumber = findPhoneNumberType(
-        userProfile?.phoneNumbers,
-        'Business Phone'
-      );
-    }
-  }
+  const phoneNumber = findPreferredPhoneNumberType(userProfile?.phoneNumbers);
 
   // Concatenate street address 2 and 3.
   const street2 = [address?.streetAddress2, address?.streetAddress3]
     .join(' ')
     .trim();
 
-  // Used within the Registration, Additional Payment, Notify Me, and Journey request form
-  // TODO: Finalize structure of firstName and lastName. (e.g. user?.registrationNameFirst or user?.fullNameParsed?.firstName)
-  // TODO: Switch back to individual MP endpoints
-  // window.dname =
-  //   userProfile?.user?.name?.digitalName ||
-  //   `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}` ||
-  //   '';
-  // window.su_first_name =
-  //   userProfile?.user?.name?.fullNameParsed.firstName ||
-  //   userProfile?.user?.firstName ||
-  //   '';
-  // window.su_last_name =
-  //   userProfile?.user?.name?.fullNameParsed.lastName ||
-  //   userProfile?.user?.lastName ||
-  //   '';
-  // window.su_birthDate = userProfile?.user?.birthDate || '';
-  // window.su_email = userProfile?.user?.email || '';
-  // window.su_phone = userProfile?.user?.phoneNumber || '';
   window.dname =
     `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
     '';

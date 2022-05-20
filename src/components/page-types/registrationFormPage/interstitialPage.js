@@ -27,7 +27,9 @@ import {
 } from './registationFormOptions';
 import {
   findPreferredEmail,
+  findPreferedEmailType,
   findPreferredPhoneNumber,
+  findPreferredPhoneNumberType,
 } from '../../../utilities/giveGabVars';
 
 const InterstitialPage = (props) => {
@@ -53,8 +55,8 @@ const InterstitialPage = (props) => {
     let data = {};
     relationshipsData?.forEach((relationship) => {
       data = {
-        did: relationship?.relatedContactEncodedID,
-        dname: `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
+        su_did: relationship?.relatedContactEncodedID,
+        su_dname: `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
         su_title: findSelectOption(
           prefixSelectList,
           relationship?.relatedContactFullNameParsed?.relatedContactPrefix
@@ -87,8 +89,8 @@ const InterstitialPage = (props) => {
 
   const relatedContacts = structureTravelerData(relationships);
   const primaryRegistrant = {
-    did: userProfile?.encodedSUID,
-    dname: `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`,
+    su_did: userProfile?.encodedSUID,
+    su_dname: `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`,
     su_title: findSelectOption(
       prefixSelectList,
       userProfile?.name?.fullNameParsed?.prefix
@@ -100,7 +102,9 @@ const InterstitialPage = (props) => {
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
     su_email: findPreferredEmail(userProfile?.emails),
-    su_phone: findPreferredPhoneNumber(userProfile?.phones),
+    su_email_type: findPreferedEmailType(userProfile?.emails),
+    su_phone: findPreferredPhoneNumber(userProfile?.phoneNumbers),
+    su_phone_type: findPreferredPhoneNumberType(userProfile?.phoneNumbers),
     su_affiliation:
       findSelectOption(affiliationSelectList, userProfile?.affiliation) ||
       'None',
