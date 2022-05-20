@@ -3,7 +3,7 @@
  * @param {*} tripId
  * @returns
  */
-const getAllTrips = async (storyblok, res) => {
+const getAllTrips = async (storyblok) => {
   let currentPage = 1;
   let trips = [];
   const perpage = 25;
@@ -43,8 +43,7 @@ const getAllTrips = async (storyblok, res) => {
       });
     })
     .catch((err) => {
-      res.status(500).json({ error: err.message });
-      console.log(err);
+      console.error(err);
     });
 
   return trips;
