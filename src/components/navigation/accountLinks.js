@@ -1,7 +1,9 @@
-import React, { useState, createRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import AuthContext from '../../contexts/AuthContext';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import useEscape from '../../hooks/useEscape';
+import { isExpanded } from '../../utilities/menuHelpers';
 import useDisplay from '../../hooks/useDisplay';
 import NavItem from './navItem';
 import HeroIcon from '../simple/heroIcon';
@@ -9,14 +11,15 @@ import HeroIcon from '../simple/heroIcon';
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
   return (
-    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-xlight lg:su-border-digital-red-light su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark">
+    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark">
       {initial}
     </div>
   );
 };
 
 const AccountLinks = ({ mainLinkClasses }) => {
-  const ref = createRef();
+  const ref = useRef(null);
+  const buttonRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const loginDestination =
     typeof window !== 'undefined' ? window.location.pathname : null;
@@ -29,6 +32,13 @@ const AccountLinks = ({ mainLinkClasses }) => {
 
   useOnClickOutside(ref, () => {
     setExpanded(false);
+  });
+
+  useEscape(() => {
+    if (buttonRef.current && isExpanded(buttonRef.current)) {
+      setExpanded(false);
+      buttonRef.current.focus();
+    }
   });
 
   const linkClasses =
@@ -71,6 +81,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
           {isAuthenticated && (
             <li className="su-text-white su-relative" ref={ref}>
               <button
+                ref={buttonRef}
                 type="button"
                 onClick={() => setExpanded(!expanded)}
                 className="su-flex su-items-center su-py-8 su-group"
