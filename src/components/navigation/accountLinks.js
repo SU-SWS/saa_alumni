@@ -81,8 +81,9 @@ const AccountLinks = ({ mainLinkClasses }) => {
           {isAuthenticated && (
             <li className="su-text-white su-relative" ref={ref}>
               <button
-                ref={buttonRef}
                 type="button"
+                ref={buttonRef}
+                aria-expanded={expanded}
                 onClick={() => setExpanded(!expanded)}
                 className="su-flex su-items-center su-py-8 su-group"
               >
@@ -106,6 +107,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                       : 'su-scale-y-0 md:su-scale-x-0 su-opacity-0 su-invisible'
                   }
                 `}
+                aria-hidden={!expanded}
               >
                 {links.map((link) => (
                   <li className={link.classes} key={link.url}>
