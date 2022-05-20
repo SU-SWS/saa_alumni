@@ -30,9 +30,9 @@ const GiveGabForm = ({
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
 
-  let embedUrl = url;
+  let embedUrl = new URL(url);
   if (tripId) {
-    embedUrl = `${url}?urlData=${tripId}`;
+    embedUrl = embedUrl.searchParams.append('urlData', tripId);
   }
 
   if (isAuthenticating) {

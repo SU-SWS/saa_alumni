@@ -10,23 +10,6 @@ const storyblok = new StoryblokClient({
 });
 
 /**
- * Get Rooom Category Object from Storyblok.
- * @returns
- */
-const getRoomCategory = async () => {
-  const roomCategoryRes = await storyblok.get(`cdn/datasource_entries`, {
-    datasource: 'room-category',
-  });
-
-  const { data } = roomCategoryRes;
-  const roomCategory = {};
-  data.datasource_entries.forEach((category) => {
-    roomCategory[category.name] = category.value;
-  });
-  return roomCategory;
-};
-
-/**
  * Export Handler.
  * @param {*} req
  * @param {*} res
@@ -81,16 +64,13 @@ export default async function handler(req, res) {
 
     // Loop through the room category options configred on the Trip page in StoryBlok
     trip?.content?.roomCategory?.forEach((categoryValue) => {
-      const categoryKey = Object.keys(roomCategory).find(
-        (key) => roomCategory[key] === categoryValue
-      );
       data.push([
         'prompt',
         trip.content.tripId,
         categoryValue,
         'TRUE',
         '',
-        categoryKey,
+        categoryValue,
         'TRUE',
         'USD',
         '',
