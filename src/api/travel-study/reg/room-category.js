@@ -79,8 +79,7 @@ export default async function handler(req, res) {
       return;
     }
 
-    // Loop through the bed types in our temporary array. In the future we will
-    // pull the options right from the trip information.
+    // Loop through the room category options configred on the Trip page in StoryBlok
     trip?.content?.roomCategory?.forEach((categoryValue) => {
       const categoryKey = Object.keys(roomCategory).find(
         (key) => roomCategory[key] === categoryValue

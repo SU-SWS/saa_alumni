@@ -34,13 +34,6 @@ export default async function handler(req, res) {
     return;
   }
 
-  // // Fetch the trip form information from storyblok. if we need it.
-  // const registrationForm = await getTripFormStory(trip.uuid);
-  // if (!registrationForm) {
-  //   res.status(404).send(`Registration Form with id ${tripId} not found`);
-  //   return;
-  // }
-
   // Aggregate and compile it in the format that GG expects.
   const data = [
     [
