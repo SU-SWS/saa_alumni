@@ -7,11 +7,15 @@ import { isExpanded } from '../../utilities/menuHelpers';
 import useDisplay from '../../hooks/useDisplay';
 import NavItem from './navItem';
 import HeroIcon from '../simple/heroIcon';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
   return (
-    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark">
+    <div
+      className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark"
+      aria-hidden
+    >
       {initial}
     </div>
   );
@@ -42,7 +46,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
   });
 
   const linkClasses =
-    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white ' +
+    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white ' +
     'hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight su-text-20';
 
   const links = [
@@ -65,7 +69,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
       text: 'Help',
       url: 'https://alumni.stanford.edu/help/',
       classes:
-        'su-border-t su-border-digital-red-xlight su-pt-[9px] su-link-regular',
+        'su-border-t su-border-digital-red-xlight su-pt-16 su-link-regular',
     },
     {
       text: 'Log out',
@@ -92,6 +96,9 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     showDesktop ? '' : 'su-sr-only'
                   }`}
                 >{`Hi, ${userProfile.name.fullNameParsed.firstName} ${userProfile.name.fullNameParsed.lastName}`}</span>
+                <SrOnlyText>
+                  {`${expanded ? ' Close' : ' Open'} user menu`}
+                </SrOnlyText>
                 <Initial string={userProfile.name.fullNameParsed.firstName} />
                 <ChevronDownIcon
                   className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition
@@ -100,7 +107,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                 />
               </button>
               <ul
-                className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-py-[24px] su-px-[24px] su-w-screen su-mr-[-20px] sm:su-mr-[-30px] md:su-w-[300px] su-right-0 su-text-left
+                className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[32rem] su-right-0 su-text-left
                   ${
                     expanded
                       ? 'su-scale-y-100 md:su-scale-x-100 su-opacity-100 su-visible'
