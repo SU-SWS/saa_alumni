@@ -147,7 +147,7 @@ const RegistrationFormPage = (props) => {
                   xl={5}
                   className=" su-rs-pt-6 su-rs-mt-5"
                 >
-                  <CreateBloks blokSection={giveGabForm} trip={tripId} />
+                  <CreateBloks blokSection={giveGabForm} tripId={tripId} />
                 </GridCell>
               </Grid>
               {numAnkle > 0 && <Ankle isDark {...props} />}
