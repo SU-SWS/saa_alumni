@@ -88,7 +88,7 @@ export const ctaLinkColor = {
   'bright-red-hover-white': 'su-text-digital-red-xlight hocus:su-text-black-20',
   black: 'su-text-black hocus:su-text-black !su-underline-digital-red-light',
   white:
-    'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
+    'su-text-black-20 hocus:su-text-black-20 !su-decoration-digital-red-xlight',
   'all-white': 'su-text-white hocus:su-text-white',
   'all-black': 'su-text-black hocus:su-text-black',
 };

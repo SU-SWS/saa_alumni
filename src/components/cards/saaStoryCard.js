@@ -114,7 +114,7 @@ const SaaStoryCard = ({
           <SbLink
             link={externalLink || internalLink}
             classes={dcnb(
-              'su-stretched-link su-group su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight',
+              'su-stretched-link su-group su-z-20 su-rs-mt-2 su-mb-02em su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-decoration-digital-red-xlight',
               headlineSize,
               headlineColor
             )}

@@ -34,10 +34,5 @@ module.exports = function () {
       DEFAULT: '#505EEC',
       light: '#6B77F5',
     },
-    facebook: '#4267B2',
-    twitter: '#1da1f2',
-    instagram: '#d73676',
-    linkedin: '#0077b5',
-    youtube: '#FF0000',
   };
 };

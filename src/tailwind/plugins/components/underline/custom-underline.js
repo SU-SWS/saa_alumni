@@ -11,11 +11,6 @@ module.exports = function () {
       '.underline-thick': {
         textDecorationThickness: '0.12em',
       },
-      // Custom text underline colors
-      // For use directly in an <a> tag
-      '.underline-digital-red-xlight': {
-        textDecorationColor: theme('colors.digital-red-xlight'),
-      },
       // For use in a parent container that contains the links
       '.link-underline-digital-red-xlight a': {
         textDecorationColor: theme('colors.digital-red-xlight'),

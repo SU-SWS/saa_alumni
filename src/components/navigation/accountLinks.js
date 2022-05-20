@@ -13,7 +13,7 @@ const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
   return (
     <div
-      className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark"
+      className="su-flex su-justify-center su-transition su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark"
       aria-hidden
     >
       {initial}
@@ -46,8 +46,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
   });
 
   const linkClasses =
-    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white ' +
-    'hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight su-text-20';
+    'su-flex su-items-baseline su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-decoration-digital-red-xlight su-text-20';
 
   const links = [
     {
@@ -64,6 +63,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
       text: 'Stanford Groups',
       url: 'https://alumni.stanford.edu/groups/',
       icon: true,
+      classes: 'su-pb-16',
     },
     {
       text: 'Help',
