@@ -43,7 +43,7 @@ const getAllTrips = async (storyblok) => {
       });
     })
     .catch((err) => {
-      console.error(err);
+      throw new Error('Trip Fetching Failed');
     });
 
   return trips;
