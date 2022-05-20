@@ -30,6 +30,11 @@ const GiveGabForm = ({
   const preBlok = { markup: pre_markup };
   const postBlok = { markup: post_markup };
 
+  let embedUrl = url;
+  if (tripId) {
+    embedUrl = `${url}?urlData=${tripId}`;
+  }
+
   if (isAuthenticating) {
     return (
       <div
@@ -70,7 +75,7 @@ const GiveGabForm = ({
       >
         <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
           <Embed blok={preBlok} />
-          <DynaScript src={url} id={htmlId} errorText={errorText} />
+          <DynaScript src={embedUrl} id={htmlId} errorText={errorText} />
         </div>
         <div className="form-gradient su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
           <Embed blok={postBlok} />
