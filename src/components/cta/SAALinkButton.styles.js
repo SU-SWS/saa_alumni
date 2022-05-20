@@ -9,4 +9,6 @@ export const icon = ({ buttonStyle }) =>
       buttonStyle === 'secondary',
     'su-text-saa-electric-blue group-hover:su-text-white group-focus:su-text-white':
       buttonStyle === 'secondary-gradient',
+    'su-text-digital-red-light group-hocus:su-text-white':
+      buttonStyle === 'link',
   });
