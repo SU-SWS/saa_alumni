@@ -20,7 +20,7 @@ export const parentButton = ({
   isHomesite,
 } = {}) =>
   dcnb(
-    'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset',
+    'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset-[3px]',
     buttonMobile,
     buttonDesktop,
     {
@@ -45,10 +45,10 @@ export const parentTextLinebreak = 'su-hidden xl:su-inline 2xl:su-hidden';
 const chevronMobile =
   'su-absolute su-right-0 su-w-[3.4rem] su-pt-6 su-pb-5 su-px-5 su-bg-digital-red su-rounded-full group-hover:!su-bg-digital-red-light group-focus:!su-bg-digital-red-light su-mr-20';
 const chevronDesktop =
-  'lg:su-relative lg:su--top-3 lg:su-mr-0 lg:su-ml-02em lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight lg:group-hover:!su-bg-transparent lg:group-focus:!su-bg-transparent';
+  'lg:su-relative lg:su--top-3 lg:su-mr-0 lg:su-ml-02em lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hover:su-text-digital-red-xlight lg:group-focus:su-text-digital-red-xlight lg:group-hover:!su-bg-transparent lg:group-focus:!su-bg-transparent';
 export const chevron = ({ panelOpened, isActiveButton } = {}) =>
   dcnb(
-    'su-inline-block su-text-white su-transition',
+    'su-inline-block su-text-white su-transition group-focus:su-text-white',
     chevronMobile,
     chevronDesktop,
     {
@@ -64,7 +64,7 @@ const topLinkMobile =
 const topLinkDesktop =
   'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-20 2xl:su-text-22';
 export const topLink = dcnb(
-  'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset',
+  'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px]',
   topLinkMobile,
   topLinkDesktop
 );

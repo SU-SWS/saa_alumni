@@ -486,7 +486,7 @@ export const superheadStyles = {
   },
   'red-back-link': {
     light:
-      'su-text-digital-red-light hocus:su-text-cardinal-red su-underline-offset hocus:su-underline',
-    dark: 'su-text-digital-red-xlight hocus:su-text-white su-underline-offset hocus:su-underline',
+      'su-text-digital-red-light hocus:su-text-cardinal-red su-underline-offset-[3px] hocus:su-underline',
+    dark: 'su-text-digital-red-xlight hocus:su-text-white su-underline-offset-[3px] hocus:su-underline',
   },
 };

@@ -14,8 +14,8 @@ module.exports = {
   presets: [require('decanter')],
   content: ['./src/**/*.{js,jsx,md,mdx,ts,tsx}'],
   theme: {
-    // SAA themes extending our Decanter ones
     screens: require(`${dir}/theme/screens.js`)(),
+    // SAA themes extending our Decanter ones
     extend: {
       colors: require(`${dir}/theme/colors.js`)(),
     },

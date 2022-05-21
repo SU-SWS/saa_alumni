@@ -13,7 +13,7 @@ const NavItem = ({
       <SbLink
         link={link}
         activeClass="active"
-        classes="su-group hover:su-underline focus:su-underline"
+        classes="su-group su-no-underline hover:su-underline focus:su-underline"
         hasExternalIcon={hasExternalIcon}
       >
         {text}

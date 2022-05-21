@@ -17,21 +17,6 @@ module.exports = function () {
           color: config('theme.colors.cardinal-red.DEFAULT'),
         },
       },
-      '.su-global-footer': {
-        '.su-logo': {
-          '&:hover, &:focus': {
-            color: config('theme.colors.white'),
-          },
-        },
-        nav: {
-          a: {
-            textDecoration: 'none',
-            '&:hover, &:focus': {
-              textDecoration: 'underline',
-            },
-          },
-        },
-      },
     });
   };
 };
