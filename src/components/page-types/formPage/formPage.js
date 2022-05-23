@@ -20,7 +20,7 @@ import {
 const FormPage = (props) => {
   const {
     blok: {
-      trip,
+      trip: { tripId, title: tripTitle },
       title,
       isSrOnlyTitle,
       heroImage: { filename, alt, focus } = {},
@@ -52,13 +52,15 @@ const FormPage = (props) => {
   const { userProfile } = useContext(AuthContext);
 
   useEffect(() => {
+    window.su_trip_id = tripId;
+    window.su_trip_title = tripTitle;
     if (userProfile) {
       setGiveGabVars(userProfile);
     }
     return () => {
       unsetGiveGabVars();
     };
-  }, [userProfile]);
+  }, [userProfile, tripId, tripTitle]);
 
   return (
     <AuthenticatedPage>
