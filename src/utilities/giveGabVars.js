@@ -259,7 +259,7 @@ export const findPreferredAddressType = (addresses) => {
  */
 const setGiveGabVars = (userProfile) => {
   // Set the `did` value to the encoded SUID variable.
-  window.did = userProfile?.encodedSUID || null;
+  window.su_did = userProfile?.encodedSUID || null;
 
   // Logic for finding an address.
   //
@@ -279,12 +279,23 @@ const setGiveGabVars = (userProfile) => {
     .join(' ')
     .trim();
 
-  window.dname =
-    `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
+  // In the event that the Megaprofile information is not available, only the following fields would be prefilled:
+  // - Digital Name
+  // - First Name
+  // - Last Name
+  // - Email
+  window.su_dname =
+    userProfile?.name?.digitalName ||
+    `${userProfile?.user?.firstName} ${userProfile?.user?.lastName}`;
+  window.su_first_name =
+    userProfile?.name?.fullNameParsed?.firstName ||
+    userProfile?.user?.firstName ||
     '';
-  window.su_first_name = userProfile?.name?.fullNameParsed?.firstName || '';
-  window.su_last_name = userProfile?.name?.fullNameParsed?.lastName || '';
-  window.su_email = email || '';
+  window.su_last_name =
+    userProfile?.name?.fullNameParsed?.lastName ||
+    userProfile?.user?.lastName ||
+    '';
+  window.su_email = email || userProfile?.user?.email || '';
   window.su_address = address?.streetAddress1 || '';
   window.su_address2 = street2 || '';
   window.su_city = address?.city || '';
@@ -299,8 +310,8 @@ const setGiveGabVars = (userProfile) => {
  * Unset the window variables for the pre populated forms.
  */
 const unsetGiveGabVars = () => {
-  delete window.did;
-  delete window.dname;
+  delete window.su_did;
+  delete window.su_dname;
   delete window.su_first_name;
   delete window.su_last_name;
   delete window.su_email;
