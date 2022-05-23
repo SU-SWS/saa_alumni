@@ -21,6 +21,7 @@ const FormPage = (props) => {
   const {
     blok: {
       trip: { tripId, title: tripTitle },
+      trip,
       title,
       isSrOnlyTitle,
       heroImage: { filename, alt, focus } = {},
