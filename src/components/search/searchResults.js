@@ -60,7 +60,7 @@ const SearchResults = ({ results }) => {
                         ? 'arrow-right'
                         : 'external'
                     }
-                    className="su-inline-block group-hocus:su-text-cardinal-red"
+                    className="su-inline-block group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red"
                     isAnimate
                     srText={
                       result.domain.match(/^alumni.stanford.edu/)

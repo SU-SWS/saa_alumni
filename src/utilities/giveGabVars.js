@@ -277,4 +277,29 @@ const setGiveGabVars = (userProfile) => {
   window.su_phone = phoneNumber || '';
 };
 
-export default setGiveGabVars;
+/**
+ * Unset the window variables for the pre populated forms.
+ */
+const unsetGiveGabVars = () => {
+  delete window.did;
+  delete window.dname;
+  delete window.su_first_name;
+  delete window.su_last_name;
+  delete window.su_email;
+  delete window.su_address;
+  delete window.su_address2;
+  delete window.su_city;
+  delete window.su_state;
+  delete window.su_zip;
+  delete window.su_country;
+  delete window.su_birthDate;
+  delete window.su_phone;
+};
+
+export {
+  findPreferredPhoneNumber,
+  findPreferredEmail,
+  findPreferredAddress,
+  setGiveGabVars,
+  unsetGiveGabVars,
+};

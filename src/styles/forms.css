@@ -14,12 +14,12 @@
   @apply su-p-0 su-mb-34 md:su-mb-45;
 }
 
-.ggeWidget .ggeContent .ggeQuestion:last-child {
-  @apply su-pb-0 md:su-pb-0;
+.ggeWidget .ggeContent .ggeQuestion.su-phone {
+  @apply su-mb-[.7rem];
 }
 
-.ggeWidget .ggeContent .ggeQuestion.su-email {
-  @apply su-mb-0;
+.ggeWidget .ggeContent .ggeQuestion:last-child {
+  @apply su-pb-0 md:su-pb-0;
 }
 
 .ggeQuestion:not(.ggeQuestion--error):not(.ggeQuestion--instructions) .ggeQuestion__field {
@@ -36,7 +36,7 @@
 
 .ggeWidget .ggeQuestion--instructions a,
 .ggeWidget .ggeQuestion__error a {
-  @apply su-no-underline hocus:su-underline su-text-white hocus:su-underline-digital-red-xlight;
+  @apply su-no-underline hocus:su-underline su-text-white hocus:su-underline-digital-red-xlight su-font-regular su-underline-offset;
 }
 
 .ggeWidget .ggeQuestion--instructions a:after,
@@ -44,11 +44,18 @@
   content: "";
   mask: url("../assets/arrow-right.svg");
   -webkit-mask-size: contain;
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45 su-bg-white su-ml-4 su-relative su-top-2;
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45 su-bg-white su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
+}
+
+.ggeWidget .ggeQuestion--instructions a:hover:after,
+.ggeWidget .ggeQuestion--instructions a:focus:after,
+.ggeWidget .ggeQuestion__error a:hover:after,
+.ggeWidget .ggeQuestion__error a:focus:after {
+  @apply su-translate-x-02em su--translate-y-02em;
 }
 
 .ggeWidget .ggeQuestion--instructions h1 {
-  @apply su-mt-0 su-font-semibold;
+  @apply su-mt-0 su-font-semibold su-text-white;
 }
 
 .ggeWidget .ggeQuestion input[type="email"],
@@ -56,7 +63,7 @@
 .ggeWidget .ggeQuestion input[type="text"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
-  @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8px] md:su-text-[2.1rem] su-border-0 su-border-b-2 su-border-black-50 su-rounded-[3px] su-box-border;
+  @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8rem] md:su-text-[2.1rem] su-border-0 su-border-b su-border-black-50 su-rounded-[3px] su-box-border;
   background: rgba(16, 15, 13, 0.5);
 }
 
@@ -64,6 +71,30 @@
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="number"],
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"] {
   @apply su-border-0 su-border-b-2 su-border-black-50;
+}
+
+.ggeWidget .ggeQuestion input[type="email"],
+.ggeWidget .ggeQuestion input[type="number"],
+.ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion textarea {
+  @apply su-px-[21px] md:su-px-[19px] su-py-[20px] ;
+}
+
+.ggeWidget .ggeQuestion input[type="email"]:focus,
+.ggeWidget .ggeQuestion input[type="number"]:focus,
+.ggeWidget .ggeQuestion input[type="text"]:focus,
+.ggeWidget .ggeQuestion textarea:focus {
+  @apply su-border-2 su-border-transparent;
+  border-image-source: linear-gradient(0deg, #017E7C 84.05%, #505EEC 15.6%);
+  border-image-slice: 1;
+  margin: -2px -2px -1px;
+}
+
+.ggeWidget .ggeQuestion input[type="email"][readonly],
+.ggeWidget .ggeQuestion input[type="number"][readonly],
+.ggeWidget .ggeQuestion input[type="text"][readonly] {
+  @apply su-p-0 su-border-none su-text-24 su-text-black-30 hocus:su-m-0 hocus:su-shadow-none;
+  background: transparent !important;
 }
 
 .ggeWidget .ggeQuestion--required label,
@@ -78,11 +109,11 @@
 .ggeWidget .ggeQuestion--error,
 .ggeWidget .ggeQuestion__error,
 .ggeWidget .ggePageNav--formError {
-  @apply su-bg-transparent su-text-digital-red-light;
+  @apply su-bg-transparent su-text-digital-red-xlight;
 }
 
 .ggeWidget .ggeQuestion .ggeQuestion__field select {
-  @apply su-bg-no-repeat;
+  @apply su-bg-no-repeat su-text-white su-leading-[2.4rem] md:su-leading-[2.7rem];
   background-position: right 22px center;
   background-image: url("../assets/arrow-down.svg");
   background-size: 21px;
@@ -92,14 +123,33 @@
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="number"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="text"],
 .ggeWidget .ggeQuestion.ggeQuestion--error select {
-  @apply su-border su-border-digital-red-light;
+  @apply su-border su-border-digital-red-xlight;
 }
 
-.ggeWidget .ggeQuestion input[type="email"],
-.ggeWidget .ggeQuestion input[type="number"],
-.ggeWidget .ggeQuestion input[type="text"],
-.ggeWidget .ggeQuestion textarea {
-  @apply su-px-[21px] md:su-px-[19px] su-py-[20px];
+.ggeTally {
+  @apply su-border-2 su-border-transparent su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem];
+  border-image-source: linear-gradient(0deg, #017E7C 84.05%, #505EEC 15.6%);
+  border-image-slice: 1;
+}
+
+.ggeTally tr {
+  @apply su-border-none
+}
+
+.ggeTally .ggeTally--text,
+.ggeTally .ggeTally--money {
+  @apply su-pt-0 su-pb-[3.2rem]
+}
+.ggeTally--text{
+  @apply su-border-b su-border-black-30;
+}
+
+.ggeTally .ggeTally--total {
+  @apply su-pt-12 su-pb-0;
+}
+
+.ggeTally .ggeTally--money {
+  @apply su-w-1/4;
 }
 
 .ggeWidget .ggeQuestion textarea {
@@ -107,27 +157,27 @@
 }
 
 .ggeWidget .ggePageNav {
-  @apply su-flex su-justify-center su-mt-0;
+  @apply su-flex su-justify-center su-mt-0 su-mx-auto;
 }
 
 .ggePageSet .ggeHidden ~ .ggePage .ggePageNav {
-  @apply su-justify-between;
+  @apply su-justify-center;
 }
 
 .ggeWidget .ggePageNav--back {
-  @apply su-static su-translate-y-0;
+  @apply su-static su-translate-y-0 su-mr-[2rem] lg:su-mr-[3.6rem];
 }
 
 .ggeWidget .ggeButton {
-  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45;
+  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md;
 }
 
 .ggeWidget .ggeButton--forward {
-  @apply su-border-solid su-border-3 su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-rounded-none
+  @apply su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
 }
 
 .ggeWidget .ggeButton--back {
-  @apply su-static su-border-2 su-border-solid su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
+  @apply su-static su-border-2 su-pr-[3rem] su-border-solid su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
 }
 
 .ggeWidget .ggeButton--forward::after,
@@ -143,7 +193,7 @@
 }
 
 .ggeWidget .ggeButton--back::before {
-  @apply su-bg-[#000] su-rotate-180 su-mr-8;
+  @apply su-bg-[#fff] su-rotate-180 su-mr-8;
 }
 
 .ggeWidget .ggeQuestion__label label {
@@ -200,36 +250,54 @@
 }
 
 .form-gradient {
+  @apply su-border-2 su-border-solid;
   background: linear-gradient(140.61deg, rgba(24, 29, 28, 0.64) 0%, rgba(24, 29, 28, 0.4) 110.98%);
+  border-image-source: linear-gradient(140.61deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 53.2%, rgba(255, 255, 255, 0.5) 109.83%);
 }
 
-.ggeWidget .ggeQuestion.su-email input,
-.ggeWidget .ggeQuestion[data-name="DigitalName"] input {
-  @apply su-bg-transparent su-p-0;
-}
-
-.ggeQuestion .su-email {
-  @apply su-text-black-30;
+.ggeWidget .ggeContent .ggeQuestion.su-phone,
+.ggeWidget .ggeContent .ggeQuestion.su-email {
+  @apply su-mb-0 su-text-black-30;
 }
 
 .ggeQuestion[data-name="DigitalName"] {
-  display: flex;
-  align-items: baseline;
+  @apply su-flex su-items-baseline;
 
 }
 .ggeQuestion[data-name="DigitalName"] .ggeQuestion__label {
-  padding: 0;
-  margin-right: 7px;
+  @apply su-text-[2.6rem] su-p-0 su-mr-[.7rem];
 }
 
 .ggeQuestion[data-name="DigitalName"] .ggeQuestion__field input {
-  font-weight: 600;
+  @apply su-text-[2.6rem] su-font-semibold;
+}
+
+.ggeWidget .ggeQuestion[data-name="DigitalName"] input[readonly] {
+  @apply su-text-white;
 }
 
 .additional-payment-form2 .ggeSection--profile header {
   display: none;
 }
 
+.ggeAddress__state,
+.ggeAddress__zipcode,
+.ggePayment--credit{
+  @apply su-float-left;
+  width: calc(50% - 10px);
+}
+
+/* If not US */
+.ggeAddress__zipcode + .ggeAddress__city {
+  @apply su-float-left su-ml-[2rem];
+  width: calc(50% - 10px);
+}
+
+.ggeAddress__state,
+.ggePayment--credit--account,
+.ggePayment--credit--monthExpires {
+  @apply su-clear-left su-mr-[2rem];
+}
 
 /* Confirmation page */
 .ggeConfirmationMessage {

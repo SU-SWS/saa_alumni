@@ -8,12 +8,18 @@ export const FormContext = createContext(initialFormState);
 
 function formReducer(state, action) {
   switch (action.type) {
+    case 'addRegistrant':
+      return {
+        travelersData: [action.payload, ...state.travelersData],
+      };
     case 'addTraveler':
-      return { travelersData: [...state.travelersData, action.payload] };
+      return {
+        travelersData: [...state.travelersData, action.payload],
+      };
     case 'removeTraveler':
       return {
         travelersData: state.travelersData.filter(
-          (traveler) => traveler.id !== action.payload
+          (traveler) => traveler.did !== action.payload
         ),
       };
     default:

@@ -102,7 +102,8 @@ const Event = ({
     if (isDark) {
       textColor = 'su-text-black-20';
       headlineColor = 'su-text-white hocus:su-text-white';
-      headlineIconColor = 'su-text-digital-red-light group-hocus:su-text-white';
+      headlineIconColor =
+        'su-text-digital-red-light group-hover:su-text-white group-focus:su-text-white';
     }
   }
 

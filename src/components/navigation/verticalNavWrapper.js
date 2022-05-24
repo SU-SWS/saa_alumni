@@ -67,7 +67,7 @@ const VerticalNavWrapper = ({
   return (
     <ul
       className={dcnb(
-        'su-list-none su-p-0 su-border su-border-solid su-border-black-10 lg:su-border-none children:su-border-t children:su-border-solid children:su-border-black-20 children:children:su-text-21 children:first:su-border-t-0 lg:children:first:su-border-t',
+        'su-list-none su-p-0 su-border su-border-solid su-border-black-10 lg:su-border-none children:su-border-t children:su-border-solid children:su-border-black-20 children:children:su-text-21 first:children:su-border-t-0 lg:first:children:su-border-t',
         className
       )}
       {...props}

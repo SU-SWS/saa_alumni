@@ -1,36 +1,35 @@
-import React, { useState, useContext } from 'react';
+/* eslint-disable no-param-reassign */
+import React, { useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
 
-const TripRelationShipCard = ({ traveler }) => {
+const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
-  const [removeBtn, setRemoveBtn] = useState(false);
-
-  let fullName = '';
-  if (traveler && traveler?.digitalName) {
-    fullName = traveler.digitalName;
-  }
-  if (traveler && traveler?.firstName && traveler?.lastName) {
-    fullName = `${traveler?.firstName} ${traveler?.lastName}`;
-  }
 
   const addRelationship = () => {
+    traveler.removeBtn = true;
+    if (traveler.su_reg.includes('Primary')) {
+      dispatch({
+        type: 'addRegistrant',
+        payload: traveler,
+      });
+      return;
+    }
     dispatch({
       type: 'addTraveler',
       payload: traveler,
     });
-    setRemoveBtn(true);
   };
 
   const removeRelationship = () => {
+    traveler.removeBtn = false;
     dispatch({
       type: 'removeTraveler',
-      payload: traveler?.id,
+      payload: traveler.did,
     });
-    setRemoveBtn(false);
   };
 
   return (
@@ -43,7 +42,7 @@ const TripRelationShipCard = ({ traveler }) => {
           iconType="play"
           className="su-mb-02em su-transition-colors su-text-m2"
         />
-        {removeBtn ? (
+        {traveler?.removeBtn ? (
           <span>
             <HeroIcon
               iconType="play"
@@ -67,9 +66,9 @@ const TripRelationShipCard = ({ traveler }) => {
           id="page-title"
           className="su-text-m2"
         >
-          {fullName}
+          {traveler.dname}
         </Heading>
-        {removeBtn ? (
+        {traveler?.removeBtn ? (
           <button
             type="button"
             className="su-button"
@@ -95,4 +94,4 @@ const TripRelationShipCard = ({ traveler }) => {
   );
 };
 
-export default TripRelationShipCard;
+export default TripTravelerCard;

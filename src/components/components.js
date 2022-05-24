@@ -26,7 +26,7 @@ import { SBHeading } from './storyblok/heading';
 import GiveGabForm from './embed/giveGabForm';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
-import InterstitialPage from './page-types/formPage/interstitialPage';
+import InterstitialPage from './page-types/registrationFormPage/interstitialPage';
 import Itinerary from './composite/itinerary';
 import ItineraryItem from './composite/itineraryItem';
 import LinkGroup from './navigation/linkGroup';
@@ -43,10 +43,13 @@ import Page from './page';
 import Perk from './content-types/perk/perk';
 import PerkCard from './cards/perkCard';
 import PerkCardHorizontal from './cards/perkCardHorizontal';
+import PromoCodeBanner from './cards/promoCodeBanner';
+import ProtectedContentWrapper from './layout/ProtectedContentWrapper';
+import protectedContentItem from './cards/protectedContentItem';
 import Poster from './composite/poster';
 import ProtectedPage from './page-types/protectedPage';
 import Redirect from './redirect/Redirect';
-import RegistrationFormPage from './page-types/formPage/registrationFormPage';
+import RegistrationFormPage from './page-types/registrationFormPage/registrationFormPage';
 import { SBSAAMainNav } from './storyblok/saaMainNav';
 import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
 import SearchFacet from './search/searchFacet';
@@ -119,6 +122,9 @@ const ComponentList = {
   perk: Perk,
   perkCard: PerkCard,
   perkCardHorizontal: PerkCardHorizontal,
+  protectedContentWrapper: ProtectedContentWrapper,
+  promoCodeBanner: PromoCodeBanner,
+  protectedContentItem,
   poster: Poster,
   protectedPage: ProtectedPage,
   redirect: Redirect,

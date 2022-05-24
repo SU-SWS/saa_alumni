@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
@@ -13,37 +13,88 @@ import { GridCell } from '../../layout/GridCell';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import {
-  FormContextProvider,
-  FormContext,
-} from '../../../contexts/FormContext';
+import { FormContextProvider } from '../../../contexts/FormContext';
 
 const RegistrationFormPage = (props) => {
   const {
     blok: {
       body,
       trip: {
-        content: { title: tripTitle },
+        full_slug: fullSlug,
+        content: {
+          title: tripTitle,
+          tripId,
+          startDate,
+          endDate,
+          extendStartDate,
+          extendEndDate,
+          extendPrice,
+          postExtendStartDate,
+          postExtendEndDate,
+          postExtendPrice,
+        },
       },
       heroImage: { filename, alt, focus } = {},
       giveGabForm,
       ankleContent,
     },
     blok,
-    location: { state },
+    location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip: ${tripTitle}`;
 
-  const guests = state?.guests;
-  // TODO: REMOVE THIS CONSOLE LOG BEFORE MERGE. This is for testing purposes only.
-  console.log('Prefill Data Obj: ', guests);
+  const travelers = location?.state?.travelers;
 
   useEffect(() => {
-    if (guests) {
-      window.prefillData = guests;
+    const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
+    // StoryBlok trip related data
+    window.trip_id = tripId;
+    window.trip_name = tripTitle;
+    window.trip_url = tripUrl;
+    window.trip_start_date = startDate;
+    window.trip_end_date = endDate;
+
+    // StoryBlok trip extend related data
+    window.trip_pre_extension = extendPrice;
+    window.trip_post_extension = postExtendPrice;
+
+    // Trip extension related data
+    const extension = () => {
+      if (extendStartDate && postExtendEndDate) {
+        return 'Both';
+      }
+      if (extendStartDate) {
+        return 'Pre-trip only';
+      }
+      if (postExtendEndDate) {
+        return 'Post-trip only';
+      }
+      return 'None';
+    };
+    window.pre_extension_start = extendStartDate;
+    window.pre_extension_end = extendEndDate;
+    window.post_extension_start = postExtendStartDate;
+    window.post_extension_end = postExtendEndDate;
+    window.extension = extension();
+
+    if (travelers) {
+      window.prefillData = travelers;
     }
-  }, [guests]);
+  }, [
+    travelers,
+    fullSlug,
+    tripId,
+    tripTitle,
+    startDate,
+    endDate,
+    extendStartDate,
+    extendEndDate,
+    extendPrice,
+    postExtendStartDate,
+    postExtendEndDate,
+    postExtendPrice,
+  ]);
 
   return (
     <AuthenticatedPage>
@@ -96,7 +147,7 @@ const RegistrationFormPage = (props) => {
                   xl={5}
                   className=" su-rs-pt-6 su-rs-mt-5"
                 >
-                  <CreateBloks blokSection={giveGabForm} />
+                  <CreateBloks blokSection={giveGabForm} tripId={tripId} />
                 </GridCell>
               </Grid>
               {numAnkle > 0 && <Ankle isDark {...props} />}

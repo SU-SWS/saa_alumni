@@ -1,6 +1,5 @@
 import React, { createContext } from 'react';
 import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
-import setGiveGabVars from '../utilities/giveGabVars';
 
 const initialAuthState = {
   userSession: null,
@@ -64,8 +63,8 @@ class AuthContextProvider extends React.Component {
           this.dispatch({ type: 'setAuthenticating', payload: false });
           return;
         }
+
         if (profile) {
-          setGiveGabVars(profile);
           this.dispatch({ type: 'setUserProfile', payload: profile });
         }
 

@@ -46,7 +46,7 @@ export const SBAlert = ({
         <RichTextRenderer
           wysiwyg={body}
           linkColor={linkColor}
-          className="children:su-card-paragraph children:su-leading-display children:first:su-mt-0"
+          className="children:su-card-paragraph children:su-leading-display first:children:su-mt-0"
         />
         {getNumBloks(alertCta) > 0 && (
           <div className="su-rs-mt-1">

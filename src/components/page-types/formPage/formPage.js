@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Container } from '../../layout/Container';
@@ -11,6 +11,11 @@ import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
+import AuthContext from '../../../contexts/AuthContext';
+import {
+  setGiveGabVars,
+  unsetGiveGabVars,
+} from '../../../utilities/giveGabVars';
 
 const FormPage = (props) => {
   const {
@@ -26,33 +31,51 @@ const FormPage = (props) => {
     },
     blok,
   } = props;
+  const hasDefaultHero = isSingleColumn ? filename : null;
   const numAnkle = getNumBloks(ankleContent);
   let contentStyle = 'su-sticky su-top-0 su-h-fit';
   let formCardStyle = 'su-rs-mt-7 lg:su-col-start-7 xl:su-col-start-7';
+  let heroStyle = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
   let bgCardStyle = false;
+  let overlay = 'formDark';
+  let gridContainerStyle = ' su-rs-pt-6';
 
   if (isSingleColumn) {
+    heroStyle = '';
     contentStyle = '';
     formCardStyle = 'lg:su-col-start-4 xl:su-col-start-4';
     bgCardStyle = 'su-bg-saa-black';
+    overlay = 'dark';
+    gridContainerStyle = 'su-bg-saa-black';
   }
+
+  const { userProfile } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (userProfile) {
+      setGiveGabVars(userProfile);
+    }
+    return () => {
+      unsetGiveGabVars();
+    };
+  }, [userProfile]);
 
   return (
     <AuthenticatedPage>
       <SbEditable content={blok}>
-        <Layout {...props}>
+        <Layout hasHero={hasDefaultHero} {...props}>
           <Container
             as="main"
             id="main-content"
             className="basic-page su-relative su-flex-grow su-w-full"
             width="full"
           >
-            <div className="su-fixed su-top-0 su-z-0 su-h-full su-w-full">
+            <div className={heroStyle}>
               <HeroImage
                 filename={filename}
                 alt={alt}
                 focus={focus}
-                overlay="formDark"
+                overlay={overlay}
                 aspectRatio="5x2"
                 className="su-object-cover su-h-full su-w-full"
               />
@@ -60,7 +83,10 @@ const FormPage = (props) => {
             <Grid
               gap
               xs={12}
-              className="su-relative su-cc su-z-10 su-rs-pb-8 su-rs-pt-6"
+              className={dcnb(
+                'su-relative su-cc su-z-10 su-rs-pb-8',
+                gridContainerStyle
+              )}
             >
               <GridCell
                 xs={12}
@@ -73,9 +99,14 @@ const FormPage = (props) => {
                       level={1}
                       align="left"
                       font="serif"
+                      size={isSingleColumn ? 8 : null}
                       srOnly={isSrOnlyTitle}
                       id="page-title"
-                      className={isSingleColumn ? 'su-rs-mt-5' : 'su-rs-mt-7'}
+                      className={
+                        isSingleColumn
+                          ? 'su-rs-mt-5 su-text-center'
+                          : 'su-rs-mt-7'
+                      }
                     >
                       {title}
                     </Heading>

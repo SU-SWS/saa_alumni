@@ -45,12 +45,13 @@
   package = "netlify-plugin-vault-variables"
   [plugins.inputs]
     endpoint = 'https://vault.stanford.edu'
-    # Order doesn't matter here as these will be fetch asyncronously. Try not to have dupes.
+    # Order doesn't matter here as these will be fetched asyncronously.
+    # Try not to have dupes.
     secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/tsgg']
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
-  
+
 [[plugins]]
   package = '/plugins/netlify-plugin-contextual-auth'
   [plugins.inputs]
@@ -65,12 +66,12 @@ package = "/plugins/netlify-plugin-wildcard-404-redirect"
  destination = "https://cardinalalumni.stanford.edu/:splat"
 
 [[plugins]]
-package = "@netlify/plugin-gatsby"
+  package = "@netlify/plugin-gatsby"
 
 # CONTEXTUAL PLUGINS
 # ##############################################################################
 [[context.production.plugins]]
-package = "netlify-plugin-submit-sitemap"
+  package = "netlify-plugin-submit-sitemap"
   [context.production.plugins.inputs]
   # Path to the sitemap URL (optional, default = /sitemap.xml)
   sitemapPath = "/sitemap/sitemap-index.xml"
