@@ -26,9 +26,11 @@ const RegistrationFormPage = (props) => {
           tripId,
           startDate,
           endDate,
+          extendHeading,
           extendStartDate,
           extendEndDate,
           extendPrice,
+          postExtendHeading,
           postExtendStartDate,
           postExtendEndDate,
           postExtendPrice,
@@ -49,17 +51,20 @@ const RegistrationFormPage = (props) => {
   useEffect(() => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
     // StoryBlok trip related data
-    window.trip_id = tripId;
-    window.trip_name = tripTitle;
-    window.trip_url = tripUrl;
-    window.trip_start_date = startDate;
-    window.trip_end_date = endDate;
+    window.su_trip_id = tripId;
+    window.su_trip_name = tripTitle;
+    window.su_trip_url = tripUrl;
+    window.su_trip_start_date = startDate;
+    window.su_trip_end_date = endDate;
 
-    // StoryBlok trip extend related data
-    window.trip_pre_extension = extendPrice;
-    window.trip_post_extension = postExtendPrice;
+    // Trip Room Category default
+    window.su_category_first = 'None';
+    window.su_category_second = 'None';
+    window.su_category_request = 'None';
 
     // Trip extension related data
+    window.su_pre_extension_name = extendHeading;
+    window.su_post_extension_name = postExtendHeading;
     const extension = () => {
       if (extendStartDate && postExtendEndDate) {
         return 'Both';
@@ -72,11 +77,11 @@ const RegistrationFormPage = (props) => {
       }
       return 'None';
     };
-    window.pre_extension_start = extendStartDate;
-    window.pre_extension_end = extendEndDate;
-    window.post_extension_start = postExtendStartDate;
-    window.post_extension_end = postExtendEndDate;
-    window.extension = extension();
+    window.su_pre_extension_start = extendStartDate;
+    window.su_pre_extension_end = extendEndDate;
+    window.su_post_extension_start = postExtendStartDate;
+    window.su_post_extension_end = postExtendEndDate;
+    window.su_extension = extension();
 
     if (travelers) {
       window.prefillData = travelers;
@@ -88,9 +93,11 @@ const RegistrationFormPage = (props) => {
     tripTitle,
     startDate,
     endDate,
+    extendHeading,
     extendStartDate,
     extendEndDate,
     extendPrice,
+    postExtendHeading,
     postExtendStartDate,
     postExtendEndDate,
     postExtendPrice,
