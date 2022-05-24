@@ -22,7 +22,6 @@ import {
   findSelectOption,
   prefixSelectList,
   relationshipSelectList,
-  affiliationSelectList,
 } from './registationFormOptions';
 import {
   findPreferredEmail,
@@ -48,7 +47,6 @@ const InterstitialPage = (props) => {
   const slug = location.pathname.replace(/\/$/, '');
   const { userProfile } = useContext(AuthContext);
   const relationships = userProfile?.relationships;
-  console.log(relationships);
 
   const structureTravelerData = (relationshipsData = []) => {
     let relatedContacts = [];
@@ -71,7 +69,6 @@ const InterstitialPage = (props) => {
                 ?.relatedContactMiddleName,
         su_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
-        su_affiliation: relationship?.affiliation || 'None',
         su_relation: findSelectOption(
           relationshipSelectList,
           relationship?.relationshipType
@@ -105,9 +102,6 @@ const InterstitialPage = (props) => {
     su_email_type: findPreferredEmailType(userProfile?.emails),
     su_phone: findPreferredPhoneNumber(userProfile?.phoneNumbers),
     su_phone_type: findPreferredPhoneNumberType(userProfile?.phoneNumbers),
-    su_affiliation:
-      findSelectOption(affiliationSelectList, userProfile?.affiliation) ||
-      'None',
     su_dob: userProfile?.birthDate,
     su_reg: 'Primary registrant',
     removeBtn: false,
