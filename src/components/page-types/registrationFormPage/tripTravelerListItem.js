@@ -12,14 +12,14 @@ const TripTravelerListItem = ({ traveler }) => {
     traveler.removeBtn = false;
     dispatch({
       type: 'removeTraveler',
-      payload: traveler.did,
+      payload: traveler.su_did,
     });
   };
 
   return (
     <FlexBox direction="row">
       <Heading level={3} align="left" font="serif">
-        {traveler.dname}
+        {traveler.su_dname}
       </Heading>
       <button type="button" onClick={removeRelationship}>
         Remove

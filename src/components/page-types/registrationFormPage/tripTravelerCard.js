@@ -28,7 +28,7 @@ const TripTravelerCard = ({ traveler }) => {
     traveler.removeBtn = false;
     dispatch({
       type: 'removeTraveler',
-      payload: traveler.did,
+      payload: traveler.su_did,
     });
   };
 
