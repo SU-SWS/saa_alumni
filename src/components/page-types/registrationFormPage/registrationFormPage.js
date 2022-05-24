@@ -57,11 +57,6 @@ const RegistrationFormPage = (props) => {
     window.su_trip_start_date = startDate;
     window.su_trip_end_date = endDate;
 
-    // Trip Room Category default
-    window.su_category_first = 'None';
-    window.su_category_second = 'None';
-    window.su_category_request = 'None';
-
     // Trip extension related data
     window.su_pre_extension_name = extendHeading;
     window.su_post_extension_name = postExtendHeading;
