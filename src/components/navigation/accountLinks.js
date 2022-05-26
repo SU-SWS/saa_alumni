@@ -107,7 +107,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                 />
               </button>
               <ul
-                className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[32rem] su-right-0 su-text-left
+                className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-cardinal-red-xdark su-z-10 su-list-none su-absolute su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[32rem] su-right-0 su-text-left
                   ${
                     expanded
                       ? 'su-scale-y-100 md:su-scale-x-100 su-opacity-100 su-visible'
