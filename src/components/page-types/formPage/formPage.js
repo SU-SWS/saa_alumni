@@ -56,7 +56,7 @@ const FormPage = (props) => {
 
   useEffect(() => {
     window.su_trip_id = tripId;
-    window.su_trip_title = tripTitle;
+    window.su_trip_name = tripTitle;
     if (userProfile) {
       setGiveGabVars(userProfile);
     }
