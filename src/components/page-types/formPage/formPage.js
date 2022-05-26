@@ -20,7 +20,9 @@ import {
 const FormPage = (props) => {
   const {
     blok: {
-      trip: { tripId, title: tripTitle },
+      trip: {
+        content: { tripId, title: tripTitle },
+      },
       trip,
       title,
       isSrOnlyTitle,

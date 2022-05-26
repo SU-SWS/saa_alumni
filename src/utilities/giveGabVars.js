@@ -12,7 +12,7 @@ const lookup = require('country-code-lookup');
 const findPreferredPhoneNumber = (phoneNumbers) => {
   let ret = false;
 
-  // Check the first email for the preferred type. Abort if anything is missing.
+  // Check the first phone number for the preferred type. Abort if anything is missing.
   if (
     !Array.isArray(phoneNumbers) ||
     !phoneNumbers[0]?.preferredPhoneNumberType
@@ -20,7 +20,7 @@ const findPreferredPhoneNumber = (phoneNumbers) => {
     return ret;
   }
 
-  // The preferred email is nested as a key in each of the options and we have
+  // The preferred phone number is nested as a key in each of the options and we have
   // to loop through each of the phoneNumbers looking for it.
   const pref = phoneNumbers[0].preferredPhoneNumberType;
   phoneNumbers.forEach((val, ind, arr) => {
