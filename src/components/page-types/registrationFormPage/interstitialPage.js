@@ -103,6 +103,7 @@ const InterstitialPage = (props) => {
     su_phone: findPreferredPhoneNumber(userProfile?.phoneNumbers),
     su_phone_type: findPreferredPhoneNumberType(userProfile?.phoneNumbers),
     su_dob: userProfile?.birthDate,
+    su_relation: 'Self',
     su_reg: 'Primary registrant',
     removeBtn: false,
   };
