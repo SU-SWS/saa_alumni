@@ -53,7 +53,7 @@ const FormPage = (props) => {
 
   useEffect(() => {
     window.su_trip_id = trip?.content?.tripId;
-    window.su_trip_name = trip?.content?.tripTitle;
+    window.su_trip_name = trip?.content?.title;
     if (userProfile) {
       setGiveGabVars(userProfile);
     }
