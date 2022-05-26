@@ -20,9 +20,6 @@ import {
 const FormPage = (props) => {
   const {
     blok: {
-      trip: {
-        content: { tripId, title: tripTitle },
-      },
       trip,
       title,
       isSrOnlyTitle,
@@ -55,15 +52,15 @@ const FormPage = (props) => {
   const { userProfile } = useContext(AuthContext);
 
   useEffect(() => {
-    window.su_trip_id = tripId;
-    window.su_trip_name = tripTitle;
+    window.su_trip_id = trip?.content?.tripId;
+    window.su_trip_name = trip?.content?.tripTitle;
     if (userProfile) {
       setGiveGabVars(userProfile);
     }
     return () => {
       unsetGiveGabVars();
     };
-  }, [userProfile, tripId, tripTitle]);
+  }, [userProfile, trip]);
 
   return (
     <AuthenticatedPage>
