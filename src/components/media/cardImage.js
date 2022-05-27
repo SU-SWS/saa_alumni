@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
 import transformImage from '../../utilities/transformImage';
 import getImageSize from '../../utilities/getImageSize';
@@ -14,6 +14,10 @@ const CardImage = ({
   loading = 'auto',
   ...props
 }) => {
+  // Work-around for hydration bug. See: https://github.com/gatsbyjs/gatsby/discussions/17914
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => setIsClient(true), [setIsClient]);
+
   const imgFocus = objectPosition[imageFocus];
   const imgLoading = loading;
 
@@ -53,6 +57,7 @@ const CardImage = ({
       className={dcnb('su-object-cover', className, imgFocus)}
       alt={alt ?? ''}
       loading={imgLoading}
+      key={isClient}
       {...props}
     />
   );
