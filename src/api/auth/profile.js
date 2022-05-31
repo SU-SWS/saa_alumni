@@ -13,20 +13,33 @@ import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
  */
 const megaprofileHandler = async (req, res) => {
   const mp = new MegaProfile();
+  const profileId = req.user.encodedSUID;
+  const token = await tokenFetcher();
+  let fullgg;
+  let affiliations;
+
+  // While the authentication is between states support fetching by both oauth
+  // services for the majority of the profile information.
   try {
-    const profileId = req.user.encodedSUID;
-    const token = await tokenFetcher();
-    const fullgg = await profileFetcher(profileId, token);
+    fullgg = await profileFetcher(profileId, token);
+  } catch (e) {
+    try {
+      fullgg = await mp.get(`/${profileId}/profiles/fullgg`);
+    } catch (err) {
+      return ExceptionHandler(res, err);
+    }
+  }
 
-    const { data: affiliations } = await mp.get(
-      `/${profileId}/profiles/affiliations`
-    );
-
-    const mpUser = { ...fullgg, affiliations };
-    return res.status(200).json(mpUser);
+  // Affiliations is already on the keycloak ouath so we fetch here.
+  try {
+    const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
+    affiliations = mpresult.data.affiliations;
   } catch (err) {
     return ExceptionHandler(res, err);
   }
+
+  const mpUser = { ...fullgg, affiliations };
+  return res.status(200).json(mpUser);
 };
 
 const handler = connect().use(authInstance.authorize()).get(megaprofileHandler);
