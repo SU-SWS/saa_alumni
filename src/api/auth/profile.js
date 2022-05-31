@@ -13,7 +13,7 @@ import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
  */
 const megaprofileHandler = async (req, res) => {
   const mp = new MegaProfile();
-  const profileId = 123 || req.user.encodedSUID;
+  const profileId = req.user.encodedSUID;
   const token = await tokenFetcher();
   let fullgg;
   let affiliations;
