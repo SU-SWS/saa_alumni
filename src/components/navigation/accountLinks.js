@@ -56,12 +56,12 @@ const AccountLinks = ({ mainLinkClasses }) => {
     },
     {
       text: 'Your Giving',
-      url: 'https://give.stanford.edu',
+      url: 'https://givinghistory.stanford.edu/',
       icon: true,
     },
     {
       text: 'Stanford Groups',
-      url: 'https://alumni.stanford.edu/groups/',
+      url: 'https://groups.stanford.edu/',
       icon: true,
       classes: 'su-pb-16',
     },
