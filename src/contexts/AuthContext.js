@@ -65,7 +65,6 @@ class AuthContextProvider extends React.Component {
           this.dispatch({ type: 'setAuthenticated', payload: false });
           this.dispatch({ type: 'setAuthenticating', payload: false });
           this.dispatch({ type: 'setError', payload: true });
-          console.log('LOGIN ERROR DUE TO API FAIL.');
           return;
         }
 
