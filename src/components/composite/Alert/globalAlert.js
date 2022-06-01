@@ -59,7 +59,7 @@ const GlobalAlert = () => {
           if (!isError || !showAlert) return null;
           return (
             <Alert
-              type="error"
+              type="warning"
               label="Login Error"
               hasDismiss
               dismissFunction={handleDismiss}
@@ -70,7 +70,7 @@ const GlobalAlert = () => {
               If this issue persists, please{' '}
               <a
                 href="https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=0d4e42301ba33410a61d41d5ec4bcbc7"
-                className="su-text-white hocus:su-text-black hocus:su-bg-white"
+                className="su-text-black hocus:su-no-underline hocus:su-text-black"
               >
                 submit a ticket.
               </a>
