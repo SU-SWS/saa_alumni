@@ -6,6 +6,7 @@ const initialAuthState = {
   userSession: null,
   isAuthenticated: false,
   isAuthenticating: true,
+  isError: false,
 };
 
 function authReducer(state, action) {
@@ -18,6 +19,8 @@ function authReducer(state, action) {
       return { ...state, userSession: action.payload };
     case 'setUserProfile':
       return { ...state, userProfile: action.payload };
+    case 'setError':
+      return { ...state, isError: action.payload };
     default:
       return state;
   }
@@ -58,6 +61,13 @@ class AuthContextProvider extends React.Component {
     // To be logged in, both session and profile must be available.
     Promise.all([sess, prof])
       .then(([session, profile]) => {
+        if (session && !profile) {
+          this.dispatch({ type: 'setAuthenticated', payload: false });
+          this.dispatch({ type: 'setAuthenticating', payload: false });
+          this.dispatch({ type: 'setError', payload: true });
+          return;
+        }
+
         if (!session || !profile) {
           this.dispatch({ type: 'setAuthenticated', payload: false });
           this.dispatch({ type: 'setAuthenticating', payload: false });
@@ -72,6 +82,7 @@ class AuthContextProvider extends React.Component {
       .catch((err) => {
         this.dispatch({ type: 'setAuthenticated', payload: false });
         this.dispatch({ type: 'setAuthenticating', payload: false });
+        this.dispatch({ type: 'setError', payload: true });
       });
   }
 
@@ -86,8 +97,13 @@ class AuthContextProvider extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { userProfile, userSession, isAuthenticated, isAuthenticating } =
-      this.state;
+    const {
+      userProfile,
+      userSession,
+      isAuthenticated,
+      isAuthenticating,
+      isError,
+    } = this.state;
     return (
       <AuthContext.Provider
         value={{
@@ -95,6 +111,7 @@ class AuthContextProvider extends React.Component {
           userSession,
           isAuthenticated,
           isAuthenticating,
+          isError,
           setAuthState: this.setAuthState,
         }}
       >
