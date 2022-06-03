@@ -11,9 +11,9 @@
     <h2>Scenario: Multiple, have account, same household</h2>
     <ul>
       <li>Multiple people traveling</li>
-      <li>Registrant has Stanford Pass account</li>
-      <li>Registrant does not have data within Megaprofile</li>
-      <li>Add'l travelers in the same household on Registrant's account</li>
+      <li>registrant has Stanford Pass account</li>
+      <li>registrant does not have data within Megaprofile</li>
+      <li>Add'l travelers in the same household on registrant's account</li>
     </ul>
     <hr />
 
@@ -29,9 +29,10 @@
           su_email: "rebecca@stanford.edu",
           su_email_type: "Business",
           su_phone: "1-415-123-4567",
-          su_phone_type: "Work",
+          su_phone_type: 'Business',
           su_dob: "10-10-2022",
-          su_reg: "Primary Registrant",
+          su_reg: "Primary registrant",
+          su_relation: 'Self',
         },
         {
           su_did: "000124",
