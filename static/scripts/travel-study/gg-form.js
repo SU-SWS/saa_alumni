@@ -1,5 +1,3 @@
-const autoComplete = require('./autoComplete');
-
 class ggForm {
   /**
    *
@@ -162,16 +160,12 @@ class ggForm {
   autocompleteConfig = async () => {
     const trips = await this.getTrips();
     // eslint-disable-next-line new-cap
+    // eslint-disable-next-line no-undef
     const autoCompleteJS = new autoComplete({
       selector: '#autoComplete',
-      placaeHolder: 'Search for Food...',
+      placeHolder: 'Search for Trip...',
       data: {
-        src: [
-          'Sauce - Thousand Island',
-          'Wild Boar - Tenderloin',
-          'Goat - Whole Cut',
-          ...trips,
-        ],
+        src: [...trips],
         cache: true,
       },
       resultsList: {
