@@ -26,7 +26,7 @@ const TripCustomJourneys = (props) => {
   return (
     <SbEditable content={blok}>
       <SbLink
-        link={tripURL}
+        link={{ url: tripURL }}
         classes="su-group su-inline-block su-font-light su-rs-mb-6 su-no-underline su-transition-colors"
       >
         <HeroIcon

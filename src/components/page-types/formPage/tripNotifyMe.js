@@ -54,8 +54,8 @@ const TripNotifyMe = (props) => {
       <Grid xs={12}>
         <GridCell xs={12} md={6} lg={12}>
           <SbLink
-            link={tripURL}
             classes="su-group su-inline-block su-font-light su-rs-mb-6 su-no-underline su-transition-colors"
+            link={{ url: tripURL }}
           >
             <HeroIcon
               iconType="arrow-left"
