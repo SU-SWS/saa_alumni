@@ -1,3 +1,5 @@
+const autoComplete = require('./autoComplete');
+
 class ggForm {
   /**
    *
@@ -19,6 +21,7 @@ class ggForm {
     await this.getUserInfo();
     this.render('Loading trip information...');
     this.embedTripSelect();
+    this.autocompleteConfig();
   };
 
   /**
@@ -98,7 +101,10 @@ class ggForm {
     const response = await fetch(this.tripApi);
     const trips = await response.json();
     this.trips = trips;
-    return trips;
+    const tripList = Object.keys(trips).map(
+      (key) => `${trips[key].title} ${trips[key].tripId}`
+    );
+    return tripList;
   };
 
   /**
@@ -126,13 +132,18 @@ class ggForm {
   /**
    * Embeds an option to select a trip.
    */
-  embedTripSelect = async () => {
-    const trips = await this.getTrips();
+  embedTripSelect = () => {
     const content = document.createElement('div');
     const message = document.createElement('h3');
     message.innerText = 'Select a trip to begin:';
-    const select = document.createElement('select');
-    select.id = `${this.id}-select`;
+    const div = document.createElement('div');
+    div.className = 'autoComplete_wrapper';
+    const input = document.createElement('input');
+    input.id = `autoComplete`;
+    input.type = `search`;
+    input.dir = 'ltr';
+    input.spellcheck = false;
+    div.appendChild(input);
     const go = document.createElement('button');
     go.innerText = 'Go ➡️';
     go.className = 'go-button';
@@ -141,19 +152,55 @@ class ggForm {
       this.renderForm();
     };
 
-    // Create and append the trip options.
-    Object.entries(trips).forEach(([key, value]) => {
-      const option = document.createElement('option');
-      option.value = key;
-      option.text = `${value.title} (${value.tripId})`;
-      select.appendChild(option);
-    });
-
     content.appendChild(message);
-    content.appendChild(select);
+    content.appendChild(div);
     content.appendChild(go);
 
     this.render(content);
+  };
+
+  autocompleteConfig = async () => {
+    const trips = await this.getTrips();
+    // eslint-disable-next-line new-cap
+    const autoCompleteJS = new autoComplete({
+      selector: '#autoComplete',
+      placaeHolder: 'Search for Food...',
+      data: {
+        src: [
+          'Sauce - Thousand Island',
+          'Wild Boar - Tenderloin',
+          'Goat - Whole Cut',
+          ...trips,
+        ],
+        cache: true,
+      },
+      resultsList: {
+        element: (list, data) => {
+          if (!data.results.length) {
+            // Create "No Results" message element
+            const message = document.createElement('div');
+            // Add class to the created element
+            message.setAttribute('class', 'no_result');
+            // Add message text content
+            message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
+            // Append message element to the results list
+            list.prepend(message);
+          }
+        },
+        noResults: true,
+      },
+      resultItem: {
+        highlight: true,
+      },
+      events: {
+        input: {
+          selection: (event) => {
+            const selection = event.detail.selection.value;
+            autoCompleteJS.input.value = selection;
+          },
+        },
+      },
+    });
   };
 }
 
