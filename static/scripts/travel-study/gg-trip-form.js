@@ -137,7 +137,7 @@ class ggTripForm {
    */
   embedTripSelect = () => {
     const content = document.createElement('div');
-    const message = document.createElement('h3');
+    const message = document.createElement('h2');
     message.innerText = 'Trip details';
 
     const labelDiv = document.createElement('div');
