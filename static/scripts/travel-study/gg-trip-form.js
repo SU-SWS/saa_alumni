@@ -98,9 +98,13 @@ class ggTripForm {
     const response = await fetch(this.tripApi);
     const trips = await response.json();
     this.trips = trips;
-    const tripList = Object.keys(trips).map(
-      (uuid) => `${trips[uuid].title} ${trips[uuid].tripId}`
-    );
+    const tripList = Object.keys(trips).map((uuid) => {
+      const trip = {
+        label: `${trips[uuid].title} ${trips[uuid].tripId}`,
+        value: uuid,
+      };
+      return trip;
+    });
     console.log(tripList);
     return tripList;
   };
@@ -172,8 +176,17 @@ class ggTripForm {
       selector: '#autoComplete',
       placeHolder: 'Search for Trip...',
       data: {
-        src: [...trips],
+        src: trips,
         cache: true,
+      },
+      searchEngine: (query, record) => {
+        // eslint-disable-next-line no-param-reassign
+        query = query.toLowerCase();
+        const recordName = record.label;
+        if (recordName && recordName.toLowerCase().includes(query)) {
+          return recordName;
+        }
+        return false;
       },
       resultsList: {
         element: (list, data) => {
@@ -192,8 +205,9 @@ class ggTripForm {
       events: {
         input: {
           selection: (event) => {
-            const selection = event.detail.selection.value;
+            const selection = event.detail.selection.value.label;
             autoCompleteJS.input.value = selection;
+            this.uuid = event.detail.selection.value.value;
           },
         },
       },
