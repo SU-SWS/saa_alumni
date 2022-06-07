@@ -45,6 +45,7 @@ class ggTripForm {
       this.user = {
         uid: 0,
         su_display_name: 'Guest',
+        display_name: 'Guest-suid',
         mail: 'person@example.com',
       };
     }
@@ -67,6 +68,7 @@ class ggTripForm {
     window.su_trip_id = this.trips[uuid].tripId;
     window.su_trip_name = this.trips[uuid].title;
     window.su_suid = this.user.display_name;
+    window.su_staff = this.user.su_display_name;
   };
 
   /**
