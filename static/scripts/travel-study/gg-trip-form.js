@@ -107,7 +107,6 @@ class ggTripForm {
       };
       return trip;
     });
-    console.log(tripList);
     return tripList;
   };
 
