@@ -168,6 +168,8 @@ class ggTripForm {
     content.appendChild(next);
 
     this.render(content);
+    document.head.innerHTML +=
+      '<link rel="stylesheet" href="static/scripts/travel-study/gg-form.css" type="text/css"/>';
   };
 
   autocompleteConfig = async () => {
