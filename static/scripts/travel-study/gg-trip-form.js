@@ -151,11 +151,11 @@ class ggTripForm {
     content.style.gap = '3rem';
 
     const sidebar = document.createElement('aside');
-    sidebar.className = 'gg-form-sidebar flex-lg-5-of-12';
+    sidebar.className = 'gg-form-sidebar flex-5-of-12';
     sidebar.innerHTML += this.getTripInfoBox(this.trips, this.uuid);
 
     const main = document.createElement('section');
-    main.className = 'gg-form-main flex-lg-7-of-12';
+    main.className = 'gg-form-main flex-7-of-12';
     main.appendChild(this.getGGScript());
 
     content.appendChild(sidebar);
