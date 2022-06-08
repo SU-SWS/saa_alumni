@@ -148,8 +148,6 @@ class ggTripForm {
   renderForm = () => {
     const content = document.createElement('article');
     content.className = 'gg-form-wrapper flex-container';
-    content.style.display = 'flex';
-    content.style.gap = '3rem';
 
     const sidebar = document.createElement('aside');
     sidebar.className = 'gg-form-sidebar flex-5-of-12';
@@ -172,7 +170,7 @@ class ggTripForm {
    */
   embedTripSelect = () => {
     document.head.innerHTML +=
-      '<link rel="stylesheet" href="http://localhost:8000/scripts/travel-study/gg-form.css" type="text/css"/>';
+      '<link rel="stylesheet" href="https://deploy-preview-361--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
     const content = document.createElement('div');
     content.className = 'gg-form-autocomplete';
     content.innerHTML = `
