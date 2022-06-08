@@ -69,7 +69,7 @@ class ggForm {
    */
   renderForm = () => {
     const content = document.createElement('article');
-    content.className = 'gg-form-wrapper';
+    content.className = 'gg-form-wrapper gg-form-notrip';
     const main = document.createElement('section');
     main.className = 'gg-form-main centered-container';
     const ggScript = document.createElement('div');
