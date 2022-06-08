@@ -168,7 +168,7 @@ class ggTripForm {
    */
   embedTripSelect = () => {
     document.head.innerHTML +=
-      '<link rel="stylesheet" href="/scripts/travel-study/gg-form.css" type="text/css"/>';
+      '<link rel="stylesheet" href="https://deploy-preview-361--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
     const content = document.createElement('div');
     content.className = 'gg-form-autocomplete';
     content.innerHTML = `
