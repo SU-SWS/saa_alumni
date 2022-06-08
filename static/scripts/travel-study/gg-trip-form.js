@@ -91,7 +91,7 @@ class ggTripForm {
     const tripDuration = timeDifference / (1000 * 3600 * 24);
 
     const content = `
-      <h3>Trip Information</h3>
+      <h2>Trip Information</h2>
       <p><strong>Trip Name:</strong> ${trips[uuid].title}</p>
       <p><strong>Trip ID:</strong> ${trips[uuid].tripId}</p>
       <p>
@@ -100,23 +100,23 @@ class ggTripForm {
         </a>
       </p>
       <div class="summary-item">
-        <h2>Dates<h2>
+        <h3>Dates</h3>
         <p>${dateRange}</p>
       </div>
       <div class="summary-item">
-        <h2>Duration<h2>
+        <h3>Duration</h3>
         <p>${tripDuration}</p>
       </div>
       <div class="summary-item">
-        <h2>Price<h2>
+        <h3>Price</h3>
         <p>${trips[uuid].price}</p>
       </div>
       <div class="summary-item">
-        <h2>Trip size<h2>
+        <h3>Trip size</h3>
         <p>${trips[uuid].tripSize}</p>
       </div>
       <div class="summary-item">
-        <h2>Minimum age requirement<h2>
+        <h3>Minimum age requirement</h3>
         <p>${trips[uuid].minAge}</p>
       </div>
     `;
@@ -172,7 +172,9 @@ class ggTripForm {
     const content = document.createElement('div');
     content.className = 'gg-form-autocomplete';
     content.innerHTML = `
-      <p>Staff name: ${this.user.su_display_name}</p>
+      <div class="gg-form-">
+        <p>Staff name: ${this.user.su_display_name}</p>
+      </div>
       <h2>Trip details</h2>
       <div>
         <label for="su_autoComplete">Trip name, year, and trip ID number</label>
