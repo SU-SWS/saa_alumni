@@ -60,7 +60,7 @@ const tripsCollection = async (req, res) => {
       full_slug: story.full_slug,
       tripId: story.content.tripId,
       tripSize: story.content.tripSize,
-      minAge: story.contentgit.minAge,
+      minAge: story.content.minAge,
       startDate: story.content.startDate,
       endDate: story.content.endDate,
       price: story.content?.cost?.content?.[0]?.content?.[0]?.text,
