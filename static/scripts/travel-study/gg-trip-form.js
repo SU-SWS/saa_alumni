@@ -168,10 +168,11 @@ class ggTripForm {
    */
   embedTripSelect = () => {
     document.head.innerHTML +=
-      '<link rel="stylesheet" href="static/scripts/travel-study/gg-form.css" type="text/css"/>';
+      '<link rel="stylesheet" href="/scripts/travel-study/gg-form.css" type="text/css"/>';
     const content = document.createElement('div');
     content.className = 'gg-form-autocomplete';
     content.innerHTML = `
+      <p>Staff name: ${this.user.su_display_name}</p>
       <h2>Trip details</h2>
       <div>
         <label for="su_autoComplete">Trip name, year, and trip ID number</label>
