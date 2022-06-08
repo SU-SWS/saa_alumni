@@ -70,12 +70,12 @@ class ggForm {
   renderForm = () => {
     const content = document.createElement('article');
     content.className = 'gg-form-wrapper';
-    content.style.display = 'flex';
-    content.style.gap = '3rem';
-
     const main = document.createElement('section');
-    main.className = 'gg-form-main';
-    main.appendChild(this.getGGScript());
+    main.className = 'gg-form-main centered-container';
+    const ggScript = document.createElement('div');
+    ggScript.className = 'gg-script-wrapper';
+    ggScript.appendChild(this.getGGScript());
+    main.appendChild(ggScript);
 
     content.appendChild(main);
     this.render(content);
@@ -85,6 +85,8 @@ class ggForm {
    * Embeds an option to select a trip.
    */
   embedInterstitialPage = () => {
+    document.head.innerHTML +=
+      '<link rel="stylesheet" href="https://deploy-preview-361--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
     const content = document.createElement('div');
     const staffName = document.createElement('p');
     staffName.innerText = `Staff name: ${this.user.su_display_name}`;

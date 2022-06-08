@@ -155,10 +155,10 @@ class ggTripForm {
 
     const main = document.createElement('section');
     main.className = 'gg-form-main flex-7-of-12';
-    const ggForm = document.createElement('div');
-    ggForm.className = 'gg-script-wrapper';
-    ggForm.appendChild(this.getGGScript());
-    main.appendChild(ggForm);
+    const ggScript = document.createElement('div');
+    ggScript.className = 'gg-script-wrapper';
+    ggScript.appendChild(this.getGGScript());
+    main.appendChild(ggScript);
 
     content.appendChild(sidebar);
     content.appendChild(main);
