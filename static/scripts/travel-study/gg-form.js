@@ -88,16 +88,17 @@ class ggForm {
     const content = document.createElement('div');
     const staffName = document.createElement('p');
     staffName.innerText = `Staff name: ${this.user.su_display_name}`;
-    const next = document.createElement('button');
-    next.innerText = 'Next ➡️';
-    next.className = 'next-button';
-    next.onclick = () => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'su-button su-link su-link--action';
+    button.innerHTML = 'Next';
+    button.onclick = () => {
       this.setADCVariables();
       this.renderForm();
     };
 
     content.appendChild(staffName);
-    content.appendChild(next);
+    content.appendChild(button);
 
     this.render(content);
   };
