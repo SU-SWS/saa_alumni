@@ -105,7 +105,7 @@ class ggTripForm {
       </div>
       <div class="summary-item">
         <h3>Duration</h3>
-        <p>${tripDuration}</p>
+        <p>${tripDuration} days</p>
       </div>
       <div class="summary-item">
         <h3>Price</h3>
@@ -132,6 +132,7 @@ class ggTripForm {
     const trips = await response.json();
     this.trips = trips;
     const tripList = Object.keys(trips).map((uuid) => {
+      // TBD: Confirm the final Trip label (e.g. Australian, June 2022 (123456))
       const trip = {
         label: `${trips[uuid].title} ${trips[uuid].tripId}`,
         value: uuid,
@@ -168,7 +169,7 @@ class ggTripForm {
    */
   embedTripSelect = () => {
     document.head.innerHTML +=
-      '<link rel="stylesheet" href="https://deploy-preview-361--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
+      '<link rel="stylesheet" href="http://localhost:8000/scripts/travel-study/gg-form.css" type="text/css"/>';
     const content = document.createElement('div');
     content.className = 'gg-form-autocomplete';
     content.innerHTML = `
