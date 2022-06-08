@@ -146,16 +146,16 @@ class ggTripForm {
    */
   renderForm = () => {
     const content = document.createElement('article');
-    content.className = 'gg-form-wrapper';
+    content.className = 'gg-form-wrapper flex-container';
     content.style.display = 'flex';
     content.style.gap = '3rem';
 
     const sidebar = document.createElement('aside');
-    sidebar.className = 'gg-form-sidebar';
+    sidebar.className = 'gg-form-sidebar flex-lg-5-of-12';
     sidebar.innerHTML += this.getTripInfoBox(this.trips, this.uuid);
 
     const main = document.createElement('section');
-    main.className = 'gg-form-main';
+    main.className = 'gg-form-main flex-lg-7-of-12';
     main.appendChild(this.getGGScript());
 
     content.appendChild(sidebar);
@@ -172,15 +172,13 @@ class ggTripForm {
     const content = document.createElement('div');
     content.className = 'gg-form-autocomplete';
     content.innerHTML = `
-      <div class="gg-form-">
+      <div class="gg-form-staff">
         <p>Staff name: ${this.user.su_display_name}</p>
       </div>
       <h2>Trip details</h2>
-      <div>
-        <label for="su_autoComplete">Trip name, year, and trip ID number</label>
-        <div class="autoComplete_wrapper">
-          <input id="su_autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="2048" tabindex="1">
-        </div>
+      <div class="gg-autocomplete-wrapper">
+        <label for="autoComplete">Trip name, year, and trip ID number</label>
+        <input id="autoComplete" class="gg-autocomplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="2048" tabindex="1">
       </div>
     `;
     const button = document.createElement('button');
@@ -200,7 +198,7 @@ class ggTripForm {
     const trips = await this.getTrips();
     // eslint-disable-next-line no-undef
     const autoCompleteJS = new autoComplete({
-      selector: '#su_autoComplete',
+      selector: '#autoComplete',
       placeHolder: 'Search for Trip...',
       data: {
         src: trips,
