@@ -75,19 +75,50 @@ class ggTripForm {
    * Get the information box.
    */
   getTripInfoBox = (trips, uuid) => {
+    const dateFormat = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    };
+    const startDate = new Date(trips[uuid].startDate);
+    const endDate = new Date(trips[uuid].endDate);
+    const dateRange = `${startDate.toLocaleDateString(
+      'en-US',
+      dateFormat
+    )} - ${endDate.toLocaleDateString('en-US', dateFormat)}`;
+
+    const timeDifference = endDate.getTime() - startDate.getTime();
+    const tripDuration = timeDifference / (1000 * 3600 * 24);
+
     const content = `
       <h3>Trip Information</h3>
       <p><strong>Trip Name:</strong> ${trips[uuid].title}</p>
       <p><strong>Trip ID:</strong> ${trips[uuid].tripId}</p>
       <p>
-        <strong>Trip URL:</strong>
-        <a href="https://alumni.stanford.edu/${trips[uuid].full_slug}" target="_blank" rel="noopener">
-          https://alumni.stanford.edu/${trips[uuid].full_slug}
+        <a href="https://alumni.stanford.edu/${trips[uuid].full_slug}" target="_blank" rel="noopener" class="su-link su-link--external">
+          See trip details
         </a>
       </p>
-      <p><strong>Trip Subtitle:</strong> ${trips[uuid].subtitle}</p>
-      <p><strong>Trip Start Date:</strong> ${trips[uuid].startDate}</p>
-      <p><strong>Trip End Date:</strong> ${trips[uuid].endDate}</p>
+      <div class="summary-item">
+        <h2>Dates<h2>
+        <p>${dateRange}</p>
+      </div>
+      <div class="summary-item">
+        <h2>Duration<h2>
+        <p>${tripDuration}</p>
+      </div>
+      <div class="summary-item">
+        <h2>Price<h2>
+        <p>${trips[uuid].price}</p>
+      </div>
+      <div class="summary-item">
+        <h2>Trip size<h2>
+        <p>${trips[uuid].tripSize}</p>
+      </div>
+      <div class="summary-item">
+        <h2>Minimum age requirement<h2>
+        <p>${trips[uuid].minAge}</p>
+      </div>
     `;
     return content;
   };
@@ -136,47 +167,37 @@ class ggTripForm {
    * Embeds an option to select a trip.
    */
   embedTripSelect = () => {
+    document.head.innerHTML +=
+      '<link rel="stylesheet" href="static/scripts/travel-study/gg-form.css" type="text/css"/>';
     const content = document.createElement('div');
-    const message = document.createElement('h2');
-    message.innerText = 'Trip details';
-
-    const labelDiv = document.createElement('div');
-    const label = document.createElement('label');
-    label.innerText = 'Trip name, year, and trip ID number';
-    labelDiv.appendChild(label);
-
-    const inputDiv = document.createElement('div');
-    inputDiv.className = 'autoComplete_wrapper';
-    const input = document.createElement('input');
-    input.id = `autoComplete`;
-    input.type = `search`;
-    input.dir = 'ltr';
-    input.spellcheck = false;
-    inputDiv.appendChild(input);
-
-    const next = document.createElement('button');
-    next.innerText = 'Next ➡️';
-    next.className = 'next-button';
-    next.onclick = () => {
+    content.className = 'gg-form-autocomplete';
+    content.innerHTML = `
+      <h2>Trip details</h2>
+      <div>
+        <label for="su_autoComplete">Trip name, year, and trip ID number</label>
+        <div class="autoComplete_wrapper">
+          <input id="su_autoComplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="2048" tabindex="1">
+        </div>
+      </div>
+    `;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'su-button su-link su-link--action';
+    button.innerHTML = 'Next';
+    button.onclick = () => {
       this.setADCVariables();
       this.renderForm();
     };
 
-    content.appendChild(message);
-    content.appendChild(labelDiv);
-    content.appendChild(inputDiv);
-    content.appendChild(next);
-
+    content.appendChild(button);
     this.render(content);
-    document.head.innerHTML +=
-      '<link rel="stylesheet" href="static/scripts/travel-study/gg-form.css" type="text/css"/>';
   };
 
   autocompleteConfig = async () => {
     const trips = await this.getTrips();
     // eslint-disable-next-line no-undef
     const autoCompleteJS = new autoComplete({
-      selector: '#autoComplete',
+      selector: '#su_autoComplete',
       placeHolder: 'Search for Trip...',
       data: {
         src: trips,
