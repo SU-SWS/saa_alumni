@@ -46,6 +46,7 @@ const RegistrationFormPage = (props) => {
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip`;
+  const helmetTitle = `Register for your trip: ${tripTitle}`;
   const heroProps = {
     image: { filename, alt, focus },
     headline: title,
@@ -117,7 +118,7 @@ const RegistrationFormPage = (props) => {
               className="basic-page su-relative su-flex-grow su-w-full"
               width="full"
             >
-              <Helmet titleTemplate={title} title={title} />
+              <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
               <Hero blok={heroProps} />
               <Grid
                 gap
