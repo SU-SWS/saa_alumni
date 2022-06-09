@@ -56,6 +56,7 @@ const RegistrationFormPage = (props) => {
   };
 
   const travelers = location?.state?.travelers;
+  console.log(travelers);
 
   useEffect(() => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
