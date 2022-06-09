@@ -41,15 +41,13 @@ const findPreferredPhoneNumber = (phoneNumbers) => {
  * @returns {string|boolean}
  *   The phone number when found or false
  */
-export const findPhoneNumberType = (phoneNumbers, type) => {
+const findPhoneNumberType = (phoneNumbers, type) => {
   let ret = false;
-  let pref = false;
   const BreakException = {};
   try {
     phoneNumbers.forEach((val, ind, arr) => {
       if (val.phoneNumberType === type) {
         ret = val.phoneNumber;
-        pref = val.phoneNumberType;
         throw BreakException;
       }
     });
@@ -57,7 +55,7 @@ export const findPhoneNumberType = (phoneNumbers, type) => {
     if (e !== BreakException) throw e;
   }
 
-  return { ret, pref };
+  return ret;
 };
 
 /**
@@ -161,13 +159,11 @@ const findPreferredEmail = (emails) => {
  */
 const findEmailType = (emails, type) => {
   let ret = false;
-  let pref = false;
   const BreakException = {};
   try {
     emails.forEach((val, ind, arr) => {
       if (val.emailType === type && val.emailStatus === 'Active') {
         ret = val.emailAddress;
-        pref = val.emailType;
         throw BreakException;
       }
     });
@@ -175,7 +171,7 @@ const findEmailType = (emails, type) => {
     if (e !== BreakException) throw e;
   }
 
-  return { ret, pref };
+  return ret;
 };
 
 /**
@@ -215,7 +211,7 @@ export const findEmail = (emails) => {
  * @returns {string|boolean}
  *   The pref email type
  */
-export const findPreferredEmailType = (emails, prefEmail) => {
+export const findPreferredEmailType = (emails = [], prefEmail) => {
   let pref = emails.find((val) => {
     if (val.email === prefEmail) {
       return val.preferredEmailType;
