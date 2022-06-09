@@ -111,7 +111,6 @@ const FormPage = (props) => {
                       level={1}
                       align="left"
                       font="serif"
-                      size={isSingleColumn ? 8 : null}
                       srOnly={isSrOnlyTitle}
                       id="page-title"
                       className="su-rs-mt-7"

@@ -7,13 +7,14 @@ import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
-import { HeroImage } from '../../composite/HeroImage/HeroImage';
+import Hero from '../../composite/hero';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
+import Header from '../../partials/header';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -44,7 +45,14 @@ const RegistrationFormPage = (props) => {
     location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
-  const title = `Register for your trip: ${tripTitle}`;
+  const title = `Register for your trip`;
+  const heroProps = {
+    image: { filename, alt, focus },
+    headline: title,
+    headlineSize: 'medium',
+    isDarkGradient: 'true',
+    isHideScroll: 'true',
+  };
 
   const travelers = location?.state?.travelers;
 
@@ -110,46 +118,41 @@ const RegistrationFormPage = (props) => {
               width="full"
             >
               <Helmet titleTemplate={title} title={title} />
-              <div className="su-fixed su-top-0 su-z-0 su-h-full su-w-full">
-                <HeroImage
-                  filename={filename}
-                  alt={alt}
-                  focus={focus}
-                  overlay="formDark"
-                  aspectRatio="5x2"
-                  className="su-object-cover su-h-full su-w-full"
-                />
-              </div>
+              <Hero blok={heroProps} />
               <Grid
                 gap
                 xs={12}
-                className="su-relative su-cc su-z-10 su-rs-pb-8"
+                className="su-relative su-cc su-z-10 su-rs-pb-8 su-bg-saa-black"
               >
-                <GridCell xs={12} lg={5} xl={5}>
-                  <div className="su-sticky su-top-0 su-h-fit su-text-white su-rs-pt-6">
+                <GridCell
+                  xs={12}
+                  lg={6}
+                  xl={6}
+                  className="lg:su-col-start-4 xl:su-col-start-4"
+                >
+                  <div className="su-text-white">
                     <Heading
-                      level={1}
-                      align="left"
+                      level={2}
+                      align="center"
                       font="serif"
-                      id="page-title"
+                      className="su-rs-mt-7"
                     >
-                      {title}
+                      {tripTitle}:<br />
+                      Registration
                     </Heading>
-                    {hasRichText(body) && (
-                      <RichTextRenderer
-                        wysiwyg={body}
-                        className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                      />
-                    )}
                   </div>
                 </GridCell>
                 <GridCell
                   xs={12}
-                  lg={5}
-                  xl={5}
-                  className=" su-rs-pt-6 su-rs-mt-5"
+                  lg={6}
+                  xl={6}
+                  className="lg:su-col-start-4 xl:su-col-start-4"
                 >
-                  <CreateBloks blokSection={giveGabForm} tripId={tripId} />
+                  <CreateBloks
+                    blokSection={giveGabForm}
+                    bgCardStyle="su-bg-saa-black"
+                    tripId={tripId}
+                  />
                 </GridCell>
               </Grid>
               {numAnkle > 0 && <Ankle isDark {...props} />}
