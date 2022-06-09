@@ -95,15 +95,18 @@ export const findPhoneNumber = (phoneNumbers) => {
  * @returns {string|boolean}
  *   The pref phone number type
  */
-export const findPreferredPhoneNumberType = (phoneNumbers, prefPhoneNumber) => {
-  let pref = phoneNumbers.find((val) => {
-    if (val.phoneNumber === prefPhoneNumber) {
+export const findPreferredPhoneNumberType = (
+  phoneNumbers = [],
+  prefPhoneNumber
+) => {
+  let pref = phoneNumbers?.find((val) => {
+    if (val?.phoneNumber === prefPhoneNumber) {
       return val.phoneNumberType;
     }
     return 'Home Phone';
   });
 
-  if (phoneNumbers[0].preferredPhoneNumberType === null) {
+  if (phoneNumbers[0]?.preferredPhoneNumberType === null) {
     return pref;
   }
 
@@ -212,14 +215,14 @@ export const findEmail = (emails) => {
  *   The pref email type
  */
 export const findPreferredEmailType = (emails = [], prefEmail) => {
-  let pref = emails.find((val) => {
-    if (val.email === prefEmail) {
+  let pref = emails?.find((val) => {
+    if (val?.email === prefEmail) {
       return val.preferredEmailType;
     }
     return 'Home Email';
   });
 
-  if (emails[0].preferredEmailType === null) {
+  if (emails[0]?.preferredEmailType === null) {
     return pref;
   }
 
