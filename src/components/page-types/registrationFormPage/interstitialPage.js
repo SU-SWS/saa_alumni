@@ -24,9 +24,9 @@ import {
   relationshipSelectList,
 } from './registationFormOptions';
 import {
-  findPreferredEmail,
+  findEmail,
   findPreferredEmailType,
-  findPreferredPhoneNumber,
+  findPhoneNumber,
   findPreferredPhoneNumberType,
 } from '../../../utilities/giveGabVars';
 
@@ -83,8 +83,20 @@ const InterstitialPage = (props) => {
     });
     return relatedContacts;
   };
-
   const relatedContacts = structureTravelerData(relationships);
+
+  const primaryRegistrantEmail = findEmail(userProfile?.emails);
+  const primaryRegistrantEmailType = findPreferredEmailType(
+    userProfile?.emails,
+    primaryRegistrantEmail
+  );
+  const primaryRegistrantPhoneNumber = findPhoneNumber(
+    userProfile?.phoneNumbers
+  );
+  const primaryRegistrantPhoneNumberType = findPreferredPhoneNumberType(
+    userProfile?.phoneNumbers,
+    primaryRegistrantPhoneNumber
+  );
   const primaryRegistrant = {
     su_did: userProfile?.encodedSUID,
     su_dname: `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`,
@@ -98,10 +110,10 @@ const InterstitialPage = (props) => {
         ? '&nbsp;'
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
-    su_email: findPreferredEmail(userProfile?.emails),
-    su_email_type: findPreferredEmailType(userProfile?.emails),
-    su_phone: findPreferredPhoneNumber(userProfile?.phoneNumbers),
-    su_phone_type: findPreferredPhoneNumberType(userProfile?.phoneNumbers),
+    su_email: primaryRegistrantEmail,
+    su_email_type: primaryRegistrantEmailType,
+    su_phone: primaryRegistrantPhoneNumber,
+    su_phone_type: primaryRegistrantPhoneNumberType,
     su_dob: userProfile?.birthDate,
     su_relation: 'Self',
     su_reg: 'Primary registrant',
