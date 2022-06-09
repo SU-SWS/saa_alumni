@@ -16,6 +16,7 @@ import {
   setGiveGabVars,
   unsetGiveGabVars,
 } from '../../../utilities/giveGabVars';
+import Hero from '../../composite/hero';
 
 const FormPage = (props) => {
   const {
@@ -33,19 +34,23 @@ const FormPage = (props) => {
   } = props;
   const hasDefaultHero = isSingleColumn ? filename : null;
   const numAnkle = getNumBloks(ankleContent);
+  const heroProps = {
+    image: { filename, alt, focus },
+    headline: title,
+    headlineSize: 'large',
+    isDarkGradient: 'true',
+    isHideScroll: 'true',
+  };
+
   let contentStyle = 'su-sticky su-top-0 su-h-fit';
   let formCardStyle = 'su-rs-mt-7 lg:su-col-start-7 xl:su-col-start-7';
-  let heroStyle = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
   let bgCardStyle = false;
-  let overlay = 'formDark';
   let gridContainerStyle = ' su-rs-pt-6';
 
   if (isSingleColumn) {
-    heroStyle = '';
     contentStyle = '';
     formCardStyle = 'lg:su-col-start-4 xl:su-col-start-4';
     bgCardStyle = 'su-bg-saa-black';
-    overlay = 'dark';
     gridContainerStyle = 'su-bg-saa-black';
   }
 
@@ -72,16 +77,21 @@ const FormPage = (props) => {
             className="basic-page su-relative su-flex-grow su-w-full"
             width="full"
           >
-            <div className={heroStyle}>
-              <HeroImage
-                filename={filename}
-                alt={alt}
-                focus={focus}
-                overlay={overlay}
-                aspectRatio="5x2"
-                className="su-object-cover su-h-full su-w-full"
-              />
-            </div>
+            {isSingleColumn ? (
+              <Hero blok={heroProps} />
+            ) : (
+              <div className="su-fixed su-top-0 su-z-0 su-h-full su-w-full">
+                <HeroImage
+                  filename={filename}
+                  alt={alt}
+                  focus={focus}
+                  overlay="formDark"
+                  aspectRatio="5x2"
+                  className="su-object-cover su-h-full su-w-full"
+                />
+              </div>
+            )}
+
             <Grid
               gap
               xs={12}
@@ -96,7 +106,7 @@ const FormPage = (props) => {
                 xl={isSingleColumn ? 12 : 5}
               >
                 <div className={dcnb('su-text-white', contentStyle)}>
-                  {title && (
+                  {!isSingleColumn && title && (
                     <Heading
                       level={1}
                       align="left"
@@ -104,11 +114,7 @@ const FormPage = (props) => {
                       size={isSingleColumn ? 8 : null}
                       srOnly={isSrOnlyTitle}
                       id="page-title"
-                      className={
-                        isSingleColumn
-                          ? 'su-rs-mt-5 su-text-center'
-                          : 'su-rs-mt-7'
-                      }
+                      className="su-rs-mt-7"
                     >
                       {title}
                     </Heading>
