@@ -10,16 +10,12 @@ import Ankle from '../../partials/ankle/ankle';
 import Hero from '../../composite/hero';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
-import RichTextRenderer from '../../../utilities/richTextRenderer';
-import hasRichText from '../../../utilities/hasRichText';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
-import Header from '../../partials/header';
 
 const RegistrationFormPage = (props) => {
   const {
     blok: {
-      body,
       trip: {
         full_slug: fullSlug,
         content: {

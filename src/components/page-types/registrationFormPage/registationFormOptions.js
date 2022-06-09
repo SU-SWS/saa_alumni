@@ -88,3 +88,7 @@ export const relationshipSelectList = [
   'Self',
   'Guest',
 ];
+
+export const emailTypeList = ['Home', 'Business', 'Other'];
+
+export const phoneNumberTypeList = ['Home', 'Business', 'Mobile'];

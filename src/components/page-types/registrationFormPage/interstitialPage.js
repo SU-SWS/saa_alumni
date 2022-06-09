@@ -22,6 +22,8 @@ import {
   findSelectOption,
   prefixSelectList,
   relationshipSelectList,
+  emailTypeList,
+  phoneNumberTypeList,
 } from './registationFormOptions';
 import {
   findEmail,
@@ -111,9 +113,12 @@ const InterstitialPage = (props) => {
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
     su_email: primaryRegistrantEmail,
-    su_email_type: primaryRegistrantEmailType,
+    su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
     su_phone: primaryRegistrantPhoneNumber,
-    su_phone_type: primaryRegistrantPhoneNumberType,
+    su_phone_type: findSelectOption(
+      phoneNumberTypeList,
+      primaryRegistrantPhoneNumberType
+    ),
     su_dob: userProfile?.birthDate,
     su_relation: 'Self',
     su_reg: 'Primary registrant',
