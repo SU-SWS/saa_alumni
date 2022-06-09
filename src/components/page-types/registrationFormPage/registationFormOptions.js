@@ -1,9 +1,14 @@
 export const findSelectOption = (select = [], value) => {
-  if (select.includes(value)) {
-    const index = select.findIndex((item) => item.indexOf(value) !== -1);
-    return select[index];
-  }
-  return null;
+  let selected = null;
+  select?.forEach((option) => {
+    if (value === option) {
+      selected = option;
+    }
+    if (value?.includes(option)) {
+      selected = option;
+    }
+  });
+  return selected;
 };
 
 export const prefixSelectList = [
