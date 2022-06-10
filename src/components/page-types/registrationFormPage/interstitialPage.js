@@ -31,6 +31,7 @@ import {
   findPhoneNumber,
   findPreferredPhoneNumberType,
 } from '../../../utilities/giveGabVars';
+import { GridCell } from '../../layout/GridCell';
 
 const InterstitialPage = (props) => {
   const {
@@ -126,70 +127,70 @@ const InterstitialPage = (props) => {
   };
 
   return (
-    <AuthenticatedPage>
-      <FormContextProvider>
-        <SbEditable content={blok}>
-          <Layout {...props}>
-            <Container
-              as="main"
-              id="main-content"
-              className="basic-page su-relative su-flex-grow su-w-full"
-              width="full"
-            >
-              <Helmet titleTemplate={title} title={title} />
-              <Container className="su-cc su-rs-pb-8">
-                <Heading level={1} align="left" font="serif" id="page-title">
-                  {title}
-                </Heading>
-                {hasRichText(body) && (
-                  <RichTextRenderer
-                    wysiwyg={body}
-                    className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                  />
-                )}
-                {relationships?.length > 0 ? (
-                  <Grid gap md={12}>
-                    {/* TODO: ADAPT-4677 Determine how we want to pass the registrant's data (which must include their name, email, address) */}
-                    <TripTravelerCard traveler={primaryRegistrant} />
-                    {relatedContacts.map((relatedContact) => (
-                      <TripTravelerCard
-                        key={relatedContact.did}
-                        traveler={relatedContact}
-                      />
-                    ))}
-                  </Grid>
-                ) : (
-                  <p>No relationships are available at this time</p>
-                )}
-                {/* Relationship? List */}
-                <Heading level={2} align="left" font="serif">
-                  Your trip registrants
-                </Heading>
-                <p>
-                  Please confirm that you would like to register the following
-                  people for this trip. Please note that you will be able to add
-                  the above people later if you choose, but you will have to
-                  enter their information manually.
-                </p>
-                <TripTravelerList />
-                <FormContext.Consumer>
-                  {(value) => (
-                    <Link
-                      to={`${slug}/form`}
-                      className="su-button"
-                      state={{ travelers: value[0].travelersData }}
-                    >
-                      Next
-                    </Link>
+    // <AuthenticatedPage>
+    <FormContextProvider>
+      <SbEditable content={blok}>
+        <Layout {...props}>
+          <Container
+            as="main"
+            id="main-content"
+            className="basic-page su-relative su-flex-grow su-w-full"
+            width="full"
+          >
+            <Helmet titleTemplate={title} title={title} />
+            <Container className="su-cc su-rs-pb-8">
+              <Heading level={1} align="left" font="serif" id="page-title">
+                {title}
+              </Heading>
+              {hasRichText(body) && (
+                <RichTextRenderer
+                  wysiwyg={body}
+                  className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                />
+              )}
+              <Grid>
+                <GridCell md={8}>
+                  {relationships?.length > 0 ? (
+                    <>
+                      <TripTravelerCard traveler={primaryRegistrant} />
+                      {relatedContacts.map((relatedContact) => (
+                        <TripTravelerCard
+                          key={relatedContact.did}
+                          traveler={relatedContact}
+                        />
+                      ))}
+                    </>
+                  ) : (
+                    <p>No relationships are available at this time</p>
                   )}
-                </FormContext.Consumer>
-              </Container>
-              {numAnkle > 0 && <Ankle isDark {...props} />}
+                </GridCell>
+                <GridCell md={8}>
+                  <div>
+                    <Heading level={2} align="left" font="serif">
+                      Added travelers
+                    </Heading>
+                    <TripTravelerList />
+                  </div>
+                  <FormContext.Consumer>
+                    {(value) => (
+                      <Link
+                        to={`${slug}/form`}
+                        className="su-button"
+                        state={{ travelers: value[0].travelersData }}
+                      >
+                        Next
+                      </Link>
+                    )}
+                  </FormContext.Consumer>
+                </GridCell>
+              </Grid>
             </Container>
-          </Layout>
-        </SbEditable>
-      </FormContextProvider>
-    </AuthenticatedPage>
+            {numAnkle > 0 && <Ankle isDark {...props} />}
+          </Container>
+        </Layout>
+      </SbEditable>
+    </FormContextProvider>
+    // </AuthenticatedPage>
   );
 };
 
