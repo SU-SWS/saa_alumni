@@ -7,6 +7,7 @@ import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
+import Hero from '../../composite/hero';
 import { Grid } from '../../layout/Grid';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
@@ -40,14 +41,23 @@ const InterstitialPage = (props) => {
       trip: {
         content: { title: tripTitle },
       },
+      heroImage: { filename, alt, focus } = {},
       ankleContent,
     },
     blok,
     location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
-  const title = `Register for your trip: ${tripTitle}`;
+  const title = `Register for your trip`;
+  const helmetTitle = `Register for your trip: ${tripTitle}`;
   const slug = location.pathname.replace(/\/$/, '');
+  const heroProps = {
+    image: { filename, alt, focus },
+    headline: title,
+    headlineSize: 'medium',
+    isDarkGradient: 'true',
+    isHideScroll: 'true',
+  };
   const { userProfile } = useContext(AuthContext);
   const relationships = userProfile?.relationships;
 
@@ -127,70 +137,71 @@ const InterstitialPage = (props) => {
   };
 
   return (
-    // <AuthenticatedPage>
-    <FormContextProvider>
-      <SbEditable content={blok}>
-        <Layout {...props}>
-          <Container
-            as="main"
-            id="main-content"
-            className="basic-page su-relative su-flex-grow su-w-full"
-            width="full"
-          >
-            <Helmet titleTemplate={title} title={title} />
-            <Container className="su-cc su-rs-pb-8">
-              <Heading level={1} align="left" font="serif" id="page-title">
-                {title}
-              </Heading>
-              {hasRichText(body) && (
-                <RichTextRenderer
-                  wysiwyg={body}
-                  className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                />
-              )}
-              <Grid>
-                <GridCell md={8}>
-                  {relationships?.length > 0 ? (
-                    <>
-                      <TripTravelerCard traveler={primaryRegistrant} />
-                      {relatedContacts.map((relatedContact) => (
-                        <TripTravelerCard
-                          key={relatedContact.did}
-                          traveler={relatedContact}
-                        />
-                      ))}
-                    </>
-                  ) : (
-                    <p>No relationships are available at this time</p>
-                  )}
-                </GridCell>
-                <GridCell md={8}>
-                  <div>
-                    <Heading level={2} align="left" font="serif">
-                      Added travelers
-                    </Heading>
-                    <TripTravelerList />
-                  </div>
-                  <FormContext.Consumer>
-                    {(value) => (
-                      <Link
-                        to={`${slug}/form`}
-                        className="su-button"
-                        state={{ travelers: value[0].travelersData }}
-                      >
-                        Next
-                      </Link>
+    <AuthenticatedPage>
+      <FormContextProvider>
+        <SbEditable content={blok}>
+          <Layout {...props}>
+            <Container
+              as="main"
+              id="main-content"
+              className="basic-page su-relative su-flex-grow su-w-full"
+              width="full"
+            >
+              <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
+              <Hero blok={heroProps} />
+              <Container className="su-cc su-rs-pb-8">
+                <Heading level={1} align="left" font="serif" id="page-title">
+                  {title}
+                </Heading>
+                {hasRichText(body) && (
+                  <RichTextRenderer
+                    wysiwyg={body}
+                    className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                  />
+                )}
+                <Grid>
+                  <GridCell md={8}>
+                    {relationships?.length > 0 ? (
+                      <>
+                        <TripTravelerCard traveler={primaryRegistrant} />
+                        {relatedContacts.map((relatedContact) => (
+                          <TripTravelerCard
+                            key={relatedContact.did}
+                            traveler={relatedContact}
+                          />
+                        ))}
+                      </>
+                    ) : (
+                      <p>No relationships are available at this time</p>
                     )}
-                  </FormContext.Consumer>
-                </GridCell>
-              </Grid>
+                  </GridCell>
+                  <GridCell md={8}>
+                    <div>
+                      <Heading level={2} align="left" font="serif">
+                        Added travelers
+                      </Heading>
+                      <TripTravelerList />
+                    </div>
+                    <FormContext.Consumer>
+                      {(value) => (
+                        <Link
+                          to={`${slug}/form`}
+                          className="su-button"
+                          state={{ travelers: value[0].travelersData }}
+                        >
+                          Next
+                        </Link>
+                      )}
+                    </FormContext.Consumer>
+                  </GridCell>
+                </Grid>
+              </Container>
+              {numAnkle > 0 && <Ankle isDark {...props} />}
             </Container>
-            {numAnkle > 0 && <Ankle isDark {...props} />}
-          </Container>
-        </Layout>
-      </SbEditable>
-    </FormContextProvider>
-    // </AuthenticatedPage>
+          </Layout>
+        </SbEditable>
+      </FormContextProvider>
+    </AuthenticatedPage>
   );
 };
 
