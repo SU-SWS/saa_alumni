@@ -59,7 +59,48 @@ const InterstitialPage = (props) => {
     isHideScroll: 'true',
   };
   const { userProfile } = useContext(AuthContext);
-  const relationships = userProfile?.relationships;
+  // const relationships = userProfile?.relationships;
+
+  const relationships = [
+    {
+      relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Spouse/Partner',
+      category: 'Family',
+      relationshipType: 'Spouse/Partner',
+      relatedContact: '0034600000xKKeMAAW',
+      relatedContactEncodedID: '67392062457',
+      relatedContactGender: 'Female',
+      relatedContactDigitalName: 'Xiaojing Fu',
+      relatedContactMyFriendsCallMe: 'Xiaojing',
+      relatedContactBirthDate: '1981-01-02',
+      relatedContactFullNameParsed: {
+        relatedContactPrefix: 'Ms.',
+        relatedContactFirstName: 'Xiaojing',
+        relatedContactMiddleName: null,
+        relatedContactLastName: 'Fu',
+        relatedContactPersonalSuffix: null,
+        relatedContactProfessionalSuffix: null,
+      },
+    },
+    {
+      relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Child',
+      category: 'Family',
+      relationshipType: 'Child',
+      relatedContact: '0034600000xKKeMAAW',
+      relatedContactEncodedID: '67392062457',
+      relatedContactGender: 'Female',
+      relatedContactDigitalName: 'Xiaohu Fu',
+      relatedContactMyFriendsCallMe: 'Xiaohu',
+      relatedContactBirthDate: '1998-10-10',
+      relatedContactFullNameParsed: {
+        relatedContactPrefix: 'Miss',
+        relatedContactFirstName: 'Xiaohu',
+        relatedContactMiddleName: null,
+        relatedContactLastName: 'Fu',
+        relatedContactPersonalSuffix: null,
+        relatedContactProfessionalSuffix: null,
+      },
+    },
+  ];
 
   const structureTravelerData = (relationshipsData = []) => {
     let relatedContacts = [];
@@ -137,71 +178,81 @@ const InterstitialPage = (props) => {
   };
 
   return (
-    <AuthenticatedPage>
-      <FormContextProvider>
-        <SbEditable content={blok}>
-          <Layout {...props}>
-            <Container
-              as="main"
-              id="main-content"
-              className="basic-page su-relative su-flex-grow su-w-full"
-              width="full"
-            >
-              <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
-              <Hero blok={heroProps} />
-              <Container className="su-cc su-rs-pb-8">
-                <Heading level={1} align="left" font="serif" id="page-title">
-                  {title}
-                </Heading>
-                {hasRichText(body) && (
-                  <RichTextRenderer
-                    wysiwyg={body}
-                    className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                  />
-                )}
-                <Grid>
-                  <GridCell md={8}>
-                    {relationships?.length > 0 ? (
-                      <>
-                        <TripTravelerCard traveler={primaryRegistrant} />
-                        {relatedContacts.map((relatedContact) => (
-                          <TripTravelerCard
-                            key={relatedContact.did}
-                            traveler={relatedContact}
-                          />
-                        ))}
-                      </>
-                    ) : (
-                      <p>No relationships are available at this time</p>
+    // <AuthenticatedPage>
+    <FormContextProvider>
+      <SbEditable content={blok}>
+        <Layout {...props}>
+          <Container
+            as="main"
+            id="main-content"
+            className="basic-page su-relative su-flex-grow su-w-full"
+            width="full"
+          >
+            <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
+            <Hero blok={heroProps} />
+            <Container className="su-cc su-rs-pb-8 su-bg-saa-black su-text-white">
+              <Grid gap>
+                <GridCell xs={12} md={8}>
+                  <Heading
+                    level={2}
+                    align="center"
+                    font="serif"
+                    className="su-rs-mt-7"
+                  >
+                    {tripTitle}:<br />
+                    Registration
+                  </Heading>
+                  {hasRichText(body) && (
+                    <RichTextRenderer
+                      wysiwyg={body}
+                      className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                    />
+                  )}
+                </GridCell>
+              </Grid>
+              <Grid gap>
+                <GridCell xs={12} md={8}>
+                  {relationships?.length > 0 ? (
+                    <>
+                      <TripTravelerCard traveler={primaryRegistrant} />
+                      {relatedContacts.map((relatedContact) => (
+                        <TripTravelerCard
+                          key={relatedContact.did}
+                          traveler={relatedContact}
+                        />
+                      ))}
+                    </>
+                  ) : (
+                    <p>No relationships are available at this time</p>
+                  )}
+                </GridCell>
+                <GridCell md={8}>
+                  <div>
+                    <Heading level={2} align="left" font="serif">
+                      Added travelers
+                    </Heading>
+                    <TripTravelerList />
+                  </div>
+                  <FormContext.Consumer>
+                    {(value) => (
+                      <Link
+                        to={`${slug}/form`}
+                        className="su-button"
+                        state={{ travelers: value[0].travelersData }}
+                      >
+                        Next
+                      </Link>
                     )}
-                  </GridCell>
-                  <GridCell md={8}>
-                    <div>
-                      <Heading level={2} align="left" font="serif">
-                        Added travelers
-                      </Heading>
-                      <TripTravelerList />
-                    </div>
-                    <FormContext.Consumer>
-                      {(value) => (
-                        <Link
-                          to={`${slug}/form`}
-                          className="su-button"
-                          state={{ travelers: value[0].travelersData }}
-                        >
-                          Next
-                        </Link>
-                      )}
-                    </FormContext.Consumer>
-                  </GridCell>
-                </Grid>
-              </Container>
-              {numAnkle > 0 && <Ankle isDark {...props} />}
+                  </FormContext.Consumer>
+                </GridCell>
+              </Grid>
             </Container>
-          </Layout>
-        </SbEditable>
-      </FormContextProvider>
-    </AuthenticatedPage>
+            {numAnkle > 0 && <Ankle isDark {...props} />}
+          </Container>
+        </Layout>
+      </SbEditable>
+    </FormContextProvider>
+    // </AuthenticatedPage>
   );
 };
 
