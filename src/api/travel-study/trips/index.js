@@ -52,12 +52,14 @@ const tripsCollection = async (req, res) => {
 
   const ret = {};
   trips.forEach((story) => {
+    console.log('Config: ', story.name);
     ret[story.uuid] = {
       uuid: story.uuid,
       title: story.content?.title,
       subtitle: story.content?.subtitle,
       slug: story.slug,
       full_slug: story.full_slug,
+      tripConfigName: story.name,
       tripId: story.content?.tripId,
       tripSize: story.content?.tripSize,
       minAge: story.content?.minAge,

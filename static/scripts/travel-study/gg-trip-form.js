@@ -133,8 +133,9 @@ class ggTripForm {
     this.trips = trips;
     const tripList = Object.keys(trips).map((uuid) => {
       // TBD: Confirm the final Trip label (e.g. Australian, June 2022 (123456))
+      const year = new Date(trips[uuid].startDate).getFullYear();
       const trip = {
-        label: `${trips[uuid].title} ${trips[uuid].tripId}`,
+        label: `${trips[uuid].tripConfigName} ${year} (${trips[uuid].tripId})`,
         value: uuid,
       };
       return trip;
