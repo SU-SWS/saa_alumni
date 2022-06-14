@@ -2,8 +2,8 @@
 import React, { useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
-import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
+import FaIcon from '../../simple/faIcon';
 
 const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
@@ -36,55 +36,47 @@ const TripTravelerCard = ({ traveler }) => {
       direction="row"
       className="icon-card su-group su-basefont-23 su-p-36 su-m-w-full"
       gap
-      justifyContent="su-justify-between"
+      justifyContent="between"
+      alignItems="start"
     >
       <FlexBox direction="col">
-        <Heading
-          level={3}
-          align="left"
-          font="serif"
-          id="page-title"
-          className="su-text-m2"
-        >
+        <Heading level={4} align="left" font="serif" size={2}>
           {traveler.su_dname}
         </Heading>
-        {traveler?.removeBtn ? (
+        {traveler?.removeBtn && (
           <span>
-            <HeroIcon
-              iconType="play"
-              className="su-transition-colors su-inline"
-            />
-            Remove
-          </span>
-        ) : (
-          <span>
-            <HeroIcon
-              iconType="play"
-              className="su-transition-colors su-inline"
+            <FaIcon
+              iconChoice="fa-check"
+              iconType="far"
+              isOutline="false"
+              fixedWidth
+              className="su-transition-colors"
             />
             Added
           </span>
         )}
       </FlexBox>
       {traveler?.removeBtn ? (
-        <button
-          type="button"
-          className="su-button"
-          onClick={removeRelationship}
-        >
-          Remove
-          <HeroIcon
-            iconType="play"
-            className="su-transition-colors su-inline"
+        <button type="button" className="su-ghost" onClick={removeRelationship}>
+          <FaIcon
+            iconChoice="fa-minus-circle"
+            iconType="far"
+            isOutline="false"
+            fixedWidth
+            className="su-mr-02em su-transition-colors su-text-digital-red-xlight"
           />
+          Remove traveler
         </button>
       ) : (
-        <button type="button" className="su-button" onClick={addRelationship}>
-          Add
-          <HeroIcon
-            iconType="play"
-            className="su-transition-colors su-inline"
+        <button type="button" className="su-ghost" onClick={addRelationship}>
+          <FaIcon
+            iconChoice="fa-plus-circle"
+            iconType="far"
+            isOutline="false"
+            fixedWidth
+            className="su-mr-02em su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
           />
+          Add traveler
         </button>
       )}
     </FlexBox>

@@ -33,6 +33,7 @@ import {
   findPreferredPhoneNumberType,
 } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
+import { FlexBox } from '../../layout/FlexBox';
 
 const InterstitialPage = (props) => {
   const {
@@ -86,7 +87,7 @@ const InterstitialPage = (props) => {
       category: 'Family',
       relationshipType: 'Child',
       relatedContact: '0034600000xKKeMAAW',
-      relatedContactEncodedID: '67392062457',
+      relatedContactEncodedID: '67392062458',
       relatedContactGender: 'Female',
       relatedContactDigitalName: 'Xiaohu Fu',
       relatedContactMyFriendsCallMe: 'Xiaohu',
@@ -191,8 +192,12 @@ const InterstitialPage = (props) => {
             <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
             <Hero blok={heroProps} />
             <Container className="su-cc su-rs-pb-8 su-bg-saa-black su-text-white">
-              <Grid gap>
-                <GridCell xs={12} md={8}>
+              <Grid xs={12} className="su-rs-pb-8">
+                <GridCell
+                  xs={12}
+                  md={6}
+                  className="md:su-col-start-4 xl:su-col-start-4"
+                >
                   <Heading
                     level={2}
                     align="center"
@@ -210,14 +215,26 @@ const InterstitialPage = (props) => {
                   )}
                 </GridCell>
               </Grid>
-              <Grid gap>
+              <Grid xs={12}>
+                <GridCell xs={12} md={6}>
+                  <Heading level={3} align="left" font="serif">
+                    Add existing connections and past travelers to your trip
+                  </Heading>
+                  <p>
+                    We recommend adding the people listed below in this step, as
+                    you won’t be able to later. You will be able to add people
+                    not listed below later in the process.
+                  </p>
+                </GridCell>
+              </Grid>
+              <Grid gap xs={12}>
                 <GridCell xs={12} md={8}>
                   {relationships?.length > 0 ? (
                     <>
                       <TripTravelerCard traveler={primaryRegistrant} />
                       {relatedContacts.map((relatedContact) => (
                         <TripTravelerCard
-                          key={relatedContact.did}
+                          key={relatedContact.su_did}
                           traveler={relatedContact}
                         />
                       ))}
@@ -226,24 +243,24 @@ const InterstitialPage = (props) => {
                     <p>No relationships are available at this time</p>
                   )}
                 </GridCell>
-                <GridCell md={8}>
-                  <div>
+                <GridCell xs={12} md={4}>
+                  <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
                     <Heading level={2} align="left" font="serif">
                       Added travelers
                     </Heading>
                     <TripTravelerList />
+                    <FormContext.Consumer>
+                      {(value) => (
+                        <Link
+                          to={`${slug}/form`}
+                          className="su-button"
+                          state={{ travelers: value[0].travelersData }}
+                        >
+                          Next
+                        </Link>
+                      )}
+                    </FormContext.Consumer>
                   </div>
-                  <FormContext.Consumer>
-                    {(value) => (
-                      <Link
-                        to={`${slug}/form`}
-                        className="su-button"
-                        state={{ travelers: value[0].travelersData }}
-                      >
-                        Next
-                      </Link>
-                    )}
-                  </FormContext.Consumer>
                 </GridCell>
               </Grid>
             </Container>
