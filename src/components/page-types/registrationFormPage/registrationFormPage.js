@@ -61,7 +61,7 @@ const RegistrationFormPage = (props) => {
     // with this function.
     window.navigateToTripPolicy = () => {
       const destUrl = new URL(tripUrl, window.location.origin);
-      destUrl.hash = 'pricing-section';
+      destUrl.hash = 'cancellation-policy';
       window.location.href = destUrl;
     };
 
