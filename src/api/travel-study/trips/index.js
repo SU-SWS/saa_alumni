@@ -52,7 +52,6 @@ const tripsCollection = async (req, res) => {
 
   const ret = {};
   trips.forEach((story) => {
-    console.log('Config: ', story.name);
     ret[story.uuid] = {
       uuid: story.uuid,
       title: story.content?.title,
