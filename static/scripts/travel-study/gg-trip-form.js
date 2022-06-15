@@ -20,8 +20,7 @@ class ggTripForm {
     this.render('Loading user information...');
     await this.getUserInfo();
     this.render('Loading trip information...');
-    this.embedTripSelect();
-    this.autocompleteConfig();
+    await this.embedTripSelect();
   };
 
   /**
@@ -199,6 +198,7 @@ class ggTripForm {
 
     content.appendChild(button);
     this.render(content);
+    this.autocompleteConfig();
   };
 
   autocompleteConfig = async () => {

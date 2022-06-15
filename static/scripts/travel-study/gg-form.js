@@ -13,6 +13,7 @@ class ggForm {
    * Run you fools!
    */
   init = async () => {
+    this.mountStyles();
     this.elem = document.getElementById(this.id);
     this.render('Loading user information...');
     await this.getUserInfo();
@@ -25,6 +26,11 @@ class ggForm {
    */
   render = (content) => {
     this.elem.replaceChildren(content);
+  };
+
+  mountStyles = () => {
+    document.head.innerHTML +=
+      '<link rel="stylesheet" href="https://deploy-preview-361--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
   };
 
   /**
@@ -85,8 +91,6 @@ class ggForm {
    * Embeds an option to select a trip.
    */
   embedInterstitialPage = () => {
-    document.head.innerHTML +=
-      '<link rel="stylesheet" href="https://deploy-preview-361--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
     const content = document.createElement('div');
     const staffName = document.createElement('p');
     staffName.innerText = `Staff name: ${this.user.su_display_name}`;
