@@ -174,7 +174,8 @@ class ggTripForm {
   /**
    * Embeds an option to select a trip.
    */
-  embedTripSelect = () => {
+  embedTripSelect = async () => {
+    const trips = await this.getTrips();
     const content = document.createElement('div');
     content.className = 'gg-form-autocomplete';
     content.innerHTML = `
@@ -198,13 +199,9 @@ class ggTripForm {
 
     content.appendChild(button);
     this.render(content);
-    this.autocompleteConfig();
-  };
 
-  autocompleteConfig = async () => {
-    const trips = await this.getTrips();
     // eslint-disable-next-line no-undef
-    const autoCompleteJS = new autoComplete({
+    const autoCompleteJS = await new autoComplete({
       selector: '#autoComplete',
       placeHolder: 'Search for Trip...',
       data: {
