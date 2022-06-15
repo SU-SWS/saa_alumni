@@ -40,24 +40,34 @@ const TripTravelerCard = ({ traveler }) => {
       alignItems="start"
     >
       <FlexBox direction="col">
-        <Heading level={4} align="left" font="serif" size={2}>
+        <Heading
+          level={4}
+          align="left"
+          font="serif"
+          size={2}
+          className="su-m-0"
+        >
           {traveler.su_dname}
         </Heading>
         {traveler?.removeBtn && (
-          <span>
+          <span className="su-basefont-23">
             <FaIcon
               iconChoice="fa-check"
               iconType="far"
               isOutline="false"
               fixedWidth
-              className="su-transition-colors"
+              className="su-transition-colors su-text-palo-verde-light"
             />
-            Added
+            Added!
           </span>
         )}
       </FlexBox>
       {traveler?.removeBtn ? (
-        <button type="button" className="su-ghost" onClick={removeRelationship}>
+        <button
+          type="button"
+          className="su-ghost su-basefont-23"
+          onClick={removeRelationship}
+        >
           <FaIcon
             iconChoice="fa-minus-circle"
             iconType="far"
@@ -68,13 +78,17 @@ const TripTravelerCard = ({ traveler }) => {
           Remove traveler
         </button>
       ) : (
-        <button type="button" className="su-ghost" onClick={addRelationship}>
+        <button
+          type="button"
+          className="su-ghost su-basefont-23"
+          onClick={addRelationship}
+        >
           <FaIcon
             iconChoice="fa-plus-circle"
             iconType="far"
             isOutline="false"
             fixedWidth
-            className="su-mr-02em su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
+            className="su-mr-02em su-text-transparent su-bg-clip-text su-bg-gradient-to-tr su-from-palo-verde-dark su-to-saa-electric-blue"
           />
           Add traveler
         </button>

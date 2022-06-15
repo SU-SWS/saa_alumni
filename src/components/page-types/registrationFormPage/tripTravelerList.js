@@ -7,15 +7,17 @@ const TripTravelerList = () => {
   const [state, dispatch] = useContext(FormContext);
 
   if (state.travelersData.length === 0) {
-    return <p>No travelers have been selected</p>;
+    return (
+      <p className="su-text-center su-basefont-23">
+        No travelers have been selected
+      </p>
+    );
   }
-  console.log('Current select list: ', state.travelersData);
 
   return (
     <FlexBox
       direction="col"
-      className="icon-card su-group su-basefont-23"
-      gap
+      className="icon-card su-group su-basefont-23 children:su-border-b-2 children:su-border-black children:last-of-type:su-border-none"
       justifyContent="between"
       alignItems="start"
     >

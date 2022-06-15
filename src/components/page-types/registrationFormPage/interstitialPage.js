@@ -34,6 +34,7 @@ import {
 } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
+import FaIcon from '../../simple/faIcon';
 
 const InterstitialPage = (props) => {
   const {
@@ -210,7 +211,7 @@ const InterstitialPage = (props) => {
                   {hasRichText(body) && (
                     <RichTextRenderer
                       wysiwyg={body}
-                      className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                      className="su-intro-text su-text-center children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
                     />
                   )}
                 </GridCell>
@@ -220,7 +221,7 @@ const InterstitialPage = (props) => {
                   <Heading level={3} align="left" font="serif">
                     Add existing connections and past travelers to your trip
                   </Heading>
-                  <p>
+                  <p className="su-intro-text">
                     We recommend adding the people listed below in this step, as
                     you won’t be able to later. You will be able to add people
                     not listed below later in the process.
@@ -245,19 +246,28 @@ const InterstitialPage = (props) => {
                 </GridCell>
                 <GridCell xs={12} md={4}>
                   <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
-                    <Heading level={2} align="left" font="serif">
+                    <Heading level={4} size="3" align="left" font="serif">
                       Added travelers
                     </Heading>
                     <TripTravelerList />
                     <FormContext.Consumer>
                       {(value) => (
-                        <Link
-                          to={`${slug}/form`}
-                          className="su-button"
-                          state={{ travelers: value[0].travelersData }}
-                        >
-                          Next
-                        </Link>
+                        <FlexBox justifyContent="center">
+                          <Link
+                            to={`${slug}/form`}
+                            className="su-button su-mt-36 su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24"
+                            state={{ travelers: value[0].travelersData }}
+                          >
+                            Next
+                            <FaIcon
+                              iconChoice="fa-long-arrow-right"
+                              iconType="far"
+                              isOutline="false"
+                              fixedWidth
+                              className="su-ml-02em su-transition-colors"
+                            />
+                          </Link>
+                        </FlexBox>
                       )}
                     </FormContext.Consumer>
                   </div>

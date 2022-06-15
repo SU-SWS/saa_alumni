@@ -19,17 +19,15 @@ const TripTravelerListItem = ({ traveler }) => {
   return (
     <FlexBox
       direction="row"
-      className="su-basefont-23"
+      className="su-basefont-23 su-w-full su-m-12"
       gap
       justifyContent="between"
       alignItems="start"
     >
-      <Heading level={4} align="left" font="serif" size={2}>
-        {traveler.su_dname}
-      </Heading>
+      <p className="su-big-paragraph su-m-0">{traveler.su_dname}</p>
       <button
         type="button"
-        className="su-ghost su-flex su-items-center"
+        className="su-ghost su-flex su-items-center su-m-0"
         onClick={removeRelationship}
       >
         Remove
