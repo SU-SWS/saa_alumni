@@ -3,7 +3,8 @@
 /* SU colors */
 :root {
   --su-digital-red-xlight: #e50808;
-  --su-black-70: #000000;
+  --su-black: #2e2d29;
+  --su-black-70: #6D6C69;
   --su-black-50: #979694; 
   --su-black-30: #C0C0BF;
   --su-black-20: #D5D5D4;
@@ -14,6 +15,70 @@
 .gg-autocomplete {
 
 }
+
+.gg-autocomplete-wrapper .autoComplete_wrapper > ul {
+  position: absolute;
+  max-height: 226px;
+  overflow-y: scroll;
+  box-sizing: border-box;
+  left: 0;
+  right: 0;
+  margin: 0.5rem 0 0 0;
+  padding: 0;
+  z-index: 1;
+  list-style: none;
+  border-radius: 0.6rem;
+  background-color: #fff;
+  border: 1px solid rgba(33, 33, 33, 0.07);
+  box-shadow: 0 3px 6px rgba(149, 157, 165, 0.15);
+  outline: none;
+  transition: opacity 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out;
+  -webkit-transition: opacity 0.15s ease-in-out;
+}
+
+.gg-autocomplete-wrapper .autoComplete_wrapper > ul[hidden],
+.gg-autocomplete-wrapper .autoComplete_wrapper > ul:empty {
+  display: block;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.gg-autocomplete-wrapper .autoComplete_wrapper > ul > li {
+  margin: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  text-align: left;
+  font-size: 1rem;
+  color: #212121;
+  border-radius: 0.35rem;
+  background-color: rgba(255, 255, 255, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s ease;
+}
+
+.gg-autocomplete-wrapper .autoComplete_wrapper > ul > li mark {
+  background-color: transparent;
+  color: rgba(255, 122, 122, 1);
+  font-weight: bold;
+}
+
+.gg-autocomplete-wrapper .autoComplete_wrapper > ul > li:hover {
+  cursor: pointer;
+  background-color: rgba(255, 122, 122, 0.15);
+}
+
+.gg-autocomplete-wrapper .autoComplete_wrapper > ul > li[aria-selected="true"] {
+  background-color: rgba(255, 122, 122, 0.15);
+}
+
+@media only screen and (max-width: 600px) {
+  .gg-autocomplete-wrapper .autoComplete_wrapper > input {
+    width: 18rem;
+  }
+}
+
 
 .gg-form-sidebar .summary-item {
   display: flex;
@@ -232,7 +297,6 @@
 }
 
 .ggeWidget .ggePageNav {
-  @apply su-flex su-justify-center su-mt-0 su-mx-auto;
   display: flex;
   justify-content: center;
   margin: 0 auto;
@@ -413,5 +477,5 @@
 }
 
 .ggeWidget .ggeQuestion[data-name="DigitalName"] input[readonly] {
-  font-size: var(--su-black-70)
+  font-size: var(--su-black-70) 
 }
