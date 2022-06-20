@@ -3,6 +3,7 @@
 /* SU colors */
 :root {
   --su-digital-red-xlight: #e50808;
+  --su-digital-red: #B1040E;
   --su-black: #2e2d29;
   --su-black-70: #6D6C69;
   --su-black-50: #979694; 
@@ -165,7 +166,8 @@
 .ggeWidget .ggeQuestion--instructions h1 {
   margin-top: 0;
   font-weight: 600;
-  color: var(--su-white);
+  font-size: 3.5rem;
+  color: var(--su-black);
 }
 
 .ggeWidget .ggeQuestion input[type="email"],
@@ -229,7 +231,8 @@
 
 .ggeWidget .ggeQuestion--required label,
 .ggeWidget .ggeQuestion--required legend {
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 2.1rem;
 }
 
 .ggeWidget .ggeQuestion .ggeQuestion__field textarea {
@@ -324,27 +327,36 @@
 }
 
 .ggeWidget .ggeButton--forward {
+  align-items: center;
+  background: var(--su-digital-red);
+  border: 2px solid var(--su-digital-red);
+  border-radius: none;
+  color: var(--su-white);
   position: static;
   padding-left: 3rem;
-  border: 2px solid var(--su-digital-red-xlight);
-  transform: translateX(0px);
   position: relative;
 }
 
 .ggeWidget .ggeButton--forward:focus,
 .ggeWidget .ggeButton--forward:hover {
+  background: var(--su-digital-red);
+  border: 2px solid var(--su-digital-red);
+  border: var(--su-digital-red);
   border-radius: none;
-  background: var(--su-digital-red-xlight);
   color: var(--su-white);
-  border: var(--su-digital-red-xlight);
 }
 
 .ggeWidget .ggeButton--back {
+  align-items: center;
+  background: var(--su-digital-red);
+  border: 2px solid var(--su-digital-red);
+  border-radius: none;
+  color: var(--su-white);
   position: static;
   padding-right: 3rem;
-  border: 2px solid var(--su-digital-red-xlight);
-  transform: translateX(0px);
   position: relative;
+  position: static;
+  transform: translateX(0px);
 }
 
 .ggeWidget .ggeButton--forward::after,
@@ -379,7 +391,6 @@
 .ggeWidget .ggeQuestion__caption,
 .ggeWidget .ggeQuestion__error {
   font-size: 18px;
-
 }
 
 .ggeWidget .ggeQuestion__caption {
