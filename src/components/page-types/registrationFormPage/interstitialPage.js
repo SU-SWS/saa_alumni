@@ -196,8 +196,8 @@ const InterstitialPage = (props) => {
               <Grid xs={12} className="su-rs-pb-8">
                 <GridCell
                   xs={12}
-                  md={6}
-                  className="md:su-col-start-4 xl:su-col-start-4"
+                  lg={6}
+                  className="lg:su-col-start-4 xl:su-col-start-4"
                 >
                   <Heading
                     level={2}
@@ -231,7 +231,7 @@ const InterstitialPage = (props) => {
                 </GridCell>
               </Grid>
               <Grid gap xs={12}>
-                <GridCell xs={12} md={8}>
+                <GridCell xs={12} lg={8}>
                   {relationships?.length > 0 ? (
                     <>
                       <TripTravelerCard traveler={primaryRegistrant} />
@@ -246,7 +246,7 @@ const InterstitialPage = (props) => {
                     <p>No relationships are available at this time</p>
                   )}
                 </GridCell>
-                <GridCell xs={12} md={4}>
+                <GridCell xs={12} lg={4}>
                   <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
                     <Heading level={4} size="3" align="left" font="serif">
                       Added travelers

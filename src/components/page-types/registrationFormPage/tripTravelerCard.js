@@ -85,7 +85,7 @@ const TripTravelerCard = ({ traveler }) => {
                 fixedWidth
                 className="su-mr-02em su-transition-colors su-text-digital-red-xlight"
               />
-              Remove traveler
+              <span className="su-basefont-23">Remove traveler</span>
             </>
           ) : (
             <>
@@ -94,9 +94,9 @@ const TripTravelerCard = ({ traveler }) => {
                 iconType="far"
                 isOutline="false"
                 fixedWidth
-                className="su-mr-02em su-text-transparent su-bg-clip-text su-bg-gradient-to-tr su-from-palo-verde-dark su-to-saa-electric-blue"
+                className="su-mr-02em children:su-text-transparent children:su-bg-clip-text children:su-bg-gradient-to-tr children:su-from-palo-verde-dark children:su-to-saa-electric-blue"
               />
-              Add traveler
+              <span className="su-basefont-23">Add traveler</span>
             </>
           )}
         </span>
