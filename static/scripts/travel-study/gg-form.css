@@ -1,5 +1,15 @@
 /* GG Trip Form Styles */
 
+/* SU colors */
+:root {
+  --su-digital-red-xlight: #e50808;
+  --su-black-70: #000000;
+  --su-black-50: #979694; 
+  --su-black-30: #C0C0BF;
+  --su-black-20: #D5D5D4;
+  --su-white: #ffffff;
+}
+
 /* GG Trip Autocomplete */
 .gg-autocomplete {
 
@@ -19,7 +29,7 @@
 }
 
 .gg-form-sidebar .summary-item h2 {
-  font-weight: 700;
+  font-weight: 600;
   font-size: 1em;
   margin-bottom: 2.7rem;
 }
@@ -27,11 +37,313 @@
 .gg-form-main .gg-script-wrapper {
   padding: 58px 87px 90px;
   background: #F4F4F4;
-  border: 1px solid #D5D5D4;
+  border: 1px solid var(--su-black-20);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 /*  GG Form */
+.ggeWidget .su-digital-name {
+  display: flex;
+}
+
+.ggeWidget .su-digital-name .ggeQuestion__label {
+  padding: 0;
+  margin-right: 5px;
+}
+
+.ggeWidget .su-digital-name .ggeQuestion__field input[type="text"] {
+  border: none;
+  color: var(--su-black-30);
+  background: transparent;
+  padding: 0;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.ggeWidget .ggeContent .ggeQuestion {
+  margin-bottom: 45px;
+  padding: 0;
+}
+
+.ggeWidget .ggeContent .ggeQuestion.su-phone {
+  margin-bottom: 0.7rem;
+}
+
+.ggeWidget .ggeContent .ggeQuestion:last-child {
+  padding-bottom: 0;
+}
+
+.ggeQuestion:not(.ggeQuestion--error):not(.ggeQuestion--instructions) .ggeQuestion__field {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion.ggeQuestion--error .ggeQuestion__field {
+  flex-direction: column;
+}
+
+.ggeWidget .ggeQuestion--instructions .ggeQuestion__field {
+  font-size: 18px;
+  color: var(--su-black-30);
+}
+
+.ggeWidget .ggeQuestion--instructions a,
+.ggeWidget .ggeQuestion__error a {
+  font-size: 18px;
+  text-decoration: none;
+  text-underline-offset: auto;
+}
+.ggeWidget .ggeQuestion--instructions a:focus,
+.ggeWidget .ggeQuestion__error a:focus, 
+.ggeWidget .ggeQuestion--instructions a:hover ,
+.ggeWidget .ggeQuestion__error a:hover {
+  text-decoration: underline;
+}
+
+.ggeWidget .ggeQuestion--instructions h1 {
+  margin-top: 0;
+  font-weight: 600;
+  color: var(--su-white);
+}
+
+.ggeWidget .ggeQuestion input[type="email"],
+.ggeWidget .ggeQuestion input[type="number"],
+.ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion select,
+.ggeWidget .ggeQuestion textarea {
+  background: var(--su-black-20);
+  padding: 20px;
+  border: none;
+  border-bottom: 2px var(--su-black-50) solid;
+  border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 1.8rem;
+}
+
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="email"],
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="number"],
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"] {
+  border: none;
+  border-bottom: 2px var(--su-black-50) solid;
+}
+
+.ggeWidget .ggeQuestion input[type="email"],
+.ggeWidget .ggeQuestion input[type="number"],
+.ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion textarea {
+  padding-left: 21px;
+  padding-right: 21px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.ggeWidget .ggeQuestion input[type="email"]:focus,
+.ggeWidget .ggeQuestion input[type="number"]:focus,
+.ggeWidget .ggeQuestion input[type="text"]:focus,
+.ggeWidget .ggeQuestion textarea:focus {
+  border: 2px solid var(--su-digital-red-xlight);
+  margin: -2px -2px -1px;
+}
+
+.ggeWidget .ggeQuestion input[type="email"][readonly],
+.ggeWidget .ggeQuestion input[type="number"][readonly],
+.ggeWidget .ggeQuestion input[type="text"][readonly] {
+  padding: 0;
+  border: none;
+  font-size: 24px;
+  color: #C0C0BF;
+  background: transparent !important;
+}
+
+.ggeWidget .ggeQuestion input[type="email"][readonly]:focus,
+.ggeWidget .ggeQuestion input[type="number"][readonly]:focus,
+.ggeWidget .ggeQuestion input[type="text"][readonly]:focus,
+.ggeWidget .ggeQuestion input[type="email"][readonly]:hover,
+.ggeWidget .ggeQuestion input[type="number"][readonly]:hover,
+.ggeWidget .ggeQuestion input[type="text"][readonly]:hover {
+  box-shadow: none;
+  margin: 0;
+}
+
+.ggeWidget .ggeQuestion--required label,
+.ggeWidget .ggeQuestion--required legend {
+  font-weight: 600;
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion__field textarea {
+  min-height: 138px;
+}
+
+.ggeWidget .ggeQuestion--error,
+.ggeWidget .ggeQuestion__error,
+.ggeWidget .ggePageNav--formError {
+  background: transparent;
+  color: var(--su-digital-red-xlight);
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion__field select {
+  background-position: right 22px center;
+  background-image: url("../assets/arrow-down.svg");
+  background-size: 21px;
+  color: var(--su-white);
+  line-height: 2.4rem;
+  background-repeat: no-repeat;
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--error input[type="email"],
+.ggeWidget .ggeQuestion.ggeQuestion--error input[type="number"],
+.ggeWidget .ggeQuestion.ggeQuestion--error input[type="text"],
+.ggeWidget .ggeQuestion.ggeQuestion--error select {
+  border: 1px solid var(--su-digital-red-xlight);
+}
+
+.ggeTally {
+  border: 2px solid var(--su-digital-red-xlight);
+  padding-top: 2.6rem;
+  padding-right: 2.6rem;
+  padding-bottom: 4.5rem;
+  margin-bottom: 7.2rem;
+}
+
+.ggeTally tr {
+  border: none;
+}
+
+.ggeTally .ggeTally--text,
+.ggeTally .ggeTally--money {
+  padding-top: 0;
+  padding-bottom: 3.2rem;
+}
+.ggeTally--text{
+  border-bottom: 1px solid var(--su-black-30);
+}
+
+.ggeTally .ggeTally--total {
+  padding-top: 12px;
+  padding-bottom: 0;
+}
+
+.ggeTally .ggeTally--money {
+  width: 25%;
+}
+
+.ggeWidget .ggeQuestion textarea {
+  padding-right: 25px;
+}
+
+.ggeWidget .ggePageNav {
+  @apply su-flex su-justify-center su-mt-0 su-mx-auto;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.ggePageSet .ggeHidden ~ .ggePage .ggePageNav {
+  justify-content: center;
+}
+
+.ggeWidget .ggePageNav--back {
+  position: static;
+  transform: translateY(0px);
+  margin-right: 2rem;
+}
+
+.ggeWidget .ggeButton {
+  display: flex;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.ggeWidget .ggeButton {
+  text-decoration: underline;
+  padding: 26px 14px;
+  font-size: 23px;
+  margin-top: 45px;
+  text-transform: capitalize;
+}
+
+.ggeWidget .ggeButton--forward {
+  position: static;
+  padding-left: 3rem;
+  border: 2px solid var(--su-digital-red-xlight);
+  transform: translateX(0px);
+  position: relative;
+}
+
+.ggeWidget .ggeButton--forward:focus,
+.ggeWidget .ggeButton--forward:hover {
+  border-radius: none;
+  background: var(--su-digital-red-xlight);
+  color: var(--su-white);
+  border: var(--su-digital-red-xlight);
+}
+
+.ggeWidget .ggeButton--back {
+  position: static;
+  padding-right: 3rem;
+  border: 2px solid var(--su-digital-red-xlight);
+  transform: translateX(0px);
+  position: relative;
+}
+
+.ggeWidget .ggeButton--forward::after,
+.ggeWidget .ggeButton--back::before {
+  content: "";
+  mask: url("./assets/arrow-right.svg");
+  -webkit-mask-size: contain;
+  display: inline-block;
+  background-size: cover;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+}
+
+.ggeWidget .ggeButton--forward::after {
+  margin-left: 8px;
+}
+
+.ggeWidget .ggeButton--back::before {
+  background: var(--su-white);
+  transform: rotate(180deg);
+  margin-right: 8px;
+}
+
+.ggeWidget .ggeQuestion__label label {
+  font-size: 1em;
+}
+.ggeWidget .ggeQuestion--required .ggeQuestion__label. label {
+  font-weight: 600;
+}
+
+.ggeWidget .ggeQuestion__caption,
+.ggeWidget .ggeQuestion__error {
+  font-size: 18px;
+
+}
+
+.ggeWidget .ggeQuestion__caption {
+  margin-bottom: 11px;
+}
+
+.ggeWidget .ggeQuestion__error {
+  margin-bottom: 11px;
+}
+
+.ggeWidget .ggeTally--total {
+  border: 1px solid var(--su-black-30);
+}
+
+.ggeWidget .ggePrompt {
+  display: flex;
+  align-items: center;
+  margin-top: 1.1rem;
+  margin-bottom: 2.6rem;
+}
+
+.ggeWidget .ggePrompt:last-child {
+  margin-bottom: 0;
+}
+
 [type=checkbox],
 [type=radio] {
   clip: unset;
@@ -48,6 +360,7 @@
 .ggeWidget .ggePrompt .ggePrompt__radio {
   margin-right: 1.2rem;
   position: relative
+  display: block;
 }
 
 .ggeWidget .ggePrompt label {
@@ -56,7 +369,7 @@
 }
 
 .ggeWidget .ggePrompt .ggePrompt__radio input {
-  background: #e50808;
+  background: var(--su-digital-red-xlight);
   border-color: transparent;
   border-width: 2px;
   display: flex;
@@ -67,7 +380,7 @@
 }
 
 .ggeWidget .ggePrompt--checked .ggePrompt__radio:after {
-  background: #e50808;
+  background: var(--su-digital-red-xlight);
   content: "";
   display: flex;
   height: 1.2rem;
@@ -76,4 +389,29 @@
   top: 50%;
   width: 1.2rem;
   transform: translate(-50%, -50%);
+}
+
+.ggeWidget .ggeContent .ggeQuestion.su-phone,
+.ggeWidget .ggeContent .ggeQuestion.su-email {
+  color: var(--su-black-30);
+  margin-bottom: 0;
+}
+
+.ggeQuestion[data-name="DigitalName"] {
+  display: flex;
+  align-items: baseline;
+}
+.ggeQuestion[data-name="DigitalName"] .ggeQuestion__label {
+  font-size: 2.6rem;
+  padding: 0;
+  margin-right: 0.7rem;
+}
+
+.ggeQuestion[data-name="DigitalName"] .ggeQuestion__field input {
+  font-weight: 600;
+  font-size: 2.6rem;
+}
+
+.ggeWidget .ggeQuestion[data-name="DigitalName"] input[readonly] {
+  font-size: var(--su-black-70)
 }
