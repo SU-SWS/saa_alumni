@@ -12,10 +12,6 @@
 }
 
 /* GG Trip Autocomplete */
-.gg-autocomplete {
-
-}
-
 .gg-autocomplete-wrapper .autoComplete_wrapper > ul {
   position: absolute;
   max-height: 226px;
@@ -29,7 +25,7 @@
   list-style: none;
   border-radius: 0.6rem;
   background-color: #fff;
-  border: 1px solid rgba(33, 33, 33, 0.07);
+  border: 1px solid var(--su-black-20);
   box-shadow: 0 3px 6px rgba(149, 157, 165, 0.15);
   outline: none;
   transition: opacity 0.15s ease-in-out;
@@ -79,7 +75,7 @@
   }
 }
 
-
+/* Trip Form Styling */
 .gg-form-sidebar .summary-item {
   display: flex;
   flex-direction: column;
