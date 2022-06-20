@@ -30,3 +30,50 @@
   border: 1px solid #D5D5D4;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
+
+/*  GG Form */
+[type=checkbox],
+[type=radio] {
+  clip: unset;
+  -webkit-clip-path: inset(100%);
+  clip-path: unset;
+  height: inherit;
+  overflow: hidden;
+  padding: 0;
+  position: unset;
+  white-space: nowrap;
+  width: inherit;
+}
+
+.ggeWidget .ggePrompt .ggePrompt__radio {
+  margin-right: 1.2rem;
+  position: relative
+}
+
+.ggeWidget .ggePrompt label {
+  padding: 0;
+  width: auto
+}
+
+.ggeWidget .ggePrompt .ggePrompt__radio input {
+  background: #e50808;
+  border-color: transparent;
+  border-width: 2px;
+  display: flex;
+  height: 2.4rem;
+  margin-bottom: 0;
+  margin-left: 0;
+  width: 2.4rem
+}
+
+.ggeWidget .ggePrompt--checked .ggePrompt__radio:after {
+  background: #e50808;
+  content: "";
+  display: flex;
+  height: 1.2rem;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  width: 1.2rem;
+  transform: translate(-50%, -50%);
+}
