@@ -48,9 +48,9 @@ const TripTravelerCard = ({ traveler }) => {
       <FlexBox
         direction="row"
         className="su-basefont-23 su-p-36 su-m-w-full"
-        gap
         justifyContent="between"
         alignItems="start"
+        gap
       >
         <FlexBox direction="col" alignItems="start">
           <Heading
@@ -63,7 +63,7 @@ const TripTravelerCard = ({ traveler }) => {
             {traveler.su_dname}
           </Heading>
           {traveler?.removeBtn && (
-            <span className="su-basefont-23">
+            <p className="su-basefont-23 su-mb-0">
               <FaIcon
                 iconChoice="fa-check"
                 iconType="far"
@@ -72,10 +72,10 @@ const TripTravelerCard = ({ traveler }) => {
                 className="su-transition-colors su-text-palo-verde-light"
               />
               Added!
-            </span>
+            </p>
           )}
         </FlexBox>
-        <span className="su-basefont-23">
+        <FlexBox direction="row" alignItems="center" justifyContent="start">
           {traveler?.removeBtn ? (
             <>
               <FaIcon
@@ -85,7 +85,7 @@ const TripTravelerCard = ({ traveler }) => {
                 fixedWidth
                 className="su-mr-02em su-transition-colors su-text-digital-red-xlight"
               />
-              <span className="su-basefont-23">Remove traveler</span>
+              <p className="su-basefont-23 su-mb-0">Remove traveler</p>
             </>
           ) : (
             <>
@@ -96,10 +96,10 @@ const TripTravelerCard = ({ traveler }) => {
                 fixedWidth
                 className="su-mr-02em children:su-text-transparent children:su-bg-clip-text children:su-bg-gradient-to-tr children:su-from-palo-verde-dark children:su-to-saa-electric-blue"
               />
-              <span className="su-basefont-23">Add traveler</span>
+              <p className="su-basefont-23 su-mb-0">Add traveler</p>
             </>
           )}
-        </span>
+        </FlexBox>
       </FlexBox>
     </button>
   );

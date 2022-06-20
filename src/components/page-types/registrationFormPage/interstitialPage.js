@@ -217,12 +217,12 @@ const InterstitialPage = (props) => {
                 </GridCell>
               </Grid>
               <Grid xs={12}>
-                <GridCell xs={12} lg={6}>
+                <GridCell xs={12} md={6}>
                   <Heading level={3} align="left" font="serif">
                     Add existing connections and past travelers to your trip
                   </Heading>
                 </GridCell>
-                <GridCell xs={12} lg={8}>
+                <GridCell xs={12} md={7} lg={8}>
                   <p className="su-intro-text">
                     We recommend adding the people listed below in this step, as
                     you won’t be able to later. You will be able to add people
@@ -231,22 +231,24 @@ const InterstitialPage = (props) => {
                 </GridCell>
               </Grid>
               <Grid gap xs={12}>
-                <GridCell xs={12} lg={8}>
-                  {relationships?.length > 0 ? (
-                    <>
-                      <TripTravelerCard traveler={primaryRegistrant} />
-                      {relatedContacts.map((relatedContact) => (
-                        <TripTravelerCard
-                          key={relatedContact.su_did}
-                          traveler={relatedContact}
-                        />
-                      ))}
-                    </>
-                  ) : (
-                    <p>No relationships are available at this time</p>
-                  )}
+                <GridCell xs={12} md={7} lg={8}>
+                  <FlexBox direction="col" gap>
+                    {relationships?.length > 0 ? (
+                      <>
+                        <TripTravelerCard traveler={primaryRegistrant} />
+                        {relatedContacts.map((relatedContact) => (
+                          <TripTravelerCard
+                            key={relatedContact.su_did}
+                            traveler={relatedContact}
+                          />
+                        ))}
+                      </>
+                    ) : (
+                      <p>No relationships are available at this time</p>
+                    )}
+                  </FlexBox>
                 </GridCell>
-                <GridCell xs={12} lg={4}>
+                <GridCell xs={12} md={5} lg={4}>
                   <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
                     <Heading level={4} size="3" align="left" font="serif">
                       Added travelers

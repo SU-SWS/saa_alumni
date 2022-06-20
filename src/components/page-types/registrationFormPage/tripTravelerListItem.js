@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
 import { FormContext } from '../../../contexts/FormContext';
 import FaIcon from '../../simple/faIcon';
@@ -19,7 +18,7 @@ const TripTravelerListItem = ({ traveler }) => {
   return (
     <FlexBox
       direction="row"
-      className="su-basefont-23 su-w-full su-m-12"
+      className="su-basefont-23 su-w-full su-pb-12"
       gap
       justifyContent="between"
       alignItems="start"

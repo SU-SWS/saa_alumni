@@ -17,9 +17,10 @@ const TripTravelerList = () => {
   return (
     <FlexBox
       direction="col"
-      className="icon-card su-group su-basefont-23 children:su-border-b-2 children:su-border-black children:last-of-type:su-border-none"
+      className="icon-card su-group su-basefont-23 children:su-border-b-2 children:su-border-black last:children:su-border-none"
       justifyContent="between"
       alignItems="start"
+      gap
     >
       {state.travelersData.map((traveler) => (
         <TripTravelerListItem key={traveler.su_did} traveler={traveler} />
