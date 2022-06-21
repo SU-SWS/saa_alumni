@@ -47,11 +47,7 @@
     endpoint = 'https://vault.stanford.edu'
     # Order doesn't matter here as these will be fetched asyncronously.
     # Try not to have dupes.
-<<<<<<< HEAD
     secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/tsgg']
-=======
-    secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/perks']
->>>>>>> perks
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
