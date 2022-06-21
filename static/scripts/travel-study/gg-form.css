@@ -457,7 +457,7 @@
 
 .ggeWidget .ggePrompt .ggeQuestion__caption,
 .ggeWidget .ggePrompt .ggeQuestion__error {
-  margin: 0 0 11px;
+  margin: 11px 0 0;
 }
 
 /* Radio */
