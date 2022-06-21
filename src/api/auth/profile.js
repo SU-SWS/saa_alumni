@@ -7,6 +7,8 @@ import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
 import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
+import { fullggMockData } from '../../utilities/mocks';
+import { isStoryblokEditor } from '../../utilities/isStoryblokEditor';
 
 /**
  * Fetches the profile data from the MEGA PROFILE API endpoints.
@@ -30,6 +32,15 @@ const megaprofileHandler = async (req, res) => {
   }
 };
 
-const handler = connect().use(authInstance.authorize()).get(megaprofileHandler);
+const storyblokPreviewPassthrough = (req, res, next) => {
+  if (isStoryblokEditor(req)) {
+    res.json(fullggMockData);
+  } else next();
+};
+
+const handler = connect()
+  .get(storyblokPreviewPassthrough)
+  .use(authInstance.authorize())
+  .get(megaprofileHandler);
 
 export default handler;
