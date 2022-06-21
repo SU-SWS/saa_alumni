@@ -175,7 +175,7 @@
 .ggeWidget .ggeQuestion input[type="text"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
-  background: var(--su-black-20);
+  background: transparent;
   padding: 20px;
   border: none;
   border-bottom: 2px var(--su-black-50) solid;
