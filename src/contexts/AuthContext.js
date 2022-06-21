@@ -2,10 +2,11 @@ import React, { createContext } from 'react';
 import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 
 const initialAuthState = {
-  userSession: null,
   userProfile: null,
+  userSession: null,
   isAuthenticated: false,
   isAuthenticating: true,
+  isError: false,
 };
 
 function authReducer(state, action) {
@@ -18,6 +19,8 @@ function authReducer(state, action) {
       return { ...state, userSession: action.payload };
     case 'setUserProfile':
       return { ...state, userProfile: action.payload };
+    case 'setError':
+      return { ...state, isError: action.payload };
     default:
       return state;
   }
@@ -89,15 +92,21 @@ class AuthContextProvider extends React.Component {
 
   render() {
     const { children } = this.props;
-    const { userSession, userProfile, isAuthenticated, isAuthenticating } =
-      this.state;
+    const {
+      userProfile,
+      userSession,
+      isAuthenticated,
+      isAuthenticating,
+      isError,
+    } = this.state;
     return (
       <AuthContext.Provider
         value={{
-          userSession,
           userProfile,
+          userSession,
           isAuthenticated,
           isAuthenticating,
+          isError,
           setAuthState: this.setAuthState,
         }}
       >

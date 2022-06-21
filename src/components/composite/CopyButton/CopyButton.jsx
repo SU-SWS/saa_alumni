@@ -20,6 +20,7 @@ export const CopyButtonProps = {
    * Copy success message
    */
   copySuccess: PropTypes.node,
+  variant: PropTypes.oneOf(['link', 'button']),
   className: ClassNameType,
   children: PropTypes.oneOfType([
     PropTypes.node,
@@ -31,6 +32,7 @@ export const CopyButton = ({
   copyText,
   successDuration = 5000,
   copySuccess = 'Link copied!',
+  variant = 'button',
   children,
   className,
   onClick = () => undefined,
@@ -45,11 +47,17 @@ export const CopyButton = ({
     [copy, onClick]
   );
 
+  let buttonVariant = 'link';
+  if (variant === 'button') {
+    buttonVariant = copied ? 'secondary-gradient' : 'secondary';
+  }
+
   return (
     <SAAButton
       aria-live="polite"
-      size="small-short"
-      buttonStyle={copied ? 'secondary-gradient' : 'secondary'}
+      size={variant === 'button' ? 'small-short' : 'link'}
+      icon={variant === 'link' && copied ? 'none' : 'arrow-right'}
+      buttonStyle={buttonVariant}
       onClick={handleClick}
       className={className}
       {...rest}

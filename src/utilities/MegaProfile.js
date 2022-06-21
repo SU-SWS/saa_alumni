@@ -10,7 +10,6 @@ export class MegaProfile {
     const builtUrl = `${host}${path}`;
     this.url = config.url || process.env.MEGAPROFILE_URL || builtUrl;
     this.auth = config.auth || new ApiGatewayAuth();
-
     // Create Client
     this.client = axios.create({
       baseURL: this.url,
@@ -30,7 +29,9 @@ export class MegaProfile {
    */
   authenticate = async () => {
     await this.auth.authenticate();
-    this.client.defaults.params = { token: this.auth?.token?.access_token };
+    this.client.defaults.headers.common = {
+      Authorization: `Bearer ${this.auth?.token?.access_token}`,
+    };
   };
 
   // Generic request handler w/ auth check
@@ -39,16 +40,7 @@ export class MegaProfile {
     if (!this.auth.isAuthenticated()) {
       await this.authenticate();
     }
-
-    const result = await this.client
-      .request(config)
-      .then((response) => response)
-      .catch((error) => error);
-
-    if (result.status === 404) {
-      result.data = {};
-      return result;
-    }
+    const result = await this.client.request(config);
     return result;
   };
 

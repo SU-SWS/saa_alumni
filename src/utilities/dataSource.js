@@ -51,6 +51,7 @@ export const buttonSizes = {
     'su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24',
   large:
     'su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24',
+  link: 'su-text-19 md:su-text-21 xl:su-text-23',
 };
 
 export const buttonStyles = {
@@ -70,6 +71,7 @@ export const buttonStyles = {
     'su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-transparent hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md',
   'palo-verde-gradient':
     'su-border-palo-verde-dark su-bg-palo-verde-dark su-text-white hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue',
+  link: 'su-border-transparent su-text-white hocus:su-text-white su-decoration-transparent hocus:su-decoration-digital-red-xlight',
 };
 
 export const ctaGroupDisplay = {
@@ -86,7 +88,7 @@ export const ctaLinkColor = {
   'bright-red-hover-white': 'su-text-digital-red-xlight hocus:su-text-black-20',
   black: 'su-text-black hocus:su-text-black !su-underline-digital-red-light',
   white:
-    'su-text-black-20 hocus:su-text-black-20 !su-underline-digital-red-xlight',
+    'su-text-black-20 hocus:su-text-black-20 !su-decoration-digital-red-xlight',
   'all-white': 'su-text-white hocus:su-text-white',
   'all-black': 'su-text-black hocus:su-text-black',
 };
@@ -484,7 +486,7 @@ export const superheadStyles = {
   },
   'red-back-link': {
     light:
-      'su-text-digital-red-light hocus:su-text-cardinal-red su-underline-offset hocus:su-underline',
-    dark: 'su-text-digital-red-xlight hocus:su-text-white su-underline-offset hocus:su-underline',
+      'su-text-digital-red-light hocus:su-text-cardinal-red su-underline-offset-[3px] hocus:su-underline',
+    dark: 'su-text-digital-red-xlight hocus:su-text-white su-underline-offset-[3px] hocus:su-underline',
   },
 };

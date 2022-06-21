@@ -59,7 +59,7 @@ const IconCard = ({
         </div>
         <SbLink
           classes={dcnb(
-            'su-group su-stretched-link su-z-20 su-rs-mt-0 su-no-underline hocus:su-underline su-underline-offset su-type-1',
+            'su-group su-stretched-link su-z-20 su-rs-mt-0 su-no-underline hocus:su-underline su-underline-offset-[3px] su-type-1',
             headlineColor
           )}
           link={link}

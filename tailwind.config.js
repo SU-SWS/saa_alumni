@@ -22,19 +22,15 @@ module.exports = {
   },
   plugins: [
     function ({ addVariant }) {
-      addVariant('children', '& > *');
       addVariant('children-hover', '& > *:hover');
       addVariant('children-hocus', '& > *:hover, & > *:focus');
-      addVariant('group-hocus', [':merge(.group):focus &', ':merge(.group):hover &'])
     },
 
     // @tailwind base;
     require(`${dir}/base/base.js`)(),
 
     // @tailwind components;
-    require(`${dir}/components/backface-visibility/backface-visibility.js`)(),
     require(`${dir}/components/scroll-margin/scroll-margin.js`)(),
-    require(`${dir}/components/shadow/text-shadow.js`)(),
     require(`${dir}/components/underline/custom-underline.js`)(),
     require(`${dir}/components/underline/link-underline.js`)(),
     require(`${dir}/components/wysiwyg/heading-link.js`)(),
@@ -42,7 +38,5 @@ module.exports = {
     // // @tailwind utilities;
     require(`${dir}/utilities/gradient-border/gradient-border.js`)(),
     require(`${dir}/utilities/grid/grid-cols.js`)(),
-    require(`${dir}/utilities/typography/writing-mode.js`)(),
-    require(`${dir}/utilities/break-words.js`)(),
   ],
 };

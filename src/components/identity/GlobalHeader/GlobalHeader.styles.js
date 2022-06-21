@@ -16,9 +16,9 @@ export const logoWrapper =
 export const utilWrapper = 'su-flex su-flex-grow su-rs-mt-0';
 export const utilNav = 'su-inline-block su-text-right su-flex-grow';
 export const utilNavMenu =
-  'su-list-unstyled su-inline-block su-link-white su-link-no-underline su-text-18 children:su-inline-block children:su-leading-[3.4rem] children:su-mr-[2em] children:su-mb-0 su-underline-offset';
+  'su-list-unstyled su-inline-block su-link-white su-link-no-underline su-text-18 children:su-inline-block children:su-leading-[3.4rem] children:su-mr-[2em] children:su-mb-0 su-underline-offset-[3px]';
 export const utilNavItem =
-  'first:su-ml-0 children:hocus:su-underline-digital-red-xlight children:hocus:su-underline-thick';
+  'first:su-ml-0 children:hocus:su-decoration-digital-red-xlight children:hocus:su-decoration-[0.12em]';
 export const siteNameWrapper = 'su-basefont-23 su-mt-10 xl:su-mt-19 su-rs-mb-0';
 export const siteName =
   'su-text-white su-font-bold hocus:su-text-white su-no-underline hocus:su-no-underline lg:su-text-[3.3rem] xl:su-text-m3';
@@ -34,5 +34,5 @@ export const logoMobile =
 export const logoImageMobile = 'su-w-[11rem] su-mb-01em';
 export const utilNavMobile = 'su-cc su-text-right su-bg-digital-red';
 export const utilNavMenuMobile =
-  'su-list-unstyled su-flex su-items-center su-justify-end su-link-white su-link-no-underline su-text-13 sm:su-text-16 children:su-inline-block children:su-ml-[1.6em] xs:children:su-ml-[1.9em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset';
+  'su-list-unstyled su-flex su-items-center su-justify-end su-link-white su-link-no-underline su-text-13 sm:su-text-16 children:su-inline-block children:su-ml-[1.6em] xs:children:su-ml-[1.9em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset-[3px]';
 export const utilNavItemMobile = 'first:su-ml-0';

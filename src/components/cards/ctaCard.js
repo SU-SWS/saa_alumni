@@ -28,7 +28,7 @@ const CtaCard = ({
       {link && (
         <SbLink
           link={link}
-          classes="su-block su-stretched-link su-group su-transition-colors su-font-regular su-no-underline su-underline-offset su-text-white hocus:su-underline hocus:su-text-white su-rs-mt-3"
+          classes="su-block su-stretched-link su-group su-transition-colors su-font-regular su-no-underline su-underline-offset-[3px] su-text-white hocus:su-underline hocus:su-text-white su-rs-mt-3 focus:su-outline-none"
         >
           {linkText}
           {srText && <SrOnlyText>{` ${srText}`}</SrOnlyText>}
