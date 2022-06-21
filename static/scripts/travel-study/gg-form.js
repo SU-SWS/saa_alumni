@@ -13,7 +13,7 @@ class ggForm {
    * Run you fools!
    */
   init = async () => {
-    this.mountStyles();
+    this.mountAdditionalScripts();
     this.elem = document.getElementById(this.id);
     this.render('Loading user information...');
     await this.getUserInfo();
@@ -28,9 +28,11 @@ class ggForm {
     this.elem.replaceChildren(content);
   };
 
-  mountStyles = () => {
+  mountAdditionalScripts = () => {
     document.head.innerHTML +=
       '<link rel="stylesheet" href="https://deploy-preview-361--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
+    document.body.innerHTML +=
+      '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };
 
   /**
