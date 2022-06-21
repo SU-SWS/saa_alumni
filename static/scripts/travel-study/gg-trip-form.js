@@ -37,7 +37,7 @@ class ggTripForm {
     // TODO: remove before merge
     // document.head.innerHTML +=
     // '<link rel="stylesheet" href="http:localhost:8000/scripts/travel-study/gg-form.css" type="text/css"/>';
-    document.body.innerHTML +=
+    document.head.innerHTML +=
       '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };
 
