@@ -147,7 +147,7 @@
 
 .ggeWidget .ggeQuestion--instructions .ggeQuestion__field {
   font-size: 18px;
-  color: var(--su-black-30);
+  color: var(--su-black);
 }
 
 .ggeWidget .ggeQuestion--instructions a,
@@ -176,7 +176,7 @@
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
   background: transparent;
-  padding: 20px;
+  padding-left: 21px;
   border: 1px solid var(--su-black-50);
   border-bottom: 2px solid var(--su-black-50);
   border-radius: 3px;
@@ -195,10 +195,7 @@
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
 .ggeWidget .ggeQuestion textarea {
-  padding-left: 21px;
-  padding-right: 21px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 21px;
 }
 
 .ggeWidget .ggeQuestion input[type="email"]:focus,
@@ -248,7 +245,7 @@
   background-position: right 22px center;
   background-image: url("../assets/arrow-down.svg");
   background-size: 21px;
-  color: var(--su-white);
+  color: var(--su-black);
   line-height: 2.4rem;
   background-repeat: no-repeat;
 }
@@ -315,6 +312,7 @@
   padding: 12px 30px 14px;
   font-size: 23px;
   margin-top: 45px;
+  text-transform: none;
 }
 
 .ggeWidget .ggeButton--forward {
@@ -390,7 +388,6 @@
   border: unset;
   text-decoration: underline;
   color: var(--su-digital-red-xlight);
-  text-transform: none;
 }
 
 .ggeButton .ggeButton--tallyEditRegistrant:hover,
