@@ -316,21 +316,16 @@
   display: flex;
   width: fit-content;
   text-decoration: none;
-}
-
-.ggeWidget .ggeButton {
-  text-decoration: underline;
-  padding: 26px 14px;
+  padding: 12px 30px 14px;
   font-size: 23px;
   margin-top: 45px;
-  text-transform: capitalize;
 }
 
 .ggeWidget .ggeButton--forward {
   align-items: center;
   background: var(--su-digital-red);
   border: 2px solid var(--su-digital-red);
-  border-radius: none;
+  border-radius: unset;
   color: var(--su-white);
   position: static;
   padding-left: 3rem;
@@ -339,24 +334,35 @@
 
 .ggeWidget .ggeButton--forward:focus,
 .ggeWidget .ggeButton--forward:hover {
+  align-items: center;
   background: var(--su-digital-red);
   border: 2px solid var(--su-digital-red);
-  border: var(--su-digital-red);
-  border-radius: none;
+  border-radius: unset;
   color: var(--su-white);
+  text-decoration: underline;
 }
 
 .ggeWidget .ggeButton--back {
   align-items: center;
-  background: var(--su-digital-red);
+  background: transparent;
   border: 2px solid var(--su-digital-red);
-  border-radius: none;
-  color: var(--su-white);
+  border-radius: unset;
+  color: var(--su-digital-red);
   position: static;
   padding-right: 3rem;
   position: relative;
   position: static;
   transform: translateX(0px);
+}
+
+.ggeWidget .ggeButton--back:focus,
+.ggeWidget .ggeButton--back:hover {
+  align-items: center;
+  background: transparent;
+  border: 2px solid var(--su-black);
+  border-radius: unset;
+  color: var(--su-black);
+  text-decoration: underline;
 }
 
 .ggeWidget .ggeButton--forward::after,
