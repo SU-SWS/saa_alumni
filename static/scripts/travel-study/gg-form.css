@@ -262,9 +262,7 @@
 
 .ggeTally {
   border: 2px solid var(--su-digital-red-xlight);
-  padding-top: 2.6rem;
-  padding-right: 2.6rem;
-  padding-bottom: 4.5rem;
+  padding: 2.6rem 2.6rem 4.5rem;
   margin-bottom: 7.2rem;
 }
 
@@ -317,7 +315,6 @@
   padding: 12px 30px 14px;
   font-size: 23px;
   margin-top: 45px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ggeWidget .ggeButton--forward {
@@ -329,6 +326,7 @@
   position: static;
   padding-left: 3rem;
   position: relative;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ggeWidget .ggeButton--forward:focus,
@@ -352,6 +350,7 @@
   position: relative;
   position: static;
   transform: translateX(0px);
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ggeWidget .ggeButton--back:focus,
@@ -386,6 +385,42 @@
   margin-right: 8px;
 }
 
+.ggeButton .ggeButton--tallyEditRegistrant {
+  padding: 0;
+  border: unset;
+  text-decoration: underline;
+  color: var(--su-digital-red-xlight);
+  text-transform: none;
+}
+
+.ggeButton .ggeButton--tallyEditRegistrant:hover,
+.ggeButton .ggeButton--tallyEditRegistrant:focus {
+  background: transparent;
+  color: var(--su-black);
+  text-decoration: underline;
+}
+
+.ggeWidget .ggeTally--total {
+  border-top: 1px solid var(--su-black-30);
+}
+
+.ggeWidget .ggePrompt {
+  display: flex;
+  align-items: center;
+  margin-top: 1.1rem;
+  margin-bottom: 2.6rem;
+}
+
+.ggeWidget .ggePrompt:last-child {
+  margin-bottom: 0;
+}
+
+.ggeWidget .ggePrompt label {
+  padding: 0;
+  width: auto;
+  margin-top: 0;
+}
+
 .ggeWidget .ggeQuestion__label label {
   font-size: 1em;
 }
@@ -398,27 +433,9 @@
   font-size: 18px;
 }
 
-.ggeWidget .ggeQuestion__caption {
-  margin-bottom: 11px;
-}
-
+.ggeWidget .ggeQuestion__caption,
 .ggeWidget .ggeQuestion__error {
-  margin-bottom: 11px;
-}
-
-.ggeWidget .ggeTally--total {
-  border: 1px solid var(--su-black-30);
-}
-
-.ggeWidget .ggePrompt {
-  display: flex;
-  align-items: center;
-  margin-top: 1.1rem;
-  margin-bottom: 2.6rem;
-}
-
-.ggeWidget .ggePrompt:last-child {
-  margin-bottom: 0;
+  margin: 0 0 11px;
 }
 
 [type=checkbox],
@@ -438,11 +455,6 @@
   margin-right: 1.2rem;
   position: relative;
   display: block;
-}
-
-.ggeWidget .ggePrompt label {
-  padding: 0;
-  width: auto
 }
 
 .ggeWidget .ggePrompt .ggePrompt__radio input {
@@ -470,7 +482,6 @@
 
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
 .ggeWidget .ggeContent .ggeQuestion.su-email {
-  color: var(--su-black-30);
   margin-bottom: 0;
 }
 
