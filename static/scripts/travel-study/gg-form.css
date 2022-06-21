@@ -271,8 +271,6 @@
 .ggeTally .ggeTally--money {
   padding-top: 0;
   padding-bottom: 3.2rem;
-}
-.ggeTally--text{
   border-bottom: 1px solid var(--su-black-30);
 }
 
@@ -309,10 +307,20 @@
   display: flex;
   width: fit-content;
   text-decoration: none;
-  padding: 12px 30px 14px;
   font-size: 23px;
   margin-top: 45px;
   text-transform: none;
+  padding: 1.4rem 2.6rem;
+}
+
+/* Solid Button */
+.ggeWidget .ggeButton--addRegistrant {
+  background: var(--su-digital-red);
+  border: 2px solid var(--su-digital-red);
+  border-radius: unset;
+  color: var(--su-white);
+  position: relative;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ggeWidget .ggeButton--forward {
@@ -322,11 +330,13 @@
   border-radius: unset;
   color: var(--su-white);
   position: static;
-  padding-left: 3rem;
   position: relative;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  padding-left: 3rem;
 }
 
+.ggeWidget .ggeButton--addRegistrant:focus,
+.ggeWidget .ggeButton--addRegistrant:hover,
 .ggeWidget .ggeButton--forward:focus,
 .ggeWidget .ggeButton--forward:hover {
   align-items: center;
@@ -337,6 +347,7 @@
   text-decoration: underline;
 }
 
+/* Secondary Button */
 .ggeWidget .ggeButton--back {
   align-items: center;
   background: transparent;
@@ -361,6 +372,7 @@
   text-decoration: underline;
 }
 
+/* Button Action Icon */
 .ggeWidget .ggeButton--forward::after,
 .ggeWidget .ggeButton--back::before {
   content: "";
@@ -383,15 +395,18 @@
   margin-right: 8px;
 }
 
-.ggeButton .ggeButton--tallyEditRegistrant {
+/* Tally Table */
+
+/* Traveler Name button */
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant {
   padding: 0;
   border: unset;
   text-decoration: underline;
   color: var(--su-digital-red-xlight);
 }
 
-.ggeButton .ggeButton--tallyEditRegistrant:hover,
-.ggeButton .ggeButton--tallyEditRegistrant:focus {
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover,
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:focus {
   background: transparent;
   color: var(--su-black);
   text-decoration: underline;
@@ -412,6 +427,7 @@
   margin-bottom: 0;
 }
 
+/* Label */
 .ggeWidget .ggePrompt label {
   padding: 0;
   width: auto;
@@ -425,6 +441,7 @@
   font-weight: 600;
 }
 
+/* Caption and Error message */
 .ggeWidget .ggeQuestion__caption,
 .ggeWidget .ggeQuestion__error {
   font-size: 18px;
@@ -435,6 +452,7 @@
   margin: 0 0 11px;
 }
 
+/* Radio */
 [type=checkbox],
 [type=radio] {
   clip: unset;
@@ -477,11 +495,13 @@
   transform: translate(-50%, -50%);
 }
 
+/* Phone and Email text */
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
 .ggeWidget .ggeContent .ggeQuestion.su-email {
   margin-bottom: 0;
 }
 
+/* Digital name — TODO: TEST AND REMOVE IF THIS IS NOT BEING USED */
 .ggeQuestion[data-name="DigitalName"] {
   display: flex;
   align-items: baseline;
