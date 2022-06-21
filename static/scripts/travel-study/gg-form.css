@@ -177,8 +177,8 @@
 .ggeWidget .ggeQuestion textarea {
   background: transparent;
   padding: 20px;
-  border: none;
-  border-bottom: 2px var(--su-black-50) solid;
+  border: 1px solid var(--su-black-50);
+  border-bottom: 2px solid var(--su-black-50);
   border-radius: 3px;
   box-sizing: border-box;
   font-size: 1.8rem;
@@ -187,8 +187,8 @@
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="email"],
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="number"],
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"] {
-  border: none;
-  border-bottom: 2px var(--su-black-50) solid;
+  border: 1px solid var(--su-black-50);
+  border-bottom: 2px solid var(--su-black-50);
 }
 
 .ggeWidget .ggeQuestion input[type="email"],
@@ -205,8 +205,7 @@
 .ggeWidget .ggeQuestion input[type="number"]:focus,
 .ggeWidget .ggeQuestion input[type="text"]:focus,
 .ggeWidget .ggeQuestion textarea:focus {
-  border: 2px solid var(--su-digital-red-xlight);
-  margin: -2px -2px -1px;
+  background: var(--su-white);
 }
 
 .ggeWidget .ggeQuestion input[type="email"][readonly],
@@ -215,7 +214,6 @@
   padding: 0;
   border: none;
   font-size: 24px;
-  color: #C0C0BF;
   background: transparent !important;
 }
 
@@ -319,6 +317,7 @@
   padding: 12px 30px 14px;
   font-size: 23px;
   margin-top: 45px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .ggeWidget .ggeButton--forward {
