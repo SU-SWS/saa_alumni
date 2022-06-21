@@ -163,6 +163,7 @@
   text-decoration: underline;
 }
 
+.ggeWidget .ggeSection header h1,
 .ggeWidget .ggeQuestion--instructions h1 {
   margin-top: 0;
   font-weight: 600;
