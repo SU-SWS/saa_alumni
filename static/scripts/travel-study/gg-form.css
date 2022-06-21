@@ -376,25 +376,34 @@
 /* Button Action Icon */
 .ggeWidget .ggeButton--forward::after,
 .ggeWidget .ggeButton--back::before {
-  content: "";
-  mask: url("./assets/arrow-right.svg");
-  -webkit-mask-size: contain;
-  display: inline-block;
-  background-size: cover;
-  flex-shrink: 0;
   width: 1em;
   height: 1em;
+  content: "";
+  display: inline-block;
+  mask: url("./assets/arrow-right.svg");
+  -webkit-mask: url("./assets/arrow-right.svg") no-repeat 50% 50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
 }
 
 .ggeWidget .ggeButton--forward::after {
+  background: var(--su-white);
   margin-left: 8px;
 }
 
 .ggeWidget .ggeButton--back::before {
-  background: var(--su-white);
+  background: var(--su-digital-red);
   transform: rotate(180deg);
   margin-right: 8px;
 }
+
+.ggeWidget .ggeButton--forward:focus::after,
+.ggeWidget .ggeButton--forward:hover::after,
+.ggeWidget .ggeButton--back:focus::before,
+.ggeWidget .ggeButton--back:hover::before {
+  background: var(--su-black);
+}
+
 
 /* Tally Table */
 
