@@ -455,8 +455,8 @@
   font-size: 18px;
 }
 
-.ggeWidget .ggeQuestion__caption,
-.ggeWidget .ggeQuestion__error {
+.ggeWidget .ggePrompt .ggeQuestion__caption,
+.ggeWidget .ggePrompt .ggeQuestion__error {
   margin: 0 0 11px;
 }
 
