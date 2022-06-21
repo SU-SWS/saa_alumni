@@ -42,12 +42,6 @@ export const tokenFetcher = async () => {
   throw new Error('Response did not contain access token');
 };
 
-<<<<<<< HEAD
-/**
- * Get profile data from the MEGA PROFILE API
- */
-=======
->>>>>>> perks
 export const profileFetcher = async (profileId, token) => {
   const client = axios.create({
     baseURL: process.env.MEGAPROFILE_URL,
