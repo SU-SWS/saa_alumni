@@ -14,6 +14,7 @@ import { tokenFetcher, profileFetcher } from '../../utilities/getGgProfile';
 const megaprofileHandler = async (req, res) => {
   const mp = new MegaProfile();
   const profileId = req.user.encodedSUID;
+  const session = req.user;
   const token = await tokenFetcher();
   let fullgg;
   let affiliations;
@@ -38,7 +39,7 @@ const megaprofileHandler = async (req, res) => {
     return ExceptionHandler(res, err);
   }
 
-  const mpUser = { ...fullgg, affiliations };
+  const mpUser = { session, ...fullgg, affiliations };
   return res.status(200).json(mpUser);
 };
 
