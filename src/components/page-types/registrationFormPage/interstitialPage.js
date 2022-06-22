@@ -205,7 +205,9 @@ const InterstitialPage = (props) => {
                           ))}
                         </>
                       ) : (
-                        <p>No relationships are available at this time</p>
+                        <p>
+                          No additional travelers are available at this time
+                        </p>
                       )}
                     </FlexBox>
                   </GridCell>
