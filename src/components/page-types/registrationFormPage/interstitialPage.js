@@ -7,6 +7,7 @@ import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
+import Hero from '../../composite/hero';
 import { Grid } from '../../layout/Grid';
 import RichTextRenderer from '../../../utilities/richTextRenderer';
 import hasRichText from '../../../utilities/hasRichText';
@@ -31,6 +32,9 @@ import {
   findPhoneNumber,
   findPreferredPhoneNumberType,
 } from '../../../utilities/giveGabVars';
+import { GridCell } from '../../layout/GridCell';
+import { FlexBox } from '../../layout/FlexBox';
+import FaIcon from '../../simple/faIcon';
 
 const InterstitialPage = (props) => {
   const {
@@ -39,14 +43,23 @@ const InterstitialPage = (props) => {
       trip: {
         content: { title: tripTitle },
       },
+      heroImage: { filename, alt, focus } = {},
       ankleContent,
     },
     blok,
     location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
-  const title = `Register for your trip: ${tripTitle}`;
+  const title = `Register for your trip`;
+  const helmetTitle = `Register for your trip: ${tripTitle}`;
   const slug = location.pathname.replace(/\/$/, '');
+  const heroProps = {
+    image: { filename, alt, focus },
+    headline: title,
+    headlineSize: 'medium',
+    isDarkGradient: 'true',
+    isHideScroll: 'true',
+  };
   const { userProfile } = useContext(AuthContext);
   const relationships = userProfile?.relationships;
 
@@ -100,8 +113,10 @@ const InterstitialPage = (props) => {
     primaryRegistrantPhoneNumber
   );
   const primaryRegistrant = {
-    su_did: userProfile?.encodedSUID,
-    su_dname: `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`,
+    su_did: userProfile?.encodedSUID || userProfile?.session?.encodedSUID,
+    su_dname:
+      `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
+      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_title: findSelectOption(
       prefixSelectList,
       userProfile?.name?.fullNameParsed?.prefix
@@ -112,7 +127,7 @@ const InterstitialPage = (props) => {
         ? '&nbsp;'
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
-    su_email: primaryRegistrantEmail,
+    su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
     su_phone: primaryRegistrantPhoneNumber,
     su_phone_type: findSelectOption(
@@ -136,53 +151,95 @@ const InterstitialPage = (props) => {
               className="basic-page su-relative su-flex-grow su-w-full"
               width="full"
             >
-              <Helmet titleTemplate={title} title={title} />
-              <Container className="su-cc su-rs-pb-8">
-                <Heading level={1} align="left" font="serif" id="page-title">
-                  {title}
-                </Heading>
-                {hasRichText(body) && (
-                  <RichTextRenderer
-                    wysiwyg={body}
-                    className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                  />
-                )}
-                {relationships?.length > 0 ? (
-                  <Grid gap md={12}>
-                    {/* TODO: ADAPT-4677 Determine how we want to pass the registrant's data (which must include their name, email, address) */}
-                    <TripTravelerCard traveler={primaryRegistrant} />
-                    {relatedContacts.map((relatedContact) => (
-                      <TripTravelerCard
-                        key={relatedContact.did}
-                        traveler={relatedContact}
-                      />
-                    ))}
-                  </Grid>
-                ) : (
-                  <p>No relationships are available at this time</p>
-                )}
-                {/* Relationship? List */}
-                <Heading level={2} align="left" font="serif">
-                  Your trip registrants
-                </Heading>
-                <p>
-                  Please confirm that you would like to register the following
-                  people for this trip. Please note that you will be able to add
-                  the above people later if you choose, but you will have to
-                  enter their information manually.
-                </p>
-                <TripTravelerList />
-                <FormContext.Consumer>
-                  {(value) => (
-                    <Link
-                      to={`${slug}/form`}
-                      className="su-button"
-                      state={{ travelers: value[0].travelersData }}
+              <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
+              <Hero blok={heroProps} />
+              <Container className="su-cc su-rs-pb-8 su-bg-saa-black su-text-white">
+                <Grid xs={12} className="su-rs-pb-8">
+                  <GridCell
+                    xs={12}
+                    lg={6}
+                    className="lg:su-col-start-4 xl:su-col-start-4"
+                  >
+                    <Heading
+                      level={2}
+                      align="center"
+                      font="serif"
+                      className="su-rs-mt-7"
                     >
-                      Next
-                    </Link>
-                  )}
-                </FormContext.Consumer>
+                      {tripTitle}:<br />
+                      Registration
+                    </Heading>
+                    {hasRichText(body) && (
+                      <RichTextRenderer
+                        wysiwyg={body}
+                        className="su-intro-text su-text-center children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                      />
+                    )}
+                  </GridCell>
+                </Grid>
+                <Grid xs={12}>
+                  <GridCell xs={12} md={6}>
+                    <Heading level={3} align="left" font="serif">
+                      Add existing connections and past travelers to your trip
+                    </Heading>
+                  </GridCell>
+                  <GridCell xs={12} md={7} lg={8}>
+                    <p className="su-intro-text">
+                      We recommend adding the people listed below in this step,
+                      as you won’t be able to later. You will be able to add
+                      people not listed below later in the process.
+                    </p>
+                  </GridCell>
+                </Grid>
+                <Grid gap xs={12}>
+                  <GridCell xs={12} md={7} lg={8}>
+                    <FlexBox direction="col" gap>
+                      <TripTravelerCard traveler={primaryRegistrant} />
+                      {relationships?.length > 0 ? (
+                        <>
+                          {relatedContacts.map((relatedContact) => (
+                            <TripTravelerCard
+                              key={relatedContact.su_did}
+                              traveler={relatedContact}
+                            />
+                          ))}
+                        </>
+                      ) : (
+                        <p className="su-text-center su-basefont-23">
+                          No additional travelers are available at this time
+                        </p>
+                      )}
+                    </FlexBox>
+                  </GridCell>
+                  <GridCell xs={12} md={5} lg={4}>
+                    <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
+                      <Heading level={4} size="3" align="left" font="serif">
+                        Added travelers
+                      </Heading>
+                      <TripTravelerList />
+                      <FormContext.Consumer>
+                        {(value) => (
+                          <FlexBox justifyContent="center">
+                            <Link
+                              to={`${slug}/form`}
+                              className="su-button su-mt-36 su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24"
+                              state={{ travelers: value[0].travelersData }}
+                            >
+                              Next
+                              <FaIcon
+                                iconChoice="fa-long-arrow-right"
+                                iconType="far"
+                                isOutline="false"
+                                fixedWidth
+                                className="su-ml-02em su-transition-colors"
+                              />
+                            </Link>
+                          </FlexBox>
+                        )}
+                      </FormContext.Consumer>
+                    </div>
+                  </GridCell>
+                </Grid>
               </Container>
               {numAnkle > 0 && <Ankle isDark {...props} />}
             </Container>

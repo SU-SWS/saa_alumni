@@ -1,10 +1,9 @@
 /* eslint-disable no-param-reassign */
 import React, { useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
-import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
-import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
+import FaIcon from '../../simple/faIcon';
 
 const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
@@ -32,65 +31,77 @@ const TripTravelerCard = ({ traveler }) => {
     });
   };
 
+  const toggleRelationship = () => {
+    if (traveler?.removeBtn) {
+      removeRelationship();
+    } else {
+      addRelationship();
+    }
+  };
+
   return (
-    <GridCell md={4}>
+    <button
+      type="button"
+      className="su-stretch-link su-w-full"
+      onClick={toggleRelationship}
+    >
       <FlexBox
-        direction="col"
-        className="icon-card su-bg-white print:su-hidden su-group su-relative su-block children:su-mx-auto su-text-center sm:su-max-w-[42rem] lg:su-max-w-[50rem] xl:su-max-w-full su-w-full su-mx-auto su-rs-px-3 md:su-rs-px-1 xl:su-rs-px-3 su-rs-py-3 xl:su-rs-py-4 su-basefont-23 su-break-words su-border su-border-solid su-shadow-sm hover:su-shadow-md"
+        direction="row"
+        className="su-basefont-23 su-p-36 su-m-w-full"
+        justifyContent="between"
+        alignItems="start"
+        gap
       >
-        <HeroIcon
-          iconType="play"
-          className="su-mb-02em su-transition-colors su-text-m2"
-        />
-        {traveler?.removeBtn ? (
-          <span>
-            <HeroIcon
-              iconType="play"
-              className="su-transition-colors su-inline"
-            />
-            Remove
-          </span>
-        ) : (
-          <span>
-            <HeroIcon
-              iconType="play"
-              className="su-transition-colors su-inline"
-            />
-            Added
-          </span>
-        )}
-        <Heading
-          level={3}
-          align="left"
-          font="serif"
-          id="page-title"
-          className="su-text-m2"
-        >
-          {traveler.su_dname}
-        </Heading>
-        {traveler?.removeBtn ? (
-          <button
-            type="button"
-            className="su-button"
-            onClick={removeRelationship}
+        <FlexBox direction="col" alignItems="start">
+          <Heading
+            level={4}
+            align="left"
+            font="serif"
+            size={2}
+            className="su-m-0"
           >
-            Remove
-            <HeroIcon
-              iconType="play"
-              className="su-transition-colors su-inline"
-            />
-          </button>
-        ) : (
-          <button type="button" className="su-button" onClick={addRelationship}>
-            Add
-            <HeroIcon
-              iconType="play"
-              className="su-transition-colors su-inline"
-            />
-          </button>
-        )}
+            {traveler.su_dname}
+          </Heading>
+          {traveler?.removeBtn && (
+            <p className="su-basefont-23 su-mb-0">
+              <FaIcon
+                iconChoice="fa-check"
+                iconType="far"
+                isOutline="false"
+                fixedWidth
+                className="su-transition-colors su-text-palo-verde-light"
+              />
+              Added!
+            </p>
+          )}
+        </FlexBox>
+        <FlexBox direction="row" alignItems="center" justifyContent="start">
+          {traveler?.removeBtn ? (
+            <>
+              <FaIcon
+                iconChoice="fa-minus-circle"
+                iconType="far"
+                isOutline="false"
+                fixedWidth
+                className="su-mr-02em su-transition-colors su-text-digital-red-xlight"
+              />
+              <p className="su-basefont-23 su-mb-0">Remove traveler</p>
+            </>
+          ) : (
+            <>
+              <FaIcon
+                iconChoice="fa-plus-circle"
+                iconType="far"
+                isOutline="false"
+                fixedWidth
+                className="su-mr-02em children:su-text-saa-electric-blue children:su-bg-clip-text children:su-bg-gradient-to-tr children:su-from-palo-verde-dark children:su-to-saa-electric-blue"
+              />
+              <p className="su-basefont-23 su-mb-0">Add traveler</p>
+            </>
+          )}
+        </FlexBox>
       </FlexBox>
-    </GridCell>
+    </button>
   );
 };
 

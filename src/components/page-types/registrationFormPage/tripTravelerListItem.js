@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { Heading } from '../../simple/Heading';
-import HeroIcon from '../../simple/heroIcon';
 import { FlexBox } from '../../layout/FlexBox';
 import { FormContext } from '../../../contexts/FormContext';
+import FaIcon from '../../simple/faIcon';
 
 const TripTravelerListItem = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
@@ -17,13 +16,27 @@ const TripTravelerListItem = ({ traveler }) => {
   };
 
   return (
-    <FlexBox direction="row">
-      <Heading level={3} align="left" font="serif">
-        {traveler.su_dname}
-      </Heading>
-      <button type="button" onClick={removeRelationship}>
+    <FlexBox
+      direction="row"
+      className="su-basefont-23 su-w-full su-pb-12"
+      gap
+      justifyContent="between"
+      alignItems="start"
+    >
+      <p className="su-big-paragraph su-m-0">{traveler.su_dname}</p>
+      <button
+        type="button"
+        className="su-ghost su-flex su-items-center su-m-0"
+        onClick={removeRelationship}
+      >
         Remove
-        <HeroIcon iconType="play" className="su-transition-colors su-inline" />
+        <FaIcon
+          iconChoice="fa-times"
+          iconType="far"
+          isOutline="false"
+          fixedWidth
+          className="su-ml-02em su-transition-colors su-text-digital-red-xlight"
+        />
       </button>
     </FlexBox>
   );
