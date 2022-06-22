@@ -94,7 +94,7 @@ const TripTravelerCard = ({ traveler }) => {
                 iconType="far"
                 isOutline="false"
                 fixedWidth
-                className="su-mr-02em children:su-text-transparent children:su-bg-clip-text children:su-bg-gradient-to-tr children:su-from-palo-verde-dark children:su-to-saa-electric-blue"
+                className="su-mr-02em children:su-text-saa-electric-blue children:su-bg-clip-text children:su-bg-gradient-to-tr children:su-from-palo-verde-dark children:su-to-saa-electric-blue"
               />
               <p className="su-basefont-23 su-mb-0">Add traveler</p>
             </>
