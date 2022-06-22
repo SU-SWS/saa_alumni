@@ -61,48 +61,7 @@ const InterstitialPage = (props) => {
     isHideScroll: 'true',
   };
   const { userProfile } = useContext(AuthContext);
-  // const relationships = userProfile?.relationships;
-
-  const relationships = [
-    {
-      relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Spouse/Partner',
-      category: 'Family',
-      relationshipType: 'Spouse/Partner',
-      relatedContact: '0034600000xKKeMAAW',
-      relatedContactEncodedID: '67392062457',
-      relatedContactGender: 'Female',
-      relatedContactDigitalName: 'Xiaojing Fu',
-      relatedContactMyFriendsCallMe: 'Xiaojing',
-      relatedContactBirthDate: '1981-01-02',
-      relatedContactFullNameParsed: {
-        relatedContactPrefix: 'Ms.',
-        relatedContactFirstName: 'Xiaojing',
-        relatedContactMiddleName: null,
-        relatedContactLastName: 'Fu',
-        relatedContactPersonalSuffix: null,
-        relatedContactProfessionalSuffix: null,
-      },
-    },
-    {
-      relationshipID: '0034600000xKKeNAAW-0034600000xKKeMAAW-Child',
-      category: 'Family',
-      relationshipType: 'Child',
-      relatedContact: '0034600000xKKeMAAW',
-      relatedContactEncodedID: '67392062458',
-      relatedContactGender: 'Female',
-      relatedContactDigitalName: 'Xiaohu Fu',
-      relatedContactMyFriendsCallMe: 'Xiaohu',
-      relatedContactBirthDate: '1998-10-10',
-      relatedContactFullNameParsed: {
-        relatedContactPrefix: 'Miss',
-        relatedContactFirstName: 'Xiaohu',
-        relatedContactMiddleName: null,
-        relatedContactLastName: 'Fu',
-        relatedContactPersonalSuffix: null,
-        relatedContactProfessionalSuffix: null,
-      },
-    },
-  ];
+  const relationships = userProfile?.relationships;
 
   const structureTravelerData = (relationshipsData = []) => {
     let relatedContacts = [];
@@ -154,8 +113,10 @@ const InterstitialPage = (props) => {
     primaryRegistrantPhoneNumber
   );
   const primaryRegistrant = {
-    su_did: userProfile?.encodedSUID,
-    su_dname: `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`,
+    su_did: userProfile?.encodedSUID || userProfile?.session?.encodedSUID,
+    su_dname:
+      `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
+      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_title: findSelectOption(
       prefixSelectList,
       userProfile?.name?.fullNameParsed?.prefix
@@ -166,7 +127,7 @@ const InterstitialPage = (props) => {
         ? '&nbsp;'
         : userProfile?.name?.fullNameParsed?.middleName,
     su_last_name: userProfile?.name?.fullNameParsed?.lastName,
-    su_email: primaryRegistrantEmail,
+    su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
     su_phone: primaryRegistrantPhoneNumber,
     su_phone_type: findSelectOption(
@@ -233,9 +194,9 @@ const InterstitialPage = (props) => {
                 <Grid gap xs={12}>
                   <GridCell xs={12} md={7} lg={8}>
                     <FlexBox direction="col" gap>
+                      <TripTravelerCard traveler={primaryRegistrant} />
                       {relationships?.length > 0 ? (
                         <>
-                          <TripTravelerCard traveler={primaryRegistrant} />
                           {relatedContacts.map((relatedContact) => (
                             <TripTravelerCard
                               key={relatedContact.su_did}
