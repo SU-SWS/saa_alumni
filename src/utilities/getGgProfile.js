@@ -39,7 +39,8 @@ export const tokenFetcher = async () => {
     return response.token.access_token;
   }
 
-  throw new Error('Response did not contain access token');
+  console.error('Response did not contain access token');
+  return false;
 };
 
 export const profileFetcher = async (profileId, token) => {
@@ -58,7 +59,7 @@ export const profileFetcher = async (profileId, token) => {
     .get(`${profileId}/profiles/fullgg`)
     .then((result) => result.data)
     .catch((err) => {
-      throw new Error('Failed to fetch profile.');
+      console.error('Failed to fetch profile.');
     });
 
   return contact;

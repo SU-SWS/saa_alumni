@@ -16,8 +16,8 @@ const megaprofileHandler = async (req, res) => {
   const profileId = req.user.encodedSUID;
   const session = req.user;
   const token = await tokenFetcher();
-  let fullgg;
-  let affiliations;
+  let fullgg = {};
+  let affiliations = {};
 
   // While the authentication is between states support fetching by both oauth
   // services for the majority of the profile information.
@@ -27,19 +27,21 @@ const megaprofileHandler = async (req, res) => {
     try {
       fullgg = await mp.get(`/${profileId}/profiles/fullgg`);
     } catch (err) {
-      return ExceptionHandler(res, err);
+      console.error(ExceptionHandler(res, err));
     }
   }
 
   // Affiliations is already on the keycloak ouath so we fetch here.
   try {
-    const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
-    affiliations = mpresult.data.affiliations;
+    // const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
+    const mpresult = null;
+    affiliations = mpresult?.data?.affiliations;
   } catch (err) {
-    return ExceptionHandler(res, err);
+    console.error(ExceptionHandler(res, err));
   }
 
   const mpUser = { session, ...fullgg, affiliations };
+  console.log('mpUser data here: ', mpUser);
   return res.status(200).json(mpUser);
 };
 
