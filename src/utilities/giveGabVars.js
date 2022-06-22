@@ -344,7 +344,7 @@ const setGiveGabVars = (userProfile) => {
   // - Email
   window.su_dname =
     userProfile?.name?.digitalName ||
-    `${userProfile?.user?.firstName} ${userProfile?.session?.lastName}`;
+    `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`;
   window.su_first_name =
     userProfile?.name?.fullNameParsed?.firstName ||
     userProfile?.session?.firstName ||
