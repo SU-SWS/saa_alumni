@@ -205,7 +205,7 @@ const InterstitialPage = (props) => {
                           ))}
                         </>
                       ) : (
-                        <p>
+                        <p className="su-text-center su-basefont-23">
                           No additional travelers are available at this time
                         </p>
                       )}
