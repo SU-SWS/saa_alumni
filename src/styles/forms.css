@@ -36,7 +36,7 @@
 
 .ggeWidget .ggeQuestion--instructions a,
 .ggeWidget .ggeQuestion__error a {
-  @apply su-no-underline hocus:su-underline su-text-white hocus:su-underline-digital-red-xlight su-font-regular su-underline-offset;
+  @apply su-no-underline hocus:su-underline su-text-white hocus:su-decoration-digital-red-xlight su-font-regular su-underline-offset;
 }
 
 .ggeWidget .ggeQuestion--instructions a:after,
