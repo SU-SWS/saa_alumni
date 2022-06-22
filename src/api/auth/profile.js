@@ -33,15 +33,13 @@ const megaprofileHandler = async (req, res) => {
 
   // Affiliations is already on the keycloak ouath so we fetch here.
   try {
-    // const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
-    const mpresult = null;
+    const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
     affiliations = mpresult?.data?.affiliations;
   } catch (err) {
     console.error(ExceptionHandler(res, err));
   }
 
   const mpUser = { session, ...fullgg, affiliations };
-  console.log('mpUser data here: ', mpUser);
   return res.status(200).json(mpUser);
 };
 
