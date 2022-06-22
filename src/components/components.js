@@ -19,6 +19,7 @@ import EmbedVideo from './media/embedVideo';
 import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
 import FormPage from './page-types/formPage/formPage';
+import GiveGabForm from './embed/giveGabForm';
 import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
