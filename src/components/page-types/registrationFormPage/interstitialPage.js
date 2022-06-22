@@ -180,110 +180,110 @@ const InterstitialPage = (props) => {
   };
 
   return (
-    // <AuthenticatedPage>
-    <FormContextProvider>
-      <SbEditable content={blok}>
-        <Layout {...props}>
-          <Container
-            as="main"
-            id="main-content"
-            className="basic-page su-relative su-flex-grow su-w-full"
-            width="full"
-          >
-            <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
-            <Hero blok={heroProps} />
-            <Container className="su-cc su-rs-pb-8 su-bg-saa-black su-text-white">
-              <Grid xs={12} className="su-rs-pb-8">
-                <GridCell
-                  xs={12}
-                  lg={6}
-                  className="lg:su-col-start-4 xl:su-col-start-4"
-                >
-                  <Heading
-                    level={2}
-                    align="center"
-                    font="serif"
-                    className="su-rs-mt-7"
+    <AuthenticatedPage>
+      <FormContextProvider>
+        <SbEditable content={blok}>
+          <Layout {...props}>
+            <Container
+              as="main"
+              id="main-content"
+              className="basic-page su-relative su-flex-grow su-w-full"
+              width="full"
+            >
+              <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
+              <Hero blok={heroProps} />
+              <Container className="su-cc su-rs-pb-8 su-bg-saa-black su-text-white">
+                <Grid xs={12} className="su-rs-pb-8">
+                  <GridCell
+                    xs={12}
+                    lg={6}
+                    className="lg:su-col-start-4 xl:su-col-start-4"
                   >
-                    {tripTitle}:<br />
-                    Registration
-                  </Heading>
-                  {hasRichText(body) && (
-                    <RichTextRenderer
-                      wysiwyg={body}
-                      className="su-intro-text su-text-center children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                    />
-                  )}
-                </GridCell>
-              </Grid>
-              <Grid xs={12}>
-                <GridCell xs={12} md={6}>
-                  <Heading level={3} align="left" font="serif">
-                    Add existing connections and past travelers to your trip
-                  </Heading>
-                </GridCell>
-                <GridCell xs={12} md={7} lg={8}>
-                  <p className="su-intro-text">
-                    We recommend adding the people listed below in this step, as
-                    you won’t be able to later. You will be able to add people
-                    not listed below later in the process.
-                  </p>
-                </GridCell>
-              </Grid>
-              <Grid gap xs={12}>
-                <GridCell xs={12} md={7} lg={8}>
-                  <FlexBox direction="col" gap>
-                    {relationships?.length > 0 ? (
-                      <>
-                        <TripTravelerCard traveler={primaryRegistrant} />
-                        {relatedContacts.map((relatedContact) => (
-                          <TripTravelerCard
-                            key={relatedContact.su_did}
-                            traveler={relatedContact}
-                          />
-                        ))}
-                      </>
-                    ) : (
-                      <p>No relationships are available at this time</p>
-                    )}
-                  </FlexBox>
-                </GridCell>
-                <GridCell xs={12} md={5} lg={4}>
-                  <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
-                    <Heading level={4} size="3" align="left" font="serif">
-                      Added travelers
+                    <Heading
+                      level={2}
+                      align="center"
+                      font="serif"
+                      className="su-rs-mt-7"
+                    >
+                      {tripTitle}:<br />
+                      Registration
                     </Heading>
-                    <TripTravelerList />
-                    <FormContext.Consumer>
-                      {(value) => (
-                        <FlexBox justifyContent="center">
-                          <Link
-                            to={`${slug}/form`}
-                            className="su-button su-mt-36 su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24"
-                            state={{ travelers: value[0].travelersData }}
-                          >
-                            Next
-                            <FaIcon
-                              iconChoice="fa-long-arrow-right"
-                              iconType="far"
-                              isOutline="false"
-                              fixedWidth
-                              className="su-ml-02em su-transition-colors"
+                    {hasRichText(body) && (
+                      <RichTextRenderer
+                        wysiwyg={body}
+                        className="su-intro-text su-text-center children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
+                      />
+                    )}
+                  </GridCell>
+                </Grid>
+                <Grid xs={12}>
+                  <GridCell xs={12} md={6}>
+                    <Heading level={3} align="left" font="serif">
+                      Add existing connections and past travelers to your trip
+                    </Heading>
+                  </GridCell>
+                  <GridCell xs={12} md={7} lg={8}>
+                    <p className="su-intro-text">
+                      We recommend adding the people listed below in this step,
+                      as you won’t be able to later. You will be able to add
+                      people not listed below later in the process.
+                    </p>
+                  </GridCell>
+                </Grid>
+                <Grid gap xs={12}>
+                  <GridCell xs={12} md={7} lg={8}>
+                    <FlexBox direction="col" gap>
+                      {relationships?.length > 0 ? (
+                        <>
+                          <TripTravelerCard traveler={primaryRegistrant} />
+                          {relatedContacts.map((relatedContact) => (
+                            <TripTravelerCard
+                              key={relatedContact.su_did}
+                              traveler={relatedContact}
                             />
-                          </Link>
-                        </FlexBox>
+                          ))}
+                        </>
+                      ) : (
+                        <p>No relationships are available at this time</p>
                       )}
-                    </FormContext.Consumer>
-                  </div>
-                </GridCell>
-              </Grid>
+                    </FlexBox>
+                  </GridCell>
+                  <GridCell xs={12} md={5} lg={4}>
+                    <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
+                      <Heading level={4} size="3" align="left" font="serif">
+                        Added travelers
+                      </Heading>
+                      <TripTravelerList />
+                      <FormContext.Consumer>
+                        {(value) => (
+                          <FlexBox justifyContent="center">
+                            <Link
+                              to={`${slug}/form`}
+                              className="su-button su-mt-36 su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24"
+                              state={{ travelers: value[0].travelersData }}
+                            >
+                              Next
+                              <FaIcon
+                                iconChoice="fa-long-arrow-right"
+                                iconType="far"
+                                isOutline="false"
+                                fixedWidth
+                                className="su-ml-02em su-transition-colors"
+                              />
+                            </Link>
+                          </FlexBox>
+                        )}
+                      </FormContext.Consumer>
+                    </div>
+                  </GridCell>
+                </Grid>
+              </Container>
+              {numAnkle > 0 && <Ankle isDark {...props} />}
             </Container>
-            {numAnkle > 0 && <Ankle isDark {...props} />}
-          </Container>
-        </Layout>
-      </SbEditable>
-    </FormContextProvider>
-    // </AuthenticatedPage>
+          </Layout>
+        </SbEditable>
+      </FormContextProvider>
+    </AuthenticatedPage>
   );
 };
 
