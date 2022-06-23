@@ -61,6 +61,7 @@ const TripTravelerCard = ({ traveler }) => {
             className="su-m-0"
           >
             {traveler.su_dname}
+            {traveler.su_reg === 'Primary registrant' ? ` (you)` : null}
           </Heading>
           {traveler?.removeBtn && (
             <p className="su-basefont-23 su-mb-0">
