@@ -112,11 +112,17 @@ const InterstitialPage = (props) => {
     userProfile?.phoneNumbers,
     primaryRegistrantPhoneNumber
   );
+
+  let digitalName;
+  if (userProfile?.name?.fullNameParsed?.firstName) {
+    digitalName = `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`;
+  } else {
+    digitalName = `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`;
+  }
+
   const primaryRegistrant = {
     su_did: userProfile?.encodedSUID || userProfile?.session?.encodedSUID,
-    su_dname:
-      `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}` ||
-      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
+    su_dname: digitalName,
     su_title: findSelectOption(
       prefixSelectList,
       userProfile?.name?.fullNameParsed?.prefix

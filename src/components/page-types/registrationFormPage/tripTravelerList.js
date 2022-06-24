@@ -19,8 +19,7 @@ const TripTravelerList = () => {
       direction="col"
       className="icon-card su-group su-basefont-23 children:su-border-b-2 children:su-border-black last:children:su-border-none"
       justifyContent="between"
-      alignItems="start"
-      gap
+      alignItems="center"
     >
       {state.travelersData.map((traveler) => (
         <TripTravelerListItem key={traveler.su_did} traveler={traveler} />
