@@ -32,8 +32,9 @@ const megaprofileHandler = async (req, res) => {
   }
 };
 
-const storyblokPreviewPassthrough = (req, res, next) => {
-  if (isStoryblokEditor(req)) {
+const storyblokPreviewPassthrough = async (req, res, next) => {
+  const isEditor = await isStoryblokEditor(req);
+  if (isEditor) {
     res.json(fullggMockData);
   } else next();
 };

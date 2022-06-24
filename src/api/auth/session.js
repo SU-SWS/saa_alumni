@@ -5,8 +5,9 @@ import { isStoryblokEditor } from '../../utilities/isStoryblokEditor';
 
 const handler = connect()
   // Pass-through for Storyblok Editor preview.
-  .get((req, res, next) => {
-    if (isStoryblokEditor(req)) {
+  .get(async (req, res, next) => {
+    const isEditor = await isStoryblokEditor(req);
+    if (isEditor) {
       res.json(sessionMockData);
     } else next();
   })
