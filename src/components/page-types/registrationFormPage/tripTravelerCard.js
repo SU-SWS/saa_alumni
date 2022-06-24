@@ -42,7 +42,7 @@ const TripTravelerCard = ({ traveler }) => {
   return (
     <button
       type="button"
-      className="su-stretch-link su-w-full"
+      className="su-stretch-link su-w-full su-bg-saa-black-dark"
       onClick={toggleRelationship}
     >
       <FlexBox

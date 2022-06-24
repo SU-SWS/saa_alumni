@@ -50,7 +50,7 @@ const FormPage = (props) => {
   if (isSingleColumn) {
     contentStyle = '';
     formCardStyle = 'lg:su-col-start-4 xl:su-col-start-4';
-    bgCardStyle = 'su-bg-saa-black';
+    bgCardStyle = 'su-bg-saa-black-dark';
     gridContainerStyle = 'su-bg-saa-black';
   }
 
