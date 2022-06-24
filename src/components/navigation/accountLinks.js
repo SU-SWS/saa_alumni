@@ -55,23 +55,6 @@ const AccountLinks = ({ mainLinkClasses }) => {
       icon: true,
     },
     {
-      text: 'Your Giving',
-      url: 'https://givinghistory.stanford.edu/',
-      icon: true,
-    },
-    {
-      text: 'Stanford Groups',
-      url: 'https://groups.stanford.edu/',
-      icon: true,
-      classes: 'su-pb-16',
-    },
-    {
-      text: 'Help',
-      url: 'https://alumni.stanford.edu/help/',
-      classes:
-        'su-border-t su-border-digital-red-xlight su-pt-16 su-link-regular',
-    },
-    {
       text: 'Log out',
       url: '/api/auth/logout',
       classes: 'su-link-regular',
@@ -146,18 +129,6 @@ const AccountLinks = ({ mainLinkClasses }) => {
 
           {!isAuthenticated && (
             <>
-              <NavItem
-                className={`${mainLinkClasses} su-link-regular`}
-                blok={{
-                  link: {
-                    url: 'https://alumni.stanford.edu/get/page/my-account/profile',
-                    linktype: 'url',
-                  },
-                  text: 'My Account',
-                }}
-                hasExternalIcon
-              />
-
               <NavItem
                 className={mainLinkClasses}
                 blok={{

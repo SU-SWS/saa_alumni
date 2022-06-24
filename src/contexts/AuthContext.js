@@ -78,6 +78,7 @@ class AuthContextProvider extends React.Component {
       .catch((err) => {
         this.dispatch({ type: 'setAuthenticated', payload: false });
         this.dispatch({ type: 'setAuthenticating', payload: false });
+        this.dispatch({ type: 'setError', payload: true });
       });
   }
 
