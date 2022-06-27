@@ -21,7 +21,7 @@ const TripTravelerListItem = ({ traveler }) => {
       className="su-basefont-23 su-w-full su-pb-12"
       gap
       justifyContent="between"
-      alignItems="start"
+      alignItems="center"
     >
       <p className="su-big-paragraph su-m-0">{traveler.su_dname}</p>
       <button
