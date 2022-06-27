@@ -125,14 +125,19 @@ const InterstitialPage = (props) => {
     su_dname: digitalName,
     su_title: findSelectOption(
       prefixSelectList,
-      userProfile?.name?.fullNameParsed?.prefix
+      userProfile?.name?.fullNameParsed?.prefix || 'Mx.'
     ),
-    su_first_name: userProfile?.name?.fullNameParsed?.firstName,
+    su_first_name:
+      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.session?.firstName,
     su_middle_name:
-      userProfile?.name?.fullNameParsed?.middleName === null
+      userProfile?.name?.fullNameParsed?.middleName === null ||
+      userProfile?.name?.fullNameParsed?.middleName === undefined
         ? '&nbsp;'
         : userProfile?.name?.fullNameParsed?.middleName,
-    su_last_name: userProfile?.name?.fullNameParsed?.lastName,
+    su_last_name:
+      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
     su_phone: primaryRegistrantPhoneNumber,
