@@ -69,7 +69,7 @@ class ggForm {
    */
   setADCVariables = () => {
     window.su_suid = this.user.display_name;
-    window.su_staff = this.user.su_display_name;
+    window.su_staff_name = this.user.su_display_name;
   };
 
   /**

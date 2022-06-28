@@ -75,7 +75,7 @@ class ggTripForm {
     window.su_trip_id = this.trips[uuid].tripId;
     window.su_trip_name = this.trips[uuid].title;
     window.su_suid = this.user.display_name;
-    window.su_staff = this.user.su_display_name;
+    window.su_staff_name = this.user.su_display_name;
   };
 
   /**
