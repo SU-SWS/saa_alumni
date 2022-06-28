@@ -160,8 +160,8 @@
 .ggeWidget .ggeQuestion textarea {
   background: var(--su-white);
   padding-left: 21px;
-  border: 1px solid var(--su-black-50);
-  border-bottom: 2px solid var(--su-black-50);
+  border: 1px solid var(--su-black-20);
+  border-bottom: 2px solid var(--su-black-20);
   border-radius: 3px;
   box-sizing: border-box;
   font-size: 1.8rem;
@@ -186,6 +186,7 @@
 .ggeWidget .ggeQuestion input[type="text"]:focus,
 .ggeWidget .ggeQuestion textarea:focus {
   background: var(--su-white);
+  box-shadow: 0 0 3px var(--su-black-70), 0 0 7px var(--su-black-70);
 }
 
 .ggeWidget .ggeQuestion input[type="email"][readonly],
