@@ -105,24 +105,6 @@
 }
 
 /*  GG Form */
-.ggeWidget .su-digital-name {
-  display: flex;
-}
-
-.ggeWidget .su-digital-name .ggeQuestion__label {
-  padding: 0;
-  margin-right: 5px;
-}
-
-.ggeWidget .su-digital-name .ggeQuestion__field input[type="text"] {
-  border: none;
-  color: var(--su-black-30);
-  background: transparent;
-  padding: 0;
-  font-weight: 600;
-  margin-top: 20px;
-}
-
 .ggeWidget .ggeContent .ggeQuestion {
   margin-bottom: 45px;
   padding: 0;
