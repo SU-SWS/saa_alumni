@@ -74,12 +74,14 @@ const GiveGabForm = ({
         )}
       >
         <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
-          <Embed blok={preBlok} />
+          {pre_markup && <Embed blok={preBlok} />}
           <DynaScript src={embedUrl} id={htmlId} errorText={errorText} />
         </div>
-        <div className="form-gradient su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
-          <Embed blok={postBlok} />
-        </div>
+        {post_markup && (
+          <div className="form-gradient su-rs-mt-3 children:children:su-p-38 md:children:children:su-p-72 xl:children:children:su-p-76 children:children:empty:su-p-0">
+            <Embed blok={postBlok} />
+          </div>
+        )}
       </Container>
     </SbEditable>
   );
