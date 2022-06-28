@@ -336,9 +336,12 @@
 .ggeWidget .ggeButton--back {
   align-items: center;
   background: transparent;
-  border: 2px solid var(--su-digital-red);
+  border-image-slice: 1;
+  border-image-source: linear-gradient(to right top,#017e7c,#505eec);
+  border-style: solid;
+  border-width: 2px;
   border-radius: unset;
-  color: var(--su-digital-red);
+  color: var(--su-white);
   position: static;
   padding-right: 3rem;
   position: relative;
@@ -351,9 +354,7 @@
 .ggeWidget .ggeButton--back:focus,
 .ggeWidget .ggeButton--back:hover {
   align-items: center;
-  background: transparent;
-  border: 2px solid var(--su-black);
-  border-radius: unset;
+  background-image: linear-gradient(to right top, rgb(1, 126, 124), rgb(80, 94, 236));
   color: var(--su-black);
   text-decoration: underline;
 }
@@ -377,7 +378,7 @@
 }
 
 .ggeWidget .ggeButton--back::before {
-  background: var(--su-digital-red);
+  color: var(--su-white);
   transform: rotate(180deg);
   margin-right: 8px;
 }
