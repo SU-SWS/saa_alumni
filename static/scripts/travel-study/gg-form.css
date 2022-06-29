@@ -80,10 +80,23 @@
 }
 
 /* Trip Form Styling */
+.gg-form-sidebar {
+  margin-top: 58px;
+}
+
+.gg-form-sidebar h2 {
+  font-size: 33px;
+  padding: 0;
+}
+
+.gg-form-sidebar a {
+  font-size: 25px;
+}
+
 .gg-form-sidebar .summary-item {
   display: flex;
   flex-direction: column;
-  line-height: 1.4;
+  line-height: 2.7rem;
   margin-bottom: 6.1rem;
   padding-bottom: 1.9rem;
   border-bottom: 1px solid #585754;
@@ -93,10 +106,14 @@
   border-bottom: none;
 }
 
-.gg-form-sidebar .summary-item h2 {
+.gg-form-sidebar .summary-item h3 {
   font-weight: 600;
-  font-size: 1em;
+  font-size: 2.1rem;
   margin-bottom: 2.7rem;
+}
+
+.gg-form-sidebar .summary-item p {
+  margin: 0;
 }
 
 .gg-form-main .gg-script-wrapper {
