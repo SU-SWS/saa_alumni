@@ -82,7 +82,7 @@
   display: flex;
   flex-direction: column;
   line-height: 1.4;
-  margin-bottom: 6.1rem;
+  margin-bottom: 7.2rem;
   padding-bottom: 1.9rem;
   border-bottom: 1px solid #585754;
 }
@@ -247,6 +247,10 @@
   margin-bottom: 7.2rem;
 }
 
+.ggeTally table {
+  margin: 0;
+}
+
 .ggeTally tr {
   border: none;
 }
@@ -256,6 +260,11 @@
   padding-top: 0;
   padding-bottom: 3.2rem;
   border-bottom: 1px solid var(--su-black-30);
+}
+
+.ggeTally .ggeTally--money:last-child {
+  padding: 0;
+  border-bottom: unset;
 }
 
 .ggeTally .ggeTally--total {
