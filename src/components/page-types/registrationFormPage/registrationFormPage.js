@@ -127,7 +127,7 @@ const RegistrationFormPage = (props) => {
               <Grid
                 gap
                 xs={12}
-                className="su-relative su-cc su-z-10 su-rs-pb-8 su-bg-saa-black"
+                className="su-relative su-cc su-z-10 su-rs-pb-8  su-bg-saa-black"
               >
                 <GridCell
                   xs={12}
@@ -155,7 +155,7 @@ const RegistrationFormPage = (props) => {
                 >
                   <CreateBloks
                     blokSection={giveGabForm}
-                    bgCardStyle="su-bg-saa-black"
+                    bgCardStyle="su-bg-saa-black-dark"
                     tripId={tripId}
                   />
                 </GridCell>

@@ -1,22 +1,29 @@
-import React, { useState, createRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import AuthContext from '../../contexts/AuthContext';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import useEscape from '../../hooks/useEscape';
+import { isExpanded } from '../../utilities/menuHelpers';
 import useDisplay from '../../hooks/useDisplay';
 import NavItem from './navItem';
 import HeroIcon from '../simple/heroIcon';
+import { SrOnlyText } from '../accessibility/SrOnlyText';
 
 const Initial = ({ string }) => {
-  const initial = string.substr(0, 1);
+  const initial = string?.substr(0, 1);
   return (
-    <div className="su-flex su-justify-center su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-solid su-border-digital-red-xlight lg:su-border-digital-red-light su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark">
+    <div
+      className="su-flex su-justify-center su-transition su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark"
+      aria-hidden
+    >
       {initial}
     </div>
   );
 };
 
 const AccountLinks = ({ mainLinkClasses }) => {
-  const ref = createRef();
+  const ref = useRef(null);
+  const buttonRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const loginDestination =
     typeof window !== 'undefined' ? window.location.pathname : null;
@@ -31,31 +38,21 @@ const AccountLinks = ({ mainLinkClasses }) => {
     setExpanded(false);
   });
 
+  useEscape(() => {
+    if (buttonRef.current && isExpanded(buttonRef.current)) {
+      setExpanded(false);
+      buttonRef.current.focus();
+    }
+  });
+
   const linkClasses =
-    'su-flex su-justify-between su-group su-w-full su-px-20 su-py-8 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white ' +
-    'hocus:su-bg-cardinal-red-xxdark !su-underline-offset lg:!su-underline-digital-red-xlight su-text-20';
+    'su-flex su-items-baseline su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white hocus:su-bg-cardinal-red-xxdark !su-underline-offset-[3px] lg:!su-decoration-digital-red-xlight su-text-20';
 
   const links = [
     {
       text: 'My Account Settings',
       url: 'https://alumni.stanford.edu/get/page/my-account/profile',
       icon: true,
-    },
-    {
-      text: 'Your Giving',
-      url: 'https://give.stanford.edu',
-      icon: true,
-    },
-    {
-      text: 'Stanford Groups',
-      url: 'https://alumni.stanford.edu/groups/',
-      icon: true,
-    },
-    {
-      text: 'Help',
-      url: 'https://alumni.stanford.edu/help/',
-      classes:
-        'su-border-t su-border-digital-red-xlight su-pt-[9px] su-link-regular',
     },
     {
       text: 'Log out',
@@ -66,12 +63,14 @@ const AccountLinks = ({ mainLinkClasses }) => {
 
   return (
     <AuthContext.Consumer>
-      {({ isAuthenticated, userProfile, userSession }) => (
+      {({ isAuthenticated, userProfile }) => (
         <>
           {isAuthenticated && (
             <li className="su-text-white su-relative" ref={ref}>
               <button
                 type="button"
+                ref={buttonRef}
+                aria-expanded={expanded}
                 onClick={() => setExpanded(!expanded)}
                 className="su-flex su-items-center su-py-8 su-group"
               >
@@ -80,16 +79,18 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     showDesktop ? '' : 'su-sr-only'
                   }`}
                 >
-                  Hi,{' '}
-                  {userProfile
-                    ? `${userProfile.name.fullNameParsed.firstName} ${userProfile.name.fullNameParsed.lastName}`
-                    : `${userSession.firstName} ${userSession.lastName}`}
+                  Hi,
+                  {userProfile?.name?.fullNameParsed
+                    ? ` ${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`
+                    : ` ${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`}
                 </span>
+                <SrOnlyText>
+                  {`${expanded ? ' Close' : ' Open'} user menu`}
+                </SrOnlyText>
                 <Initial
                   string={
-                    userProfile
-                      ? userProfile.name.fullNameParsed.firstName
-                      : userSession.firstName
+                    userProfile?.name?.fullNameParsed?.firstName ||
+                    userProfile?.session?.firstName
                   }
                 />
                 <ChevronDownIcon
@@ -99,13 +100,14 @@ const AccountLinks = ({ mainLinkClasses }) => {
                 />
               </button>
               <ul
-                className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-digital-red-dark su-z-10 su-list-none su-absolute su-py-[24px] su-px-[24px] su-w-screen su-mr-[-20px] sm:su-mr-[-30px] md:su-w-[300px] su-right-0 su-text-left
+                className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-cardinal-red-xdark su-z-10 su-list-none su-absolute su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[32rem] su-right-0 su-text-left
                   ${
                     expanded
                       ? 'su-scale-y-100 md:su-scale-x-100 su-opacity-100 su-visible'
                       : 'su-scale-y-0 md:su-scale-x-0 su-opacity-0 su-invisible'
                   }
                 `}
+                aria-hidden={!expanded}
               >
                 {links.map((link) => (
                   <li className={link.classes} key={link.url}>
@@ -127,18 +129,6 @@ const AccountLinks = ({ mainLinkClasses }) => {
 
           {!isAuthenticated && (
             <>
-              <NavItem
-                className={`${mainLinkClasses} su-link-regular`}
-                blok={{
-                  link: {
-                    url: 'https://alumni.stanford.edu/get/page/my-account/profile',
-                    linktype: 'url',
-                  },
-                  text: 'My Account',
-                }}
-                hasExternalIcon
-              />
-
               <NavItem
                 className={mainLinkClasses}
                 blok={{

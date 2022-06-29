@@ -36,7 +36,7 @@
 
 .ggeWidget .ggeQuestion--instructions a,
 .ggeWidget .ggeQuestion__error a {
-  @apply su-no-underline hocus:su-underline su-text-white hocus:su-underline-digital-red-xlight su-font-regular su-underline-offset;
+  @apply su-no-underline hocus:su-underline su-text-white hocus:su-decoration-digital-red-xlight su-font-regular su-underline-offset-[3px];
 }
 
 .ggeWidget .ggeQuestion--instructions a:after,
@@ -169,7 +169,7 @@
 }
 
 .ggeWidget .ggeButton {
-  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md;
+  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md;
 }
 
 .ggeWidget .ggeButton--forward {

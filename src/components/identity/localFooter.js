@@ -116,7 +116,7 @@ const LocalFooter = ({
               sm={3}
               md={4}
               xxl={3}
-              className="su-link-black-20 su-underline-offset !su-link-underline-digital-red-xlight"
+              className="su-link-black-20 su-underline-offset-[3px] !su-link-underline-digital-red-xlight"
             >
               <Grid
                 as="nav"

@@ -25,7 +25,7 @@ const UtilityNav = ({
     <ul className={menuClasses}>
       <CreateBloks
         blokSection={menuItems}
-        className={`${itemClasses} su-link-regular`}
+        className={`${itemClasses} children:su-font-normal`}
         hasExternalIcon
       />
       <AccountLinks mainLinkClasses={itemClasses} />

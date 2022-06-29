@@ -14,7 +14,7 @@ export const filterlistMobile = ({ panelOpened }) =>
   });
 export const toggle = ({ panelOpened }) =>
   dcnb(
-    'su-group su-flex su-items-center su-w-full su-pl-20 sm:su-pl-30 md:su-pl-50 su-underline-offset hocus:su-shadow-none hocus:su-underline hocus:su-bg-black-90 su-py-20 su-pl-20 su-pr-80 su-text-20 su-text-white',
+    'su-group su-flex su-items-center su-w-full su-pl-20 sm:su-pl-30 md:su-pl-50 su-underline-offset-[3px] hocus:su-shadow-none hocus:su-underline hocus:su-bg-black-90 su-py-20 su-pl-20 su-pr-80 su-text-20 su-text-white',
     {
       'su-border-b su-border-black-80 su-bg-saa-black-dark': !panelOpened,
       '!su-bg-saa-black hover:!su-bg-black-80': panelOpened,

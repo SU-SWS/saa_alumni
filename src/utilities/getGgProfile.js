@@ -3,10 +3,6 @@ import { ClientCredentials } from 'simple-oauth2';
 import axios from 'axios';
 import mockServer from './mockServer';
 
-/**
- * Get Bearer Token
- * Fetches and returns a bearer token string using the client/secret provided.
- */
 export const tokenFetcher = async () => {
   // The OAuth Bearer token granter.
   const TOKEN_URL = process.env.MEGAPROFILE_TOKEN_URL;
@@ -43,12 +39,10 @@ export const tokenFetcher = async () => {
     return response.token.access_token;
   }
 
-  throw new Error('Response did not contain access token');
+  console.error('Response did not contain access token');
+  return false;
 };
 
-/**
- * Get profile data from the MEGA PROFILE API
- */
 export const profileFetcher = async (profileId, token) => {
   const client = axios.create({
     baseURL: process.env.MEGAPROFILE_URL,
@@ -65,7 +59,7 @@ export const profileFetcher = async (profileId, token) => {
     .get(`${profileId}/profiles/fullgg`)
     .then((result) => result.data)
     .catch((err) => {
-      throw new Error('Failed to fetch profile.');
+      console.error('Failed to fetch profile.');
     });
 
   return contact;

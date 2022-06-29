@@ -35,7 +35,7 @@ export const contentWrapper = ({ orientation }) =>
   });
 export const link = ({ orientation }) =>
   dcnb(
-    'su-block su-stretched-link su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight',
+    'su-block su-stretched-link su-group su-mb-06em su-text-white hocus:su-text-white su-no-underline hocus:su-underline group-hover:su-underline su-underline-offset-[3px] su-decoration-[0.12em] su-decoration-digital-red-xlight focus:su-outline-none',
     {
       'su-type-3': orientation === 'horizontal',
       'su-type-1': orientation !== 'horizontal',

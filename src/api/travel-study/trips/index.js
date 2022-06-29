@@ -52,17 +52,20 @@ const tripsCollection = async (req, res) => {
 
   const ret = {};
   trips.forEach((story) => {
-    console.log(story);
     ret[story.uuid] = {
       uuid: story.uuid,
-      title: story.content.title,
-      subtitle: story.content.subtitle,
+      title: story.content?.title,
+      subtitle: story.content?.subtitle,
       slug: story.slug,
       full_slug: story.full_slug,
-      tripId: story.content.tripId,
-      startDate: story.content.startDate,
-      endDate: story.content.endDate,
-      extendPrice: story.content.extendPrice,
+      tripConfigName: story.name,
+      tripId: story.content?.tripId,
+      tripSize: story.content?.tripSize,
+      minAge: story.content?.minAge,
+      startDate: story.content?.startDate,
+      endDate: story.content?.endDate,
+      price: story.content?.cost?.content?.[0]?.content?.[0]?.text,
+      extendPrice: story.content?.extendPrice,
     };
   });
 

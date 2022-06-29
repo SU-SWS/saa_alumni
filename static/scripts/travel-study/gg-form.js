@@ -1,3 +1,4 @@
+/* eslint-disable new-cap */
 class ggForm {
   /**
    *
@@ -6,19 +7,17 @@ class ggForm {
   constructor(options) {
     this.id = options.id;
     this.form = options.form;
-    this.tripApi =
-      options?.tripApi || 'http://localhost:8000/api/travel-study/trips';
   }
 
   /**
    * Run you fools!
    */
   init = async () => {
+    this.mountAdditionalScripts();
     this.elem = document.getElementById(this.id);
     this.render('Loading user information...');
     await this.getUserInfo();
-    this.render('Loading trip information...');
-    this.embedTripSelect();
+    this.embedInterstitialPage();
   };
 
   /**
@@ -27,6 +26,13 @@ class ggForm {
    */
   render = (content) => {
     this.elem.replaceChildren(content);
+  };
+
+  mountAdditionalScripts = () => {
+    document.head.innerHTML +=
+      '<link rel="stylesheet" href="https://tsgg--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
+    document.head.innerHTML +=
+      '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };
 
   /**
@@ -43,6 +49,7 @@ class ggForm {
       this.user = {
         uid: 0,
         su_display_name: 'Guest',
+        display_name: 'Guest-suid',
         mail: 'person@example.com',
       };
     }
@@ -61,44 +68,8 @@ class ggForm {
    * Put the ADC Window variables into place.
    */
   setADCVariables = () => {
-    const uuid = document.getElementById(`${this.id}-select`).value;
-    this.uuid = uuid;
-    window.su_trip_id = this.trips[uuid].tripId;
-    window.su_trip_name = this.trips[uuid].title;
-    window.su_dname = this.user.su_display_name;
-    window.su_email = this.user.mail;
-  };
-
-  /**
-   * Get the information box.
-   */
-  getTripInfoBox = (trips, uuid) => {
-    const content = `
-      <h3>Trip Information</h3>
-      <p><strong>Trip Name:</strong> ${trips[uuid].title}</p>
-      <p><strong>Trip ID:</strong> ${trips[uuid].tripId}</p>
-      <p>
-        <strong>Trip URL:</strong>
-        <a href="https://alumni.stanford.edu/${trips[uuid].full_slug}" target="_blank" rel="noopener">
-          https://alumni.stanford.edu/${trips[uuid].full_slug}
-        </a>
-      </p>
-      <p><strong>Trip Subtitle:</strong> ${trips[uuid].subtitle}</p>
-      <p><strong>Trip Start Date:</strong> ${trips[uuid].startDate}</p>
-      <p><strong>Trip End Date:</strong> ${trips[uuid].endDate}</p>
-    `;
-    return content;
-  };
-
-  /**
-   *
-   * @returns {Promise<void>}
-   */
-  getTrips = async () => {
-    const response = await fetch(this.tripApi);
-    const trips = await response.json();
-    this.trips = trips;
-    return trips;
+    window.su_suid = this.user.display_name;
+    window.su_staff_name = this.user.su_display_name;
   };
 
   /**
@@ -106,19 +77,14 @@ class ggForm {
    */
   renderForm = () => {
     const content = document.createElement('article');
-    content.className = 'gg-form-wrapper';
-    content.style.display = 'flex';
-    content.style.gap = '3rem';
-
-    const sidebar = document.createElement('aside');
-    sidebar.className = 'gg-form-sidebar';
-    sidebar.innerHTML += this.getTripInfoBox(this.trips, this.uuid);
-
+    content.className = 'gg-form-wrapper gg-form-notrip';
     const main = document.createElement('section');
-    main.className = 'gg-form-main';
-    main.appendChild(this.getGGScript());
+    main.className = 'gg-form-main centered-container';
+    const ggScript = document.createElement('div');
+    ggScript.className = 'gg-script-wrapper';
+    ggScript.appendChild(this.getGGScript());
+    main.appendChild(ggScript);
 
-    content.appendChild(sidebar);
     content.appendChild(main);
     this.render(content);
   };
@@ -126,32 +92,21 @@ class ggForm {
   /**
    * Embeds an option to select a trip.
    */
-  embedTripSelect = async () => {
-    const trips = await this.getTrips();
+  embedInterstitialPage = () => {
     const content = document.createElement('div');
-    const message = document.createElement('h3');
-    message.innerText = 'Select a trip to begin:';
-    const select = document.createElement('select');
-    select.id = `${this.id}-select`;
-    const go = document.createElement('button');
-    go.innerText = 'Go ➡️';
-    go.className = 'go-button';
-    go.onclick = () => {
+    const staffName = document.createElement('p');
+    staffName.innerText = `Staff name: ${this.user.su_display_name}`;
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'su-button su-link su-link--action';
+    button.innerHTML = 'Next';
+    button.onclick = () => {
       this.setADCVariables();
       this.renderForm();
     };
 
-    // Create and append the trip options.
-    Object.entries(trips).forEach(([key, value]) => {
-      const option = document.createElement('option');
-      option.value = key;
-      option.text = `${value.title} (${value.tripId})`;
-      select.appendChild(option);
-    });
-
-    content.appendChild(message);
-    content.appendChild(select);
-    content.appendChild(go);
+    content.appendChild(staffName);
+    content.appendChild(button);
 
     this.render(content);
   };

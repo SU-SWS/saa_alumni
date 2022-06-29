@@ -53,7 +53,7 @@
 }
 
 .event-title__link {
-  @apply su-no-underline hocus:su-underline su-underline-offset !su-underline-thick !su-underline-digital-red-xlight su-text-black hocus:su-text-black su-font-serif;
+  @apply su-no-underline hocus:su-underline su-underline-offset-[3px] su-decoration-[0.12em] su-decoration-digital-red-xlight su-text-black hocus:su-text-black su-font-serif focus:su-outline-none;
 }
 
 .event-title__link::before {
