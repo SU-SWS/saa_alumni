@@ -32,8 +32,10 @@ class ggTripForm {
   };
 
   mountAdditionalScripts = () => {
+    // document.head.innerHTML +=
+    // '<link rel="stylesheet" href="https://tsgg--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
     document.head.innerHTML +=
-      '<link rel="stylesheet" href="https://tsgg--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
+      '<link rel="stylesheet" href="http://localhost:8000/scripts/travel-study/gg-form.css" type="text/css"/>';
     document.head.innerHTML +=
       '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };

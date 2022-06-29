@@ -261,6 +261,7 @@
 }
 
 .ggeTally {
+  border: 0 solid;
   border-color: transparent;
   border-image-slice: 1;
   border-image-source: linear-gradient(0deg,var(--su-palo-verde-dark) 84.05%,var(--su-electric-blue) 0);
