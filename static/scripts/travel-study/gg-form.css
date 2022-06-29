@@ -9,6 +9,8 @@
   --su-black-50: #979694; 
   --su-black-30: #C0C0BF;
   --su-black-20: #D5D5D4;
+  --su-palo-verde-dark: #017e7c;
+  --su-electric-blue: #505EEC;
   --su-white: #ffffff;
 }
 
@@ -25,7 +27,7 @@
   z-index: 1;
   list-style: none;
   border-radius: 0.6rem;
-  background-color: #fff;
+  background-color: var(--su-white);
   border: 1px solid var(--su-black-20);
   box-shadow: 0 3px 6px rgba(149, 157, 165, 0.15);
   outline: none;
@@ -78,10 +80,23 @@
 }
 
 /* Trip Form Styling */
+.gg-form-sidebar {
+  margin-top: 58px;
+}
+
+.gg-form-sidebar h2 {
+  font-size: 33px;
+  padding: 0;
+}
+
+.gg-form-sidebar a {
+  font-size: 25px;
+}
+
 .gg-form-sidebar .summary-item {
   display: flex;
   flex-direction: column;
-  line-height: 1.4;
+  line-height: 2.7rem;
   margin-bottom: 7.2rem;
   padding-bottom: 1.9rem;
   border-bottom: 1px solid #585754;
@@ -91,15 +106,19 @@
   border-bottom: none;
 }
 
-.gg-form-sidebar .summary-item h2 {
+.gg-form-sidebar .summary-item h3 {
   font-weight: 600;
-  font-size: 1em;
+  font-size: 2.1rem;
   margin-bottom: 2.7rem;
+}
+
+.gg-form-sidebar .summary-item p {
+  margin: 0;
 }
 
 .gg-form-main .gg-script-wrapper {
   padding: 58px 87px 90px;
-  background: #F4F4F4;
+  background: var(--su-white);
   border: 1px solid var(--su-black-20);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
@@ -242,9 +261,12 @@
 }
 
 .ggeTally {
-  border: 2px solid var(--su-digital-red-xlight);
-  padding: 2.6rem 2.6rem 4.5rem;
+  border-color: transparent;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(0deg,var(--su-palo-verde-dark) 84.05%,var(--su-electric-blue) 0);
+  border-width: 2px;
   margin-bottom: 7.2rem;
+  padding: 2.6rem 2.6rem 4.5rem;
 }
 
 .ggeTally table {
@@ -346,11 +368,11 @@
   align-items: center;
   background: transparent;
   border-image-slice: 1;
-  border-image-source: linear-gradient(to right top,#017e7c,#505eec);
+  border-image-source: linear-gradient(to right top,var(--su-palo-verde-dark),var(--su-electric-blue));
   border-style: solid;
   border-width: 2px;
   border-radius: unset;
-  color: var(--su-white);
+  color: var(--su-electric-blue);
   position: static;
   padding-right: 3rem;
   position: relative;
@@ -387,7 +409,7 @@
 }
 
 .ggeWidget .ggeButton--back::before {
-  color: var(--su-white);
+  background: var(--su-electric-blue);
   transform: rotate(180deg);
   margin-right: 8px;
 }
@@ -437,7 +459,7 @@
 }
 
 .ggeWidget .ggeQuestion__label label {
-  font-size: 1em;
+  font-size: 2.1rem;
 }
 .ggeWidget .ggeQuestion--required .ggeQuestion__label label {
   font-weight: 600;
@@ -481,9 +503,11 @@
 }
 
 .ggeWidget .ggePrompt .ggePrompt__radio input {
-  background: linear-gradient(222.67deg,#505eec 15.6%,#017e7c 84.05%) border-box;
+  background: linear-gradient(222.67deg,var(--su-electric-blue) 15.6%,var(--su-palo-verde-dark) 84.05%) border-box;
   border: 2px solid transparent;
   border-radius: 50%;
+  -webkit-mask: linear-gradient(var(--su-white) 0 0) padding-box,linear-gradient(var(--su-white) 0 0);
+  -webkit-mask-composite: xor;
   display: flex;
   height: 2.4rem;
   margin: 0;
@@ -491,7 +515,7 @@
 }
 
 .ggeWidget .ggePrompt--checked .ggePrompt__radio:after {
-  background: linear-gradient(222.67deg,#505eec 15.6%,#017e7c 84.05%);
+  background: linear-gradient(222.67deg,var(--su-electric-blue) 15.6%,var(--su-palo-verde-dark) 84.05%);
   border-radius: 50%;
   content: "";
   display: flex;

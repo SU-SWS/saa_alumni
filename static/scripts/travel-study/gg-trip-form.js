@@ -99,32 +99,40 @@ class ggTripForm {
 
     const content = `
       <h2>Trip Information</h2>
-      <p><strong>Trip Name:</strong> ${trips[uuid].title}</p>
-      <p><strong>Trip ID:</strong> ${trips[uuid].tripId}</p>
       <p>
         <a href="https://alumni.stanford.edu/${trips[uuid].full_slug}" target="_blank" rel="noopener" class="su-link su-link--external">
           See trip details
         </a>
       </p>
-      <div class="summary-item">
-        <h3>Dates</h3>
-        <p>${dateRange}</p>
-      </div>
-      <div class="summary-item">
-        <h3>Duration</h3>
-        <p>${tripDuration} days</p>
-      </div>
-      <div class="summary-item">
-        <h3>Price</h3>
-        <p>${trips[uuid].price}</p>
-      </div>
-      <div class="summary-item">
-        <h3>Trip size</h3>
-        <p>${trips[uuid].tripSize}</p>
-      </div>
-      <div class="summary-item">
-        <h3>Minimum age requirement</h3>
-        <p>${trips[uuid].minAge}</p>
+      <div class="summary-wrapper">
+        <div class="summary-item">
+          <h3>Destination</h3>
+          <p>${trips[uuid].title}</p>
+        </div>
+        <div class="summary-item">
+          <h3>Trip ID Number</h3>
+          <p>${trips[uuid].tripId}</p>
+        </div>
+        <div class="summary-item">
+          <h3>Dates</h3>
+          <p>${dateRange}</p>
+        </div>
+        <div class="summary-item">
+          <h3>Duration</h3>
+          <p>${tripDuration} days</p>
+        </div>
+        <div class="summary-item">
+          <h3>Price</h3>
+          <p>${trips[uuid].price}</p>
+        </div>
+        <div class="summary-item">
+          <h3>Trip size</h3>
+          <p>${trips[uuid].tripSize}</p>
+        </div>
+        <div class="summary-item">
+          <h3>Minimum age requirement</h3>
+          <p>${trips[uuid].minAge}</p>
+        </div>
       </div>
     `;
     return content;
