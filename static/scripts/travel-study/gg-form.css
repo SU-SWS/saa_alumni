@@ -244,9 +244,12 @@
 }
 
 .ggeTally {
-  border: 2px solid var(--su-digital-red-xlight);
-  padding: 2.6rem 2.6rem 4.5rem;
+  border-color: transparent;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(0deg,var(--su-palo-verde-dark) 84.05%,var(--su-electric-blue) 0);
+  border-width: 2px;
   margin-bottom: 7.2rem;
+  padding: 2.6rem 2.6rem 4.5rem;
 }
 
 .ggeTally tr {
@@ -380,7 +383,7 @@
 }
 
 .ggeWidget .ggeButton--back::before {
-  color: var(--su-white);
+  background: var(--su-electric-blue);
   transform: rotate(180deg);
   margin-right: 8px;
 }
