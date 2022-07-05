@@ -228,12 +228,6 @@
   margin: 0;
 }
 
-.ggeWidget .ggeQuestion--required label,
-.ggeWidget .ggeQuestion--required legend {
-  font-weight: 400;
-  font-size: 2.1rem;
-}
-
 .ggeWidget .ggeQuestion .ggeQuestion__field textarea {
   min-height: 138px;
 }
@@ -461,11 +455,14 @@
   margin-top: 0;
 }
 
-.ggeWidget .ggeQuestion__label label {
+.ggeWidget .ggeQuestion label, 
+.ggeWidget .ggeQuestion legend,
+.ggeWidget .ggeQuestion__field label, 
+.ggeWidget .ggeQuestion__field legend,
+.ggeWidget .ggeQuestion--required label,
+.ggeWidget .ggeQuestion--required legend {
+  font-weight: 400;
   font-size: 2.1rem;
-}
-.ggeWidget .ggeQuestion--required .ggeQuestion__label label {
-  font-weight: 600;
 }
 
 /* Caption and Error message */
@@ -534,24 +531,4 @@
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
 .ggeWidget .ggeContent .ggeQuestion.su-email {
   margin-bottom: 0;
-}
-
-/* Digital name — TODO: TEST AND REMOVE IF THIS IS NOT BEING USED */
-.ggeQuestion[data-name="DigitalName"] {
-  display: flex;
-  align-items: baseline;
-}
-.ggeQuestion[data-name="DigitalName"] .ggeQuestion__label {
-  font-size: 2.6rem;
-  padding: 0;
-  margin-right: 0.7rem;
-}
-
-.ggeQuestion[data-name="DigitalName"] .ggeQuestion__field input {
-  font-weight: 600;
-  font-size: 2.6rem;
-}
-
-.ggeWidget .ggeQuestion[data-name="DigitalName"] input[readonly] {
-  font-size: var(--su-black-70) 
 }
