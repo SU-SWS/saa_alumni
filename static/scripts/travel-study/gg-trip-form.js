@@ -62,8 +62,13 @@ class ggTripForm {
    * Load Give Gab Form Into Place
    */
   getGGScript = () => {
+    const { uuid } = this;
+    const { tripId } = this.trips[uuid];
+    const url = this.form;
+    const embedUrl = new URL(url);
+    embedUrl.searchParams.set('urlData', tripId);
     const script = document.createElement('script');
-    script.src = this.form;
+    script.src = embedUrl;
     return script;
   };
 
