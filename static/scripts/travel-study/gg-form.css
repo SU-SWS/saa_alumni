@@ -240,9 +240,8 @@
 }
 
 .ggeWidget .ggeQuestion .ggeQuestion__field select {
-  content: '';
   background-position: right 22px center;
-  background-image: url("./assets/arrow-down.svg");
+  background-image: url("../assets/arrow-down.svg");
   background-size: 21px;
   color: var(--su-black);
   line-height: 2.4rem;
