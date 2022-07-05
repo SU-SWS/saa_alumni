@@ -146,7 +146,7 @@ const InterstitialPage = (props) => {
       primaryRegistrantPhoneNumberType
     ),
     su_dob: userProfile?.birthDate,
-    su_relation: 'Self',
+    su_relation: 'Guest',
     su_reg: 'Primary registrant',
     removeBtn: false,
   };
