@@ -239,13 +239,16 @@
   color: var(--su-digital-red-xlight);
 }
 
-.ggeWidget .ggeQuestion .ggeQuestion__field select {
-  background-position: right 22px center;
-  background-image: url("../assets/arrow-down.svg");
-  background-size: 21px;
-  color: var(--su-black);
-  line-height: 2.4rem;
-  background-repeat: no-repeat;
+.ggeWidget .ggeQuestion .ggeQuestion__field select::after {
+  width: 1em;
+  height: 1em;
+  content: "";
+  display: inline-block;
+  background: var(--su-black);
+  mask: url("./assets/arrow-down.svg");
+  -webkit-mask: url("./assets/arrow-down.svg") no-repeat 50% 50%;
+  mask-size: cover;
+  -webkit-mask-size: cover;
 }
 
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="email"],
