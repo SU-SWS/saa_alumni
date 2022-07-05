@@ -60,7 +60,10 @@ const tripsCollection = async (req, res) => {
       tripId: story.content.tripId,
       startDate: story.content.startDate,
       endDate: story.content.endDate,
-      extendPrice: story.content.extendPrice,
+      preExtendStartDate: story.content.extendStartDate,
+      preExtendEndDate: story.content.extendEndDate,
+      postExtendStartDate: story.content.postExtendStartDate,
+      postExtendEndDate: story.content.postExtendEndDate,
     };
   });
   res.status(200).json(ret);
