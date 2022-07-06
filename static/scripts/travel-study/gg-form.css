@@ -383,7 +383,7 @@
 .ggeWidget .ggeButton--back:hover {
   align-items: center;
   background-image: linear-gradient(to right top, rgb(1, 126, 124), rgb(80, 94, 236));
-  color: var(--su-black);
+  color: var(--su-white);
   text-decoration: underline;
 }
 
@@ -413,7 +413,7 @@
 
 .ggeWidget .ggeButton--back:focus::before,
 .ggeWidget .ggeButton--back:hover::before {
-  background: var(--su-black);
+  background: var(--su-white);
 }
 
 /* Tally Table */
