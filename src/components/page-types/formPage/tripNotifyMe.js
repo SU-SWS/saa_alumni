@@ -54,12 +54,12 @@ const TripNotifyMe = (props) => {
       <Grid xs={12}>
         <GridCell xs={12} md={6} lg={12}>
           <SbLink
-            classes="su-group su-inline-block su-font-light su-rs-mb-6 su-no-underline su-transition-colors"
+            classes="su-group su-inline-block su-font-semibold su-basefont-23 su-rs-mb-6 su-no-underline su-transition-colors su-text-digital-red-xlight hocus:su-text-white hocus:su-underline hocus:su-underline-offset-[3px]"
             link={{ url: tripURL }}
           >
             <HeroIcon
               iconType="arrow-left"
-              className="su-inline-block su-text-digital-red-light group-hocus:su-text-cardinal-red"
+              className="su-inline-block su-text-digital-red-xlight group-hocus:su-text-white"
               isAnimate
             />
             Back to {tripTitle}
@@ -67,6 +67,7 @@ const TripNotifyMe = (props) => {
           <Helmet titleTemplate={title} title={title} />
           <Heading
             level={1}
+            size={6}
             align="left"
             font="serif"
             id="page-title"
@@ -90,13 +91,13 @@ const TripNotifyMe = (props) => {
         >
           <Grid xl={5} className={styles.summaryContent}>
             <GridCell xl={3} className={styles.summaryItem}>
-              <Heading level={4} className={styles.summaryName}>
+              <Heading level={2} className={styles.summaryName}>
                 Dates
               </Heading>
               <span className={styles.summaryValue}>{tripDates}</span>
             </GridCell>
             <GridCell xl={3} className={styles.summaryItem}>
-              <Heading level={4} className={styles.summaryName}>
+              <Heading level={2} className={styles.summaryName}>
                 Duration
               </Heading>
               <span className={styles.summaryValue}>{tripDuration}</span>
