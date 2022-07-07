@@ -2,8 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Heading } from '../../simple/Heading';
-import RichTextRenderer from '../../../utilities/richTextRenderer';
-import hasRichText from '../../../utilities/hasRichText';
 import SbLink from '../../../utilities/sbLink';
 import HeroIcon from '../../simple/heroIcon';
 
@@ -46,11 +44,10 @@ const TripCustomJourneys = (props) => {
       >
         {heading}
       </Heading>
-      {hasRichText(body) && (
-        <RichTextRenderer
-          wysiwyg={body}
-          className="su-card-paragraph children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-        />
+      {body && (
+        <p className="su-intro-text children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0">
+          {body}
+        </p>
       )}
     </SbEditable>
   );

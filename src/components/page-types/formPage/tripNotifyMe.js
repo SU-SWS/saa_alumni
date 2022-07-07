@@ -3,8 +3,6 @@ import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { getDate, getDuration } from '../../../utilities/dates';
 import { Heading } from '../../simple/Heading';
-import RichTextRenderer from '../../../utilities/richTextRenderer';
-import hasRichText from '../../../utilities/hasRichText';
 import * as styles from './tripNotifyMe.styles';
 import SbLink from '../../../utilities/sbLink';
 import HeroIcon from '../../simple/heroIcon';
@@ -75,11 +73,10 @@ const TripNotifyMe = (props) => {
           >
             {title}
           </Heading>
-          {hasRichText(body) && (
-            <RichTextRenderer
-              wysiwyg={body}
-              className="su-card-paragraph su-rs-mb-5 children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-            />
+          {body && (
+            <p className="su-intro-text children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0">
+              {body}
+            </p>
           )}
         </GridCell>
         <GridCell
