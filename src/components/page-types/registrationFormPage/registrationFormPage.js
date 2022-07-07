@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
@@ -12,6 +12,7 @@ import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
+import AuthContext from '../../../contexts/AuthContext';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -40,6 +41,7 @@ const RegistrationFormPage = (props) => {
     blok,
     location,
   } = props;
+  const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip`;
   const helmetTitle = `Register for your trip: ${tripTitle}`;
@@ -93,6 +95,8 @@ const RegistrationFormPage = (props) => {
 
     if (travelers) {
       window.prefillData = travelers;
+    } else {
+      window.su_did = userProfile?.session?.encodedSUID;
     }
   }, [
     travelers,
@@ -109,6 +113,7 @@ const RegistrationFormPage = (props) => {
     postExtendStartDate,
     postExtendEndDate,
     postExtendPrice,
+    userProfile,
   ]);
 
   return (
