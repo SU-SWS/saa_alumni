@@ -6,6 +6,7 @@ import CreateStories from '../../utilities/createStories';
 import AuthContext from '../../contexts/AuthContext';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import hasRichText from '../../utilities/hasRichText';
+import { Heading } from '../simple/Heading';
 
 const ProtectedContentWrapper = ({ blok }) => {
   const [authenticatedContent, setAuthenticatedContent] = useState(null);
@@ -54,6 +55,30 @@ const ProtectedContentWrapper = ({ blok }) => {
     return (
       <div aria-live="polite" role="status">
         <CreateStories stories={authenticatedContent} />
+      </div>
+    );
+  }
+
+  // Logged in and has no megaprofile data
+  if (
+    !authState.isAuthenticating &&
+    authState.isAuthenticated &&
+    authState.isError &&
+    !checkingAccess &&
+    authenticatedContent?.length === 0
+  ) {
+    return (
+      <div aria-live="polite" role="status">
+        {/* TODO: Confirm with Bhavika whether the login message should be hardcoded */}
+        <Heading level={2} size={3}>
+          Uh oh. This is embarassing.
+        </Heading>
+        <p>
+          It looks like we’re currently unable to look up your membership status
+          due to a technical error. Please try again later. If you are still
+          experiencing this issue, please contact{' '}
+          <a href="/">Stanford Alumni Customer Service</a>
+        </p>
       </div>
     );
   }
