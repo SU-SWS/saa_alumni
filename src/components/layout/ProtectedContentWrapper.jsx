@@ -70,22 +70,21 @@ const ProtectedContentWrapper = ({ blok }) => {
     return (
       <div aria-live="polite" role="status" className="su-text-center">
         {/* TODO: Confirm with Bhavika whether the login message should be hardcoded */}
-        <Heading level={2} size={3} font="serif">
+        <Heading level={3} size={3} font="serif">
           Uh oh. This is embarassing.
         </Heading>
-        <p className="su-intro-text">
-          It looks like we’re currently unable to look up your membership status
-          due to a technical error. Please try again later.
-        </p>
-        <p className="su-intro-text su-mb-0">
-          If you are still experiencing this issue, please contact
-        </p>
-        <a
-          href="/"
-          className="su-intro-text su-text-digital-xlight hocus:su-text-white"
-        >
-          Stanford Alumni Customer Service
-        </a>
+        <div className="su-basefont-23">
+          <p>
+            It looks like we’re currently unable to look up your membership
+            status due to a technical error. Please try again later.
+          </p>
+          <p className="su-mb-0">
+            If you are still experiencing this issue, please contact
+          </p>
+          <a href="/" className="su-text-digital-xlight hocus:su-text-white">
+            Stanford Alumni Customer Service
+          </a>
+        </div>
       </div>
     );
   }
