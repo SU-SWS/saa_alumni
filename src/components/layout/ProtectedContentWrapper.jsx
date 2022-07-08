@@ -68,17 +68,24 @@ const ProtectedContentWrapper = ({ blok }) => {
     authenticatedContent?.length === 0
   ) {
     return (
-      <div aria-live="polite" role="status">
+      <div aria-live="polite" role="status" className="su-text-center">
         {/* TODO: Confirm with Bhavika whether the login message should be hardcoded */}
-        <Heading level={2} size={3}>
+        <Heading level={2} size={3} font="serif">
           Uh oh. This is embarassing.
         </Heading>
-        <p>
+        <p className="su-intro-text">
           It looks like we’re currently unable to look up your membership status
-          due to a technical error. Please try again later. If you are still
-          experiencing this issue, please contact{' '}
-          <a href="/">Stanford Alumni Customer Service</a>
+          due to a technical error. Please try again later.
         </p>
+        <p className="su-intro-text su-mb-0">
+          If you are still experiencing this issue, please contact
+        </p>
+        <a
+          href="/"
+          className="su-intro-text su-text-digital-xlight hocus:su-text-white"
+        >
+          Stanford Alumni Customer Service
+        </a>
       </div>
     );
   }
