@@ -7,7 +7,7 @@ export const isStoryblokEditor = async (req) => {
     const accessKey = url.searchParams.get('access_key');
     const spaceId = url.searchParams.get('_storyblok_tk[space_id]');
 
-    if (url.pathname === '/editor' && spaceId && accessKey) {
+    if (url.pathname.match(/^\/editor\/?$/) && spaceId && accessKey) {
       const result = await fetch(
         `https://api.storyblok.com/v1/cdn/spaces/me?token=${accessKey}`
       ).then((res) => res.json());
@@ -19,4 +19,3 @@ export const isStoryblokEditor = async (req) => {
   }
   return false;
 };
-
