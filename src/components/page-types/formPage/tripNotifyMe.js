@@ -69,7 +69,7 @@ const TripNotifyMe = (props) => {
             align="left"
             font="serif"
             id="page-title"
-            className="su-drop-shadow"
+            className="su-text-shadow-lg su-rs-mb-2"
           >
             {title}
           </Heading>
