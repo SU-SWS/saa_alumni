@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import { FormContext } from '../../../contexts/FormContext';
-import FaIcon from '../../simple/faIcon';
+import HeroIcon from '../../simple/heroIcon';
 
 const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
@@ -42,7 +42,7 @@ const TripTravelerCard = ({ traveler }) => {
   return (
     <button
       type="button"
-      className="su-stretch-link su-w-full su-bg-saa-black-dark"
+      className="su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-saa-black-dark hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
       onClick={toggleRelationship}
     >
       <FlexBox
@@ -65,12 +65,9 @@ const TripTravelerCard = ({ traveler }) => {
           </Heading>
           {traveler?.removeBtn && (
             <p className="su-basefont-23 su-mb-0">
-              <FaIcon
-                iconChoice="fa-check"
-                iconType="far"
-                isOutline="false"
-                fixedWidth
-                className="su-transition-colors su-text-palo-verde-light"
+              <HeroIcon
+                iconType="check"
+                className="su-inline-block su-mb-02em su-text-palo-verde-light"
               />
               Added!
             </p>
@@ -79,24 +76,22 @@ const TripTravelerCard = ({ traveler }) => {
         <FlexBox direction="row" alignItems="center" justifyContent="start">
           {traveler?.removeBtn ? (
             <>
-              <FaIcon
-                iconChoice="fa-minus-circle"
-                iconType="far"
-                isOutline="false"
-                fixedWidth
-                className="su-mr-02em su-transition-colors su-text-digital-red-xlight"
-              />
+              <div className="su-border-2 su-rounded-full su-border-digital-red-xlight su-mr-02em">
+                <HeroIcon
+                  iconType="minus"
+                  className="su-text-digital-red-xlight"
+                />
+              </div>
               <p className="su-basefont-23 su-mb-0">Remove traveler</p>
             </>
           ) : (
             <>
-              <FaIcon
-                iconChoice="fa-plus-circle"
-                iconType="far"
-                isOutline="false"
-                fixedWidth
-                className="su-mr-02em children:su-text-saa-electric-blue children:su-bg-clip-text children:su-bg-gradient-to-tr children:su-from-palo-verde-dark children:su-to-saa-electric-blue"
-              />
+              <div className="su-rounded-full su-p-2 su-bg-gradient-to-bl su-from-saa-electric-blue su-to-palo-verde-dark su-mr-02em">
+                <HeroIcon
+                  iconType="plus"
+                  className="su-text-saa-electric-blue su-rounded-full su-bg-saa-black"
+                />
+              </div>
               <p className="su-basefont-23 su-mb-0">Add traveler</p>
             </>
           )}
