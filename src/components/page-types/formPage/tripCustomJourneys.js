@@ -45,7 +45,7 @@ const TripCustomJourneys = (props) => {
         {heading}
       </Heading>
       {body && (
-        <p className="su-intro-text children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0">
+        <p className="su-intro-text su-rs-mb-5">
           {body}
         </p>
       )}
