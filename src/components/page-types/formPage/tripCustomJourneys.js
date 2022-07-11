@@ -44,11 +44,7 @@ const TripCustomJourneys = (props) => {
       >
         {heading}
       </Heading>
-      {body && (
-        <p className="su-intro-text su-rs-mb-5">
-          {body}
-        </p>
-      )}
+      {body && <p className="su-intro-text su-rs-mb-5">{body}</p>}
     </SbEditable>
   );
 };

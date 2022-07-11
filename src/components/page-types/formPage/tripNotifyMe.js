@@ -73,11 +73,7 @@ const TripNotifyMe = (props) => {
           >
             {title}
           </Heading>
-          {body && (
-            <p className="su-intro-text su-rs-mb-5">
-              {body}
-            </p>
-          )}
+          {body && <p className="su-intro-text su-rs-mb-5">{body}</p>}
         </GridCell>
         <GridCell
           xs={12}
