@@ -1,6 +1,6 @@
 import React from 'react';
+import { useLocation } from '@reach/router';
 import PulseLoader from 'react-spinners/PulseLoader';
-import useLocation from '@reach/router';
 import AuthContext from '../../contexts/AuthContext';
 
 const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
