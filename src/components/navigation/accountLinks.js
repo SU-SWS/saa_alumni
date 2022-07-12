@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
+import { useLocation } from '@reach/router';
 import AuthContext from '../../contexts/AuthContext';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import useEscape from '../../hooks/useEscape';
@@ -22,13 +23,12 @@ const Initial = ({ string }) => {
 };
 
 const AccountLinks = ({ mainLinkClasses }) => {
+  const location = useLocation();
   const ref = useRef(null);
   const buttonRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
-  const loginDestination =
-    typeof window !== 'undefined' ? window.location.pathname : null;
   const loginParams = new URLSearchParams({
-    final_destination: loginDestination,
+    final_destination: location.pathname,
   });
 
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
