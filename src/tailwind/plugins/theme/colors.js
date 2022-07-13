@@ -23,6 +23,7 @@ module.exports = function () {
       dark: '#070B0A',
       opacity: {
         0: 'rgba(24, 29, 28, 0)',
+        30: 'rgba(24, 29, 28, 0.3)',
         80: 'rgba(24, 29, 28, 0.8)',
       },
     },

@@ -80,7 +80,7 @@ const TripNotifyMe = (props) => {
           sm={6}
           md={4}
           lg={12}
-          className="md:su-col-start-8 lg:su-col-start-1 su-rs-mt-7 lg:su-mt-0"
+          className="md:su-col-start-8 md:su-rs-mt-7 lg:su-mt-0 lg:su-col-start-1"
         >
           <Grid xl={5} className={styles.summaryContent}>
             <GridCell xl={3} className={styles.summaryItem}>

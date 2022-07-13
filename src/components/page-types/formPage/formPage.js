@@ -43,7 +43,7 @@ const FormPage = (props) => {
   };
 
   let contentStyle = 'su-sticky su-top-0 su-h-fit';
-  let formCardStyle = 'su-rs-mt-7 lg:su-col-start-7 xl:su-col-start-7';
+  let formCardStyle = 'lg:su-rs-mt-7 lg:su-col-start-7 xl:su-col-start-7';
   let bgCardStyle = false;
   let gridContainerStyle = ' su-rs-pt-6';
 
@@ -91,7 +91,6 @@ const FormPage = (props) => {
                 />
               </div>
             )}
-
             <Grid
               gap
               xs={12}
