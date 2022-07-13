@@ -8,6 +8,7 @@ const handler = connect()
     if (!req.query.final_destination) {
       const { referer } = req.headers;
       const { pathname } = URLParse(referer);
+      console.log('Pathname: ', pathname);
       req.query.final_destination = pathname || '/';
     }
     next();
