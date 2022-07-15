@@ -61,10 +61,7 @@ const TripCard = ({
           <Date startDate={startDate} endDate={endDate} isSmall />
         </div>
         <div className={styles.content}>
-          <SbLink
-            link={{ url: tripURL, linktype: 'story' }}
-            className={styles.link}
-          >
+          <SbLink link={{ url: tripURL }} classes={styles.link}>
             <Heading
               level={headingLevel}
               font="serif"

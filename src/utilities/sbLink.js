@@ -116,6 +116,12 @@ const SbLink = React.forwardRef((props, ref) => {
     );
   }
 
+  if (linkUrl.match(/\?/) && utms.length) {
+    linkUrl += `&${utms}`;
+  } else if (utms.length) {
+    linkUrl += `?${utms}`;
+  }
+
   // Default if we don't know what type this is.
   // ---------------------------------------------------------------------------
   return (
