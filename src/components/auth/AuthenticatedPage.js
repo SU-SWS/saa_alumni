@@ -11,7 +11,6 @@ const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
       typeof window === 'undefined'
         ? location.pathname
         : window.location.pathname;
-    console.log('Return URL: ', returnUrl);
     const query = new URLSearchParams({ final_destination: returnUrl });
     window.location = `/api/auth/login?${query.toString()}`;
   }
