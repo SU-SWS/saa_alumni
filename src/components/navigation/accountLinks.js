@@ -28,7 +28,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
   const buttonRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const loginParams = new URLSearchParams({
-    final_destination: location.pathname,
+    final_destination: location.pathname + location.search,
   });
 
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
