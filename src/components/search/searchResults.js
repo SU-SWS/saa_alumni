@@ -1,9 +1,23 @@
 import React from 'react';
 import sanitize from 'sanitize-html';
+import { useLocation } from '@reach/router';
 import { Heading } from '../simple/Heading';
 import HeroIcon from '../simple/heroIcon';
+import { utmParams } from '../../utilities/utmParams';
 
 const SearchResults = ({ results }) => {
+  const location = useLocation();
+  const utms = utmParams(location.search);
+  const checkParams = (url) => {
+    let linkUrl = url;
+    if (linkUrl.match(/\?/) && utms.length) {
+      linkUrl += `&${utms}`;
+    } else if (utms.length) {
+      linkUrl += `?${utms}`;
+    }
+    return linkUrl;
+  };
+
   if (!results.hits) {
     return <div />;
   }
@@ -31,7 +45,7 @@ const SearchResults = ({ results }) => {
               <Heading level={3} size={1} font="serif">
                 <a
                   className="su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
-                  href={result.url}
+                  href={checkParams(result.url)}
                 >
                   {result.fileType === 'video' && (
                     <HeroIcon
