@@ -63,7 +63,11 @@ const SearchField = React.forwardRef(
       setQuery(suggestion);
       setShowAutocomplete(false);
       setSelectedSuggestion(null);
-      onSubmit(suggestion);
+      let suggestionParams = suggestion;
+      if (utms.length > 0) {
+        suggestionParams += `&${utms}`;
+      }
+      onSubmit(suggestionParams);
     };
 
     useEffect(() => {
