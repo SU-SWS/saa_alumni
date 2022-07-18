@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
-import { Redirect } from '@reach/router';
+import { redirectTo } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -116,7 +116,7 @@ const RegistrationFormPage = (props) => {
   // redirect user back to insteritial page to select travelers
   if (!location?.state?.travelers) {
     const redirectPath = location.pathname.slice(0, -5);
-    return <Redirect to={redirectPath} />;
+    redirectTo(redirectPath);
   }
 
   return (
