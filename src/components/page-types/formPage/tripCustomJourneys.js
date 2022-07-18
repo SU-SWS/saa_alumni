@@ -25,11 +25,11 @@ const TripCustomJourneys = (props) => {
     <SbEditable content={blok}>
       <SbLink
         link={{ url: tripURL }}
-        classes="su-group su-inline-block su-font-light su-rs-mb-6 su-no-underline su-transition-colors"
+        classes="su-group su-inline-block su-font-semibold su-basefont-23 su-rs-mb-6 su-no-underline su-transition-colors su-text-digital-red-xlight hocus:su-text-white hocus:su-underline hocus:su-underline-offset-[3px]"
       >
         <HeroIcon
           iconType="arrow-left"
-          className="su-inline-block su-text-digital-red-light group-hocus:su-text-cardinal-red"
+          className="su-inline-block su-text-digital-red-xlight group-hocus:su-text-white"
           isAnimate
         />
         Back to {title}
@@ -40,7 +40,7 @@ const TripCustomJourneys = (props) => {
         align="left"
         font="serif"
         id="page-title"
-        className="su-drop-shadow"
+        className="su-text-shadow-lg su-rs-mb-2"
       >
         {heading}
       </Heading>
