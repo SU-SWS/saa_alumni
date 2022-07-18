@@ -114,7 +114,7 @@ const RegistrationFormPage = (props) => {
 
   // In the event that the user goes directly to the registration form,
   // redirect user back to insteritial page to select travelers
-  if (location?.state?.travelers.length === 0) {
+  if (location?.state?.travelers?.length === 0) {
     const redirectPath = location.pathname.slice(0, -5);
     return <Redirect to={redirectPath} />;
   }
