@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
-import { redirectTo } from '@reach/router';
+import { redirectTo, Redirect } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -56,14 +56,17 @@ const RegistrationFormPage = (props) => {
 
   const travelers = location?.state?.travelers;
 
-  useEffect(() => {
-    // In the event that the user goes directly to the registration form,
-    // redirect user back to insteritial page to select travelers
-    if (!travelers || travelers.length === 0) {
-      const redirectPath = location.pathname.slice(0, -5);
-      redirectTo(redirectPath);
-    }
+  console.log('Location: ', location);
+  console.log('props: ', props);
+  // In the event that the user goes directly to the registration form,
+  // redirect user back to insteritial page to select travelers
+  if (!travelers || !location.state) {
+    const redirectPath = location.pathname.slice(0, -5);
+    // redirectTo(redirectPath);
+    return <Redirect to={redirectPath} noThrow />;
+  }
 
+  useEffect(() => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
     // StoryBlok trip related data
     window.su_trip_id = tripId;
