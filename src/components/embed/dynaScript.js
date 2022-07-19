@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import React, { useRef, useEffect, useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import RichTextRenderer from '../../utilities/richTextRenderer';

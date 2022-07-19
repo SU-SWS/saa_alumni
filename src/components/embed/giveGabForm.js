@@ -10,7 +10,13 @@ import AuthContext from '../../contexts/AuthContext';
 // Give Gab Form Component
 // -----------------------------------------------------------------------------
 const GiveGabForm = ({
-  blok: { body, url, uuid },
+  blok: {
+    failureMessage: {
+      content: { body },
+    },
+    url,
+    uuid,
+  },
   blok,
   tripId,
   bgCardStyle,
