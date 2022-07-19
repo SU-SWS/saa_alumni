@@ -20,6 +20,7 @@ import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
 import FormPage from './page-types/formPage/formPage';
 import GiveGabForm from './embed/giveGabForm';
+import GiveGabFailureMessage from './embed/giveGabFailureMessage';
 import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
@@ -99,6 +100,7 @@ const ComponentList = {
   eventCard: EventCard,
   formPage: FormPage,
   giveGabForm: GiveGabForm,
+  giveGabFailureMessage: GiveGabFailureMessage,
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
   grid: SBGrid,

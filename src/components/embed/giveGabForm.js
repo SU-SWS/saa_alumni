@@ -9,7 +9,12 @@ import AuthContext from '../../contexts/AuthContext';
 
 // Give Gab Form Component
 // -----------------------------------------------------------------------------
-const GiveGabForm = ({ blok: { url, uuid }, blok, tripId, bgCardStyle }) => {
+const GiveGabForm = ({
+  blok: { body, url, uuid },
+  blok,
+  tripId,
+  bgCardStyle,
+}) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
 
@@ -47,7 +52,7 @@ const GiveGabForm = ({ blok: { url, uuid }, blok, tripId, bgCardStyle }) => {
         )}
       >
         <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
-          <DynaScript src={embedUrl} id={htmlId} />
+          <DynaScript src={embedUrl} id={htmlId} errorText={body} />
         </div>
       </Container>
     </SbEditable>
