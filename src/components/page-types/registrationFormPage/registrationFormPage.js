@@ -57,6 +57,13 @@ const RegistrationFormPage = (props) => {
   const travelers = location?.state?.travelers;
 
   useEffect(() => {
+    // In the event that the user goes directly to the registration form,
+    // redirect user back to insteritial page to select travelers
+    if (!location?.state?.travelers) {
+      const redirectPath = location.pathname.slice(0, -5);
+      redirectTo(redirectPath);
+    }
+
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
     // StoryBlok trip related data
     window.su_trip_id = tripId;
@@ -95,6 +102,7 @@ const RegistrationFormPage = (props) => {
     window.su_extension = extension();
     window.prefillData = travelers;
   }, [
+    location,
     travelers,
     fullSlug,
     tripId,
@@ -111,13 +119,6 @@ const RegistrationFormPage = (props) => {
     postExtendPrice,
     userProfile,
   ]);
-
-  // In the event that the user goes directly to the registration form,
-  // redirect user back to insteritial page to select travelers
-  if (!location?.state?.travelers) {
-    const redirectPath = location.pathname.slice(0, -5);
-    redirectTo(redirectPath);
-  }
 
   return (
     <AuthenticatedPage>
