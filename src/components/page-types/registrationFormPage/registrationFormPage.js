@@ -59,7 +59,7 @@ const RegistrationFormPage = (props) => {
   useEffect(() => {
     // In the event that the user goes directly to the registration form,
     // redirect user back to insteritial page to select travelers
-    if (!location?.state?.travelers) {
+    if (!travelers || travelers.length === 0) {
       const redirectPath = location.pathname.slice(0, -5);
       redirectTo(redirectPath);
     }
