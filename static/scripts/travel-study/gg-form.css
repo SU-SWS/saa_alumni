@@ -18,18 +18,26 @@
 .gg-staff-name {
   font-weight: 600;
   font-size: 2.1rem;
-  margin-bottom: 3.6rem;
+  margin-bottom: 0;
 }
 
 /* GG Trip Autocomplete */
 .gg-autocomplete {
-  height: 6.4rem;
-  font-size: 2.1rem;
+  background: var(--su-white);
+  padding-left: 21px;
+  border: 1px solid var(--su-black-20);
+  border-bottom: 2px solid var(--su-black-20);
   border-radius: 3px;
+  box-sizing: border-box;
+  font-size: 2.1rem;
+  height: 6.4rem;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .gg-autocomplete-wrapper label {
   font-size: 2.1rem;
+  margin-bottom: 0.33em;
+  font-weight: 600;
 }
 
 .gg-form-autocomplete h2 {
@@ -213,6 +221,7 @@
   border-radius: 3px;
   box-sizing: border-box;
   font-size: 2.1rem;
+  font-family: 'Source Sans Pro', sans-serif;
   height: 6.4rem;
 }
 
@@ -304,6 +313,7 @@
   margin-right: 2rem;
 }
 
+.gg-form-autocomplete .ggeButton,
 .ggeWidget .ggeButton {
   display: flex;
   width: fit-content;
@@ -312,6 +322,7 @@
   text-transform: none;
   padding: 1.4rem 2.6rem;
   font-weight: 400;
+  line-height: 2em;
 }
 
 /* Solid Button */
@@ -327,6 +338,10 @@
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   padding-left: 3rem;
   margin-top: 3.6rem;
+}
+
+.gg-form-autocomplete .ggeButton {
+  margin-top: 5.8rem;
 }
 
 .gg-form-autocomplete .ggeButton--forward:focus,
@@ -488,7 +503,7 @@
   position: absolute;
   inset: -0.6rem;
   border-radius: 100%;
-  background: (--su-electric-blue-light);
+  background: var(--su-electric-blue-light);
   opacity: 0.6;
 }
 
@@ -573,7 +588,8 @@
 }
 
 .ggeConfirmation .ggeConfirmationMessage > div:last-child {
-  padding-top: 6rem;
+  /* padding-top: 6rem; */
+  margin-bottom: 0;
 }
 
 .ggeConfirmation .ggeConfirmationMessage p {
@@ -583,8 +599,9 @@
 .ggeConfirmation h1 {
   font-size: 3rem;
   font-weight: 600;
-  padding-top: 11.9rem;
-  margin-bottom: 3rem,
+  padding-top: 9.3rem;
+  margin-bottom: 3rem;
+  margin-top: 0;
 }
 
 .ggeConfirmation .ggeTally--header {
@@ -774,10 +791,14 @@
 }
 
 /* Hold Trip Payment Header */
-.staff-hold-trip-registration .ggeSection ggeSection--payment h2 {
+.staff-hold-trip-registration .ggeSection ggeSection--payment h1 {
   display: none;
 }
 
 .staff-hold-trip-registration .ggeTally {
-  margin-bottom: 2.1rem;
+  margin-bottom: 2.2rem;
+}
+
+.staff-hold-trip-registration .ggeConfirmationMessage .ggeTally {
+  display: none;
 }
