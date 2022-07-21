@@ -125,6 +125,7 @@
 
 .gg-form-autocomplete,
 .gg-form-main .gg-script-wrapper {
+  font-family: 'Source Sans Pro';
   padding: 58px 87px 90px;
   background: var(--su-white);
   border: 1px solid var(--su-black-20);
@@ -467,9 +468,14 @@
 .ggeWidget .ggeQuestion legend,
 .ggeWidget .ggeQuestion__field label, 
 .ggeWidget .ggeQuestion__field legend,
+.ggeWidget .ggeQuestion--required .ggePrompt .ggePrompt__label label {
+  font-weight: 400;
+  font-size: 2.1rem;
+}
+
 .ggeWidget .ggeQuestion--required label,
 .ggeWidget .ggeQuestion--required legend {
-  font-weight: 400;
+  font-weight: 600;
   font-size: 2.1rem;
 }
 
@@ -511,11 +517,25 @@
 }
 
 .ggeWidget .ggePrompt .ggePrompt__radio input {
+  background: var(--su-electric-blue) border-box;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  -webkit-mask: linear-gradient(var(--su-white) 0 0) padding-box,linear-gradient(var(--su-white) 0 0);
+  -webkit-mask-composite: xor;
+  -webkit-mask-composite: exclude;
+  display: flex;
+  height: 2.4rem;
+  margin: 0;
+  width: 2.4rem;
+}
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio input {
   background: linear-gradient(222.67deg,var(--su-electric-blue) 15.6%,var(--su-palo-verde-dark) 84.05%) border-box;
   border: 2px solid transparent;
   border-radius: 50%;
   -webkit-mask: linear-gradient(var(--su-white) 0 0) padding-box,linear-gradient(var(--su-white) 0 0);
   -webkit-mask-composite: xor;
+  -webkit-mask-composite: exclude;
   display: flex;
   height: 2.4rem;
   margin: 0;
