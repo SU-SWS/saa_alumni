@@ -403,22 +403,6 @@
 }
 
 /* Tally Table */
-
-/* Traveler Name button */
-.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant {
-  padding: 0;
-  border: unset;
-  text-decoration: underline;
-  color: var(--su-digital-red-xlight);
-}
-
-.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover,
-.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:focus {
-  background: transparent;
-  color: var(--su-black);
-  text-decoration: underline;
-}
-
 .ggeWidget .ggeTally--total {
   border-top: 1px solid var(--su-black-30);
 }
@@ -687,8 +671,8 @@
   font-size: 2.1rem;
   font-weight: 600;
   color: var(--su-black);
-
 }
+
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant::after {
   content: "Edit";
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13' fill='none'%3E%3Cpath d='M11.6673 1.33265L12.1976 0.802316V0.802316L11.6673 1.33265ZM3.0625 12.1472L3.0625 12.8972C3.26141 12.8972 3.45218 12.8182 3.59283 12.6775L3.0625 12.1472ZM0.875 12.1472H0.125C0.125 12.5614 0.460786 12.8972 0.875 12.8972L0.875 12.1472ZM0.875 9.91526L0.34467 9.38493C0.204018 9.52558 0.125 9.71634 0.125 9.91526H0.875ZM9.98794 1.86298C10.3052 1.54567 10.8197 1.54567 11.137 1.86298L12.1976 0.802316C11.2946 -0.100772 9.83037 -0.100772 8.92728 0.802316L9.98794 1.86298ZM11.137 1.86298C11.4543 2.18028 11.4543 2.69472 11.137 3.01202L12.1976 4.07268C13.1007 3.1696 13.1007 1.7054 12.1976 0.802316L11.137 1.86298ZM11.137 3.01202L2.53217 11.6168L3.59283 12.6775L12.1976 4.07268L11.137 3.01202ZM3.0625 11.3972H0.875L0.875 12.8972H3.0625L3.0625 11.3972ZM8.92728 0.802316L0.34467 9.38493L1.40533 10.4456L9.98794 1.86298L8.92728 0.802316ZM0.125 9.91526L0.125 12.1472H1.625L1.625 9.91526H0.125ZM7.98978 2.80048L10.1995 5.01018L11.2601 3.94952L9.05044 1.73982L7.98978 2.80048Z' fill='%23505EEC'/%3E%3C/svg%3E");
@@ -702,7 +686,6 @@
 }
 
 .ggeWidget .ggeTally__multireg__buttons {
-  @apply su-relative su-flex su-flex-col-reverse;
   position: relative;
   display: flex;
   flex-direction: column-reverse;
@@ -735,7 +718,7 @@
 
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant::after {
   content: "Remove";
-  color: var(--su-black)
+  color: var(--su-black);
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover::after {
@@ -758,7 +741,6 @@
 }
 
 .ggeWidget .ggeTally--total {
-  @apply su-text-[2.6rem] su-font-semibold su-pt-[3rem];
   padding-top: 3rem;
   font-weight: 600;
   font-size: 2.6rem;
