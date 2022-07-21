@@ -356,7 +356,7 @@
   position: static;
   transform: translateX(0px);
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 4.5rem;
+  margin-top: 3.6rem;
 }
 
 .ggeWidget .ggeButton--back:focus,
@@ -789,4 +789,8 @@
 /* Hold Trip Payment Header */
 .staff-hold-trip-registration .ggeSection ggeSection--payment h2 {
   display: none;
+}
+
+.staff-hold-trip-registration .ggeTally {
+  margin-bottom: 2.1rem;
 }
