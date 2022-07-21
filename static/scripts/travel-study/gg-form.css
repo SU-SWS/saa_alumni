@@ -587,8 +587,11 @@
   font-size: 2.5rem;
 }
 
-.ggeConfirmation .ggeConfirmationMessage > div:last-child {
+/* .ggeConfirmation .ggeConfirmationMessage > div:last-child { */
   /* padding-top: 6rem; */
+/* } */
+
+.ggeConfirmation .ggeConfirmationMessage p:last-child {
   margin-bottom: 0;
 }
 
