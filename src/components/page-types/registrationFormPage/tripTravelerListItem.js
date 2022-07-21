@@ -4,7 +4,7 @@ import { FormContext } from '../../../contexts/FormContext';
 import FaIcon from '../../simple/faIcon';
 
 const TripTravelerListItem = ({ traveler }) => {
-  const [state, dispatch] = useContext(FormContext);
+  const [, dispatch] = useContext(FormContext);
 
   const removeRelationship = () => {
     // eslint-disable-next-line no-param-reassign
