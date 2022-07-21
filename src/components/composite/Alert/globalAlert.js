@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import { SBAlert } from '../../storyblok/alert/alert';
-import { Alert } from './Alert';
 import useSubsite from '../../../hooks/useSubsite';
-import AuthContext from '../../../contexts/AuthContext';
 
 const query = graphql`
   query {
@@ -30,11 +28,6 @@ const query = graphql`
 
 const GlobalAlert = () => {
   const hideAlerts = useSubsite() !== 'homesite';
-  const [showAlert, setShowAlert] = useState(true);
-
-  const handleDismiss = () => {
-    setShowAlert(false);
-  };
 
   return (
     <>
@@ -54,30 +47,6 @@ const GlobalAlert = () => {
           );
         }}
       />
-      <AuthContext.Consumer>
-        {({ isError }) => {
-          if (!isError || !showAlert) return null;
-          return (
-            <Alert
-              type="warning"
-              label="Login Error"
-              hasDismiss
-              dismissFunction={handleDismiss}
-            >
-              We weren&apos;t able to log you in with your Stanford profile at
-              this time. Please try again later.
-              <br />
-              If this issue persists, please{' '}
-              <a
-                href="https://stanford.service-now.com/alumni_donor_services?id=sc_cat_item&sys_id=9a91f4b6db890050404aa4cb0b961978"
-                className="su-text-black hocus:su-no-underline hocus:su-text-black"
-              >
-                submit a ticket.
-              </a>
-            </Alert>
-          );
-        }}
-      </AuthContext.Consumer>
     </>
   );
 };
