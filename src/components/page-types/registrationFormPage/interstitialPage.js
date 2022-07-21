@@ -9,8 +9,6 @@ import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
 import Hero from '../../composite/hero';
 import { Grid } from '../../layout/Grid';
-import RichTextRenderer from '../../../utilities/richTextRenderer';
-import hasRichText from '../../../utilities/hasRichText';
 import {
   FormContextProvider,
   FormContext,
@@ -180,17 +178,12 @@ const InterstitialPage = (props) => {
                       {tripTitle}:<br />
                       Registration
                     </Heading>
-                    {hasRichText(body) && (
-                      <RichTextRenderer
-                        wysiwyg={body}
-                        className="su-intro-text su-text-center children:su-leading-snug children:!su-mb-06em children:last:!su-mb-0"
-                      />
-                    )}
+                    {body && <p className="su-subheading">{body}</p>}
                   </GridCell>
                 </Grid>
                 <Grid xs={12}>
                   <GridCell xs={12} md={6}>
-                    <Heading level={3} align="left" font="serif">
+                    <Heading level={3} size={5} align="left" font="serif">
                       Add existing connections and past travelers to your trip
                     </Heading>
                   </GridCell>
@@ -204,7 +197,10 @@ const InterstitialPage = (props) => {
                 </Grid>
                 <Grid gap xs={12}>
                   <GridCell xs={12} md={7} lg={8}>
-                    <FlexBox direction="col" gap>
+                    <FlexBox
+                      direction="col"
+                      className="children:su-mb-18 children:last-child:su-mb-0"
+                    >
                       <TripTravelerCard traveler={primaryRegistrant} />
                       {relationships?.length > 0 ? (
                         <>

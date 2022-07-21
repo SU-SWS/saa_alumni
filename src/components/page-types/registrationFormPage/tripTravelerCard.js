@@ -49,7 +49,7 @@ const TripTravelerCard = ({ traveler }) => {
         direction="row"
         className="su-basefont-23 su-p-36 su-m-w-full"
         justifyContent="between"
-        alignItems="start"
+        alignItems="center"
         gap
       >
         <FlexBox direction="col" alignItems="start">
