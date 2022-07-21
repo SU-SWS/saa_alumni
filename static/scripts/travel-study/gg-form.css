@@ -3,14 +3,14 @@
 /* SU colors */
 :root {
   --su-digital-red-xlight: #e50808;
-  --su-digital-red: #B1040E;
+  --su-digital-red: #b1040e;
   --su-black: #2e2d29;
-  --su-black-70: #6D6C69;
-  --su-black-50: #979694; 
-  --su-black-30: #C0C0BF;
-  --su-black-20: #D5D5D4;
+  --su-black-70: #6d6c69;
+  --su-black-50: #979694;
+  --su-black-30: #c0c0bf;
+  --su-black-20: #d5d5d4;
   --su-palo-verde-dark: #017e7c;
-  --su-electric-blue: #505EEC;
+  --su-electric-blue: #505eec;
   --su-white: #ffffff;
 }
 
@@ -21,6 +21,19 @@
 }
 
 /* GG Trip Autocomplete */
+.gg-autocomplete {
+  height: 6.4rem;
+  font-size: 2.1rem;
+}
+
+.gg-autocomplete-wrapper label {
+  font-size: 2.1rem;
+}
+
+.gg-form-autocomplete h2 {
+  font-weight: 600;
+}
+
 .gg-autocomplete-wrapper .autoComplete_wrapper > ul {
   position: absolute;
   max-height: 226px;
@@ -86,6 +99,15 @@
 }
 
 /* Trip Form Styling */
+.gg-form-autocomplete,
+.gg-form-main .gg-script-wrapper {
+  font-family: "Source Sans Pro";
+  padding: 58px 87px 90px;
+  background: var(--su-white);
+  border: 1px solid var(--su-black-20);
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
 .gg-form-sidebar {
   margin-top: 58px;
 }
@@ -123,16 +145,6 @@
   margin: 0;
 }
 
-.gg-form-autocomplete,
-.gg-form-main .gg-script-wrapper {
-  font-family: 'Source Sans Pro';
-  padding: 58px 87px 90px;
-  background: var(--su-white);
-  border: 1px solid var(--su-black-20);
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
-}
-
-
 /*  GG Form */
 .ggeWidget .ggeContent .ggeQuestion {
   margin-bottom: 4.5rem;
@@ -147,7 +159,8 @@
   padding-bottom: 0;
 }
 
-.ggeQuestion:not(.ggeQuestion--error):not(.ggeQuestion--instructions) .ggeQuestion__field {
+.ggeQuestion:not(.ggeQuestion--error):not(.ggeQuestion--instructions)
+  .ggeQuestion__field {
   display: flex;
   flex-direction: column-reverse;
 }
@@ -168,8 +181,8 @@
   text-underline-offset: auto;
 }
 .ggeWidget .ggeQuestion--instructions a:focus,
-.ggeWidget .ggeQuestion__error a:focus, 
-.ggeWidget .ggeQuestion--instructions a:hover ,
+.ggeWidget .ggeQuestion__error a:focus,
+.ggeWidget .ggeQuestion--instructions a:hover,
 .ggeWidget .ggeQuestion__error a:hover {
   text-decoration: underline;
 }
@@ -193,7 +206,8 @@
   border-bottom: 2px solid var(--su-black-20);
   border-radius: 3px;
   box-sizing: border-box;
-  font-size: 1.8rem;
+  font-size: 2.1rem;
+  height: 6.4rem;
 }
 
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="email"],
@@ -268,7 +282,11 @@
   border: 0 solid;
   border-color: transparent;
   border-image-slice: 1;
-  border-image-source: linear-gradient(0deg,var(--su-palo-verde-dark) 84.05%,var(--su-electric-blue) 0);
+  border-image-source: linear-gradient(
+    0deg,
+    var(--su-palo-verde-dark) 84.05%,
+    var(--su-electric-blue) 0
+  );
   border-width: 2px;
   margin-bottom: 7.2rem;
   padding: 2.6rem 2.6rem 4.5rem;
@@ -344,6 +362,7 @@
   margin-top: 6.2rem;
 }
 
+.gg-form-autocomplete .ggeButton--forward,
 .ggeWidget .ggeButton--forward {
   align-items: center;
   background: var(--su-digital-red);
@@ -359,6 +378,8 @@
 
 .ggeWidget .ggeButton--addRegistrant:focus,
 .ggeWidget .ggeButton--addRegistrant:hover,
+.gg-form-autocomplete .ggeButton--forward:focus,
+.gg-form-autocomplete .ggeButton--forward:hover,
 .ggeWidget .ggeButton--forward:focus,
 .ggeWidget .ggeButton--forward:hover {
   align-items: center;
@@ -374,7 +395,11 @@
   align-items: center;
   background: transparent;
   border-image-slice: 1;
-  border-image-source: linear-gradient(to right top,var(--su-palo-verde-dark),var(--su-electric-blue));
+  border-image-source: linear-gradient(
+    to right top,
+    var(--su-palo-verde-dark),
+    var(--su-electric-blue)
+  );
   border-style: solid;
   border-width: 2px;
   border-radius: unset;
@@ -391,12 +416,17 @@
 .ggeWidget .ggeButton--back:focus,
 .ggeWidget .ggeButton--back:hover {
   align-items: center;
-  background-image: linear-gradient(to right top, rgb(1, 126, 124), rgb(80, 94, 236));
+  background-image: linear-gradient(
+    to right top,
+    rgb(1, 126, 124),
+    rgb(80, 94, 236)
+  );
   color: var(--su-white);
   text-decoration: underline;
 }
 
 /* Button Action Icon */
+.gg-form-autocomplete .ggeButton--forward:after,
 .ggeWidget .ggeButton--forward::after,
 .ggeWidget .ggeButton--back::before {
   width: 1em;
@@ -409,6 +439,7 @@
   -webkit-mask-size: cover;
 }
 
+.gg-form-autocomplete .ggeButton--forward:after,
 .ggeWidget .ggeButton--forward::after {
   background: var(--su-white);
   margin-left: 8px;
@@ -464,9 +495,9 @@
   margin-top: 0;
 }
 
-.ggeWidget .ggeQuestion label, 
+.ggeWidget .ggeQuestion label,
 .ggeWidget .ggeQuestion legend,
-.ggeWidget .ggeQuestion__field label, 
+.ggeWidget .ggeQuestion__field label,
 .ggeWidget .ggeQuestion__field legend,
 .ggeWidget .ggeQuestion--required .ggePrompt .ggePrompt__label label {
   font-weight: 400;
@@ -491,8 +522,8 @@
 }
 
 /* Radio */
-[type=checkbox],
-[type=radio] {
+[type="checkbox"],
+[type="radio"] {
   clip: unset;
   -webkit-clip-path: inset(100%);
   clip-path: unset;
@@ -504,7 +535,7 @@
   width: inherit;
 }
 
-[type=radio] {
+[type="radio"] {
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
@@ -520,7 +551,8 @@
   background: var(--su-electric-blue) border-box;
   border: 2px solid transparent;
   border-radius: 50%;
-  -webkit-mask: linear-gradient(var(--su-white) 0 0) padding-box,linear-gradient(var(--su-white) 0 0);
+  -webkit-mask: linear-gradient(var(--su-white) 0 0) padding-box,
+    linear-gradient(var(--su-white) 0 0);
   -webkit-mask-composite: xor;
   -webkit-mask-composite: exclude;
   display: flex;
@@ -530,10 +562,16 @@
 }
 
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio input {
-  background: linear-gradient(222.67deg,var(--su-electric-blue) 15.6%,var(--su-palo-verde-dark) 84.05%) border-box;
+  background: linear-gradient(
+      222.67deg,
+      var(--su-electric-blue) 15.6%,
+      var(--su-palo-verde-dark) 84.05%
+    )
+    border-box;
   border: 2px solid transparent;
   border-radius: 50%;
-  -webkit-mask: linear-gradient(var(--su-white) 0 0) padding-box,linear-gradient(var(--su-white) 0 0);
+  -webkit-mask: linear-gradient(var(--su-white) 0 0) padding-box,
+    linear-gradient(var(--su-white) 0 0);
   -webkit-mask-composite: xor;
   -webkit-mask-composite: exclude;
   display: flex;
@@ -543,7 +581,11 @@
 }
 
 .ggeWidget .ggePrompt--checked .ggePrompt__radio:after {
-  background: linear-gradient(222.67deg,var(--su-electric-blue) 15.6%,var(--su-palo-verde-dark) 84.05%);
+  background: linear-gradient(
+    222.67deg,
+    var(--su-electric-blue) 15.6%,
+    var(--su-palo-verde-dark) 84.05%
+  );
   border-radius: 50%;
   content: "";
   display: flex;
