@@ -102,7 +102,7 @@
 .gg-form-autocomplete,
 .gg-form-main .gg-script-wrapper {
   font-family: "Source Sans Pro";
-  padding: 58px 87px 90px;
+  padding: 5.8rem 8.7rem 9rem;
   background: var(--su-white);
   border: 1px solid var(--su-black-20);
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
@@ -373,7 +373,7 @@
   position: relative;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   padding-left: 3rem;
-  margin-top: 4.5rem;
+  margin-top: 3.6rem;
 }
 
 .ggeWidget .ggeButton--addRegistrant:focus,
