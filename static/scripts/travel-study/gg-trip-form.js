@@ -210,7 +210,7 @@ class ggTripForm {
     `;
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'ggeButton--forward';
+    button.className = 'ggeButton ggeButton--forward';
     button.innerHTML = 'Next';
     button.onclick = () => {
       this.setADCVariables();
