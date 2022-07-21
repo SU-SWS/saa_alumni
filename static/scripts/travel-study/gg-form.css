@@ -493,14 +493,17 @@
   display: block;
 }
 
+.ggePrompt__radio:focus::before
 .ggePrompt__radio:hover::before {
   content: "";
   position: absolute;
   inset: -0.6rem;
   border-radius: 100%;
-  background: rgba(var(--su-electric-blue-light), 0.4);
+  background: (--su-electric-blue-light);
+  opacity: 0.6;
 }
 
+.ggePrompt--checked .ggePrompt__radio:focus::before
 .ggePrompt--checked .ggePrompt__radio:hover::before {
   background: linear-gradient(222.67deg, var(--su-electric-blue) 15.6%, var(--su-palo-verde-dark) 84.05%);
   opacity: .4;
