@@ -11,6 +11,7 @@
   --su-black-20: #d5d5d4;
   --su-palo-verde-dark: #017e7c;
   --su-electric-blue: #505eec;
+  --su-electric-blue-light: #6B77F5;
   --su-white: #ffffff;
 }
 
@@ -278,49 +279,6 @@
   border: 1px solid var(--su-digital-red-xlight);
 }
 
-.ggeTally {
-  border: 0 solid;
-  border-color: transparent;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(
-    0deg,
-    var(--su-palo-verde-dark) 84.05%,
-    var(--su-electric-blue) 0
-  );
-  border-width: 2px;
-  margin-bottom: 7.2rem;
-  padding: 2.6rem 2.6rem 4.5rem;
-}
-
-.ggeTally table {
-  margin: 0;
-}
-
-.ggeTally tr {
-  border: none;
-}
-
-.ggeTally .ggeTally--text,
-.ggeTally .ggeTally--money {
-  padding-top: 0;
-  padding-bottom: 3.2rem;
-  border-bottom: 1px solid var(--su-black-30);
-}
-
-.ggeTally .ggeTally--money:last-child {
-  padding: 0;
-  border-bottom: unset;
-}
-
-.ggeTally .ggeTally--total {
-  padding-top: 12px;
-  padding-bottom: 0;
-}
-
-.ggeTally .ggeTally--money {
-  width: 25%;
-}
-
 .ggeWidget .ggeQuestion textarea {
   padding-right: 25px;
 }
@@ -547,6 +505,19 @@
   display: block;
 }
 
+.ggePrompt__radio:hover::before {
+  content: "";
+  position: absolute;
+  inset: -0.6rem;
+  border-radius: 100%;
+  background: rgba(var(--su-electric-blue-light), 0.4);
+}
+
+.ggePrompt--checked .ggePrompt__radio:hover::before {
+  background: linear-gradient(222.67deg, var(--su-electric-blue) 15.6%, var(--su-palo-verde-dark) 84.05%);
+  opacity: .4;
+}
+
 .ggeWidget .ggePrompt .ggePrompt__radio input {
   background: var(--su-electric-blue) border-box;
   border: 2px solid transparent;
@@ -657,6 +628,49 @@
 /* Tally Table */
 .ggeRegistrantList {
   display: none;
+}
+
+.ggeTally {
+  border: 0 solid;
+  border-color: transparent;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(
+    0deg,
+    var(--su-palo-verde-dark) 84.05%,
+    var(--su-electric-blue) 0
+  );
+  border-width: 2px;
+  margin-bottom: 7.2rem;
+  padding: 2.6rem 2.6rem 4.5rem;
+}
+
+.ggeTally table {
+  margin: 0;
+}
+
+.ggeTally tr {
+  border: none;
+}
+
+.ggeTally .ggeTally--text,
+.ggeTally .ggeTally--money {
+  padding-top: 0;
+  padding-bottom: 3.2rem;
+  border-bottom: 1px solid var(--su-black-30);
+}
+
+.ggeTally .ggeTally--money:last-child {
+  padding: 0;
+  border-bottom: unset;
+}
+
+.ggeTally .ggeTally--total {
+  padding-top: 12px;
+  padding-bottom: 0;
+}
+
+.ggeTally .ggeTally--money {
+  width: 25%;
 }
 
 .ggeWidget.ggeWidget--highlightIncomplete .ggeRegistrant--prefilled .ggeQuestion--incomplete {
