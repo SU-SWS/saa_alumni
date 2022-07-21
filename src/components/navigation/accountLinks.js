@@ -63,7 +63,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
 
   return (
     <AuthContext.Consumer>
-      {({ isAuthenticated, userProfile }) => (
+      {({ isAuthenticated, isAuthenticating, userProfile }) => (
         <>
           {isAuthenticated && (
             <li className="su-text-white su-relative" ref={ref}>
@@ -117,7 +117,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
             </li>
           )}
 
-          {!isAuthenticated && (
+          {!isAuthenticated && !isAuthenticating && (
             <>
               <NavItem
                 className={mainLinkClasses}
@@ -127,7 +127,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                       loginParams ? `?${loginParams.toString()}` : ''
                     }`,
                   },
-                  text: 'Login',
+                  text: 'Log in',
                 }}
               />
             </>
