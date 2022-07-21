@@ -4,6 +4,7 @@ import SbEditable from 'storyblok-react';
 import { Heading } from '../../simple/Heading';
 import SbLink from '../../../utilities/sbLink';
 import HeroIcon from '../../simple/heroIcon';
+import * as styles from './tripCustomJourneys.styles';
 
 const TripCustomJourneys = (props) => {
   const {
@@ -23,13 +24,10 @@ const TripCustomJourneys = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <SbLink
-        link={{ url: tripURL }}
-        classes="su-group su-inline-block su-font-light su-rs-mb-6 su-no-underline su-transition-colors"
-      >
+      <SbLink link={{ url: tripURL }} classes={styles.backToLink}>
         <HeroIcon
           iconType="arrow-left"
-          className="su-inline-block su-text-digital-red-light group-hocus:su-text-cardinal-red"
+          className={styles.leadingIcon}
           isAnimate
         />
         Back to {title}
@@ -40,11 +38,11 @@ const TripCustomJourneys = (props) => {
         align="left"
         font="serif"
         id="page-title"
-        className="su-drop-shadow"
+        className={styles.heading}
       >
         {heading}
       </Heading>
-      {body && <p className="su-intro-text su-rs-mb-5">{body}</p>}
+      {body && <p className={styles.body}>{body}</p>}
     </SbEditable>
   );
 };
