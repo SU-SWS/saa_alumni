@@ -199,7 +199,7 @@ class ggTripForm {
   embedTripSelect = async () => {
     const trips = await this.getTrips();
     const content = document.createElement('div');
-    content.className = 'gg-form-autocomplete';
+    content.className = 'gg-form-autocomplete centered-container';
     content.innerHTML = `
       <p class="gg-staff-name">Staff name: ${this.user.su_display_name}</p>
       <h2>Trip Look-up</h2>

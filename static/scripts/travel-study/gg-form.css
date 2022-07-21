@@ -310,16 +310,6 @@
 }
 
 /* Solid Button */
-.ggeWidget .ggeButton--addRegistrant {
-  background: var(--su-digital-red);
-  border: 2px solid var(--su-digital-red);
-  border-radius: unset;
-  color: var(--su-white);
-  position: relative;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 6.2rem;
-}
-
 .gg-form-autocomplete .ggeButton--forward,
 .ggeWidget .ggeButton--forward {
   align-items: center;
@@ -334,8 +324,6 @@
   margin-top: 3.6rem;
 }
 
-.ggeWidget .ggeButton--addRegistrant:focus,
-.ggeWidget .ggeButton--addRegistrant:hover,
 .gg-form-autocomplete .ggeButton--forward:focus,
 .gg-form-autocomplete .ggeButton--forward:hover,
 .ggeWidget .ggeButton--forward:focus,
@@ -691,7 +679,6 @@
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant {
-  @apply su-mt-0 su-p-0 su-text-21 su-font-semibold su-text-black-10;
   margin-top: 0;
   padding: 0;
   font-size: 2.1rem;
@@ -703,11 +690,19 @@
   content: "Edit";
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13' fill='none'%3E%3Cpath d='M11.6673 1.33265L12.1976 0.802316V0.802316L11.6673 1.33265ZM3.0625 12.1472L3.0625 12.8972C3.26141 12.8972 3.45218 12.8182 3.59283 12.6775L3.0625 12.1472ZM0.875 12.1472H0.125C0.125 12.5614 0.460786 12.8972 0.875 12.8972L0.875 12.1472ZM0.875 9.91526L0.34467 9.38493C0.204018 9.52558 0.125 9.71634 0.125 9.91526H0.875ZM9.98794 1.86298C10.3052 1.54567 10.8197 1.54567 11.137 1.86298L12.1976 0.802316C11.2946 -0.100772 9.83037 -0.100772 8.92728 0.802316L9.98794 1.86298ZM11.137 1.86298C11.4543 2.18028 11.4543 2.69472 11.137 3.01202L12.1976 4.07268C13.1007 3.1696 13.1007 1.7054 12.1976 0.802316L11.137 1.86298ZM11.137 3.01202L2.53217 11.6168L3.59283 12.6775L12.1976 4.07268L11.137 3.01202ZM3.0625 11.3972H0.875L0.875 12.8972H3.0625L3.0625 11.3972ZM8.92728 0.802316L0.34467 9.38493L1.40533 10.4456L9.98794 1.86298L8.92728 0.802316ZM0.125 9.91526L0.125 12.1472H1.625L1.625 9.91526H0.125ZM7.98978 2.80048L10.1995 5.01018L11.2601 3.94952L9.05044 1.73982L7.98978 2.80048Z' fill='%23505EEC'/%3E%3C/svg%3E");
   background-position: left 15px center;
-  @apply su-ml-[1rem] su-pl-[3.8rem] su-text-[1.8rem] su-text-white su-border-l su-border-l-black su-bg-no-repeat;
+  background-repeat: no-repeat;
+  border-left: 1px solid var(--su-black-30);
+  margin-left: 1rem;
+  padding-left: 3.8rem;
+  font-size: 1.8rem;
+  color: var(--black);
 }
 
 .ggeWidget .ggeTally__multireg__buttons {
   @apply su-relative su-flex su-flex-col-reverse;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant {
@@ -780,4 +775,15 @@
   background-repeat: no-repeat;
   background-position: left center;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cpath d='M10.5 7V10M10.5 10V13M10.5 10H13.5M10.5 10H7.5M19.5 10C19.5 14.9706 15.4706 19 10.5 19C5.52944 19 1.5 14.9706 1.5 10C1.5 5.02944 5.52944 1 10.5 1C15.4706 1 19.5 5.02944 19.5 10Z' stroke='%23F83535' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  box-shadow: none;
+}
+
+.ggeWidget .ggeButton--addRegistrant:hover,
+.ggeWidget .ggeButton--addRegistrant:focus {
+  text-decoration: underline;
+}
+
+/* Hold Trip Payment Header */
+.staff-hold-trip-registration .ggeSection ggeSection--payment h2 {
+  display: none;
 }
