@@ -69,7 +69,7 @@ const GlobalAlert = () => {
               <br />
               If this issue persists, please{' '}
               <a
-                href="https://stanford.service-now.com/it_services?id=sc_cat_item&sys_id=0d4e42301ba33410a61d41d5ec4bcbc7"
+                href="https://stanford.service-now.com/alumni_donor_services?id=sc_cat_item&sys_id=9a91f4b6db890050404aa4cb0b961978"
                 className="su-text-black hocus:su-no-underline hocus:su-text-black"
               >
                 submit a ticket.
