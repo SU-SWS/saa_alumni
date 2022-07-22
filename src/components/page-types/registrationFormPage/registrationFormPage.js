@@ -118,7 +118,8 @@ const RegistrationFormPage = (props) => {
   // redirect user back to insteritial page to select travelers
   // Storyblok patch: Check window location params if viewing from editor, skip redirect
   // TODO: Rework ADAPT-5181
-  const isStoryBlok = window?.location?.pathname?.match(/^\/editor\/?$/);
+  const isStoryBlok =
+    (window && window?.location?.pathname?.match(/^\/editor\/?$/)) || false;
   if (!location?.state?.travelers && !isStoryBlok) {
     return <Redirect to={registrationSlug} noThrow />;
   }
