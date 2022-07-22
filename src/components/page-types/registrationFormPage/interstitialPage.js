@@ -67,7 +67,9 @@ const InterstitialPage = (props) => {
     relationshipsData?.forEach((relationship) => {
       data = {
         su_did: relationship?.relatedContactEncodedID,
-        su_dname: `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
+        su_dname: relationship?.relatedContactDigitalName
+          ? relationship?.relatedContactDigitalName
+          : `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
         su_title: findSelectOption(
           prefixSelectList,
           relationship?.relatedContactFullNameParsed?.relatedContactPrefix
@@ -90,7 +92,6 @@ const InterstitialPage = (props) => {
         su_reg: 'Related contact',
         su_email: undefined,
         su_phone: undefined,
-        removeBtn: false,
       };
       relatedContacts = [...relatedContacts, data];
     });
@@ -112,14 +113,16 @@ const InterstitialPage = (props) => {
   );
 
   let digitalName;
-  if (userProfile?.name?.fullNameParsed?.firstName) {
+  if (userProfile?.name?.digitalName) {
+    digitalName = userProfile?.name?.digitalName;
+  } else if (userProfile?.name?.fullNameParsed?.firstName) {
     digitalName = `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`;
   } else {
     digitalName = `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`;
   }
 
   const primaryRegistrant = {
-    su_did: userProfile?.encodedSUID || userProfile?.session?.encodedSUID,
+    su_did: userProfile?.session?.encodedSUID,
     su_dname: digitalName,
     su_title: findSelectOption(
       prefixSelectList,
@@ -146,7 +149,6 @@ const InterstitialPage = (props) => {
     su_dob: userProfile?.birthDate,
     su_relation: 'Guest',
     su_reg: 'Primary registrant',
-    removeBtn: false,
   };
 
   return (

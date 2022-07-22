@@ -75,38 +75,24 @@ class ggForm {
   /**
    * Embed the trip information and form.
    */
-  renderForm = () => {
+  embedInterstitialPage = () => {
     const content = document.createElement('article');
     content.className = 'gg-form-wrapper gg-form-notrip';
+
     const main = document.createElement('section');
     main.className = 'gg-form-main centered-container';
+
     const ggScript = document.createElement('div');
     ggScript.className = 'gg-script-wrapper';
+
+    const staffName = document.createElement('p');
+    staffName.className = 'gg-staff-name';
+    staffName.innerText = `Staff name: ${this.user.su_display_name}`;
+
+    ggScript.appendChild(staffName);
     ggScript.appendChild(this.getGGScript());
     main.appendChild(ggScript);
-
     content.appendChild(main);
-    this.render(content);
-  };
-
-  /**
-   * Embeds an option to select a trip.
-   */
-  embedInterstitialPage = () => {
-    const content = document.createElement('div');
-    const staffName = document.createElement('p');
-    staffName.innerText = `Staff name: ${this.user.su_display_name}`;
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'su-button su-link su-link--action';
-    button.innerHTML = 'Next';
-    button.onclick = () => {
-      this.setADCVariables();
-      this.renderForm();
-    };
-
-    content.appendChild(staffName);
-    content.appendChild(button);
 
     this.render(content);
   };

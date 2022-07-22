@@ -4,7 +4,7 @@ import TripTravelerListItem from './tripTravelerListItem';
 import { FlexBox } from '../../layout/FlexBox';
 
 const TripTravelerList = () => {
-  const [state, dispatch] = useContext(FormContext);
+  const [state] = useContext(FormContext);
 
   if (state.travelersData.length === 0) {
     return (

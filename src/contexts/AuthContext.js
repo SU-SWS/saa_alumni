@@ -58,7 +58,7 @@ class AuthContextProvider extends React.Component {
       return false;
     });
 
-    // To be logged in, both session and profile must be available.
+    // To be logged in, session must be available.
     Promise.all([sess, prof])
       .then(([session, profile]) => {
         if (!session) {

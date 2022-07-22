@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
 import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
@@ -11,6 +10,7 @@ import TabLabel from '../../simple/tabLabel';
 import { TripType } from '../../../types/TripType';
 import { HeadingLevelType } from '../../../types/HeadingLevelType';
 import * as styles from './TripCard.styles';
+import SbLink from '../../../utilities/sbLink';
 
 export const TripCardProps = {
   trip: PropTypes.shape(TripType),
@@ -61,7 +61,7 @@ const TripCard = ({
           <Date startDate={startDate} endDate={endDate} isSmall />
         </div>
         <div className={styles.content}>
-          <Link to={tripURL} className={styles.link}>
+          <SbLink link={{ url: tripURL }} classes={styles.link}>
             <Heading
               level={headingLevel}
               font="serif"
@@ -76,7 +76,7 @@ const TripCard = ({
               className={styles.icon}
               isAnimate
             />
-          </Link>
+          </SbLink>
           {tag && <TabLabel text={tag} aria-hidden />}
           <p className={styles.subheading}>{tripSubtitle}</p>
           <p className={styles.description}>{description}</p>

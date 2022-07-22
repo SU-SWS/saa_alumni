@@ -1,13 +1,8 @@
 export const findSelectOption = (select = [], value) => {
   let selected = null;
-  select?.forEach((option) => {
-    if (value === option) {
-      selected = option;
-    }
-    if (value?.includes(option)) {
-      selected = option;
-    }
-  });
+  selected = select?.find(
+    (option) => option === value || value?.includes(option)
+  );
   return selected;
 };
 

@@ -1,7 +1,9 @@
 import React, { useState, createRef, useEffect } from 'react';
 import { X, Search } from 'react-hero-icon/solid';
+import { useLocation } from '@reach/router';
 import SearchAutocomplete from './searchAutocomplete';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import { utmParams } from '../../utilities/utmParams';
 
 const SearchField = React.forwardRef(
   (
@@ -28,10 +30,17 @@ const SearchField = React.forwardRef(
     const inputWrapper = createRef();
     const inputRef = ref || createRef();
 
+    const location = useLocation();
+    const utms = utmParams(location.search);
+
     const submitHandler = (e) => {
       e.preventDefault();
       setShowAutocomplete(false);
-      onSubmit(query);
+      let queryParams = query;
+      if (utms.length > 0) {
+        queryParams += `&${utms}`;
+      }
+      onSubmit(queryParams);
     };
 
     const inputHandler = (e) => {
@@ -54,7 +63,11 @@ const SearchField = React.forwardRef(
       setQuery(suggestion);
       setShowAutocomplete(false);
       setSelectedSuggestion(null);
-      onSubmit(suggestion);
+      let suggestionParams = suggestion;
+      if (utms.length > 0) {
+        suggestionParams += `&${utms}`;
+      }
+      onSubmit(suggestionParams);
     };
 
     useEffect(() => {

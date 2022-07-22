@@ -1,10 +1,10 @@
 import React from 'react';
 import { useLocation } from '@reach/router';
-import { parse } from 'query-string';
 import { Link } from 'gatsby';
 import { dcnb } from 'cnbuilder';
 import { config } from './config';
 import HeroIcon from '../components/simple/heroIcon';
+import { utmParams } from './utmParams';
 
 /**
  * Reusable Storyblok Link component for various link types
@@ -31,25 +31,7 @@ const SbLink = React.forwardRef((props, ref) => {
 
   // Get out of the url and keep track of specific utm parameters.
   const location = useLocation();
-  const parsedSearch = parse(location.search);
-  // utms variable will create a string of just the valid params we want to keep.
-  let utms = '';
-  const passParams = [
-    'utm_source',
-    'utm_medium',
-    'utm_campaign',
-    'utm_term',
-    'utm_content',
-  ];
-  // Loop through the paramaters we want to continue to track and check to see
-  // if the existing page url has them.
-  passParams.forEach((i, v) => {
-    if (parsedSearch[i] !== undefined) {
-      utms += `${i}=${parsedSearch[i]}&`;
-    }
-  });
-  // Strip off the last ampersand.
-  utms = utms.replace(new RegExp('&$'), '');
+  const utms = utmParams(location.search);
 
   // Story or Internal type link.
   // ---------------------------------------------------------------------------
@@ -132,6 +114,12 @@ const SbLink = React.forwardRef((props, ref) => {
         {props.children}
       </a>
     );
+  }
+
+  if (linkUrl.match(/\?/) && utms.length) {
+    linkUrl += `&${utms}`;
+  } else if (utms.length) {
+    linkUrl += `?${utms}`;
   }
 
   // Default if we don't know what type this is.

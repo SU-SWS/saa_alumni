@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import { FormContext } from '../../../contexts/FormContext';
@@ -7,6 +7,20 @@ import HeroIcon from '../../simple/heroIcon';
 
 const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
+  const [removeBtn, setRemoveBtn] = useState(false);
+  const { travelersData } = state;
+
+  useEffect(() => {
+    if (
+      travelersData.find(
+        (selectedTraveler) => selectedTraveler.su_did === traveler.su_did
+      )
+    ) {
+      setRemoveBtn(true);
+    } else {
+      setRemoveBtn(false);
+    }
+  }, [travelersData, setRemoveBtn, traveler]);
 
   const addRelationship = () => {
     traveler.removeBtn = true;
@@ -32,7 +46,7 @@ const TripTravelerCard = ({ traveler }) => {
   };
 
   const toggleRelationship = () => {
-    if (traveler?.removeBtn) {
+    if (removeBtn) {
       removeRelationship();
     } else {
       addRelationship();
@@ -63,7 +77,7 @@ const TripTravelerCard = ({ traveler }) => {
             {traveler.su_dname}
             {traveler.su_reg === 'Primary registrant' ? ` (you)` : null}
           </Heading>
-          {traveler?.removeBtn && (
+          {removeBtn && (
             <p className="su-basefont-23 su-mb-0">
               <HeroIcon
                 iconType="check"
@@ -74,7 +88,7 @@ const TripTravelerCard = ({ traveler }) => {
           )}
         </FlexBox>
         <FlexBox direction="row" alignItems="center" justifyContent="start">
-          {traveler?.removeBtn ? (
+          {removeBtn ? (
             <>
               <div className="su-border-2 su-rounded-full su-border-digital-red-xlight su-mr-02em">
                 <HeroIcon
