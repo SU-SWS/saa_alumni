@@ -1,7 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
-import { Redirect } from '@reach/router';
+import { Redirect, useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -43,6 +43,7 @@ const RegistrationFormPage = (props) => {
     location,
     pageContext,
   } = props;
+  const windowLocation = useLocation();
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
   const title = `Register for your trip`;
@@ -96,6 +97,11 @@ const RegistrationFormPage = (props) => {
     window.su_post_extension_end = postExtendEndDate;
     window.su_extension = extension();
     window.prefillData = travelers;
+    if (travelers) {
+      window.prefillData = travelers;
+    } else {
+      window.su_did = userProfile?.session?.encodedSUID;
+    }
   }, [
     travelers,
     fullSlug,
@@ -118,8 +124,7 @@ const RegistrationFormPage = (props) => {
   // redirect user back to insteritial page to select travelers
   // Storyblok patch: Check window location params if viewing from editor, skip redirect
   // TODO: Rework ADAPT-5181
-  const isStoryBlok =
-    (window && window?.location?.pathname?.match(/^\/editor\/?$/)) || false;
+  const isStoryBlok = windowLocation?.pathname?.match(/^\/editor\/?$/);
   if (!location?.state?.travelers && !isStoryBlok) {
     return <Redirect to={registrationSlug} noThrow />;
   }
