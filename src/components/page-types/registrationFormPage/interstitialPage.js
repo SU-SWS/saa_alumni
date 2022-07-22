@@ -9,8 +9,6 @@ import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
 import Hero from '../../composite/hero';
 import { Grid } from '../../layout/Grid';
-import RichTextRenderer from '../../../utilities/richTextRenderer';
-import hasRichText from '../../../utilities/hasRichText';
 import {
   FormContextProvider,
   FormContext,

@@ -41,9 +41,7 @@ const RegistrationFormPage = (props) => {
     },
     blok,
     location,
-    pageContext: {
-      story: { full_slug: registrationSlug },
-    },
+    pageContext,
   } = props;
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
@@ -57,6 +55,7 @@ const RegistrationFormPage = (props) => {
     isHideScroll: 'true',
   };
 
+  const registrationSlug = pageContext?.story?.full_slug;
   const travelers = location?.state?.travelers;
 
   useEffect(() => {
@@ -117,7 +116,10 @@ const RegistrationFormPage = (props) => {
 
   // In the event that the user goes directly to the registration form,
   // redirect user back to insteritial page to select travelers
-  if (!location?.state?.travelers) {
+  // Storyblok patch: Check window location params if viewing from editor, skip redirect
+  // To be reworked in ADAPT-5181
+  const isStoryBlok = window.location.pathname.match(/^\/editor\/?$/);
+  if (!location?.state?.travelers && !isStoryBlok) {
     return <Redirect to={registrationSlug} noThrow />;
   }
 
