@@ -180,17 +180,25 @@ const InterstitialPage = (props) => {
                       {tripTitle}:<br />
                       Registration
                     </Heading>
-                    {body && <p className="su-subheading">{body}</p>}
+                    {body && (
+                      <p className="su-subheading su-text-center">{body}</p>
+                    )}
                   </GridCell>
                 </Grid>
-                <Grid xs={12}>
+                <Grid xs={12} className="su-rs-mb-5">
                   <GridCell xs={12} md={6}>
-                    <Heading level={3} size={5} align="left" font="serif">
+                    <Heading
+                      level={3}
+                      size={5}
+                      align="left"
+                      font="serif"
+                      className="su-mb-0"
+                    >
                       Add existing connections and past travelers to your trip
                     </Heading>
                   </GridCell>
                   <GridCell xs={12} md={7} lg={8}>
-                    <p className="su-intro-text">
+                    <p className="su-subheading su-mb-0 su-rs-mt-1">
                       We recommend adding the people listed below in this step,
                       as you won’t be able to later. You will be able to add
                       people not listed below later in the process.
