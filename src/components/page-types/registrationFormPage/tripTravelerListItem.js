@@ -7,8 +7,6 @@ const TripTravelerListItem = ({ traveler }) => {
   const [, dispatch] = useContext(FormContext);
 
   const removeRelationship = () => {
-    // eslint-disable-next-line no-param-reassign
-    traveler.removeBtn = false;
     dispatch({
       type: 'removeTraveler',
       payload: traveler.su_did,

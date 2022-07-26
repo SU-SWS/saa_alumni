@@ -199,20 +199,18 @@ class ggTripForm {
   embedTripSelect = async () => {
     const trips = await this.getTrips();
     const content = document.createElement('div');
-    content.className = 'gg-form-autocomplete';
+    content.className = 'gg-form-autocomplete centered-container';
     content.innerHTML = `
-      <div class="gg-form-staff">
-        <p>Staff name: ${this.user.su_display_name}</p>
-      </div>
-      <h2>Trip details</h2>
+      <p class="gg-staff-name">Staff name: ${this.user.su_display_name}</p>
+      <h2>Trip Look-up</h2>
       <div class="gg-autocomplete-wrapper">
-        <label for="autoComplete">Trip name, year, and trip ID number</label>
+        <label for="autoComplete">Search for a trip</label>
         <input id="autoComplete" class="gg-autocomplete" type="search" dir="ltr" spellcheck=false autocorrect="off" autocomplete="off" autocapitalize="off" maxlength="2048" tabindex="1">
       </div>
     `;
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'su-button su-link su-link--action';
+    button.className = 'ggeButton ggeButton--forward';
     button.innerHTML = 'Next';
     button.onclick = () => {
       this.setADCVariables();
@@ -225,7 +223,7 @@ class ggTripForm {
     // eslint-disable-next-line no-undef
     const autoCompleteJS = await new autoComplete({
       selector: '#autoComplete',
-      placeHolder: 'Search for Trip...',
+      placeHolder: 'Enter trip name, year, or trip ID number',
       data: {
         src: trips,
         cache: true,

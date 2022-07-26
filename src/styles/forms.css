@@ -157,7 +157,7 @@
 }
 
 .ggeWidget .ggePageNav {
-  @apply su-flex su-justify-center su-mt-0 su-mx-auto;
+  @apply su-flex su-justify-center su-mt-0 su-mx-auto su-my-0;
 }
 
 .ggePageSet .ggeHidden ~ .ggePage .ggePageNav {
@@ -247,6 +247,16 @@
   @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
   content: "";
   background: linear-gradient(222.67deg, #505EEC 15.6%, #017E7C 84.05%);
+}
+
+.ggePrompt__radio:hover::before {
+  content: "";
+  @apply su-absolute su-inset-[-.6rem] su-rounded-full su-bg-saa-electric-blue-light/[.4];
+}
+
+.ggePrompt--checked .ggePrompt__radio:hover::before {
+  background: linear-gradient(222.67deg, #505EEC 15.6%, #017E7C 84.05%);
+  opacity: .4;
 }
 
 .form-gradient {
@@ -347,4 +357,92 @@
 
 .ggeConfirmation .ggeConfirmationMessage > .ggeTally ~ div {
   @apply su-p-0;
+}
+
+.ggeRegistrantList {
+  @apply su-hidden;
+}
+
+.ggeWidget.ggeWidget--highlightIncomplete .ggeRegistrant--prefilled .ggeQuestion--incomplete {
+  @apply su-bg-transparent;
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--error .ggeQuestion__field select {
+  @apply su-text-digital-red-xlight;
+}
+
+.ggeWidget .ggePageNav--forward {
+  @apply su-flex su-gap-x-[3rem] lg:su-gap-x-[7rem];
+}
+
+.ggeWidget .ggeButton.ggeButton--discardRegistrant {
+  @apply su-bg-transparent su-text-white su-border-0 su-bg-no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.07784 7.75026L13.916 2.95543C14.384 2.49176 14.3873 1.73776 13.9236 1.26976C13.4599 0.801762 12.7059 0.799596 12.2379 1.26218L7.38459 6.07218L2.53234 1.26218C2.06543 0.799596 1.31034 0.803929 0.846678 1.27085C0.383012 1.73776 0.386262 2.49176 0.854262 2.95543L5.69134 7.75026L0.853178 12.5451C0.385178 13.0088 0.381928 13.7628 0.845595 14.2308C1.07851 14.4658 1.38509 14.5828 1.69168 14.5828C1.99501 14.5828 2.29834 14.4691 2.53018 14.2383L7.38459 9.42835L12.2368 14.2383C12.4698 14.4691 12.772 14.5828 13.0753 14.5828C13.3819 14.5828 13.6885 14.4658 13.9214 14.2308C14.3851 13.7628 14.3818 13.0088 13.9138 12.5451L9.07784 7.75026Z' fill='%23505EEC'/%3E%3C/svg%3E%0A");
+  background-position: right center;
+}
+
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant {
+  @apply su-mt-0 su-p-0 su-text-21 su-font-semibold su-text-black-10;
+
+}
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant::after {
+  content: "Edit";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13' fill='none'%3E%3Cpath d='M11.6673 1.33265L12.1976 0.802316V0.802316L11.6673 1.33265ZM3.0625 12.1472L3.0625 12.8972C3.26141 12.8972 3.45218 12.8182 3.59283 12.6775L3.0625 12.1472ZM0.875 12.1472H0.125C0.125 12.5614 0.460786 12.8972 0.875 12.8972L0.875 12.1472ZM0.875 9.91526L0.34467 9.38493C0.204018 9.52558 0.125 9.71634 0.125 9.91526H0.875ZM9.98794 1.86298C10.3052 1.54567 10.8197 1.54567 11.137 1.86298L12.1976 0.802316C11.2946 -0.100772 9.83037 -0.100772 8.92728 0.802316L9.98794 1.86298ZM11.137 1.86298C11.4543 2.18028 11.4543 2.69472 11.137 3.01202L12.1976 4.07268C13.1007 3.1696 13.1007 1.7054 12.1976 0.802316L11.137 1.86298ZM11.137 3.01202L2.53217 11.6168L3.59283 12.6775L12.1976 4.07268L11.137 3.01202ZM3.0625 11.3972H0.875L0.875 12.8972H3.0625L3.0625 11.3972ZM8.92728 0.802316L0.34467 9.38493L1.40533 10.4456L9.98794 1.86298L8.92728 0.802316ZM0.125 9.91526L0.125 12.1472H1.625L1.625 9.91526H0.125ZM7.98978 2.80048L10.1995 5.01018L11.2601 3.94952L9.05044 1.73982L7.98978 2.80048Z' fill='%23505EEC'/%3E%3C/svg%3E");
+  background-position: left 15px center;
+  @apply su-ml-[1rem] su-pl-[3.8rem] su-text-[1.8rem] su-text-white su-border-l su-border-l-black su-bg-no-repeat;
+}
+
+.ggeWidget .ggeTally__multireg__buttons {
+  @apply su-relative su-flex su-flex-col-reverse;
+}
+
+.ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant {
+  background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.64321 6.88535L13.5183 2.05397C13.9898 1.58677 13.9931 0.827025 13.5259 0.355458C13.0587 -0.116108 12.2989 -0.118291 11.8274 0.347817L6.93706 5.19447L2.04783 0.347817C1.57736 -0.118291 0.816521 -0.113925 0.34932 0.35655C-0.11788 0.827025 -0.114605 1.58677 0.356961 2.05397L5.23091 6.88535L0.35587 11.7167C-0.115697 12.1839 -0.118971 12.9437 0.348229 13.4152C0.582921 13.6521 0.89184 13.77 1.20076 13.77C1.5064 13.77 1.81205 13.6554 2.04565 13.4229L6.93706 8.57622L11.8263 13.4229C12.061 13.6554 12.3655 13.77 12.6712 13.77C12.9801 13.77 13.289 13.6521 13.5237 13.4152C13.9909 12.9437 13.9876 12.1839 13.5161 11.7167L8.64321 6.88535Z' fill='%23F83535'/%3E%3C/svg%3E");
+  @apply su-font-semibold su-text-18 su-mt-0 su-absolute su-bottom-[-6.5rem] su-py-0 su-pr-0 su-pl-[1.6rem] su-text-transparent su-bg-transparent su-border-0 su-bg-no-repeat;
+  background-position: left center;
+}
+
+.ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:hover::after {
+  text-decoration-line: underline;
+  @apply su-text-white;
+}
+
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover {
+  text-decoration-line: none;
+}
+
+.ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant::after {
+  content: "Remove";
+  @apply su-text-white;
+}
+
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover::after {
+  text-decoration-line: underline;
+}
+
+.ggeWidget .ggeTally--text {
+  @apply su-text-19;
+}
+
+.ggeWidget .ggeTally--money {
+  @apply su-text-21;
+}
+
+.ggeWidget td.ggeTally--text,
+.ggeWidget td.ggeTally--money:not(.ggeTally--total) {
+  @apply su-pt-0 su-pb-[5.2rem] su-border-b su-border-b-black;
+}
+
+.ggeWidget .ggeTally--total {
+  @apply su-text-[2.6rem] su-font-semibold su-pt-[3rem];
+}
+
+.ggeWidget .ggeTally--terms {
+  @apply su-pt-[1.4rem];
+}
+
+.ggeWidget .ggeButton--addRegistrant {
+  @apply su-bg-transparent su-text-white su-border-0 su-px-0 su-pr-0 su-pl-[2.7rem] su-text-21 su-bg-no-repeat;
+  background-position: left center;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cpath d='M10.5 7V10M10.5 10V13M10.5 10H13.5M10.5 10H7.5M19.5 10C19.5 14.9706 15.4706 19 10.5 19C5.52944 19 1.5 14.9706 1.5 10C1.5 5.02944 5.52944 1 10.5 1C15.4706 1 19.5 5.02944 19.5 10Z' stroke='%23F83535' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }

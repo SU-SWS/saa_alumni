@@ -32,6 +32,7 @@ const FormPage = (props) => {
     },
     blok,
   } = props;
+  const { userProfile } = useContext(AuthContext);
   const hasDefaultHero = isSingleColumn ? filename : null;
   const numAnkle = getNumBloks(ankleContent);
   const heroProps = {
@@ -53,8 +54,6 @@ const FormPage = (props) => {
     bgCardStyle = 'su-bg-saa-black-dark';
     gridContainerStyle = 'su-bg-saa-black';
   }
-
-  const { userProfile } = useContext(AuthContext);
 
   useEffect(() => {
     window.su_trip_id = trip?.content?.tripId;

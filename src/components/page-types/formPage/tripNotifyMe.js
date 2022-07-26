@@ -51,13 +51,10 @@ const TripNotifyMe = (props) => {
     <SbEditable content={blok}>
       <Grid xs={12}>
         <GridCell xs={12} md={6} lg={12}>
-          <SbLink
-            classes="su-group su-inline-block su-font-semibold su-basefont-23 su-rs-mb-6 su-no-underline su-transition-colors su-text-digital-red-xlight hocus:su-text-white hocus:su-underline hocus:su-underline-offset-[3px]"
-            link={{ url: tripURL }}
-          >
+          <SbLink link={{ url: tripURL }} classes={styles.backToLink}>
             <HeroIcon
               iconType="arrow-left"
-              className="su-inline-block su-text-digital-red-xlight group-hocus:su-text-white"
+              className={styles.leadingIcon}
               isAnimate
             />
             Back to {tripTitle}
@@ -69,19 +66,13 @@ const TripNotifyMe = (props) => {
             align="left"
             font="serif"
             id="page-title"
-            className="su-text-shadow-lg su-rs-mb-2"
+            className={styles.heading}
           >
             {title}
           </Heading>
-          {body && <p className="su-intro-text su-rs-mb-5">{body}</p>}
+          {body && <p className={styles.body}>{body}</p>}
         </GridCell>
-        <GridCell
-          xs={12}
-          sm={6}
-          md={4}
-          lg={12}
-          className="md:su-col-start-8 md:su-rs-mt-7 lg:su-mt-0 lg:su-col-start-1"
-        >
+        <GridCell xs={12} sm={6} md={4} lg={12} className={styles.contentGrid}>
           <Grid xl={5} className={styles.summaryContent}>
             <GridCell xl={3} className={styles.summaryItem}>
               <Heading level={2} className={styles.summaryName}>
