@@ -12,7 +12,7 @@ import AuthContext from '../../contexts/AuthContext';
 const GiveGabForm = ({
   blok: {
     failureMessage: {
-      content: { body },
+      content: { body, buttonToggle, buttonText, helpTextLink },
     },
     url,
     uuid,
@@ -58,7 +58,14 @@ const GiveGabForm = ({
         )}
       >
         <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
-          <DynaScript src={embedUrl} id={htmlId} errorText={body} />
+          <DynaScript
+            src={embedUrl}
+            id={htmlId}
+            errorText={body}
+            buttonToggle
+            buttonText
+            helpTextLink
+          />
         </div>
       </Container>
     </SbEditable>
