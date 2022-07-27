@@ -62,6 +62,7 @@ const FormPage = (props) => {
     // Trip Dates for Notify Me form
     window.su_trip_start_date = trip?.content?.startDate;
     window.su_trip_end_date = trip?.content?.endDate;
+    window.su_trip_url = trip?.full_slug;
 
     if (userProfile) {
       setGiveGabVars(userProfile);
