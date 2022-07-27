@@ -11,7 +11,7 @@ const GiveGabFailureMessage = (props) => {
   const {
     blok: {
       heading,
-      body,
+      body = 'Sorry, we are experiencing technical difficulties. Please try refreshing your browser or return to this form later. Thank you!',
       buttonToggle,
       buttonText = 'Try again',
       helpTicketLink,
