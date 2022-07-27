@@ -22,7 +22,7 @@ const GiveGabFailureMessage = (props) => {
   return (
     <SbEditable content={blok}>
       <div className="su-text-center su-flex su-flex-col su-items-center">
-        <Heading level={2} size={2}>
+        <Heading level={2} size={2} weight="regular">
           {heading}
         </Heading>
         {body && <p className="su-text-center su-subheading">{body}</p>}
@@ -34,13 +34,18 @@ const GiveGabFailureMessage = (props) => {
             {buttonText || 'Try again'}
           </SAALinkButton>
         )}
-        <p className="su-mb-0 su-text-18 md:su-text-21 xl:su-text-23">
+        <p className="su-mb-0 su-text-18">
           If the problem persists,{' '}
           <SbLink
             link={helpTicketLink}
-            className="su-flex su-text-digital-red-xlight group-hover:su-text-black-20 group-focus:su-text-black-20"
+            classes="su-inline su-group su-transition-colors su-no-underline hocus:su-border-b hocus:su-border-digital-red-xlight su-text-white hocus:su-text-white group-hover:su-text-white group-focus:su-text-white"
           >
-            please submit a help ticket <HeroIcon iconType="external" />
+            please submit a help ticket{' '}
+            <HeroIcon
+              iconType="external"
+              className="su-inline su-text-digital-red-xlight"
+              isAnimate
+            />
           </SbLink>
         </p>
       </div>
