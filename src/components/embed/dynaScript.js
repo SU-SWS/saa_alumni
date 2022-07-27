@@ -1,9 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
-import RichTextRenderer from '../../utilities/richTextRenderer';
-import hasRichText from '../../utilities/hasRichText';
+import { useLocation } from '@reach/router';
 import { SAACtaLink } from '../cta/SAACtaLink';
 import { SAALinkButton } from '../cta/SAALinkButton';
+import SbLink from '../../utilities/sbLink';
+import HeroIcon from '../simple/heroIcon';
+import { Heading } from '../simple/Heading';
 
 /**
  * Dynamically load a script after the component has been mounted.
@@ -11,9 +13,10 @@ import { SAALinkButton } from '../cta/SAALinkButton';
  * @param {*} props
  */
 const DynaScript = ({
-  errorText = 'Sorry, we are experiencing technical difficulties. Please try refreshing your browser or return to this form later. Thank you!',
+  heading,
   buttonToggle,
   buttonText,
+  errorText = 'Sorry, we are experiencing technical difficulties. Please try refreshing your browser or return to this form later. Thank you!',
   helpTicketLink,
   src,
   id,
@@ -22,6 +25,7 @@ const DynaScript = ({
   const scriptRef = useRef();
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [scriptError, setScriptError] = useState(false);
+  const location = useLocation();
 
   // When the component mounts load the script.
   useEffect(() => {
@@ -59,28 +63,32 @@ const DynaScript = ({
           Loading...
         </>
       )}
-      {scriptError && hasRichText(errorText) && (
-        <>
-          <RichTextRenderer wysiwyg={errorText} className="su-text-center" />
+      {scriptError && errorText && (
+        <div className="su-text-center su-flex su-flex-col su-items-center">
+          <Heading level={2} size={2}>
+            {heading}
+          </Heading>
+          {errorText && (
+            <p className="su-text-center su-subheading">{errorText}</p>
+          )}
           {buttonToggle && (
             <SAALinkButton
-              link="/"
-              className="su-mb-27 su-bg-digital-red su-border-digital-red hocus:su-bg-digital-red-light hocus:su-border-digital-red-light"
+              link={location.pathname}
+              className="su-rs-mt-1 su-mb-27 su-bg-digital-red su-border-digital-red hocus:su-bg-digital-red-light hocus:su-border-digital-red-light"
             >
               {buttonText || 'Try again'}
             </SAALinkButton>
           )}
-          <p className="su-mb-0 su-text-19 md:su-text-21 xl:su-text-23 su-flex">
+          <p className="su-mb-0 su-text-18 md:su-text-21 xl:su-text-23">
             If the problem persists,{' '}
-            <SAACtaLink
+            <SbLink
               link={helpTicketLink}
-              trailingIcon="external"
-              linkText="please submit a help ticket"
-              textColor="bright-red-hover-white"
-              className="su-font-normal"
-            />
+              className="su-flex su-text-digital-red-xlight group-hover:su-text-black-20 group-focus:su-text-black-20"
+            >
+              please submit a help ticket <HeroIcon iconType="external" />
+            </SbLink>
           </p>
-        </>
+        </div>
       )}
     </>
   );
