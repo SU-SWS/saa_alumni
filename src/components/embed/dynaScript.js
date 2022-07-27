@@ -32,7 +32,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     return () => {
       mounted = false;
     };
-  }, [src, errorText, setScriptLoaded, scriptRef]);
+  }, [src, setScriptLoaded, scriptRef]);
 
   return (
     <>
