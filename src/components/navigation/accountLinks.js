@@ -9,6 +9,7 @@ import useDisplay from '../../hooks/useDisplay';
 import NavItem from './navItem';
 import HeroIcon from '../simple/heroIcon';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
+import { dcnb } from 'cnbuilder';
 
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
@@ -65,12 +66,24 @@ const AccountLinks = ({ mainLinkClasses }) => {
     <AuthContext.Consumer>
       {({ isAuthenticated, isAuthenticating, userProfile }) => (
         <>
-          {isAuthenticating && <li className="su-w-[4.6rem] su-h-[3.4rem]" />}
+          {isAuthenticating && (
+            <li className="su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0">
+              <div className="su-spinner su-flex su-relative su-w-[4rem] su-h-[4rem]">
+                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
+                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin su-delay-75" />
+                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
+                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
+              </div>
+            </li>
+          )}
 
           {!isAuthenticating && (
             <>
               {isAuthenticated && (
-                <li className="su-text-white su-relative" ref={ref}>
+                <li
+                  className="su-text-white su-relative su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0"
+                  ref={ref}
+                >
                   <button
                     type="button"
                     ref={buttonRef}
@@ -101,7 +114,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         expanded
                           ? 'su-scale-y-100 md:su-scale-x-100 su-opacity-100 su-visible'
                           : 'su-scale-y-0 md:su-scale-x-0 su-opacity-0 su-invisible'
-                    }
+                      }
                     `}
                     aria-hidden={!expanded}
                   >
@@ -125,7 +138,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
               {!isAuthenticated && (
                 <>
                   <NavItem
-                    className={mainLinkClasses}
+                    className={dcnb('su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0', mainLinkClasses)}
                     blok={{
                       link: {
                         url: `/api/auth/login${
