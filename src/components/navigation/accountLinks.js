@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import { useLocation } from '@reach/router';
+import { dcnb } from 'cnbuilder';
 import AuthContext from '../../contexts/AuthContext';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import useEscape from '../../hooks/useEscape';
@@ -9,7 +10,6 @@ import useDisplay from '../../hooks/useDisplay';
 import NavItem from './navItem';
 import HeroIcon from '../simple/heroIcon';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
-import { dcnb } from 'cnbuilder';
 
 const Initial = ({ string }) => {
   const initial = string.substr(0, 1);
@@ -138,7 +138,10 @@ const AccountLinks = ({ mainLinkClasses }) => {
               {!isAuthenticated && (
                 <>
                   <NavItem
-                    className={dcnb('su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0', mainLinkClasses)}
+                    className={dcnb(
+                      'su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0',
+                      mainLinkClasses
+                    )}
                     blok={{
                       link: {
                         url: `/api/auth/login${
