@@ -58,6 +58,11 @@ const FormPage = (props) => {
   useEffect(() => {
     window.su_trip_id = trip?.content?.tripId;
     window.su_trip_name = trip?.content?.title;
+
+    // Trip Dates for Notify Me form
+    window.su_trip_start_date = trip?.content?.startDate;
+    window.su_trip_end_date = trip?.content?.endDate;
+
     if (userProfile) {
       setGiveGabVars(userProfile);
     }
