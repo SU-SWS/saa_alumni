@@ -33,7 +33,6 @@ const FormPage = (props) => {
     blok,
   } = props;
   const { userProfile } = useContext(AuthContext);
-  const hasDefaultHero = isSingleColumn ? filename : null;
   const numAnkle = getNumBloks(ankleContent);
   const heroProps = {
     image: { filename, alt, focus },
@@ -60,9 +59,15 @@ const FormPage = (props) => {
     window.su_trip_name = trip?.content?.title;
 
     // Trip Dates for Notify Me form
-    window.su_trip_start_date = trip?.content?.startDate;
-    window.su_trip_end_date = trip?.content?.endDate;
     window.su_trip_url = trip?.full_slug;
+    if (trip?.content?.startDate && trip?.content?.endDate) {
+      window.su_trip_start_date = new Date(trip?.content?.startDate)
+        ?.toISOString()
+        ?.split('T', 1)[0];
+      window.su_trip_end_date = new Date(trip?.content?.endDate)
+        ?.toISOString()
+        ?.split('T', 1)[0];
+    }
 
     if (userProfile) {
       setGiveGabVars(userProfile);
@@ -75,7 +80,7 @@ const FormPage = (props) => {
   return (
     <AuthenticatedPage>
       <SbEditable content={blok}>
-        <Layout hasHero={hasDefaultHero} {...props}>
+        <Layout hasHero={isSingleColumn} {...props}>
           <Container
             as="main"
             id="main-content"
