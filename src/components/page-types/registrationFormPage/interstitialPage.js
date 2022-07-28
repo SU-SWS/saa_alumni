@@ -185,7 +185,7 @@ const InterstitialPage = (props) => {
                     )}
                   </GridCell>
                 </Grid>
-                <Grid xs={12} className="su-rs-mb-5">
+                <Grid gap xs={12} className="su-rs-mb-5">
                   <GridCell xs={12} md={6}>
                     <Heading
                       level={3}
