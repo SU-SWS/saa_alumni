@@ -181,7 +181,9 @@ const InterstitialPage = (props) => {
                       Registration
                     </Heading>
                     {body && (
-                      <p className="su-subheading su-text-center">{body}</p>
+                      <p className="su-subheading su-text-center su-mb-0">
+                        {body}
+                      </p>
                     )}
                   </GridCell>
                 </Grid>
@@ -198,7 +200,7 @@ const InterstitialPage = (props) => {
                     </Heading>
                   </GridCell>
                   <GridCell xs={12} md={7} lg={8}>
-                    <p className="su-subheading su-mb-0 su-rs-mt-1">
+                    <p className="intro-text su-mb-0 su-rs-mt-1">
                       We recommend adding the people listed below in this step,
                       as you won’t be able to later. You will be able to add
                       people not listed below later in the process.

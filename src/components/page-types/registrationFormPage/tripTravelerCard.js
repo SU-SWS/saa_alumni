@@ -77,10 +77,15 @@ const TripTravelerCard = ({ traveler }) => {
             {traveler.su_dname}
             {traveler.su_reg === 'Primary registrant' ? ` (you)` : null}
           </Heading>
-          <FlexBox direction="row" alignItems="center" justifyContent="start">
+          <FlexBox
+            direction="row"
+            alignItems="center"
+            justifyContent="start"
+            className="su-flex-shrink-0"
+          >
             {removeBtn ? (
               <>
-                <div className="su-border-2 su-rounded-full su-border-digital-red-xlight su-mr-02em">
+                <div className="su-border-2 su-rounded-full su-border-digital-red-xlight su-mr-03em">
                   <HeroIcon
                     iconType="minus"
                     className="su-text-digital-red-xlight"
@@ -90,7 +95,7 @@ const TripTravelerCard = ({ traveler }) => {
               </>
             ) : (
               <>
-                <div className="su-rounded-full su-p-2 su-bg-gradient-to-bl su-from-saa-electric-blue su-to-palo-verde-dark su-mr-02em">
+                <div className="su-rounded-full su-p-2 su-bg-gradient-to-bl su-from-saa-electric-blue su-to-palo-verde-dark su-mr-03em">
                   <HeroIcon
                     iconType="plus"
                     className="su-text-saa-electric-blue su-rounded-full su-bg-saa-black"
