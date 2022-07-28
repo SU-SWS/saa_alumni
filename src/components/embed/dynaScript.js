@@ -11,6 +11,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
   const scriptRef = useRef();
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [scriptError, setScriptError] = useState(false);
+  const isDark = true;
 
   // When the component mounts load the script.
   useEffect(() => {
@@ -48,7 +49,9 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
           Loading...
         </>
       )}
-      {scriptError && errorBlok && <GiveGabErrorMessage blok={errorBlok} />}
+      {scriptError && errorBlok && (
+        <GiveGabErrorMessage blok={errorBlok} isDark={isDark} />
+      )}
     </>
   );
 };
