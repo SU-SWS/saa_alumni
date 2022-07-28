@@ -101,7 +101,7 @@ const ProtectedContentWrapper = ({ blok }) => {
       <RichTextRenderer
         wysiwyg={blok.accessDeniedContent}
         isDark
-        className="su-rs-px-2"
+        className="su-rs-px-2 su-text-center"
         aria-live="polite"
         role="status"
       />
@@ -139,7 +139,7 @@ const ProtectedContentWrapper = ({ blok }) => {
   // Processing.
   return (
     <div aria-live="polite" role="status">
-      <p>Checking your access...</p>
+      <p>Loading...</p>
       <p className="su-text-center">
         <PulseLoader color="#820000" size={16} />
       </p>
