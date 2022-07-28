@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
-import GiveGabFailureMessage from './giveGabFailureMessage';
+import GiveGabErrorMessage from './giveGabErrorMessage';
 
 /**
  * Dynamically load a script after the component has been mounted.
@@ -48,7 +48,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
           Loading...
         </>
       )}
-      {scriptError && errorBlok && <GiveGabFailureMessage blok={errorBlok} />}
+      {scriptError && errorBlok && <GiveGabErrorMessage blok={errorBlok} />}
     </>
   );
 };

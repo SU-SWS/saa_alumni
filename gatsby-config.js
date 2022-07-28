@@ -23,7 +23,7 @@ const storyblokRelations = [
   'formPage.trip',
   'registrationFormPage.trip',
   'giveGabForm.failureMessage',
-  'failureMessage.giveGabFailureMessage',
+  'failureMessage.giveGabErrorMessage',
 ];
 
 // Support for Gatsby CLI

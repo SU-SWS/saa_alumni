@@ -1,13 +1,13 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { useLocation } from '@reach/router';
-import { SAACtaLink } from '../cta/SAACtaLink';
+import { dcnb } from 'cnbuilder';
 import { SAALinkButton } from '../cta/SAALinkButton';
 import { Heading } from '../simple/Heading';
 import SbLink from '../../utilities/sbLink';
 import HeroIcon from '../simple/heroIcon';
 
-const GiveGabFailureMessage = (props) => {
+const GiveGabErrorMessage = (props) => {
   const {
     blok: {
       heading,
@@ -17,12 +17,20 @@ const GiveGabFailureMessage = (props) => {
       helpTicketLink,
     },
     blok,
+    bgCardStyle,
   } = props;
   const location = useLocation();
+  const linkStyle = bgCardStyle
+    ? 'hocus:su-border-b hocus:su-border-digital-red-xlight su-text-white hocus:su-text-white group-hover:su-text-white group-focus:su-text-white'
+    : 'su-underline-offset-[3px] hocus:su-underline su-text-digital-red-light group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red';
+  const iconStyle = bgCardStyle
+    ? 'su-text-digital-red-xlight'
+    : 'su-text-digital-red-light';
+
   return (
     <SbEditable content={blok}>
       <div className="su-text-center su-flex su-flex-col su-items-center">
-        <Heading level={2} size={2} weight="regular">
+        <Heading level={2} size={2} weight="semibold">
           {heading}
         </Heading>
         {body && <p className="su-text-center su-subheading">{body}</p>}
@@ -38,12 +46,15 @@ const GiveGabFailureMessage = (props) => {
           If the problem persists,{' '}
           <SbLink
             link={helpTicketLink}
-            classes="su-inline su-group su-transition-colors su-no-underline hocus:su-border-b hocus:su-border-digital-red-xlight su-text-white hocus:su-text-white group-hover:su-text-white group-focus:su-text-white"
+            classes={dcnb(
+              'su-inline su-group su-transition-colors su-no-underline',
+              linkStyle
+            )}
           >
             please submit a help ticket{' '}
             <HeroIcon
               iconType="external"
-              className="su-inline su-text-digital-red-xlight"
+              className={dcnb('su-inline', iconStyle)}
               isAnimate
             />
           </SbLink>
@@ -53,4 +64,4 @@ const GiveGabFailureMessage = (props) => {
   );
 };
 
-export default GiveGabFailureMessage;
+export default GiveGabErrorMessage;

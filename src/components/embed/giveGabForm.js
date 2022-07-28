@@ -34,7 +34,7 @@ const GiveGabForm = ({
         aria-busy="true"
         className={dcnb(
           'su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm',
-          bgCardStyle
+          bgCardStyle ? 'su-bg-saa-black-dark' : ''
         )}
       >
         <ClipLoader color="#00BFFF" height={50} width={50} />
@@ -56,7 +56,12 @@ const GiveGabForm = ({
         )}
       >
         <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
-          <DynaScript src={embedUrl} id={htmlId} errorBlok={content} />
+          <DynaScript
+            src={embedUrl}
+            id={htmlId}
+            errorBlok={content}
+            bgCardStyle
+          />
         </div>
       </Container>
     </SbEditable>
