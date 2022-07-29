@@ -72,6 +72,11 @@ class ggTripForm {
     return script;
   };
 
+  getDateOnly = (dateTime) => {
+    const date = new Date(dateTime).toISOString().split('T', 1)[0];
+    return date;
+  };
+
   /**
    * Put the ADC Window variables into place.
    */
@@ -82,12 +87,24 @@ class ggTripForm {
     window.su_trip_id = this.trips[uuid].tripId;
     window.su_trip_name = this.trips[uuid].title;
     window.su_trip_url = `https://alumni.stanford.edu/${this.trips[uuid].full_slug}`;
-    window.su_trip_start_date = this.trips[uuid].startDate;
-    window.su_trip_end_date = this.trips[uuid].endDate;
-    window.su_pre_extension_start = this.trips[uuid].extendStartDate;
-    window.su_pre_extension_end = this.trips[uuid].extendEndDate;
-    window.su_post_extension_start = this.trips[uuid].postExtendStartDate;
-    window.su_post_extension_end = this.trips[uuid].postExtendEndDate;
+    window.su_trip_start_date = this.trips[uuid].startDate
+      ? this.getDateOnly(this.trips[uuid].startDate)
+      : '';
+    window.su_trip_end_date = this.trips[uuid].endDate
+      ? this.getDateOnly(this.trips[uuid].endDate)
+      : '';
+    window.su_pre_extension_start = this.trips[uuid].extendStartDate
+      ? this.getDateOnly(this.trips[uuid].extendStartDate)
+      : '';
+    window.su_pre_extension_end = this.trips[uuid].extendEndDate
+      ? this.getDateOnly(this.trips[uuid].extendEndDate)
+      : '';
+    window.su_post_extension_start = this.trips[uuid].postExtendStartDate
+      ? this.getDateOnly(this.trips[uuid].postExtendStartDate)
+      : '';
+    window.su_post_extension_end = this.trips[uuid].postExtendEndDate
+      ? this.getDateOnly(this.trips[uuid].postExtendEndDate)
+      : '';
   };
 
   /**
