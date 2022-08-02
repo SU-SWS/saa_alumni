@@ -17,6 +17,10 @@ import {
   unsetGiveGabVars,
 } from '../../../utilities/giveGabVars';
 import Hero from '../../composite/hero';
+import {
+  formatFmDate,
+  formatEmailDate,
+} from '../../../utilities/transformDate';
 
 const FormPage = (props) => {
   const {
@@ -61,12 +65,10 @@ const FormPage = (props) => {
     // Trip Dates for Notify Me form
     window.su_trip_url = trip?.full_slug;
     if (trip?.content?.startDate && trip?.content?.endDate) {
-      window.su_trip_start_date = new Date(trip?.content?.startDate)
-        ?.toISOString()
-        ?.split('T', 1)[0];
-      window.su_trip_end_date = new Date(trip?.content?.endDate)
-        ?.toISOString()
-        ?.split('T', 1)[0];
+      window.su_trip_start_date = formatFmDate(trip?.content?.startDate);
+      window.su_trip_end_date = formatFmDate(trip?.content?.endDate);
+      window.su_email_start_date = formatEmailDate(trip?.content?.startDate);
+      window.su_email_end_date = formatEmailDate(trip?.content?.endDate);
     }
 
     if (userProfile) {

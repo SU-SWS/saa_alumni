@@ -14,6 +14,10 @@ import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
+import {
+  formatEmailDate,
+  formatFmDate,
+} from '../../../utilities/transformDate';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -65,8 +69,11 @@ const RegistrationFormPage = (props) => {
     window.su_trip_id = tripId;
     window.su_trip_name = tripTitle;
     window.su_trip_url = tripUrl;
-    window.su_trip_start_date = startDate;
-    window.su_trip_end_date = endDate;
+    window.su_trip_start_date = formatFmDate(startDate);
+    window.su_trip_end_date = formatFmDate(endDate);
+
+    window.su_email_start_date = formatEmailDate(startDate);
+    window.su_email_end_date = formatEmailDate(endDate);
     // Global function for the trip cancellation policy link in givegab.
     // GG Doesn't support dynamic urls in their forms so we added an onclick
     // with this function.
@@ -91,10 +98,16 @@ const RegistrationFormPage = (props) => {
       }
       return 'None';
     };
-    window.su_pre_extension_start = extendStartDate;
-    window.su_pre_extension_end = extendEndDate;
-    window.su_post_extension_start = postExtendStartDate;
-    window.su_post_extension_end = postExtendEndDate;
+    window.su_pre_extension_start = formatFmDate(extendStartDate);
+    window.su_pre_extension_end = formatFmDate(extendEndDate);
+    window.su_post_extension_start = formatFmDate(postExtendStartDate);
+    window.su_post_extension_end = formatFmDate(postExtendEndDate);
+
+    window.su_email_pre_extension_start = formatEmailDate(extendStartDate);
+    window.su_email_pre_extension_end = formatEmailDate(extendEndDate);
+    window.su_email_post_extension_start = formatEmailDate(postExtendStartDate);
+    window.su_email_post_extension_end = formatEmailDate(postExtendEndDate);
+
     window.su_extension = extension();
     window.prefillData = travelers;
     if (travelers) {
