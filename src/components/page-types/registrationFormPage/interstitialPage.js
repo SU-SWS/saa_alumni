@@ -33,6 +33,7 @@ import {
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import FaIcon from '../../simple/faIcon';
+import HeroIcon from '../../simple/heroIcon';
 
 const InterstitialPage = (props) => {
   const {
@@ -241,16 +242,14 @@ const InterstitialPage = (props) => {
                           <FlexBox justifyContent="center">
                             <Link
                               to={`${slug}/form`}
-                              className="su-button su-mt-36 su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24"
+                              className="su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-border-3 su-border-digital-red-xlight su-text-white hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18"
                               state={{ travelers: value[0].travelersData }}
                             >
                               Next
-                              <FaIcon
-                                iconChoice="fa-long-arrow-right"
-                                iconType="far"
-                                isOutline="false"
-                                fixedWidth
-                                className="su-ml-02em su-transition-colors"
+                              <HeroIcon
+                                iconType="arrow-right"
+                                className="su-w-1em su-text-digital-red-xlight group-hocus:su-text-white"
+                                isAnimate
                               />
                             </Link>
                           </FlexBox>
