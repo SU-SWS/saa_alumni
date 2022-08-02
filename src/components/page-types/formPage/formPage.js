@@ -35,7 +35,6 @@ const FormPage = (props) => {
       isSingleColumn,
     },
     blok,
-    pageContext,
   } = props;
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
@@ -61,7 +60,7 @@ const FormPage = (props) => {
 
   useEffect(() => {
     window.su_trip_id = trip?.content?.tripId;
-    window.su_trip_name = pageContext?.story?.name;
+    window.su_trip_name = trip?.name;
 
     // Trip Dates for Notify Me form
     window.su_trip_url = trip?.full_slug;
@@ -78,7 +77,7 @@ const FormPage = (props) => {
     return () => {
       unsetGiveGabVars();
     };
-  }, [userProfile, trip, pageContext]);
+  }, [userProfile, trip]);
 
   return (
     <AuthenticatedPage>

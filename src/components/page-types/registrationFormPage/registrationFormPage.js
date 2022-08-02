@@ -23,6 +23,7 @@ const RegistrationFormPage = (props) => {
   const {
     blok: {
       trip: {
+        name: tripConfigTitle,
         full_slug: fullSlug,
         content: {
           title: tripTitle,
@@ -50,7 +51,6 @@ const RegistrationFormPage = (props) => {
   const windowLocation = useLocation();
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
-  const tripConfigTitle = pageContext?.story?.name;
   const title = `Register for your trip`;
   const helmetTitle = `Register for your trip: ${tripTitle}`;
   const heroProps = {
@@ -60,6 +60,8 @@ const RegistrationFormPage = (props) => {
     isDarkGradient: 'true',
     isHideScroll: 'true',
   };
+
+  console.log(tripConfigTitle);
 
   const registrationSlug = pageContext?.story?.full_slug;
   const travelers = location?.state?.travelers;
