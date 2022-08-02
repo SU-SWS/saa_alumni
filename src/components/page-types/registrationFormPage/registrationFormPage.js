@@ -50,6 +50,7 @@ const RegistrationFormPage = (props) => {
   const windowLocation = useLocation();
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
+  const tripConfigTitle = pageContext?.story?.name;
   const title = `Register for your trip`;
   const helmetTitle = `Register for your trip: ${tripTitle}`;
   const heroProps = {
@@ -67,7 +68,7 @@ const RegistrationFormPage = (props) => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
     // StoryBlok trip related data
     window.su_trip_id = tripId;
-    window.su_trip_name = tripTitle;
+    window.su_trip_name = tripConfigTitle;
     window.su_trip_url = tripUrl;
     window.su_trip_start_date = formatFmDate(startDate);
     window.su_trip_end_date = formatFmDate(endDate);
@@ -119,7 +120,7 @@ const RegistrationFormPage = (props) => {
     travelers,
     fullSlug,
     tripId,
-    tripTitle,
+    tripConfigTitle,
     startDate,
     endDate,
     extendHeading,
