@@ -17,7 +17,7 @@ const TripTravelerList = () => {
   return (
     <FlexBox
       direction="col"
-      className="icon-card su-group su-basefont-23 children:su-border-b-2 children:su-border-black last:children:su-border-none"
+      className="icon-card su-group su-basefont-23 children:su-py-12 children:su-border-b-2 children:su-border-black last:children:su-border-none"
       justifyContent="between"
       alignItems="center"
     >

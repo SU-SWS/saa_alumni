@@ -16,7 +16,7 @@ const TripTravelerListItem = ({ traveler }) => {
   return (
     <FlexBox
       direction="row"
-      className="su-basefont-23 su-w-full su-pb-12"
+      className="su-w-full"
       gap
       justifyContent="between"
       alignItems="center"
@@ -24,7 +24,7 @@ const TripTravelerListItem = ({ traveler }) => {
       <p className="su-big-paragraph su-m-0">{traveler.su_dname}</p>
       <button
         type="button"
-        className="su-ghost su-flex su-items-center su-m-0"
+        className="su-ghost su-flex su-items-center su-m-0 su-text-18"
         onClick={removeRelationship}
       >
         Remove
