@@ -32,8 +32,8 @@ import {
 } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
-import FaIcon from '../../simple/faIcon';
 import HeroIcon from '../../simple/heroIcon';
+import * as styles from './interstitialPage.styles';
 
 const InterstitialPage = (props) => {
   const {
@@ -160,48 +160,40 @@ const InterstitialPage = (props) => {
             <Container
               as="main"
               id="main-content"
-              className="basic-page su-relative su-flex-grow su-w-full"
+              className={styles.container}
               width="full"
             >
               <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
               <Hero blok={heroProps} />
-              <Container className="su-cc su-rs-pb-8 su-bg-saa-black su-text-white">
-                <Grid xs={12} className="su-rs-pb-8">
-                  <GridCell
-                    xs={12}
-                    lg={6}
-                    className="lg:su-col-start-4 xl:su-col-start-4"
-                  >
+              <Container className={styles.contentWrapper}>
+                <Grid xs={12} className={styles.grid}>
+                  <GridCell xs={12} lg={6} className={styles.gridHeader}>
                     <Heading
                       level={2}
                       align="center"
                       font="serif"
-                      className="su-rs-mt-7"
+                      className={styles.heading}
                     >
                       {tripTitle}:<br />
                       Registration
                     </Heading>
-                    {body && (
-                      <p className="su-subheading su-text-center su-mb-0">
-                        {body}
-                      </p>
-                    )}
+                    {body && <p className={styles.bodyContent}>{body}</p>}
                   </GridCell>
                 </Grid>
-                <Grid gap xs={12} className="su-rs-mb-5">
+                <Grid gap xs={12} className={styles.gridContent}>
                   <GridCell xs={12} md={6}>
                     <Heading
                       level={3}
                       size={5}
                       align="left"
                       font="serif"
-                      className="su-mb-0"
+                      className={styles.noMarginBottom}
                     >
                       Add existing connections and past travelers to your trip
                     </Heading>
                   </GridCell>
                   <GridCell xs={12} md={7} lg={8}>
-                    <p className="su-intro-text su-mb-0 su-rs-mt-1">
+                    <p className={styles.gridText}>
                       We recommend adding the people listed below in this step,
                       as you won’t be able to later. You will be able to add
                       people not listed below later in the process.
@@ -212,7 +204,7 @@ const InterstitialPage = (props) => {
                   <GridCell xs={12} md={7} lg={8}>
                     <FlexBox
                       direction="col"
-                      className="children:su-mb-18 children:last-child:su-mb-0"
+                      className={styles.gridTravelerList}
                     >
                       <TripTravelerCard traveler={primaryRegistrant} />
                       {relationships?.length > 0 ? (
@@ -225,14 +217,14 @@ const InterstitialPage = (props) => {
                           ))}
                         </>
                       ) : (
-                        <p className="su-text-center su-basefont-23">
+                        <p className={styles.travelerEmptyText}>
                           No additional travelers are available at this time
                         </p>
                       )}
                     </FlexBox>
                   </GridCell>
                   <GridCell xs={12} md={5} lg={4}>
-                    <div className="su-border-3 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-px-58 su-pt-58 su-pb-72">
+                    <div className={styles.gridTravelerBox}>
                       <Heading level={4} size="3" align="left" font="serif">
                         Added travelers
                       </Heading>
@@ -242,13 +234,13 @@ const InterstitialPage = (props) => {
                           <FlexBox justifyContent="center">
                             <Link
                               to={`${slug}/form`}
-                              className="su-rs-mt-2 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-border-3 su-border-digital-red-xlight su-text-white hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18"
+                              className={styles.travelerLink}
                               state={{ travelers: value[0].travelersData }}
                             >
                               Next
                               <HeroIcon
                                 iconType="arrow-right"
-                                className="su-w-1em su-text-digital-red-xlight group-hocus:su-text-white"
+                                className={styles.travelerLinkIcon}
                                 isAnimate
                               />
                             </Link>

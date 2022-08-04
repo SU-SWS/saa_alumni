@@ -18,6 +18,7 @@ import {
   formatEmailDate,
   formatFmDate,
 } from '../../../utilities/transformDate';
+import * as styles from './registrationFormPage.styles';
 
 const RegistrationFormPage = (props) => {
   const {
@@ -60,8 +61,6 @@ const RegistrationFormPage = (props) => {
     isDarkGradient: 'true',
     isHideScroll: 'true',
   };
-
-  console.log(tripConfigTitle);
 
   const registrationSlug = pageContext?.story?.full_slug;
   const travelers = location?.state?.travelers;
@@ -153,28 +152,25 @@ const RegistrationFormPage = (props) => {
             <Container
               as="main"
               id="main-content"
-              className="basic-page su-relative su-flex-grow su-w-full"
+              className={styles.container}
               width="full"
             >
               <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
               <Hero blok={heroProps} />
-              <Grid
-                gap
-                xs={12}
-                className="su-relative su-cc su-z-10 su-rs-pb-8  su-bg-saa-black"
-              >
+              <Grid gap xs={12} className={styles.contentWrapper}>
                 <GridCell
                   xs={12}
-                  lg={6}
+                  md={10}
+                  lg={8}
                   xl={6}
-                  className="lg:su-col-start-4 xl:su-col-start-4"
+                  className={styles.formWrapper}
                 >
                   <div className="su-text-white">
                     <Heading
                       level={2}
                       align="center"
                       font="serif"
-                      className="su-rs-mt-7"
+                      className={styles.header}
                     >
                       {tripTitle}:<br />
                       Registration
@@ -183,9 +179,10 @@ const RegistrationFormPage = (props) => {
                 </GridCell>
                 <GridCell
                   xs={12}
-                  lg={6}
+                  md={10}
+                  lg={8}
                   xl={6}
-                  className="lg:su-col-start-4 xl:su-col-start-4"
+                  className={styles.formWrapper}
                 >
                   <CreateBloks
                     blokSection={giveGabForm}

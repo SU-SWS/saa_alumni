@@ -199,10 +199,9 @@
 .ggeWidget .ggeQuestion__label label {
   @apply su-type-0;
 }
-.ggeWidget .ggeQuestion--required .ggeQuestion__label. label {
+.ggeWidget .ggeQuestion--required .ggeQuestion__label label {
   @apply su-font-semibold;
 }
-
 
 .ggeWidget .ggeQuestion__caption,
 .ggeWidget .ggeQuestion__error {
