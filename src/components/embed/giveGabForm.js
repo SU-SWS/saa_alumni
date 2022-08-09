@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import SbEditable from 'storyblok-react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { dcnb } from 'cnbuilder';
@@ -21,6 +21,7 @@ const GiveGabForm = ({
 }) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
+  const [display, setDisplay] = useState(false);
 
   const embedUrl = new URL(url);
   if (tripId) {
@@ -33,12 +34,12 @@ const GiveGabForm = ({
         aria-live="polite"
         aria-busy="true"
         className={dcnb(
-          'su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm',
+          'su-flex su-flex-row su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm',
           bgCardStyle ? 'su-bg-saa-black-dark' : ''
         )}
       >
         <ClipLoader color="#00BFFF" height={50} width={50} />
-        <p>Loading form...</p>
+        <p className="su-pl-03em">Loading form...</p>
         <noscript>
           Sorry, but you must have Javascript enabled to use the form.
         </noscript>

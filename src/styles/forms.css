@@ -396,7 +396,9 @@
 }
 
 /* Registration form specific  */
-.ggeRegistrantList {
+.ggeRegistrantList,
+.ggeWidget .ggeRegistrant--prefilled .ggeSection--askArray.ggeSection--registration,
+.ggePage--payment .ggePageNav--back {
   @apply su-hidden;
 }
 
@@ -488,14 +490,8 @@
   @apply su-pt-[1.4rem];
 }
 
-.ggeWidget
-  .ggeRegistrant--prefilled
-  .ggeSection--askArray.ggeSection--registration {
-  @apply su-hidden;
-}
-
-.ggeWidget .ggeRegistrant--prefilled .ggeContent .ggeQuestion.su-phone,
-.ggeWidget .ggeRegistrant--prefilled .ggeContent .ggeQuestion.su-email {
+.ggeWidget.public-registration .ggeContent .ggeQuestion.su-phone,
+.ggeWidget.public-registration .ggeContent .ggeQuestion.su-email {
   @apply su-text-black-30 su-mb-34 md:su-mb-45;
 }
 
@@ -506,10 +502,6 @@
 
 .ggePage--payment .ggeQuestion.ggeQuestion--instructions #TripAgreements {
   @apply su-mb-12;
-}
-
-.ggePage--payment .ggePageNav--back {
-  @apply su-hidden;
 }
 
 .ggeWidget .ggeButton--addRegistrant {
