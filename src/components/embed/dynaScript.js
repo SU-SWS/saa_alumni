@@ -1,4 +1,3 @@
-import { dcnb } from 'cnbuilder';
 import React, { useRef, useEffect, useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import GiveGabErrorMessage from './giveGabErrorMessage';
@@ -46,7 +45,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
 
   return (
     <>
-      {!scriptLoaded && !scriptError && !display ? (
+      {!scriptLoaded || !scriptError || !display ? (
         <div className="su-flex su-flex-row">
           <ClipLoader color="#00BFFF" height={50} width={50} />
           <p className="su-pl-03em">Loading form...</p>
@@ -63,7 +62,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         aria-live="polite"
         aria-busy={!scriptLoaded}
         id={id}
-        className={dcnb(formDisplay)}
+        className={formDisplay}
       />
     </>
   );
