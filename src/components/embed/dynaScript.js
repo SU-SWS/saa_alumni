@@ -1,3 +1,4 @@
+import { dcnb } from 'cnbuilder';
 import React, { useRef, useEffect, useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import GiveGabErrorMessage from './giveGabErrorMessage';
@@ -12,6 +13,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [scriptError, setScriptError] = useState(false);
   const [display, setDisplay] = useState(false);
+  const [formDisplay, setFormDisplay] = useState('su-hidden');
   const isDark = true;
 
   // When the component mounts load the script.
@@ -34,17 +36,17 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     return () => {
       mounted = false;
     };
-  }, [src, setScriptLoaded, scriptRef, setDisplay, display]);
+  }, [src, setScriptLoaded, scriptRef]);
 
-  let formDisplay = 'su-hidden';
   const displayForm = () => {
     setDisplay(true);
-    formDisplay = 'su-block';
+    setFormDisplay('su-block');
+    console.log('I am here!');
   };
 
   return (
     <>
-      {!scriptLoaded && !scriptError && (
+      {!scriptLoaded && !scriptError && !display ? (
         <div className="su-flex su-flex-row">
           <ClipLoader color="#00BFFF" height={50} width={50} />
           <p className="su-pl-03em">Loading form...</p>
@@ -52,7 +54,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
             Sorry, but you must have Javascript enabled to use the form.
           </noscript>
         </div>
-      )}
+      ) : null}
       {scriptError && errorBlok && (
         <GiveGabErrorMessage blok={errorBlok} isDark={isDark} />
       )}
@@ -61,7 +63,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         aria-live="polite"
         aria-busy={!scriptLoaded}
         id={id}
-        className={formDisplay}
+        className={dcnb(formDisplay)}
       />
     </>
   );
