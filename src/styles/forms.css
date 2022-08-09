@@ -2,7 +2,7 @@
   @apply su-flex;
 }
 
-.ggeWidget  .su-digital-name .ggeQuestion__label {
+.ggeWidget .su-digital-name .ggeQuestion__label {
   @apply su-mr-5 su-p-0 su-type-1;
 }
 
@@ -22,12 +22,17 @@
   @apply su-pb-0 md:su-pb-0;
 }
 
-.ggeQuestion:not(.ggeQuestion--error):not(.ggeQuestion--instructions) .ggeQuestion__field {
+.ggeQuestion:not(.ggeQuestion--error):not(.ggeQuestion--instructions)
+  .ggeQuestion__field {
   @apply su-flex su-flex-col-reverse;
 }
 
 .ggeWidget .ggeQuestion .ggeQuestion.ggeQuestion--error .ggeQuestion__field {
   @apply su-flex-col;
+}
+
+.ggeWidget .ggeContent .ggeQuestion.ggeQuestion--instructions {
+  @apply su-m-0 su-mt-7;
 }
 
 .ggeWidget .ggeQuestion--instructions .ggeQuestion__field {
@@ -63,21 +68,29 @@
 .ggeWidget .ggeQuestion input[type="text"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
-  @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8rem] md:su-text-[2.1rem] su-border-0 su-border-b su-border-black-50 su-rounded-[3px] su-box-border;
+  @apply su-mt-11;
+}
+
+.ggeWidget .ggeQuestion input[type="email"],
+.ggeWidget .ggeQuestion input[type="number"],
+.ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion select,
+.ggeWidget .ggeQuestion textarea {
+  @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8rem] md:su-text-[2.1rem] su-border su-border-b-2 su-border-black-50 su-rounded-[3px] su-box-border;
   background: rgba(16, 15, 13, 0.5);
 }
 
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="email"],
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="number"],
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"] {
-  @apply su-border-0 su-border-b-2 su-border-black-50;
+  @apply su-border su-border-b-2 su-border-black-50;
 }
 
 .ggeWidget .ggeQuestion input[type="email"],
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
 .ggeWidget .ggeQuestion textarea {
-  @apply su-px-[21px] md:su-px-[19px] su-py-[20px] ;
+  @apply su-px-[21px] md:su-px-[19px] su-py-[20px];
 }
 
 .ggeWidget .ggeQuestion input[type="email"]:focus,
@@ -85,15 +98,14 @@
 .ggeWidget .ggeQuestion input[type="text"]:focus,
 .ggeWidget .ggeQuestion textarea:focus {
   @apply su-border-2 su-border-transparent;
-  border-image-source: linear-gradient(0deg, #017E7C 84.05%, #505EEC 15.6%);
+  border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
   border-image-slice: 1;
-  margin: -2px -2px -1px;
 }
 
 .ggeWidget .ggeQuestion input[type="email"][readonly],
 .ggeWidget .ggeQuestion input[type="number"][readonly],
 .ggeWidget .ggeQuestion input[type="text"][readonly] {
-  @apply su-p-0 su-border-none su-text-24 su-text-black-30 hocus:su-m-0 hocus:su-shadow-none;
+  @apply su-p-0 su-border-none su-text-24 su-text-black-30 hocus:su-shadow-none;
   background: transparent !important;
 }
 
@@ -104,6 +116,10 @@
 
 .ggeWidget .ggeQuestion .ggeQuestion__field textarea {
   @apply su-min-h-[138px];
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion__field fieldset[id*="TripExtension"] {
+  @apply su-mt-12;
 }
 
 .ggeWidget .ggeQuestion--error,
@@ -128,19 +144,19 @@
 
 .ggeTally {
   @apply su-border-2 su-border-transparent su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem];
-  border-image-source: linear-gradient(0deg, #017E7C 84.05%, #505EEC 15.6%);
+  border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
   border-image-slice: 1;
 }
 
 .ggeTally tr {
-  @apply su-border-none
+  @apply su-border-none;
 }
 
 .ggeTally .ggeTally--text,
 .ggeTally .ggeTally--money {
-  @apply su-pt-0 su-pb-[3.2rem]
+  @apply su-pt-0 su-pb-[3.2rem];
 }
-.ggeTally--text{
+.ggeTally--text {
   @apply su-border-b su-border-black-30;
 }
 
@@ -196,11 +212,25 @@
   @apply su-bg-[#fff] su-rotate-180 su-mr-8;
 }
 
-.ggeWidget .ggeQuestion__label label {
+.ggeWidget.labelsTop .ggeQuestion__label {
+  @apply su-m-0 su-p-0;
+}
+
+.ggeWidget .ggeQuestion__label label,
+.ggeWidget .ggeQuestion--instructions #Pre-TripExtensionQuestion,
+.ggeWidget .ggeQuestion--instructions #Post-TripExtensionQuestion {
   @apply su-type-0;
 }
-.ggeWidget .ggeQuestion--required .ggeQuestion__label label {
+
+.ggeWidget .ggeQuestion--required .ggeQuestion__label label,
+.ggeWidget .ggeQuestion--instructions #Pre-TripExtensionQuestion,
+.ggeWidget .ggeQuestion--instructions #Post-TripExtensionQuestion {
   @apply su-font-semibold;
+}
+
+.ggeWidget .ggeQuestion--instructions #Pre-TripExtensionQuestion,
+.ggeWidget .ggeQuestion--instructions #Post-TripExtensionQuestion {
+  @apply su-text-white;
 }
 
 .ggeWidget .ggeQuestion__caption,
@@ -234,10 +264,9 @@
 
 .ggeWidget .ggePrompt .ggePrompt__radio input {
   @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent;
-  background: linear-gradient(222.67deg, #505EEC 15.6%, #017E7C 84.05%) border-box;
-  -webkit-mask:
-    linear-gradient(#fff 0 0) padding-box,
-    linear-gradient(#fff 0 0);
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
+    border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
@@ -245,7 +274,7 @@
 .ggeWidget .ggePrompt--checked .ggePrompt__radio::after {
   @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
   content: "";
-  background: linear-gradient(222.67deg, #505EEC 15.6%, #017E7C 84.05%);
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
 }
 
 .ggePrompt__radio:hover::before {
@@ -254,24 +283,32 @@
 }
 
 .ggePrompt--checked .ggePrompt__radio:hover::before {
-  background: linear-gradient(222.67deg, #505EEC 15.6%, #017E7C 84.05%);
-  opacity: .4;
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
+  opacity: 0.4;
 }
 
 .form-gradient {
   @apply su-border-2 su-border-solid;
-  background: linear-gradient(140.61deg, rgba(24, 29, 28, 0.64) 0%, rgba(24, 29, 28, 0.4) 110.98%);
-  border-image-source: linear-gradient(140.61deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 53.2%, rgba(255, 255, 255, 0.5) 109.83%);
+  background: linear-gradient(
+    140.61deg,
+    rgba(24, 29, 28, 0.64) 0%,
+    rgba(24, 29, 28, 0.4) 110.98%
+  );
+  border-image-source: linear-gradient(
+    140.61deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0) 53.2%,
+    rgba(255, 255, 255, 0.5) 109.83%
+  );
 }
 
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
 .ggeWidget .ggeContent .ggeQuestion.su-email {
-  @apply su-mb-0 su-text-black-30;
+  @apply su-text-black-30;
 }
 
 .ggeQuestion[data-name="DigitalName"] {
   @apply su-flex su-items-baseline;
-
 }
 .ggeQuestion[data-name="DigitalName"] .ggeQuestion__label {
   @apply su-text-[2.6rem] su-p-0 su-mr-[.7rem];
@@ -285,13 +322,13 @@
   @apply su-text-white;
 }
 
-.additional-payment-form2 .ggeSection--profile header {
+.public-additional-payment .ggeSection--profile header {
   display: none;
 }
 
 .ggeAddress__state,
 .ggeAddress__zipcode,
-.ggePayment--credit{
+.ggePayment--credit {
   @apply su-float-left;
   width: calc(50% - 10px);
 }
@@ -358,11 +395,14 @@
   @apply su-p-0;
 }
 
+/* Registration form specific  */
 .ggeRegistrantList {
   @apply su-hidden;
 }
 
-.ggeWidget.ggeWidget--highlightIncomplete .ggeRegistrant--prefilled .ggeQuestion--incomplete {
+.ggeWidget.ggeWidget--highlightIncomplete
+  .ggeRegistrant--prefilled
+  .ggeQuestion--incomplete {
   @apply su-bg-transparent;
 }
 
@@ -382,7 +422,6 @@
 
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant {
   @apply su-mt-0 su-p-0 su-text-21 su-font-semibold su-text-black-10;
-
 }
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant::after {
   content: "Edit";
@@ -395,9 +434,13 @@
   @apply su-relative su-flex su-flex-col-reverse;
 }
 
+.ggeWidget .ggeTally__multireg__button.ggeTally__multireg__button--delete {
+  @apply su-relative su-h-30;
+}
+
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant {
   background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.64321 6.88535L13.5183 2.05397C13.9898 1.58677 13.9931 0.827025 13.5259 0.355458C13.0587 -0.116108 12.2989 -0.118291 11.8274 0.347817L6.93706 5.19447L2.04783 0.347817C1.57736 -0.118291 0.816521 -0.113925 0.34932 0.35655C-0.11788 0.827025 -0.114605 1.58677 0.356961 2.05397L5.23091 6.88535L0.35587 11.7167C-0.115697 12.1839 -0.118971 12.9437 0.348229 13.4152C0.582921 13.6521 0.89184 13.77 1.20076 13.77C1.5064 13.77 1.81205 13.6554 2.04565 13.4229L6.93706 8.57622L11.8263 13.4229C12.061 13.6554 12.3655 13.77 12.6712 13.77C12.9801 13.77 13.289 13.6521 13.5237 13.4152C13.9909 12.9437 13.9876 12.1839 13.5161 11.7167L8.64321 6.88535Z' fill='%23F83535'/%3E%3C/svg%3E");
-  @apply su-font-semibold su-text-18 su-mt-0 su-absolute su-bottom-[-6.5rem] su-py-0 su-pr-0 su-pl-[1.6rem] su-text-transparent su-bg-transparent su-border-0 su-bg-no-repeat;
+  @apply su-h-full su-font-semibold su-text-18 su-mt-0 su-absolute su-top-1 su-left-1 su-items-center su-bottom-[-6.5rem] su-py-0 su-pr-0 su-pl-[1.6rem] su-text-transparent su-bg-transparent su-border-0 su-bg-no-repeat;
   background-position: left center;
 }
 
@@ -419,6 +462,10 @@
   text-decoration-line: underline;
 }
 
+.ggeTally table td {
+  @apply su-p-0;
+}
+
 .ggeWidget .ggeTally--text {
   @apply su-text-19;
 }
@@ -429,15 +476,40 @@
 
 .ggeWidget td.ggeTally--text,
 .ggeWidget td.ggeTally--money:not(.ggeTally--total) {
-  @apply su-pt-0 su-pb-[5.2rem] su-border-b su-border-b-black;
+  @apply su-pt-0 su-pb-14 su-border-b su-border-b-black;
 }
 
 .ggeWidget .ggeTally--total {
   @apply su-text-[2.6rem] su-font-semibold su-pt-[3rem];
 }
 
+.ggeWidget td.ggeTally--text,
 .ggeWidget .ggeTally--terms {
   @apply su-pt-[1.4rem];
+}
+
+.ggeWidget
+  .ggeRegistrant--prefilled
+  .ggeSection--askArray.ggeSection--registration {
+  @apply su-hidden;
+}
+
+.ggeWidget .ggeRegistrant--prefilled .ggeContent .ggeQuestion.su-phone,
+.ggeWidget .ggeRegistrant--prefilled .ggeContent .ggeQuestion.su-email {
+  @apply su-text-black-30 su-mb-34 md:su-mb-45;
+}
+
+.ggePage--payment .ggeQuestion.ggeQuestion--mobilepayment,
+.ggePage--payment .ggeQuestion.ggeQuestion--mobilepayment > div {
+  @apply su-mb-0;
+}
+
+.ggePage--payment .ggeQuestion.ggeQuestion--instructions #TripAgreements {
+  @apply su-mb-12;
+}
+
+.ggePage--payment .ggePageNav--back {
+  @apply su-hidden;
 }
 
 .ggeWidget .ggeButton--addRegistrant {

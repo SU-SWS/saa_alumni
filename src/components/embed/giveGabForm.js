@@ -55,7 +55,7 @@ const GiveGabForm = ({
           bgCardStyle
         )}
       >
-        <div className="form-gradient su-rs-p-5 md:su-rs-p-6 2xl:su-pb-[10.8rem]">
+        <div className="form-gradient su-rs-p-5 su-rs-pb-6 md:su-rs-p-6 md:su-rs-pb-7">
           <DynaScript src={embedUrl} id={htmlId} errorBlok={content} />
         </div>
       </Container>

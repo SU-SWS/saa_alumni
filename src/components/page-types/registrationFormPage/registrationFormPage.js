@@ -160,9 +160,9 @@ const RegistrationFormPage = (props) => {
               <Grid gap xs={12} className={styles.contentWrapper}>
                 <GridCell
                   xs={12}
-                  md={10}
-                  lg={8}
-                  xl={6}
+                  lg={10}
+                  xl={8}
+                  xxl={6}
                   className={styles.formWrapper}
                 >
                   <div className="su-text-white">
@@ -179,9 +179,9 @@ const RegistrationFormPage = (props) => {
                 </GridCell>
                 <GridCell
                   xs={12}
-                  md={10}
-                  lg={8}
-                  xl={6}
+                  lg={10}
+                  xl={8}
+                  xxl={6}
                   className={styles.formWrapper}
                 >
                   <CreateBloks
