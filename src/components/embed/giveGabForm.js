@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import SbEditable from 'storyblok-react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { dcnb } from 'cnbuilder';
@@ -21,7 +21,6 @@ const GiveGabForm = ({
 }) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
-  const [display, setDisplay] = useState(false);
 
   const embedUrl = new URL(url);
   if (tripId) {
