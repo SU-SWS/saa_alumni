@@ -12,11 +12,15 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const [scriptError, setScriptError] = useState(false);
   const [display, setDisplay] = useState(false);
-  const [formDisplay, setFormDisplay] = useState('su-hidden');
   const isDark = true;
+  const displayForm = () => {
+    setDisplay(true);
+    console.log('I am here!');
+  };
 
   // When the component mounts load the script.
   useEffect(() => {
+    window.displayForm = displayForm();
     let mounted = true;
     const script = document.createElement('script');
     script.src = src;
@@ -37,15 +41,9 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     };
   }, [src, setScriptLoaded, scriptRef]);
 
-  const displayForm = () => {
-    setDisplay(true);
-    setFormDisplay('su-block');
-    console.log('I am here!');
-  };
-
   return (
     <>
-      {!scriptLoaded || !scriptError || !display ? (
+      {!display && (
         <div className="su-flex su-flex-row">
           <ClipLoader color="#00BFFF" height={50} width={50} />
           <p className="su-pl-03em">Loading form...</p>
@@ -53,7 +51,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
             Sorry, but you must have Javascript enabled to use the form.
           </noscript>
         </div>
-      ) : null}
+      )}
       {scriptError && errorBlok && (
         <GiveGabErrorMessage blok={errorBlok} isDark={isDark} />
       )}
@@ -62,7 +60,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         aria-live="polite"
         aria-busy={!scriptLoaded}
         id={id}
-        className={formDisplay}
+        className={display ? 'su-block' : 'su-hidden'}
       />
     </>
   );
