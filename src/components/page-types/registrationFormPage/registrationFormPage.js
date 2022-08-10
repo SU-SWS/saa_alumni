@@ -148,7 +148,7 @@ const RegistrationFormPage = (props) => {
     <AuthenticatedPage>
       <FormContextProvider>
         <SbEditable content={blok}>
-          <Layout {...props}>
+          <Layout hasHero="true" {...props}>
             <Container
               as="main"
               id="main-content"
