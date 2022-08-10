@@ -13,14 +13,9 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
   const [scriptError, setScriptError] = useState(false);
   const [display, setDisplay] = useState(false);
   const isDark = true;
-  const displayForm = () => {
-    setDisplay(true);
-    console.log('I am here!');
-  };
 
   // When the component mounts load the script.
   useEffect(() => {
-    window.displayForm = displayForm();
     let mounted = true;
     const script = document.createElement('script');
     script.src = src;
@@ -28,6 +23,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     script.onload = () => {
       if (mounted) {
         setScriptLoaded(true);
+        console.log('Script loaded');
       }
     };
     script.onerror = () => {
@@ -35,6 +31,11 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     };
 
     scriptRef.current.appendChild(script);
+
+    document.addEventListener('widgetRenderEnd', (e) => {
+      setDisplay(true);
+      console.log('I am here!', e);
+    });
 
     return () => {
       mounted = false;
