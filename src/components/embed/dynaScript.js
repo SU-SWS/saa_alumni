@@ -23,7 +23,10 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     script.onload = () => {
       if (mounted) {
         setScriptLoaded(true);
-        console.log('Script loaded');
+
+        script.addEventListener('widgetRenderEnd', (e) => {
+          setDisplay(true);
+        });
       }
     };
     script.onerror = () => {
@@ -32,13 +35,9 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
 
     scriptRef.current.appendChild(script);
 
-    document.addEventListener('widgetRenderEnd', (e) => {
-      setDisplay(true);
-      console.log('I am here!', e);
-    });
-
     return () => {
       mounted = false;
+      script.removeEventListener('widgetRenderEnd');
     };
   }, [src, setScriptLoaded, scriptRef]);
 
