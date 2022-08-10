@@ -24,7 +24,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
       if (mounted) {
         setScriptLoaded(true);
 
-        script.addEventListener('widgetRenderEnd', (e) => {
+        script.addEventListener('widgetRenderEnd', () => {
           setDisplay(true);
         });
       }
