@@ -46,7 +46,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
       {!display && (
         <div className="su-flex su-flex-row">
           <ClipLoader color="#00BFFF" height={50} width={50} />
-          <p className="su-pl-03em">Loading form...</p>
+          <p className="su-ml-03em">Loading form...</p>
           <noscript>
             Sorry, but you must have Javascript enabled to use the form.
           </noscript>
