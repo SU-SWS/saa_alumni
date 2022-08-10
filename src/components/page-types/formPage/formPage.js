@@ -119,9 +119,9 @@ const FormPage = (props) => {
               </GridCell>
               <GridCell
                 xs={12}
-                md={isSingleColumn ? 8 : 5}
-                lg={6}
-                xl={isSingleColumn ? 6 : 5}
+                lg={isSingleColumn ? 10 : 5}
+                xl={isSingleColumn ? 8 : 5}
+                xxl={isSingleColumn ? 6 : 5}
                 className={styles.formCardStyle({ isSingleColumn })}
               >
                 <CreateBloks
