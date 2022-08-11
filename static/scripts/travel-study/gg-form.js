@@ -56,15 +56,6 @@ class ggForm {
   };
 
   /**
-   * Load Give Gab Form Into Place
-   */
-  getGGScript = () => {
-    const script = document.createElement('script');
-    script.src = this.form;
-    return script;
-  };
-
-  /**
    * Put the ADC Window variables into place.
    */
   setADCVariables = () => {
@@ -90,11 +81,32 @@ class ggForm {
     staffName.innerText = `Staff name: ${this.user.su_display_name}`;
 
     ggScript.appendChild(staffName);
-    ggScript.appendChild(this.getGGScript());
+
+    // Display Loader while GiveGab Form renders
+    const loaderWrapper = document.createElement('div');
+    loaderWrapper.className = 'gg-loader-wrapper';
+    const loader = `
+        <div class="gg-loader"></div>
+        <p>Loading...</p>
+      `;
+    loaderWrapper.innerHTML += loader;
+    ggScript.appendChild(loaderWrapper);
+
+    // Load GiveGab Form Into Place
+    const script = document.createElement('script');
+    script.src = this.form;
+
+    ggScript.appendChild(script);
     main.appendChild(ggScript);
     content.appendChild(main);
 
     this.render(content);
+
+    // Remove Loader once GiveGab Form completes render
+    script.addEventListener('widgetRenderEnd', () => {
+      ggScript.removeChild(loaderWrapper);
+    });
+    script.removeEventListener('widgetRenderEnd');
   };
 }
 

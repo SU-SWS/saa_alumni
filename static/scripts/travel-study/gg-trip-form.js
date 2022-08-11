@@ -48,13 +48,9 @@ class ggTripForm {
       udata = await udata.json();
       this.user = udata.data[0].attributes;
     } catch (err) {
-      console.log(err);
-      this.user = {
-        uid: 0,
-        su_display_name: 'Guest',
-        display_name: 'Guest-suid',
-        mail: 'person@example.com',
-      };
+      throw this.render(
+        'An error has occured while fetching your user information, please try again later. Thank you!'
+      );
     }
   };
 
