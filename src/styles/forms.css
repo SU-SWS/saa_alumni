@@ -107,11 +107,16 @@
   border-image-slice: 1;
 }
 
+.ggeWidget .ggeQuestion .ggeQuestion__field textarea[readonly],
 .ggeWidget .ggeQuestion input[type="email"][readonly],
 .ggeWidget .ggeQuestion input[type="number"][readonly],
 .ggeWidget .ggeQuestion input[type="text"][readonly] {
   @apply su-p-0 su-border-none su-text-24 su-text-black-30 hocus:su-shadow-none;
   background: transparent !important;
+}
+
+.ggeWidget .ggeQuestion .ggeQuestion__field textarea[readonly] {
+  @apply su-min-h-[2.8rem];
 }
 
 .ggeWidget .ggeQuestion--required label,
