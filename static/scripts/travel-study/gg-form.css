@@ -704,6 +704,7 @@
 .ggeWidget .ggeButton.ggeButton--discardRegistrant:hover,
 .ggeWidget .ggeButton.ggeButton--discardRegistrant:focus {
   text-decoration: underline;
+  box-shadow: none;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant {
@@ -756,16 +757,23 @@
   align-items: center;
 }
 
+.ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:focus,
+.ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:hover {
+  box-shadow: none;
+}
+
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:focus::after,
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:hover::after {
   text-decoration-line: underline;
   color: var(--su-black);
+  box-shadow: none;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:focus,
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover {
   text-decoration-line: none;
   background-color: transparent;
+  box-shadow: none;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant::after {
@@ -777,6 +785,8 @@
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:focus::after,
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover::after {
   text-decoration-line: underline;
+  box-shadow: none;
+}
 }
 
 .ggeWidget .ggeTally--text {

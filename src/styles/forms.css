@@ -31,6 +31,11 @@
   @apply su-flex-col;
 }
 
+.ggeWidget.public-custom-journeys .ggeContent .ggeQuestion.ggeQuestion--instructions {
+  @apply su-m-0 su-mt-7 su-mb-45;
+}
+
+
 .ggeWidget .ggeContent .ggeQuestion.ggeQuestion--instructions {
   @apply su-m-0 su-mt-7;
 }
@@ -454,13 +459,16 @@
   background-position: left center;
 }
 
+.ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:focus::after,
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:hover::after {
   text-decoration-line: underline;
-  @apply su-text-white;
+  @apply su-text-white su-shadow-none;
 }
 
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:focus,
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover {
   text-decoration-line: none;
+  @apply su-shadow-none;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant::after {
@@ -468,8 +476,10 @@
   @apply su-text-white;
 }
 
+.ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:focus::after,
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover::after {
   text-decoration-line: underline;
+  @apply su-shadow-none;
 }
 
 .ggeTally table td {

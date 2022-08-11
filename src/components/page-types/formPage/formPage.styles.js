@@ -15,4 +15,4 @@ export const contentStyle = ({ isSingleColumn }) =>
 export const formCardStyle = ({ isSingleColumn }) =>
   isSingleColumn
     ? 'lg:su-col-start-2 xl:su-col-start-3 2xl:su-col-start-4'
-    : 'lg:su-rs-mt-7 lg:su-col-start-7 xl:su-col-start-7';
+    : 'lg:su-rs-mt-7 lg:su-col-start-7 xl:su-col-start-7 2xl:su-col-start-7';

@@ -98,6 +98,7 @@ const FormPage = (props) => {
             >
               <GridCell
                 xs={12}
+                md={12}
                 lg={isSingleColumn ? 12 : 5}
                 xl={isSingleColumn ? 12 : 5}
               >
@@ -119,8 +120,9 @@ const FormPage = (props) => {
               </GridCell>
               <GridCell
                 xs={12}
-                lg={isSingleColumn ? 10 : 5}
-                xl={isSingleColumn ? 8 : 5}
+                md={isSingleColumn ? 10 : 12}
+                lg={isSingleColumn ? 10 : 6}
+                xl={isSingleColumn ? 8 : 6}
                 xxl={isSingleColumn ? 6 : 5}
                 className={styles.formCardStyle({ isSingleColumn })}
               >
