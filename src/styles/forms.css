@@ -32,7 +32,7 @@
 }
 
 .ggeWidget .ggeContent .ggeQuestion.ggeQuestion--instructions {
-  @apply su-m-0 su-mt-7 su-mb-45;
+  @apply su-m-0 su-mt-7;
 }
 
 .ggeWidget .ggeQuestion--instructions .ggeQuestion__field {
