@@ -363,8 +363,8 @@
   @apply su-text-25 lg:su-text-[2.9rem];
 }
 
-.ggeConfirmation .ggeConfirmationMessage > div:last-child {
-  @apply su-pt-20 lg:su-pt-[6rem];
+.ggeConfirmation .ggeConfirmationMessage > div:first-child {
+  @apply su-pb-26;
 }
 
 .ggeConfirmation .ggeConfirmationMessage p {
@@ -388,7 +388,7 @@
 }
 
 .ggeConfirmation .ggeTally {
-  @apply su-text-left;
+  @apply su-text-left su-mb-0;
 }
 
 .ggeConfirmation .ggeConfirmationMessage > .ggeTally ~ div {

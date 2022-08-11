@@ -1,0 +1,38 @@
+<div class="ggeConfirmationMessage">
+  <div>
+    <p>
+      Your payment is being processed. Your confirmation code is
+      <b>#{{ConfirmationCode}}</b>. A receipt has been sent to the cardholder. A
+      notification has been sent to each person at the email address(es) you
+      provided.
+    </p>
+  </div>
+  <section class="ggeTally">
+    <table role="presentation" class="ggeTallyTable">
+      <thead>
+        <tr>
+          <th class="ggeTally--header">Your trip payment details</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    {{#registrations}}
+    <table role="presentation" class="ggeTallyTable">
+      <tbody>
+        <tr>
+          <td class="ggeTally--text">{{FirstName}} {{LastName}}</td>
+          <td class="ggeTally--money">{{Cost}}</td>
+        </tr>
+      </tbody>
+    </table>
+    {{/registrations}}
+    <table role="presentation" class="ggeTallyTable">
+      <tbody>
+        <tr>
+          <td class="ggeTally--total">Total</td>
+          <td class="ggeTally--total ggeTally--money">{{AmountCharged}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
