@@ -187,7 +187,6 @@
 .ggeWidget .ggeContent .ggeQuestion.ggeQuestion--instructions {
   margin: 0;
   margin-top: 0.7rem;
-  margin-bottom: 4.5rem;
 }
 
 .ggeWidget .ggeQuestion--instructions .ggeQuestion__field {
@@ -462,7 +461,8 @@
   font-size: 2.1rem;
 }
 
-
+.ggeWidget .ggeQuestion--instructions #Pre-TripExtensionQuestion,
+.ggeWidget .ggeQuestion--instructions #Post-TripExtensionQuestion,
 .ggeWidget .ggeQuestion--required label,
 .ggeWidget .ggeQuestion--required legend {
   font-weight: 600;
@@ -635,10 +635,6 @@
 }
 
 /* Tally Table */
-.ggeRegistrantList {
-  display: none;
-}
-
 .ggeTally {
   border: 0 solid;
   border-color: transparent;
@@ -673,6 +669,16 @@
 
 .ggeTally .ggeTally--money {
   width: 25%;
+}
+
+.ggeRegistrantList,
+.ggeWidget .ggeRegistrant--prefilled .ggeSection--askArray.ggeSection--registration,
+.ggePage--payment .ggePageNav--back {
+  display: none;
+}
+
+.ggeWidget #AddatravelerHeader {
+  margin-bottom: 4.5rem;
 }
 
 .ggeWidget.ggeWidget--highlightIncomplete .ggeRegistrant--prefilled .ggeQuestion--incomplete {
@@ -727,20 +733,26 @@
   flex-direction: column-reverse;
 }
 
+.ggeWidget .ggeTally__multireg__button.ggeTally__multireg__button--delete {
+  position: relative;
+  height: 30px;
+}
+
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant {
   background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.64321 6.88535L13.5183 2.05397C13.9898 1.58677 13.9931 0.827025 13.5259 0.355458C13.0587 -0.116108 12.2989 -0.118291 11.8274 0.347817L6.93706 5.19447L2.04783 0.347817C1.57736 -0.118291 0.816521 -0.113925 0.34932 0.35655C-0.11788 0.827025 -0.114605 1.58677 0.356961 2.05397L5.23091 6.88535L0.35587 11.7167C-0.115697 12.1839 -0.118971 12.9437 0.348229 13.4152C0.582921 13.6521 0.89184 13.77 1.20076 13.77C1.5064 13.77 1.81205 13.6554 2.04565 13.4229L6.93706 8.57622L11.8263 13.4229C12.061 13.6554 12.3655 13.77 12.6712 13.77C12.9801 13.77 13.289 13.6521 13.5237 13.4152C13.9909 12.9437 13.9876 12.1839 13.5161 11.7167L8.64321 6.88535Z' fill='%23F83535'/%3E%3C/svg%3E");
   background-position: left center;
   font-size: 1.8rem;
   margin-top: 0;
   position: absolute;
-  bottom: -6.5rem;
-  right: 0;
+  top: 0;
+  left: 0;
   padding: 0;
   padding-left: 1.6rem;
   color: transparent;
-  background: transparent;
+  background-color: transparent;
   border: none;
   background-repeat: no-repeat;
+  align-items: center;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant:hover::after {
@@ -756,6 +768,7 @@
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant::after {
   content: "Remove";
   color: var(--su-black);
+  background-color: transparent;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant:hover::after {
