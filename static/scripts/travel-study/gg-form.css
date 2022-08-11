@@ -12,6 +12,7 @@
   --su-palo-verde-dark: #017e7c;
   --su-electric-blue: #505eec;
   --su-electric-blue-light: #6B77F5;
+  --su-digital-blue: #006cb8;
   --su-white: #ffffff;
 }
 
@@ -183,6 +184,12 @@
   flex-direction: column;
 }
 
+.ggeWidget .ggeContent .ggeQuestion.ggeQuestion--instructions {
+  margin: 0;
+  margin-top: 0.7rem;
+  margin-bottom: 4.5rem;
+}
+
 .ggeWidget .ggeQuestion--instructions .ggeQuestion__field {
   font-size: 18px;
   color: var(--su-black);
@@ -305,6 +312,7 @@
 
 .ggePageSet .ggeHidden ~ .ggePage .ggePageNav {
   justify-content: center;
+  align-items: end;
 }
 
 .ggeWidget .ggePageNav--back {
@@ -453,6 +461,7 @@
   font-weight: 400;
   font-size: 2.1rem;
 }
+
 
 .ggeWidget .ggeQuestion--required label,
 .ggeWidget .ggeQuestion--required legend {
@@ -652,13 +661,6 @@
   border: none;
 }
 
-.ggeTally .ggeTally--text,
-.ggeTally .ggeTally--money {
-  padding-top: 0;
-  padding-bottom: 3.2rem;
-  border-bottom: 1px solid var(--su-black-30);
-}
-
 .ggeTally .ggeTally--money:last-child {
   padding: 0;
   border-bottom: unset;
@@ -688,6 +690,13 @@
   background-repeat: no-repeat;
   background-image: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.07784 7.75026L13.916 2.95543C14.384 2.49176 14.3873 1.73776 13.9236 1.26976C13.4599 0.801762 12.7059 0.799596 12.2379 1.26218L7.38459 6.07218L2.53234 1.26218C2.06543 0.799596 1.31034 0.803929 0.846678 1.27085C0.383012 1.73776 0.386262 2.49176 0.854262 2.95543L5.69134 7.75026L0.853178 12.5451C0.385178 13.0088 0.381928 13.7628 0.845595 14.2308C1.07851 14.4658 1.38509 14.5828 1.69168 14.5828C1.99501 14.5828 2.29834 14.4691 2.53018 14.2383L7.38459 9.42835L12.2368 14.2383C12.4698 14.4691 12.772 14.5828 13.0753 14.5828C13.3819 14.5828 13.6885 14.4658 13.9214 14.2308C14.3851 13.7628 14.3818 13.0088 13.9138 12.5451L9.07784 7.75026Z' fill='%23505EEC'/%3E%3C/svg%3E%0A");
   background-position: right center;
+  padding: 0;
+  padding-right: 2.6rem;
+}
+
+.ggeWidget .ggeButton.ggeButton--discardRegistrant:hover,
+.ggeWidget .ggeButton.ggeButton--discardRegistrant:focus {
+  text-decoration: underline;
 }
 
 .ggeWidget .ggeButton.ggeButton--tallyEditRegistrant {
@@ -763,8 +772,8 @@
 
 .ggeWidget td.ggeTally--text,
 .ggeWidget td.ggeTally--money:not(.ggeTally--total) {
-  padding-top: 0;
-  padding-bottom: 5.2rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
   border-bottom: 1px solid var(--su-black);
 }
 
@@ -809,4 +818,31 @@
 
 .staff-hold-trip-registration .ggeConfirmationMessage .ggeTally {
   display: none;
+}
+
+/* Form Loader */
+.gg-loader-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.gg-loader-wrapper p {
+  margin: 0;
+  margin-left: 1rem;
+}
+
+.gg-loader {
+  width: 50px;
+  height: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side, var(--su-digital-blue) 94%,#0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%, var(--su-digital-blue));
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+  animation: s3 1s infinite linear;
+}
+
+@keyframes s3{ 
+  100%{transform: rotate(1turn)}
 }
