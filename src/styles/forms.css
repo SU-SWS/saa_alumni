@@ -153,7 +153,8 @@
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="email"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="number"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="text"],
-.ggeWidget .ggeQuestion.ggeQuestion--error select {
+.ggeWidget .ggeQuestion.ggeQuestion--error select,
+.ggeWidget .ggeQuestion.ggeQuestion--error textarea {
   @apply su-border su-border-digital-red-xlight;
 }
 

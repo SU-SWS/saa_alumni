@@ -276,6 +276,12 @@
   min-height: 138px;
 }
 
+.ggeWidget .ggeQuestion.su-email .ggeQuestion__field textarea {
+  min-height: 2.8rem;
+  overflow: hidden;
+  height: 6.4rem;
+}
+
 .ggeWidget .ggeQuestion--error,
 .ggeWidget .ggeQuestion__error,
 .ggeWidget .ggePageNav--formError {
@@ -295,7 +301,8 @@
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="email"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="number"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="text"],
-.ggeWidget .ggeQuestion.ggeQuestion--error select {
+.ggeWidget .ggeQuestion.ggeQuestion--error select,
+.ggeWidget .ggeQuestion.ggeQuestion--error textarea {
   border: 1px solid var(--su-digital-red-xlight);
 }
 
@@ -672,6 +679,7 @@
   width: 25%;
 }
 
+/* Registration  */
 .ggeRegistrantList,
 .ggeWidget .ggeRegistrant--prefilled .ggeSection--askArray.ggeSection--registration,
 .ggePage--payment .ggePageNav--back {
@@ -688,6 +696,37 @@
 
 .ggeWidget .ggeQuestion.ggeQuestion--error .ggeQuestion__field select {
   color: var(--su-digital-red-xlight)
+}
+
+.ggeWidget.staff-registration .ggeContent .ggeQuestion.su-email {
+  margin-bottom: 0;
+}
+
+.ggeWidget.staff-registration .ggeContent #Gift-EmailInstructions {
+  margin-bottom: 4.5rem;
+}
+
+.ggeWidget.staff-registration .ggeContent #Gift-EmailInstructions .ggeQuestion__label {
+  padding: 0;
+}
+
+/* Reg Email Error */
+.ggeWidget .su-email.ggeQuestion--error .ggeQuestion__field {
+  display: flex;
+  flex-direction: column;
+}
+
+.ggeWidget .su-email.ggeQuestion--error .ggeQuestion__field [id*='ggeQuestion__caption'] {
+  order: 1;
+  color: var(--su-black);
+}
+
+.ggeWidget .su-email.ggeQuestion--error .ggeQuestion__field textarea {
+  order: 2;
+}
+
+.ggeWidget .su-email.ggeQuestion--error .ggeQuestion__field [id*='ggeQuestion__error'] {
+  order: 3;
 }
 
 .ggeWidget .ggeButton.ggeButton--discardRegistrant {
@@ -845,6 +884,12 @@
 
 .staff-hold-trip-registration .ggeConfirmationMessage .ggeTally {
   display: none;
+}
+
+/* User Fetch Error */
+.gg-user-error p {
+  margin-bottom: 0;
+  font-weight: 600;
 }
 
 /* Form Loader */

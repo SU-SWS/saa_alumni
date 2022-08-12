@@ -17,10 +17,25 @@ class ggTripForm {
   init = async () => {
     this.mountAdditionalScripts();
     this.elem = document.getElementById(this.id);
-    this.render('Loading user information...');
+    this.render(this.createLoader('Loading user information...'));
     await this.getUserInfo();
-    this.render('Loading trip information...');
+    this.render(this.createLoader('Loading trip information...'));
     await this.embedTripSelect();
+  };
+
+  /**
+   * Add loading animation
+   * @param {string} loaderText — The text that will display next to loading animation
+   */
+  createLoader = (loaderText) => {
+    const loaderWrapper = document.createElement('div');
+    loaderWrapper.className = 'gg-loader-wrapper';
+    const loader = `
+        <div class="gg-loader"></div>
+        <p>${loaderText}</p>
+      `;
+    loaderWrapper.innerHTML += loader;
+    return loaderWrapper;
   };
 
   /**
@@ -48,9 +63,14 @@ class ggTripForm {
       udata = await udata.json();
       this.user = udata.data[0].attributes;
     } catch (err) {
-      throw this.render(
-        'An error has occured while fetching your user information, please try again later. Thank you!'
-      );
+      const errorMessage = document.createElement('div');
+      errorMessage.className = 'gg-user-error';
+      const message = `
+        <p>An error has occured while fetching your user information.</p>
+        <p>Please confirm you are logged in and refresh the page. Thank you!</p>
+      `;
+      errorMessage.innerHTML += message;
+      throw this.render(errorMessage);
     }
   };
 
@@ -220,13 +240,7 @@ class ggTripForm {
     ggScript.className = 'gg-script-wrapper';
 
     // Display Loader while GiveGab Form renders
-    const loaderWrapper = document.createElement('div');
-    loaderWrapper.className = 'gg-loader-wrapper';
-    const loader = `
-        <div class="gg-loader"></div>
-        <p>Loading...</p>
-      `;
-    loaderWrapper.innerHTML += loader;
+    const loaderWrapper = this.createLoader('Loading form...');
     ggScript.appendChild(loaderWrapper);
 
     // Load GiveGab Form Into Place
