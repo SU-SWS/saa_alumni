@@ -26,6 +26,7 @@ export const TripPageOverviewSectionProps = {
   startDate: PropTypes.string,
   endDate: PropTypes.string,
   cost: SBRichTextType,
+  depositCost: PropTypes.string,
   tripSize: PropTypes.string,
   minAge: PropTypes.string,
   status: PropTypes.oneOf(['notify', 'reserve']),
@@ -42,6 +43,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     startDate,
     endDate,
     cost,
+    depositCost,
     tripSize,
     minAge,
     status,
@@ -114,6 +116,14 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                     wysiwyg={cost}
                     className={styles.summaryCost}
                   />
+                </div>
+              )}
+              {depositCost && (
+                <div className={styles.summaryItem}>
+                  <Heading level={4} className={styles.summaryName}>
+                    Deposit
+                  </Heading>
+                  <p className={styles.summaryCost}>{depositCost}</p>
                 </div>
               )}
               {tripSize && (

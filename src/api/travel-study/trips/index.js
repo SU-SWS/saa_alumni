@@ -65,8 +65,15 @@ const tripsCollection = async (req, res) => {
       startDate: story.content?.startDate,
       endDate: story.content?.endDate,
       price: story.content?.cost?.content?.[0]?.content?.[0]?.text,
+      deposit: story.content?.depositCost,
       preExtendPrice: story.content?.extendPrice,
+      preExtendDepositPrice:
+        story.content?.preTripExtensionDeposit ||
+        story.content?.extendDepositPrice?.replace(/\D/g, ''),
       postExtendPrice: story.content?.postExtendPrice,
+      postExtendDepositPrice:
+        story.content?.postTripExtensionDeposit ||
+        story.content?.postExtendDepositPrice?.replace(/\D/g, ''),
       preExtendStartDate: story.content.extendStartDate,
       preExtendEndDate: story.content.extendEndDate,
       postExtendStartDate: story.content.postExtendStartDate,

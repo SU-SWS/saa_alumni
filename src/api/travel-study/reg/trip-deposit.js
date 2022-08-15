@@ -61,7 +61,9 @@ export default async function handler(req, res) {
     }
 
     if (trip?.content?.tripDeposit) {
-      const dollarValue = trip.content.tripDeposit.replace(/\D/g, '');
+      const dollarValue =
+        trip.content.tripDeposit ||
+        trip.content?.depositCost.replace(/\D/g, '');
       data.push([
         'prompt',
         trip.content.tripId,

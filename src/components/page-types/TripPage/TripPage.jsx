@@ -41,6 +41,7 @@ const TripPage = (props) => {
       startDate,
       endDate,
       cost,
+      depositCost,
       tripSize,
       minAge,
       status,
@@ -68,6 +69,7 @@ const TripPage = (props) => {
       extendStartDate,
       extendEndDate,
       extendPrice,
+      extendDepositPrice,
       extendTripSize,
       extendAboveContent,
       extendItinerary,
@@ -80,6 +82,7 @@ const TripPage = (props) => {
       postExtendStartDate,
       postExtendEndDate,
       postExtendPrice,
+      postExtendDepositPrice,
       postExtendTripSize,
       postExtendAboveContent,
       postExtendItinerary,
@@ -213,6 +216,7 @@ const TripPage = (props) => {
                 startDate={startDate}
                 endDate={endDate}
                 cost={cost}
+                depositCost={depositCost}
                 tripSize={tripSize}
                 minAge={minAge}
                 status={status}
@@ -253,6 +257,7 @@ const TripPage = (props) => {
                   extendStartDate={extendStartDate}
                   extendEndDate={extendEndDate}
                   extendPrice={extendPrice}
+                  extendDepositPrice={extendDepositPrice}
                   extendTripSize={extendTripSize}
                   postExtendStartDate={postExtendStartDate}
                   postExtendEndDate={postExtendEndDate}
@@ -272,6 +277,7 @@ const TripPage = (props) => {
                   extendStartDate={postExtendStartDate}
                   extendEndDate={postExtendEndDate}
                   extendPrice={postExtendPrice}
+                  extendDepositPrice={postExtendDepositPrice}
                   extendTripSize={postExtendTripSize}
                   extendAboveContent={postExtendAboveContent}
                   isCenterExtendHeader={isCenterPostExtendHeader}

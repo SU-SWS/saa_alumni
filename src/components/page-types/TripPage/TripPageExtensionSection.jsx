@@ -21,6 +21,7 @@ export const TripPageExtensionSectionProps = {
   extendStartDate: PropTypes.string,
   extendEndDate: PropTypes.string,
   extendPrice: PropTypes.string,
+  extendDepositPrice: PropTypes.string,
   extendTripSize: PropTypes.string,
   extendAboveContent: SBBlokType,
   extendItinerary: SBBlokType,
@@ -35,6 +36,7 @@ export const TripPageExtensionSection = (props) => {
     extendStartDate,
     extendEndDate,
     extendPrice,
+    extendDepositPrice,
     extendTripSize,
     extendAboveContent,
     extendItinerary,
@@ -111,6 +113,16 @@ export const TripPageExtensionSection = (props) => {
                 </Heading>
                 <span className={overviewStyles.summaryValue}>
                   {extendPrice}
+                </span>
+              </div>
+            )}
+            {extendDepositPrice && (
+              <div className={overviewStyles.summaryItem}>
+                <Heading level={4} className={overviewStyles.summaryName}>
+                  Deposit
+                </Heading>
+                <span className={overviewStyles.summaryValue}>
+                  {extendDepositPrice}
                 </span>
               </div>
             )}
