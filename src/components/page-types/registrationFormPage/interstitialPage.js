@@ -90,7 +90,7 @@ const InterstitialPage = (props) => {
           relationship?.relationshipType
         ),
         su_dob: relationship?.relatedContactBirthDate,
-        su_reg: 'Related contact',
+        su_reg: 'Related contact: deposit',
         su_email: undefined,
         su_phone: undefined,
       };
@@ -149,7 +149,7 @@ const InterstitialPage = (props) => {
     ),
     su_dob: userProfile?.birthDate,
     su_relation: 'Guest',
-    su_reg: 'Primary registrant',
+    su_reg: 'Primary registrant: deposit',
   };
 
   return (

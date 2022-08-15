@@ -85,7 +85,6 @@ export const relationshipSelectList = [
   'Spouse/Partner',
   'Step-child',
   'Step-parent',
-  'Self',
   'Guest',
 ];
 
