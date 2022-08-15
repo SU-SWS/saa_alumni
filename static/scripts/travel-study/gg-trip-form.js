@@ -191,6 +191,10 @@ class ggTripForm {
           <p>${trips[uuid].price}</p>
         </div>
         <div class="summary-item">
+          <h3>Deposit</h3>
+          <p>${trips[uuid].deposit}</p>
+        </div>
+        <div class="summary-item">
           <h3>Trip size</h3>
           <p>${trips[uuid].tripSize}</p>
         </div>
