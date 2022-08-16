@@ -165,7 +165,9 @@ class ggTripForm {
     const content = `
       <h2>Trip Information</h2>
       <p>
-        <a href="https://alumni.stanford.edu/${trips[uuid].full_slug}" target="_blank" rel="noopener" class="su-link su-link--external">
+        <a href="https://alumni.stanford.edu/${
+          trips[uuid].full_slug
+        }" target="_blank" rel="noopener" class="su-link su-link--external">
           See trip details
         </a>
       </p>
@@ -193,7 +195,7 @@ class ggTripForm {
         <div class="summary-item">
           <h3>Deposit</h3>
           <p>${trips[uuid].deposi || 'N/A'}</p>
-        </div>}
+        </div>
         <div class="summary-item">
           <h3>Trip size</h3>
           <p>${trips[uuid].tripSize}</p>
