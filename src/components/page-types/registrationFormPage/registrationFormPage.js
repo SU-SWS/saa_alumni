@@ -158,13 +158,7 @@ const RegistrationFormPage = (props) => {
               <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
               <Hero blok={heroProps} />
               <Grid gap xs={12} className={styles.contentWrapper}>
-                <GridCell
-                  xs={12}
-                  md={10}
-                  lg={8}
-                  xl={6}
-                  className={styles.formWrapper}
-                >
+                <GridCell xs={12}>
                   <div className="su-text-white">
                     <Heading
                       level={2}
