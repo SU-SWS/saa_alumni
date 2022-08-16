@@ -39,6 +39,8 @@ const RegistrationFormPage = (props) => {
           postExtendStartDate,
           postExtendEndDate,
           postExtendPrice,
+          preTripExtensionDeposit,
+          postTripExtensionDeposit,
         },
       },
       heroImage: { filename, alt, focus } = {},
@@ -110,6 +112,9 @@ const RegistrationFormPage = (props) => {
     window.su_email_post_extension_start = formatEmailDate(postExtendStartDate);
     window.su_email_post_extension_end = formatEmailDate(postExtendEndDate);
 
+    window.su_pre_extension_deposit = preTripExtensionDeposit;
+    window.su_post_extension_deposit = postTripExtensionDeposit;
+
     window.su_extension = extension();
     window.prefillData = travelers;
     if (travelers) {
@@ -132,6 +137,8 @@ const RegistrationFormPage = (props) => {
     postExtendStartDate,
     postExtendEndDate,
     postExtendPrice,
+    preTripExtensionDeposit,
+    postTripExtensionDeposit,
     userProfile,
   ]);
 
