@@ -105,6 +105,15 @@ class ggTripForm {
     window.su_trip_id = this.trips[uuid].tripId;
     window.su_trip_name = this.trips[uuid].title;
     window.su_trip_url = `https://alumni.stanford.edu/${this.trips[uuid].full_slug}`;
+    window.navigateToTripPolicy = () => {
+      const destUrl = new URL(
+        this.trips[uuid].full_slug,
+        window.location.origin
+      );
+      destUrl.hash = 'cancellation-policy';
+      window.open(destUrl, '_blank');
+      return false;
+    };
     window.su_trip_start_date = this.trips[uuid].startDate
       ? this.formatFmDate(this.trips[uuid].startDate)
       : '';
@@ -265,11 +274,13 @@ class ggTripForm {
     content.appendChild(main);
     this.render(content);
 
-    // Remove Loader once GiveGab Form completes render
-    script.addEventListener('widgetRenderEnd', () => {
+    const removeLoader = () => {
       ggScript.removeChild(loaderWrapper);
-    });
-    script.removeEventListener('widgetRenderEnd');
+    };
+
+    // Remove Loader once GiveGab Form completes render
+    script.addEventListener('widgetRenderEnd', removeLoader);
+    script.removeEventListener('widgetRenderEnd', removeLoader);
   };
 
   /**

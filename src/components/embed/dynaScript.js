@@ -16,6 +16,13 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
 
   // When the component mounts load the script.
   useEffect(() => {
+    const showForm = () => {
+      setDisplay(true);
+    };
+
+    const scrollTop = () => {
+      document.getElementById('su-embed').scrollIntoView(true);
+    };
     let mounted = true;
     const script = document.createElement('script');
     script.src = src;
@@ -24,9 +31,10 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
       if (mounted) {
         setScriptLoaded(true);
 
-        script.addEventListener('widgetRenderEnd', () => {
-          setDisplay(true);
-        });
+        // Once GiveGab form has completed rendering, display form
+        script.addEventListener('widgetRenderEnd', showForm);
+        // Once GiveGab form has successfully submitted, bring user back to the top of the form
+        script.addEventListener('widgetComplete', scrollTop);
       }
     };
     script.onerror = () => {
@@ -37,12 +45,13 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
 
     return () => {
       mounted = false;
-      script.removeEventListener('widgetRenderEnd');
+      script.removeEventListener('widgetRenderEnd', showForm);
+      script.removeEventListener('widgetComplete', scrollTop);
     };
   }, [src, setScriptLoaded, scriptRef]);
 
   return (
-    <>
+    <div id="su-embed">
       {!display && (
         <div className="su-flex su-flex-row">
           <ClipLoader color="#00BFFF" height={50} width={50} />
@@ -62,7 +71,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         id={id}
         className={display ? 'su-block' : 'su-hidden'}
       />
-    </>
+    </div>
   );
 };
 
