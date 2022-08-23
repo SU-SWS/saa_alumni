@@ -100,15 +100,22 @@ const RegistrationFormPage = (props) => {
       }
       return 'None';
     };
-    window.su_pre_extension_start = formatFmDate(extendStartDate);
-    window.su_pre_extension_end = formatFmDate(extendEndDate);
-    window.su_post_extension_start = formatFmDate(postExtendStartDate);
-    window.su_post_extension_end = formatFmDate(postExtendEndDate);
 
-    window.su_email_pre_extension_start = formatEmailDate(extendStartDate);
-    window.su_email_pre_extension_end = formatEmailDate(extendEndDate);
-    window.su_email_post_extension_start = formatEmailDate(postExtendStartDate);
-    window.su_email_post_extension_end = formatEmailDate(postExtendEndDate);
+    // Check if there is a pre-extension trip, if so set window vars for FM and email dates
+    if (extendStartDate) {
+      window.su_pre_extension_start = formatFmDate(extendStartDate);
+      window.su_pre_extension_end = formatFmDate(extendEndDate);
+      window.su_email_pre_extension_start = formatEmailDate(extendStartDate);
+      window.su_email_pre_extension_end = formatEmailDate(extendEndDate);
+    }
+    // Check if there is a post-extension trip, if so set window vars for FM and email dates
+    if (postExtendStartDate) {
+      window.su_post_extension_start = formatFmDate(postExtendStartDate);
+      window.su_post_extension_end = formatFmDate(postExtendEndDate);
+      window.su_email_post_extension_start =
+        formatEmailDate(postExtendStartDate);
+      window.su_email_post_extension_end = formatEmailDate(postExtendEndDate);
+    }
 
     window.su_extension = extension();
     window.prefillData = travelers;
