@@ -108,12 +108,11 @@ class ggTripForm {
     window.navigateToTripPolicy = () => {
       const destUrl = new URL(
         this.trips[uuid].full_slug,
-        window.location.origin,
-        null,
-        false
+        window.location.origin
       );
       destUrl.hash = 'cancellation-policy';
       window.open(destUrl, '_blank');
+      return false;
     };
     window.su_trip_start_date = this.trips[uuid].startDate
       ? this.formatFmDate(this.trips[uuid].startDate)
