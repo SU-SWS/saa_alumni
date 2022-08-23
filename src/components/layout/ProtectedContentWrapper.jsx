@@ -70,7 +70,7 @@ const ProtectedContentWrapper = ({ blok }) => {
       <RichTextRenderer
         wysiwyg={blok.accessDeniedContent}
         isDark
-        className="su-rs-px-2"
+        className="su-rs-px-2 su-text-center"
         aria-live="polite"
         role="status"
       />
