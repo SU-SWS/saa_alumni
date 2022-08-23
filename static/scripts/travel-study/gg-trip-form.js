@@ -265,11 +265,13 @@ class ggTripForm {
     content.appendChild(main);
     this.render(content);
 
-    // Remove Loader once GiveGab Form completes render
-    script.addEventListener('widgetRenderEnd', () => {
+    const removeLoader = () => {
       ggScript.removeChild(loaderWrapper);
-    });
-    script.removeEventListener('widgetRenderEnd');
+    };
+
+    // Remove Loader once GiveGab Form completes render
+    script.addEventListener('widgetRenderEnd', removeLoader);
+    script.removeEventListener('widgetRenderEnd', removeLoader);
   };
 
   /**
