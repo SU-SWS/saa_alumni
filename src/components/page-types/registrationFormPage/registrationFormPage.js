@@ -82,7 +82,7 @@ const RegistrationFormPage = (props) => {
     window.navigateToTripPolicy = () => {
       const destUrl = new URL(tripUrl, window.location.origin);
       destUrl.hash = 'cancellation-policy';
-      window.open(destUrl);
+      window.open(destUrl, '_blank');
     };
 
     // Trip extension related data

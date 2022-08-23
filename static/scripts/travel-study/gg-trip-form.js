@@ -105,6 +105,14 @@ class ggTripForm {
     window.su_trip_id = this.trips[uuid].tripId;
     window.su_trip_name = this.trips[uuid].title;
     window.su_trip_url = `https://alumni.stanford.edu/${this.trips[uuid].full_slug}`;
+    window.navigateToTripPolicy = () => {
+      const destUrl = new URL(
+        this.trips[uuid].full_slug,
+        window.location.origin
+      );
+      destUrl.hash = 'cancellation-policy';
+      window.open(destUrl, '_blank');
+    };
     window.su_trip_start_date = this.trips[uuid].startDate
       ? this.formatFmDate(this.trips[uuid].startDate)
       : '';
