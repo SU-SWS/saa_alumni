@@ -46,7 +46,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
     }
   });
 
-  const logoutLinkClasses = showDesktopXl
+  const logoutLinkClasses = showDesktop
     ? mainLinkClasses
     : styles.utilityNavLink;
 
