@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import { FormContext } from '../../../contexts/FormContext';
@@ -7,19 +7,12 @@ import HeroIcon from '../../simple/heroIcon';
 
 const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
-  const [removeBtn, setRemoveBtn] = useState(false);
   const { travelersData } = state;
-
-  useEffect(() => {
-    setRemoveBtn(
-      travelersData.find(
-        (selectedTraveler) => selectedTraveler.su_did === traveler.su_did
-      )
-    );
-  }, [travelersData, setRemoveBtn, traveler]);
+  const buttonDisplay = travelersData.find(
+    (selectedTraveler) => selectedTraveler.su_did === traveler.su_did
+  );
 
   const addRelationship = () => {
-    traveler.removeBtn = true;
     if (traveler.su_reg.includes('Primary')) {
       dispatch({
         type: 'addRegistrant',
@@ -34,7 +27,6 @@ const TripTravelerCard = ({ traveler }) => {
   };
 
   const removeRelationship = () => {
-    traveler.removeBtn = false;
     dispatch({
       type: 'removeTraveler',
       payload: traveler.su_did,
@@ -42,7 +34,7 @@ const TripTravelerCard = ({ traveler }) => {
   };
 
   const toggleRelationship = () => {
-    if (removeBtn) {
+    if (buttonDisplay) {
       removeRelationship();
     } else {
       addRelationship();
@@ -79,7 +71,7 @@ const TripTravelerCard = ({ traveler }) => {
             justifyContent="start"
             className="su-flex-shrink-0"
           >
-            {removeBtn ? (
+            {buttonDisplay ? (
               <>
                 <div className="su-border-2 su-rounded-full su-border-digital-red-xlight su-mr-03em">
                   <HeroIcon
@@ -102,7 +94,7 @@ const TripTravelerCard = ({ traveler }) => {
             )}
           </FlexBox>
         </FlexBox>
-        {removeBtn && (
+        {buttonDisplay && (
           <p className="su-basefont-23 su-mb-0">
             <HeroIcon
               iconType="check"
