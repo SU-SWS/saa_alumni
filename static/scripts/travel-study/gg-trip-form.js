@@ -105,7 +105,8 @@ class ggTripForm {
     window.su_trip_id = this.trips[uuid].tripId;
     window.su_trip_name = this.trips[uuid].title;
     window.su_trip_url = `https://alumni.stanford.edu/${this.trips[uuid].full_slug}`;
-    window.navigateToTripPolicy = () => {
+    window.navigateToTripPolicy = (e) => {
+      e.preventdefault();
       const destUrl = new URL(
         this.trips[uuid].full_slug,
         window.location.origin
