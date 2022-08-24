@@ -80,7 +80,10 @@ const ProtectedContentWrapper = ({ blok }) => {
           <p className="su-mb-0">
             If you are still experiencing this issue, please contact
           </p>
-          <a href="/" className="su-text-digital-xlight hocus:su-text-white">
+          <a
+            href="https://stanford.service-now.com/alumni_donor_services?id=sc_cat_item&sys_id=9a91f4b6db890050404aa4cb0b961978"
+            className="su-text-digital-xlight hocus:su-text-white"
+          >
             Stanford Alumni Customer Service
           </a>
         </div>
