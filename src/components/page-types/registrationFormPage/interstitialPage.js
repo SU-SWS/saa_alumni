@@ -34,6 +34,7 @@ import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './interstitialPage.styles';
+import { formatUsDate } from '../../../utilities/transformDate';
 
 const InterstitialPage = (props) => {
   const {
@@ -89,7 +90,9 @@ const InterstitialPage = (props) => {
           relationshipSelectList,
           relationship?.relationshipType
         ),
-        su_dob: relationship?.relatedContactBirthDate,
+        su_dob: relationship?.relatedContactBirthDate
+          ? formatUsDate(relationship?.relatedContactBirthDate)
+          : '',
         su_reg: 'Related contact: deposit',
         su_email: undefined,
         su_phone: undefined,
@@ -147,7 +150,7 @@ const InterstitialPage = (props) => {
       phoneNumberTypeList,
       primaryRegistrantPhoneNumberType
     ),
-    su_dob: userProfile?.birthDate,
+    su_dob: userProfile?.birthDate ? formatUsDate(userProfile?.birthDate) : '',
     su_relation: 'Guest',
     su_reg: 'Primary registrant: deposit',
   };

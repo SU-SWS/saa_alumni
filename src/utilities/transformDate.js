@@ -12,3 +12,11 @@ export const formatEmailDate = (tripDate) => {
   const date = new Date(tripDate).toLocaleDateString('en-US', dateFormat);
   return date;
 };
+
+export const formatUsDate = (tripDate) => {
+  const date = new Date(tripDate);
+  const year = date.getFullYear();
+  const month = (1 + date.getMonth()).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  return `${month}/${day}/${year}`;
+};
