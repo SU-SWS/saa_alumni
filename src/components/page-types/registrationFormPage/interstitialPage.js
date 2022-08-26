@@ -184,7 +184,7 @@ const InterstitialPage = (props) => {
                   </GridCell>
                 </Grid>
                 <Grid gap xs={12} className={styles.gridContent}>
-                  <GridCell xs={12} lg={8}>
+                  <GridCell xs={12} lg={10}>
                     <Heading
                       level={3}
                       size={5}
@@ -197,7 +197,10 @@ const InterstitialPage = (props) => {
                     <p className={styles.gridText}>
                       We recommend adding the people listed below in this step,
                       as you won’t be able to later. You will be able to add
-                      people not listed below later in the process.
+                      people not listed below later in the process. If you are
+                      not attending this trip, the first selected traveler will
+                      be assigned as the Primary registrant and receive the trip
+                      payment receipt.
                     </p>
                   </GridCell>
                 </Grid>
