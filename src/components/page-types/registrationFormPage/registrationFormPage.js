@@ -63,7 +63,23 @@ const RegistrationFormPage = (props) => {
   };
 
   const registrationSlug = pageContext?.story?.full_slug;
-  const travelers = location?.state?.travelers;
+
+  const checkPrimary = (travelersData) => {
+    if (
+      travelersData.find(
+        (traveler) => traveler.su_reg === 'Primary registrant: deposit'
+      )
+    ) {
+      return travelersData;
+    }
+    // eslint-disable-next-line no-param-reassign
+    travelersData[0].su_reg = 'Primary registrant: deposit';
+    return travelersData;
+  };
+
+  const travelers = location?.state?.travelers
+    ? checkPrimary(location?.state?.travelers)
+    : '';
 
   useEffect(() => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;
@@ -119,6 +135,9 @@ const RegistrationFormPage = (props) => {
     }
 
     window.su_extension = extension();
+
+    // Provides registrant's encodedSUID as an identifying piece for FM
+    window.su_registrant_did = userProfile?.session?.encodedSUID;
     window.prefillData = travelers;
     if (travelers) {
       window.prefillData = travelers;
