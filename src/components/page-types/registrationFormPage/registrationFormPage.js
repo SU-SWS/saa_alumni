@@ -104,7 +104,7 @@ const RegistrationFormPage = (props) => {
     };
 
     // Trip room category check
-    if (roomCategory.length === 0) {
+    if (roomCategory.includes('None')) {
       window.su_category_request = 'none';
       window.su_category_first = 'None';
       window.su_category_second = 'None';
