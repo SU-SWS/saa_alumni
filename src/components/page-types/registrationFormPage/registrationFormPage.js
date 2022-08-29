@@ -39,6 +39,7 @@ const RegistrationFormPage = (props) => {
           postExtendStartDate,
           postExtendEndDate,
           postExtendPrice,
+          roomCategory,
         },
       },
       heroImage: { filename, alt, focus } = {},
@@ -102,6 +103,13 @@ const RegistrationFormPage = (props) => {
       return false;
     };
 
+    // Trip room category check
+    if (roomCategory.length === 0) {
+      window.su_category_request = 'none';
+      window.su_category_first = 'none';
+      window.su_category_second = 'none';
+    }
+
     // Trip extension related data
     window.su_pre_extension_name = extendHeading;
     window.su_post_extension_name = postExtendHeading;
@@ -159,6 +167,7 @@ const RegistrationFormPage = (props) => {
     postExtendStartDate,
     postExtendEndDate,
     postExtendPrice,
+    roomCategory,
     userProfile,
   ]);
 
