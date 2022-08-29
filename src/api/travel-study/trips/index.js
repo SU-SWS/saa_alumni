@@ -78,6 +78,7 @@ const tripsCollection = async (req, res) => {
       preExtendEndDate: story.content.extendEndDate,
       postExtendStartDate: story.content.postExtendStartDate,
       postExtendEndDate: story.content.postExtendEndDate,
+      roomCategory: story.content.roomCategory,
     };
   });
 

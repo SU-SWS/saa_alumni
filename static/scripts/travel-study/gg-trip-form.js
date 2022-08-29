@@ -150,6 +150,12 @@ class ggTripForm {
     window.su_email_post_extension_end = this.trips[uuid].postExtendEndDate
       ? this.formatEmailDate(this.trips[uuid].postExtendEndDate)
       : '';
+
+    if (this.trips[uuid].roomCategory.includes('None')) {
+      window.su_category_request = 'none';
+      window.su_category_first = 'None';
+      window.su_category_second = 'None';
+    }
   };
 
   /**
