@@ -185,7 +185,7 @@ const InterstitialPage = (props) => {
                   </GridCell>
                 </Grid>
                 <Grid gap xs={12} className={styles.gridContent}>
-                  <GridCell xs={12} lg={10}>
+                  <GridCell xs={12} lg={8}>
                     <Heading
                       level={3}
                       size={5}
@@ -193,12 +193,13 @@ const InterstitialPage = (props) => {
                       font="serif"
                       className={styles.noMarginBottom}
                     >
-                      Add existing connections and past travelers to your trip
+                      Add existing connections
                     </Heading>
                     <p className={styles.gridText}>
-                      We recommend adding the people listed below in this step,
-                      as you won’t be able to later. You will be able to add
-                      people not listed below later in the process.
+                      If you are traveling with any of the friends or family
+                      listed below, select them here to use the information we
+                      have on record for them. You will be able to add
+                      additional guests later.
                     </p>
                   </GridCell>
                 </Grid>
