@@ -14,6 +14,7 @@ import {
   FormContext,
 } from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
+import TripPrimaryCard from './tripPrimaryCard';
 import TripTravelerCard from './tripTravelerCard';
 import TripTravelerList from './tripTravelerList';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
@@ -197,10 +198,7 @@ const InterstitialPage = (props) => {
                     <p className={styles.gridText}>
                       We recommend adding the people listed below in this step,
                       as you won’t be able to later. You will be able to add
-                      people not listed below later in the process. If you are
-                      not attending this trip, the first selected traveler will
-                      be assigned as the Primary registrant and receive the trip
-                      payment receipt.
+                      people not listed below later in the process.
                     </p>
                   </GridCell>
                 </Grid>
@@ -210,7 +208,7 @@ const InterstitialPage = (props) => {
                       direction="col"
                       className={styles.gridTravelerList}
                     >
-                      <TripTravelerCard traveler={primaryRegistrant} />
+                      <TripPrimaryCard traveler={primaryRegistrant} />
                       {relationships?.length > 0 ? (
                         <>
                           {relatedContacts.map((relatedContact) => (

@@ -64,23 +64,7 @@ const RegistrationFormPage = (props) => {
   };
 
   const registrationSlug = pageContext?.story?.full_slug;
-
-  const checkPrimary = (travelersData) => {
-    if (
-      travelersData.find(
-        (traveler) => traveler.su_reg === 'Primary registrant: deposit'
-      )
-    ) {
-      return travelersData;
-    }
-    // eslint-disable-next-line no-param-reassign
-    travelersData[0].su_reg = 'Primary registrant: deposit';
-    return travelersData;
-  };
-
-  const travelers = location?.state?.travelers
-    ? checkPrimary(location?.state?.travelers)
-    : '';
+  const travelers = location?.state?.travelers;
 
   useEffect(() => {
     const tripUrl = `/${fullSlug.replace(/^\//, '')}`;

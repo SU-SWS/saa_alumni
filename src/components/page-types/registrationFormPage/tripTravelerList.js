@@ -6,14 +6,6 @@ import { FlexBox } from '../../layout/FlexBox';
 const TripTravelerList = () => {
   const [state] = useContext(FormContext);
 
-  if (state.travelersData.length === 0) {
-    return (
-      <p className="su-text-center su-basefont-23">
-        No travelers have been selected
-      </p>
-    );
-  }
-
   return (
     <FlexBox
       direction="col"
@@ -21,9 +13,27 @@ const TripTravelerList = () => {
       justifyContent="between"
       alignItems="center"
     >
-      {state.travelersData.map((traveler) => (
-        <TripTravelerListItem key={traveler.su_did} traveler={traveler} />
-      ))}
+      {state.travelersData.map((traveler) => {
+        if (traveler.su_reg.includes('Primary')) {
+          return (
+            <>
+              <TripTravelerListItem
+                key={traveler.su_did}
+                traveler={traveler}
+                isBtn={false}
+              />
+            </>
+          );
+        }
+        return (
+          <TripTravelerListItem key={traveler.su_did} traveler={traveler} />
+        );
+      })}
+      {state.travelersData.length === 1 && (
+        <p className="su-text-center su-basefont-23">
+          You haven’t yet added any additional travelers.
+        </p>
+      )}
     </FlexBox>
   );
 };
