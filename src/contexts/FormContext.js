@@ -8,11 +8,6 @@ export const FormContext = createContext(initialFormState);
 
 function formReducer(state, action) {
   switch (action.type) {
-    // Add Primary Registrant as the first traveler of the list
-    case 'addRegistrant':
-      return {
-        travelersData: [action.payload, ...state.travelersData],
-      };
     case 'addTraveler':
       return {
         travelersData: [...state.travelersData, action.payload],

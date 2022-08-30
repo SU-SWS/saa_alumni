@@ -21,9 +21,20 @@ const TripTravelerList = () => {
       justifyContent="between"
       alignItems="center"
     >
-      {state.travelersData.map((traveler) => (
-        <TripTravelerListItem key={traveler.su_did} traveler={traveler} />
-      ))}
+      {state.travelersData.map((traveler) => {
+        if (traveler.su_reg.includes('Primary')) {
+          return (
+            <TripTravelerListItem
+              key={traveler.su_did}
+              traveler={traveler}
+              isBtn={false}
+            />
+          );
+        }
+        return (
+          <TripTravelerListItem key={traveler.su_did} traveler={traveler} />
+        );
+      })}
     </FlexBox>
   );
 };
