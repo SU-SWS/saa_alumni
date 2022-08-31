@@ -53,11 +53,11 @@ const RegistrationFormPage = (props) => {
   const windowLocation = useLocation();
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
-  const title = `Register for your trip`;
   const helmetTitle = `Register for your trip: ${tripTitle}`;
   const heroProps = {
     image: { filename, alt, focus },
-    headline: title,
+    sansSuper: 'Registration for',
+    headline: tripTitle,
     headlineSize: 'medium',
     isDarkGradient: 'true',
     isHideScroll: 'true',
