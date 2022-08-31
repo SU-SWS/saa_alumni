@@ -14,5 +14,5 @@ export const contentStyle = ({ isSingleColumn }) =>
     : 'su-sticky su-top-0 su-h-fit su-text-white';
 export const formCardStyle = ({ isSingleColumn }) =>
   isSingleColumn
-    ? 'md:su-col-2 xl:su-col-start-3 2xl:su-col-start-4'
+    ? 'md:su-col-start-2 xl:su-col-start-3 2xl:su-col-start-4'
     : 'lg:su-rs-mt-7 lg:su-col-start-7 xl:su-col-start-7 2xl:su-col-start-7';

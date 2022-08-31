@@ -1,8 +1,8 @@
-/* eslint-disable no-param-reassign */
 import React, { useContext, useEffect } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import { FormContext } from '../../../contexts/FormContext';
+import HeroIcon from '../../simple/heroIcon';
 
 const TripPrimaryCard = ({ traveler }) => {
   const [, dispatch] = useContext(FormContext);
@@ -37,6 +37,13 @@ const TripPrimaryCard = ({ traveler }) => {
             {traveler.su_dname} (you)
           </Heading>
         </FlexBox>
+        <p className="su-basefont-23 su-mb-0">
+          <HeroIcon
+            iconType="check"
+            className="su-inline-block su-mb-02em su-text-palo-verde-light"
+          />
+          Added
+        </p>
       </FlexBox>
     </div>
   );

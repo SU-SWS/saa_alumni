@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import React, { useContext } from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';

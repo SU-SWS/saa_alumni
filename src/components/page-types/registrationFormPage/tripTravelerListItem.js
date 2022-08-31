@@ -21,7 +21,10 @@ const TripTravelerListItem = ({ traveler, isBtn = true }) => {
       justifyContent="between"
       alignItems="center"
     >
-      <p className="su-big-paragraph su-m-0">{traveler.su_dname}</p>
+      <p className="su-big-paragraph su-m-0">
+        {traveler.su_dname}
+        {!isBtn && ` (you)`}
+      </p>
       {isBtn && (
         <button
           type="button"

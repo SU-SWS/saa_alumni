@@ -3,6 +3,13 @@ export const contentWrapper = 'su-cc su-rs-pb-8 su-bg-saa-black su-text-white';
 export const grid = 'su-rs-pb-8';
 export const gridHeader = 'lg:su-col-start-4 xl:su-col-start-4';
 export const heading = 'su-rs-mt-7';
+export const depositWrapper = '';
+export const depositContent =
+  'children:su-text-center su-rs-mb-8 lg:su-col-start-2 xl:su-col-start-3';
+export const contactNumber =
+  'su-group su-inline-block su-font-normal su-text-white hocus:su-text-digital-red-xlight su-no-underline hocus:su-underline su-transition-colors';
+export const externalIcon =
+  'su-inline-block su-text-digital-red-light group-hocus:su-text-digital-red-xlight';
 export const bodyContent = 'su-subheading su-text-center su-mb-0';
 export const gridContent = 'su-rs-mb-5';
 export const gridText = 'su-intro-text su-mb-0 su-rs-mt-1';
