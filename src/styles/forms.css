@@ -347,6 +347,14 @@
   display: none;
 }
 
+.ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeNoMobileLabel {
+  text-transform: lowercase;
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeNoMobileLabel::first-letter {
+  text-transform: capitalize;
+}
+
 .ggeAddress__state,
 .ggeAddress__zipcode,
 .ggePayment--credit {
