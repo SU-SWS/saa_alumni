@@ -40,9 +40,13 @@ import { formatUsDate } from '../../../utilities/transformDate';
 const InterstitialPage = (props) => {
   const {
     blok: {
-      body,
       trip: {
-        content: { title: tripTitle },
+        content: {
+          title: tripTitle,
+          tripDeposit,
+          preTripExtensionDeposit,
+          postTripExtensionDeposit,
+        },
       },
       heroImage: { filename, alt, focus } = {},
       ankleContent,
@@ -51,12 +55,12 @@ const InterstitialPage = (props) => {
     location,
   } = props;
   const numAnkle = getNumBloks(ankleContent);
-  const title = `Register for your trip`;
   const helmetTitle = `Register for your trip: ${tripTitle}`;
   const slug = location.pathname.replace(/\/$/, '');
   const heroProps = {
     image: { filename, alt, focus },
-    headline: title,
+    sansSuper: 'Registration for',
+    headline: tripTitle,
     headlineSize: 'medium',
     isDarkGradient: 'true',
     isHideScroll: 'true',
@@ -156,6 +160,9 @@ const InterstitialPage = (props) => {
     su_reg: 'Primary registrant: deposit',
   };
 
+  const extensionDeposit =
+    preTripExtensionDeposit || postTripExtensionDeposit || false;
+
   return (
     <AuthenticatedPage>
       <FormContextProvider>
@@ -170,18 +177,50 @@ const InterstitialPage = (props) => {
               <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
               <Hero blok={heroProps} />
               <Container className={styles.contentWrapper}>
-                <Grid xs={12} className={styles.grid}>
-                  <GridCell xs={12} lg={6} className={styles.gridHeader}>
+                <Grid gap xs={12} className={styles.depositWrapper}>
+                  <GridCell
+                    xs={12}
+                    lg={10}
+                    xl={8}
+                    className={styles.depositContent}
+                  >
                     <Heading
-                      level={2}
-                      align="center"
+                      level={3}
+                      size={5}
+                      align="left"
                       font="serif"
-                      className={styles.heading}
+                      className={styles.noMarginBottom}
                     >
-                      {tripTitle}:<br />
-                      Registration
+                      Before you register
                     </Heading>
-                    {body && <p className={styles.bodyContent}>{body}</p>}
+                    <p className={styles.gridText}>
+                      A deposit amount of ${tripDeposit} per traveler is
+                      required upon registration.
+                      <br />
+                      {extensionDeposit && (
+                        <>
+                          For extensions, a deposit amount of $
+                          {extensionDeposit} per traveler is required upon
+                          registration.
+                        </>
+                      )}
+                    </p>
+                    <p className={styles.gridText}>
+                      Looking to give this trip as a gift? To ensure that your
+                      gift is kept private, please register for this trip by
+                      {` `}
+                      <a
+                        href="tel:+16507251093"
+                        className={styles.contactNumber}
+                      >
+                        giving us a call
+                        <HeroIcon
+                          iconType="external"
+                          className={styles.externalIcon}
+                          isAnimate
+                        />
+                      </a>
+                    </p>
                   </GridCell>
                 </Grid>
                 <Grid gap xs={12} className={styles.gridContent}>
