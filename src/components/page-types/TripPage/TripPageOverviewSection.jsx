@@ -154,6 +154,7 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                   className={{ 'su-w-full': true, 'su-w-fit': false }}
                   align="center"
                   size="small"
+                  target="_blank"
                 >
                   Reserve
                 </SAALinkButton>
