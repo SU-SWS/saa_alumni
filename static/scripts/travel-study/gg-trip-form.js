@@ -152,7 +152,7 @@ class ggTripForm {
       ? this.formatEmailDate(this.trips[uuid].postExtendEndDate)
       : '';
 
-    if (this.trips[uuid].roomCategory.includes('None')) {
+    if (this.trips[uuid] && this.trips[uuid].roomCategory && this.trips[uuid].roomCategory.includes('None')) {
       window.su_category_request = 'none';
       window.su_category_first = 'None';
       window.su_category_second = 'None';
