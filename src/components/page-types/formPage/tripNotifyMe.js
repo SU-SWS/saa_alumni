@@ -49,6 +49,7 @@ const TripNotifyMe = (props) => {
 
   return (
     <SbEditable content={blok}>
+      <Helmet titleTemplate={title} title={title} />
       <Grid xs={12}>
         <GridCell xs={12} md={6} lg={12}>
           <SbLink link={{ url: tripURL }} classes={styles.backToLink}>
@@ -59,7 +60,6 @@ const TripNotifyMe = (props) => {
             />
             Back to {tripTitle}
           </SbLink>
-          <Helmet titleTemplate={title} title={title} />
           <Heading
             level={1}
             size={6}

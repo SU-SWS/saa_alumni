@@ -24,6 +24,7 @@ const TripCustomJourneys = (props) => {
 
   return (
     <SbEditable content={blok}>
+      <Helmet titleTemplate={title} title={title} />
       <SbLink link={{ url: tripURL }} classes={styles.backToLink}>
         <HeroIcon
           iconType="arrow-left"
@@ -32,7 +33,6 @@ const TripCustomJourneys = (props) => {
         />
         Back to {title}
       </SbLink>
-      <Helmet titleTemplate={title} title={title} />
       <Heading
         level={1}
         align="left"

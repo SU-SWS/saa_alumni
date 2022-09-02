@@ -167,6 +167,7 @@ const InterstitialPage = (props) => {
     <AuthenticatedPage>
       <FormContextProvider>
         <SbEditable content={blok}>
+          <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
           <Layout hasHero="true" {...props}>
             <Container
               as="main"
@@ -174,7 +175,6 @@ const InterstitialPage = (props) => {
               className={styles.container}
               width="full"
             >
-              <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
               <Hero blok={heroProps} />
               <Container className={styles.contentWrapper}>
                 <Grid gap xs={12} className={styles.depositWrapper}>
