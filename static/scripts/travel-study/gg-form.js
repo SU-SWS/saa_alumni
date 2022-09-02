@@ -7,6 +7,7 @@ class ggForm {
   constructor(options) {
     this.id = options.id;
     this.form = options.form;
+    this.source = options?.source || 'http://localhost:8000';
   }
 
   /**
@@ -30,7 +31,7 @@ class ggForm {
 
   mountAdditionalScripts = () => {
     document.head.innerHTML +=
-      '<link rel="stylesheet" href="https://tsgg--stanford-alumni.netlify.app/scripts/travel-study/gg-form.css" type="text/css"/>';
+      '<link rel="stylesheet" href="' + this.source + '/scripts/travel-study/gg-form.css" type="text/css"/>';
     document.head.innerHTML +=
       '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };
