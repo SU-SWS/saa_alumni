@@ -15,7 +15,7 @@ export const burgerIconMobile =
   'su-transition-colors su-w-[2.4rem] group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
 
 const menuMobileCommon =
-  'su-w-full su-border-t su-border-solid su-border-digital-red su-flex su-flex-col su-list-unstyled children:su-mb-0';
+  'su-w-full su-border-t su-border-solid su-border-digital-red-light su-flex su-flex-col su-list-unstyled children:su-mb-0';
 export const menuMobileSAA = ({ menuOpened } = {}) =>
   dcnb(menuMobileCommon, ' su-bg-black');
 export const menuMobileHomesite = ({ menuOpened } = {}) =>
