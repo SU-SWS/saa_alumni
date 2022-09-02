@@ -194,14 +194,14 @@ const InterstitialPage = (props) => {
                       Before you register
                     </Heading>
                     <p className={styles.gridText}>
-                      A deposit amount of ${tripDeposit} per traveler is
-                      required upon registration.
+                      A deposit of ${tripDeposit.toLocaleString('en-US')} per
+                      traveler is required upon registration.
                       <br />
                       {extensionDeposit && (
                         <>
-                          For extensions, a deposit amount of $
-                          {extensionDeposit} per traveler is required upon
-                          registration.
+                          For extensions, an additional deposit of $
+                          {extensionDeposit.toLocaleString('en-US')} per
+                          traveler is required.
                         </>
                       )}
                     </p>
