@@ -61,7 +61,6 @@ class AuthContextProvider extends React.Component {
     // To be logged in, session must be available.
     Promise.allSettled([sess, prof])
       .then(([session, profile]) => {
-
         if (session.status === 'fullfilled' && session.value) {
           this.dispatch({ type: 'setAuthenticated', payload: false });
           this.dispatch({ type: 'setAuthenticating', payload: false });
