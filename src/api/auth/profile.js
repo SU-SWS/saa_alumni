@@ -13,8 +13,7 @@ import { isStoryblokEditor } from '../../utilities/isStoryblokEditor';
  */
 const megaprofileHandler = async (req, res, next) => {
   const mp = new MegaProfile();
-  // const profileId = req.user.encodedSUID;
-  const profileId = undefined;
+  const profileId = req.user.encodedSUID;
   const session = req.user;
   let fullgg = {};
   let affiliations = [];
