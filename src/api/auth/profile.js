@@ -6,6 +6,8 @@ import connect from 'next-connect';
 import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import { ExceptionHandler } from '../../utilities/ApiExceptions';
+import { fullggMockData } from '../../utilities/mocks';
+import { isStoryblokEditor } from '../../utilities/isStoryblokEditor';
 
 /**
  * Fetches the profile data from the MEGA PROFILE API endpoints.
@@ -13,8 +15,9 @@ import { ExceptionHandler } from '../../utilities/ApiExceptions';
 const megaprofileHandler = async (req, res) => {
   const mp = new MegaProfile();
   const profileId = req.user.encodedSUID;
-  let fullgg;
-  let affiliations;
+  const session = req.user;
+  let fullgg = {};
+  let affiliations = {};
 
   // While the authentication is between states support fetching by both oauth
   // services for the majority of the profile information.
@@ -22,7 +25,7 @@ const megaprofileHandler = async (req, res) => {
     const fullggresult = await mp.get(`/${profileId}/profiles/fullgg`);
     fullgg = fullggresult.data;
   } catch (err) {
-    return ExceptionHandler(res, err);
+    console.error(ExceptionHandler(res, err));
   }
 
   // Affiliations is already on the keycloak ouath so we fetch here.
@@ -30,13 +33,23 @@ const megaprofileHandler = async (req, res) => {
     const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
     affiliations = mpresult.data.affiliations;
   } catch (err) {
-    return ExceptionHandler(res, err);
+    console.error(ExceptionHandler(res, err));
   }
 
-  const mpUser = { ...fullgg, affiliations };
+  const mpUser = { session, ...fullgg, affiliations };
   return res.status(200).json(mpUser);
 };
 
-const handler = connect().use(authInstance.authorize()).get(megaprofileHandler);
+const storyblokPreviewPassthrough = async (req, res, next) => {
+  const isEditor = await isStoryblokEditor(req);
+  if (isEditor) {
+    res.json(fullggMockData);
+  } else next();
+};
+
+const handler = connect()
+  .get(storyblokPreviewPassthrough)
+  .use(authInstance.authorize())
+  .get(megaprofileHandler);
 
 export default handler;

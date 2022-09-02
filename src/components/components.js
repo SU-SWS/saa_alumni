@@ -18,12 +18,16 @@ import EmbedCard from './cards/embedCard';
 import EmbedVideo from './media/embedVideo';
 import Event from './content-types/event/event';
 import EventCard from './cards/eventCard';
+import FormPage from './page-types/formPage/formPage';
+import GiveGabForm from './embed/giveGabForm';
+import GiveGabErrorMessage from './embed/giveGabErrorMessage';
 import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
+import InterstitialPage from './page-types/registrationFormPage/interstitialPage';
 import Itinerary from './composite/itinerary';
 import ItineraryItem from './composite/itineraryItem';
 import LinkGroup from './navigation/linkGroup';
@@ -46,6 +50,7 @@ import protectedContentItem from './cards/protectedContentItem';
 import Poster from './composite/poster';
 import ProtectedPage from './page-types/protectedPage';
 import Redirect from './redirect/Redirect';
+import RegistrationFormPage from './page-types/registrationFormPage/registrationFormPage';
 import { SBSAAMainNav } from './storyblok/saaMainNav';
 import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
 import SearchFacet from './search/searchFacet';
@@ -62,7 +67,10 @@ import SaaStoryCard from './cards/saaStoryCard';
 import { SBTripCard } from './storyblok/tripCard';
 import { SBTsContentPicker } from './storyblok/tsContentPicker';
 import { SBTsContentTemplate } from './storyblok/tsContentTemplate';
+import TripCustomJourneys from './page-types/formPage/tripCustomJourneys';
 import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
+import TripFormInformation from './composite/tripFormInformation';
+import TripNotifyMe from './page-types/formPage/tripNotifyMe';
 import TripPage from './page-types/TripPage/TripPage';
 import { SBUtilityNav } from './storyblok/utilityNav';
 import VerticalNav from './navigation/verticalNav';
@@ -90,12 +98,16 @@ const ComponentList = {
   embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
+  formPage: FormPage,
+  giveGabForm: GiveGabForm,
+  giveGabErrorMessage: GiveGabErrorMessage,
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
   grid: SBGrid,
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
+  interstitialPage: InterstitialPage,
   itinerary: Itinerary,
   itineraryItem: ItineraryItem,
   linkGroup: LinkGroup,
@@ -118,6 +130,7 @@ const ComponentList = {
   poster: Poster,
   protectedPage: ProtectedPage,
   redirect: Redirect,
+  registrationFormPage: RegistrationFormPage,
   saaMainNav: SBSAAMainNav,
   saaMainMenuGroup: SBSAAMainMenuGroup,
   searchFacet: SearchFacet,
@@ -133,9 +146,12 @@ const ComponentList = {
   saaStoryCard: SaaStoryCard,
   trip: TripPage,
   tripCard: SBTripCard,
+  tripCustomJourneys: TripCustomJourneys,
   tripFilterPage: TripFilterPage,
   tsContentPicker: SBTsContentPicker,
   tsContentTemplate: SBTsContentTemplate,
+  tripFormInformation: TripFormInformation,
+  tripNotifyMe: TripNotifyMe,
   utilityNav: SBUtilityNav,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,

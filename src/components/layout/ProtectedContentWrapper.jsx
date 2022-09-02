@@ -6,6 +6,7 @@ import CreateStories from '../../utilities/createStories';
 import AuthContext from '../../contexts/AuthContext';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import hasRichText from '../../utilities/hasRichText';
+import { Heading } from '../simple/Heading';
 
 const ProtectedContentWrapper = ({ blok }) => {
   const [authenticatedContent, setAuthenticatedContent] = useState(null);
@@ -54,6 +55,38 @@ const ProtectedContentWrapper = ({ blok }) => {
     return (
       <div aria-live="polite" role="status">
         <CreateStories stories={authenticatedContent} />
+      </div>
+    );
+  }
+
+  // Logged in and has no megaprofile data
+  if (
+    !authState.isAuthenticating &&
+    authState.isAuthenticated &&
+    authState.isError &&
+    !checkingAccess &&
+    authenticatedContent?.length === 0
+  ) {
+    return (
+      <div aria-live="polite" role="status" className="su-text-center">
+        <Heading level={3} size={3} font="serif">
+          Uh oh. This is embarassing.
+        </Heading>
+        <div className="su-basefont-23">
+          <p>
+            It looks like we’re currently unable to look up your membership
+            status due to a technical error. Please try again later.
+          </p>
+          <p className="su-mb-0">
+            If you are still experiencing this issue, please contact
+          </p>
+          <a
+            href="https://stanford.service-now.com/alumni_donor_services?id=sc_cat_item&sys_id=9a91f4b6db890050404aa4cb0b961978"
+            className="su-text-digital-xlight hocus:su-text-white"
+          >
+            Stanford Alumni Customer Service
+          </a>
+        </div>
       </div>
     );
   }
@@ -108,7 +141,7 @@ const ProtectedContentWrapper = ({ blok }) => {
   // Processing.
   return (
     <div aria-live="polite" role="status">
-      <p>Checking your access...</p>
+      <p>Loading...</p>
       <p className="su-text-center">
         <PulseLoader color="#820000" size={16} />
       </p>

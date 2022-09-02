@@ -36,11 +36,17 @@ export class MegaProfile {
 
   // Generic request handler w/ auth check
   request = async (config = {}) => {
+    let result;
     // Check authentication first
     if (!this.auth.isAuthenticated()) {
       await this.authenticate();
     }
-    const result = await this.client.request(config);
+
+    try {
+      result = await this.client.request(config);
+    } catch (err) {
+      console.error(err);
+    }
     return result;
   };
 

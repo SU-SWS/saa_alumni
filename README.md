@@ -1,5 +1,5 @@
 # [ADAPT SAA Alumni](https://github.com/SU-SWS/saa_alumni)
-
+ 
 <a href="https://codeclimate.com/github/SU-SWS/saa_alumni/maintainability"><img src="https://api.codeclimate.com/v1/badges/6545d64d90025f75e2c8/maintainability" /></a>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ce1b5cc8-4507-46b9-9416-dae43ce65989/deploy-status)](https://app.netlify.com/sites/stanford-alumni/deploys)

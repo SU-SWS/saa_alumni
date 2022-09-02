@@ -18,6 +18,12 @@ const storyblokRelations = [
   'verticalNav.verticalNav',
   'tripCard.trip',
   'tsContentPicker.contentPicker',
+  'tripNotifyMe.notifyMeText',
+  'tripCustomJourneys.customJourneysText',
+  'formPage.trip',
+  'registrationFormPage.trip',
+  'giveGabForm.failureMessage',
+  'failureMessage.giveGabErrorMessage',
 ];
 
 // Support for Gatsby CLI

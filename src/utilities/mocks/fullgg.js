@@ -1,3 +1,5 @@
+import { affiliationsMockData } from './affiliations';
+
 export const fullggMockData = {
   encodedSUID: '12345678910',
   birthDate: '1979-08-14',
@@ -250,4 +252,5 @@ export const fullggMockData = {
     encodedSUID: '12345678910',
     access_method: 'GET',
   },
+  affiliations: affiliationsMockData,
 };

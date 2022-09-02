@@ -1,6 +1,6 @@
 import React from 'react';
+import { useLocation } from '@reach/router';
 import PulseLoader from 'react-spinners/PulseLoader';
-import useLocation from '@reach/router';
 import AuthContext from '../../contexts/AuthContext';
 
 const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
@@ -9,8 +9,8 @@ const AuthenticatedPage = ({ children, redirectUnauthorized = true }) => {
   function redirectUnuauthorized() {
     const returnUrl =
       typeof window === 'undefined'
-        ? location.pathname
-        : window.location.pathname;
+        ? location.pathname + location.search
+        : window.location.pathname + window.location.search;
     const query = new URLSearchParams({ final_destination: returnUrl });
     window.location = `/api/auth/login?${query.toString()}`;
   }

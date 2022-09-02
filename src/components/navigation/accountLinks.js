@@ -12,7 +12,7 @@ import { SrOnlyText } from '../accessibility/SrOnlyText';
 import * as styles from './MainNav/userNavItems.styles';
 
 const Initial = ({ string }) => {
-  const initial = string.substr(0, 1);
+  const initial = string?.substr(0, 1);
   return (
     <div
       className="su-flex su-justify-center su-transition su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark"
@@ -29,7 +29,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
   const buttonRef = useRef(null);
   const [expanded, setExpanded] = useState(false);
   const loginParams = new URLSearchParams({
-    final_destination: location.pathname,
+    final_destination: location.pathname + location.search,
   });
 
   const { showDesktop: showDesktopXl } = useDisplay('xl');
