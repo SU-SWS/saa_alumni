@@ -69,7 +69,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
             <>
               {isAuthenticated && (
                 <li
-                  className="su-text-white su-relative su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0"
+                  className="su-text-white su-relative su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
                   ref={ref}
                 >
                   {showDesktop && (
