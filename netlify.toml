@@ -47,7 +47,7 @@
     endpoint = 'https://vault.stanford.edu'
     # Order doesn't matter here as these will be fetched asyncronously.
     # Try not to have dupes.
-    secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/tsgg']
+    secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/alumni']
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
@@ -75,9 +75,3 @@ package = "/plugins/netlify-plugin-wildcard-404-redirect"
   [context.production.plugins.inputs]
   # Path to the sitemap URL (optional, default = /sitemap.xml)
   sitemapPath = "/sitemap/sitemap-index.xml"
-
-## ########################## ##
-## REMOVE BEFORE MERGE TO DEV ##
-## ########################## ##
-[build.environment]
-  VAULT_OVERWRITE = "true"
