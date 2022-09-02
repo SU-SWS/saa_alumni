@@ -3,10 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SbEditable from 'storyblok-react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useStaticQuery, graphql } from 'gatsby';
-import StoryblokClient from 'storyblok-js-client';
 import Components from '../components/components';
-
-const sbClient = new StoryblokClient({});
 
 /**
  *
@@ -31,50 +28,51 @@ const getParam = function (val) {
 };
 
 /**
+ *
+ */
+const loadStory = (sbResolveRelations, setStory) => {
+  window.storyblok.get(
+    {
+      slug: window.storyblok.getParam('path'),
+      version: 'draft',
+      resolve_relations: sbResolveRelations || [],
+    },
+    (data) => {
+      setStory(data.story.content);
+    }
+  );
+};
+
+/**
  * This is Sparta
  */
 const initBridge = function (key, sbResolveRelations, setStory) {
-  const { StoryblokBridge } = window;
-
   // Initialize the Storyblok JS Bridge
-  const storyblokInstance = new StoryblokBridge({
-    preventClicks: true,
+  window.storyblok.init({
     resolveRelations: sbResolveRelations,
     accessToken: key,
   });
 
   // Ping the Visual Editor and enter Editmode manually
-  storyblokInstance.pingEditor(() => {
-    storyblokInstance.enterEditmode();
+  window.storyblok.pingEditor(() => {
+    window.storyblok.enterEditmode();
   });
 
   // Listens on multiple events and does a basic website refresh
-  storyblokInstance.on(['change', 'published', 'unpublished'], () => {
+  window.storyblok.on(['change', 'published', 'unpublished'], () => {
     window.location.reload();
   });
 
   // When the content author does stuff.
-  storyblokInstance.on('input', (payload) => {
-    setStory(payload.story.content);
+  window.storyblok.on('input', (payload) => {
+    // Add _editable properties to keep the Storyblok JS Bridge active after the content updates.
+    window.storyblok.addComments(payload.story.content, payload.story.id);
+    window.storyblok.resolveRelations(payload.story, sbResolveRelations, () => {
+      setStory(payload.story.content);
+    });
   });
-  storyblokInstance.on('enterEditmode', () => {
-    // loading the draft version on initial view of the page
-    sbClient
-      .get(`cdn/stories/${getParam('path')}`, {
-        version: 'draft',
-        resolve_relations: sbResolveRelations || [],
-        token: key,
-      })
-      .then(({ data }) => {
-        if (data.story) {
-          setStory(data.story.content);
-        }
-      })
-      .catch((error) => {
-        /* eslint-disable no-console */
-        console.log(error);
-      });
-  });
+
+  loadStory(sbResolveRelations, setStory);
 };
 
 /**
@@ -125,7 +123,8 @@ const StoryblokEntry = (props) => {
 
       const script = document.createElement('script');
       script.type = 'text/javascript';
-      script.src = '//app.storyblok.com/f/storyblok-v2-latest.js';
+      // script.src = '//app.storyblok.com/f/storyblok-v2-latest.js';
+      script.src = '//app.storyblok.com/f/storyblok-latest.js';
       script.onload = () => {
         initBridge(key, sbResolveRelations, setStory);
       };
