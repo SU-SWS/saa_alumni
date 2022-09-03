@@ -20,7 +20,8 @@ const ProtectedContentWrapper = ({ blok }) => {
       const requests = [];
 
       blok.protectedContentRef.forEach((item) => {
-        const slug = item?.protectedContentItem?.story?.full_slug;
+        // const slug = item?.protectedContentItem?.story?.full_slug;
+        const slug = item?.protectedContentItem?.cached_url;
         const request = fetch(`/api/private-proxy?slug=${slug}`).then((res) => {
           if (res.status === 200) {
             return res.json();
