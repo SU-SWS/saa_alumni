@@ -59,23 +59,23 @@ class AuthContextProvider extends React.Component {
     });
 
     // To be logged in, session must be available.
-    Promise.all([sess, prof])
+    Promise.allSettled([sess, prof])
       .then(([session, profile]) => {
-        if (!session) {
+        if (session.status === 'fullfilled' && session.value) {
           this.dispatch({ type: 'setAuthenticated', payload: false });
           this.dispatch({ type: 'setAuthenticating', payload: false });
           return;
         }
 
-        if (profile) {
-          this.dispatch({ type: 'setUserProfile', payload: profile });
+        if (profile.status === 'fulfilled' && profile.value) {
+          this.dispatch({ type: 'setUserProfile', payload: profile.value });
         }
 
-        if (Object.keys(profile?.affiliations).length === 0) {
+        if (Object.keys(profile.value?.affiliations).length === 0) {
           this.dispatch({ type: 'setError', payload: true });
         }
 
-        this.dispatch({ type: 'setUserSession', payload: session });
+        this.dispatch({ type: 'setUserSession', payload: session.value });
         this.dispatch({ type: 'setAuthenticated', payload: true });
         this.dispatch({ type: 'setAuthenticating', payload: false });
       })
