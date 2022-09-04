@@ -93,7 +93,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
         }`}
       >
-        <div className="su-h-[6.5rem] su-px-20 su-font-20 su-text-white su-flex su-justify-center su-items-center">
+        <div className="su-h-[7rem] su-px-20 su-text-20 su-text-white su-flex su-justify-center su-items-center">
           {mainMenuOpened && 'Menu'}
           {utilityMenuOpen && <UserHeaderIcon />}
         </div>

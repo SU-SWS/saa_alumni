@@ -69,7 +69,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
             <>
               {isAuthenticated && (
                 <li
-                  className="su-text-white su-relative su-pt-10 su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
+                  className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
                   ref={ref}
                 >
                   {showDesktop && (
@@ -84,12 +84,12 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         className={`su-inline-block su-mr-10 ${
                           showDesktopXl ? '' : 'su-sr-only'
                         }`}
-                      >{`Hi, ${userProfile.name.fullNameParsed.firstName} ${userProfile.name.fullNameParsed.lastName}`}</span>
+                      >{`Hi, ${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`}</span>
                       <SrOnlyText>
                         {`${expanded ? ' Close' : ' Open'} user menu`}
                       </SrOnlyText>
                       <Initial
-                        string={userProfile.name.fullNameParsed.firstName}
+                        string={userProfile?.name?.fullNameParsed?.firstName}
                       />
                       <ChevronDownIcon
                         className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition

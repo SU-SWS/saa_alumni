@@ -20,7 +20,7 @@ export const parentButton = ({
   isHomesite,
 } = {}) =>
   dcnb(
-    'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset-[3px]',
+    'su-group su-text-white su-transition-colors su-font-semibold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset-[3px]',
     buttonMobile,
     buttonDesktop,
     {

@@ -44,14 +44,15 @@ const UserHeaderIcon = ({ menuCircle }) => {
                   className={`su-inline-block su-mr-10 ${
                     showDesktop ? '' : 'su-sr-only'
                   }`}
-                >{`Hi, ${userProfile.name.fullNameParsed.firstName} ${userProfile.name.fullNameParsed.lastName}`}</span>
+                >{`Hi, ${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`}</span>
               )}
 
               <Initial
                 isAuthenticated={isAuthenticated}
                 menuCircle={menuCircle}
                 string={
-                  isAuthenticated && userProfile.name.fullNameParsed.firstName
+                  isAuthenticated &&
+                  userProfile?.name?.fullNameParsed?.firstName
                 }
               />
             </div>
