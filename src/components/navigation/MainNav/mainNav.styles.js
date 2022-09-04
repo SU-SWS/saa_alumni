@@ -12,7 +12,7 @@ export const headerUserCircle =
   'su-flex su-justify-center su-transition su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark';
 
 export const burgerIconMobile =
-  'su-transition-colors su-w-[2.4rem] group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
+  'su-transition-colors su-w-[2.2rem] group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
 
 const menuMobileCommon =
   'su-w-full su-border-t su-border-solid su-border-digital-red-light su-flex su-flex-col su-list-unstyled children:su-mb-0';

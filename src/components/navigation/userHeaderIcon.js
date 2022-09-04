@@ -13,7 +13,7 @@ const Initial = ({ string, isAuthenticated, menuCircle }) => {
       {isAuthenticated && initial}
       {!isAuthenticated && (
         <UserIcon
-          className="su-w-[2.6rem] su-h-[2.6rem] su-flex su-self-center"
+          className="su-w-20 su-h-20 su-flex su-self-center"
           aria-hidden="true"
         />
       )}

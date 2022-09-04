@@ -8,6 +8,7 @@ import * as styles from './mainNav.styles';
 import Modal from '../../layout/Modal/Modal';
 import AccountLinks from '../accountLinks';
 import UserHeaderIcon from '../userHeaderIcon';
+import { FlexBox } from '../../layout/FlexBox';
 
 /**
  * This Main Nav is only used on the SAA Homesite
@@ -93,10 +94,14 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
         }`}
       >
-        <div className="su-h-[7rem] su-px-20 su-text-20 su-text-white su-flex su-justify-center su-items-center">
+        <FlexBox
+          alignItems="center"
+          justifyContent="center"
+          className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
+        >
           {mainMenuOpened && 'Menu'}
           {utilityMenuOpen && <UserHeaderIcon />}
-        </div>
+        </FlexBox>
         {mainMenuOpened && (
           <ul
             className={styles.menuMobileHomesite({ mainMenuOpened })}

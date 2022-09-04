@@ -60,7 +60,7 @@ const UserNavItems = ({ expanded }) => {
               className={dcnb('su-m-0 ', styles.utilityNavLink, link.classes)}
               key={link.url}
             >
-              <a href={link.url}>
+              <a href={link.url} className="su-group">
                 {link.text}
                 {link.icon && (
                   <HeroIcon

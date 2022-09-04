@@ -10,9 +10,10 @@ import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import Modal from '../../layout/Modal/Modal';
 import AccountLinks from '../accountLinks';
 import UserHeaderIcon from '../userHeaderIcon';
+import { FlexBox } from '../../layout/FlexBox';
 
 /**
- * This Main Nav is only used on the SAA subsites
+ * This Main Nav is only used on the SAA subsites such as Travel/Study
  * For Main Nav used on the SAA Homesite, please see the mainNav component
  */
 
@@ -98,10 +99,14 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
           (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
         }`}
       >
-        <div className="su-h-[7rem] su-px-20 su-text-20 su-text-white su-flex su-justify-center su-items-center">
+        <FlexBox
+          alignItems="center"
+          justifyContent="center"
+          className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
+        >
           {mainMenuOpened && 'Menu'}
           {utilityMenuOpen && <UserHeaderIcon />}
-        </div>
+        </FlexBox>
         {mainMenuOpened && (
           <ul
             className={styles.menuMobileSAA({ mainMenuOpened })}

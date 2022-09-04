@@ -92,7 +92,7 @@ const Modal = ({
             type="button"
             ref={closeButton}
             onClick={onClose}
-            className={styles.closeButton}
+            className={styles.closeButton({ type })}
             aria-label="Close modal"
           >
             <XIcon className={styles.closeIcon({ type })} aria-hidden />
