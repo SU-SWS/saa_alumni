@@ -82,7 +82,7 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
           type="button"
           onClick={toggleUserMenu}
           aria-expanded={setUtilityMenuOpen}
-          aria-label={setUtilityMenuOpen ? 'Close User Menu' : 'Open User Menu'}
+          aria-label="Open User Menu"
           ref={userMenuRef}
           className="su-ml-20 su-rounded-full su-flex"
         >

@@ -60,7 +60,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           className={dcnb('su-ml-20', styles.menuCircles)}
           onClick={toggleMainMenu}
           aria-expanded={mainMenuOpened}
-          aria-label={!mainMenuOpened ? 'Close Main Menu' : 'Open Main Menu'}
+          aria-label="Open Main Menu"
           ref={mainMenuRef}
         >
           <MenuIcon aria-hidden="true" className={styles.burgerIconMobile} />
@@ -73,9 +73,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
             type="button"
             onClick={toggleUserMenu}
             aria-expanded={utilityMenuOpen}
-            aria-label={
-              !setUtilityMenuOpen ? 'Close User Menu' : 'Open User Menu'
-            }
+            aria-label="Open User Menu"
             ref={userMenuRef}
             className="su-ml-20 su-rounded-full su-flex"
           >
