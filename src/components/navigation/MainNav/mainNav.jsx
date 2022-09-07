@@ -68,18 +68,16 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
       </nav>
 
       <nav className="main-nav-mobile lg:su-hidden" aria-label="Main Menu">
-        <nav className="main-nav-mobile lg:su-hidden" aria-label="Main Menu">
-          <button
-            type="button"
-            onClick={toggleUserMenu}
-            aria-expanded={utilityMenuOpen}
-            aria-label="Open User Menu"
-            ref={userMenuRef}
-            className="su-ml-20 su-rounded-full su-flex"
-          >
-            <UserHeaderIcon menuCircle />
-          </button>
-        </nav>
+        <button
+          type="button"
+          onClick={toggleUserMenu}
+          aria-expanded={utilityMenuOpen}
+          aria-label="Open User Menu"
+          ref={userMenuRef}
+          className="su-ml-20 su-rounded-full su-flex"
+        >
+          <UserHeaderIcon menuCircle />
+        </button>
       </nav>
 
       <Modal
@@ -109,9 +107,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           </ul>
         )}
 
-        {utilityMenuOpen && (
-          <AccountLinks mainLinkClasses={styles.utilNavItem} />
-        )}
+        {utilityMenuOpen && <AccountLinks />}
       </Modal>
     </SbEditable>
   );
