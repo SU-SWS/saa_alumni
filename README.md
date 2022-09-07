@@ -207,7 +207,7 @@ TODO
 TODO
 
 ### Megaprofile Mocking
-Megaprofile mocking can be enabled locally by running `npm run dev:local`, or by adding the following
+Megaprofile mocking can be enabled locally by running `npm run dev:mock`, or by adding the following
 environment variable:
 ```
 MEGAPROFILE_MOCK=true
