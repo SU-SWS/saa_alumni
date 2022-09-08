@@ -22,7 +22,7 @@ const ItineraryItem = ({ blok }) => {
     image: { filename, focus } = {},
     caption,
   } = blok;
-  // First take all but the last selected meal options and joins them together with a comma.
+  // First take all but the last selected meal options and joins them together with a comma
   // Joins that string and the last element with "and" if there are at least two meal options selected.
   const mealsString = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(
     meals.length < 2 ? '' : ' and '
