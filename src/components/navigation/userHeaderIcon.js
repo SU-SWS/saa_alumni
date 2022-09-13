@@ -42,7 +42,7 @@ const UserHeaderIcon = ({ menuCircle }) => {
               {isAuthenticated && (
                 <span
                   className={`su-inline-block su-mr-10 ${
-                    showDesktop ? '' : 'su-sr-only'
+                    showDesktop ? '' : 'su-hidden'
                   }`}
                 >{`Hi, ${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`}</span>
               )}

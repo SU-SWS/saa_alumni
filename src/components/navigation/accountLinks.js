@@ -82,7 +82,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     >
                       <span
                         className={`su-inline-block su-mr-10 ${
-                          showDesktopXl ? '' : 'su-sr-only'
+                          showDesktopXl ? '' : 'su-hidden'
                         }`}
                       >{`Hi, ${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`}</span>
                       <SrOnlyText>
