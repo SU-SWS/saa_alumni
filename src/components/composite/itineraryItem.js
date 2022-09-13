@@ -22,7 +22,7 @@ const ItineraryItem = ({ blok }) => {
     image: { filename, focus } = {},
     caption,
   } = blok;
-  // First take all but the last selected meal options and joins them together with a comma.
+  // First take all but the last selected meal options and joins them together with a comma
   // Joins that string and the last element with "and" if there are at least two meal options selected.
   const mealsString = [meals.slice(0, -1).join(', '), meals.slice(-1)[0]].join(
     meals.length < 2 ? '' : ' and '
@@ -33,7 +33,7 @@ const ItineraryItem = ({ blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-hidden last:children:children:last:su-pb-0 su-basefont-21">
+      <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-bg-transparent last:children:children:last:su-pb-0 su-basefont-21">
         <Grid
           alignItems="stretch"
           className="su-grid-flow-col su-grid-cols-auto-1fr su-w-full su-break-words su-gap-x-xs md:su-gap-x-[5rem] xl:su-gap-x-[7rem]"
