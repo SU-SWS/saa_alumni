@@ -163,6 +163,12 @@ const InterstitialPage = (props) => {
   const extensionDeposit =
     preTripExtensionDeposit || postTripExtensionDeposit || false;
 
+  const formatUSD = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+  });
+
   return (
     <AuthenticatedPage>
       <FormContextProvider>
@@ -194,32 +200,21 @@ const InterstitialPage = (props) => {
                       Before you register
                     </Heading>
                     <p className={styles.gridText}>
-                      A deposit of ${tripDeposit.toLocaleString('en-US')} per
-                      traveler is required upon registration.
+                      A deposit of {formatUSD.format(tripDeposit)} per traveler
+                      is required upon registration.
                       <br />
                       {extensionDeposit && (
                         <>
-                          For extensions, an additional deposit of $
-                          {extensionDeposit.toLocaleString('en-US')} per
-                          traveler is required.
+                          For extensions, an additional deposit of{` `}
+                          {formatUSD.format(extensionDeposit)} per traveler is
+                          required.
                         </>
                       )}
                     </p>
                     <p className={styles.gridText}>
-                      Looking to give this trip as a gift? To ensure that your
-                      gift is kept private, please register for this trip by
-                      {` `}
-                      <a
-                        href="tel:+16507251093"
-                        className={styles.contactNumber}
-                      >
-                        giving us a call
-                        <HeroIcon
-                          iconType="external"
-                          className={styles.externalIcon}
-                          isAnimate
-                        />
-                      </a>
+                      Looking to surprise someone with this trip? Enter your
+                      email in place of theirs to ensure that your gift is kept
+                      private.
                     </p>
                   </GridCell>
                 </Grid>
@@ -260,7 +255,7 @@ const InterstitialPage = (props) => {
                         </>
                       ) : (
                         <p className={styles.travelerEmptyText}>
-                          No additional travelers are available at this time
+                          No existing connections are available at this time
                         </p>
                       )}
                     </FlexBox>

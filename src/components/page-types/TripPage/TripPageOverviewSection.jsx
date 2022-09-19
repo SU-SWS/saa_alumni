@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useLocation } from '@reach/router';
+import { faGameConsoleHandheld } from '@fortawesome/pro-solid-svg-icons';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import { Heading } from '../../simple/Heading';
@@ -18,6 +19,8 @@ import { SAALinkButton } from '../../cta/SAALinkButton';
 import { SAAButton } from '../../simple/SAAButton';
 import hasRichText from '../../../utilities/hasRichText';
 import getNumBloks from '../../../utilities/getNumBloks';
+import HeroIcon from '../../simple/heroIcon';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 
 export const TripPageOverviewSectionProps = {
   onPrint: PropTypes.func,
@@ -71,6 +74,19 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
     return '';
   }, [startDate, endDate]);
   const location = useLocation();
+
+  // Checks to see if reservationURL is an internal or external URL
+  if (
+    reservationURL.cached_url &&
+    !reservationURL.cached_url.includes('http')
+  ) {
+    // If internal url, remove the paramaters that match the current trip page url and return the end snippet
+    // e.g. reservationURL.cached_url = `register`
+    reservationURL.cached_url = reservationURL.cached_url.replace(
+      location.pathname.replace(/^\//, ''),
+      ''
+    );
+  }
 
   return (
     <div ref={ref}>
@@ -149,14 +165,16 @@ export const TripPageOverviewSection = React.forwardRef((props, ref) => {
                 </div>
               )}
               {status === 'reserve' && reservationURL?.cached_url && (
-                <SAALinkButton
-                  link={reservationURL}
-                  className={{ 'su-w-full': true, 'su-w-fit': false }}
-                  align="center"
-                  size="small"
+                <a
+                  href={reservationURL?.cached_url}
+                  className={styles.reserveBtn}
+                  rel="noopener nofollow noreferrer"
+                  target="_blank"
                 >
                   Reserve
-                </SAALinkButton>
+                  <SrOnlyText>(opens new window)</SrOnlyText>
+                  <HeroIcon iconType="external" isAnimate />
+                </a>
               )}
               {status === 'notify' && inquireURL?.cached_url && (
                 <SAALinkButton

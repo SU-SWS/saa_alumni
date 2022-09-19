@@ -1,6 +1,6 @@
 export const findSelectOption = (select = [], value) => {
   let selected = null;
-  selected = select?.find(
+  selected = select.find(
     (option) => option === value || value?.includes(option)
   );
   return selected;

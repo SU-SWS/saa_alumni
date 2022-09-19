@@ -61,9 +61,7 @@ export default async function handler(req, res) {
     }
 
     if (trip?.content?.postExtendPrice) {
-      const dollarValue = trip.content.postTripExtensionDeposit
-        ? trip.content.postTripExtensionDeposit
-        : trip.content?.extendDepositPrice?.replace(/\D/g, '');
+      const dollarValue = trip.content.postTripExtensionDeposit;
       data.push([
         'prompt',
         trip.content.tripId,

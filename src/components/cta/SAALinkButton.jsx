@@ -21,6 +21,7 @@ const SAALinkButtonProps = {
   children: PropTypes.node,
   link: SBLinkType,
   rel: PropTypes.string,
+  attributes: PropTypes.oneOfType([PropTypes.object]),
   srText: PropTypes.string,
   className: ClassNameType,
 };
@@ -35,6 +36,7 @@ export const SAALinkButton = React.forwardRef(
       children,
       link,
       rel,
+      attributes,
       srText,
       className,
       ...rest
@@ -55,7 +57,7 @@ export const SAALinkButton = React.forwardRef(
         <SbLink
           ref={ref}
           link={link}
-          attributes={rel ? { rel } : {}}
+          attributes={attributes || rel ? { rel, ...attributes } : {}}
           classes={dcnb(styles.link, ctaButtonStyle, ctaButtonSize, className)}
           {...rest}
         >

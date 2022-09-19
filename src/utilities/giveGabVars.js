@@ -21,7 +21,7 @@ const findPreferredPhoneNumber = (phoneNumbers) => {
   // The preferred phone number is nested as a key in each of the options and we have
   // to loop through each of the phoneNumbers looking for it.
   const pref = phoneNumbers[0].preferredPhoneNumberType;
-  phoneNumbers.forEach((val, ind, arr) => {
+  phoneNumbers.forEach((val) => {
     if (val?.phoneNumberType === pref) {
       ret = val.phoneNumber;
     }
@@ -43,7 +43,7 @@ const findPhoneNumberType = (phoneNumbers, type) => {
   let ret = false;
   const BreakException = {};
   try {
-    phoneNumbers.forEach((val, ind, arr) => {
+    phoneNumbers.forEach((val) => {
       if (val.phoneNumberType === type) {
         ret = val.phoneNumber;
         throw BreakException;
@@ -97,13 +97,18 @@ export const findPreferredPhoneNumberType = (
   phoneNumbers = [],
   prefPhoneNumber
 ) => {
-  let pref = 'Home Phone';
+  let pref = '';
 
   if (phoneNumbers[0]?.preferredPhoneNumberType === null) {
-    return pref;
+    phoneNumbers.forEach((val) => {
+      if (val.phoneNumberType.includes('Mobile')) pref = 'Mobile';
+      else if (val.phoneNumberType.includes('Home')) pref = 'Home';
+      else if (val.phoneNumberType.includes('Business')) pref = 'Business';
+      return pref;
+    });
   }
 
-  phoneNumbers.forEach((val, ind, arr) => {
+  phoneNumbers.forEach((val) => {
     if (val?.phoneNumber === prefPhoneNumber) {
       pref = val.phoneNumberType;
     }
@@ -132,7 +137,7 @@ const findPreferredEmail = (emails) => {
   // The preferred email is nested as a key in each of the options and we have
   // to loop through each of the emails looking for it.
   const pref = emails[0].preferredEmailType;
-  emails.forEach((val, ind, arr) => {
+  emails.forEach((val) => {
     if (val?.emailType === pref && val?.emailStatus === 'Active') {
       ret = val.emailAddress;
     }
@@ -157,7 +162,7 @@ const findEmailType = (emails, type) => {
   let ret = false;
   const BreakException = {};
   try {
-    emails.forEach((val, ind, arr) => {
+    emails.forEach((val) => {
       if (val.emailType === type && val.emailStatus === 'Active') {
         ret = val.emailAddress;
         throw BreakException;
@@ -184,13 +189,12 @@ export const findEmail = (emails) => {
   if (Array.isArray(emails)) {
     email = findPreferredEmail(emails);
     if (!email) {
-      email = findEmailType(emails, 'Home Email');
-    }
-    if (!email) {
-      email = findEmailType(emails, 'Business Email');
-    }
-    if (!email) {
-      email = findEmailType(emails, 'Other Email');
+      email =
+        findEmailType(emails, 'Home Email') ||
+        findEmailType(emails, 'Business Email') ||
+        findEmailType(emails, 'SAA Email') ||
+        findEmailType(emails, 'GSB Email') ||
+        findEmailType(emails, 'Other Email');
     }
   }
   return email;
@@ -208,15 +212,25 @@ export const findEmail = (emails) => {
  *   The pref email type
  */
 export const findPreferredEmailType = (emails = [], prefEmail) => {
-  let pref = 'Home Email';
+  let pref = 'Other Email';
 
   if (emails[0]?.preferredEmailType === null) {
-    return pref;
+    emails.forEach((val) => {
+      if (val.emailType.includes('Home')) pref = 'Home Email';
+      else if (val.emailType.includes('Business')) pref = 'Business Email';
+      else if (val.emailType.includes('SAA')) pref = 'Other Email';
+      else if (val.emailType.includes('GSB')) pref = 'Other Email';
+      return pref;
+    });
   }
 
-  emails.forEach((val, ind, arr) => {
-    if (val?.email === prefEmail) {
-      pref = val.preferredEmailType;
+  emails.forEach((val) => {
+    if (val?.emailAddress === prefEmail) {
+      if (val.preferredEmailType.includes('GSB' || 'SAA')) {
+        pref = 'Other Email';
+      } else {
+        pref = val.preferredEmailType;
+      }
     }
   });
 

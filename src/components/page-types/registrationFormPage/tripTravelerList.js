@@ -16,13 +16,11 @@ const TripTravelerList = () => {
       {state.travelersData.map((traveler) => {
         if (traveler.su_reg.includes('Primary')) {
           return (
-            <>
-              <TripTravelerListItem
-                key={traveler.su_did}
-                traveler={traveler}
-                isBtn={false}
-              />
-            </>
+            <TripTravelerListItem
+              key={traveler.su_did}
+              traveler={traveler}
+              isBtn={false}
+            />
           );
         }
         return (
@@ -31,7 +29,7 @@ const TripTravelerList = () => {
       })}
       {state.travelersData.length === 1 && (
         <p className="su-text-center su-basefont-23">
-          You haven’t yet added any additional travelers.
+          You haven’t yet added any existing connections.
         </p>
       )}
     </FlexBox>

@@ -34,7 +34,7 @@ export const TripPagePricingSection = React.forwardRef((props, ref) => {
           body={pricingBody}
         />
         {getNumBloks(pricingBelowContent) > 0 && (
-          <div className="trip-page-pricing-below-content">
+          <div className="trip-page-pricing-below-content children:lg:su-scroll-margin-top-130">
             <CreateBloks blokSection={pricingBelowContent} />
           </div>
         )}

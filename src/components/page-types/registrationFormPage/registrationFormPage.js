@@ -178,19 +178,6 @@ const RegistrationFormPage = (props) => {
             >
               <Hero blok={heroProps} />
               <Grid gap xs={12} className={styles.contentWrapper}>
-                <GridCell xs={12}>
-                  <div className="su-text-white">
-                    <Heading
-                      level={2}
-                      align="center"
-                      font="serif"
-                      className={styles.header}
-                    >
-                      {tripTitle}:<br />
-                      Registration
-                    </Heading>
-                  </div>
-                </GridCell>
                 <GridCell
                   xs={12}
                   md={10}
