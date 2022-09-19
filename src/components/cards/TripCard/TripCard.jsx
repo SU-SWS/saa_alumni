@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import { FlexBox } from '../../layout/FlexBox';
@@ -43,8 +43,17 @@ const TripCard = ({
   const image = cardImage?.filename ? cardImage : heroImage;
   const tripURL = `/${fullSlug.replace(/^\//, '')}`;
 
+  // Work-around for hydration bug. See: https://github.com/gatsbyjs/gatsby/discussions/17914
+  const [isClient, setIsClient] = useState(false);
+  useEffect(() => setIsClient(true), [setIsClient]);
+
   return (
-    <FlexBox direction="col" as="article" className={styles.root}>
+    <FlexBox
+      direction="col"
+      as="article"
+      className={styles.root}
+      key={isClient}
+    >
       <div className={styles.imageWrapper}>
         <CardImage
           className={styles.image}
