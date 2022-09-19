@@ -1,7 +1,7 @@
 import { dcnb } from 'cnbuilder';
 
 export const utilityNavLink =
-  'children:su-text-white hocus:children:su-text-white su-m-0 su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent su-flex su-items-center children:su-justify-between su-w-full children:su-flex children:su-w-full children:su-py-20 children:su-px-20 su-text-20 hocus:su-bg-cardinal-red-xxdark su-border-b last:su-border-b-0 su-border-digital-red-light children:su-no-underline children:hocus:su-underline first:su-border-t';
+  'children:su-text-white hocus:children:su-text-white su-m-0 su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent su-flex su-items-center children:su-justify-between su-w-full children:su-flex children:su-w-full children:su-py-20 children:su-px-20 su-text-20 hocus:su-bg-cardinal-red-xxdark su-border-digital-red-light children:su-no-underline children:hocus:su-underline su-border-t';
 export const link =
   'su-flex su-items-baseline su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white hocus:su-bg-cardinal-red-xxdark !su-underline-offset-[3px] lg:!su-decoration-digital-red-xlight su-text-20';
 export const heroicon =
