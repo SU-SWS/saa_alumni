@@ -220,8 +220,8 @@ export const findPreferredEmailType = (emails = [], prefEmail) => {
       else if (val?.emailType?.includes('Business')) pref = 'Business Email';
       else if (val?.emailType?.includes('SAA')) pref = 'Other Email';
       else if (val?.emailType?.includes('GSB')) pref = 'Other Email';
-      return pref;
     });
+    return pref;
   }
 
   emails.forEach((val) => {
