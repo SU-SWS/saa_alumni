@@ -1,7 +1,9 @@
 export const findSelectOption = (select = [], value) => {
   let selected = null;
   selected = select.find(
-    (option) => option === value || value?.includes(option)
+    (option) =>
+      option?.toLowerCase() === value?.toLowerCase() ||
+      value?.toLowerCase()?.includes(option?.toLowerCase())
   );
   return selected;
 };
@@ -88,6 +90,6 @@ export const relationshipSelectList = [
   'Guest',
 ];
 
-export const emailTypeList = ['Home', 'Business', 'Other'];
+export const emailTypeList = ['Home', 'Business', 'other'];
 
 export const phoneNumberTypeList = ['Home', 'Business', 'Mobile'];
