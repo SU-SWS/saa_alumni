@@ -14,6 +14,8 @@ import {
   MailIcon,
   PlayIcon,
   CheckIcon,
+  MinusSmIcon,
+  PlusSmIcon,
 } from '@heroicons/react/solid';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 
@@ -88,6 +90,18 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
     },
     check: {
       heroicon: CheckIcon,
+      baseStyle: 'su-w-1em',
+      animate:
+        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+    },
+    plus: {
+      heroicon: PlusSmIcon,
+      baseStyle: 'su-w-1em',
+      animate:
+        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+    },
+    minus: {
+      heroicon: MinusSmIcon,
       baseStyle: 'su-w-1em',
       animate:
         'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',

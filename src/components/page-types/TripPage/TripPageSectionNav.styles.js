@@ -49,3 +49,7 @@ export const linkMobile =
   'su-group su-block su-no-underline su-border-l-5 su-border-saa-black su-py-14 su-pl-10 su-pr-20 su-transition-all su-text-white su-text-21 hocus:su-text-digital-red-xlight hocus:su-border-digital-red-xlight hocus:su-underline';
 export const buttonWrapperMobile = 'su-px-20 md:su-px-30 su-rs-py-2';
 export const buttonMobile = '!su-w-full su-text-center su-text-21';
+export const reserveBtn =
+  'su-inline-block children:su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-8 md:su-pb-10 su-text-18 md:su-text-20 su-ml-[6rem] xl:su-ml-[8rem] su-mt-[-0.5rem]';
+export const reserveMobileBtn =
+  'su-inline-block children:su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20 !su-w-full su-text-center su-text-21';

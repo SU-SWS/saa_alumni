@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
 import * as styles from './TripPageSectionNav.styles';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
@@ -8,6 +9,8 @@ import { SAALinkButton } from '../../cta/SAALinkButton';
 import useEscape from '../../../hooks/useEscape';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { isExpanded } from '../../../utilities/menuHelpers';
+import HeroIcon from '../../simple/heroIcon';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 
 export const TripPageSectionNavProps = {
   renderFacultySection: PropTypes.bool,
@@ -33,10 +36,23 @@ export const TripPageSectionNav = (props) => {
     reservationURL,
     activeSection,
   } = props;
-
   const [navOpened, setNavOpened] = useState(false);
   const ref = useRef(null);
   const burgerRef = useRef(null);
+  const location = useLocation();
+
+  // Checks to see if reservationURL is an internal or external URL
+  if (
+    reservationURL.cached_url &&
+    !reservationURL.cached_url.includes('http')
+  ) {
+    // If internal url, remove the paramaters that match the current trip page url and return the end snippet
+    // e.g. reservationURL.cached_url = `register`
+    reservationURL.cached_url = reservationURL.cached_url.replace(
+      location.pathname.replace(/^\//, ''),
+      ''
+    );
+  }
 
   const toggleNav = () => {
     setNavOpened(!navOpened);
@@ -116,13 +132,16 @@ export const TripPageSectionNav = (props) => {
           )}
         </ul>
         {status === 'reserve' && reservationURL?.cached_url && (
-          <SAALinkButton
-            link={reservationURL}
-            size="small-short"
-            className={styles.button}
+          <a
+            href={reservationURL?.cached_url}
+            className={styles.reserveBtn}
+            rel="noopener nofollow noreferrer"
+            target="_blank"
           >
             Reserve
-          </SAALinkButton>
+            <SrOnlyText>(opens new window)</SrOnlyText>
+            <HeroIcon iconType="external" isAnimate />
+          </a>
         )}
         {status === 'notify' && inquireURL?.cached_url && (
           <SAALinkButton
@@ -209,13 +228,16 @@ export const TripPageSectionNav = (props) => {
             </ul>
             {status === 'reserve' && reservationURL?.cached_url && (
               <div className={styles.buttonWrapperMobile}>
-                <SAALinkButton
-                  link={reservationURL}
-                  className={styles.buttonMobile}
-                  size="small"
+                <a
+                  href={reservationURL?.cached_url}
+                  className={styles.reserveMobileBtn}
+                  rel="noopener nofollow noreferrer"
+                  target="_blank"
                 >
                   Reserve
-                </SAALinkButton>
+                  <SrOnlyText>(opens new window)</SrOnlyText>
+                  <HeroIcon iconType="external" isAnimate />
+                </a>
               </div>
             )}
             {status === 'notify' && inquireURL?.cached_url && (

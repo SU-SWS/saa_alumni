@@ -40,8 +40,16 @@ class StoryblokEntry extends React.Component {
    * @returns
    */
   render() {
-    // eslint-disable-next-line react/destructuring-assignment
-    const { content } = this.state.story;
+    const {
+      story: { content },
+    } = this.state;
+
+    const { location, pageContext } = this.props;
+
+    // Swap the page component for interstitial pages.
+    if (pageContext.interstitial) {
+      content.component = 'interstitialPage';
+    }
 
     return (
       <>
@@ -49,8 +57,8 @@ class StoryblokEntry extends React.Component {
           // eslint-disable-next-line no-underscore-dangle
           key: content._uid,
           blok: content,
-          // eslint-disable-next-line react/destructuring-assignment
-          location: this.props.location,
+          location,
+          pageContext,
         })}
       </>
     );

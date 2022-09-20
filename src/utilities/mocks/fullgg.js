@@ -1,3 +1,5 @@
+import { affiliationsMockData } from './affiliations';
+
 export const fullggMockData = {
   encodedSUID: '12345678910',
   birthDate: '1979-08-14',
@@ -29,28 +31,28 @@ export const fullggMockData = {
       communicationMethodID: 'a0h46000001ezKdAAI',
       emailAddress: 'teridactyl@jurrasicpark.com',
       emailType: 'Home Email',
-      preferredEmailType: 'Home Email',
+      preferredEmailType: 'GSB Email',
       emailStatus: 'Active',
     },
     {
       communicationMethodID: 'a0h46000001ezKYAAY',
       emailAddress: 't@dactyl.com',
       emailType: 'Other Email',
-      preferredEmailType: 'Home Email',
+      preferredEmailType: 'GSB Email',
       emailStatus: 'Active',
     },
     {
       communicationMethodID: 'a0h46000001ezKXAAY',
       emailAddress: 't@dactyl.com',
       emailType: 'Business Email',
-      preferredEmailType: 'Home Email',
+      preferredEmailType: 'GSB Email',
       emailStatus: 'Active',
     },
     {
       communicationMethodID: 'a0h46000001ezKaAAI',
       emailAddress: 'tdactyl@alumni.stanfordgsb.org',
       emailType: 'GSB Email',
-      preferredEmailType: 'Home Email',
+      preferredEmailType: 'GSB Email',
       emailStatus: 'Active',
     },
   ],
@@ -250,4 +252,5 @@ export const fullggMockData = {
     encodedSUID: '12345678910',
     access_method: 'GET',
   },
+  affiliations: affiliationsMockData,
 };

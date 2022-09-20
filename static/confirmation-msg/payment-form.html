@@ -1,0 +1,27 @@
+<div class="ggeConfirmationMessage">
+  <div>
+    <p>
+      We are processing your payment. Your confirmation code is
+      <b>#{{ConfirmationCode}}</b>
+    </p>
+  </div>
+  <section class="ggeTally">
+    <table role="presentation" class="ggeTallyTable">
+      <thead>
+        <tr>
+          <th class="ggeTally--header">Payment details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="ggeTally--text">Additional payment</td>
+          <td class="ggeTally--money">{{AmountCharged}}</td>
+        </tr>
+        <tr>
+          <td class="ggeTally--total">Total</td>
+          <td class="ggeTally--total ggeTally--money">{{AmountCharged}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
