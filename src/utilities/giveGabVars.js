@@ -104,8 +104,8 @@ export const findPreferredPhoneNumberType = (
       if (val?.phoneNumberType?.includes('Mobile')) pref = 'Mobile';
       else if (val?.phoneNumberType?.includes('Home')) pref = 'Home';
       else if (val?.phoneNumberType?.includes('Business')) pref = 'Business';
-      return pref;
     });
+    return pref;
   }
 
   phoneNumbers.forEach((val) => {
