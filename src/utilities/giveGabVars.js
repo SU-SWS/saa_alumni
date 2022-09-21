@@ -226,7 +226,10 @@ export const findPreferredEmailType = (emails = [], prefEmail) => {
 
   emails.forEach((val) => {
     if (val?.emailAddress === prefEmail) {
-      if (val?.preferredEmailType?.includes('GSB' || 'SAA')) {
+      if (
+        val?.preferredEmailType?.includes('SAA') ||
+        val?.preferredEmailType?.includes('GSB')
+      ) {
         pref = 'Other Email';
       } else {
         pref = val.preferredEmailType;
