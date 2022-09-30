@@ -32,7 +32,7 @@ export const shouldUpdateScroll = (ctx) => {
   if (
     location.pathname.match(/^\/search/i) ||
     location.pathname.match(/^\/travel-study\/search/i) ||
-    location.pathname.match(/^\/travel-study\/register/)
+    location.pathname.match(/^\/travel-study\/register/i)
   ) {
     return false;
   }
