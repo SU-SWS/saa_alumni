@@ -296,7 +296,7 @@
 }
 
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
-.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt > .ggePrompt__radio::after {
+.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::after {
   @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
   content: "";
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
@@ -308,7 +308,7 @@
 }
 
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio:hover::before,
-.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt > .ggePrompt__radio::before {
+.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::before {
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
   opacity: 0.4;
 }
