@@ -291,8 +291,8 @@
   @apply su-flex su-flex-col;
 }
 
-.ggeWidget .ggePrompt__other > .ggePrompt {
-  @apply su-mb-0;
+.ggeWidget .ggePrompt__other .ggePrompt:first-of-type {
+  @apply su-m-0;
 }
 
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
