@@ -47,7 +47,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
 
     return () => {
       mounted = false;
-      script.removeEventListener('widgetRenderEnd', showForm(false));
+      script.removeEventListener('widgetRenderEnd', showForm);
       script.removeEventListener('widgetPageChange', scrollTop);
       script.removeEventListener('widgetComplete', scrollTop);
     };
