@@ -20,9 +20,9 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
       setDisplay(true);
     };
 
-    const scrollTop = () => {
-      document.getElementById('main').scrollIntoView(true);
-    };
+    // const scrollTop = () => {
+    //   document.getElementById('main').scrollIntoView(true);
+    // };
     let mounted = true;
     const script = document.createElement('script');
     script.src = src;
@@ -36,7 +36,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         // Once GiveGab form has been prompted to the next form page, bring user back to the top of the form
         // script.addEventListener('widgetPageChange', scrollTop);
         // Once GiveGab form has successfully submitted, bring user back to the top of the form
-        script.addEventListener('widgetComplete', scrollTop);
+        // script.addEventListener('widgetComplete', scrollTop);
       }
     };
     script.onerror = () => {
@@ -49,7 +49,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
       mounted = false;
       script.removeEventListener('widgetRenderEnd', showForm);
       // script.removeEventListener('widgetPageChange', scrollTop);
-      script.removeEventListener('widgetComplete', scrollTop);
+      // script.removeEventListener('widgetComplete', scrollTop);
     };
   }, [src, setScriptLoaded, scriptRef]);
 
