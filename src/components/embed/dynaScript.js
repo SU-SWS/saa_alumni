@@ -14,15 +14,16 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
   const [display, setDisplay] = useState(false);
   const isDark = true;
 
+  const showForm = () => {
+    setDisplay(true);
+  };
+
+  const scrollTop = () => {
+    document.getElementById('su-embed').scrollIntoView(true);
+  };
+
   // When the component mounts load the script.
   useEffect(() => {
-    const showForm = () => {
-      setDisplay(true);
-    };
-
-    // const scrollTop = () => {
-    //   document.getElementById('main').scrollIntoView(true);
-    // };
     let mounted = true;
     const script = document.createElement('script');
     script.src = src;
@@ -34,7 +35,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         // Once GiveGab form has completed rendering, display form
         script.addEventListener('widgetRenderEnd', showForm);
         // Once GiveGab form has been prompted to the next form page, bring user back to the top of the form
-        // script.addEventListener('widgetPageChange', scrollTop);
+        script.addEventListener('widgetPageChange', scrollTop);
         // Once GiveGab form has successfully submitted, bring user back to the top of the form
         // script.addEventListener('widgetComplete', scrollTop);
       }
@@ -48,7 +49,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     return () => {
       mounted = false;
       script.removeEventListener('widgetRenderEnd', showForm);
-      // script.removeEventListener('widgetPageChange', scrollTop);
+      script.removeEventListener('widgetPageChange', scrollTop);
       // script.removeEventListener('widgetComplete', scrollTop);
     };
   }, [src, setScriptLoaded, scriptRef]);
