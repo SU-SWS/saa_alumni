@@ -98,7 +98,7 @@ const InterstitialPage = (props) => {
         su_dob: relationship?.relatedContactBirthDate
           ? formatUsDate(relationship?.relatedContactBirthDate)
           : '',
-        su_reg: 'Related contact: deposit',
+        su_reg: 'Related contact',
         su_email: undefined,
         su_phone: undefined,
       };
@@ -157,7 +157,7 @@ const InterstitialPage = (props) => {
     ),
     su_dob: userProfile?.birthDate ? formatUsDate(userProfile?.birthDate) : '',
     su_relation: 'Guest',
-    su_reg: 'Primary registrant: deposit',
+    su_reg: 'Primary registrant',
   };
 
   const extensionDeposit =

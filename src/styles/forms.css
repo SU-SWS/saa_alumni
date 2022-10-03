@@ -304,7 +304,7 @@
 }
 
 /* Email Other Type */
-.ggeWidget .ggeQuestion su-email-type .ggePrompt__label label {
+.ggeWidget .ggeQuestion.su-email-type .ggePrompt__label label {
   @apply su-capitalize;
 }
 
