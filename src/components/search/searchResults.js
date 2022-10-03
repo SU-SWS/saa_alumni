@@ -95,6 +95,9 @@ const SearchResults = ({ results }) => {
                   }}
                 />
               )}
+              {/* Return null if no body field */}
+              {/* eslint-disable-next-line no-underscore-dangle */}
+              {!result._snippetResult.body.value && null}
             </div>
             {result.image && (
               <div className="su-rs-mt-0 su-w-[15rem] su-h-[10rem] md:su-w-[22.5rem] md:su-h-[15rem] md:su-ml-30">
