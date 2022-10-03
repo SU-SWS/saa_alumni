@@ -85,7 +85,7 @@ const SearchResults = ({ results }) => {
                 </a>
               </Heading>
               {/* eslint-disable-next-line no-underscore-dangle */}
-              {result._snippetResult.body.value && (
+              {result._snippetResult.body?.value && (
                 <p
                   className="su-card-paragraph su-leading-snug su-mb-0"
                   // eslint-disable-next-line react/no-danger
@@ -95,9 +95,6 @@ const SearchResults = ({ results }) => {
                   }}
                 />
               )}
-              {/* Return null if no body field */}
-              {/* eslint-disable-next-line no-underscore-dangle */}
-              {!result._snippetResult.body.value && null}
             </div>
             {result.image && (
               <div className="su-rs-mt-0 su-w-[15rem] su-h-[10rem] md:su-w-[22.5rem] md:su-h-[15rem] md:su-ml-30">
