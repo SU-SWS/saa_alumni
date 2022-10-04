@@ -295,6 +295,10 @@
   @apply su-m-0;
 }
 
+.ggeWidget .ggePrompt__other .ggePrompt input[type="text"] {
+  @apply  su-ml-[24px];
+}
+
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
 .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::after {
   @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
