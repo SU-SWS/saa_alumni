@@ -36,11 +36,8 @@ export const shouldUpdateScroll = (ctx) => {
     return false;
   }
 
-  if (
-    location.pathname.match(/\/register\/form/) ||
-    location.pathname.match(/\/register/)
-  ) {
-    return [0, 0];
+  if (location.pathname.match(/\/register\/form/)) {
+    return 'su-embed';
   }
 
   // Prevent scrolling trip filter pages
