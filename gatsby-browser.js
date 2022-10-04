@@ -31,11 +31,16 @@ export const shouldUpdateScroll = (ctx) => {
   // Prevent scrolling when user clicks on filters on search page.
   if (
     location.pathname.match(/^\/search/i) ||
-    location.pathname.match(/^\/travel-study\/search/i) ||
+    location.pathname.match(/^\/travel-study\/search/i)
+  ) {
+    return false;
+  }
+
+  if (
     location.pathname.match(/\/register\/form/) ||
     location.pathname.match(/\/register/)
   ) {
-    return false;
+    return [0, 0];
   }
 
   // Prevent scrolling trip filter pages
