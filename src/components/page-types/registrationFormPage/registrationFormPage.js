@@ -184,6 +184,7 @@ const RegistrationFormPage = (props) => {
                   xl={8}
                   xxl={6}
                   className={styles.formWrapper}
+                  id="su-ggForm"
                 >
                   <CreateBloks
                     blokSection={giveGabForm}
