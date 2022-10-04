@@ -19,7 +19,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
   };
 
   const scrollTop = () => {
-    document.getElementById('su-embed').scrollIntoView(true);
+    document.getElementById('su-gg-embed').scrollIntoView(true);
   };
 
   // When the component mounts load the script.
