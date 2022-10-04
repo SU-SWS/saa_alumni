@@ -37,12 +37,7 @@ export const shouldUpdateScroll = (ctx) => {
   }
 
   if (location.pathname.match(/\/register\/form/)) {
-    const formLocation = document.getElementById('su-gg-embed');
-    window.scrollTo({
-      top: formLocation.scrollTop,
-      left: formLocation.scrollLeft,
-    });
-    return false;
+    return [0, 0];
   }
 
   // Prevent scrolling trip filter pages
