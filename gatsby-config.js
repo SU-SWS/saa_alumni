@@ -97,6 +97,8 @@ module.exports = {
           `/travel-study/destinations/**/register`,
           `/travel-study/destinations/**/register/form`,
           `/travel-study/destinations/**/notify`,
+          `/travel-study/custom-journeys/request/`,
+          `/travel-study/payment`,
           `/test/**`,
           `/403-access-denied`,
         ],
