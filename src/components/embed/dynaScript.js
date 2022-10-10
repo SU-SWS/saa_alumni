@@ -18,9 +18,10 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     setDisplay(true);
   };
 
-  const scrollTop = (e) => {
-    e.preventDefault();
-    window.scroll({ top: 500 });
+  const scrollTop = () => {
+    if (document.documentElement.scrollTop !== 0) {
+      window.scroll({ top: document.getElementById('su-gg-embed').offsetTop });
+    }
   };
 
   // When the component mounts load the script.
@@ -36,7 +37,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         // Once GiveGab form has completed rendering, display form
         script.addEventListener('widgetRenderEnd', showForm);
         // Once GiveGab form has been prompted to the next form page and/or submitted, bring user back to the top of the form
-        script.addEventListener('widgetPageChange', (e) => scrollTop(e));
+        script.addEventListener('widgetPageChange', scrollTop());
       }
     };
     script.onerror = () => {
