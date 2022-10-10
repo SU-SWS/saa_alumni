@@ -20,7 +20,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
 
   const scrollTop = () => {
     document.getElementById('su-gg-embed').scrollIntoView({
-      block: 'center',
+      block: 'start',
       behaviour: 'smooth',
     });
   };
