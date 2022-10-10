@@ -177,7 +177,12 @@ const RegistrationFormPage = (props) => {
               width="full"
             >
               <Hero blok={heroProps} />
-              <Grid gap xs={12} className={styles.contentWrapper}>
+              <Grid
+                gap
+                xs={12}
+                className={styles.contentWrapper}
+                id="su-gg-embed"
+              >
                 <GridCell
                   xs={12}
                   md={10}
