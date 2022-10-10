@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Redirect, useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
-import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import getNumBloks from '../../../utilities/getNumBloks';
