@@ -19,7 +19,10 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
   };
 
   const scrollTop = () => {
-    if (document.documentElement.scrollTop !== 0) {
+    if (
+      document.documentElement.scrollTop !==
+      document.getElementById('su-gg-embed').offsetTop
+    ) {
       window.scroll({ top: document.getElementById('su-gg-embed').offsetTop });
     }
   };
