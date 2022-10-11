@@ -40,7 +40,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
         // Once GiveGab form has completed rendering, display form
         script.addEventListener('widgetRenderEnd', showForm);
         // Once GiveGab form has been prompted to the next form page and/or submitted, bring user back to the top of the form
-        script.addEventListener('widgetPageChange', scrollTop());
+        script.addEventListener('widgetPageChange', scrollTop);
       }
     };
     script.onerror = () => {
