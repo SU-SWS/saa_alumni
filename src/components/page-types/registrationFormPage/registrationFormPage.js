@@ -188,7 +188,6 @@ const RegistrationFormPage = (props) => {
                   xl={8}
                   xxl={6}
                   className={styles.formWrapper}
-                  id="su-gg-embed"
                 >
                   <CreateBloks
                     blokSection={giveGabForm}
