@@ -37,7 +37,9 @@ export const shouldUpdateScroll = (ctx) => {
   }
 
   if (location.pathname.match(/\/register\/form/)) {
-    window.scroll({ top: document.getElementById('su-gg-embed')?.offsetTop });
+    if (document.getElementById('su-gg-embed')) {
+      window.scroll({ top: document.getElementById('su-gg-embed').offsetTop });
+    }
     return false;
   }
 
