@@ -40,6 +40,8 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
 
         // Once GiveGab form has completed rendering, display form
         script.addEventListener('widgetRenderEnd', showForm);
+        // Once GiveGab form has been prompted to remove a traveler, bring user back to the top of the form
+        script.addEventListener('widgetDiscardRegistrant', scrollTop);
         // Once GiveGab form has been prompted to the next form page and/or submitted, bring user back to the top of the form
         script.addEventListener('widgetPageChange', scrollTop);
       }
@@ -53,6 +55,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     return () => {
       mounted = false;
       script.removeEventListener('widgetRenderEnd', showForm);
+      script.removeEventListener('widgetDiscardRegistrant', scrollTop);
       script.removeEventListener('widgetPageChange', scrollTop);
     };
   }, [src, setScriptLoaded, scriptRef]);
