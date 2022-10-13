@@ -137,7 +137,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
           const noIndex = content.noIndex ? content.noIndex : false;
 
-          // Create the GG form page(s) only if the trip is published
+          // Create the GG form page(s) only if the trip is published 
           if (content.trip.name) {
             createPage({
               path: `/${pagePath}/form`,
