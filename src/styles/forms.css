@@ -444,6 +444,10 @@
 }
 
 /* Registration form specific  */
+div.ggeRegistrant--prefilled[data-registrantid="1"] .ggeButton--discardRegistrant {
+  @apply su-hidden;
+}
+
 .ggeRegistrantList,
 .ggeWidget .ggeSection--askArray.ggeSection--registration,
 .ggePage--payment .ggePageNav--back {
