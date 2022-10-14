@@ -444,8 +444,8 @@
 }
 
 /* Registration form specific  */
-div.ggeRegistrant--prefilled[data-registrantid="1"] .ggeButton--discardRegistrant,
-.geeTally .ggeTally__multireg__button.ggeTally__multireg__button--delete:first {
+.ggeWidget .ggeRegistrant--prefilled[data-registrantid="1"] .ggePageNav__btn--discardRegistrant,
+.ggeWidget .ggeTally .ggeTally__multireg__button.ggeTally__multireg__button--delete:first {
   @apply su-hidden;
 }
 
