@@ -13,7 +13,7 @@ export const overlay = ({ overlay: overlayType }) =>
       'su-bg-gradient-to-b su-from-black-true-opacity-20':
         overlayType === 'dark',
       'su-bg-gradient-to-b su-from-transparent': overlayType === 'normal',
-      'su-to-saa-black-dark su-bg-gradient-to-t su-from-saa-black-opacity-30 lg:su-bg-gradient-to-l lg:su-from-saa-black-opacity-0':
+      'su-bg-gradient-to-t su-from-saa-black-opacity-30 lg:su-bg-gradient-to-l lg:su-from-saa-black-opacity-0 lg:su-to-saa-black':
         overlayType === 'formDark',
     }
   );

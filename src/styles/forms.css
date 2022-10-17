@@ -35,7 +35,6 @@
   @apply su-m-0 su-mt-7 su-mb-45;
 }
 
-
 .ggeWidget .ggeContent .ggeQuestion.ggeQuestion--instructions {
   @apply su-m-0 su-mt-7;
 }
@@ -372,6 +371,14 @@
 
 .ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeNoMobileLabel::first-letter {
   text-transform: capitalize;
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--mobilepayment .gg-payment-request-button {
+  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeMobileManualEntryInner {
+  background: transparent;
 }
 
 .ggeAddress__state,
