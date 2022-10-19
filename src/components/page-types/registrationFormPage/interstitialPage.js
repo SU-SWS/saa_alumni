@@ -131,7 +131,7 @@ const InterstitialPage = (props) => {
   }
 
   const primaryRegistrant = {
-    su_did: userProfile?.session?.encodedSUID,
+    su_did: userProfile?.encodedSUID || userProfile?.session?.encodedSUID,
     su_dname: digitalName,
     su_title: findSelectOption(
       prefixSelectList,
