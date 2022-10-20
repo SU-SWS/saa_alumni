@@ -85,7 +85,7 @@ const SearchResults = ({ results }) => {
                 </a>
               </Heading>
               {/* eslint-disable-next-line no-underscore-dangle */}
-              {result._snippetResult.body?.value && (
+              {result._snippetResult?.body.value && (
                 <p
                   className="su-card-paragraph su-leading-snug su-mb-0"
                   // eslint-disable-next-line react/no-danger
