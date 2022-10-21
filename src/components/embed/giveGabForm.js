@@ -24,7 +24,7 @@ const GiveGabForm = ({
 
   const embedUrl = new URL(url);
   if (tripId) {
-    embedUrl.searchParams.set('urlData', tripId);
+    embedUrl.searchParams.set('urlData', tripId.replace(' ', ''));
   }
 
   if (isAuthenticating) {

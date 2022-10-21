@@ -35,7 +35,6 @@
   @apply su-m-0 su-mt-7 su-mb-45;
 }
 
-
 .ggeWidget .ggeContent .ggeQuestion.ggeQuestion--instructions {
   @apply su-m-0 su-mt-7;
 }
@@ -287,7 +286,20 @@
   mask-composite: exclude;
 }
 
-.ggeWidget .ggePrompt--checked .ggePrompt__radio::after {
+.ggeWidget .ggePrompt__other {
+  @apply su-flex su-flex-col;
+}
+
+.ggeWidget .ggePrompt__other .ggePrompt:first-of-type {
+  @apply su-m-0;
+}
+
+.ggeWidget .ggePrompt__other .ggePrompt input[type="text"] {
+  @apply su-ml-[24px];
+}
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
+.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::after {
   @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
   content: "";
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
@@ -298,7 +310,8 @@
   @apply su-absolute su-inset-[-.6rem] su-rounded-full su-bg-saa-electric-blue-light/[.4];
 }
 
-.ggePrompt--checked .ggePrompt__radio:hover::before {
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio:hover::before,
+.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::before {
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
   opacity: 0.4;
 }
@@ -353,11 +366,24 @@
 }
 
 .ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeNoMobileLabel {
-  text-transform: lowercase;
+  @apply su-lowercase;
 }
 
 .ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeNoMobileLabel::first-letter {
-  text-transform: capitalize;
+  @apply su-capitalize;
+}
+
+/* Hide spacer when Saved Card is present */
+.ggeWidget .ggeQuestion.ggeQuestion--mobilepayment .ggeStripeButton #ggeMobileContainerEntrySpacer {
+  @apply su-hidden
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--mobilepayment .ggeStripeButton .ggeMobilePay {
+  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
+}
+
+.ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeMobileManualEntryInner {
+  @apply !su-bg-transparent;
 }
 
 .ggeAddress__state,
@@ -430,6 +456,11 @@
 }
 
 /* Registration form specific  */
+.ggeRegistrant[data-registrantid="1"] .ggePageNav__btn--discardRegistrant,
+.ggeWidget .ggeTally tr:first-of-type .ggeTally__multireg__button.ggeTally__multireg__button--delete {
+  @apply su-hidden;
+}
+
 .ggeRegistrantList,
 .ggeWidget .ggeSection--askArray.ggeSection--registration,
 .ggePage--payment .ggePageNav--back {

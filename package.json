@@ -17,10 +17,8 @@
     "@netlify/plugin-gatsby": "^3.0.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.3.4",
-    "adapt-auth-sdk": "^1.0.7",
+    "adapt-auth-sdk": "^1.0.10",
     "algoliasearch": "^4.9.3",
-    "axios": "^0.21.4",
-    "axios-mock-adapter": "^1.20.0",
     "body-parser": "^1.19.1",
     "cnbuilder": "^3.1.0",
     "cookie-parser": "^1.4.6",
@@ -49,8 +47,6 @@
     "prop-types": "^15.7.2",
     "qs": "^6.9.6",
     "query-string": "^7.0.1",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
     "react-hero-icon": "^0.0.7",
     "react-idle-timer": "^4.6.4",
@@ -75,7 +71,8 @@
     "xml2js": "^0.4.23"
   },
   "keywords": [
-    "Stanford"
+    "Stanford",
+    "Alumni"
   ],
   "license": "MIT",
   "scripts": {
@@ -107,6 +104,7 @@
     "@babel/preset-env": "^7.14.1",
     "@babel/preset-react": "^7.13.13",
     "autoprefixer": "^10.2.6",
+    "axios-mock-adapter": "^1.21.2",
     "cross-env": "^7.0.2",
     "dotenv": "^16.0.0",
     "eslint": "^7.26.0",
@@ -125,8 +123,6 @@
     "node-vault": "^0.9.22",
     "postcss": "^8.3.5",
     "prettier": "^2.3.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
     "storyblok": "^3.10.0",
     "toml": "^3.0.0",
     "type-fest": "^2.13.1"

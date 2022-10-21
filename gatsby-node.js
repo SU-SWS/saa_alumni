@@ -137,29 +137,31 @@ exports.createPages = ({ graphql, actions }) => {
           }
           const noIndex = content.noIndex ? content.noIndex : false;
 
-          // Create the GG form page.
-          createPage({
-            path: `/${pagePath}/form`,
-            component: storyblokEntry,
-            context: {
-              slug: `${registrationEntry.node.full_slug}/form`,
-              story: registrationEntry.node,
-              isCanonical,
-              noIndex,
-            },
-          });
+          // Create the GG form page(s) only if the trip is published
+          if (content.trip) {
+            createPage({
+              path: `/${pagePath}/form`,
+              component: storyblokEntry,
+              context: {
+                slug: `${registrationEntry.node.full_slug}/form`,
+                story: registrationEntry.node,
+                isCanonical,
+                noIndex,
+              },
+            });
 
-          createPage({
-            path: `/${pagePath}`,
-            component: storyblokEntry,
-            context: {
-              slug: registrationEntry.node.full_slug,
-              story: registrationEntry.node,
-              isCanonical,
-              noIndex,
-              interstitial: true,
-            },
-          });
+            createPage({
+              path: `/${pagePath}`,
+              component: storyblokEntry,
+              context: {
+                slug: registrationEntry.node.full_slug,
+                story: registrationEntry.node,
+                isCanonical,
+                noIndex,
+                interstitial: true,
+              },
+            });
+          }
         });
       })
     );

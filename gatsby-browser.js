@@ -36,6 +36,13 @@ export const shouldUpdateScroll = (ctx) => {
     return false;
   }
 
+  if (location.pathname.match(/\/register\/form/)) {
+    if (document.getElementById('su-gg-embed')) {
+      window.scroll({ top: document.getElementById('su-gg-embed').offsetTop });
+    }
+    return false;
+  }
+
   // Prevent scrolling trip filter pages
   const filterQueryParams = [
     'trip-region=',
