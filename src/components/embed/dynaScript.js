@@ -37,7 +37,6 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
     script.onload = () => {
       if (mounted) {
         setScriptLoaded(true);
-
         // Once GiveGab form has completed rendering, display form
         script.addEventListener('widgetRenderEnd', showForm);
         // Once GiveGab form has been prompted to remove a traveler, bring user back to the top of the form
