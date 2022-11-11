@@ -166,6 +166,20 @@ const SearchPage = (props) => {
       }
     });
 
+    const filterResults = (searchResults) => {
+      const filteredResults = searchResults;
+      // create a filter function to go in and filter the hits
+      const filteredResultHits = filteredResults.hits.filter(result => result.title !== '');
+      filteredResults.hits = filteredResultHits;
+      filteredResults.nbHits = filteredResultHits.length;
+      filteredResults.nbPages = Math.ceil(filteredResultHits.length / 16);
+      console.log('filteredResultHits: ', filteredResultHits);
+      console.log('filteredResults.nbHits: ', filteredResults.nbHits);
+      console.log('filteredResults.nbPages ', filteredResults.nbPages);
+
+      return filteredResults;
+    };
+
     client
       .multipleQueries([
         // Query for search results.
@@ -199,16 +213,8 @@ const SearchPage = (props) => {
         },
       ])
       .then((queryResults) => {
-        setResults(queryResults.results[0]);
+        setResults(filterResults(queryResults.results[0]));
         console.log(results);
-        // create a map function to go in and filter the hits
-        const filteredResultHits = results.hits.filter(result => result.title !== '');
-        results.hits = filteredResultHits;
-        results.nbHits = filteredResultHits.length;
-        results.nbPages = Math.ceil(filteredResultHits.length / 16);
-        console.log('filteredResultHits: ', filteredResultHits);
-        console.log('results.nbHits: ', results.nbHits);
-        console.log('results.nbPages ', results.nbPages);
         setSiteNameValues(queryResults.results[1].facets.siteName);
         setFileTypeValues(queryResults.results[2].facets.fileType);
       });
