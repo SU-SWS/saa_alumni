@@ -3,11 +3,12 @@ import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { dcnb } from 'cnbuilder';
 import { MenuIcon } from '@heroicons/react/outline';
+import { XIcon } from '@heroicons/react/solid';
+import Modal from '@mui/material/Modal';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import * as styles from './mainNav.styles';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
-import Modal from '../../layout/Modal/Modal';
 import AccountLinks from '../accountLinks';
 import UserHeaderIcon from '../userHeaderIcon';
 import { FlexBox } from '../../layout/FlexBox';
@@ -22,7 +23,7 @@ export const SAAMainNavProps = {
   ariaLabel: PropTypes.string,
 };
 
-const SAAMainNav = ({ menuItems, ariaLabel }) => {
+const SAAMainNav = ({ menuItems, ariaLabel, type = 'default' }) => {
   const [mainMenuOpened, setMainMenuOpened] = useState(false);
   const [utilityMenuOpen, setUtilityMenuOpen] = useState(false);
   const mainMenuRef = useRef(null);
@@ -91,32 +92,46 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
       </nav>
 
       <Modal
-        isOpen={mainMenuOpened || utilityMenuOpen}
+        open={mainMenuOpened || utilityMenuOpen}
         onClose={() => {
           handleClose();
         }}
-        ariaLabel={`Stanford Alumni websites ${
+        aria-labelledby={`Stanford Alumni websites ${
           (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
         }`}
       >
-        <FlexBox
-          alignItems="center"
-          justifyContent="center"
-          className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
-        >
-          {mainMenuOpened && 'Menu'}
-          {utilityMenuOpen && <UserHeaderIcon />}
-        </FlexBox>
-        {mainMenuOpened && (
-          <ul
-            className={styles.menuMobileSAA({ mainMenuOpened })}
-            aria-hidden={!mainMenuOpened}
+        <div>
+          <div className={styles.wrapper()}>
+            <div className={styles.closeButtonWrapper({ type })}>
+              <button
+                type="button"
+                onClick={handleClose}
+                className={styles.closeButton({ type })}
+                aria-label="Close modal"
+              >
+                <XIcon className={styles.closeIcon({ type })} aria-hidden />
+              </button>
+            </div>
+          </div>
+          <FlexBox
+            alignItems="center"
+            justifyContent="center"
+            className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
           >
-            <CreateBloks blokSection={menuItems} />
-          </ul>
-        )}
+            {mainMenuOpened && 'Menu'}
+            {utilityMenuOpen && <UserHeaderIcon />}
+          </FlexBox>
+          {mainMenuOpened && (
+            <ul
+              className={styles.menuMobileSAA({ mainMenuOpened })}
+              aria-hidden={!mainMenuOpened}
+            >
+              <CreateBloks blokSection={menuItems} />
+            </ul>
+          )}
 
-        {utilityMenuOpen && <AccountLinks />}
+          {utilityMenuOpen && <AccountLinks />}
+        </div>
       </Modal>
     </>
   );

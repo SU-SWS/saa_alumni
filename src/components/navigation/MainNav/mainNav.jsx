@@ -2,10 +2,11 @@ import React, { useState, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { MenuIcon } from '@heroicons/react/outline';
+import { XIcon } from '@heroicons/react/solid';
+import Modal from '@mui/material/Modal';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import * as styles from './mainNav.styles';
-import Modal from '../../layout/Modal/Modal';
 import AccountLinks from '../accountLinks';
 import UserHeaderIcon from '../userHeaderIcon';
 import { FlexBox } from '../../layout/FlexBox';
@@ -15,7 +16,12 @@ import { FlexBox } from '../../layout/FlexBox';
  * For Main Nav used on the subsites, e.g., Travel/Study, please see SAAMainNav
  */
 
-const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
+const MainNav = ({
+  blok: { mainMenuGroups },
+  blok,
+  className,
+  type = 'default',
+}) => {
   const [mainMenuOpened, setMainMenuOpened] = useState(false);
   const [utilityMenuOpen, setUtilityMenuOpen] = useState(false);
   const mainMenuRef = useRef(null);
@@ -81,33 +87,47 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
       </nav>
 
       <Modal
-        isOpen={mainMenuOpened || utilityMenuOpen}
+        open={mainMenuOpened || utilityMenuOpen}
         type="main-menu"
         onClose={() => {
           handleClose();
         }}
-        ariaLabel={`Stanford Alumni websites ${
+        aria-labelledby={`Stanford Alumni websites ${
           (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
         }`}
       >
-        <FlexBox
-          alignItems="center"
-          justifyContent="center"
-          className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
-        >
-          {mainMenuOpened && 'Menu'}
-          {utilityMenuOpen && <UserHeaderIcon />}
-        </FlexBox>
-        {mainMenuOpened && (
-          <ul
-            className={styles.menuMobileHomesite({ mainMenuOpened })}
-            aria-hidden={!mainMenuOpened}
+        <div>
+          <div className={styles.wrapper()}>
+            <div>
+              <button
+                type="button"
+                onClick={handleClose}
+                className={styles.closeButton({ type })}
+                aria-label="Close modal"
+              >
+                <XIcon className={styles.closeIcon({ type })} aria-hidden />
+              </button>
+            </div>
+          </div>
+          <FlexBox
+            alignItems="center"
+            justifyContent="center"
+            className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
           >
-            <CreateBloks blokSection={mainMenuGroups} />
-          </ul>
-        )}
+            {mainMenuOpened && 'Menu'}
+            {utilityMenuOpen && <UserHeaderIcon />}
+          </FlexBox>
+          {mainMenuOpened && (
+            <ul
+              className={styles.menuMobileHomesite({ mainMenuOpened })}
+              aria-hidden={!mainMenuOpened}
+            >
+              <CreateBloks blokSection={mainMenuGroups} />
+            </ul>
+          )}
 
-        {utilityMenuOpen && <AccountLinks />}
+          {utilityMenuOpen && <AccountLinks />}
+        </div>
       </Modal>
     </SbEditable>
   );
