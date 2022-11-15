@@ -527,8 +527,8 @@
   opacity: 0.6;
 }
 
-.ggePrompt--checked .ggePrompt__radio:focus::before
-.ggePrompt--checked .ggePrompt__radio:hover::before {
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio:hover::before,
+.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::before  {
   background: linear-gradient(222.67deg, var(--su-electric-blue) 15.6%, var(--su-palo-verde-dark) 84.05%);
   opacity: .4;
 }
@@ -566,22 +566,37 @@
   width: 2.4rem;
 }
 
-.ggeWidget .ggePrompt--checked .ggePrompt__radio:after {
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
+.ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  content: "";
   background: linear-gradient(
     222.67deg,
     var(--su-electric-blue) 15.6%,
     var(--su-palo-verde-dark) 84.05%
   );
-  border-radius: 50%;
-  content: "";
-  display: flex;
-  height: 1.2rem;
-  left: 50%;
-  position: absolute;
-  top: 50%;
-  width: 1.2rem;
-  transform: translate(-50%, -50%);
 }
+
+.ggeWidget .ggePrompt__other {
+  display: flex;
+  flex-direction: column;
+}
+
+.ggeWidget .ggePrompt__other .ggePrompt:first-of-type {
+  margin: 0;
+}
+
+.ggeWidget .ggePrompt__other .ggePrompt input[type="text"] {
+  margin-left: 24px;
+}
+
 
 /* Phone and Email text */
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
