@@ -303,12 +303,13 @@ class ggTripForm {
     this.render(content);
 
     // Remove Loader once GiveGab Form completes render
-    script.addEventListener('widgetRenderEnd', () => {
-      ggScript.removeChild(loaderWrapper);
-    });
-    script.removeEventListener('widgetRenderEnd', () => {
-      ggScript.removeChild(loaderWrapper);
-    });
+    script.addEventListener(
+      'widgetRenderEnd',
+      () => {
+        ggScript.removeChild(loaderWrapper);
+      },
+      { once: true }
+    );
   };
 
   /**
