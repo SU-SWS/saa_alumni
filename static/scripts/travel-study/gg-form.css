@@ -661,6 +661,11 @@
   padding: 0;
 }
 
+.ggeConfirmation .ggeButton {
+  display: flex;
+  justify-content: center;
+}
+
 /* Tally Table */
 .ggeTally {
   border: 0 solid;

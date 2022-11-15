@@ -151,6 +151,24 @@ class ggTripForm {
       ? this.formatEmailDate(this.trips[uuid].postExtendEndDate)
       : '';
 
+    const extension = () => {
+      if (
+        this.trips[uuid].extendStartDate &&
+        this.trips[uuid].postExtendEndDate
+      ) {
+        return 'Both';
+      }
+      if (this.trips[uuid].extendStartDate) {
+        return 'Pre-trip only';
+      }
+      if (this.trips[uuid].postExtendEndDate) {
+        return 'Post-trip only';
+      }
+      return 'None';
+    };
+
+    window.su_extension = extension();
+
     if (
       this.trips[uuid] &&
       this.trips[uuid].roomCategory &&
