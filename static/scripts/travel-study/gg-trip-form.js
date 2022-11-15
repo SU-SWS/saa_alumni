@@ -48,8 +48,7 @@ class ggTripForm {
   };
 
   mountAdditionalScripts = () => {
-    document.head.innerHTML +=
-      '<link rel="stylesheet" href="' + this.source + '/scripts/travel-study/gg-form.css" type="text/css"/>';
+    document.head.innerHTML += `<link rel="stylesheet" href="${this.source}/scripts/travel-study/gg-form.css" type="text/css"/>`;
     document.head.innerHTML +=
       '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };
@@ -152,7 +151,11 @@ class ggTripForm {
       ? this.formatEmailDate(this.trips[uuid].postExtendEndDate)
       : '';
 
-    if (this.trips[uuid] && this.trips[uuid].roomCategory && this.trips[uuid].roomCategory.includes('None')) {
+    if (
+      this.trips[uuid] &&
+      this.trips[uuid].roomCategory &&
+      this.trips[uuid].roomCategory.includes('None')
+    ) {
       window.su_category_request = 'none';
       window.su_category_first = 'None';
       window.su_category_second = 'None';
@@ -281,13 +284,13 @@ class ggTripForm {
     content.appendChild(main);
     this.render(content);
 
-    const removeLoader = () => {
-      ggScript.removeChild(loaderWrapper);
-    };
-
     // Remove Loader once GiveGab Form completes render
-    script.addEventListener('widgetRenderEnd', removeLoader);
-    script.removeEventListener('widgetRenderEnd', removeLoader);
+    script.addEventListener('widgetRenderEnd', () => {
+      ggScript.removeChild(loaderWrapper);
+    });
+    script.removeEventListener('widgetRenderEnd', () => {
+      ggScript.removeChild(loaderWrapper);
+    });
   };
 
   /**
