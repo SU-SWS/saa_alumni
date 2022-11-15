@@ -908,6 +908,9 @@
   margin-bottom: 2.2rem;
 }
 
+.staff-hold-trip-registration .ggeTally .ggeTally--text,
+.staff-hold-trip-registration .ggeTally .ggeTally--money,
+.staff-hold-trip-registration .ggeTally .ggeTally--total,
 .staff-hold-trip-registration .ggeConfirmationMessage .ggeTally {
   display: none;
 }
