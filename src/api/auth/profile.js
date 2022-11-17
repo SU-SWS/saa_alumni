@@ -37,7 +37,7 @@ const megaprofileHandler = async (req, res, next) => {
     console.error(err);
   }
 
-  const mpUser = { session, ...fullgg, affiliations };
+  const mpUser = { session };
   res.status(200).json(mpUser);
   next();
 };

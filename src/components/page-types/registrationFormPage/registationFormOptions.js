@@ -1,6 +1,5 @@
 export const findSelectOption = (select = [], value) => {
-  let selected = null;
-  selected = select.find(
+  const selected = select.find(
     (option) =>
       option?.toLowerCase() === value?.toLowerCase() ||
       value?.toLowerCase()?.includes(option?.toLowerCase())
