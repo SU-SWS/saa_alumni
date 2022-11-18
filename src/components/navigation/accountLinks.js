@@ -105,7 +105,10 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     <Initial
                       string={
                         userProfile.name?.digitalName ||
-                        userProfile.session?.firstName
+                        `${
+                          userProfile.session.firstName +
+                          userProfile.session.lastName
+                        }`
                       }
                     />
                     <ChevronDownIcon
