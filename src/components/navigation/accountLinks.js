@@ -95,11 +95,19 @@ const AccountLinks = ({ mainLinkClasses }) => {
                       className={`su-inline-block su-mr-10 ${
                         showDesktop ? '' : 'su-sr-only'
                       }`}
-                    >{`Hi, ${userProfile.name.digitalName}`}</span>
+                    >{`Hi, ${
+                      userProfile.name?.digitalName ||
+                      userProfile.session?.firstName
+                    }`}</span>
                     <SrOnlyText>
                       {`${expanded ? ' Close' : ' Open'} user menu`}
                     </SrOnlyText>
-                    <Initial string={userProfile.name.digitalName} />
+                    <Initial
+                      string={
+                        userProfile.name?.digitalName ||
+                        userProfile.session?.firstName
+                      }
+                    />
                     <ChevronDownIcon
                       className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition
                 ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}

@@ -20,8 +20,6 @@ import TripTravelerList from './tripTravelerList';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import {
   findSelectOption,
-  prefixSelectList,
-  relationshipSelectList,
   emailTypeList,
   phoneNumberTypeList,
 } from './registationFormOptions';
@@ -77,10 +75,8 @@ const InterstitialPage = (props) => {
         su_dname: relationship?.relatedContactDigitalName
           ? relationship?.relatedContactDigitalName
           : `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
-        su_title: findSelectOption(
-          prefixSelectList,
-          relationship?.relatedContactFullNameParsed?.relatedContactPrefix
-        ),
+        su_title:
+          relationship?.relatedContactFullNameParsed?.relatedContactPrefix,
         su_first_name:
           relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
         su_middle_name:
@@ -91,10 +87,7 @@ const InterstitialPage = (props) => {
                 ?.relatedContactMiddleName,
         su_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
-        su_relation: findSelectOption(
-          relationshipSelectList,
-          relationship?.relationshipType
-        ),
+        su_relation: relationship?.relationshipType,
         su_dob: relationship?.relatedContactBirthDate
           ? formatUsDate(relationship?.relatedContactBirthDate)
           : '',
@@ -133,10 +126,7 @@ const InterstitialPage = (props) => {
   const primaryRegistrant = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname: digitalName,
-    su_title: findSelectOption(
-      prefixSelectList,
-      userProfile?.name?.fullNameParsed?.prefix || 'Mx.'
-    ),
+    su_title: userProfile?.name?.fullNameParsed?.prefix,
     su_first_name:
       userProfile?.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
