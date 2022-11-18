@@ -97,7 +97,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                       }`}
                     >{`Hi, ${
                       userProfile.name?.digitalName ||
-                      userProfile.session?.firstName
+                      `${`${userProfile.session.firstName} ${userProfile.session.lastName}`}`
                     }`}</span>
                     <SrOnlyText>
                       {`${expanded ? ' Close' : ' Open'} user menu`}
@@ -105,10 +105,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     <Initial
                       string={
                         userProfile.name?.digitalName ||
-                        `${
-                          userProfile.session.firstName +
-                          userProfile.session.lastName
-                        }`
+                        userProfile.session?.firstName
                       }
                     />
                     <ChevronDownIcon
