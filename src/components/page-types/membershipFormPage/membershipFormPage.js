@@ -14,7 +14,7 @@ import { FormContextProvider } from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './membershipFormPage.style';
 
-const RegistrationFormPage = (props) => {
+const MembershipFormPage = (props) => {
   const {
     blok: {
       heroImage: { filename, alt, focus } = {},
@@ -79,4 +79,4 @@ const RegistrationFormPage = (props) => {
   );
 };
 
-export default RegistrationFormPage;
+export default MembershipFormPage;
