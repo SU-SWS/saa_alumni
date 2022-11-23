@@ -12,7 +12,7 @@ import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
-import * as styles from './membershipFormPage.style';
+import * as styles from './membershipFormPage.styles';
 
 const MembershipFormPage = (props) => {
   const {
