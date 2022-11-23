@@ -31,7 +31,7 @@ const MembershipFormPage = (props) => {
     image: { filename, alt, focus },
     sansSuper: 'Stanford Alumni Association Membership',
     headline: `Welcome, ${
-      userProfile.name.firstname || userProfile.session.firstname
+      userProfile?.name?.firstname || userProfile?.session.firstname
     }`,
     headlineSize: 'medium',
     isDarkGradient: 'true',
