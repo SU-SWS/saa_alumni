@@ -234,7 +234,7 @@ exports.createPages = ({ graphql, actions }) => {
               story: membershipEntry.node,
               isCanonical,
               noIndex,
-              interstitial: true,
+              membershipInterstitial: true,
             },
           });
         });
