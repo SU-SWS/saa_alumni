@@ -6,7 +6,7 @@ import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
-import Hero from '../../composite/hero';
+import HeroImage from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
@@ -50,7 +50,16 @@ const MembershipFormPage = (props) => {
               className={styles.container}
               width="full"
             >
-              <Hero blok={heroProps} />
+              <div className={styles.fixedHero}>
+                <HeroImage
+                  filename={filename}
+                  alt={alt}
+                  focus={focus}
+                  overlay="formDark"
+                  aspectRatio="5x2"
+                  className={styles.fixedHeroImg}
+                />
+              </div>
               <Grid
                 gap
                 xs={12}
