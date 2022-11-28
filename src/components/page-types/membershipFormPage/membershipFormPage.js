@@ -6,13 +6,14 @@ import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
-import HeroImage from '../../composite/HeroImage/HeroImage';
+import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './membershipFormPage.styles';
+import { Heading } from '../../simple/Heading';
 
 const MembershipFormPage = (props) => {
   const {
@@ -27,23 +28,13 @@ const MembershipFormPage = (props) => {
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
-  const heroProps = {
-    image: { filename, alt, focus },
-    sansSuper: 'Stanford Alumni Association Membership',
-    headline: `Welcome, ${
-      userProfile?.name?.firstName || userProfile?.session.firstName
-    }`,
-    headlineSize: 'medium',
-    isDarkGradient: 'true',
-    isHideScroll: 'true',
-  };
 
   return (
     <AuthenticatedPage>
       <FormContextProvider>
         <SbEditable content={blok}>
           <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
-          <Layout hasHero="true" {...props}>
+          <Layout {...props}>
             <Container
               as="main"
               id="main-content"
@@ -73,6 +64,22 @@ const MembershipFormPage = (props) => {
                   xxl={6}
                   className={styles.formWrapper}
                 >
+                  <div className={styles.contentStyle}>
+                    <span className={styles.superHead}>
+                      Stanford Alumni Association Membership
+                    </span>
+                    <Heading
+                      level={1}
+                      size="6"
+                      align="center"
+                      font="serif"
+                      id="page-title"
+                    >
+                      Welcome,{' '}
+                      {userProfile?.name?.firstName ||
+                        userProfile?.session.firstName}
+                    </Heading>
+                  </div>
                   <CreateBloks
                     blokSection={giveGabForm}
                     bgCardStyle="su-bg-saa-black-dark"
