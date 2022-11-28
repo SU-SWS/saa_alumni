@@ -193,7 +193,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
         `
       ).then((result) => {
-        // No registration page forms.
+        // No membership page forms.
         if (result.errors) {
           console.log(result.errors);
           reject(result.errors);
