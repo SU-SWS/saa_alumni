@@ -166,6 +166,81 @@ exports.createPages = ({ graphql, actions }) => {
       })
     );
 
+    // Membership Form Pages
+    // /////////////////////////////////////////////////////////////////////////
+    resolve(
+      graphql(
+        `
+          {
+            allStoryblokEntry(
+              filter: { field_component: { eq: "membershipFormPage" } }
+            ) {
+              edges {
+                node {
+                  id
+                  name
+                  created_at
+                  uuid
+                  slug
+                  full_slug
+                  content
+                  is_startpage
+                  parent_id
+                  group_id
+                }
+              }
+            }
+          }
+        `
+      ).then((result) => {
+        // No membership page forms.
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        const membershipEntries = result.data.allStoryblokEntry.edges;
+        membershipEntries.forEach((membershipEntry, index) => {
+          const slug = `${membershipEntry.node.full_slug}`;
+          const pagePath = slug.replace(/^\/|\/$/g, '');
+
+          const content = JSON.parse(membershipEntry.node.content);
+
+          let isCanonical = true;
+          if (
+            content.canonicalURL &&
+            (content.canonicalURL.url || content.canonicalURL.cached_url)
+          ) {
+            isCanonical = false;
+          }
+          const noIndex = content.noIndex ? content.noIndex : false;
+
+          createPage({
+            path: `/${pagePath}/form`,
+            component: storyblokEntry,
+            context: {
+              slug: `${membershipEntry.node.full_slug}/form`,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+            },
+          });
+
+          createPage({
+            path: `/${pagePath}`,
+            component: storyblokEntry,
+            context: {
+              slug: membershipEntry.node.full_slug,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+              interstitial: true,
+            },
+          });
+        });
+      })
+    );
+
     // Add Redirects pre-configured in Storyblok.
     // /////////////////////////////////////////////////////////////////////////
     resolve(
