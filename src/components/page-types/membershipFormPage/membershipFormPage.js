@@ -76,7 +76,7 @@ const MembershipFormPage = (props) => {
                       id="page-title"
                     >
                       Welcome,{' '}
-                      {userProfile?.name?.firstName ||
+                      {userProfile?.name?.fullNameParsed?.firstName ||
                         userProfile?.session.firstName}
                     </Heading>
                   </div>
