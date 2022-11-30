@@ -145,7 +145,7 @@ const InterstitialPage = (props) => {
       phoneNumberTypeList,
       primaryRegistrantPhoneNumberType
     ),
-    su_dob: userProfile?.birthDate ? formatUsDate(userProfile?.birthDate) : '',
+    su_dob: userProfile?.birthDate ? formatUsDate(userProfile?.birthDate) : '00/00/0000',
     su_relation: 'Guest',
     su_reg: 'Primary registrant',
   };
