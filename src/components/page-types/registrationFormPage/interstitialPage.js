@@ -90,7 +90,7 @@ const InterstitialPage = (props) => {
         su_relation: relationship?.relationshipType,
         su_dob: relationship?.relatedContactBirthDate
           ? formatUsDate(relationship?.relatedContactBirthDate)
-          : '',
+          : undefined,
         su_reg: 'Related contact',
         su_email: undefined,
         su_phone: undefined,
