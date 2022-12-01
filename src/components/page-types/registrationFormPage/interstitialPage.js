@@ -147,7 +147,7 @@ const InterstitialPage = (props) => {
     ),
     su_dob: userProfile?.birthDate
       ? formatUsDate(userProfile?.birthDate)
-      : undefined,
+      : '00/00/0000',
     su_relation: 'Guest',
     su_reg: 'Primary registrant',
   };
