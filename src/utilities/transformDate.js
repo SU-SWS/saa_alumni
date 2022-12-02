@@ -18,5 +18,9 @@ export const formatUsDate = (tripDate) => {
   const month = date.getMonth() + 1;
   const day = date.getDate() + 1;
   const year = date.getFullYear();
-  return `${month}/${day}/${year}`;
+  const newDate = `${month}/${day}/${year}`;
+  if (typeof newDate === 'string') {
+    return newDate;
+  }
+  return newDate.toString();
 };
