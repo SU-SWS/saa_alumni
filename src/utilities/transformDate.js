@@ -14,13 +14,13 @@ export const formatEmailDate = (tripDate) => {
 };
 
 export const formatUsDate = (tripDate) => {
-  const date = new Date(tripDate);
+  let date = new Date(tripDate);
+  if (Number.isNaN(Number(date))) {
+    date = new Date();
+  }
   const month = date.getMonth() + 1;
   const day = date.getDate() + 1;
   const year = date.getFullYear();
   const newDate = `${month}/${day}/${year}`;
-  if (typeof newDate === 'string') {
-    return newDate;
-  }
   return newDate.toString();
 };
