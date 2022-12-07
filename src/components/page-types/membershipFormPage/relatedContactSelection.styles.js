@@ -15,3 +15,4 @@ export const contactLinkIcon =
   'su-w-1em su-text-digital-red-xlight group-hocus:su-text-white';
 export const contactWrapper =
   'su-flex su-flex-col su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm su-bg-saa-black-dark';
+export const tempCard = 'su-rs-p-2 su-border-white su-border-2';

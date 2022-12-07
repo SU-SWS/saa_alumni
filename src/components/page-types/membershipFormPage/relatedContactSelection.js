@@ -64,9 +64,9 @@ const RelatedContactSelection = (props) => {
   };
   const relatedContacts = structureRelatedContactData(relationships);
 
-  const selectRelatedContact = (relatedContact) => {
-    console.log('Selected!');
-    return setSelectedContact[relatedContact];
+  const selectRelatedContact = (data) => {
+    console.log('DATA: ', data);
+    setSelectedContact(data);
   };
 
   return (
@@ -132,18 +132,18 @@ const RelatedContactSelection = (props) => {
                   <FlexBox>
                     {/* DISPLAY RELATED CONTACTS HERE */}
                     {relatedContacts.map((relatedContact) => (
-                      <div className="su-p-2 su-b-1">
+                      <div className={styles.tempCard}>
                         <p>{relatedContact.su_dname}</p>
                         <p>{relatedContact.su_reg}</p>
                         <SAAButton
                           icon="none"
-                          onClick={selectRelatedContact(relatedContact)}
+                          onClick={() => selectRelatedContact(relatedContact)}
                         >
                           Select
                         </SAAButton>
                       </div>
                     ))}
-                    <div className="su-p-2 su-b-1">
+                    <div className={styles.tempCard}>
                       <p>Add New Contact</p>
                       <p>New contact</p>
                       <SAAButton icon="plus">Create new</SAAButton>
