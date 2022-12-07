@@ -228,17 +228,17 @@ exports.createPages = ({ graphql, actions }) => {
           });
 
           // Create type of registrant interstitial page
-          // createPage({
-          //   path: `/${pagePath}`,
-          //   component: storyblokEntry,
-          //   context: {
-          //     slug: membershipEntry.node.full_slug,
-          //     story: membershipEntry.node,
-          //     isCanonical,
-          //     noIndex,
-          //     membershipInterstitial: true,
-          //   },
-          // });
+          createPage({
+            path: `/${pagePath}`,
+            component: storyblokEntry,
+            context: {
+              slug: membershipEntry.node.full_slug,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+              membershipInterstitial: true,
+            },
+          });
 
           // Create related contact selection interstitial page
           createPage({
