@@ -17,6 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
       'perk',
       'redirect', // NOTE: Redirects are are specifically generated below
       'registrationFormPage', // Note: Handled separately
+      'membershipFormPage', // Note: Handled separately below
       'searchEntry',
       'searchKeywordBanner',
       'searchSuggestions',
@@ -234,7 +235,7 @@ exports.createPages = ({ graphql, actions }) => {
               story: membershipEntry.node,
               isCanonical,
               noIndex,
-              interstitial: true,
+              membershipInterstitial: true,
             },
           });
         });

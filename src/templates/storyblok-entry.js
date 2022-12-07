@@ -51,6 +51,11 @@ class StoryblokEntry extends React.Component {
       content.component = 'interstitialPage';
     }
 
+    // Swap the page component for membership interstitial pages.
+    if (pageContext.membershipInterstitial) {
+      content.component = 'typeOfRegistrant';
+    }
+
     return (
       <>
         {React.createElement(Components(content.component), {
