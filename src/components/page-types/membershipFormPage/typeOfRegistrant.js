@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
-import Hero from '../../composite/hero';
+import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import Logo from '../../identity/logo';
+import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './typeOfRegistrant.styles';
 
 const TypeOfRegistrant = (props) => {
@@ -19,96 +20,113 @@ const TypeOfRegistrant = (props) => {
     blok: { heroImage: { filename, alt, focus } = {} },
     blok,
   } = props;
+
+  const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
-  const heroProps = {
-    image: { filename, alt, focus },
-    sansSuper: 'Stanford Alumni Association Membership',
-    headline: 'Join now!',
-    headlineSize: 'medium',
-    isDarkGradient: 'true',
-    isHideScroll: 'true',
-  };
 
   return (
     <AuthenticatedPage>
       <SbEditable content={blok}>
         <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
-        <Layout hasHero="true" {...props}>
+        <Layout {...props}>
           <Container
             as="main"
             id="main-content"
             className={styles.container}
             width="full"
           >
-            <Hero blok={heroProps} />
-            <Container className={styles.contentWrapper}>
-              <Grid gap xs={12}>
-                <GridCell xs={12}>
+            <div className={styles.fixedHero}>
+              <HeroImage
+                filename={filename}
+                alt={alt}
+                focus={focus}
+                overlay="formDark"
+                aspectRatio="5x2"
+                className={styles.fixedHeroImg}
+              />
+            </div>
+            <Grid gap xs={12} className={styles.contentWrapper}>
+              <GridCell
+                xs={12}
+                md={10}
+                xl={8}
+                xxl={6}
+                className={styles.formWrapper}
+              >
+                <div className={styles.contentStyle}>
                   <span className={styles.superHead}>
                     Stanford Alumni Association Membership
                   </span>
                   <Heading
-                    level={3}
-                    size={5}
+                    level={1}
+                    size={6}
                     align="center"
                     font="serif"
                     id="page-title"
                   >
                     Join now!
                   </Heading>
-                </GridCell>
-              </Grid>
-              <Grid gap xs={12} className={styles.contentWrapper}>
-                <GridCell xs={12}>
-                  <div className=" su-basefont-23 su-p-36 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark">
-                    <FlexBox justifyContent="center" className="su-rs-py-2">
-                      <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />
-                    </FlexBox>
-                    <p className="su-intro-text">
-                      Become a member of the Stanford Alumni Association and you'll enjoy a host of benefits.
-                    </p>
-                    <p>
-                      To be eligible for alumni membership, you need to have
-                      completed a minimum of three quarters of matriculated
-                      coursework at either the undergraduate or graduate level.
-                      Stanford faculty, staff, interns, residents, fellows,
-                      certificate holders, postdocs, Travel/Study participants
-                      and Stanford parents are eligible for an affiliate
-                      membership.
-                    </p>
-                    <FlexBox justifyContent="center">
-                      <Link to="/" className={styles.benefitsLink}>
-                        Benefits of Membership
-                        <HeroIcon
-                          iconType="arrow-right"
-                          className={styles.benefitsLinkIcon}
-                          isAnimate
-                        />
-                      </Link>
-                    </FlexBox>
-                  </div>
-                </GridCell>
-              </Grid>
-              <div className="su-p-36 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark">
-                <Grid gap xs={12} className={styles.gridContent}>
-                  <GridCell xs={12} lg={8}>
-                    <Heading level={3} size={5} align="left" font="serif">
-                      Who do you wish to purchase a membership for?
-                    </Heading>
-                  </GridCell>
-                </Grid>
-                <div className="su-card-centered">
-                  <Grid gap xs={12}>
+                </div>
+                <div className=" su-basefont-23 su-p-36 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark">
+                  <FlexBox justifyContent="center" className="su-rs-py-2">
+                    <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />
+                  </FlexBox>
+                  <p className="su-intro-text">
+                    Become a member of the Stanford Alumni Association and
+                    you&apos;ll enjoy a host of benefits.
+                  </p>
+                  <p>
+                    To be eligible for alumni membership, you need to have
+                    completed a minimum of three quarters of matriculated
+                    coursework at either the undergraduate or graduate level.
+                    Stanford faculty, staff, interns, residents, fellows,
+                    certificate holders, postdocs, Travel/Study participants
+                    Stanford parents are eligible for an affiliate membership.
+                  </p>
+                  <FlexBox justifyContent="center">
+                    <Link to="/" className={styles.benefitsLink}>
+                      Benefits of Membership
+                      <HeroIcon
+                        iconType="arrow-right"
+                        className={styles.benefitsLinkIcon}
+                        isAnimate
+                      />
+                    </Link>
+                  </FlexBox>
+                </div>
+              </GridCell>
+              <GridCell xs={12}>
+                <div className="su-basefont-23 su-rs-p-5 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark">
+                  <Heading level={2} size={4} align="left" font="serif">
+                    Who do you wish to purchase a membership for?
+                  </Heading>
+                  <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
                     <GridCell xs={12} md={6}>
                       <div className="su-border-3 su-px-90 su-py-58">
-                        {/* icon */}
-                        <Heading level={4} size="3" align="center" font="serif">
-                          Myself
-                        </Heading>
-                        {/* Name of myself */}
-                        <p className="su-text-center">Kristin Southard</p>
                         <FlexBox justifyContent="center">
-                          <Link to="/" className={styles.benefitsLink}>
+                          <FlexBox
+                            justifyContent="center"
+                            alignItems="center"
+                            className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
+                            aria-hidden="true"
+                          >
+                            <span>
+                              {userProfile?.name?.firstName?.slice(0, 1) ||
+                                userProfile?.session.firstName?.slice(0, 1)}
+                            </span>
+                          </FlexBox>
+                        </FlexBox>
+                        <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
+                          Myself
+                        </div>
+                        <div className="su-text-center su-leading ">
+                          {userProfile?.name?.firstName ||
+                            userProfile?.session.firstName}{' '}
+                          {userProfile?.name?.lastName ||
+                            userProfile?.session.lastName}
+                        </div>
+                        <FlexBox justifyContent="center">
+                          <Link to="/" className={styles.membershipCardLink}>
                             Select
                           </Link>
                         </FlexBox>
@@ -116,45 +134,55 @@ const TypeOfRegistrant = (props) => {
                     </GridCell>
                     <GridCell xs={12} md={6}>
                       <div className="su-border-3 su-px-90 su-py-58">
-                        {/* icon */}
-                        <Heading level={4} size="3" align="center" font="serif">
-                          Someone else
-                        </Heading>
-                        {/* Name of myself */}
-                        <p>Existing contact or new contact</p>
                         <FlexBox justifyContent="center">
-                          <Link to="/" className={styles.benefitsLink}>
+                          <FlexBox
+                            justifyContent="center"
+                            alignItems="center"
+                            className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
+                            aria-hidden="true"
+                          >
+                            ?
+                          </FlexBox>
+                        </FlexBox>
+                        <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
+                          <span>Someone else</span>
+                        </div>
+                        <div className="su-text-center su-leading">
+                          Existing contact or new contact
+                        </div>
+                        <FlexBox justifyContent="center">
+                          <Link to="/" className={styles.membershipCardLink}>
                             Select
                           </Link>
                         </FlexBox>
                       </div>
                     </GridCell>
                   </Grid>
-                </div>
-                {/* tbd Promo code section  */}
+                  <FlexBox justifyContent="center">
+                    <Link to="/" className={styles.benefitsLink}>
+                      Select membership type
+                      <HeroIcon
+                        iconType="arrow-right"
+                        className={styles.benefitsLinkIcon}
+                        isAnimate
+                      />
+                    </Link>
+                  </FlexBox>
 
-                <FlexBox justifyContent="center">
-                  <Link to="/" className={styles.benefitsLink}>
-                    Select membership type
-                    <HeroIcon
-                      iconType="arrow-right"
-                      className={styles.benefitsLinkIcon}
-                      isAnimate
-                    />
-                  </Link>
-                </FlexBox>
-
-                <div className="su-centered-text">
-                  <p>
-                    Please note: All memberships, both domestic and
-                    international, will have access to a digital membership card
-                    in lieu of a physical membership packet. Additionally, we
-                    are unable to send SAA Member key tags to addresses outside
-                    of the US. (note linked digital membership card)
-                  </p>
+                  <Grid gap xs={12}>
+                    <GridCell xs={12} md={8} className="md:su-col-start-3">
+                      <p className="su-text-center su-rs-py-2">
+                        Please note: All memberships, both domestic and
+                        international, will have access to a digital membership
+                        card card in lieu of a physical membership packet.
+                        Additionally, we are unable to send SAA Member key tags
+                        to of the US.
+                      </p>
+                    </GridCell>
+                  </Grid>
                 </div>
-              </div>
-            </Container>
+              </GridCell>
+            </Grid>
           </Container>
         </Layout>
       </SbEditable>
