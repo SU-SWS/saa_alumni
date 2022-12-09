@@ -7,9 +7,9 @@ export const superHead =
 
 export const contentWrapper = 'su-relative su-cc su-z-10 su-rs-pb-8 su-rs-pt-6';
 export const formWrapper = 'md:su-col-start-2';
-export const contentStyle = 'su-sticky su-top-0 su-h-fit su-text-white';
+export const contentStyle = 'su-text-white';
 export const contactLink =
-  'su-rs-mt-2 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-border-3 su-border-digital-red-xlight su-text-white hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18';
+  'su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-border-3 su-border-digital-red-xlight su-text-white hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18';
 export const contactLinkIcon =
   'su-w-1em su-text-digital-red-xlight group-hocus:su-text-white';
 export const contactWrapper =

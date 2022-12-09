@@ -15,6 +15,7 @@ import { formatUsDate } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { SAAButton } from '../../simple/SAAButton';
+import { SAALinkButton } from '../../cta/SAALinkButton';
 
 const RelatedContactSelection = (props) => {
   const {
@@ -24,7 +25,7 @@ const RelatedContactSelection = (props) => {
   } = props;
   const helmetTitle = `Stanford Alumni Association Membership`;
   // TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
-  // const slug = pageContext.slug.replace(/\/$/, '');
+  const slug = pageContext.slug.replace(/\/$/, '');
   const [selectedContact, setSelectedContact] = useState([]);
 
   const { userProfile } = useContext(AuthContext);
@@ -117,7 +118,7 @@ const RelatedContactSelection = (props) => {
                 <div className={styles.contactWrapper}>
                   {/* Alumni logo here */}
                   <Heading>Select a recipient</Heading>
-                  <p>
+                  <p className="su-mb-0">
                     Help someone become a membership of the Stanford Alumni
                     Association.
                   </p>
@@ -182,7 +183,15 @@ const RelatedContactSelection = (props) => {
                       </div>
                     </GridCell>
                   </Grid>
-                  <FlexBox>
+                  <FlexBox justifyContent="evenly" alignItems="center">
+                    <SAALinkButton icon="none" link="/membership/register">
+                      <HeroIcon
+                        iconType="arrow-left"
+                        className="su-inline-block"
+                        isAnimate
+                      />
+                      Go back
+                    </SAALinkButton>
                     <Link
                       to="/membership/register/form"
                       className={styles.contactLink}
