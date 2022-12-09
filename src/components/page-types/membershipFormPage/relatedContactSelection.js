@@ -74,7 +74,7 @@ const RelatedContactSelection = (props) => {
     <AuthenticatedPage>
       <SbEditable content={blok}>
         <Helmet titleTemplate={helmetTitle} title={helmetTitle} />
-        <Layout hasHero="true" {...props}>
+        <Layout {...props}>
           <Container
             as="main"
             id="main-content"
@@ -97,13 +97,7 @@ const RelatedContactSelection = (props) => {
               className={styles.contentWrapper}
               id="su-gg-embed"
             >
-              <GridCell
-                xs={12}
-                md={10}
-                xl={8}
-                xxl={6}
-                className={styles.formWrapper}
-              >
+              <GridCell xs={12} md={10} className={styles.formWrapper}>
                 <div className={styles.contentStyle}>
                   <span className={styles.superHead}>
                     Stanford Alumni Association Membership
@@ -130,26 +124,64 @@ const RelatedContactSelection = (props) => {
                   <p>
                     Please select a recipient from your list of contacts below.
                   </p>
-                  <FlexBox>
+                  <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
                     {/* DISPLAY RELATED CONTACTS HERE */}
                     {relatedContacts.map((relatedContact) => (
-                      <div className={styles.tempCard}>
-                        <p>{relatedContact.su_dname}</p>
-                        <p>{relatedContact.su_reg}</p>
-                        <SAAButton
-                          icon="none"
-                          onClick={() => selectRelatedContact(relatedContact)}
-                        >
-                          Select
-                        </SAAButton>
-                      </div>
+                      <GridCell xs={12} md={6}>
+                        <div className="su-border-3 su-px-90 su-py-58">
+                          <FlexBox justifyContent="center">
+                            <FlexBox
+                              justifyContent="center"
+                              alignItems="center"
+                              className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
+                              aria-hidden="true"
+                            >
+                              <span>{relatedContact.su_dname.slice(0, 1)}</span>
+                            </FlexBox>
+                          </FlexBox>
+                          <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
+                            {relatedContact.su_dname}
+                          </div>
+                          <div className="su-text-center su-leading ">
+                            {relatedContact.su_reg}
+                          </div>
+                          <FlexBox justifyContent="center">
+                            <SAAButton
+                              icon="none"
+                              onClick={() =>
+                                selectRelatedContact(relatedContact)
+                              }
+                            >
+                              Select
+                            </SAAButton>
+                          </FlexBox>
+                        </div>
+                      </GridCell>
                     ))}
-                    <div className={styles.tempCard}>
-                      <p>Add New Contact</p>
-                      <p>New contact</p>
-                      <SAAButton icon="plus">Create new</SAAButton>
-                    </div>
-                  </FlexBox>
+                    <GridCell xs={12} md={6}>
+                      <div className="su-border-3 su-px-90 su-py-58">
+                        <FlexBox justifyContent="center">
+                          <FlexBox
+                            justifyContent="center"
+                            alignItems="center"
+                            className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
+                            aria-hidden="true"
+                          >
+                            <HeroIcon iconType="plus" />
+                          </FlexBox>
+                        </FlexBox>
+                        <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
+                          Add new contact
+                        </div>
+                        <div className="su-text-center su-leading ">
+                          New contact
+                        </div>
+                        <FlexBox justifyContent="center">
+                          <SAAButton icon="plus">Create new</SAAButton>
+                        </FlexBox>
+                      </div>
+                    </GridCell>
+                  </Grid>
                   <FlexBox>
                     <Link
                       to="/membership/register/form"
