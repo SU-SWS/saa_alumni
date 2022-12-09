@@ -20,10 +20,11 @@ const RelatedContactSelection = (props) => {
   const {
     blok: { heroImage: { filename, alt, focus } = {} },
     blok,
-    location,
+    pageContext,
   } = props;
   const helmetTitle = `Stanford Alumni Association Membership`;
-  const slug = location.pathname.replace(/\/$/, '');
+  // TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
+  // const slug = pageContext.slug.replace(/\/$/, '');
   const [selectedContact, setSelectedContact] = useState([]);
 
   const { userProfile } = useContext(AuthContext);
@@ -151,7 +152,7 @@ const RelatedContactSelection = (props) => {
                   </FlexBox>
                   <FlexBox>
                     <Link
-                      to={`${slug}/form`}
+                      to="/membership/register/form"
                       className={styles.contactLink}
                       state={{ registrant: selectedContact }}
                     >
@@ -163,6 +164,7 @@ const RelatedContactSelection = (props) => {
                       />
                     </Link>
                   </FlexBox>
+                  {/* TODO: Inquire about digital membership card link */}
                   <p>
                     Please note: All memberships, both domestic and
                     international, will have access to a{' '}
