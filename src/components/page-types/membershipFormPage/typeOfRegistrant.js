@@ -12,6 +12,7 @@ import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import Logo from '../../identity/logo';
+import MembershipCard from './membershipCard';
 import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './typeOfRegistrant.styles';
 
@@ -102,60 +103,10 @@ const TypeOfRegistrant = (props) => {
                   </Heading>
                   <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
                     <GridCell xs={12} md={6}>
-                      <div className="su-border-3 su-px-90 su-py-58">
-                        <FlexBox justifyContent="center">
-                          <FlexBox
-                            justifyContent="center"
-                            alignItems="center"
-                            className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
-                            aria-hidden="true"
-                          >
-                            <span>
-                              {userProfile?.name?.firstName?.slice(0, 1) ||
-                                userProfile?.session.firstName?.slice(0, 1)}
-                            </span>
-                          </FlexBox>
-                        </FlexBox>
-                        <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
-                          Myself
-                        </div>
-                        <div className="su-text-center su-leading ">
-                          {userProfile?.name?.firstName ||
-                            userProfile?.session.firstName}{' '}
-                          {userProfile?.name?.lastName ||
-                            userProfile?.session.lastName}
-                        </div>
-                        <FlexBox justifyContent="center">
-                          <Link to="/" className={styles.membershipCardLink}>
-                            Select
-                          </Link>
-                        </FlexBox>
-                      </div>
+                      <MembershipCard />
                     </GridCell>
                     <GridCell xs={12} md={6}>
-                      <div className="su-border-3 su-px-90 su-py-58">
-                        <FlexBox justifyContent="center">
-                          <FlexBox
-                            justifyContent="center"
-                            alignItems="center"
-                            className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
-                            aria-hidden="true"
-                          >
-                            ?
-                          </FlexBox>
-                        </FlexBox>
-                        <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
-                          <span>Someone else</span>
-                        </div>
-                        <div className="su-text-center su-leading">
-                          Existing contact or new contact
-                        </div>
-                        <FlexBox justifyContent="center">
-                          <Link to="/" className={styles.membershipCardLink}>
-                            Select
-                          </Link>
-                        </FlexBox>
-                      </div>
+                      <MembershipCard />
                     </GridCell>
                   </Grid>
                   <FlexBox justifyContent="center">
@@ -180,6 +131,7 @@ const TypeOfRegistrant = (props) => {
                       </p>
                     </GridCell>
                   </Grid>
+                  <MembershipCard />
                 </div>
               </GridCell>
             </Grid>
