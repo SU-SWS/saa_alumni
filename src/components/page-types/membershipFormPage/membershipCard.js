@@ -1,15 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import { FlexBox } from '../../layout/FlexBox';
-import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import AuthContext from '../../../contexts/AuthContext';
-import { Grid } from '../../layout/Grid';
-import { GridCell } from '../../layout/GridCell';
 import * as styles from './MembershipCard.styles';
-import SbLink from '../../../utilities/sbLink';
 
 export const MembershipCardProps = {
   name: PropTypes.string,
@@ -52,11 +46,11 @@ const MembershipCard = ({ name, type }) => {
 
   return (
     <FlexBox direction="col" as="article" className={styles.root}>
-        <button
-          type="button"
-          className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
-          // onClick={toggleRelationship}
-        >
+      <button
+        type="button"
+        className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
+        // onClick={toggleRelationship}
+      >
         <div>
           <FlexBox justifyContent="center">
             <FlexBox
@@ -105,4 +99,3 @@ const MembershipCard = ({ name, type }) => {
 MembershipCard.propTypes = MembershipCardProps;
 
 export default MembershipCard;
-
