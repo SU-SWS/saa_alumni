@@ -131,7 +131,6 @@ const TypeOfRegistrant = (props) => {
                       </p>
                     </GridCell>
                   </Grid>
-                  <MembershipCard />
                 </div>
               </GridCell>
             </Grid>
