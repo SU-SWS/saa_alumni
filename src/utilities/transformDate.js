@@ -18,6 +18,7 @@ export const formatUsDate = (tripDate) => {
   if (Number.isNaN(Number(date))) {
     return undefined;
   }
+  
   const month = date.getMonth() + 1;
   const day = date.getDate();
   const year = date.getFullYear();
