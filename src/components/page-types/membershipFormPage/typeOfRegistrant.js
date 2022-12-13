@@ -54,7 +54,7 @@ const TypeOfRegistrant = (props) => {
                 xxl={6}
                 className={styles.formWrapper}
               >
-                <div className={styles.contentStyle}>
+                <div>
                   <span className={styles.superHead}>
                     Stanford Alumni Association Membership
                   </span>
@@ -103,10 +103,24 @@ const TypeOfRegistrant = (props) => {
                   </Heading>
                   <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
                     <GridCell xs={12} md={6}>
-                      <MembershipCard />
+                      <MembershipCard
+                        heading="Myself"
+                        subheading={
+                          userProfile?.name?.digitalName ||
+                          `${userProfile?.session.firstName} ${userProfile?.session.lastName} `
+                        }
+                        initial={
+                          userProfile?.name?.firstName ||
+                          userProfile?.session.firstName
+                        }
+                      />
                     </GridCell>
                     <GridCell xs={12} md={6}>
-                      <MembershipCard />
+                      <MembershipCard
+                        heading="Someone else"
+                        subheading="Existing contact or new contact"
+                        initial="?"
+                      />
                     </GridCell>
                   </Grid>
                   <FlexBox justifyContent="center">
