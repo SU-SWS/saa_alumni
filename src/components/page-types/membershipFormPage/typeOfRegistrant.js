@@ -54,20 +54,18 @@ const TypeOfRegistrant = (props) => {
                 xxl={6}
                 className={styles.formWrapper}
               >
-                <div>
-                  <span className={styles.superHead}>
-                    Stanford Alumni Association Membership
-                  </span>
-                  <Heading
-                    level={1}
-                    size={6}
-                    align="center"
-                    font="serif"
-                    id="page-title"
-                  >
-                    Join now!
-                  </Heading>
-                </div>
+                <span className={styles.superHead}>
+                  Stanford Alumni Association Membership
+                </span>
+                <Heading
+                  level={1}
+                  size={6}
+                  align="center"
+                  font="serif"
+                  id="page-title"
+                >
+                  Join now!
+                </Heading>
                 <div className=" su-basefont-23 su-p-36 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark">
                   <FlexBox justifyContent="center" className="su-rs-py-2">
                     <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />

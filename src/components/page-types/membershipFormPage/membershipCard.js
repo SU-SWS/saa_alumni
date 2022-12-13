@@ -50,7 +50,7 @@ const MembershipCard = ({
   const [isSelected, setIsSelected] = useState(false);
 
   const handleClick = () => {
-    setIsSelected((current) => !current);
+    setIsSelected(!isSelected);
   };
 
   return (
