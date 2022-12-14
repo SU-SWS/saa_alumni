@@ -1,3 +1,5 @@
+import { dcnb } from 'cnbuilder';
+
 export const container = 'basic-page su-relative su-flex-grow su-w-full';
 export const fixedHero = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
 export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
@@ -8,10 +10,18 @@ export const superHead =
 export const contentWrapper = 'su-relative su-cc su-z-10 su-rs-pb-8 su-rs-pt-6';
 export const formWrapper = 'md:su-col-start-2';
 export const contentStyle = 'su-text-white';
-export const contactLink =
-  'su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-border-3 su-border-digital-red-xlight su-text-white hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18';
-export const contactLinkIcon =
-  'su-w-1em su-text-digital-red-xlight group-hocus:su-text-white';
+export const nextLink = (disabled) =>
+  dcnb(
+    'su-group su-flex su-items-end su-text-18 md:su-text-24 su-no-underline su-font-regular su-text-white hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18',
+    disabled
+      ? 'su-pointer-events-none su-bg-black-70 su-border-black-70 hocus:su-bg-black-70 hocus:su-border-black-70'
+      : 'hocus:su-underline su-bg-digital-red su-border-digital-red hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark'
+  );
+export const nextLinkIcon = 'su-w-1em su-text-white group-hocus:su-text-white';
+export const goBackLink =
+  'su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline hocus:su-underline su-text-white hocus:su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-bg-transparent group-hocus:su-text-white group-hocus:su-bg-gradient-to-tr group-hocus:su-from-palo-verde-dark group-hocus:su-to-saa-electric-blue group-hocus:su-shadow-md';
+export const goBackLinkIcon =
+  'su-w-1em su-text-white group-hocus:su-text-white';
 export const contactWrapper =
   'su-flex su-flex-col su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm su-bg-saa-black-dark';
 export const tempCard = 'su-rs-p-2 su-border-white su-border-2';

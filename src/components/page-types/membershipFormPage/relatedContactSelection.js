@@ -14,8 +14,8 @@ import * as styles from './relatedContactSelection.styles';
 import { formatUsDate } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
-import { SAAButton } from '../../simple/SAAButton';
-import { SAALinkButton } from '../../cta/SAALinkButton';
+import Logo from '../../identity/logo';
+import MembershipCard from './membershipCard';
 
 const RelatedContactSelection = (props) => {
   const {
@@ -24,7 +24,7 @@ const RelatedContactSelection = (props) => {
     pageContext,
   } = props;
   const helmetTitle = `Stanford Alumni Association Membership`;
-  // TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
+  // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
   const slug = pageContext.slug.replace(/\/$/, '');
   const [selectedContact, setSelectedContact] = useState([]);
 
@@ -65,11 +65,6 @@ const RelatedContactSelection = (props) => {
     return relatedContacts;
   };
   const relatedContacts = structureRelatedContactData(relationships);
-
-  const selectRelatedContact = (data) => {
-    console.log('DATA: ', data);
-    setSelectedContact(data);
-  };
 
   return (
     <AuthenticatedPage>
@@ -116,7 +111,9 @@ const RelatedContactSelection = (props) => {
                   </Heading>
                 </div>
                 <div className={styles.contactWrapper}>
-                  {/* Alumni logo here */}
+                  <FlexBox justifyContent="center" className="su-rs-py-2">
+                    <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />
+                  </FlexBox>
                   <Heading>Select a recipient</Heading>
                   <p className="su-mb-0">
                     Help someone become a membership of the Stanford Alumni
@@ -129,91 +126,68 @@ const RelatedContactSelection = (props) => {
                     {/* DISPLAY RELATED CONTACTS HERE */}
                     {relatedContacts.map((relatedContact) => (
                       <GridCell xs={12} md={6}>
-                        <div className="su-border-3 su-px-90 su-py-58">
-                          <FlexBox justifyContent="center">
-                            <FlexBox
-                              justifyContent="center"
-                              alignItems="center"
-                              className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
-                              aria-hidden="true"
-                            >
-                              <span>{relatedContact.su_dname.slice(0, 1)}</span>
-                            </FlexBox>
-                          </FlexBox>
-                          <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
-                            {relatedContact.su_dname}
-                          </div>
-                          <div className="su-text-center su-leading ">
-                            {relatedContact.su_reg}
-                          </div>
-                          <FlexBox justifyContent="center">
-                            <SAAButton
-                              icon="none"
-                              onClick={() =>
-                                selectRelatedContact(relatedContact)
-                              }
-                            >
-                              Select
-                            </SAAButton>
-                          </FlexBox>
-                        </div>
+                        <MembershipCard
+                          heading={relatedContact.su_dname}
+                          subheading={relatedContact.su_reg}
+                          initial={relatedContact.su_dname.slice(0, 1)}
+                        />
                       </GridCell>
                     ))}
                     <GridCell xs={12} md={6}>
-                      <div className="su-border-3 su-px-90 su-py-58">
-                        <FlexBox justifyContent="center">
-                          <FlexBox
-                            justifyContent="center"
-                            alignItems="center"
-                            className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
-                            aria-hidden="true"
-                          >
-                            <HeroIcon iconType="plus" />
-                          </FlexBox>
-                        </FlexBox>
-                        <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
-                          Add new contact
-                        </div>
-                        <div className="su-text-center su-leading ">
-                          New contact
-                        </div>
-                        <FlexBox justifyContent="center">
-                          <SAAButton icon="plus">Create new</SAAButton>
-                        </FlexBox>
-                      </div>
+                      <MembershipCard
+                        heading="New Contact"
+                        subheading="Add new contact"
+                        newContact
+                      />
                     </GridCell>
                   </Grid>
-                  <FlexBox justifyContent="evenly" alignItems="center">
-                    <SAALinkButton icon="none" link="/membership/register">
+                  <FlexBox
+                    justifyContent="evenly"
+                    alignItems="center"
+                    className="su-rs-mb-4"
+                  >
+                    <Link
+                      to="/membership/register"
+                      className={styles.goBackLink}
+                    >
                       <HeroIcon
                         iconType="arrow-left"
-                        className="su-inline-block"
+                        className={styles.goBackLinkIcon}
                         isAnimate
                       />
                       Go back
-                    </SAALinkButton>
+                    </Link>
                     <Link
                       to="/membership/register/form"
-                      className={styles.contactLink}
+                      className={styles.nextLink(selectedContact)}
                       state={{ registrant: selectedContact }}
                     >
                       Next
                       <HeroIcon
                         iconType="arrow-right"
-                        className={styles.contactLinkIcon}
-                        isAnimate
+                        className={styles.nextLinkIcon}
+                        isAnimate={!selectedContact}
                       />
                     </Link>
                   </FlexBox>
                   {/* TODO: Inquire about digital membership card link */}
-                  <p>
-                    Please note: All memberships, both domestic and
-                    international, will have access to a{' '}
-                    <a href="/">digital membership card</a> in lieu of a
-                    physical membership packet. Additionally, we are unable to
-                    send SAA Member key tags to addresses outside of the US.
-                    (note linked digital membership card)
-                  </p>
+                  <Grid gap xs={12}>
+                    <GridCell xs={12} md={8} className="md:su-col-start-3">
+                      <p className="su-text-center">
+                        Please note: All memberships, both domestic and
+                        international, will have access to a{' '}
+                        <a
+                          className="su-text-white hocus:su-text-digital-red-light"
+                          href="/"
+                        >
+                          digital membership card
+                        </a>{' '}
+                        in lieu of a physical membership packet. Additionally,
+                        we are unable to send SAA Member key tags to addresses
+                        outside of the US. (note linked digital membership card)
+                      </p>
+                    </GridCell>
+                  </Grid>
                 </div>
               </GridCell>
             </Grid>
