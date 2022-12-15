@@ -23,11 +23,18 @@ const MembershipFormPage = (props) => {
       ankleContent,
     },
     blok,
+    location,
   } = props;
 
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
+  const registrant = location?.state?.registrant;
+  console.log('REGISTRANT PASS THROUGH: ', registrant);
+
+  useEffect(() => {
+    window.prefillData = registrant;
+  }, [registrant]);
 
   return (
     <AuthenticatedPage>

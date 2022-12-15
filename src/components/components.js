@@ -74,6 +74,7 @@ import TripFormInformation from './composite/tripFormInformation';
 import TripNotifyMe from './page-types/formPage/tripNotifyMe';
 import TripPage from './page-types/TripPage/TripPage';
 import TypeOfRegistrant from './page-types/membershipFormPage/typeOfRegistrant';
+import RelatedContactSelection from './page-types/membershipFormPage/relatedContactSelection';
 import { SBUtilityNav } from './storyblok/utilityNav';
 import VerticalNav from './navigation/verticalNav';
 import VerticalNavWrapper from './navigation/verticalNavWrapper';
@@ -156,6 +157,7 @@ const ComponentList = {
   tripFormInformation: TripFormInformation,
   tripNotifyMe: TripNotifyMe,
   typeOfRegistrant: TypeOfRegistrant,
+  relatedContactSelection: RelatedContactSelection,
   utilityNav: SBUtilityNav,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
