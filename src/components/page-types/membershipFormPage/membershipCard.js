@@ -1,7 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
+import { FormContext } from '../../../contexts/FormContext';
 import * as styles from './MembershipCard.styles';
 
 export const MembershipCardProps = {
@@ -16,50 +17,55 @@ const MembershipCard = ({
   subheading,
   initial,
   newContact = false,
+  member,
 }) => {
   // @TODO - return to this in ADAPTSM-53
-  // const [state, dispatch] = useContext(FormContext);
-  // const { membersData } = state;
-  // const buttonDisplay = membersData.find(
-  //   (selectedMember) => selectedMember.su_did === member.su_did
-  // );
+  const [state, dispatch] = useContext(FormContext);
+  const { travelerData } = state;
+  const isSelected = travelerData?.find(
+    (selectedMember) => selectedMember.su_did === member.su_did
+  );
 
-  // const addRelationship = () => {
-  //   dispatch({
-  //     type: 'addMember',
-  //     payload: member,
-  //   });
-  // };
+  const addRelationship = () => {
+    console.log('Adding: ', member);
+    dispatch({
+      type: 'addRegistrant',
+      payload: member,
+    });
+  };
 
-  // const removeRelationship = () => {
-  //   dispatch({
-  //     type: 'removeMember',
-  //     payload: member.su_did,
-  //   });
-  // };
+  const removeRelationship = () => {
+    console.log('Removing');
+    dispatch({
+      type: 'removeRegistrant',
+      payload: member.su_did,
+    });
+  };
 
-  // const toggleRelationship = () => {
-  //   if (buttonDisplay) {
-  //     removeRelationship();
-  //   } else {
-  //     addRelationship();
-  //   }
-  // };
+  const toggleRelationship = () => {
+    if (isSelected) {
+      removeRelationship();
+    } else {
+      addRelationship();
+    }
+  };
+
+  console.log('MEMBER DATA:', travelerData);
 
   // for testing purposes
-  const [isSelected, setIsSelected] = useState(false);
+  // const [isSelected, setIsSelected] = useState(false);
 
-  const handleClick = () => {
-    setIsSelected(!isSelected);
-  };
+  // const handleClick = () => {
+  //   setIsSelected(!isSelected);
+  // };
 
   return (
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
         className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
-        // onClick={toggleRelationship}
-        onClick={handleClick}
+        onClick={toggleRelationship}
+        // onClick={handleClick}
       >
         <FlexBox justifyContent="center">
           <FlexBox
@@ -106,9 +112,16 @@ const MembershipCard = ({
         ) : (
           <FlexBox justifyContent="center">
             {isSelected ? (
-              <div className={styles.membershipCardSelectedLink}>Selected</div>
+              <button
+                type="button"
+                className={styles.membershipCardSelectedLink}
+              >
+                Selected
+              </button>
             ) : (
-              <div className={styles.membershipCardLink}>Select</div>
+              <button type="button" className={styles.membershipCardLink}>
+                Select
+              </button>
             )}
           </FlexBox>
         )}

@@ -13,7 +13,7 @@ const TripTravelerList = () => {
       justifyContent="between"
       alignItems="center"
     >
-      {state.travelersData.map((traveler) => {
+      {state.registrantsData.map((traveler) => {
         if (traveler.su_reg.includes('Primary')) {
           return (
             <TripTravelerListItem
@@ -27,7 +27,7 @@ const TripTravelerList = () => {
           <TripTravelerListItem key={traveler.su_did} traveler={traveler} />
         );
       })}
-      {state.travelersData.length === 1 && (
+      {state.registrantsData.length === 1 && (
         <p className="su-text-center su-basefont-23">
           You haven’t yet added any existing connections.
         </p>

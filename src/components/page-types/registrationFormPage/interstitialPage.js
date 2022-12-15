@@ -262,7 +262,7 @@ const InterstitialPage = (props) => {
                             <Link
                               to={`${slug}/form`}
                               className={styles.travelerLink}
-                              state={{ travelers: value[0].travelersData }}
+                              state={{ travelers: value[0].registrantsData }}
                             >
                               Next
                               <HeroIcon
