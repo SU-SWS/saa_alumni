@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
@@ -16,7 +16,10 @@ import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import Logo from '../../identity/logo';
 import MembershipCard from './membershipCard';
-import { FormContextProvider } from '../../../contexts/FormContext';
+import {
+  FormContext,
+  FormContextProvider,
+} from '../../../contexts/FormContext';
 
 const RelatedContactSelection = (props) => {
   const {
@@ -27,7 +30,6 @@ const RelatedContactSelection = (props) => {
   const helmetTitle = `Stanford Alumni Association Membership`;
   // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
   const slug = pageContext.slug.replace(/\/$/, '');
-  const [selectedContact, setSelectedContact] = useState([]);
 
   const { userProfile } = useContext(AuthContext);
   const relationships = userProfile?.relationships;
@@ -161,20 +163,28 @@ const RelatedContactSelection = (props) => {
                         />
                         Go back
                       </Link>
-                      <Link
-                        to="/membership/register/form"
-                        className={styles.nextLink(selectedContact)}
-                        state={{ registrant: selectedContact }}
-                      >
-                        Next
-                        <HeroIcon
-                          iconType="arrow-right"
-                          className={styles.nextLinkIcon}
-                          isAnimate={!selectedContact}
-                        />
-                      </Link>
+                      <FormContext.Consumer>
+                        {(value) => {
+                          const isContactSelected =
+                            value[0].registrantsData.length === 0;
+                          return (
+                            <Link
+                              to="/membership/register/form"
+                              className={styles.nextLink(isContactSelected)}
+                              state={{ registrant: value[0].registrantsData }}
+                            >
+                              Next
+                              <HeroIcon
+                                iconType="arrow-right"
+                                className={styles.nextLinkIcon}
+                                isAnimate={!isContactSelected}
+                              />
+                            </Link>
+                          );
+                        }}
+                      </FormContext.Consumer>
                     </FlexBox>
-                    {/* TODO: Inquire about digital membership card link */}
+                    {/* @TODO: Inquire about digital membership card link */}
                     <Grid gap xs={12}>
                       <GridCell xs={12} md={8} className="md:su-col-start-3">
                         <p className="su-text-center">

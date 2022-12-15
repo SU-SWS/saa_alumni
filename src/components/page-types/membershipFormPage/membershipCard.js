@@ -21,10 +21,12 @@ const MembershipCard = ({
 }) => {
   // @TODO - return to this in ADAPTSM-53
   const [state, dispatch] = useContext(FormContext);
-  const { travelerData } = state;
-  const isSelected = travelerData?.find(
-    (selectedMember) => selectedMember.su_did === member.su_did
+  const { registrantsData } = state;
+  const isSelected = registrantsData.find(
+    (selectedMember) => selectedMember.su_did === member?.su_did
   );
+
+  console.log('SU DID', member?.su_did);
 
   const addRelationship = () => {
     console.log('Adding: ', member);
@@ -50,7 +52,7 @@ const MembershipCard = ({
     }
   };
 
-  console.log('MEMBER DATA:', travelerData);
+  console.log('MEMBER DATA:', registrantsData);
 
   // for testing purposes
   // const [isSelected, setIsSelected] = useState(false);
