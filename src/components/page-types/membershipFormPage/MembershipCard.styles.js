@@ -25,3 +25,10 @@ export const membershipCardLink = (disabled) =>
   );
 export const membershipCardSelectedLink =
   'su-rs-mt-2 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-gradient-to-tr su-from-palo-verde-dark su-to-saa-electric-blue su-shadow-md hocus:su-text-white';
+export const membershipCardWrapper = (disabled) =>
+  dcnb(
+    'su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white',
+    disabled
+      ? 'su-pointer-events-none'
+      : 'hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
+  );
