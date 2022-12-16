@@ -15,10 +15,15 @@ import Logo from '../../identity/logo';
 import MembershipCard from './membershipCard';
 import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './typeOfRegistrant.styles';
+import CreateBloks from '../../../utilities/createBloks';
 
 const TypeOfRegistrant = (props) => {
   const {
-    blok: { heroImage: { filename, alt, focus } = {} },
+    blok: {
+      heroImage: { filename, alt, focus } = {},
+      intro,
+      membershipCardNote,
+    },
     blok,
   } = props;
 
@@ -70,28 +75,7 @@ const TypeOfRegistrant = (props) => {
                   <FlexBox justifyContent="center" className="su-rs-py-2">
                     <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />
                   </FlexBox>
-                  <p className="su-intro-text">
-                    Become a member of the Stanford Alumni Association and
-                    you&apos;ll enjoy a host of benefits.
-                  </p>
-                  <p>
-                    To be eligible for alumni membership, you need to have
-                    completed a minimum of three quarters of matriculated
-                    coursework at either the undergraduate or graduate level.
-                    Stanford faculty, staff, interns, residents, fellows,
-                    certificate holders, postdocs, Travel/Study participants
-                    Stanford parents are eligible for an affiliate membership.
-                  </p>
-                  <FlexBox justifyContent="center">
-                    <Link to="/" className={styles.benefitsLink}>
-                      Benefits of Membership
-                      <HeroIcon
-                        iconType="arrow-right"
-                        className={styles.benefitsLinkIcon}
-                        isAnimate
-                      />
-                    </Link>
-                  </FlexBox>
+                  <CreateBloks blokSection={intro} />
                 </div>
               </GridCell>
               <GridCell xs={12}>
@@ -131,16 +115,9 @@ const TypeOfRegistrant = (props) => {
                       />
                     </Link>
                   </FlexBox>
-
                   <Grid gap xs={12}>
                     <GridCell xs={12} md={8} className="md:su-col-start-3">
-                      <p className="su-text-center su-rs-py-2">
-                        Please note: All memberships, both domestic and
-                        international, will have access to a digital membership
-                        card card in lieu of a physical membership packet.
-                        Additionally, we are unable to send SAA Member key tags
-                        to of the US.
-                      </p>
+                      {/* <CreateBloks blokSection={membershipCardNote} /> */}
                     </GridCell>
                   </Grid>
                 </div>

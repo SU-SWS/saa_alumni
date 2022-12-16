@@ -1,21 +1,40 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
+import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
+import HeroIcon from '../../simple/heroIcon';
+import * as styles from './membershipInformation.styles';
 
 const MembershipInformation = (props) => {
   const {
-    blok: { heading, body, benefitsLink },
+    blok: {
+      heading,
+      body,
+      displayBenefitsButton,
+      benefitsButtonText,
+      benefitsLink,xw
+    },
     blok,
   } = props;
-  console.log('BLOK: ', blok);
 
   return (
     <SbEditable content={blok}>
-      <Heading level={1} size={6} align="left" font="serif" id="page-title">
+      <Heading level={2} size={2} align="left" font="sans">
         {heading}
       </Heading>
-      <p>{body}</p>
-      <a href={benefitsLink}>Become a Member</a>
+      <p className="su-card-paragraph">{body}</p>
+      {displayBenefitsButton && (
+        <FlexBox justifyContent="center">
+          <a href={benefitsLink} className={styles.benefitsLink}>
+            {benefitsButtonText || 'Benefits of Membership'}
+            <HeroIcon
+              iconType="arrow-right"
+              className={styles.benefitsLinkIcon}
+              isAnimate
+            />
+          </a>
+        </FlexBox>
+      )}
     </SbEditable>
   );
 };
