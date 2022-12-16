@@ -68,8 +68,10 @@ const MembershipCard = ({
       <button
         type="button"
         className={dcnb(
-          'su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue',
-          disabled ? 'su-pointer-events-none' : ''
+          'su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white',
+          disabled
+            ? 'su-pointer-events-none'
+            : 'hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
         )}
         onClick={toggleRelationship}
         // onClick={handleClick}

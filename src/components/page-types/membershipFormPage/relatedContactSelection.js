@@ -69,6 +69,8 @@ const RelatedContactSelection = (props) => {
   };
   const relatedContacts = structureRelatedContactData(relationships);
 
+  const newContact = { su_did: 'newContact' };
+
   return (
     <AuthenticatedPage>
       <FormContextProvider>
@@ -96,6 +98,7 @@ const RelatedContactSelection = (props) => {
                 {(value) => {
                   const isContactSelected =
                     value[0].registrantsData.length === 0;
+                  console.log('REG DATA:', value[0].registrantsData[0]?.su_did);
                   return (
                     <Grid
                       gap
@@ -136,7 +139,6 @@ const RelatedContactSelection = (props) => {
                             Please select a recipient from your list of contacts
                             below.
                           </p>
-
                           <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
                             {/* DISPLAY RELATED CONTACTS HERE */}
                             {relatedContacts.map((relatedContact) => (
@@ -148,7 +150,7 @@ const RelatedContactSelection = (props) => {
                                   member={relatedContact}
                                   disabled={
                                     value[0].registrantsData.length !== 0 &&
-                                    value[0].registrantsData.su_did ===
+                                    value[0].registrantsData[0]?.su_did !==
                                       relatedContact.su_did
                                   }
                                 />
@@ -158,7 +160,12 @@ const RelatedContactSelection = (props) => {
                               <MembershipCard
                                 heading="New Contact"
                                 subheading="Add new contact"
-                                disabled={value[0].registrantsData.length !== 0}
+                                member={newContact}
+                                disabled={
+                                  value[0].registrantsData.length !== 0 &&
+                                  value[0].registrantsData[0]?.su_did !==
+                                    newContact.su_did
+                                }
                                 newContact
                               />
                             </GridCell>
