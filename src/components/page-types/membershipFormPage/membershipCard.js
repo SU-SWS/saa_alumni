@@ -21,7 +21,6 @@ const MembershipCard = ({
   member,
   disabled = false,
 }) => {
-  // @TODO - return to this in ADAPTSM-53
   const [state, dispatch] = useContext(FormContext);
   const { registrantsData } = state;
   const isSelected = registrantsData.find(
@@ -50,13 +49,6 @@ const MembershipCard = ({
     }
   };
 
-  // for testing purposes
-  // const [isSelected, setIsSelected] = useState(false);
-
-  // const handleClick = () => {
-  //   setIsSelected(!isSelected);
-  // };
-
   return (
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
@@ -68,7 +60,6 @@ const MembershipCard = ({
             : 'hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
         )}
         onClick={toggleRelationship}
-        // onClick={handleClick}
       >
         <FlexBox justifyContent="center">
           <FlexBox
