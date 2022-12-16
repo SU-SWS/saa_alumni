@@ -98,7 +98,6 @@ const RelatedContactSelection = (props) => {
                 {(value) => {
                   const isContactSelected =
                     value[0].registrantsData.length === 0;
-                  console.log('REG DATA:', value[0].registrantsData[0]?.su_did);
                   return (
                     <Grid
                       gap

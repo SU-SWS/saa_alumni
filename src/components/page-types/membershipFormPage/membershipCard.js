@@ -28,10 +28,7 @@ const MembershipCard = ({
     (selectedMember) => selectedMember.su_did === member?.su_did
   );
 
-  console.log('SU DID', member?.su_did);
-
   const addRelationship = () => {
-    console.log('Adding: ', member);
     dispatch({
       type: 'addRegistrant',
       payload: member,
@@ -39,7 +36,6 @@ const MembershipCard = ({
   };
 
   const removeRelationship = () => {
-    console.log('Removing');
     dispatch({
       type: 'removeRegistrant',
       payload: member.su_did,
@@ -53,8 +49,6 @@ const MembershipCard = ({
       addRelationship();
     }
   };
-
-  console.log('MEMBER DATA:', registrantsData);
 
   // for testing purposes
   // const [isSelected, setIsSelected] = useState(false);
