@@ -117,7 +117,7 @@ const TypeOfRegistrant = (props) => {
                   </FlexBox>
                   <Grid gap xs={12}>
                     <GridCell xs={12} md={8} className="md:su-col-start-3">
-                      {/* <CreateBloks blokSection={membershipCardNote} /> */}
+                      <CreateBloks blokSection={membershipCardNote} />
                     </GridCell>
                   </Grid>
                 </div>

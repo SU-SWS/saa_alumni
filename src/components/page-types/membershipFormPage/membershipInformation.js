@@ -8,11 +8,15 @@ import * as styles from './membershipInformation.styles';
 const MembershipInformation = (props) => {
   const {
     blok: {
-      heading,
-      body,
-      displayBenefitsButton,
-      benefitsButtonText,
-      benefitsLink,xw
+      membershipInfoText: {
+        content: {
+          heading,
+          body,
+          displayBenefitsButton,
+          benefitsButtonText,
+          benefitsLink,
+        },
+      },
     },
     blok,
   } = props;
