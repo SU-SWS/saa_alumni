@@ -91,34 +91,30 @@ const MembershipCard = ({
           {heading}
         </div>
         <div className="su-text-center su-leading ">{subheading}</div>
-        {newContact ? (
-          <FlexBox justifyContent="center">
-            {isSelected ? (
-              <div className={styles.membershipCardSelectedLink}>
-                Create new <HeroIcon iconType="plus" />
-              </div>
-            ) : (
-              <div className={styles.membershipCardLink}>
-                Create new <HeroIcon iconType="plus" />
-              </div>
-            )}
-          </FlexBox>
-        ) : (
-          <FlexBox justifyContent="center">
-            {isSelected ? (
-              <button
-                type="button"
-                className={styles.membershipCardSelectedLink}
-              >
-                Selected
-              </button>
-            ) : (
-              <button type="button" className={styles.membershipCardLink}>
-                Select
-              </button>
-            )}
-          </FlexBox>
-        )}
+        <FlexBox justifyContent="center">
+          {newContact ? (
+            <div
+              className={
+                isSelected
+                  ? styles.membershipCardSelectedLink
+                  : styles.membershipCardLink
+              }
+            >
+              Create new <HeroIcon iconType="plus" />
+            </div>
+          ) : (
+            <button
+              type="button"
+              className={
+                isSelected
+                  ? styles.membershipCardSelectedLink
+                  : styles.membershipCardLink
+              }
+            >
+              {isSelected ? 'Selected' : 'Select'}
+            </button>
+          )}
+        </FlexBox>
       </button>
     </FlexBox>
   );
