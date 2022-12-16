@@ -97,7 +97,7 @@ const MembershipCard = ({
               className={
                 isSelected
                   ? styles.membershipCardSelectedLink
-                  : styles.membershipCardLink
+                  : styles.membershipCardLink(disabled)
               }
             >
               Create new <HeroIcon iconType="plus" />
@@ -108,7 +108,7 @@ const MembershipCard = ({
               className={
                 isSelected
                   ? styles.membershipCardSelectedLink
-                  : styles.membershipCardLink
+                  : styles.membershipCardLink(disabled)
               }
             >
               {isSelected ? 'Selected' : 'Select'}
