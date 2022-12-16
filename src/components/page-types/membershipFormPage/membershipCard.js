@@ -53,7 +53,7 @@ const MembershipCard = ({
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
-        className={styles.membershipCardWrapper}
+        className={styles.membershipCardWrapper(disabled)}
         onClick={toggleRelationship}
       >
         <FlexBox justifyContent="center">
