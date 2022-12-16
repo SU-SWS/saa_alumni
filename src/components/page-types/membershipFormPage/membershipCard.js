@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
@@ -18,6 +19,7 @@ const MembershipCard = ({
   initial,
   newContact = false,
   member,
+  disabled = false,
 }) => {
   // @TODO - return to this in ADAPTSM-53
   const [state, dispatch] = useContext(FormContext);
@@ -65,7 +67,10 @@ const MembershipCard = ({
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
-        className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
+        className={dcnb(
+          'su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue',
+          disabled ? 'su-pointer-events-none' : ''
+        )}
         onClick={toggleRelationship}
         // onClick={handleClick}
       >
