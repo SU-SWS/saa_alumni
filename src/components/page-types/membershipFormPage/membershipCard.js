@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
+import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './MembershipCard.styles';
@@ -16,6 +17,8 @@ const MembershipCard = ({
   subheading,
   initial,
   newContact = false,
+  disabled = false,
+  selected = false,
 }) => {
   // @TODO - return to this in ADAPTSM-53
   // const [state, dispatch] = useContext(FormContext);
@@ -57,11 +60,14 @@ const MembershipCard = ({
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
-        className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
-        // onClick={toggleRelationship}
+        className={
+          isSelected
+            ? dcnb('su-bg-saa-black', styles.membershipCardWrapper(disabled))
+            : styles.membershipCardWrapper(disabled)
+        }
         onClick={handleClick}
       >
-        <FlexBox justifyContent="center">
+        <FlexBox justifyContent="center" className="su-relative">
           <FlexBox
             justifyContent="center"
             alignItems="center"
@@ -91,27 +97,30 @@ const MembershipCard = ({
           {heading}
         </div>
         <div className="su-text-center su-leading ">{subheading}</div>
-        {newContact ? (
-          <FlexBox justifyContent="center">
-            {isSelected ? (
-              <div className={styles.membershipCardSelectedLink}>
-                Create new <HeroIcon iconType="plus" />
-              </div>
-            ) : (
-              <div className={styles.membershipCardLink}>
-                Create new <HeroIcon iconType="plus" />
-              </div>
-            )}
-          </FlexBox>
-        ) : (
-          <FlexBox justifyContent="center">
-            {isSelected ? (
-              <div className={styles.membershipCardSelectedLink}>Selected</div>
-            ) : (
-              <div className={styles.membershipCardLink}>Select</div>
-            )}
-          </FlexBox>
-        )}
+        <FlexBox justifyContent="center">
+          {newContact ? (
+            <div
+              className={
+                isSelected
+                  ? styles.membershipCardLink(selected)
+                  : styles.membershipCardLink(disabled)
+              }
+            >
+              Create new <HeroIcon iconType="plus" />
+            </div>
+          ) : (
+            <button
+              type="button"
+              className={
+                isSelected
+                  ? styles.membershipCardLink(selected)
+                  : styles.membershipCardLink(disabled)
+              }
+            >
+              {isSelected ? 'Selected' : 'Select'}
+            </button>
+          )}
+        </FlexBox>
       </button>
     </FlexBox>
   );
