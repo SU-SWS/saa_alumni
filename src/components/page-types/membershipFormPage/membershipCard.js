@@ -56,15 +56,25 @@ const MembershipCard = ({
     setIsSelected(!isSelected);
   };
 
+  let newContactWrapper = '';
+
+  // Horizontal card styles and options
+  if (newContact && isSelected) {
+    newContactWrapper = 'su-bg-saa-black';
+  } else if (newContact) {
+    newContactWrapper = 'su-border-dashed';
+  }
+
   return (
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
-        className={
+        className={dcnb(
           isSelected
             ? dcnb('su-bg-saa-black', styles.membershipCardWrapper(disabled))
-            : styles.membershipCardWrapper(disabled)
-        }
+            : styles.membershipCardWrapper(disabled),
+          newContactWrapper
+        )}
         onClick={handleClick}
       >
         <FlexBox justifyContent="center" className="su-relative">
