@@ -58,7 +58,6 @@ const MembershipCard = ({
 
   let newContactWrapper = '';
 
-  // Horizontal card styles and options
   if (newContact && isSelected) {
     newContactWrapper = 'su-bg-saa-black';
   } else if (newContact) {
