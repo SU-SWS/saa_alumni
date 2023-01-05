@@ -16,10 +16,11 @@ import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import Logo from '../../identity/logo';
 import MembershipCard from './membershipCard';
+import CreateBloks from '../../../utilities/createBloks';
 
 const RelatedContactSelection = (props) => {
   const {
-    blok: { heroImage: { filename, alt, focus } = {} },
+    blok: { heroImage: { filename, alt, focus } = {}, membershipCardNote },
     blok,
     pageContext,
   } = props;
@@ -170,22 +171,9 @@ const RelatedContactSelection = (props) => {
                       />
                     </Link>
                   </FlexBox>
-                  {/* TODO: Inquire about digital membership card link */}
                   <Grid gap xs={12}>
                     <GridCell xs={12} md={8} className="md:su-col-start-3">
-                      <p className="su-text-center">
-                        Please note: All memberships, both domestic and
-                        international, will have access to a{' '}
-                        <a
-                          className="su-text-white hocus:su-text-digital-red-light"
-                          href="/"
-                        >
-                          digital membership card
-                        </a>{' '}
-                        in lieu of a physical membership packet. Additionally,
-                        we are unable to send SAA Member key tags to addresses
-                        outside of the US. (note linked digital membership card)
-                      </p>
+                      <CreateBloks blokSection={membershipCardNote} />
                     </GridCell>
                   </Grid>
                 </div>
