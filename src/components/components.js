@@ -41,6 +41,7 @@ import Masthead from './identity/masthead';
 import MastheadPicker from './identity/mastheadPicker';
 import MembershipFormPage from './page-types/membershipFormPage/membershipFormPage';
 import MembershipInformation from './page-types/membershipFormPage/membershipInformation';
+import MembershipInfoText from './page-types/membershipFormPage/membershipInfoText';
 import NavItem from './navigation/navItem';
 import Page from './page';
 import Perk from './content-types/perk/perk';
@@ -125,6 +126,7 @@ const ComponentList = {
   mastheadPicker: MastheadPicker,
   membershipFormPage: MembershipFormPage,
   membershipInformation: MembershipInformation,
+  membershipInfoText: MembershipInfoText,
   navItem: NavItem,
   page: Page,
   perk: Perk,
