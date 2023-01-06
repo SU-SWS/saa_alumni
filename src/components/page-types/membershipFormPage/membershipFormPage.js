@@ -33,7 +33,9 @@ const MembershipFormPage = (props) => {
   console.log('REGISTRANT PASS THROUGH: ', registrant);
 
   useEffect(() => {
-    window.prefillData = registrant;
+    if (registrant.su_did !== 'newContact') {
+      window.prefillData = registrant;
+    }
   }, [registrant]);
 
   return (

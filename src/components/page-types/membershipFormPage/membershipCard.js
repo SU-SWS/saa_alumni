@@ -1,7 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
+import { FormContext } from '../../../contexts/FormContext';
 import * as styles from './MembershipCard.styles';
 
 export const MembershipCardProps = {
@@ -9,6 +11,7 @@ export const MembershipCardProps = {
   subheading: PropTypes.string,
   initial: PropTypes.string,
   newContact: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 const MembershipCard = ({
@@ -16,50 +19,43 @@ const MembershipCard = ({
   subheading,
   initial,
   newContact = false,
+  member,
+  disabled = false,
 }) => {
-  // @TODO - return to this in ADAPTSM-53
-  // const [state, dispatch] = useContext(FormContext);
-  // const { membersData } = state;
-  // const buttonDisplay = membersData.find(
-  //   (selectedMember) => selectedMember.su_did === member.su_did
-  // );
+  const [state, dispatch] = useContext(FormContext);
+  const { registrantsData } = state;
+  const isSelected = registrantsData.find(
+    (selectedMember) => selectedMember.su_did === member?.su_did
+  );
 
-  // const addRelationship = () => {
-  //   dispatch({
-  //     type: 'addMember',
-  //     payload: member,
-  //   });
-  // };
+  const addRelationship = () => {
+    dispatch({
+      type: 'addRegistrant',
+      payload: member,
+    });
+  };
 
-  // const removeRelationship = () => {
-  //   dispatch({
-  //     type: 'removeMember',
-  //     payload: member.su_did,
-  //   });
-  // };
+  const removeRelationship = () => {
+    dispatch({
+      type: 'removeRegistrant',
+      payload: member.su_did,
+    });
+  };
 
-  // const toggleRelationship = () => {
-  //   if (buttonDisplay) {
-  //     removeRelationship();
-  //   } else {
-  //     addRelationship();
-  //   }
-  // };
-
-  // for testing purposes
-  const [isSelected, setIsSelected] = useState(false);
-
-  const handleClick = () => {
-    setIsSelected(!isSelected);
+  const toggleRelationship = () => {
+    if (isSelected) {
+      removeRelationship();
+    } else {
+      addRelationship();
+    }
   };
 
   return (
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
-        className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
-        // onClick={toggleRelationship}
-        onClick={handleClick}
+        className={styles.membershipCardWrapper(disabled)}
+        onClick={toggleRelationship}
       >
         <FlexBox justifyContent="center">
           <FlexBox
@@ -91,27 +87,30 @@ const MembershipCard = ({
           {heading}
         </div>
         <div className="su-text-center su-leading ">{subheading}</div>
-        {newContact ? (
-          <FlexBox justifyContent="center">
-            {isSelected ? (
-              <div className={styles.membershipCardSelectedLink}>
-                Create new <HeroIcon iconType="plus" />
-              </div>
-            ) : (
-              <div className={styles.membershipCardLink}>
-                Create new <HeroIcon iconType="plus" />
-              </div>
-            )}
-          </FlexBox>
-        ) : (
-          <FlexBox justifyContent="center">
-            {isSelected ? (
-              <div className={styles.membershipCardSelectedLink}>Selected</div>
-            ) : (
-              <div className={styles.membershipCardLink}>Select</div>
-            )}
-          </FlexBox>
-        )}
+        <FlexBox justifyContent="center">
+          {newContact ? (
+            <div
+              className={
+                isSelected
+                  ? styles.membershipCardSelectedLink
+                  : styles.membershipCardLink(disabled)
+              }
+            >
+              Create new <HeroIcon iconType="plus" />
+            </div>
+          ) : (
+            <button
+              type="button"
+              className={
+                isSelected
+                  ? styles.membershipCardSelectedLink
+                  : styles.membershipCardLink(disabled)
+              }
+            >
+              {isSelected ? 'Selected' : 'Select'}
+            </button>
+          )}
+        </FlexBox>
       </button>
     </FlexBox>
   );
