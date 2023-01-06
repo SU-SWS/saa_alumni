@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
+import { dcnb } from 'cnbuilder';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -57,7 +58,7 @@ const TypeOfRegistrant = (props) => {
                 md={10}
                 xl={8}
                 xxl={6}
-                className={styles.formWrapper}
+                className={styles.benefitsWrapper}
               >
                 <span className={styles.superHead}>
                   Stanford Alumni Association Membership
@@ -71,19 +72,22 @@ const TypeOfRegistrant = (props) => {
                 >
                   Join now!
                 </Heading>
-                <div className=" su-basefont-23 su-p-36 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark">
-                  <FlexBox justifyContent="center" className="su-rs-py-2">
-                    <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />
+                <div className={dcnb('su-p-36', styles.formWrapper)}>
+                  <FlexBox
+                    justifyContent="center"
+                    className={styles.logoWrapper}
+                  >
+                    <Logo className={styles.logo} />
                   </FlexBox>
                   <CreateBloks blokSection={intro} />
                 </div>
               </GridCell>
               <GridCell xs={12}>
-                <div className="su-basefont-23 su-rs-p-5 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark">
+                <div className={dcnb('su-rs-p-5', styles.formWrapper)}>
                   <Heading level={2} size={4} align="left" font="serif">
                     Who do you wish to purchase a membership for?
                   </Heading>
-                  <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
+                  <Grid gap xs={12} className={styles.cardGridWrapper}>
                     <GridCell xs={12} md={6}>
                       <MembershipCard
                         heading="Myself"
@@ -116,7 +120,7 @@ const TypeOfRegistrant = (props) => {
                     </Link>
                   </FlexBox>
                   <Grid gap xs={12}>
-                    <GridCell xs={12} md={8} className="md:su-col-start-3">
+                    <GridCell xs={12} md={8} className={styles.cardNoteWrapper}>
                       <CreateBloks blokSection={membershipCardNote} />
                     </GridCell>
                   </Grid>
