@@ -11,6 +11,7 @@ export const MembershipCardProps = {
   subheading: PropTypes.string,
   initial: PropTypes.string,
   newContact: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 const MembershipCard = ({
