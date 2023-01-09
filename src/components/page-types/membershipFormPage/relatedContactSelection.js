@@ -21,10 +21,16 @@ import {
   FormContextProvider,
 } from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
+import MembershipPaymentCard from './membershipPaymentCard';
 
 const RelatedContactSelection = (props) => {
   const {
-    blok: { heroImage: { filename, alt, focus } = {}, membershipCardNote },
+    blok: {
+      heroImage: { filename, alt, focus } = {},
+      membershipCardNote,
+      oneTimePayment,
+      installments,
+    },
     blok,
     pageContext,
   } = props;
@@ -205,6 +211,19 @@ const RelatedContactSelection = (props) => {
                               className="md:su-col-start-3"
                             >
                               <CreateBloks blokSection={membershipCardNote} />
+                            </GridCell>
+                          </Grid>
+                          {/* TESTING PAYMENT OPTIONS */}
+                          <Grid gap xs={12}>
+                            <GridCell xs={12} md={6}>
+                              <MembershipPaymentCard>
+                                <CreateBloks blokSection={oneTimePayment} />
+                              </MembershipPaymentCard>
+                            </GridCell>
+                            <GridCell xs={12} md={6}>
+                              <MembershipPaymentCard>
+                                <CreateBloks blokSection={installments} />
+                              </MembershipPaymentCard>
                             </GridCell>
                           </Grid>
                         </div>
