@@ -227,6 +227,18 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
 
+          createPage({
+            path: `/${pagePath}/installments/form`,
+            component: storyblokEntry,
+            context: {
+              slug: `${membershipEntry.node.full_slug}/installments/form`,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+              membershipInstallments: true,
+            },
+          });
+
           // Create type of registrant interstitial page
           createPage({
             path: `/${pagePath}`,

@@ -61,6 +61,11 @@ class StoryblokEntry extends React.Component {
       content.component = 'relatedContactSelection';
     }
 
+    // Swap the page component for membership installments form page
+    if (pageContext.membershipInstallments) {
+      content.component = 'membershipInstallmentsForm';
+    }
+
     return (
       <>
         {React.createElement(Components(content.component), {
