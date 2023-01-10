@@ -214,18 +214,33 @@ const RelatedContactSelection = (props) => {
                             </GridCell>
                           </Grid>
                           {/* TESTING PAYMENT OPTIONS */}
-                          <Grid gap xs={12}>
-                            <GridCell xs={12} md={6}>
-                              <MembershipPaymentCard>
-                                <CreateBloks blokSection={oneTimePayment} />
-                              </MembershipPaymentCard>
-                            </GridCell>
-                            <GridCell xs={12} md={6}>
-                              <MembershipPaymentCard>
-                                <CreateBloks blokSection={installments} />
-                              </MembershipPaymentCard>
-                            </GridCell>
-                          </Grid>
+                          <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue su-to-palo-verde-dark su-px-48 su-pb-76">
+                            <p>Payment options</p>
+                            <p>One time or installments</p>
+                            <Grid
+                              gap
+                              xs={12}
+                              className="su-p-26 su-bg-saa-black su-rounded"
+                            >
+                              <GridCell xs={12} md={6}>
+                                <MembershipPaymentCard
+                                  heading="Pay in full"
+                                  subheading="One time payment"
+                                  caption="Most value"
+                                >
+                                  <CreateBloks blokSection={oneTimePayment} />
+                                </MembershipPaymentCard>
+                              </GridCell>
+                              <GridCell xs={12} md={6}>
+                                <MembershipPaymentCard
+                                  heading="Pay in installments"
+                                  subheading="Over 5 years"
+                                >
+                                  <CreateBloks blokSection={installments} />
+                                </MembershipPaymentCard>
+                              </GridCell>
+                            </Grid>
+                          </Container>
                         </div>
                       </GridCell>
                     </Grid>

@@ -5,7 +5,7 @@ const MembershipPaymentOptions = ({
 }) => (
   <div>
     <p>{membershipType}</p>
-    <p>{membershipCost}</p>
+    <p>${membershipCost}</p>
     {infoText && <p>{infoText}</p>}
   </div>
 );
