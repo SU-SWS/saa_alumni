@@ -1,44 +1,34 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
 import * as styles from './MembershipCard.styles';
-
-export const MembershipCardProps = {
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  initial: PropTypes.string,
-  newContact: PropTypes.bool,
-  disabled: PropTypes.bool,
-};
 
 const MembershipCard = ({
   heading,
   subheading,
   initial,
   newContact = false,
-  member,
+  memberData,
   disabled = false,
 }) => {
   const [state, dispatch] = useContext(FormContext);
   const { registrantsData } = state;
   const isSelected = registrantsData.find(
-    (selectedMember) => selectedMember.su_did === member?.su_did
+    (selectedMember) => selectedMember.su_did === memberData?.su_did
   );
 
   const addRelationship = () => {
     dispatch({
       type: 'addRegistrant',
-      payload: member,
+      payload: memberData,
     });
   };
 
   const removeRelationship = () => {
     dispatch({
       type: 'removeRegistrant',
-      payload: member.su_did,
+      payload: memberData.su_did,
     });
   };
 
@@ -115,6 +105,5 @@ const MembershipCard = ({
     </FlexBox>
   );
 };
-MembershipCard.propTypes = MembershipCardProps;
 
 export default MembershipCard;
