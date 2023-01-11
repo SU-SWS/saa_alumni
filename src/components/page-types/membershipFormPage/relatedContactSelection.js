@@ -70,7 +70,11 @@ const RelatedContactSelection = (props) => {
   };
   const relatedContacts = structureRelatedContactData(relationships);
 
-  const newContact = { su_did: 'newContact' };
+  const newContact = {
+    su_reg_type: 'newContact',
+    su_self_membership: 'no',
+    su_gift: 'yes',
+  };
 
   return (
     <AuthenticatedPage>
