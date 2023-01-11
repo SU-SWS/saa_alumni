@@ -35,6 +35,10 @@ module.exports = function () {
     'saa-electric-blue': {
       DEFAULT: '#505EEC',
       light: '#6B77F5',
+      dark: '#151C37',
+    },
+    'palo-verde': {
+      xdark: '#062220',
     },
   };
 };

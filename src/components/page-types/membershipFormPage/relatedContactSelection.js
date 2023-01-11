@@ -214,7 +214,7 @@ const RelatedContactSelection = (props) => {
                             </GridCell>
                           </Grid>
                           {/* TESTING PAYMENT OPTIONS */}
-                          <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue su-to-palo-verde-dark su-px-48 su-pb-76">
+                          <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-48 su-pb-76">
                             <p>Payment options</p>
                             <p>One time or installments</p>
                             <Grid
