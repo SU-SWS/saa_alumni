@@ -152,7 +152,7 @@ const RelatedContactSelection = (props) => {
                                   heading={relatedContact.su_dname}
                                   subheading={relatedContact.su_relation}
                                   initial={relatedContact.su_dname.slice(0, 1)}
-                                  member={relatedContact}
+                                  memberData={relatedContact}
                                   disabled={
                                     value[0].registrantsData.length !== 0 &&
                                     value[0].registrantsData[0]?.su_did !==
@@ -165,7 +165,7 @@ const RelatedContactSelection = (props) => {
                               <MembershipCard
                                 heading="New Contact"
                                 subheading="Add new contact"
-                                member={newContact}
+                                memberData={newContact}
                                 disabled={
                                   value[0].registrantsData.length !== 0 &&
                                   value[0].registrantsData[0]?.su_did !==
