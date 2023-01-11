@@ -9,6 +9,7 @@ import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
+import { findPhoneNumber } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -34,21 +35,24 @@ const TypeOfRegistrant = (props) => {
   const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
 
+  const primaryRegistrantPhoneNumber = findPhoneNumber(
+    userProfile?.phoneNumbers
+  );
+
   const primaryUser = {
-    su_did: 1234,
+    su_did: userProfile?.session?.encodedSUID,
     su_dname: userProfile?.name
       ? userProfile?.name?.digitalName
       : `${userProfile?.session.firstName} ${userProfile?.session.lastName} `,
-    su_title: 'Mr',
-    su_first_name: userProfile?.name
-      ? userProfile?.name?.firstName
-      : userProfile?.session.firstName,
-    su_middle_name: 'Middle Name',
-    su_last_name: 'Last Name',
-    su_relation: 'Self',
-    su_dob: '12/12/1999',
-    su_email: undefined,
-    su_phone: undefined,
+    su_first_name:
+      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.session?.firstName,
+    su_last_name:
+      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.session?.lastName,
+    su_phone: primaryRegistrantPhoneNumber,
+    su_self_membership: 'yes',
+    su_gift: 'no',
   };
 
   const newContact = { su_did: 'newContact' };
@@ -112,20 +116,28 @@ const TypeOfRegistrant = (props) => {
                     </Heading>
                     <Grid gap xs={12} className={styles.cardGridWrapper}>
                       <GridCell xs={12} md={6}>
-                        <MembershipCard
-                          heading="Myself"
-                          subheading={primaryUser.su_dname}
-                          initial={primaryUser.su_dname.slice(0, 1)}
-                          memberData={primaryUser}
-                        />
+                        <FormContext.Consumer>
+                          {(value) => (
+                            <MembershipCard
+                              heading="Myself"
+                              subheading={primaryUser.su_dname}
+                              initial={primaryUser.su_dname.slice(0, 1)}
+                              memberData={primaryUser}
+                            />
+                          )}
+                        </FormContext.Consumer>
                       </GridCell>
                       <GridCell xs={12} md={6}>
-                        <MembershipCard
-                          heading="Someone else"
-                          subheading="Existing contact or new contact"
-                          initial="?"
-                          memberData={newContact}
-                        />
+                        <FormContext.Consumer>
+                          {(value) => (
+                            <MembershipCard
+                              heading="Someone else"
+                              subheading="Existing contact or new contact"
+                              initial="?"
+                              memberData={newContact}
+                            />
+                          )}
+                        </FormContext.Consumer>
                       </GridCell>
                     </Grid>
                     <FormContext.Consumer>
