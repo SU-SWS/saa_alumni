@@ -16,7 +16,10 @@ import Logo from '../../identity/logo';
 import MembershipCard from './membershipCard';
 import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './typeOfRegistrant.styles';
-import { FormContextProvider } from '../../../contexts/FormContext';
+import {
+  FormContextProvider,
+  FormContext,
+} from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
 
 const TypeOfRegistrant = (props) => {
@@ -125,16 +128,24 @@ const TypeOfRegistrant = (props) => {
                         />
                       </GridCell>
                     </Grid>
-                    <FlexBox justifyContent="center">
-                      <Link to="/" className={styles.benefitsLink}>
-                        Select membership type
-                        <HeroIcon
-                          iconType="arrow-right"
-                          className={styles.benefitsLinkIcon}
-                          isAnimate
-                        />
-                      </Link>
-                    </FlexBox>
+                    <FormContext.Consumer>
+                      {(value) => (
+                        <FlexBox justifyContent="center">
+                          <Link
+                            to="/"
+                            className={styles.benefitsLink}
+                            state={{ registrant: selectedContact }}
+                          >
+                            Select membership type
+                            <HeroIcon
+                              iconType="arrow-right"
+                              className={styles.benefitsLinkIcon}
+                              isAnimate
+                            />
+                          </Link>
+                        </FlexBox>
+                      )}
+                    </FormContext.Consumer>
                     <Grid gap xs={12}>
                       <GridCell
                         xs={12}
