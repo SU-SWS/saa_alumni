@@ -40,29 +40,29 @@ const RelatedContactSelection = (props) => {
     let data = {};
     relationshipsData?.forEach((relationship) => {
       data = {
+        // @TODO: Should su_did be the related contact or the registering user's encodedSUID?
         su_did: relationship?.relatedContactEncodedID,
-        su_dname: relationship?.relatedContactDigitalName
-          ? relationship?.relatedContactDigitalName
-          : `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
-        su_title:
-          relationship?.relatedContactFullNameParsed?.relatedContactPrefix,
         su_first_name:
           relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
-        su_middle_name:
-          relationship?.relatedContactFullNameParsed
-            ?.relatedContactMiddleName === null
-            ? '&nbsp;'
-            : relationship?.relatedContactFullNameParsed
-                ?.relatedContactMiddleName,
         su_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
-        su_relation: relationship?.relationshipType,
-        su_dob: relationship?.relatedContactBirthDate
+        su_recipient_dob: relationship?.relatedContactBirthDate
           ? formatUsDate(relationship?.relatedContactBirthDate)
           : '',
-        su_reg: 'Related contact',
+        su_recipient_first_name:
+          relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
+        su_recipient_last_name:
+          relationship?.relatedContactFullNameParsed?.relatedContactLastName,
+        su_recipient_relationship: relationship?.relationshipType,
+        su_recipient_suid: relationship?.relatedContactEncodedID,
         su_email: undefined,
         su_phone: undefined,
+        su_recipient_email: '',
+        su_recipient_email_type: '',
+        su_recipient_phone: '',
+        su_recipient_phone_type: '',
+        su_self_membership: 'no',
+        su_gift: 'yes',
       };
       relatedContacts = [...relatedContacts, data];
     });
@@ -70,7 +70,11 @@ const RelatedContactSelection = (props) => {
   };
   const relatedContacts = structureRelatedContactData(relationships);
 
-  const newContact = { su_did: 'newContact' };
+  const newContact = {
+    su_reg_type: 'newContact',
+    su_self_membership: 'no',
+    su_gift: 'yes',
+  };
 
   return (
     <AuthenticatedPage>
@@ -143,9 +147,14 @@ const RelatedContactSelection = (props) => {
                             {relatedContacts.map((relatedContact) => (
                               <GridCell xs={12} md={6}>
                                 <MembershipCard
-                                  heading={relatedContact.su_dname}
-                                  subheading={relatedContact.su_relation}
-                                  initial={relatedContact.su_dname.slice(0, 1)}
+                                  heading={`${relatedContact.su_first_name} ${relatedContact.su_last_name}`}
+                                  subheading={
+                                    relatedContact.su_recipient_relationship
+                                  }
+                                  initial={relatedContact.su_first_name.slice(
+                                    0,
+                                    1
+                                  )}
                                   memberData={relatedContact}
                                   disabled={
                                     value[0].registrantsData.length !== 0 &&
