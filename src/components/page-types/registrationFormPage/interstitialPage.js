@@ -90,7 +90,7 @@ const InterstitialPage = (props) => {
         su_relation: relationship?.relationshipType,
         su_dob: relationship?.relatedContactBirthDate
           ? formatUsDate(relationship?.relatedContactBirthDate)
-          : '',
+          : undefined,
         su_reg: 'Related contact',
         su_email: undefined,
         su_phone: undefined,
@@ -145,7 +145,9 @@ const InterstitialPage = (props) => {
       phoneNumberTypeList,
       primaryRegistrantPhoneNumberType
     ),
-    su_dob: userProfile?.birthDate ? formatUsDate(userProfile?.birthDate) : '',
+    su_dob: userProfile?.birthDate
+      ? formatUsDate(userProfile?.birthDate)
+      : undefined,
     su_relation: 'Guest',
     su_reg: 'Primary registrant',
   };

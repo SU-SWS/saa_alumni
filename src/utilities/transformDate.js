@@ -15,8 +15,12 @@ export const formatEmailDate = (tripDate) => {
 
 export const formatUsDate = (tripDate) => {
   const date = new Date(tripDate);
+  if (Number.isNaN(Number(date))) {
+    return undefined;
+  }
   const month = date.getMonth() + 1;
-  const day = date.getDate() + 1;
+  const day = date.getDate();
   const year = date.getFullYear();
-  return `${month}/${day}/${year}`;
+  const newDate = `${month}/${day}/${year}`;
+  return newDate;
 };
