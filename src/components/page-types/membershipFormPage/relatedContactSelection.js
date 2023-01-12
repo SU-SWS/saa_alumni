@@ -148,7 +148,9 @@ const RelatedContactSelection = (props) => {
                               <GridCell xs={12} md={6}>
                                 <MembershipCard
                                   heading={`${relatedContact.su_first_name} ${relatedContact.su_last_name}`}
-                                  subheading={relatedContact.su_relation}
+                                  subheading={
+                                    relatedContact.su_recipient_relationship
+                                  }
                                   initial={relatedContact.su_first_name.slice(
                                     0,
                                     1
