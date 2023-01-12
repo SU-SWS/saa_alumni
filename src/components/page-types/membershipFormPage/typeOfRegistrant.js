@@ -41,9 +41,6 @@ const TypeOfRegistrant = (props) => {
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
-    su_dname: userProfile?.name
-      ? userProfile?.name?.digitalName
-      : `${userProfile?.session.firstName} ${userProfile?.session.lastName} `,
     su_first_name:
       userProfile?.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
@@ -53,9 +50,10 @@ const TypeOfRegistrant = (props) => {
     su_phone: primaryRegistrantPhoneNumber,
     su_self_membership: 'yes',
     su_gift: 'no',
+    su_reg_type: 'self',
   };
 
-  const newContact = { su_did: 'newContact' };
+  const newContact = { su_reg_type: 'newContact' };
 
   return (
     <AuthenticatedPage>
@@ -79,97 +77,111 @@ const TypeOfRegistrant = (props) => {
                   className={styles.fixedHeroImg}
                 />
               </div>
-              <Grid gap xs={12} className={styles.contentWrapper}>
-                <GridCell
-                  xs={12}
-                  md={10}
-                  xl={8}
-                  xxl={6}
-                  className={styles.benefitsWrapper}
-                >
-                  <span className={styles.superHead}>
-                    Stanford Alumni Association Membership
-                  </span>
-                  <Heading
-                    level={1}
-                    size={6}
-                    align="center"
-                    font="serif"
-                    id="page-title"
-                  >
-                    Join now!
-                  </Heading>
-                  <div className={dcnb('su-p-36', styles.formWrapper)}>
-                    <FlexBox
-                      justifyContent="center"
-                      className={styles.logoWrapper}
-                    >
-                      <Logo className={styles.logo} />
-                    </FlexBox>
-                    <CreateBloks blokSection={intro} />
-                  </div>
-                </GridCell>
-                <GridCell xs={12}>
-                  <div className={dcnb('su-rs-p-5', styles.formWrapper)}>
-                    <Heading level={2} size={4} align="left" font="serif">
-                      Who do you wish to purchase a membership for?
-                    </Heading>
-                    <Grid gap xs={12} className={styles.cardGridWrapper}>
-                      <GridCell xs={12} md={6}>
-                        <FormContext.Consumer>
-                          {(value) => (
-                            <MembershipCard
-                              heading="Myself"
-                              subheading={primaryUser.su_dname}
-                              initial={primaryUser.su_dname.slice(0, 1)}
-                              memberData={primaryUser}
-                            />
-                          )}
-                        </FormContext.Consumer>
-                      </GridCell>
-                      <GridCell xs={12} md={6}>
-                        <FormContext.Consumer>
-                          {(value) => (
-                            <MembershipCard
-                              heading="Someone else"
-                              subheading="Existing contact or new contact"
-                              initial="?"
-                              memberData={newContact}
-                            />
-                          )}
-                        </FormContext.Consumer>
-                      </GridCell>
-                    </Grid>
-                    <FormContext.Consumer>
-                      {(value) => (
-                        <FlexBox justifyContent="center">
-                          <Link
-                            to="/"
-                            className={styles.benefitsLink}
-                            state={{ registrant: selectedContact }}
-                          >
-                            Select membership type
-                            <HeroIcon
-                              iconType="arrow-right"
-                              className={styles.benefitsLinkIcon}
-                              isAnimate
-                            />
-                          </Link>
-                        </FlexBox>
-                      )}
-                    </FormContext.Consumer>
-                    <Grid gap xs={12}>
+              <FormContext.Consumer>
+                {(value) => {
+                  const isContactSelected =
+                    value[0].registrantsData.length === 0;
+
+                  let nextPageLink = '/membership/register/form';
+                  if (
+                    value[0].registrantsData[0]?.su_reg_type === 'newContact'
+                  ) {
+                    nextPageLink = '/membership/register/related-contacts';
+                  }
+
+                  return (
+                    <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
                         xs={12}
-                        md={8}
-                        className={styles.cardNoteWrapper}
+                        md={10}
+                        xl={8}
+                        xxl={6}
+                        className={styles.benefitsWrapper}
                       >
-                        <CreateBloks blokSection={membershipCardNote} />
+                        <span className={styles.superHead}>
+                          Stanford Alumni Association Membership
+                        </span>
+                        <Heading
+                          level={1}
+                          size={6}
+                          align="center"
+                          font="serif"
+                          id="page-title"
+                        >
+                          Join now!
+                        </Heading>
+                        <div className={dcnb('su-p-36', styles.formWrapper)}>
+                          <FlexBox
+                            justifyContent="center"
+                            className={styles.logoWrapper}
+                          >
+                            <Logo className={styles.logo} />
+                          </FlexBox>
+                          <CreateBloks blokSection={intro} />
+                        </div>
+                      </GridCell>
+                      <GridCell xs={12}>
+                        <div className={dcnb('su-rs-p-5', styles.formWrapper)}>
+                          <Heading level={2} size={4} align="left" font="serif">
+                            Who do you wish to purchase a membership for?
+                          </Heading>
+                          <Grid gap xs={12} className={styles.cardGridWrapper}>
+                            <GridCell xs={12} md={6}>
+                              <MembershipCard
+                                heading="Myself"
+                                subheading={`${primaryUser.su_first_name} ${primaryUser.su_last_name}`}
+                                initial={primaryUser.su_first_name.slice(0, 1)}
+                                memberData={primaryUser}
+                                disabled={
+                                  value[0].registrantsData.length !== 0 &&
+                                  value[0].registrantsData[0]?.su_did !==
+                                    primaryUser.su_did
+                                }
+                              />
+                            </GridCell>
+                            <GridCell xs={12} md={6}>
+                              <MembershipCard
+                                heading="Someone else"
+                                subheading="Existing contact or new contact"
+                                initial="?"
+                                memberData={newContact}
+                                disabled={
+                                  value[0].registrantsData.length !== 0 &&
+                                  value[0].registrantsData[0]?.su_did !==
+                                    newContact.su_did
+                                }
+                              />
+                            </GridCell>
+                          </Grid>
+                          <FlexBox justifyContent="center">
+                            <Link
+                              to={nextPageLink}
+                              className={styles.nextLink(isContactSelected)}
+                              state={{ registrant: value[0].registrantsData }}
+                            >
+                              Select membership type
+                              <HeroIcon
+                                iconType="arrow-right"
+                                className={styles.nextLinkIcon}
+                                isAnimate={!isContactSelected}
+                              />
+                            </Link>
+                          </FlexBox>
+                          <Grid gap xs={12}>
+                            <GridCell
+                              xs={12}
+                              md={8}
+                              className={styles.cardNoteWrapper}
+                            >
+                              <CreateBloks blokSection={membershipCardNote} />
+                            </GridCell>
+                          </Grid>
+                        </div>
                       </GridCell>
                     </Grid>
-                  </div>
-                </GridCell>
-              </Grid>
+                  );
+                }}
+              </FormContext.Consumer>
             </Container>
           </Layout>
         </SbEditable>
