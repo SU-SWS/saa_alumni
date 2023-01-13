@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
+import { Redirect } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
@@ -26,15 +27,27 @@ const RelatedContactSelection = (props) => {
   const {
     blok: { heroImage: { filename, alt, focus } = {}, membershipCardNote },
     blok,
+    location,
     pageContext,
+    pageContext: {
+      story: { full_slug: registrationSlug },
+    },
   } = props;
+
   const helmetTitle = `Stanford Alumni Association Membership`;
   // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
   const slug = pageContext.slug.replace(/\/$/, '');
 
   const { userProfile } = useContext(AuthContext);
-  const relationships = userProfile?.relationships;
 
+  // In the event that the user goes directly to the related contact page,
+  // redirect user back to insteritial page to select registration type
+  if (!location?.state?.registrant) {
+    return <Redirect to={registrationSlug} noThrow />;
+  }
+
+  // Map related contacts/relationships data to GiveGab ADC values
+  const relationships = userProfile?.relationships;
   const structureRelatedContactData = (relationshipsData = []) => {
     let relatedContacts = [];
     let data = {};
@@ -57,10 +70,10 @@ const RelatedContactSelection = (props) => {
         su_recipient_suid: relationship?.relatedContactEncodedID,
         su_email: undefined,
         su_phone: undefined,
-        su_recipient_email: '',
-        su_recipient_email_type: '',
-        su_recipient_phone: '',
-        su_recipient_phone_type: '',
+        su_recipient_email: undefined,
+        su_recipient_email_type: undefined,
+        su_recipient_phone: undefined,
+        su_recipient_phone_type: undefined,
         su_self_membership: 'no',
         su_gift: 'yes',
       };
