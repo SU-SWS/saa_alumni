@@ -37,7 +37,7 @@ const MembershipInstallmentsForm = (props) => {
   console.log('REGISTRANT PASS THROUGH INSTALLMENTS: ', registrant);
 
   useEffect(() => {
-    if (registrant?.su_did !== 'newContact') {
+    if (registrant?.su_reg_type !== 'newContact') {
       window.prefillData = registrant;
     }
   }, [registrant]);
