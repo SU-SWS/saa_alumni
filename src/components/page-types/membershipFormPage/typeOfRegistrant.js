@@ -9,7 +9,7 @@ import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import { findPhoneNumber } from '../../../utilities/giveGabVars';
+import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -35,6 +35,8 @@ const TypeOfRegistrant = (props) => {
   const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
 
+  const primaryRegistrantEmail = findEmail(userProfile?.emails);
+
   const primaryRegistrantPhoneNumber = findPhoneNumber(
     userProfile?.phoneNumbers
   );
@@ -47,6 +49,7 @@ const TypeOfRegistrant = (props) => {
     su_last_name:
       userProfile?.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
+    su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
     su_self_membership: 'yes',
     su_gift: 'no',
