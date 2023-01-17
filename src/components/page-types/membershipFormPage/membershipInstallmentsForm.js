@@ -16,11 +16,11 @@ import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './membershipFormPage.styles';
 import { Heading } from '../../simple/Heading';
 
-const MembershipFormPage = (props) => {
+const MembershipInstallmentsForm = (props) => {
   const {
     blok: {
       heroImage: { filename, alt, focus } = {},
-      giveGabForm,
+      installmentsForm,
       ankleContent,
     },
     blok,
@@ -34,7 +34,7 @@ const MembershipFormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
   const registrant = location?.state?.registrant;
-  console.log('REGISTRANT PASS THROUGH: ', registrant);
+  console.log('REGISTRANT PASS THROUGH INSTALLMENTS: ', registrant);
 
   useEffect(() => {
     if (registrant?.su_reg_type !== 'newContact') {
@@ -44,7 +44,7 @@ const MembershipFormPage = (props) => {
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
-  if (!registrant) {
+  if (!location?.state?.registrant) {
     return <Redirect to={registrationSlug} noThrow />;
   }
 
@@ -100,7 +100,7 @@ const MembershipFormPage = (props) => {
                     </Heading>
                   </div>
                   <CreateBloks
-                    blokSection={giveGabForm}
+                    blokSection={installmentsForm}
                     bgCardStyle="su-bg-saa-black-dark"
                   />
                 </GridCell>
@@ -114,4 +114,4 @@ const MembershipFormPage = (props) => {
   );
 };
 
-export default MembershipFormPage;
+export default MembershipInstallmentsForm;

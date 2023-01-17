@@ -3,7 +3,7 @@ import SbEditable from 'storyblok-react';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
-import * as styles from './membershipInformation.styles';
+import * as styles from './membershipInfoText.styles';
 
 const MembershipInfoText = ({
   blok: {

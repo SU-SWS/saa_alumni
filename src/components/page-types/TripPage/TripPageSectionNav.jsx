@@ -246,6 +246,7 @@ export const TripPageSectionNav = (props) => {
                   link={inquireURL}
                   className={styles.buttonMobile}
                   size="small"
+                  rel="nofollow"
                 >
                   Notify me
                 </SAALinkButton>

@@ -706,6 +706,7 @@
 /* Registration  */
 .ggeRegistrantList,
 .ggeWidget .ggeRegistrant--prefilled .ggeSection--askArray.ggeSection--registration,
+.ggeWidget .ggeSection.ggeSection--askArray header,
 .ggePage--payment .ggePageNav--back {
   display: none;
 }

@@ -40,7 +40,7 @@ import MainNavItem from './navigation/MainNav/mainNavItem';
 import Masthead from './identity/masthead';
 import MastheadPicker from './identity/mastheadPicker';
 import MembershipFormPage from './page-types/membershipFormPage/membershipFormPage';
-import MembershipInformation from './page-types/membershipFormPage/membershipInformation';
+import MembershipInstallmentsForm from './page-types/membershipFormPage/membershipInstallmentsForm';
 import MembershipInfoText from './page-types/membershipFormPage/membershipInfoText';
 import NavItem from './navigation/navItem';
 import Page from './page';
@@ -126,7 +126,7 @@ const ComponentList = {
   masthead: Masthead,
   mastheadPicker: MastheadPicker,
   membershipFormPage: MembershipFormPage,
-  membershipInformation: MembershipInformation,
+  membershipInstallmentsForm: MembershipInstallmentsForm,
   membershipInfoText: MembershipInfoText,
   membershipPaymentOptions: MembershipPaymentOptions,
   navItem: NavItem,
