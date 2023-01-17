@@ -22,16 +22,10 @@ import {
   FormContextProvider,
 } from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
-import MembershipPaymentCard from './membershipPaymentCard';
 
 const RelatedContactSelection = (props) => {
   const {
-    blok: {
-      heroImage: { filename, alt, focus } = {},
-      membershipCardNote,
-      oneTimePayment,
-      installments,
-    },
+    blok: { heroImage: { filename, alt, focus } = {}, membershipCardNote },
     blok,
     location,
     pageContext,
@@ -235,34 +229,6 @@ const RelatedContactSelection = (props) => {
                               <CreateBloks blokSection={membershipCardNote} />
                             </GridCell>
                           </Grid>
-                          {/* TESTING PAYMENT OPTIONS */}
-                          <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-48 su-pb-76">
-                            <p>Payment options</p>
-                            <p>One time or installments</p>
-                            <Grid
-                              gap
-                              xs={12}
-                              className="su-p-26 su-bg-saa-black su-rounded"
-                            >
-                              <GridCell xs={12} md={6}>
-                                <MembershipPaymentCard
-                                  heading="Pay in full"
-                                  subheading="One time payment"
-                                  caption="Most value"
-                                >
-                                  <CreateBloks blokSection={oneTimePayment} />
-                                </MembershipPaymentCard>
-                              </GridCell>
-                              <GridCell xs={12} md={6}>
-                                <MembershipPaymentCard
-                                  heading="Pay in installments"
-                                  subheading="Over 5 years"
-                                >
-                                  <CreateBloks blokSection={installments} />
-                                </MembershipPaymentCard>
-                              </GridCell>
-                            </Grid>
-                          </Container>
                         </div>
                       </GridCell>
                     </Grid>
