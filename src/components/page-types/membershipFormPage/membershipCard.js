@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
@@ -40,18 +41,34 @@ const MembershipCard = ({
     }
   };
 
+  let newContactWrapper = '';
+
+  if (newContact && isSelected) {
+    newContactWrapper = 'su-bg-saa-black';
+  } else if (newContact) {
+    newContactWrapper = 'su-border-dashed';
+  }
+
   return (
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
-        className={styles.membershipCardWrapper(disabled)}
+        className={dcnb(
+          isSelected
+            ? dcnb('su-bg-saa-black', styles.membershipCardWrapper(disabled))
+            : styles.membershipCardWrapper(disabled),
+          newContactWrapper
+        )}
         onClick={toggleRelationship}
       >
-        <FlexBox justifyContent="center">
+        <FlexBox
+          justifyContent="center"
+          className={styles.initialAndSelectionWrapper}
+        >
           <FlexBox
             justifyContent="center"
             alignItems="center"
-            className="su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full"
+            className={styles.initialWrapper}
             aria-hidden="true"
           >
             {newContact ? (
@@ -61,22 +78,14 @@ const MembershipCard = ({
             )}
           </FlexBox>
           {isSelected && (
-            <FlexBox
-              className="su-absolute su-right-0 su-text-16 su-font-semibold"
-              aria-hidden="true"
-            >
-              <HeroIcon
-                iconType="check"
-                className="su-inline-block su-text-saa-electric-blue su-w-[1.4em] su-mt-[-2px] su-mr-[5px]"
-              />
+            <FlexBox className={styles.selectionWrapper} aria-hidden="true">
+              <HeroIcon iconType="check" className={styles.checkLinkIcon} />
               <span>Selected</span>
             </FlexBox>
           )}
         </FlexBox>
-        <div className="su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading">
-          {heading}
-        </div>
-        <div className="su-text-center su-leading ">{subheading}</div>
+        <div className={styles.heading}>{heading}</div>
+        <div className={styles.subheading}>{subheading}</div>
         <FlexBox justifyContent="center">
           {newContact ? (
             <div
