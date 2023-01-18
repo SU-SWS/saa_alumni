@@ -61,6 +61,14 @@ const TypeOfRegistrant = (props) => {
 
   const newContact = { su_reg_type: 'newContact' };
 
+  const [paymentType, setPaymentType] = useState(false);
+  const togglePaymentType = (type) => {
+    console.log('TYPE:', type);
+    console.log('PAYMENT TYPE:', paymentType);
+    // Reset to false if the payment type is the same
+    setPaymentType(type === paymentType ? false : type);
+  };
+
   return (
     <AuthenticatedPage>
       <FormContextProvider>
@@ -89,10 +97,14 @@ const TypeOfRegistrant = (props) => {
                     value[0].registrantsData.length === 0;
 
                   let nextPageLink = '/membership/register/form';
+
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
                     nextPageLink = '/membership/register/related-contacts';
+                  }
+                  if (paymentType === 'installments') {
+                    nextPageLink = '/membership/register/installments/form';
                   }
 
                   return (
@@ -176,6 +188,9 @@ const TypeOfRegistrant = (props) => {
                                     heading="Pay in full"
                                     subheading="One time payment"
                                     caption="Most value"
+                                    onClick={togglePaymentType}
+                                    id="oneTime"
+                                    isSelected={paymentType === 'oneTime'}
                                   >
                                     <CreateBloks blokSection={oneTimePayment} />
                                   </MembershipPaymentCard>
@@ -184,6 +199,9 @@ const TypeOfRegistrant = (props) => {
                                   <MembershipPaymentCard
                                     heading="Pay in installments"
                                     subheading="Over 5 years"
+                                    onClick={togglePaymentType}
+                                    id="installments"
+                                    isSelected={paymentType === 'installments'}
                                   >
                                     <CreateBloks blokSection={installments} />
                                   </MembershipPaymentCard>
