@@ -82,6 +82,7 @@ import VerticalNav from './navigation/verticalNav';
 import VerticalNavWrapper from './navigation/verticalNavWrapper';
 import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
+import MembershipPaymentOptions from './page-types/membershipFormPage/membershipPaymentOptions';
 
 const ComponentList = {
   accordion: Accordion,
@@ -127,6 +128,7 @@ const ComponentList = {
   membershipFormPage: MembershipFormPage,
   membershipInstallmentsForm: MembershipInstallmentsForm,
   membershipInfoText: MembershipInfoText,
+  membershipPaymentOptions: MembershipPaymentOptions,
   navItem: NavItem,
   page: Page,
   perk: Perk,

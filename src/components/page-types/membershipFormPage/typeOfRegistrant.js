@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
@@ -22,6 +22,7 @@ import {
   FormContext,
 } from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
+import MembershipPaymentCard from './membershipPaymentCard';
 
 const TypeOfRegistrant = (props) => {
   const {
@@ -29,6 +30,8 @@ const TypeOfRegistrant = (props) => {
       heroImage: { filename, alt, focus } = {},
       intro,
       membershipCardNote,
+      oneTimePayment,
+      installments,
     },
     blok,
   } = props;
@@ -58,6 +61,14 @@ const TypeOfRegistrant = (props) => {
 
   const newContact = { su_reg_type: 'newContact' };
 
+  const [paymentType, setPaymentType] = useState(false);
+  const togglePaymentType = (type) => {
+    console.log('TYPE:', type);
+    console.log('PAYMENT TYPE:', paymentType);
+    // Reset to false if the payment type is the same
+    setPaymentType(type === paymentType ? false : type);
+  };
+
   return (
     <AuthenticatedPage>
       <FormContextProvider>
@@ -86,10 +97,14 @@ const TypeOfRegistrant = (props) => {
                     value[0].registrantsData.length === 0;
 
                   let nextPageLink = '/membership/register/form';
+
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
                     nextPageLink = '/membership/register/related-contacts';
+                  }
+                  if (paymentType === 'installments') {
+                    nextPageLink = '/membership/register/installments/form';
                   }
 
                   return (
@@ -156,6 +171,44 @@ const TypeOfRegistrant = (props) => {
                               />
                             </GridCell>
                           </Grid>
+
+                          {/* PAYMENT OPTIONS */}
+                          {value[0].registrantsData[0]?.su_did ===
+                          primaryUser.su_did ? (
+                            <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-48 su-pb-76">
+                              <p>Payment options</p>
+                              <p>One time or installments</p>
+                              <Grid
+                                gap
+                                xs={12}
+                                className="su-p-26 su-bg-saa-black su-rounded"
+                              >
+                                <GridCell xs={12} md={6}>
+                                  <MembershipPaymentCard
+                                    heading="Pay in full"
+                                    subheading="One time payment"
+                                    caption="Most value"
+                                    onClick={togglePaymentType}
+                                    id="oneTime"
+                                    isSelected={paymentType === 'oneTime'}
+                                  >
+                                    <CreateBloks blokSection={oneTimePayment} />
+                                  </MembershipPaymentCard>
+                                </GridCell>
+                                <GridCell xs={12} md={6}>
+                                  <MembershipPaymentCard
+                                    heading="Pay in installments"
+                                    subheading="Over 5 years"
+                                    onClick={togglePaymentType}
+                                    id="installments"
+                                    isSelected={paymentType === 'installments'}
+                                  >
+                                    <CreateBloks blokSection={installments} />
+                                  </MembershipPaymentCard>
+                                </GridCell>
+                              </Grid>
+                            </Container>
+                          ) : null}
                           <FlexBox justifyContent="center">
                             <Link
                               to={nextPageLink}
