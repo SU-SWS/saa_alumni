@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
+import { Redirect } from '@reach/router';
 import { Container } from '../../layout/Container';
 import Layout from '../../partials/layout';
 import CreateBloks from '../../../utilities/createBloks';
@@ -24,6 +25,9 @@ const MembershipFormPage = (props) => {
     },
     blok,
     location,
+    pageContext: {
+      story: { full_slug: registrationSlug },
+    },
   } = props;
 
   const { userProfile } = useContext(AuthContext);
@@ -33,11 +37,16 @@ const MembershipFormPage = (props) => {
   console.log('REGISTRANT PASS THROUGH: ', registrant);
 
   useEffect(() => {
-    if (registrant.su_reg_type !== 'newContact') {
-      registrant.su_did = undefined;
+    if (registrant?.su_reg_type !== 'newContact') {
       window.prefillData = registrant;
     }
   }, [registrant]);
+
+  // In the event that the user goes directly to the related contact page,
+  // redirect user back to insteritial page to select registration type
+  if (!registrant) {
+    return <Redirect to={registrationSlug} noThrow />;
+  }
 
   return (
     <AuthenticatedPage>

@@ -41,7 +41,6 @@ import Masthead from './identity/masthead';
 import MastheadPicker from './identity/mastheadPicker';
 import MembershipFormPage from './page-types/membershipFormPage/membershipFormPage';
 import MembershipInstallmentsForm from './page-types/membershipFormPage/membershipInstallmentsForm';
-import MembershipInformation from './page-types/membershipFormPage/membershipInformation';
 import MembershipInfoText from './page-types/membershipFormPage/membershipInfoText';
 import NavItem from './navigation/navItem';
 import Page from './page';
@@ -83,6 +82,7 @@ import VerticalNav from './navigation/verticalNav';
 import VerticalNavWrapper from './navigation/verticalNavWrapper';
 import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
+import MembershipPaymentOptions from './page-types/membershipFormPage/membershipPaymentOptions';
 
 const ComponentList = {
   accordion: Accordion,
@@ -127,8 +127,8 @@ const ComponentList = {
   mastheadPicker: MastheadPicker,
   membershipFormPage: MembershipFormPage,
   membershipInstallmentsForm: MembershipInstallmentsForm,
-  membershipInformation: MembershipInformation,
   membershipInfoText: MembershipInfoText,
+  membershipPaymentOptions: MembershipPaymentOptions,
   navItem: NavItem,
   page: Page,
   perk: Perk,
