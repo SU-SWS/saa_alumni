@@ -2,20 +2,24 @@ import { dcnb } from 'cnbuilder';
 
 export const root =
   'su-group su-relative su-overflow-hidden su-bg-saa-black-dark su-break-words su-border-black su-w-full sm:su-max-w-[42rem] md:su-max-w-full';
-export const content = 'su-rs-pt-1 su-rs-px-2 su-rs-pb-3';
-export const link =
-  'su-stretched-link su-group su-z-20 su-mb-08em su-type-2 su-no-underline hocus:su-underline su-underline-offset-[3px] su-decoration-[0.12em] su-decoration-digital-red-xlight focus:su-outline-none';
+export const membershipCardWrapper = (disabled) =>
+  dcnb(
+    'su-basefont-23 su-p-30 lg:su-p-36 su-stretch-link su-w-full su-transition-all su-border-3 su-border-white',
+    disabled
+      ? 'su-pointer-events-none'
+      : 'hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
+  );
+export const initialAndSelectionWrapper =
+  'su-flex-col lg:su-flex-row su-items-center su-gap-xs su-relative';
+export const initialWrapper =
+  'su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full';
+export const selectionWrapper =
+  'sm:su-absolute su-right-0 md:su-right-[-20px] lg:su-right-0 su-text-16 su-font-semibold';
+export const checkLinkIcon =
+  'su-inline-block su-text-saa-electric-blue su-w-[1.4em] su-mt-[-2px] su-mr-[2px]';
 export const heading =
-  'su-type-0 su-mt-0 su-font-bold su-relative su-inline su-text-white';
-export const icon =
-  'su-relative su-inline-block group-hover:su-text-white group-focus:su-text-white';
-export const subheading =
-  'su-mt-4 su-mb-0 su-font-semibold su-text-white su-leading-display';
-export const description =
-  'su-rs-mt-0 su-mb-0 su-card-paragraph su-text-black-20';
-export const benefitsLink =
-  'su-rs-mt-2 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-border-3 su-border-digital-red-xlight su-text-white hocus:su-bg-digital-red hocus:su-border-digital-red hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18';
-export const benefitsLinkIcon = 'su-w-1em su-text-white';
+  'su-text-center su-type-2 su-font-bold su-rs-mt-1 su-leading';
+export const subheading = 'su-text-center su-type-0';
 export const membershipCardLink = (disabled) =>
   dcnb(
     'su-rs-mt-2 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-bg-transparent',
@@ -25,10 +29,3 @@ export const membershipCardLink = (disabled) =>
   );
 export const membershipCardSelectedLink =
   'su-rs-mt-2 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-gradient-to-tr su-from-palo-verde-dark su-to-saa-electric-blue su-shadow-md hocus:su-text-white';
-export const membershipCardWrapper = (disabled) =>
-  dcnb(
-    'su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-white',
-    disabled
-      ? 'su-pointer-events-none'
-      : 'hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
-  );
