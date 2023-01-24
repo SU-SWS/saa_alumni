@@ -120,11 +120,11 @@ class ggTripForm {
     window.su_trip_end_date = this.trips[uuid].endDate
       ? this.formatFmDate(this.trips[uuid].endDate)
       : '';
-    window.su_pre_extension_start = this.trips[uuid].extendStartDate
-      ? this.formatFmDate(this.trips[uuid].extendStartDate)
+    window.su_pre_extension_start = this.trips[uuid].preExtendStartDate
+      ? this.formatFmDate(this.trips[uuid].preExtendStartDate)
       : '';
-    window.su_pre_extension_end = this.trips[uuid].extendEndDate
-      ? this.formatFmDate(this.trips[uuid].extendEndDate)
+    window.su_pre_extension_end = this.trips[uuid].preExtendEndDate
+      ? this.formatFmDate(this.trips[uuid].preExtendEndDate)
       : '';
     window.su_post_extension_start = this.trips[uuid].postExtendStartDate
       ? this.formatFmDate(this.trips[uuid].postExtendStartDate)
@@ -138,11 +138,11 @@ class ggTripForm {
     window.su_email_end_date = this.trips[uuid].endDate
       ? this.formatEmailDate(this.trips[uuid].endDate)
       : '';
-    window.su_email_pre_extension_start = this.trips[uuid].extendStartDate
-      ? this.formatEmailDate(this.trips[uuid].extendStartDate)
+    window.su_email_pre_extension_start = this.trips[uuid].preExtendStartDate
+      ? this.formatEmailDate(this.trips[uuid].preExtendStartDate)
       : '';
-    window.su_email_pre_extension_end = this.trips[uuid].extendEndDate
-      ? this.formatEmailDate(this.trips[uuid].extendEndDate)
+    window.su_email_pre_extension_end = this.trips[uuid].preExtendEndDate
+      ? this.formatEmailDate(this.trips[uuid].preExtendEndDate)
       : '';
     window.su_email_post_extension_start = this.trips[uuid].postExtendStartDate
       ? this.formatEmailDate(this.trips[uuid].postExtendStartDate)
@@ -153,12 +153,12 @@ class ggTripForm {
 
     const extension = () => {
       if (
-        this.trips[uuid].extendStartDate &&
+        this.trips[uuid].preExtendStartDate &&
         this.trips[uuid].postExtendEndDate
       ) {
         return 'Both';
       }
-      if (this.trips[uuid].extendStartDate) {
+      if (this.trips[uuid].preExtendStartDate) {
         return 'Pre-trip only';
       }
       if (this.trips[uuid].postExtendEndDate) {
