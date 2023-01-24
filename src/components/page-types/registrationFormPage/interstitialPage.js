@@ -33,7 +33,6 @@ import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './interstitialPage.styles';
-import { formatUsDate } from '../../../utilities/transformDate';
 
 const InterstitialPage = (props) => {
   const {
