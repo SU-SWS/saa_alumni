@@ -46,6 +46,9 @@ const TypeOfRegistrant = (props) => {
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
+    su_dname:
+      userProfile.name.digtalName ||
+      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
       userProfile?.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
@@ -150,11 +153,6 @@ const TypeOfRegistrant = (props) => {
                                 subheading={`${primaryUser.su_first_name} ${primaryUser.su_last_name}`}
                                 initial={primaryUser.su_first_name.slice(0, 1)}
                                 memberData={primaryUser}
-                                disabled={
-                                  value[0].registrantsData.length !== 0 &&
-                                  value[0].registrantsData[0]?.su_did !==
-                                    primaryUser.su_did
-                                }
                               />
                             </GridCell>
                             <GridCell xs={12} md={6}>
@@ -163,11 +161,6 @@ const TypeOfRegistrant = (props) => {
                                 subheading="Existing contact or new contact"
                                 initial="?"
                                 memberData={newContact}
-                                disabled={
-                                  value[0].registrantsData.length !== 0 &&
-                                  value[0].registrantsData[0]?.su_did !==
-                                    newContact.su_did
-                                }
                               />
                             </GridCell>
                           </Grid>

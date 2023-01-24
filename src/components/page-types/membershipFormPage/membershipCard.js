@@ -11,7 +11,6 @@ const MembershipCard = ({
   initial,
   newContact = false,
   memberData,
-  disabled = false,
 }) => {
   const [state, dispatch] = useContext(FormContext);
   const { registrantsData } = state;
@@ -21,7 +20,7 @@ const MembershipCard = ({
 
   const addRelationship = () => {
     dispatch({
-      type: 'addRegistrant',
+      type: 'addSingleRegistrant',
       payload: memberData,
     });
   };
@@ -41,23 +40,13 @@ const MembershipCard = ({
     }
   };
 
-  let newContactWrapper = '';
-
-  if (newContact && isSelected) {
-    newContactWrapper = 'su-bg-saa-black';
-  } else if (newContact) {
-    newContactWrapper = 'su-border-dashed';
-  }
-
   return (
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
         className={dcnb(
-          isSelected
-            ? dcnb('su-bg-saa-black', styles.membershipCardWrapper(disabled))
-            : styles.membershipCardWrapper(disabled),
-          newContactWrapper
+          styles.membershipCardWrapper,
+          newContact && 'su-border-dashed'
         )}
         onClick={toggleRelationship}
       >
@@ -92,7 +81,7 @@ const MembershipCard = ({
               className={
                 isSelected
                   ? styles.membershipCardSelectedLink
-                  : styles.membershipCardLink(disabled)
+                  : styles.membershipCardLink
               }
             >
               Create new <HeroIcon iconType="plus" />
@@ -103,7 +92,7 @@ const MembershipCard = ({
               className={
                 isSelected
                   ? styles.membershipCardSelectedLink
-                  : styles.membershipCardLink(disabled)
+                  : styles.membershipCardLink
               }
             >
               {isSelected ? 'Selected' : 'Select'}
