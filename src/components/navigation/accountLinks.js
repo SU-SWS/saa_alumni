@@ -11,11 +11,17 @@ import NavItem from './navItem';
 import HeroIcon from '../simple/heroIcon';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 
-const Initial = ({ string }) => {
+const Initial = ({ userProfile }) => {
+  const string =
+    userProfile.name?.digitalName || userProfile.session?.firstName;
   const initial = string?.substr(0, 1);
   return (
     <div
-      className="su-flex su-justify-center su-transition su-leading su-text-center su-w-40 su-h-40 su-text-24 su-border-2 su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark"
+      className={dcnb(
+        'su-flex su-justify-center su-transition su-leading su-text-center su-border-2',
+        'su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark',
+        'su-w-full su-h-full'
+      )}
       aria-hidden
     >
       {initial}
@@ -46,21 +52,94 @@ const AccountLinks = ({ mainLinkClasses }) => {
     }
   });
 
+  // TODO: Add donor logic
+  const isDonor = true;
+
   const linkClasses =
     'su-flex su-items-baseline su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-underline hocus:su-text-white hocus:su-bg-cardinal-red-xxdark !su-underline-offset-[3px] lg:!su-decoration-digital-red-xlight su-text-20';
 
   const links = [
     {
-      text: 'My Account Settings',
-      url: 'https://alumni.stanford.edu/get/page/my-account/profile',
+      text: 'My Account',
+      url: 'https://myaccount.stanford.edu',
       icon: true,
+      classes: 'su-border-t su-border-b su-py-14',
+    },
+  ];
+
+  if (isDonor) {
+    links.push({
+      text: 'My Giving',
+      url: '',
+      icon: true,
+      classes: 'su-border-b su-py-14',
+    });
+  }
+
+  links.push(
+    {
+      text: 'Help',
+      url: 'https://alumni.stanford.edu/help/',
+      classes: 'su-link-regular',
     },
     {
       text: 'Log out',
       url: '/api/auth/logout',
       classes: 'su-link-regular',
-    },
-  ];
+    }
+  );
+
+  const getProfileLinks = (userProfile) => {
+    const affiliation = [
+      'GSB Alum',
+      'SAA Alum',
+      'Med Alum',
+      'Law Alum',
+      'EDU Alum',
+    ];
+
+    const alumFilter = userProfile.affiliations.filter((item) =>
+      affiliation.includes(item)
+    );
+    const isAlumni = !alumFilter.length;
+
+    let profileLinks = [
+      {
+        text: 'Edit my information',
+        url: 'https://myaccount.stanford.edu/profile',
+      },
+    ];
+
+    if (!isAlumni) {
+      profileLinks = [
+        {
+          text: 'View Profile',
+          url: 'https://alumnidirectory.stanford.edu/profile/me',
+        },
+        {
+          text: 'Edit',
+          url: 'https://myaccount.stanford.edu/profile',
+        },
+      ];
+    }
+
+    return profileLinks.map((link, key) => (
+      <li className="su-m-0">
+        <a
+          key={`profileLinks-${key}`}
+          href={link.url}
+          className={dcnb(
+            '!su-text-digital-red-xlight su-text-19 su-flex su-items-center su-no-underline hocus:su-underline'
+          )}
+        >
+          {key !== 0 && (
+            <span className="su-w-1 su-h-[2.1rem] su-flex su-bg-digital-red-light su-mx-12" />
+          )}
+          {link.text}
+        </a>
+      </li>
+    ));
+  };
 
   return (
     <AuthContext.Consumer>
@@ -102,20 +181,17 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     <SrOnlyText>
                       {`${expanded ? ' Close' : ' Open'} user menu`}
                     </SrOnlyText>
-                    <Initial
-                      string={
-                        userProfile.name?.digitalName ||
-                        userProfile.session?.firstName
-                      }
-                    />
+                    <div className="su-w-40 su-h-40 su-text-24">
+                      <Initial userProfile={userProfile} />
+                    </div>
                     <ChevronDownIcon
                       className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition
                 ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
                       aria-hidden="true"
                     />
                   </button>
-                  <ul
-                    className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-cardinal-red-xdark su-z-10 su-list-none su-absolute su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[32rem] su-right-0 su-mt-8 su-text-left
+                  <div
+                    className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-cardinal-red-xdark su-z-10 su-absolute su-rs-px-1 su-rs-pt-0 su-rs-pb-1 su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[38rem] su-right-0 su-mt-8 su-text-left
                       ${
                         expanded
                           ? 'su-scale-y-100 md:su-scale-x-100 su-opacity-100 su-visible'
@@ -124,21 +200,38 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     `}
                     aria-hidden={!expanded}
                   >
-                    {links.map((link) => (
-                      <li className={link.classes} key={link.url}>
-                        <a href={link.url} className={linkClasses}>
-                          {link.text}
-                          {link.icon && (
-                            <HeroIcon
-                              iconType="arrow-right"
-                              isAnimate
-                              className="su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white"
-                            />
-                          )}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                    <div className="su-px-20 su-flex su-items-center su-pb-[2.8rem]">
+                      <div className="su-w-[54px] su-h-[54px] su-text-[34px]">
+                        <Initial userProfile={userProfile} />
+                      </div>
+
+                      <div className="su-pl-10">
+                        <div className=" su-text-23 su-leading-tight su-font-semibold">
+                          {userProfile.name?.digitalName ||
+                            userProfile.session?.firstName}
+                        </div>
+                        <ul className="su-list-unstyled su-leading-snug su-flex">
+                          {getProfileLinks(userProfile)}
+                        </ul>
+                      </div>
+                    </div>
+                    <ul className="su-list-none su-p-0  children:su-mb-02em">
+                      {links.map((link) => (
+                        <li className={link.classes} key={link.url}>
+                          <a href={link.url} className={linkClasses}>
+                            {link.text}
+                            {link.icon && (
+                              <HeroIcon
+                                iconType="arrow-right"
+                                isAnimate
+                                className="su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white"
+                              />
+                            )}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </li>
               )}
               {!isAuthenticated && (
