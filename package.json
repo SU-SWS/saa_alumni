@@ -67,7 +67,7 @@
     "tabbable": "^5.2.0",
     "tailwindcss-interaction-variants": "^5.0.0",
     "url-parse": "^1.5.10",
-    "use-query-params": "^1.2.2",
+    "use-query-params": "^2.1.2",
     "xml2js": "^0.4.23"
   },
   "keywords": [
