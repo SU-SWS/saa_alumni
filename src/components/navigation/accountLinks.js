@@ -126,7 +126,6 @@ const AccountLinks = ({ mainLinkClasses }) => {
     return profileLinks.map((link, key) => (
       <li className="su-m-0">
         <a
-          key={`profileLinks-${key}`}
           href={link.url}
           className={dcnb(
             '!su-text-digital-red-xlight su-text-19 su-flex su-items-center su-no-underline hocus:su-underline'
