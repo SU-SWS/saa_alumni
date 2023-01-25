@@ -109,7 +109,7 @@ module.exports = {
             // Exlude form and registration form pages
             page.pageContext.story.content.includes('formPage') ||
             page.pageContext.story.content.includes('registrationFormPage') ||
-            // page.pageContext.story.content.includes('membershipFormPage') ||
+            page.pageContext.story.content.includes('membershipFormPage') ||
             // Exclude pages marked with "noindex"
             page.pageContext.noIndex ||
             // Exclude pages that match the "excludes" array. (default condition)
