@@ -63,7 +63,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
       text: 'My Account',
       url: 'https://myaccount.stanford.edu',
       icon: true,
-      classes: 'su-border-t su-border-b su-py-14',
+      classes: 'su-border-t su-border-b su-border-digital-red-xlight su-py-14',
     },
   ];
 
@@ -72,7 +72,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
       text: 'My Giving',
       url: '',
       icon: true,
-      classes: 'su-border-b su-py-14',
+      classes: 'su-border-b su-border-digital-red-xlight su-py-14',
     });
   }
 
@@ -80,7 +80,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
     {
       text: 'Help',
       url: 'https://alumni.stanford.edu/help/',
-      classes: 'su-link-regular',
+      classes: 'su-link-regular su-m-0 su-pt-14',
     },
     {
       text: 'Log out',
@@ -190,7 +190,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     />
                   </button>
                   <div
-                    className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-cardinal-red-xdark su-z-10 su-absolute su-rs-px-1 su-rs-pt-0 su-rs-pb-1 su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[38rem] su-right-0 su-mt-8 su-text-left
+                    className={`su-transform-gpu su-transition su-origin-top md:su-origin-top-right su-bg-cardinal-red-xdark su-z-10 su-absolute su-rs-px-1 su-rs-pt-2 su-rs-pb-1 su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] md:su-w-[38rem] su-right-0 su-mt-8 su-text-left
                       ${
                         expanded
                           ? 'su-scale-y-100 md:su-scale-x-100 su-opacity-100 su-visible'
@@ -214,7 +214,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         </ul>
                       </div>
                     </div>
-                    <ul className="su-list-none su-p-0  children:su-mb-02em">
+                    <ul className="su-list-none su-p-0 children:su-mb-02em">
                       {links.map((link) => (
                         <li className={link.classes} key={link.url}>
                           <a href={link.url} className={linkClasses}>
