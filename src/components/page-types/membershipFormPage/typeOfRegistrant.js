@@ -47,7 +47,7 @@ const TypeOfRegistrant = (props) => {
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname:
-      userProfile.name.digtalName ||
+      userProfile?.name?.digtalName ||
       `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
       userProfile?.name?.fullNameParsed?.firstName ||
