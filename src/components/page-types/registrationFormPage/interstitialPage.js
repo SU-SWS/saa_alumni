@@ -33,6 +33,7 @@ import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './interstitialPage.styles';
+import { formatUsDate } from '../../../utilities/transformDate';
 
 const InterstitialPage = (props) => {
   const {
@@ -87,7 +88,9 @@ const InterstitialPage = (props) => {
         su_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
         su_relation: relationship?.relationshipType,
-        su_dob: relationship?.relatedContactBirthDate,
+        su_dob: relationship?.relatedContactBirthDate
+          ? formatUsDate(relationship?.relatedContactBirthDate)
+          : undefined,
         su_reg: 'Related contact',
         su_email: undefined,
         su_phone: undefined,
@@ -142,7 +145,9 @@ const InterstitialPage = (props) => {
       phoneNumberTypeList,
       primaryRegistrantPhoneNumberType
     ),
-    su_dob: userProfile?.birthDate,
+    su_dob: userProfile?.birthDate
+      ? formatUsDate(userProfile?.birthDate)
+      : undefined,
     su_relation: 'Guest',
     su_reg: 'Primary registrant',
   };
