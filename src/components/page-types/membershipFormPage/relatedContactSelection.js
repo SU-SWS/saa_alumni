@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
@@ -33,11 +33,9 @@ const RelatedContactSelection = (props) => {
       story: { full_slug: registrationSlug },
     },
   } = props;
-
   const helmetTitle = `Stanford Alumni Association Membership`;
   // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
   const slug = pageContext.slug.replace(/\/$/, '');
-
   const { userProfile } = useContext(AuthContext);
 
   // In the event that the user goes directly to the related contact page,
@@ -88,12 +86,6 @@ const RelatedContactSelection = (props) => {
     su_self_membership: 'no',
     su_gift: 'yes',
   };
-
-  const [promoCode, setPromoCode] = useState('');
-  const getPromoCode = (event) => {
-    setPromoCode(event.target.value);
-  };
-  console.log('PROMOCODE: ', promoCode);
 
   return (
     <AuthenticatedPage>
@@ -197,17 +189,6 @@ const RelatedContactSelection = (props) => {
                               />
                             </GridCell>
                           </Grid>
-                          <FlexBox alignItems="center" direction="col">
-                            <FlexBox direction="col">
-                              <label className="su-type-0 su-font-semibold">
-                                Promo code
-                              </label>
-                              <input
-                                className="su-w-[44rem] su-p-20 su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
-                                onChange={getPromoCode}
-                              />
-                            </FlexBox>
-                          </FlexBox>
                           <FlexBox
                             justifyContent="evenly"
                             alignItems="center"
@@ -225,13 +206,12 @@ const RelatedContactSelection = (props) => {
                               Go back
                             </Link>
                             <Link
-                              to={
-                                promoCode
-                                  ? `/membership/register/form?${promoCode}`
-                                  : `/membership/register/form`
-                              }
+                              to="/membership/register/form"
                               className={styles.nextLink(isContactSelected)}
-                              state={{ registrant: value[0].registrantsData }}
+                              state={{
+                                registrant: value[0].registrantsData,
+                                promoCode: location?.state?.promoCode,
+                              }}
                             >
                               Next
                               <HeroIcon

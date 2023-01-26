@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
 import { dcnb } from 'cnbuilder';
+import { useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -38,8 +39,18 @@ const TypeOfRegistrant = (props) => {
   const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
 
-  const primaryRegistrantEmail = findEmail(userProfile?.emails);
+  // If url parameters include an appeal code, parse and set the promo code input value
+  const location = useLocation();
+  const [promoCode, setPromoCode] = useState('');
+  const appealCode = new URL(location.href).searchParams.get('appeal_code');
+  useEffect(() => {
+    if (appealCode) setPromoCode(appealCode);
+  }, [appealCode]);
+  const getPromoCode = (event) => {
+    setPromoCode(event.target.value);
+  };
 
+  const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantPhoneNumber = findPhoneNumber(
     userProfile?.phoneNumbers
   );
@@ -209,11 +220,30 @@ const TypeOfRegistrant = (props) => {
                               </Grid>
                             </Container>
                           ) : null}
+                          <FlexBox alignItems="center" direction="col">
+                            <FlexBox direction="col">
+                              <label
+                                htmlFor="su-promocode"
+                                className="su-type-0 su-font-semibold"
+                              >
+                                Promo code
+                              </label>
+                              <input
+                                id="su-promocode"
+                                className="su-w-[44rem] su-p-20 su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
+                                value={promoCode}
+                                onChange={getPromoCode}
+                              />
+                            </FlexBox>
+                          </FlexBox>
                           <FlexBox justifyContent="center">
                             <Link
                               to={nextPageLink}
                               className={styles.nextLink(isContactSelected)}
-                              state={{ registrant: value[0].registrantsData }}
+                              state={{
+                                registrant: value[0].registrantsData,
+                                promoCode,
+                              }}
                             >
                               Select membership type
                               <HeroIcon
