@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
@@ -44,10 +43,7 @@ const MembershipCard = ({
     <FlexBox direction="col" as="article" className={styles.root}>
       <button
         type="button"
-        className={dcnb(
-          styles.membershipCardWrapper,
-          newContact && 'su-border-dashed'
-        )}
+        className={styles.membershipCardWrapper(newContact, isSelected)}
         onClick={toggleRelationship}
       >
         <FlexBox
