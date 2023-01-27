@@ -105,6 +105,7 @@ const TypeOfRegistrant = (props) => {
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
                     nextPageLink = '/membership/register/related-contacts';
+                    setPaymentType(false);
                   }
                   if (paymentType === 'installments') {
                     nextPageLink = '/membership/register/installments/form';
