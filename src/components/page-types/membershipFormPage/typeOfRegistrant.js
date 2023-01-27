@@ -42,10 +42,10 @@ const TypeOfRegistrant = (props) => {
   // If url parameters include an appeal code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
-  const appealCode = new URL(location.href).searchParams.get('appeal_code');
-  useEffect(() => {
-    if (appealCode) setPromoCode(appealCode);
-  }, [appealCode]);
+  // const appealCode = new URL(location.href).searchParams.get('appeal_code');
+  // useEffect(() => {
+  //   if (appealCode) setPromoCode(appealCode);
+  // }, [appealCode]);
   const getPromoCode = (event) => {
     setPromoCode(event.target.value);
   };
