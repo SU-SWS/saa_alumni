@@ -1,6 +1,5 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import SbEditable from 'storyblok-react';
 import useSiteMetadata from '../../hooks/useSiteMetadata';
 import transformImage from '../../utilities/transformImage';
 import useSubsite from '../../hooks/useSubsite';
@@ -89,30 +88,28 @@ const Seo = ({
   const canonicalUrl = getCanonicalUrl(blok, siteUrl, location);
 
   return (
-    <SbEditable content={blok}>
-      <Helmet titleTemplate={`%s | ${siteTitle}`} title={seoTitle}>
-        {!noIndex && <link rel="canonical" href={canonicalUrl} />}
-        {noIndex && <meta name="robots" content="noindex" />}
-        {seoDescription !== '' && (
-          <meta name="description" content={seoDescription} />
-        )}
-        {ogTitle !== '' && <meta property="og:title" content={ogTitle} />}
-        {ogDescription !== '' && (
-          <meta property="og:description" content={ogDescription} />
-        )}
-        {ogImage !== '' && <meta property="og:image" content={ogImage} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        {seo.twitter_title && (
-          <meta name="twitter:title" content={seo.twitter_title} />
-        )}
-        {seo.twitter_description && (
-          <meta name="twitter:description" content={seo.twitter_description} />
-        )}
-        {twitterImage !== '' && (
-          <meta name="twitter:image" content={twitterImage} />
-        )}
-      </Helmet>
-    </SbEditable>
+    <Helmet titleTemplate={`%s | ${siteTitle}`} title={seoTitle}>
+      {!noIndex && <link rel="canonical" href={canonicalUrl} />}
+      {noIndex && <meta name="robots" content="noindex" />}
+      {seoDescription !== '' && (
+        <meta name="description" content={seoDescription} />
+      )}
+      {ogTitle !== '' && <meta property="og:title" content={ogTitle} />}
+      {ogDescription !== '' && (
+        <meta property="og:description" content={ogDescription} />
+      )}
+      {ogImage !== '' && <meta property="og:image" content={ogImage} />}
+      <meta name="twitter:card" content="summary_large_image" />
+      {seo.twitter_title && (
+        <meta name="twitter:title" content={seo.twitter_title} />
+      )}
+      {seo.twitter_description && (
+        <meta name="twitter:description" content={seo.twitter_description} />
+      )}
+      {twitterImage !== '' && (
+        <meta name="twitter:image" content={twitterImage} />
+      )}
+    </Helmet>
   );
 };
 
