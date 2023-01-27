@@ -96,8 +96,20 @@ const TypeOfRegistrant = (props) => {
               </div>
               <FormContext.Consumer>
                 {(value) => {
-                  const isContactSelected =
-                    value[0].registrantsData.length === 0;
+                  const isContactSelected = () => {
+                    if (
+                      value[0].registrantsData[0]?.su_reg_type === 'self' &&
+                      paymentType
+                    ) {
+                      return true;
+                    }
+                    if (
+                      value[0].registrantsData[0]?.su_reg_type === 'newContact'
+                    ) {
+                      return true;
+                    }
+                    return false;
+                  };
 
                   let nextPageLink = '/membership/register/form';
 
@@ -206,7 +218,7 @@ const TypeOfRegistrant = (props) => {
                           <FlexBox justifyContent="center">
                             <Link
                               to={nextPageLink}
-                              className={styles.nextLink(isContactSelected)}
+                              className={styles.nextLink(!isContactSelected())}
                               state={{ registrant: value[0].registrantsData }}
                             >
                               Select membership type
