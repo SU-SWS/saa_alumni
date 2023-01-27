@@ -156,7 +156,7 @@
 .ggeWidget .ggeQuestion.ggeQuestion--error textarea {
   @apply su-border su-border-digital-red-xlight;
 }
-
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration,
 .ggeTally {
   @apply su-border-2 su-border-transparent su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem];
   border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
@@ -462,7 +462,7 @@
 }
 
 .ggeRegistrantList,
-.ggeWidget .ggeSection--askArray.ggeSection--registration,
+.ggeWidget:not(.saamembershiptestcampaign) .ggeSection--askArray.ggeSection--registration,
 .ggePage--payment .ggePageNav--back {
   @apply su-hidden;
 }
