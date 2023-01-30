@@ -46,8 +46,8 @@ const MembershipCard = ({
         type="button"
         className={dcnb(
           styles.membershipCardWrapper,
-          newContact && 'su-border-dashed',
-          isSelected && newContact ? 'su-bg-saa-black' : ''
+          newContact && !isSelected && 'su-border-dashed',
+          isSelected && 'su-bg-saa-black'
         )}
         onClick={toggleRelationship}
       >
