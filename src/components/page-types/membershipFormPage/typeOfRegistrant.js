@@ -46,6 +46,9 @@ const TypeOfRegistrant = (props) => {
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
+    su_dname:
+      userProfile?.name?.digtalName ||
+      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
       userProfile?.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
@@ -93,14 +96,27 @@ const TypeOfRegistrant = (props) => {
               </div>
               <FormContext.Consumer>
                 {(value) => {
-                  const isContactSelected =
-                    value[0].registrantsData.length === 0;
+                  const isContactSelected = () => {
+                    if (
+                      value[0].registrantsData[0]?.su_reg_type === 'self' &&
+                      paymentType
+                    ) {
+                      return true;
+                    }
+                    if (
+                      value[0].registrantsData[0]?.su_reg_type === 'newContact'
+                    ) {
+                      return true;
+                    }
+                    return false;
+                  };
 
                   let nextPageLink = '/membership/register/form';
 
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
+                    setPaymentType(false);
                     nextPageLink = '/membership/register/related-contacts';
                     if (userProfile?.relationships.length === 0) {
                       nextPageLink = '/membership/register/form';
@@ -153,11 +169,6 @@ const TypeOfRegistrant = (props) => {
                                 subheading={`${primaryUser.su_first_name} ${primaryUser.su_last_name}`}
                                 initial={primaryUser.su_first_name.slice(0, 1)}
                                 memberData={primaryUser}
-                                disabled={
-                                  value[0].registrantsData.length !== 0 &&
-                                  value[0].registrantsData[0]?.su_did !==
-                                    primaryUser.su_did
-                                }
                               />
                             </GridCell>
                             <GridCell xs={12} md={6}>
@@ -166,11 +177,6 @@ const TypeOfRegistrant = (props) => {
                                 subheading="Existing contact or new contact"
                                 initial="?"
                                 memberData={newContact}
-                                disabled={
-                                  value[0].registrantsData.length !== 0 &&
-                                  value[0].registrantsData[0]?.su_did !==
-                                    newContact.su_did
-                                }
                               />
                             </GridCell>
                           </Grid>
@@ -215,7 +221,7 @@ const TypeOfRegistrant = (props) => {
                           <FlexBox justifyContent="center">
                             <Link
                               to={nextPageLink}
-                              className={styles.nextLink(isContactSelected)}
+                              className={styles.nextLink(!isContactSelected())}
                               state={{ registrant: value[0].registrantsData }}
                             >
                               Select membership type
