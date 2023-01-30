@@ -102,10 +102,7 @@ const TypeOfRegistrant = (props) => {
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
                     nextPageLink = '/membership/register/related-contacts';
-                    if (
-                      userProfile?.relationships ||
-                      userProfile?.relationships.length === 0
-                    ) {
+                    if (userProfile?.relationships.length === 0) {
                       nextPageLink = '/membership/register/form';
                     }
                   }
