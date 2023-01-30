@@ -53,6 +53,7 @@ const RelatedContactSelection = (props) => {
       data = {
         // @TODO: Should su_did be the related contact or the registering user's encodedSUID?
         su_did: relationship?.relatedContactEncodedID,
+        su_dname: relationship?.relatedContactDigitalName,
         su_first_name:
           relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
         su_last_name:

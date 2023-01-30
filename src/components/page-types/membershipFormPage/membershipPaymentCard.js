@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './MembershipCard.styles';
@@ -15,7 +15,7 @@ const MembershipPaymentCard = ({
   <FlexBox direction="col" as="article" className={styles.root}>
     <button
       type="button"
-      className={styles.membershipCardWrapper(false)}
+      className={styles.membershipCardWrapper}
       onClick={() => onClick(id)}
     >
       {isSelected && (
@@ -39,7 +39,7 @@ const MembershipPaymentCard = ({
           className={
             isSelected
               ? styles.membershipCardSelectedLink
-              : styles.membershipCardLink(false)
+              : styles.membershipCardLink
           }
         >
           {isSelected ? 'Selected' : 'Select'}
