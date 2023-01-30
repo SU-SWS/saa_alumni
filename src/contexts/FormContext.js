@@ -18,6 +18,10 @@ function formReducer(state, action) {
           (traveler) => traveler.su_did !== action.payload
         ),
       };
+    case 'addSingleRegistrant':
+      return {
+        registrantsData: [action.payload],
+      };
     default:
       return state;
   }
