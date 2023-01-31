@@ -8,6 +8,11 @@ https://youngalumni.alumni.stanford.edu/Stanford10 https://alumni.stanford.edu/y
 https://youngalumni.alumni.stanford.edu https://alumni.stanford.edu/young-alumni 301!
 https://associates.alumni.stanford.edu https://alumni.stanford.edu/stanford-associates 301!
 https://careers.alumni.stanford.edu https://alumni.stanford.edu/career-connections 301!
+https://careers.alumni.stanford.edu/resources https://alumni.stanford.edu/career-connections/resources 301!
+https://careers.alumni.stanford.edu/students https://alumni.stanford.edu/career-connections/students 301!
+https://careers.alumni.stanford.edu/offer-support https://alumni.stanford.edu/career-connections/offer-help 301!
+https://careers.alumni.stanford.edu/faq https://alumni.stanford.edu/career-connections/faq 301!
+https://careers.alumni.stanford.edu/* https://alumni.stanford.edu/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
