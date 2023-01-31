@@ -10,7 +10,12 @@ import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
+import {
+  findEmail,
+  findPreferredEmailType,
+  findPhoneNumber,
+  findPreferredPhoneNumberType,
+} from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -24,6 +29,7 @@ import {
 } from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
+import { formatUsDate } from '../../../utilities/transformDate';
 
 const TypeOfRegistrant = (props) => {
   const {
@@ -53,8 +59,16 @@ const TypeOfRegistrant = (props) => {
   };
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
+  const primaryRegistrantEmailType = findPreferredEmailType(
+    userProfile?.emails,
+    primaryRegistrantEmail
+  );
   const primaryRegistrantPhoneNumber = findPhoneNumber(
     userProfile?.phoneNumbers
+  );
+  const primaryRegistrantPhoneNumberType = findPreferredPhoneNumberType(
+    userProfile?.phoneNumbers,
+    primaryRegistrantPhoneNumber
   );
 
   const primaryUser = {
@@ -70,6 +84,21 @@ const TypeOfRegistrant = (props) => {
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
+    su_recipient_dob: userProfile?.birthDate
+      ? formatUsDate(userProfile?.birthDate)
+      : '',
+    su_recipient_first_name:
+      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.session?.firstName,
+    su_recipient_last_name:
+      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.session?.lastName,
+    su_recipient_relationship: 'Guest',
+    su_recipient_suid: userProfile?.session?.encodedSUID,
+    su_recipient_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_recipient_email_type: primaryRegistrantEmailType || undefined,
+    su_recipient_phone: primaryRegistrantPhoneNumber,
+    su_recipient_phone_type: primaryRegistrantPhoneNumberType || undefined,
     su_self_membership: 'yes',
     su_gift: 'no',
     su_reg_type: 'self',
