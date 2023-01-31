@@ -34,6 +34,7 @@ const MembershipInstallmentsForm = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
   const registrant = location?.state?.registrant;
+  const promoCode = location?.state?.promoCode;
   console.log('REGISTRANT PASS THROUGH INSTALLMENTS: ', registrant);
 
   useEffect(() => {
@@ -102,6 +103,7 @@ const MembershipInstallmentsForm = (props) => {
                   <CreateBloks
                     blokSection={installmentsForm}
                     bgCardStyle="su-bg-saa-black-dark"
+                    urlData={promoCode}
                   />
                 </GridCell>
               </Grid>

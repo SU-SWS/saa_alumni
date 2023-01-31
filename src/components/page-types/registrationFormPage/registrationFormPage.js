@@ -192,7 +192,7 @@ const RegistrationFormPage = (props) => {
                   <CreateBloks
                     blokSection={giveGabForm}
                     bgCardStyle="su-bg-saa-black-dark"
-                    tripId={tripId}
+                    urlData={tripId}
                   />
                 </GridCell>
               </Grid>
