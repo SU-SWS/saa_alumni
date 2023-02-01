@@ -213,7 +213,7 @@ const RelatedContactSelection = (props) => {
                                 registrant: value[0].registrantsData,
                                 promoCode: location?.state?.promoCode
                                   ? location.state.promoCode
-                                  : 'buy_somneone',
+                                  : 'buy_someone',
                               }}
                             >
                               Next
