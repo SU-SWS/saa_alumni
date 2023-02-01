@@ -129,8 +129,11 @@ const TypeOfRegistrant = (props) => {
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
-                    nextPageLink = '/membership/register/related-contacts';
                     setPaymentType(false);
+                    nextPageLink = '/membership/register/related-contacts';
+                    if (userProfile?.relationships.length === 0) {
+                      nextPageLink = '/membership/register/form';
+                    }
                   }
                   if (paymentType === 'installments') {
                     nextPageLink = '/membership/register/installments/form';
