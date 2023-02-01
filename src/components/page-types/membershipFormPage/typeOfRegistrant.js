@@ -48,6 +48,9 @@ const TypeOfRegistrant = (props) => {
   useEffect(() => {
     if (appealCode) setPromoCode(appealCode);
   }, [appealCode]);
+  if (appealCode.length === 0 && promoCode.length === 0) {
+    setPromoCode('alum_myself_myself');
+  }
   const getPromoCode = (event) => {
     setPromoCode(event.target.value);
   };
@@ -137,6 +140,10 @@ const TypeOfRegistrant = (props) => {
                   }
                   if (paymentType === 'installments') {
                     nextPageLink = '/membership/register/installments/form';
+                    // If there is no promo code, set the urlData to alumni_myself_install
+                    if (appealCode.length === 0 && promoCode.length === 0) {
+                      setPromoCode('alum_myself_install');
+                    }
                   }
 
                   return (

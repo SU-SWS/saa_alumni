@@ -211,7 +211,9 @@ const RelatedContactSelection = (props) => {
                               className={styles.nextLink(isContactSelected)}
                               state={{
                                 registrant: value[0].registrantsData,
-                                promoCode: location?.state?.promoCode,
+                                promoCode: location?.state?.promoCode
+                                  ? location.state.promoCode
+                                  : 'buy_somneone',
                               }}
                             >
                               Next
