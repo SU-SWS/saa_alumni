@@ -361,9 +361,11 @@
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after
 /* .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__checkbox::after  */
 {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
   content: "";
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
+  mask: url("../assets/check-mark.svg");
+  -webkit-mask-size: contain;
 }
 
 .ggePrompt__checkbox:hover::before {
@@ -379,14 +381,14 @@
 }
 
 /* Membership display none */
-.ggeWidget .ggeQuestion .ggeQuestion__label label[for="RecipientFirstName__ggid1"],
-.ggeWidget .ggeQuestion .ggeQuestion__label label[for="RecipientLastName__ggid1"],
+.ggeWidget .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientFirstName__ggid1"],
+.ggeWidget .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientLastName__ggid1"],
 .ggeWidget .ggeQuestion .ggeQuestion__label label[for="Terms and Conditions Acknowledgement|I agree.__input__ggid1"],
 .ggeWidget .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."] {
   @apply su-hidden;
 }
 
-.ggeWidget .ggeQuestion[data-name="RecipientFirstName"] {
+.ggeWidget .ggeQuestion--readonly[data-name="RecipientFirstName"] {
   @apply su-float-left;
 }
 
@@ -443,7 +445,7 @@ div[data-name="TermsandConditionsAcknowledgement"] .ggeQuestion__field {
   @apply su-flex su-items-baseline;
 }
 .ggeQuestion[data-name="DigitalName"] .ggeQuestion__label {
-  @apply su-hidden;
+  @apply su-text-[2.6rem] su-p-0 su-mr-[.7rem];
 }
 
 .ggeQuestion[data-name="DigitalName"] .ggeQuestion__field input {
