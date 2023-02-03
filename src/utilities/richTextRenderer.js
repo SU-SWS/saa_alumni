@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   render,
+  MARK_STYLED,
   MARK_BOLD,
   MARK_ITALIC,
   MARK_LINK,
@@ -25,6 +26,15 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
   }
   const rendered = render(wysiwyg, {
     markResolvers: {
+      [MARK_STYLED]: (children, props) =>
+        React.createElement(
+          'span',
+          {
+            // eslint-disable-next-line react/destructuring-assignment
+            className: props?.class || '',
+          },
+          children
+        ),
       [MARK_BOLD]: (children) => <strong>{children}</strong>,
       [MARK_ITALIC]: (children) => <em>{children}</em>,
       [MARK_LINK]: (children, props) => {

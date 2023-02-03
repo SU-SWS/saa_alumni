@@ -212,7 +212,7 @@ export const findEmail = (emails) => {
  *   The pref email type
  */
 export const findPreferredEmailType = (emails = [], prefEmail) => {
-  let pref = 'Other Email';
+  let pref;
 
   if (emails[0]?.preferredEmailType === null) {
     emails.forEach((val) => {

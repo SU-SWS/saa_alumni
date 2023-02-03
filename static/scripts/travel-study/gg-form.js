@@ -30,8 +30,7 @@ class ggForm {
   };
 
   mountAdditionalScripts = () => {
-    document.head.innerHTML +=
-      '<link rel="stylesheet" href="' + this.source + '/scripts/travel-study/gg-form.css" type="text/css"/>';
+    document.head.innerHTML += `<link rel="stylesheet" href="${this.source}/scripts/travel-study/gg-form.css" type="text/css"/>`;
     document.head.innerHTML +=
       '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };
@@ -103,13 +102,14 @@ class ggForm {
 
     this.render(content);
 
-    const removeLoader = () => {
-      ggScript.removeChild(loaderWrapper);
-    };
-
     // Remove Loader once GiveGab Form completes render
-    script.addEventListener('widgetRenderEnd', removeLoader);
-    script.removeEventListener('widgetRenderEnd', removeLoader);
+    script.addEventListener(
+      'widgetRenderEnd',
+      () => {
+        ggScript.removeChild(loaderWrapper);
+      },
+      { once: true }
+    );
   };
 }
 

@@ -48,8 +48,7 @@ class ggTripForm {
   };
 
   mountAdditionalScripts = () => {
-    document.head.innerHTML +=
-      '<link rel="stylesheet" href="' + this.source + '/scripts/travel-study/gg-form.css" type="text/css"/>';
+    document.head.innerHTML += `<link rel="stylesheet" href="${this.source}/scripts/travel-study/gg-form.css" type="text/css"/>`;
     document.head.innerHTML +=
       '<script key="stripe" src="https://js.stripe.com/v3" type="text/javascript" />';
   };
@@ -121,11 +120,11 @@ class ggTripForm {
     window.su_trip_end_date = this.trips[uuid].endDate
       ? this.formatFmDate(this.trips[uuid].endDate)
       : '';
-    window.su_pre_extension_start = this.trips[uuid].extendStartDate
-      ? this.formatFmDate(this.trips[uuid].extendStartDate)
+    window.su_pre_extension_start = this.trips[uuid].preExtendStartDate
+      ? this.formatFmDate(this.trips[uuid].preExtendStartDate)
       : '';
-    window.su_pre_extension_end = this.trips[uuid].extendEndDate
-      ? this.formatFmDate(this.trips[uuid].extendEndDate)
+    window.su_pre_extension_end = this.trips[uuid].preExtendEndDate
+      ? this.formatFmDate(this.trips[uuid].preExtendEndDate)
       : '';
     window.su_post_extension_start = this.trips[uuid].postExtendStartDate
       ? this.formatFmDate(this.trips[uuid].postExtendStartDate)
@@ -139,11 +138,11 @@ class ggTripForm {
     window.su_email_end_date = this.trips[uuid].endDate
       ? this.formatEmailDate(this.trips[uuid].endDate)
       : '';
-    window.su_email_pre_extension_start = this.trips[uuid].extendStartDate
-      ? this.formatEmailDate(this.trips[uuid].extendStartDate)
+    window.su_email_pre_extension_start = this.trips[uuid].preExtendStartDate
+      ? this.formatEmailDate(this.trips[uuid].preExtendStartDate)
       : '';
-    window.su_email_pre_extension_end = this.trips[uuid].extendEndDate
-      ? this.formatEmailDate(this.trips[uuid].extendEndDate)
+    window.su_email_pre_extension_end = this.trips[uuid].preExtendEndDate
+      ? this.formatEmailDate(this.trips[uuid].preExtendEndDate)
       : '';
     window.su_email_post_extension_start = this.trips[uuid].postExtendStartDate
       ? this.formatEmailDate(this.trips[uuid].postExtendStartDate)
@@ -152,7 +151,29 @@ class ggTripForm {
       ? this.formatEmailDate(this.trips[uuid].postExtendEndDate)
       : '';
 
-    if (this.trips[uuid] && this.trips[uuid].roomCategory && this.trips[uuid].roomCategory.includes('None')) {
+    const extension = () => {
+      if (
+        this.trips[uuid].preExtendStartDate &&
+        this.trips[uuid].postExtendEndDate
+      ) {
+        return 'Both';
+      }
+      if (this.trips[uuid].preExtendStartDate) {
+        return 'Pre-trip only';
+      }
+      if (this.trips[uuid].postExtendEndDate) {
+        return 'Post-trip only';
+      }
+      return 'None';
+    };
+
+    window.su_extension = extension();
+
+    if (
+      this.trips[uuid] &&
+      this.trips[uuid].roomCategory &&
+      this.trips[uuid].roomCategory.includes('None')
+    ) {
       window.su_category_request = 'none';
       window.su_category_first = 'None';
       window.su_category_second = 'None';
@@ -281,13 +302,14 @@ class ggTripForm {
     content.appendChild(main);
     this.render(content);
 
-    const removeLoader = () => {
-      ggScript.removeChild(loaderWrapper);
-    };
-
     // Remove Loader once GiveGab Form completes render
-    script.addEventListener('widgetRenderEnd', removeLoader);
-    script.removeEventListener('widgetRenderEnd', removeLoader);
+    script.addEventListener(
+      'widgetRenderEnd',
+      () => {
+        ggScript.removeChild(loaderWrapper);
+      },
+      { once: true }
+    );
   };
 
   /**

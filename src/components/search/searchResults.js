@@ -65,7 +65,9 @@ const SearchResults = ({ results }) => {
                     // eslint-disable-next-line react/no-danger
                     dangerouslySetInnerHTML={{
                       // eslint-disable-next-line no-underscore-dangle
-                      __html: sanitize(result.title, { decodeEntities: false }),
+                      __html: sanitize(result.title, {
+                        decodeEntities: false,
+                      }),
                     }}
                   />
                   <HeroIcon

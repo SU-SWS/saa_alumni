@@ -94,13 +94,10 @@ module.exports = {
           `/editor`,
           `/global-components/**`,
           `/travel-study/global-components/**`,
-          `/travel-study/destinations/**/register`,
-          `/travel-study/destinations/**/register/form`,
-          `/travel-study/destinations/**/notify`,
-          `/travel-study/custom-journeys/request/`,
-          `/travel-study/payment`,
           `/test/**`,
           `/403-access-denied`,
+          `/user-guide`,
+          `/user-guide/**`,
         ],
         // eslint-disable-next-line consistent-return
         filterPages: (page, excludedRoute, tools) => {
@@ -108,6 +105,9 @@ module.exports = {
           if (
             // Exclude non-canonical pages.
             !page.pageContext.isCanonical ||
+            // Exlude form and registration form pages
+            page.pageContext.story.content.includes('formPage') ||
+            page.pageContext.story.content.includes('registrationFormPage') ||
             // Exclude pages marked with "noindex"
             page.pageContext.noIndex ||
             // Exclude pages that match the "excludes" array. (default condition)
