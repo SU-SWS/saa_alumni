@@ -42,7 +42,7 @@ const TypeOfRegistrant = (props) => {
   // If url parameters include an appeal code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
-  let paymentTypeCode = 'alum_myself_myself';
+  let paymentTypeCode = 'alum_myself_full';
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
     : '';
