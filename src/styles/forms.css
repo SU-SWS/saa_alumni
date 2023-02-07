@@ -318,102 +318,6 @@
   opacity: 0.4;
 }
 
-/* GG Checkbox */
-.ggeWidget .ggePrompt .ggePrompt__checkbox {
-  @apply su-relative su-mr-[1.2rem];
-}
-
-/* .ggeWidget .ggePrompt label {
-  @apply su-w-auto su-p-0;
-} */
-
-.ggeWidget .ggePrompt .ggePrompt__checkbox input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-saa-electric-blue-light;
-  /* background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
-    border-box; */
-  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox input {
-  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
-    border-box;
-}
-
-.ggeWidget .ggePrompt .ggePrompt__checkbox input:hover {
-  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
-    border-box;
-}
-
-/* .ggeWidget .ggePrompt__other {
-  @apply su-flex su-flex-col;
-} */
-
-/* .ggeWidget .ggePrompt__other .ggePrompt:first-of-type {
-  @apply su-m-0;
-} */
-
-/* .ggeWidget .ggePrompt__other .ggePrompt input[type="text"] {
-  @apply su-ml-[24px];
-} */
-
-.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after
-/* .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__checkbox::after  */
-{
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
-  content: "";
-  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
-  mask: url("../assets/check-mark.svg");
-  -webkit-mask-size: contain;
-}
-
-.ggePrompt__checkbox:hover::before {
-  content: "";
-  @apply su-absolute su-inset-[-.6rem] su-rounded-full su-bg-saa-electric-blue-light/[.4];
-}
-
-.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox:hover::before
-/* .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__checkbox::before  */
-{
-  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
-  opacity: 0.4;
-}
-
-/* Membership display none */
-.ggeWidget .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientFirstName__ggid1"],
-.ggeWidget .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientLastName__ggid1"],
-.ggeWidget .ggeQuestion .ggeQuestion__label label[for="Terms and Conditions Acknowledgement|I agree.__input__ggid1"],
-.ggeWidget .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."] {
-  @apply su-hidden;
-}
-
-.ggeWidget .ggeQuestion--readonly[data-name="RecipientFirstName"] {
-  @apply su-float-left;
-}
-
-/* Membership registration leave a comment */
-.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label {
-  @apply su-clear-both;
-}
-.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label label[for="Comments__ggid1"] {
-  @apply su-font-semibold;
-}
-
-/* Membership registration terms & conditions */
-.ggeWidget .ggeQuestion.ggeQuestion--instructions #TermsandConditions {
-  @apply su-font-semibold su-text-white su-type-0;
-}
-.ggeWidget .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
-  @apply hocus:su-underline su-text-digital-red-light hocus:su-text-digital-red hocus:su-decoration-digital-red;
-}
-.ggeWidget .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
-  @apply su-hidden;
-}
-div[data-name="TermsandConditionsAcknowledgement"] .ggeQuestion__field {
-  @apply su-items-center;
-  flex-direction: row !important;
-}
 
 /* Email Other Type */
 .ggeWidget .ggeQuestion.su-email-type .ggePrompt__label label {
@@ -426,13 +330,13 @@ div[data-name="TermsandConditionsAcknowledgement"] .ggeQuestion__field {
     140.61deg,
     rgba(24, 29, 28, 0.64) 0%,
     rgba(24, 29, 28, 0.4) 110.98%
-  );
-  border-image-source: linear-gradient(
-    140.61deg,
+    );
+    border-image-source: linear-gradient(
+      140.61deg,
     rgba(255, 255, 255, 0.5) 0%,
     rgba(255, 255, 255, 0) 53.2%,
     rgba(255, 255, 255, 0.5) 109.83%
-  );
+    );
 }
 
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
@@ -575,8 +479,8 @@ div[data-name="TermsandConditionsAcknowledgement"] .ggeQuestion__field {
 }
 
 .ggeWidget.ggeWidget--highlightIncomplete
-  .ggeRegistrant--prefilled
-  .ggeQuestion--incomplete {
+.ggeRegistrant--prefilled
+.ggeQuestion--incomplete {
   @apply su-bg-transparent;
 }
 
@@ -691,4 +595,107 @@ div[data-name="TermsandConditionsAcknowledgement"] .ggeQuestion__field {
 .ggeWidget .ggeStripeContainer__lowerHr__outer,
 .ggeWidget .ggeStripeContainer__lowerHr__outer .ggeStripeContainer__lowerHr__inner {
   @apply su-bg-transparent;
+}
+
+/* GG Checkbox */
+.ggeWidget .ggePrompt .ggePrompt__checkbox,
+.ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
+  @apply su-relative su-mr-[1.2rem];
+}
+
+/* .ggeWidget .ggePrompt label {
+  @apply su-w-auto su-p-0;
+} */
+
+.ggeWidget .ggePrompt .ggePrompt__checkbox input,
+.ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field input {
+  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-saa-electric-blue-light;
+  /* background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
+    border-box; */
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox input,
+.ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field input:checked {
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
+    border-box;
+}
+
+.ggeWidget .ggePrompt .ggePrompt__checkbox input:hover,
+.ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field input:hover {
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
+    border-box;
+}
+
+/* .ggeWidget .ggePrompt__other {
+  @apply su-flex su-flex-col;
+} */
+
+/* .ggeWidget .ggePrompt__other .ggePrompt:first-of-type {
+  @apply su-m-0;
+} */
+
+/* .ggeWidget .ggePrompt__other .ggePrompt input[type="text"] {
+  @apply su-ml-[24px];
+} */
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after
+/* .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field::after */
+/* .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field::after input:checked */
+/* .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__checkbox::after  */
+{
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
+  content: "";
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
+  mask: url("../assets/check-mark.svg");
+  -webkit-mask-size: contain;
+}
+
+.ggePrompt__checkbox:hover::before {
+  content: "";
+  @apply su-absolute su-inset-[-.6rem] su-rounded-full su-bg-saa-electric-blue-light/[.4];
+}
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox:hover::before
+/* .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__checkbox::before  */
+{
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
+  opacity: 0.4;
+}
+
+/* Membership display none */
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientFirstName__ggid1"],
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientLastName__ggid1"],
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion .ggeQuestion__label label[for="Terms and Conditions Acknowledgement|I agree.__input__ggid1"],
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."] {
+  @apply su-hidden;
+}
+
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--readonly[data-name="RecipientFirstName"] {
+  @apply su-float-left;
+}
+
+/* Membership registration leave a comment */
+.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label {
+  @apply su-clear-both;
+}
+.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label label[for="Comments__ggid1"] {
+  @apply su-font-semibold;
+}
+
+/* Membership registration terms & conditions */
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions {
+  @apply su-font-semibold su-text-white su-type-0;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
+  @apply hocus:su-underline su-text-digital-red-light hocus:su-text-digital-red hocus:su-decoration-digital-red;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
+  @apply su-hidden;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check[data-name="TermsandConditionsAcknowledgement"] .ggeQuestion__field {
+  @apply su-items-center;
+  flex-direction: row !important;
 }
