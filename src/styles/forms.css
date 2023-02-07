@@ -695,7 +695,36 @@
 .ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
   @apply su-hidden;
 }
-.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check[data-name="TermsandConditionsAcknowledgement"] .ggeQuestion__field {
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--instructions.su-terms-and-conditions {
+  @apply su-rs-mb-1;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
   @apply su-items-center;
   flex-direction: row !important;
 }
+
+/* Membership selection section */
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt__price::before {
+  @apply su-hidden;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt {
+  @apply su-items-start;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label {
+  @apply su-w-full;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label label {
+  @apply su-flex su-justify-between;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption {
+  @apply su-block su-w-10/12 su-leading-display su-ml-0;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption div {
+  @apply su-mt-02em;
+}
+/* .ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption i {
+  @apply su-block su-w-10/12 su-leading-display;
+} */
+/* .ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption div b {
+  @apply su-leading-display;
+} */
