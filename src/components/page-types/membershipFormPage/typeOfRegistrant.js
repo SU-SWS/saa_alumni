@@ -42,15 +42,13 @@ const TypeOfRegistrant = (props) => {
   // If url parameters include an appeal code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
+  let paymentTypeCode = 'alum_myself_myself';
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
     : '';
   useEffect(() => {
     if (appealCode) setPromoCode(appealCode);
   }, [appealCode]);
-  if (appealCode?.length === 0 && promoCode?.length === 0) {
-    setPromoCode('alum_myself_myself');
-  }
   const getPromoCode = (event) => {
     setPromoCode(event.target.value);
   };
@@ -141,8 +139,8 @@ const TypeOfRegistrant = (props) => {
                   if (paymentType === 'installments') {
                     nextPageLink = '/membership/register/installments/form';
                     // If there is no promo code, set the urlData to alumni_myself_install
-                    if (appealCode?.length === 0 && promoCode?.length === 0) {
-                      setPromoCode('alum_myself_install');
+                    if (appealCode?.length === 0 || promoCode.length === 0) {
+                      paymentTypeCode = 'alum_myself_install';
                     }
                   }
 
@@ -260,7 +258,7 @@ const TypeOfRegistrant = (props) => {
                               className={styles.nextLink(!isContactSelected())}
                               state={{
                                 registrant: value[0].registrantsData,
-                                promoCode,
+                                promoCode: promoCode || paymentTypeCode,
                               }}
                             >
                               Select membership type
