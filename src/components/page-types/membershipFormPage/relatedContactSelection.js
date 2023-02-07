@@ -33,11 +33,9 @@ const RelatedContactSelection = (props) => {
       story: { full_slug: registrationSlug },
     },
   } = props;
-
   const helmetTitle = `Stanford Alumni Association Membership`;
   // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
   const slug = pageContext.slug.replace(/\/$/, '');
-
   const { userProfile } = useContext(AuthContext);
 
   // In the event that the user goes directly to the related contact page,
@@ -211,7 +209,10 @@ const RelatedContactSelection = (props) => {
                             <Link
                               to="/membership/register/form"
                               className={styles.nextLink(isContactSelected)}
-                              state={{ registrant: value[0].registrantsData }}
+                              state={{
+                                registrant: value[0].registrantsData,
+                                promoCode: location?.state?.promoCode,
+                              }}
                             >
                               Next
                               <HeroIcon

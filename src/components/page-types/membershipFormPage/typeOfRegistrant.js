@@ -1,15 +1,21 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
 import { dcnb } from 'cnbuilder';
+import { useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
+import {
+  findEmail,
+  findPreferredEmailType,
+  findPhoneNumber,
+  findPreferredPhoneNumberType,
+} from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -23,6 +29,7 @@ import {
 } from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
+import { formatUsDate } from '../../../utilities/transformDate';
 
 const TypeOfRegistrant = (props) => {
   const {
@@ -38,10 +45,30 @@ const TypeOfRegistrant = (props) => {
   const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
 
-  const primaryRegistrantEmail = findEmail(userProfile?.emails);
+  // If url parameters include an appeal code, parse and set the promo code input value
+  const location = useLocation();
+  const [promoCode, setPromoCode] = useState('');
+  const appealCode = location?.href
+    ? new URL(location.href).searchParams.get('appeal_code')
+    : '';
+  useEffect(() => {
+    if (appealCode) setPromoCode(appealCode);
+  }, [appealCode]);
+  const getPromoCode = (event) => {
+    setPromoCode(event.target.value);
+  };
 
+  const primaryRegistrantEmail = findEmail(userProfile?.emails);
+  const primaryRegistrantEmailType = findPreferredEmailType(
+    userProfile?.emails,
+    primaryRegistrantEmail
+  );
   const primaryRegistrantPhoneNumber = findPhoneNumber(
     userProfile?.phoneNumbers
+  );
+  const primaryRegistrantPhoneNumberType = findPreferredPhoneNumberType(
+    userProfile?.phoneNumbers,
+    primaryRegistrantPhoneNumber
   );
 
   const primaryUser = {
@@ -57,6 +84,21 @@ const TypeOfRegistrant = (props) => {
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
+    su_recipient_dob: userProfile?.birthDate
+      ? formatUsDate(userProfile?.birthDate)
+      : '',
+    su_recipient_first_name:
+      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.session?.firstName,
+    su_recipient_last_name:
+      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.session?.lastName,
+    su_recipient_relationship: 'Guest',
+    su_recipient_suid: userProfile?.session?.encodedSUID,
+    su_recipient_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_recipient_email_type: primaryRegistrantEmailType || undefined,
+    su_recipient_phone: primaryRegistrantPhoneNumber,
+    su_recipient_phone_type: primaryRegistrantPhoneNumberType || undefined,
     su_self_membership: 'yes',
     su_gift: 'no',
     su_reg_type: 'self',
@@ -116,8 +158,11 @@ const TypeOfRegistrant = (props) => {
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
-                    nextPageLink = '/membership/register/related-contacts';
                     setPaymentType(false);
+                    nextPageLink = '/membership/register/related-contacts';
+                    if (userProfile?.relationships.length === 0) {
+                      nextPageLink = '/membership/register/form';
+                    }
                   }
                   if (paymentType === 'installments') {
                     nextPageLink = '/membership/register/installments/form';
@@ -215,11 +260,30 @@ const TypeOfRegistrant = (props) => {
                               </Grid>
                             </Container>
                           ) : null}
+                          <FlexBox alignItems="center" direction="col">
+                            <FlexBox direction="col">
+                              <label
+                                htmlFor="su-promocode"
+                                className="su-type-0 su-font-semibold"
+                              >
+                                Promo code
+                              </label>
+                              <input
+                                id="su-promocode"
+                                className="su-w-[44rem] su-p-20 su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
+                                value={promoCode}
+                                onChange={getPromoCode}
+                              />
+                            </FlexBox>
+                          </FlexBox>
                           <FlexBox justifyContent="center">
                             <Link
                               to={nextPageLink}
                               className={styles.nextLink(!isContactSelected())}
-                              state={{ registrant: value[0].registrantsData }}
+                              state={{
+                                registrant: value[0].registrantsData,
+                                promoCode,
+                              }}
                             >
                               Select membership type
                               <HeroIcon
