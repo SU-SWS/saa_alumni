@@ -124,7 +124,9 @@ const RelatedContactSelection = (props) => {
                       <GridCell xs={12}>
                         <div className={styles.contentStyle}>
                           <span className={styles.superHead}>
-                            Stanford Alumni Association Membership
+                            Stanford Alumni Association
+                            <br />
+                            Membership
                           </span>
                           <Heading
                             level={1}
