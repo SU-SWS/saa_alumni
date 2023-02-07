@@ -132,12 +132,13 @@ const TypeOfRegistrant = (props) => {
                   ) {
                     setPaymentType(false);
                     nextPageLink = '/membership/register/related-contacts';
+                    // If there is no promo code, set the urlData to buy_someone
+                    if (appealCode?.length === 0 || promoCode.length === 0) {
+                      paymentTypeCode = 'buy_someone';
+                    }
+                    // If there is no related contacts available, go directly to the form
                     if (userProfile?.relationships.length === 0) {
                       nextPageLink = '/membership/register/form';
-                      // If there is no promo code, set the urlData to buy_someone
-                      if (appealCode?.length === 0 || promoCode.length === 0) {
-                        paymentTypeCode = 'buy_someone';
-                      }
                     }
                   }
                   if (paymentType === 'installments') {
