@@ -139,21 +139,20 @@ const RelatedContactSelection = (props) => {
                           </Heading>
                         </div>
                         <div className={styles.contactWrapper}>
-                          <Heading>Select a recipient</Heading>
-                          <p className="su-mb-0">
+                          <Heading level={2} size="4" font="serif">
+                            Select a recipient
+                          </Heading>
+                          <p className={styles.helpText}>
                             Help someone become a membership of the Stanford
-                            Alumni Association.
+                            Alumni Association. Please select a recipient from
+                            your list of contacts below.
                           </p>
-                          <p>
-                            Please select a recipient from your list of contacts
-                            below.
-                          </p>
-                          <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
+                          <Grid gap xs={12} className={styles.cardGroupWrapper}>
                             {/* DISPLAY RELATED CONTACTS HERE */}
                             {relatedContacts.map((relatedContact) => (
                               <GridCell
                                 xs={12}
-                                xl={6}
+                                xxl={6}
                                 className={styles.cardGridWrapper}
                               >
                                 <MembershipCard
@@ -176,7 +175,7 @@ const RelatedContactSelection = (props) => {
                             ))}
                             <GridCell
                               xs={12}
-                              xl={6}
+                              xxl={6}
                               className={styles.cardGridWrapper}
                             >
                               <MembershipCard
@@ -195,7 +194,7 @@ const RelatedContactSelection = (props) => {
                           <FlexBox
                             justifyContent="center"
                             alignItems="center"
-                            className="su-rs-mb-5"
+                            className={styles.linkWrapper}
                           >
                             <Link
                               to="/membership/register"
