@@ -1,5 +1,5 @@
 export const root =
-  'su-group su-relative su-overflow-hidden su-bg-saa-black-dark su-break-words su-border-black su-w-full sm:su-max-w-[42rem] md:su-max-w-full';
+  'su-group su-relative su-overflow-hidden su-bg-saa-black-dark su-break-words su-border-black su-max-w-full';
 export const membershipCardWrapper =
   'su-basefont-23 su-p-30 lg:su-p-36 su-stretch-link su-w-full su-transition-all su-rounded su-border su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue';
 export const initialAndSelectionWrapper =
