@@ -134,11 +134,15 @@ const TypeOfRegistrant = (props) => {
                     nextPageLink = '/membership/register/related-contacts';
                     if (userProfile?.relationships.length === 0) {
                       nextPageLink = '/membership/register/form';
+                      // If there is no promo code, set the urlData to buy_someone
+                      if (appealCode?.length === 0 || promoCode.length === 0) {
+                        paymentTypeCode = 'buy_someone';
+                      }
                     }
                   }
                   if (paymentType === 'installments') {
                     nextPageLink = '/membership/register/installments/form';
-                    // If there is no promo code, set the urlData to alumni_myself_install
+                    // If there is no promo code, set the urlData to alum_myself_install
                     if (appealCode?.length === 0 || promoCode.length === 0) {
                       paymentTypeCode = 'alum_myself_install';
                     }

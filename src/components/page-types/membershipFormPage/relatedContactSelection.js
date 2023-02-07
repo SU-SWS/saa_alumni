@@ -36,11 +36,8 @@ const RelatedContactSelection = (props) => {
   const helmetTitle = `Stanford Alumni Association Membership`;
   // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
   const slug = pageContext.slug.replace(/\/$/, '');
-  let promoCode = location?.state?.promoCode;
+  const promoCode = location?.state?.promoCode;
   const { userProfile } = useContext(AuthContext);
-  if (promoCode === 'alum_myself_full') {
-    promoCode = 'buy_someone';
-  }
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
