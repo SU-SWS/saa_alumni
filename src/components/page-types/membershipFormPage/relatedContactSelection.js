@@ -154,7 +154,7 @@ const RelatedContactSelection = (props) => {
                             {relatedContacts.map((relatedContact) => (
                               <GridCell
                                 xs={12}
-                                xxl={6}
+                                xl={6}
                                 className={styles.cardGridWrapper}
                               >
                                 <MembershipCard
@@ -177,7 +177,7 @@ const RelatedContactSelection = (props) => {
                             ))}
                             <GridCell
                               xs={12}
-                              xxl={6}
+                              xl={6}
                               className={styles.cardGridWrapper}
                             >
                               <MembershipCard

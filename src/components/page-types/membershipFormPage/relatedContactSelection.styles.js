@@ -15,7 +15,7 @@ export const helpText = 'su-subheading su-m-0 md:su-max-w-[64ch]';
 // Card Content
 export const cardGroupWrapper = 'su-rs-pt-4 su-rs-pb-5';
 export const cardGridWrapper =
-  'su-m-0 xs:su-mx-45 md:su-mx-61 lg:su-mx-92 2xl:su-m-0';
+  'su-m-0 sm:su-mx-45 md:su-mx-61 lg:su-mx-92 xl:su-m-0';
 // Links
 export const linkWrapper = 'su-rs-mt-0 su-rs-mb-5';
 export const nextLink = (disabled) =>
