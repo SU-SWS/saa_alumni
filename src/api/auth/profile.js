@@ -15,27 +15,27 @@ const megaprofileHandler = async (req, res, next) => {
   const mp = new MegaProfile();
   const profileId = req.user.encodedSUID;
   const session = req.user;
-  let fullgg = {};
-  let affiliations = [];
+  const fullgg = {};
+  const affiliations = [];
 
   // While the authentication is between states support fetching by both oauth
   // services for the majority of the profile information.
-  try {
-    const fullggresult = await mp.get(`/${profileId}/profiles/fullgg`);
-    fullgg = fullggresult.data;
-  } catch (err) {
-    console.error(err);
-    fullgg.name = {};
-    fullgg.name.digitalName = `${req.user.firstName} ${req.user.lastName}`;
-  }
+  // try {
+  //   const fullggresult = await mp.get(`/${profileId}/profiles/fullgg`);
+  //   fullgg = fullggresult.data;
+  // } catch (err) {
+  //   console.error(err);
+  //   fullgg.name = {};
+  //   fullgg.name.digitalName = `${req.user.firstName} ${req.user.lastName}`;
+  // }
 
-  // // Affiliations is already on the keycloak ouath so we fetch here.
-  try {
-    const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
-    affiliations = mpresult.data.affiliations;
-  } catch (err) {
-    console.error(err);
-  }
+  // // // Affiliations is already on the keycloak ouath so we fetch here.
+  // try {
+  //   const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
+  //   affiliations = mpresult.data.affiliations;
+  // } catch (err) {
+  //   console.error(err);
+  // }
 
   const mpUser = { session, ...fullgg, affiliations };
   res.status(200).json(mpUser);
