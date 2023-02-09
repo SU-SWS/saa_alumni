@@ -669,12 +669,22 @@
 .ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientFirstName__ggid1"],
 .ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--readonly .ggeQuestion__label label[for="RecipientLastName__ggid1"],
 .ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion .ggeQuestion__label label[for="Terms and Conditions Acknowledgement|I agree.__input__ggid1"],
-.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."] {
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."],
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion .ggeQuestion__field #ggeQuestion__caption--1--PhoneNumber,
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion .ggeQuestion__field #ggeQuestion__caption--1--ContactEmail {
   @apply su-hidden;
 }
 
 .ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion--readonly[data-name="RecipientFirstName"] {
   @apply su-float-left;
+}
+
+/* Email and Phone Number */
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion[data-name="ContactEmail"] {
+  @apply su-rs-mb-neg2 su-rs-mt-3;
+}
+.ggeWidget.saamembershiptestcampaign .ggeSection--profile .ggeQuestion[data-name="PhoneNumber"] {
+  @apply su-rs-mb-neg2;
 }
 
 /* Membership registration leave a comment */
@@ -707,6 +717,9 @@
 .ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt__price::before {
   @apply su-hidden;
 }
+.ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt__price {
+  @apply su-rs-ml-1;
+}
 .ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt {
   @apply su-items-start;
 }
@@ -722,9 +735,3 @@
 .ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption div {
   @apply su-mt-02em;
 }
-/* .ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption i {
-  @apply su-block su-w-10/12 su-leading-display;
-} */
-/* .ggeWidget.saamembershiptestcampaign .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption div b {
-  @apply su-leading-display;
-} */
