@@ -122,10 +122,12 @@ const RelatedContactSelection = (props) => {
                       className={styles.contentWrapper}
                       id="su-gg-embed"
                     >
-                      <GridCell xs={12} md={10} className={styles.formWrapper}>
+                      <GridCell xs={12}>
                         <div className={styles.contentStyle}>
                           <span className={styles.superHead}>
-                            Stanford Alumni Association Membership
+                            Stanford Alumni Association
+                            <br />
+                            Membership
                           </span>
                           <Heading
                             level={1}
@@ -140,25 +142,22 @@ const RelatedContactSelection = (props) => {
                           </Heading>
                         </div>
                         <div className={styles.contactWrapper}>
-                          <FlexBox
-                            justifyContent="center"
-                            className="su-rs-py-2"
-                          >
-                            <Logo className="su-w-200 md:su-w-300 2xl:su-w-[350px]" />
-                          </FlexBox>
-                          <Heading>Select a recipient</Heading>
-                          <p className="su-mb-0">
+                          <Heading level={2} size="4" font="serif">
+                            Select a recipient
+                          </Heading>
+                          <p className={styles.helpText}>
                             Help someone become a membership of the Stanford
-                            Alumni Association.
+                            Alumni Association. Please select a recipient from
+                            your list of contacts below.
                           </p>
-                          <p>
-                            Please select a recipient from your list of contacts
-                            below.
-                          </p>
-                          <Grid gap xs={12} className="su-rs-pb-2 su-rs-pt-1">
+                          <Grid gap xs={12} className={styles.cardGroupWrapper}>
                             {/* DISPLAY RELATED CONTACTS HERE */}
                             {relatedContacts.map((relatedContact) => (
-                              <GridCell xs={12} md={6}>
+                              <GridCell
+                                xs={12}
+                                xl={6}
+                                className={styles.cardGridWrapper}
+                              >
                                 <MembershipCard
                                   heading={`${relatedContact.su_first_name} ${relatedContact.su_last_name}`}
                                   subheading={
@@ -177,7 +176,11 @@ const RelatedContactSelection = (props) => {
                                 />
                               </GridCell>
                             ))}
-                            <GridCell xs={12} md={6}>
+                            <GridCell
+                              xs={12}
+                              xl={6}
+                              className={styles.cardGridWrapper}
+                            >
                               <MembershipCard
                                 heading="New Contact"
                                 subheading="Add new contact"
@@ -192,9 +195,9 @@ const RelatedContactSelection = (props) => {
                             </GridCell>
                           </Grid>
                           <FlexBox
-                            justifyContent="evenly"
+                            justifyContent="center"
                             alignItems="center"
-                            className="su-rs-mb-4"
+                            className={styles.linkWrapper}
                           >
                             <Link
                               to="/membership/register"

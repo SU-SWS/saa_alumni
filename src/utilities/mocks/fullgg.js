@@ -128,6 +128,25 @@ export const fullggMockData = {
         relatedContactProfessionalSuffix: null,
       },
     },
+    {
+      relationshipID: '0034700000xKKeNAAW-0034700000xKKeMAAW-Child',
+      category: 'Family',
+      relationshipType: 'Child',
+      relatedContact: '0034600000xKKeMAAW',
+      relatedContactEncodedID: '10987654324',
+      relatedContactGender: 'Female',
+      relatedContactDigitalName: 'Jessie Grater',
+      relatedContactMyFriendsCallMe: 'Jessie',
+      relatedContactBirthDate: '1998-05-22',
+      relatedContactFullNameParsed: {
+        relatedContactPrefix: 'Miss',
+        relatedContactFirstName: 'Jessie',
+        relatedContactMiddleName: null,
+        relatedContactLastName: 'Grater',
+        relatedContactPersonalSuffix: null,
+        relatedContactProfessionalSuffix: null,
+      },
+    },
   ],
   phoneNumbers: [
     {
