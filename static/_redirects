@@ -13,6 +13,8 @@ https://careers.alumni.stanford.edu/students https://alumni.stanford.edu/career-
 https://careers.alumni.stanford.edu/offer-support https://alumni.stanford.edu/career-connections/offer-help 301!
 https://careers.alumni.stanford.edu/faq https://alumni.stanford.edu/career-connections/faq 301!
 https://careers.alumni.stanford.edu/* https://alumni.stanford.edu/:splat 301!
+https://students.alumni.stanford.edu https://alumni.stanford.edu/students 301!
+https://students.alumni.stanford.edu/* https://alumni.stanford.edu/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
