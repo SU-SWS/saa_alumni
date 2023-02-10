@@ -15,6 +15,7 @@ import { FormContextProvider } from '../../../contexts/FormContext';
 import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './membershipFormPage.styles';
 import { Heading } from '../../simple/Heading';
+import { FlexBox } from '../../layout/FlexBox';
 
 const MembershipInstallmentsForm = (props) => {
   const {
@@ -71,37 +72,34 @@ const MembershipInstallmentsForm = (props) => {
                   className={styles.fixedHeroImg}
                 />
               </div>
-              <Grid
-                gap
-                xs={12}
-                className={styles.contentWrapper}
-                id="su-gg-embed"
-              >
-                <GridCell
-                  xs={12}
-                  md={10}
-                  xl={8}
-                  xxl={6}
-                  className={styles.formWrapper}
-                >
-                  <div className={styles.contentStyle}>
-                    <Heading
-                      level={1}
-                      size="6"
-                      align="center"
-                      font="serif"
-                      id="page-title"
-                    >
-                      Stanford Alumni Association Membership
-                    </Heading>
-                  </div>
-                  <CreateBloks
-                    blokSection={installmentsForm}
-                    bgCardStyle="su-bg-saa-black-dark"
-                    urlData={promoCode}
-                  />
-                </GridCell>
-              </Grid>
+              <FlexBox direction="col" className={styles.contentWrapper}>
+                <div className={styles.contentStyle}>
+                  <Heading
+                    level={1}
+                    size="6"
+                    align="center"
+                    font="serif"
+                    id="page-title"
+                  >
+                    Stanford Alumni Association Membership
+                  </Heading>
+                </div>
+                <Grid gap xs={12} id="su-gg-embed">
+                  <GridCell
+                    xs={12}
+                    md={10}
+                    xl={8}
+                    xxl={6}
+                    className={styles.formWrapper}
+                  >
+                    <CreateBloks
+                      blokSection={installmentsForm}
+                      bgCardStyle="su-bg-saa-black-dark"
+                      urlData={promoCode}
+                    />
+                  </GridCell>
+                </Grid>
+              </FlexBox>
               {numAnkle > 0 && <Ankle isDark {...props} />}
             </Container>
           </Layout>
