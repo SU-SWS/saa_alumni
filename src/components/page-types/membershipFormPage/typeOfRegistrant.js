@@ -236,39 +236,49 @@ const TypeOfRegistrant = (props) => {
                           {/* PAYMENT OPTIONS */}
                           {value[0].registrantsData[0]?.su_did ===
                           primaryUser.su_did ? (
-                            <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-48 su-pb-76">
-                              <p>Payment options</p>
-                              <p>One time or installments</p>
-                              <Grid
-                                gap
-                                xs={12}
-                                className="su-p-26 su-bg-saa-black su-rounded"
-                              >
-                                <GridCell xs={12} md={6}>
-                                  <MembershipPaymentCard
-                                    heading="Pay in full"
-                                    subheading="One time payment"
-                                    caption="Most value"
-                                    onClick={togglePaymentType}
-                                    id="oneTime"
-                                    isSelected={paymentType === 'oneTime'}
-                                  >
-                                    <CreateBloks blokSection={oneTimePayment} />
-                                  </MembershipPaymentCard>
-                                </GridCell>
-                                <GridCell xs={12} md={6}>
-                                  <MembershipPaymentCard
-                                    heading="Pay in installments"
-                                    subheading="Over 5 years"
-                                    onClick={togglePaymentType}
-                                    id="installments"
-                                    isSelected={paymentType === 'installments'}
-                                  >
-                                    <CreateBloks blokSection={installments} />
-                                  </MembershipPaymentCard>
-                                </GridCell>
-                              </Grid>
-                            </Container>
+                            <div className="su-rs-pb-3">
+                              <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-48 su-pb-76">
+                                <div className="su-text-center su-rs-pt-4 su-rs-pb-0">
+                                  <p className="su-type-2 su-font-serif su-font-bold su-mb-0">
+                                    Payment options
+                                  </p>
+                                  <p>One time or installments</p>
+                                </div>
+                                <Grid
+                                  gap
+                                  xs={12}
+                                  className="su-p-26 su-bg-saa-black-dark su-rounded"
+                                >
+                                  <GridCell xs={12} md={6}>
+                                    <MembershipPaymentCard
+                                      heading="Pay in full"
+                                      subheading="One time payment"
+                                      caption="Most value"
+                                      onClick={togglePaymentType}
+                                      id="oneTime"
+                                      isSelected={paymentType === 'oneTime'}
+                                    >
+                                      <CreateBloks
+                                        blokSection={oneTimePayment}
+                                      />
+                                    </MembershipPaymentCard>
+                                  </GridCell>
+                                  <GridCell xs={12} md={6}>
+                                    <MembershipPaymentCard
+                                      heading="Pay in installments"
+                                      subheading="Over 5 years"
+                                      onClick={togglePaymentType}
+                                      id="installments"
+                                      isSelected={
+                                        paymentType === 'installments'
+                                      }
+                                    >
+                                      <CreateBloks blokSection={installments} />
+                                    </MembershipPaymentCard>
+                                  </GridCell>
+                                </Grid>
+                              </Container>
+                            </div>
                           ) : null}
                           <FlexBox alignItems="center" direction="col">
                             <FlexBox direction="col">
@@ -280,7 +290,7 @@ const TypeOfRegistrant = (props) => {
                               </label>
                               <input
                                 id="su-promocode"
-                                className="su-w-[44rem] su-p-20 su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
+                                className="su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
                                 value={promoCode}
                                 onChange={getPromoCode}
                               />
