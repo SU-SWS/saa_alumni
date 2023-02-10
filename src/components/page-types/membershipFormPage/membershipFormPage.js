@@ -85,9 +85,6 @@ const MembershipFormPage = (props) => {
                   className={styles.formWrapper}
                 >
                   <div className={styles.contentStyle}>
-                    <span className={styles.superHead}>
-                      Stanford Alumni Association Membership
-                    </span>
                     <Heading
                       level={1}
                       size="6"
@@ -95,9 +92,7 @@ const MembershipFormPage = (props) => {
                       font="serif"
                       id="page-title"
                     >
-                      Welcome,{' '}
-                      {userProfile?.name?.fullNameParsed?.firstName ||
-                        userProfile?.session.firstName}
+                      Stanford Alumni Association Membership
                     </Heading>
                   </div>
                   <CreateBloks
