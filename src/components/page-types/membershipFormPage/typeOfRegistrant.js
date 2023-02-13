@@ -166,7 +166,10 @@ const TypeOfRegistrant = (props) => {
                       paymentTypeCode = 'buy_someone';
                     }
                     // If there is no related contacts available, go directly to the form
-                    if (userProfile?.relationships.length === 0) {
+                    if (
+                      !userProfile?.relationships ||
+                      userProfile?.relationships.length === 0
+                    ) {
                       nextPageLink = '/membership/register/form';
                     }
                   }
