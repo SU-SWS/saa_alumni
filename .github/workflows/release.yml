@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: read
 
@@ -18,7 +20,7 @@ jobs:
       contents: write
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # Specify a different token to allow pushing changes to main later
         with:
           token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
@@ -31,7 +33,6 @@ jobs:
         uses: release-drafter/release-drafter@v5
         with:
           publish: true
-          config-name: release-drafter.yml
           disable-autolabeler: true
         env:
           GITHUB_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}

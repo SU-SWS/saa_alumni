@@ -13,6 +13,20 @@ https://careers.alumni.stanford.edu/students https://alumni.stanford.edu/career-
 https://careers.alumni.stanford.edu/offer-support https://alumni.stanford.edu/career-connections/offer-help 301!
 https://careers.alumni.stanford.edu/faq https://alumni.stanford.edu/career-connections/faq 301!
 https://careers.alumni.stanford.edu/* https://alumni.stanford.edu/:splat 301!
+https://students.alumni.stanford.edu https://alumni.stanford.edu/students 301!
+https://students.alumni.stanford.edu/frosh https://alumni.stanford.edu/students/undergraduate/frosh 301!
+https://students.alumni.stanford.edu/sophomores https://alumni.stanford.edu/students/undergraduate/sophomores 301!
+https://students.alumni.stanford.edu/juniors https://alumni.stanford.edu/students/undergraduate/juniors 301!
+https://students.alumni.stanford.edu/seniors https://alumni.stanford.edu/students/undergraduate/seniors 301!
+https://students.alumni.stanford.edu/class-presidents https://alumni.stanford.edu/students/undergraduate/class-presidents 301!
+https://students.alumni.stanford.edu/commencement https://alumni.stanford.edu/students/undergraduate/commencement 301!
+https://students.alumni.stanford.edu/student-alumni-council https://alumni.stanford.edu/students/undergraduate/student-alumni-council 301!
+https://students.alumni.stanford.edu/undergrad-awards https://alumni.stanford.edu/students/undergraduate/undergraduate-awards 301!
+https://students.alumni.stanford.edu/grad-students https://alumni.stanford.edu/students/grad/ 301!
+https://students.alumni.stanford.edu/grad-awards https://alumni.stanford.edu/students/grad/graduate-awards 301!
+https://students.alumni.stanford.edu/awards/nominations https://alumni.stanford.edu/students/grad/graduate-awards 301!
+https://students.alumni.stanford.edu/class-presidents https://alumni.alumni.stanford.edu/students/grad/class-presidents 301!
+https://students.alumni.stanford.edu/* https://alumni.stanford.edu/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
