@@ -36,18 +36,18 @@ const MembershipPaymentCard = ({
           </FlexBox>
         )}
       </FlexBox>
-      <p className="su-type-2 su-font-bold su-rs-mt-1 su-mb-0">{heading}</p>
-      <p className="su-mb-0">{subheading}</p>
-      {caption && (
-        <p className="su-text-saa-electric-blue su-rs-mb-1">{caption}</p>
-      )}
+      <p className={styles.heading}>{heading}</p>
+      <div className="su-rs-mb-0">
+        <p className={styles.subheading}>{subheading}</p>
+        {caption && <p className="su-text-saa-electric-blue">{caption}</p>}
+      </div>
       <div>{children}</div>
       <FlexBox justifyContent="center">
         <div
           className={
             isSelected
-              ? styles.membershipCardSelectedLink
-              : styles.membershipCardLink
+              ? styles.membershipPaymentCardSelectedLink
+              : styles.membershipPaymentCardLink
           }
         >
           {isSelected ? 'Selected' : 'Select'}

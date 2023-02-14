@@ -237,7 +237,7 @@ const TypeOfRegistrant = (props) => {
                           {value[0].registrantsData[0]?.su_did ===
                           primaryUser.su_did ? (
                             <div className="su-rs-pb-3">
-                              <Container className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-48 su-pb-76">
+                              <div className="sm:su-bg-gradient-to-tr sm:su-from-saa-electric-blue-dark sm:su-to-palo-verde-xdark sm:su-px-48 sm:su-pb-76">
                                 <div className="su-text-center su-rs-pt-4 su-rs-pb-0">
                                   <p className="su-type-2 su-font-serif su-font-bold su-mb-0">
                                     Payment options
@@ -247,9 +247,9 @@ const TypeOfRegistrant = (props) => {
                                 <Grid
                                   gap
                                   xs={12}
-                                  className="su-p-26 su-bg-saa-black-dark su-rounded"
+                                  className="sm:su-p-26 su-gap-y-2xl sm:su-bg-saa-black-dark sm:su-rounded"
                                 >
-                                  <GridCell xs={12} md={6}>
+                                  <GridCell xs={12} lg={6}>
                                     <MembershipPaymentCard
                                       heading="Pay in full"
                                       subheading="One time payment"
@@ -263,7 +263,7 @@ const TypeOfRegistrant = (props) => {
                                       />
                                     </MembershipPaymentCard>
                                   </GridCell>
-                                  <GridCell xs={12} md={6}>
+                                  <GridCell xs={12} lg={6}>
                                     <MembershipPaymentCard
                                       heading="Pay in installments"
                                       subheading="Over 5 years"
@@ -277,7 +277,7 @@ const TypeOfRegistrant = (props) => {
                                     </MembershipPaymentCard>
                                   </GridCell>
                                 </Grid>
-                              </Container>
+                              </div>
                             </div>
                           ) : null}
                           <FlexBox alignItems="center" direction="col">
