@@ -5,10 +5,10 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: read
-
-workflow_dispatch:
 
 jobs:
   release:
