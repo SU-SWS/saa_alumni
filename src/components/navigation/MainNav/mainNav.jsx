@@ -90,14 +90,15 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
         }`}
       >
-        <FlexBox
-          alignItems="center"
-          justifyContent="center"
-          className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
-        >
-          {mainMenuOpened && 'Menu'}
-          {utilityMenuOpen && <UserHeaderIcon />}
-        </FlexBox>
+        {mainMenuOpened && (
+          <FlexBox
+            alignItems="center"
+            justifyContent="center"
+            className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
+          >
+            Menu
+          </FlexBox>
+        )}
         {mainMenuOpened && (
           <ul
             className={styles.menuMobileHomesite({ mainMenuOpened })}

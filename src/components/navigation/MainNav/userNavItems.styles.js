@@ -9,7 +9,7 @@ export const heroicon =
 
 export const menuWrapper = (expanded) =>
   dcnb(
-    'su-transform-gpu su-transition su-origin-top lg:su-origin-top-right lg:su-bg-cardinal-red-xdark su-z-10 lg:su-absolute lg:su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] lg:su-w-[38rem] su-right-0 su-mt-8 su-text-left',
+    'su-transform-gpu su-transition su-origin-top lg:su-origin-top-right lg:su-bg-cardinal-red-xdark lg:su-z-10 lg:su-absolute lg:su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] lg:su-w-[38rem] su-right-0 su-mt-8 su-text-left',
     {
       'lg:su-scale-y-0 lg:su-scale-x-0 lg:su-opacity-0 lg:su-invisible':
         !expanded,
