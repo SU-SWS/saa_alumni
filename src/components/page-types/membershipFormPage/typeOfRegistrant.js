@@ -237,7 +237,7 @@ const TypeOfRegistrant = (props) => {
                           {value[0].registrantsData[0]?.su_did ===
                           primaryUser.su_did ? (
                             <div className="su-rs-pb-3">
-                              <div className="sm:su-bg-gradient-to-tr sm:su-from-saa-electric-blue-dark sm:su-to-palo-verde-xdark sm:su-px-48 sm:su-pb-76">
+                              <div className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-20 sm:su-px-48 su-pb-76">
                                 <div className="su-text-center su-rs-pt-4 su-rs-pb-0">
                                   <p className="su-type-2 su-font-serif su-font-bold su-mb-0">
                                     Payment options
