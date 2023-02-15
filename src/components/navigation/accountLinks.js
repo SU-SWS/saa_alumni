@@ -39,6 +39,10 @@ const AccountLinks = ({ mainLinkClasses }) => {
     final_destination: location.pathname + location.search,
   });
 
+  const loginUrl = `/api/auth/login${
+    loginParams ? `?${loginParams.toString()}` : ''
+  }`;
+
   const { showDesktop: showDesktopXl } = useDisplay('xl');
   const { showDesktop } = useDisplay();
 
@@ -52,10 +56,6 @@ const AccountLinks = ({ mainLinkClasses }) => {
       buttonRef.current.focus();
     }
   });
-
-  const logoutLinkClasses = showDesktop
-    ? mainLinkClasses
-    : styles.utilityNavLink;
 
   return (
     <AuthContext.Consumer>
@@ -75,60 +75,80 @@ const AccountLinks = ({ mainLinkClasses }) => {
           {!isAuthenticating && (
             <>
               {isAuthenticated && (
-                <li
-                  className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
-                  ref={ref}
-                >
-                  {showDesktop && (
-                    <button
-                      type="button"
-                      ref={buttonRef}
-                      aria-expanded={expanded}
-                      onClick={() => setExpanded(!expanded)}
-                      className="su-flex su-items-center su-group"
+                <>
+                  {showDesktop ? (
+                    <li
+                      className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
+                      ref={ref}
                     >
-                      <span
-                        className={`su-inline-block su-mr-10 ${
-                          showDesktopXl ? '' : 'su-hidden'
-                        }`}
-                      >{`Hi, ${
-                        userProfile.name?.digitalName ||
-                        `${`${userProfile.session.firstName} ${userProfile.session.lastName}`}`
-                      }`}</span>
-                      <SrOnlyText>
-                        {`${expanded ? ' Close' : ' Open'} user menu`}
-                      </SrOnlyText>
-                      <div className="su-w-40 su-h-40 su-text-24">
-                        <Initial userProfile={userProfile} />
-                      </div>
-                      <ChevronDownIcon
-                        className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition
-                ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
-                        aria-hidden="true"
-                      />
-                    </button>
-                  )}
+                      <button
+                        type="button"
+                        ref={buttonRef}
+                        aria-expanded={expanded}
+                        onClick={() => setExpanded(!expanded)}
+                        className="su-flex su-items-center su-group"
+                      >
+                        <span
+                          className={`su-inline-block su-mr-10 ${
+                            showDesktopXl ? '' : 'su-hidden'
+                          }`}
+                        >{`Hi, ${
+                          userProfile.name?.digitalName ||
+                          `${userProfile.session.firstName} ${userProfile.session.lastName}`
+                        }`}</span>
+                        <SrOnlyText>
+                          {`${expanded ? ' Close' : ' Open'} user menu`}
+                        </SrOnlyText>
+                        <div className="su-w-40 su-h-40 su-text-24">
+                          <Initial userProfile={userProfile} />
+                        </div>
+                        <ChevronDownIcon
+                          className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition
+                  ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
+                          aria-hidden="true"
+                        />
+                      </button>
 
-                  <UserNavItems
-                    expanded={expanded}
-                    userProfile={userProfile}
-                    Initial={() => <Initial userProfile={userProfile} />}
-                  />
-                </li>
+                      <UserNavItems
+                        expanded={expanded}
+                        userProfile={userProfile}
+                        Initial={() => <Initial userProfile={userProfile} />}
+                      />
+                    </li>
+                  ) : (
+                    <div
+                      className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
+                      ref={ref}
+                    >
+                      <UserNavItems
+                        expanded={expanded}
+                        userProfile={userProfile}
+                        Initial={() => <Initial userProfile={userProfile} />}
+                      />
+                    </div>
+                  )}
+                </>
               )}
               {!isAuthenticated && (
                 <>
-                  <NavItem
-                    className={logoutLinkClasses}
-                    blok={{
-                      link: {
-                        url: `/api/auth/login${
-                          loginParams ? `?${loginParams.toString()}` : ''
-                        }`,
-                      },
-                      text: 'Log in',
-                    }}
-                  />
+                  {showDesktop ? (
+                    <NavItem
+                      className={mainLinkClasses}
+                      blok={{
+                        link: {
+                          url: loginUrl,
+                        },
+                        text: 'Log in',
+                      }}
+                    />
+                  ) : (
+                    <a
+                      className={dcnb(styles.utilityNavLink, 'su-mt-[7rem]')}
+                      href={loginUrl}
+                    >
+                      Log in
+                    </a>
+                  )}
                 </>
               )}
             </>

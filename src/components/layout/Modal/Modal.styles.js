@@ -7,7 +7,7 @@ export const root = ({ type, isOpen }) =>
       'su-flex': isOpen,
       'su-hidden': !isOpen,
       'su-bg-saa-black-dark': type === 'trip-filter',
-      'su-bg-cardinal-red-dark': type === 'main-menu',
+      'su-bg-cardinal-red-xdark': type === 'main-menu',
       'su-bg-saa-black su-bg-opacity-[97%]':
         type !== 'trip-filter' && type !== 'main-menu',
     }

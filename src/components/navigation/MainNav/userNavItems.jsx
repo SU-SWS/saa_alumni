@@ -5,40 +5,7 @@ import * as styles from './userNavItems.styles';
 
 const UserNavItems = ({ expanded, Initial, userProfile }) => {
   // TODO: Add donor logic
-  const isDonor = false;
-
-  const links = [
-    {
-      text: 'My Account',
-      url: 'https://myaccount.stanford.edu',
-      icon: true,
-      classes:
-        'lg:su-m-0 su-border-t lg:su-border-b su-border-digital-red-xlight lg:su-py-14',
-    },
-  ];
-
-  if (isDonor) {
-    links.push({
-      text: 'My Giving',
-      url: '',
-      icon: true,
-      classes:
-        'lg:su-m-0 lg:su-border-b lg:su-border-digital-red-xlight lg:su-py-14',
-    });
-  }
-
-  links.push(
-    {
-      text: 'Help',
-      url: 'https://alumni.stanford.edu/help/',
-      classes: 'su-link-regular lg:su-m-0 lg:su-pt-14',
-    },
-    {
-      text: 'Log out',
-      url: '/api/auth/logout',
-      classes: 'su-link-regular',
-    }
-  );
+  const isDonor = true;
 
   const getProfileLinks = () => {
     const affiliation = [
@@ -93,9 +60,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
 
   return (
     <div aria-hidden={!expanded} className={styles.menuWrapper(expanded)}>
-      {/* className="su-transform-gpu su-transition su-origin-top lg:su-origin-top-right su-bg-cardinal-red-xdark su-z-10 su-absolute su-rs-px-1 su-rs-pt-2 su-rs-pb-1 su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] lg:su-w-[38rem] su-right-0 su-mt-8 su-text-left"> */}
-
-      <div className="su-px-20 su-flex su-items-center su-pt-[1.8rem] su-pb-[2.2rem]">
+      <div className="su-px-26 lg:su-px-18 su-rs-pb-1 su-flex su-items-center su-pt-[1.8rem]">
         <div className="su-w-[54px] su-h-[54px] su-text-[34px]">
           <Initial />
         </div>
@@ -110,41 +75,49 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
         </div>
       </div>
 
-      <ul className={styles.desktopMenu}>
-        {links.map((link) => (
-          <li className={link.classes} key={link.url}>
-            <a href={link.url} className={styles.link}>
-              {link.text}
-              {link.icon && (
-                <HeroIcon
-                  iconType="arrow-right"
-                  isAnimate
-                  className={styles.heroicon}
-                />
-              )}
+      <ul className={styles.menu}>
+        <li>
+          <a
+            href="https://myaccount.stanford.edu"
+            className={styles.utilityNavLink}
+          >
+            My Account
+            <HeroIcon
+              iconType="arrow-right"
+              isAnimate
+              className={styles.heroicon}
+            />
+          </a>
+        </li>
+
+        {isDonor && (
+          <li>
+            <a href="https://TODO" className={styles.utilityNavLink}>
+              My Giving
+              <HeroIcon
+                iconType="arrow-right"
+                isAnimate
+                className={styles.heroicon}
+              />
             </a>
           </li>
-        ))}
+        )}
       </ul>
 
-      <ul className={styles.mobileMenu}>
-        {links.map((link) => (
-          <li
-            className={dcnb('su-m-0 ', styles.utilityNavLink, link.classes)}
-            key={link.url}
+      <ul className={styles.menu2}>
+        <li>
+          <a
+            href="https://alumni.stanford.edu/help/"
+            className={styles.utilityNav2Link}
           >
-            <a href={link.url} className="su-group">
-              {link.text}
-              {link.icon && (
-                <HeroIcon
-                  iconType="arrow-right"
-                  isAnimate
-                  className={styles.heroicon}
-                />
-              )}
-            </a>
-          </li>
-        ))}
+            Help
+          </a>
+        </li>
+        <li>
+          <a href="/api/auth/logout" className={styles.utilityNav2Link}>
+            Log out
+          </a>
+        </li>
       </ul>
     </div>
   );
