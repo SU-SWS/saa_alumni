@@ -247,9 +247,9 @@ const TypeOfRegistrant = (props) => {
                                 <Grid
                                   gap
                                   xs={12}
-                                  className="sm:su-p-26 su-gap-y-2xl sm:su-bg-saa-black-dark sm:su-rounded"
+                                  className="sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded"
                                 >
-                                  <GridCell xs={12} lg={6}>
+                                  <GridCell xs={12} xl={6}>
                                     <MembershipPaymentCard
                                       heading="Pay in full"
                                       subheading="One time payment"
@@ -263,7 +263,7 @@ const TypeOfRegistrant = (props) => {
                                       />
                                     </MembershipPaymentCard>
                                   </GridCell>
-                                  <GridCell xs={12} lg={6}>
+                                  <GridCell xs={12} xl={6}>
                                     <MembershipPaymentCard
                                       heading="Pay in installments"
                                       subheading="Over 5 years"

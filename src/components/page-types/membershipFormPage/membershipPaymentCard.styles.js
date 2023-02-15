@@ -7,9 +7,9 @@ export const initialAndSelectionWrapper =
 export const heading = 'su-type-2 su-font-bold su-rs-mt-1 su-mb-0';
 export const subheading = 'su-mb-0';
 export const membershipPaymentCardLink =
-  'su-rs-mt-1 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-bg-transparent group-hocus:su-text-white group-hocus:su-bg-gradient-to-tr group-hocus:su-from-palo-verde-dark group-hocus:su-to-saa-electric-blue group-hocus:su-shadow-md';
+  'su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-bg-transparent group-hocus:su-text-white group-hocus:su-bg-gradient-to-tr group-hocus:su-from-palo-verde-dark group-hocus:su-to-saa-electric-blue group-hocus:su-shadow-md';
 export const membershipPaymentCardSelectedLink =
-  'su-rs-mt-1 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-gradient-to-tr su-from-palo-verde-dark su-to-saa-electric-blue su-shadow-md hocus:su-text-white';
+  'su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-white su-bg-gradient-to-tr su-from-palo-verde-dark su-to-saa-electric-blue su-shadow-md hocus:su-text-white';
 export const selectionWrapper =
   'sm:su-absolute su-top-0 su-right-0 md:su-right-[-20px] lg:su-right-[-1.5em] su-text-16 su-font-semibold';
 // export const initialWrapper =
