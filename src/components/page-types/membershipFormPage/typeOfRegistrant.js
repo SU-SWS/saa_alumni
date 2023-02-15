@@ -281,7 +281,10 @@ const TypeOfRegistrant = (props) => {
                             </div>
                           ) : null}
                           <FlexBox alignItems="center" direction="col">
-                            <FlexBox direction="col">
+                            <FlexBox
+                              direction="col"
+                              className="su-w-full sm:su-w-auto"
+                            >
                               <label
                                 htmlFor="su-promocode"
                                 className="su-type-0 su-font-semibold"
@@ -290,7 +293,7 @@ const TypeOfRegistrant = (props) => {
                               </label>
                               <input
                                 id="su-promocode"
-                                className="su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
+                                className="sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
                                 value={promoCode}
                                 onChange={getPromoCode}
                               />
