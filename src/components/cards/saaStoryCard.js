@@ -1,5 +1,6 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
+import { useLocation } from '@reach/router';
 import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../layout/FlexBox';
 import { Heading } from '../simple/Heading';
@@ -29,6 +30,7 @@ const SaaStoryCard = ({
     headingLevel = 3,
     cardImageFocus,
     tabText,
+    id,
   },
   blok,
   isDark,
@@ -79,6 +81,14 @@ const SaaStoryCard = ({
     teaserSize = 'su-card-paragraph lg:su-text-25';
   }
 
+  const location = useLocation();
+  const locationName = () => {
+    if (location.pathname === '/') {
+      return 'home';
+    }
+    return location.pathname.replaceAll('/', '');
+  };
+
   return (
     <SbEditable content={blok}>
       <FlexBox
@@ -90,6 +100,7 @@ const SaaStoryCard = ({
           borderColor,
           textColor
         )}
+        id={id ? `${locationName()}-${id}` : null}
       >
         {!hideImage && (cardFilename || filename) && (
           <div

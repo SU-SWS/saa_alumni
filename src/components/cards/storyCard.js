@@ -11,6 +11,7 @@ const StoryCard = ({
     hideImage,
     headingLevel,
     cardImageFocus,
+    id,
   },
   isDark,
 }) => (
@@ -25,7 +26,7 @@ const StoryCard = ({
     headingLevel={headingLevel}
     cardImageFocus={cardImageFocus}
     isDark={isDark}
+    id={id || null}
   />
 );
-
 export default StoryCard;
