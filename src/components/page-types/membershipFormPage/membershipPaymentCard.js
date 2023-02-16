@@ -27,13 +27,13 @@ const MembershipPaymentCard = ({
         className={styles.initialAndSelectionWrapper}
       >
         {isSelected && (
-          <FlexBox className={styles.selectionWrapper} aria-hidden="true">
+          <div className={styles.selectionWrapper} aria-hidden="true">
             <HeroIcon
               iconType="check"
               className="su-inline-block su-right su-text-saa-electric-blue su-w-[1.4em] su-mt-[-2px] su-mr-[5px]"
             />
             <span>Selected</span>
-          </FlexBox>
+          </div>
         )}
       </FlexBox>
       <p className={styles.heading}>{heading}</p>

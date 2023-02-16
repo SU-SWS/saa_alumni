@@ -68,10 +68,10 @@ const MembershipCard = ({
             )}
           </FlexBox>
           {isSelected && (
-            <FlexBox className={styles.selectionWrapper} aria-hidden="true">
+            <div className={styles.selectionWrapper} aria-hidden="true">
               <HeroIcon iconType="check" className={styles.checkLinkIcon} />
               <span>Selected</span>
-            </FlexBox>
+            </div>
           )}
         </FlexBox>
         <div className={styles.heading}>{heading}</div>
