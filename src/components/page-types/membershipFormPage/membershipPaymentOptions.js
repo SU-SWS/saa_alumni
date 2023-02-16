@@ -1,17 +1,14 @@
 import React from 'react';
+import * as styles from './membershipPaymentCard.styles';
 
 const MembershipPaymentOptions = ({
   blok: { membershipType, membershipCost, infoText, blok },
 }) => (
   <>
-    <p className="su-mb-0">{membershipType}</p>
-    <div className="su-rs-mb-1">
-      <p className="su-type-2 su-font-bold su-mb-0">${membershipCost}</p>
-      {infoText && (
-        <p className="su-italic su-text-black-40 su-mb-0 su-text-16">
-          {infoText}
-        </p>
-      )}
+    <p className={styles.membershipType}>{membershipType}</p>
+    <div className={styles.costAndInfoTextWrapper}>
+      <p className={styles.membershipCost}>${membershipCost}</p>
+      {infoText && <p className={styles.infoText}>{infoText}</p>}
     </div>
   </>
 );
