@@ -55,6 +55,12 @@ const MembershipCard = ({
           justifyContent="center"
           className={styles.initialAndSelectionWrapper}
         >
+          {isSelected && (
+            <div className={styles.selectionWrapper} aria-hidden="true">
+              <HeroIcon iconType="check" className={styles.checkLinkIcon} />
+              <span>Selected</span>
+            </div>
+          )}
           <FlexBox
             justifyContent="center"
             alignItems="center"
@@ -67,12 +73,6 @@ const MembershipCard = ({
               <span>{initial.slice(0, 1)}</span>
             )}
           </FlexBox>
-          {isSelected && (
-            <FlexBox className={styles.selectionWrapper} aria-hidden="true">
-              <HeroIcon iconType="check" className={styles.checkLinkIcon} />
-              <span>Selected</span>
-            </FlexBox>
-          )}
         </FlexBox>
         <div className={styles.heading}>{heading}</div>
         <div className={styles.subheading}>{subheading}</div>

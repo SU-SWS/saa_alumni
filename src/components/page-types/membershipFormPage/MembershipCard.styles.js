@@ -7,7 +7,7 @@ export const initialAndSelectionWrapper =
 export const initialWrapper =
   'su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full';
 export const selectionWrapper =
-  'sm:su-absolute su-right-0 md:su-right-[-20px] lg:su-right-0 su-text-16 su-font-semibold';
+  'sm:su-absolute su-self-end sm:su-self-auto su-right-0 md:su-right-[-20px] lg:su-right-0 su-text-16 su-font-semibold';
 export const checkLinkIcon =
   'su-inline-block su-text-saa-electric-blue su-w-[1.4em] su-mt-[-2px] su-mr-[2px]';
 export const heading =
