@@ -59,7 +59,7 @@ const initBridge = function (key, sbResolveRelations, setStory) {
         .then(({ data }) => {
           if (data.story) {
             setStory(data.story.content);
-            console.log("SB DATA: ",data.story);
+            console.log('SB DATA: ', data.story);
           }
         })
         .catch((error) => {
@@ -77,6 +77,7 @@ const initBridge = function (key, sbResolveRelations, setStory) {
   // When the content author does stuff.
   storyblokInstance.on('input', (payload) => {
     setStory(payload.story.content);
+    console.log('SB PAYLOAD: ', payload.story);
   });
   storyblokInstance.on('enterEditmode', () => {
     // loading the draft version on initial view of the page
@@ -89,6 +90,7 @@ const initBridge = function (key, sbResolveRelations, setStory) {
       .then(({ data }) => {
         if (data.story) {
           setStory(data.story.content);
+          console.log('SB DATA 2: ', data.story);
         }
       })
       .catch((error) => {
