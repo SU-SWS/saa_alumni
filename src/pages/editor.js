@@ -59,6 +59,7 @@ const initBridge = function (key, sbResolveRelations, setStory) {
         .then(({ data }) => {
           if (data.story) {
             setStory(data.story.content);
+            console.log("SB DATA: ",data.story);
           }
         })
         .catch((error) => {
