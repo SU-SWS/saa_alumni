@@ -235,7 +235,6 @@ exports.createPages = ({ graphql, actions }) => {
               story: membershipEntry.node,
               isCanonical,
               noIndex,
-              membershipInstallments: true,
             },
           });
 
@@ -249,6 +248,7 @@ exports.createPages = ({ graphql, actions }) => {
               isCanonical,
               noIndex,
               membershipInterstitial: true,
+              membershipInstallments: true,
             },
           });
 
