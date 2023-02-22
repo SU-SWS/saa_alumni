@@ -29,9 +29,6 @@ const RelatedContactSelection = (props) => {
     blok,
     location,
     pageContext,
-    pageContext: {
-      story: { full_slug: registrationSlug },
-    },
   } = props;
   const helmetTitle = `Stanford Alumni Association Membership`;
   // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
