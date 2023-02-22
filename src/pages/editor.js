@@ -57,7 +57,6 @@ const initBridge = function (key, sbResolveRelations, setStory) {
           token: key,
         })
         .then(({ data }) => {
-          console.log('SB DATA: ', data);
           if (data.story) {
             setStory(data.story.content);
           }
@@ -158,8 +157,6 @@ const StoryblokEntry = (props) => {
     // Ready to go.
   }, [sbResolveRelations, mounted, setMounted, myStory]);
 
-  console.log('MyStory: ', myStory);
-  console.log('MyStory Component: ', myStory.component);
   /**
    * Show the content!
    */
