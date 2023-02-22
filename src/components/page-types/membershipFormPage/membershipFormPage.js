@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Redirect } from '@reach/router';
@@ -12,7 +12,6 @@ import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { FormContextProvider } from '../../../contexts/FormContext';
-import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './membershipFormPage.styles';
 import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
@@ -28,8 +27,6 @@ const MembershipFormPage = (props) => {
     location,
     pageContext,
   } = props;
-
-  const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
   const registrant = location?.state?.registrant;
