@@ -159,6 +159,7 @@ const StoryblokEntry = (props) => {
   }, [sbResolveRelations, mounted, setMounted, myStory]);
 
   console.log('MyStory: ', myStory);
+  console.log('MyStory Component: ', myStory.component);
   /**
    * Show the content!
    */
