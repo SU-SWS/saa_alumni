@@ -1,5 +1,4 @@
 import React, { useRef, useState } from 'react';
-import { ChevronDownIcon } from '@heroicons/react/outline';
 import { useLocation } from '@reach/router';
 import { dcnb } from 'cnbuilder';
 import UserNavItems from './MainNav/userNavItems';
@@ -102,11 +101,6 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         <div className="su-w-40 su-h-40 su-text-24">
                           <Initial userProfile={userProfile} />
                         </div>
-                        <ChevronDownIcon
-                          className={`su-inline-block lg:su-relative su-ml-8 su-w-[19px] lg:su-w-[19px] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 su-text-white lg:group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight su-transition
-                  ${expanded ? 'su-rotate-180 su-transform-gpu' : ''}`}
-                          aria-hidden="true"
-                        />
                       </button>
 
                       <UserNavItems

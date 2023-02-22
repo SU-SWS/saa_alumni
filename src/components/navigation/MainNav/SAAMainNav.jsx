@@ -95,6 +95,7 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
         onClose={() => {
           handleClose();
         }}
+        type={utilityMenuOpen ? 'main-menu' : 'default'}
         ariaLabel={`Stanford Alumni websites ${
           (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
         }`}
