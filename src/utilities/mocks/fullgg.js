@@ -272,4 +272,8 @@ export const fullggMockData = {
     access_method: 'GET',
   },
   affiliations: affiliationsMockData,
+  membership: {
+    type: 'Life Member',
+    id: '222314',
+  },
 };
