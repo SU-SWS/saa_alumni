@@ -41,8 +41,8 @@ const RelatedContactSelection = (props) => {
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
-  if (!location?.state?.registrant) {
-    return <Redirect to={registrationSlug} noThrow />;
+  if (!location?.state?.registrant && pageContext?.story) {
+    return <Redirect to={pageContext.story.full_slug} noThrow />;
   }
 
   // Map related contacts/relationships data to GiveGab ADC values

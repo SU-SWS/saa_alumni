@@ -44,7 +44,7 @@ const MembershipFormPage = (props) => {
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
-  if (!registrant && pageContext.story) {
+  if (!registrant && pageContext?.story) {
     return <Redirect to={pageContext.story.full_slug} noThrow />;
   }
 
