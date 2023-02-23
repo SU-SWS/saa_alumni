@@ -13,7 +13,8 @@ export const logoWrapper = 'su-rs-py-2';
 export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[350px]';
 export const superHead =
   'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-mb-01em';
-export const cardGridWrapper = 'su-rs-pb-3 su-rs-pt-1';
+export const cardGridHeading = 'su-rs-mb-4';
+export const cardGridWrapper = 'su-rs-pb-3 su-gap-y-xl';
 export const nextLink = (disabled) =>
   dcnb(
     'su-rs-mt-2 su-group su-flex su-items-end su-text-18 md:su-text-24 su-no-underline su-font-regular su-text-white hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18',

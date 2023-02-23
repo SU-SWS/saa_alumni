@@ -213,7 +213,7 @@ const TypeOfRegistrant = (props) => {
                         </div>
                       </GridCell>
                       <GridCell xs={12}>
-                        <div className={dcnb('su-rs-p-5', styles.formWrapper)}>
+                        <div className={dcnb('su-rs-p-6', styles.formWrapper)}>
                           <Heading level={2} size={4} align="left" font="serif">
                             Who do you wish to purchase a membership for?
                           </Heading>
