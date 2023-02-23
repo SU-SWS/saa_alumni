@@ -636,6 +636,7 @@
 }
 
 /* Membership display none */
+.ggeWidget.membership-forms .su-membership-dname label,
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion .ggeQuestion__label label[for="Terms and Conditions Acknowledgement|I agree.__input__ggid1"],
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."],
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion .ggeQuestion__field #ggeQuestion__caption--1--PhoneNumber,
