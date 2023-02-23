@@ -218,7 +218,7 @@ const TypeOfRegistrant = (props) => {
                             Who do you wish to purchase a membership for?
                           </Heading>
                           <Grid gap xs={12} className={styles.cardGridWrapper}>
-                            <GridCell xs={12} md={6}>
+                            <GridCell xs={12} xl={6}>
                               <MembershipCard
                                 heading="Myself"
                                 subheading={`${primaryUser.su_first_name} ${primaryUser.su_last_name}`}
@@ -226,7 +226,7 @@ const TypeOfRegistrant = (props) => {
                                 memberData={primaryUser}
                               />
                             </GridCell>
-                            <GridCell xs={12} md={6}>
+                            <GridCell xs={12} xl={6}>
                               <MembershipCard
                                 heading="Someone else"
                                 subheading="Existing contact or new contact"
