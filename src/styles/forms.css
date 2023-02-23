@@ -754,3 +754,9 @@
 .ggeWidget.membership-forms .ggePage--payment .ggePageNav .ggePageNav--back {
   @apply su-mb-30 sm:su-mb-0;
 }
+
+/* Membership Pay with Card Button */
+
+.ggeWidget.membership-forms .ggeStripeBtn {
+  @apply su-border-2 su-pr-[3rem] su-border-solid su-border-saa-electric-blue su-text-white;
+}
