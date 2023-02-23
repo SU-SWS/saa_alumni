@@ -4,8 +4,7 @@ export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
 export const formWrapper =
   'md:su-col-start-2 xl:su-col-start-3 2xl:su-col-start-4';
 
-export const contentWrapper =
-  'su-relative md:su-cc su-z-10 su-rs-pb-8 su-rs-pt-6';
+export const contentWrapper = 'su-relative su-z-10 su-rs-pb-8 su-rs-pt-6';
 export const contentStyle = 'su-text-white';
 export const superHead =
   'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-mb-01em';
