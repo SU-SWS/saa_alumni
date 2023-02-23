@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
-import { dcnb } from 'cnbuilder';
 import { useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
@@ -191,7 +190,7 @@ const TypeOfRegistrant = (props) => {
                         className={styles.benefitsWrapper}
                       >
                         <span className={styles.superHead}>
-                          Stanford Alumni Association Membership
+                          Stanford Alumni Association <br /> Membership
                         </span>
                         <Heading
                           level={1}
@@ -199,10 +198,11 @@ const TypeOfRegistrant = (props) => {
                           align="center"
                           font="serif"
                           id="page-title"
+                          className="su-rs-mb-5"
                         >
                           Join now!
                         </Heading>
-                        <div className={dcnb('su-p-36', styles.formWrapper)}>
+                        <div className={styles.formWrapper}>
                           <FlexBox
                             justifyContent="center"
                             className={styles.logoWrapper}
@@ -213,7 +213,7 @@ const TypeOfRegistrant = (props) => {
                         </div>
                       </GridCell>
                       <GridCell xs={12}>
-                        <div className={dcnb('su-rs-p-6', styles.formWrapper)}>
+                        <div className={styles.formWrapper}>
                           <Heading
                             level={2}
                             size={4}

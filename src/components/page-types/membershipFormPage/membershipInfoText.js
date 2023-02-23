@@ -19,7 +19,7 @@ const MembershipInfoText = ({
     <Heading level={2} size={2} align="left" font="sans">
       {heading}
     </Heading>
-    <p className="su-card-paragraph">{body}</p>
+    <p className={styles.bodyText}>{body}</p>
     {displayBenefitsButton && (
       <FlexBox justifyContent="center">
         <a href={benefitsLink} className={styles.benefitsLink}>
