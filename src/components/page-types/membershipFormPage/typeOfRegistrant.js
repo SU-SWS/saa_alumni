@@ -214,7 +214,13 @@ const TypeOfRegistrant = (props) => {
                       </GridCell>
                       <GridCell xs={12}>
                         <div className={dcnb('su-rs-p-6', styles.formWrapper)}>
-                          <Heading level={2} size={4} align="left" font="serif">
+                          <Heading
+                            level={2}
+                            size={4}
+                            align="left"
+                            font="serif"
+                            className={styles.cardGridHeading}
+                          >
                             Who do you wish to purchase a membership for?
                           </Heading>
                           <Grid gap xs={12} className={styles.cardGridWrapper}>
