@@ -591,7 +591,7 @@
 .ggeWidget .ggeStripeContainer__upperHr,
 .ggeWidget .ggeStripeContainer__lowerHr__outer,
 .ggeWidget .ggeStripeContainer__lowerHr__outer .ggeStripeContainer__lowerHr__inner {
-  @apply su-bg-transparent;
+  @apply su-bg-transparent su-border-0 su-p-0 su-m-0;
 }
 
 /* GG Checkbox */
