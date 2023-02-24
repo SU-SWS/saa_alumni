@@ -9,7 +9,6 @@ import { isExpanded } from '../../utilities/menuHelpers';
 import useDisplay from '../../hooks/useDisplay';
 import NavItem from './navItem';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
-import * as styles from './MainNav/userNavItems.styles';
 
 const Initial = ({ userProfile }) => {
   const string =
@@ -61,25 +60,23 @@ const AccountLinks = ({ mainLinkClasses }) => {
       {({ isAuthenticated, isAuthenticating, userProfile }) => (
         <>
           {isAuthenticating && (
-            <li>
-              <div className="su-spinner su-flex su-relative su-w-[4rem] su-h-[4rem]">
-                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin su-delay-75" />
-                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-                <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-              </div>
-            </li>
+            <div className="su-spinner su-flex su-relative su-w-[4rem] su-h-[4rem]">
+              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
+              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin su-delay-75" />
+              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
+              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
+            </div>
           )}
 
           {!isAuthenticating && (
             <>
               {isAuthenticated && (
                 <>
-                  {showDesktop ? (
-                    <li
-                      className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
-                      ref={ref}
-                    >
+                  <li
+                    className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
+                    ref={ref}
+                  >
+                    {showDesktop && (
                       <button
                         type="button"
                         ref={buttonRef}
@@ -102,47 +99,31 @@ const AccountLinks = ({ mainLinkClasses }) => {
                           <Initial userProfile={userProfile} />
                         </div>
                       </button>
+                    )}
 
-                      <UserNavItems
-                        expanded={expanded}
-                        userProfile={userProfile}
-                        Initial={() => <Initial userProfile={userProfile} />}
-                      />
-                    </li>
-                  ) : (
-                    <div
-                      className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
-                      ref={ref}
-                    >
-                      <UserNavItems
-                        expanded={expanded}
-                        userProfile={userProfile}
-                        Initial={() => <Initial userProfile={userProfile} />}
-                      />
-                    </div>
-                  )}
+                    <UserNavItems
+                      expanded={expanded}
+                      userProfile={userProfile}
+                      Initial={() => <Initial userProfile={userProfile} />}
+                    />
+                  </li>
                 </>
               )}
               {!isAuthenticated && (
                 <>
-                  {showDesktop ? (
-                    <NavItem
-                      className={mainLinkClasses}
-                      blok={{
-                        link: {
-                          url: loginUrl,
-                        },
-                        text: 'Log in',
-                      }}
-                    />
-                  ) : (
-                    <a
-                      className={dcnb(styles.utilityNavLink, 'su-mt-[7rem]')}
-                      href={loginUrl}
-                    >
-                      Log in
-                    </a>
-                  )}
+                  <NavItem
+                    className={dcnb(
+                      showDesktop
+                        ? mainLinkClasses
+                        : `su-transition su-text-20 children:su-px-20 children:su-py-32 children:su-flex su-leading-display children:su-text-white hocus:children:su-text-white hocus:su-bg-cardinal-red-xxdark hocus:children:su-decoration-digital-red-xlight su-underline-offset-2 children:su-w-full su-mt-[7rem]`
+                    )}
+                    blok={{
+                      link: {
+                        url: loginUrl,
+                      },
+                      text: 'Log in',
+                    }}
+                  />
                 </>
               )}
             </>

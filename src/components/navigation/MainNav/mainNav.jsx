@@ -108,7 +108,11 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           </ul>
         )}
 
-        {utilityMenuOpen && <AccountLinks />}
+        {utilityMenuOpen && (
+          <ul className="su-list-none su-p-0">
+            <AccountLinks />
+          </ul>
+        )}
       </Modal>
     </SbEditable>
   );

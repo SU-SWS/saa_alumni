@@ -1,9 +1,9 @@
 import { dcnb } from 'cnbuilder';
 
 export const utilityNavLink =
-  'su-group su-font-regular hocus:su-underline su-transition su-w-full su-text-20 su-px-20 su-py-32 lg:su-pr-16 lg:su-py-26 su-flex su-items-baseline su-justify-between su-leading-display su-text-left su-font-semibold su-text-white hocus:su-text-white su-no-underline hocus:su-bg-cardinal-red-xxdark su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight su-underline-offset-2';
+  'su-group su-font-regular hocus:su-underline su-transition su-w-full su-text-20 su-px-26 su-py-32 lg:su-pr-16 lg:su-py-26 su-flex su-items-baseline su-justify-between su-leading-display su-text-left su-font-semibold su-text-white hocus:su-text-white su-no-underline hocus:su-bg-cardinal-red-xxdark su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight su-underline-offset-2';
 export const utilityNav2Link =
-  'su-group su-font-regular hocus:su-underline su-transition su-w-full su-text-20 su-px-20 su-py-12 su-flex su-leading-display su-text-left su-text-white hocus:su-text-white su-no-underline hocus:su-bg-cardinal-red-xxdark su-rounded su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight su-underline-offset-2';
+  'su-group su-font-regular hocus:su-underline su-transition su-w-full su-text-20 su-px-26 su-py-12 su-flex su-leading-display su-text-left su-text-white hocus:su-text-white su-no-underline hocus:su-bg-cardinal-red-xxdark su-rounded su-decoration-digital-red-xlight hocus:su-decoration-digital-red-xlight su-underline-offset-2';
 export const link =
   'su-flex su-items-baseline su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-text-white hocus:su-bg-cardinal-red-xxdark su-font-semibold !su-underline-offset-[3px] lg:!su-decoration-digital-red-xlight su-text-20';
 export const heroicon =

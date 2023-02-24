@@ -26,15 +26,12 @@ const MainMenuGroup = ({
 
   const { setUpdateModal } = useContext(ModalContext);
 
-  useEffect(
-    () => () => {
-      if (setUpdateModal) {
-        setUpdateModal(true);
-      }
-    },
+  useEffect(() => {
+    if (setUpdateModal) {
+      setUpdateModal(true);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [panelOpened]
-  );
+  }, [panelOpened]);
 
   const togglePanel = () => {
     setPanelOpened(!panelOpened);
