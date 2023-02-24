@@ -798,5 +798,5 @@
 /* Membership Pay with Card Button */
 
 .ggeWidget.membership-forms .ggeStripeBtn {
-  @apply su-border-2 su-pr-[3rem] su-border-solid su-border-saa-electric-blue su-text-white;
+  @apply su-border-2 su-pr-[3rem] su-bg-transparent su-border-solid su-border-saa-electric-blue su-text-white hocus:su-bg-saa-electric-blue hocus:su-text-white;
 }
