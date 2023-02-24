@@ -84,8 +84,6 @@ const RelatedContactSelection = (props) => {
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
         su_recipient_relationship: relationship?.relationshipType,
         su_recipient_suid: relationship?.relatedContactEncodedID,
-        su_email: undefined,
-        su_phone: undefined,
         su_recipient_email: undefined,
         su_recipient_email_type: undefined,
         su_recipient_phone: undefined,
@@ -175,20 +173,15 @@ const RelatedContactSelection = (props) => {
                                 className={styles.cardGridWrapper}
                               >
                                 <MembershipCard
-                                  heading={`${relatedContact.su_first_name} ${relatedContact.su_last_name}`}
+                                  heading={`${relatedContact.su_recipient_first_name} ${relatedContact.su_recipient_last_name}`}
                                   subheading={
                                     relatedContact.su_recipient_relationship
                                   }
-                                  initial={relatedContact.su_first_name.slice(
+                                  initial={relatedContact.su_recipient_first_name.slice(
                                     0,
                                     1
                                   )}
                                   memberData={relatedContact}
-                                  disabled={
-                                    value[0].registrantsData.length !== 0 &&
-                                    value[0].registrantsData[0]?.su_did !==
-                                      relatedContact.su_did
-                                  }
                                 />
                               </GridCell>
                             ))}
@@ -201,11 +194,6 @@ const RelatedContactSelection = (props) => {
                                 heading="New Contact"
                                 subheading="Add new contact"
                                 memberData={newContact}
-                                disabled={
-                                  value[0].registrantsData.length !== 0 &&
-                                  value[0].registrantsData[0]?.su_did !==
-                                    newContact.su_did
-                                }
                                 newContact
                               />
                             </GridCell>
