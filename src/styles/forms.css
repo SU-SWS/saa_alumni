@@ -594,6 +594,11 @@
   @apply su-bg-transparent su-border-0 su-p-0 su-m-0;
 }
 
+.ggeWidget .ggeStripeContainer__lowerHr__outer .ggeStripeContainer__lowerHr__inner {
+  @apply su-type-0;
+}
+
+
 /* GG Checkbox */
 .ggeWidget .ggePrompt .ggePrompt__checkbox,
 .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
