@@ -595,7 +595,7 @@
 }
 
 .ggeWidget .ggeStripeContainer__lowerHr__outer .ggeStripeContainer__lowerHr__inner {
-  @apply su-text-center su-type-0 su-rs-mt-2;
+  @apply su-text-center su-type-0 su-rs-mt-1 su-rs-mb-2;
 }
 
 
