@@ -16,6 +16,12 @@ import { formatUsDate } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import Logo from '../../identity/logo';
+import {
+  findEmail,
+  findPreferredEmailType,
+  findPhoneNumber,
+  findPreferredPhoneNumberType,
+} from '../../../utilities/giveGabVars';
 import MembershipCard from './membershipCard';
 import {
   FormContext,
@@ -46,19 +52,29 @@ const RelatedContactSelection = (props) => {
   }
 
   // Map related contacts/relationships data to GiveGab ADC values
+  const primaryRegistrantEmail = findEmail(userProfile?.emails);
+  const primaryRegistrantPhoneNumber = findPhoneNumber(
+    userProfile?.phoneNumbers
+  );
+
   const relationships = userProfile?.relationships;
   const structureRelatedContactData = (relationshipsData = []) => {
     let relatedContacts = [];
     let data = {};
     relationshipsData?.forEach((relationship) => {
       data = {
-        // @TODO: Should su_did be the related contact or the registering user's encodedSUID?
-        su_did: relationship?.relatedContactEncodedID,
-        su_dname: relationship?.relatedContactDigitalName,
+        su_did: userProfile?.session?.encodedSUID,
+        su_dname:
+          userProfile?.name?.digtalName ||
+          `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
         su_first_name:
-          relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
+          userProfile?.name?.fullNameParsed?.firstName ||
+          userProfile?.session?.firstName,
         su_last_name:
-          relationship?.relatedContactFullNameParsed?.relatedContactLastName,
+          userProfile?.name?.fullNameParsed?.lastName ||
+          userProfile?.session?.lastName,
+        su_email: primaryRegistrantEmail || userProfile?.session?.email,
+        su_phone: primaryRegistrantPhoneNumber,
         su_recipient_dob: relationship?.relatedContactBirthDate
           ? formatUsDate(relationship?.relatedContactBirthDate)
           : '',
