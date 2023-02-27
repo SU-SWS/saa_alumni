@@ -18,7 +18,8 @@ const MembershipPaymentCard = ({
       type="button"
       className={dcnb(
         styles.membershipPaymentCardWrapper,
-        isSelected && 'su-bg-saa-black'
+        isSelected &&
+          'su-bg-saa-black su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
       )}
       onClick={() => onClick(id)}
     >
