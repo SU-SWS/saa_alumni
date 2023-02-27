@@ -5,14 +5,14 @@ export const fixedHero = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
 export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
 export const contentWrapper =
   'su-relative su-cc su-z-10 su-rs-py-8 su-text-white';
-export const benefitsWrapper =
-  'md:su-col-start-2 xl:su-col-start-3 2xl:su-col-start-4';
+export const benefitsWrapper = 'md:su-col-start-2 xl:su-col-start-3';
+export const superHead =
+  'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
 export const formWrapper =
   'su-basefont-23 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark su-rs-p-6';
 export const logoWrapper = 'su-rs-mb-5';
 export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[350px]';
-export const superHead =
-  'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
+export const purchaseWrapper = '2xl:su-col-start-2';
 export const cardGridHeading = 'su-rs-mb-4';
 export const cardGridWrapper = 'su-rs-pb-3 su-gap-y-xl';
 export const nextLink = (disabled) =>

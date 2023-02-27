@@ -186,7 +186,6 @@ const TypeOfRegistrant = (props) => {
                         xs={12}
                         md={10}
                         xl={8}
-                        xxl={6}
                         className={styles.benefitsWrapper}
                       >
                         <span className={styles.superHead}>
@@ -212,7 +211,11 @@ const TypeOfRegistrant = (props) => {
                           <CreateBloks blokSection={intro} />
                         </div>
                       </GridCell>
-                      <GridCell xs={12}>
+                      <GridCell
+                        xs={12}
+                        xxl={10}
+                        className={styles.purchaseWrapper}
+                      >
                         <div className={styles.formWrapper}>
                           <Heading
                             level={2}
