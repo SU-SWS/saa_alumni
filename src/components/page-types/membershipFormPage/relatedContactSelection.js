@@ -16,6 +16,12 @@ import { formatUsDate } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import Logo from '../../identity/logo';
+import {
+  findEmail,
+  findPreferredEmailType,
+  findPhoneNumber,
+  findPreferredPhoneNumberType,
+} from '../../../utilities/giveGabVars';
 import MembershipCard from './membershipCard';
 import {
   FormContext,
@@ -43,19 +49,29 @@ const RelatedContactSelection = (props) => {
   }
 
   // Map related contacts/relationships data to GiveGab ADC values
+  const primaryRegistrantEmail = findEmail(userProfile?.emails);
+  const primaryRegistrantPhoneNumber = findPhoneNumber(
+    userProfile?.phoneNumbers
+  );
+
   const relationships = userProfile?.relationships;
   const structureRelatedContactData = (relationshipsData = []) => {
     let relatedContacts = [];
     let data = {};
     relationshipsData?.forEach((relationship) => {
       data = {
-        // @TODO: Should su_did be the related contact or the registering user's encodedSUID?
-        su_did: relationship?.relatedContactEncodedID,
-        su_dname: relationship?.relatedContactDigitalName,
+        su_did: userProfile?.session?.encodedSUID,
+        su_dname:
+          userProfile?.name?.digtalName ||
+          `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
         su_first_name:
-          relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
+          userProfile?.name?.fullNameParsed?.firstName ||
+          userProfile?.session?.firstName,
         su_last_name:
-          relationship?.relatedContactFullNameParsed?.relatedContactLastName,
+          userProfile?.name?.fullNameParsed?.lastName ||
+          userProfile?.session?.lastName,
+        su_email: primaryRegistrantEmail || userProfile?.session?.email,
+        su_phone: primaryRegistrantPhoneNumber,
         su_recipient_dob: relationship?.relatedContactBirthDate
           ? formatUsDate(relationship?.relatedContactBirthDate)
           : '',
@@ -65,8 +81,6 @@ const RelatedContactSelection = (props) => {
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
         su_recipient_relationship: relationship?.relationshipType,
         su_recipient_suid: relationship?.relatedContactEncodedID,
-        su_email: undefined,
-        su_phone: undefined,
         su_recipient_email: undefined,
         su_recipient_email_type: undefined,
         su_recipient_phone: undefined,
@@ -81,6 +95,18 @@ const RelatedContactSelection = (props) => {
   const relatedContacts = structureRelatedContactData(relationships);
 
   const newContact = {
+    su_did: userProfile?.session?.encodedSUID,
+    su_dname:
+      userProfile?.name?.digtalName ||
+      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
+    su_first_name:
+      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.session?.firstName,
+    su_last_name:
+      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.session?.lastName,
+    su_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_phone: primaryRegistrantPhoneNumber,
     su_reg_type: 'newContact',
     su_self_membership: 'no',
     su_gift: 'yes',
@@ -156,20 +182,15 @@ const RelatedContactSelection = (props) => {
                                 className={styles.cardGridWrapper}
                               >
                                 <MembershipCard
-                                  heading={`${relatedContact.su_first_name} ${relatedContact.su_last_name}`}
+                                  heading={`${relatedContact.su_recipient_first_name} ${relatedContact.su_recipient_last_name}`}
                                   subheading={
                                     relatedContact.su_recipient_relationship
                                   }
-                                  initial={relatedContact.su_first_name.slice(
+                                  initial={relatedContact.su_recipient_first_name.slice(
                                     0,
                                     1
                                   )}
                                   memberData={relatedContact}
-                                  disabled={
-                                    value[0].registrantsData.length !== 0 &&
-                                    value[0].registrantsData[0]?.su_did !==
-                                      relatedContact.su_did
-                                  }
                                 />
                               </GridCell>
                             ))}
@@ -182,11 +203,6 @@ const RelatedContactSelection = (props) => {
                                 heading="New Contact"
                                 subheading="Add new contact"
                                 memberData={newContact}
-                                disabled={
-                                  value[0].registrantsData.length !== 0 &&
-                                  value[0].registrantsData[0]?.su_did !==
-                                    newContact.su_did
-                                }
                                 newContact
                               />
                             </GridCell>

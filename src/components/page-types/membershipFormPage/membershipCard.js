@@ -15,7 +15,8 @@ const MembershipCard = ({
   const [state, dispatch] = useContext(FormContext);
   const { registrantsData } = state;
   const isSelected = registrantsData.find(
-    (selectedMember) => selectedMember.su_did === memberData?.su_did
+    (selectedMember) =>
+      selectedMember.su_recipient_suid === memberData?.su_recipient_suid
   );
 
   const addRelationship = () => {

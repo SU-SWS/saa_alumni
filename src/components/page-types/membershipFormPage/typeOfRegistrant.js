@@ -105,7 +105,21 @@ const TypeOfRegistrant = (props) => {
     su_reg_type: 'self',
   };
 
-  const newContact = { su_reg_type: 'newContact' };
+  const newContact = {
+    su_did: userProfile?.session?.encodedSUID,
+    su_dname:
+      userProfile?.name?.digtalName ||
+      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
+    su_first_name:
+      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.session?.firstName,
+    su_last_name:
+      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.session?.lastName,
+    su_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_phone: primaryRegistrantPhoneNumber,
+    su_reg_type: 'newContact',
+  };
 
   const [paymentType, setPaymentType] = useState(false);
   const togglePaymentType = (type) => {
