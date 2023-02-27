@@ -8,6 +8,7 @@ export const contentWrapper =
 export const benefitsWrapper = 'md:su-col-start-2 xl:su-col-start-3';
 export const superHead =
   'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
+export const heading = 'su-rs-mb-5';
 export const formWrapper =
   'su-basefont-23 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark su-rs-p-6';
 export const logoWrapper = 'su-rs-mb-5';
@@ -24,3 +25,14 @@ export const nextLink = (disabled) =>
   );
 export const nextLinkIcon = 'su-w-1em su-text-white group-hocus:su-text-white';
 export const cardNoteWrapper = 'md:su-col-start-3 su-rs-py-4';
+export const paymentOuterWrapper = 'su-rs-pb-3';
+export const paymentInnerWrapper =
+  'su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-20 sm:su-px-48 su-pb-76';
+export const paymentHeadingWrapper = 'su-text-center su-rs-pt-4 su-rs-pb-0';
+export const paymentHeading = 'su-type-2 su-font-serif su-font-bold su-mb-0';
+export const paymentCardsWrapper =
+  'sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded';
+export const promoWrapper = 'su-w-full sm:su-w-auto';
+export const promoLabel = 'su-type-0 su-font-semibold';
+export const promoInput =
+  'sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2';

@@ -197,7 +197,7 @@ const TypeOfRegistrant = (props) => {
                           align="center"
                           font="serif"
                           id="page-title"
-                          className="su-rs-mb-5"
+                          className={styles.heading}
                         >
                           Join now!
                         </Heading>
@@ -248,10 +248,10 @@ const TypeOfRegistrant = (props) => {
                           {/* PAYMENT OPTIONS */}
                           {value[0].registrantsData[0]?.su_did ===
                           primaryUser.su_did ? (
-                            <div className="su-rs-pb-3">
-                              <div className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-20 sm:su-px-48 su-pb-76">
-                                <div className="su-text-center su-rs-pt-4 su-rs-pb-0">
-                                  <p className="su-type-2 su-font-serif su-font-bold su-mb-0">
+                            <div className={styles.paymentOuterWrapper}>
+                              <div className={styles.paymentInnerWrapper}>
+                                <div className={styles.paymentHeadingWrapper}>
+                                  <p className={styles.paymentHeading}>
                                     Payment options
                                   </p>
                                   <p>One time or installments</p>
@@ -259,7 +259,7 @@ const TypeOfRegistrant = (props) => {
                                 <Grid
                                   gap
                                   xs={12}
-                                  className="sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded"
+                                  className={styles.paymentCardsWrapper}
                                 >
                                   <GridCell xs={12} xl={6}>
                                     <MembershipPaymentCard
@@ -295,17 +295,17 @@ const TypeOfRegistrant = (props) => {
                           <FlexBox alignItems="center" direction="col">
                             <FlexBox
                               direction="col"
-                              className="su-w-full sm:su-w-auto"
+                              className={styles.promoWrapper}
                             >
                               <label
                                 htmlFor="su-promocode"
-                                className="su-type-0 su-font-semibold"
+                                className={styles.promoLabel}
                               >
                                 Promo code
                               </label>
                               <input
                                 id="su-promocode"
-                                className="sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
+                                className={styles.promoInput}
                                 value={promoCode}
                                 onChange={getPromoCode}
                               />
