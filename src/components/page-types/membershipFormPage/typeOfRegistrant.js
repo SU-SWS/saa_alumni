@@ -267,11 +267,8 @@ const TypeOfRegistrant = (props) => {
                           </Grid>
                           {/* PAYMENT OPTIONS */}
                           <div
-                            className={dcnb(
-                              styles.paymentOuterWrapper,
+                            className={styles.paymentOuterWrapper(
                               paymentOptionSection
-                                ? 'su-visible su-scale-y-100 su-h-auto su-opacity-100'
-                                : 'su-invisible su-scale-y-0 su-h-0 su-opacity-0 su-cursor-none'
                             )}
                           >
                             <div className={styles.paymentInnerWrapper}>
