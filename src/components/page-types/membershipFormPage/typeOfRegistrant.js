@@ -183,8 +183,7 @@ const TypeOfRegistrant = (props) => {
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
-                        xs={12}
-                        md={10}
+                        xs={10}
                         xl={8}
                         className={styles.benefitsWrapper}
                       >
