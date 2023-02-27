@@ -25,14 +25,13 @@ export const nextLink = (disabled) =>
   );
 export const nextLinkIcon = 'su-w-1em su-text-white group-hocus:su-text-white';
 export const cardNoteWrapper = 'md:su-col-start-3 su-rs-py-4';
-export const paymentOuterWrapper = (paymentOptionSection) => {
+export const paymentOuterWrapper = (paymentOptionSection) =>
   dcnb(
     'su-transition-all su-origin-top su-h-0 su-ease-linear su-duration-150',
     paymentOptionSection
       ? 'su-visible su-scale-y-100 su-h-auto su-opacity-100'
       : 'su-invisible su-scale-y-0 su-h-0 su-opacity-0 su-cursor-none'
   );
-};
 export const paymentInnerWrapper =
   'su-rs-mb-3 su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-rs-px-1 sm:su-rs-px-2 su-rs-pb-5';
 export const paymentHeadingWrapper = 'su-text-center su-rs-pt-4 su-rs-pb-0';
