@@ -2,8 +2,8 @@ import React, { useEffect, useContext, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
-import { dcnb } from 'cnbuilder';
 import { useLocation } from '@reach/router';
+import { dcnb } from 'cnbuilder';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -205,14 +205,12 @@ const TypeOfRegistrant = (props) => {
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
-                        xs={12}
-                        md={10}
+                        xs={10}
                         xl={8}
-                        xxl={6}
                         className={styles.benefitsWrapper}
                       >
                         <span className={styles.superHead}>
-                          Stanford Alumni Association Membership
+                          Stanford Alumni Association <br /> Membership
                         </span>
                         <Heading
                           level={1}
@@ -220,10 +218,11 @@ const TypeOfRegistrant = (props) => {
                           align="center"
                           font="serif"
                           id="page-title"
+                          className={styles.heading}
                         >
                           Join now!
                         </Heading>
-                        <div className={dcnb('su-p-36', styles.formWrapper)}>
+                        <div className={styles.formWrapper}>
                           <FlexBox
                             justifyContent="center"
                             className={styles.logoWrapper}
@@ -233,13 +232,23 @@ const TypeOfRegistrant = (props) => {
                           <CreateBloks blokSection={intro} />
                         </div>
                       </GridCell>
-                      <GridCell xs={12}>
-                        <div className={dcnb('su-rs-p-5', styles.formWrapper)}>
-                          <Heading level={2} size={4} align="left" font="serif">
+                      <GridCell
+                        xs={12}
+                        xxl={10}
+                        className={styles.purchaseWrapper}
+                      >
+                        <div className={styles.formWrapper}>
+                          <Heading
+                            level={2}
+                            size={4}
+                            align="left"
+                            font="serif"
+                            className={styles.cardGridHeading}
+                          >
                             Who do you wish to purchase a membership for?
                           </Heading>
                           <Grid gap xs={12} className={styles.cardGridWrapper}>
-                            <GridCell xs={12} md={6}>
+                            <GridCell xs={12} xl={6}>
                               <MembershipCard
                                 heading="Myself"
                                 subheading={`${primaryUser.su_first_name} ${primaryUser.su_last_name}`}
@@ -247,7 +256,7 @@ const TypeOfRegistrant = (props) => {
                                 memberData={primaryUser}
                               />
                             </GridCell>
-                            <GridCell xs={12} md={6}>
+                            <GridCell xs={12} xl={6}>
                               <MembershipCard
                                 heading="Someone else"
                                 subheading="Existing contact or new contact"
@@ -259,15 +268,15 @@ const TypeOfRegistrant = (props) => {
                           {/* PAYMENT OPTIONS */}
                           <div
                             className={dcnb(
-                              'su-transition-all su-origin-top su-h-0 su-ease-linear su-duration-150',
+                              styles.paymentOuterWrapper,
                               paymentOptionSection
                                 ? 'su-visible su-scale-y-100 su-h-auto su-opacity-100'
                                 : 'su-invisible su-scale-y-0 su-h-0 su-opacity-0 su-cursor-none'
                             )}
                           >
-                            <div className="su-rs-mb-3 su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-20 sm:su-px-48 su-pb-76">
-                              <div className="su-text-center su-rs-pt-4 su-rs-pb-0">
-                                <p className="su-type-2 su-font-serif su-font-bold su-mb-0">
+                            <div className={styles.paymentInnerWrapper}>
+                              <div className={styles.paymentHeadingWrapper}>
+                                <p className={styles.paymentHeading}>
                                   Payment options
                                 </p>
                                 <p>One time or installments</p>
@@ -275,7 +284,7 @@ const TypeOfRegistrant = (props) => {
                               <Grid
                                 gap
                                 xs={12}
-                                className="sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded"
+                                className={styles.paymentCardsWrapper}
                               >
                                 <GridCell xs={12} xl={6}>
                                   <MembershipPaymentCard
@@ -302,21 +311,50 @@ const TypeOfRegistrant = (props) => {
                                 </GridCell>
                               </Grid>
                             </div>
+                            <Grid
+                              gap
+                              xs={12}
+                              className="sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded"
+                            >
+                              <GridCell xs={12} xl={6}>
+                                <MembershipPaymentCard
+                                  heading="Pay in full"
+                                  subheading="One time payment"
+                                  caption="Most value"
+                                  onClick={togglePaymentType}
+                                  id="oneTime"
+                                  isSelected={paymentType === 'oneTime'}
+                                >
+                                  <CreateBloks blokSection={oneTimePayment} />
+                                </MembershipPaymentCard>
+                              </GridCell>
+                              <GridCell xs={12} xl={6}>
+                                <MembershipPaymentCard
+                                  heading="Pay in installments"
+                                  subheading="Over 5 years"
+                                  onClick={togglePaymentType}
+                                  id="installments"
+                                  isSelected={paymentType === 'installments'}
+                                >
+                                  <CreateBloks blokSection={installments} />
+                                </MembershipPaymentCard>
+                              </GridCell>
+                            </Grid>
                           </div>
                           <FlexBox alignItems="center" direction="col">
                             <FlexBox
                               direction="col"
-                              className="su-w-full sm:su-w-auto"
+                              className={styles.promoWrapper}
                             >
                               <label
                                 htmlFor="su-promocode"
-                                className="su-type-0 su-font-semibold"
+                                className={styles.promoLabel}
                               >
                                 Promo code
                               </label>
                               <input
                                 id="su-promocode"
-                                className="sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2"
+                                className={styles.promoInput}
                                 value={promoCode}
                                 onChange={getPromoCode}
                               />
