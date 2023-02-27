@@ -39,6 +39,7 @@ import MainNav from './navigation/MainNav/mainNav';
 import MainNavItem from './navigation/MainNav/mainNavItem';
 import Masthead from './identity/masthead';
 import MastheadPicker from './identity/mastheadPicker';
+import MembershipCard from './cards/membershipCard';
 import MembershipFormPage from './page-types/membershipFormPage/membershipFormPage';
 import MembershipInstallmentsForm from './page-types/membershipFormPage/membershipInstallmentsForm';
 import MembershipInfoText from './page-types/membershipFormPage/membershipInfoText';
@@ -125,6 +126,7 @@ const ComponentList = {
   mainNavItem: MainNavItem,
   masthead: Masthead,
   mastheadPicker: MastheadPicker,
+  membershipCard: MembershipCard,
   membershipFormPage: MembershipFormPage,
   membershipInstallmentsForm: MembershipInstallmentsForm,
   membershipInfoText: MembershipInfoText,
