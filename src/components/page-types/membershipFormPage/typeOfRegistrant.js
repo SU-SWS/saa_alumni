@@ -195,6 +195,13 @@ const TypeOfRegistrant = (props) => {
                     }
                   }
 
+                  let paymentOptionSection = false;
+                  if (
+                    value[0].registrantsData[0]?.su_recipient_suid ===
+                    primaryUser.su_recipient_suid
+                  ) {
+                    paymentOptionSection = true;
+                  }
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
@@ -249,54 +256,53 @@ const TypeOfRegistrant = (props) => {
                               />
                             </GridCell>
                           </Grid>
-
                           {/* PAYMENT OPTIONS */}
-                          {value[0].registrantsData[0]?.su_did ===
-                          primaryUser.su_did ? (
-                            <div className="su-rs-pb-3">
-                              <div className="su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-20 sm:su-px-48 su-pb-76">
-                                <div className="su-text-center su-rs-pt-4 su-rs-pb-0">
-                                  <p className="su-type-2 su-font-serif su-font-bold su-mb-0">
-                                    Payment options
-                                  </p>
-                                  <p>One time or installments</p>
-                                </div>
-                                <Grid
-                                  gap
-                                  xs={12}
-                                  className="sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded"
-                                >
-                                  <GridCell xs={12} xl={6}>
-                                    <MembershipPaymentCard
-                                      heading="Pay in full"
-                                      subheading="One time payment"
-                                      caption="Most value"
-                                      onClick={togglePaymentType}
-                                      id="oneTime"
-                                      isSelected={paymentType === 'oneTime'}
-                                    >
-                                      <CreateBloks
-                                        blokSection={oneTimePayment}
-                                      />
-                                    </MembershipPaymentCard>
-                                  </GridCell>
-                                  <GridCell xs={12} xl={6}>
-                                    <MembershipPaymentCard
-                                      heading="Pay in installments"
-                                      subheading="Over 5 years"
-                                      onClick={togglePaymentType}
-                                      id="installments"
-                                      isSelected={
-                                        paymentType === 'installments'
-                                      }
-                                    >
-                                      <CreateBloks blokSection={installments} />
-                                    </MembershipPaymentCard>
-                                  </GridCell>
-                                </Grid>
+                          <div
+                            className={dcnb(
+                              'su-transition-all su-origin-top su-h-0 su-ease-linear su-duration-150',
+                              paymentOptionSection
+                                ? 'su-visible su-scale-y-100 su-h-auto su-opacity-100'
+                                : 'su-invisible su-scale-y-0 su-h-0 su-opacity-0 su-cursor-none'
+                            )}
+                          >
+                            <div className="su-rs-mb-3 su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-px-20 sm:su-px-48 su-pb-76">
+                              <div className="su-text-center su-rs-pt-4 su-rs-pb-0">
+                                <p className="su-type-2 su-font-serif su-font-bold su-mb-0">
+                                  Payment options
+                                </p>
+                                <p>One time or installments</p>
                               </div>
+                              <Grid
+                                gap
+                                xs={12}
+                                className="sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded"
+                              >
+                                <GridCell xs={12} xl={6}>
+                                  <MembershipPaymentCard
+                                    heading="Pay in full"
+                                    subheading="One time payment"
+                                    caption="Most value"
+                                    onClick={togglePaymentType}
+                                    id="oneTime"
+                                    isSelected={paymentType === 'oneTime'}
+                                  >
+                                    <CreateBloks blokSection={oneTimePayment} />
+                                  </MembershipPaymentCard>
+                                </GridCell>
+                                <GridCell xs={12} xl={6}>
+                                  <MembershipPaymentCard
+                                    heading="Pay in installments"
+                                    subheading="Over 5 years"
+                                    onClick={togglePaymentType}
+                                    id="installments"
+                                    isSelected={paymentType === 'installments'}
+                                  >
+                                    <CreateBloks blokSection={installments} />
+                                  </MembershipPaymentCard>
+                                </GridCell>
+                              </Grid>
                             </div>
-                          ) : null}
+                          </div>
                           <FlexBox alignItems="center" direction="col">
                             <FlexBox
                               direction="col"
