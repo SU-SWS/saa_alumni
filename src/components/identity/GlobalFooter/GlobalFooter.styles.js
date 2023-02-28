@@ -1,5 +1,5 @@
 export const root =
-  'su-global-footer su-basefont-20 su-rs-py-1 su-bg-saa-black su-text-white';
+  'su-global-footer su-basefont-20 su-rs-py-1 su-bg-saa-black su-text-white print:su-hidden';
 export const wrapper = 'su-flex su-flex-col lg:su-flex-row';
 export const logoWrapper = 'su-text-center su-mt-5 su-mb-9';
 export const logo = 'su-type-3';
