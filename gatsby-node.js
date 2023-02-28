@@ -228,10 +228,10 @@ exports.createPages = ({ graphql, actions }) => {
           });
 
           createPage({
-            path: `/${pagePath}/installments/form`,
+            path: `/${pagePath}/installment/form`,
             component: storyblokEntry,
             context: {
-              slug: `${membershipEntry.node.full_slug}/installments/form`,
+              slug: `${membershipEntry.node.full_slug}/installment/form`,
               story: membershipEntry.node,
               isCanonical,
               noIndex,

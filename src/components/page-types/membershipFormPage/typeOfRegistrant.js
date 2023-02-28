@@ -187,7 +187,7 @@ const TypeOfRegistrant = (props) => {
                     }
                   }
                   if (paymentType === 'installments') {
-                    nextPageLink = '/membership/register/installments/form';
+                    nextPageLink = '/membership/register/installment/form';
                     // If there is no promo code, set the urlData to alum_myself_install
                     if (appealCode?.length === 0 || promoCode.length === 0) {
                       paymentTypeCode = 'alum_myself_install';
