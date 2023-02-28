@@ -54,6 +54,7 @@ const MembershipCard = ({ blok }) => {
         fetchImages(false);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.isAuthenticating, auth.isAuthenticated]);
 
   return (
@@ -109,10 +110,10 @@ const MembershipCard = ({ blok }) => {
                   </div>
                   <ul className="su-list-none su-p-0 su-m-0">
                     <li>
-                      <a href="#">Become an SAA Member</a>
+                      <a href="http://TODO">Become an SAA Member</a>
                     </li>
                     <li>
-                      <a href="#">See the full list of Benefits</a>
+                      <a href="http://TODO">See the full list of Benefits</a>
                     </li>
                   </ul>
                 </div>
