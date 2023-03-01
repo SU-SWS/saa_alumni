@@ -118,7 +118,11 @@ const SAAMainNav = ({ menuItems, ariaLabel }) => {
           </ul>
         )}
 
-        {utilityMenuOpen && <ul className="su-list-none su-p-0"><AccountLinks /></ul>}
+        {utilityMenuOpen && (
+          <ul className="su-list-none su-p-0">
+            <AccountLinks />
+          </ul>
+        )}
       </Modal>
     </>
   );
