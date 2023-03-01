@@ -10,16 +10,25 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
   const getProfileLinks = () => {
     const affiliation = [
       'GSB Alum',
+      'GSB SEP',
+      'GSB Life Member',
+      'GSB Student',
+      'GSB Defined Alums and Students',
+      'Student',
       'SAA Alum',
+      'Med CRT Graduate',
       'Med Alum',
+      'Med Student',
       'Law Alum',
+      'Law Student',
       'EDU Alum',
+      'EDU Student',
     ];
 
     const alumFilter = userProfile.affiliations.filter((item) =>
       affiliation.includes(item)
     );
-    const isAlumni = !alumFilter.length;
+    const isAlumni = alumFilter.length;
 
     let profileLinks = [
       {
@@ -28,7 +37,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
       },
     ];
 
-    if (!isAlumni) {
+    if (isAlumni) {
       profileLinks = [
         {
           text: 'View Profile',
