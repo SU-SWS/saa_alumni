@@ -4,9 +4,6 @@ import HeroIcon from '../../simple/heroIcon';
 import * as styles from './userNavItems.styles';
 
 const UserNavItems = ({ expanded, Initial, userProfile }) => {
-  // TODO: Add donor logic
-  const isDonor = true;
-
   const getProfileLinks = () => {
     const affiliation = [
       'GSB Alum',
@@ -99,18 +96,17 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
           </a>
         </li>
 
-        {isDonor && (
-          <li>
-            <a href="https://TODO" className={styles.utilityNavLink}>
-              My Giving
-              <HeroIcon
-                iconType="arrow-right"
-                isAnimate
-                className={styles.heroicon}
-              />
-            </a>
-          </li>
-        )}
+        {/* To add back when donor logic is added */}
+        {/* <li> */}
+        {/*  <a href="https://TODO" className={styles.utilityNavLink}> */}
+        {/*    My Giving */}
+        {/*    <HeroIcon */}
+        {/*      iconType="arrow-right" */}
+        {/*      isAnimate */}
+        {/*      className={styles.heroicon} */}
+        {/*    /> */}
+        {/*  </a> */}
+        {/* </li> */}
       </ul>
 
       <ul className={styles.menu2}>
