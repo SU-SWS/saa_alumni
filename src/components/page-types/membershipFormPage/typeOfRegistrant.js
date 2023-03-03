@@ -308,35 +308,6 @@ const TypeOfRegistrant = (props) => {
                                 </GridCell>
                               </Grid>
                             </div>
-                            <Grid
-                              gap
-                              xs={12}
-                              className="sm:su-p-26 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded"
-                            >
-                              <GridCell xs={12} xl={6}>
-                                <MembershipPaymentCard
-                                  heading="Pay in full"
-                                  subheading="One time payment"
-                                  caption="Most value"
-                                  onClick={togglePaymentType}
-                                  id="oneTime"
-                                  isSelected={paymentType === 'oneTime'}
-                                >
-                                  <CreateBloks blokSection={oneTimePayment} />
-                                </MembershipPaymentCard>
-                              </GridCell>
-                              <GridCell xs={12} xl={6}>
-                                <MembershipPaymentCard
-                                  heading="Pay in installments"
-                                  subheading="Over 5 years"
-                                  onClick={togglePaymentType}
-                                  id="installments"
-                                  isSelected={paymentType === 'installments'}
-                                >
-                                  <CreateBloks blokSection={installments} />
-                                </MembershipPaymentCard>
-                              </GridCell>
-                            </Grid>
                           </div>
                           <FlexBox alignItems="center" direction="col">
                             <FlexBox
