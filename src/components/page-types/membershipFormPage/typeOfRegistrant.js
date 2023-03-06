@@ -254,6 +254,8 @@ const TypeOfRegistrant = (props) => {
                                 subheading={`${primaryUser.su_first_name} ${primaryUser.su_last_name}`}
                                 initial={primaryUser.su_first_name.slice(0, 1)}
                                 memberData={primaryUser}
+                                aria-expanded={paymentOptionSection}
+                                id="su-myself-payment"
                               />
                             </GridCell>
                             <GridCell xs={12} xl={6}>
@@ -270,6 +272,7 @@ const TypeOfRegistrant = (props) => {
                             className={styles.paymentOuterWrapper(
                               paymentOptionSection
                             )}
+                            aria-labelledby="su-myself-payment"
                           >
                             <div className={styles.paymentInnerWrapper}>
                               <div className={styles.paymentHeadingWrapper}>
