@@ -11,7 +11,7 @@ const MembershipCard = ({
   initial,
   newContact = false,
   memberData,
-  props,
+  ...props
 }) => {
   const [state, dispatch] = useContext(FormContext);
   const { registrantsData } = state;
