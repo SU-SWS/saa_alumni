@@ -11,6 +11,7 @@ const MembershipCard = ({
   initial,
   newContact = false,
   memberData,
+  ...props
 }) => {
   const [state, dispatch] = useContext(FormContext);
   const { registrantsData } = state;
@@ -52,6 +53,7 @@ const MembershipCard = ({
             'su-bg-saa-black su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
         )}
         onClick={toggleRelationship}
+        {...props}
       >
         <FlexBox
           justifyContent="center"

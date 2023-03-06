@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
 import { useLocation } from '@reach/router';
+import { dcnb } from 'cnbuilder';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -194,6 +195,13 @@ const TypeOfRegistrant = (props) => {
                     }
                   }
 
+                  let paymentOptionSection = false;
+                  if (
+                    value[0].registrantsData[0]?.su_recipient_suid ===
+                    primaryUser.su_recipient_suid
+                  ) {
+                    paymentOptionSection = true;
+                  }
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
@@ -246,6 +254,8 @@ const TypeOfRegistrant = (props) => {
                                 subheading={`${primaryUser.su_first_name} ${primaryUser.su_last_name}`}
                                 initial={primaryUser.su_first_name.slice(0, 1)}
                                 memberData={primaryUser}
+                                aria-expanded={paymentOptionSection}
+                                id="su-myself-payment"
                               />
                             </GridCell>
                             <GridCell xs={12} xl={6}>
@@ -257,54 +267,51 @@ const TypeOfRegistrant = (props) => {
                               />
                             </GridCell>
                           </Grid>
-
                           {/* PAYMENT OPTIONS */}
-                          {value[0].registrantsData[0]?.su_did ===
-                          primaryUser.su_did ? (
-                            <div className={styles.paymentOuterWrapper}>
-                              <div className={styles.paymentInnerWrapper}>
-                                <div className={styles.paymentHeadingWrapper}>
-                                  <p className={styles.paymentHeading}>
-                                    Payment options
-                                  </p>
-                                  <p>One time or installments</p>
-                                </div>
-                                <Grid
-                                  gap
-                                  xs={12}
-                                  className={styles.paymentCardsWrapper}
-                                >
-                                  <GridCell xs={12} xl={6}>
-                                    <MembershipPaymentCard
-                                      heading="Pay in full"
-                                      subheading="One time payment"
-                                      caption="Most value"
-                                      onClick={togglePaymentType}
-                                      id="oneTime"
-                                      isSelected={paymentType === 'oneTime'}
-                                    >
-                                      <CreateBloks
-                                        blokSection={oneTimePayment}
-                                      />
-                                    </MembershipPaymentCard>
-                                  </GridCell>
-                                  <GridCell xs={12} xl={6}>
-                                    <MembershipPaymentCard
-                                      heading="Pay in installments"
-                                      subheading="Over 5 years"
-                                      onClick={togglePaymentType}
-                                      id="installments"
-                                      isSelected={
-                                        paymentType === 'installments'
-                                      }
-                                    >
-                                      <CreateBloks blokSection={installments} />
-                                    </MembershipPaymentCard>
-                                  </GridCell>
-                                </Grid>
+                          <div
+                            className={styles.paymentOuterWrapper(
+                              paymentOptionSection
+                            )}
+                            aria-labelledby="su-myself-payment"
+                          >
+                            <div className={styles.paymentInnerWrapper}>
+                              <div className={styles.paymentHeadingWrapper}>
+                                <p className={styles.paymentHeading}>
+                                  Payment options
+                                </p>
+                                <p>One time or installments</p>
                               </div>
+                              <Grid
+                                gap
+                                xs={12}
+                                className={styles.paymentCardsWrapper}
+                              >
+                                <GridCell xs={12} xl={6}>
+                                  <MembershipPaymentCard
+                                    heading="Pay in full"
+                                    subheading="One time payment"
+                                    caption="Most value"
+                                    onClick={togglePaymentType}
+                                    id="oneTime"
+                                    isSelected={paymentType === 'oneTime'}
+                                  >
+                                    <CreateBloks blokSection={oneTimePayment} />
+                                  </MembershipPaymentCard>
+                                </GridCell>
+                                <GridCell xs={12} xl={6}>
+                                  <MembershipPaymentCard
+                                    heading="Pay in installments"
+                                    subheading="Over 5 years"
+                                    onClick={togglePaymentType}
+                                    id="installments"
+                                    isSelected={paymentType === 'installments'}
+                                  >
+                                    <CreateBloks blokSection={installments} />
+                                  </MembershipPaymentCard>
+                                </GridCell>
+                              </Grid>
                             </div>
-                          ) : null}
+                          </div>
                           <FlexBox alignItems="center" direction="col">
                             <FlexBox
                               direction="col"
