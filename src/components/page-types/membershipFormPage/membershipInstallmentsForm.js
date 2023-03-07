@@ -76,7 +76,7 @@ const MembershipInstallmentsForm = (props) => {
                     font="serif"
                     id="page-title"
                   >
-                    Stanford Alumni Association Membership
+                    Stanford Alumni Association <br /> Membership
                   </Heading>
                 </div>
                 <Grid gap xs={12} id="su-gg-embed">
