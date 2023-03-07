@@ -702,6 +702,10 @@
 }
 
 /* Membership Installment Confirmation Tally Table */
+.ggeWidget.membership-forms .ggeConfirmation .ggeButton.ggeButton--forward {
+  @apply su-rs-pt-5;
+}
+
 .ggeWidget.membership-forms .ggeConfirmation .ggeTally td {
   @apply su-border-0;
 }
