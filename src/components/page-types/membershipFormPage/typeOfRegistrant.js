@@ -48,7 +48,9 @@ const TypeOfRegistrant = (props) => {
   // If url parameters include an appeal code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
-  let paymentTypeCode = 'alum_myself_full';
+  let paymentTypeCode = userProfile?.affiliations.includes('Friend')
+    ? 'aff_fr_myself'
+    : 'alum_myself_full';
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
     : '';
@@ -103,6 +105,7 @@ const TypeOfRegistrant = (props) => {
     su_self_membership: 'yes',
     su_gift: 'no',
     su_reg_type: 'self',
+    su_affiliations: userProfile?.affiliations,
   };
 
   const newContact = {
@@ -156,7 +159,8 @@ const TypeOfRegistrant = (props) => {
                   const isContactSelected = () => {
                     if (
                       value[0].registrantsData[0]?.su_reg_type === 'self' &&
-                      paymentType
+                      (paymentType ||
+                        primaryUser.su_affiliations.includes('Friend'))
                     ) {
                       return true;
                     }
@@ -187,7 +191,10 @@ const TypeOfRegistrant = (props) => {
                       nextPageLink = '/membership/register/form';
                     }
                   }
-                  if (paymentType === 'installments') {
+                  if (
+                    paymentType === 'installments' &&
+                    !primaryUser.su_affiliations.includes('Friend')
+                  ) {
                     nextPageLink = '/membership/register/installment/form';
                     // If there is no promo code, set the urlData to alum_myself_install
                     if (appealCode?.length === 0 || promoCode.length === 0) {
@@ -198,7 +205,8 @@ const TypeOfRegistrant = (props) => {
                   let paymentOptionSection = false;
                   if (
                     value[0].registrantsData[0]?.su_recipient_suid ===
-                    primaryUser.su_recipient_suid
+                      primaryUser.su_recipient_suid &&
+                    !primaryUser.su_affiliations.includes('Friend')
                   ) {
                     paymentOptionSection = true;
                   }
