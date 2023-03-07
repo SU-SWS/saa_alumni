@@ -724,11 +724,11 @@
 }
 
 .ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--total {
-  @apply su-rs-pb-5 su-border-t su-border-fog-light;
+  @apply su-border-t su-border-fog-light;
 }
 
 .ggeWidget.membership-forms .ggeConfirmation .ggeTally td.ggeTally--subheader {
-  @apply su-type-1 su-font-semibold;
+  @apply su-rs-pt-5 su-type-1 su-font-semibold;
 }
 
 /* Membership Payment section */
