@@ -703,7 +703,7 @@
 
 /* Membership Installment Confirmation Tally Table */
 .ggeWidget.membership-forms .ggeConfirmation .ggeButton.ggeButton--forward {
-  @apply su-rs-pt-5;
+  @apply su-rs-pt-5 su-bg-digital-red-light;
 }
 
 .ggeWidget.membership-forms .ggeConfirmation .ggeTally td {
