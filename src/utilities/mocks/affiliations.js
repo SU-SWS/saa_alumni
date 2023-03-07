@@ -8,11 +8,10 @@ export const affiliationsMockData = {
     },
   ],
   affiliations: [
-    // 'GSB Alum',
-    // 'GSB SEP',
+    'GSB Alum',
+    'GSB SEP',
     'Non-Student',
-    // 'GSB Defined Alums and Students',
-    // 'SAA Member',
-    'Friend', // For ADAPTSM-150 testing only
+    'GSB Defined Alums and Students',
+    'SAA Member',
   ],
 };
