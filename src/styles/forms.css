@@ -701,6 +701,36 @@
   @apply su-hidden;
 }
 
+/* Membership Installment Confirmation Tally Table */
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally td {
+  @apply su-border-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--header {
+  @apply su-p-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--headtext {
+  @apply su-type-1 su-font-semibold su-text-saa-electric-blue-light su-pb-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--subtext,
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--money {
+  @apply su-p-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--confirmation {
+  @apply su-font-semibold su-rs-pb-1;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--total {
+  @apply su-rs-pb-5 su-border-t su-border-fog-light;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally td.ggeTally--subheader {
+  @apply su-type-1 su-font-semibold;
+}
+
 /* Membership Payment section */
 .ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--nameOnCard {
   @apply su-w-full;
