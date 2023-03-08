@@ -128,7 +128,6 @@ const Masthead = ({
               >
                 <nav aria-label="Utility Menu" className={styles.utilNav}>
                   <ul className={styles.utilNavMenu}>
-                    {console.log(utilityNav)}
                     <CreateBloks
                       blokSection={utilityNav}
                       className={`${styles.utilNavItem} su-link-regular`}
