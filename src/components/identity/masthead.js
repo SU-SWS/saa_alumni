@@ -65,10 +65,12 @@ const Masthead = ({
 
   // Adjust email link
   const cleanUtilNav = utilityNav;
-  cleanUtilNav[1].link.cached_url =
-    'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
-  cleanUtilNav[1].link.url =
-    'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
+  if (cleanUtilNav[1]?.link) {
+    cleanUtilNav[1].link.cached_url =
+      'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
+    cleanUtilNav[1].link.url =
+      'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
+  }
 
   return (
     <SbEditable content={blok}>
