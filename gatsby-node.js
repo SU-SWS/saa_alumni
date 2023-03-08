@@ -216,6 +216,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
           const noIndex = content.noIndex ? content.noIndex : false;
 
+          // Create full payment form page
           createPage({
             path: `/${pagePath}/form`,
             component: storyblokEntry,
@@ -228,6 +229,7 @@ exports.createPages = ({ graphql, actions }) => {
             },
           });
 
+          // Create installments form page
           createPage({
             path: `/${pagePath}/installment/form`,
             component: storyblokEntry,

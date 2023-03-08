@@ -30,6 +30,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
 import { formatUsDate } from '../../../utilities/transformDate';
 
+// The type of registrant interstitial page has been set as the default preview within StoryBlok
 const MembershipFormPage = (props) => {
   const {
     blok: {
