@@ -158,7 +158,7 @@ const MembershipFormPage = (props) => {
                     if (
                       value[0].registrantsData[0]?.su_reg_type === 'self' &&
                       (paymentType ||
-                        primaryUser.su_affiliations.includes('Friend'))
+                        primaryUser.su_affiliations?.includes('Friend'))
                     ) {
                       return true;
                     }
@@ -191,7 +191,7 @@ const MembershipFormPage = (props) => {
                   }
                   if (
                     paymentType === 'installments' &&
-                    !primaryUser.su_affiliations.includes('Friend')
+                    !primaryUser.su_affiliations?.includes('Friend')
                   ) {
                     nextPageLink = '/membership/register/installment/form';
                     // If there is no promo code, set the urlData to alum_myself_install
@@ -204,7 +204,7 @@ const MembershipFormPage = (props) => {
                   if (
                     value[0].registrantsData[0]?.su_recipient_suid ===
                       primaryUser.su_recipient_suid &&
-                    !primaryUser.su_affiliations.includes('Friend')
+                    !primaryUser.su_affiliations?.includes('Friend')
                   ) {
                     paymentOptionSection = true;
                   }
