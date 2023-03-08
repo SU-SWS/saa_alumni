@@ -15,13 +15,7 @@ import * as styles from './relatedContactSelection.styles';
 import { formatUsDate } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
-import Logo from '../../identity/logo';
-import {
-  findEmail,
-  findPreferredEmailType,
-  findPhoneNumber,
-  findPreferredPhoneNumberType,
-} from '../../../utilities/giveGabVars';
+import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
 import MembershipCard from './membershipCard';
 import {
   FormContext,
@@ -169,9 +163,8 @@ const RelatedContactSelection = (props) => {
                             Select a recipient
                           </Heading>
                           <p className={styles.helpText}>
-                            Help someone become a membership of the Stanford
-                            Alumni Association. Please select a recipient from
-                            your list of contacts below.
+                            Please select a recipient from your list of contacts
+                            below.
                           </p>
                           <Grid gap xs={12} className={styles.cardGroupWrapper}>
                             {/* DISPLAY RELATED CONTACTS HERE */}

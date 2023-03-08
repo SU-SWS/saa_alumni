@@ -3,7 +3,7 @@ import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
-import * as styles from './MembershipCard.styles';
+import * as styles from './membershipCard.styles';
 
 const MembershipCard = ({
   heading,

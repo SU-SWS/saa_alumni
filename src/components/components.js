@@ -40,6 +40,7 @@ import MainNavItem from './navigation/MainNav/mainNavItem';
 import Masthead from './identity/masthead';
 import MastheadPicker from './identity/mastheadPicker';
 import MembershipFormPage from './page-types/membershipFormPage/membershipFormPage';
+import MembershipFullPaymentForm from './page-types/membershipFormPage/membershipFullPaymentForm';
 import MembershipInstallmentsForm from './page-types/membershipFormPage/membershipInstallmentsForm';
 import MembershipInfoText from './page-types/membershipFormPage/membershipInfoText';
 import NavItem from './navigation/navItem';
@@ -75,7 +76,6 @@ import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
 import TripFormInformation from './composite/tripFormInformation';
 import TripNotifyMe from './page-types/formPage/tripNotifyMe';
 import TripPage from './page-types/TripPage/TripPage';
-import TypeOfRegistrant from './page-types/membershipFormPage/typeOfRegistrant';
 import RelatedContactSelection from './page-types/membershipFormPage/relatedContactSelection';
 import { SBUtilityNav } from './storyblok/utilityNav';
 import VerticalNav from './navigation/verticalNav';
@@ -126,6 +126,7 @@ const ComponentList = {
   masthead: Masthead,
   mastheadPicker: MastheadPicker,
   membershipFormPage: MembershipFormPage,
+  membershipFullPaymentForm: MembershipFullPaymentForm,
   membershipInstallmentsForm: MembershipInstallmentsForm,
   membershipInfoText: MembershipInfoText,
   membershipPaymentOptions: MembershipPaymentOptions,
@@ -162,7 +163,6 @@ const ComponentList = {
   tsContentTemplate: SBTsContentTemplate,
   tripFormInformation: TripFormInformation,
   tripNotifyMe: TripNotifyMe,
-  typeOfRegistrant: TypeOfRegistrant,
   relatedContactSelection: RelatedContactSelection,
   utilityNav: SBUtilityNav,
   verticalNav: VerticalNav,
