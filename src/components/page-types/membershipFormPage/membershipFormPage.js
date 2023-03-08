@@ -47,7 +47,7 @@ const MembershipFormPage = (props) => {
   // If url parameters include an appeal code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
-  let paymentTypeCode = userProfile?.affiliations.includes('Friend')
+  let paymentTypeCode = userProfile?.affiliations?.includes('Friend')
     ? 'aff_fr_myself'
     : 'alum_myself_full';
   const appealCode = location?.href
