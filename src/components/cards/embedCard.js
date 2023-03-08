@@ -30,6 +30,9 @@ const EmbedCard = ({ blok: { embed: html }, blok }) => {
         done: () => {
           setScriptLoaded(true);
         },
+        error: (err) => {
+          console.error(err);
+        },
       });
     } else {
       // Create a 'tiny' document and parse the html string.

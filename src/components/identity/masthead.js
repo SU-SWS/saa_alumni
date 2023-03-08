@@ -63,6 +63,13 @@ const Masthead = ({
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
   const { showDesktop, showMobile } = useDisplay();
 
+  // Adjust email link
+  const cleanUtilNav = utilityNav;
+  cleanUtilNav[1].link.cached_url =
+    'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
+  cleanUtilNav[1].link.url =
+    'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
+
   return (
     <SbEditable content={blok}>
       {showMobile && (
@@ -73,7 +80,7 @@ const Masthead = ({
           <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
             <ul className={styles.utilNavMenuMobile}>
               <CreateBloks
-                blokSection={utilityNav}
+                blokSection={cleanUtilNav}
                 className="first:su-ml-0 su-link-regular"
                 hasExternalIcon
               />
@@ -119,6 +126,7 @@ const Masthead = ({
               >
                 <nav aria-label="Utility Menu" className={styles.utilNav}>
                   <ul className={styles.utilNavMenu}>
+                    {console.log(utilityNav)}
                     <CreateBloks
                       blokSection={utilityNav}
                       className={`${styles.utilNavItem} su-link-regular`}
