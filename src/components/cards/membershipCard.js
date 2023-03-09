@@ -60,48 +60,55 @@ const MembershipCard = ({ blok }) => {
   return (
     <>
       {!auth.isAuthenticating && (
-        <div className="su-cc">
-          {!noCard && <h4>Your card</h4>}
-          <div className="2xl:su-flex">
+        <div className="sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto lg:su--mt-[70px]">
+          {!noCard && (
+            <h2 className="su-mb-34 md:su-mb-58 su-font-serif">Your card</h2>
+          )}
+          <div className="lg:su-flex lg:su-px-20">
             <div
               className={dcnb(
-                'su-text-white su-relative su-overflow-hidden su-rounded-[100px] su-min-w-[900px] su-w-[900px] su-h-[567px] su-mb-20 xl:mb-0',
+                'su-text-white su-relative su-overflow-hidden su-rounded-[25px] md:su-rounded-[50px] md:su-rounded-[70px] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0',
                 bgColor
               )}
             >
               {noCard ? (
                 <img src={exampleImage} alt="" />
               ) : (
-                <>
-                  <div className="su-relative su-flex su-flex-col su-justify-between su-h-full su-flex su-pt-[30px] su-text-[38px] su-z-10">
-                    <img
-                      src={logo}
-                      alt=""
-                      className="su-max-w-[400px] mu-ml-20"
-                    />
-                    <div className="su-flex su-flex-col su-pb-[70px] su-pl-[37px] ">
-                      <span className="su-text-[55px] su-font-semibold">
-                        {auth.userProfile?.name?.fullNameParsed?.firstName}{' '}
-                        {auth.userProfile?.name?.fullNameParsed?.lastName}
-                      </span>
-                      <span>{auth.userProfile?.membership?.id}</span>
-                      <span>{auth.userProfile?.membership?.type}</span>
+                <div className="su-relative su-w-full su-pt-[63%]">
+                  <div className="su-absolute su-top-0 su-w-full su-h-full">
+                    <div className="su-relative su-flex su-flex-col su-justify-between su-h-full su-flex su-text-[38px] su-z-10">
+                      <div className="su-top-0 su-left-0 su-w-[85%] su-h-[50%] su-flex su-items-center">
+                        <img
+                          src={logo}
+                          alt=""
+                          className="su-max-w-full su-max-h-full"
+                        />
+                      </div>
+
+                      <div className="su-flex su-flex-col su-pb-[23px] md:su-pb-[40px] su-px-[12px] md:su-px-[25px] su-text-[14px] sm:su-text-[22px]">
+                        <span className="su-text-[22px] sm:su-text-[30px] su-font-semibold">
+                          {auth.userProfile?.name?.fullNameParsed?.firstName}{' '}
+                          {auth.userProfile?.name?.fullNameParsed?.lastName}
+                        </span>
+                        <span>{auth.userProfile?.membership?.id}</span>
+                        <span>{auth.userProfile?.membership?.type}</span>
+                      </div>
+                    </div>
+                    <div className="su-absolute su-top-1/2 -su-translate-y-1/2 su-left-[40%] su-w-full su-h-0 su-pt-[90%] su-overflow-hidden su-rounded-full">
+                      <div className="su-absolute su-inset-0">
+                        <img
+                          className="su-absolute su-inset-0 su-min-h-full"
+                          src={bgImage}
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
-                  <div className="su-absolute su-top-1/2 -su-translate-y-1/2 su-left-[40%] f su-w-full su-h-0 su-pt-[90%] su-overflow-hidden su-rounded-full">
-                    <div className="su-absolute su-inset-0">
-                      <img
-                        className="su-absolute su-inset-0 su-min-h-full"
-                        src={bgImage}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </>
+                </div>
               )}
             </div>
 
-            <div className="su-flex su-items-center 2xl:su-rs-ml-7 print:su-hidden">
+            <div className="su-flex su-items-center lg:su-rs-ml-5 xl:su-rs-ml-7 print:su-hidden">
               {noCard ? (
                 <div>
                   <div className="su-mb-10">
@@ -118,7 +125,9 @@ const MembershipCard = ({ blok }) => {
                   </ul>
                 </div>
               ) : (
-                <CtaGroup blok={blok.ctaGroup[0]} />
+                <div className="[&>.cta-group]:su-gap-[10px] [&>.cta-group]:sm:su-gap-[20px]">
+                  <CtaGroup blok={blok.ctaGroup[0]} />
+                </div>
               )}
             </div>
           </div>
