@@ -16,7 +16,6 @@ const tripsCollection = async (req, res) => {
         in: 'trip',
       },
     },
-    sort_by: 'content.title',
     per_page: perpage,
     page: currentPage,
   });
