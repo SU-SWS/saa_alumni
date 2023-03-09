@@ -67,9 +67,9 @@ const Masthead = ({
   const cleanUtilNav = utilityNav;
   if (cleanUtilNav[1]?.link) {
     cleanUtilNav[1].link.cached_url =
-      'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
+      'https://uat.myaccount.stanford.edu/alumni-email';
     cleanUtilNav[1].link.url =
-      'https://deploy-preview-739--adapt-myaccount.netlify.app/alumni-email';
+      'https://uat.myaccount.stanford.edu/alumni-email';
   }
 
   return (
