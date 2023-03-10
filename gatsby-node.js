@@ -216,6 +216,7 @@ exports.createPages = ({ graphql, actions }) => {
           }
           const noIndex = content.noIndex ? content.noIndex : false;
 
+          // Create full payment form page
           createPage({
             path: `/${pagePath}/form`,
             component: storyblokEntry,
@@ -224,9 +225,11 @@ exports.createPages = ({ graphql, actions }) => {
               story: membershipEntry.node,
               isCanonical,
               noIndex,
+              membershipFullPayment: true,
             },
           });
 
+          // Create installments form page
           createPage({
             path: `/${pagePath}/installment/form`,
             component: storyblokEntry,
@@ -236,19 +239,6 @@ exports.createPages = ({ graphql, actions }) => {
               isCanonical,
               noIndex,
               membershipInstallments: true,
-            },
-          });
-
-          // Create type of registrant interstitial page
-          createPage({
-            path: `/${pagePath}`,
-            component: storyblokEntry,
-            context: {
-              slug: membershipEntry.node.full_slug,
-              story: membershipEntry.node,
-              isCanonical,
-              noIndex,
-              membershipInterstitial: true,
             },
           });
 
@@ -262,6 +252,18 @@ exports.createPages = ({ graphql, actions }) => {
               isCanonical,
               noIndex,
               membershipRelatedContact: true,
+            },
+          });
+
+          // Create type of registrant interstitial page
+          createPage({
+            path: `/${pagePath}`,
+            component: storyblokEntry,
+            context: {
+              slug: membershipEntry.node.full_slug,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
             },
           });
         });

@@ -16,11 +16,11 @@ import * as styles from './membershipForm.styles';
 import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
 
-const MembershipInstallmentsForm = (props) => {
+const MembershipFullPaymentForm = (props) => {
   const {
     blok: {
       heroImage: { filename, alt, focus } = {},
-      installmentsForm,
+      giveGabForm,
       ankleContent,
     },
     blok,
@@ -31,7 +31,6 @@ const MembershipInstallmentsForm = (props) => {
   const helmetTitle = `Stanford Alumni Association Membership`;
   const registrant = location?.state?.registrant;
   const promoCode = location?.state?.promoCode;
-  console.log('REGISTRANT PASS THROUGH INSTALLMENTS: ', registrant);
 
   useEffect(() => {
     if (registrant?.su_reg_type !== 'newContact') {
@@ -41,7 +40,7 @@ const MembershipInstallmentsForm = (props) => {
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
-  if (!location?.state?.registrant && pageContext?.story) {
+  if (!registrant && pageContext?.story) {
     return <Redirect to={pageContext.story.full_slug} noThrow />;
   }
 
@@ -88,7 +87,7 @@ const MembershipInstallmentsForm = (props) => {
                     className={styles.formWrapper}
                   >
                     <CreateBloks
-                      blokSection={installmentsForm}
+                      blokSection={giveGabForm}
                       bgCardStyle="su-bg-saa-black-dark"
                       urlData={promoCode}
                     />
@@ -104,4 +103,4 @@ const MembershipInstallmentsForm = (props) => {
   );
 };
 
-export default MembershipInstallmentsForm;
+export default MembershipFullPaymentForm;
