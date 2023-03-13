@@ -52,11 +52,11 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
         <a
           href={link.url}
           className={dcnb(
-            '!su-text-digital-red-xlight hocus:!su-text-white su-text-19 su-flex su-items-center su-no-underline hocus:su-underline'
+            '!su-text-digital-red-xlight hocus:!su-text-white su-font-bold su-text-18 su-leading-display su-flex su-items-center su-no-underline hocus:su-underline'
           )}
         >
           {key !== 0 && (
-            <span className="su-w-1 su-h-[2.1rem] su-flex su-bg-digital-red-light su-mx-12" />
+            <span className="su-w-1 su-h-[2rem] su-flex su-bg-digital-red-light su-mx-12" />
           )}
           {link.text}
         </a>
@@ -72,7 +72,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
         </div>
 
         <div className="su-pl-10">
-          <div className=" su-text-23 su-leading-tight su-font-semibold">
+          <div className=" su-text-23 su-leading-display su-font-semibold">
             {userProfile.name?.digitalName || userProfile.session?.firstName}
           </div>
           <ul className="su-list-unstyled su-leading-snug su-flex">

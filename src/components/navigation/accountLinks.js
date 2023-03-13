@@ -9,6 +9,7 @@ import { isExpanded } from '../../utilities/menuHelpers';
 import useDisplay from '../../hooks/useDisplay';
 import NavItem from './navItem';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
+import * as styles from './accountLinks.styles';
 
 const Initial = ({ userProfile }) => {
   const string =
@@ -85,9 +86,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         className="su-flex su-items-center su-group"
                       >
                         <span
-                          className={`su-inline-block su-mr-10 ${
-                            showDesktopXl ? '' : 'su-hidden'
-                          }`}
+                          className={styles.greeting(showDesktopXl)}
                         >{`Hi, ${
                           userProfile.name?.digitalName ||
                           `${userProfile.session.firstName} ${userProfile.session.lastName}`
