@@ -31,7 +31,6 @@ const MembershipInstallmentsForm = (props) => {
   const helmetTitle = `Stanford Alumni Association Membership`;
   const registrant = location?.state?.registrant;
   const promoCode = location?.state?.promoCode;
-  console.log('REGISTRANT PASS THROUGH INSTALLMENTS: ', registrant);
 
   useEffect(() => {
     if (registrant?.su_reg_type !== 'newContact') {
