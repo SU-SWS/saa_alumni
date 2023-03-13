@@ -174,13 +174,19 @@ const MembershipFormPage = (props) => {
                     return false;
                   };
 
-                  let nextPageLink = '/membership/register/form';
+                  let nextPageLink = `${location.pathname.replace(
+                    /\/$/,
+                    ''
+                  )}/form`;
 
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
                     setPaymentType(false);
-                    nextPageLink = '/membership/register/related-contacts';
+                    nextPageLink = `${location.pathname.replace(
+                      /\/$/,
+                      ''
+                    )}/related-contacts`;
                     // If there is no promo code, set the urlData to buy_someone
                     if (appealCode?.length === 0 || promoCode.length === 0) {
                       paymentTypeCode = 'buy_someone';
@@ -190,14 +196,20 @@ const MembershipFormPage = (props) => {
                       !userProfile?.relationships ||
                       userProfile?.relationships.length === 0
                     ) {
-                      nextPageLink = '/membership/register/form';
+                      nextPageLink = `${location.pathname.replace(
+                        /\/$/,
+                        ''
+                      )}/form`;
                     }
                   }
                   if (
                     paymentType === 'installments' &&
                     !Array.from(primaryUser.su_affiliations).includes('Friend')
                   ) {
-                    nextPageLink = '/membership/register/installment/form';
+                    nextPageLink = `${location.pathname.replace(
+                      /\/$/,
+                      ''
+                    )}/installment/form`;
                     // If there is no promo code, set the urlData to alum_myself_install
                     if (appealCode?.length === 0 || promoCode.length === 0) {
                       paymentTypeCode = 'alum_myself_install';

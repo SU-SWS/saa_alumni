@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Helmet } from 'react-helmet';
 import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
-import { Redirect } from '@reach/router';
+import { Redirect, useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
@@ -30,9 +30,11 @@ const RelatedContactSelection = (props) => {
     location,
     pageContext,
   } = props;
+
+  const urlLocation = useLocation();
   const helmetTitle = `Stanford Alumni Association Membership`;
-  // @TODO: Determine how slug can be passed into the Gatsby Link as an absolute vs addition
-  const slug = pageContext.slug.replace(/\/$/, '');
+  const slug = urlLocation.pathname.replace(/\/?related-contacts\/?$/, '');
+  const formLink = `${slug}/form`;
   const promoCode = location?.state?.promoCode;
   const { userProfile } = useContext(AuthContext);
 
@@ -205,10 +207,7 @@ const RelatedContactSelection = (props) => {
                             alignItems="center"
                             className={styles.linkWrapper}
                           >
-                            <Link
-                              to="/membership/register"
-                              className={styles.goBackLink}
-                            >
+                            <Link to={slug} className={styles.goBackLink}>
                               <HeroIcon
                                 iconType="arrow-left"
                                 className={styles.goBackLinkIcon}
@@ -217,7 +216,7 @@ const RelatedContactSelection = (props) => {
                               Go back
                             </Link>
                             <Link
-                              to="/membership/register/form"
+                              to={formLink}
                               className={styles.nextLink(isContactSelected)}
                               state={{
                                 registrant: value[0].registrantsData,
