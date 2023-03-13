@@ -14,7 +14,11 @@ const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => (
   <SbEditable content={blok}>
     <GlobalAlert />
     <CreateBloks blokSection={alert} />
-    <Container as="header" width="full" className="su-relative su-z-50">
+    <Container
+      as="header"
+      width="full"
+      className="su-relative su-z-50 print:su-hidden"
+    >
       <Skiplink />
       <CreateBloks blokSection={masthead} hasHero={hasHero} isDark={isDark} />
     </Container>
