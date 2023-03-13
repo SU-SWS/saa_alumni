@@ -80,6 +80,7 @@ export const ctaGroupDisplay = {
   'adjacent-left':
     'su-flex-col su-items-start lg:su-flex-row lg:su-flex-wrap lg:su-justify-start su--ml-10 children:su-mx-10',
   stack: 'su-flex-col su-items-center children:su-mx-auto',
+  'stack-left': 'su-flex-col',
 };
 
 export const ctaLinkColor = {

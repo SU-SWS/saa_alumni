@@ -92,8 +92,7 @@ const MembershipCard = ({
               Create new <HeroIcon iconType="plus" />
             </div>
           ) : (
-            <button
-              type="button"
+            <div
               className={
                 isSelected
                   ? styles.membershipCardSelectedLink
@@ -101,7 +100,7 @@ const MembershipCard = ({
               }
             >
               {isSelected ? 'Selected' : 'Select'}
-            </button>
+            </div>
           )}
         </FlexBox>
       </button>
