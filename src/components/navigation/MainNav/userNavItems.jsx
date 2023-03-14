@@ -23,10 +23,10 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
       'EDU Student',
     ];
 
-    const alumFilter = userProfile.affiliations.filter((item) =>
+    const directoryAccessFilter = userProfile.affiliations.filter((item) =>
       affiliation.includes(item)
     );
-    const isAlumni = alumFilter.length;
+    const canAccessDirectory = !!directoryAccessFilter?.length;
 
     let profileLinks = [
       {
@@ -35,7 +35,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
       },
     ];
 
-    if (isAlumni) {
+    if (canAccessDirectory) {
       profileLinks = [
         {
           text: 'View Profile',

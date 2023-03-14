@@ -18,7 +18,7 @@ import { FlexBox } from '../../layout/FlexBox';
 
 const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   const [mainMenuOpened, setMainMenuOpened] = useState(false);
-  const [utilityMenuOpen, setUtilityMenuOpen] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const mainMenuRef = useRef(null);
   const userMenuRef = useRef(null);
 
@@ -27,7 +27,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
   };
 
   const toggleUserMenu = () => {
-    setUtilityMenuOpen(!utilityMenuOpen);
+    setUserMenuOpen(!userMenuOpen);
   };
 
   const handleClose = () => {
@@ -35,9 +35,9 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
       mainMenuRef.current.focus();
       setMainMenuOpened(false);
     }
-    if (utilityMenuOpen) {
+    if (userMenuOpen) {
       userMenuRef.current.focus();
-      setUtilityMenuOpen(false);
+      setUserMenuOpen(false);
     }
   };
 
@@ -55,67 +55,69 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           <CreateBloks blokSection={mainMenuGroups} />
         </ul>
       </nav>
-      <nav className="main-nav-mobile lg:su-hidden" aria-label="Main Menu">
-        <button
-          type="button"
-          className={dcnb('su-ml-20', styles.menuCircles)}
-          onClick={toggleMainMenu}
-          aria-expanded={mainMenuOpened}
-          aria-label="Open Main Menu"
-          ref={mainMenuRef}
-        >
-          <MenuIcon aria-hidden="true" className={styles.burgerIconMobile} />
-        </button>
-      </nav>
+      <button
+        type="button"
+        ref={mainMenuRef}
+        className={dcnb('su-ml-20 lg:su-hidden', styles.menuCircles)}
+        onClick={toggleMainMenu}
+        aria-expanded={mainMenuOpened}
+        aria-label="Open Main Menu"
+      >
+        <MenuIcon aria-hidden="true" className={styles.burgerIconMobile} />
+      </button>
 
-      <nav className="main-nav-mobile lg:su-hidden" aria-label="Main Menu">
-        <button
-          type="button"
-          onClick={toggleUserMenu}
-          aria-expanded={utilityMenuOpen}
-          aria-label="Open User Menu"
-          ref={userMenuRef}
-          className="su-ml-20 su-rounded-full su-flex"
-        >
-          <UserHeaderIcon menuCircle />
-        </button>
-      </nav>
+      <button
+        type="button"
+        ref={userMenuRef}
+        onClick={toggleUserMenu}
+        aria-expanded={userMenuOpen}
+        aria-label="Open User Menu"
+        className="lg:su-hidden su-ml-20 su-rounded-full su-flex"
+      >
+        <UserHeaderIcon menuCircle />
+      </button>
 
       <Modal
-        isOpen={mainMenuOpened || utilityMenuOpen}
+        isOpen={mainMenuOpened || userMenuOpen}
         type="main-menu"
         onClose={() => {
           handleClose();
         }}
         ariaLabel={`Stanford Alumni websites ${
-          (mainMenuOpened && 'Main Menu') || (utilityMenuOpen && 'User Menu')
+          (mainMenuOpened && 'Main Menu') || (userMenuOpen && 'User Menu')
         }`}
       >
-        {mainMenuOpened && (
-          <FlexBox
-            alignItems="center"
-            justifyContent="center"
-            className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
-          >
-            <Heading size="base" weight="regular" className="su-mb-0">
-              Menu
-            </Heading>
-          </FlexBox>
-        )}
-        {mainMenuOpened && (
-          <ul
-            className={styles.menuMobileHomesite({ mainMenuOpened })}
-            aria-hidden={!mainMenuOpened}
-          >
-            <CreateBloks blokSection={mainMenuGroups} />
-          </ul>
-        )}
+        <nav
+          aria-label={
+            (mainMenuOpened && 'Main Menu') || (userMenuOpen && 'User Menu')
+          }
+        >
+          {mainMenuOpened && (
+            <FlexBox
+              alignItems="center"
+              justifyContent="center"
+              className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
+            >
+              <Heading size="base" weight="regular" className="su-mb-0">
+                Menu
+              </Heading>
+            </FlexBox>
+          )}
+          {mainMenuOpened && (
+            <ul
+              className={styles.menuMobileHomesite({ mainMenuOpened })}
+              aria-hidden={!mainMenuOpened}
+            >
+              <CreateBloks blokSection={mainMenuGroups} />
+            </ul>
+          )}
 
-        {utilityMenuOpen && (
-          <ul className="su-list-none su-p-0">
-            <AccountLinks />
-          </ul>
-        )}
+          {userMenuOpen && (
+            <ul className="su-list-none su-p-0">
+              <AccountLinks />
+            </ul>
+          )}
+        </nav>
       </Modal>
     </SbEditable>
   );
