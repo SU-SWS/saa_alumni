@@ -99,7 +99,7 @@ const SearchResults = ({ results }) => {
               )}
             </div>
             {result.image && (
-              <div className="su-rs-mt-0 su-w-[15rem] su-h-[10rem] md:su-w-[22.5rem] md:su-h-[15rem] md:su-ml-30">
+              <div className="su-rs-mt-0 su-w-[15rem] su-h-100 md:su-w-[22.5rem] md:su-h-[15rem] md:su-ml-30">
                 <img
                   className="su-block su-object-cover su-object-center su-h-full su-w-full"
                   src={result.image}
