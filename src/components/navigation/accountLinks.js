@@ -20,11 +20,7 @@ const Initial = ({ userProfile }) => {
   return (
     <FlexBox
       justifyContent="center"
-      className={dcnb(
-        'su-transition su-leading su-text-center su-border-2',
-        'su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark',
-        'su-w-full su-h-full'
-      )}
+      className={styles.initialCircle}
       aria-hidden
     >
       {initial}
@@ -71,7 +67,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
               {isAuthenticated && (
                 <>
                   <li
-                    className="su-text-white su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
+                    className="su-relative su-pb-10 lg:su-pt-0 lg:su-pb-0 su-list-none"
                     ref={ref}
                   >
                     {showDesktop && (
@@ -80,7 +76,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         ref={buttonRef}
                         aria-expanded={expanded}
                         onClick={() => setExpanded(!expanded)}
-                        className="su-flex su-items-center su-group"
+                        className="su-flex su-items-center su-group su-text-white"
                       >
                         <span
                           className={styles.greeting(showDesktopXl)}
@@ -91,7 +87,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         <SrOnlyText>
                           {`${expanded ? ' Close' : ' Open'} user menu`}
                         </SrOnlyText>
-                        <div className="su-w-40 su-h-40 su-text-24">
+                        <div className={styles.initialCircleWrapper}>
                           <Initial userProfile={userProfile} />
                         </div>
                       </button>

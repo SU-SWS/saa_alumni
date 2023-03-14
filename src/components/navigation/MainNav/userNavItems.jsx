@@ -1,6 +1,7 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import HeroIcon from '../../simple/heroIcon';
+import { FlexBox } from '../../layout/FlexBox';
 import * as styles from './userNavItems.styles';
 
 const UserNavItems = ({ expanded, Initial, userProfile }) => {
@@ -66,20 +67,23 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
 
   return (
     <div aria-hidden={!expanded} className={styles.menuWrapper(expanded)}>
-      <div className="su-px-26 lg:su-px-18 su-rs-pb-1 su-flex su-items-center su-pt-[1.8rem]">
-        <div className="su-w-[54px] su-h-[54px] su-text-[34px]">
+      <FlexBox
+        alignItems="center"
+        className="su-px-26 lg:su-px-18 su-rs-pb-1 su-pt-18"
+      >
+        <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
           <Initial />
         </div>
 
         <div className="su-pl-10">
-          <div className=" su-text-23 su-leading-display su-font-semibold">
+          <div className="su-text-23 su-text-white su-leading-display su-font-semibold">
             {userProfile.name?.digitalName || userProfile.session?.firstName}
           </div>
           <ul className="su-list-unstyled su-leading-snug su-flex">
             {getProfileLinks()}
           </ul>
         </div>
-      </div>
+      </FlexBox>
 
       <ul className={styles.menu}>
         <li>
