@@ -54,7 +54,7 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
     },
     'arrow-right': {
       heroicon: ArrowRightIcon,
-      baseStyle: 'su-w-08em su-ml-03em su-mt-02em',
+      baseStyle: 'su-w-08em su-ml-03em su--mt-02em',
       animate:
         'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
     },
