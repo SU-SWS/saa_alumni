@@ -654,11 +654,11 @@
 }
 
 /* Membership Recipient First and Last Name */
-.ggeWidget.membership-forms .ggeQuestion.su-name.su-first-name {
+.ggeWidget.membership-forms .ggeQuestion.ggeQuestion--readonly.su-name.su-first-name {
   @apply su-m-0;
 }
 
-.ggeWidget.membership-forms .ggeQuestion.su-name label {
+.ggeWidget.membership-forms .ggeQuestion.ggeQuestion--readonly.su-name label {
   @apply su-hidden;
 }
 
