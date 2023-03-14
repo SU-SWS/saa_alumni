@@ -7,7 +7,7 @@ export const utilityNav2Link =
 export const link =
   'su-flex su-items-baseline su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-text-white hocus:su-bg-cardinal-red-xxdark su-font-semibold !su-underline-offset-[3px] lg:!su-decoration-digital-red-xlight su-text-20';
 export const heroicon =
-  'su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white su-mr-7';
+  'su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hocus:su-text-white su-text-[2.6rem] su-relative su-top-[0.15em]';
 
 export const menuWrapper = (expanded) =>
   dcnb(

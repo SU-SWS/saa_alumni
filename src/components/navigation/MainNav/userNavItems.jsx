@@ -95,6 +95,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
             <HeroIcon
               iconType="arrow-right"
               isAnimate
+              noBaseStyles
               className={styles.heroicon}
             />
           </a>
