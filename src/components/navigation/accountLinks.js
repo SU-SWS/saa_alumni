@@ -7,7 +7,9 @@ import useOnClickOutside from '../../hooks/useOnClickOutside';
 import useEscape from '../../hooks/useEscape';
 import { isExpanded } from '../../utilities/menuHelpers';
 import useDisplay from '../../hooks/useDisplay';
+import { FlexBox } from '../layout/FlexBox';
 import NavItem from './navItem';
+import { Spinner } from './Spinner';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 import * as styles from './accountLinks.styles';
 
@@ -16,16 +18,17 @@ const Initial = ({ userProfile }) => {
     userProfile.name?.digitalName || userProfile.session?.firstName;
   const initial = string?.substr(0, 1);
   return (
-    <div
+    <FlexBox
+      justifyContent="center"
       className={dcnb(
-        'su-flex su-justify-center su-transition su-leading su-text-center su-border-2',
+        'su-transition su-leading su-text-center su-border-2',
         'su-border-digital-red-xlight su-rounded-full group-hover:su-bg-cardinal-red-xdark group-focus:su-bg-cardinal-red-xdark',
         'su-w-full su-h-full'
       )}
       aria-hidden
     >
       {initial}
-    </div>
+    </FlexBox>
   );
 };
 
@@ -60,14 +63,8 @@ const AccountLinks = ({ mainLinkClasses }) => {
     <AuthContext.Consumer>
       {({ isAuthenticated, isAuthenticating, userProfile }) => (
         <>
-          {isAuthenticating && (
-            <div className="su-spinner su-flex su-relative su-w-[4rem] su-h-[4rem]">
-              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin su-delay-75" />
-              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-              <div className="su-block su-absolute su-w-[4rem] su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-            </div>
-          )}
+          {/* Desktop spinner in utility nav */}
+          {isAuthenticating && <Spinner className="su-hidden lg:su-flex" />}
 
           {!isAuthenticating && (
             <>

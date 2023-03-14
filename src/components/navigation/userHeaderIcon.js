@@ -2,6 +2,7 @@ import React from 'react';
 import { UserIcon } from '@heroicons/react/outline';
 import AuthContext from '../../contexts/AuthContext';
 import useDisplay from '../../hooks/useDisplay';
+import { Spinner } from './Spinner';
 import * as styles from './MainNav/mainNav.styles';
 
 const Initial = ({ string, isAuthenticated, menuCircle }) => {
@@ -28,14 +29,8 @@ const UserHeaderIcon = ({ menuCircle }) => {
     <AuthContext.Consumer>
       {({ isAuthenticated, isAuthenticating, userProfile }) => (
         <>
-          {isAuthenticating && (
-            <div className="su-spinner su-flex su-relative su-w-[3.4rem] su-h-[3.4rem] lg:su-w-[4rem] lg:su-h-[4rem]">
-              <div className="su-block su-absolute su-w-[3.4rem] su-h-[3.4rem] lg:su-w-[4rem] lg:su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-              <div className="su-block su-absolute su-w-[3.4rem] su-h-[3.4rem] lg:su-w-[4rem] lg:su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin su-delay-75" />
-              <div className="su-block su-absolute su-w-[3.4rem] su-h-[3.4rem] lg:su-w-[4rem] lg:su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-              <div className="su-block su-absolute su-w-[3.4rem] su-h-[3.4rem] lg:su-w-[4rem] lg:su-h-[4rem] su-border-[.2rem] su-border-[white_transparent_transparent_transparent] su-rounded-full su-box-border su-animate-spin" />
-            </div>
-          )}
+          {/* Mobile Spinner in place of avatar */}
+          {isAuthenticating && <Spinner className="lg:su-hidden" />}
 
           {!isAuthenticating && (
             <div className="su-flex su-items-center su-group su-relative">

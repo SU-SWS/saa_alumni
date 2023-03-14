@@ -5,6 +5,7 @@ import { MenuIcon } from '@heroicons/react/outline';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import * as styles from './mainNav.styles';
+import { Heading } from '../../simple/Heading';
 import Modal from '../../layout/Modal/Modal';
 import AccountLinks from '../accountLinks';
 import UserHeaderIcon from '../userHeaderIcon';
@@ -96,7 +97,9 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
             justifyContent="center"
             className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
           >
-            Menu
+            <Heading size="base" weight="regular" className="su-mb-0">
+              Menu
+            </Heading>
           </FlexBox>
         )}
         {mainMenuOpened && (
