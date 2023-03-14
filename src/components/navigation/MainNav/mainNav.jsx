@@ -58,7 +58,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
       <button
         type="button"
         ref={mainMenuRef}
-        className={dcnb('su-ml-20 lg:su-hidden', styles.menuCircles)}
+        className={dcnb('su-ml-20', styles.rootMobile, styles.menuCircles)}
         onClick={toggleMainMenu}
         aria-expanded={mainMenuOpened}
         aria-label="Open Main Menu"
