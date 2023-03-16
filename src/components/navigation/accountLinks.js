@@ -24,7 +24,11 @@ const Initial = ({ userProfile }) => {
       className={styles.initialCircle}
       aria-hidden
     >
-      {initial}
+      {userProfile?.profilePhotoURL ? (
+        <PrivateImage filename={userProfile.profilePhotoURL} />
+      ) : (
+        initial
+      )}
     </FlexBox>
   );
 };
@@ -89,14 +93,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                           {`${expanded ? ' Close' : ' Open'} user menu`}
                         </SrOnlyText>
                         <div className={styles.initialCircleWrapper}>
-                          {userProfile?.profilePhotoURL && (
-                            <PrivateImage
-                              filename={userProfile.profilePhotoURL}
-                            />
-                          )}
-                          {!userProfile?.profilePhotoURL && (
-                            <Initial userProfile={userProfile} />
-                          )}
+                          <Initial userProfile={userProfile} />
                         </div>
                       </button>
                     )}
