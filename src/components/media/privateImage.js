@@ -23,7 +23,9 @@ const PrivateImage = ({
 
   return (
     <img
-      src={`https://assets.stanford.edu/p/${width}x0/${encodeURIComponent(signedUrl)}`}
+      src={`https://assets.stanford.edu/p/${width}x0/${encodeURIComponent(
+        signedUrl
+      )}`}
       className={dcnb('su-object-cover', className)}
       alt={alt ?? ''}
       loading={loading}
