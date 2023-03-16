@@ -12,6 +12,7 @@ import NavItem from './navItem';
 import { Spinner } from './Spinner';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 import * as styles from './accountLinks.styles';
+import PrivateImage from '../media/privateImage';
 
 const Initial = ({ userProfile }) => {
   const string =
@@ -88,7 +89,14 @@ const AccountLinks = ({ mainLinkClasses }) => {
                           {`${expanded ? ' Close' : ' Open'} user menu`}
                         </SrOnlyText>
                         <div className={styles.initialCircleWrapper}>
-                          <Initial userProfile={userProfile} />
+                          {userProfile?.profilePhotoURL && (
+                            <PrivateImage
+                              filename={userProfile.profilePhotoURL}
+                            />
+                          )}
+                          {!userProfile?.profilePhotoURL && (
+                            <Initial userProfile={userProfile} />
+                          )}
                         </div>
                       </button>
                     )}

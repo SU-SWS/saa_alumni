@@ -3,6 +3,7 @@ import { dcnb } from 'cnbuilder';
 import HeroIcon from '../../simple/heroIcon';
 import { FlexBox } from '../../layout/FlexBox';
 import * as styles from './userNavItems.styles';
+import PrivateImage from '../../media/privateImage';
 
 const UserNavItems = ({ expanded, Initial, userProfile }) => {
   const getProfileLinks = () => {
@@ -49,7 +50,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
     }
 
     return profileLinks.map((link, key) => (
-      <li className="su-m-0">
+      <li className="su-m-0" key={link.url}>
         <a
           href={link.url}
           className={dcnb(
@@ -72,7 +73,10 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
         className="su-px-26 lg:su-px-18 su-rs-pb-1 su-pt-18"
       >
         <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
-          <Initial />
+          {userProfile?.profilePhotoURL && (
+            <PrivateImage filename={userProfile.profilePhotoURL} />
+          )}
+          {!userProfile?.profilePhotoURL && <Initial />}
         </div>
 
         <div className="su-pl-10">
@@ -95,7 +99,6 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
             <HeroIcon
               iconType="arrow-right"
               isAnimate
-              noBaseStyles
               className={styles.heroicon}
             />
           </a>
