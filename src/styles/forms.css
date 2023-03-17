@@ -799,7 +799,7 @@
   @apply su-hidden;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--instructions.su-terms-and-conditions {
-  @apply su-rs-mb-1;
+  @apply su-rs-mb-1 su-flex su-flex-col su-justify-start su-w-full;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
   @apply su-items-center;
