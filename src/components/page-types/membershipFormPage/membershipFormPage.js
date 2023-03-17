@@ -298,9 +298,14 @@ const MembershipFormPage = (props) => {
                           >
                             <div className={styles.paymentInnerWrapper}>
                               <div className={styles.paymentHeadingWrapper}>
-                                <p className={styles.paymentHeading}>
+                                <Heading
+                                  level={2}
+                                  size={2}
+                                  font="serif"
+                                  className="su-mb-0"
+                                >
                                   Payment options
-                                </p>
+                                </Heading>
                                 <p>One time or installments</p>
                               </div>
                               <Grid

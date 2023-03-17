@@ -10,7 +10,6 @@ export const selectionWrapper =
   'sm:su-absolute su-self-end sm:su-self-auto su-right-0 md:su-right-[-20px] lg:su-right-0 su-text-16 su-font-semibold';
 export const checkLinkIcon =
   'su-inline-block su-text-saa-electric-blue su-w-[1.4em] su-mt-[-2px] su-mr-[2px]';
-export const heading = 'su-text-center su-type-2 su-font-bold su-leading';
 export const subheading = 'su-text-center su-type-0 su-rs-mb-1';
 export const membershipCardLink =
   'su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-bg-transparent group-hocus:su-text-white group-hocus:su-bg-gradient-to-tr group-hocus:su-from-palo-verde-dark group-hocus:su-to-saa-electric-blue group-hocus:su-shadow-md';

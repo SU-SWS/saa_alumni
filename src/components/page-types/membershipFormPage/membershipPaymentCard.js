@@ -3,6 +3,7 @@ import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './membershipPaymentCard.styles';
+import { Heading } from '../../simple/Heading';
 
 const MembershipPaymentCard = ({
   heading,
@@ -13,7 +14,7 @@ const MembershipPaymentCard = ({
   id,
   isSelected,
 }) => (
-  <FlexBox direction="col" as="article" className={styles.root}>
+  <FlexBox direction="col" className={styles.root}>
     <button
       type="button"
       className={dcnb(
@@ -34,7 +35,9 @@ const MembershipPaymentCard = ({
           </div>
         )}
       </FlexBox>
-      <p className={styles.heading}>{heading}</p>
+      <Heading level={3} size={2} className="su-mb-0 su-rs-mt-1">
+        {heading}
+      </Heading>
       <div className={styles.subheadingAndCaptionWrapper}>
         <p className={styles.subheading}>{subheading}</p>
         {caption && <p className={styles.caption}>{caption}</p>}

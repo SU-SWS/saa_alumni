@@ -4,6 +4,7 @@ import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
 import * as styles from './MembershipCard.styles';
+import { Heading } from '../../simple/Heading';
 
 const MembershipCard = ({
   heading,
@@ -43,7 +44,7 @@ const MembershipCard = ({
   };
 
   return (
-    <FlexBox direction="col" as="article" className={styles.root}>
+    <FlexBox direction="col" className={styles.root}>
       <button
         type="button"
         className={dcnb(
@@ -78,8 +79,10 @@ const MembershipCard = ({
             )}
           </FlexBox>
         </FlexBox>
-        <div className={styles.heading}>{heading}</div>
-        <div className={styles.subheading}>{subheading}</div>
+        <Heading level={3} size={2} className="su-mb-0">
+          {heading}
+        </Heading>
+        <p className={styles.subheading}>{subheading}</p>
         <FlexBox justifyContent="center">
           {newContact ? (
             <div
