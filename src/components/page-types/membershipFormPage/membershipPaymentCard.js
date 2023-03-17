@@ -13,7 +13,7 @@ const MembershipPaymentCard = ({
   id,
   isSelected,
 }) => (
-  <FlexBox direction="col" as="article" className={styles.root}>
+  <FlexBox direction="col" className={styles.root}>
     <button
       type="button"
       className={dcnb(
