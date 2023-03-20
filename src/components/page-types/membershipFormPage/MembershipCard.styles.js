@@ -1,7 +1,7 @@
 export const root =
   'su-group su-relative su-break-words su-border-black su-max-w-full su-bg-saa-black-dark';
 export const membershipCardWrapper =
-  'su-basefont-23 su-rs-p-3 su-stretch-link su-w-full su-transition-all su-rounded su-border su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue focus:su-outline-4 focus:su-outline-offset-4';
+  'su-basefont-23 su-rs-p-3 su-stretch-link su-w-full su-transition-all su-rounded su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue focus:su-outline-4 focus:su-outline-offset-4';
 export const initialAndSelectionWrapper =
   'su-flex-col lg:su-flex-row su-items-center su-gap-xs su-relative su-rs-mb-0';
 export const initialWrapper =

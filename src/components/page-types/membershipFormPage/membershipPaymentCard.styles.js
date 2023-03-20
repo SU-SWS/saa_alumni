@@ -1,7 +1,7 @@
 export const root =
   'su-group su-relative su-bg-saa-black-dark su-break-words su-border-black su-w-full sm:su-max-w-[42rem] md:su-max-w-full';
 export const membershipPaymentCardWrapper =
-  'su-basefont-23 su-rs-px-3 su-rs-pt-1 su-rs-pb-4 su-stretch-link su-w-full su-transition-all su-rounded su-border su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue focus:su-outline-4 focus:su-outline-offset-4';
+  'su-basefont-23 su-rs-px-3 su-rs-pt-1 su-rs-pb-4 su-stretch-link su-w-full su-transition-all su-rounded su-border-3 su-border-white hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue focus:su-outline-4 focus:su-outline-offset-4';
 export const initialAndSelectionWrapper =
   'su-flex-col lg:su-flex-row su-items-center su-gap-xs su-relative';
 export const subheading = 'su-mb-0';
