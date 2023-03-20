@@ -38,7 +38,7 @@ const EmbedCard = ({ blok: { embed: html, injectSuid }, blok }) => {
       // https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
       const miniDom = document.createRange().createContextualFragment(html);
       if (injectSuid && miniDom.childNodes[0].src) {
-        miniDom.childNodes[0].src = `${miniDom.childNodes[0].src}?suid=${userProfile.encodedSUID}`;
+        miniDom.childNodes[0].src = `${miniDom.childNodes[0].src}?suid=${userProfile.session.SUID}`;
       }
       // Clear the container.
       myEmbed.current.innerHTML = '';
