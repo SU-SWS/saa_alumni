@@ -215,21 +215,31 @@ const RelatedContactSelection = (props) => {
                               />
                               Go back
                             </Link>
-                            <Link
-                              to={formLink}
-                              className={styles.nextLink(isContactSelected)}
-                              state={{
-                                registrant: value[0].registrantsData,
-                                promoCode,
-                              }}
-                            >
-                              Next
-                              <HeroIcon
-                                iconType="arrow-right"
-                                className={styles.nextLinkIcon}
-                                isAnimate={!isContactSelected}
-                              />
-                            </Link>
+                            {isContactSelected ? (
+                              <div className={styles.nextLinkDisabled}>
+                                Next
+                                <HeroIcon
+                                  iconType="arrow-right"
+                                  className={styles.nextLinkIcon}
+                                />
+                              </div>
+                            ) : (
+                              <Link
+                                to={formLink}
+                                className={styles.nextLinkActive}
+                                state={{
+                                  registrant: value[0].registrantsData,
+                                  promoCode,
+                                }}
+                              >
+                                Next
+                                <HeroIcon
+                                  iconType="arrow-right"
+                                  className={styles.nextLinkIcon}
+                                  isAnimate
+                                />
+                              </Link>
+                            )}
                           </FlexBox>
                           <Grid gap xs={12}>
                             <GridCell
