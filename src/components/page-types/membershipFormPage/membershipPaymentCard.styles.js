@@ -18,4 +18,4 @@ export const subheadingAndCaptionWrapper = 'su-rs-mb-0';
 export const membershipType = 'su-mb-0';
 export const membershipCost = 'su-type-2 su-font-bold su-mb-0';
 export const costAndInfoTextWrapper = 'su-rs-mb-1';
-export const infoText = 'su-italic su-text-black-40 su-mb-0 su-text-16';
+export const infoText = 'su-text-black-40 su-mb-0 su-text-16';
