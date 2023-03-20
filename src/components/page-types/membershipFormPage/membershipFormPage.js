@@ -359,21 +359,31 @@ const MembershipFormPage = (props) => {
                             </FlexBox>
                           </FlexBox>
                           <FlexBox justifyContent="center">
-                            <Link
-                              to={nextPageLink}
-                              className={styles.nextLink(!isContactSelected())}
-                              state={{
-                                registrant: value[0].registrantsData,
-                                promoCode: promoCode || paymentTypeCode,
-                              }}
-                            >
-                              Select membership type
-                              <HeroIcon
-                                iconType="arrow-right"
-                                className={styles.nextLinkIcon}
-                                isAnimate={!isContactSelected}
-                              />
-                            </Link>
+                            {isContactSelected() ? (
+                              <Link
+                                to={nextPageLink}
+                                className={styles.nextLinkActive}
+                                state={{
+                                  registrant: value[0].registrantsData,
+                                  promoCode: promoCode || paymentTypeCode,
+                                }}
+                              >
+                                Select membership type
+                                <HeroIcon
+                                  iconType="arrow-right"
+                                  className={styles.nextLinkIcon}
+                                  isAnimate
+                                />
+                              </Link>
+                            ) : (
+                              <div className={styles.nextLinkDisabled}>
+                                Select membership type
+                                <HeroIcon
+                                  iconType="arrow-right"
+                                  className={styles.nextLinkIcon}
+                                />
+                              </div>
+                            )}
                           </FlexBox>
                           <Grid gap xs={12}>
                             <GridCell

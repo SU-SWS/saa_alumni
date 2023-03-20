@@ -1,5 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
+import { SAALinkButton } from '../../cta/SAALinkButton';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
@@ -22,14 +23,13 @@ const MembershipInfoText = ({
     <p className={styles.bodyText}>{body}</p>
     {displayBenefitsButton && (
       <FlexBox justifyContent="center">
-        <a href={benefitsLink} className={styles.benefitsLink}>
-          {benefitsButtonText || 'Benefits of Membership'}
-          <HeroIcon
-            iconType="arrow-right"
-            className={styles.benefitsLinkIcon}
-            isAnimate
-          />
-        </a>
+        <SAALinkButton
+          link={benefitsLink}
+          buttonStyle="ghost"
+          className={styles.benefitsLink}
+        >
+          {benefitsButtonText || 'Benefits of membership'}
+        </SAALinkButton>
       </FlexBox>
     )}
   </SbEditable>

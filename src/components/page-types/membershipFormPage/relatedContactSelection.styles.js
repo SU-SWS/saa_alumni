@@ -18,13 +18,10 @@ export const cardGridWrapper =
   'su-m-0 sm:su-mx-45 md:su-mx-61 lg:su-mx-92 xl:su-m-0';
 // Links
 export const linkWrapper = 'su-rs-mt-0 su-rs-mb-5';
-export const nextLink = (disabled) =>
-  dcnb(
-    'su-group su-flex su-items-end su-text-18 md:su-text-24 su-no-underline su-font-regular su-text-white hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18',
-    disabled
-      ? 'su-pointer-events-none su-bg-black-70 su-border-black-70 hocus:su-bg-black-70 hocus:su-border-black-70'
-      : 'hocus:su-underline su-bg-digital-red su-border-digital-red hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark'
-  );
+export const nextLinkDisabled =
+  'su-group su-flex su-items-end su-text-18 md:su-text-24 su-no-underline su-font-regular su-text-white hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-pointer-events-none su-bg-black-70 su-border-black-70 hocus:su-outline-0 hocus:su-bg-black-70 hocus:su-border-black-70';
+export const nextLinkActive =
+  'su-group su-flex su-items-end su-text-18 md:su-text-24 su-no-underline su-font-regular su-text-white hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 hocus:su-underline su-bg-digital-red su-border-digital-red hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark';
 export const nextLinkIcon = 'su-w-1em su-text-white group-hocus:su-text-white';
 export const goBackLink =
   'su-rs-mr-3 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline hocus:su-underline su-text-white hocus:su-text-white su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-solid su-border-3 su-transition-colors su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-bg-transparent group-hocus:su-text-white group-hocus:su-bg-gradient-to-tr group-hocus:su-from-palo-verde-dark group-hocus:su-to-saa-electric-blue group-hocus:su-shadow-md';
