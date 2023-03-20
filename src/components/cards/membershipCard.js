@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
+import { Link } from 'gatsby';
 import CtaGroup from '../cta/ctaGroup';
 import AuthContext from '../../contexts/AuthContext';
 
@@ -117,10 +118,12 @@ const MembershipCard = ({ blok }) => {
                   </div>
                   <ul className="su-list-none su-p-0 su-m-0">
                     <li>
-                      <a href="http://TODO">Become an SAA Member</a>
+                      <Link to="http://TODO">Become an SAA Member</Link>
                     </li>
                     <li>
-                      <a href="http://TODO">See the full list of Benefits</a>
+                      <Link to="http://TODO">
+                        See the full list of Benefits
+                      </Link>
                     </li>
                   </ul>
                 </div>
