@@ -60,7 +60,7 @@ const MembershipCard = ({ blok }) => {
   return (
     <>
       {!auth.isAuthenticating && (
-        <div className="sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto lg:su--mt-[70px]">
+        <div className="print:su-w-[3in] print:su-h-[2in] sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto lg:su--mt-[70px]">
           {!noCard && (
             <h2 className="su-mb-34 md:su-mb-58 su-font-serif">Your card</h2>
           )}
