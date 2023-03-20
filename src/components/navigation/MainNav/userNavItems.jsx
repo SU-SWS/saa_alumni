@@ -3,9 +3,8 @@ import { dcnb } from 'cnbuilder';
 import HeroIcon from '../../simple/heroIcon';
 import { FlexBox } from '../../layout/FlexBox';
 import * as styles from './userNavItems.styles';
-import PrivateImage from '../../media/privateImage';
 
-const UserNavItems = ({ expanded, Initial, userProfile }) => {
+const UserNavItems = ({ expanded, Circle, userProfile }) => {
   const getProfileLinks = () => {
     const affiliation = [
       'GSB Alum',
@@ -73,7 +72,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
         className="su-px-26 lg:su-px-18 su-rs-pb-1 su-pt-18"
       >
         <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
-          <Initial />
+          <Circle />
         </div>
 
         <div className="su-pl-10">

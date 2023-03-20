@@ -14,7 +14,7 @@ import { SrOnlyText } from '../accessibility/SrOnlyText';
 import * as styles from './accountLinks.styles';
 import PrivateImage from '../media/privateImage';
 
-const Initial = ({ userProfile }) => {
+const Circle = ({ userProfile }) => {
   const string =
     userProfile.name?.digitalName || userProfile.session?.firstName;
   const initial = string?.substr(0, 1);
@@ -93,7 +93,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                           {`${expanded ? ' Close' : ' Open'} user menu`}
                         </SrOnlyText>
                         <div className={styles.initialCircleWrapper}>
-                          <Initial userProfile={userProfile} />
+                          <Circle userProfile={userProfile} />
                         </div>
                       </button>
                     )}
@@ -101,7 +101,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     <UserNavItems
                       expanded={expanded}
                       userProfile={userProfile}
-                      Initial={() => <Initial userProfile={userProfile} />}
+                      Circle={() => <Circle userProfile={userProfile} />}
                     />
                   </li>
                 </>
