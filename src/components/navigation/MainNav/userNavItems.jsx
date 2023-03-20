@@ -73,10 +73,7 @@ const UserNavItems = ({ expanded, Initial, userProfile }) => {
         className="su-px-26 lg:su-px-18 su-rs-pb-1 su-pt-18"
       >
         <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
-          {userProfile?.profilePhotoURL && (
-            <PrivateImage filename={userProfile.profilePhotoURL} />
-          )}
-          {!userProfile?.profilePhotoURL && <Initial />}
+          <Initial />
         </div>
 
         <div className="su-pl-10">
