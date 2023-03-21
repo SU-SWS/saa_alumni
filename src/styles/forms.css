@@ -158,9 +158,7 @@
 }
 .ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration,
 .ggeTally {
-  @apply su-border-2 su-border-transparent su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem];
-  border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
-  border-image-slice: 1;
+  @apply su-border-3 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue;
 }
 
 .ggeTally tr {
