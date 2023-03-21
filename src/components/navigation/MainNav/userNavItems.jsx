@@ -1,10 +1,11 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import HeroIcon from '../../simple/heroIcon';
+import { Avatar } from '../Avatar';
 import { FlexBox } from '../../layout/FlexBox';
 import * as styles from './userNavItems.styles';
 
-const UserNavItems = ({ expanded, Circle, userProfile }) => {
+const UserNavItems = ({ expanded, userProfile }) => {
   const getProfileLinks = () => {
     const affiliation = [
       'GSB Alum',
@@ -72,7 +73,7 @@ const UserNavItems = ({ expanded, Circle, userProfile }) => {
         className="su-px-26 lg:su-px-18 su-rs-pb-1 su-pt-18"
       >
         <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
-          <Circle />
+          <Avatar userProfile={userProfile} />
         </div>
 
         <div className="su-pl-10">

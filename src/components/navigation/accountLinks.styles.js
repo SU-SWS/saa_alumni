@@ -7,7 +7,7 @@ export const initialCircle =
 
 export const greeting = (showDesktopXl) =>
   dcnb(
-    'su-inline-block su-mr-10 group-hocus:su-underline group-hocus:su-decoration-digital-red-xlight group-hocus:su-decoration-[0.12em]',
+    'su-inline-block su-mr-10 group-hocus:su-underline group-hocus:su-decoration-digital-red-xlight group-hocus:su-decoration-[0.12em] su-max-w-300 su-leading-tight',
     {
       'su-hidden': !showDesktopXl,
     }

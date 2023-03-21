@@ -1,37 +1,17 @@
 import React, { useRef, useState } from 'react';
 import { useLocation } from '@reach/router';
 import { dcnb } from 'cnbuilder';
+import { Avatar } from './Avatar';
 import UserNavItems from './MainNav/userNavItems';
 import AuthContext from '../../contexts/AuthContext';
 import useOnClickOutside from '../../hooks/useOnClickOutside';
 import useEscape from '../../hooks/useEscape';
 import { isExpanded } from '../../utilities/menuHelpers';
 import useDisplay from '../../hooks/useDisplay';
-import { FlexBox } from '../layout/FlexBox';
 import NavItem from './navItem';
 import { Spinner } from './Spinner';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 import * as styles from './accountLinks.styles';
-import PrivateImage from '../media/privateImage';
-
-const Circle = ({ userProfile }) => {
-  const string =
-    userProfile.name?.digitalName || userProfile.session?.firstName;
-  const initial = string?.substr(0, 1);
-  return (
-    <FlexBox
-      justifyContent="center"
-      className={styles.initialCircle}
-      aria-hidden
-    >
-      {userProfile?.profilePhotoURL ? (
-        <PrivateImage filename={userProfile.profilePhotoURL} />
-      ) : (
-        initial
-      )}
-    </FlexBox>
-  );
-};
 
 const AccountLinks = ({ mainLinkClasses }) => {
   const location = useLocation();
@@ -93,7 +73,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                           {`${expanded ? ' Close' : ' Open'} user menu`}
                         </SrOnlyText>
                         <div className={styles.initialCircleWrapper}>
-                          <Circle userProfile={userProfile} />
+                          <Avatar userProfile={userProfile} />
                         </div>
                       </button>
                     )}
@@ -101,7 +81,6 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     <UserNavItems
                       expanded={expanded}
                       userProfile={userProfile}
-                      Circle={() => <Circle userProfile={userProfile} />}
                     />
                   </li>
                 </>

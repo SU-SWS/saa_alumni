@@ -29,6 +29,7 @@ const PrivateImage = ({
       className={dcnb('su-object-cover', className)}
       alt={alt ?? ''}
       loading={loading}
+      width={width}
       {...props}
     />
   );

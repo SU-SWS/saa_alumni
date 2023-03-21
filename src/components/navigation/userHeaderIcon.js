@@ -1,39 +1,26 @@
 import React from 'react';
 import { UserIcon } from '@heroicons/react/outline';
+import { Avatar } from './Avatar';
 import AuthContext from '../../contexts/AuthContext';
-import { FlexBox } from '../layout/FlexBox';
 import { Spinner } from './Spinner';
 import * as styles from './MainNav/mainNav.styles';
 
-const Initial = ({ string, isAuthenticated, menuCircle }) => {
-  const initial = string && string.substr(0, 1);
-  const classes = menuCircle ? styles.menuCircles : styles.headerUserCircle;
-
-  return (
-    <div className={classes} aria-hidden>
-      {isAuthenticated && initial}
-      {!isAuthenticated && <UserIcon className="su-w-20 su-h-20" aria-hidden />}
-    </div>
-  );
-};
-
-const UserHeaderIcon = ({ menuCircle }) => (
+const UserHeaderIcon = () => (
   <AuthContext.Consumer>
     {({ isAuthenticated, isAuthenticating, userProfile }) => (
       <>
-        {/* Mobile Spinner in place of avatar */}
+        {/* On mobile while logged out, display generic HeroIcon user in circle */}
+        {!isAuthenticated && !isAuthenticating && (
+          <div className={styles.menuCircles} aria-hidden>
+            <UserIcon className="su-w-20 su-h-20" aria-hidden />
+          </div>
+        )}
+        {/* While authenticating on mobile, display Spinner in place of avatar */}
         {isAuthenticating && <Spinner className="lg:su-hidden" />}
 
-        {!isAuthenticating && (
-          <FlexBox alignItems="center" className="su-group su-relative">
-            <Initial
-              isAuthenticated={isAuthenticated}
-              menuCircle={menuCircle}
-              string={
-                isAuthenticated && userProfile?.name?.fullNameParsed?.firstName
-              }
-            />
-          </FlexBox>
+        {/* If authenticated, show the avatar (initial or image) */}
+        {!isAuthenticating && isAuthenticated && (
+          <Avatar userProfile={userProfile} className={styles.menuCircles} />
         )}
       </>
     )}
