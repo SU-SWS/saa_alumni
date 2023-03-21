@@ -24,7 +24,7 @@ const UserNavItems = ({ expanded, userProfile }) => {
       'EDU Student',
     ];
 
-    const directoryAccessFilter = userProfile.affiliations.filter((item) =>
+    const directoryAccessFilter = userProfile?.affiliations?.filter((item) =>
       affiliation.includes(item)
     );
     const canAccessDirectory = !!directoryAccessFilter?.length;
@@ -77,7 +77,7 @@ const UserNavItems = ({ expanded, userProfile }) => {
         </div>
 
         <div className="su-pl-10">
-          <div className="su-text-23 su-text-white su-leading-display su-font-semibold">
+          <div className="su-break-words su-text-23 su-text-white su-leading-display su-font-semibold su-max-w-300 sm:su-max-w-500 md:su-max-w-700">
             {userProfile.name?.digitalName || userProfile.session?.firstName}
           </div>
           <ul className="su-list-unstyled su-leading-snug su-flex">
