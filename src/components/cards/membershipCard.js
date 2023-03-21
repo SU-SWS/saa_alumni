@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
+import { Link } from 'gatsby';
 import CtaGroup from '../cta/ctaGroup';
 import AuthContext from '../../contexts/AuthContext';
 
@@ -60,7 +61,7 @@ const MembershipCard = ({ blok }) => {
   return (
     <>
       {!auth.isAuthenticating && (
-        <div className="sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto lg:su--mt-[70px]">
+        <div className="print:su-w-[3in] print:su-h-[2in] sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto lg:su--mt-[70px]">
           {!noCard && (
             <h2 className="su-mb-34 md:su-mb-58 su-font-serif">Your card</h2>
           )}
@@ -117,10 +118,12 @@ const MembershipCard = ({ blok }) => {
                   </div>
                   <ul className="su-list-none su-p-0 su-m-0">
                     <li>
-                      <a href="http://TODO">Become an SAA Member</a>
+                      <Link to="http://TODO">Become an SAA Member</Link>
                     </li>
                     <li>
-                      <a href="http://TODO">See the full list of Benefits</a>
+                      <Link to="http://TODO">
+                        See the full list of Benefits
+                      </Link>
                     </li>
                   </ul>
                 </div>
