@@ -1,10 +1,10 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
-import { Link } from 'gatsby';
-import CtaGroup from '../cta/ctaGroup';
+import SbEditable from 'storyblok-react';
 import AuthContext from '../../contexts/AuthContext';
+import CreateBloks from '../../utilities/createBloks';
 
-const MembershipCard = ({ blok }) => {
+const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   const [bgColor, setBgColor] = useState('su-bg-[#C3363A]');
   const [noCard, setNoCard] = useState(false);
   const [bgImage, setBgImage] = useState(null);
@@ -59,7 +59,7 @@ const MembershipCard = ({ blok }) => {
   }, [auth.isAuthenticating, auth.isAuthenticated]);
 
   return (
-    <>
+    <SbEditable content={blok}>
       {!auth.isAuthenticating && (
         <div className="print:su-w-[3in] print:su-h-[2in] sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto lg:su--mt-[70px]">
           {!noCard && (
@@ -116,27 +116,20 @@ const MembershipCard = ({ blok }) => {
                     You are not currently a Stanford Alumni Association (SAA)
                     Member
                   </div>
-                  <ul className="su-list-none su-p-0 su-m-0">
-                    <li>
-                      <Link to="http://TODO">Become an SAA Member</Link>
-                    </li>
-                    <li>
-                      <Link to="http://TODO">
-                        See the full list of Benefits
-                      </Link>
-                    </li>
-                  </ul>
+                  <div className="[&>.cta-group]:su-gap-[10px] [&>.cta-group]:sm:su-gap-[20px]">
+                    <CreateBloks blokSection={publicCtaGroup} />
+                  </div>
                 </div>
               ) : (
                 <div className="[&>.cta-group]:su-gap-[10px] [&>.cta-group]:sm:su-gap-[20px]">
-                  <CtaGroup blok={blok.ctaGroup[0]} />
+                  <CreateBloks blokSection={ctaGroup} />
                 </div>
               )}
             </div>
           </div>
         </div>
       )}
-    </>
+    </SbEditable>
   );
 };
 
