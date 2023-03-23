@@ -365,7 +365,7 @@ class ggTripForm {
             list.prepend(message);
           }
         },
-        maxResults: 15,
+        maxResults: 10,
         noResults: true,
       },
       resultItem: {
