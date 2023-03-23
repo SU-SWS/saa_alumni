@@ -30,7 +30,7 @@ export const paymentOuterWrapper = (paymentOptionSection) =>
       : 'su-invisible su-scale-y-0 su-h-0 su-opacity-0 su-cursor-none'
   );
 export const paymentInnerWrapper =
-  'su-rs-mb-3 su-bg-gradient-to-tr su-from-saa-electric-blue-dark su-to-palo-verde-xdark su-rs-px-1 sm:su-rs-px-2 su-rs-pb-5';
+  'su-rs-mb-3 su-bg-gradient-to-tr su-to-saa-electric-blue-dark su-from-palo-verde-xdark su-rs-px-1 sm:su-rs-px-2 su-rs-pb-5';
 export const paymentHeadingWrapper = 'su-text-center su-rs-pt-4 su-rs-pb-0';
 export const paymentCardsWrapper =
   'sm:su-rs-p-2 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded';
