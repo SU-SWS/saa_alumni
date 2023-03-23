@@ -45,7 +45,7 @@ const MembershipFormPage = (props) => {
   const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
 
-  // If url parameters include an appeal code, parse and set the promo code input value
+  // If url parameters include an appeal_code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
   let paymentTypeCode =
