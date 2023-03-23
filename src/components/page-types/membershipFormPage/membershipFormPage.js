@@ -187,10 +187,8 @@ const MembershipFormPage = (props) => {
                       /\/$/,
                       ''
                     )}/related-contacts`;
-                    // If there is no promo code, set the urlData to buy_someone
-                    if (appealCode?.length === 0 || promoCode.length === 0) {
-                      paymentTypeCode = 'buy_someone';
-                    }
+                    // If the user is purchasing for a Someone else, the payment code should always be defined
+                    paymentTypeCode = 'buy_someone';
                     // If there is no related contacts available, go directly to the form
                     if (
                       !userProfile?.relationships ||
@@ -361,7 +359,7 @@ const MembershipFormPage = (props) => {
                           <FlexBox justifyContent="center">
                             {isContactSelected() ? (
                               <Link
-                                to={nextPageLink}
+                                to={nextPageLink + location.search}
                                 className={styles.nextLinkActive}
                                 state={{
                                   registrant: value[0].registrantsData,

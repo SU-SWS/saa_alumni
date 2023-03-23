@@ -207,7 +207,10 @@ const RelatedContactSelection = (props) => {
                             alignItems="center"
                             className={styles.linkWrapper}
                           >
-                            <Link to={slug} className={styles.goBackLink}>
+                            <Link
+                              to={slug + location.search}
+                              className={styles.goBackLink}
+                            >
                               <HeroIcon
                                 iconType="arrow-left"
                                 className={styles.goBackLinkIcon}
@@ -225,7 +228,7 @@ const RelatedContactSelection = (props) => {
                               </div>
                             ) : (
                               <Link
-                                to={formLink}
+                                to={formLink + location.search}
                                 className={styles.nextLinkActive}
                                 state={{
                                   registrant: value[0].registrantsData,
