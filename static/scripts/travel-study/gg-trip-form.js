@@ -231,7 +231,7 @@ class ggTripForm {
         </div>
         <div class="summary-item">
           <h3>Deposit</h3>
-          <p>${trips[uuid].deposi || 'N/A'}</p>
+          <p>${trips[uuid].deposit || 'N/A'}</p>
         </div>
         <div class="summary-item">
           <h3>Trip size</h3>
