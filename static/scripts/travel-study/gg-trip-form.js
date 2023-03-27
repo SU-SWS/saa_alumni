@@ -293,7 +293,7 @@ class ggTripForm {
 
     // Load GiveGab Form Into Place
     const { uuid } = this;
-    const { tripId } = this.trips[uuid];
+    const tripId = this.trips[uuid].tripId.replace(/\s+/g, '');
     const url = this.form;
     const embedUrl = new URL(url);
     embedUrl.searchParams.set('urlData', tripId);
