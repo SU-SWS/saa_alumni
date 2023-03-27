@@ -231,7 +231,12 @@ class ggTripForm {
         </div>
         <div class="summary-item">
           <h3>Deposit</h3>
-          <p>${trips[uuid].deposit || 'N/A'}</p>
+          <p>${
+            trips[uuid].deposit.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            }) || 'N/A'
+          }</p>
         </div>
         <div class="summary-item">
           <h3>Trip size</h3>
