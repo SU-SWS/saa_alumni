@@ -103,7 +103,7 @@ class ggTripForm {
     window.su_suid = this.user.display_name;
     window.su_staff_name = this.user.su_display_name;
     window.su_trip_id = this.trips[uuid].tripId;
-    window.su_trip_name = this.trips[uuid].title;
+    window.su_trip_name = this.trips[uuid].tripConfigName;
     window.su_trip_url = `https://alumni.stanford.edu/${this.trips[uuid].full_slug}`;
     window.navigateToTripPolicy = () => {
       const destUrl = new URL(
@@ -211,7 +211,7 @@ class ggTripForm {
       <div class="summary-wrapper">
         <div class="summary-item">
           <h3>Destination</h3>
-          <p>${trips[uuid].title}</p>
+          <p>${trips[uuid].tripConfigName}</p>
         </div>
         <div class="summary-item">
           <h3>Trip ID Number</h3>
