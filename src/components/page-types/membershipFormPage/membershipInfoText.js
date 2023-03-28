@@ -17,7 +17,14 @@ const MembershipInfoText = ({
   blok,
 }) => (
   <SbEditable content={blok}>
-    <Heading level={2} size={2} align="left" font="sans">
+    <Heading
+      level={2}
+      size={2}
+      align="left"
+      font="sans"
+      weight="semibold"
+      className="su-text-black-20"
+    >
       {heading}
     </Heading>
     <p className={styles.bodyText}>{body}</p>
