@@ -89,7 +89,7 @@ export default async function handler(req, res) {
         'Non-traveling Caller',
         'TRUE',
         'USD',
-        `${dollarValue}00`,
+        '',
         '',
         '',
         '',
