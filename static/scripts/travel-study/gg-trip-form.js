@@ -103,7 +103,7 @@ class ggTripForm {
     window.su_suid = this.user.display_name;
     window.su_staff_name = this.user.su_display_name;
     window.su_trip_id = this.trips[uuid].tripId;
-    window.su_trip_name = this.trips[uuid].title;
+    window.su_trip_name = this.trips[uuid].tripConfigName;
     window.su_trip_url = `https://alumni.stanford.edu/${this.trips[uuid].full_slug}`;
     window.navigateToTripPolicy = () => {
       const destUrl = new URL(
@@ -211,7 +211,7 @@ class ggTripForm {
       <div class="summary-wrapper">
         <div class="summary-item">
           <h3>Destination</h3>
-          <p>${trips[uuid].title}</p>
+          <p>${trips[uuid].tripConfigName}</p>
         </div>
         <div class="summary-item">
           <h3>Trip ID Number</h3>
@@ -231,7 +231,12 @@ class ggTripForm {
         </div>
         <div class="summary-item">
           <h3>Deposit</h3>
-          <p>${trips[uuid].deposi || 'N/A'}</p>
+          <p>${
+            trips[uuid].deposit.toLocaleString('en-US', {
+              style: 'currency',
+              currency: 'USD',
+            }) || 'N/A'
+          }</p>
         </div>
         <div class="summary-item">
           <h3>Trip size</h3>
@@ -288,7 +293,7 @@ class ggTripForm {
 
     // Load GiveGab Form Into Place
     const { uuid } = this;
-    const { tripId } = this.trips[uuid];
+    const tripId = this.trips[uuid].tripId.replace(/\s+/g, '');
     const url = this.form;
     const embedUrl = new URL(url);
     embedUrl.searchParams.set('urlData', tripId);

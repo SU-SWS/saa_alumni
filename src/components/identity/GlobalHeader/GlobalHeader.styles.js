@@ -34,5 +34,5 @@ export const logoMobile =
 export const logoImageMobile = 'su-w-[11rem] su-mb-01em';
 export const utilNavMobile = 'su-cc su-text-right su-bg-digital-red';
 export const utilNavMenuMobile =
-  'su-list-unstyled su-flex su-items-center su-justify-end su-link-white su-link-no-underline su-text-13 sm:su-text-16 children:su-inline-block children:su-ml-[1.6em] xs:children:su-ml-[1.9em] children:su-mb-0 children:su-leading-[4rem] su-underline-offset-[3px]';
+  'su-list-unstyled su-flex su-items-center su-justify-end su-link-white su-link-no-underline su-text-14 children:su-inline-block children:su-ml-20 children:su-mb-0 children:su-leading-[4rem] su-underline-offset-2';
 export const utilNavItemMobile = 'first:su-ml-0';

@@ -64,7 +64,7 @@ const tripsCollection = async (req, res) => {
       startDate: story.content?.startDate,
       endDate: story.content?.endDate,
       price: story.content?.cost?.content?.[0]?.content?.[0]?.text,
-      deposit: story.content?.depositCost,
+      deposit: story.content?.tripDeposit,
       preExtendPrice: story.content?.extendPrice,
       preExtendDepositPrice:
         story.content?.preTripExtensionDeposit ||

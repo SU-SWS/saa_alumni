@@ -3,6 +3,7 @@ import { tabbable } from 'tabbable';
 import { XIcon } from '@heroicons/react/solid';
 import useFocusTrap from '../../../hooks/useFocusTrap';
 import * as styles from './Modal.styles';
+import { ModalContext } from './ModalContext';
 
 const Modal = ({
   children,
@@ -29,11 +30,14 @@ const Modal = ({
   const [lastTabbableRef, setLastTabbableRef] = useState({
     current: getLastTabbableItem(),
   });
+  const [updateModal, setUpdateModal] = useState(undefined);
+  const contextValue = { updateModal, setUpdateModal };
 
   // Update focus trap when child content changes.
   useEffect(() => {
     setLastTabbableRef({ current: getLastTabbableItem() });
-  }, [children]);
+    setUpdateModal(false);
+  }, [children, updateModal]);
 
   useFocusTrap(closeButton, lastTabbableRef, isOpen);
 
@@ -78,30 +82,31 @@ const Modal = ({
   }, [isOpen]);
 
   return (
-    <div
-      className={styles.root({ isOpen, type })}
-      aria-label={ariaLabel}
-      aria-hidden={!isOpen}
-      aria-modal={isOpen}
-      role="dialog"
-      tabIndex="-1"
-    >
-      <div className={styles.wrapper({ type })}>
-        <div className={styles.closeButtonWrapper({ type })}>
-          <button
-            type="button"
-            ref={closeButton}
-            onClick={onClose}
-            className={styles.closeButton}
-            aria-label="Close modal"
-          >
-            Close
-            <XIcon className={styles.closeIcon({ type })} aria-hidden />
-          </button>
+    <ModalContext.Provider value={contextValue}>
+      <div
+        className={styles.root({ isOpen, type })}
+        aria-label={ariaLabel}
+        aria-hidden={!isOpen}
+        aria-modal={isOpen}
+        role="dialog"
+        tabIndex="-1"
+      >
+        <div className={styles.wrapper()}>
+          <div className={styles.closeButtonWrapper({ type })}>
+            <button
+              type="button"
+              ref={closeButton}
+              onClick={onClose}
+              className={styles.closeButton({ type })}
+              aria-label="Close modal"
+            >
+              <XIcon className={styles.closeIcon({ type })} aria-hidden />
+            </button>
+          </div>
+          <div ref={modalBodyRef}>{children}</div>
         </div>
-        <div ref={modalBodyRef}>{children}</div>
       </div>
-    </div>
+    </ModalContext.Provider>
   );
 };
 

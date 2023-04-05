@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-restricted-syntax */
@@ -31,6 +32,10 @@ const EmbedCard = ({ blok: { embed: html, injectSuid }, blok }) => {
       postscribe(`#${uniqueId}`, html, {
         done: () => {
           setScriptLoaded(true);
+        },
+        // Catch the error when postscribe gets blocked by ad blockers.
+        error: (err) => {
+          console.error(err);
         },
       });
     } else {

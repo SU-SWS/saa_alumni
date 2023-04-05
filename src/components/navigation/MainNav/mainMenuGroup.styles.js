@@ -11,16 +11,16 @@ export const root = ({ isHomesite }) =>
 
 // Styles for top level buttons
 const buttonMobile =
-  'su-flex su-items-center su-w-full hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-20 su-pr-80 su-text-20';
+  'su-flex su-items-center su-font-semibold su-w-full hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-26 su-pr-80 su-text-20';
 const buttonDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
+  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
 export const parentButton = ({
   panelOpened,
   isActiveButton,
   isHomesite,
 } = {}) =>
   dcnb(
-    'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset-[3px]',
+    'su-group su-text-white su-transition-colors su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset-[3px]',
     buttonMobile,
     buttonDesktop,
     {
@@ -60,11 +60,11 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
 // Styles for top level links for shared SAA Main Nav only
 // The Homesite Main Nav does not have top level links, only buttons
 const topLinkMobile =
-  'su-flex su-items-center hocus:su-underline hocus:su-text-white hocus:su-bg-black-90 su-p-20 su-text-20';
+  'su-flex su-items-center su-font-semibold hocus:su-underline hocus:su-text-white hocus:su-bg-black-90 su-py-20 su-px-26 su-text-20';
 const topLinkDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-20 2xl:su-text-22';
+  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-20 2xl:su-text-22';
 export const topLink = dcnb(
-  'su-group su-text-white su-transition-colors su-font-bold su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px]',
+  'su-group su-text-white su-transition-colors su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px]',
   topLinkMobile,
   topLinkDesktop
 );
