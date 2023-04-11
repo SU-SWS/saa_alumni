@@ -7,7 +7,7 @@ import CreateBloks from '../../utilities/createBloks';
 const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   const [bgColor, setBgColor] = useState('su-bg-[#C3363A]');
   const [userType, setUserType] = useState(undefined);
-  const [noCard, setNoCard] = useState(false);
+  const [noCard, setNoCard] = useState(true);
   const [bgImage, setBgImage] = useState(null);
   const [exampleImage, setExampleImage] = useState(null);
   const [logo, setLogo] = useState(null);
@@ -21,7 +21,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
         const responseBg = await import(`../../images/${bgPath}`);
         setBgImage(responseBg.default);
       } else {
-        const response = await import(`../../images/exampleMembershipCard.png`);
+        const response = await import(`../../images/saa-example.png`);
         setExampleImage(response.default);
       }
     } catch (err) {
@@ -30,38 +30,35 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   };
 
   useEffect(() => {
-    if (!auth.isAuthenticating) {
-      if (auth.isAuthenticated) {
-        // TODO: Figure out why this discrepancy in data
-        const affiliations =
-          auth.userProfile.affiliations.affiliations ||
-          auth.userProfile.affiliations;
-        if (affiliations.length === 0) {
-          setNoCard(true);
-        } else if (affiliations.filter((s) => s.includes('GSB'))) {
-          fetchImages(true, 'gsb-card-logo.png', 'gsb-card-bg.jpg');
-          setBgColor('su-bg-[#C3363A]');
-          setUserType('gsb');
-        } else if (affiliations.filter((s) => s.includes('SAA'))) {
-          fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
-          setBgColor(
-            'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
-          );
-          setUserType('saa');
-        } else {
-          fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
-          setBgColor(
-            'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
-          );
-          setUserType('affiliate');
-        }
-      } else {
-        setNoCard(true);
-        fetchImages(false);
-      }
+    // TODO: Figure out why this discrepancy in data
+    const membership = auth.userProfile?.membership || {};
+    if (membership.membershipGroup?.includes('GSB')) {
+      fetchImages(true, 'gsb-card-logo.png', 'gsb-card-bg.jpg');
+      setBgColor('su-bg-[#C3363A]');
+      setUserType('gsb');
+    } else if (
+      membership.membershipGroup?.includes('SAA') &&
+      membership.membershipAffiliation?.includes('Alum')
+    ) {
+      fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
+      setBgColor(
+        'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
+      );
+      setUserType('saa');
+    } else if (
+      membership.membershipGroup?.includes('SAA') &&
+      membership.membershipAffiliation?.includes('Affiliate')
+    ) {
+      fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
+      setBgColor(
+        'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
+      );
+      setUserType('affiliate');
+    } else {
+      setNoCard(true);
+      fetchImages(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.isAuthenticating, auth.isAuthenticated]);
+  }, [auth]);
 
   return (
     <SbEditable content={blok}>
@@ -73,13 +70,13 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
           <div className="lg:su-flex lg:su-px-20">
             <div
               className={dcnb(
-                'su-relative su-overflow-hidden su-rounded-[25px] md:su-rounded-[50px] md:su-rounded-[70px] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0',
+                'su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0',
                 userType !== 'affiliate' ? 'su-text-white' : '',
                 bgColor
               )}
             >
               {noCard ? (
-                <img src={exampleImage} alt="" />
+                <img src={exampleImage} alt="Example SAA Digital Member Card" />
               ) : (
                 <div className="su-relative su-w-full su-pt-[63%]">
                   <div className="su-absolute su-top-0 su-w-full su-h-full">
@@ -119,14 +116,16 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                             : 'su-mt-auto'
                         )}
                       >
-                        <span className="su-text-[22px] sm:su-text-[30px] su-font-semibold">
+                        <span className="su-text-22 sm:su-text-[30px] su-font-semibold">
                           {auth.userProfile?.name?.fullNameParsed?.firstName}{' '}
                           {auth.userProfile?.name?.fullNameParsed?.lastName}
                         </span>
-                        <span>{auth.userProfile?.membership?.id}fdsfds</span>
-                        {userType === 'gsb' && (
-                          <span>{auth.userProfile?.membership?.type}</span>
-                        )}
+                        <span>
+                          {auth.userProfile?.membership?.membershipNumber}
+                        </span>
+                        <span>
+                          {auth.userProfile?.membership?.membershipNumber}
+                        </span>
                       </div>
                     </div>
                     <div
@@ -158,10 +157,10 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
             <div className="su-flex su-items-center lg:su-rs-ml-5 xl:su-rs-ml-7 print:su-hidden">
               {noCard ? (
                 <div>
-                  <div className="su-mb-10">
+                  <p className="su-card-paragraph">
                     You are not currently a Stanford Alumni Association (SAA)
                     Member
-                  </div>
+                  </p>
                   <div className="[&>.cta-group]:su-gap-[10px] [&>.cta-group]:sm:su-gap-[20px]">
                     <CreateBloks blokSection={publicCtaGroup} />
                   </div>
