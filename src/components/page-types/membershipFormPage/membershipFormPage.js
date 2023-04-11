@@ -376,7 +376,7 @@ const MembershipFormPage = (props) => {
                               </Link>
                             ) : (
                               <div className={styles.nextLinkDisabled}>
-                                Select membership type
+                                Continue
                                 <HeroIcon
                                   iconType="arrow-right"
                                   className={styles.nextLinkIcon}
