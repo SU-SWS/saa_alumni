@@ -7,7 +7,7 @@ import CreateBloks from '../../utilities/createBloks';
 const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   const [bgColor, setBgColor] = useState('su-bg-[#C3363A]');
   const [userType, setUserType] = useState(undefined);
-  const [noCard, setNoCard] = useState(true);
+  const [noCard, setNoCard] = useState(false);
   const [bgImage, setBgImage] = useState(null);
   const [exampleImage, setExampleImage] = useState(null);
   const [logo, setLogo] = useState(null);
@@ -30,8 +30,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   };
 
   useEffect(() => {
-    // TODO: Figure out why this discrepancy in data
-    const membership = auth.userProfile?.membership || {};
+    const membership = auth.userProfile.membership || {};
     if (membership.membershipGroup?.includes('GSB')) {
       fetchImages(true, 'gsb-card-logo.png', 'gsb-card-bg.jpg');
       setBgColor('su-bg-[#C3363A]');
@@ -102,7 +101,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                       </div>
 
                       {userType !== 'gsb' && (
-                        <div className="su-font-bold su-font-serif su-text-[25px] su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
+                        <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
                           {userType === 'saa' ? 'Alumni' : 'Affiliate'}{' '}
                           Membership
                         </div>
@@ -110,22 +109,22 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
 
                       <div
                         className={dcnb(
-                          'su-flex su-flex-col su-pb-[23px] md:su-pb-[40px] su-text-[14px] sm:su-text-[22px]',
+                          'su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22',
                           userType === 'gsb'
-                            ? ' su-px-[12px] md:su-px-[25px]'
+                            ? ' su-px-[1.2rem] md:su-px-[2.5rem]'
                             : 'su-mt-auto'
                         )}
                       >
-                        <span className="su-text-22 sm:su-text-[30px] su-font-semibold">
+                        <span className="su-text-22 sm:su-type-2 su-font-semibold">
                           {auth.userProfile?.name?.fullNameParsed?.firstName}{' '}
                           {auth.userProfile?.name?.fullNameParsed?.lastName}
                         </span>
                         <span>
                           {auth.userProfile?.membership?.membershipNumber}
                         </span>
-                        <span>
-                          {auth.userProfile?.membership?.membershipNumber}
-                        </span>
+                        {userType === 'gsb' && (
+                          <span>{auth.userProfile?.membership?.type}</span>
+                        )}
                       </div>
                     </div>
                     <div

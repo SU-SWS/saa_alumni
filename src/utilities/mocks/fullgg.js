@@ -272,23 +272,23 @@ export const fullggMockData = {
     access_method: 'GET',
   },
   affiliations: affiliationsMockData,
-  //  Test Data for SAA Affiliate
+  // Test Data for SAA Alum
   membership: {
     id: 'a0046000003s3pnAAA',
     membershipStatus: 'Active',
     membershipNumber: '0001223551',
     membershipType: 'Life',
-    membershipAffiliation: 'Affiliate',
+    membershipAffiliation: 'Alum',
     membershipStartDate: '2011',
     membershipGroup: 'SAA',
   },
-  // Test Data for SAA Alum
+  //  Test Data for SAA Affiliate
   // membership: {
   //   id: 'a0046000003s3pnAAA',
   //   membershipStatus: 'Active',
   //   membershipNumber: '0001223551',
   //   membershipType: 'Life',
-  //   membershipAffiliation: 'Alum',
+  //   membershipAffiliation: 'Affiliate',
   //   membershipStartDate: '2011',
   //   membershipGroup: 'SAA',
   // },
