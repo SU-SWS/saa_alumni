@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -12,6 +12,7 @@ const MembershipCard = ({
   initial,
   newContact = false,
   memberData,
+  enabled = false,
   ...props
 }) => {
   const [state, dispatch] = useContext(FormContext);
@@ -42,6 +43,13 @@ const MembershipCard = ({
       addRelationship();
     }
   };
+
+  useEffect(() => {
+    if (enabled) {
+      toggleRelationship();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <FlexBox direction="col" className={styles.root}>
