@@ -276,6 +276,7 @@ const MembershipFormPage = (props) => {
                                 memberData={primaryUser}
                                 aria-expanded={paymentOptionSection}
                                 id="su-myself-payment"
+                                enabled
                               />
                             </GridCell>
                             <GridCell xs={12} xl={6}>
