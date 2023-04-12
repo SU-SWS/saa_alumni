@@ -77,12 +77,11 @@ const Masthead = ({
                 className="first:su-ml-0 su-link-regular"
                 hasExternalIcon
               />
-              <AccountLinks />
             </ul>
           </nav>
           <FlexBox className="su-cc" alignItems="center">
             <FlexBox alignItems="center" className="su-rs-py-1">
-              <Logo className="su-w-[18rem]" />
+              <Logo className="su-w-[15rem]" />
             </FlexBox>
             <OpenSearchModalButton
               openOpen={modalOpen}

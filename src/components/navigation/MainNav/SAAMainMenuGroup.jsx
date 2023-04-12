@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import PropTypes from 'prop-types';
 import CreateBloks from '../../../utilities/createBloks';
@@ -9,6 +9,7 @@ import SbLink from '../../../utilities/sbLink';
 import * as styles from './mainMenuGroup.styles';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { NavItemType } from '../../../types/NavItemType';
+import { ModalContext } from '../../layout/Modal/ModalContext';
 
 // Main Menu Group for the shared SAA Main Nav
 export const SAAMainMenuGroupProps = {
@@ -27,6 +28,14 @@ const SAAMainMenuGroup = ({
   const [panelOpened, setPanelOpened] = useState(false);
   const ref = useRef(null);
   const parentRef = useRef(null);
+  const { setUpdateModal } = useContext(ModalContext);
+
+  useEffect(() => {
+    if (setUpdateModal) {
+      setUpdateModal(true);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [panelOpened]);
 
   const togglePanel = () => {
     setPanelOpened(!panelOpened);

@@ -41,7 +41,7 @@ export const TripContent = PropTypes.shape({
 });
 
 export const TripType = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired || PropTypes.number.isRequired,
   full_slug: PropTypes.string.isRequired,
   content: TripContent,
 };

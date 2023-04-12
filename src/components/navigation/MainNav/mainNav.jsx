@@ -1,12 +1,15 @@
 import React, { useState, useRef } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
-import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { MenuIcon } from '@heroicons/react/outline';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
-import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import * as styles from './mainNav.styles';
-import { isExpanded } from '../../../utilities/menuHelpers';
+import { Heading } from '../../simple/Heading';
+import Modal from '../../layout/Modal/Modal';
+import AccountLinks from '../accountLinks';
+import UserHeaderIcon from '../userHeaderIcon';
+import { FlexBox } from '../../layout/FlexBox';
 
 /**
  * This Main Nav is only used on the SAA Homesite
@@ -14,28 +17,33 @@ import { isExpanded } from '../../../utilities/menuHelpers';
  */
 
 const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
-  const [menuOpened, setMenuOpened] = useState(false);
-  const ref = useRef(null);
-  const burgerRef = useRef(null);
+  const [mainMenuOpened, setMainMenuOpened] = useState(false);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const mainMenuRef = useRef(null);
+  const userMenuRef = useRef(null);
 
-  const toggleMenu = () => {
-    setMenuOpened(!menuOpened);
+  const toggleMainMenu = () => {
+    setMainMenuOpened(!mainMenuOpened);
   };
 
-  let NavIcon = MenuIcon;
-  if (menuOpened) {
-    NavIcon = XIcon;
-  }
+  const toggleUserMenu = () => {
+    setUserMenuOpen(!userMenuOpen);
+  };
 
-  // Close menu if escape key is pressed and return focus to the menu button
-  useEscape(() => {
-    if (burgerRef.current && isExpanded(burgerRef.current)) {
-      setMenuOpened(false);
-      burgerRef.current.focus();
+  const handleClose = () => {
+    if (mainMenuOpened) {
+      mainMenuRef.current.focus();
+      setMainMenuOpened(false);
     }
-  });
+    if (userMenuOpen) {
+      userMenuRef.current.focus();
+      setUserMenuOpen(false);
+    }
+  };
 
-  useOnClickOutside(ref, () => setMenuOpened(false));
+  useEscape(() => {
+    handleClose();
+  });
 
   return (
     <SbEditable content={blok}>
@@ -47,29 +55,70 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
           <CreateBloks blokSection={mainMenuGroups} />
         </ul>
       </nav>
-      <nav
-        className="main-nav-mobile lg:su-hidden"
-        aria-label="Main Menu"
-        ref={ref}
+      <button
+        type="button"
+        ref={mainMenuRef}
+        className={dcnb('su-ml-20', styles.rootMobile, styles.menuCircles)}
+        onClick={toggleMainMenu}
+        aria-expanded={mainMenuOpened}
+        aria-label="Open Main Menu"
       >
-        <button
-          type="button"
-          className={styles.burgerMobileHomesite}
-          onClick={toggleMenu}
-          aria-expanded={menuOpened}
-          aria-label={menuOpened ? 'Close Menu' : 'Open Menu'}
-          ref={burgerRef}
+        <MenuIcon aria-hidden="true" className={styles.burgerIconMobile} />
+      </button>
+
+      <button
+        type="button"
+        ref={userMenuRef}
+        onClick={toggleUserMenu}
+        aria-expanded={userMenuOpen}
+        aria-label="Open User Menu"
+        className="lg:su-hidden su-ml-20 su-rounded-full su-flex"
+      >
+        <UserHeaderIcon menuCircle />
+      </button>
+
+      <Modal
+        isOpen={mainMenuOpened || userMenuOpen}
+        type="main-menu"
+        onClose={() => {
+          handleClose();
+        }}
+        ariaLabel={`Stanford Alumni websites ${
+          (mainMenuOpened && 'Main Menu') || (userMenuOpen && 'User Menu')
+        }`}
+      >
+        <nav
+          aria-label={
+            (mainMenuOpened && 'Main Menu') || (userMenuOpen && 'User Menu')
+          }
         >
-          <NavIcon aria-hidden="true" className={styles.burgerIconMobile} />
-          {menuOpened ? 'Close' : 'Menu'}
-        </button>
-        <ul
-          className={styles.menuMobileHomesite({ menuOpened })}
-          aria-hidden={!menuOpened}
-        >
-          <CreateBloks blokSection={mainMenuGroups} />
-        </ul>
-      </nav>
+          {mainMenuOpened && (
+            <FlexBox
+              alignItems="center"
+              justifyContent="center"
+              className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
+            >
+              <Heading size="base" weight="regular" className="su-mb-0">
+                Menu
+              </Heading>
+            </FlexBox>
+          )}
+          {mainMenuOpened && (
+            <ul
+              className={styles.menuMobileHomesite({ mainMenuOpened })}
+              aria-hidden={!mainMenuOpened}
+            >
+              <CreateBloks blokSection={mainMenuGroups} />
+            </ul>
+          )}
+
+          {userMenuOpen && (
+            <ul className="su-list-none su-p-0">
+              <AccountLinks />
+            </ul>
+          )}
+        </nav>
+      </Modal>
     </SbEditable>
   );
 };

@@ -61,7 +61,7 @@ const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
             size={3}
             level={2}
             align="center"
-            className="su-text-white su-rs-mt-5 su-mb-61 md:su-rs-mb-4"
+            className="su-text-white su-mt-[8rem] su-mb-61 md:su-rs-mb-4"
             aria-label="Search Stanford Alumni websites"
           >
             {introduction}

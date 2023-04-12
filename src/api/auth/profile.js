@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 // Get MP User Data and append to User
 // Do not enable for public use. This is for development/debugging purposes only.
 // Data can be viewed at /api/auth/megaprofile-data
@@ -16,28 +17,41 @@ const megaprofileHandler = async (req, res, next) => {
   const profileId = req.user.encodedSUID;
   const session = req.user;
   let fullgg = {};
-  let affiliations = [];
+  let affiliations = {};
+  let contact = {};
+  // Three simultaneous requests to the API in hopes to stay under 10s.
+  const requests = [
+    mp.get(`/${profileId}/profiles/fullgg`),
+    mp.get(`/${profileId}/profiles/affiliations`),
+    mp.get(`/${profileId}/profiles/contact`),
+  ];
 
-  // While the authentication is between states support fetching by both oauth
-  // services for the majority of the profile information.
-  try {
-    const fullggresult = await mp.get(`/${profileId}/profiles/fullgg`);
-    fullgg = fullggresult.data;
-  } catch (err) {
-    console.error(err);
+  const resolved = await Promise.allSettled(requests);
+
+  // Full GG Data.
+  if (resolved[0].status === 'fulfilled') {
+    fullgg = resolved[0].value.data;
+  } else {
     fullgg.name = {};
     fullgg.name.digitalName = `${req.user.firstName} ${req.user.lastName}`;
   }
 
-  // // Affiliations is already on the keycloak ouath so we fetch here.
-  try {
-    const mpresult = await mp.get(`/${profileId}/profiles/affiliations`);
-    affiliations = mpresult.data.affiliations;
-  } catch (err) {
-    console.error(err);
+  // Affiliations Data;
+  if (resolved[1].status === 'fulfilled') {
+    affiliations = resolved[1].value.data.affiliations;
   }
 
-  const mpUser = { session, ...fullgg, affiliations };
+  // Contact Data;
+  if (resolved[2].status === 'fulfilled') {
+    contact = resolved[2].value.data.contact;
+  }
+
+  const mpUser = {
+    session,
+    ...fullgg,
+    affiliations,
+    profilePhotoURL: contact?.profilePhotoURL,
+  };
   res.status(200).json(mpUser);
   next();
 };
