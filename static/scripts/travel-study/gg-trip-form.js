@@ -13,7 +13,7 @@ class ggTripForm {
   }
 
   /**
-   * Run you fools!
+   * Run you fools! 
    */
   init = async () => {
     this.mountAdditionalScripts();
