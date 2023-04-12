@@ -57,13 +57,12 @@
   [plugins.inputs]
     username = 'adapt'
     password = 'letmein2021'
-    context = 'branch-deploy'
-    branch = 'staging'
+    context = ['branch-deploy', 'preview-build']
 
 [[plugins]]
-package = "/plugins/netlify-plugin-wildcard-404-redirect"
- [plugins.inputs]
- destination = "https://cardinalalumni.stanford.edu/:splat"
+  package = "/plugins/netlify-plugin-wildcard-404-redirect"
+  [plugins.inputs]
+    destination = "https://cardinalalumni.stanford.edu/:splat"
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
@@ -73,5 +72,5 @@ package = "/plugins/netlify-plugin-wildcard-404-redirect"
 [[context.production.plugins]]
   package = "netlify-plugin-submit-sitemap"
   [context.production.plugins.inputs]
-  # Path to the sitemap URL (optional, default = /sitemap.xml)
-  sitemapPath = "/sitemap/sitemap-index.xml"
+    # Path to the sitemap URL (optional, default = /sitemap.xml)
+    sitemapPath = "/sitemap/sitemap-index.xml"
