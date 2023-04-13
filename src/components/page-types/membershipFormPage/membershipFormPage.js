@@ -367,7 +367,7 @@ const MembershipFormPage = (props) => {
                                   promoCode: promoCode || paymentTypeCode,
                                 }}
                               >
-                                Select membership type
+                                Continue
                                 <HeroIcon
                                   iconType="arrow-right"
                                   className={styles.nextLinkIcon}
