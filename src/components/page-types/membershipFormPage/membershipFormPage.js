@@ -63,6 +63,8 @@ const MembershipFormPage = (props) => {
     setPromoCode(event.target.value);
   };
 
+  const membership = userProfile?.membership;
+
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantEmailType = findPreferredEmailType(
     userProfile?.emails,
@@ -276,6 +278,9 @@ const MembershipFormPage = (props) => {
                                 memberData={primaryUser}
                                 aria-expanded={paymentOptionSection}
                                 id="su-myself-payment"
+                                membershipInfo={
+                                  membership.length > 0 ? membership : false
+                                }
                                 enabled
                               />
                             </GridCell>
