@@ -61,23 +61,7 @@ exports.createPages = ({ graphql, actions }) => {
         entries.forEach((entry, index) => {
           let slug = `${entry.node.full_slug}`;
           slug = slug.replace(/^\/|\/$/g, '');
-          let pagePath;
-
-          switch (entry.node.full_slug) {
-            case 'home':
-              pagePath = '';
-              break;
-            // Re-write the 404 page to be compatible with Gatsby's 404 page and Storyblok's API.
-            case '404-page-not-found':
-              pagePath = '404';
-              break;
-            // Re-write the 403 page to be compatible with Gatsby's 403 page and Storyblok's API.
-            case '403-access-denied':
-              pagePath = '403';
-              break;
-            default:
-              pagePath = `${slug}/`;
-          }
+          const pagePath = entry.node.full_slug === 'home' ? '' : `${slug}/`;
 
           // Determine if the page is canonical, or is using a custom canonical URL.
           const content = JSON.parse(entry.node.content);
