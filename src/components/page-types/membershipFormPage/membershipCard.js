@@ -13,6 +13,7 @@ const MembershipCard = ({
   newContact = false,
   memberData,
   enabled = false,
+  membershipInfo,
   ...props
 }) => {
   const [state, dispatch] = useContext(FormContext);
@@ -45,23 +46,24 @@ const MembershipCard = ({
   };
 
   useEffect(() => {
-    if (enabled) {
+    if (enabled && !membershipInfo) {
       toggleRelationship();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [membershipInfo, enabled]);
 
   return (
     <FlexBox direction="col" className={styles.root}>
       <button
         type="button"
         className={dcnb(
-          styles.membershipCardWrapper,
+          styles.membershipCardWrapper(membershipInfo),
           newContact && !isSelected && 'su-border-dashed',
           isSelected &&
             'su-bg-saa-black su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue'
         )}
         onClick={toggleRelationship}
+        disabled={membershipInfo}
         {...props}
       >
         <FlexBox
@@ -91,29 +93,40 @@ const MembershipCard = ({
           {heading}
         </Heading>
         <p className={styles.subheading}>{subheading}</p>
-        <FlexBox justifyContent="center">
-          {newContact ? (
-            <div
-              className={
-                isSelected
-                  ? styles.membershipCardSelectedLink
-                  : styles.membershipCardLink
-              }
-            >
-              Create new <HeroIcon iconType="plus" />
-            </div>
-          ) : (
-            <div
-              className={
-                isSelected
-                  ? styles.membershipCardSelectedLink
-                  : styles.membershipCardLink
-              }
-            >
-              {isSelected ? 'Selected' : 'Select'}
-            </div>
-          )}
-        </FlexBox>
+        {membershipInfo ? (
+          <>
+            <p className={styles.membershipDetails}>
+              {membershipInfo.membershipType} Membership
+            </p>
+            <p className={styles.membershipDetails}>
+              #{membershipInfo.membershipNumber}
+            </p>
+          </>
+        ) : (
+          <FlexBox justifyContent="center">
+            {newContact ? (
+              <div
+                className={
+                  isSelected
+                    ? styles.membershipCardSelectedLink
+                    : styles.membershipCardLink
+                }
+              >
+                Create new <HeroIcon iconType="plus" />
+              </div>
+            ) : (
+              <div
+                className={
+                  isSelected
+                    ? styles.membershipCardSelectedLink
+                    : styles.membershipCardLink
+                }
+              >
+                {isSelected ? 'Selected' : 'Select'}
+              </div>
+            )}
+          </FlexBox>
+        )}
       </button>
     </FlexBox>
   );

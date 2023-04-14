@@ -53,15 +53,20 @@ const MembershipFormPage = (props) => {
     Array.from(userProfile?.affiliations).includes('Friend')
       ? 'aff_fr_myself'
       : 'alum_myself_full';
+
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
     : '';
+
   useEffect(() => {
     if (appealCode) setPromoCode(appealCode);
   }, [appealCode]);
+
   const getPromoCode = (event) => {
     setPromoCode(event.target.value);
   };
+
+  const membership = userProfile?.membership;
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantEmailType = findPreferredEmailType(
@@ -276,6 +281,11 @@ const MembershipFormPage = (props) => {
                                 memberData={primaryUser}
                                 aria-expanded={paymentOptionSection}
                                 id="su-myself-payment"
+                                membershipInfo={
+                                  Object.keys(membership).length > 0
+                                    ? membership
+                                    : false
+                                }
                                 enabled
                               />
                             </GridCell>
