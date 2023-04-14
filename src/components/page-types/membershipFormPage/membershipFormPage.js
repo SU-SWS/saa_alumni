@@ -53,12 +53,15 @@ const MembershipFormPage = (props) => {
     Array.from(userProfile?.affiliations).includes('Friend')
       ? 'aff_fr_myself'
       : 'alum_myself_full';
+
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
     : '';
+
   useEffect(() => {
     if (appealCode) setPromoCode(appealCode);
   }, [appealCode]);
+
   const getPromoCode = (event) => {
     setPromoCode(event.target.value);
   };
@@ -279,7 +282,9 @@ const MembershipFormPage = (props) => {
                                 aria-expanded={paymentOptionSection}
                                 id="su-myself-payment"
                                 membershipInfo={
-                                  membership.length > 0 ? membership : false
+                                  Object.keys(membership).length > 0
+                                    ? membership
+                                    : false
                                 }
                                 enabled
                               />

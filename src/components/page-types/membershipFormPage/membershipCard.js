@@ -50,7 +50,7 @@ const MembershipCard = ({
       toggleRelationship();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [membershipInfo, enabled]);
 
   return (
     <FlexBox direction="col" className={styles.root}>
