@@ -129,6 +129,7 @@ const MembershipFormPage = (props) => {
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
     su_reg_type: 'newContact',
+    su_self_membership: 'no',
   };
 
   const [paymentType, setPaymentType] = useState(false);
