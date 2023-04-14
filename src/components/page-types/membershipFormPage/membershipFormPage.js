@@ -66,7 +66,7 @@ const MembershipFormPage = (props) => {
     setPromoCode(event.target.value);
   };
 
-  const membership = userProfile?.membership;
+  const membership = userProfile?.membership || {};
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantEmailType = findPreferredEmailType(
