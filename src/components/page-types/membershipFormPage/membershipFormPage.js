@@ -266,7 +266,7 @@ const MembershipFormPage = (props) => {
                         <div className={styles.formWrapper}>
                           <Heading
                             level={2}
-                            size={4}
+                            size={3}
                             align="left"
                             font="serif"
                             className={styles.cardGridHeading}

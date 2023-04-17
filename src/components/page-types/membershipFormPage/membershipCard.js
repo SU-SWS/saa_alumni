@@ -3,7 +3,7 @@ import { dcnb } from 'cnbuilder';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import { FormContext } from '../../../contexts/FormContext';
-import * as styles from './MembershipCard.styles';
+import * as styles from './membershipCard.styles';
 import { Heading } from '../../simple/Heading';
 
 const MembershipCard = ({
@@ -89,7 +89,7 @@ const MembershipCard = ({
             )}
           </FlexBox>
         </FlexBox>
-        <Heading level={3} size={2} className="su-mb-0">
+        <Heading level={3} size={1} className="su-mb-0">
           {heading}
         </Heading>
         <p className={styles.subheading}>{subheading}</p>
