@@ -18,14 +18,14 @@ const megaprofileHandler = async (req, res, next) => {
   const session = req.user;
   let fullgg = {};
   let affiliations = {};
-  let contact = {};
+  // const contact = {};
   // @TODO: Comment back in and test when endpoint is live
   // let membership = {}
   // Four simultaneous requests to the API in hopes to stay under 10s.
   const requests = [
     mp.get(`/${profileId}/profiles/fullgg`),
     mp.get(`/${profileId}/profiles/affiliations`),
-    mp.get(`/${profileId}/profiles/contact`),
+    // mp.get(`/${profileId}/profiles/contact`),
     // @TODO: Comment back in and test when endpoint is live
     // mp.get(`/${profileId}/profiles/memberships`),
   ];
@@ -46,9 +46,9 @@ const megaprofileHandler = async (req, res, next) => {
   }
 
   // Contact Data;
-  if (resolved[2].status === 'fulfilled') {
-    contact = resolved[2].value.data.contact;
-  }
+  // if (resolved[2].status === 'fulfilled') {
+  //   contact = resolved[2].value.data.contact;
+  // }
 
   // @TODO: Comment back in and test when endpoint is live
   // Membership Data;
@@ -60,7 +60,7 @@ const megaprofileHandler = async (req, res, next) => {
     session,
     ...fullgg,
     affiliations,
-    profilePhotoURL: contact?.profilePhotoURL,
+    // profilePhotoURL: contact?.profilePhotoURL,
     // @TODO: Comment back in and test when endpoint is live
     // membership,
   };
