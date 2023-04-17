@@ -5,7 +5,7 @@ export const fixedHero = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
 export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
 export const contentWrapper =
   'su-relative sm:su-cc su-z-10 su-rs-pt-8 sm:su-rs-pb-8 su-text-white';
-export const benefitsWrapper = 'xs:su-col-start-2 xl:su-col-start-3';
+export const benefitsWrapper = '2xl:su-col-start-2';
 export const superHead =
   'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
 export const heading = 'su-rs-mb-5';

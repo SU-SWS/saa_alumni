@@ -231,8 +231,8 @@ const MembershipFormPage = (props) => {
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
-                        xs={10}
-                        xl={8}
+                        xs={12}
+                        xxl={10}
                         className={styles.benefitsWrapper}
                       >
                         <span className={styles.superHead}>
