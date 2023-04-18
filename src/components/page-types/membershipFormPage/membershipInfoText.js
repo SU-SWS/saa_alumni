@@ -34,6 +34,11 @@ const MembershipInfoText = ({
           link={benefitsLink}
           buttonStyle="ghost"
           className={styles.benefitsLink}
+          attributes={{
+            target: benefitsLink.target,
+            rel: 'noreferrer noopener',
+          }}
+          {...benefitsLink}
         >
           {benefitsButtonText || 'Benefits of membership'}
         </SAALinkButton>
