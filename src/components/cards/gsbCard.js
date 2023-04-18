@@ -2,11 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
 import SbEditable from 'storyblok-react';
 import AuthContext from '../../contexts/AuthContext';
-import CreateBloks from '../../utilities/createBloks';
 
-const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
+const GsbCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   const [bgColor, setBgColor] = useState('su-bg-[#C3363A]');
-  const [userType, setUserType] = useState(undefined);
   const [noCard, setNoCard] = useState(false);
   const [bgImage, setBgImage] = useState(null);
   const [exampleImage, setExampleImage] = useState(null);
@@ -31,24 +29,9 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
 
   useEffect(() => {
     const membership = auth.userProfile.membership || {};
-    if (
-      membership.membershipGroup?.includes('SAA') &&
-      membership.membershipAffiliation?.includes('Alum')
-    ) {
-      fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
-      setBgColor(
-        'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
-      );
-      setUserType('saa');
-    } else if (
-      membership.membershipGroup?.includes('SAA') &&
-      membership.membershipAffiliation?.includes('Affiliate')
-    ) {
-      fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
-      setBgColor(
-        'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
-      );
-      setUserType('affiliate');
+    if (membership.membershipGroup?.includes('GSB')) {
+      fetchImages(true, 'gsb-card-logo.png', 'gsb-card-bg.jpg');
+      setBgColor('su-bg-[#C3363A]');
     } else {
       setNoCard(true);
       fetchImages(false);
@@ -66,31 +49,29 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
             <div
               className={dcnb(
                 'su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0',
-                userType !== 'affiliate' ? 'su-text-white' : '',
                 bgColor
               )}
             >
               {noCard ? (
-                <img src={exampleImage} alt="Example SAA Digital Member Card" />
+                <img src={exampleImage} alt="Example Digital Member Card" />
               ) : (
                 <div className="su-relative su-w-full su-pt-[63%]">
                   <div className="su-absolute su-top-0 su-w-full su-h-full">
-                    <div className="su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10 su-pl-[5%]">
-                      <div className="su-top-0 su-left-0 su-flex su-items-center su-w-[63%] su-h-[35%]">
+                    <div className="su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10 su-justify-between">
+                      <div
+                        className={dcnb(
+                          'su-top-0 su-left-0 su-flex su-items-center su-w-[85%] su-h-[50%]'
+                        )}
+                      >
                         <img
                           src={logo}
                           alt=""
                           className="su-max-w-full su-max-h-full"
                         />
                       </div>
-
-                      <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
-                        {userType === 'saa' ? 'Alumni' : 'Affiliate'} Membership
-                      </div>
-
                       <div
                         className={dcnb(
-                          'su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-mt-auto'
+                          'su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-px-[1.2rem] md:su-px-[2.5rem]'
                         )}
                       >
                         <span className="su-text-22 sm:su-type-2 su-font-semibold">
@@ -100,38 +81,19 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                         <span>
                           {auth.userProfile?.membership?.membershipNumber}
                         </span>
+                        <span>{auth.userProfile?.membership?.type}</span>
                       </div>
                     </div>
-                    <div className="su-absolute su-w-full su-h-full su-top-0 su-right-0">
+                    <div className="'su-absolute su-w-full su-top-1/2 -su-translate-y-1/2 su-left-[40%] su-rounded-full su-h-0 su-pt-[90%] su-overflow-hidden'">
                       <div className="su-absolute su-inset-0">
                         <img
-                          className={dcnb(
-                            'su-absolute su-h-full su-top-0 su-right-0'
-                          )}
+                          className="su-absolute su-min-h-full su-inset-0"
                           src={bgImage}
                           alt=""
                         />
                       </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </div>
-
-            <div className="su-flex su-items-center lg:su-rs-ml-5 xl:su-rs-ml-7 print:su-hidden">
-              {noCard ? (
-                <div>
-                  <p className="su-card-paragraph">
-                    You are not currently a Stanford Alumni Association (SAA)
-                    Member
-                  </p>
-                  <div className="[&>.cta-group]:su-gap-[10px] [&>.cta-group]:sm:su-gap-[20px]">
-                    <CreateBloks blokSection={publicCtaGroup} />
-                  </div>
-                </div>
-              ) : (
-                <div className="[&>.cta-group]:su-gap-[10px] [&>.cta-group]:sm:su-gap-[20px]">
-                  <CreateBloks blokSection={ctaGroup} />
                 </div>
               )}
             </div>
@@ -142,4 +104,4 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   );
 };
 
-export default MembershipCard;
+export default GsbCard;
