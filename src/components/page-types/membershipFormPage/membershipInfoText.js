@@ -15,39 +15,36 @@ const MembershipInfoText = ({
     benefitsLink,
   },
   blok,
-}) => {
-  console.log('LINK: ', benefitsLink);
-  return (
-    <SbEditable content={blok}>
-      <Heading
-        level={2}
-        size={2}
-        align="left"
-        font="sans"
-        weight="semibold"
-        className="su-text-black-20"
-      >
-        {heading}
-      </Heading>
-      <p className={styles.bodyText}>{body}</p>
-      {displayBenefitsButton && (
-        <FlexBox justifyContent="center">
-          <SAALinkButton
-            link={benefitsLink}
-            buttonStyle="ghost"
-            className={styles.benefitsLink}
-            attributes={{
-              target: benefitsLink.target,
-              rel: 'noreferrer noopener',
-            }}
-            {...benefitsLink}
-          >
-            {benefitsButtonText || 'Benefits of membership'}
-          </SAALinkButton>
-        </FlexBox>
-      )}
-    </SbEditable>
-  );
-};
+}) => (
+  <SbEditable content={blok}>
+    <Heading
+      level={2}
+      size={2}
+      align="left"
+      font="sans"
+      weight="semibold"
+      className="su-text-black-20"
+    >
+      {heading}
+    </Heading>
+    <p className={styles.bodyText}>{body}</p>
+    {displayBenefitsButton && (
+      <FlexBox justifyContent="center">
+        <SAALinkButton
+          link={benefitsLink}
+          buttonStyle="ghost"
+          className={styles.benefitsLink}
+          attributes={{
+            target: benefitsLink.target,
+            rel: 'noreferrer noopener',
+          }}
+          {...benefitsLink}
+        >
+          {benefitsButtonText || 'Benefits of membership'}
+        </SAALinkButton>
+      </FlexBox>
+    )}
+  </SbEditable>
+);
 
 export default MembershipInfoText;
