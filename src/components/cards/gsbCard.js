@@ -2,6 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import SbEditable from 'storyblok-react';
 import AuthContext from '../../contexts/AuthContext';
 
+/*
+ * @TODO: TBD — Build out StoryBlok component for the GSB Digital Membership Card display
+ */
 const GsbCard = ({ blok }) => {
   const [noCard, setNoCard] = useState(false);
   const [bgImage, setBgImage] = useState(null);
