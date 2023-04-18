@@ -1,10 +1,8 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { dcnb } from 'cnbuilder';
 import SbEditable from 'storyblok-react';
 import AuthContext from '../../contexts/AuthContext';
 
-const GsbCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
-  const [bgColor, setBgColor] = useState('su-bg-[#C3363A]');
+const GsbCard = ({ blok }) => {
   const [noCard, setNoCard] = useState(false);
   const [bgImage, setBgImage] = useState(null);
   const [exampleImage, setExampleImage] = useState(null);
@@ -19,7 +17,7 @@ const GsbCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
         const responseBg = await import(`../../images/${bgPath}`);
         setBgImage(responseBg.default);
       } else {
-        const response = await import(`../../images/saa-example.png`);
+        const response = await import(`../../images/gsb-example.png`);
         setExampleImage(response.default);
       }
     } catch (err) {
@@ -31,7 +29,6 @@ const GsbCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
     const membership = auth.userProfile.membership || {};
     if (membership.membershipGroup?.includes('GSB')) {
       fetchImages(true, 'gsb-card-logo.png', 'gsb-card-bg.jpg');
-      setBgColor('su-bg-[#C3363A]');
     } else {
       setNoCard(true);
       fetchImages(false);
@@ -46,34 +43,21 @@ const GsbCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
             <h2 className="su-mb-34 md:su-mb-58 su-font-serif">Your card</h2>
           )}
           <div className="lg:su-flex lg:su-px-20">
-            <div
-              className={dcnb(
-                'su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0',
-                bgColor
-              )}
-            >
+            <div className="su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0 su-bg-[#C3363A]">
               {noCard ? (
-                <img src={exampleImage} alt="Example Digital Member Card" />
+                <img src={exampleImage} alt="Example GSB Digital Member Card" />
               ) : (
                 <div className="su-relative su-w-full su-pt-[63%]">
                   <div className="su-absolute su-top-0 su-w-full su-h-full">
                     <div className="su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10 su-justify-between">
-                      <div
-                        className={dcnb(
-                          'su-top-0 su-left-0 su-flex su-items-center su-w-[85%] su-h-[50%]'
-                        )}
-                      >
+                      <div className="su-top-0 su-left-0 su-flex su-items-center su-w-[85%] su-h-[50%]">
                         <img
                           src={logo}
                           alt=""
                           className="su-max-w-full su-max-h-full"
                         />
                       </div>
-                      <div
-                        className={dcnb(
-                          'su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-px-[1.2rem] md:su-px-[2.5rem]'
-                        )}
-                      >
+                      <div className="su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-px-[1.2rem] md:su-px-[2.5rem]">
                         <span className="su-text-22 sm:su-type-2 su-font-semibold">
                           {auth.userProfile?.name?.fullNameParsed?.firstName}{' '}
                           {auth.userProfile?.name?.fullNameParsed?.lastName}
