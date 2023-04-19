@@ -9,7 +9,7 @@ module.exports = function () {
         overflowY: 'visible !important', // Need this for sticky nav to work
       },
       body: {
-        scrollBehavior: 'smooth',
+        scrollBehavior: 'smooth', // Moved from html to body in order for window.scroll to work on Firefox
       },
       a: {
         color: config('theme.colors.digital-red.light'),
