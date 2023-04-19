@@ -7,8 +7,10 @@ module.exports = function () {
     addBase({
       html: {
         height: '100%',
-        scrollBehavior: 'smooth',
         overflowY: 'visible !important', // Need this for sticky nav to work
+      },
+      body: {
+        scrollBehavior: 'smooth',
       },
       a: {
         color: config('theme.colors.digital-red.light'),
