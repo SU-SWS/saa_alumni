@@ -115,10 +115,10 @@ const InterstitialPage = (props) => {
   );
 
   let digitalName;
-  if (userProfile?.name?.digitalName) {
-    digitalName = userProfile?.name?.digitalName;
-  } else if (userProfile?.name?.fullNameParsed?.firstName) {
-    digitalName = `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`;
+  if (userProfile?.contact.name?.digitalName) {
+    digitalName = userProfile?.contact.name?.digitalName;
+  } else if (userProfile?.contact.name?.fullNameParsed?.firstName) {
+    digitalName = `${userProfile?.contact.name?.fullNameParsed?.firstName} ${userProfile?.contact.name?.fullNameParsed?.lastName}`;
   } else {
     digitalName = `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`;
   }
@@ -126,17 +126,17 @@ const InterstitialPage = (props) => {
   const primaryRegistrant = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname: digitalName,
-    su_title: userProfile?.name?.fullNameParsed?.prefix,
+    su_title: userProfile?.contact.name?.fullNameParsed?.prefix,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_middle_name:
-      userProfile?.name?.fullNameParsed?.middleName === null ||
-      userProfile?.name?.fullNameParsed?.middleName === undefined
+      userProfile?.contact.name?.fullNameParsed?.middleName === null ||
+      userProfile?.contact.name?.fullNameParsed?.middleName === undefined
         ? '&nbsp;'
-        : userProfile?.name?.fullNameParsed?.middleName,
+        : userProfile?.contact.name?.fullNameParsed?.middleName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
@@ -145,8 +145,8 @@ const InterstitialPage = (props) => {
       phoneNumberTypeList,
       primaryRegistrantPhoneNumberType
     ),
-    su_dob: userProfile?.birthDate
-      ? formatUsDate(userProfile?.birthDate)
+    su_dob: userProfile?.contact.birthDate
+      ? formatUsDate(userProfile?.contact.birthDate)
       : undefined,
     su_relation: 'Guest',
     su_reg: 'Primary registrant',

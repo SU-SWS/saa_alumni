@@ -58,13 +58,13 @@ const RelatedContactSelection = (props) => {
       data = {
         su_did: userProfile?.session?.encodedSUID,
         su_dname:
-          userProfile?.name?.digtalName ||
+          userProfile?.contact.name?.digtalName ||
           `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
         su_first_name:
-          userProfile?.name?.fullNameParsed?.firstName ||
+          userProfile?.contact.name?.fullNameParsed?.firstName ||
           userProfile?.session?.firstName,
         su_last_name:
-          userProfile?.name?.fullNameParsed?.lastName ||
+          userProfile?.contact.name?.fullNameParsed?.lastName ||
           userProfile?.session?.lastName,
         su_email: primaryRegistrantEmail || userProfile?.session?.email,
         su_phone: primaryRegistrantPhoneNumber,
@@ -93,13 +93,13 @@ const RelatedContactSelection = (props) => {
   const newContact = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname:
-      userProfile?.name?.digtalName ||
+      userProfile?.contact.name?.digtalName ||
       `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
@@ -156,8 +156,8 @@ const RelatedContactSelection = (props) => {
                             id="page-title"
                           >
                             Welcome,{' '}
-                            {userProfile?.name?.fullNameParsed?.firstName ||
-                              userProfile?.session.firstName}
+                            {userProfile?.contact.name?.fullNameParsed
+                              ?.firstName || userProfile?.session.firstName}
                           </Heading>
                         </div>
                         <div className={styles.contactWrapper}>

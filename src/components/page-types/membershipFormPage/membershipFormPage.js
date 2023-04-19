@@ -49,8 +49,8 @@ const MembershipFormPage = (props) => {
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
   let paymentTypeCode =
-    userProfile?.affiliations &&
-    Array.from(userProfile?.affiliations).includes('Friend')
+    userProfile?.affiliation.affiliations &&
+    Array.from(userProfile?.affiliation.affiliations).includes('Friend')
       ? 'aff_fr_myself'
       : 'alum_myself_full';
 
@@ -84,24 +84,24 @@ const MembershipFormPage = (props) => {
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname:
-      userProfile?.name?.digtalName ||
+      userProfile?.contact.name?.digtalName ||
       `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
-    su_recipient_dob: userProfile?.birthDate
-      ? formatUsDate(userProfile?.birthDate)
+    su_recipient_dob: userProfile?.contact.birthDate
+      ? formatUsDate(userProfile?.contact.birthDate)
       : '',
     su_recipient_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_recipient_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_recipient_relationship: 'Guest',
     su_recipient_suid: userProfile?.session?.encodedSUID,
@@ -112,19 +112,19 @@ const MembershipFormPage = (props) => {
     su_self_membership: 'yes',
     su_gift: 'no',
     su_reg_type: 'self',
-    su_affiliations: userProfile?.affiliations,
+    su_affiliations: userProfile?.affiliation.affiliations,
   };
 
   const newContact = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname:
-      userProfile?.name?.digtalName ||
+      userProfile?.contact.name?.digtalName ||
       `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,

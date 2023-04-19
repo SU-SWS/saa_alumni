@@ -71,7 +71,7 @@ class AuthContextProvider extends React.Component {
           this.dispatch({ type: 'setUserProfile', payload: profile.value });
         }
 
-        if (Object.keys(profile.value?.affiliations).length === 0) {
+        if (Object.keys(profile.value?.affiliation.affiliations).length === 0) {
           this.dispatch({ type: 'setError', payload: true });
         }
 

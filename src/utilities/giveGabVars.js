@@ -247,8 +247,7 @@ export const findPreferredEmailType = (emails = [], prefEmail) => {
  */
 const setGiveGabVars = (userProfile) => {
   // Set the `did` value to the encoded SUID variable.
-  window.su_did =
-    userProfile?.encodedSUID || userProfile?.session?.encodedSUID || null;
+  window.su_did = userProfile?.session?.encodedSUID || null;
 
   // Find the preferred email address. If none, use the one they logged in with.
   const email = findEmail(userProfile?.emails);
@@ -262,18 +261,18 @@ const setGiveGabVars = (userProfile) => {
   // - Last Name
   // - Email
   window.su_dname =
-    userProfile?.name?.digitalName ||
+    userProfile?.contact.name?.digitalName ||
     `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`;
   window.su_first_name =
-    userProfile?.name?.fullNameParsed?.firstName ||
+    userProfile?.contact.name?.fullNameParsed?.firstName ||
     userProfile?.session?.firstName ||
     '';
   window.su_last_name =
-    userProfile?.name?.fullNameParsed?.lastName ||
+    userProfile?.contact.name?.fullNameParsed?.lastName ||
     userProfile?.session?.lastName ||
     '';
   window.su_email = email || userProfile?.session?.email || '';
-  window.su_birthDate = userProfile?.birthDate || '';
+  window.su_birthDate = userProfile?.contact.birthDate || '';
   window.su_phone = phoneNumber || '';
 };
 

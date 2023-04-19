@@ -28,12 +28,13 @@ const UserNavItems = ({ expanded, userProfile }) => {
 
     if (
       userProfile &&
-      userProfile.affiliations &&
-      Array.isArray(userProfile.affiliations)
+      userProfile.affiliation.affiliations &&
+      Array.isArray(userProfile.affiliation.affiliations)
     ) {
-      const directoryAccessFilter = userProfile?.affiliations?.filter((item) =>
-        affiliation.includes(item)
-      );
+      const directoryAccessFilter =
+        userProfile?.affiliation.affiliations?.filter((item) =>
+          affiliation.includes(item)
+        );
       canAccessDirectory = !!directoryAccessFilter?.length;
     }
 

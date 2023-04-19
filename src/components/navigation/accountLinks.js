@@ -66,7 +66,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                         <span
                           className={styles.greeting(showDesktopXl)}
                         >{`Hi, ${
-                          userProfile.name?.digitalName ||
+                          userProfile?.contact?.name.digitalName ||
                           `${userProfile.session.firstName} ${userProfile.session.lastName}`
                         }`}</span>
                         <SrOnlyText>
