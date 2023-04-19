@@ -31,11 +31,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
 
   useEffect(() => {
     const membership = auth.userProfile.membership || {};
-    if (membership.membershipGroup?.includes('GSB')) {
-      fetchImages(true, 'gsb-card-logo.png', 'gsb-card-bg.jpg');
-      setBgColor('su-bg-[#C3363A]');
-      setUserType('gsb');
-    } else if (
+    if (
       membership.membershipGroup?.includes('SAA') &&
       membership.membershipAffiliation?.includes('Alum')
     ) {
@@ -79,20 +75,8 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
               ) : (
                 <div className="su-relative su-w-full su-pt-[63%]">
                   <div className="su-absolute su-top-0 su-w-full su-h-full">
-                    <div
-                      className={dcnb(
-                        'su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10',
-                        userType === 'gsb' ? 'su-justify-between' : 'su-pl-[5%]'
-                      )}
-                    >
-                      <div
-                        className={dcnb(
-                          'su-top-0 su-left-0 su-flex su-items-center',
-                          userType === 'gsb'
-                            ? 'su-w-[85%] su-h-[50%]'
-                            : 'su-w-[63%] su-h-[35%]'
-                        )}
-                      >
+                    <div className="su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10 su-pl-[5%]">
+                      <div className="su-top-0 su-left-0 su-flex su-items-center su-w-[63%] su-h-[35%]">
                         <img
                           src={logo}
                           alt=""
@@ -100,19 +84,13 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                         />
                       </div>
 
-                      {userType !== 'gsb' && (
-                        <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
-                          {userType === 'saa' ? 'Alumni' : 'Affiliate'}{' '}
-                          Membership
-                        </div>
-                      )}
+                      <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
+                        {userType === 'saa' ? 'Alumni' : 'Affiliate'} Membership
+                      </div>
 
                       <div
                         className={dcnb(
-                          'su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22',
-                          userType === 'gsb'
-                            ? ' su-px-[1.2rem] md:su-px-[2.5rem]'
-                            : 'su-mt-auto'
+                          'su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-mt-auto'
                         )}
                       >
                         <span className="su-text-22 sm:su-type-2 su-font-semibold">
@@ -122,26 +100,13 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                         <span>
                           {auth.userProfile?.membership?.membershipNumber}
                         </span>
-                        {userType === 'gsb' && (
-                          <span>{auth.userProfile?.membership?.type}</span>
-                        )}
                       </div>
                     </div>
-                    <div
-                      className={dcnb(
-                        'su-absolute su-w-full',
-                        userType === 'gsb'
-                          ? 'su-top-1/2 -su-translate-y-1/2 su-left-[40%] su-rounded-full su-h-0 su-pt-[90%] su-overflow-hidden'
-                          : 'su-h-full su-top-0 su-right-0'
-                      )}
-                    >
+                    <div className="su-absolute su-w-full su-h-full su-top-0 su-right-0">
                       <div className="su-absolute su-inset-0">
                         <img
                           className={dcnb(
-                            'su-absolute ',
-                            userType === 'gsb'
-                              ? 'su-min-h-full su-inset-0'
-                              : 'su-h-full su-top-0 su-right-0'
+                            'su-absolute su-h-full su-top-0 su-right-0'
                           )}
                           src={bgImage}
                           alt=""
