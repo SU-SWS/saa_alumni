@@ -7,7 +7,7 @@ module.exports = function () {
     addBase({
       html: {
         height: '100%',
-        // scrollBehavior: 'smooth',
+        scrollBehavior: 'smooth',
         overflowY: 'visible !important', // Need this for sticky nav to work
       },
       a: {
