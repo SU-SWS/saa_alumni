@@ -38,8 +38,11 @@ export const shouldUpdateScroll = (ctx) => {
 
   if (location.pathname.match(/\/register\/form/)) {
     if (document.getElementById('su-gg-embed')) {
-      console.log('FIRING');
-      window.scroll({ top: document.getElementById('su-gg-embed').offsetTop });
+      window.scroll({
+        top: document.getElementById('su-gg-embed').offsetTop,
+        left: '0',
+        behavior: 'smooth',
+      });
     }
     return false;
   }
