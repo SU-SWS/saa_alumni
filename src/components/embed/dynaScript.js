@@ -24,11 +24,7 @@ const DynaScript = ({ errorBlok, src, id, ...props }) => {
       document.documentElement.scrollTop !==
       document.getElementById('su-gg-embed').offsetTop
     ) {
-      window.scroll({
-        top: document.getElementById('su-gg-embed').offsetTop,
-        left: '0',
-        behavior: 'smooth',
-      });
+      window.scroll({ top: document.getElementById('su-gg-embed').offsetTop });
     }
   };
 
