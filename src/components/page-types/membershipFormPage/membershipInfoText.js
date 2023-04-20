@@ -3,7 +3,6 @@ import SbEditable from 'storyblok-react';
 import { SAALinkButton } from '../../cta/SAALinkButton';
 import { FlexBox } from '../../layout/FlexBox';
 import { Heading } from '../../simple/Heading';
-import HeroIcon from '../../simple/heroIcon';
 import * as styles from './membershipInfoText.styles';
 
 const MembershipInfoText = ({

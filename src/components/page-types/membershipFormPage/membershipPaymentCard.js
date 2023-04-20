@@ -35,7 +35,7 @@ const MembershipPaymentCard = ({
           </div>
         )}
       </FlexBox>
-      <Heading level={3} size={2} className="su-mb-0 su-rs-mt-1">
+      <Heading level={3} size={2} className={styles.heading}>
         {heading}
       </Heading>
       <div className={styles.subheadingAndCaptionWrapper}>
