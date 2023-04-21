@@ -30,29 +30,30 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   };
 
   useEffect(() => {
-    const membership = auth.userProfile.membership || {};
-    if (
-      membership.membershipGroup?.includes('SAA') &&
-      membership.membershipAffiliation?.includes('Alum')
-    ) {
-      fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
-      setBgColor(
-        'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
-      );
-      setUserType('saa');
-    } else if (
-      membership.membershipGroup?.includes('SAA') &&
-      membership.membershipAffiliation?.includes('Affiliate')
-    ) {
-      fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
-      setBgColor(
-        'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
-      );
-      setUserType('affiliate');
-    } else {
-      setNoCard(true);
-      fetchImages(false);
-    }
+    const memberships = auth.userProfile.memberships || [];
+    setNoCard(true);
+    fetchImages(false);
+    memberships.forEach((membership) => {
+      if (
+        membership.membershipGroup?.includes('SAA') &&
+        membership.membershipAffiliation?.includes('Alum')
+      ) {
+        fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
+        setBgColor(
+          'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
+        );
+        setUserType('saa');
+      } else if (
+        membership.membershipGroup?.includes('SAA') &&
+        membership.membershipAffiliation?.includes('Affiliate')
+      ) {
+        fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
+        setBgColor(
+          'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
+        );
+        setUserType('affiliate');
+      }
+    });
   }, [auth]);
 
   return (
