@@ -27,6 +27,7 @@ https://students.alumni.stanford.edu/grad-awards https://alumni.stanford.edu/stu
 https://students.alumni.stanford.edu/awards/nominations https://alumni.stanford.edu/students/grad/graduate-awards 301!
 https://students.alumni.stanford.edu/class-presidents https://alumni.alumni.stanford.edu/students/grad/class-presidents 301!
 https://students.alumni.stanford.edu/* https://alumni.stanford.edu/:splat 301!
+https://alumnicenter.alumni.stanford.edu/* https://alumni.stanford.edu/alumni-center 301!
 
 # PATH REDIRECTS
 ################################################################################
