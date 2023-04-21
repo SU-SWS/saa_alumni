@@ -1,10 +1,10 @@
 import { dcnb } from 'cnbuilder';
 
 export const root =
-  'su-group su-relative su-break-words su-border-black su-max-w-full su-bg-saa-black-dark';
+  'su-group su-relative su-break-words su-border-black su-max-w-full su-bg-saa-black-dark su-h-full';
 export const membershipCardWrapper = (disableHocus) =>
   dcnb(
-    'su-basefont-23 su-rs-p-3 su-stretch-link su-w-full su-transition-all su-rounded su-border-3 su-border-white',
+    'su-basefont-23 su-rs-p-3 su-stretch-link su-w-full su-transition-all su-rounded su-border-3 su-border-white su-h-full',
     !disableHocus &&
       'hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue focus:su-outline-4 focus:su-outline-offset-4'
   );
