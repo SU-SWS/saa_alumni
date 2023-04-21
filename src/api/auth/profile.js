@@ -50,7 +50,7 @@ const megaprofileHandler = async (req, res, next) => {
 
   // Membership Data;
   if (resolved[3].status === 'fulfilled') {
-    memberships = resolved[3].value.data.membership;
+    memberships = resolved[3].value.data.memberships;
   }
 
   const mpUser = {
