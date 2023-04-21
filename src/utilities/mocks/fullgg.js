@@ -274,14 +274,14 @@ export const fullggMockData = {
   affiliations: affiliationsMockData,
   memberships: [
     // Test Data for SAA Alum
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '0001223551',
-      membershipType: 'Life',
-      membershipAffiliation: 'Alum',
-      membershipStartDate: '2011',
-      membershipGroup: 'SAA',
-    },
+    // {
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223551',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Alum',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'SAA',
+    // },
     //  Test Data for SAA Affiliate
     // {
     //   membershipStatus: 'Active',
