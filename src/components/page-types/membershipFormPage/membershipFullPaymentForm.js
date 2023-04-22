@@ -29,14 +29,17 @@ const MembershipFullPaymentForm = (props) => {
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
-  const registrant = location?.state?.registrant;
+  const registrant = location?.state?.registrant[0];
   const promoCode = location?.state?.promoCode;
 
   useEffect(() => {
     if (registrant?.su_reg_type !== 'newContact') {
       window.prefillData = registrant;
     }
-  }, [registrant]);
+    if (registrant?.su_affiliations.includes('Friend')) {
+      window.appeal_code = promoCode;
+    }
+  }, [registrant, promoCode]);
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
@@ -89,7 +92,11 @@ const MembershipFullPaymentForm = (props) => {
                     <CreateBloks
                       blokSection={giveGabForm}
                       bgCardStyle="su-bg-saa-black-dark"
-                      urlData={promoCode}
+                      urlData={
+                        registrant?.su_affiliations.includes('Friend')
+                          ? 'aff_fr_myself'
+                          : promoCode
+                      }
                     />
                   </GridCell>
                 </Grid>

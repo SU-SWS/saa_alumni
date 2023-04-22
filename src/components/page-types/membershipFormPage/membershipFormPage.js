@@ -50,7 +50,7 @@ const MembershipFormPage = (props) => {
   const [promoCode, setPromoCode] = useState('');
   let paymentTypeCode =
     userProfile?.affiliations &&
-    Array.from(userProfile?.affiliations).includes('Alum')
+    Array.from(userProfile?.affiliations).includes('SAA Alum')
       ? 'alum_myself_full'
       : 'aff_fr_myself';
 
