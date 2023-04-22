@@ -50,9 +50,9 @@ const MembershipFormPage = (props) => {
   const [promoCode, setPromoCode] = useState('');
   let paymentTypeCode =
     userProfile?.affiliations &&
-    Array.from(userProfile?.affiliations).includes('Friend')
-      ? 'aff_fr_myself'
-      : 'alum_myself_full';
+    Array.from(userProfile?.affiliations).includes('Alum')
+      ? 'alum_myself_full'
+      : 'aff_fr_myself';
 
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
@@ -66,7 +66,7 @@ const MembershipFormPage = (props) => {
     setPromoCode(event.target.value);
   };
 
-  const membership = userProfile?.membership || {};
+  const memberships = userProfile?.memberships || {};
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantEmailType = findPreferredEmailType(
@@ -132,10 +132,10 @@ const MembershipFormPage = (props) => {
     su_self_membership: 'no',
   };
 
-  const [paymentType, setPaymentType] = useState(false);
+  const [paymentType, setPaymentType] = useState('oneTime');
   const togglePaymentType = (type) => {
     // Reset to false if the payment type is the same
-    setPaymentType(type === paymentType ? false : type);
+    setPaymentType(type === paymentType ? 'oneTime' : type);
   };
 
   return (
@@ -283,8 +283,10 @@ const MembershipFormPage = (props) => {
                                 aria-expanded={paymentOptionSection}
                                 id="su-myself-payment"
                                 membershipInfo={
-                                  Object.keys(membership).length > 0
-                                    ? membership
+                                  memberships.length > 0 &&
+                                  memberships.includes('SAA') &&
+                                  memberships.includes('Active')
+                                    ? memberships
                                     : false
                                 }
                                 enabled
