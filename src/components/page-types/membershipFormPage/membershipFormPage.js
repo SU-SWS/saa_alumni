@@ -180,10 +180,7 @@ const MembershipFormPage = (props) => {
                   const isContactSelected = () => {
                     if (
                       value[0].registrantsData[0]?.su_reg_type === 'self' &&
-                      (paymentType ||
-                        Array.from(primaryUser.su_affiliations).includes(
-                          'Friend'
-                        ))
+                      (paymentType || !isAlum(affiliations))
                     ) {
                       return true;
                     }
@@ -236,7 +233,7 @@ const MembershipFormPage = (props) => {
                     }
                   }
 
-                  // If user is an Alum and selects "Myself", toggle the payment option sectiona
+                  // If user is an Alum and selects "Myself", toggle the payment option section
                   let paymentOptionSection = false;
                   if (
                     value[0].registrantsData[0]?.su_recipient_suid ===
