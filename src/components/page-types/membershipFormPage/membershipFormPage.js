@@ -235,9 +235,7 @@ const MembershipFormPage = (props) => {
                   if (
                     value[0].registrantsData[0]?.su_recipient_suid ===
                       primaryUser.su_recipient_suid &&
-                    Array.from(primaryUser.su_affiliations).includes(
-                      'SAA Alumn'
-                    )
+                    Array.from(primaryUser.su_affiliations).includes('SAA Alum')
                   ) {
                     paymentOptionSection = true;
                   }
