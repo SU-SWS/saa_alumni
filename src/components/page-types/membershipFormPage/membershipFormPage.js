@@ -66,6 +66,8 @@ const MembershipFormPage = (props) => {
     setPromoCode(event.target.value);
   };
 
+  // If the user has an existing SAA membership, they should not be permitted to purchase another membership for themselves
+  // See MembershipCard(~L290) for "Myself" for additional conditionals and config
   const memberships = userProfile?.memberships || {};
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
@@ -162,6 +164,10 @@ const MembershipFormPage = (props) => {
               </div>
               <FormContext.Consumer>
                 {(value) => {
+                  // This function handles whether an active or disabled button should appear
+                  // based on whether the user is an Alum or Friend/Unknown.
+                  // If the user is an Alum, they will need to select the payment type before being able to process
+                  // If the user is an Friend/Unknown, they can continue to the full payment form
                   const isContactSelected = () => {
                     if (
                       value[0].registrantsData[0]?.su_reg_type === 'self' &&
@@ -180,11 +186,13 @@ const MembershipFormPage = (props) => {
                     return false;
                   };
 
+                  // Set the pay in full form as the default location
                   let nextPageLink = `${location.pathname.replace(
                     /\/$/,
                     ''
                   )}/form`;
 
+                  // If the user is purchasing for Someone else, set the payment type to false and direct them to the related contacts page
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
@@ -193,7 +201,7 @@ const MembershipFormPage = (props) => {
                       /\/$/,
                       ''
                     )}/related-contacts`;
-                    // If the user is purchasing for a Someone else, the payment code should always be defined
+                    // If the user is purchasing for a Someone else, the payment code should always be defined as buy_someone
                     paymentTypeCode = 'buy_someone';
                     // If there is no related contacts available, go directly to the form
                     if (
@@ -206,9 +214,11 @@ const MembershipFormPage = (props) => {
                       )}/form`;
                     }
                   }
+
+                  // If the user is purchasing for Myself and decided to purchase with an installment, confirm they are an Alum before continuing to the installments form
                   if (
                     paymentType === 'installments' &&
-                    !Array.from(primaryUser.su_affiliations).includes('Friend')
+                    Array.from(primaryUser.su_affiliations).includes('SAA Alum')
                   ) {
                     nextPageLink = `${location.pathname.replace(
                       /\/$/,
@@ -220,14 +230,18 @@ const MembershipFormPage = (props) => {
                     }
                   }
 
+                  // If user is an Alum and selects "Myself", toggle the payment option sectiona
                   let paymentOptionSection = false;
                   if (
                     value[0].registrantsData[0]?.su_recipient_suid ===
                       primaryUser.su_recipient_suid &&
-                    !Array.from(primaryUser.su_affiliations).includes('Friend')
+                    Array.from(primaryUser.su_affiliations).includes(
+                      'SAA Alumn'
+                    )
                   ) {
                     paymentOptionSection = true;
                   }
+
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
