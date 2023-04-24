@@ -78,7 +78,6 @@ const MembershipFormPage = (props) => {
         membership.membershipStatus === 'Active'
       )
   );
-  console.log('IS MEMBER?', isSaaMember);
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantEmailType = findPreferredEmailType(
