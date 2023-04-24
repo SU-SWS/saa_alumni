@@ -271,8 +271,17 @@ export const fullggMockData = {
     encodedSUID: '12345678910',
     access_method: 'GET',
   },
-  affiliations: [],
+  // TODO: Resolve affiliations differences in ADAPTSM-171
   // affiliations: affiliationsMockData,
+  // affiliations: [],
+  affiliations: [
+    'GSB Alum',
+    'GSB SEP',
+    'Non-Student',
+    'GSB Defined Alums and Students',
+    'SAA Member',
+    // 'Friend,
+  ],
   memberships: [
     // Test Data for SAA Alum
     // {
