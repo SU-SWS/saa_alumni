@@ -29,6 +29,7 @@ import {
 import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
 import { formatUsDate } from '../../../utilities/transformDate';
+import { isAlum } from '../../../utilities/isAlum';
 
 // The type of registrant interstitial page has been set as the default preview within StoryBlok
 const MembershipFormPage = (props) => {
@@ -47,8 +48,6 @@ const MembershipFormPage = (props) => {
 
   // Determine if user is an Alum
   const affiliations = userProfile?.affiliations || [];
-  const isAlum = (aff) =>
-    aff.filter((type) => type.includes('Alum')).length > 0;
 
   // If url parameters include an appeal_code, parse and set the promo code input value
   const location = useLocation();

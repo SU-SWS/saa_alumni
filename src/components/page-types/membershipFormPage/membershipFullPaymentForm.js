@@ -15,6 +15,7 @@ import { FormContextProvider } from '../../../contexts/FormContext';
 import * as styles from './membershipForm.styles';
 import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
+import { isAlum } from '../../../utilities/isAlum';
 
 const MembershipFullPaymentForm = (props) => {
   const {
@@ -36,7 +37,7 @@ const MembershipFullPaymentForm = (props) => {
     if (registrant?.su_reg_type !== 'newContact') {
       window.prefillData = registrant;
     }
-    if (registrant?.su_affiliations.includes('Friend')) {
+    if (!isAlum(registrant?.su_affiliations)) {
       window.appeal_code = promoCode;
     }
   }, [registrant, promoCode]);
@@ -93,7 +94,7 @@ const MembershipFullPaymentForm = (props) => {
                       blokSection={giveGabForm}
                       bgCardStyle="su-bg-saa-black-dark"
                       urlData={
-                        registrant?.su_affiliations.includes('Friend')
+                        !isAlum(registrant?.su_affiliations)
                           ? 'aff_fr_myself'
                           : promoCode
                       }
