@@ -273,15 +273,15 @@ export const fullggMockData = {
   },
   // TODO: Resolve affiliations differences in ADAPTSM-171
   // affiliations: affiliationsMockData,
-  // affiliations: [],
-  affiliations: [
-    'GSB Alum',
-    'GSB SEP',
-    'Non-Student',
-    'GSB Defined Alums and Students',
-    'SAA Member',
-    // 'Friend,
-  ],
+  affiliations: [],
+  // affiliations: [
+  //   'GSB Alum',
+  //   'GSB SEP',
+  //   'Non-Student',
+  //   'GSB Defined Alums and Students',
+  //   'SAA Member',
+  //   // 'Friend,
+  // ],
   memberships: [
     // Test Data for SAA Alum
     // {
