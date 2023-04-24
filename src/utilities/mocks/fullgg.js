@@ -283,23 +283,23 @@ export const fullggMockData = {
     //   membershipGroup: 'SAA',
     // },
     //  Test Data for SAA Affiliate
+    {
+      membershipStatus: 'Active',
+      membershipNumber: '0001223552',
+      membershipType: 'Life',
+      membershipAffiliation: 'Affiliate',
+      membershipStartDate: '2011',
+      membershipGroup: 'SAA',
+    },
+    // Test Data for GSB Membership
     // {
     //   membershipStatus: 'Active',
     //   membershipNumber: '0001223551',
     //   membershipType: 'Life',
-    //   membershipAffiliation: 'Affiliate',
+    //   membershipAffiliation: 'Alum',
     //   membershipStartDate: '2011',
-    //   membershipGroup: 'SAA',
+    //   membershipGroup: 'GSB',
     // },
-    // Test Data for GSB Membership
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '0001223551',
-      membershipType: 'Life',
-      membershipAffiliation: 'Alum',
-      membershipStartDate: '2011',
-      membershipGroup: 'GSB',
-    },
   ],
   profilePhotoURL: 'https://placekitten.com/300/300',
 };

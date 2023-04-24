@@ -71,7 +71,15 @@ const MembershipFormPage = (props) => {
 
   // If the user has an existing SAA membership, they should not be permitted to purchase another membership for themselves
   // See MembershipCard(~L290) for "Myself" for additional conditionals and config
-  const memberships = userProfile?.memberships || {};
+  const memberships = userProfile?.memberships || [];
+  const isSaaMember = memberships.filter(
+    (membership) =>
+      !!(
+        membership.membershipGroup === 'SAA' &&
+        membership.membershipStatus === 'Active'
+      )
+  );
+  console.log('IS MEMBER?', isSaaMember);
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantEmailType = findPreferredEmailType(
@@ -295,10 +303,8 @@ const MembershipFormPage = (props) => {
                                 aria-expanded={paymentOptionSection}
                                 id="su-myself-payment"
                                 membershipInfo={
-                                  memberships.length > 0 &&
-                                  memberships.includes('SAA') &&
-                                  memberships.includes('Active')
-                                    ? memberships
+                                  isSaaMember.length > 0
+                                    ? isSaaMember[0]
                                     : false
                                 }
                                 enabled
