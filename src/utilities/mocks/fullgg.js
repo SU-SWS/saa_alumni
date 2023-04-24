@@ -271,7 +271,8 @@ export const fullggMockData = {
     encodedSUID: '12345678910',
     access_method: 'GET',
   },
-  affiliations: affiliationsMockData,
+  affiliations: [],
+  // affiliations: affiliationsMockData,
   memberships: [
     // Test Data for SAA Alum
     // {
