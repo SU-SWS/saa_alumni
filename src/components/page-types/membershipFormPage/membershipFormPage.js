@@ -45,14 +45,17 @@ const MembershipFormPage = (props) => {
   const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
 
+  // Determine if user is an Alum
+  const affiliations = userProfile?.affiliations || [];
+  const isAlum = (aff) =>
+    aff.filter((type) => type.includes('Alum')).length > 0;
+
   // If url parameters include an appeal_code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
-  let paymentTypeCode =
-    userProfile?.affiliations &&
-    Array.from(userProfile?.affiliations).includes('SAA Alum')
-      ? 'alum_myself_full'
-      : 'aff_fr_myself';
+  let paymentTypeCode = isAlum(affiliations)
+    ? 'alum_myself_full'
+    : 'aff_fr_myself';
 
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
@@ -114,7 +117,7 @@ const MembershipFormPage = (props) => {
     su_self_membership: 'yes',
     su_gift: 'no',
     su_reg_type: 'self',
-    su_affiliations: userProfile?.affiliations,
+    su_affiliations: affiliations,
   };
 
   const newContact = {
@@ -216,10 +219,7 @@ const MembershipFormPage = (props) => {
                   }
 
                   // If the user is purchasing for Myself and decided to purchase with an installment, confirm they are an Alum before continuing to the installments form
-                  if (
-                    paymentType === 'installments' &&
-                    Array.from(primaryUser.su_affiliations).includes('SAA Alum')
-                  ) {
+                  if (paymentType === 'installments' && isAlum(affiliations)) {
                     nextPageLink = `${location.pathname.replace(
                       /\/$/,
                       ''
@@ -235,7 +235,7 @@ const MembershipFormPage = (props) => {
                   if (
                     value[0].registrantsData[0]?.su_recipient_suid ===
                       primaryUser.su_recipient_suid &&
-                    Array.from(primaryUser.su_affiliations).includes('SAA Alum')
+                    isAlum(affiliations)
                   ) {
                     paymentOptionSection = true;
                   }
