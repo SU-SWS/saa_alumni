@@ -284,14 +284,14 @@ export const fullggMockData = {
     //   membershipGroup: 'SAA',
     // },
     //  Test Data for SAA Affiliate
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '0001223552',
-      membershipType: 'Life',
-      membershipAffiliation: 'Affiliate',
-      membershipStartDate: '2011',
-      membershipGroup: 'SAA',
-    },
+    // {
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223552',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Affiliate',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'SAA',
+    // },
     // Test Data for GSB Membership
     // {
     //   membershipStatus: 'Active',
