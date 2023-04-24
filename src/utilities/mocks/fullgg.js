@@ -272,36 +272,34 @@ export const fullggMockData = {
     access_method: 'GET',
   },
   affiliations: affiliationsMockData,
-  membership: {},
-  // Test Data for SAA Alum
-  // membership: {
-  //   id: 'a0046000003s3pnAAA',
-  //   membershipStatus: 'Active',
-  //   membershipNumber: '0001223551',
-  //   membershipType: 'Life',
-  //   membershipAffiliation: 'Alum',
-  //   membershipStartDate: '2011',
-  //   membershipGroup: 'SAA',
-  // },
-  //  Test Data for SAA Affiliate
-  // membership: {
-  //   id: 'a0046000003s3pnAAA',
-  //   membershipStatus: 'Active',
-  //   membershipNumber: '0001223551',
-  //   membershipType: 'Life',
-  //   membershipAffiliation: 'Affiliate',
-  //   membershipStartDate: '2011',
-  //   membershipGroup: 'SAA',
-  // },
-  // Test Data for GSB Membership
-  // membership: {
-  //   id: 'a0046000003s3pnAAA',
-  //   membershipStatus: 'Active',
-  //   membershipNumber: '0001223551',
-  //   membershipType: 'Life',
-  //   membershipAffiliation: 'Alum',
-  //   membershipStartDate: '2011',
-  //   membershipGroup: 'GSB',
-  // },
+  memberships: [
+    // Test Data for SAA Alum
+    // {
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223551',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Alum',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'SAA',
+    // },
+    //  Test Data for SAA Affiliate
+    // {
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223551',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Affiliate',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'SAA',
+    // },
+    // Test Data for GSB Membership
+    {
+      membershipStatus: 'Active',
+      membershipNumber: '0001223551',
+      membershipType: 'Life',
+      membershipAffiliation: 'Alum',
+      membershipStartDate: '2011',
+      membershipGroup: 'GSB',
+    },
+  ],
   profilePhotoURL: 'https://placekitten.com/300/300',
 };

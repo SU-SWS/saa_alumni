@@ -7,10 +7,11 @@ import CreateBloks from '../../utilities/createBloks';
 const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   const [bgColor, setBgColor] = useState('su-bg-[#C3363A]');
   const [userType, setUserType] = useState(undefined);
-  const [noCard, setNoCard] = useState(false);
+  const [noCard, setNoCard] = useState(true);
   const [bgImage, setBgImage] = useState(null);
   const [exampleImage, setExampleImage] = useState(null);
   const [logo, setLogo] = useState(null);
+  const [membershipNumber, setMembershipNumber] = useState('');
   const auth = useContext(AuthContext);
 
   const fetchImages = async (loggedIn, logoPath, bgPath) => {
@@ -30,29 +31,35 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   };
 
   useEffect(() => {
-    const membership = auth.userProfile.membership || {};
-    if (
-      membership.membershipGroup?.includes('SAA') &&
-      membership.membershipAffiliation?.includes('Alum')
-    ) {
-      fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
-      setBgColor(
-        'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
-      );
-      setUserType('saa');
-    } else if (
-      membership.membershipGroup?.includes('SAA') &&
-      membership.membershipAffiliation?.includes('Affiliate')
-    ) {
-      fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
-      setBgColor(
-        'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
-      );
-      setUserType('affiliate');
-    } else {
-      setNoCard(true);
-      fetchImages(false);
-    }
+    const memberships = auth.userProfile.memberships || [];
+    fetchImages(false);
+    memberships.forEach((membership) => {
+      if (
+        membership.membershipStatus?.includes('Active') &&
+        membership.membershipGroup?.includes('SAA') &&
+        membership.membershipAffiliation?.includes('Alum')
+      ) {
+        fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
+        setBgColor(
+          'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
+        );
+        setUserType('saa');
+        setNoCard(false);
+        setMembershipNumber(membership.membershipNumber);
+      } else if (
+        membership.membershipStatus?.includes('Active') &&
+        membership.membershipGroup?.includes('SAA') &&
+        membership.membershipAffiliation?.includes('Affiliate')
+      ) {
+        fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
+        setBgColor(
+          'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
+        );
+        setUserType('affiliate');
+        setNoCard(false);
+        setMembershipNumber(membership.membershipNumber);
+      }
+    });
   }, [auth]);
 
   return (
@@ -97,9 +104,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                           {auth.userProfile?.name?.fullNameParsed?.firstName}{' '}
                           {auth.userProfile?.name?.fullNameParsed?.lastName}
                         </span>
-                        <span>
-                          {auth.userProfile?.membership?.membershipNumber}
-                        </span>
+                        <span>{membershipNumber}</span>
                       </div>
                     </div>
                     <div className="su-absolute su-w-full su-h-full su-top-0 su-right-0">
