@@ -280,7 +280,7 @@ export const fullggMockData = {
   //   'Non-Student',
   //   'GSB Defined Alums and Students',
   //   'SAA Member',
-  //   // 'Friend,
+  //   // 'Friend',
   // ],
   memberships: [
     // Test Data for SAA Alum

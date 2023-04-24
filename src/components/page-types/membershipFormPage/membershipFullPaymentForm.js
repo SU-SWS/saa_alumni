@@ -33,11 +33,24 @@ const MembershipFullPaymentForm = (props) => {
   const registrant = location?.state?.registrant[0];
   const promoCode = location?.state?.promoCode;
 
+  let noPromo = false;
+  if (
+    !isAlum(registrant?.su_affiliations) &&
+    registrant?.su_self_membership === 'yes'
+  ) {
+    noPromo = 'aff_fr_myself';
+  } else if (registrant?.su_self_membership === 'no') {
+    noPromo = 'buy_someone';
+  }
+
   useEffect(() => {
     if (registrant?.su_reg_type !== 'newContact') {
       window.prefillData = registrant;
     }
-    if (!isAlum(registrant?.su_affiliations)) {
+    if (
+      !isAlum(registrant?.su_affiliations) ||
+      registrant?.su_self_membership === 'no'
+    ) {
       window.appeal_code = promoCode;
     }
   }, [registrant, promoCode]);
@@ -93,11 +106,7 @@ const MembershipFullPaymentForm = (props) => {
                     <CreateBloks
                       blokSection={giveGabForm}
                       bgCardStyle="su-bg-saa-black-dark"
-                      urlData={
-                        !isAlum(registrant?.su_affiliations)
-                          ? 'aff_fr_myself'
-                          : promoCode
-                      }
+                      urlData={noPromo || promoCode}
                     />
                   </GridCell>
                 </Grid>
