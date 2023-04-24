@@ -146,7 +146,7 @@ const MembershipFormPage = (props) => {
   const [paymentType, setPaymentType] = useState('oneTime');
   const togglePaymentType = (type) => {
     // Reset to false if the payment type is the same
-    setPaymentType(type === paymentType ? 'oneTime' : type);
+    setPaymentType(type === paymentType ? false : type);
   };
 
   return (
