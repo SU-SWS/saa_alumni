@@ -7,22 +7,14 @@
  * @returns {string|boolean}
  *   The phone number when found or false
  */
-const findPreferredPhoneNumber = (phoneNumbers) => {
+const findPreferredPhoneNumber = (phoneNumbers, prefPhoneNumberType) => {
   let ret = false;
-
-  // Check the first phone number for the preferred type. Abort if anything is missing.
-  if (
-    !Array.isArray(phoneNumbers) ||
-    !phoneNumbers[0]?.preferredPhoneNumberType
-  ) {
-    return ret;
-  }
 
   // The preferred phone number is nested as a key in each of the options and we have
   // to loop through each of the phoneNumbers looking for it.
-  const pref = phoneNumbers[0].preferredPhoneNumberType;
+  const pref = prefPhoneNumberType;
   phoneNumbers.forEach((val) => {
-    if (val?.phoneNumberType === pref) {
+    if (val?.type === pref) {
       ret = val.phoneNumber;
     }
   });
@@ -65,10 +57,10 @@ const findPhoneNumberType = (phoneNumbers, type) => {
  * @returns {string}
  *   The preferred phone number type
  */
-export const findPhoneNumber = (phoneNumbers) => {
+export const findPhoneNumber = (phoneNumbers, prefPhoneNumberType) => {
   let phoneNumber;
   if (Array.isArray(phoneNumbers)) {
-    phoneNumber = findPreferredPhoneNumber(phoneNumbers);
+    phoneNumber = findPreferredPhoneNumber(phoneNumbers, prefPhoneNumberType);
     if (!phoneNumber) {
       phoneNumber = findPhoneNumberType(phoneNumbers, 'Home Phone');
     }
@@ -101,9 +93,9 @@ export const findPreferredPhoneNumberType = (
 
   if (phoneNumbers[0]?.preferredPhoneNumberType === null) {
     phoneNumbers.forEach((val) => {
-      if (val?.phoneNumberType?.includes('Mobile')) pref = 'Mobile';
-      else if (val?.phoneNumberType?.includes('Home')) pref = 'Home';
-      else if (val?.phoneNumberType?.includes('Business')) pref = 'Business';
+      if (val?.type?.includes('Mobile')) pref = 'Mobile';
+      else if (val?.type?.includes('Home')) pref = 'Home';
+      else if (val?.type?.includes('Business')) pref = 'Business';
     });
     return pref;
   }
@@ -126,19 +118,14 @@ export const findPreferredPhoneNumberType = (
  * @returns {string|boolean}
  *   The email when found or false
  */
-const findPreferredEmail = (emails) => {
+const findPreferredEmail = (emails, prefEmailType) => {
   let ret = false;
-
-  // Check the first email for the preferred type. Abort if anything is missing.
-  if (!Array.isArray(emails) || !emails[0]?.preferredEmailType) {
-    return ret;
-  }
 
   // The preferred email is nested as a key in each of the options and we have
   // to loop through each of the emails looking for it.
-  const pref = emails[0].preferredEmailType;
+  const pref = prefEmailType;
   emails.forEach((val) => {
-    if (val?.emailType === pref && val?.emailStatus === 'Active') {
+    if (val?.emailType === pref) {
       ret = val.emailAddress;
     }
   });
@@ -163,7 +150,7 @@ const findEmailType = (emails, type) => {
   const BreakException = {};
   try {
     emails.forEach((val) => {
-      if (val.emailType === type && val.emailStatus === 'Active') {
+      if (val.emailType === type) {
         ret = val.emailAddress;
         throw BreakException;
       }
@@ -184,10 +171,10 @@ const findEmailType = (emails, type) => {
  * @returns {string}
  *   The preferred email type
  */
-export const findEmail = (emails) => {
+export const findEmail = (emails, prefEmailType) => {
   let email;
   if (Array.isArray(emails)) {
-    email = findPreferredEmail(emails);
+    email = findPreferredEmail(emails, prefEmailType);
     if (!email) {
       email =
         findEmailType(emails, 'Home Email') ||
@@ -214,7 +201,7 @@ export const findEmail = (emails) => {
 export const findPreferredEmailType = (emails = [], prefEmail) => {
   let pref;
 
-  if (emails[0]?.preferredEmailType === null) {
+  if (emails[0]?.type === null) {
     emails.forEach((val) => {
       if (val?.emailType?.includes('Home')) pref = 'Home Email';
       else if (val?.emailType?.includes('Business')) pref = 'Business Email';
@@ -226,10 +213,7 @@ export const findPreferredEmailType = (emails = [], prefEmail) => {
 
   emails.forEach((val) => {
     if (val?.emailAddress === prefEmail) {
-      if (
-        val?.preferredEmailType?.includes('SAA') ||
-        val?.preferredEmailType?.includes('GSB')
-      ) {
+      if (val?.type?.includes('SAA') || val?.type?.includes('GSB')) {
         pref = 'Other Email';
       } else {
         pref = val.preferredEmailType;

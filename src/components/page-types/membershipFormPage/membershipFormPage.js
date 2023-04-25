@@ -79,18 +79,24 @@ const MembershipFormPage = (props) => {
       )
   );
 
-  const primaryRegistrantEmail = findEmail(userProfile?.emails);
-  const primaryRegistrantEmailType = findPreferredEmailType(
+  const primaryRegistrantEmail = findEmail(
     userProfile?.emails,
-    primaryRegistrantEmail
+    userProfile?.contact?.preferredEmail
   );
+  const primaryRegistrantEmailType =
+    userProfile?.contact?.preferredEmail ||
+    findPreferredEmailType(userProfile?.emails, primaryRegistrantEmail);
+
   const primaryRegistrantPhoneNumber = findPhoneNumber(
-    userProfile?.phoneNumbers
-  );
-  const primaryRegistrantPhoneNumberType = findPreferredPhoneNumberType(
     userProfile?.phoneNumbers,
-    primaryRegistrantPhoneNumber
+    userProfile?.contact?.preferredPhoneType
   );
+  const primaryRegistrantPhoneNumberType =
+    userProfile?.contact?.preferredPhoneType ||
+    findPreferredPhoneNumberType(
+      userProfile?.phoneNumbers,
+      primaryRegistrantPhoneNumber
+    );
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
