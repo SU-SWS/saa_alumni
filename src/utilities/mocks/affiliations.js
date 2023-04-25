@@ -13,6 +13,5 @@ export const affiliationsMockData = {
     'Non-Student',
     'GSB Defined Alums and Students',
     'SAA Member',
-    // 'Friend,
   ],
 };
