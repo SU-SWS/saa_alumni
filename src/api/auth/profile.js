@@ -19,7 +19,7 @@ const megaprofileHandler = async (req, res, next) => {
   let fullgg = {};
   let affiliations = {};
   let contact = {};
-  let memberships = {};
+  let memberships = [];
   // Four simultaneous requests to the API in hopes to stay under 10s.
   const requests = [
     mp.get(`/${profileId}/profiles/fullgg`),
