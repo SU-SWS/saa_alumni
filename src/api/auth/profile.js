@@ -41,7 +41,7 @@ const megaprofileHandler = async (req, res, next) => {
   // Affiliations Data;
   if (
     resolved[1].status === 'fulfilled' &&
-    !(resolved[3].value?.data === undefined)
+    !(resolved[1].value?.data === undefined)
   ) {
     affiliations = resolved[1].value.data.affiliations;
   }
@@ -49,7 +49,7 @@ const megaprofileHandler = async (req, res, next) => {
   // Contact Data;
   if (
     resolved[2].status === 'fulfilled' &&
-    !(resolved[3].value?.data === undefined)
+    !(resolved[2].value?.data === undefined)
   ) {
     contact = resolved[2].value.data.contact;
   }
