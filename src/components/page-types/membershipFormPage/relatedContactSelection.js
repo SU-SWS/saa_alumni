@@ -68,14 +68,14 @@ const RelatedContactSelection = (props) => {
           userProfile?.session?.lastName,
         su_email: primaryRegistrantEmail || userProfile?.session?.email,
         su_phone: primaryRegistrantPhoneNumber,
-        su_recipient_dob: relationship?.relatedContactBirthDate
-          ? formatUsDate(relationship?.relatedContactBirthDate)
+        su_recipient_dob: relationship?.birthDate
+          ? formatUsDate(relationship?.birthDate)
           : '',
         su_recipient_first_name:
           relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
         su_recipient_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
-        su_recipient_relationship: relationship?.relationshipType,
+        su_recipient_relationship: relationship?.type,
         su_recipient_suid: relationship?.relatedContactEncodedID,
         su_recipient_email: undefined,
         su_recipient_email_type: undefined,

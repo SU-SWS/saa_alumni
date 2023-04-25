@@ -930,12 +930,26 @@ export const fullprofileMockData = {
       type: 'Child',
       digitalName: 'Meg Alodon',
       birthDate: null,
+      relatedContactEncodedSUID: '1006614571278',
+      relatedContactFullNameParsed: {
+        relatedContactPrefix: 'Mx.',
+        relatedContactFirstName: 'Meg',
+        relatedContactMiddleName: null,
+        relatedContactLastName: 'Alodon',
+      },
     },
     {
       id: '0BE3CBE5D8A8E5FFBFC6358251266182DD50443F26424A650DCBEB70CB8AB310',
       type: 'Spouse/Partner',
       digitalName: 'Allie Grater',
       birthDate: '1981-01-02',
+      relatedContactEncodedSUID: '67392062457',
+      relatedContactFullNameParsed: {
+        relatedContactPrefix: 'Ms.',
+        relatedContactFirstName: 'Allie',
+        relatedContactMiddleName: null,
+        relatedContactLastName: 'Grater',
+      },
     },
   ],
   skillsAndSpecialties: [

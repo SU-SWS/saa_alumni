@@ -72,8 +72,8 @@ const InterstitialPage = (props) => {
     relationshipsData?.forEach((relationship) => {
       data = {
         su_did: relationship?.relatedContactEncodedID,
-        su_dname: relationship?.relatedContactDigitalName
-          ? relationship?.relatedContactDigitalName
+        su_dname: relationship?.digitalName
+          ? relationship?.digitalName
           : `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
         su_title:
           relationship?.relatedContactFullNameParsed?.relatedContactPrefix,
@@ -87,9 +87,9 @@ const InterstitialPage = (props) => {
                 ?.relatedContactMiddleName,
         su_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
-        su_relation: relationship?.relationshipType,
-        su_dob: relationship?.relatedContactBirthDate
-          ? formatUsDate(relationship?.relatedContactBirthDate)
+        su_relation: relationship?.type,
+        su_dob: relationship?.birthDate
+          ? formatUsDate(relationship?.birthDate)
           : undefined,
         su_reg: 'Related contact',
         su_email: undefined,
