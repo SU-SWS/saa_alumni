@@ -17,7 +17,7 @@ const megaprofileHandler = async (req, res, next) => {
   const profileId = req.user.encodedSUID;
   const session = req.user;
   let fullgg = {};
-  let affiliations = {};
+  let affiliations = [];
   let contact = {};
   let memberships = [];
   // Four simultaneous requests to the API in hopes to stay under 10s.
@@ -39,17 +39,26 @@ const megaprofileHandler = async (req, res, next) => {
   }
 
   // Affiliations Data;
-  if (resolved[1].status === 'fulfilled') {
+  if (
+    resolved[1].status === 'fulfilled' &&
+    !(resolved[3].value?.data === undefined)
+  ) {
     affiliations = resolved[1].value.data.affiliations;
   }
 
   // Contact Data;
-  if (resolved[2].status === 'fulfilled') {
+  if (
+    resolved[2].status === 'fulfilled' &&
+    !(resolved[3].value?.data === undefined)
+  ) {
     contact = resolved[2].value.data.contact;
   }
 
   // Membership Data;
-  if (resolved[3].status === 'fulfilled') {
+  if (
+    resolved[3].status === 'fulfilled' &&
+    !(resolved[3].value?.data === undefined)
+  ) {
     memberships = resolved[3].value.data.memberships;
   }
 
