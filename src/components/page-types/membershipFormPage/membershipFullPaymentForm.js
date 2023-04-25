@@ -15,6 +15,7 @@ import { FormContextProvider } from '../../../contexts/FormContext';
 import * as styles from './membershipForm.styles';
 import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
+import { isAlum } from '../../../utilities/isAlum';
 
 const MembershipFullPaymentForm = (props) => {
   const {
@@ -29,14 +30,28 @@ const MembershipFullPaymentForm = (props) => {
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
-  const registrant = location?.state?.registrant;
+  const registrant = location?.state?.registrant[0];
   const promoCode = location?.state?.promoCode;
 
+  let noPromo = false;
+  if (
+    !isAlum(registrant?.su_affiliations) &&
+    registrant?.su_self_membership === 'yes'
+  ) {
+    noPromo = 'aff_fr_myself';
+  } else if (registrant?.su_self_membership === 'no') {
+    noPromo = 'buy_someone';
+  }
+
   useEffect(() => {
-    if (registrant?.su_reg_type !== 'newContact') {
-      window.prefillData = registrant;
+    window.prefillData = registrant;
+    if (
+      !isAlum(registrant?.su_affiliations) ||
+      registrant?.su_self_membership === 'no'
+    ) {
+      window.appeal_code = promoCode;
     }
-  }, [registrant]);
+  }, [registrant, promoCode]);
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
@@ -89,7 +104,7 @@ const MembershipFullPaymentForm = (props) => {
                     <CreateBloks
                       blokSection={giveGabForm}
                       bgCardStyle="su-bg-saa-black-dark"
-                      urlData={promoCode}
+                      urlData={noPromo || promoCode}
                     />
                   </GridCell>
                 </Grid>

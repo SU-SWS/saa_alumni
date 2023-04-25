@@ -83,6 +83,7 @@ const RelatedContactSelection = (props) => {
         su_recipient_phone_type: undefined,
         su_self_membership: 'no',
         su_gift: 'yes',
+        su_affiliations: userProfile?.affiliations,
       };
       relatedContacts = [...relatedContacts, data];
     });
@@ -105,7 +106,6 @@ const RelatedContactSelection = (props) => {
     su_phone: primaryRegistrantPhoneNumber,
     su_reg_type: 'newContact',
     su_self_membership: 'no',
-    su_gift: 'yes',
   };
 
   return (

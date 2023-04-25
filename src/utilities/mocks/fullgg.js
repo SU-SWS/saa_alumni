@@ -271,7 +271,17 @@ export const fullggMockData = {
     encodedSUID: '12345678910',
     access_method: 'GET',
   },
-  affiliations: affiliationsMockData,
+  // TODO: Resolve affiliations differences in ADAPTSM-171
+  // affiliations: affiliationsMockData,
+  affiliations: [],
+  // affiliations: [
+  //   'GSB Alum',
+  //   'GSB SEP',
+  //   'Non-Student',
+  //   'GSB Defined Alums and Students',
+  //   'SAA Member',
+  //   // 'Friend',
+  // ],
   memberships: [
     // Test Data for SAA Alum
     // {
@@ -285,21 +295,21 @@ export const fullggMockData = {
     //  Test Data for SAA Affiliate
     // {
     //   membershipStatus: 'Active',
-    //   membershipNumber: '0001223551',
+    //   membershipNumber: '0001223552',
     //   membershipType: 'Life',
     //   membershipAffiliation: 'Affiliate',
     //   membershipStartDate: '2011',
     //   membershipGroup: 'SAA',
     // },
     // Test Data for GSB Membership
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '0001223551',
-      membershipType: 'Life',
-      membershipAffiliation: 'Alum',
-      membershipStartDate: '2011',
-      membershipGroup: 'GSB',
-    },
+    // {
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223551',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Alum',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'GSB',
+    // },
   ],
   profilePhotoURL: 'https://placekitten.com/300/300',
 };
