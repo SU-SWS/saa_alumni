@@ -29,10 +29,7 @@ const megaprofileHandler = async (req, res, next) => {
   const resolved = await Promise.allSettled(requests);
 
   // Full GG Data.
-  if (
-    resolved[0].status === 'fulfilled' &&
-    !(resolved[0].value?.data === undefined)
-  ) {
+  if (resolved[0].status === 'fulfilled' && !!resolved[0].value?.data) {
     fullgg = resolved[0].value.data;
   } else {
     fullgg.name = {};
@@ -40,18 +37,12 @@ const megaprofileHandler = async (req, res, next) => {
   }
 
   // Affiliations Data;
-  if (
-    resolved[1].status === 'fulfilled' &&
-    !(resolved[1].value?.data === undefined)
-  ) {
+  if (resolved[1].status === 'fulfilled' && !!resolved[1].value?.data) {
     affiliations = resolved[1].value.data.affiliations;
   }
 
   // Contact Data;
-  if (
-    resolved[2].status === 'fulfilled' &&
-    !(resolved[2].value?.data === undefined)
-  ) {
+  if (resolved[2].status === 'fulfilled' && !!resolved[2].value?.data) {
     contact = resolved[2].value.data.contact;
   }
 
