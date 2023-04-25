@@ -17,36 +17,32 @@ const megaprofileHandler = async (req, res, next) => {
   const profileId = req.user.encodedSUID;
   const session = req.user;
   let fullprofile = {};
-  // @TODO: Comment back in and test when endpoint is live
-  // let membership = {}
-  // Four simultaneous requests to the API in hopes to stay under 10s.
+  let memberships = [];
+  // Two simultaneous requests to the API in hopes to stay under 10s.
   const requests = [
     mp.get(`/${profileId}/profiles/fullprofile`),
-    // @TODO: Comment back in and test when endpoint is live
-    // mp.get(`/${profileId}/profiles/memberships`),
+    mp.get(`/${profileId}/profiles/memberships`),
   ];
 
   const resolved = await Promise.allSettled(requests);
 
   // Full GG Data.
-  if (resolved[0].status === 'fulfilled') {
+  if (resolved[0].status === 'fulfilled' && !!resolved[0].value?.data) {
     fullprofile = resolved[0].value.data;
   } else {
     fullprofile.contact.name = {};
     fullprofile.contact.name.digitalName = `${req.user.firstName} ${req.user.lastName}`;
   }
 
-  // @TODO: Comment back in and test when endpoint is live
   // Membership Data;
-  // if (resolved[3].status === 'fulfilled') {
-  //   membership = resolved[3].value.data.membership;
-  // }
+  if (resolved[1].status === 'fulfilled' && !!resolved[1].value?.data) {
+    memberships = resolved[1].value.data.memberships;
+  }
 
   const mpUser = {
     session,
     ...fullprofile,
-    // @TODO: Comment back in and test when endpoint is live
-    // membership,
+    memberships,
   };
   res.status(200).json(mpUser);
   next();

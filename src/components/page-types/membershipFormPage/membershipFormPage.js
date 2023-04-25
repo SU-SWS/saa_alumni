@@ -29,6 +29,7 @@ import {
 import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
 import { formatUsDate } from '../../../utilities/transformDate';
+import { isAlum } from '../../../utilities/isAlum';
 
 // The type of registrant interstitial page has been set as the default preview within StoryBlok
 const MembershipFormPage = (props) => {
@@ -45,14 +46,15 @@ const MembershipFormPage = (props) => {
   const { userProfile } = useContext(AuthContext);
   const helmetTitle = 'Stanford Alumni Association Membership';
 
+  // Determine if user is an Alum
+  const affiliations = userProfile?.affiliation.affiliation || [];
+
   // If url parameters include an appeal_code, parse and set the promo code input value
   const location = useLocation();
   const [promoCode, setPromoCode] = useState('');
-  let paymentTypeCode =
-    userProfile?.affiliation.affiliations &&
-    Array.from(userProfile?.affiliation.affiliations).includes('Friend')
-      ? 'aff_fr_myself'
-      : 'alum_myself_full';
+  let paymentTypeCode = isAlum(affiliations)
+    ? 'alum_myself_full'
+    : 'aff_fr_myself';
 
   const appealCode = location?.href
     ? new URL(location.href).searchParams.get('appeal_code')
@@ -66,7 +68,16 @@ const MembershipFormPage = (props) => {
     setPromoCode(event.target.value);
   };
 
-  const membership = userProfile?.membership || {};
+  // If the user has an existing SAA membership, they should not be permitted to purchase another membership for themselves
+  // See MembershipCard(~L290) for "Myself" for additional conditionals and config
+  const memberships = userProfile?.memberships || [];
+  const isSaaMember = memberships.filter(
+    (membership) =>
+      !!(
+        membership.membershipGroup === 'SAA' &&
+        membership.membershipStatus === 'Active'
+      )
+  );
 
   const primaryRegistrantEmail = findEmail(userProfile?.emails);
   const primaryRegistrantEmailType = findPreferredEmailType(
@@ -112,7 +123,7 @@ const MembershipFormPage = (props) => {
     su_self_membership: 'yes',
     su_gift: 'no',
     su_reg_type: 'self',
-    su_affiliations: userProfile?.affiliation.affiliations,
+    su_affiliations: affiliations,
   };
 
   const newContact = {
@@ -132,7 +143,7 @@ const MembershipFormPage = (props) => {
     su_self_membership: 'no',
   };
 
-  const [paymentType, setPaymentType] = useState(false);
+  const [paymentType, setPaymentType] = useState('oneTime');
   const togglePaymentType = (type) => {
     // Reset to false if the payment type is the same
     setPaymentType(type === paymentType ? false : type);
@@ -162,13 +173,14 @@ const MembershipFormPage = (props) => {
               </div>
               <FormContext.Consumer>
                 {(value) => {
+                  // This function handles whether an active or disabled button should appear
+                  // based on whether the user is an Alum or Friend/Unknown.
+                  // If the user is an Alum, they will need to select the payment type before being able to process
+                  // If the user is an Friend/Unknown, they can continue to the full payment form
                   const isContactSelected = () => {
                     if (
                       value[0].registrantsData[0]?.su_reg_type === 'self' &&
-                      (paymentType ||
-                        Array.from(primaryUser.su_affiliations).includes(
-                          'Friend'
-                        ))
+                      (paymentType || !isAlum(affiliations))
                     ) {
                       return true;
                     }
@@ -180,11 +192,13 @@ const MembershipFormPage = (props) => {
                     return false;
                   };
 
+                  // Set the pay in full form as the default location
                   let nextPageLink = `${location.pathname.replace(
                     /\/$/,
                     ''
                   )}/form`;
 
+                  // If the user is purchasing for Someone else, set the payment type to false and direct them to the related contacts page
                   if (
                     value[0].registrantsData[0]?.su_reg_type === 'newContact'
                   ) {
@@ -193,7 +207,7 @@ const MembershipFormPage = (props) => {
                       /\/$/,
                       ''
                     )}/related-contacts`;
-                    // If the user is purchasing for a Someone else, the payment code should always be defined
+                    // If the user is purchasing for a Someone else, the payment code should always be defined as buy_someone
                     paymentTypeCode = 'buy_someone';
                     // If there is no related contacts available, go directly to the form
                     if (
@@ -206,10 +220,9 @@ const MembershipFormPage = (props) => {
                       )}/form`;
                     }
                   }
-                  if (
-                    paymentType === 'installments' &&
-                    !Array.from(primaryUser.su_affiliations).includes('Friend')
-                  ) {
+
+                  // If the user is purchasing for Myself and decided to purchase with an installment, confirm they are an Alum before continuing to the installments form
+                  if (paymentType === 'installments' && isAlum(affiliations)) {
                     nextPageLink = `${location.pathname.replace(
                       /\/$/,
                       ''
@@ -220,14 +233,16 @@ const MembershipFormPage = (props) => {
                     }
                   }
 
+                  // If user is an Alum and selects "Myself", toggle the payment option section
                   let paymentOptionSection = false;
                   if (
                     value[0].registrantsData[0]?.su_recipient_suid ===
                       primaryUser.su_recipient_suid &&
-                    !Array.from(primaryUser.su_affiliations).includes('Friend')
+                    isAlum(affiliations)
                   ) {
                     paymentOptionSection = true;
                   }
+
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
@@ -283,8 +298,8 @@ const MembershipFormPage = (props) => {
                                 aria-expanded={paymentOptionSection}
                                 id="su-myself-payment"
                                 membershipInfo={
-                                  Object.keys(membership).length > 0
-                                    ? membership
+                                  isSaaMember.length > 0
+                                    ? isSaaMember[0]
                                     : false
                                 }
                                 enabled

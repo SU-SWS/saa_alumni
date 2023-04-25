@@ -10,7 +10,10 @@ const accessAllowed = (userAffiliations, protectedContentItem) => {
     : [];
 
   allowedAffiliations.forEach((affiliation) => {
-    if (userAffiliations.includes(affiliation)) {
+    if (
+      userAffiliations.includes(affiliation) ||
+      affiliation.includes('Authenticated')
+    ) {
       allowed = true;
     }
   });
