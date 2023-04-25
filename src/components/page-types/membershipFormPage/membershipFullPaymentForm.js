@@ -44,9 +44,7 @@ const MembershipFullPaymentForm = (props) => {
   }
 
   useEffect(() => {
-    if (registrant?.su_reg_type !== 'newContact') {
-      window.prefillData = registrant;
-    }
+    window.prefillData = registrant;
     if (
       !isAlum(registrant?.su_affiliations) ||
       registrant?.su_self_membership === 'no'

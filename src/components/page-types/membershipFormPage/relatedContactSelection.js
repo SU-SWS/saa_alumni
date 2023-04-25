@@ -106,7 +106,6 @@ const RelatedContactSelection = (props) => {
     su_phone: primaryRegistrantPhoneNumber,
     su_reg_type: 'newContact',
     su_self_membership: 'no',
-    su_gift: 'yes',
   };
 
   return (
