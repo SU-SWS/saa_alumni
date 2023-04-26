@@ -9,14 +9,14 @@
  * @returns {obj}
  *   Contains the preferred phone number and type
  */
-export const findPhoneNumber = (phoneNumbers, type: string) => {
+export const findPhoneNumber = (phoneNumbers, type) => {
   if (Array.isArray(phoneNumbers) && type) {
     phoneNumbers.forEach((val) => {
       if (val?.type === type) {
-        return { val.phoneNumber, type };
+        return { phoneNumber: val.phoneNumber, type };
       }
 
-      return findPhoneNumber(val, type)
+      return findPhoneNumber(val, type);
     });
   }
 };
