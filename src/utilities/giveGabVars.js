@@ -9,19 +9,15 @@
  * @returns {obj}
  *   Contains the preferred phone number and type
  */
-export const findPhoneNumber = (phoneNumbers, type) => {
-  let phoneNumber;
-  let prefPhone = {};
-  if (Array.isArray(phoneNumbers)) {
-    if (type) {
-      phoneNumbers.forEach((val) => {
-        if (val?.type === type) {
-          return { val.phoneNumber, type };
-        }
-        
-        return findPhoneNumber(val, type)
-      });
-    }
+export const findPhoneNumber = (phoneNumbers, type: string) => {
+  if (Array.isArray(phoneNumbers) && type) {
+    phoneNumbers.forEach((val) => {
+      if (val?.type === type) {
+        return { val.phoneNumber, type };
+      }
+
+      return findPhoneNumber(val, type)
+    });
   }
 };
 
