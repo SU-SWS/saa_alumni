@@ -16,7 +16,7 @@ export const fullprofileMockData = {
       pronouns: 'He/him',
       myFriendsCallMe: 'Teri',
       envelopeName: 'Mr. Teri Dactyl',
-      username: 'teridactyl',
+      username: 'tdactyl',
       registrationNameString: 'Mr. Teri Dactyl',
       fullNameParsed: {
         prefix: 'Mr.',
@@ -284,22 +284,22 @@ export const fullprofileMockData = {
   emails: [
     {
       id: 'C9DE08474703999BB100D134861471F0378E6294B814ED49E3C5879FF578242C',
-      emailAddress: 'zguan@alumni.stanfordgsb.org',
+      emailAddress: 'tdactyl@alumni.stanfordgsb.org',
       type: 'GSB Email',
     },
     {
       id: '0EA80E2B872AA6649DD3B9AB4BAEA1DFB2EC571B561C61F79976C2AA063293CA',
-      emailAddress: 'zguan@alumni-test.stanford.edu',
+      emailAddress: 'tdactyl@alumni-test.stanford.edu',
       type: 'SAA Email',
     },
     {
       id: '15D976323E2BF964DF926633E9A62D30D55E100A8C27D574D5278AF96ADD6BFB',
-      emailAddress: 'test@as.a',
+      emailAddress: 'tdactyl-test@as.a',
       type: 'Other Email',
     },
     {
       id: '311DF118DD5D89B343DD7A3D43F3283D2891145D11A847F8017490D73154C123',
-      emailAddress: 'asdfasdfsadfas@test.com',
+      emailAddress: 'tdactyl@test.com',
       type: 'Home Email',
     },
     {
@@ -1012,22 +1012,22 @@ export const fullprofileMockData = {
     {
       id: '5065186F2CE5FD8919FA8776FEB3478EE6F3ED8C2DBDE981D174A640E8918043',
       type: 'LinkedIn',
-      url: 'http://zguan.linkedin.com',
+      url: 'http://tdactyl.linkedin.com',
     },
     {
       id: '29AECCF3DF12F7BD7CBBDBDE32A079B61256139546C4F0D66C70B162EC858BD8',
       type: 'Facebook',
-      url: 'https://test.com',
+      url: 'https://fb-test.com/tdactyl',
     },
     {
       id: '29AECCF3DF12F7BD7CBBDBDE32A079B646D4D8486E749A8E8252BA7D16867D41',
       type: 'Organization URL',
-      url: 'http://www.deepa-test.com',
+      url: 'http://www.tdactyl-test.com',
     },
     {
       id: '5065186F2CE5FD8919FA8776FEB3478E72503B59837B983CDCD5C7AF9E7FE9BA',
       type: 'Stanford Profiles',
-      url: 'https://blerg.org',
+      url: 'https://tdactyl.profiles.org',
     },
     {
       id: '5065186F2CE5FD8919FA8776FEB3478E6437C6861769BA71342CFA3B4F3419DB',
@@ -1090,36 +1090,36 @@ export const fullprofileMockData = {
     spousalConsent: true,
     anonymity: false,
   },
-
-  membership: {},
-  // Test Data for SAA Alum
-  // membership: {
-  //   id: 'a0046000003s3pnAAA',
-  //   membershipStatus: 'Active',
-  //   membershipNumber: '0001223551',
-  //   membershipType: 'Life',
-  //   membershipAffiliation: 'Alum',
-  //   membershipStartDate: '2011',
-  //   membershipGroup: 'SAA',
-  // },
-  //  Test Data for SAA Affiliate
-  // membership: {
-  //   id: 'a0046000003s3pnAAA',
-  //   membershipStatus: 'Active',
-  //   membershipNumber: '0001223551',
-  //   membershipType: 'Life',
-  //   membershipAffiliation: 'Affiliate',
-  //   membershipStartDate: '2011',
-  //   membershipGroup: 'SAA',
-  // },
-  // Test Data for GSB Membership
-  // membership: {
-  //   id: 'a0046000003s3pnAAA',
-  //   membershipStatus: 'Active',
-  //   membershipNumber: '0001223551',
-  //   membershipType: 'Life',
-  //   membershipAffiliation: 'Alum',
-  //   membershipStartDate: '2011',
-  //   membershipGroup: 'GSB',
-  // },
+  membership: [
+    // Test Data for SAA Alum
+    // {
+    //   id: 'a0046000003s3pnAAA',
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223551',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Alum',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'SAA',
+    // },
+    //  Test Data for SAA Affiliate
+    // {
+    //   id: 'a0046000003s3pnAAA',
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223551',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Affiliate',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'SAA',
+    // },
+    // Test Data for GSB Membership
+    // {
+    //   id: 'a0046000003s3pnAAA',
+    //   membershipStatus: 'Active',
+    //   membershipNumber: '0001223551',
+    //   membershipType: 'Life',
+    //   membershipAffiliation: 'Alum',
+    //   membershipStartDate: '2011',
+    //   membershipGroup: 'GSB',
+    // },
+  ],
 };
