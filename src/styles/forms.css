@@ -656,6 +656,15 @@
   @apply su-hidden;
 }
 
+/* Membership Recipient Digital Name */
+.ggeWidget.membership-forms .su-membership-dname.ggeQuestion[data-name="DigitalName"] {
+  @apply su-rs-mb-0 su-block;
+}
+
+.ggeWidget.membership-forms .su-membership-dname.ggeQuestion[data-name="DigitalName"] #DigitalName__ggid1 {
+  @apply su-mt-0;
+}
+
 /* Membership Recipient First and Last Name */
 .ggeWidget.membership-forms .ggeQuestion.ggeQuestion--readonly.su-name.su-first-name {
   @apply su-m-0;
@@ -795,6 +804,19 @@
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion[data-name="PhoneNumber"] {
   @apply su-rs-mb-neg2;
 }
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion[data-name="UpdatePhoneNumber"] {
+  @apply su-rs-mb-5;
+}
+
+/* Address */
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__state select {
+  @apply su-leading-display;
+}
+
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__state,
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__zipcode {
+  @apply su-rs-mb-5;
+}
 
 /* Membership registration leave a comment */
 .ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label {
@@ -810,16 +832,16 @@
 }
 
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #InstallmentPaymentTerms {
-  @apply su-rs-mb-1;
+  @apply su-rs-mb-0;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
-  @apply hocus:su-underline su-text-digital-red-light hocus:su-text-digital-red hocus:su-decoration-digital-red;
+  @apply su-underline hocus:su-no-underline su-text-digital-red-light hocus:su-text-digital-red hocus:su-decoration-digital-red;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
   @apply su-hidden;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--instructions.su-terms-and-conditions {
-  @apply su-rs-mb-1 su-rs-pt-3 su-mt-0 su-flex su-flex-col su-justify-start su-w-full;
+  @apply su-rs-mb-1 su-mt-0 su-flex su-flex-col su-justify-start su-w-full;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
   @apply su-items-center;
