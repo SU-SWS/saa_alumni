@@ -16,20 +16,13 @@ export const findPhoneNumber = (phoneNumbers, type) => {
     if (type) {
       phoneNumbers.forEach((val) => {
         if (val?.type === type) {
-          phoneNumber = val.phoneNumber;
+          return { val.phoneNumber, type };
         }
+        
+        return findPhoneNumber(val, type)
       });
-      prefPhone = { phoneNumber, type };
-      return prefPhone;
-    }
-    if (!phoneNumber) {
-      prefPhone =
-        findPhoneNumber(phoneNumbers, 'Home Phone') ||
-        findPhoneNumber(phoneNumbers, 'Mobile') ||
-        findPhoneNumber(phoneNumbers, 'Business Phone');
     }
   }
-  return prefPhone;
 };
 
 /**
