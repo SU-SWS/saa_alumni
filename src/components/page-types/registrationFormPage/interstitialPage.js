@@ -23,7 +23,7 @@ import {
   emailTypeList,
   phoneNumberTypeList,
 } from './registationFormOptions';
-import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
+import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -96,16 +96,21 @@ const InterstitialPage = (props) => {
   };
   const relatedContacts = structureTravelerData(relationships);
 
-  const { email: primaryRegistrantEmail, type: primaryRegistrantEmailType } =
-    findEmail(userProfile?.emails, userProfile?.contact?.preferredEmail);
+  const emailData = fetchEmail(
+    userProfile?.emails,
+    userProfile?.contact?.preferredEmail
+  );
 
-  const {
-    phoneNumber: primaryRegistrantPhoneNumber,
-    type: primaryRegistrantPhoneNumberType,
-  } = findPhoneNumber(
+  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
+  const primaryRegistrantEmailType = emailData?.type || null;
+
+  const phoneData = fetchPhone(
     userProfile?.phoneNumbers,
     userProfile?.contact?.preferredPhoneType
   );
+
+  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber || null;
+  const primaryRegistrantPhoneNumberType = phoneData?.type || null;
 
   let digitalName;
   if (userProfile?.contact.name?.digitalName) {
@@ -131,7 +136,7 @@ const InterstitialPage = (props) => {
     su_last_name:
       userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_email: primaryRegistrantEmail,
     su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
     su_phone: primaryRegistrantPhoneNumber,
     su_phone_type: findSelectOption(

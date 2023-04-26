@@ -10,16 +10,22 @@
  *   Contains the preferred phone number and type
  */
 export const findPhoneNumber = (phoneNumbers, type) => {
+  let prefPhone = false;
   if (Array.isArray(phoneNumbers) && type) {
     phoneNumbers.forEach((val) => {
       if (val?.type === type) {
-        return { phoneNumber: val.phoneNumber, type };
+        prefPhone = { phoneNumber: val.phoneNumber, type };
       }
-
-      return findPhoneNumber(val, type);
     });
   }
+  return prefPhone;
 };
+
+export const fetchPhone = (phoneNumbers, type) =>
+  findPhoneNumber(phoneNumbers, type) ||
+  findPhoneNumber(phoneNumbers, 'Home Phone') ||
+  findPhoneNumber(phoneNumbers, 'Mobile') ||
+  findPhoneNumber(phoneNumbers, 'Business Phone');
 
 /**
  * Find the preferred email and type
@@ -33,29 +39,24 @@ export const findPhoneNumber = (phoneNumbers, type) => {
  *   Contains the preferred email and type
  */
 export const findEmail = (emails, type) => {
-  let email;
-  let prefEmail = {};
-  if (Array.isArray(emails)) {
-    if (type) {
-      emails.forEach((val) => {
-        if (val?.type === type) {
-          email = val.email;
-        }
-      });
-      prefEmail = { email, type };
-      return prefEmail;
-    }
-    if (!email) {
-      prefEmail =
-        findEmail(emails, 'Home Email') ||
-        findEmail(emails, 'Business Email') ||
-        findEmail(emails, 'SAA Email') ||
-        findEmail(emails, 'GSB Email') ||
-        findEmail(emails, 'Other Email');
-    }
+  let prefEmail = false;
+  if (Array.isArray(emails) && type) {
+    emails.forEach((val) => {
+      if (val?.type === type) {
+        prefEmail = { email: val.email, type };
+      }
+    });
   }
   return prefEmail;
 };
+
+export const fetchEmail = (emails, type) =>
+  findEmail(emails, type) ||
+  findEmail(emails, 'Home Email') ||
+  findEmail(emails, 'Business Email') ||
+  findEmail(emails, 'SAA Email') ||
+  findEmail(emails, 'GSB Email') ||
+  findEmail(emails, 'Other Email');
 
 /**
  * Set the window variables for the pre populated forms.

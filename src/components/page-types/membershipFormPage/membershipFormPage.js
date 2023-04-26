@@ -9,7 +9,7 @@ import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
+import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -74,16 +74,21 @@ const MembershipFormPage = (props) => {
       )
   );
 
-  const { email: primaryRegistrantEmail, type: primaryRegistrantEmailType } =
-    findEmail(userProfile?.emails, userProfile?.contact?.preferredEmail);
+  const emailData = fetchEmail(
+    userProfile?.emails,
+    userProfile?.contact?.preferredEmail
+  );
 
-  const {
-    phoneNumber: primaryRegistrantPhoneNumber,
-    type: primaryRegistrantPhoneNumberType,
-  } = findPhoneNumber(
+  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
+  const primaryRegistrantEmailType = emailData?.type || null;
+
+  const phoneData = fetchPhone(
     userProfile?.phoneNumbers,
     userProfile?.contact?.preferredPhoneType
   );
+
+  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber || null;
+  const primaryRegistrantPhoneNumberType = phoneData?.type || null;
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
