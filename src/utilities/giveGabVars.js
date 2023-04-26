@@ -69,33 +69,6 @@ export const findEmail = (emails, type) => {
 };
 
 /**
- * Find the user's preferred email type.
- *
- * @param {array} emails
- *   An array of objects containing email type.
- * @param {string} prefEmail
- *   Preferred email type.
- *
- * @returns {string|boolean}
- *   The pref email type
- */
-export const findPreferredEmailType = (emails = [], prefEmail) => {
-  let pref;
-
-  emails.forEach((val) => {
-    if (val?.emailAddress === prefEmail) {
-      if (val?.type?.includes('SAA') || val?.type?.includes('GSB')) {
-        pref = 'Other Email';
-      } else {
-        pref = val.type;
-      }
-    }
-  });
-
-  return pref;
-};
-
-/**
  * Set the window variables for the pre populated forms.
  * .
  * @param {*} userProfile
