@@ -141,7 +141,11 @@ const RelatedContactSelection = (props) => {
                       className={styles.contentWrapper}
                       id="su-gg-embed"
                     >
-                      <GridCell xs={12}>
+                      <GridCell
+                        xs={12}
+                        xxl={10}
+                        className={styles.gridCellWrapper}
+                      >
                         <div className={styles.contentStyle}>
                           <span className={styles.superHead}>
                             Stanford Alumni Association
@@ -154,6 +158,7 @@ const RelatedContactSelection = (props) => {
                             align="center"
                             font="serif"
                             id="page-title"
+                            className={styles.heading}
                           >
                             Welcome,{' '}
                             {userProfile?.name?.fullNameParsed?.firstName ||
