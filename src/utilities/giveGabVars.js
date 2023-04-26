@@ -1,183 +1,71 @@
 /**
- * Find the user's preferred phone number.
- *
- * @param {array} phoneNumbers
- *   An array of objects containing phone numbers.
- *
- * @returns {string|boolean}
- *   The phone number when found or false
- */
-const findPreferredPhoneNumber = (phoneNumbers, prefPhoneNumberType) => {
-  let ret = false;
-
-  // The preferred phone number is nested as a key in each of the options and we have
-  // to loop through each of the phoneNumbers looking for it.
-  if (prefPhoneNumberType) {
-    phoneNumbers.forEach((val) => {
-      if (val?.type === prefPhoneNumberType) {
-        ret = val.phoneNumber;
-      }
-    });
-  }
-
-  return ret;
-};
-
-/**
- * Find the user's phone number.
- *
- * @param {array} phoneNumbers
- *   An array of objects containing phone numbers.
- *
- * @returns {string|boolean}
- *   The phone number when found or false
- */
-const findPhoneNumberType = (phoneNumbers, type) => {
-  let ret = false;
-  const BreakException = {};
-  try {
-    phoneNumbers.forEach((val) => {
-      if (val.type === type) {
-        ret = val.phoneNumber;
-        throw BreakException;
-      }
-    });
-  } catch (e) {
-    if (e !== BreakException) throw e;
-  }
-
-  return ret;
-};
-
-/**
- * Find the preferred phone number type
+ * Find the preferred phone number and type
  *
  * @param {array} phoneNumbers
  *   An array of objects containing phone number information.
- *
- * @returns {string}
- *   The preferred phone number type
- */
-export const findPhoneNumber = (phoneNumbers, prefPhoneNumberType) => {
-  let phoneNumber;
-  if (Array.isArray(phoneNumbers)) {
-    phoneNumber = findPreferredPhoneNumber(phoneNumbers, prefPhoneNumberType);
-    if (!phoneNumber) {
-      phoneNumber = findPhoneNumberType(phoneNumbers, 'Home Phone');
-    }
-    if (!phoneNumber) {
-      phoneNumber = findPhoneNumberType(phoneNumbers, 'Mobile');
-    }
-    if (!phoneNumber) {
-      phoneNumber = findPhoneNumberType(phoneNumbers, 'Business Phone');
-    }
-  }
-  return phoneNumber;
-};
-
-/**
- * Find the user's preferred phone number.
- *
- * @param {array} phoneNumbers
- *   An array of objects containing phone numbers.
- * @param {string} prefPhoneNumber
- *   Preferred phone number.
- *
- * @returns {string|boolean}
- *   The pref phone number type
- */
-export const findPreferredPhoneNumberType = (
-  phoneNumbers = [],
-  prefPhoneNumber
-) => {
-  let pref = '';
-
-  phoneNumbers.forEach((val) => {
-    if (val?.phoneNumber === prefPhoneNumber) {
-      pref = val.type;
-    }
-  });
-
-  return pref;
-};
-
-/**
- * Find the user's preferred email.
- *
- * @param {array} emails
- *   An array of objects containing email information.
- *
- * @returns {string|boolean}
- *   The email when found or false
- */
-const findPreferredEmail = (emails, prefEmailType) => {
-  let ret = false;
-
-  // The preferred email is nested as a key in each of the options and we have
-  // to loop through each of the emails looking for it.
-  if (prefEmailType) {
-    emails.forEach((val) => {
-      if (val?.type === prefEmailType) {
-        ret = val.emailAddress;
-      }
-    });
-  }
-
-  return ret;
-};
-
-/**
- * Find the email address information.
- *
- * @param {array} emails
- *   An array of objects containing email information.
- *
  * @param {string} type
- *   The keyword string to look for.
+ *   A string of prefPhoneNumberType
  *
- * @returns {string|boolean}
- *   The email string when found or false
+ * @returns {obj}
+ *   Contains the preferred phone number and type
  */
-const findEmailType = (emails, type) => {
-  let ret = false;
-  const BreakException = {};
-  try {
-    emails.forEach((val) => {
-      if (val.type === type) {
-        ret = val.emailAddress;
-        throw BreakException;
-      }
-    });
-  } catch (e) {
-    if (e !== BreakException) throw e;
+export const findPhoneNumber = (phoneNumbers, type) => {
+  let phoneNumber;
+  let prefPhone = {};
+  if (Array.isArray(phoneNumbers)) {
+    if (type) {
+      phoneNumbers.forEach((val) => {
+        if (val?.type === type) {
+          phoneNumber = val.phoneNumber;
+        }
+      });
+      prefPhone = { phoneNumber, type };
+      return prefPhone;
+    }
+    if (!phoneNumber) {
+      prefPhone =
+        findPhoneNumber(phoneNumbers, 'Home Phone') ||
+        findPhoneNumber(phoneNumbers, 'Mobile') ||
+        findPhoneNumber(phoneNumbers, 'Business Phone');
+    }
   }
-
-  return ret;
+  return prefPhone;
 };
 
 /**
- * Find the preferred email type
+ * Find the preferred email and type
  *
  * @param {array} emails
- *   An array of objects containing email information.
+ *   An array of objects containing emails.
+ * @param {string} type
+ *   A string of prefEmailType
  *
- * @returns {string}
- *   The preferred email type
+ * @returns {obj}
+ *   Contains the preferred email and type
  */
-export const findEmail = (emails, prefEmailType) => {
+export const findEmail = (emails, type) => {
   let email;
+  let prefEmail = {};
   if (Array.isArray(emails)) {
-    email = findPreferredEmail(emails, prefEmailType);
+    if (type) {
+      emails.forEach((val) => {
+        if (val?.type === type) {
+          email = val.email;
+        }
+      });
+      prefEmail = { email, type };
+      return prefEmail;
+    }
     if (!email) {
-      email =
-        findEmailType(emails, 'Home Email') ||
-        findEmailType(emails, 'Business Email') ||
-        findEmailType(emails, 'SAA Email') ||
-        findEmailType(emails, 'GSB Email') ||
-        findEmailType(emails, 'Other Email');
+      prefEmail =
+        findEmail(emails, 'Home Email') ||
+        findEmail(emails, 'Business Email') ||
+        findEmail(emails, 'SAA Email') ||
+        findEmail(emails, 'GSB Email') ||
+        findEmail(emails, 'Other Email');
     }
   }
-  return email;
+  return prefEmail;
 };
 
 /**

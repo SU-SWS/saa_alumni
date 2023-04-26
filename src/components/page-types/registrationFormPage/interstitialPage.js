@@ -23,12 +23,7 @@ import {
   emailTypeList,
   phoneNumberTypeList,
 } from './registationFormOptions';
-import {
-  findEmail,
-  findPreferredEmailType,
-  findPhoneNumber,
-  findPreferredPhoneNumberType,
-} from '../../../utilities/giveGabVars';
+import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -101,23 +96,16 @@ const InterstitialPage = (props) => {
   };
   const relatedContacts = structureTravelerData(relationships);
 
-  const primaryRegistrantEmail = findEmail(
-    userProfile?.emails,
-    userProfile?.contact?.preferredEmail
-  );
-  const primaryRegistrantEmailType =
-    userProfile?.contact?.preferredEmail ||
-    findPreferredEmailType(userProfile?.emails, primaryRegistrantEmail);
-  const primaryRegistrantPhoneNumber = findPhoneNumber(
+  const { email: primaryRegistrantEmail, type: primaryRegistrantEmailType } =
+    findEmail(userProfile?.emails, userProfile?.contact?.preferredEmail);
+
+  const {
+    phoneNumber: primaryRegistrantPhoneNumber,
+    type: primaryRegistrantPhoneNumberType,
+  } = findPhoneNumber(
     userProfile?.phoneNumbers,
     userProfile?.contact?.preferredPhoneType
   );
-  const primaryRegistrantPhoneNumberType =
-    userProfile?.contact?.preferredPhoneType ||
-    findPreferredPhoneNumberType(
-      userProfile?.phoneNumbers,
-      primaryRegistrantPhoneNumber
-    );
 
   let digitalName;
   if (userProfile?.contact.name?.digitalName) {

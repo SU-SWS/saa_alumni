@@ -9,12 +9,7 @@ import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import {
-  findEmail,
-  findPreferredEmailType,
-  findPhoneNumber,
-  findPreferredPhoneNumberType,
-} from '../../../utilities/giveGabVars';
+import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -79,24 +74,16 @@ const MembershipFormPage = (props) => {
       )
   );
 
-  const primaryRegistrantEmail = findEmail(
-    userProfile?.emails,
-    userProfile?.contact?.preferredEmail
-  );
-  const primaryRegistrantEmailType =
-    userProfile?.contact?.preferredEmail ||
-    findPreferredEmailType(userProfile?.emails, primaryRegistrantEmail);
+  const { email: primaryRegistrantEmail, type: primaryRegistrantEmailType } =
+    findEmail(userProfile?.emails, userProfile?.contact?.preferredEmail);
 
-  const primaryRegistrantPhoneNumber = findPhoneNumber(
+  const {
+    phoneNumber: primaryRegistrantPhoneNumber,
+    type: primaryRegistrantPhoneNumberType,
+  } = findPhoneNumber(
     userProfile?.phoneNumbers,
     userProfile?.contact?.preferredPhoneType
   );
-  const primaryRegistrantPhoneNumberType =
-    userProfile?.contact?.preferredPhoneType ||
-    findPreferredPhoneNumberType(
-      userProfile?.phoneNumbers,
-      primaryRegistrantPhoneNumber
-    );
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
