@@ -1091,35 +1091,21 @@ export const fullprofileMockData = {
     anonymity: false,
   },
   membership: [
-    // Test Data for SAA Alum
-    // {
-    //   id: 'a0046000003s3pnAAA',
-    //   membershipStatus: 'Active',
-    //   membershipNumber: '0001223551',
-    //   membershipType: 'Life',
-    //   membershipAffiliation: 'Alum',
-    //   membershipStartDate: '2011',
-    //   membershipGroup: 'SAA',
-    // },
-    //  Test Data for SAA Affiliate
-    // {
-    //   id: 'a0046000003s3pnAAA',
-    //   membershipStatus: 'Active',
-    //   membershipNumber: '0001223551',
-    //   membershipType: 'Life',
-    //   membershipAffiliation: 'Affiliate',
-    //   membershipStartDate: '2011',
-    //   membershipGroup: 'SAA',
-    // },
-    // Test Data for GSB Membership
-    // {
-    //   id: 'a0046000003s3pnAAA',
-    //   membershipStatus: 'Active',
-    //   membershipNumber: '0001223551',
-    //   membershipType: 'Life',
-    //   membershipAffiliation: 'Alum',
-    //   membershipStartDate: '2011',
-    //   membershipGroup: 'GSB',
-    // },
+    {
+      membershipStatus: 'Active',
+      membershipNumber: '123456789',
+      membershipType: 'Life',
+      membershipAffiliation: 'Alum',
+      membershipStartDate: '2011',
+      membershipGroup: 'SAA',
+    },
+    {
+      membershipStatus: 'Active',
+      membershipNumber: '987654321',
+      membershipType: 'Life',
+      membershipAffiliation: 'Alum',
+      membershipStartDate: '2011',
+      membershipGroup: 'GSB',
+    },
   ],
 };
