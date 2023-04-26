@@ -10,26 +10,15 @@
  *   Contains the preferred phone number and type
  */
 export const findPhoneNumber = (phoneNumbers, type) => {
-  let phoneNumber;
-  let prefPhone = {};
-  if (Array.isArray(phoneNumbers)) {
-    if (type) {
-      phoneNumbers.forEach((val) => {
-        if (val?.type === type) {
-          phoneNumber = val.phoneNumber;
-        }
-      });
-      prefPhone = { phoneNumber, type };
-      return prefPhone;
-    }
-    if (!phoneNumber) {
-      prefPhone =
-        findPhoneNumber(phoneNumbers, 'Home Phone') ||
-        findPhoneNumber(phoneNumbers, 'Mobile') ||
-        findPhoneNumber(phoneNumbers, 'Business Phone');
-    }
+  if (Array.isArray(phoneNumbers) && type) {
+    phoneNumbers.forEach((val) => {
+      if (val?.type === type) {
+        return { phoneNumber: val.phoneNumber, type };
+      }
+
+      return findPhoneNumber(val, type);
+    });
   }
-  return prefPhone;
 };
 
 /**
