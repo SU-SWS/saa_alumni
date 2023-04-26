@@ -47,7 +47,7 @@ const MembershipFormPage = (props) => {
   const helmetTitle = 'Stanford Alumni Association Membership';
 
   // Determine if user is an Alum
-  const affiliations = userProfile?.affiliation.affiliation || [];
+  const affiliations = userProfile?.affiliation.affiliations || [];
 
   // If url parameters include an appeal_code, parse and set the promo code input value
   const location = useLocation();
