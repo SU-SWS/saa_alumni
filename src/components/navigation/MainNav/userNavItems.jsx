@@ -31,10 +31,9 @@ const UserNavItems = ({ expanded, userProfile }) => {
       userProfile.affiliation.affiliations &&
       Array.isArray(userProfile.affiliation.affiliations)
     ) {
-      const directoryAccessFilter =
-        userProfile.affiliation.affiliations.filter((item) =>
-          affiliation.includes(item)
-        );
+      const directoryAccessFilter = userProfile.affiliation.affiliations.filter(
+        (item) => affiliation.includes(item)
+      );
       canAccessDirectory = !!directoryAccessFilter?.length;
     }
 
