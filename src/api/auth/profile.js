@@ -17,17 +17,15 @@ const megaprofileHandler = async (req, res, next) => {
   const profileId = req.user.encodedSUID;
   const session = req.user;
   let fullgg = {};
-  let affiliations = {};
+  let affiliations = [];
   let contact = {};
-  // @TODO: Comment back in and test when endpoint is live
-  // let membership = {}
+  let memberships = [];
   // Four simultaneous requests to the API in hopes to stay under 10s.
   const requests = [
     mp.get(`/${profileId}/profiles/fullgg`),
     mp.get(`/${profileId}/profiles/affiliations`),
     mp.get(`/${profileId}/profiles/contact`),
-    // @TODO: Comment back in and test when endpoint is live
-    // mp.get(`/${profileId}/profiles/memberships`),
+    mp.get(`/${profileId}/profiles/memberships`),
   ];
 
   const resolved = await Promise.allSettled(requests);
@@ -41,28 +39,35 @@ const megaprofileHandler = async (req, res, next) => {
   }
 
   // Affiliations Data;
-  if (resolved[1].status === 'fulfilled') {
+  if (
+    resolved[1].status === 'fulfilled' &&
+    !(resolved[1].value?.data === undefined)
+  ) {
     affiliations = resolved[1].value.data.affiliations;
   }
 
   // Contact Data;
-  if (resolved[2].status === 'fulfilled') {
+  if (
+    resolved[2].status === 'fulfilled' &&
+    !(resolved[2].value?.data === undefined)
+  ) {
     contact = resolved[2].value.data.contact;
   }
 
-  // @TODO: Comment back in and test when endpoint is live
   // Membership Data;
-  // if (resolved[3].status === 'fulfilled') {
-  //   membership = resolved[3].value.data.membership;
-  // }
+  if (
+    resolved[3].status === 'fulfilled' &&
+    !(resolved[3].value?.data === undefined)
+  ) {
+    memberships = resolved[3].value.data.memberships;
+  }
 
   const mpUser = {
     session,
     ...fullgg,
     affiliations,
     profilePhotoURL: contact?.profilePhotoURL,
-    // @TODO: Comment back in and test when endpoint is live
-    // membership,
+    memberships,
   };
   res.status(200).json(mpUser);
   next();
