@@ -16,7 +16,7 @@ export const fullprofileMockData = {
       pronouns: 'He/him',
       myFriendsCallMe: 'Teri',
       envelopeName: 'Mr. Teri Dactyl',
-      username: 'zguan',
+      username: 'teridactyl',
       registrationNameString: 'Mr. Teri Dactyl',
       fullNameParsed: {
         prefix: 'Mr.',
