@@ -45,12 +45,7 @@ const MembershipFullPaymentForm = (props) => {
 
   useEffect(() => {
     window.prefillData = registrant;
-    if (
-      !isAlum(registrant?.su_affiliations) ||
-      registrant?.su_self_membership === 'no'
-    ) {
-      window.appeal_code = promoCode;
-    }
+    window.appeal_code = promoCode;
   }, [registrant, promoCode]);
 
   // In the event that the user goes directly to the related contact page,
