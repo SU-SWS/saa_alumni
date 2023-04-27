@@ -228,7 +228,7 @@ const RelatedContactSelection = (props) => {
                               </div>
                             ) : (
                               <Link
-                                to={formLink + location.search}
+                                to={formLink}
                                 className={styles.nextLinkActive}
                                 state={{
                                   registrant: value[0].registrantsData,
