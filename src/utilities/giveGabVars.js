@@ -10,15 +10,8 @@
  *   Contains the preferred phone number and type
  */
 export const findPhoneNumber = (phoneNumbers, type) => {
-  let prefPhone = false;
-  if (Array.isArray(phoneNumbers) && type) {
-    phoneNumbers.forEach((val) => {
-      if (val?.type === type) {
-        prefPhone = { phoneNumber: val.phoneNumber, type };
-      }
-    });
-  }
-  return prefPhone;
+  const found = phoneNumbers.find((item) => item.type === type);
+  return found ? { phoneNumber: found.phoneNumber, type } : false;
 };
 
 export const fetchPhone = (phoneNumbers, type) =>
@@ -39,15 +32,8 @@ export const fetchPhone = (phoneNumbers, type) =>
  *   Contains the preferred email and type
  */
 export const findEmail = (emails, type) => {
-  let prefEmail = false;
-  if (Array.isArray(emails) && type) {
-    emails.forEach((val) => {
-      if (val?.type === type) {
-        prefEmail = { email: val.email, type };
-      }
-    });
-  }
-  return prefEmail;
+  const found = emails.find((item) => item.type === type);
+  return found ? { email: found.email, type } : false;
 };
 
 export const fetchEmail = (emails, type) =>
