@@ -10,8 +10,11 @@
  *   Contains the preferred phone number and type
  */
 export const findPhoneNumber = (phoneNumbers, type) => {
-  const found = phoneNumbers.find((item) => item.type === type);
-  return found ? { phoneNumber: found.phoneNumber, type } : false;
+  const found =
+    Array.isArray(phoneNumbers) && type
+      ? phoneNumbers.find((item) => item.type === type)
+      : false;
+  return found && { phoneNumber: found.phoneNumber, type };
 };
 
 export const fetchPhone = (phoneNumbers, type) =>
@@ -32,8 +35,11 @@ export const fetchPhone = (phoneNumbers, type) =>
  *   Contains the preferred email and type
  */
 export const findEmail = (emails, type) => {
-  const found = emails.find((item) => item.type === type);
-  return found ? { email: found.email, type } : false;
+  const found =
+    Array.isArray(emails) && type
+      ? emails.find((item) => item.type === type)
+      : false;
+  return found && { email: found.email, type };
 };
 
 export const fetchEmail = (emails, type) =>
