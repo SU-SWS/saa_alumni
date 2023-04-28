@@ -33,10 +33,9 @@ const MembershipInstallmentsForm = (props) => {
   const promoCode = location?.state?.promoCode;
 
   useEffect(() => {
-    if (registrant?.su_reg_type !== 'newContact') {
-      window.prefillData = registrant;
-    }
-  }, [registrant]);
+    window.prefillData = registrant;
+    window.appeal_code = promoCode;
+  }, [registrant, promoCode]);
 
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
