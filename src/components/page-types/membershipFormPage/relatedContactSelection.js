@@ -76,7 +76,7 @@ const RelatedContactSelection = (props) => {
         su_recipient_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
         su_recipient_relationship: relationship?.type,
-        su_recipient_suid: relationship?.relatedContactEncodedID,
+        su_recipient_suid: relationship?.relatedContactEncodedSUID,
         su_recipient_email: undefined,
         su_recipient_email_type: undefined,
         su_recipient_phone: undefined,

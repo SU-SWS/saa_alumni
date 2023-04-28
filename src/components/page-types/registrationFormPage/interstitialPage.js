@@ -66,7 +66,7 @@ const InterstitialPage = (props) => {
     let data = {};
     relationshipsData?.forEach((relationship) => {
       data = {
-        su_did: relationship?.relatedContactEncodedID,
+        su_did: relationship?.relatedContactEncodedSUID,
         su_dname: relationship?.digitalName
           ? relationship?.digitalName
           : `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
