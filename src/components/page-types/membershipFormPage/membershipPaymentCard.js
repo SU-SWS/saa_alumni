@@ -24,25 +24,27 @@ const MembershipPaymentCard = ({
       )}
       onClick={() => onClick(id)}
     >
-      <FlexBox
-        justifyContent="center"
-        className={styles.initialAndSelectionWrapper}
-      >
-        {isSelected && (
-          <div className={styles.selectionWrapper} aria-hidden="true">
-            <HeroIcon iconType="check" className={styles.checkLinkIcon} />
-            <span>Selected</span>
-          </div>
-        )}
-      </FlexBox>
-      <Heading level={3} size={2} className="su-mb-0 su-rs-mt-1">
-        {heading}
-      </Heading>
-      <div className={styles.subheadingAndCaptionWrapper}>
-        <p className={styles.subheading}>{subheading}</p>
-        {caption && <p className={styles.caption}>{caption}</p>}
+      <div>
+        <FlexBox
+          justifyContent="center"
+          className={styles.initialAndSelectionWrapper}
+        >
+          {isSelected && (
+            <div className={styles.selectionWrapper} aria-hidden="true">
+              <HeroIcon iconType="check" className={styles.checkLinkIcon} />
+              <span>Selected</span>
+            </div>
+          )}
+        </FlexBox>
+        <Heading level={3} size={2} className={styles.heading}>
+          {heading}
+        </Heading>
+        <div className={styles.subheadingAndCaptionWrapper}>
+          <p className={styles.subheading}>{subheading}</p>
+          {caption && <p className={styles.caption}>{caption}</p>}
+        </div>
+        <div>{children}</div>
       </div>
-      <div>{children}</div>
       <FlexBox justifyContent="center">
         <div
           className={

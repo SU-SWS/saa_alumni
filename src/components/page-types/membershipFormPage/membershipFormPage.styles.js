@@ -5,7 +5,7 @@ export const fixedHero = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
 export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
 export const contentWrapper =
   'su-relative sm:su-cc su-z-10 su-rs-pt-8 sm:su-rs-pb-8 su-text-white';
-export const benefitsWrapper = 'xs:su-col-start-2 xl:su-col-start-3';
+export const benefitsWrapper = '2xl:su-col-start-2';
 export const superHead =
   'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
 export const heading = 'su-rs-mb-5';
@@ -32,8 +32,7 @@ export const paymentOuterWrapper = (paymentOptionSection) =>
 export const paymentInnerWrapper =
   'su-rs-mb-3 su-bg-gradient-to-tr su-to-saa-electric-blue-dark su-from-palo-verde-xdark su-rs-px-1 sm:su-rs-px-2 su-rs-pb-5';
 export const paymentHeadingWrapper = 'su-text-center su-rs-pt-4 su-rs-pb-0';
-export const paymentCardsWrapper =
-  'sm:su-rs-p-2 su-gap-y-xl sm:su-bg-saa-black-dark sm:su-rounded';
+export const paymentCardsWrapper = 'su-gap-y-xl sm:su-rounded';
 export const promoWrapper = 'su-w-full sm:su-w-auto';
 export const promoLabel = 'su-type-0 su-font-semibold';
 export const promoInput =

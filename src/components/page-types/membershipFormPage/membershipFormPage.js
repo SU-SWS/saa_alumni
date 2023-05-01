@@ -246,8 +246,8 @@ const MembershipFormPage = (props) => {
                   return (
                     <Grid gap xs={12} className={styles.contentWrapper}>
                       <GridCell
-                        xs={10}
-                        xl={8}
+                        xs={12}
+                        xxl={10}
                         className={styles.benefitsWrapper}
                       >
                         <span className={styles.superHead}>
@@ -281,7 +281,7 @@ const MembershipFormPage = (props) => {
                         <div className={styles.formWrapper}>
                           <Heading
                             level={2}
-                            size={4}
+                            size={3}
                             align="left"
                             font="serif"
                             className={styles.cardGridHeading}

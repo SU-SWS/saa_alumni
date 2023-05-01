@@ -89,7 +89,7 @@ const MembershipCard = ({
             )}
           </FlexBox>
         </FlexBox>
-        <Heading level={3} size={2} className="su-mb-0">
+        <Heading level={3} size={1} className="su-mb-0">
           {heading}
         </Heading>
         <p className={styles.subheading}>{subheading}</p>

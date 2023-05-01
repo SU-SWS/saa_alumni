@@ -656,6 +656,15 @@
   @apply su-hidden;
 }
 
+/* Membership Recipient Digital Name */
+.ggeWidget.membership-forms .su-membership-dname.ggeQuestion[data-name="DigitalName"] {
+  @apply su-rs-mb-0 su-block;
+}
+
+.ggeWidget.membership-forms .su-membership-dname.ggeQuestion[data-name="DigitalName"] #DigitalName__ggid1 {
+  @apply su-mt-0;
+}
+
 /* Membership Recipient First and Last Name */
 .ggeWidget.membership-forms .ggeQuestion.ggeQuestion--readonly.su-name.su-first-name {
   @apply su-m-0;
@@ -696,8 +705,21 @@
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan {
   @apply su-rs-mt-3;
 }
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan header {
+  @apply su-rs-mb-0;
+}
+
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan h1 {
-  @apply su-font-semibold;
+  @apply su-font-semibold su-type-2;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption label[for="ggePaymentPlan--installmentOption__ggid1"] {
+  @apply su-text-21 su-font-semibold;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption .ggeQuestion__caption {
+  @apply su-text-21;
 }
 
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption.ggePrompt--checked .ggePrompt__radio {
@@ -782,6 +804,19 @@
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion[data-name="PhoneNumber"] {
   @apply su-rs-mb-neg2;
 }
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion[data-name="UpdatePhoneNumber"] {
+  @apply su-rs-mb-5;
+}
+
+/* Address */
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__state select {
+  @apply su-leading-display;
+}
+
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__state,
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__zipcode {
+  @apply su-rs-mb-5;
+}
 
 /* Membership registration leave a comment */
 .ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label {
@@ -795,21 +830,37 @@
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions {
   @apply su-font-semibold su-text-white su-type-0;
 }
+
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #InstallmentPaymentTerms {
+  @apply su-rs-mb-0;
+}
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
-  @apply hocus:su-underline su-text-digital-red-light hocus:su-text-digital-red hocus:su-decoration-digital-red;
+  @apply su-underline hocus:su-no-underline su-text-digital-red-light hocus:su-text-digital-red hocus:su-decoration-digital-red;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
   @apply su-hidden;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--instructions.su-terms-and-conditions {
-  @apply su-rs-mb-1 su-flex su-flex-col su-justify-start su-w-full;
+  @apply su-rs-mb-1 su-mt-0 su-flex su-flex-col su-justify-start su-w-full;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
   @apply su-items-center;
   flex-direction: row !important;
 }
 
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field .ggePrompt {
+  @apply su-mt-0;
+}
+
 /* Membership selection section */
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration header {
+  @apply su-rs-mb-2;
+}
+
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration header h1 {
+  @apply su-type-2;
+}
+
 .ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt__price::before {
   @apply su-hidden;
 }
@@ -817,7 +868,7 @@
   @apply su-rs-ml-1;
 }
 .ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt {
-  @apply su-items-start;
+  @apply su-items-start first:su-mt-0 su-rs-mb-2 last:su-mb-0;
 }
 .ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label {
   @apply su-w-full;
