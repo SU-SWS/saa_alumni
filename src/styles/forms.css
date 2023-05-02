@@ -675,7 +675,7 @@
 }
 
 
-/* Membership form caption order and text */
+/* Membership form caption order, spacing, and styling */
 .ggeWidget.membership-forms .ggeQuestion .ggeQuestion__field .ggePrompt__select {
   @apply su-flex su-flex-col-reverse;
 }
@@ -725,11 +725,15 @@
 }
 
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption label[for="ggePaymentPlan--installmentOption__ggid1"] {
-  @apply su-text-21 su-font-semibold;
+  @apply su-text-18 sm:su-text-21 su-font-semibold;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption label[for="ggePaymentPlan--installmentOption__ggid1"] .ggePaymentPlan--installmentOption__interval {
+  @apply su-mr-5;
 }
 
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption .ggeQuestion__caption {
-  @apply su-text-21;
+  @apply su-text-15 md:su-text-18 su-text-black-30;
 }
 
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption.ggePrompt--checked .ggePrompt__radio {
