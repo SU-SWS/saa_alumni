@@ -675,6 +675,16 @@
 }
 
 
+/* Membership form caption order and text */
+.ggeWidget.membership-forms .ggeQuestion .ggeQuestion__field .ggePrompt__select {
+  @apply su-flex su-flex-col-reverse;
+}
+
+.ggeWidget.membership-forms .ggeQuestion .ggeQuestion__field .ggeQuestion__caption,
+.ggeWidget.membership-forms .ggeQuestion .ggeQuestion__field .ggePrompt__select .ggeQuestion__caption {
+  @apply su-mb-0 su-rs-mt-neg1 su-text-15 md:su-text-18 su-text-black-30;
+}
+
 /* Membership Tally Table */
 .ggeWidget.membership-forms .ggeSection header h1 {
   @apply su-mt-0 su-font-semibold;
