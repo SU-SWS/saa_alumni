@@ -725,11 +725,7 @@
 }
 
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption label[for="ggePaymentPlan--installmentOption__ggid1"] {
-  @apply su-text-18 sm:su-text-21 su-font-semibold;
-}
-
-.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption label[for="ggePaymentPlan--installmentOption__ggid1"] .ggePaymentPlan--installmentOption__interval {
-  @apply su-mr-5;
+  @apply su-block su-text-18 sm:su-text-21 su-font-semibold;
 }
 
 .ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption .ggeQuestion__caption {
