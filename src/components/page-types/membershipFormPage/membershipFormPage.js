@@ -9,12 +9,7 @@ import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import {
-  findEmail,
-  findPreferredEmailType,
-  findPhoneNumber,
-  findPreferredPhoneNumberType,
-} from '../../../utilities/giveGabVars';
+import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -47,7 +42,7 @@ const MembershipFormPage = (props) => {
   const helmetTitle = 'Stanford Alumni Association Membership';
 
   // Determine if user is an Alum
-  const affiliations = userProfile?.affiliations || [];
+  const affiliations = userProfile?.affiliation.affiliations || [];
 
   // If url parameters include an appeal_code, parse and set the promo code input value
   const location = useLocation();
@@ -79,40 +74,43 @@ const MembershipFormPage = (props) => {
       )
   );
 
-  const primaryRegistrantEmail = findEmail(userProfile?.emails);
-  const primaryRegistrantEmailType = findPreferredEmailType(
+  const emailData = fetchEmail(
     userProfile?.emails,
-    primaryRegistrantEmail
+    userProfile?.contact?.preferredEmail
   );
-  const primaryRegistrantPhoneNumber = findPhoneNumber(
-    userProfile?.phoneNumbers
-  );
-  const primaryRegistrantPhoneNumberType = findPreferredPhoneNumberType(
+
+  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
+  const primaryRegistrantEmailType = emailData?.type || null;
+
+  const phoneData = fetchPhone(
     userProfile?.phoneNumbers,
-    primaryRegistrantPhoneNumber
+    userProfile?.contact?.preferredPhoneType
   );
+
+  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber || null;
+  const primaryRegistrantPhoneNumberType = phoneData?.type || null;
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname:
-      userProfile?.name?.digtalName ||
+      userProfile?.contact.name?.digtalName ||
       `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
-    su_recipient_dob: userProfile?.birthDate
-      ? formatUsDate(userProfile?.birthDate)
+    su_recipient_dob: userProfile?.contact.birthDate
+      ? formatUsDate(userProfile?.contact.birthDate)
       : '',
     su_recipient_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_recipient_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_recipient_relationship: 'Guest',
     su_recipient_suid: userProfile?.session?.encodedSUID,
@@ -129,13 +127,13 @@ const MembershipFormPage = (props) => {
   const newContact = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname:
-      userProfile?.name?.digtalName ||
+      userProfile?.contact.name?.digtalName ||
       `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,

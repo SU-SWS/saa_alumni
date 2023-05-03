@@ -6,7 +6,7 @@ import PrivateImage from '../media/privateImage';
 
 export const Avatar = ({ userProfile, className }) => {
   const string =
-    userProfile.name?.digitalName || userProfile.session?.firstName;
+    userProfile.contact?.name.digitalName || userProfile.session.firstName;
   const initial = string?.substr(0, 1);
 
   return (
@@ -15,9 +15,9 @@ export const Avatar = ({ userProfile, className }) => {
       className={dcnb(styles.initialCircle, className)}
       aria-hidden
     >
-      {userProfile?.profilePhotoURL ? (
+      {userProfile.contact.profilePhotoURL ? (
         <PrivateImage
-          filename={userProfile.profilePhotoURL}
+          filename={userProfile.contact.profilePhotoURL}
           loading="eager"
           width="50"
           height="50"

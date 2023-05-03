@@ -58,25 +58,25 @@ const RelatedContactSelection = (props) => {
       data = {
         su_did: userProfile?.session?.encodedSUID,
         su_dname:
-          userProfile?.name?.digtalName ||
+          userProfile?.contact.name?.digtalName ||
           `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
         su_first_name:
-          userProfile?.name?.fullNameParsed?.firstName ||
+          userProfile?.contact.name?.fullNameParsed?.firstName ||
           userProfile?.session?.firstName,
         su_last_name:
-          userProfile?.name?.fullNameParsed?.lastName ||
+          userProfile?.contact.name?.fullNameParsed?.lastName ||
           userProfile?.session?.lastName,
         su_email: primaryRegistrantEmail || userProfile?.session?.email,
         su_phone: primaryRegistrantPhoneNumber,
-        su_recipient_dob: relationship?.relatedContactBirthDate
-          ? formatUsDate(relationship?.relatedContactBirthDate)
+        su_recipient_dob: relationship?.birthDate
+          ? formatUsDate(relationship?.birthDate)
           : '',
         su_recipient_first_name:
           relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
         su_recipient_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
-        su_recipient_relationship: relationship?.relationshipType,
-        su_recipient_suid: relationship?.relatedContactEncodedID,
+        su_recipient_relationship: relationship?.type,
+        su_recipient_suid: relationship?.relatedContactEncodedSUID,
         su_recipient_email: undefined,
         su_recipient_email_type: undefined,
         su_recipient_phone: undefined,
@@ -94,13 +94,13 @@ const RelatedContactSelection = (props) => {
   const newContact = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname:
-      userProfile?.name?.digtalName ||
+      userProfile?.contact.name?.digtalName ||
       `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
     su_email: primaryRegistrantEmail || userProfile?.session?.email,
     su_phone: primaryRegistrantPhoneNumber,
@@ -161,8 +161,8 @@ const RelatedContactSelection = (props) => {
                             className={styles.heading}
                           >
                             Welcome,{' '}
-                            {userProfile?.name?.fullNameParsed?.firstName ||
-                              userProfile?.session.firstName}
+                            {userProfile?.contact.name?.fullNameParsed
+                              ?.firstName || userProfile?.session.firstName}
                           </Heading>
                         </div>
                         <div className={styles.contactWrapper}>

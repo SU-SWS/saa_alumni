@@ -56,7 +56,7 @@ export const profileFetcher = async (profileId, token) => {
   }
 
   const contact = await client
-    .get(`${profileId}/profiles/fullgg`)
+    .get(`${profileId}/profiles/fullprofile`)
     .then((result) => result.data)
     .catch((err) => {
       console.error('Failed to fetch profile.');
