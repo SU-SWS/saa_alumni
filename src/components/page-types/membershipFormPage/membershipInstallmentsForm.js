@@ -29,7 +29,7 @@ const MembershipInstallmentsForm = (props) => {
   } = props;
   const numAnkle = getNumBloks(ankleContent);
   const helmetTitle = `Stanford Alumni Association Membership`;
-  const registrant = location?.state?.registrant[0];
+  const registrant = location?.state?.registrant?.[0];
   const promoCode = location?.state?.promoCode;
 
   useEffect(() => {
