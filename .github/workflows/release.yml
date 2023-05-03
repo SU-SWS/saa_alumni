@@ -75,7 +75,7 @@ jobs:
       - name: Push Changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GH_ACCESS_TOKEN }}
+          github_token: ${{ secrets.ADMIN_GITHUB_TOKEN }}
           branch: ${{ github.base_ref }}
           tags: true
 
@@ -93,6 +93,7 @@ jobs:
           publish: true
         env:
           GITHUB_TOKEN: ${{ secrets.ADMIN_GITHUB_TOKEN }}
+          FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FA_NPM_TOKEN }}
 
       - name: Merge release back into dev
         uses: devmasx/merge-branch@v1.3.1

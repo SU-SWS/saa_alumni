@@ -27,6 +27,13 @@ https://students.alumni.stanford.edu/grad-awards https://alumni.stanford.edu/stu
 https://students.alumni.stanford.edu/awards/nominations https://alumni.stanford.edu/students/grad/graduate-awards 301!
 https://students.alumni.stanford.edu/class-presidents https://alumni.alumni.stanford.edu/students/grad/class-presidents 301!
 https://students.alumni.stanford.edu/* https://alumni.stanford.edu/:splat 301!
+https://alumnicenter.alumni.stanford.edu/* https://alumni.stanford.edu/alumni-center 301!
+https://alumnicenterevents.alumni.stanford.edu/rates https://alumni.stanford.edu/alumni-center-events/event-spaces 301!
+https://alumnicenterevents.alumni.stanford.edu/frequently-asked-questions https://alumni.stanford.edu/alumni-center-events/alumni-events-faqs 301!
+https://alumnicenterevents.alumni.stanford.edu/event-planning-resources https://alumni.stanford.edu/alumni-center-events/event-planning-resources 301!
+https://alumnicenterevents.alumni.stanford.edu/event-spaces https://alumni.stanford.edu/alumni-center-events/event-spaces 301!
+https://alumnicenterevents.alumni.stanford.edu/space-availability https://alumni.stanford.edu/alumni-center-events/event-spaces 301!
+https://alumnicenterevents.alumni.stanford.edu/* https://alumni.stanford.edu/alumni-center-events/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
