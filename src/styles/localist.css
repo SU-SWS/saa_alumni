@@ -125,6 +125,7 @@
   display: block;
 }
 
+.su-event-widget--1col-no-images .event .event-when,
 .su-event-widget--1col-no-images .event .event-location {
   min-height: 29px;
   display: flex;
