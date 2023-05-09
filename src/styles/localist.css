@@ -109,6 +109,7 @@
 .su-event-widget--1col-no-images .event-list .event .event-date {
   max-width: 100%;
   line-height: 1;
+  margin-top: 4px;
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-date__day {
@@ -122,6 +123,12 @@
 
 .su-event-widget--1col-no-images .event-list .event .event-title__link {
   margin-bottom: 0.43em;
+  max-width: 75ch;
+}
+
+.su-event-widget--1col-no-images .event-list .event .event-title__link::after {
+  width: 20px;
+  height: 20px;
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-type,
@@ -133,7 +140,5 @@
 
 .su-event-widget--1col-no-images .event-list .event .event-when,
 .su-event-widget--1col-no-images .event-list .event .event-location {
-  min-height: 29px;
-  display: flex;
-  align-items: center;
+  line-height: 1.2;
 }
