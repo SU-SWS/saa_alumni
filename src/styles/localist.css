@@ -142,3 +142,9 @@
 .su-event-widget--1col-no-images .event-list .event .event-location {
   line-height: 1.2;
 }
+
+.su-event-widget--1col-no-images .event-when span,
+.su-event-widget--1col-no-images .event-location span {
+  display: inline-block;
+  margin-top: 2px;
+}
