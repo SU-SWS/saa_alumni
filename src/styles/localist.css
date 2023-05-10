@@ -123,7 +123,7 @@
 
 .su-event-widget--1col-no-images .event-list .event .event-title__link {
   margin-bottom: 0.43em;
-  max-width: 75ch;
+  max-width: 80rem;
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-title__link::after {
