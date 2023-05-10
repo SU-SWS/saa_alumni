@@ -91,7 +91,7 @@ const Modal = ({
         role="dialog"
         tabIndex="-1"
       >
-        <div className={styles.wrapper()}>
+        <div className={styles.wrapper({ type })}>
           <div className={styles.closeButtonWrapper({ type })}>
             <button
               type="button"
