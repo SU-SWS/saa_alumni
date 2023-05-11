@@ -94,7 +94,8 @@
     "cy:open": "cypress open",
     "test:e2e": "MEGAPROFILE_MOCK=true CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:open",
     "cy:run": "CYPRESS_baseUrl=http://localhost:9000 cypress run",
-    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:run"
+    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:run",
+    "build-test": "MEGAPROFILE_MOCK=true CYPRESS_SUPPORT=y npm run build"
   },
   "repository": {
     "type": "git",
