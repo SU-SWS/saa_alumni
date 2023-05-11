@@ -90,7 +90,12 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "https-proxy-start": "local-ssl-proxy --source 3010 --target 8000 --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
     "hps": "local-ssl-proxy --cert ./dev/localhost.pem --key ./dev/localhost-key.pem",
-    "sb:pull": "storyblok pull-components --space=$STORYBLOK_SPACE_ID && mv components.*.json presets.*.json storyblok/"
+    "sb:pull": "storyblok pull-components --space=$STORYBLOK_SPACE_ID && mv components.*.json presets.*.json storyblok/",
+    "cy:open": "cypress open",
+    "test:e2e": "MEGAPROFILE_MOCK=true CYPRESS_SUPPORT=y start-server-and-test develop http://localhost:8000 cy:open",
+    "cy:run": "CYPRESS_baseUrl=http://localhost:9000 cypress run",
+    "test:e2e:ci": "CYPRESS_SUPPORT=y npm run build && start-server-and-test serve http://localhost:9000 cy:run",
+    "build-test": "MEGAPROFILE_MOCK=true CYPRESS_SUPPORT=y npm run build"
   },
   "repository": {
     "type": "git",
@@ -106,6 +111,7 @@
     "autoprefixer": "^10.2.6",
     "axios-mock-adapter": "^1.21.2",
     "cross-env": "^7.0.2",
+    "cypress": "^10.3.0",
     "dotenv": "^16.0.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -123,6 +129,7 @@
     "node-vault": "^0.9.22",
     "postcss": "^8.3.5",
     "prettier": "^2.3.0",
+    "start-server-and-test": "^2.0.0",
     "storyblok": "^3.10.0",
     "toml": "^3.0.0",
     "type-fest": "^2.13.1"
