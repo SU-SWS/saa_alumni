@@ -46,7 +46,7 @@ jobs:
           install: false
           build: npm run build-test
           start: npm run start
-          wait-on: 'http://localhost:9000'
+          wait-on: 'http://localhost:8000'
           wait-on-timeout: 240
           browser: chrome
           headed: false
