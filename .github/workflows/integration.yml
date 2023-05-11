@@ -23,8 +23,8 @@ jobs:
           node-version: 16
           cache: 'npm'
 
-      - name: Install Netlify Vault
-        run: npm install netlify-plugin-vault-variables
+      - name: Install Netlify Vault Plugin
+        run: npm install -g netlify-plugin-vault-variables
 
       - name: Create .env
         run: touch .env
