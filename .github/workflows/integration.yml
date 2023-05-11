@@ -27,7 +27,6 @@ jobs:
         uses: bahmutov/npm-install@v1
         with:
           useLockFile: false
-          install-command: npm install --force
 
       - name: Create .env
         run: touch .env
