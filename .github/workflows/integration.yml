@@ -1,0 +1,74 @@
+name: Cypress Integration Tests
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened, synchronize]
+
+jobs:
+  integration-test:
+    name: Integration Test
+    timeout-minutes: 20
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
+        env:
+          FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+
+      - name: Create .env
+        run: touch .env
+
+      - name: Get Secrets From Vault
+        run: npm run vault:local
+        env:
+          VAULT_ROLE_ID: ${{ secrets.VAULT_ROLE_ID }}
+          VAULT_SECRET_ID: ${{ secrets.VAULT_SECRET_ID }}
+
+      - name: Cypress Integration Test
+        uses: cypress-io/github-action@v5
+        with:
+          # we have already installed all dependencies above
+          install: false
+          build: npm run build-test
+          start: npm run start
+          wait-on: 'http://localhost:8000'
+          wait-on-timeout: 240
+          browser: chrome
+          headed: false
+          config: video=false
+
+      - name: Integration Test Screenshot Artifacts
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: ./cypress/screenshots
+
+      - name: Integration Test Video Artifacts
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-videos
+          path: ./cypress/videos
+
+      - name: NPM Failure Logs
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: npm-logs
+          path: ~/.npm/_logs
