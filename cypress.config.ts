@@ -19,7 +19,7 @@ export default defineConfig({
     runMode: 2,
   },
   e2e: {
-    baseUrl: 'http://localhost:9000',
+    baseUrl: 'http://localhost:8000',
     setupNodeEvents(on, config) {
       on('task', {
         // Sign jwt token for mocking auth session
