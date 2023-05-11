@@ -23,10 +23,8 @@ jobs:
           node-version: 16
           cache: 'npm'
 
-      - name: Install Dependencies
-        uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
+      - name: Install Netlify Vault
+        run: npm install netlify-plugin-vault-variables
 
       - name: Create .env
         run: touch .env
@@ -36,6 +34,11 @@ jobs:
         env:
           VAULT_ROLE_ID: ${{ secrets.VAULT_ROLE_ID }}
           VAULT_SECRET_ID: ${{ secrets.VAULT_SECRET_ID }}
+
+      - name: Install Dependencies
+        uses: bahmutov/npm-install@v1
+        with:
+          useLockFile: false
 
       - name: Cypress Integration Test
         uses: cypress-io/github-action@v5
