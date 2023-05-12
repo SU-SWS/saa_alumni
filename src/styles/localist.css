@@ -64,7 +64,7 @@
 .event-title__link::after {
   content: "";
   background: url("../assets/arrow-right.svg") no-repeat;
-  @apply su-transition su-bg-cover su-w-08em su-h-[0.8em] su-relative su-top-[0.1em] su-ml-02em su--rotate-45 su-transform-gpu su-inline-block su-text-digital-red-light;
+  @apply su-transition su-bg-cover su-w-08em su-h-08em su-relative su-top-01em su-ml-02em su--rotate-45 su-transform-gpu su-inline-block su-text-digital-red-light;
 }
 
 .event-title__link:hover::after {
@@ -82,6 +82,10 @@
 }
 
 /* One col, no image events */
+.su-event-widget--1col-no-images .event {
+  @apply su-basefont-23;
+}
+
 .su-event-widget--1col-no-images ul.event-list {
   grid-template-columns: 1fr;
   row-gap: 0;
@@ -100,6 +104,26 @@
   box-shadow: none;
 }
 
+.su-event-widget--1col-no-images .event .event-date {
+  @apply su-items-start su-basefont-23;
+}
+
+.su-event-widget--1col-no-images .event .event-date .event-date__month {
+  @apply su-mb-8 su-ml-2 su-uppercase su-leading-none !su-text-20 lg:!su-text-22 su-font-normal;
+}
+
+.su-event-widget--1col-no-images .event .event-date .event-date__day {
+  @apply su-font-serif su-leading-trim !su-text-m5 md:!su-text-m4 lg:!su-text-m5;
+}
+
+.su-event-widget--1col-no-images .event .event-type {
+  @apply su-basefont-21 su-type-0;
+}
+
+.su-event-widget--1col-no-images .event-list .event {
+    @apply su-rs-px-2;
+}
+
 @media only screen and (min-width: 1500px) {
   .su-event-widget--1col-no-images .event-list .event {
     padding-bottom: 3rem;
@@ -107,9 +131,7 @@
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-date {
-  max-width: 100%;
-  line-height: 1;
-  margin-top: 4px;
+  @apply su-mb-0 su-leading-none su-max-w-full su-mt-4;
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-date__day {
@@ -117,10 +139,7 @@
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-title {
-  padding: 0;
-  display: inline;
-  font-size: 1em;
-  line-height: 1.2;
+  @apply su-font-serif su-p-0 su-inline su-type-0 su-leading-display;
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-title__link {
@@ -129,6 +148,10 @@
   color: #2E2D29;
   font-size: 21px;
   line-height: 1.2;
+}
+
+.su-event-widget--1col-no-images .event .event-date {
+  @apply su-rs-mr-3;
 }
 
 @media only screen and (min-width: 768px) {
@@ -152,8 +175,8 @@
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-title__link::after {
-  width: 20px;
-  height: 20px;
+  width: 0.8em;
+  height: 0.8em;
 }
 
 .su-event-widget--1col-no-images .event-list .event .event-type,
@@ -165,7 +188,7 @@
 
 .su-event-widget--1col-no-images .event-list .event .event-when,
 .su-event-widget--1col-no-images .event-list .event .event-location {
-  line-height: 1.2;
+  @apply su-text-16 md:su-text-18 xl:su-text-20 su-leading-display;
 }
 
 .su-event-widget--1col-no-images .event-when span,
