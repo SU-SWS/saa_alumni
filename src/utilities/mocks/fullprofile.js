@@ -1090,7 +1090,7 @@ export const fullprofileMockData = {
     spousalConsent: true,
     anonymity: false,
   },
-  membership: [
+  memberships: [
     {
       membershipStatus: 'Active',
       membershipNumber: '123456789',

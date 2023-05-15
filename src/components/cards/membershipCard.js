@@ -101,8 +101,14 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                         )}
                       >
                         <span className="su-text-22 sm:su-type-2 su-font-semibold">
-                          {auth.userProfile?.name?.fullNameParsed?.firstName}{' '}
-                          {auth.userProfile?.name?.fullNameParsed?.lastName}
+                          {
+                            auth.userProfile?.contact?.name?.fullNameParsed
+                              ?.firstName
+                          }{' '}
+                          {
+                            auth.userProfile?.contact?.name?.fullNameParsed
+                              ?.lastName
+                          }
                         </span>
                         <span>{membershipNumber}</span>
                       </div>
