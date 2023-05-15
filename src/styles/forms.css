@@ -846,7 +846,7 @@
   @apply su-rs-mb-0;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
-  @apply su-underline hocus:su-no-underline su-text-digital-red-light hocus:su-text-digital-red hocus:su-decoration-digital-red;
+  @apply su-underline hocus:su-text-digital-red-light hocus:su-decoration-digital-red-light;
 }
 .ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
   @apply su-hidden;
