@@ -34,6 +34,24 @@ https://alumnicenterevents.alumni.stanford.edu/event-planning-resources https://
 https://alumnicenterevents.alumni.stanford.edu/event-spaces https://alumni.stanford.edu/alumni-center-events/event-spaces 301!
 https://alumnicenterevents.alumni.stanford.edu/space-availability https://alumni.stanford.edu/alumni-center-events/event-spaces 301!
 https://alumnicenterevents.alumni.stanford.edu/* https://alumni.stanford.edu/alumni-center-events/:splat 301!
+https://sierracamp.alumni.stanford.edu/family-camp https://alumni.stanford.edu/sierra-programs/family-camp 301!
+https://sierracamp.alumni.stanford.edu/summer-family-camp/accommodations https://alumni.stanford.edu/sierra-programs/family-camp/accommodations 301!
+https://sierracamp.alumni.stanford.edu/summer-family-camp/rates https://alumni.stanford.edu/sierra-programs/family-camp/rates/ 301!
+https://sierracamp.alumni.stanford.edu/summer-family-camp/calendar https://alumni.stanford.edu/sierra-programs/family-camp 301!
+https://sierracamp.alumni.stanford.edu/family-camp/reservations https://alumni.stanford.edu/sierra-programs/family-camp/application-process/ 301!
+https://sierracamp.alumni.stanford.edu/family-camp/reservations/new https://alumni.stanford.edu/sierra-programs/family-camp/Reservations/ 301!
+https://sierracamp.alumni.stanford.edu/family-camp/reservations/repeat https://alumni.stanford.edu/sierra-programs/family-camp/Reservations/ 301!
+https://sierracamp.alumni.stanford.edu/family-camp/reservations/current https://alumni.stanford.edu/sierra-programs/family-camp/Reservations/ 301!
+https://sierracamp.alumni.stanford.edu/family-camp/faq https://alumni.stanford.edu/sierra-programs/family-camp 301!
+https://sierracamp.alumni.stanford.edu/spring-programs https://alumni.stanford.edu/sierra-programs/spring-programs 301!
+https://sierracamp.alumni.stanford.edu/spring-programs/healthy-living-retreat https://alumni.stanford.edu/sierra-programs/spring-programs/healthy-living-retreat 301!
+https://sierracamp.alumni.stanford.edu/spring-alumni-programs/healthy-living-retreat-women/presenters https://alumni.stanford.edu/sierra-programs/spring-programs/healthy-living-retreat 301!
+https://sierracamp.alumni.stanford.edu/spring-programs/memorial-day-weekend https://alumni.stanford.edu/sierra-programs/spring-programs/memorial-day-weekend 301!
+https://sierracamp.alumni.stanford.edu/faculty-staff-weekend https://alumni.stanford.edu/sierra-programs/faculty-staff-weekend 301!
+https://sierracamp.alumni.stanford.edu/facultystaff-weekend/accommodations https://alumni.stanford.edu/sierra-programs/faculty-staff-weekend 301!
+https://sierracamp.alumni.stanford.edu/faculty-staff-weekend/rates https://alumni.stanford.edu/sierra-programs/faculty-staff-weekend 301!
+https://sierracamp.alumni.stanford.edu/faculty-staff-weekend/apply https://alumni.stanford.edu/sierra-programs/faculty-staff-weekend 301!
+https://sierracamp.alumni.stanford.edu/* https://alumni.stanford.edu/sierra-programs/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
