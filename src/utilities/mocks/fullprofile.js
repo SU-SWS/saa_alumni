@@ -1,4 +1,13 @@
 export const fullprofileMockData = {
+  session: {
+    userName: 'tdactyl',
+    email: 'tdactyl@alumni-test.stanford.edu',
+    firstName: 'Teri',
+    lastName: 'Dactyl',
+    SUID: '00055212221',
+    encodedSUID: '67355212221',
+    exp: 12345678910,
+  },
   contact: {
     birthDate: '1979-08-14',
     preferredPhoneType: 'Mobile',
