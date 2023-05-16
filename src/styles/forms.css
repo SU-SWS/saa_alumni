@@ -552,17 +552,19 @@
 }
 
 .ggeWidget .ggeTally--text,
-.ggeWidget .ggeTally--money,
-.ggeWidget.membership-installment .ggePage--payment tr td.ggeTally--total.ggeTally--money {
+.ggeWidget .ggeTally--money {
   @apply su-type-1;
 }
 
 .ggeWidget:not(.membership-installment) td.ggeTally--text,
 .ggeWidget:not(.membership-installment) td.ggeTally--money,
-.ggeWidget.membership-installment .ggePage--payment .ggeTally--total.ggeTally--money,
 .ggeWidget.membership-installment .ggePage--payment tr:first-of-type .ggeTally--text,
 .ggeWidget.membership-installment .ggePage--payment tr:first-of-type .ggeTally--money {
   @apply su-pt-0 su-pb-14 su-border-b su-border-b-black;
+}
+
+.ggeWidget td.ggeTally--total.ggeTally--money {
+  @apply su-border-0;
 }
 
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--text,
@@ -572,7 +574,7 @@
 
 .ggeWidget .ggeTally--total,
 .ggeWidget .ggeTally--total.ggeTally--money {
-  @apply su-type-1 su-font-semibold su-pt-[3rem];
+  @apply su-type-1 su-font-semibold su-pt-[3rem] su-pb-0;
 }
 
 .ggeWidget td.ggeTally--text,
