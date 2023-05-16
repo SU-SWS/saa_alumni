@@ -10,8 +10,7 @@
   @apply hocus:su-border-none su-text-black-30 su-bg-transparent su-p-0 su-type-1 su-font-semibold su-text-white su--mt-2;
 }
 
-.ggeWidget .ggeQuestion__field input[type="date"],
-.ggeWidget .ggeQuestion__field input[type="date"]::-webkit-calendar-picker-indicator {
+.ggeWidget .ggeQuestion__field input[type="date"] {
   @apply su-text-white;
 }
 
