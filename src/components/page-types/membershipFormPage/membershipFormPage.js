@@ -101,7 +101,7 @@ const MembershipFormPage = (props) => {
     su_last_name:
       userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_email: primaryRegistrantEmail,
     su_phone: primaryRegistrantPhoneNumber,
     su_recipient_dob: userProfile?.contact.birthDate
       ? formatUsDate(userProfile?.contact.birthDate)
@@ -114,7 +114,7 @@ const MembershipFormPage = (props) => {
       userProfile?.session?.lastName,
     su_recipient_relationship: 'Guest',
     su_recipient_suid: userProfile?.session?.encodedSUID,
-    su_recipient_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_recipient_email: primaryRegistrantEmail,
     su_recipient_email_type: primaryRegistrantEmailType || undefined,
     su_recipient_phone: primaryRegistrantPhoneNumber,
     su_recipient_phone_type: primaryRegistrantPhoneNumberType || undefined,
