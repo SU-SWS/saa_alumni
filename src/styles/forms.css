@@ -12,7 +12,7 @@
 
 .ggeWidget .ggeQuestion__field input[type="date"],
 .ggeWidget .ggeQuestion__field input[type="date"]::-webkit-calendar-picker-indicator {
-  @apply !su-text-white;
+  @apply su-text-white;
 }
 
 .ggeWidget .ggeQuestion__field input[type="date"]::-webkit-calendar-picker-indicator {
