@@ -564,7 +564,7 @@
 }
 
 .ggeWidget td.ggeTally--total.ggeTally--money {
-  @apply su-border-0;
+  @apply su-border-0 su-p-0;
 }
 
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--text,
