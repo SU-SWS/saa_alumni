@@ -50,7 +50,7 @@ jobs:
           wait-on-timeout: 240
           browser: chrome
           headed: false
-          config: video=false
+          config: video=false,baseUrl=http://localhost:8000
 
       - name: Integration Test Screenshot Artifacts
         uses: actions/upload-artifact@v3
