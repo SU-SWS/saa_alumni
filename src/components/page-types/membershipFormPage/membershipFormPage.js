@@ -79,16 +79,22 @@ const MembershipFormPage = (props) => {
     userProfile?.contact?.preferredEmail
   );
 
-  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
-  const primaryRegistrantEmailType = emailData?.type || null;
+  const primaryRegistrantEmail = emailData?.email
+    ? emailData.email
+    : userProfile?.session.email;
+  const primaryRegistrantEmailType = emailData?.type ? emailData.type : null;
 
   const phoneData = fetchPhone(
     userProfile?.phoneNumbers,
     userProfile?.contact?.preferredPhoneType
   );
 
-  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber || null;
-  const primaryRegistrantPhoneNumberType = phoneData?.type || null;
+  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber
+    ? phoneData.phoneNumber
+    : null;
+  const primaryRegistrantPhoneNumberType = phoneData?.type
+    ? phoneData.type
+    : null;
 
   const primaryUser = {
     su_did: userProfile?.session?.encodedSUID,
