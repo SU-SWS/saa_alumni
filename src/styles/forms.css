@@ -10,6 +10,14 @@
   @apply hocus:su-border-none su-text-black-30 su-bg-transparent su-p-0 su-type-1 su-font-semibold su-text-white su--mt-2;
 }
 
+.ggeWidget .ggeQuestion__field input[type="date"] {
+  @apply su-text-white;
+}
+
+.ggeWidget .ggeQuestion__field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}
+
 .ggeWidget .ggeContent .ggeQuestion:not(.su-email) {
   @apply su-p-0 su-mb-34 md:su-mb-45;
 }
@@ -70,6 +78,7 @@
 .ggeWidget .ggeQuestion input[type="email"],
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
   @apply su-mt-11;
@@ -78,6 +87,7 @@
 .ggeWidget .ggeQuestion input[type="email"],
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
   @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8rem] md:su-text-[2.1rem] su-border su-border-b-2 su-border-black-50 su-rounded-[3px] su-box-border;
@@ -86,13 +96,15 @@
 
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="email"],
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="number"],
-.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"] {
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"],
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="date"] {
   @apply su-border su-border-b-2 su-border-black-50;
 }
 
 .ggeWidget .ggeQuestion input[type="email"],
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion textarea {
   @apply su-px-[21px] md:su-px-[19px] su-py-[20px];
 }
@@ -100,6 +112,7 @@
 .ggeWidget .ggeQuestion input[type="email"]:focus,
 .ggeWidget .ggeQuestion input[type="number"]:focus,
 .ggeWidget .ggeQuestion input[type="text"]:focus,
+.ggeWidget .ggeQuestion input[type="date"]:focus,
 .ggeWidget .ggeQuestion textarea:focus {
   @apply su-border-2 su-border-transparent;
   border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
@@ -109,7 +122,8 @@
 .ggeWidget .ggeQuestion .ggeQuestion__field textarea[readonly],
 .ggeWidget .ggeQuestion input[type="email"][readonly],
 .ggeWidget .ggeQuestion input[type="number"][readonly],
-.ggeWidget .ggeQuestion input[type="text"][readonly] {
+.ggeWidget .ggeQuestion input[type="text"][readonly],
+.ggeWidget .ggeQuestion input[type="date"][readonly] {
   @apply su-p-0 su-border-none su-text-24 su-text-black-30 hocus:su-shadow-none;
   background: transparent !important;
 }
@@ -152,6 +166,7 @@
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="email"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="number"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="text"],
+.ggeWidget .ggeQuestion.ggeQuestion--error input[type="date"],
 .ggeWidget .ggeQuestion.ggeQuestion--error select,
 .ggeWidget .ggeQuestion.ggeQuestion--error textarea {
   @apply su-border su-border-digital-red-xlight;
@@ -297,7 +312,8 @@
   @apply su-m-0;
 }
 
-.ggeWidget .ggePrompt__other .ggePrompt input[type="text"] {
+.ggeWidget .ggePrompt__other .ggePrompt input[type="text"],
+.ggeWidget .ggePrompt__other .ggePrompt input[type="date"] {
   @apply su-ml-[24px];
 }
 
