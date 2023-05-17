@@ -3,6 +3,10 @@ import { dcnb } from 'cnbuilder';
 import SbEditable from 'storyblok-react';
 import AuthContext from '../../contexts/AuthContext';
 import CreateBloks from '../../utilities/createBloks';
+import SaaCardBg from '../../images/saa-card-bg.png';
+import SaaExampleCard from '../../images/saa-example.png';
+import SaaLogoWhite from '../../images/stanford_alumni-white.png';
+import SaaLogoColor from '../../images/stanford_alumni-color.png';
 
 const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   const [bgColor, setBgColor] = useState('su-bg-[#C3363A]');
@@ -16,13 +20,10 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
 
   const fetchImages = async (loggedIn, logoPath, bgPath) => {
     if (loggedIn) {
-      const responseLogo = `/images/${logoPath}`;
-      setLogo(responseLogo);
-      const responseBg = `/images/${bgPath}`;
-      setBgImage(responseBg);
+      setLogo(logoPath);
+      setBgImage(bgPath);
     } else {
-      const response = `/images/saa-example.png`;
-      setExampleImage(response);
+      setExampleImage(SaaExampleCard);
     }
   };
 
@@ -35,7 +36,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
         membership.membershipGroup?.includes('SAA') &&
         membership.membershipAffiliation?.includes('Alum')
       ) {
-        fetchImages(true, 'stanford_alumni-white.png', 'saa-card-bg.png');
+        fetchImages(true, SaaLogoWhite, SaaCardBg);
         setBgColor(
           'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
         );
@@ -47,7 +48,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
         membership.membershipGroup?.includes('SAA') &&
         membership.membershipAffiliation?.includes('Affiliate')
       ) {
-        fetchImages(true, 'stanford_alumni-color.png', 'saa-card-bg.png');
+        fetchImages(true, SaaLogoColor, SaaCardBg);
         setBgColor(
           'su-bg-gradient-to-b su-from-illuminating-dark su-to-illuminating-light'
         );
