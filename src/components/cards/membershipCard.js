@@ -15,18 +15,14 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
   const auth = useContext(AuthContext);
 
   const fetchImages = async (loggedIn, logoPath, bgPath) => {
-    try {
-      if (loggedIn) {
-        const responseLogo = await import(`../../images/${logoPath}`);
-        setLogo(responseLogo.default);
-        const responseBg = await import(`../../images/${bgPath}`);
-        setBgImage(responseBg.default);
-      } else {
-        const response = await import(`../../images/saa-example.png`);
-        setExampleImage(response.default);
-      }
-    } catch (err) {
-      console.log(err);
+    if (loggedIn) {
+      const responseLogo = `/images/${logoPath}`;
+      setLogo(responseLogo);
+      const responseBg = `/images/${bgPath}`;
+      setBgImage(responseBg);
+    } else {
+      const response = `/images/saa-example.png`;
+      setExampleImage(response);
     }
   };
 
