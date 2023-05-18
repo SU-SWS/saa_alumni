@@ -4,7 +4,7 @@ describe('Home Page', () => {
       cy.login();
       cy.visit('/');
 
-      cy.getByTestId('user-menu-greeting', null, { timeout: 15000 }).should('contain', 'John Doe');
+      cy.getByTestId('user-menu-greeting', undefined, { timeout: 15000 }).should('contain', 'Teri Dactyl');
     });
   });
 });

@@ -24,6 +24,7 @@ const storyblokRelations = [
   'registrationFormPage.trip',
   'giveGabForm.failureMessage',
   'failureMessage.giveGabErrorMessage',
+  'membershipInformation.membershipInfoText',
 ];
 
 // Support for Gatsby CLI
@@ -105,9 +106,10 @@ module.exports = {
           if (
             // Exclude non-canonical pages.
             !page.pageContext.isCanonical ||
-            // Exlude form and registration form pages
+            // Exlude form, registration form, and membership form pages
             page.pageContext.story.content.includes('formPage') ||
             page.pageContext.story.content.includes('registrationFormPage') ||
+            page.pageContext.story.content.includes('membershipFormPage') ||
             // Exclude pages marked with "noindex"
             page.pageContext.noIndex ||
             // Exclude pages that match the "excludes" array. (default condition)

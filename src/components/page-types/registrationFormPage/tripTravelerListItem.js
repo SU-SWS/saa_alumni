@@ -8,7 +8,7 @@ const TripTravelerListItem = ({ traveler, isBtn = true }) => {
 
   const removeRelationship = () => {
     dispatch({
-      type: 'removeTraveler',
+      type: 'removeRegistrant',
       payload: traveler.su_did,
     });
   };

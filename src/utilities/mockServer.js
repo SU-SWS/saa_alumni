@@ -1,10 +1,10 @@
 import MockAdapter from 'axios-mock-adapter';
-import { affiliationsMockData, fullggMockData } from './mocks';
+import { affiliationsMockData, fullprofileMockData } from './mocks';
 
 export default function mockServer(axiosInstance) {
   const mock = new MockAdapter(axiosInstance);
 
-  mock.onGet(/\/[0-9]+\/profiles\/fullgg/).reply(200, fullggMockData);
+  mock.onGet(/\/[0-9]+\/profiles\/fullprofile/).reply(200, fullprofileMockData);
 
   mock
     .onGet(/\/[0-9]+\/profiles\/affiliations/)

@@ -39,6 +39,11 @@ import MainNav from './navigation/MainNav/mainNav';
 import MainNavItem from './navigation/MainNav/mainNavItem';
 import Masthead from './identity/masthead';
 import MastheadPicker from './identity/mastheadPicker';
+import MembershipCard from './cards/membershipCard';
+import MembershipFormPage from './page-types/membershipFormPage/membershipFormPage';
+import MembershipFullPaymentForm from './page-types/membershipFormPage/membershipFullPaymentForm';
+import MembershipInstallmentsForm from './page-types/membershipFormPage/membershipInstallmentsForm';
+import MembershipInfoText from './page-types/membershipFormPage/membershipInfoText';
 import NavItem from './navigation/navItem';
 import Page from './page';
 import Perk from './content-types/perk/perk';
@@ -72,11 +77,13 @@ import TripFilterPage from './page-types/TripFilterPage/TripFilterPage';
 import TripFormInformation from './composite/tripFormInformation';
 import TripNotifyMe from './page-types/formPage/tripNotifyMe';
 import TripPage from './page-types/TripPage/TripPage';
+import RelatedContactSelection from './page-types/membershipFormPage/relatedContactSelection';
 import { SBUtilityNav } from './storyblok/utilityNav';
 import VerticalNav from './navigation/verticalNav';
 import VerticalNavWrapper from './navigation/verticalNavWrapper';
 import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
+import MembershipPaymentOptions from './page-types/membershipFormPage/membershipPaymentOptions';
 
 const ComponentList = {
   accordion: Accordion,
@@ -119,6 +126,12 @@ const ComponentList = {
   mainNavItem: MainNavItem,
   masthead: Masthead,
   mastheadPicker: MastheadPicker,
+  membershipCard: MembershipCard,
+  membershipFormPage: MembershipFormPage,
+  membershipFullPaymentForm: MembershipFullPaymentForm,
+  membershipInstallmentsForm: MembershipInstallmentsForm,
+  membershipInfoText: MembershipInfoText,
+  membershipPaymentOptions: MembershipPaymentOptions,
   navItem: NavItem,
   page: Page,
   perk: Perk,
@@ -152,6 +165,7 @@ const ComponentList = {
   tsContentTemplate: SBTsContentTemplate,
   tripFormInformation: TripFormInformation,
   tripNotifyMe: TripNotifyMe,
+  relatedContactSelection: RelatedContactSelection,
   utilityNav: SBUtilityNav,
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,

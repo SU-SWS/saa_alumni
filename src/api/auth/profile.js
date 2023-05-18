@@ -6,7 +6,7 @@
 import connect from 'next-connect';
 import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
-import { fullggMockData } from '../../utilities/mocks';
+import { fullprofileMockData } from '../../utilities/mocks';
 import { isStoryblokEditor } from '../../utilities/isStoryblokEditor';
 
 /**
@@ -16,41 +16,33 @@ const megaprofileHandler = async (req, res, next) => {
   const mp = new MegaProfile();
   const profileId = req.user.encodedSUID;
   const session = req.user;
-  let fullgg = {};
-  let affiliations = {};
-  let contact = {};
-  // Three simultaneous requests to the API in hopes to stay under 10s.
+  let fullprofile = {};
+  let memberships = [];
+  // Two simultaneous requests to the API in hopes to stay under 10s.
   const requests = [
-    mp.get(`/${profileId}/profiles/fullgg`),
-    mp.get(`/${profileId}/profiles/affiliations`),
-    mp.get(`/${profileId}/profiles/contact`),
+    mp.get(`/${profileId}/profiles/fullprofile`),
+    mp.get(`/${profileId}/profiles/memberships`),
   ];
 
   const resolved = await Promise.allSettled(requests);
 
   // Full GG Data.
   if (resolved[0].status === 'fulfilled' && !!resolved[0].value?.data) {
-    fullgg = resolved[0].value.data;
+    fullprofile = resolved[0].value.data;
   } else {
-    fullgg.name = {};
-    fullgg.name.digitalName = `${req.user.firstName} ${req.user.lastName}`;
+    fullprofile.contact.name = {};
+    fullprofile.contact.name.digitalName = `${req.user.firstName} ${req.user.lastName}`;
   }
 
-  // Affiliations Data;
+  // Membership Data;
   if (resolved[1].status === 'fulfilled' && !!resolved[1].value?.data) {
-    affiliations = resolved[1].value.data.affiliations;
-  }
-
-  // Contact Data;
-  if (resolved[2].status === 'fulfilled' && !!resolved[2].value?.data) {
-    contact = resolved[2].value.data.contact;
+    memberships = resolved[1].value.data.memberships;
   }
 
   const mpUser = {
     session,
-    ...fullgg,
-    affiliations,
-    profilePhotoURL: contact?.profilePhotoURL,
+    ...fullprofile,
+    memberships,
   };
   res.status(200).json(mpUser);
   next();
@@ -59,7 +51,7 @@ const megaprofileHandler = async (req, res, next) => {
 const storyblokPreviewPassthrough = async (req, res, next) => {
   const isEditor = await isStoryblokEditor(req);
   if (isEditor) {
-    res.json(fullggMockData);
+    res.json(fullprofileMockData);
   } else next();
 };
 

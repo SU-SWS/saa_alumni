@@ -55,7 +55,10 @@ export const Alert = (props) => {
   }
 
   return (
-    <div className={dcnb('su-alert', styles.root({ type }))} {...rest}>
+    <div
+      className={dcnb('su-alert print:su-hidden', styles.root({ type }))}
+      {...rest}
+    >
       <FlexBox wrap="wrap" className={styles.wrapper}>
         {hasDismiss && (
           <div className={styles.dismissWrapper}>

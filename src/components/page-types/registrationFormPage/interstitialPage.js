@@ -23,12 +23,7 @@ import {
   emailTypeList,
   phoneNumberTypeList,
 } from './registationFormOptions';
-import {
-  findEmail,
-  findPreferredEmailType,
-  findPhoneNumber,
-  findPreferredPhoneNumberType,
-} from '../../../utilities/giveGabVars';
+import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
@@ -71,9 +66,9 @@ const InterstitialPage = (props) => {
     let data = {};
     relationshipsData?.forEach((relationship) => {
       data = {
-        su_did: relationship?.relatedContactEncodedID,
-        su_dname: relationship?.relatedContactDigitalName
-          ? relationship?.relatedContactDigitalName
+        su_did: relationship?.relatedContactEncodedSUID,
+        su_dname: relationship?.digitalName
+          ? relationship?.digitalName
           : `${relationship?.relatedContactFullNameParsed?.relatedContactFirstName} ${relationship?.relatedContactFullNameParsed?.relatedContactLastName}`,
         su_title:
           relationship?.relatedContactFullNameParsed?.relatedContactPrefix,
@@ -87,9 +82,9 @@ const InterstitialPage = (props) => {
                 ?.relatedContactMiddleName,
         su_last_name:
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
-        su_relation: relationship?.relationshipType,
-        su_dob: relationship?.relatedContactBirthDate
-          ? formatUsDate(relationship?.relatedContactBirthDate)
+        su_relation: relationship?.type,
+        su_dob: relationship?.birthDate
+          ? formatUsDate(relationship?.birthDate)
           : undefined,
         su_reg: 'Related contact',
         su_email: undefined,
@@ -101,24 +96,27 @@ const InterstitialPage = (props) => {
   };
   const relatedContacts = structureTravelerData(relationships);
 
-  const primaryRegistrantEmail = findEmail(userProfile?.emails);
-  const primaryRegistrantEmailType = findPreferredEmailType(
+  const emailData = fetchEmail(
     userProfile?.emails,
-    primaryRegistrantEmail
-  );
-  const primaryRegistrantPhoneNumber = findPhoneNumber(
-    userProfile?.phoneNumbers
-  );
-  const primaryRegistrantPhoneNumberType = findPreferredPhoneNumberType(
-    userProfile?.phoneNumbers,
-    primaryRegistrantPhoneNumber
+    userProfile?.contact?.preferredEmail
   );
 
+  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
+  const primaryRegistrantEmailType = emailData?.type || null;
+
+  const phoneData = fetchPhone(
+    userProfile?.phoneNumbers,
+    userProfile?.contact?.preferredPhoneType
+  );
+
+  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber || null;
+  const primaryRegistrantPhoneNumberType = phoneData?.type || null;
+
   let digitalName;
-  if (userProfile?.name?.digitalName) {
-    digitalName = userProfile?.name?.digitalName;
-  } else if (userProfile?.name?.fullNameParsed?.firstName) {
-    digitalName = `${userProfile?.name?.fullNameParsed?.firstName} ${userProfile?.name?.fullNameParsed?.lastName}`;
+  if (userProfile?.contact.name?.digitalName) {
+    digitalName = userProfile?.contact.name?.digitalName;
+  } else if (userProfile?.contact.name?.fullNameParsed?.firstName) {
+    digitalName = `${userProfile?.contact.name?.fullNameParsed?.firstName} ${userProfile?.contact.name?.fullNameParsed?.lastName}`;
   } else {
     digitalName = `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`;
   }
@@ -126,27 +124,27 @@ const InterstitialPage = (props) => {
   const primaryRegistrant = {
     su_did: userProfile?.session?.encodedSUID,
     su_dname: digitalName,
-    su_title: userProfile?.name?.fullNameParsed?.prefix,
+    su_title: userProfile?.contact.name?.fullNameParsed?.prefix,
     su_first_name:
-      userProfile?.name?.fullNameParsed?.firstName ||
+      userProfile?.contact.name?.fullNameParsed?.firstName ||
       userProfile?.session?.firstName,
     su_middle_name:
-      userProfile?.name?.fullNameParsed?.middleName === null ||
-      userProfile?.name?.fullNameParsed?.middleName === undefined
+      userProfile?.contact.name?.fullNameParsed?.middleName === null ||
+      userProfile?.contact.name?.fullNameParsed?.middleName === undefined
         ? '&nbsp;'
-        : userProfile?.name?.fullNameParsed?.middleName,
+        : userProfile?.contact.name?.fullNameParsed?.middleName,
     su_last_name:
-      userProfile?.name?.fullNameParsed?.lastName ||
+      userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_email: primaryRegistrantEmail,
     su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
     su_phone: primaryRegistrantPhoneNumber,
     su_phone_type: findSelectOption(
       phoneNumberTypeList,
       primaryRegistrantPhoneNumberType
     ),
-    su_dob: userProfile?.birthDate
-      ? formatUsDate(userProfile?.birthDate)
+    su_dob: userProfile?.contact.birthDate
+      ? formatUsDate(userProfile?.contact.birthDate)
       : undefined,
     su_relation: 'Guest',
     su_reg: 'Primary registrant',
@@ -264,7 +262,7 @@ const InterstitialPage = (props) => {
                             <Link
                               to={`${slug}/form`}
                               className={styles.travelerLink}
-                              state={{ travelers: value[0].travelersData }}
+                              state={{ travelers: value[0].registrantsData }}
                             >
                               Next
                               <HeroIcon

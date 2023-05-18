@@ -16,15 +16,15 @@ const GiveGabForm = ({
     uuid,
   },
   blok,
-  tripId,
+  urlData,
   bgCardStyle,
 }) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
 
   const embedUrl = new URL(url);
-  if (tripId) {
-    embedUrl.searchParams.set('urlData', tripId.replace(' ', ''));
+  if (urlData) {
+    embedUrl.searchParams.set('urlData', urlData.replace(' ', ''));
   }
 
   if (isAuthenticating) {

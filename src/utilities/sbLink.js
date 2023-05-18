@@ -33,6 +33,14 @@ const SbLink = React.forwardRef((props, ref) => {
   const location = useLocation();
   const utms = utmParams(location.search);
 
+  // Open internal links in new tab because passing target="_blank" to GatsbyLink doesn't work at the moment
+  const openGatsbyLinkInNewTab = (e) => {
+    if (otherAttributes?.target === '_blank') {
+      e.preventDefault();
+      window.open(linkUrl, '_blank');
+    }
+  };
+
   // Story or Internal type link.
   // ---------------------------------------------------------------------------
   if (props.link?.linktype === 'story') {
@@ -52,6 +60,7 @@ const SbLink = React.forwardRef((props, ref) => {
         to={linkUrl}
         className={dcnb(linkClasses, storyClasses)}
         activeClassName={activeClass}
+        onClick={openGatsbyLinkInNewTab}
         {...otherAttributes}
       >
         {props.children}

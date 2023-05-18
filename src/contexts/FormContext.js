@@ -1,22 +1,26 @@
 import React, { useReducer, createContext } from 'react';
 
 const initialFormState = {
-  travelersData: [],
+  registrantsData: [],
 };
 
 export const FormContext = createContext(initialFormState);
 
 function formReducer(state, action) {
   switch (action.type) {
-    case 'addTraveler':
+    case 'addRegistrant':
       return {
-        travelersData: [...state.travelersData, action.payload],
+        registrantsData: [...state.registrantsData, action.payload],
       };
-    case 'removeTraveler':
+    case 'removeRegistrant':
       return {
-        travelersData: state.travelersData.filter(
+        registrantsData: state.registrantsData.filter(
           (traveler) => traveler.su_did !== action.payload
         ),
+      };
+    case 'addSingleRegistrant':
+      return {
+        registrantsData: [action.payload],
       };
     default:
       return state;

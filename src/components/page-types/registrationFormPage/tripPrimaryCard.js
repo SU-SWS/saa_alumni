@@ -10,7 +10,7 @@ const TripPrimaryCard = ({ traveler }) => {
   useEffect(() => {
     const addRelationship = () => {
       dispatch({
-        type: 'addTraveler',
+        type: 'addRegistrant',
         payload: traveler,
       });
     };

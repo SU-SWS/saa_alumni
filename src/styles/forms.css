@@ -10,6 +10,14 @@
   @apply hocus:su-border-none su-text-black-30 su-bg-transparent su-p-0 su-type-1 su-font-semibold su-text-white su--mt-2;
 }
 
+.ggeWidget .ggeQuestion__field input[type="date"] {
+  @apply su-text-white;
+}
+
+.ggeWidget .ggeQuestion__field input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(100%);
+}
+
 .ggeWidget .ggeContent .ggeQuestion:not(.su-email) {
   @apply su-p-0 su-mb-34 md:su-mb-45;
 }
@@ -70,6 +78,7 @@
 .ggeWidget .ggeQuestion input[type="email"],
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
   @apply su-mt-11;
@@ -78,6 +87,7 @@
 .ggeWidget .ggeQuestion input[type="email"],
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
   @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8rem] md:su-text-[2.1rem] su-border su-border-b-2 su-border-black-50 su-rounded-[3px] su-box-border;
@@ -86,13 +96,15 @@
 
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="email"],
 .ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="number"],
-.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"] {
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="text"],
+.ggeWidget .ggeQuestion--required .ggeAddress__street2 input[type="date"] {
   @apply su-border su-border-b-2 su-border-black-50;
 }
 
 .ggeWidget .ggeQuestion input[type="email"],
 .ggeWidget .ggeQuestion input[type="number"],
 .ggeWidget .ggeQuestion input[type="text"],
+.ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion textarea {
   @apply su-px-[21px] md:su-px-[19px] su-py-[20px];
 }
@@ -100,6 +112,7 @@
 .ggeWidget .ggeQuestion input[type="email"]:focus,
 .ggeWidget .ggeQuestion input[type="number"]:focus,
 .ggeWidget .ggeQuestion input[type="text"]:focus,
+.ggeWidget .ggeQuestion input[type="date"]:focus,
 .ggeWidget .ggeQuestion textarea:focus {
   @apply su-border-2 su-border-transparent;
   border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
@@ -109,7 +122,8 @@
 .ggeWidget .ggeQuestion .ggeQuestion__field textarea[readonly],
 .ggeWidget .ggeQuestion input[type="email"][readonly],
 .ggeWidget .ggeQuestion input[type="number"][readonly],
-.ggeWidget .ggeQuestion input[type="text"][readonly] {
+.ggeWidget .ggeQuestion input[type="text"][readonly],
+.ggeWidget .ggeQuestion input[type="date"][readonly] {
   @apply su-p-0 su-border-none su-text-24 su-text-black-30 hocus:su-shadow-none;
   background: transparent !important;
 }
@@ -152,15 +166,14 @@
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="email"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="number"],
 .ggeWidget .ggeQuestion.ggeQuestion--error input[type="text"],
+.ggeWidget .ggeQuestion.ggeQuestion--error input[type="date"],
 .ggeWidget .ggeQuestion.ggeQuestion--error select,
 .ggeWidget .ggeQuestion.ggeQuestion--error textarea {
   @apply su-border su-border-digital-red-xlight;
 }
-
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration,
 .ggeTally {
-  @apply su-border-2 su-border-transparent su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem];
-  border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
-  border-image-slice: 1;
+  @apply su-border-3 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue;
 }
 
 .ggeTally tr {
@@ -200,15 +213,18 @@
 }
 
 .ggeWidget .ggeStripeBtn,
+.ggeWidget .ggeButton:disabled,
 .ggeWidget .ggeButton {
   @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md;
 }
 
 .ggeWidget .ggeStripeBtn,
+.ggeWidget .ggeButton--forward:disabled,
 .ggeWidget .ggeButton--forward {
   @apply su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
 }
 
+.ggeWidget .ggeButton--back:disabled,
 .ggeWidget .ggeButton--back {
   @apply su-static su-border-2 su-pr-[3rem] su-border-solid su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
 }
@@ -296,7 +312,8 @@
   @apply su-m-0;
 }
 
-.ggeWidget .ggePrompt__other .ggePrompt input[type="text"] {
+.ggeWidget .ggePrompt__other .ggePrompt input[type="text"],
+.ggeWidget .ggePrompt__other .ggePrompt input[type="date"] {
   @apply su-ml-[24px];
 }
 
@@ -307,6 +324,7 @@
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
 }
 
+.ggePrompt__radio:focus-within::before,
 .ggePrompt__radio:hover::before {
   content: "";
   @apply su-absolute su-inset-[-.6rem] su-rounded-full su-bg-saa-electric-blue-light/[.4];
@@ -317,6 +335,7 @@
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
   opacity: 0.4;
 }
+
 
 /* Email Other Type */
 .ggeWidget .ggeQuestion.su-email-type .ggePrompt__label label {
@@ -329,13 +348,13 @@
     140.61deg,
     rgba(24, 29, 28, 0.64) 0%,
     rgba(24, 29, 28, 0.4) 110.98%
-  );
-  border-image-source: linear-gradient(
-    140.61deg,
+    );
+    border-image-source: linear-gradient(
+      140.61deg,
     rgba(255, 255, 255, 0.5) 0%,
     rgba(255, 255, 255, 0) 53.2%,
     rgba(255, 255, 255, 0.5) 109.83%
-  );
+    );
 }
 
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
@@ -464,8 +483,8 @@
 }
 
 .ggeRegistrantList,
-.ggeWidget .ggeSection--askArray.ggeSection--registration,
-.ggePage--payment .ggePageNav--back {
+.ggeWidget:not(.membership-forms) .ggeSection--askArray.ggeSection--registration,
+.ggeWidget:not(.membership-forms) .ggePage--payment .ggePageNav--back {
   @apply su-hidden;
 }
 
@@ -478,8 +497,8 @@
 }
 
 .ggeWidget.ggeWidget--highlightIncomplete
-  .ggeRegistrant--prefilled
-  .ggeQuestion--incomplete {
+.ggeRegistrant--prefilled
+.ggeQuestion--incomplete {
   @apply su-bg-transparent;
 }
 
@@ -548,21 +567,30 @@
   @apply su-p-0;
 }
 
-.ggeWidget .ggeTally--text {
-  @apply su-text-19;
-}
-
+.ggeWidget .ggeTally--text,
 .ggeWidget .ggeTally--money {
-  @apply su-text-21;
+  @apply su-type-1;
 }
 
-.ggeWidget td.ggeTally--text,
-.ggeWidget td.ggeTally--money:not(.ggeTally--total) {
+.ggeWidget:not(.membership-installment) td.ggeTally--text,
+.ggeWidget:not(.membership-installment) td.ggeTally--money,
+.ggeWidget.membership-installment .ggePage--payment tr:first-of-type .ggeTally--text,
+.ggeWidget.membership-installment .ggePage--payment tr:first-of-type .ggeTally--money {
   @apply su-pt-0 su-pb-14 su-border-b su-border-b-black;
 }
 
-.ggeWidget .ggeTally--total {
-  @apply su-text-[2.6rem] su-font-semibold su-pt-[3rem];
+.ggeWidget td.ggeTally--total.ggeTally--money {
+  @apply su-border-0 su-p-0;
+}
+
+.ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--text,
+.ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--money {
+  @apply su-border-0 su-type-0 su-font-regular su-pt-14 su-pb-0;
+} 
+
+.ggeWidget .ggeTally--total,
+.ggeWidget .ggeTally--total.ggeTally--money {
+  @apply su-type-1 su-font-semibold su-pt-[3rem] su-pb-0;
 }
 
 .ggeWidget td.ggeTally--text,
@@ -593,5 +621,308 @@
 .ggeWidget .ggeStripeContainer__upperHr,
 .ggeWidget .ggeStripeContainer__lowerHr__outer,
 .ggeWidget .ggeStripeContainer__lowerHr__outer .ggeStripeContainer__lowerHr__inner {
-  @apply su-bg-transparent;
+  @apply su-bg-transparent su-border-0 su-p-0 su-m-0;
+}
+
+.ggeWidget .ggeStripeContainer__lowerHr__outer {
+  @apply su-rs-mt-1 su-rs-mb-2;
+}
+
+.ggeWidget .ggeStripeContainer__lowerHr__outer .ggeStripeContainer__lowerHr__inner {
+  @apply su-text-center su-type-0;
+}
+
+
+/* GG Checkbox */
+.ggeWidget .ggePrompt .ggePrompt__checkbox,
+.ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
+  @apply su-relative su-mr-[1.2rem];
+}
+
+.ggeWidget .ggePrompt .ggePrompt__checkbox input {
+  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-saa-electric-blue-light;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox input {
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
+    border-box;
+}
+
+.ggeWidget .ggePrompt .ggePrompt__checkbox input:hover {
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
+    border-box;
+}
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after {
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
+  content: "";
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
+  mask: url("../assets/check-mark.svg");
+  -webkit-mask-size: contain;
+}
+
+.ggePrompt__checkbox:focus-within::before,
+.ggePrompt__checkbox:hover::before {
+  content: "";
+  @apply su-absolute su-inset-[-.6rem] su-rounded-full su-bg-saa-electric-blue-light/[.4];
+}
+
+.ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox:hover::before {
+  background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
+  opacity: 0.4;
+}
+
+/* Membership display none */
+.ggeWidget.membership-forms .su-membership-dname label,
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion .ggeQuestion__label label[for="Terms and Conditions Acknowledgement|I agree.__input__ggid1"],
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."],
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion .ggeQuestion__field #ggeQuestion__caption--1--PhoneNumber,
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion .ggeQuestion__field #ggeQuestion__caption--1--ContactEmail {
+  @apply su-hidden;
+}
+
+/* Membership Recipient Digital Name */
+.ggeWidget.membership-forms .su-membership-dname.ggeQuestion[data-name="DigitalName"] {
+  @apply su-rs-mb-0 su-block;
+}
+
+.ggeWidget.membership-forms .su-membership-dname.ggeQuestion[data-name="DigitalName"] #DigitalName__ggid1 {
+  @apply su-mt-0;
+}
+
+/* Membership Recipient First and Last Name */
+.ggeWidget.membership-forms .ggeQuestion.ggeQuestion--readonly.su-name.su-first-name {
+  @apply su-m-0;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.ggeQuestion--readonly.su-name label {
+  @apply su-hidden;
+}
+
+
+/* Membership form caption order, spacing, and styling */
+.ggeWidget.membership-forms .ggeQuestion .ggeQuestion__field .ggePrompt__select {
+  @apply su-flex su-flex-col-reverse;
+}
+
+.ggeWidget.membership-forms .ggeQuestion .ggeQuestion__field .ggeQuestion__caption,
+.ggeWidget.membership-forms .ggeQuestion .ggeQuestion__field .ggePrompt__select .ggeQuestion__caption {
+  @apply su-mb-0 su-rs-mt-neg1 su-text-15 md:su-text-18 su-text-black-30;
+}
+
+/* Membership Tally Table */
+.ggeWidget.membership-forms .ggeSection header h1 {
+  @apply su-mt-0 su-font-semibold;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership {
+  @apply su-mb-0;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment fieldset {
+  @apply su-order-1;
+}
+
+.ggeWidget.membership-forms .ggePage--payment tr .ggeTally--terms {
+  @apply su-type-1 su-font-semibold su-rs-pt-3;
+}
+
+/* Membership Installment Tally Table */
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan {
+  @apply su-rs-mt-3;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan header {
+  @apply su-rs-mb-0;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan h1 {
+  @apply su-font-semibold su-type-2;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption label[for="ggePaymentPlan--installmentOption__ggid1"] {
+  @apply su-block su-text-18 sm:su-text-21 su-font-semibold;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption .ggeQuestion__caption {
+  @apply su-text-15 md:su-text-18 su-text-black-30;
+}
+
+.ggeWidget.membership-forms .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption.ggePrompt--checked .ggePrompt__radio {
+  @apply su-hidden;
+}
+
+/* Membership Installment Confirmation Tally Table */
+.ggeWidget.membership-forms .ggeConfirmation .ggeButton.ggeButton--forward {
+  @apply su-rs-mt-5 su-bg-digital-red-light;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally td {
+  @apply su-border-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--header {
+  @apply su-p-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--headtext {
+  @apply su-type-1 su-font-semibold su-text-saa-electric-blue-light su-pb-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--subtext,
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--money {
+  @apply su-p-0;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--confirmation {
+  @apply su-font-semibold su-rs-pb-1;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--total {
+  @apply su-border-t su-border-fog-light;
+}
+
+.ggeWidget.membership-forms .ggeConfirmation .ggeTally td.ggeTally--subheader {
+  @apply su-rs-pt-5 su-type-1 su-font-semibold;
+}
+
+/* Membership Payment section */
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--nameOnCard {
+  @apply su-w-full;
+}
+
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--nameOnCard .ggeQuestion__field input {
+  @apply su-mr-0 lg:su-w-[80%] 2xl:su-w-[calc(70%_-_2rem)];
+  margin-right: 2rem;
+}
+
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--account {
+  @apply su-mr-0 su-w-full md:su-w-[calc(75%_-_2rem)] 2xl:su-w-[calc(70%_-_2rem)];
+  margin-right: 2rem;
+}
+
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--account .ggeQuestion__field input {
+  @apply su-w-full sm:su-w-[75%] md:su-w-full;
+}
+
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--verification {
+  @apply su-w-full md:su-w-[25%] 2xl:su-w-[30%];
+}
+
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--verification .ggeQuestion__field input {
+  @apply su-w-full sm:su-w-[25%] md:su-w-full;
+}
+
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--monthExpires,
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--yearExpires{
+  @apply su-w-full sm:su-w-[calc(50%_-_10px)];
+}
+
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--monthExpires select,
+.ggeWidget.membership-forms .ggePayment--credit.ggePayment--credit--yearExpires select {
+  @apply su-w-full;
+}
+
+/* Email and Phone Number */
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion[data-name="ContactEmail"] {
+  @apply su-rs-mb-neg2 su-rs-mt-3;
+}
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion[data-name="PhoneNumber"] {
+  @apply su-rs-mb-neg2;
+}
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion[data-name="UpdatePhoneNumber"] {
+  @apply su-rs-mb-5;
+}
+
+/* Address */
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__state select {
+  @apply su-leading-display;
+}
+
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__state,
+.ggeWidget.membership-forms .ggeSection--profile .ggeAddress__zipcode {
+  @apply su-rs-mb-5;
+}
+
+/* Membership registration leave a comment */
+.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label {
+  @apply su-clear-both;
+}
+.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label label[for="Comments__ggid1"] {
+  @apply su-font-semibold;
+}
+
+/* Membership registration terms & conditions */
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions {
+  @apply su-font-semibold su-text-white su-type-0;
+}
+
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #InstallmentPaymentTerms {
+  @apply su-rs-mb-0;
+}
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
+  @apply su-underline hocus:su-text-digital-red-light hocus:su-decoration-digital-red-light;
+}
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
+  @apply su-hidden;
+}
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--instructions.su-terms-and-conditions {
+  @apply su-rs-mb-1 su-mt-0 su-flex su-flex-col su-justify-start su-w-full;
+}
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
+  @apply su-items-center;
+  flex-direction: row !important;
+}
+
+.ggeWidget.membership-forms .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field .ggePrompt {
+  @apply su-mt-0;
+}
+
+/* Membership selection section */
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration header {
+  @apply su-rs-mb-2;
+}
+
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration header h1 {
+  @apply su-type-2;
+}
+
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt__price::before {
+  @apply su-hidden;
+}
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt__price {
+  @apply su-rs-ml-1;
+}
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt {
+  @apply su-items-start first:su-mt-0 su-rs-mb-2 last:su-mb-0;
+}
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label {
+  @apply su-w-full;
+}
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label label {
+  @apply su-flex su-justify-between;
+}
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption {
+  @apply su-block su-w-10/12 su-leading-display su-ml-0;
+}
+.ggeWidget.membership-forms .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption div {
+  @apply su-mt-02em;
+}
+
+/* Membership Payment Nav Buttons */
+.ggeWidget.membership-forms .ggePage--payment .ggePageNav {
+  @apply su-flex su-flex-col sm:su-flex-row su-items-center;
+}
+
+.ggeWidget.membership-forms .ggePage--payment .ggePageNav .ggePageNav--back {
+  @apply su-mb-30 sm:su-mb-0;
+}
+
+/* Membership Pay with Card Button */
+
+.ggeWidget.membership-forms .ggeStripeBtn {
+  @apply su-border-2 su-pr-[3rem] su-bg-transparent su-border-solid su-border-saa-electric-blue su-text-white hocus:su-bg-saa-electric-blue hocus:su-text-white;
 }

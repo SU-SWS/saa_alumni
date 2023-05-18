@@ -67,7 +67,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                           className={styles.greeting(showDesktopXl)}
                           data-test="user-menu-greeting"
                         >{`Hi, ${
-                          userProfile.name?.digitalName ||
+                          userProfile?.contact?.name.digitalName ||
                           `${userProfile.session.firstName} ${userProfile.session.lastName}`
                         }`}</span>
                         <SrOnlyText>

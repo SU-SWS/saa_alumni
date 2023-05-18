@@ -88,14 +88,7 @@ Cypress.Commands.add('login', (username: string = '') => {
   // const foundUser = users.find((u) => u.contact.name.username === username);
   // const user = foundUser || defaultUser;
 
-  const userToken = {
-    userName: sessionMockData?.userName,
-    email: sessionMockData?.email,
-    firstName: sessionMockData?.firstName,
-    lastName: sessionMockData?.lastName,
-    SUID: 'NOTHINGTOSEEHERE',
-    encodedSUID: sessionMockData?.encodedSUID,
-  };
+  const userToken = { ...sessionMockData };
 
   // Generate mock auth token
   cy.task('signToken', userToken).then((token) => {

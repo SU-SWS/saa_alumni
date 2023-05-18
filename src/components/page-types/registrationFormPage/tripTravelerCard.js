@@ -6,8 +6,8 @@ import HeroIcon from '../../simple/heroIcon';
 
 const TripTravelerCard = ({ traveler }) => {
   const [state, dispatch] = useContext(FormContext);
-  const { travelersData } = state;
-  const buttonDisplay = travelersData.find(
+  const { registrantsData } = state;
+  const buttonDisplay = registrantsData.find(
     (selectedTraveler) => selectedTraveler.su_did === traveler.su_did
   );
 
@@ -20,14 +20,14 @@ const TripTravelerCard = ({ traveler }) => {
       return;
     }
     dispatch({
-      type: 'addTraveler',
+      type: 'addRegistrant',
       payload: traveler,
     });
   };
 
   const removeRelationship = () => {
     dispatch({
-      type: 'removeTraveler',
+      type: 'removeRegistrant',
       payload: traveler.su_did,
     });
   };

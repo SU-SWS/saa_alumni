@@ -17,6 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
       'perk',
       'redirect', // NOTE: Redirects are are specifically generated below
       'registrationFormPage', // Note: Handled separately
+      'membershipFormPage', // Note: Handled separately below
       'searchEntry',
       'searchKeywordBanner',
       'searchSuggestions',
@@ -162,6 +163,109 @@ exports.createPages = ({ graphql, actions }) => {
               },
             });
           }
+        });
+      })
+    );
+
+    // Membership Form Pages
+    // /////////////////////////////////////////////////////////////////////////
+    resolve(
+      graphql(
+        `
+          {
+            allStoryblokEntry(
+              filter: { field_component: { eq: "membershipFormPage" } }
+            ) {
+              edges {
+                node {
+                  id
+                  name
+                  created_at
+                  uuid
+                  slug
+                  full_slug
+                  content
+                  is_startpage
+                  parent_id
+                  group_id
+                }
+              }
+            }
+          }
+        `
+      ).then((result) => {
+        // No membership page forms.
+        if (result.errors) {
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        const membershipEntries = result.data.allStoryblokEntry.edges;
+        membershipEntries.forEach((membershipEntry, index) => {
+          const slug = `${membershipEntry.node.full_slug}`;
+          const pagePath = slug.replace(/^\/|\/$/g, '');
+
+          const content = JSON.parse(membershipEntry.node.content);
+
+          let isCanonical = true;
+          if (
+            content.canonicalURL &&
+            (content.canonicalURL.url || content.canonicalURL.cached_url)
+          ) {
+            isCanonical = false;
+          }
+          const noIndex = content.noIndex ? content.noIndex : false;
+
+          // Create full payment form page
+          createPage({
+            path: `/${pagePath}/form`,
+            component: storyblokEntry,
+            context: {
+              slug: `${membershipEntry.node.full_slug}/form`,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+              membershipFullPayment: true,
+            },
+          });
+
+          // Create installments form page
+          createPage({
+            path: `/${pagePath}/installment/form`,
+            component: storyblokEntry,
+            context: {
+              slug: `${membershipEntry.node.full_slug}/installment/form`,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+              membershipInstallments: true,
+            },
+          });
+
+          // Create related contact selection interstitial page
+          createPage({
+            path: `/${pagePath}/related-contacts`,
+            component: storyblokEntry,
+            context: {
+              slug: membershipEntry.node.full_slug,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+              membershipRelatedContact: true,
+            },
+          });
+
+          // Create type of registrant interstitial page
+          createPage({
+            path: `/${pagePath}`,
+            component: storyblokEntry,
+            context: {
+              slug: membershipEntry.node.full_slug,
+              story: membershipEntry.node,
+              isCanonical,
+              noIndex,
+            },
+          });
         });
       })
     );
