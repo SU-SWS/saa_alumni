@@ -38,7 +38,7 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
       ) {
         fetchImages(true, SaaLogoWhite, SaaCardBg);
         setBgColor(
-          'su-bg-gradient-to-b su-from-[#8E1515] su-to-digital-red-light'
+          'su-bg-gradient-to-b su-from-cardinal-red su-to-digital-red-light'
         );
         setUserType('saa');
         setNoCard(false);
