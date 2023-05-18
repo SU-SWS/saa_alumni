@@ -32,12 +32,12 @@
 [[headers]]
   for = "/membership/join"
   [headers.values]
-    Basic-Auth = "membership0n1y23"
+    Basic-Auth = "saa:membership0n1y23"
     X-Robots-Tag = "noindex, nofollow"
 [[headers]]
   for = "/membership/saacard"
   [headers.values]
-    Basic-Auth = "membership0n1y23"
+    Basic-Auth = "saa:membership0n1y23"
     X-Robots-Tag = "noindex, nofollow"
 
 # REDIRECTS
