@@ -113,10 +113,9 @@
 .ggeWidget .ggeQuestion input[type="number"]:focus,
 .ggeWidget .ggeQuestion input[type="text"]:focus,
 .ggeWidget .ggeQuestion input[type="date"]:focus,
+.ggeWidget .ggeQuestion select:focus,
 .ggeWidget .ggeQuestion textarea:focus {
-  @apply su-border-2 su-border-transparent;
-  border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
-  border-image-slice: 1;
+  @apply su-border-2 su-border-transparent su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue;
 }
 
 .ggeWidget .ggeQuestion .ggeQuestion__field textarea[readonly],
@@ -296,7 +295,7 @@
 }
 
 .ggeWidget .ggePrompt .ggePrompt__radio input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent;
+  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent su-cursor-pointer;
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
     border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
@@ -640,7 +639,7 @@
 }
 
 .ggeWidget .ggePrompt .ggePrompt__checkbox input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-saa-electric-blue-light;
+  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-saa-electric-blue-light su-cursor-pointer;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
