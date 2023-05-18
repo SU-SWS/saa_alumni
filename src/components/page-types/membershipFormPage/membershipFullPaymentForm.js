@@ -48,13 +48,9 @@ const MembershipFullPaymentForm = (props) => {
     window.appeal_code = promoCode;
   }, [registrant, promoCode]);
 
-  console.log('SLUG: ', pageContext);
-  console.log('REG: ', !registrant);
-
   // In the event that the user goes directly to the related contact page,
   // redirect user back to insteritial page to select registration type
   if (!registrant && pageContext?.story) {
-    console.log('REDIRECTING');
     return <Redirect to={pageContext.story.full_slug} noThrow />;
   }
 
