@@ -24,7 +24,7 @@ const MembershipPaymentCard = ({
       )}
       onClick={() => onClick(id)}
     >
-      <div>
+      <div className="su-w-full">
         <FlexBox
           justifyContent="center"
           className={styles.initialAndSelectionWrapper}
