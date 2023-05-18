@@ -113,6 +113,7 @@
 .ggeWidget .ggeQuestion input[type="number"]:focus,
 .ggeWidget .ggeQuestion input[type="text"]:focus,
 .ggeWidget .ggeQuestion input[type="date"]:focus,
+.ggeWidget .ggeQuestion select:focus,
 .ggeWidget .ggeQuestion textarea:focus {
   @apply su-border-2 su-border-transparent;
   border-image-source: linear-gradient(0deg, #017e7c 84.05%, #505eec 15.6%);
