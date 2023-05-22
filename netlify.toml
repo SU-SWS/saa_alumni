@@ -29,16 +29,6 @@
   [headers.values]
     Basic-Auth = "saa:@lumn1@ss0c1@t10n"
     X-Robots-Tag = "noindex, nofollow"
-[[headers]]
-  for = "/membership/join"
-  [headers.values]
-    Basic-Auth = "saa:membership0n1y23"
-    X-Robots-Tag = "noindex, nofollow"
-[[headers]]
-  for = "/membership/saacard"
-  [headers.values]
-    Basic-Auth = "saa:membership0n1y23"
-    X-Robots-Tag = "noindex, nofollow"
 
 # REDIRECTS
 # ##############################################################################
