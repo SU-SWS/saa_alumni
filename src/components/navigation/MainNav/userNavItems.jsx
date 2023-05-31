@@ -117,7 +117,10 @@ const UserNavItems = ({ expanded, userProfile }) => {
 
         {isDonor && (
           <li>
-            <a href="https://TODO" className={styles.utilityNavLink}>
+            <a
+              href="https://myaccount.stanford.edu/giving"
+              className={styles.utilityNavLink}
+            >
               My Giving
               <HeroIcon
                 iconType="arrow-right"
