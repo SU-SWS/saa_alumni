@@ -74,6 +74,12 @@ const UserNavItems = ({ expanded, userProfile }) => {
     ));
   };
 
+  const isDonor =
+    userProfile &&
+    userProfile.affiliation.affiliations &&
+    Array.isArray(userProfile.affiliation.affiliations) &&
+    userProfile.affiliation.affiliations.includes('Donor');
+
   return (
     <div aria-hidden={!expanded} className={styles.menuWrapper(expanded)}>
       <FlexBox
@@ -109,17 +115,18 @@ const UserNavItems = ({ expanded, userProfile }) => {
           </a>
         </li>
 
-        {/* To add back when donor logic is added */}
-        {/* <li> */}
-        {/*  <a href="https://TODO" className={styles.utilityNavLink}> */}
-        {/*    My Giving */}
-        {/*    <HeroIcon */}
-        {/*      iconType="arrow-right" */}
-        {/*      isAnimate */}
-        {/*      className={styles.heroicon} */}
-        {/*    /> */}
-        {/*  </a> */}
-        {/* </li> */}
+        {isDonor && (
+          <li>
+            <a href="https://TODO" className={styles.utilityNavLink}>
+              My Giving
+              <HeroIcon
+                iconType="arrow-right"
+                isAnimate
+                className={styles.heroicon}
+              />
+            </a>
+          </li>
+        )}
       </ul>
 
       <ul className={styles.menu2}>
