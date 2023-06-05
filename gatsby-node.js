@@ -136,6 +136,7 @@ exports.createPages = ({ graphql, actions }) => {
           ) {
             isCanonical = false;
           }
+
           const noIndex = content.noIndex ? content.noIndex : false;
 
           // Create the GG form page(s) only if the trip is published
