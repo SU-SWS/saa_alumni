@@ -52,6 +52,7 @@ https://sierracamp.alumni.stanford.edu/facultystaff-weekend/accommodations https
 https://sierracamp.alumni.stanford.edu/faculty-staff-weekend/rates https://alumni.stanford.edu/sierra-programs/faculty-staff-weekend 301!
 https://sierracamp.alumni.stanford.edu/faculty-staff-weekend/apply https://alumni.stanford.edu/sierra-programs/faculty-staff-weekend 301!
 https://sierracamp.alumni.stanford.edu/* https://alumni.stanford.edu/sierra-programs/:splat 301!
+https://groups.alumni.stanford.edu/* https://alumni.stanford.edu/groups/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
