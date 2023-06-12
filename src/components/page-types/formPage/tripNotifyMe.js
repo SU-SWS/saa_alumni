@@ -19,15 +19,12 @@ const TripNotifyMe = (props) => {
     blok,
     trip,
   } = props;
-  const {
-    full_slug: fullSlug,
-    content: { title: tripTitle, startDate, endDate },
-  } = trip;
+  const tripTitle = trip?.content?.title;
   const title = `Notify me: ${tripTitle}`;
-  const tripURL = `/${fullSlug.replace(/^\//, '')}`;
+  const tripURL = `/${trip?.fullSlug.replace(/^\//, '')}`;
   const tripDates = useMemo(() => {
-    const start = getDate(startDate);
-    const end = getDate(endDate);
+    const start = getDate(trip?.content?.startDate);
+    const end = getDate(trip?.content?.endDate);
     return `${start.month} ${start.day}${
       start.year !== end.year ? `, ${start.year}` : ''
     }–${
@@ -35,9 +32,12 @@ const TripNotifyMe = (props) => {
         ? ''
         : `${end.month} `
     }${end.day}, ${end.year}`;
-  }, [startDate, endDate]);
+  }, [trip?.content?.startDate, trip?.content?.endDate]);
   const tripDuration = useMemo(() => {
-    const { days: dayDuration } = getDuration(startDate, endDate);
+    const { days: dayDuration } = getDuration(
+      trip?.content?.startDate,
+      trip?.content?.endDate
+    );
 
     if (dayDuration >= 0) {
       const days = dayDuration + 1;
@@ -45,7 +45,7 @@ const TripNotifyMe = (props) => {
     }
 
     return '';
-  }, [startDate, endDate]);
+  }, [trip?.content?.startDate, trip?.content?.endDate]);
 
   return (
     <SbEditable content={blok}>
