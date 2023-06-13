@@ -40,7 +40,6 @@ const AuthIdleTimeoutOverlay = ({
       const secs = Math.floor(modalTimer.remainingTime / 1000);
 
       if (mins > 1) return `${mins} minutes`;
-
       return `${secs} ${pluralize(secs, 'second')}`;
     }
     return undefined;
