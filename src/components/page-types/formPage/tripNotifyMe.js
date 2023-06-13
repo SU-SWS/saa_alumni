@@ -19,15 +19,12 @@ const TripNotifyMe = (props) => {
     blok,
     trip,
   } = props;
-  const {
-    full_slug: fullSlug,
-    content: { title: tripTitle, startDate, endDate },
-  } = trip;
+  const tripTitle = trip?.content?.title;
   const title = `Notify me: ${tripTitle}`;
-  const tripURL = `/${fullSlug.replace(/^\//, '')}`;
+  const tripURL = `/${trip?.fullSlug?.replace(/^\//, '')}`;
   const tripDates = useMemo(() => {
-    const start = getDate(startDate);
-    const end = getDate(endDate);
+    const start = getDate(trip?.content?.startDate);
+    const end = getDate(trip?.content?.endDate);
     return `${start.month} ${start.day}${
       start.year !== end.year ? `, ${start.year}` : ''
     }–${
@@ -35,9 +32,12 @@ const TripNotifyMe = (props) => {
         ? ''
         : `${end.month} `
     }${end.day}, ${end.year}`;
-  }, [startDate, endDate]);
+  }, [trip?.content?.startDate, trip?.content?.endDate]);
   const tripDuration = useMemo(() => {
-    const { days: dayDuration } = getDuration(startDate, endDate);
+    const { days: dayDuration } = getDuration(
+      trip?.content?.startDate,
+      trip?.content?.endDate
+    );
 
     if (dayDuration >= 0) {
       const days = dayDuration + 1;
@@ -45,7 +45,7 @@ const TripNotifyMe = (props) => {
     }
 
     return '';
-  }, [startDate, endDate]);
+  }, [trip?.content?.startDate, trip?.content?.endDate]);
 
   return (
     <SbEditable content={blok}>
@@ -68,26 +68,52 @@ const TripNotifyMe = (props) => {
             id="page-title"
             className={styles.heading}
           >
-            {title}
+            {trip?.content?.title ? title : 'Something went wrong.'}
           </Heading>
-          {body && <p className={styles.body}>{body}</p>}
+          {trip?.content?.title && body ? (
+            <p className={styles.body}>{body}</p>
+          ) : (
+            <p>
+              A technical error has occurred. Please refresh the page or try
+              again later. If the problem persists,{' '}
+              <SbLink
+                link="https://stanford.service-now.com/alumni_donor_services?id=sc_cat_item&sys_id=18a4d6751b237050d78786ecdc4bcbe4"
+                classes={styles.helpLink}
+              >
+                please submit a help ticket{' '}
+                <HeroIcon
+                  iconType="external"
+                  className={styles.helpLinkIcon}
+                  isAnimate
+                />
+              </SbLink>
+            </p>
+          )}
         </GridCell>
-        <GridCell xs={12} sm={6} md={4} lg={12} className={styles.contentGrid}>
-          <Grid xl={5} className={styles.summaryContent}>
-            <GridCell xl={3} className={styles.summaryItem}>
-              <Heading level={2} className={styles.summaryName}>
-                Dates
-              </Heading>
-              <span className={styles.summaryValue}>{tripDates}</span>
-            </GridCell>
-            <GridCell xl={3} className={styles.summaryItem}>
-              <Heading level={2} className={styles.summaryName}>
-                Duration
-              </Heading>
-              <span className={styles.summaryValue}>{tripDuration}</span>
-            </GridCell>
-          </Grid>
-        </GridCell>
+        {trip?.content?.startDate && (
+          <GridCell
+            xs={12}
+            sm={6}
+            md={4}
+            lg={12}
+            className={styles.contentGrid}
+          >
+            <Grid xl={5} className={styles.summaryContent}>
+              <GridCell xl={3} className={styles.summaryItem}>
+                <Heading level={2} className={styles.summaryName}>
+                  Dates
+                </Heading>
+                <span className={styles.summaryValue}>{tripDates}</span>
+              </GridCell>
+              <GridCell xl={3} className={styles.summaryItem}>
+                <Heading level={2} className={styles.summaryName}>
+                  Duration
+                </Heading>
+                <span className={styles.summaryValue}>{tripDuration}</span>
+              </GridCell>
+            </Grid>
+          </GridCell>
+        )}
       </Grid>
     </SbEditable>
   );
