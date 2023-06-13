@@ -68,26 +68,40 @@ const TripNotifyMe = (props) => {
             id="page-title"
             className={styles.heading}
           >
-            {title}
+            {trip?.content?.title
+              ? title
+              : 'There was an error with loading the the trip.'}
           </Heading>
-          {body && <p className={styles.body}>{body}</p>}
+          {trip?.content?.title && body ? (
+            <p className={styles.body}>{body}</p>
+          ) : (
+            <p>Please contact Travel/Study for additional assistance.</p>
+          )}
         </GridCell>
-        <GridCell xs={12} sm={6} md={4} lg={12} className={styles.contentGrid}>
-          <Grid xl={5} className={styles.summaryContent}>
-            <GridCell xl={3} className={styles.summaryItem}>
-              <Heading level={2} className={styles.summaryName}>
-                Dates
-              </Heading>
-              <span className={styles.summaryValue}>{tripDates}</span>
-            </GridCell>
-            <GridCell xl={3} className={styles.summaryItem}>
-              <Heading level={2} className={styles.summaryName}>
-                Duration
-              </Heading>
-              <span className={styles.summaryValue}>{tripDuration}</span>
-            </GridCell>
-          </Grid>
-        </GridCell>
+        {trip?.content?.startDate && (
+          <GridCell
+            xs={12}
+            sm={6}
+            md={4}
+            lg={12}
+            className={styles.contentGrid}
+          >
+            <Grid xl={5} className={styles.summaryContent}>
+              <GridCell xl={3} className={styles.summaryItem}>
+                <Heading level={2} className={styles.summaryName}>
+                  Dates
+                </Heading>
+                <span className={styles.summaryValue}>{tripDates}</span>
+              </GridCell>
+              <GridCell xl={3} className={styles.summaryItem}>
+                <Heading level={2} className={styles.summaryName}>
+                  Duration
+                </Heading>
+                <span className={styles.summaryValue}>{tripDuration}</span>
+              </GridCell>
+            </Grid>
+          </GridCell>
+        )}
       </Grid>
     </SbEditable>
   );
