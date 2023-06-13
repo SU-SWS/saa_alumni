@@ -68,14 +68,26 @@ const TripNotifyMe = (props) => {
             id="page-title"
             className={styles.heading}
           >
-            {trip?.content?.title
-              ? title
-              : 'There was an error with loading the the trip.'}
+            {trip?.content?.title ? title : 'Something went wrong.'}
           </Heading>
           {trip?.content?.title && body ? (
             <p className={styles.body}>{body}</p>
           ) : (
-            <p>Please contact Travel/Study for additional assistance.</p>
+            <p>
+              A technical error has occurred. Please refresh the page or try
+              again later. If the problem persists,{' '}
+              <SbLink
+                link="https://stanford.service-now.com/alumni_donor_services?id=sc_cat_item&sys_id=18a4d6751b237050d78786ecdc4bcbe4"
+                classes={styles.helpLink}
+              >
+                please submit a help ticket{' '}
+                <HeroIcon
+                  iconType="external"
+                  className={styles.helpLinkIcon}
+                  isAnimate
+                />
+              </SbLink>
+            </p>
           )}
         </GridCell>
         {trip?.content?.startDate && (
