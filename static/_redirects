@@ -97,7 +97,7 @@ https://reunion.stanford.edu/class-books/class-books-overview https://alumni.sta
 https://reunion.stanford.edu/class-books/find-your-class-book https://alumni.stanford.edu/reunion 301!
 https://reunion.stanford.edu/class-books/class-books-faqs https://alumni.stanford.edu/reunion/faqs 301!
 https://reunion.stanford.edu/registration/look-whos-planning-attend https://cvent.me/od0R9D 301!
-https://reunion.stanford.edu/* https://alumni.stanford.edu/reunion/* 301!
+https://reunion.stanford.edu/* https://alumni.stanford.edu/reunion/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
