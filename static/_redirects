@@ -57,6 +57,8 @@ https://groups.alumni.stanford.edu/* https://alumni.stanford.edu/groups/:splat 3
 # REUNION
 ################################################################################
 
+https://reunion.alumni.stanford.edu/* https://reunion.stanford.edu/:splat 301!
+
 https://reunion.stanford.edu/events/schedule-glance https://alumni.stanford.edu/reunion/schedule 301!
 https://reunion.stanford.edu/volunteer/plan-mini-reunion https://alumni.stanford.edu/reunion/volunteer 301!
 https://reunion.stanford.edu/volunteer/plan-mini-reunion/tips-and-resources-person-gatherings https://alumni.stanford.edu/reunion/volunteer/tips-and-resources-in-person-gatherings 301!
