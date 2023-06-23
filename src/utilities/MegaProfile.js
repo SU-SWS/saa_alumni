@@ -8,7 +8,7 @@ export class MegaProfile {
     const host = config.host || process.env.MEGAPROFILE_HOST;
     const path = config.path || process.env.MEGAPROFILE_PATH;
     const builtUrl = `${host}${path}`;
-    this.url = config.url || process.env.MEGAPROFILE_URL || builtUrl;
+    this.url = config.url || process.env.AWS_MEGAPROFILE_URL || builtUrl;
     this.auth = config.auth || new ApiGatewayAuth();
     // Create Client
     this.client = axios.create({

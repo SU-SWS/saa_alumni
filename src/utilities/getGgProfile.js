@@ -5,14 +5,14 @@ import mockServer from './mockServer';
 
 export const tokenFetcher = async () => {
   // The OAuth Bearer token granter.
-  const TOKEN_URL = process.env.MEGAPROFILE_TOKEN_URL;
+  const TOKEN_URL = process.env.AWS_OAUTH_URL;
 
   const bearerUrl = Url(TOKEN_URL);
   // These are required to operate and are not defaulted. Contact a developer for
   // these credentials. These credentials are used to fetch a bearer token from
   // the TOKEN_URL endpoint.
-  const CLIENT_ID = process.env.MEGAPROFILE_CLIENT_ID;
-  const CLIENT_SECRET = process.env.MEGAPROFILE_CLIENT_SECRET;
+  const CLIENT_ID = process.env.AWS_CLIENT_ID;
+  const CLIENT_SECRET = process.env.AWS_CLIENT_SECRET;
 
   const megaTokenAuth = new ClientCredentials({
     client: {
@@ -45,7 +45,7 @@ export const tokenFetcher = async () => {
 
 export const profileFetcher = async (profileId, token) => {
   const client = axios.create({
-    baseURL: process.env.MEGAPROFILE_URL,
+    baseURL: process.env.AWS_OAUTH_URL,
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -4,10 +4,9 @@ import qs from 'qs';
 
 export class ApiGatewayAuth {
   constructor(config = {}) {
-    this.url = config.url || process.env.API_GATEWAY_AUTH_URL;
-    this.clientId = config.clientId || process.env.API_GATEWAY_AUTH_CLIENT_ID;
-    this.clientSecret =
-      config.clientSecret || process.env.API_GATEWAY_AUTH_CLIENT_SECRET;
+    this.url = config.url || process.env.AWS_OAUTH_URL;
+    this.clientId = config.clientId || process.env.AWS_CLIENT_ID;
+    this.clientSecret = config.clientSecret || process.env.AWS_CLIENT_SECRET;
     this.token = config.token || false;
     this.grantType = 'client_credentials';
   }
