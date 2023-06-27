@@ -11,8 +11,7 @@ const excludedRelationships = [
   'Friend',
 ];
 
-export const filterRelationships = (relationships) => {
+export const filterRelationships = (relationships) =>
   relationships.map((relationship) =>
     excludedRelationships.forEach((type) => relationship.type !== type)
   );
-};
