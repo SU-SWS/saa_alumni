@@ -58,7 +58,6 @@ https://groups.alumni.stanford.edu/* https://alumni.stanford.edu/groups/:splat 3
 ################################################################################
 
 https://reunion.alumni.stanford.edu/* https://reunion.stanford.edu/:splat 301!
-
 https://reunion.stanford.edu/events/schedule-glance https://alumni.stanford.edu/reunion/schedule 301!
 https://reunion.stanford.edu/volunteer/plan-mini-reunion https://alumni.stanford.edu/reunion/volunteer 301!
 https://reunion.stanford.edu/volunteer/plan-mini-reunion/tips-and-resources-person-gatherings https://alumni.stanford.edu/reunion/volunteer/tips-and-resources-in-person-gatherings 301!
@@ -100,6 +99,14 @@ https://reunion.stanford.edu/class-books/find-your-class-book https://alumni.sta
 https://reunion.stanford.edu/class-books/class-books-faqs https://alumni.stanford.edu/reunion/faqs 301!
 https://reunion.stanford.edu/registration/look-whos-planning-attend https://cvent.me/od0R9D 301!
 https://reunion.stanford.edu/* https://alumni.stanford.edu/reunion/:splat 301!
+
+# RACIAL JUSTICE
+################################################################################
+
+https://racialjustice.alumni.stanford.edu/videos-podcasts https://alumni.stanford.edu/racial-justice/resources 301!
+https://racialjustice.alumni.stanford.edu/news https://alumni.stanford.edu/racial-justice/resources 301!
+https://racialjustice.alumni.stanford.edu/events https://alumni.stanford.edu/racial-justice/#events 301!
+https://racialjustice.alumni.stanford.edu/* https://alumni.stanford.edu/racial-justice/:splat 301!
 
 # PATH REDIRECTS
 ################################################################################
