@@ -29,6 +29,7 @@ import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './interstitialPage.styles';
 import { formatUsDate } from '../../../utilities/transformDate';
+import { filterRelationships } from '../../../utilities/filterRelationships';
 
 const InterstitialPage = (props) => {
   const {
@@ -94,7 +95,9 @@ const InterstitialPage = (props) => {
     });
     return relatedContacts;
   };
-  const relatedContacts = structureTravelerData(relationships);
+  const relatedContacts = filterRelationships(
+    structureTravelerData(relationships)
+  );
 
   const emailData = fetchEmail(
     userProfile?.emails,

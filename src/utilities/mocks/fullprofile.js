@@ -936,7 +936,7 @@ export const fullprofileMockData = {
   relationships: [
     {
       id: 'E563DBD43BE42C1681E372F2979A7FDDBE27255FCA17388F338EFE28FA226564',
-      type: 'Child',
+      type: 'Friend',
       digitalName: 'Meg Alodon',
       birthDate: null,
       relatedContactEncodedSUID: '1006614571278',

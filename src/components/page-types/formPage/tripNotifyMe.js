@@ -21,7 +21,7 @@ const TripNotifyMe = (props) => {
   } = props;
   const tripTitle = trip?.content?.title;
   const title = `Notify me: ${tripTitle}`;
-  const tripURL = `/${trip?.fullSlug?.replace(/^\//, '')}`;
+  const tripURL = `/${trip?.full_slug.replace(/^\//, '')}`;
   const tripDates = useMemo(() => {
     const start = getDate(trip?.content?.startDate);
     const end = getDate(trip?.content?.endDate);
