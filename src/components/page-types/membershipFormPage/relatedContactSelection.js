@@ -15,7 +15,7 @@ import * as styles from './relatedContactSelection.styles';
 import { formatUsDate } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
-import { findEmail, findPhoneNumber } from '../../../utilities/giveGabVars';
+import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import MembershipCard from './membershipCard';
 import {
   FormContext,
@@ -45,10 +45,21 @@ const RelatedContactSelection = (props) => {
   }
 
   // Map related contacts/relationships data to GiveGab ADC values
-  const primaryRegistrantEmail = findEmail(userProfile?.emails);
-  const primaryRegistrantPhoneNumber = findPhoneNumber(
-    userProfile?.phoneNumbers
+  const emailData = fetchEmail(
+    userProfile?.emails,
+    userProfile?.contact?.preferredEmail
   );
+
+  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
+
+  const phoneData = fetchPhone(
+    userProfile?.phoneNumbers,
+    userProfile?.contact?.preferredPhoneType
+  );
+
+  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber
+    ? phoneData.phoneNumber
+    : null;
 
   const relationships = userProfile?.relationships;
   const structureRelatedContactData = (relationshipsData = []) => {
@@ -66,7 +77,7 @@ const RelatedContactSelection = (props) => {
         su_last_name:
           userProfile?.contact.name?.fullNameParsed?.lastName ||
           userProfile?.session?.lastName,
-        su_email: primaryRegistrantEmail || userProfile?.session?.email,
+        su_email: primaryRegistrantEmail,
         su_phone: primaryRegistrantPhoneNumber,
         su_recipient_dob: relationship?.birthDate
           ? formatUsDate(relationship?.birthDate)
