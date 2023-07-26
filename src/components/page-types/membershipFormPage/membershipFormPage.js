@@ -79,10 +79,8 @@ const MembershipFormPage = (props) => {
     userProfile?.contact?.preferredEmail
   );
 
-  const primaryRegistrantEmail = emailData?.email
-    ? emailData.email
-    : userProfile?.session.email;
-  const primaryRegistrantEmailType = emailData?.type ? emailData.type : null;
+  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
+  const primaryRegistrantEmailType = emailData?.type || null;
 
   const phoneData = fetchPhone(
     userProfile?.phoneNumbers,
@@ -141,7 +139,7 @@ const MembershipFormPage = (props) => {
     su_last_name:
       userProfile?.contact.name?.fullNameParsed?.lastName ||
       userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail || userProfile?.session?.email,
+    su_email: primaryRegistrantEmail,
     su_phone: primaryRegistrantPhoneNumber,
     su_reg_type: 'newContact',
     su_self_membership: 'no',
