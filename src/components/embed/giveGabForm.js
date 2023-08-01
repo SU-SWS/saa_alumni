@@ -48,14 +48,14 @@ const GiveGabForm = ({
 
   return (
     <SbEditable content={blok}>
-      <Container
-        width="full"
-        className={dcnb(
-          'children:backdrop-opacity-30 children:su-bg-gradient-to-tl children:su-backdrop-blur-sm children:su-shadow-lg children:su-text-white',
-          bgCardStyle
-        )}
-      >
-        <div className="form-gradient su-rs-p-5 su-rs-pb-6 lg:su-rs-p-6 lg:su-rs-pb-7">
+      <Container width="full" className={bgCardStyle}>
+        <div
+          className={dcnb(
+            'su-rs-p-5 su-rs-pb-6 lg:su-rs-p-6 lg:su-rs-pb-7',
+            bgCardStyle.includes('dark') && 'form-gradient',
+            bgCardStyle
+          )}
+        >
           <DynaScript src={embedUrl} id={htmlId} errorBlok={content} />
         </div>
       </Container>
