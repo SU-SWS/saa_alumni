@@ -40,14 +40,13 @@ const AuthIdleTimeoutOverlay = ({
       const secs = Math.floor(modalTimer.remainingTime / 1000);
 
       if (mins > 1) return `${mins} minutes`;
-
       return `${secs} ${pluralize(secs, 'second')}`;
     }
     return undefined;
   }, [modalTimer.isRunning, modalTimer.remainingTime]);
 
   return (
-    <Modal isOpen={open} onClose={handleCancelClose}>
+    <Modal isOpen={open} type="timeout" onClose={handleCancelClose}>
       <div className="su-cc su-max-w-700 md:su-px-0">
         <div className="su-bg-white su-rs-py-2 su-rs-px-4">
           <p className="su-text-center">

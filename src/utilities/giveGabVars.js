@@ -39,7 +39,7 @@ export const findEmail = (emails, type) => {
     Array.isArray(emails) && type
       ? emails.find((item) => item.type === type)
       : false;
-  return found && { email: found.email, type };
+  return found && { email: found.emailAddress, type };
 };
 
 export const fetchEmail = (emails, type) =>

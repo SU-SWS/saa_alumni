@@ -12,8 +12,14 @@ export const root = ({ type, isOpen }) =>
         type !== 'trip-filter' && type !== 'main-menu',
     }
   );
-export const wrapper = () =>
-  'su-absolute su-w-screen su-h-full su-basefont-19 su-pointer-events-auto';
+export const wrapper = ({ type }) =>
+  dcnb(
+    'su-absolute su-basefont-19 su-pointer-events-auto',
+    type === 'timeout'
+      ? 'su-top-1/2 su-left-1/2 su--translate-y-1/2 su--translate-x-1/2'
+      : 'su-w-screen su-h-full'
+  );
+
 export const closeButtonWrapper = ({ type }) =>
   dcnb({
     'su-cc su-flex su-justify-end': type !== 'trip-filter',
@@ -27,6 +33,7 @@ export const closeButton = ({ type }) =>
       'hover:su-bg-digital-red-xlight hocus:su-rounded-full':
         type === 'main-menu',
       'hocus:su-bg-transparent': type !== 'main-menu',
+      'su-text-black': type === 'timeout',
     }
   );
 export const closeIcon = ({ type }) =>
