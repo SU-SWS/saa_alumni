@@ -89,7 +89,6 @@ const UserNavItems = ({ expanded, userProfile }) => {
         <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
           <Avatar userProfile={userProfile} />
         </div>
-
         <div className="su-pl-10">
           <div className="su-break-words su-text-23 su-text-white su-leading-display su-font-semibold su-max-w-300 sm:su-max-w-500 md:su-max-w-700">
             {userProfile.name?.digitalName || userProfile.session?.firstName}
