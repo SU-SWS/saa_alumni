@@ -85,7 +85,6 @@ import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
 import MembershipPaymentOptions from './page-types/membershipFormPage/membershipPaymentOptions';
 import MegaMenu from './navigation/MegaMenu/megaMenu';
-import megaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
 import MegaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
 import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
