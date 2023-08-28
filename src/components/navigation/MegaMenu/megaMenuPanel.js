@@ -60,8 +60,17 @@ const MegaMenuPanel = ({
 
   return (
     <SbEditable content={blok}>
-      <li ref={ref}>
-        <button type="button" aria-expanded={panelOpened} onClick={togglePanel}>
+      <li className={styles.root({ isHomesite: true })} ref={ref}>
+        <button
+          type="button"
+          aria-expanded={panelOpened}
+          onClick={togglePanel}
+          className={styles.parentButton({
+            panelOpened,
+            isActiveButton,
+            isHomesite: true,
+          })}
+        >
           {linkText}
           <ChevronDownIcon
             className={styles.chevron({ panelOpened, isActiveButton })}
@@ -73,16 +82,17 @@ const MegaMenuPanel = ({
             panelOpened,
             isHomesite: true,
           })}
-          // "saa-mega-nav__section"
           aria-hidden={!panelOpened}
         >
-          <Container width="full" className="su-pt-4 su-pb-5">
-            <FlexBox direction="col">
-              <FlexBox direction="row">
-                <CreateBloks blokSection={linkGroups} />
-                {card && <CreateBloks blokSection={card} />}
+          <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
+            <FlexBox direction="row" gap>
+              <FlexBox direction="col">
+                <FlexBox direction="row" gap>
+                  <CreateBloks blokSection={linkGroups} />
+                </FlexBox>
+                <CreateBloks blokSection={sectionCtaLink} />
               </FlexBox>
-              <CreateBloks blokSection={sectionCtaLink} />
+              {card && <CreateBloks blokSection={card} />}
             </FlexBox>
           </Container>
         </div>

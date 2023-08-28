@@ -18,7 +18,7 @@ const MegaMenuCard = (
   props
 ) => (
   <SbEditable content={blok}>
-    <article className="saa-mega-nav__card">
+    <article className="su-w-full">
       <SbLink link={link} classes="su-no-underline">
         {filename != null && (
           <CardImage
@@ -26,8 +26,8 @@ const MegaMenuCard = (
             filename={filename}
             size="vertical"
             loading="lazy"
-            width="600"
-            height="400"
+            imageFocus="center"
+            className="su-overflow-hidden su-aspect-[3/2] su-w-full"
           />
         )}
         <div className={`su-text-white su-bg-${backgroundColor}`}>

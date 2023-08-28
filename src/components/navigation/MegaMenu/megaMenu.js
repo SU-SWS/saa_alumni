@@ -42,7 +42,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <nav className="su-hidden lg:su-block" aria-label="Main Menu">
+      <nav className="su-hidden lg:su-block" aria-label="Main Mega Menu">
         <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
           <CreateBloks blokSection={topLevelLinks} />
         </ul>
