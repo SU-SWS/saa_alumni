@@ -1,5 +1,6 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
+import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../../utilities/createBloks';
 import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
@@ -14,7 +15,7 @@ const MegaMenuLinkGroup = ({
     <FlexBox direction="col">
       {heading && (
         <SbLink link={secondaryLink} classes={styles.menuLink}>
-          <Heading weight="bold" size="base" className="su-uppercase">
+          <Heading weight="bold" uppercase size="base">
             {heading}
           </Heading>
         </SbLink>
