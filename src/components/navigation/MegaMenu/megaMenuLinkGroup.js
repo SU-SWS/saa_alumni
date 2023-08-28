@@ -4,6 +4,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
 import SbLink from '../../../utilities/sbLink';
+import * as styles from './megaMenuLinkGroup.styles';
 
 const MegaMenuLinkGroup = ({
   blok: { heading, secondaryLink, links },
@@ -12,7 +13,7 @@ const MegaMenuLinkGroup = ({
   <SbEditable content={blok}>
     <FlexBox direction="col">
       {heading && (
-        <SbLink link={secondaryLink}>
+        <SbLink link={secondaryLink} classes={styles.menuLink}>
           <Heading weight="bold" size="base" className="su-uppercase">
             {heading}
           </Heading>

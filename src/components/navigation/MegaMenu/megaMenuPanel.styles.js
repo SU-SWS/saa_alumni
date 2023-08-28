@@ -59,7 +59,7 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
 
 export const childMenu = ({ panelOpened, isHomesite } = {}) =>
   dcnb(
-    'su-left-0 su-list-unstyled su-transform-gpu su-transition su-ease-linear lg:su-ease-out lg:su-shadow-md su-w-full su-absolute children:su-mb-0',
+    'su-z-50 su-left-0 su-list-unstyled su-transform-gpu su-transition su-ease-linear lg:su-ease-out lg:su-shadow-md su-w-full su-absolute children:su-mb-0',
     {
       'su-bg-white su-w-full su-scale-y-100 lg:su-scale-100 su-opacity-100 su-visible su-pb-10':
         panelOpened,

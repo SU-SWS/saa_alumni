@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import SbEditable from 'storyblok-react';
+import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import { FlexBox } from '../../layout/FlexBox';
@@ -9,6 +10,8 @@ import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { ModalContext } from '../../layout/Modal/ModalContext';
 import * as styles from './megaMenuPanel.styles';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
+import { Grid } from '../../layout/Grid';
+import { GridCell } from '../../layout/GridCell';
 
 const MegaMenuPanel = ({
   blok: { linkText, linkGroups, sectionCtaLink, card },
@@ -85,15 +88,19 @@ const MegaMenuPanel = ({
           aria-hidden={!panelOpened}
         >
           <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
-            <FlexBox direction="row" gap>
-              <FlexBox direction="col">
+            <Grid lg={12} gap>
+              <GridCell lg={card.length > 0 ? 8 : 12}>
                 <FlexBox direction="row" gap>
                   <CreateBloks blokSection={linkGroups} />
                 </FlexBox>
                 <CreateBloks blokSection={sectionCtaLink} />
-              </FlexBox>
-              {card && <CreateBloks blokSection={card} />}
-            </FlexBox>
+              </GridCell>
+              {card.length > 0 && (
+                <GridCell lg={4}>
+                  <CreateBloks blokSection={card} />
+                </GridCell>
+              )}
+            </Grid>
           </Container>
         </div>
       </li>

@@ -2,6 +2,8 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
+import { Heading } from '../../simple/Heading';
+import HeroIcon from '../../simple/heroIcon';
 
 const MegaMenuCard = (
   {
@@ -30,13 +32,19 @@ const MegaMenuCard = (
             className="su-overflow-hidden su-aspect-[3/2] su-w-full"
           />
         )}
-        <div className={`su-text-white su-bg-${backgroundColor}`}>
-          <h3 className="su-serif su-bold">{headline}</h3>
-          <p
-            className={`su-after-bg-white su-after-bg-hocus-white su-mb-none
-          ${link.linktype === 'url' ? 'su-link--external' : 'su-link--action'}`}
-          >
+        <div
+          className={`su-text-white su-rs-px-2 su-rs-pt-2 su-rs-pb-3 su-bg-${backgroundColor}`}
+        >
+          <Heading size="2" level={3} font="serif" weight="bold">
+            {headline}
+          </Heading>
+          <p className="su-mb-0 su-flex su-items-center">
             {ctaText}
+            <HeroIcon
+              className="su-h-full"
+              isAnimate
+              iconType={link.linktype === 'url' ? 'external' : 'chevron-right'}
+            />
           </p>
         </div>
       </SbLink>
