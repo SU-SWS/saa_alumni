@@ -93,7 +93,9 @@ const MegaMenuPanel = ({
                 <FlexBox direction="row" gap>
                   <CreateBloks blokSection={linkGroups} />
                 </FlexBox>
-                <CreateBloks blokSection={sectionCtaLink} />
+                <div className="su-rs-mt-4">
+                  <CreateBloks blokSection={sectionCtaLink} />
+                </div>
               </GridCell>
               {card.length > 0 && (
                 <GridCell lg={4}>

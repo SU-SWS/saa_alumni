@@ -15,7 +15,7 @@ const MegaMenuLinkGroup = ({
     <FlexBox direction="col">
       {heading && (
         <SbLink link={secondaryLink} classes={styles.menuLink}>
-          <Heading weight="bold" uppercase size="base">
+          <Heading weight="bold" uppercase className="su-text-17 su-rs-mb-0">
             {heading}
           </Heading>
         </SbLink>

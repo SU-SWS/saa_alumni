@@ -6,7 +6,7 @@ import * as styles from './megaMenuLinkGroup.styles';
 
 const MegaMenuLinkItem = ({ blok: { link, linkText }, blok }) => (
   <SbEditable content={blok}>
-    <li>
+    <li className="su-rs-mb-0">
       <SbLink
         link={link}
         classes={dcnb(styles.menuLink, 'su-font-normal su-card-paragraph')}
