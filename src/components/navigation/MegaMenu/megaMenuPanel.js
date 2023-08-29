@@ -95,10 +95,13 @@ const MegaMenuPanel = ({
           <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
             <Grid lg={12} gap>
               <GridCell
-                md={card.length > 0 ? 8 : 12}
-                lg={card.length > 0 ? 6 : 12}
+                lg={card.length > 0 ? 8 : 12}
+                xl={card.length > 0 ? 6 : 12}
               >
-                <FlexBox direction="row" gap>
+                <FlexBox
+                  className="su-flex-col lg:su-flex-row children:su-border-b children:su-border-black-20 children:su-rs-pb-1 last-child:children:su-p-0 last-child:children:su-border-0 lg:children:su-p-0 lg:children:su-border-0  lg:children:su-border-0"
+                  gap
+                >
                   <CreateBloks blokSection={linkGroups} />
                 </FlexBox>
                 <div className="su-rs-mt-4">
@@ -106,7 +109,7 @@ const MegaMenuPanel = ({
                 </div>
               </GridCell>
               {card.length > 0 && (
-                <GridCell md={4} lg={3}>
+                <GridCell lg={4} xl={3}>
                   <CreateBloks blokSection={card} />
                 </GridCell>
               )}
