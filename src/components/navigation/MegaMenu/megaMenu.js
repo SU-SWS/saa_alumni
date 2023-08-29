@@ -11,7 +11,11 @@ import AccountLinks from '../accountLinks';
 import UserHeaderIcon from '../userHeaderIcon';
 import { FlexBox } from '../../layout/FlexBox';
 
-const MegaMenu = ({ blok: { topLevelLinks }, blok }) => {
+/**
+ * This Mega Menu Nav is only used on the SAA Homesite
+ * For Main Nav used on the subsites, e.g., Travel/Study, please see SAAMainNav
+ */
+const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
   const [mainMenuOpened, setMainMenuOpened] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const mainMenuRef = useRef(null);
@@ -42,7 +46,10 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok }) => {
 
   return (
     <SbEditable content={blok}>
-      <nav className="su-hidden lg:su-block" aria-label="Main Mega Menu">
+      <nav
+        className={dcnb('main-nav-desktop su-hidden lg:su-block', className)}
+        aria-label="Mega Menu"
+      >
         <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
           <CreateBloks blokSection={topLevelLinks} />
         </ul>

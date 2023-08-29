@@ -1,5 +1,10 @@
 import { dcnb } from 'cnbuilder';
 
+/**
+ * This Mega Menu Nav is only used on the SAA Homesite
+ * The isHomesite has not been properly styled and tested for micosites
+ */
+
 export const root = ({ isHomesite }) =>
   dcnb(
     'su-float-left su-border-b su-border-solid last:su-border-none lg:su-inline-block lg:su-border-none',
