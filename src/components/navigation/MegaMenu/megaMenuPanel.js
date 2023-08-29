@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import SbEditable from 'storyblok-react';
-import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
 import { FlexBox } from '../../layout/FlexBox';
@@ -14,7 +13,7 @@ import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 
 const MegaMenuPanel = ({
-  blok: { linkText, linkGroups, sectionCtaLink, card },
+  blok: { parentText, parentTextSecond, linkGroups, sectionCtaLink, card },
   blok,
 }) => {
   const [panelOpened, setPanelOpened] = useState(false);
@@ -74,7 +73,13 @@ const MegaMenuPanel = ({
             isHomesite: true,
           })}
         >
-          {linkText}
+          {parentText}
+          {parentTextSecond && (
+            <>
+              <br className={styles.parentTextLinebreak} />
+              {parentTextSecond}
+            </>
+          )}
           <ChevronDownIcon
             className={styles.chevron({ panelOpened, isActiveButton })}
             aria-hidden="true"
