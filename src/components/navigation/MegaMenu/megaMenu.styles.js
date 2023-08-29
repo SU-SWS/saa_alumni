@@ -1,9 +1,5 @@
 import { dcnb } from 'cnbuilder';
 
-export const root = 'su-hidden lg:su-flex children:su-mb-0';
-export const menu =
-  'su-flex su-flex-row su-items-end su-ml-auto su-list-unstyled children:su-mb-0';
-
 // Mobile styles
 export const rootMobile = 'lg:su-hidden su-flex-shrink-0';
 export const menuCircles =
