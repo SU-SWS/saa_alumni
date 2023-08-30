@@ -32,29 +32,36 @@ const MegaMenuPanel = ({
     setPanelOpened(!panelOpened);
   };
 
-  const handleClose = () => {
-    if (panelOpened) {
-      ref.current.focus();
-      setPanelOpened(false);
-    }
-  };
-
   useEscape(() => {
     if (parentRef.current && isExpanded(parentRef.current)) {
-      handleClose();
+      setPanelOpened(false);
       parentRef.current.focus();
     }
   });
+
   useOnClickOutside(ref, () => setPanelOpened(false));
 
   let isActiveButton;
 
   if (isBrowser) {
-    const browserUrl = window.location.href;
+    const browserUrl = window.location.pathname;
 
     // Loop through children menu items and add active styles to parent button if any childrem items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
-      if (browserUrl.includes(linkGroups[i].link?.cached_url)) {
+      if (Object.keys(linkGroups[i]).includes('links')) {
+        for (let j = 0; j < linkGroups[i].links.length; j += 1) {
+          if (
+            linkGroups[i].links[j].link?.cached_url &&
+            browserUrl.includes(linkGroups[i].links[j].link.cached_url)
+          ) {
+            isActiveButton = true;
+          }
+        }
+      }
+      if (
+        linkGroups[i].secondaryLink?.cached_url &&
+        browserUrl.includes(linkGroups[i].secondaryLink.cached_url)
+      ) {
         isActiveButton = true;
       }
     }
