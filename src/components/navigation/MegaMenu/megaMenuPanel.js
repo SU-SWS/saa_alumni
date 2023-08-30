@@ -69,7 +69,7 @@ const MegaMenuPanel = ({
 
   return (
     <SbEditable content={blok}>
-      <li className={styles.root({ isHomesite: true })} ref={ref}>
+      <li className={styles.root} ref={ref}>
         <button
           type="button"
           aria-expanded={panelOpened}
@@ -77,7 +77,6 @@ const MegaMenuPanel = ({
           className={styles.parentButton({
             panelOpened,
             isActiveButton,
-            isHomesite: true,
           })}
         >
           {parentText}
@@ -95,7 +94,6 @@ const MegaMenuPanel = ({
         <div
           className={styles.childMenu({
             panelOpened,
-            isHomesite: true,
           })}
           aria-hidden={!panelOpened}
         >
