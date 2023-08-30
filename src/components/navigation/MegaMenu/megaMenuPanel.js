@@ -32,6 +32,7 @@ const MegaMenuPanel = ({
     setPanelOpened(!panelOpened);
   };
 
+  // Close dropdown if escape key is pressed and return focus to the parent item button
   useEscape(() => {
     if (parentRef.current && isExpanded(parentRef.current)) {
       setPanelOpened(false);
@@ -72,8 +73,9 @@ const MegaMenuPanel = ({
       <li className={styles.root} ref={ref}>
         <button
           type="button"
-          aria-expanded={panelOpened}
           onClick={togglePanel}
+          aria-expanded={panelOpened}
+          ref={parentRef}
           className={styles.parentButton({
             panelOpened,
             isActiveButton,
