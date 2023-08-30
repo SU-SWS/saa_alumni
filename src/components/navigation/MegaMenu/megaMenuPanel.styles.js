@@ -46,9 +46,9 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
 
 export const childMenu = ({ panelOpened } = {}) =>
   dcnb(
-    'su-z-50 su-left-0 su-list-unstyled su-transform-gpu su-transition-transform su-origin-top lg:su-shadow-md su-w-full su-absolute children:su-mb-0',
+    'su-z-50 su-left-0 su-list-unstyled su-transform-gpu su-transition-transform su-origin-top su-duration-300 lg:su-shadow-md su-w-full su-absolute children:su-mb-0',
     {
-      'su-bg-white su-w-full su-scale-y-100 lg:su-scale-100 su-opacity-100 su-visible su-pb-10':
+      'su-bg-fog-light lg:su-bg-white su-w-full su-scale-y-100 su-opacity-100 su-visible su-pb-10':
         panelOpened,
       'su-invisible !su-scale-y-0 su-opacity-0 children:su-hidden su-pb-0':
         !panelOpened,
