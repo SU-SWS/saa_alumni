@@ -32,7 +32,6 @@ const chevronMobile =
   'su-absolute su-right-0 su-w-[3.4rem] su-pt-6 su-pb-5 su-px-5 su-bg-digital-red su-rounded-full group-hover:!su-bg-digital-red-light group-focus:!su-bg-digital-red-light su-mr-20';
 const chevronDesktop =
   'lg:su-relative lg:su--top-3 lg:su-mr-0 lg:su-ml-02em lg:su-w-[0.9em] lg:su-pt-0 lg:su-pb-0 lg:su-px-0 lg:su-bg-transparent lg:group-hover:su-text-digital-red-xlight lg:group-focus:su-text-digital-red-xlight lg:group-hover:!su-bg-transparent lg:group-focus:!su-bg-transparent';
-
 export const chevron = ({ panelOpened, isActiveButton } = {}) =>
   dcnb(
     'su-inline-block su-text-white su-transition group-focus:su-text-white',
@@ -41,17 +40,17 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
     {
       'su-transform-gpu su-rotate-180 lg:su-text-digital-red-light':
         panelOpened,
-      'lg:su-bg-digital-red-light lg:su-text-white': isActiveButton,
+      'su-bg-digital-red-light lg:su-text-white': isActiveButton,
     }
   );
 
 export const childMenu = ({ panelOpened } = {}) =>
   dcnb(
-    'su-z-50 su-left-0 su-list-unstyled su-transform-gpu su-transition su-ease-linear lg:su-ease-out lg:su-shadow-md su-w-full su-absolute children:su-mb-0',
+    'su-z-50 su-left-0 su-list-unstyled su-transform-gpu su-transition-transform su-origin-top lg:su-shadow-md su-w-full su-absolute children:su-mb-0',
     {
       'su-bg-white su-w-full su-scale-y-100 lg:su-scale-100 su-opacity-100 su-visible su-pb-10':
         panelOpened,
-      'su-invisible !su-scale-y-0 lg:!su-scale-75 su-opacity-0 children:su-hidden su-pb-0':
+      'su-invisible !su-scale-y-0 su-opacity-0 children:su-hidden su-pb-0':
         !panelOpened,
     }
   );
