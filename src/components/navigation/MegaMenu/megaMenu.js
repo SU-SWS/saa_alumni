@@ -77,7 +77,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
       </button>
       <Modal
         isOpen={mainMenuOpened || userMenuOpen}
-        type="main-menu"
+        type="mega-menu"
         onClose={() => {
           handleClose();
         }}
@@ -94,7 +94,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
             <FlexBox
               alignItems="center"
               justifyContent="center"
-              className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
+              className="su-h-[7rem] su-px-30 su-text-20 su-bg-white"
             >
               <Heading size="base" weight="regular" className="su-mb-0">
                 Menu
