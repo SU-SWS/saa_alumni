@@ -1,18 +1,18 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
-import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../../utilities/createBloks';
 import { Heading } from '../../simple/Heading';
-import { FlexBox } from '../../layout/FlexBox';
 import SbLink from '../../../utilities/sbLink';
 import * as styles from './megaMenuLinkGroup.styles';
+import { GridCell } from '../../layout/GridCell';
 
 const MegaMenuLinkGroup = ({
   blok: { heading, secondaryLink, links },
   blok,
+  onlyLinks,
 }) => (
   <SbEditable content={blok}>
-    <FlexBox direction="col">
+    <GridCell lg={3}>
       {heading && (
         <SbLink link={secondaryLink} classes={styles.menuLink}>
           <Heading weight="bold" uppercase className="su-text-17 su-rs-mb-0">
@@ -25,7 +25,7 @@ const MegaMenuLinkGroup = ({
           <CreateBloks blokSection={links} />
         </ul>
       )}
-    </FlexBox>
+    </GridCell>
   </SbEditable>
 );
 

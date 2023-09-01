@@ -3,7 +3,6 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
-import { FlexBox } from '../../layout/FlexBox';
 import { Container } from '../../layout/Container';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { ModalContext } from '../../layout/Modal/ModalContext';
@@ -100,23 +99,20 @@ const MegaMenuPanel = ({
           aria-hidden={!panelOpened}
         >
           <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
-            <Grid lg={12} gap>
-              <GridCell
-                lg={card.length > 0 ? 8 : 12}
-                xl={card.length > 0 ? 6 : 12}
-              >
-                <FlexBox
-                  className="su-flex-col lg:su-flex-row children:su-border-b children:su-border-black-20 children:su-rs-pb-1 last-child:children:su-p-0 last-child:children:su-border-0 lg:children:su-p-0 lg:children:su-border-0  lg:children:su-border-0"
-                  gap
-                >
-                  <CreateBloks blokSection={linkGroups} />
-                </FlexBox>
+            <Grid lg={12}>
+              <GridCell lg={card.length > 0 ? 9 : 12}>
+                <Grid lg={card.length > 0 ? 9 : 12}>
+                  <CreateBloks
+                    blokSection={linkGroups}
+                    onlyLinks={card.length === 0}
+                  />
+                </Grid>
                 <div className="su-rs-mt-4">
                   <CreateBloks blokSection={sectionCtaLink} />
                 </div>
               </GridCell>
               {card.length > 0 && (
-                <GridCell lg={4} xl={3}>
+                <GridCell lg={3}>
                   <CreateBloks blokSection={card} />
                 </GridCell>
               )}
