@@ -1,9 +1,5 @@
 import { dcnb } from 'cnbuilder';
 
-export const root = 'su-hidden lg:su-flex children:su-mb-0';
-export const menu =
-  'su-flex su-flex-row su-items-end su-ml-auto su-list-unstyled children:su-mb-0';
-
 // Mobile styles
 export const rootMobile = 'lg:su-hidden su-flex-shrink-0';
 export const menuCircles =
@@ -15,8 +11,7 @@ export const burgerIconMobile =
   'su-transition-colors su-w-[2.2rem] group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
 
 const menuMobileCommon =
-  'su-w-full su-border-t su-border-solid su-border-digital-red-light su-flex su-flex-col su-list-unstyled children:su-mb-0';
-export const menuMobileSAA = ({ menuOpened } = {}) =>
-  dcnb(menuMobileCommon, ' su-bg-black');
+  'su-w-full su-border-t su-border-solid su-border-black-20 su-flex su-flex-col su-list-unstyled children:su-mb-0';
+
 export const menuMobileHomesite = ({ menuOpened } = {}) =>
   dcnb(menuMobileCommon);

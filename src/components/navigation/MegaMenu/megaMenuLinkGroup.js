@@ -2,22 +2,30 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../../utilities/createBloks';
 import { Heading } from '../../simple/Heading';
-import { FlexBox } from '../../layout/FlexBox';
+import SbLink from '../../../utilities/sbLink';
+import * as styles from './megaMenuLinkGroup.styles';
+import { GridCell } from '../../layout/GridCell';
 
-const MegaMenuLinkGroup = ({ blok: { heading, links }, blok }) => (
+const MegaMenuLinkGroup = ({
+  blok: { heading, secondaryLink, links },
+  blok,
+  onlyLinks,
+}) => (
   <SbEditable content={blok}>
-    <FlexBox md={4}>
+    <GridCell lg={3}>
       {heading && (
-        <Heading weight="bold" classes="su-uppercase">
-          {heading}
-        </Heading>
+        <SbLink link={secondaryLink} classes={styles.menuLink}>
+          <Heading weight="bold" uppercase className="su-text-17 su-rs-mb-0">
+            {heading}
+          </Heading>
+        </SbLink>
       )}
       {links !== '' && (
-        <ul className="su-list-none">
+        <ul className="su-list-none su-p-0">
           <CreateBloks blokSection={links} />
         </ul>
       )}
-    </FlexBox>
+    </GridCell>
   </SbEditable>
 );
 

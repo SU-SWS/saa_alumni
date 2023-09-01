@@ -1,41 +1,27 @@
 import { dcnb } from 'cnbuilder';
 
-export const root = ({ isHomesite }) =>
-  dcnb(
-    'su-relative su-border-b su-border-solid last:su-border-none lg:su-inline-block lg:su-border-none',
-    {
-      'su-border-digital-red-light': isHomesite,
-      'su-border-black-80': !isHomesite,
-    }
-  );
+/**
+ * This Mega Menu Nav is only used on the SAA Homesite
+ */
+
+export const root =
+  'su-float-left su-border-b su-border-solid lg:su-inline-block lg:su-border-none su-border-black-20';
 
 // Styles for top level buttons
 const buttonMobile =
-  'su-flex su-items-center su-font-semibold su-w-full hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-26 su-pr-80 su-text-20';
+  'su-text-black !su-z-[100] su-flex su-items-center su-font-semibold su-w-full hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-26 su-pr-80 su-text-20';
 const buttonDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
-export const parentButton = ({
-  panelOpened,
-  isActiveButton,
-  isHomesite,
-} = {}) =>
+  'lg:su-text-white lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:su-bg-transparent lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
+export const parentButton = ({ panelOpened, isActiveButton } = {}) =>
   dcnb(
-    'su-group su-text-white su-transition-colors su-text-left su-leading-snug su-bg-transparent focus:su-outline-none su-underline-offset-[3px]',
+    'su-group su-transition-colors su-text-left su-leading-snug su-bg-white focus:su-outline-none su-underline-offset-[3px] hocus:su-underline lg:su-text-19 2xl:su-text-21',
     buttonMobile,
     buttonDesktop,
     {
-      'hocus:su-bg-cardinal-red-xxdark lg:su-text-19 2xl:su-text-21':
-        isHomesite,
-      'hocus:su-bg-black-90 lg:su-text-20 2xl:su-text-22': !isHomesite,
-      'lg:hover:!su-bg-cardinal-red-xdark lg:hocus:!su-text-white lg:!su-bg-cardinal-red-xdark lg:!su-border-transparent':
+      '!su-bg-white !su-border-cardinal-red-xdark lg:hover:!su-bg-transparent !su-text-digital-red-light lg:!su-bg-transparent lg:!su-border-digital-red-light':
         panelOpened,
-      '!su-bg-cardinal-red-xxdark hover:!su-bg-digital-red !su-border-cardinal-red-xdark':
-        panelOpened && isHomesite,
-      '!su-bg-black-90 hover:!su-bg-black-80': panelOpened && !isHomesite,
-      'lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
+      'su-bg-white lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
         isActiveButton,
-      'su-bg-cardinal-red-xxdark': isActiveButton && isHomesite,
-      'su-bg-black-90': isActiveButton && !isHomesite,
     }
   );
 
@@ -52,37 +38,19 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
     chevronMobile,
     chevronDesktop,
     {
-      'su-transform-gpu su-rotate-180': panelOpened,
-      'su-bg-digital-red-light lg:su-text-digital-red-xlight': isActiveButton,
+      'su-transform-gpu su-rotate-180 lg:su-text-digital-red-light':
+        panelOpened,
+      'su-bg-digital-red-light lg:su-text-white': isActiveButton,
     }
   );
 
-// Styles for top level links for shared SAA Main Nav only
-// The Homesite Main Nav does not have top level links, only buttons
-const topLinkMobile =
-  'su-flex su-items-center su-font-semibold hocus:su-underline hocus:su-text-white hocus:su-bg-black-90 su-py-20 su-px-26 su-text-20';
-const topLinkDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-20 2xl:su-text-22';
-export const topLink = dcnb(
-  'su-group su-text-white su-transition-colors su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px]',
-  topLinkMobile,
-  topLinkDesktop
-);
-export const activeTopLink =
-  'su-bg-black-90 lg:su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:!su-bg-transparent lg:!su-border-digital-red-xlight';
-export const topLinkIcon =
-  'su-top-2 lg:su-top-[-0.2rem] su-text-white group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
-export const childMenu = ({ panelFacing, panelOpened, isHomesite } = {}) =>
+export const childMenu = ({ panelOpened } = {}) =>
   dcnb(
-    'su-list-unstyled su-transform-gpu su-transition su-ease-linear lg:su-ease-out su-origin-top lg:su-shadow-md lg:su-w-[29rem] su-px-20 lg:su-py-10 su-relative lg:su-absolute children:su-mb-0',
+    'su-z-50 su-left-0 su-list-unstyled su-transform-gpu su-transition-transform su-origin-top su-duration-300 lg:su-shadow-md su-w-full su-absolute children:su-mb-0',
     {
-      'lg:su-right-0 lg:su-origin-top-right': panelFacing === 'left',
-      'lg:su-origin-top-left': panelFacing !== 'left',
-      'su-bg-cardinal-red-xxdark su-w-full lg:su-bg-cardinal-red-xdark su-scale-y-100 lg:su-scale-100 su-opacity-100 su-visible su-pb-10':
+      'su-bg-fog-light lg:su-bg-white su-w-full su-scale-y-100 su-opacity-100 su-visible su-pb-10':
         panelOpened,
-      'su-invisible !su-scale-y-75 lg:!su-scale-75 su-opacity-0 children:su-hidden su-pb-0':
+      'su-invisible !su-scale-y-0 su-opacity-0 children:su-hidden su-pb-0':
         !panelOpened,
-      'su-bg-cardinal-red-xxdark': isHomesite && panelOpened,
-      'su-bg-black-90': !isHomesite && panelOpened,
     }
   );

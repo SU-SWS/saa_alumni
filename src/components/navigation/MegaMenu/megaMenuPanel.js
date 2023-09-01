@@ -3,15 +3,16 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
-import { FlexBox } from '../../layout/FlexBox';
 import { Container } from '../../layout/Container';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { ModalContext } from '../../layout/Modal/ModalContext';
 import * as styles from './megaMenuPanel.styles';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
+import { Grid } from '../../layout/Grid';
+import { GridCell } from '../../layout/GridCell';
 
 const MegaMenuPanel = ({
-  blok: { linkText, linkGroups, sectionCtaLink, card },
+  blok: { parentText, parentTextSecond, linkGroups, sectionCtaLink, card },
   blok,
 }) => {
   const [panelOpened, setPanelOpened] = useState(false);
@@ -30,29 +31,37 @@ const MegaMenuPanel = ({
     setPanelOpened(!panelOpened);
   };
 
-  const handleClose = () => {
-    if (panelOpened) {
-      ref.current.focus();
-      setPanelOpened(false);
-    }
-  };
-
+  // Close dropdown if escape key is pressed and return focus to the parent item button
   useEscape(() => {
     if (parentRef.current && isExpanded(parentRef.current)) {
-      handleClose();
+      setPanelOpened(false);
       parentRef.current.focus();
     }
   });
+
   useOnClickOutside(ref, () => setPanelOpened(false));
 
   let isActiveButton;
 
   if (isBrowser) {
-    const browserUrl = window.location.href;
+    const browserUrl = window.location.pathname;
 
     // Loop through children menu items and add active styles to parent button if any childrem items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
-      if (browserUrl.includes(linkGroups[i].link?.cached_url)) {
+      if (Object.keys(linkGroups[i]).includes('links')) {
+        for (let j = 0; j < linkGroups[i].links.length; j += 1) {
+          if (
+            linkGroups[i].links[j].link?.cached_url &&
+            browserUrl.includes(linkGroups[i].links[j].link.cached_url)
+          ) {
+            isActiveButton = true;
+          }
+        }
+      }
+      if (
+        linkGroups[i].secondaryLink?.cached_url &&
+        browserUrl.includes(linkGroups[i].secondaryLink.cached_url)
+      ) {
         isActiveButton = true;
       }
     }
@@ -60,9 +69,24 @@ const MegaMenuPanel = ({
 
   return (
     <SbEditable content={blok}>
-      <li ref={ref}>
-        <button type="button" aria-expanded={panelOpened} onClick={togglePanel}>
-          {linkText}
+      <li className={styles.root} ref={ref}>
+        <button
+          type="button"
+          onClick={togglePanel}
+          aria-expanded={panelOpened}
+          ref={parentRef}
+          className={styles.parentButton({
+            panelOpened,
+            isActiveButton,
+          })}
+        >
+          {parentText}
+          {parentTextSecond && (
+            <>
+              <br className={styles.parentTextLinebreak} />
+              {parentTextSecond}
+            </>
+          )}
           <ChevronDownIcon
             className={styles.chevron({ panelOpened, isActiveButton })}
             aria-hidden="true"
@@ -71,19 +95,28 @@ const MegaMenuPanel = ({
         <div
           className={styles.childMenu({
             panelOpened,
-            isHomesite: true,
           })}
-          // "saa-mega-nav__section"
           aria-hidden={!panelOpened}
         >
-          <Container width="full" className="su-pt-4 su-pb-5">
-            <FlexBox direction="col">
-              <FlexBox direction="row">
-                <CreateBloks blokSection={linkGroups} />
-                {card && <CreateBloks blokSection={card} />}
-              </FlexBox>
-              <CreateBloks blokSection={sectionCtaLink} />
-            </FlexBox>
+          <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
+            <Grid lg={12}>
+              <GridCell lg={card.length > 0 ? 9 : 12}>
+                <Grid lg={card.length > 0 ? 9 : 12}>
+                  <CreateBloks
+                    blokSection={linkGroups}
+                    onlyLinks={card.length === 0}
+                  />
+                </Grid>
+                <div className="su-rs-mt-4">
+                  <CreateBloks blokSection={sectionCtaLink} />
+                </div>
+              </GridCell>
+              {card.length > 0 && (
+                <GridCell lg={3}>
+                  <CreateBloks blokSection={card} />
+                </GridCell>
+              )}
+            </Grid>
           </Container>
         </div>
       </li>
