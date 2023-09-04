@@ -84,12 +84,16 @@ import VerticalNavWrapper from './navigation/verticalNavWrapper';
 import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
 import MembershipPaymentOptions from './page-types/membershipFormPage/membershipPaymentOptions';
+import AssociatesDirectoryPage from './page-types/associatesDirectoryPage/associatesDirectoryPage';
+import AssociatesDirectory from './page-types/associatesDirectoryPage/associatesDirectory';
 
 const ComponentList = {
   accordion: Accordion,
   accordionItem: AccordionItem,
   alert: SBAlert,
   alertCtaLink: SBAlertCtaLink,
+  associatesDirectoryPage: AssociatesDirectoryPage,
+  associatesDirectory: AssociatesDirectory,
   basicCard: BasicCard,
   basicCardHorizontal: BasicCardHorizontal,
   basicPage: BasicPage,
