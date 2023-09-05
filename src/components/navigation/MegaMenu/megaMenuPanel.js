@@ -99,9 +99,9 @@ const MegaMenuPanel = ({
           aria-hidden={!panelOpened}
         >
           <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
-            <Grid lg={12}>
+            <Grid lg={12} gap>
               <GridCell lg={card.length > 0 ? 9 : 12}>
-                <Grid lg={card.length > 0 ? 9 : 12}>
+                <Grid lg={card.length > 0 ? 9 : 12} gap>
                   <CreateBloks
                     blokSection={linkGroups}
                     onlyLinks={card.length === 0}
