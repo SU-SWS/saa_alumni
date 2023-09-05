@@ -34,12 +34,15 @@ export const closeButton = ({ type }) =>
         type === 'main-menu',
       'hocus:su-bg-transparent': type !== 'main-menu',
       'su-text-black': type === 'timeout',
+      'su-text-black hocus:su-bg-white hocus:su-text-digital-red':
+        type === 'mega-menu',
     }
   );
 export const closeIcon = ({ type }) =>
   dcnb('su-inline-block su-h-[1.1em] su-w-[1.1em]', {
     'su-transition-colors group-hover:su-text-palo-verde-light group-focus:su-text-palo-verde-light':
       type === 'trip-filter',
-    'su-h-[1.3em] su-w-[1.3em] su-ml-0 su-p-2': type === 'main-menu',
+    'su-h-[1.3em] su-w-[1.3em] !su-ml-0 su-p-2':
+      type === 'main-menu' || type === 'mega-menu',
     'su-ml-4': type !== 'main-menu',
   });
