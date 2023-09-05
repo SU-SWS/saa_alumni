@@ -40,7 +40,7 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
     {
       'su-transform-gpu su-rotate-180 lg:su-text-digital-red-light':
         panelOpened,
-      'su-bg-digital-red-light lg:su-text-white': isActiveButton,
+      'lg:su-text-white': isActiveButton,
     }
   );
 
