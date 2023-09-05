@@ -12,7 +12,7 @@ const MegaMenuLinkGroup = ({
   onlyLinks,
 }) => (
   <SbEditable content={blok}>
-    <GridCell lg={3}>
+    <GridCell lg={3} className={styles.menuGroup}>
       {heading && (
         <SbLink link={secondaryLink} classes={styles.menuLink}>
           <Heading weight="bold" uppercase className="su-text-17 su-rs-mb-0">
