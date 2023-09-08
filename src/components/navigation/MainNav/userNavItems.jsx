@@ -62,7 +62,7 @@ const UserNavItems = ({ expanded, userProfile }) => {
         <a
           href={link.url}
           className={dcnb(
-            '!su-text-digital-red-xlight hocus:!su-text-white su-font-bold su-text-18 su-leading-display su-flex su-items-center su-no-underline hocus:su-underline'
+            '!su-text-digital-red-xlight hocus:!su-text-white su-font-bold su-text-19 su-leading-display su-flex su-items-center su-no-underline hocus:su-underline'
           )}
         >
           {key !== 0 && (
