@@ -21,11 +21,6 @@ module.exports = {
     },
   },
   plugins: [
-    function ({ addVariant }) {
-      addVariant('children-hover', '& > *:hover');
-      addVariant('children-hocus', '& > *:hover, & > *:focus');
-    },
-
     // @tailwind base;
     require(`${dir}/base/base.js`)(),
 

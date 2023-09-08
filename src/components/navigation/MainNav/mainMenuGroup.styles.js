@@ -78,7 +78,7 @@ export const childMenu = ({ panelFacing, panelOpened, isHomesite } = {}) =>
     {
       'lg:su-right-0 lg:su-origin-top-right': panelFacing === 'left',
       'lg:su-origin-top-left': panelFacing !== 'left',
-      'su-bg-cardinal-red-xxdark su-w-full lg:su-bg-cardinal-red-xdark su-scale-y-100 lg:su-scale-100 su-opacity-100 su-visible su-pb-10':
+      'su-w-full lg:su-bg-cardinal-red-xdark su-scale-y-100 lg:su-scale-100 su-opacity-100 su-visible su-pb-10':
         panelOpened,
       'su-invisible !su-scale-y-75 lg:!su-scale-75 su-opacity-0 children:su-hidden su-pb-0':
         !panelOpened,
