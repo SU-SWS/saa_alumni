@@ -64,8 +64,7 @@ const SaaStoryCard = ({
     if (isDark) {
       textColor = 'su-text-black-20';
       headlineColor = 'su-text-white hocus:su-text-white';
-      headlineIconColor =
-        'su-text-digital-red-light group-hover:su-text-white group-focus:su-text-white';
+      headlineIconColor = 'su-text-digital-red-light group-hocus:su-text-white';
     }
   }
 
@@ -113,7 +112,7 @@ const SaaStoryCard = ({
                 imageFocus={cardImageFocus || imageFocus}
                 smartFocus={focus}
                 size="vertical"
-                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
+                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hocus-within:su-scale-[1.03]"
                 loading="lazy"
                 width="600"
                 height="400"

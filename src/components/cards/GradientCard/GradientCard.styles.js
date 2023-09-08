@@ -19,7 +19,7 @@ export const imageWrapper = ({ orientation }) =>
     'su-aspect-w-3 su-aspect-h-2 su-mb-[-3em]': orientation !== 'horizontal',
   });
 export const image =
-  'su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]';
+  'su-w-full su-h-full su-transition-transform su-transform-gpu group-hocus-within:su-scale-[1.03]';
 export const gradient = ({ orientation }) =>
   dcnb(
     'su-absolute su-block su-w-full su-h-[101%] su-top-0 su-left-0 su-from-transparent su-to-saa-black su-backface-hidden su-bg-gradient-to-b',
@@ -43,7 +43,7 @@ export const link = ({ orientation }) =>
   );
 export const heading = 'su-relative su-inline su-type-0';
 export const icon =
-  'su-relative su-inline-block su-text-digital-red-xlight group-hover:su-text-white group-focus:su-text-white';
+  'su-relative su-inline-block su-text-digital-red-xlight group-hocus:su-text-white';
 export const description = ({ orientation }) =>
   dcnb('su-relative su-text-black-20 su-grow su-mb-0 su-card-paragraph', {
     'xl:su-big-paragraph xl:su-leading-snug': orientation === 'horizontal',

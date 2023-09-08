@@ -2,7 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ className, isMinimal } = {}) =>
   dcnb(className, 'su-rounded-full su-w-fit', {
-    'su-p-6 su-bg-gradient-to-tr su-from-saa-black su-to-saa-black-opacity-80 group-hover:su-from-black group-hover:su-to-black-opacity-80 group-focus-within:su-from-black group-focus-within:su-to-black-opacity-80':
+    'su-p-6 su-bg-gradient-to-tr su-from-saa-black su-to-saa-black-opacity-80 group-hocus-within:su-from-black group-hocus-within:su-to-black-opacity-80':
       !isMinimal,
   });
 export const dateWrapper = ({ isMinimal, isSmall }) =>
