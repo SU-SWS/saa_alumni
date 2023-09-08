@@ -4,7 +4,7 @@ export const root = ({ checked }) =>
   dcnb(
     'su-group su-pt-3 su-py-4 su-pl-20 sm:su-pl-30 md:su-pl-50 lg:su-p-3 hover:su-bg-palo-verde-dark focus-within:su-bg-palo-verde-dark lg:su-bg-saa-black-dark su-mt-6 lg:focus-within:su-bg-gradient-to-bl lg:hover:su-bg-gradient-to-bl lg:focus-within:su-from-saa-electric-blue lg:hover:su-from-saa-electric-blue lg:focus-within:su-to-palo-verde-dark lg:hover:su-to-palo-verde-dark su-cursor-pointer',
     {
-      'lg:su-bg-gradient-to-bl lg:su-from-saa-electric-blue su-to-palo-verde-dark':
+      'lg:su-bg-gradient-to-bl lg:su-from-saa-electric-blue lg:su-to-palo-verde-dark':
         checked,
     }
   );
