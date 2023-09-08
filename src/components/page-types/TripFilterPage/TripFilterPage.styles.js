@@ -1,5 +1,5 @@
 export const page =
-  'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black su-basefont-23';
+  'trip-filter-page su-relative su-grow su-w-full su-bg-saa-black su-basefont-23';
 export const header = 'su-basefont-23';
 export const headerContent = 'su-rs-mt-6 su-rs-mb-7';
 export const hero = 'su-aspect-w-5 su-aspect-h-2';

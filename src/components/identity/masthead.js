@@ -88,7 +88,7 @@ const Masthead = ({
               setModalOpen={setModalOpen}
               ref={openSearchMobileRef}
             />
-            <CreateBloks blokSection={mainNav} className="su-flex-shrink-0" />
+            <CreateBloks blokSection={mainNav} className="su-shrink-0" />
           </FlexBox>
         </div>
       )}
@@ -101,20 +101,20 @@ const Masthead = ({
           <FlexBox>
             <FlexBox
               alignItems="center"
-              className="su-flex-shrink-0 lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-pl-61 3xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red"
+              className="su-shrink-0 lg:su-px-30 xl:su-items-end xl:su-pl-61 xl:su-pr-45 2xl:su-pr-45 2xl:su-pl-61 3xl:su-cc 3xl:su-pr-70 xl:su-pb-38 su-ml-0 su-bg-gradient-to-b su-to-digital-red su-from-cardinal-red"
             >
               <Logo className="su-w-[18rem] lg:su-w-[20rem] xl:su-w-[19vw] 2xl:su-w-[26rem]" />
             </FlexBox>
             <FlexBox
               direction="col"
               className={dcnb(
-                'su-flex-grow lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90',
+                'su-grow lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90',
                 mainNavBgColorXl
               )}
             >
               <FlexBox
                 direction="row"
-                className="su-rs-my-0 xl:su-mb-0 su-flex-grow"
+                className="su-rs-my-0 xl:su-mb-0 su-grow"
               >
                 <nav aria-label="Utility Menu" className={styles.utilNav}>
                   <ul className={styles.utilNavMenu}>

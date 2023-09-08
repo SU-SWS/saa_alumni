@@ -115,7 +115,7 @@ const SearchField = React.forwardRef(
               className={`su-flex su-w-full su-items-center su-relative ${wrapperClasses}`}
               ref={inputWrapper}
             >
-              <label className="su-flex-grow su-max-w-full">
+              <label className="su-grow su-max-w-full">
                 <span className="su-sr-only">Search</span>
                 <input
                   type="text"

@@ -68,7 +68,7 @@ const TripTravelerCard = ({ traveler }) => {
             direction="row"
             alignItems="center"
             justifyContent="start"
-            className="su-flex-shrink-0"
+            className="su-shrink-0"
           >
             {buttonDisplay ? (
               <>

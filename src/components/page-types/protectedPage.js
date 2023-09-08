@@ -47,7 +47,7 @@ const ProtectedPage = (props) => {
           <Container
             as="main"
             id="main-content"
-            className="basic-page su-relative su-flex-grow su-w-full"
+            className="basic-page su-relative su-grow su-w-full"
             width="full"
           >
             <header className="su-basefont-23">

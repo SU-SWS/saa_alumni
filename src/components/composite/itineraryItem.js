@@ -79,7 +79,7 @@ const ItineraryItem = ({ blok }) => {
                     alignItems="start"
                     className="su-mb-04em last:su-mb-0"
                   >
-                    <div className="print:su-hidden su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                    <div className="print:su-hidden su-w-fit su-shrink-0 su-mt-[-0.1em] su-mr-06em">
                       <FaIcon
                         proFaIcon="bed"
                         className="!su-w-[1.15em]"
@@ -102,7 +102,7 @@ const ItineraryItem = ({ blok }) => {
                     alignItems="start"
                     className="su-mb-04em last:su-mb-0"
                   >
-                    <div className="print:su-hidden su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                    <div className="print:su-hidden su-w-fit su-shrink-0 su-mt-[-0.1em] su-mr-06em">
                       <FaIcon
                         proFaIcon="utensils"
                         className="!su-w-[1.15em]"

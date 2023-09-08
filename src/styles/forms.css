@@ -61,7 +61,7 @@
   content: "";
   mask: url("../assets/arrow-right.svg");
   -webkit-mask-size: contain;
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45 su-bg-white su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
+  @apply su-inline-block su-bg-cover su-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45 su-bg-white su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
 }
 
 .ggeWidget .ggeQuestion--instructions a:hover:after,
@@ -233,7 +233,7 @@
   content: "";
   mask: url("../assets/arrow-right.svg");
   -webkit-mask-size: contain;
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1em] su-h-[1em];
+  @apply su-inline-block su-bg-cover su-shrink-0 su-w-[1em] su-h-[1em];
 }
 
 .ggeWidget .ggeButton--forward::after {
@@ -585,7 +585,7 @@
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--text,
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--money {
   @apply su-border-0 su-type-0 su-font-regular su-pt-14 su-pb-0;
-} 
+}
 
 .ggeWidget .ggeTally--total,
 .ggeWidget .ggeTally--total.ggeTally--money {
