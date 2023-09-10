@@ -74,6 +74,12 @@ const UserNavItems = ({ expanded, userProfile }) => {
     ));
   };
 
+  const isDonor =
+    userProfile &&
+    userProfile.affiliation.affiliations &&
+    Array.isArray(userProfile.affiliation.affiliations) &&
+    userProfile.affiliation.affiliations.includes('Donor');
+
   return (
     <div aria-hidden={!expanded} className={styles.menuWrapper(expanded)}>
       <FlexBox
@@ -83,7 +89,6 @@ const UserNavItems = ({ expanded, userProfile }) => {
         <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
           <Avatar userProfile={userProfile} />
         </div>
-
         <div className="su-pl-10">
           <div className="su-break-words su-text-23 su-text-white su-leading-display su-font-semibold su-max-w-300 sm:su-max-w-500 md:su-max-w-700">
             {userProfile.name?.digitalName || userProfile.session?.firstName}
@@ -109,17 +114,21 @@ const UserNavItems = ({ expanded, userProfile }) => {
           </a>
         </li>
 
-        {/* To add back when donor logic is added */}
-        {/* <li> */}
-        {/*  <a href="https://TODO" className={styles.utilityNavLink}> */}
-        {/*    My Giving */}
-        {/*    <HeroIcon */}
-        {/*      iconType="arrow-right" */}
-        {/*      isAnimate */}
-        {/*      className={styles.heroicon} */}
-        {/*    /> */}
-        {/*  </a> */}
-        {/* </li> */}
+        {isDonor && (
+          <li>
+            <a
+              href="https://myaccount.stanford.edu/giving"
+              className={styles.utilityNavLink}
+            >
+              My Giving
+              <HeroIcon
+                iconType="arrow-right"
+                isAnimate
+                className={styles.heroicon}
+              />
+            </a>
+          </li>
+        )}
       </ul>
 
       <ul className={styles.menu2}>
