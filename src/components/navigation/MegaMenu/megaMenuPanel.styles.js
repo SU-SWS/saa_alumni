@@ -20,7 +20,7 @@ export const parentButton = ({ panelOpened, isActiveButton } = {}) =>
     {
       '!su-bg-white !su-border-cardinal-red-xdark lg:hover:!su-bg-transparent !su-text-digital-red-light su-border-b !su-border-black-20 lg:!su-bg-transparent lg:!su-border-digital-red-light':
         panelOpened,
-      'su-bg-white lg:su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
+      'su-bg-white lg:!su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
         isActiveButton,
     }
   );
@@ -40,7 +40,7 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
     {
       'su-transform-gpu su-rotate-180 lg:!su-text-digital-red-xlight':
         panelOpened,
-      'lg:su-text-white': isActiveButton,
+      'lg:!su-text-digital-red-xlight': isActiveButton,
     }
   );
 
