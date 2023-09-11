@@ -12,7 +12,7 @@ import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 
 const MegaMenuPanel = ({
-  blok: { parentText, parentTextSecond, linkGroups, sectionCtaLink, card },
+  blok: { parentText, parentTextSecond, linkGroups, sectionCtaLink, fourthCol },
   blok,
 }) => {
   const [panelOpened, setPanelOpened] = useState(false);
@@ -99,21 +99,18 @@ const MegaMenuPanel = ({
           aria-hidden={!panelOpened}
         >
           <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
-            <Grid lg={12}>
-              <GridCell lg={card.length > 0 ? 9 : 12}>
-                <Grid lg={card.length > 0 ? 9 : 12}>
-                  <CreateBloks
-                    blokSection={linkGroups}
-                    onlyLinks={card.length === 0}
-                  />
+            <Grid lg={12} gap>
+              <GridCell lg={fourthCol.length > 0 ? 8 : 12}>
+                <Grid lg={12} gap>
+                  <CreateBloks blokSection={linkGroups} />
                 </Grid>
                 <div className="su-rs-mt-4">
                   <CreateBloks blokSection={sectionCtaLink} />
                 </div>
               </GridCell>
-              {card.length > 0 && (
-                <GridCell lg={3}>
-                  <CreateBloks blokSection={card} />
+              {fourthCol.length > 0 && (
+                <GridCell lg={4}>
+                  <CreateBloks blokSection={fourthCol} />
                 </GridCell>
               )}
             </Grid>

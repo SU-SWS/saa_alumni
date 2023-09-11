@@ -4,6 +4,7 @@ import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
+import * as styles from './megaMenuCard.styles';
 
 const MegaMenuCard = (
   {
@@ -23,18 +24,18 @@ const MegaMenuCard = (
     <article className="su-w-fit">
       <SbLink link={link} classes="su-no-underline su-group">
         {filename != null && (
-          <div className="su-overflow-hidden su-aspect-[3/2] ">
+          <div className={styles.cardImageWrapper}>
             <CardImage
               {...props}
               filename={filename}
               size="vertical"
               loading="lazy"
               imageFocus="center"
-              className="su-w-full su-object-cover su-w-full su-h-full su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03] su-object-center"
+              className={styles.cardImageStyles}
             />
           </div>
         )}
-        <div className="su-text-white su-rs-px-2 su-rs-pt-2 su-rs-pb-3 su-bg-digital-red group-hover:su-bg-cardinal-red group-focus:su-bg-cardinal-red">
+        <div className={styles.cardContent}>
           <Heading size="2" level={3} font="serif" weight="bold">
             {headline}
           </Heading>

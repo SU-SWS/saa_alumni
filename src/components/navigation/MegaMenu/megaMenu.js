@@ -77,7 +77,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
       </button>
       <Modal
         isOpen={mainMenuOpened || userMenuOpen}
-        type="mega-menu"
+        type={mainMenuOpened ? 'mega-menu' : 'main-menu'}
         onClose={() => {
           handleClose();
         }}
