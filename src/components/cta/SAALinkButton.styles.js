@@ -6,9 +6,7 @@ export const link =
 export const icon = ({ buttonStyle }) =>
   dcnb('su-inline-block', {
     'su-text-digital-red-light group-hocus:su-text-white':
-      buttonStyle === 'secondary',
+      buttonStyle === 'secondary' || buttonStyle === 'link',
     'su-text-saa-electric-blue group-hocus:su-text-white':
       buttonStyle === 'secondary-gradient',
-    'su-text-digital-red-light group-hocus:su-text-white':
-      buttonStyle === 'link',
   });
