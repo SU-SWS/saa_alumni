@@ -21,7 +21,7 @@ const MegaMenuCard = (
   props
 ) => (
   <SbEditable content={blok}>
-    <article className="su-w-fit">
+    <article className="su-w-full">
       <SbLink link={link} classes="su-no-underline su-group">
         {filename != null && (
           <div className={styles.cardImageWrapper}>
