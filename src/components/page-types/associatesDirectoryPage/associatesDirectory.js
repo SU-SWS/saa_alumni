@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
-import LegacyDirectory from './legacyDirectory/LegacyDirectory';
+import Directory from './Directory/Directory';
 
 const AssociatesDirectory = (props) => {
   const { blok } = props;
@@ -9,7 +9,7 @@ const AssociatesDirectory = (props) => {
   return (
     <SbEditable content={blok}>
       <Container id="directory">
-        <LegacyDirectory />
+        <Directory />
       </Container>
     </SbEditable>
   );

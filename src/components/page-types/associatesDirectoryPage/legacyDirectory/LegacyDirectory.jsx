@@ -16,8 +16,6 @@ class LegacyDirectory extends React.Component {
   }
 
   componentDidMount() {
-    console.log('keys', keys);
-
     const names = [];
     axios
       .get(
