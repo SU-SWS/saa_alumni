@@ -48,7 +48,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
     <SbEditable content={blok}>
       <nav
         className={dcnb('main-nav-desktop su-hidden lg:su-block', className)}
-        aria-label="Mega Menu"
+        aria-label="Main Navigation Menu"
       >
         <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
           <CreateBloks blokSection={topLevelLinks} />
