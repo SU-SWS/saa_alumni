@@ -8,7 +8,7 @@ const fetchNames = async (
   accessToken = keys.accessToken
 ) => {
   const client = new ContentFulAPI(space, accessToken);
-  const { items, total } = await client.fethEntries(1000, 0);
+  const { items, total } = await client.fetchEntries(1000, 0);
   let associates = [...items];
 
   const loops = Math.ceil(total / 1000);
@@ -17,7 +17,7 @@ const fetchNames = async (
 
   for (let i = 0; i < loops; i += 1) {
     skip += 1000;
-    requests.push(client.fethEntries(1000, skip));
+    requests.push(client.fetchEntries(1000, skip));
   }
 
   const responses = await Promise.all(requests);

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import fetchNames from '../../../../api/contentful/associates';
+import axios from 'axios';
 import Tabs from './Tabs';
 import Results from './Results';
 
@@ -31,13 +31,20 @@ const Directory = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetchNames();
-      setAssociatesData(data);
+      axios
+        .get('/api/contentful/associates')
+        .then((response) => {
+          setAssociatesData(response.data);
 
-      const mostRecent = Math.max(
-        ...data.list.map((person) => person.yearAdded || 0)
-      );
-      setRecentYear(mostRecent);
+          const mostRecent = Math.max(
+            ...response.data.list.map((person) => person.yearAdded || 0)
+          );
+          setRecentYear(mostRecent);
+        })
+        .catch((error) => {
+          // eslint-disable-next-line no-console
+          console.error(error);
+        });
     };
 
     fetchData();

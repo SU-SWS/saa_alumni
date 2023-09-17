@@ -3,12 +3,13 @@ import keys from './keys';
 
 class ContentFulAPI {
   constructor(space = keys.space, accessToken = keys.accessToken) {
+    this.host = 'https://cdn.contentful.com';
     this.space = space;
     this.accessToken = accessToken;
   }
 
-  async fethEntries(limit, skip) {
-    const apiUrl = `https://cdn.contentful.com/spaces/${this.space}/entries?access_token=${this.accessToken}&limit=${limit}&skip=${skip}&order=sys.id`;
+  async fetchEntries(limit, skip) {
+    const apiUrl = `${this.host}/spaces/${this.space}/entries?access_token=${this.accessToken}&limit=${limit}&skip=${skip}&order=sys.id`;
 
     const response = await axios.get(apiUrl);
     const { items, total } = response.data;
