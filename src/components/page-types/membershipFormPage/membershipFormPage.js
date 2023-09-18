@@ -25,6 +25,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
 import { formatUsDate } from '../../../utilities/transformDate';
 import { isAlum } from '../../../utilities/isAlum';
+import AlumniLogo from '../../../images/stanford_alumni-color.png';
 
 // The type of registrant interstitial page has been set as the default preview within StoryBlok
 const MembershipFormPage = (props) => {
@@ -270,7 +271,13 @@ const MembershipFormPage = (props) => {
                             justifyContent="center"
                             className={styles.logoWrapper}
                           >
-                            <Logo className={styles.logo} />
+                            <img
+                              src={AlumniLogo}
+                              className={styles.logo}
+                              alt="Stanford Alumni Association"
+                              width="260"
+                              height="38"
+                            />
                           </FlexBox>
                           <CreateBloks blokSection={intro} />
                         </div>

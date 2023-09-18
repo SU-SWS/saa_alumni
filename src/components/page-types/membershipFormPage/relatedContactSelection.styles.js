@@ -4,13 +4,13 @@ export const fixedHero = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
 export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
 // Main Content
 export const superHead =
-  'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
-export const heading = 'su-rs-mb-5';
+  'su-block su-text-white su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
+export const heading = 'su-rs-mb-5 su-text-white';
 export const contentWrapper =
   'su-relative sm:su-cc su-z-10 su-rs-pt-8 sm:su-rs-pb-8';
 export const contentStyle = 'su-text-black';
 export const contactWrapper =
-  'su-flex su-flex-col su-shadow-lg su-text-black su-p-45 sm:su-p-90 su-backdrop-blur-sm su-bg-white';
+  'su-flex su-flex-col su-shadow-lg su-text-black su-p-45 sm:su-p-90 su-backdrop-blur-sm su-bg-white su-border su-border-[#E5E7EB]';
 export const gridCellWrapper = '2xl:su-col-start-2';
 export const helpText = 'su-subheading su-m-0 md:su-max-w-[64ch]';
 // Card Content
