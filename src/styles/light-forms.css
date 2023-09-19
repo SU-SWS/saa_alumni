@@ -124,16 +124,11 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--header {
-  @apply su-p-0;
+  @apply su-p-0 su-text-black;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--headtext {
   @apply su-type-1 su-font-semibold su-text-saa-electric-blue-light su-pb-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--subtext,
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--money {
-  @apply su-p-0;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--confirmation {
@@ -141,7 +136,7 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--total {
-  @apply su-border-t su-border-fog-light;
+  @apply su-border-t su-border-black-70;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally td.ggeTally--subheader {
