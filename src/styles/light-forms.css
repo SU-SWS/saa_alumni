@@ -114,7 +114,15 @@
   @apply su-hidden;
 }
 
-/* Membership Installment Confirmation Tally Table */
+/* Membership Confirmation Tally Table */
+.ggeWidget[class*="membership-forms"] .ggeConfirmation {
+  text-align: center;
+  background-image: url("data:image/svg+xml,<svg width='83' height='82' viewBox='0 0 83 82' stroke-width='7' stroke-linecap='round' stroke-linejoin='round' stroke='%23006CB8' fill='none' xmlns='http://www.w3.org/2000/svg'><path d='M29 41L37.3333 49.3333L54 32.6667M79 41C79 61.7107 62.2107 78.5 41.5 78.5C20.7893 78.5 4 61.7107 4 41C4 20.2893 20.7893 3.5 41.5 3.5C62.2107 3.5 79 20.2893 79 41Z' /></svg>");
+  background-repeat: no-repeat;
+  background-size: 75px 75px;
+  background-position: center 0;
+}
+
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeButton.ggeButton--forward {
   @apply su-rs-mt-5 su-bg-digital-red-light;
 }
