@@ -308,6 +308,7 @@
   @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
   content: "";
   background: #006CB8;
+  border-radius: 0;
 }
 
 .ggeWidget[class*="membership-forms"] .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after {
@@ -318,10 +319,10 @@
   -webkit-mask-size: contain;
 }
 
-.ggePrompt__checkbox:focus-within::before,
+.ggePrompt__checkbox:focus::before,
 .ggePrompt__checkbox:hover::before {
-  content: "";
   @apply su-absolute su-inset-[-.6rem] su-bg-digital-blue/[.4];
+  content: "";
 }
 
 .ggeWidget[class*="membership-forms"] .ggePrompt.ggePrompt--checked .ggePrompt__checkbox:hover::before {
@@ -346,7 +347,7 @@
   content: "";
 }
 
-.ggePrompt__radio:focus-within::before,
+.ggePrompt__radio:focus::before,
 .ggePrompt__radio:hover::before {
   content: "";
   @apply su-absolute su-inset-[-.6rem] su-rounded-full su-bg-digital-blue/[.4];
