@@ -124,7 +124,7 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeButton.ggeButton--forward {
-  @apply su-rs-mt-5 su-bg-digital-red-light;
+  @apply su-rs-mt-5 su-bg-digital-red hocus:su-bg-cardinal-red-xdark;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally td {
@@ -364,10 +364,24 @@
 
 /* Membership Buttons */
 .ggeWidget[class*="membership-forms"] .ggePageNav .ggeButton--back:disabled,
-.ggeWidget[class*="membership-forms"] .ggePageNav .ggeButton--back {
-  @apply su-static su-border-2 su-pr-[3rem] su-translate-x-0 su-relative su-border-cardinal-red su-text-black hocus:su-text-white hocus:su-bg-digital-red hocus:su-shadow-md;
+.ggeWidget[class*="membership-forms"] .ggePageNav .ggeButton--back,
+.ggeWidget[class*="membership-forms"] .ggeButton--back {
+  border-image-source: none;
+  background-image: none;
+  @apply su-static su-pr-[3rem] su-translate-x-0 su-relative su-text-digital-red su-border-solid su-border-digital-red hocus:su-border-cardinal-red-xdark hocus:su-bg-transparent hocus:su-text-cardinal-red-xdark;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeButton--back::before {
-  @apply su-bg-black su-rotate-180 su-mr-8 hocus:su-bg-white;
+  @apply su-bg-digital-red hocus:su-bg-cardinal-red-xdark;
+}
+
+.ggeWidget[class*="membership-forms"] .ggeButton--back:hover::before,
+.ggeWidget[class*="membership-forms"] .ggeButton--back:focus::before {
+  @apply su-bg-cardinal-red-xdark;
+}
+
+.ggeWidget[class*="membership-forms"] .ggeStripeBtn,
+.ggeWidget[class*="membership-forms"] .ggeButton--forward:disabled,
+.ggeWidget[class*="membership-forms"] .ggeButton--forward {
+  @apply su-bg-digital-red hocus:su-bg-cardinal-red-xdark;
 }
