@@ -36,6 +36,7 @@ module.exports = {
     require(`${dir}/components/wysiwyg/heading-link.js`)(),
 
     // // @tailwind utilities;
+    require(`${dir}/utilities/box-shadow/box-shadow.js`)(),
     require(`${dir}/utilities/gradient-border/gradient-border.js`)(),
     require(`${dir}/utilities/grid/grid-cols.js`)(),
   ],

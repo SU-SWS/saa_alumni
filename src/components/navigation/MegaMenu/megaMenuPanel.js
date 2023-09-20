@@ -98,6 +98,7 @@ const MegaMenuPanel = ({
           })}
           aria-hidden={!panelOpened}
         >
+          <div className="su-absolute su-top su-h-0 su-w-full su-shadow-menu su-z-100" />
           <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
             <Grid lg={12} gap>
               <GridCell lg={fourthCol.length > 0 ? 8 : 12}>
