@@ -226,7 +226,7 @@
   @apply su-rs-mb-0;
 }
 .ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
-  @apply su-text-digital-red-light hocus:su-underline hocus:su-text-cardinal-red hocus:su-decoration-cardinal-red;
+  @apply su-text-digital-red su-font-semibold hocus:su-underline hocus:su-text-cardinal-red hocus:su-decoration-cardinal-red;
 }
 .ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
   @apply su-hidden;
