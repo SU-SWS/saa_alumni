@@ -46,11 +46,11 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
 
 export const childMenu = ({ panelOpened } = {}) =>
   dcnb(
-    'su-z-50 su-left-0 su-list-unstyled su-transform-gpu su-transition-transform su-origin-top su-duration-300 lg:su-shadow-menu su-w-full children:su-mb-0',
+    'su-relative lg:su-absolute su-left-0 su-list-unstyled su-transition-all su-origin-top lg:su-shadow-2xl su-w-full children:su-mb-0',
     {
-      'su-relative lg:su-absolute su-bg-fog-light lg:su-bg-white su-w-full su-scale-y-100 su-opacity-100 su-visible su-pb-10':
+      'su-bg-fog-light lg:su-bg-white su-w-full su-scale-y-100 su-visible su-pb-10':
         panelOpened,
-      'su-invisible !su-scale-y-0 su-opacity-0 children:su-hidden su-pb-0':
+      'su-invisible su-scale-y-50 children:su-hidden su-pb-0 lg:su-h-400':
         !panelOpened,
     }
   );
