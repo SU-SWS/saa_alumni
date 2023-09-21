@@ -25,6 +25,6 @@ export const nextLinkActive =
   'su-group su-flex su-items-end su-text-18 md:su-text-24 su-no-underline su-font-regular su-text-white hocus:su-text-white hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 hocus:su-underline su-bg-digital-red su-border-digital-red hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark';
 export const nextLinkIcon = 'su-w-1em su-text-white group-hocus:su-text-white';
 export const goBackLink =
-  'su-rs-mr-3 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-3 su-border-digital-red su-text-digital-red-light group-hocus:su-bg-cardinal-red-xdark group-hocus:su-text-white group-hocus:su-shadow-md';
+  'su-rs-mr-3 su-group su-flex su-items-end su-text-18 md:su-text-24 su-font-regular su-no-underline su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-border-3 su-border-digital-red su-text-digital-red hocus:su-bg-cardinal-red-xdark hocus:su-border-cardinal-red-xdark hocus:su-text-white hocus:su-shadow-md';
 export const goBackLinkIcon =
-  'su-w-1em su-text-digital-red-light group-hocus:su-text-digital-red-xdark';
+  'su-w-1em su-text-digital-red group-hocus:su-text-white';
