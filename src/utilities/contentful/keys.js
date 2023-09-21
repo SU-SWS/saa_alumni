@@ -1,6 +1,6 @@
 const keys = {
-  space: '0f39zonxf59w',
-  accessToken: '10OGNlSRGeKn81WAaTUxMjVL0nhXFEUszwRJIY7vPeI',
+  space: process.env.ASSOCIATES_CONTENTFUL_SPACE,
+  accessToken: process.env.ASSOCIATES_CONTENTFUL_TOKEN,
 };
 
 export default keys;
