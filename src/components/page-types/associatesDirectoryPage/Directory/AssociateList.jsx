@@ -26,7 +26,6 @@ const AssociateList = ({
   onlyNewMembers,
   recentYear,
 }) => {
-  console.log(associates);
   if (!isEnabled) return null;
 
   return (
