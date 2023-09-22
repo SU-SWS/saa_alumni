@@ -98,7 +98,8 @@ const MegaMenuPanel = ({
           })}
           aria-hidden={!panelOpened}
         >
-          <Container width="site" className="su-rs-pt-4 su-rs-pb-5">
+          <div className="su-absolute su-top su-w-full su-h-20 lg:su-h-30 su-from-black-20 lg:su-from-black-30 su-to-fog-light lg:su-to-white su-bg-gradient-to-b su-z-[100]" />
+          <Container width="site" className="su-rs-pt-4 su-rs-pb-5 su-z-50">
             <Grid lg={12} gap>
               <GridCell lg={fourthCol.length > 0 ? 8 : 12}>
                 <Grid lg={12} gap>

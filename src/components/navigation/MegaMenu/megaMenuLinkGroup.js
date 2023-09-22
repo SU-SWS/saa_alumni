@@ -14,7 +14,7 @@ const MegaMenuLinkGroup = ({ blok: { heading, links }, blok, onlyLinks }) => (
         </Heading>
       )}
       {links !== '' && (
-        <ul className="su-list-none su-p-0">
+        <ul className="su-list-none su-p-0 su-flex su-flex-col">
           <CreateBloks blokSection={links} />
         </ul>
       )}
