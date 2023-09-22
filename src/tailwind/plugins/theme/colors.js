@@ -27,6 +27,9 @@ module.exports = function () {
         80: 'rgba(24, 29, 28, 0.8)',
       },
     },
+    'saa-grey': {
+      DEFAULT: '#E5E7EB',
+    },
     'digital-red-xlight': '#F83535', // Passed contrast test for black background
     'cardinal-red': {
       xdark: '#7A0000', // Passed contrast test with digital-red-xlight as text

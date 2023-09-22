@@ -10,7 +10,7 @@ export const superHead =
   'su-text-white su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
 export const heading = 'su-text-white su-rs-mb-5';
 export const formWrapper =
-  'su-basefont-23 su-w-full su-cc su-bg-white su-border su-border-[#E5E7EB] su-rs-p-2 sm:su-rs-p-6';
+  'su-basefont-23 su-w-full su-cc su-bg-white su-border su-border-saa-grey su-rs-p-2 sm:su-rs-p-6';
 export const logoWrapper = 'su-rs-mb-5';
 export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[350px]';
 export const purchaseWrapper = '2xl:su-col-start-2';

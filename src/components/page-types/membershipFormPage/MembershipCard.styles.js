@@ -4,14 +4,14 @@ export const root =
   'su-group su-relative su-break-words su-border-black su-max-w-full su-bg-white su-h-full';
 export const membershipCardWrapper = (disableHocus) =>
   dcnb(
-    'su-basefont-23 su-rs-p-3 su-stretch-link su-w-full su-transition-all su-rounded su-border-3 su-border-[#E5E7EB] su-h-full',
+    'su-basefont-23 su-rs-p-3 su-stretch-link su-w-full su-transition-all su-rounded su-border-3 su-border-saa-grey su-h-full',
     !disableHocus &&
       'hocus:su-border-digital-blue focus:su-outline-4 focus:su-outline-offset-4'
   );
 export const initialAndSelectionWrapper =
   'su-flex-col lg:su-flex-row su-items-center su-gap-xs su-relative su-rs-mb-0 su-text-black';
 export const initialWrapper =
-  'su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full su-text-[#E5E7EB] children:su-text-digital-red';
+  'su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full su-text-saa-grey children:su-text-digital-red';
 export const selectionWrapper =
   'sm:su-absolute su-self-end sm:su-self-auto su-right-0 md:su-right-[-20px] lg:su-right-0 su-text-16 su-font-semibold';
 export const checkLinkIcon =

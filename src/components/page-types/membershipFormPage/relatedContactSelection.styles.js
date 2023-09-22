@@ -10,7 +10,7 @@ export const contentWrapper =
   'su-relative sm:su-cc su-z-10 su-rs-pt-8 sm:su-rs-pb-8';
 export const contentStyle = 'su-text-black';
 export const contactWrapper =
-  'su-flex su-flex-col su-shadow-lg su-text-black su-p-45 sm:su-p-90 su-backdrop-blur-sm su-bg-white su-border su-border-[#E5E7EB]';
+  'su-flex su-flex-col su-shadow-lg su-text-black su-p-45 sm:su-p-90 su-backdrop-blur-sm su-bg-white su-border su-border-saa-grey';
 export const gridCellWrapper = '2xl:su-col-start-2';
 export const helpText = 'su-subheading su-m-0 md:su-max-w-[64ch]';
 // Card Content
