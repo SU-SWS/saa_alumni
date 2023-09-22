@@ -36,7 +36,6 @@ const AssociateList = ({
       <div>
         {associates?.map((person, index) => (
           <Associate
-            // eslint-disable-next-line react/no-array-index-key
             key={`person-${person.entryTitle}-${index}`}
             person={person}
             isEnabled={!onlyNewMembers || person.yearAdded === recentYear}
