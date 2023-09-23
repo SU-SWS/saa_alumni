@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Associate from './Associate';
+import BackToTopLink from './BackToTopLink';
 
 const ResultsProps = {
   onlyNewMembers: PropTypes.bool,
@@ -24,6 +25,7 @@ const Results = ({ filteredList }) => {
           />
         ))}
       </ul>
+      <BackToTopLink />
     </div>
   );
 };

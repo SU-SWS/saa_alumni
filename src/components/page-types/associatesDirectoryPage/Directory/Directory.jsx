@@ -58,8 +58,9 @@ const Directory = () => {
 
   return (
     <div className="su-mt-30">
-      <div className="su-my-20">{associatesData.total} Associates Total</div>
-      <div className="su-my-20">
+      <div id="associates--top-of-page" />
+      <div className="su-my-50">{associatesData.total} Associates Total</div>
+      <div className="su-my-50">
         <input
           type="text"
           className="su-py-10 su-px-20 su-text-19 su-border su-border-solid su-border-black-40"
@@ -68,7 +69,7 @@ const Directory = () => {
           onChange={handleSearch}
         />
       </div>
-      <div className="su-mb-50">
+      <div className="su-my-50">
         <label>
           <input
             type="checkbox"

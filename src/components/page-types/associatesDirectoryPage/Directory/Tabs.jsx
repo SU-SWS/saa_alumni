@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import AssociateList from './AssociateList';
+import TabHeader from './TabHeader';
 
 const TabsProps = {
   onlyNewMembers: PropTypes.bool,
@@ -30,32 +31,47 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
     setActiveTab(event.target.dataset.group);
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === 'ArrowLeft') {
+      const currentIndex = Object.keys(tabsGroups).indexOf(activeTab);
+      if (currentIndex === 0) return;
+
+      const nextIndex = currentIndex - 1;
+      const nextTab = Object.keys(tabsGroups)[nextIndex];
+      setActiveTab(nextTab);
+    }
+    if (event.key === 'ArrowRight') {
+      const currentIndex = Object.keys(tabsGroups).indexOf(activeTab);
+      if (currentIndex === Object.keys(tabsGroups).length - 1) return;
+
+      const nextIndex = currentIndex + 1;
+      const nextTab = Object.keys(tabsGroups)[nextIndex];
+      setActiveTab(nextTab);
+    }
+  };
+
   return (
     <div>
-      <nav>
+      <nav
+        className="su-flex su-flex-wrap su-border-b su-border-solid su-border-1 su-border-black-30-opacity-40"
+        aria-label="Groups of Associates"
+      >
         {Object.keys(tabsGroups).map((group) => (
-          <a
+          <TabHeader
             key={`tab-${group}`}
-            className={`${
-              activeTab === group
-                ? 'su-bg-cardinal-red-xdark'
-                : 'su-bg-saa-black su-bg-opacity-[80%]'
-            } su-py-5 su-px-10 su-text-white hover:su-text-white hover:su-no-underline focus:su-text-white focus:su-no-underline su-border su-border-solid su-border-1 su-border-black-30-opacity-40`}
-            href={`#${group}`}
-            onClick={handleTabClick}
-            data-group={group}
-          >
-            {group}
-          </a>
+            group={group}
+            activeTab={activeTab}
+            handleTabClick={handleTabClick}
+            handleKeyPress={handleKeyPress}
+          />
         ))}
       </nav>
       <div className="su-my-20">
         {Object.keys(tabsGroups).map((group) => (
-          <div key={`content-${group}`}>
+          <div key={`content-${group}`} hidden={activeTab !== group}>
             {tabsGroups[group].map((letter) => (
               <AssociateList
                 key={`content-${letter}`}
-                isEnabled={activeTab === group}
                 tabsGroups={tabsGroups}
                 letter={letter}
                 associates={groupedNames[letter]}

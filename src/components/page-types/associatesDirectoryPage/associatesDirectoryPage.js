@@ -17,10 +17,20 @@ const AssociatesDirectoryPage = (props) => {
   return (
     <SbEditable content={blok}>
       <Layout hasHero={false} {...props}>
-        <Container as="main" id="main-content">
+        <Container
+          as="main"
+          id="main-content"
+          className="basic-page su-relative su-flex-grow su-w-full su-rs-pb-7"
+        >
           <header className="su-basefont-23">
             <Container>
-              <Heading align="center" font="serif" id="page-title">
+              <Heading
+                level={1}
+                align="center"
+                font="serif"
+                id="page-title"
+                className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-type-6 su-mx-auto su-max-w-1200"
+              >
                 {title}
               </Heading>
             </Container>
@@ -33,9 +43,6 @@ const AssociatesDirectoryPage = (props) => {
               />
             </div>
           )}
-        </Container>
-
-        <Container className="basic-page su-relative su-flex-grow su-w-full">
           <CreateBloks blokSection={directory} />
         </Container>
       </Layout>
