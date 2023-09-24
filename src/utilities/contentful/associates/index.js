@@ -3,13 +3,26 @@ import { sort } from 'fast-sort';
 import ContentFulAPI from '../api';
 import keys from '../keys';
 
+const addFullNameWithYears = (associate) => {
+  const { name } = associate;
+  const { first, last } = name;
+  const years = (associate.years ? Object.values(associate.years) : []).join(
+    ' '
+  );
+  const fullNameWithYears = `${first} ${last} (${years})`.toLocaleLowerCase();
+  return {
+    ...associate,
+    fullNameWithYears,
+  };
+};
+
 const fetchNames = async (
   space = keys.space,
   accessToken = keys.accessToken
 ) => {
   const client = new ContentFulAPI(space, accessToken);
   const { items, total } = await client.fetchEntries(1000, 0);
-  let associates = [...items];
+  let associates = items.map((associate) => addFullNameWithYears(associate));
 
   const loops = Math.ceil(total / 1000);
   let skip = 0;
@@ -22,7 +35,10 @@ const fetchNames = async (
 
   const responses = await Promise.all(requests);
   const newAssociates = responses.reduce(
-    (acc, response) => acc.concat(response.items),
+    (acc, response) =>
+      acc.concat(
+        response.items.map((associate) => addFullNameWithYears(associate))
+      ),
     []
   );
 

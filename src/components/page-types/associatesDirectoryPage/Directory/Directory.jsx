@@ -12,9 +12,8 @@ const Directory = () => {
 
   const filterResult = () => {
     const result = associatesData.list?.filter((person) => {
-      const fullName = `${person.name.first} ${person.name.last}`;
       const isVisible =
-        fullName.toLowerCase().includes(search.toLowerCase()) &&
+        person.fullNameWithYears.toLowerCase().includes(search.toLowerCase()) &&
         (!onlyNewMembers || person.yearAdded === recentYear);
       return isVisible;
     });
