@@ -11,9 +11,9 @@ const UserHeaderIcon = () => (
       <>
         {/* On mobile while logged out, display generic HeroIcon user in circle */}
         {!isAuthenticated && !isAuthenticating && (
-          <div className={styles.menuCircles} aria-hidden>
+          <span className={styles.menuCircles} aria-hidden>
             <UserIcon className="su-w-20 su-h-20" aria-hidden />
-          </div>
+          </span>
         )}
         {/* While authenticating on mobile, display Spinner in place of avatar */}
         {isAuthenticating && <Spinner className="lg:su-hidden" />}
