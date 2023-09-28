@@ -16,7 +16,7 @@ const Results = ({ filteredList }) => {
   return (
     <div>
       <div className="su-my-20">{total} associates found:</div>
-      <ul>
+      <ul className="su-p-0 su-list-none">
         {filteredList?.map((person, index) => (
           <Associate
             // eslint-disable-next-line react/no-array-index-key

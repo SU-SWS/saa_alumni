@@ -8,7 +8,7 @@ const AssociatesDirectory = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Container id="directory">
+      <Container width="full" id="directory">
         <Directory />
       </Container>
     </SbEditable>

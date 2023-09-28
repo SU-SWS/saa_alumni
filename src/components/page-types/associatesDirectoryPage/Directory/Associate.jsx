@@ -16,7 +16,7 @@ const Associate = ({ isEnabled = true, person }) => {
   if (!isEnabled) return null;
 
   return (
-    <div className="su-flex even:su-bg-black-10">
+    <li className="su-flex even:su-bg-black-10">
       <div className="su-flex-1 su-w-[50%] su-py-10 su-pl-30">
         {person.name.first} {person.name.last}
       </div>
@@ -24,7 +24,7 @@ const Associate = ({ isEnabled = true, person }) => {
       <div className="su-flex-1 su-w-[50%] su-py-10">
         {Object.values(person.years || []).join(', ')}
       </div>
-    </div>
+    </li>
   );
 };
 

@@ -13,7 +13,7 @@ const Directory = () => {
   const filterResult = () => {
     const result = associatesData.list?.filter((person) => {
       const isVisible =
-        person.fullNameWithYears.toLowerCase().includes(search.toLowerCase()) &&
+        person.fullNameWithYears.includes(search.toLowerCase()) &&
         (!onlyNewMembers || person.yearAdded === recentYear);
       return isVisible;
     });
