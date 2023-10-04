@@ -614,7 +614,7 @@
 }
 
 .ggeWidget .ggeStripeContainer {
-  margin: 0 auto;
+  @apply su-mx-auto;
 }
 
 .ggeWidget .ggeStripeContainer__upperHr,
