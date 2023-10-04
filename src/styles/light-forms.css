@@ -283,12 +283,6 @@
   @apply su-mb-30 sm:su-mb-0;
 }
 
-/* Membership Pay with Card Button */
-
-.ggeWidget[class*="membership-forms"] .ggeStripeBtn {
-  @apply su-border-2 su-pr-[3rem] su-bg-transparent su-border-solid su-border-digital-blue su-text-white hocus:su-bg-digital-blue hocus:su-text-white;
-}
-
 /* Membership Checkbox */
 .ggeWidget[class*="membership-forms"] .ggePrompt .ggePrompt__checkbox input {
   @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-digital-blue su-cursor-pointer;
