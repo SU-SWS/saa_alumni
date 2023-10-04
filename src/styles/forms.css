@@ -211,6 +211,10 @@
   @apply su-px-26 su-w-fit;
 }
 
+.ggeWidget:not([class*="membership-forms"]) .ggeStripeBtn.ggeGooglePay {
+  @apply su-bg-white su-text-black;
+}
+
 .ggeWidget .ggeStripeBtn .ggeGooglePayLabel {
   @apply su-flex su-flex-row;
 }
