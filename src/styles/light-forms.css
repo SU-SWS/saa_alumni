@@ -374,7 +374,6 @@
   @apply su-bg-cardinal-red-xdark;
 }
 
-.ggeWidget[class*="membership-forms"] .ggeStripeBtn,
 .ggeWidget[class*="membership-forms"] .ggeButton--forward:disabled,
 .ggeWidget[class*="membership-forms"] .ggeButton--forward {
   @apply su-bg-digital-red hocus:su-bg-cardinal-red-xdark;
