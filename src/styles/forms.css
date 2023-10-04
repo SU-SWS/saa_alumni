@@ -212,7 +212,7 @@
 }
 
 .ggeWidget .ggeStripeBtn .ggeGooglePayLabel::before {
-  @apply su-mr-3;
+  @apply su-mr-5;
 }
 
 .ggeWidget .ggeStripeBtn .ggeGooglePayLabel img {
