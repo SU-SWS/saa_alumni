@@ -46,6 +46,12 @@
   @apply su-flex su-flex-col-reverse;
 }
 
+.ggeWidget[class*="membership-forms"] .ggeContent .ggeQuestion.su-phone,
+.ggeWidget[class*="membership-forms"] .ggeContent .ggeQuestion.su-email,
+.ggeWidget[class*="membership-forms"] .ggeContent .ggeQuestion.su-email textarea {
+  @apply su-text-black;
+}
+
 .ggeWidget[class*="membership-forms"] .ggeQuestion input[type="email"],
 .ggeWidget[class*="membership-forms"] .ggeQuestion input[type="number"],
 .ggeWidget[class*="membership-forms"] .ggeQuestion input[type="text"],
