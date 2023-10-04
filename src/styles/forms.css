@@ -576,6 +576,11 @@
   @apply su-p-0;
 }
 
+
+.ggeWidget .ggeTally {
+  @apply su-bg-transparent;
+}
+
 .ggeWidget .ggeTally--text,
 .ggeWidget .ggeTally--money {
   @apply su-type-1;
