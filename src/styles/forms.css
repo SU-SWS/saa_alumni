@@ -208,7 +208,7 @@
 }
 
 .ggeWidget .ggeStripeBtn.ggeGooglePay {
-  @apply su-px-25;
+  @apply su-px-26;
 }
 
 .ggeWidget .ggeStripeBtn .ggeGooglePayLabel {
