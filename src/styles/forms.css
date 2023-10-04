@@ -207,6 +207,10 @@
   @apply su-static su-translate-y-0 su-mr-[2rem] lg:su-mr-[3.6rem];
 }
 
+.ggeWidget .ggeStripeBtn.ggeGooglePay {
+  @apply su-px-25;
+}
+
 .ggeWidget .ggeStripeBtn .ggeGooglePayLabel {
   @apply su-flex su-flex-row;
 }
