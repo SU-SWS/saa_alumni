@@ -72,10 +72,9 @@
 
 .ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field select {
   @apply su-bg-no-repeat su-text-black su-leading-[2.4rem] md:su-leading-[2.7rem];
-  mask-position: right 22px center;
-  mask-image: url("../assets/arrow-down.svg");
-  mask-size: 21px;
-  mask-repeat: no-repeat;
+  background-position: right 22px center;
+  background-image: url("../assets/arrow-down-black.svg");
+  background-size: 21px;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field .ggePrompt__select {
