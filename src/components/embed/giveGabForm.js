@@ -34,7 +34,7 @@ const GiveGabForm = ({
         aria-busy="true"
         className={dcnb(
           'su-flex su-flex-row su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm',
-          bgCardStyle ? 'su-bg-saa-black-dark' : ''
+          bgCardStyle
         )}
       >
         <ClipLoader color="#00BFFF" height={50} width={50} />
