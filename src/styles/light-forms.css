@@ -71,9 +71,9 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field select {
-  @apply su-bg-black su-bg-no-repeat su-text-white su-leading-[2.4rem] md:su-leading-[2.7rem];
+  @apply su-bg-no-repeat su-text-black su-leading-[2.4rem] md:su-leading-[2.7rem];
   background-position: right 22px center;
-  mask-image: url("../assets/arrow-down.svg");
+  background-image: url("../assets/arrow-down.svg");
   background-size: 21px;
 }
 
