@@ -128,7 +128,7 @@ const FormPage = (props) => {
               >
                 <CreateBloks
                   blokSection={giveGabForm}
-                  bgCardStyle={isSingleColumn}
+                  bgCardStyle={isSingleColumn ? 'su-bg-saa-black-dark' : ''}
                 />
               </GridCell>
             </Grid>
