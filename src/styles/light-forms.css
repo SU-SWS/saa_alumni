@@ -70,6 +70,13 @@
   @apply hocus:su-border-none su-text-black su-bg-transparent su-p-0 su-type-1 su-font-semibold su-text-white su--mt-2;
 }
 
+.ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field select {
+  @apply su-bg-black su-bg-no-repeat su-text-white su-leading-[2.4rem] md:su-leading-[2.7rem];
+  background-position: right 22px center;
+  mask-image: url("../assets/arrow-down.svg");
+  background-size: 21px;
+}
+
 .ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field .ggePrompt__select {
   @apply su-flex su-flex-col-reverse;
 }
