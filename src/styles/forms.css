@@ -207,10 +207,12 @@
   @apply su-static su-translate-y-0 su-mr-[2rem] lg:su-mr-[3.6rem];
 }
 
+.ggeWidget .ggeStripeBtn.ggeApplePay,
 .ggeWidget .ggeStripeBtn.ggeGooglePay {
   @apply su-px-26 su-w-fit;
 }
 
+.ggeWidget:not([class*="membership-forms"]) .ggeStripeBtn.ggeApplePay,
 .ggeWidget:not([class*="membership-forms"]) .ggeStripeBtn.ggeGooglePay {
   @apply su-bg-white su-text-black;
 }
