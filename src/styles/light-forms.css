@@ -32,10 +32,9 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration,
-.ggeTally {
+.ggeWidget[class*="membership-forms"] .ggeTally {
   @apply su-border-2 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-border-4 su-border-digital-blue su-bg-fog-light;
 }
-
 
 /* Membership form caption order, spacing, and styling */
 .ggeWidget[class*="membership-forms"] .su-digital-name .ggeQuestion__field input[type="text"] {
@@ -44,6 +43,12 @@
 
 .ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field .ggePrompt__select {
   @apply su-flex su-flex-col-reverse;
+}
+
+.ggeWidget[class*="membership-forms"] .ggeContent .ggeQuestion.su-phone,
+.ggeWidget[class*="membership-forms"] .ggeContent .ggeQuestion.su-email,
+.ggeWidget[class*="membership-forms"] .ggeContent .ggeQuestion.su-email textarea {
+  @apply su-text-black;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeQuestion input[type="email"],
@@ -374,7 +379,6 @@
   @apply su-bg-cardinal-red-xdark;
 }
 
-.ggeWidget[class*="membership-forms"] .ggeStripeBtn,
 .ggeWidget[class*="membership-forms"] .ggeButton--forward:disabled,
 .ggeWidget[class*="membership-forms"] .ggeButton--forward {
   @apply su-bg-digital-red hocus:su-bg-cardinal-red-xdark;
