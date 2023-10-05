@@ -36,7 +36,6 @@
   @apply su-border-2 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-border-4 su-border-digital-blue su-bg-fog-light;
 }
 
-
 /* Membership form caption order, spacing, and styling */
 .ggeWidget[class*="membership-forms"] .su-digital-name .ggeQuestion__field input[type="text"] {
   @apply hocus:su-border-none su-text-black su-bg-transparent su-p-0 su-type-1 su-font-semibold su-text-white su--mt-2;

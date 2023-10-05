@@ -212,11 +212,6 @@
   @apply su-px-26 su-w-fit;
 }
 
-.ggeWidget:not([class*="membership-forms"]) .ggeStripeBtn.ggeApplePay,
-.ggeWidget:not([class*="membership-forms"]) .ggeStripeBtn.ggeGooglePay {
-  @apply su-bg-white su-text-black;
-}
-
 .ggeWidget .ggeStripeBtn .ggeGooglePayLabel {
   @apply su-flex su-flex-row;
 }
@@ -582,9 +577,8 @@
   @apply su-p-0;
 }
 
-
 .ggeWidget .ggeTally {
-  @apply su-bg-transparent;
+  @apply su-bg-transparent su-border-3 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue;
 }
 
 .ggeWidget .ggeTally--text,
