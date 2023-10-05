@@ -52,7 +52,6 @@ const GiveGabForm = ({
         <div
           className={dcnb(
             'su-rs-p-5 su-rs-pb-6 lg:su-rs-p-6 lg:su-rs-pb-7',
-            bgCardStyle.includes('dark') && 'form-gradient',
             bgCardStyle
           )}
         >
