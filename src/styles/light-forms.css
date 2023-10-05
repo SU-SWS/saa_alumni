@@ -13,6 +13,35 @@
   @apply su-hidden;
 }
 
+/* Membership Error */
+.ggeWidget[class*="membership-forms"] .ggeQuestion--error,
+.ggeWidget[class*="membership-forms"] .ggeQuestion__error,
+.ggeWidget[class*="membership-forms"] .ggePageNav--formError {
+  @apply su-bg-transparent su-text-digital-red;
+}
+
+.ggeWidget .ggeQuestion--instructions a,
+.ggeWidget .ggeQuestion__error a {
+  @apply su-no-underline hocus:su-underline su-text-white hocus:su-decoration-digital-red su-font-regular su-underline-offset-[3px];
+}
+
+.ggeWidget .ggeQuestion--instructions a:after,
+.ggeWidget .ggeQuestion__error a:after {
+  content: "";
+  mask: url("../assets/arrow-right.svg");
+  -webkit-mask-size: contain;
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45 su-bg-digital-red su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
+}
+
+.ggeWidget[class*="membership-forms"]  .ggeQuestion.ggeQuestion--error input[type="email"],
+.ggeWidget[class*="membership-forms"]  .ggeQuestion.ggeQuestion--error input[type="number"],
+.ggeWidget[class*="membership-forms"]  .ggeQuestion.ggeQuestion--error input[type="text"],
+.ggeWidget[class*="membership-forms"]  .ggeQuestion.ggeQuestion--error input[type="date"],
+.ggeWidget[class*="membership-forms"]  .ggeQuestion.ggeQuestion--error select,
+.ggeWidget[class*="membership-forms"]  .ggeQuestion.ggeQuestion--error textarea {
+  @apply su-border su-border-digital-red;
+}
+
 /* Membership Recipient Digital Name */
 .ggeWidget[class*="membership-forms"] .su-membership-dname.ggeQuestion[data-name="DigitalName"] {
   @apply su-rs-mb-0 su-block;
