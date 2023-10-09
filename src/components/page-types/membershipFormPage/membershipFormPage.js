@@ -395,6 +395,7 @@ const MembershipFormPage = (props) => {
                           <FlexBox justifyContent="center">
                             {isContactSelected() ? (
                               <Link
+                                data-cy="continue-btn"
                                 to={nextPageLink}
                                 className={styles.nextLinkActive}
                                 state={{
