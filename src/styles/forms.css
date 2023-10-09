@@ -694,7 +694,7 @@
 
 /* Travel-Study Payment Button Workaround */
 .ggeWidget:not([class*="membership-forms"]) .ggeStripeContainer {
-  @apply su-rs-mb-2 su-rs-pt-2 su-bg-white su-text-black su-rounded;
+  @apply su-rs-mb-2 su-rs-pt-1 su-bg-white su-text-black su-rounded;
 }
 
 .ggeWidget:not([class*="membership-forms"]) .ggeStripeContainer__lowerHr {
