@@ -4,11 +4,11 @@ describe('Membership Related Contact Form Page', () => {
     cy.login();
 
     // Visit the membership form page URL
-    cy.visit('/membership/join/related-contact');
+    cy.visit('/membership/join/related-contacts');
 
     // Confirm that the URL matches the expected URL
-    cy.reload(); // Needed for local Gatsby build
     cy.url().should('include', '/membership/join');
+    cy.reload(); // Needed for local Gatsby build
 
     cy.get('h1').should('contain.text', 'Join now!');
   });
