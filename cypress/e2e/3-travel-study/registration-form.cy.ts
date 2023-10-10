@@ -31,7 +31,7 @@ describe('Travel-Study Trip Registration Form Page', () => {
     cy.get('[data-test="card-allie-grater"]').should('exist');
 
     // Select related contact
-    cy.get('[data-test="card-allie-grater"]').click();
+    cy.get('[data-test="card-allie-grater"]').first().click();
 
     // Confirm that related contact has been selected
     cy.get('[data-test="card-allie-grater"]').within(() => {
@@ -41,7 +41,7 @@ describe('Travel-Study Trip Registration Form Page', () => {
     cy.get('[data-test="list-allie-grater"]').should('exist')
 
     // Check if next button exists and click to continue to GG form
-    cy.get('[data-cy=next-btn]').should('exist').click();
+    cy.get('[data-cy=next-btn]').should('exist').first().click();
 
     // Confirm that the URL matches the expected URL
     cy.url().should('include', '/travel-study/destinations/finland-2022/finland-reg-form/form');
@@ -60,11 +60,11 @@ describe('Travel-Study Trip Registration Form Page', () => {
     cy.get('[data-fieldid="PhoneNumber"]').should('contain.value', '4081111111');
   
     // Fill required questions
-    cy.get('[data-fieldid="Pre-TripExtension__0"]').check({force: true});
-    cy.get('[data-fieldid="Post-TripExtension__0"]').check({force: true});
+    cy.get('[data-fieldid="Pre-TripExtension__0"]').first().check({force: true});
+    cy.get('[data-fieldid="Post-TripExtension__0"]').first().check({force: true});
 
     // Confirm that button exists
-    cy.get('button').should('have.class', 'ggeButton--forward');
+    cy.get('button').should('have.class', 'ggeButton--forward').first().click();
   });
 
   it('should redirect to the interstitial form page at /travel-study/destinations/finland-2022/finland-reg-form', () => {
@@ -76,7 +76,7 @@ describe('Travel-Study Trip Registration Form Page', () => {
   
     // Confirm that the URL redirect to the expected URL
     cy.url().should('include', '/travel-study/destinations/finland-2022/finland-reg-form');
-    cy.visit('/travel-study/destinations/finland-2022/finland-reg-form/'); // Needed for local Gatsby build
+    cy.reload(); // Needed for local Gatsby build
 
     cy.get('main').within(() => {
       cy.get('h3').first().should('contain.text', 'Before you register');

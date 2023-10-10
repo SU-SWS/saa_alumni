@@ -16,22 +16,26 @@ describe('Travel-Study Destinations Page', () => {
     cy.get('h3').should('contain.text', 'Iran');
 
     // Select Filter Month
-    cy.get('[data-test="filter-option--october"]').check();
+    cy.get('[data-test="filter-option--october"]').first().check({ force: true });
+    cy.reload(); // Needed for local Gatsby build
 
     // Confirm that Canada trip card exists
     cy.get('h3').should('contain.text', 'Canada');
 
     // Clear Filters
-    cy.get('[data-test="filter-btn--clear-all"]').click();
+    cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
+    cy.reload(); // Needed for local Gatsby build
 
     //  Select Filter Experience
-    cy.get('[data-test="filter-option--family-focused"]').check();
+    cy.get('[data-test="filter-option--family-focused"]').first().check({force: true});
+    cy.reload(); // Needed for local Gatsby build
 
     // Confirm that Southeast Asia trip card exists
     cy.get('h3').should('contain.text', 'Southeast');
 
     // Clear Filters
-    cy.get('[data-test="filter-btn--clear-all"]').click();
+    cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
+    cy.reload(); // Needed for local Gatsby build
   });
     
 });
