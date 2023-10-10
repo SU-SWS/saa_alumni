@@ -56,7 +56,7 @@ const MembershipCard = ({
     <FlexBox direction="col" className={styles.root}>
       <button
         type="button"
-        data-testid={`card-${heading?.replace(' ', '-')}`}
+        data-test={`card-${heading?.replaceAll(' ', '-').toLowerCase()}`}
         className={dcnb(
           styles.membershipCardWrapper(membershipInfo),
           newContact && !isSelected && 'su-border-dashed',

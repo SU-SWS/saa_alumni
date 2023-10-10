@@ -386,6 +386,7 @@ const MembershipFormPage = (props) => {
                               </label>
                               <input
                                 id="su-promocode"
+                                data-test="su-promocode"
                                 className={styles.promoInput}
                                 value={promoCode}
                                 onChange={getPromoCode}
@@ -411,7 +412,10 @@ const MembershipFormPage = (props) => {
                                 />
                               </Link>
                             ) : (
-                              <div className={styles.nextLinkDisabled}>
+                              <div
+                                className={styles.nextLinkDisabled}
+                                data-cy="disabled-btn"
+                              >
                                 Continue
                                 <HeroIcon
                                   iconType="arrow-right"
