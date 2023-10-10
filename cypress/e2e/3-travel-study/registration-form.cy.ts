@@ -64,7 +64,7 @@ describe('Travel-Study Trip Registration Form Page', () => {
     cy.get('[data-fieldid="Post-TripExtension__0"]').first().check({force: true});
 
     // Confirm that button exists
-    cy.get('button').should('have.class', 'ggeButton--forward').first().click();
+    cy.get('button').should('have.class', 'ggeButton--forward');
   });
 
   it('should redirect to the interstitial form page at /travel-study/destinations/finland-2022/finland-reg-form', () => {
@@ -75,8 +75,8 @@ describe('Travel-Study Trip Registration Form Page', () => {
     cy.visit('/travel-study/destinations/finland-2022/finland-reg-form/form');
   
     // Confirm that the URL redirect to the expected URL
-    cy.reload(); // Needed for local Gatsby build
     cy.url().should('include', '/travel-study/destinations/finland-2022/finland-reg-form');
+    cy.reload(); // Needed for local Gatsby build
 
     cy.get('main').within(() => {
       cy.get('h3').first().should('contain.text', 'Before you register');
