@@ -118,6 +118,7 @@ const SearchField = React.forwardRef(
               <label className="su-flex-grow su-max-w-full">
                 <span className="su-sr-only">Search</span>
                 <input
+                  data-test="search--modal-input"
                   type="text"
                   role="combobox"
                   aria-autocomplete="list"
