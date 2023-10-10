@@ -161,7 +161,11 @@ const SearchField = React.forwardRef(
                 autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
               />
             </div>
-            <button type="submit" className={submitBtnClasses}>
+            <button
+              data-cy="search--submit-btn"
+              type="submit"
+              className={submitBtnClasses}
+            >
               <Search
                 className="su-text-white su-w-20 su-h-20"
                 aria-hidden="true"
