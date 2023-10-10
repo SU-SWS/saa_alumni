@@ -650,7 +650,6 @@
   @apply su-text-center su-type-0;
 }
 
-
 /* GG Checkbox */
 .ggeWidget .ggePrompt .ggePrompt__checkbox,
 .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
@@ -691,4 +690,13 @@
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox:hover::before {
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
   opacity: 0.4;
+}
+
+/* Travel-Study Payment Button Workaround */
+.ggeWidget:not([class*="membership-forms"]) .ggeStripeContainer {
+  @apply su-rs-mb-2 su-rs-pt-1 su-bg-white su-text-black su-rounded;
+}
+
+.ggeWidget:not([class*="membership-forms"]) .ggeStripeContainer__lowerHr {
+  @apply su-p-0;
 }
