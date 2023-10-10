@@ -693,10 +693,10 @@
 }
 
 /* Travel-Study Payment Button Workaround */
-.ggeWidget:not([class*="membership-forms"]) .ggeStripeContainer {
+.ggeWidget:not([class*="membership-forms"]) div.ggeStripeContainer[role="alert"] {
   @apply su-rs-mb-2 su-rs-pt-1 su-bg-white su-text-black su-rounded;
 }
 
-.ggeWidget:not([class*="membership-forms"]) .ggeStripeContainer__lowerHr {
+.ggeWidget:not([class*="membership-forms"]) div.ggeStripeContainer[role="alert"] .ggeStripeContainer__lowerHr {
   @apply su-p-0;
 }
