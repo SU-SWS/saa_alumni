@@ -244,6 +244,7 @@ const RelatedContactSelection = (props) => {
                               </div>
                             ) : (
                               <Link
+                                data-cy="next-btn"
                                 to={formLink}
                                 className={styles.nextLinkActive}
                                 state={{
