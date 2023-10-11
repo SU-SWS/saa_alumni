@@ -98,7 +98,7 @@ const MembershipFullPaymentForm = (props) => {
                   >
                     <CreateBloks
                       blokSection={giveGabForm}
-                      bgCardStyle="su-bg-saa-black-dark"
+                      bgCardStyle="su-bg-white"
                       urlData={noPromo || promoCode}
                     />
                   </GridCell>
