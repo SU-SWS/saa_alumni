@@ -4,7 +4,7 @@
   "version": "4.2.0",
   "author": "Stanford University | Alumni Association",
   "dependencies": {
-    "@babel/runtime": "^7.17.2",
+    "@babel/runtime": "^7.23.1",
     "@emotion/babel-plugin": "^11.7.2",
     "@fortawesome/fontawesome-pro": "^5.15.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
