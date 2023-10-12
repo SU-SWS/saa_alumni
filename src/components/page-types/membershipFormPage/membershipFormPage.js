@@ -389,6 +389,7 @@ const MembershipFormPage = (props) => {
                                 className={styles.promoInput}
                                 value={promoCode}
                                 onChange={getPromoCode}
+                                maxLength="10"
                               />
                             </FlexBox>
                           </FlexBox>
