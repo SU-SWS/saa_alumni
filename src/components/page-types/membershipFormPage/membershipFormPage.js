@@ -383,7 +383,7 @@ const MembershipFormPage = (props) => {
                                 className={styles.promoLabel}
                               >
                                 Promo code{' '}
-                                <span className="su-italic">
+                                <span className="su-font-normal su-italic su-text-16">
                                   (10 character limit)
                                 </span>
                               </label>
