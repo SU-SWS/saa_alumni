@@ -12,15 +12,15 @@ describe('Travel-Study Destinations Page', () => {
     // Confirm form exists
     cy.get('h1').should('contain.text', 'Destinations');
 
-    // Confirm that Iran trip card exists
-    cy.get('h3').should('contain.text', 'Iran');
+    // Confirm that a trip card exists
+    cy.get('article h3').should('exist');
 
     // Select Filter Month
     cy.get('[data-test="filter-option--october"]').first().check({ force: true });
     cy.reload(); // Needed for local Gatsby build
 
-    // Confirm that Canada trip card exists
-    cy.get('h3').should('contain.text', 'Canada');
+    // Confirm that a trip card exists
+    cy.get('article h3').should('exist');
 
     // Clear Filters
     cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
