@@ -11,7 +11,7 @@ import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import AuthContext from '../../../contexts/AuthContext';
 import Hero from '../../composite/hero';
-import * as styles from './LightFormPage.styles';
+import * as styles from './lightFormPage.styles';
 
 const LightFormPage = (props) => {
   const {
