@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect, useContext, useState } from 'react';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
@@ -19,7 +19,9 @@ const LightFormPage = (props) => {
       title,
       isSrOnlyTitle,
       heroImage: { filename, alt, focus } = {},
-      formInfo,
+      formHeading,
+      orgId,
+      dssId,
       giveGabForm,
       ankleContent,
     },
@@ -34,6 +36,35 @@ const LightFormPage = (props) => {
     isDarkGradient: 'true',
     isHideScroll: 'true',
   };
+  const [kwoCreds, setKwoCreds] = useState('');
+
+  // Use the useEffect hook to fetch nonce when the component mounts
+  useEffect(() => {
+    // Function to fetch nonce from the API route
+    if (orgId && dssId) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `/api/membership/payment/${orgId}/${dssId}/2J7BCG1`
+          );
+          if (response.ok) {
+            const tokenData = await response.json();
+            if (tokenData) {
+              const { nonce } = tokenData;
+              setKwoCreds(nonce);
+            }
+          } else {
+            console.error('API request failed.');
+          }
+        } catch (error) {
+          console.error('An error occurred:', error);
+        }
+      };
+      fetchData();
+    }
+  }, [dssId, orgId]);
+
+  console.log('kwoCreds', kwoCreds);
 
   return (
     <AuthenticatedPage>
@@ -58,11 +89,12 @@ const LightFormPage = (props) => {
             <Grid gap xs={12}>
               <GridCell xs={12} md={10} lg={10} xl={8} xxl={6}>
                 <div>
-                  <Heading level={2}>{formInfo}</Heading>
+                  <Heading level={2}>{formHeading}</Heading>
                 </div>
                 <CreateBloks
                   blokSection={giveGabForm}
                   bgCardStyle="su-bg-transparent"
+                  kwoCredentials={kwoCreds}
                 />
               </GridCell>
             </Grid>

@@ -17,6 +17,7 @@ const GiveGabForm = ({
   },
   blok,
   urlData,
+  kwoCredentials,
   bgCardStyle,
 }) => {
   const htmlId = uuid;
@@ -25,6 +26,14 @@ const GiveGabForm = ({
   const embedUrl = new URL(url);
   if (urlData) {
     embedUrl.searchParams.set('urlData', urlData.replace(' ', ''));
+  }
+
+  console.log('kwoCredentials', kwoCredentials);
+  if (kwoCredentials) {
+    embedUrl.searchParams.set(
+      'kwoCredentials',
+      kwoCredentials.replace(' ', '')
+    );
   }
 
   if (isAuthenticating) {
