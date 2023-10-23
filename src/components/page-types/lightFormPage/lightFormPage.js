@@ -45,7 +45,7 @@ const LightFormPage = (props) => {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            `/api/membership/payment/${orgId}/${dssId}/2J7BCG1`
+            `/api/membership/payment/${orgId}/${dssId}/2QZ7I82`
           );
           if (response.ok) {
             const tokenData = await response.json();
