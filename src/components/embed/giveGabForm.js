@@ -28,7 +28,6 @@ const GiveGabForm = ({
     embedUrl.searchParams.set('urlData', urlData.replace(' ', ''));
   }
 
-  console.log('kwoCredentials', kwoCredentials);
   if (kwoCredentials) {
     embedUrl.searchParams.set(
       'kwoCredentials',
