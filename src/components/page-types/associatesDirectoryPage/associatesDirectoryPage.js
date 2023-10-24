@@ -36,7 +36,7 @@ const AssociatesDirectoryPage = (props) => {
             </Container>
           </header>
           {hasRichText(intro) && (
-            <div className={dcnb('su-big-paragraph su-max-w-prose su-mx-auto')}>
+            <div className={dcnb('su-big-paragraph su-max-w-prose su-mx-auto su-text-center')}>
               <RichTextRenderer
                 wysiwyg={intro}
                 className="children:su-leading-display"
