@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react';
 import SbEditable from 'storyblok-react';
+import { dcnb } from 'cnbuilder';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -16,8 +17,8 @@ import * as styles from './lightFormPage.styles';
 const LightFormPage = (props) => {
   const {
     blok: {
+      widgetType,
       title,
-      isSrOnlyTitle,
       heroImage: { filename, alt, focus } = {},
       formHeading,
       orgId,
@@ -77,19 +78,26 @@ const LightFormPage = (props) => {
             width="full"
           >
             <Hero blok={heroProps} />
-            <Heading
-              level={1}
-              align="left"
-              font="serif"
-              srOnly={isSrOnlyTitle}
-              id="page-title"
-            >
+            <Heading level={1} srOnly id="page-title">
               {title}
             </Heading>
-            <Grid gap xs={12}>
-              <GridCell xs={12} md={10} lg={10} xl={8} xxl={6}>
+            <Grid gap xs={12} className={styles.gridContainerStyle}>
+              <GridCell
+                xs={12}
+                md={10}
+                lg={10}
+                xl={8}
+                xxl={6}
+                className={dcnb(
+                  'su-light-form',
+                  widgetType,
+                  styles.formCardStyle
+                )}
+              >
                 <div>
-                  <Heading level={2}>{formHeading}</Heading>
+                  <Heading level={2} size="2" weight="regular">
+                    {formHeading}
+                  </Heading>
                 </div>
                 <CreateBloks
                   blokSection={giveGabForm}
