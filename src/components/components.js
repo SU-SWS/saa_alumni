@@ -1,6 +1,7 @@
 import Accordion from './composite/accordion';
 import AccordionItem from './composite/accordionItem';
 import { SBAlert } from './storyblok/alert/alert';
+import WillCard from '../cards/willCard';
 import { SBAlertCtaLink } from './storyblok/alert/alertCtaLink';
 import BasicCard from './cards/basicCard';
 import BasicCardHorizontal from './cards/basicCardHorizontal';
@@ -96,6 +97,7 @@ const ComponentList = {
   accordion: Accordion,
   accordionItem: AccordionItem,
   alert: SBAlert,
+  willCard: WillCard,
   alertCtaLink: SBAlertCtaLink,
   associatesDirectoryPage: AssociatesDirectoryPage,
   associatesDirectory: AssociatesDirectory,
