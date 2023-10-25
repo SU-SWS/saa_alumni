@@ -164,6 +164,7 @@
   background-position: center 0;
 }
 
+.su-light-form.su-payment-history .ggeButton--payBalance,
 .su-light-form .ggeWidget .ggeConfirmation .ggeButton.ggeButton--forward {
   @apply su-rs-mt-5 su-bg-digital-red hocus:su-bg-cardinal-red-xdark;
 }
@@ -415,6 +416,7 @@
   @apply su-bg-cardinal-red-xdark;
 }
 
+.su-light-form.su-payment-history .ggeButton--payBalance,
 .su-light-form .ggeWidget .ggeButton--submitPaymentInfo,
 .su-light-form .ggeWidget .ggeButton--forward:disabled,
 .su-light-form .ggeWidget .ggeButton--forward {
@@ -432,6 +434,7 @@
   @apply su-type-1;
 }
 
+/* Payment History */
 /* Hide Update Payment Information */
 .su-light-form.su-payment-history .ggeDonorSelfServe > .ggeHeader > h1,
 .su-light-form.su-payment-history .ggeSection--paymentHistory h1,
@@ -444,6 +447,15 @@
   @apply su-h-full su-w-full su-overflow-x-visible su-overflow-y-visible;
 }
 
+.su-light-form.su-payment-history .ggePayBalanceBtn {
+  @apply su-block;
+}
+
+.su-light-form.su-payment-history .ggeButton.ggeButton--payBalance {
+  @apply su-ml-auto;
+}
+
+/* Payment Update */
 /* Hide Payment History Information */
 .su-light-form.su-payment-update .ggeSection.ggeSection--paymentHistory {
   @apply su-hidden;
