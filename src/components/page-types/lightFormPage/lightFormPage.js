@@ -95,7 +95,12 @@ const LightFormPage = (props) => {
                 )}
               >
                 <div>
-                  <Heading level={2} size="2" weight="semibold">
+                  <Heading
+                    level={2}
+                    size="2"
+                    weight="semibold"
+                    className="su-rs-mb-3"
+                  >
                     {formHeading}
                   </Heading>
                 </div>

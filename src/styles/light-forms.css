@@ -506,3 +506,7 @@
 .su-light-form.su-payment-update .ggeDonorSelfServe #ggeBillingForm .ggeAddress > .ggeQuestion {
   @apply su-w-full;
 }
+
+.su-light-form.su-payment-update #ggeBillingForm .ggeQuestion.ggeAddress {
+  @apply su-m-0
+}
