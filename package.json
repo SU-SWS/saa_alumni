@@ -20,7 +20,6 @@
     "adapt-auth-sdk": "^1.0.10",
     "algoliasearch": "^4.9.3",
     "body-parser": "^1.19.1",
-    "caniuse-lite": "^1.0.30001554",
     "cnbuilder": "^3.1.0",
     "cookie-parser": "^1.4.6",
     "decanter": "^7.0.0-rc.2",
