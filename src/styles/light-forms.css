@@ -255,6 +255,9 @@
 .su-light-form .ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label {
   @apply su-clear-both;
 }
+
+.su-light-form .ggeWidget .ggeQuestion .ggeQuestion__label,
+.su-light-form .ggeWidget .ggeQuestion .ggeQuestion__label label,
 .su-light-form .ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label label[for="Comments__ggid1"] {
   @apply su-font-semibold;
 }
@@ -425,12 +428,15 @@
 
 /* Self Service Portal */
 
+.su-light-form .ggeBackToList,
 .su-light-form .ggeDonorSelfServe > .ggeHeader > h1,
-.su-light-form .ggeSection.ggeSection--suspend {
+.su-light-form .ggeSection.ggeSection--suspend h1,
+.su-light-form .ggeSection.ggeSection--suspend #ggeSuspendForm {
   @apply su-hidden;
 }
 
-.su-light-form h1 {
+.su-light-form h1,
+.su-light-form.su-payment-update .ggeSection--payment h1 {
   @apply su-type-1;
 }
 
@@ -452,18 +458,49 @@
 }
 
 .su-light-form.su-payment-history .ggeButton.ggeButton--payBalance {
-  @apply su-ml-auto;
+  @apply su-rs-mt-2 su-ml-auto;
+}
+
+.su-light-form.su-payment-history .ggeScheduleSuspendedStatus {
+  @apply su-rs-mt-3 su-card-paragraph;
 }
 
 /* Payment Update */
+.su-light-form .ggeWidget .ggeQuestion .ggeQuestion__field span {
+  @apply su-text-21;
+}
+
+.su-light-form .ggeWidget .ggeQuestion .ggeQuestion__field span strong {
+  @apply su-text-21 su-font-regular;
+}
+
 /* Hide Payment History Information */
+.su-light-form.su-payment-update .ggeQuestion--buttons,
+.su-light-form.su-payment-update .ggeSection.ggeSection--suspend,
 .su-light-form.su-payment-update .ggeSection.ggeSection--paymentHistory {
   @apply su-hidden;
 }
 
-/* .su-light-form.su-payment-update .ggeBillingForm .ggeQuestion.gge--_payment.type {
-  @apply su-m-0 su-h-0;
-} */
+.su-light-form.su-payment-update #ggeBillingForm {
+  @apply su-rs-mt-3;
+}
+
+.su-light-form.su-payment-update #ggeBillingForm .ggePayment--accountEmail, 
+.su-light-form.su-payment-update #ggeBillingForm .ggePayment--accountName, 
+.su-light-form.su-payment-update #ggeBillingForm .ggePayment--scheduleId,
+.su-light-form.su-payment-update .ggeSection--payment .ggeAddress__street1, 
+.su-light-form.su-payment-update .ggeSection--payment .ggeAddress__street2 {
+  grid-column: span 6;
+}
+
+.su-light-form.su-payment-update .ggeSection--payment .ggeAddress__state, 
+.su-light-form.su-payment-update .ggeSection--payment .ggeAddress__city{
+  grid-column: span 4;
+}
+
+.su-light-form.su-payment-update .ggeSection--payment .ggeAddress__zipcode {
+  grid-column: span 2;
+}
 
 .su-light-form.su-payment-update .ggeDonorSelfServe #ggeBillingForm .ggePayment--credit,
 .su-light-form.su-payment-update .ggeDonorSelfServe #ggeBillingForm .ggeAddress > .ggeQuestion {
