@@ -84,7 +84,7 @@ const WillCard = ({
     <SbEditable content={blok}>
       <div
         className={dcnb(
-          'will-card su-w-full su-basefont-23 su-break-words', 
+          'will-card su-w-full su-basefont-23 su-break-words',
           wrapperClasses
         )}
       >
@@ -103,4 +103,4 @@ const WillCard = ({
   );
 };
 
-export default WillCard;  // <-- updated name here
+export default WillCard; // <-- updated name here
