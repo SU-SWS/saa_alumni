@@ -1107,6 +1107,7 @@ export const fullprofileMockData = {
       membershipAffiliation: 'Alum',
       membershipStartDate: '2011',
       membershipGroup: 'SAA',
+      membershipGGPaymentReferenceID: '3LF42K6',
     },
     {
       membershipStatus: 'Active',

@@ -98,7 +98,8 @@ const MembershipFullPaymentForm = (props) => {
                   >
                     <CreateBloks
                       blokSection={giveGabForm}
-                      bgCardStyle="su-bg-white"
+                      bgCardStyle="su-bg-white su-light-form"
+                      isSpacing
                       urlData={noPromo || promoCode}
                     />
                   </GridCell>
