@@ -11,8 +11,9 @@ import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import AuthContext from '../../../contexts/AuthContext';
-import Hero from '../../composite/hero';
+import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import * as styles from './lightFormPage.styles';
+import { FlexBox } from '../../layout/FlexBox';
 
 const LightFormPage = (props) => {
   const {
@@ -30,14 +31,20 @@ const LightFormPage = (props) => {
   } = props;
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
-  const heroProps = {
-    image: { filename, alt, focus },
-    headline: title,
-    headlineSize: 'large',
-    isDarkGradient: 'true',
-    isHideScroll: 'true',
-  };
   const [kwoCreds, setKwoCreds] = useState('');
+  const memberships = userProfile?.memberships;
+  console.log('Memberships', memberships);
+  // const findPaymentScheduleId = (membershipsInfo) => {
+  //   membershipsInfo.map((membership) => {
+  //     if (membership?.membershipGGPaymentReferenceID) {
+  //       return membership.membershipGGPaymentReferenceID;
+  //     }
+  //     return '';
+  //   });
+  // };
+  // const paymentScheduleId = memberships
+  //   ? findPaymentScheduleId(memberships)
+  //   : '';
 
   // Use the useEffect hook to fetch nonce when the component mounts
   useEffect(() => {
@@ -46,7 +53,7 @@ const LightFormPage = (props) => {
       const fetchData = async () => {
         try {
           const response = await fetch(
-            `/api/membership/payment/${orgId}/${dssId}/3LF42K6`
+            `/api/membership/payment/${orgId}/${dssId}/2XB9QW3`
           );
           if (response.ok) {
             const tokenData = await response.json();
@@ -77,40 +84,59 @@ const LightFormPage = (props) => {
             className={styles.container}
             width="full"
           >
-            <Hero blok={heroProps} />
-            <Heading level={1} srOnly id="page-title">
-              {title}
-            </Heading>
-            <Grid gap xs={12} className={styles.gridContainerStyle}>
-              <GridCell
-                xs={12}
-                md={10}
-                lg={10}
-                xl={8}
-                xxl={6}
-                className={dcnb(
-                  'su-light-form',
-                  widgetType,
-                  styles.formCardStyle
-                )}
-              >
-                <div>
-                  <Heading
-                    level={2}
-                    size="2"
-                    weight="semibold"
-                    className="su-rs-mb-3"
-                  >
-                    {formHeading}
-                  </Heading>
-                </div>
-                <CreateBloks
-                  blokSection={giveGabForm}
-                  bgCardStyle="su-bg-transparent"
-                  kwoCredentials={kwoCreds}
-                />
-              </GridCell>
-            </Grid>
+            <div className={styles.fixedHero}>
+              <HeroImage
+                filename={filename}
+                alt={alt}
+                focus={focus}
+                overlay="formDark"
+                aspectRatio="5x2"
+                className={styles.fixedHeroImg}
+              />
+            </div>
+            <FlexBox direction="col" className={styles.contentWrapper}>
+              <div className={styles.contentStyle}>
+                <Heading
+                  level={1}
+                  size="6"
+                  align="center"
+                  font="serif"
+                  id="page-title"
+                >
+                  {title}
+                </Heading>
+              </div>
+              <Grid gap xs={12}>
+                <GridCell
+                  xs={12}
+                  md={10}
+                  lg={10}
+                  xl={8}
+                  xxl={6}
+                  className={dcnb(
+                    'su-light-form',
+                    widgetType,
+                    styles.formCardStyle
+                  )}
+                >
+                  <div>
+                    <Heading
+                      level={2}
+                      size="2"
+                      weight="semibold"
+                      className="su-rs-mb-3"
+                    >
+                      {formHeading}
+                    </Heading>
+                  </div>
+                  <CreateBloks
+                    blokSection={giveGabForm}
+                    bgCardStyle="su-bg-transparent"
+                    kwoCredentials={kwoCreds}
+                  />
+                </GridCell>
+              </Grid>
+            </FlexBox>
             {numAnkle > 0 && <Ankle isDark {...props} />}
           </Container>
         </Layout>
