@@ -475,7 +475,7 @@
 }
 
 /* Hide Payment History Information */
-.su-light-form.su-payment-update .ggeQuestion--buttons,
+.su-light-form.su-payment-update #ggeBillingForm > .ggeQuestion--buttons,
 .su-light-form.su-payment-update .ggeSection.ggeSection--suspend,
 .su-light-form.su-payment-update .ggeSection.ggeSection--paymentHistory {
   @apply su-hidden;
