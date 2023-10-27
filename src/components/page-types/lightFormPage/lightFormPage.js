@@ -47,7 +47,10 @@ const LightFormPage = (props) => {
 
       if (memberships) {
         memberships.forEach((membership) => {
-          if (membership?.membershipGGPaymentReferenceID) {
+          if (
+            membership.membershipGroup === 'SAA' &&
+            membership.membershipGGPaymentReferenceID !== null
+          ) {
             paymentRefId = membership.membershipGGPaymentReferenceID;
           }
         });
