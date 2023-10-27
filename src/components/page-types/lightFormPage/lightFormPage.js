@@ -33,46 +33,54 @@ const LightFormPage = (props) => {
   const numAnkle = getNumBloks(ankleContent);
   const [kwoCreds, setKwoCreds] = useState('');
   const memberships = userProfile?.memberships;
-  console.log('Memberships', memberships);
-  // const findPaymentScheduleId = (membershipsInfo) => {
-  //   membershipsInfo.map((membership) => {
-  //     if (membership?.membershipGGPaymentReferenceID) {
-  //       return membership.membershipGGPaymentReferenceID;
-  //     }
-  //     return '';
-  //   });
-  // };
-  // const paymentScheduleId = memberships
-  //   ? findPaymentScheduleId(memberships)
-  //   : '';
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(true);
 
   // Use the useEffect hook to fetch nonce when the component mounts
   useEffect(() => {
-    // Function to fetch nonce from the API route
-    if (orgId && dssId) {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(
-            `/api/membership/payment/${orgId}/${dssId}/2XB9QW3`
-          );
-          if (response.ok) {
-            const tokenData = await response.json();
-            if (tokenData) {
-              const { nonce } = tokenData;
-              setKwoCreds(nonce);
-            }
-          } else {
-            console.error('API request failed.');
-          }
-        } catch (error) {
-          console.error('An error occurred:', error);
-        }
-      };
-      fetchData();
+    if (!orgId || !dssId) {
+      return;
     }
-  }, [dssId, orgId]);
 
-  console.log('kwoCreds', kwoCreds);
+    const fetchData = async () => {
+      let paymentRefId = '';
+
+      if (memberships) {
+        memberships.forEach((membership) => {
+          if (membership?.membershipGGPaymentReferenceID) {
+            paymentRefId = membership.membershipGGPaymentReferenceID;
+          }
+        });
+      }
+
+      if (!paymentRefId) {
+        setError('Payment reference ID is missing.');
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `/api/membership/payment/${orgId}/${dssId}/${paymentRefId}`
+        );
+
+        if (response.ok) {
+          const { nonce } = await response.json();
+          setKwoCreds(nonce);
+        } else {
+          console.error('API request failed.');
+          setError('API request failed.');
+        }
+      } catch (error) {
+        console.error('An error occurred:', error);
+        setError('An error occurred while fetching data.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [orgId, dssId, memberships]);
 
   return (
     <AuthenticatedPage>
@@ -129,11 +137,13 @@ const LightFormPage = (props) => {
                       {formHeading}
                     </Heading>
                   </div>
-                  <CreateBloks
-                    blokSection={giveGabForm}
-                    bgCardStyle="su-bg-transparent"
-                    kwoCredentials={kwoCreds}
-                  />
+                  {!loading && (
+                    <CreateBloks
+                      blokSection={giveGabForm}
+                      bgCardStyle="su-bg-transparent"
+                      kwoCredentials={kwoCreds}
+                    />
+                  )}
                 </GridCell>
               </Grid>
             </FlexBox>

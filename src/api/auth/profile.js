@@ -6,7 +6,10 @@
 import connect from 'next-connect';
 import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
-import { fullprofileMockData } from '../../utilities/mocks';
+import {
+  fullprofileMockData,
+  membershipsMockData,
+} from '../../utilities/mocks';
 import { isStoryblokEditor } from '../../utilities/isStoryblokEditor';
 
 /**
@@ -52,6 +55,7 @@ const storyblokPreviewPassthrough = async (req, res, next) => {
   const isEditor = await isStoryblokEditor(req);
   if (isEditor) {
     res.json(fullprofileMockData);
+    res.json(membershipsMockData);
   } else next();
 };
 
