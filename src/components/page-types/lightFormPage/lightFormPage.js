@@ -74,8 +74,8 @@ const LightFormPage = (props) => {
           console.error('API request failed.');
           setError('API request failed.');
         }
-      } catch (error) {
-        console.error('An error occurred:', error);
+      } catch (err) {
+        console.error('An error occurred:', err);
         setError('An error occurred while fetching data.');
       } finally {
         setLoading(false);
