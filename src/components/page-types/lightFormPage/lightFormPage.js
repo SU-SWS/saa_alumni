@@ -1,6 +1,7 @@
 import React, { useEffect, useContext, useState } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
+import { ClipLoader } from 'react-spinners';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -140,12 +141,30 @@ const LightFormPage = (props) => {
                       {formHeading}
                     </Heading>
                   </div>
-                  {!loading && (
-                    <CreateBloks
-                      blokSection={giveGabForm}
-                      bgCardStyle="su-bg-transparent"
-                      kwoCredentials={kwoCreds}
-                    />
+                  {loading ? (
+                    <div className="su-flex su-flex-row">
+                      <ClipLoader color="#00BFFF" height={50} width={50} />
+                      <p className="su-ml-03em">Loading form...</p>
+                      <noscript>
+                        Sorry, but you must have Javascript enabled to use the
+                        form.
+                      </noscript>
+                    </div>
+                  ) : (
+                    <>
+                      {error ? (
+                        <div>
+                          <Heading>An Error has occured</Heading>
+                          <p>{error}</p>
+                        </div>
+                      ) : (
+                        <CreateBloks
+                          blokSection={giveGabForm}
+                          bgCardStyle="su-bg-transparent"
+                          kwoCredentials={kwoCreds}
+                        />
+                      )}
+                    </>
                   )}
                 </GridCell>
               </Grid>
