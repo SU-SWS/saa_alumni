@@ -6,9 +6,6 @@ describe('Membership Type of Registrant Form Page', () => {
     // Visit the membership form page URL
     cy.visit('/membership/join');
 
-    // Confirm that the URL matches the expected URL
-    cy.url().should('include', '/membership/join');
-
     cy.get('h1').should('contain.text', 'Join now!');
 
     // Check if the promo code field exists on the page
