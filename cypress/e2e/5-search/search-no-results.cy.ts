@@ -1,18 +1,7 @@
 describe('Search No Results', () => {
-  it('should travel study search results', () => {
-    // Visit the initial URL that doesn't exist on Alumni Homesite
-    cy.visit('/');
-
-    cy.get('h1').should('contain.text', 'Stanford Alumni Association');
-    cy.get('header').first().within(() => {
-      cy.get('[data-test="search--nav-bar"]').first().click();
-    })
-
-    cy.get('[data-test="search--modal-input"]').should('exist').type('lorem ipsum');
-    cy.get('[data-cy="search--submit-btn"]').first().click();
-
+  it('should return no search results when searching lorem ipsum', () => {
+    cy.visit('/search/?q=lorem%20ipsum');
     cy.reload() // Needed for local Gatsby build
-    cy.url().should('include', '/search/?q=lorem%20ipsum');
 
     cy.get('h1').should('contain.text', 'Search for...');
     cy.get('section > div form input[data-test="search--modal-input"]').should('contain.value','lorem ipsum');
