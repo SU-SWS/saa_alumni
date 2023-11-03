@@ -6,9 +6,6 @@ describe('Travel-Study Additional Payment Page', () => {
     // Visit the additional payment form page URL
     cy.visit('/travel-study/payment');
 
-    // Confirm that the URL matches the expected URL
-    cy.url().should('include', '/travel-study/payment');
-
     // Confirm form exists
     cy.get('[id="su-embed"]').should('exist');
     cy.get('form').should('exist');

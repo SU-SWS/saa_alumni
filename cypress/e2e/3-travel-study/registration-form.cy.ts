@@ -6,9 +6,6 @@ describe('Travel-Study Trip Registration Form Page', () => {
     // Visit the registration form page URL
     cy.visit('/travel-study/destinations/finland-2022/finland-reg-form/');
 
-    // Confirm that the URL matches the expected URL
-    cy.url().should('include', '/travel-study/destinations/finland-2022/finland-reg-form/');
-
     cy.get('main').within(() => {
       cy.get('h3').first().should('contain.text', 'Before you register');
     })

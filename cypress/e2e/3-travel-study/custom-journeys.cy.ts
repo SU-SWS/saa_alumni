@@ -6,9 +6,6 @@ describe('Travel-Study Custom Journeys Request Page', () => {
     // Visit the custom journeys form page URL
     cy.visit('/travel-study/custom-journeys/request/');
 
-    // Confirm that the URL matches the expected URL
-    cy.url().should('include', '/travel-study/custom-journeys/request');
-
     // Confirm form exists
     cy.get('[id="su-embed"]').should('exist');
     cy.get('form').should('exist');

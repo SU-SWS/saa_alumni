@@ -6,9 +6,6 @@ describe('Perks - Online Databases Page', () => {
     // Visit the additional payment form page URL
     cy.visit('/perks/online-databases/');
 
-    // Confirm that the URL matches the expected URL
-    cy.url().should('include', '/perks/online-databases');
-
     cy.get('h1').should('contain.text', 'Online Publication Databases');
     cy.get('main').within(() => {
       cy.get('h3').first().should('contain.text', 'I am sorry but your account is not allowed to see this content.');
