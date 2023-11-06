@@ -3,6 +3,7 @@ import AccordionItem from './composite/accordionItem';
 import { SBAlert } from './storyblok/alert/alert';
 import { SBAlertCtaLink } from './storyblok/alert/alertCtaLink';
 import BasicCard from './cards/basicCard';
+import WillCard from './cards/willCard';
 import BasicCardHorizontal from './cards/basicCardHorizontal';
 import BasicPage from './page-types/basicPage';
 import { SBCollectionCard } from './storyblok/cards/collectionCard';
@@ -100,6 +101,7 @@ const ComponentList = {
   associatesDirectoryPage: AssociatesDirectoryPage,
   associatesDirectory: AssociatesDirectory,
   basicCard: BasicCard,
+  willCard: WillCard,
   basicCardHorizontal: BasicCardHorizontal,
   basicPage: BasicPage,
   collectionCard: SBCollectionCard,
