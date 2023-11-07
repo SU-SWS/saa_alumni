@@ -1099,23 +1099,4 @@ export const fullprofileMockData = {
     spousalConsent: true,
     anonymity: false,
   },
-  memberships: [
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '123456789',
-      membershipType: 'Life',
-      membershipAffiliation: 'Alum',
-      membershipStartDate: '2011',
-      membershipGroup: 'SAA',
-      membershipGGPaymentReferenceID: '3LF42K6',
-    },
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '987654321',
-      membershipType: 'Life',
-      membershipAffiliation: 'Alum',
-      membershipStartDate: '2011',
-      membershipGroup: 'GSB',
-    },
-  ],
 };
