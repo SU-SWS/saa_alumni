@@ -35,7 +35,21 @@ const LightFormPage = (props) => {
   const [kwoCreds, setKwoCreds] = useState('');
   const memberships = userProfile?.memberships;
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState('');
+
+  let paymentRefId = false;
+
+  if (memberships && loading) {
+    memberships.forEach((membership) => {
+      if (
+        !paymentRefId &&
+        membership.membershipGroup === 'SAA' &&
+        membership.membershipGGPaymentReferenceID !== null
+      ) {
+        paymentRefId = membership.membershipGGPaymentReferenceID;
+      }
+    });
+  }
 
   // Use the useEffect hook to fetch nonce when the component mounts
   useEffect(() => {
@@ -43,48 +57,38 @@ const LightFormPage = (props) => {
       return;
     }
 
+    if (paymentRefId === null) {
+      console.log('paymentRefId is missing.');
+      setError('Payment reference ID is missing.');
+      setLoading(false);
+      return;
+    }
+
     const fetchData = async () => {
-      let paymentRefId = '';
+      if (paymentRefId) {
+        try {
+          const response = await fetch(
+            `/api/membership/payment/${orgId}/${dssId}/${paymentRefId}`
+          );
 
-      if (memberships) {
-        memberships.forEach((membership) => {
-          if (
-            membership.membershipGroup === 'SAA' &&
-            membership.membershipGGPaymentReferenceID !== null
-          ) {
-            paymentRefId = membership.membershipGGPaymentReferenceID;
+          if (response.ok) {
+            const { nonce } = await response.json();
+            setKwoCreds(nonce);
+          } else {
+            console.error('API request failed.');
+            setError('API request failed.');
           }
-        });
-      }
-
-      if (!paymentRefId) {
-        setError('Payment reference ID is missing.');
-        setLoading(false);
-        return;
-      }
-
-      try {
-        const response = await fetch(
-          `/api/membership/payment/${orgId}/${dssId}/${paymentRefId}`
-        );
-
-        if (response.ok) {
-          const { nonce } = await response.json();
-          setKwoCreds(nonce);
-        } else {
-          console.error('API request failed.');
-          setError('API request failed.');
+        } catch (err) {
+          console.error('An error occurred:', err);
+          setError('An error occurred while fetching data.');
+        } finally {
+          setLoading(false);
         }
-      } catch (err) {
-        console.error('An error occurred:', err);
-        setError('An error occurred while fetching data.');
-      } finally {
-        setLoading(false);
       }
     };
 
     fetchData();
-  }, [orgId, dssId, memberships]);
+  }, [orgId, dssId, paymentRefId]);
 
   return (
     <AuthenticatedPage>
@@ -122,7 +126,6 @@ const LightFormPage = (props) => {
                 <GridCell
                   xs={12}
                   md={10}
-                  lg={10}
                   xl={8}
                   xxl={6}
                   className={dcnb(
