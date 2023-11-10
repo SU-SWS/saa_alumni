@@ -36,21 +36,10 @@ const GsbCard = ({ blok: { ctaGroup, noAccessMessage }, blok }, props) => {
                         className="su-max-w-full su-max-h-full"
                       />
                     </div>
-
-                    <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
-                      {userType === 'saa' ? 'Alumni' : 'Affiliate'} Membership
-                    </div>
-
                     <div className="su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-mt-auto">
                       <span className="su-text-22 sm:su-type-2 su-font-semibold">
-                        {
-                          auth.userProfile?.contact?.name?.fullNameParsed
-                            ?.firstName
-                        }{' '}
-                        {
-                          auth.userProfile?.contact?.name?.fullNameParsed
-                            ?.lastName
-                        }
+                        {userProfile?.contact?.name?.fullNameParsed?.firstName}{' '}
+                        {userProfile?.contact?.name?.fullNameParsed?.lastName}
                       </span>
                       <span>{degreeStringNametagWithCert}</span>
                     </div>
