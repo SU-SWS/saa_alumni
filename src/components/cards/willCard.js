@@ -6,7 +6,7 @@ import CardImage from '../media/cardImage';
 import CircularImage from '../media/circularImage';
 import BasicCardContent from './basicCardContent';
 
-const WillCard = ({
+const willCard = ({
   blok: {
     cta,
     borderColor,
@@ -98,4 +98,4 @@ const WillCard = ({
   );
 };
 
-export default WillCard;
+export default willCard;
