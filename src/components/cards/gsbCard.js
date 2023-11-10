@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import SbEditable from 'storyblok-react';
 import AuthContext from '../../contexts/AuthContext';
 import CreateBloks from '../../utilities/createBloks';
-import GsbCardBg from '../../images/gsb-card-bg.png';
+import GsbCardBg from '../../images/gsb-card-bg.jpg';
 import GsbLogoWhite from '../../images/gsb_alumni-white.png';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 
