@@ -91,6 +91,7 @@ import MegaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
 import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
+import GsbCard from './cards/gsbCard';
 
 const ComponentList = {
   accordion: Accordion,
@@ -120,6 +121,7 @@ const ComponentList = {
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
   grid: SBGrid,
+  gsbCard: GsbCard,
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
