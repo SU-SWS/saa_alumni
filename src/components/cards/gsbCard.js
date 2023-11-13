@@ -25,7 +25,7 @@ const GsbCard = ({ blok: { ctaGroup, noAccessMessage }, blok }, props) => {
       {isGsbMember ? (
         <div className="print:su-w-[3in] print:su-h-[2in] sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto lg:su--mt-[70px]">
           <div className="lg:su-flex lg:su-px-20">
-            <div className="su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0 su-text-white su-bg-gradient-to-b su-from-cardinal-red su-to-digital-red-light">
+            <div className="su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0 su-text-white su-bg-cardinal-red">
               <div className="su-relative su-w-full su-pt-[63%]">
                 <div className="su-absolute su-top-0 su-w-full su-h-full">
                   <div className="su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10 su-pl-[5%]">
