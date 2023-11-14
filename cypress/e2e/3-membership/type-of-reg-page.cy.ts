@@ -12,6 +12,18 @@ describe("Membership Type of Registrant Form Page", () => {
     cy.getByTestId("su-promocode").should("exist");
   });
 
+  it("should display membership data in myself card", () => {
+    // Login
+    cy.login();
+
+    // Visit the membership form page URL
+    cy.visit("/membership/join");
+
+    // Confirm that the myself membership card exists
+    cy.getByTestId("card-myself").should("exist");
+    cy.getByTestId("card-myself").should("contain.text", '123456789');
+  });
+
   it("should click someone else membership card and the continue button should be enabled", () => {
     // Login
     cy.login();
