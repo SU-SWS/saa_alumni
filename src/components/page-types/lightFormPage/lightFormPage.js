@@ -91,7 +91,7 @@ const LightFormPage = (props) => {
   return (
     <AuthenticatedPage>
       <SbEditable content={blok}>
-        <Layout hasHero {...props}>
+        <Layout {...props}>
           <Container
             as="main"
             id="main-content"
