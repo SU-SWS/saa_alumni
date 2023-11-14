@@ -11,7 +11,7 @@ describe('Search Results', () => {
     cy.get('[data-test="search--modal-input"]').should('exist').type('travel study');
     cy.get('[data-cy="search--submit-btn"]').first().click();
 
-    cy.reload() // Needed for local Gatsby build
+    cy.reload({timeout: 1000}) // Needed for local Gatsby build
     cy.url().should('include', '/search/?q=travel%20study');
   })
   it('should return travel study search results', () => {

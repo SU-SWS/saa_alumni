@@ -24,7 +24,6 @@ describe('Membership SAA Card Page', () => {
 
     // Check if the saa card image exists
     cy.get('img').should('exist'); 
-
-    cy.get('p').should('contain.text', 'You are not currently a Stanford Alumni Association'); 
+    cy.get('span').should('contain.text', 'Teri'); 
   });
 });

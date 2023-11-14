@@ -8,7 +8,7 @@ describe('Membership Related Contact Form Page', () => {
 
     // Confirm that the URL matches the expected URL
     cy.url().should('include', '/membership/join');
-    cy.reload(); // Needed for local Gatsby build
+    cy.reload({timeout: 500}); // Needed for local Gatsby build
 
     cy.get('h1').should('contain.text', 'Join now!');
   });

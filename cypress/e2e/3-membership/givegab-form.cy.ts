@@ -8,27 +8,34 @@ describe('Membership GiveGab Form Page', () => {
 
     // Confirm that the URL matches the expected URL
     cy.url().should('include', '/membership/join');
-    cy.reload(); // Needed for local Gatsby build
+    cy.reload({timeout: 1000}); // Needed for local Gatsby build
 
     cy.get('h1').should('contain.text', 'Join now!');
   });
     
-  it('should be able to navigate to the Pay in Full form page', () => {
+  it('should be able to navigate to related contacts page then Full Payment form page', () => {
     // Login
     cy.login();
 
     // Visit the membership form page URL
     cy.visit('/membership/join');
     
-    // Confirm that the myself membership card exists
-    cy.getByTestId('card-myself').should('exist');
+    // Confirm that the someone else membership card exists
+    cy.getByTestId('card-someone-else').should('exist').click();
 
     // Confirm that the card is selected
-    cy.getByTestId('card-myself').first().should('have.class', 'su-border-digital-blue');
-    cy.getByTestId('card-pay-in-full').first().should('have.class', 'su-border-digital-blue');
+    cy.getByTestId('card-someone-else').first().should('have.class', 'su-border-digital-blue');
 
     // Confirm that continue button is enabled
     cy.get('[data-cy="continue-btn"]').first().click();
+
+    // Confirm that the URL matches the expected URL
+    cy.url().should('include', '/membership/join/related-contacts');
+    cy.get('h1').should('contain.text', 'Welcome, Teri');
+
+    // Select Meg Alodon card
+    cy.getByTestId('card-meg-alodon').should('exist').click();
+    cy.get('[data-cy="next-btn"]').first().click();
 
     // Confirm that the URL matches the expected URL
     cy.url().should('include', '/membership/join/form');
