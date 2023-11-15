@@ -39,12 +39,10 @@ const LightFormPage = (props) => {
 
   let paymentRefId = false;
 
-  if (memberships && loading) {
+  if (memberships) {
     memberships.forEach((membership) => {
       if (!paymentRefId && membership.membershipGroup === 'SAA') {
         paymentRefId = membership.membershipGGPaymentReferenceID;
-      } else {
-        paymentRefId = null;
       }
     });
   }
