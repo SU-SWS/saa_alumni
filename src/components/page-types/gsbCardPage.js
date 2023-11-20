@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import SbEditable from 'storyblok-react';
+import { Link } from 'gatsby';
 import AuthContext from '../../contexts/AuthContext';
 import CreateBloks from '../../utilities/createBloks';
 import GsbCardBg from '../../images/gsb-card-bg.png';
@@ -36,12 +37,17 @@ const GsbCardPage = (props) => {
         <Layout {...props}>
           <Container as="header" width="full" className="su-shadow">
             <Container as="div" width="site" className="su-rs-py-0">
-              <img
-                src={GsbLogoColor}
-                alt="Stanford Graduate School of Business"
-                width="156"
-                height="43"
-              />
+              <Link
+                to="https://gsb.stanford.edu/"
+                className="logo su-block su-w-fit"
+              >
+                <img
+                  src={GsbLogoColor}
+                  alt="Stanford Graduate School of Business"
+                  width="156"
+                  height="43"
+                />
+              </Link>
             </Container>
           </Container>
           <Container
