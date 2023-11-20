@@ -13,6 +13,7 @@ const Hero = ({
   blok: {
     headlineSize,
     isDarkGradient,
+    heroGradient,
     imageFocus,
     cta,
     image: { filename, focus } = {},
@@ -32,7 +33,20 @@ const Hero = ({
     heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
-  let gradientFrom = 'su-from-transparent';
+  let gradientFrom = 'su-to-saa-black';
+
+  switch (heroGradient) {
+    case 'brick':
+      gradientFrom = 'su-to-brick';
+      break;
+
+    case 'palo-alto-dark':
+      gradientFrom = 'su-to-palo-alto-dark';
+      break;
+
+    default:
+      gradientFrom = 'su-to-saa-black';
+  }
 
   if (isDarkGradient) {
     gradientFrom = 'su-from-black-true-opacity-20';
@@ -59,7 +73,7 @@ const Hero = ({
         )}
         <div
           className={dcnb(
-            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black',
+            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-from-transparent',
             gradientFrom
           )}
           aria-hidden="true"

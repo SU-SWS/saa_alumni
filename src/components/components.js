@@ -26,8 +26,6 @@ import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
 import Hero from './composite/hero';
-import HeroBrick from './composite/heroBrick';
-import HeroPaloAltoDark from './composite/heroPaloAltoDark';
 import IconCard from './cards/iconCard';
 import InterstitialPage from './page-types/registrationFormPage/interstitialPage';
 import Itinerary from './composite/itinerary';
@@ -124,8 +122,6 @@ const ComponentList = {
   grid: SBGrid,
   heading: SBHeading,
   hero: Hero,
-  heroBrick: HeroBrick,
-  heroPaloAltoDark: HeroPaloAltoDark,
   iconCard: IconCard,
   interstitialPage: InterstitialPage,
   itinerary: Itinerary,
