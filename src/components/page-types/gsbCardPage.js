@@ -59,6 +59,7 @@ const GsbCardPage = (props) => {
             <Container>
               <Heading
                 level={1}
+                size="5"
                 align="center"
                 font="serif"
                 id="page-title"
@@ -75,7 +76,7 @@ const GsbCardPage = (props) => {
                       Your card
                     </h2>
                     <div className="sm:su-mx-auto sm:su-w-fit su-flex-col lg:su-w-full lg:su-flex-row lg:su-flex">
-                      <div className="su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0 su-text-white su-bg-gradient-to-b su-from-cardinal-red su-to-cardinal-red-light">
+                      <div className="su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0 su-text-white su-bg-gradient-to-b su-from-cardinal-red-dark su-to-cardinal-red-light">
                         <div className="su-relative su-w-full su-pt-[63%]">
                           <div className="su-absolute su-top-0 su-w-full su-h-full">
                             <div className="su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10 su-pl-[5%]">
