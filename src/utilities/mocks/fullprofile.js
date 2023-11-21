@@ -10,6 +10,7 @@ export const fullprofileMockData = {
   },
   contact: {
     birthDate: '1979-08-14',
+    degreeStringNametagWithCert: `MBA '03`,
     preferredPhoneType: 'Mobile',
     preferredAddress: 'Home',
     preferredEmail: 'Home Email',
