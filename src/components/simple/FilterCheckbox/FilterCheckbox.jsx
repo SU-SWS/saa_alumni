@@ -26,6 +26,9 @@ export const FilterCheckbox = ({
     <div className={dcnb(className, styles.root({ checked }))}>
       <label className={styles.label}>
         <input
+          data-test={`filter-option--${label
+            .replaceAll(' ', '-')
+            .toLowerCase()}`}
           type="checkbox"
           checked={checked}
           onChange={onChange}
