@@ -71,8 +71,11 @@ const GsbCardPage = (props) => {
               <GridCell className="lg:su-col-start-2" xs={12} md={12} lg={10}>
                 {isGsbMember ? (
                   <div className="print:su-w-[3in] print:su-h-[2in] sm:su-w-[520px] md:su-w-full md:su-w-full su-mx-auto">
+                    <h2 className="su-mb-34 md:su-mb-58 su-font-serif">
+                      Your card
+                    </h2>
                     <div className="sm:su-mx-auto sm:su-w-fit su-flex-col lg:su-w-full lg:su-flex-row lg:su-flex">
-                      <div className="su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0 su-text-white su-bg-cardinal-red-light">
+                      <div className="su-relative su-overflow-hidden su-rounded-[3rem] sm:su-w-[520px] su-mb-50 sm:su-mb-90 lg:su-mb-0 su-text-white su-bg-gradient-to-b su-from-cardinal-red su-to-cardinal-red-light">
                         <div className="su-relative su-w-full su-pt-[63%]">
                           <div className="su-absolute su-top-0 su-w-full su-h-full">
                             <div className="su-relative su-flex su-flex-col su-h-full su-flex su-text-[38px] su-z-10 su-pl-[5%]">
@@ -82,6 +85,10 @@ const GsbCardPage = (props) => {
                                   alt="Stanford Graduate School of Business"
                                   className="su-max-w-full su-max-h-full"
                                 />
+                              </div>
+
+                              <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
+                                GSBAA Membership
                               </div>
                               <div className="su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-mt-auto">
                                 <span className="su-text-22 sm:su-type-2 su-font-semibold">

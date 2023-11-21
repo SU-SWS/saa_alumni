@@ -9,7 +9,7 @@ describe('Membership GSB Card Page', () => {
     // Confirm that the URL matches the expected URL
     cy.url().should('include', '/membership/gsbcard');
 
-    cy.get('h1').should('contain.text', 'Graduate School of Business');
+    cy.get('h1').should('contain.text', 'Membership');
 
     // Check if the gsb card image exists
     cy.get('img').should('exist'); 
