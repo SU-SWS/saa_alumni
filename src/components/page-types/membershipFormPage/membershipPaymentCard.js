@@ -17,6 +17,7 @@ const MembershipPaymentCard = ({
   <FlexBox direction="col" className={styles.root}>
     <button
       type="button"
+      data-test={`card-${heading?.replaceAll(' ', '-').toLowerCase()}`}
       className={dcnb(
         styles.membershipPaymentCardWrapper,
         isSelected && 'su-bg-white su-border-digital-blue'
