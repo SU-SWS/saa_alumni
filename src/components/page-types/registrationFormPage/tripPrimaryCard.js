@@ -18,7 +18,10 @@ const TripPrimaryCard = ({ traveler }) => {
   }, [dispatch, traveler]);
 
   return (
-    <div className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-saa-black-dark su-cursor-auto">
+    <div
+      data-test={`card-${traveler.su_dname.replaceAll(' ', '-').toLowerCase()}`}
+      className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-saa-black-dark su-cursor-auto"
+    >
       <FlexBox direction="col" className="su-m-w-full" alignItems="start">
         <FlexBox
           direction="row"
