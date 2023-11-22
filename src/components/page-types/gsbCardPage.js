@@ -63,7 +63,7 @@ const GsbCardPage = (props) => {
                 align="center"
                 font="serif"
                 id="page-title"
-                className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-type-6 su-mx-auto su-max-w-1200"
+                className="su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-type-6 su-mx-auto"
               >
                 {title}
               </Heading>
