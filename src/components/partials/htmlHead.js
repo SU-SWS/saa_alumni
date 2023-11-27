@@ -68,7 +68,6 @@ const HtmlHead = () => (
       href="https://www-media.stanford.edu/assets/favicon/safari-pinned-tab.svg"
       color="#ffffff"
     />
-    <meta name="application-name" content="Stanford University" />
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta
       name="msapplication-TileImage"

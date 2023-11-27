@@ -149,6 +149,7 @@ const TripFilterPage = (props) => {
                           className={styles.clearAllBtn}
                           type="button"
                           onClick={clearAllFilters}
+                          data-test="filter-btn--clear-all"
                         >
                           <span className={styles.clearAllText}>
                             Clear all filters
