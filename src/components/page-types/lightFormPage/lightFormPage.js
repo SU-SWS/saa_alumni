@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { ClipLoader } from 'react-spinners';
-import { fal } from '@fortawesome/pro-light-svg-icons';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -16,6 +15,7 @@ import AuthContext from '../../../contexts/AuthContext';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import * as styles from './lightFormPage.styles';
 import { FlexBox } from '../../layout/FlexBox';
+import SbLink from '../../../utilities/sbLink';
 
 const NoMembershipError = () => (
   <div>
@@ -23,9 +23,9 @@ const NoMembershipError = () => (
       Interested in joining SAA?
     </Heading>
     <p className="su-card-paragraph">
-      <a href="/membership/join">Join now</a> or visit our{' '}
-      <a href="/membership/faq">Membership FAQs</a> page to learn more details
-      about our membership planms and benefits.
+      <SbLink link="/membership/join">Join now</SbLink> or visit our{' '}
+      <SbLink link="/membership/faq">Membership FAQs</SbLink> page to learn more
+      details about our membership planms and benefits.
     </p>
     <p className="su-card-paragraph su-mb-0">
       If you purchased your membership online more than one business day ago,
@@ -44,8 +44,12 @@ const FullPaidMembership = () => (
       Your membership plan has been paid in full.
     </Heading>
     <p className="su-card-paragraph su-mb-0">
-      Find your membership card <a href="/membership/saacard">here</a> and{' '}
-      <a href="/perks/">learn more about your SAA membership benefits</a>.
+      Find your membership card <SbLink link="/membership/saacard">here</SbLink>{' '}
+      and{' '}
+      <SbLink link="/perks/">
+        learn more about your SAA membership benefits
+      </SbLink>
+      .
     </p>
   </div>
 );
