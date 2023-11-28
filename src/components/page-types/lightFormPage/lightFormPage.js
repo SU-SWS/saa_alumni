@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { ClipLoader } from 'react-spinners';
+import { fal } from '@fortawesome/pro-light-svg-icons';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
@@ -104,8 +105,6 @@ const LightFormPage = (props) => {
       const saaMembership = memberships?.find(
         (membership) => membership.membershipGroup === 'SAA'
       );
-
-      console.log('SAA MEMBERSHIP: ', saaMembership);
 
       if (saaMembership) {
         setPaymentRefId(saaMembership?.membershipGGPaymentReferenceID);
