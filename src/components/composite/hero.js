@@ -33,23 +33,23 @@ const Hero = ({
     heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
-  let gradientFrom = 'su-to-saa-black';
+  let gradientTo = 'su-to-saa-black';
 
   switch (heroGradient) {
     case 'brick':
-      gradientFrom = 'su-to-brick';
+      gradientTo = 'su-to-brick';
       break;
 
     case 'palo-alto-dark':
-      gradientFrom = 'su-to-palo-alto-dark';
+      gradientTo = 'su-to-palo-alto-dark';
       break;
 
     default:
-      gradientFrom = 'su-to-saa-black';
+      gradientTo = 'su-to-saa-black';
   }
 
   if (isDarkGradient) {
-    gradientFrom = 'su-from-black-true-opacity-20';
+    gradientTo = 'su-from-black-true-opacity-20';
   }
 
   const numCta = getNumBloks(cta);
@@ -74,7 +74,7 @@ const Hero = ({
         <div
           className={dcnb(
             'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-from-transparent',
-            gradientFrom
+            gradientTo
           )}
           aria-hidden="true"
         />
