@@ -21,14 +21,18 @@ const NoMembershipError = () => (
     <Heading level={2} size="2" weight="semibold" className="su-rs-mb-3">
       Interested in joining SAA?
     </Heading>
-    <p>
-      Join now or visit our Membership FAQs page to learn more details about our
-      membership planms and benefits.
+    <p className="su-card-paragraph">
+      <a href="/membership/join">Join now</a> or visit our{' '}
+      <a href="/membership/faq">Membership FAQs</a> page to learn more details
+      about our membership planms and benefits.
     </p>
-    <p>
+    <p className="su-card-paragraph su-mb-0">
       If you purchased your membership online more than one business day ago,
       and your membership is not recognized after logging in, call us at (650)
-      725-0692 or email us at membership@alumni.stanford.edu
+      725-0692 or email us at{' '}
+      <a href="mailto:membership@alumni.stanford.edu">
+        membership@alumni.stanford.edu
+      </a>
     </p>
   </div>
 );
@@ -38,9 +42,9 @@ const FullPaidMembership = () => (
     <Heading level={2} size="2" weight="semibold" className="su-rs-mb-3">
       Your membership plan has been paid in full.
     </Heading>
-    <p>
-      Find your membership card here and learn more about your SAA membership
-      benefits.
+    <p className="su-card-paragraph su-mb-0">
+      Find your membership card <a href="/membership/saacard">here</a> and{' '}
+      <a href="/perks/">learn more about your SAA membership benefits</a>.
     </p>
   </div>
 );
@@ -73,26 +77,6 @@ const LightFormPage = (props) => {
       return;
     }
 
-    if (memberships?.length === 0) {
-      setPaymentRefId(false);
-      setError(true);
-      setLoading(false);
-      return;
-    }
-
-    memberships?.forEach((membership) => {
-      if (!paymentRefId && membership.membershipGroup === 'SAA') {
-        setPaymentRefId(membership.membershipGGPaymentReferenceID);
-      }
-    });
-
-    if (paymentRefId === null) {
-      console.error('paymentRefId is missing.');
-      setError(true);
-      setLoading(false);
-      return;
-    }
-
     const fetchData = async () => {
       if (paymentRefId) {
         try {
@@ -116,7 +100,37 @@ const LightFormPage = (props) => {
       }
     };
 
-    fetchData();
+    const findPaymentRefId = () => {
+      const saaMembership = memberships?.find(
+        (membership) => membership.membershipGroup === 'SAA'
+      );
+
+      console.log('SAA MEMBERSHIP: ', saaMembership);
+
+      if (saaMembership) {
+        setPaymentRefId(saaMembership?.membershipGGPaymentReferenceID);
+        if (paymentRefId === null) {
+          console.error('PaymentRefId is missing.');
+          setError(true);
+          setLoading(false);
+        } else {
+          setLoading(false);
+          fetchData();
+        }
+      } else {
+        console.error('No SAA Membership found');
+        setError(true);
+        setLoading(false);
+      }
+    };
+
+    if (memberships?.length === 0) {
+      setPaymentRefId(false);
+      setError(true);
+      setLoading(false);
+    } else if (memberships) {
+      findPaymentRefId();
+    }
   }, [orgId, dssId, memberships, paymentRefId]);
 
   return (
