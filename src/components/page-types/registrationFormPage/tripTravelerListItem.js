@@ -20,6 +20,7 @@ const TripTravelerListItem = ({ traveler, isBtn = true }) => {
       gap
       justifyContent="between"
       alignItems="center"
+      data-test={`list-${traveler.su_dname.replaceAll(' ', '-').toLowerCase()}`}
     >
       <p className="su-big-paragraph su-m-0">
         {traveler.su_dname}
