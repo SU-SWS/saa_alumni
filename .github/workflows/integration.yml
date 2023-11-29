@@ -43,8 +43,8 @@ jobs:
           # we have already installed all dependencies above
           install: false
           build: npm run build-test
-          start: npm run start-test
-          wait-on: 'http://localhost:8000'
+          start: npm run serve-test
+          wait-on: 'http://localhost:9000'
           wait-on-timeout: 240
           browser: chrome
           headed: false
