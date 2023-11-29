@@ -54,7 +54,7 @@
     roleId = 'VAULT_ROLE_ID'
 
 [[plugins]]
-  package = 'plugins/netlify-plugin-contextual-auth'
+  package = '/plugins/netlify-plugin-contextual-auth'
   [plugins.inputs]
     username = 'adapt'
     password = 'letmein2021'
@@ -62,7 +62,6 @@
 
 [[plugins]]
   package = "/plugins/netlify-plugin-wildcard-404-redirect"
-
   [plugins.inputs]
     destination = "https://cardinalalumni.stanford.edu/:splat"
 
