@@ -8,12 +8,13 @@ import { SrOnlyText } from '../accessibility/SrOnlyText';
 import FullWidthImage from '../media/fullWidthImage';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
+import { heroGradient } from '../../utilities/dataSource';
 
 const Hero = ({
   blok: {
     headlineSize,
     isDarkGradient,
-    heroGradient,
+    heroGradient: gradientToColor,
     imageFocus,
     cta,
     image: { filename, focus } = {},
@@ -33,20 +34,7 @@ const Hero = ({
     heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
-  let gradientTo = 'su-to-saa-black';
-
-  switch (heroGradient) {
-    case 'brick':
-      gradientTo = 'su-to-brick';
-      break;
-
-    case 'palo-alto-dark':
-      gradientTo = 'su-to-palo-alto-dark';
-      break;
-
-    default:
-      gradientTo = 'su-to-saa-black';
-  }
+  let gradientTo = heroGradient[gradientToColor];
 
   if (isDarkGradient) {
     gradientTo = 'su-from-black-true-opacity-20';
