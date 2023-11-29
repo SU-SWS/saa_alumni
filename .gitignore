@@ -63,3 +63,5 @@ yarn-error.log
 
 # Local Netlify folder
 .netlify
+
+src/stanford.pass
