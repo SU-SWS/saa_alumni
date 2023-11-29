@@ -62,7 +62,6 @@
 
 [[plugins]]
   package = "/plugins/netlify-plugin-wildcard-404-redirect"
-  package = "plugins/netlify-plugin-contextual-auth"
 
   [plugins.inputs]
     destination = "https://cardinalalumni.stanford.edu/:splat"
