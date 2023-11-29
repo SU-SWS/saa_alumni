@@ -54,7 +54,7 @@
     roleId = 'VAULT_ROLE_ID'
 
 [[plugins]]
-  package = '/plugins/netlify-plugin-contextual-auth'
+  package = 'plugins/netlify-plugin-contextual-auth'
   [plugins.inputs]
     username = 'adapt'
     password = 'letmein2021'
