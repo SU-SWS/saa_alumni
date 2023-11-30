@@ -19,7 +19,7 @@ describe('Travel-Study Trip Registration Form Page', () => {
     cy.visit('/travel-study/destinations/finland-2022/finland-reg-form/');
 
     // Confirm that the URL matches the expected URL
-    cy.url().should('include', '/travel-study/destinations/finland-2022/finland-reg-form/');
+    cy.url().should('include', '/travel-study/destinations/finland-2022/finland-reg-form');
 
     // Primary card should exist
     cy.get('[data-test="card-teri-dactyl"]').should('exist');

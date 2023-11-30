@@ -15,18 +15,16 @@ jobs:
       cancel-in-progress: true
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 16
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install Dependencies
         uses: bahmutov/npm-install@v1
-        with:
-          useLockFile: false
         env:
           FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
@@ -40,13 +38,13 @@ jobs:
           VAULT_SECRET_ID: ${{ secrets.VAULT_SECRET_ID }}
 
       - name: Cypress Integration Test
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           # we have already installed all dependencies above
           install: false
           build: npm run build-test
-          start: npm run start-test
-          wait-on: 'http://localhost:8000'
+          start: npm run serve-test
+          wait-on: 'http://localhost:9000'
           wait-on-timeout: 240
           browser: chrome
           headed: false
