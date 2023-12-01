@@ -22,7 +22,7 @@ fetch(url, {
 })
 .then((res) => {
   if (!res.ok) {
-    throw new Error(`Server responded with ${res.status}`);
+    return res.text().then(text => { throw new Error(`Server responded with ${res.status}: ${text}`); });
   }
   return res.buffer();
 })
@@ -33,3 +33,4 @@ fetch(url, {
 .catch((err) => {
   console.error('Error generating pass:', err);
 });
+

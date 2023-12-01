@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
+  console.log('Received event:', event);
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -16,32 +17,40 @@ exports.handler = async (event, context) => {
 
     // Corrected file path
     const passJsonPath = path.join(__dirname, '..', '..', 'stanford.pass', 'pass.json');
-    const template = fs.readFileSync(passJsonPath, 'utf8');
-    const passData = JSON.parse(template);
+    const passData = JSON.parse(fs.readFileSync(passJsonPath, 'utf8'));
 
-    // Update pass data with dynamic values
-    passData.serialNumber = membershipNumber;
-    passData.barcode.message = membershipNumber;
-    passData.coupon.primaryFields[0].value = `${firstName} ${lastName}`;
-
-    // Generate pass
+    // Initialize a pass
     const pass = new Pass({
       model: passData,
       certificates: {
-        wwdr: process.env.APPLE_WWDR_CERTIFICATE_PATH,
-        signerCert: process.env.PASS_SIGNING_CERTIFICATE_PATH,
+        wwdr: fs.readFileSync(process.env.APPLE_WWDR_CERTIFICATE_PATH),
+        signerCert: fs.readFileSync(process.env.PASS_SIGNING_CERTIFICATE_PATH),
         signerKey: {
-          keyFile: process.env.PASS_SIGNING_CERTIFICATE_PATH,
+          keyFile: fs.readFileSync(process.env.PASS_SIGNING_CERTIFICATE_PATH),
           passphrase: process.env.PASS_CERTIFICATE_PASSWORD,
         },
       },
     });
 
-    // Add files to pass
-    pass.images.icon = fs.readFileSync(path.join(__dirname, '..', '..', 'stanford.pass', 'icon.png'));
+    // Set pass properties
+    pass.serialNumber = membershipNumber;
+    pass.barcodes = [{
+      message: membershipNumber,
+      format: "PKBarcodeFormatQR",
+      messageEncoding: "iso-8859-1"
+    }];
+    pass.primaryFields = [{
+      key: 'name',
+      label: 'Member',
+      value: `${firstName} ${lastName}`
+    }];
 
-    // Generate and send pass
-    const stream = await pass.generate();
+    // Add icon file to the pass
+    const iconPath = path.join(__dirname, '..', '..', 'stanford.pass', 'icon.png');
+    pass.images.icon = fs.readFileSync(iconPath);
+
+    // Generate the pass and capture the output stream
+    const stream = pass.generate();
     const buffers = [];
     for await (const chunk of stream) {
       buffers.push(chunk);
@@ -50,12 +59,15 @@ exports.handler = async (event, context) => {
 
     return {
       statusCode: 200,
-      headers: { 'Content-type': 'application/vnd.apple.pkpass' },
+      headers: {
+        'Content-Type': 'application/vnd.apple.pkpass',
+        'Content-Disposition': 'attachment; filename="pass.pkpass"'
+      },
       body: passBuffer.toString('base64'),
       isBase64Encoded: true,
     };
   } catch (error) {
-    console.error(error);
+    console.error('Error generating the pass:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Server Error' }),
