@@ -1,13 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Grid } from '../layout/Grid';
 import CardImage from '../media/cardImage';
 import CircularImage from '../media/circularImage';
 import BasicCardContent from './basicCardContent';
-import AuthContext from '../../contexts/AuthContext'; // Import the AuthContext
 
-const WillCard = ({
+const willCard = ({
   blok: {
     cta,
     borderColor,
@@ -23,42 +22,6 @@ const WillCard = ({
   blok,
   isDark,
 }) => {
-  const [downloadUrl, setDownloadUrl] = useState('');
-  const auth = useContext(AuthContext); // Use the AuthContext to get user data
-
-  // Handler for adding to Apple Wallet
-  const handleAddToWallet = async () => {
-    if (!auth.userProfile || auth.isAuthenticating) {
-      console.error('User not authenticated');
-      return;
-    }
-
-    // Extract user details from auth context
-    const membershipNumber = auth.userProfile?.memberships[0]?.membershipNumber;
-    const firstName = auth.userProfile?.contact?.name?.fullNameParsed?.firstName;
-    const lastName = auth.userProfile?.contact?.name?.fullNameParsed?.lastName;
-
-    try {
-      const response = await fetch('YOUR_NETLIFY_FUNCTION_ENDPOINT', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ membershipNumber, firstName, lastName }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error: ${response.statusText}`);
-      }
-
-      const passData = await response.blob();
-      const url = URL.createObjectURL(passData);
-      setDownloadUrl(url);
-    } catch (error) {
-      console.error('Error generating pass:', error);
-    }
-  };
-
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
     'su-bg-white su-text-black su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
@@ -130,11 +93,9 @@ const WillCard = ({
             `${isRound && filename ? '' : 'su-mt-[-0.3em]'}`
           )}
         />
-        <button onClick={handleAddToWallet} disabled={auth.isAuthenticating}>Add to Apple Wallet</button>
-        {downloadUrl && <a href={downloadUrl} download="pass.pkpass">Download Pass</a>}
       </Grid>
     </SbEditable>
   );
 };
 
-export default WillCard;
+export default willCard;
