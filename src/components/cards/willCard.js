@@ -1,11 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Grid } from '../layout/Grid';
 import CardImage from '../media/cardImage';
 import CircularImage from '../media/circularImage';
 import BasicCardContent from './basicCardContent';
-import AuthContext from '../../contexts/AuthContext'; // Import the AuthContext
+import appleWalletBadge from '../../assets/apple-wallet-badge.svg'; // Path to the downloaded badge
+
 
 const WillCard = ({
   blok: {
@@ -24,22 +25,20 @@ const WillCard = ({
   isDark,
 }) => {
   const [downloadUrl, setDownloadUrl] = useState('');
-  const auth = useContext(AuthContext); // Use the AuthContext to get user data
+
+  // Mock data for testing
+  const mockUserData = {
+    membershipNumber: '123456789',
+    firstName: 'John',
+    lastName: 'Doe'
+  };
 
   // Handler for adding to Apple Wallet
   const handleAddToWallet = async () => {
-    if (!auth.userProfile || auth.isAuthenticating) {
-      console.error('User not authenticated');
-      return;
-    }
-
-    // Extract user details from auth context
-    const membershipNumber = auth.userProfile?.memberships[0]?.membershipNumber;
-    const firstName = auth.userProfile?.contact?.name?.fullNameParsed?.firstName;
-    const lastName = auth.userProfile?.contact?.name?.fullNameParsed?.lastName;
+    const { membershipNumber, firstName, lastName } = mockUserData;
 
     try {
-      const response = await fetch('http://localhost:64946/.netlify/functions/generate-pass', {
+      const response = await fetch('http://localhost:8888/.netlify/functions/generate-pass', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -130,8 +129,12 @@ const WillCard = ({
             `${isRound && filename ? '' : 'su-mt-[-0.3em]'}`
           )}
         />
-        <button onClick={handleAddToWallet} disabled={auth.isAuthenticating}>Add to Apple Wallet</button>
-        {downloadUrl && <a href={downloadUrl} download="pass.pkpass">Download Pass</a>}
+        <div>
+          <button onClick={handleAddToWallet} style={{ background: 'none', border: 'none' }}>
+            <img src={appleWalletBadge} alt="Add to Apple Wallet" />
+          </button>
+          {downloadUrl && <a href={downloadUrl} download="pass.pkpass">Download Pass</a>}
+        </div>
       </Grid>
     </SbEditable>
   );
