@@ -39,7 +39,7 @@ const WillCard = ({
     const lastName = auth.userProfile?.contact?.name?.fullNameParsed?.lastName;
 
     try {
-      const response = await fetch('YOUR_NETLIFY_FUNCTION_ENDPOINT', {
+      const response = await fetch('http://localhost:64946/.netlify/functions/generate-pass', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
