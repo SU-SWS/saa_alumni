@@ -38,7 +38,7 @@ const WillCard = ({
     const { membershipNumber, firstName, lastName } = mockUserData;
 
     try {
-      const response = await fetch('/.netlify/functions/generate-pass', 
+      const response = await fetch('/.netlify/functions/generate-pass', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
