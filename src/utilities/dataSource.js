@@ -137,6 +137,7 @@ export const heroGradient = {
   black: 'saa-black',
   brick: 'su-to-brick',
   'palo-alto-dark': 'su-to-palo-alto-dark',
+  white: 'su-to-white',
 };
 
 export const modularTypes = {
