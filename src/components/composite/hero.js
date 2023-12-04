@@ -14,7 +14,7 @@ const Hero = ({
   blok: {
     headlineSize,
     isDarkGradient,
-    heroGradient: gradientToColor,
+    heroGradient: gradientProp,
     imageFocus,
     cta,
     image: { filename, focus } = {},
@@ -34,10 +34,10 @@ const Hero = ({
     heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
-  let gradientTo = heroGradient[gradientToColor];
+  let gradientFrom = heroGradient[gradientProp];
 
   if (isDarkGradient) {
-    gradientTo = 'su-from-black-true-opacity-20';
+    gradientFrom = 'su-from-black-true-opacity-20';
   }
 
   const numCta = getNumBloks(cta);
@@ -61,8 +61,8 @@ const Hero = ({
         )}
         <div
           className={dcnb(
-            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-from-transparent',
-            gradientTo
+            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black xs:su-from-transparent',
+            gradientFrom
           )}
           aria-hidden="true"
         />

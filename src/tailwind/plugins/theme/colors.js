@@ -43,5 +43,8 @@ module.exports = function () {
     'palo-verde': {
       xdark: '#062220',
     },
+    'brick-opacity-30' : 'rgba(101, 28, 50, 0.3)',
+    'palo-alto-dark-opacity-30': 'rgba(1, 66, 64, 0.3)',
+    'white-opacity-30' : 'rgba(255, 255, 255, 0.3)',
   };
 };
