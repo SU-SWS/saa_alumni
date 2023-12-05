@@ -12,12 +12,21 @@ exports.handler = async (event, context) => {
     };
   }
 
+  // Debugging: Environment variables
+  console.log('Environment Variables:');
+  console.log('WWDR Path:', process.env.APPLE_WWDR_CERTIFICATE_PATH);
+  console.log('Certificate Path:', process.env.PASS_SIGNING_CERTIFICATE_PATH);
+  console.log('Certificate Password:', process.env.PASS_CERTIFICATE_PASSWORD);
+
   try {
     const { membershipNumber, firstName, lastName } = JSON.parse(event.body);
 
     // Corrected file path
     const passJsonPath = path.join(__dirname, '..', '..', 'stanford.pass', 'pass.json');
+    console.log('Pass JSON Path:', passJsonPath); // Debugging: File path
+
     const passData = JSON.parse(fs.readFileSync(passJsonPath, 'utf8'));
+    console.log('Pass Data:', passData); // Debugging: Pass data
 
     // Initialize a pass
     const pass = new Pass({
@@ -45,8 +54,12 @@ exports.handler = async (event, context) => {
       value: `${firstName} ${lastName}`
     }];
 
+    // Debugging: Pass properties
+    console.log('Pass Properties:', pass.serialNumber, pass.barcodes, pass.primaryFields);
+
     // Add icon file to the pass
     const iconPath = path.join(__dirname, '..', '..', 'stanford.pass', 'icon.png');
+    console.log('Icon Path:', iconPath); // Debugging: Icon path
     pass.images.icon = fs.readFileSync(iconPath);
 
     // Generate the pass and capture the output stream
@@ -70,7 +83,7 @@ exports.handler = async (event, context) => {
     console.error('Error generating the pass:', error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Server Error' }),
+      body: JSON.stringify({ error: 'Server Error', details: error.toString() }),
     };
   }
 };
