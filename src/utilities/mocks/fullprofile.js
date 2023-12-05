@@ -10,6 +10,7 @@ export const fullprofileMockData = {
   },
   contact: {
     birthDate: '1979-08-14',
+    degreeStringNametagWithCert: `MBA '03`,
     preferredPhoneType: 'Mobile',
     preferredAddress: 'Home',
     preferredEmail: 'Home Email',
@@ -1099,22 +1100,4 @@ export const fullprofileMockData = {
     spousalConsent: true,
     anonymity: false,
   },
-  memberships: [
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '123456789',
-      membershipType: 'Life',
-      membershipAffiliation: 'Alum',
-      membershipStartDate: '2011',
-      membershipGroup: 'SAA',
-    },
-    {
-      membershipStatus: 'Active',
-      membershipNumber: '987654321',
-      membershipType: 'Life',
-      membershipAffiliation: 'Alum',
-      membershipStartDate: '2011',
-      membershipGroup: 'GSB',
-    },
-  ],
 };

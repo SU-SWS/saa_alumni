@@ -266,6 +266,7 @@ const InterstitialPage = (props) => {
                               to={`${slug}/form`}
                               className={styles.travelerLink}
                               state={{ travelers: value[0].registrantsData }}
+                              data-cy="next-btn"
                             >
                               Next
                               <HeroIcon
