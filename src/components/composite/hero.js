@@ -34,10 +34,10 @@ const Hero = ({
     heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
-  let gradientFrom = heroGradient[gradientProp];
+  let gradient = heroGradient[gradientProp];
 
   if (isDarkGradient) {
-    gradientFrom = 'su-from-black-true-opacity-20';
+    gradient = 'su-from-black-true-opacity-20';
   }
 
   const numCta = getNumBloks(cta);
@@ -62,7 +62,7 @@ const Hero = ({
         <div
           className={dcnb(
             'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black xs:su-from-transparent',
-            gradientFrom
+            gradient
           )}
           aria-hidden="true"
         />
