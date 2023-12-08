@@ -4,8 +4,12 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
-  console.log('Received event:', event);
+  // Log the entire event object and HTTP method
+  console.log('Received event:', JSON.stringify(event, null, 2));
+  console.log('HTTP Method:', event.httpMethod);
+
   if (event.httpMethod !== 'POST') {
+    console.log("Method not allowed. Received:", event.httpMethod);
     return {
       statusCode: 405,
       body: 'Method Not Allowed',
@@ -19,14 +23,15 @@ exports.handler = async (event, context) => {
   console.log('Certificate Password:', process.env.PASS_CERTIFICATE_PASSWORD);
 
   try {
+    // Ensure the event body exists and log it
+    if (!event.body) {
+      throw new Error("No body in the request");
+    }
+    console.log('Event Body:', event.body);
+
     const { membershipNumber, firstName, lastName } = JSON.parse(event.body);
+    console.log('Parsed Data:', { membershipNumber, firstName, lastName });
 
-    // Corrected file path
-    const passJsonPath = path.join(__dirname, '..', '..', 'stanford.pass', 'pass.json');
-    console.log('Pass JSON Path:', passJsonPath); // Debugging: File path
-
-    const passData = JSON.parse(fs.readFileSync(passJsonPath, 'utf8'));
-    console.log('Pass Data:', passData); // Debugging: Pass data
 
     // Initialize a pass
     const pass = new Pass({
@@ -80,7 +85,7 @@ exports.handler = async (event, context) => {
       isBase64Encoded: true,
     };
   } catch (error) {
-    console.error('Error generating the pass:', error);
+    console.error('Error processing the request:', error);
     return {
       statusCode: 500,
       body: JSON.stringify({ error: 'Server Error', details: error.toString() }),
