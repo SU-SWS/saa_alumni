@@ -15,6 +15,44 @@ import AuthContext from '../../../contexts/AuthContext';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import * as styles from './lightFormPage.styles';
 import { FlexBox } from '../../layout/FlexBox';
+import SbLink from '../../../utilities/sbLink';
+
+const NoMembershipError = () => (
+  <div>
+    <Heading level={2} size="2" weight="semibold" className="su-rs-mb-3">
+      Interested in joining SAA?
+    </Heading>
+    <p className="su-card-paragraph">
+      <SbLink link="/membership/join">Join now</SbLink> or visit our{' '}
+      <SbLink link="/membership/faq">Membership FAQs</SbLink> page to learn more
+      details about our membership planms and benefits.
+    </p>
+    <p className="su-card-paragraph su-mb-0">
+      If you purchased your membership online more than one business day ago,
+      and your membership is not recognized after logging in, call us at (650)
+      725-0692 or email us at{' '}
+      <a href="mailto:membership@alumni.stanford.edu">
+        membership@alumni.stanford.edu
+      </a>
+    </p>
+  </div>
+);
+
+const FullPaidMembership = () => (
+  <div>
+    <Heading level={2} size="2" weight="semibold" className="su-rs-mb-3">
+      Your membership plan has been paid in full.
+    </Heading>
+    <p className="su-card-paragraph su-mb-0">
+      Find your membership card <SbLink link="/membership/saacard">here</SbLink>{' '}
+      and{' '}
+      <SbLink link="/perks/">
+        learn more about your SAA membership benefits
+      </SbLink>
+      .
+    </p>
+  </div>
+);
 
 const LightFormPage = (props) => {
   const {
@@ -32,31 +70,15 @@ const LightFormPage = (props) => {
   } = props;
   const { userProfile } = useContext(AuthContext);
   const numAnkle = getNumBloks(ankleContent);
-  const [kwoCreds, setKwoCreds] = useState('');
   const memberships = userProfile?.memberships;
+  const [kwoCreds, setKwoCreds] = useState('');
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  let paymentRefId = false;
-
-  if (memberships) {
-    memberships.forEach((membership) => {
-      if (!paymentRefId && membership.membershipGroup === 'SAA') {
-        paymentRefId = membership.membershipGGPaymentReferenceID;
-      }
-    });
-  }
+  const [error, setError] = useState(false);
+  const [paymentRefId, setPaymentRefId] = useState(false);
 
   // Use the useEffect hook to fetch nonce when the component mounts
   useEffect(() => {
     if (!orgId || !dssId) {
-      return;
-    }
-
-    if (paymentRefId === null) {
-      console.log('paymentRefId is missing.');
-      setError('Payment reference ID is missing.');
-      setLoading(false);
       return;
     }
 
@@ -83,8 +105,36 @@ const LightFormPage = (props) => {
       }
     };
 
-    fetchData();
-  }, [orgId, dssId, paymentRefId]);
+    const findPaymentRefId = () => {
+      const saaMembership = memberships?.find(
+        (membership) => membership.membershipGroup === 'SAA'
+      );
+
+      if (saaMembership) {
+        setPaymentRefId(saaMembership?.membershipGGPaymentReferenceID);
+        if (paymentRefId === null) {
+          console.error('PaymentRefId is missing.');
+          setError(true);
+          setLoading(false);
+        } else {
+          setLoading(false);
+          fetchData();
+        }
+      } else {
+        console.error('No SAA Membership found');
+        setError(true);
+        setLoading(false);
+      }
+    };
+
+    if (memberships?.length === 0) {
+      setPaymentRefId(false);
+      setError(true);
+      setLoading(false);
+    } else if (memberships) {
+      findPaymentRefId();
+    }
+  }, [orgId, dssId, memberships, paymentRefId]);
 
   return (
     <AuthenticatedPage>
@@ -130,16 +180,6 @@ const LightFormPage = (props) => {
                     styles.formCardStyle
                   )}
                 >
-                  <div>
-                    <Heading
-                      level={2}
-                      size="2"
-                      weight="semibold"
-                      className="su-rs-mb-3"
-                    >
-                      {formHeading}
-                    </Heading>
-                  </div>
                   {loading ? (
                     <div className="su-flex su-flex-row">
                       <ClipLoader color="#00BFFF" height={50} width={50} />
@@ -152,16 +192,31 @@ const LightFormPage = (props) => {
                   ) : (
                     <>
                       {error ? (
-                        <div>
-                          <Heading>An Error has occured</Heading>
-                          <p>{error}</p>
-                        </div>
+                        <>
+                          {paymentRefId === null ? (
+                            <FullPaidMembership />
+                          ) : (
+                            <NoMembershipError />
+                          )}
+                        </>
                       ) : (
-                        <CreateBloks
-                          blokSection={giveGabForm}
-                          bgCardStyle="su-bg-transparent"
-                          kwoCredentials={kwoCreds}
-                        />
+                        <>
+                          <div>
+                            <Heading
+                              level={2}
+                              size="2"
+                              weight="semibold"
+                              className="su-rs-mb-3"
+                            >
+                              {formHeading}
+                            </Heading>
+                          </div>
+                          <CreateBloks
+                            blokSection={giveGabForm}
+                            bgCardStyle="su-bg-transparent"
+                            kwoCredentials={kwoCreds}
+                          />
+                        </>
                       )}
                     </>
                   )}
