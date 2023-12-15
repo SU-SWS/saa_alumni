@@ -23,7 +23,7 @@
     "cookie-parser": "^1.4.6",
     "decanter": "^7.1.2",
     "fast-sort": "^3.4.0",
-    "gatsby": "^4.25.7",
+    "gatsby": "^5.12.12",
     "gatsby-link": "^4.25.0",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
     "gatsby-plugin-google-tagmanager": "^4.25.0",
