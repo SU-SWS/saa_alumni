@@ -1,8 +1,7 @@
 // Find out whether a WYSIWYG has content
 
-import { render } from 'storyblok-rich-text-react-renderer';
-import getNumBloks from './getNumBloks';
+import { render } from 'storyblok-rich-text-react-renderer-ts';
 
-const hasRichText = (wysiwyg) => getNumBloks(render(wysiwyg)) > 0;
+const hasRichText = (wysiwyg) => !!render(wysiwyg);
 
 export default hasRichText;
