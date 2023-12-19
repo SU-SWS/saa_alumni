@@ -133,6 +133,13 @@ export const fontWeights = {
   bold: 'su-font-bold',
 };
 
+export const heroGradient = {
+  black: 'xs:su-to-saa-black su-from-transparent',
+  brick: 'xs:su-to-brick su-from-brick/30',
+  'palo-alto-dark': 'xs:su-to-palo-alto-dark su-from-palo-alto-dark/30',
+  white: 'xs:su-to-white su-from-white/30',
+};
+
 export const modularTypes = {
   base: 'su-type-0',
   1: 'su-type-1',

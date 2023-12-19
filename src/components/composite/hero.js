@@ -8,11 +8,13 @@ import { SrOnlyText } from '../accessibility/SrOnlyText';
 import FullWidthImage from '../media/fullWidthImage';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
+import { heroGradient } from '../../utilities/dataSource';
 
 const Hero = ({
   blok: {
     headlineSize,
     isDarkGradient,
+    heroGradient: gradientProp,
     imageFocus,
     cta,
     image: { filename, focus } = {},
@@ -32,10 +34,10 @@ const Hero = ({
     heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
   }
 
-  let gradientFrom = 'su-from-transparent';
+  let gradient = heroGradient[gradientProp];
 
   if (isDarkGradient) {
-    gradientFrom = 'su-from-black-true-opacity-20';
+    gradient = 'su-from-black-true-opacity-20';
   }
 
   const numCta = getNumBloks(cta);
@@ -59,8 +61,8 @@ const Hero = ({
         )}
         <div
           className={dcnb(
-            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black',
-            gradientFrom
+            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black xs:su-from-transparent',
+            gradient
           )}
           aria-hidden="true"
         />
