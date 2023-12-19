@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import { Grid } from '../layout/Grid';
 import CardImage from '../media/cardImage';
 import CircularImage from '../media/circularImage';
 import BasicCardContent from './basicCardContent';
-import appleWalletBadge from '../../assets/apple-wallet-badge.svg'; // Path to the downloaded badge
+import appleWalletBadge from '../../assets/apple-wallet-badge.svg';
+import AuthContext from '../../contexts/AuthContext';
 
 
 const WillCard = ({
@@ -25,19 +26,25 @@ const WillCard = ({
   isDark,
 }) => {
   const [downloadUrl, setDownloadUrl] = useState('');
+  const [userData, setUserData] = useState(null);
+  const auth = useContext(AuthContext);
 
-  // Mock data for testing
-  const mockUserData = {
-    membershipNumber: '123456789',
-    firstName: 'John',
-    lastName: 'Doe'
-  };
+  useEffect(() => {
+    if (auth.userProfile) {
+      const { firstName, lastName, membershipNumber } = auth.userProfile;
+      setUserData({ firstName, lastName, membershipNumber });
+    }
+  }, [auth.userProfile]);
 
-  // Handler for adding to Apple Wallet
   const handleAddToWallet = async () => {
-    const { membershipNumber, firstName, lastName } = mockUserData;
+    if (!userData) {
+      console.error('User data not available');
+      return;
+    }
 
     try {
+      const { membershipNumber, firstName, lastName } = userData;
+
       const response = await fetch('/.netlify/functions/generate-pass', {
         method: 'POST',
         headers: {
@@ -129,12 +136,12 @@ const WillCard = ({
             `${isRound && filename ? '' : 'su-mt-[-0.3em]'}`
           )}
         />
-        <div>
-          <button onClick={handleAddToWallet} style={{ background: 'none', border: 'none' }}>
-            <img src={appleWalletBadge} alt="Add to Apple Wallet" />
-          </button>
-          {downloadUrl && <a href={downloadUrl} download="pass.pkpass">Download Pass</a>}
-        </div>
+           <div>
+      <button onClick={handleAddToWallet} style={{ background: 'none', border: 'none' }}>
+        <img src={appleWalletBadge} alt="Add to Apple Wallet" />
+      </button>
+      {downloadUrl && <a href={downloadUrl} download="pass.pkpass">Download Pass</a>}
+    </div>
       </Grid>
     </SbEditable>
   );

@@ -65,3 +65,5 @@ yarn-error.log
 .netlify
 
 src/stanford.pass
+certs
+src/saacard.pass/pass.json
