@@ -36,4 +36,4 @@ export const paymentCardsWrapper = 'su-gap-y-xl sm:su-rounded';
 export const promoWrapper = 'su-w-full sm:su-w-auto';
 export const promoLabel = 'su-type-0 su-font-semibold';
 export const promoInput =
-  'sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2';
+  'sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30/40 su-border-b-2';

@@ -81,7 +81,7 @@ const Event = ({
     'su-rs-pb-3 su-bg-white su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
 
   // This border works well for our light background colors
-  let borderColor = 'su-border-black-30-opacity-40';
+  let borderColor = 'su-border-black-30/40';
   let headlinePadding = 'su-rs-px-2';
   let detailsPadding = 'su-rs-px-2';
   let headlineColor = 'su-text-black hocus:su-text-black';

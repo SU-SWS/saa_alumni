@@ -8,7 +8,7 @@ export const root = ({ orientation, isDark }) =>
       'sm:su-max-w-[42rem] md:su-max-w-full': orientation !== 'horizontal',
       'su-border-black hover:su-border-black-90 focus-within:su-border-black-90':
         isDark || orientation === 'horizontal',
-      'su-border-black-30-opacity-40 hover:su-border-black-30 focus-within:su-border-black-30':
+      'su-border-black-30/40 hover:su-border-black-30 focus-within:su-border-black-30':
         !isDark && orientation !== 'horizontal',
     }
   );

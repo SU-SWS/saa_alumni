@@ -24,7 +24,7 @@ const BasicCardHorizontal = ({
 }) => {
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
-    'su-bg-white su-text-black su-border su-border-solid su-border-black-30-opacity-40 su-bg-clip-padding su-shadow-sm su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
+    'su-bg-white su-text-black su-border su-border-solid su-border-black-30/40 su-bg-clip-padding su-shadow-sm su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
 
   // Basic card image has aspect ratio 3x2 for non-round option
   let cardImage = (

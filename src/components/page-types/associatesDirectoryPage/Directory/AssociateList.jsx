@@ -21,7 +21,7 @@ const AssociateListProps = {
 
 const AssociateList = ({ letter, associates, onlyNewMembers, recentYear }) => (
   <div>
-    <h4 className="su-p-10 su-text-cardinal-red-xdark su-font-serif su-border-b su-border-dashed su-border-1 su-border-black-30-opacity-40">
+    <h4 className="su-p-10 su-text-cardinal-red-xdark su-font-serif su-border-b su-border-dashed su-border-1 su-border-black-30/40">
       {letter}
     </h4>
     <ul className="su-p-0 su-list-none">

@@ -17,7 +17,7 @@ const IconCard = ({
   blok,
   isDark,
 }) => {
-  let cardStyles = 'su-bg-white su-border-black-30-opacity-40';
+  let cardStyles = 'su-bg-white su-border-black-30/40';
   let iconColor = 'su-text-digital-red group-hocus:!su-text-digital-red-light';
   let headlineColor = 'su-text-black hocus:su-text-digital-red-light';
   let headlineIconStyles = 'su-relative su-inline-block';
