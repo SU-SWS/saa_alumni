@@ -14,7 +14,6 @@
     "@fortawesome/pro-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@heroicons/react": "^1.0.6",
-    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.7",
     "adapt-auth-sdk": "^1.0.20",
     "algoliasearch": "^4.20.0",
@@ -65,7 +64,6 @@
     "storyblok-react": "^0.1.2",
     "storyblok-rich-text-react-renderer-ts": "^3.2.0",
     "tabbable": "^5.3.3",
-    "tailwindcss-interaction-variants": "^5.0.0",
     "url-parse": "^1.5.10",
     "use-query-params": "^1.2.3",
     "xml2js": "^0.6.2"
