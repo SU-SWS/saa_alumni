@@ -490,7 +490,7 @@ export const superheadStyles = {
   'gradient-underline': {
     light:
       'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-4 hocus:su-no-gradient-border',
-    dark: 'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-transition-colors hocus:su-no-gradient-border',
+    dark: 'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-4 su-transition-colors hocus:su-no-gradient-border',
   },
   'red-back-link': {
     light:
