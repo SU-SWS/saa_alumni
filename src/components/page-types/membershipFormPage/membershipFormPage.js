@@ -25,6 +25,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
 import { formatUsDate } from '../../../utilities/transformDate';
 import { isAlum } from '../../../utilities/isAlum';
+import AlumniLogo from '../../../images/stanford_alumni-color.png';
 
 // The type of registrant interstitial page has been set as the default preview within StoryBlok
 const MembershipFormPage = (props) => {
@@ -270,7 +271,13 @@ const MembershipFormPage = (props) => {
                             justifyContent="center"
                             className={styles.logoWrapper}
                           >
-                            <Logo className={styles.logo} />
+                            <img
+                              src={AlumniLogo}
+                              className={styles.logo}
+                              alt="Stanford Alumni Association"
+                              width="260"
+                              height="38"
+                            />
                           </FlexBox>
                           <CreateBloks blokSection={intro} />
                         </div>
@@ -375,19 +382,25 @@ const MembershipFormPage = (props) => {
                                 htmlFor="su-promocode"
                                 className={styles.promoLabel}
                               >
-                                Promo code
+                                Promo code{' '}
+                                <span className="su-font-normal su-italic su-text-16">
+                                  (10 character limit)
+                                </span>
                               </label>
                               <input
                                 id="su-promocode"
+                                data-test="su-promocode"
                                 className={styles.promoInput}
                                 value={promoCode}
                                 onChange={getPromoCode}
+                                maxLength="10"
                               />
                             </FlexBox>
                           </FlexBox>
                           <FlexBox justifyContent="center">
                             {isContactSelected() ? (
                               <Link
+                                data-cy="continue-btn"
                                 to={nextPageLink}
                                 className={styles.nextLinkActive}
                                 state={{
@@ -403,7 +416,10 @@ const MembershipFormPage = (props) => {
                                 />
                               </Link>
                             ) : (
-                              <div className={styles.nextLinkDisabled}>
+                              <div
+                                className={styles.nextLinkDisabled}
+                                data-cy="disabled-btn"
+                              >
                                 Continue
                                 <HeroIcon
                                   iconType="arrow-right"

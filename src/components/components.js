@@ -84,12 +84,22 @@ import VerticalNavWrapper from './navigation/verticalNavWrapper';
 import VerticalNavItem from './navigation/verticalNavItem';
 import Wysiwyg from './simple/wysiwyg';
 import MembershipPaymentOptions from './page-types/membershipFormPage/membershipPaymentOptions';
+import AssociatesDirectoryPage from './page-types/associatesDirectoryPage/associatesDirectoryPage';
+import AssociatesDirectory from './page-types/associatesDirectoryPage/associatesDirectory';
+import MegaMenu from './navigation/MegaMenu/megaMenu';
+import MegaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
+import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
+import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
+import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
+import GsbCardPage from './page-types/gsbCardPage';
 
 const ComponentList = {
   accordion: Accordion,
   accordionItem: AccordionItem,
   alert: SBAlert,
   alertCtaLink: SBAlertCtaLink,
+  associatesDirectoryPage: AssociatesDirectoryPage,
+  associatesDirectory: AssociatesDirectory,
   basicCard: BasicCard,
   basicCardHorizontal: BasicCardHorizontal,
   basicPage: BasicPage,
@@ -111,6 +121,7 @@ const ComponentList = {
   globalHeader: SBGlobalHeader,
   globalHeaderPicker: SBGlobalHeaderPicker,
   grid: SBGrid,
+  gsbCardPage: GsbCardPage,
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
@@ -126,6 +137,11 @@ const ComponentList = {
   mainNavItem: MainNavItem,
   masthead: Masthead,
   mastheadPicker: MastheadPicker,
+  megaMenu: MegaMenu,
+  megaMenuPanel: MegaMenuPanel,
+  megaMenuCard: MegaMenuCard,
+  megaMenuLinkItem: MegaMenuLinkItem,
+  megaMenuLinkGroup: MegaMenuLinkGroup,
   membershipCard: MembershipCard,
   membershipFormPage: MembershipFormPage,
   membershipFullPaymentForm: MembershipFullPaymentForm,

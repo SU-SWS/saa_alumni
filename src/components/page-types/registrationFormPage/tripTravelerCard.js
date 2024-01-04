@@ -43,6 +43,7 @@ const TripTravelerCard = ({ traveler }) => {
   return (
     <button
       type="button"
+      data-test={`card-${traveler.su_dname.replaceAll(' ', '-').toLowerCase()}`}
       className="su-basefont-23 su-p-36 su-stretch-link su-w-full su-transition-all su-bg-saa-black-dark su-border-3 su-border-saa-black-dark hocus:su-gradient-border hocus:su-border-to-rt-palo-verde-dark-to-saa-electric-blue"
       onClick={toggleRelationship}
     >

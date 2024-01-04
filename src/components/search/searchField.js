@@ -118,6 +118,7 @@ const SearchField = React.forwardRef(
               <label className="su-grow su-max-w-full">
                 <span className="su-sr-only">Search</span>
                 <input
+                  data-test="search--modal-input"
                   type="text"
                   role="combobox"
                   aria-autocomplete="list"
@@ -160,7 +161,11 @@ const SearchField = React.forwardRef(
                 autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
               />
             </div>
-            <button type="submit" className={submitBtnClasses}>
+            <button
+              data-cy="search--submit-btn"
+              type="submit"
+              className={submitBtnClasses}
+            >
               <Search
                 className="su-text-white su-w-20 su-h-20"
                 aria-hidden="true"
