@@ -37,7 +37,7 @@ const Hero = ({
   let gradient = heroGradient[gradientProp];
 
   if (isDarkGradient) {
-    gradient = 'su-from-black-true-opacity-20';
+    gradient = 'su-to-black-true/20';
   }
 
   const numCta = getNumBloks(cta);
@@ -61,7 +61,7 @@ const Hero = ({
         )}
         <div
           className={dcnb(
-            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black xs:su-from-transparent',
+            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-t su-from-saa-black',
             gradient
           )}
           aria-hidden="true"
