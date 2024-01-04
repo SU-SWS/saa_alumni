@@ -3,7 +3,7 @@
 }
 
 .event {
-  @apply su-flex su-flex-col su-relative su-overflow-hidden sm:su-max-w-[42rem] md:su-max-w-full su-text-black su-break-words su-w-full su-rs-pb-3 su-bg-white su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden su-border-black-30/40 su-mb-0;
+  @apply su-flex su-flex-col su-relative su-overflow-hidden sm:su-max-w-[42rem] md:su-max-w-full su-text-black su-break-words su-w-full su-rs-pb-3 su-bg-white su-border su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden su-border-black-30/40 su-mb-0;
 }
 
 .event-card {

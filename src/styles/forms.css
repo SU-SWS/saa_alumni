@@ -231,12 +231,12 @@
 
 .ggeWidget .ggeButton--forward:disabled,
 .ggeWidget .ggeButton--forward {
-  @apply su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
+  @apply su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
 }
 
 .ggeWidget .ggeButton--back:disabled,
 .ggeWidget .ggeButton--back {
-  @apply su-static su-border-2 su-pr-[3rem] su-border-solid su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
+  @apply su-static su-border-2 su-pr-[3rem] su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
 }
 
 .ggeWidget .ggeButton--forward::after,
@@ -353,7 +353,7 @@
 }
 
 .form-gradient {
-  @apply su-border-2 su-border-solid su-backdrop-opacity-30 su-bg-gradient-to-tl su-backdrop-blur-sm su-shadow-lg su-text-white;
+  @apply su-border-2 su-backdrop-opacity-30 su-bg-gradient-to-tl su-backdrop-blur-sm su-shadow-lg su-text-white;
   background: linear-gradient(
     140.61deg,
     rgba(24, 29, 28, 0.64) 0%,
@@ -410,7 +410,7 @@
 }
 
 .ggeWidget .ggeQuestion.ggeQuestion--mobilepayment .ggeStripeButton .ggeMobilePay {
-  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
+  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
 }
 
 .ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeMobileManualEntryInner {
@@ -600,7 +600,7 @@
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--text,
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--money {
   @apply su-border-0 su-type-0 su-font-regular su-pt-14 su-pb-0;
-} 
+}
 
 .ggeWidget .ggeTally--total,
 .ggeWidget .ggeTally--total.ggeTally--money {

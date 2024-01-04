@@ -78,7 +78,7 @@ const Event = ({
   }
 
   let wrapperClasses =
-    'su-rs-pb-3 su-bg-white su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
+    'su-rs-pb-3 su-bg-white su-border su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
 
   // This border works well for our light background colors
   let borderColor = 'su-border-black-30/40';

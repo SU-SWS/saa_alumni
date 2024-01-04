@@ -2,7 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ orientation, isDark }) =>
   dcnb(
-    'su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-bg-clip-padding su-border su-border-solid su-backface-hidden',
+    'su-group su-relative su-w-full su-overflow-hidden su-bg-saa-black su-break-words su-basefont-23 su-bg-clip-padding su-border su-backface-hidden',
     {
       'su-w-full md:su-flex-row xl:su-h-500': orientation === 'horizontal',
       'sm:su-max-w-[42rem] md:su-max-w-full': orientation !== 'horizontal',

@@ -5,13 +5,13 @@ import { dcnb } from 'cnbuilder';
  */
 
 export const root =
-  'su-float-left su-border-b su-border-solid lg:su-inline-block lg:su-border-none su-border-black-20';
+  'su-float-left su-border-b lg:su-inline-block lg:su-border-none su-border-black-20';
 
 // Styles for top level buttons
 const buttonMobile =
   'su-text-black hocus:su-text-digital-red-light !su-z-[100] su-flex su-items-center su-font-semibold su-w-full hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-26 su-pr-80 su-text-20';
 const buttonDesktop =
-  'lg:su-text-white lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:su-bg-transparent lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
+  'lg:su-text-white lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:su-bg-transparent lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
 export const parentButton = ({ panelOpened, isActiveButton } = {}) =>
   dcnb(
     'su-group su-transition-colors su-text-left su-leading-snug su-bg-white focus:su-outline-none su-underline-offset-[3px] hocus:su-underline lg:su-text-19 2xl:su-text-21',

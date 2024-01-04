@@ -42,7 +42,7 @@ const ItineraryItem = ({ blok }) => {
             <FlexBox
               alignItems="center"
               justifyContent="center"
-              className="su-type-2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10 print:su-hidden"
+              className="su-type-2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-digital-red su-bg-white su-z-10 print:su-hidden"
             >
               <FaIcon
                 proFaIcon={icon}

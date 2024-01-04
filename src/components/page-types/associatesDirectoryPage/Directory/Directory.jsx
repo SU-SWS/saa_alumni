@@ -62,7 +62,7 @@ const Directory = () => {
       <div className="su-my-50">
         <input
           type="text"
-          className="su-py-10 su-px-20 su-text-19 su-border su-border-solid su-border-black-40"
+          className="su-py-10 su-px-20 su-text-19 su-border su-border-black-40"
           placeholder="Search for a Name"
           value={search}
           onChange={handleSearch}

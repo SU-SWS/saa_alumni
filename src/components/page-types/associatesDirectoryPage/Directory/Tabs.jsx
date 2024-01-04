@@ -53,7 +53,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
   return (
     <div>
       <nav
-        className="su-flex su-flex-wrap su-border-b su-border-solid su-border-1 su-border-black-30/40"
+        className="su-flex su-flex-wrap su-border-b su-border-black-30/40"
         aria-label="Groups of Associates"
       >
         {Object.keys(tabsGroups).map((group) => (

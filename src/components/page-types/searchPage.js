@@ -211,7 +211,7 @@ const SearchPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
 
-  const wrapperClasses = `su-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
+  const wrapperClasses = `su-grow su-w-auto su-border-0 su-border-b su-border-black-60`;
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-bg-transparent su-text-black-70 hocus:su-text-black hocus:su-underline su-text-m0 su-font-semibold su-border-none  su-p-0 su-rs-mr-1 su-mt-03em`;
 
@@ -345,7 +345,7 @@ const SearchPage = (props) => {
                       )}
                     </button>
                     {opened && (
-                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-10">
+                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-black-10">
                         <div className="su-rs-p-0">{facets}</div>
 
                         <div className="su-flex su-justify-end su-rs-px-0 su-rs-py-1 su-bg-foggy-light su-border-t su-border-black-20">

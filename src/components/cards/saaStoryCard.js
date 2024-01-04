@@ -44,7 +44,7 @@ const SaaStoryCard = ({
   }
 
   let wrapperClasses =
-    'su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
+    'su-border su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
   let contentClasses = 'su-flex-1 su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
   let borderColor = 'su-border-black-30/40';
   let headlineColor = 'su-text-black hocus:su-text-black';

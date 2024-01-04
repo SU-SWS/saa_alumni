@@ -88,7 +88,7 @@ const GsbCardPage = (props) => {
                                 />
                               </div>
 
-                              <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-[50%] su-h-[30%] su-pr-8 su-flex su-items-center">
+                              <div className="su-font-bold su-font-serif su-text-18 sm:su-text-22 su-w-1/2 su-h-[30%] su-pr-8 su-flex su-items-center">
                                 GSBAA Membership
                               </div>
                               <div className="su-flex su-flex-col su-pb-[2.3rem] md:su-pb-[4rem] su-text-14 sm:su-text-22 su-mt-auto">

@@ -2,7 +2,7 @@ import { dcnb } from 'cnbuilder';
 
 export const root = ({ isHomesite }) =>
   dcnb(
-    'su-relative su-border-b su-border-solid last:su-border-none lg:su-inline-block lg:su-border-none',
+    'su-relative su-border-b last:su-border-none lg:su-inline-block lg:su-border-none',
     {
       'su-border-digital-red-light': isHomesite,
       'su-border-black-80': !isHomesite,
@@ -13,7 +13,7 @@ export const root = ({ isHomesite }) =>
 const buttonMobile =
   'su-flex su-items-center su-font-semibold su-w-full hocus:su-shadow-none hocus:su-underline su-py-20 su-pl-26 su-pr-80 su-text-20';
 const buttonDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
+  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-30 lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-5 lg:su-border-transparent lg:hocus:su-border-digital-red-xlight';
 export const parentButton = ({
   panelOpened,
   isActiveButton,
@@ -62,7 +62,7 @@ export const chevron = ({ panelOpened, isActiveButton } = {}) =>
 const topLinkMobile =
   'su-flex su-items-center su-font-semibold hocus:su-underline hocus:su-text-white hocus:su-bg-black-90 su-py-20 su-px-26 su-text-20';
 const topLinkDesktop =
-  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-solid lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-20 2xl:su-text-22';
+  'lg:su-items-end lg:su-px-15 xl:su-pt-20 lg:su-pb-18 xl:su-pb-[3rem] lg:hocus:su-bg-transparent lg:su-whitespace-pre lg:su-font-bold lg:hocus:su-text-digital-red-xlight lg:hocus:su-no-underline lg:su-border-b-[5px] lg:su-border-transparent lg:hocus:su-border-digital-red-xlight lg:su-text-20 2xl:su-text-22';
 export const topLink = dcnb(
   'su-group su-text-white su-transition-colors su-text-left su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px]',
   topLinkMobile,

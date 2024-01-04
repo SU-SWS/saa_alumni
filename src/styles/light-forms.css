@@ -403,7 +403,7 @@
 .ggeWidget[class*="membership-forms"] .ggeButton--back {
   border-image-source: none;
   background-image: none;
-  @apply su-static su-pr-[3rem] su-translate-x-0 su-relative su-text-digital-red su-border-solid su-border-digital-red hocus:su-border-cardinal-red-xdark hocus:su-bg-transparent hocus:su-text-cardinal-red-xdark;
+  @apply su-static su-pr-[3rem] su-translate-x-0 su-relative su-text-digital-red su-border-digital-red hocus:su-border-cardinal-red-xdark hocus:su-bg-transparent hocus:su-text-cardinal-red-xdark;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeButton--back::before {

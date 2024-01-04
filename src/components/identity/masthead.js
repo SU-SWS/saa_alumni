@@ -108,7 +108,7 @@ const Masthead = ({
             <FlexBox
               direction="col"
               className={dcnb(
-                'su-grow lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b xl:su-border-solid xl:su-border-black-90',
+                'su-grow lg:su-pr-30 xl:su-pr-[6rem] 2xl:su-pr-61 3xl:su-cc lg:su-pl-0 xl:su-pl-30 3xl:su-pl-61 su-bg-cardinal-red-xdark xl:su-border-b  xl:su-border-black-90',
                 mainNavBgColorXl
               )}
             >
@@ -141,7 +141,7 @@ const Masthead = ({
           <CreateBloks
             blokSection={mainNav}
             className={dcnb(
-              'lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-solid su-border-black-90',
+              'lg:su-flex xl:su-hidden su-rs-pt-1 su-pr-20 su-border-b su-border-black-90',
               mainNavBgColorLg
             )}
           />
