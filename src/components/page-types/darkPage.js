@@ -33,7 +33,7 @@ const DarkPage = (props) => {
         <Container
           as="main"
           id="main-content"
-          className="dark-page su-relative su-flex-grow su-w-full su-bg-saa-black su-text-white"
+          className="dark-page su-relative su-grow su-w-full su-bg-saa-black su-text-white"
           width="full"
         >
           <header className="su-basefont-23">

@@ -17,11 +17,11 @@ const Associate = ({ isEnabled = true, person }) => {
 
   return (
     <li className="su-flex even:su-bg-black-10">
-      <div className="su-flex-1 su-w-[50%] su-py-10 su-pl-30">
+      <div className="su-flex-1 su-w-1/2 su-py-10 su-pl-30">
         {person.name.first} {person.name.last}
       </div>
       <div> </div>
-      <div className="su-flex-1 su-w-[50%] su-py-10">
+      <div className="su-flex-1 su-w-1/2 su-py-10">
         {Object.values(person.years || []).join(', ')}
       </div>
     </li>

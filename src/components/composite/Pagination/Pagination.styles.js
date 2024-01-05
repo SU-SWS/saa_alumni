@@ -4,7 +4,7 @@ export const root = '';
 export const listWrapper =
   'su-flex su-rs-mt-6 su-rs-mb-7 su-justify-center md:su-space-x-36';
 export const pagesList =
-  'su-list-none su-flex su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-text-[26px] su-font-bold';
+  'su-list-none su-flex su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-text-26 su-font-bold';
 export const pageItem = ({ page } = {}) =>
   dcnb('su-mb-0', { 'su-px-9 md:su-px-11 su-bb': page === '...' });
 export const pageLink = ({ active } = {}) =>

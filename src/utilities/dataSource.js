@@ -50,7 +50,7 @@ export const buttonSizes = {
   default:
     'su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24',
   large:
-    'su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24',
+    'su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-22 md:su-pb-24 su-text-18 md:su-text-24',
   link: 'su-text-19 md:su-text-21 xl:su-text-23',
 };
 
@@ -134,10 +134,10 @@ export const fontWeights = {
 };
 
 export const heroGradient = {
-  black: 'xs:su-to-saa-black su-from-transparent',
-  brick: 'xs:su-to-brick su-from-brick/30',
-  'palo-alto-dark': 'xs:su-to-palo-alto-dark su-from-palo-alto-dark/30',
-  white: 'xs:su-to-white su-from-white/30',
+  black: 'su-from-saa-black',
+  brick: 'su-from-brick su-to-brick/30',
+  'palo-alto-dark': 'su-from-palo-alto-dark su-to-palo-alto-dark/30',
+  white: 'su-from-white su-to-white/30',
 };
 
 export const modularTypes = {
@@ -489,8 +489,8 @@ export const mediaAspectRatio = {
 export const superheadStyles = {
   'gradient-underline': {
     light:
-      'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid hocus:su-no-gradient-border',
-    dark: 'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-[4px] su-border-solid su-transition-colors hocus:su-no-gradient-border',
+      'su-text-black hocus:su-text-saa-electric-blue su-border-saa-electric-blue su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-4 hocus:su-no-gradient-border',
+    dark: 'su-text-white hocus:su-text-saa-electric-blue-light su-border-saa-electric-blue-light su-gradient-border su-border-to-r-palo-verde-dark-to-saa-electric-blue su-border-b-4 su-transition-colors hocus:su-no-gradient-border',
   },
   'red-back-link': {
     light:

@@ -37,7 +37,7 @@ const Hero = ({
   let gradient = heroGradient[gradientProp];
 
   if (isDarkGradient) {
-    gradient = 'su-from-black-true-opacity-20';
+    gradient = 'su-to-black-true/20';
   }
 
   const numCta = getNumBloks(cta);
@@ -61,7 +61,7 @@ const Hero = ({
         )}
         <div
           className={dcnb(
-            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-b su-to-saa-black xs:su-from-transparent',
+            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-t su-from-saa-black',
             gradient
           )}
           aria-hidden="true"
@@ -70,7 +70,7 @@ const Hero = ({
           className={`su-relative su-rs-pt-9
           ${isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'}`}
         >
-          <FlexBox direction="col" className="lg:su-mt-[190px]">
+          <FlexBox direction="col" className="lg:su-mt-[19rem]">
             {(sansSuper || serifSuper || headline || sansSub) && (
               <div className="su-text-center su-text-white">
                 {sansSuper && (
@@ -106,7 +106,7 @@ const Hero = ({
               </div>
             )}
             {!isHideScroll && (
-              <div className="su-text-center su-text-white su-flex-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22">
+              <div className="su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22">
                 <p className="su-mb-02em">Scroll to explore</p>
                 <a
                   href="#page-title"
@@ -114,7 +114,7 @@ const Hero = ({
                 >
                   <SrOnlyText>Jump to main content</SrOnlyText>
                   <ArrowDownIcon
-                    className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hover:su-text-white group-focus:su-text-white group-hover:su-bg-cardinal-red-dark group-focus:su-bg-cardinal-red-dark"
+                    className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark"
                     aria-hidden="true"
                   />
                 </a>

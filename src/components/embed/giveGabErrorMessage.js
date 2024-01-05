@@ -21,8 +21,8 @@ const GiveGabErrorMessage = (props) => {
   } = props;
   const location = useLocation();
   const linkStyle = isDark
-    ? 'hocus:su-border-b hocus:su-border-digital-red-xlight su-text-white hocus:su-text-white group-hover:su-text-white group-focus:su-text-white'
-    : 'su-underline-offset-[3px] hocus:su-underline su-text-digital-red-light group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red';
+    ? 'hocus:su-border-b hocus:su-border-digital-red-xlight su-text-white hocus:su-text-white group-hocus:su-text-white'
+    : 'su-underline-offset-[3px] hocus:su-underline su-text-digital-red-light group-hocus:su-text-cardinal-red';
   const iconStyle = isDark
     ? 'su-text-digital-red-xlight'
     : 'su-text-digital-red-light';

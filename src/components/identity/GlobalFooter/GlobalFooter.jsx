@@ -99,7 +99,7 @@ export const GlobalFooter = () => (
             </li>
             <li className={styles.secondaryMenuListItem}>
               <a
-                href="https://bulletin.stanford.edu/pages/c7vDgeOuJIfpZe8GKmW3"
+                href="https://non-discrimination.stanford.edu/"
                 title="Non-discrimination policy"
                 className={styles.secondaryMenuLink}
               >

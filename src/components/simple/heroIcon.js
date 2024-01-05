@@ -23,88 +23,74 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
   const heroIconMap = {
     video: {
       heroicon: VideoCameraIcon,
-      baseStyle: 'su-w-08em su-mt-[-0.2em]',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      baseStyle: 'su-w-08em su--mt-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     play: {
       heroicon: PlayIcon,
       baseStyle: 'su-w-08em su-ml-7 su--mt-3',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     podcast: {
       heroicon: MicrophoneIcon,
       baseStyle: 'su-w-08em su-mt-[-0.25em]',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     external: {
       heroicon: ArrowRightIcon,
-      baseStyle:
-        'su-w-08em su-ml-02em su--rotate-45  group-hover:su--rotate-45 group-focus:su--rotate-45',
+      baseStyle: 'su-w-08em su-ml-02em su--rotate-45 group-hocus:su--rotate-45',
       animate:
-        'group-hover:su-translate-x-01em group-focus:su-translate-x-01em group-hover:su--translate-y-01em group-focus:su--translate-y-01em',
+        'group-hocus:su-translate-x-01em group-hocus:su--translate-y-01em',
     },
     'arrow-left': {
       heroicon: ArrowLeftIcon,
-      baseStyle: 'su-w-08em su-mr-03em su-mt-02em',
-      animate:
-        'group-hover:su--translate-x-02em group-focus:su--translate-x-02em',
+      baseStyle: 'su-w-08em su-mr-03em su--mt-02em',
+      animate: 'group-hocus:su--translate-x-02em',
     },
     'arrow-right': {
       heroicon: ArrowRightIcon,
       baseStyle: 'su-w-08em su-ml-03em su--mt-02em',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     download: {
       heroicon: DownloadIcon,
       baseStyle: 'su-w-08em su-ml-4 su--mt-3',
-      animate:
-        'group-hover:su-translate-y-02em group-focus:su-translate-y-02em',
+      animate: 'group-hocus:su-translate-y-02em',
     },
     email: {
       heroicon: MailIcon,
       baseStyle: 'su-w-08em su-ml-7 su--mt-2',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     'chevron-down': {
       heroicon: ChevronDownIcon,
       baseStyle: 'su-w-[1.1em] su-ml-4 su--mt-3',
-      animate:
-        'group-hover:su-translate-y-02em group-focus:su-translate-y-02em',
+      animate: 'group-hocus:su-translate-y-02em',
     },
     'chevron-right': {
       heroicon: ChevronRightIcon,
       baseStyle: 'su-w-1em su-ml-02em su--mt-4',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     'document-duplicate': {
       heroicon: DocumentDuplicateIcon,
       baseStyle: 'su-w-1em',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     check: {
       heroicon: CheckIcon,
       baseStyle: 'su-w-1em',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     plus: {
       heroicon: PlusSmIcon,
       baseStyle: 'su-w-1em',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
     minus: {
       heroicon: MinusSmIcon,
       baseStyle: 'su-w-1em',
-      animate:
-        'group-hover:su-translate-x-02em group-focus:su-translate-x-02em',
+      animate: 'group-hocus:su-translate-x-02em',
     },
   };
 
