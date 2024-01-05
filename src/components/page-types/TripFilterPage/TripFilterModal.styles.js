@@ -9,7 +9,7 @@ export const modalBody =
 export const chipsWrapper =
   'su-pt-20 su-py-7 su-cc children:su-mr-13 children:su-mb-13';
 export const footer =
-  '!su-pr-20 sm:!su-pr-30 su-fixed su-overflow-hidden su-bottom-0 su-right-0 su-flex su-items-center su-justify-end su-rs-py-2 su-bg-gradient-to-b su-from-saa-black-dark su-to-palo-alto-dark su-w-full su-cc su-border-t su-border-black-80';
+  '!su-pr-20 sm:!su-pr-30 md:!su-pr-50 su-fixed su-overflow-hidden su-bottom-0 su-right-0 su-flex su-items-center su-justify-end su-rs-py-2 su-bg-gradient-to-b su-from-saa-black-dark su-to-palo-alto-dark su-w-full su-cc su-border-t su-border-black-80';
 export const clearAllBtn = 'su-group su-flex-row su-items-center su-block';
 export const clearAllText = 'su-relative su-text-white su-text-18';
 export const clearAllHover =

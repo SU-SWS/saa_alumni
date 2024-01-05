@@ -29,7 +29,7 @@ export const closeButtonWrapper = ({ type }) =>
   });
 export const closeButton = ({ type }) =>
   dcnb(
-    'su-group su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-absolute su-top-22 su-right-20 su-z-10',
+    'su-group su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-absolute su-top-22 su-z-10',
     {
       'su-text-white hocus:su-text-white hocus:su-bg-digital-red-xlight hocus:su-rounded-full':
         type === 'main-menu',
@@ -39,6 +39,8 @@ export const closeButton = ({ type }) =>
         type === 'mega-menu',
       'su-text-white hocus:su-text-digital-red-xlight':
         type !== 'mega-menu' && type !== 'timeout',
+      'su-right-0': type === 'trip-filter',
+      'su-right-20': type !== 'trip-filter',
     }
   );
 export const closeIcon = ({ type }) =>
