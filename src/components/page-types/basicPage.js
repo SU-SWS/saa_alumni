@@ -57,8 +57,7 @@ const BasicPage = (props) => {
                   'lg:su-hidden su-block su-mx-auto su-max-w-[35rem]',
                   {
                     'su-rs-my-2': hasHeroBanner,
-                    'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]':
-                      !hasHeroBanner,
+                    'su-rs-mt-2 su--mb-16 md:su--mb-50': !hasHeroBanner,
                   }
                 )}
               />
@@ -81,7 +80,7 @@ const BasicPage = (props) => {
                 font="serif"
                 srOnly={isSrOnlyTitle}
                 id="page-title"
-                className="su-max-w-900 su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-type-6 su-mx-auto su-max-w-1200"
+                className="su-mb-0 su-rs-py-5 xl:su-rs-py-7 su-type-6 su-mx-auto su-max-w-1200"
               >
                 {title}
               </Heading>

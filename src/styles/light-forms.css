@@ -30,7 +30,7 @@
   content: "";
   mask: url("../assets/arrow-right.svg");
   -webkit-mask-size: contain;
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45 su-bg-digital-red su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-15 su-h-15 su--rotate-45 su-bg-digital-red su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
 }
 
 .ggeWidget[class*="membership-forms"]  .ggeQuestion.ggeQuestion--error input[type="email"],
@@ -62,7 +62,7 @@
 
 .ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration,
 .ggeWidget[class*="membership-forms"] .ggeTally {
-  @apply su-border-2 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-border-4 su-border-digital-blue su-bg-fog-light;
+  @apply su-border-2 su-pt-26 su-px-26 su-pb-45 su-mb-72 su-border-4 su-border-digital-blue su-bg-fog-light;
 }
 
 /* Membership form caption order, spacing, and styling */
@@ -198,7 +198,7 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--nameOnCard .ggeQuestion__field input {
-  @apply su-mr-0 lg:su-w-[80%] 2xl:su-w-[calc(70%_-_2rem)];
+  @apply su-mr-0 lg:su-w-4/5 2xl:su-w-[calc(70%_-_2rem)];
   margin-right: 2rem;
 }
 
@@ -208,15 +208,15 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--account .ggeQuestion__field input {
-  @apply su-w-full sm:su-w-[75%] md:su-w-full;
+  @apply su-w-full sm:su-w-3/4 md:su-w-full;
 }
 
 .ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--verification {
-  @apply su-w-full md:su-w-[25%] 2xl:su-w-[30%];
+  @apply su-w-full md:su-w-1/4 2xl:su-w-[30%];
 }
 
 .ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--verification .ggeQuestion__field input {
-  @apply su-w-full sm:su-w-[25%] md:su-w-full;
+  @apply su-w-full sm:su-w-1/4 md:su-w-full;
 }
 
 .ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--monthExpires,
@@ -326,7 +326,7 @@
 
 /* Membership Checkbox */
 .ggeWidget[class*="membership-forms"] .ggePrompt .ggePrompt__checkbox input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-digital-blue su-cursor-pointer;
+  @apply su-flex su-w-24 su-h-24 su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-digital-blue su-cursor-pointer;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -343,14 +343,14 @@
 }
 
 .ggeWidget[class*="membership-forms"] .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::before {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-20 su-h-20 su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
   content: "";
   background: #006CB8;
   border-radius: 0;
 }
 
 .ggeWidget[class*="membership-forms"] .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-20 su-h-20 su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
   content: "";
   background: #ffffff;
   mask: url("../assets/check-mark.svg");
@@ -371,7 +371,7 @@
 
 /* Membership Radio Select */
 .ggeWidget[class*="membership-forms"] .ggePrompt .ggePrompt__radio input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent su-cursor-pointer;
+  @apply su-flex su-w-24 su-h-24 su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent su-cursor-pointer;
   background: #006CB8 border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -380,7 +380,7 @@
 
 .ggeWidget[class*="membership-forms"] .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
 .ggeWidget[class*="membership-forms"] .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::after {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-12 su-h-12 su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
   background: #006CB8;
   content: "";
 }
@@ -403,7 +403,7 @@
 .ggeWidget[class*="membership-forms"] .ggeButton--back {
   border-image-source: none;
   background-image: none;
-  @apply su-static su-pr-[3rem] su-translate-x-0 su-relative su-text-digital-red su-border-digital-red hocus:su-border-cardinal-red-xdark hocus:su-bg-transparent hocus:su-text-cardinal-red-xdark;
+  @apply su-static su-pr-30 su-translate-x-0 su-relative su-text-digital-red su-border-digital-red hocus:su-border-cardinal-red-xdark hocus:su-bg-transparent hocus:su-text-cardinal-red-xdark;
 }
 
 .ggeWidget[class*="membership-forms"] .ggeButton--back::before {

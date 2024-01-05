@@ -66,7 +66,7 @@ const UserNavItems = ({ expanded, userProfile }) => {
           )}
         >
           {key !== 0 && (
-            <span className="su-w-1 su-h-[2rem] su-flex su-bg-digital-red-light su-mx-12" />
+            <span className="su-w-1 su-h-20 su-flex su-bg-digital-red-light su-mx-12" />
           )}
           {link.text}
         </a>
@@ -86,7 +86,7 @@ const UserNavItems = ({ expanded, userProfile }) => {
         alignItems="center"
         className="su-px-26 lg:su-px-18 su-rs-pb-1 su-pt-18"
       >
-        <div className="su-w-[54px] su-h-[54px] su-text-[34px] su-shrink-0">
+        <div className="su-w-54 su-h-54 su-text-[3.4rem] su-shrink-0">
           <Avatar userProfile={userProfile} />
         </div>
         <div className="su-pl-10">

@@ -6,12 +6,12 @@ export const menu = 'su-flex su-list-unstyled su-bg-saa-black';
 export const listItem = 'su-mb-0';
 export const link = ({ isActive }) =>
   dcnb(
-    'su-block su-text-white su-transition-colors su-font-bold su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px] hocus:su-text-digital-red-xlight su-px-20 su-py-[4rem] su-border-b-[5px] su-border-transparent hocus:su-border-digital-red-xlight su-text-21',
+    'su-block su-text-white su-transition-colors su-font-bold su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px] hocus:su-text-digital-red-xlight su-px-20 su-py-40 su-border-b-5 su-border-transparent hocus:su-border-digital-red-xlight su-text-21',
     {
       'su-text-digital-red-xlight !su-border-digital-red-xlight': isActive,
     }
   );
-export const button = 'su-ml-[6rem] xl:su-ml-[8rem] su-mt-[-0.5rem]';
+export const button = 'su-ml-60 xl:su-ml-80 su--mt-5';
 
 // Mobile styles
 export const navWrapperMobile =
@@ -27,7 +27,7 @@ export const burger = ({ navOpened }) =>
     }
   );
 export const burgerIcon = ({ navOpened }) =>
-  dcnb('su-transition-colors su-w-[2.4rem] group-hocus:su-text-white', {
+  dcnb('su-transition-colors su-w-24 group-hocus:su-text-white', {
     'su-text-white': navOpened,
     'su-text-digital-red-xlight': !navOpened,
   });
@@ -47,6 +47,6 @@ export const linkMobile =
 export const buttonWrapperMobile = 'su-px-20 md:su-px-30 su-rs-py-2';
 export const buttonMobile = '!su-w-full su-text-center su-text-21';
 export const reserveBtn =
-  'su-inline-block children:su-inline-block su-w-fit su-group su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-8 md:su-pb-10 su-text-18 md:su-text-20 su-ml-[6rem] xl:su-ml-[8rem] su-mt-[-0.5rem]';
+  'su-inline-block children:su-inline-block su-w-fit su-group su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-8 md:su-pb-10 su-text-18 md:su-text-20 su-ml-60 xl:su-ml-80 su--mt-5';
 export const reserveMobileBtn =
   'su-inline-block children:su-inline-block su-w-fit su-group su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20 !su-w-full su-text-center su-text-21';

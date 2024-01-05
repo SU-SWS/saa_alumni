@@ -22,10 +22,10 @@ export const SBGrid = ({
   let gapClasses;
 
   if (gapWidth === 'none') {
-    gapClasses = 'su-gap-x-[1px]';
+    gapClasses = 'su-gap-x-px';
   } else if (gapWidth === 'large') {
     gapClasses =
-      'su-gap-xs md:su-gap-x-lg lg:su-gap-x-2xl xl:su-gap-x-[6rem] 2xl:su-gap-x-[7rem]';
+      'su-gap-xs md:su-gap-x-lg lg:su-gap-x-2xl xl:su-gap-x-60 2xl:su-gap-x-70';
   } else {
     gapClasses = 'su-grid-gap';
   }
@@ -38,7 +38,7 @@ export const SBGrid = ({
         alignItems={isStretchItems ? 'stretch' : 'start'}
         justifyItems={alignment}
         className={dcnb(
-          'su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]',
+          'su-grid-cols-[repeat(auto-fit,minmax(34rem,1fr))] su-gap-y-xl md:su-gap-y-50 xl:su-gap-y-70',
           gapClasses
         )}
       >
@@ -58,7 +58,7 @@ export const SBGrid = ({
         alignItems={isStretchItems ? 'stretch' : 'start'}
         justifyItems={alignment}
         className={dcnb(
-          'su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem]',
+          'su-gap-y-xl md:su-gap-y-50 xl:su-gap-y-70',
           gapClasses
         )}
       >

@@ -50,7 +50,7 @@ export const buttonSizes = {
   default:
     'su-px-20 su-pt-10 su-pb-11 md:su-px-30 md:su-pt-16 md:su-pb-18 su-text-18 md:su-text-24',
   large:
-    'su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-[22px] md:su-pb-[24px] su-text-18 md:su-text-24',
+    'su-px-20 su-pt-10 su-pb-11 md:su-px-36 md:su-pt-22 md:su-pb-24 su-text-18 md:su-text-24',
   link: 'su-text-19 md:su-text-21 xl:su-text-23',
 };
 

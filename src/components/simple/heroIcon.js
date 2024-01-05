@@ -23,7 +23,7 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
   const heroIconMap = {
     video: {
       heroicon: VideoCameraIcon,
-      baseStyle: 'su-w-08em su-mt-[-0.2em]',
+      baseStyle: 'su-w-08em su--mt-02em',
       animate: 'group-hocus:su-translate-x-02em',
     },
     play: {

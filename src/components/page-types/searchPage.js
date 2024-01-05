@@ -233,7 +233,7 @@ const SearchPage = (props) => {
           facetValues={siteNameValues}
           selectedOptions={selectedFacets.siteName}
           onChange={(values) => updateSiteFacet(values)}
-          className={!!selectedFacets.siteName.length && 'su-mb-[16px]'}
+          className={!!selectedFacets.siteName.length && 'su-mb-16'}
           exclude={['YouTube', 'SoundCloud', 'Apple Podcasts']}
         />
       )}
@@ -245,7 +245,7 @@ const SearchPage = (props) => {
           selectedOptions={selectedFacets.fileType}
           onChange={(values) => updateFileTypeFacet(values)}
           optionClasses="su-capitalize"
-          className="su-mb-[16px]"
+          className="su-mb-16"
           exclude={['html', 'pdf']}
         />
       )}
@@ -311,14 +311,14 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className={`lg:su-hidden su-relative su-mb-[4rem]
+                  className={`lg:su-hidden su-relative su-mb-40
                   ${opened ? 'su-shadow-xl' : ''}`}
                 >
                   <div ref={ref}>
                     <button
                       type="button"
                       className={dcnb(
-                        'su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors',
+                        'su-group su-flex su-w-full su-justify-between su-border su-px-20 su-text-21 su-font-semibold su-items-center su-transition-colors',
                         {
                           'su-border-digital-red su-text-white su-bg-digital-red':
                             opened,
@@ -330,7 +330,7 @@ const SearchPage = (props) => {
                       ref={filterOpenRef}
                       onClick={() => setOpened(!opened)}
                     >
-                      <span className="su-py-[14px] su-flex">
+                      <span className="su-py-14 su-flex">
                         {opened ? 'Filters' : ' Filter results'}
                       </span>
                       {opened ? (
@@ -379,7 +379,7 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className="su-mb-[4rem] su-hidden lg:su-flex"
+                  className="su-mb-40 su-hidden lg:su-flex"
                 >
                   <Skiplink
                     anchorLink="#search-results-section"

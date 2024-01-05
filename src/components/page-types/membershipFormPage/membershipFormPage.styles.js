@@ -12,7 +12,7 @@ export const heading = 'su-text-white su-rs-mb-5';
 export const formWrapper =
   'su-basefont-23 su-w-full su-cc su-bg-white su-border su-border-saa-grey su-rs-p-2 sm:su-rs-p-6';
 export const logoWrapper = 'su-rs-mb-5';
-export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[350px]';
+export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[35rem]';
 export const purchaseWrapper = '2xl:su-col-start-2';
 export const cardGridHeading = 'su-rs-mb-4';
 export const cardGridWrapper = 'su-rs-pb-3 su-gap-y-xl';

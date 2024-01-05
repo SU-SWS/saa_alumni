@@ -23,7 +23,7 @@ export const toggle = ({ panelOpened }) =>
 export const toggleHeading = 'su-type-0 su-mb-0';
 export const chevron = ({ panelOpened } = {}) =>
   dcnb(
-    'su-absolute su-right-0 su-w-[3.4rem] su-pt-6 su-pb-5 su-px-5 su-rounded-full su-border-2 su-border-palo-verde-dark group-hocus:su-bg-palo-verde-dark su-mr-20 sm:su-mr-30 md:su-mr-50 su-inline-block su-text-white su-transition',
+    'su-absolute su-right-0 su-w-34 su-pt-6 su-pb-5 su-px-5 su-rounded-full su-border-2 su-border-palo-verde-dark group-hocus:su-bg-palo-verde-dark su-mr-20 sm:su-mr-30 md:su-mr-50 su-inline-block su-text-white su-transition',
     {
       'su-transform-gpu su-rotate-180': panelOpened,
     }

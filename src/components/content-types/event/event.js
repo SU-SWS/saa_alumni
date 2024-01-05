@@ -115,7 +115,7 @@ const Event = ({
   }
 
   const iconClasses =
-    'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-[1em]';
+    'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-1em';
   let locationIcon = (
     <LocationMarkerIcon className={iconClasses} aria-hidden="true" />
   );

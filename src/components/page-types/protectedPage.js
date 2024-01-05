@@ -59,8 +59,7 @@ const ProtectedPage = (props) => {
                     'lg:su-hidden su-block su-mx-auto su-max-w-[35rem]',
                     {
                       'su-rs-my-2': hasHeroBanner,
-                      'su-rs-mt-2 su-mb-[-1.6rem] md:su-mb-[-5rem]':
-                        !hasHeroBanner,
+                      'su-rs-mt-2 su--mb-16 md:su--mb-50': !hasHeroBanner,
                     }
                   )}
                 />

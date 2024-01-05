@@ -90,7 +90,7 @@ const BasicCardHorizontal = ({
           cta={cta}
           className={dcnb(
             'card-body',
-            `${isRound && filename ? '' : 'su-mt-[-0.3em]'}`
+            `${isRound && filename ? '' : 'su--mt-03em'}`
           )}
         />
       </Grid>

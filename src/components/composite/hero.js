@@ -70,7 +70,7 @@ const Hero = ({
           className={`su-relative su-rs-pt-9
           ${isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'}`}
         >
-          <FlexBox direction="col" className="lg:su-mt-[190px]">
+          <FlexBox direction="col" className="lg:su-mt-[19rem]">
             {(sansSuper || serifSuper || headline || sansSub) && (
               <div className="su-text-center su-text-white">
                 {sansSuper && (

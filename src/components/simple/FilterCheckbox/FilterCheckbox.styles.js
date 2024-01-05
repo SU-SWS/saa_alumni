@@ -16,6 +16,6 @@ export const icon = ({ checked }) =>
     'su-text-palo-verde-light group-hocus-within:su-text-white lg:su-text-white':
       checked,
   });
-export const input = 'su-absolute su-opacity-0 su-w-[0] su-h-[0]';
+export const input = 'su-absolute su-opacity-0 su-w-0 su-h-0';
 export const count =
   'su-text-14 md:su-text-16 xl:su-text-16 2xl:su-text-18 su-ml-02em';
