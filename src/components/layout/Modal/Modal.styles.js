@@ -29,7 +29,7 @@ export const closeButtonWrapper = ({ type }) =>
   });
 export const closeButton = ({ type }) =>
   dcnb(
-    'su-group su-bg-transparent su-text-white su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-absolute su-top-[2.2rem] su-right-20 su-z-10',
+    'su-group su-bg-transparent su-text-white su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-absolute su-top-22 su-right-20 su-z-10',
     {
       'hover:su-bg-digital-red-xlight hocus:su-rounded-full':
         type === 'main-menu',

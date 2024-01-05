@@ -79,16 +79,22 @@ const Masthead = ({
               />
             </ul>
           </nav>
-          <FlexBox className="su-cc" alignItems="center">
+          <FlexBox
+            className="su-cc"
+            alignItems="center"
+            justifyContent="between"
+          >
             <FlexBox alignItems="center" className="su-rs-py-1">
               <Logo className="su-w-150" />
             </FlexBox>
-            <OpenSearchModalButton
-              openOpen={modalOpen}
-              setModalOpen={setModalOpen}
-              ref={openSearchMobileRef}
-            />
-            <CreateBloks blokSection={mainNav} className="su-shrink-0" />
+            <FlexBox>
+              <OpenSearchModalButton
+                openOpen={modalOpen}
+                setModalOpen={setModalOpen}
+                ref={openSearchMobileRef}
+              />
+              <CreateBloks blokSection={mainNav} className="su-shrink-0" />
+            </FlexBox>
           </FlexBox>
         </div>
       )}

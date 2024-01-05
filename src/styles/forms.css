@@ -244,7 +244,7 @@
   content: "";
   mask: url("../assets/arrow-right.svg");
   -webkit-mask-size: contain;
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-1em su-h-[1em];
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-1em su-h-1em;
 }
 
 .ggeWidget .ggeButton--forward::after {

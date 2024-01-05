@@ -13,6 +13,6 @@ export const footer =
 export const clearAllBtn = 'su-group su-flex-row su-items-center su-block';
 export const clearAllText = 'su-relative su-text-white su-text-18';
 export const clearAllHover =
-  'su-absolute su-bottom-[-0.5rem] su-left-0 su-w-full su-pt-3 group-hover:su-bg-gradient-to-r group-focus:su-bg-gradient-to-r su-from-palo-verde-dark su-to-saa-electric-blue';
+  'su-absolute su--bottom-5 su-left-0 su-w-full su-pt-3 group-hover:su-bg-gradient-to-r group-focus:su-bg-gradient-to-r su-from-palo-verde-dark su-to-saa-electric-blue';
 export const clearAllIcon = 'su-text-saa-electric-blue-light su-ml-8';
 export const viewResultsBtn = 'su-text-white su-ml-36';

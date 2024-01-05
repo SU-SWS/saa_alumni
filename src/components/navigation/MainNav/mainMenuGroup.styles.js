@@ -71,7 +71,7 @@ export const topLink = dcnb(
 export const activeTopLink =
   'su-bg-black-90 lg:su-bg-cardinal-red-xxdark lg:su-text-digital-red-xlight lg:!su-bg-transparent lg:!su-border-digital-red-xlight';
 export const topLinkIcon =
-  'su-top-2 lg:su-top-[-0.2rem] su-text-white group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
+  'su-top-2 lg:su--top-2 su-text-white group-hover:su-text-digital-red-xlight group-focus:su-text-digital-red-xlight';
 export const childMenu = ({ panelFacing, panelOpened, isHomesite } = {}) =>
   dcnb(
     'su-list-unstyled su-transform-gpu su-transition su-ease-linear lg:su-ease-out su-origin-top lg:su-shadow-md lg:su-w-[29rem] su-px-20 lg:su-py-10 su-relative lg:su-absolute children:su-mb-0',
