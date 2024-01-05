@@ -7,7 +7,7 @@ export const modalHeading =
 export const modalBody =
   'su-mt-[6.2rem] md:su-mt-[7.7rem] su-pb-[10.1rem] md:su-pb-[11.9rem] su-bg-saa-black-dark';
 export const chipsWrapper =
-  'su-pt-20 su-py-7 su-cc children:su-mr-13 children:su-mb-13';
+  'su-pt-20 su-py-7 px-20 sm:px-30 md:px-50 children:su-mr-13 children:su-mb-13';
 export const footer =
   '!su-pr-20 sm:!su-pr-30 md:!su-pr-50 su-fixed su-overflow-hidden su-bottom-0 su-right-0 su-flex su-items-center su-justify-end su-rs-py-2 su-bg-gradient-to-b su-from-saa-black-dark su-to-palo-alto-dark su-w-full su-cc su-border-t su-border-black-80';
 export const clearAllBtn = 'su-group su-flex-row su-items-center su-block';
