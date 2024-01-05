@@ -86,7 +86,7 @@ const UserNavItems = ({ expanded, userProfile }) => {
         alignItems="center"
         className="su-px-26 lg:su-px-18 su-rs-pb-1 su-pt-18"
       >
-        <div className="su-w-54 su-h-54 su-text-[3.4rem] su-shrink-0">
+        <div className="su-w-[5.4rem] su-h-[5.4rem] su-text-[3.4rem] su-shrink-0">
           <Avatar userProfile={userProfile} />
         </div>
         <div className="su-pl-10">
