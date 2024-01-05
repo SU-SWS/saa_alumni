@@ -33,7 +33,7 @@ export const burgerIcon = ({ navOpened }) =>
   });
 export const menuMobile = ({ navOpened }) =>
   dcnb(
-    'su-flex su-flex-col su-absolute su-z-20 su-bg-saa-black su-shadow-xl su-bg-white su-w-full',
+    'su-flex su-flex-col su-absolute su-z-20 su-bg-saa-black su-shadow-xl su-w-full',
     'su-border-l su-border-r su-border-b su-border-black-80',
     {
       'su-block': navOpened,
