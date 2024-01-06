@@ -211,7 +211,7 @@ const SearchPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [query, page, selectedFacets]);
 
-  const wrapperClasses = `su-flex-grow su-w-auto su-border-0 su-border-b su-border-solid su-border-black-60`;
+  const wrapperClasses = `su-grow su-w-auto su-border-0 su-border-b su-border-black-60`;
 
   const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-bg-transparent su-text-black-70 hocus:su-text-black hocus:su-underline su-text-m0 su-font-semibold su-border-none  su-p-0 su-rs-mr-1 su-mt-03em`;
 
@@ -233,7 +233,7 @@ const SearchPage = (props) => {
           facetValues={siteNameValues}
           selectedOptions={selectedFacets.siteName}
           onChange={(values) => updateSiteFacet(values)}
-          className={!!selectedFacets.siteName.length && 'su-mb-[16px]'}
+          className={!!selectedFacets.siteName.length && 'su-mb-16'}
           exclude={['YouTube', 'SoundCloud', 'Apple Podcasts']}
         />
       )}
@@ -245,7 +245,7 @@ const SearchPage = (props) => {
           selectedOptions={selectedFacets.fileType}
           onChange={(values) => updateFileTypeFacet(values)}
           optionClasses="su-capitalize"
-          className="su-mb-[16px]"
+          className="su-mb-16"
           exclude={['html', 'pdf']}
         />
       )}
@@ -311,14 +311,14 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className={`lg:su-hidden su-relative su-mb-[4rem]
+                  className={`lg:su-hidden su-relative su-mb-40
                   ${opened ? 'su-shadow-xl' : ''}`}
                 >
                   <div ref={ref}>
                     <button
                       type="button"
                       className={dcnb(
-                        'su-group su-flex su-w-full su-justify-between su-border su-px-[20px] su-text-21 su-font-semibold su-items-center su-transition-colors',
+                        'su-group su-flex su-w-full su-justify-between su-border su-px-20 su-text-21 su-font-semibold su-items-center su-transition-colors',
                         {
                           'su-border-digital-red su-text-white su-bg-digital-red':
                             opened,
@@ -330,22 +330,22 @@ const SearchPage = (props) => {
                       ref={filterOpenRef}
                       onClick={() => setOpened(!opened)}
                     >
-                      <span className="su-py-[14px] su-flex">
+                      <span className="su-py-14 su-flex">
                         {opened ? 'Filters' : ' Filter results'}
                       </span>
                       {opened ? (
-                        <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18 group-hover:su-underline group-focus:su-underline">
+                        <span className="su-ml-02em su-font-regular su-flex su-items-center su-text-18 group-hocus:su-underline">
                           Close
                           <Icon icon="x" className="su-w-14 su-ml-6" />
                         </span>
                       ) : (
-                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-light group-hover:su-text-white group-focus:su-text-white hocus:su-shadow-none">
+                        <span className="su-flex su-items-center su-mt-0 su-text-digital-red-light group-hocus:su-text-white hocus:su-shadow-none">
                           <Icon icon="chevron-down" />
                         </span>
                       )}
                     </button>
                     {opened && (
-                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-solid su-border-black-10">
+                      <div className="su-absolute su-top-[100%] su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-black-10">
                         <div className="su-rs-p-0">{facets}</div>
 
                         <div className="su-flex su-justify-end su-rs-px-0 su-rs-py-1 su-bg-foggy-light su-border-t su-border-black-20">
@@ -379,7 +379,7 @@ const SearchPage = (props) => {
                 <GridCell
                   xs={12}
                   lg={3}
-                  className="su-mb-[4rem] su-hidden lg:su-flex"
+                  className="su-mb-40 su-hidden lg:su-flex"
                 >
                   <Skiplink
                     anchorLink="#search-results-section"

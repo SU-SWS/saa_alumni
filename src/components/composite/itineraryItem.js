@@ -36,13 +36,13 @@ const ItineraryItem = ({ blok }) => {
       <li className="itinerary-item su-group su-mb-0 last:children:children:first:children:last:su-bg-transparent last:children:children:last:su-pb-0 su-basefont-21">
         <Grid
           alignItems="stretch"
-          className="su-grid-flow-col su-grid-cols-auto-1fr su-w-full su-break-words su-gap-x-xs md:su-gap-x-[5rem] xl:su-gap-x-[7rem]"
+          className="su-grid-flow-col su-grid-cols-auto-1fr su-w-full su-break-words su-gap-x-xs md:su-gap-x-50 xl:su-gap-x-70"
         >
           <div aria-hidden="true">
             <FlexBox
               alignItems="center"
               justifyContent="center"
-              className="su-type-2 su-relative su-w-[6rem] su-h-[6rem] md:su-w-[10rem] md:su-h-[10rem] su-rounded-full su-border-4 md:su-border-6 xl:su-border-[0.7rem] su-border-solid su-border-digital-red su-bg-white su-z-10 print:su-hidden"
+              className="su-type-2 su-relative su-w-60 su-h-60 md:su-w-100 md:su-h-100 su-rounded-full su-border-4 md:su-border-6 xl:su-border-7 su-border-digital-red su-bg-white su-z-10 print:su-hidden"
             >
               <FaIcon
                 proFaIcon={icon}
@@ -51,7 +51,7 @@ const ItineraryItem = ({ blok }) => {
               />
             </FlexBox>
             <div
-              className="su-relative su-block su-mx-auto su-w-[0.4rem] md:su-w-[0.6rem] xl:su-w-[0.7rem] su-h-[100.5%] su-bg-digital-red su-mt-[-6rem] md:su-mt-[-10rem] su-z-0 print:su-hidden"
+              className="su-relative su-block su-mx-auto su-w-4 md:su-w-6 xl:su-w-7 su-h-[100.5%] su-bg-digital-red su--mt-60 md:su--mt-100 su-z-0 print:su-hidden"
               aria-hidden
             />
           </div>
@@ -79,7 +79,7 @@ const ItineraryItem = ({ blok }) => {
                     alignItems="start"
                     className="su-mb-04em last:su-mb-0"
                   >
-                    <div className="print:su-hidden su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                    <div className="print:su-hidden su-w-fit su-shrink-0 su--mt-01em su-mr-06em">
                       <FaIcon
                         proFaIcon="bed"
                         className="!su-w-[1.15em]"
@@ -102,7 +102,7 @@ const ItineraryItem = ({ blok }) => {
                     alignItems="start"
                     className="su-mb-04em last:su-mb-0"
                   >
-                    <div className="print:su-hidden su-w-fit su-flex-shrink-0 su-mt-[-0.1em] su-mr-06em">
+                    <div className="print:su-hidden su-w-fit su-shrink-0 su--mt-01em su-mr-06em">
                       <FaIcon
                         proFaIcon="utensils"
                         className="!su-w-[1.15em]"

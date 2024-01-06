@@ -10,7 +10,7 @@ import CreateBloks from '../../utilities/createBloks';
 
 const Footer = ({ blok: { localFooter }, blok }) => (
   <SbEditable content={blok}>
-    <footer className="su-w-full su-flex-grow-0 su-relative">
+    <footer className="su-w-full su-grow-0 su-relative">
       <CreateBloks blokSection={localFooter} />
       <GlobalFooter />
     </footer>

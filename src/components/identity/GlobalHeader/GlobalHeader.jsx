@@ -79,7 +79,11 @@ const GlobalHeader = ({
             menuClasses={styles.utilNavMenuMobile}
             itemClasses={styles.utilNavItemMobile}
           />
-          <FlexBox className={styles.bodyMobile} alignItems="center">
+          <FlexBox
+            className={styles.bodyMobile}
+            alignItems="center"
+            justifyContent="between"
+          >
             <div className={styles.logoWrapperMobile}>
               <SbLink link={siteLink} classes={styles.logoMobile}>
                 <img
@@ -92,12 +96,14 @@ const GlobalHeader = ({
                 {siteName}
               </SbLink>
             </div>
-            <OpenSearchModalButton
-              openOpen={modalOpen}
-              setModalOpen={setModalOpen}
-              ref={openSearchMobileRef}
-            />
-            <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
+            <FlexBox>
+              <OpenSearchModalButton
+                openOpen={modalOpen}
+                setModalOpen={setModalOpen}
+                ref={openSearchMobileRef}
+              />
+              <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
+            </FlexBox>
           </FlexBox>
         </div>
       )}
