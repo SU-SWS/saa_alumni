@@ -8,7 +8,6 @@ import BasicCardContent from './basicCardContent';
 import appleWalletBadge from '../../assets/apple-wallet-badge.svg';
 import AuthContext from '../../contexts/AuthContext';
 
-
 const WillCard = ({
   blok: {
     cta,
@@ -41,10 +40,10 @@ const WillCard = ({
       console.error('User data not available');
       return;
     }
-  
+
     try {
       const { membershipNumber, firstName, lastName } = userData;
-  
+
       const response = await fetch('/.netlify/functions/generate-pass', {
         method: 'POST',
         headers: {
@@ -52,11 +51,11 @@ const WillCard = ({
         },
         body: JSON.stringify({ membershipNumber, firstName, lastName }),
       });
-  
+
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
-  
+
       const passData = await response.blob();
       const url = URL.createObjectURL(passData);
       setDownloadUrl(url);
@@ -64,7 +63,6 @@ const WillCard = ({
       console.error('Error generating pass:', error);
     }
   };
-  
 
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
@@ -137,12 +135,19 @@ const WillCard = ({
             `${isRound && filename ? '' : 'su-mt-[-0.3em]'}`
           )}
         />
-           <div>
-      <button onClick={handleAddToWallet} style={{ background: 'none', border: 'none' }}>
-        <img src={appleWalletBadge} alt="Add to Apple Wallet" />
-      </button>
-      {downloadUrl && <a href={downloadUrl} download="pass.pkpass">Download Pass</a>}
-    </div>
+        <div>
+          <button
+            onClick={handleAddToWallet}
+            style={{ background: 'none', border: 'none' }}
+          >
+            <img src={appleWalletBadge} alt="Add to Apple Wallet" />
+          </button>
+          {downloadUrl && (
+            <a href={downloadUrl} download="pass.pkpass">
+              Download Pass
+            </a>
+          )}
+        </div>
       </Grid>
     </SbEditable>
   );
