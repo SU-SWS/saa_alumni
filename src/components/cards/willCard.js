@@ -41,10 +41,10 @@ const WillCard = ({
       console.error('User data not available');
       return;
     }
-
+  
     try {
       const { membershipNumber, firstName, lastName } = userData;
-
+  
       const response = await fetch('/.netlify/functions/generate-pass', {
         method: 'POST',
         headers: {
@@ -52,11 +52,11 @@ const WillCard = ({
         },
         body: JSON.stringify({ membershipNumber, firstName, lastName }),
       });
-
+  
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
-
+  
       const passData = await response.blob();
       const url = URL.createObjectURL(passData);
       setDownloadUrl(url);
@@ -64,6 +64,7 @@ const WillCard = ({
       console.error('Error generating pass:', error);
     }
   };
+  
 
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =

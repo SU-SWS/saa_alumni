@@ -2,16 +2,14 @@
 # ##############################################################################
 [build]
   publish = "public"
-  functions = "netlify/functions"
+  functions = "src/netlify/functions"
 
 
 [dev]
   publish = "public"
-  port = 8000 # The port your Gatsby server runs on
-  targetPort = 64946 # The port Netlify functions will run on
+  port = 64946
   autolaunch = true
-  [dev.proxy]
-    "/.netlify/functions/" = "http://localhost:64946"
+ 
 
 
 # HEADERS - BASIC AUTH
