@@ -67,3 +67,4 @@ yarn-error.log
 src/stanford.pass
 certs
 src/saacard.pass/pass.json
+/src/netlify/certs
