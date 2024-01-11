@@ -3,33 +3,33 @@ const fs = require('fs');
 const path = require('path');
 
 exports.handler = async (event, context) => {
-    // CORS headers
-    const headers = {
-        'Access-Control-Allow-Origin': '*', // Adjust in production to specific origins
-        'Access-Control-Allow-Headers': 'Content-Type',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    };
+  // CORS headers
+  const headers = {
+    'Access-Control-Allow-Origin': '*', // Adjust in production to specific origins
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  };
 
-    // Handle OPTIONS request for CORS preflight
-    if (event.httpMethod === 'OPTIONS') {
-        console.log('Handling OPTIONS request for CORS preflight.');
-        return {
-            statusCode: 204,
-            headers,
-        };
-    }
-  
-    console.log('Received event:', JSON.stringify(event, null, 2));
-    console.log('HTTP Method:', event.httpMethod);
-  
-    if (event.httpMethod !== 'POST') {
-      console.log('Method not allowed. Received:', event.httpMethod);
-      return {
-        statusCode: 405,
-        headers,
-        body: 'Method Not Allowed',
-      };
-    }
+  // Handle OPTIONS request for CORS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    console.log('Handling OPTIONS request for CORS preflight.');
+    return {
+      statusCode: 204,
+      headers,
+    };
+  }
+
+  console.log('Received event:', JSON.stringify(event, null, 2));
+  console.log('HTTP Method:', event.httpMethod);
+
+  if (event.httpMethod !== 'POST') {
+    console.log('Method not allowed. Received:', event.httpMethod);
+    return {
+      statusCode: 405,
+      headers,
+      body: 'Method Not Allowed',
+    };
+  }
 
   try {
     if (!event.body) {
