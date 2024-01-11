@@ -30,6 +30,8 @@ const Hero = ({
     heroHeadlineSize = 'su-type-8';
   } else if (headlineSize === 'small') {
     heroHeadlineSize = 'su-type-6 su-mx-auto su-max-w-900';
+  } else if (headlineSize === 'x-small') {
+    heroHeadlineSize = 'su-type-4';
   }
 
   let gradientFrom = 'su-from-transparent';
