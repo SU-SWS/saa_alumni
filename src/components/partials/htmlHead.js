@@ -63,38 +63,6 @@ const HtmlHead = () => (
       href="https://www-media.stanford.edu/assets/favicon/favicon-16x16.png"
       sizes="16x16"
     />
-    <link
-      rel="mask-icon"
-      href="https://www-media.stanford.edu/assets/favicon/safari-pinned-tab.svg"
-      color="#ffffff"
-    />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta
-      name="msapplication-TileImage"
-      content="https://www-media.stanford.edu/assets/favicon/mstile-144x144.png"
-    />
-    <meta
-      name="msapplication-square70x70logo"
-      content="https://www-media.stanford.edu/assets/favicon/mstile-70x70.png"
-    />
-    <meta
-      name="msapplication-square150x150logo"
-      content="https://www-media.stanford.edu/assets/favicon/mstile-150x150.png"
-    />
-    <meta
-      name="msapplication-square310x310logo"
-      content="https://www-media.stanford.edu/assets/favicon/mstile-310x310.png"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossOrigin="true"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Source+Serif+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
   </>
 );
 

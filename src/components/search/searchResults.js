@@ -25,7 +25,7 @@ const SearchResults = ({ results }) => {
   return (
     <div id="search-results">
       <div
-        className="su-text-21 lg:su-mb-[4rem]"
+        className="su-text-21 lg:su-mb-40"
         aria-live="polite"
         aria-atomic="true"
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
@@ -76,7 +76,7 @@ const SearchResults = ({ results }) => {
                         ? 'arrow-right'
                         : 'external'
                     }
-                    className="su-inline-block group-hover:su-text-cardinal-red group-focus:su-text-cardinal-red"
+                    className="su-inline-block group-hocus:su-text-cardinal-red"
                     isAnimate
                     srText={
                       result.domain.match(/^alumni.stanford.edu/)
@@ -99,7 +99,7 @@ const SearchResults = ({ results }) => {
               )}
             </div>
             {result.image && (
-              <div className="su-rs-mt-0 su-w-[15rem] su-h-100 md:su-w-[22.5rem] md:su-h-[15rem] md:su-ml-30">
+              <div className="su-rs-mt-0 su-w-150 su-h-100 md:su-w-[22.5rem] md:su-h-150 md:su-ml-30">
                 <img
                   className="su-block su-object-cover su-object-center su-h-full su-w-full"
                   src={result.image}

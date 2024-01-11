@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  render,
-  MARK_STYLED,
-  MARK_BOLD,
-  MARK_ITALIC,
-  MARK_LINK,
-  NODE_HEADING,
-  NODE_IMAGE,
-  NODE_QUOTE,
-} from 'storyblok-rich-text-react-renderer';
+import { render } from 'storyblok-rich-text-react-renderer-ts';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
 import { SBCtaButton } from '../components/storyblok/ctaButton';
@@ -26,18 +17,12 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
   }
   const rendered = render(wysiwyg, {
     markResolvers: {
-      [MARK_STYLED]: (children, props) =>
-        React.createElement(
-          'span',
-          {
-            // eslint-disable-next-line react/destructuring-assignment
-            className: props?.class || '',
-          },
-          children
-        ),
-      [MARK_BOLD]: (children) => <strong>{children}</strong>,
-      [MARK_ITALIC]: (children) => <em>{children}</em>,
-      [MARK_LINK]: (children, props) => {
+      styled: (children, props) => (
+        <span className={props.class}>{children}</span>
+      ),
+      bold: (children) => <strong>{children}</strong>,
+      italic: (children) => <em>{children}</em>,
+      link: (children, props) => {
         const { href, target, linktype } = props;
         if (linktype === 'email') {
           // Email links: add `mailto:` scheme and map to <a>
@@ -91,7 +76,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
       },
     },
     nodeResolvers: {
-      [NODE_HEADING]: (children, props) => {
+      heading: (children, props) => {
         const { level } = props;
         if (level === 2) {
           return (
@@ -135,10 +120,10 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
 
         return null;
       },
-      [NODE_IMAGE]: (children, { src, alt }) => (
+      image: (children, { src, alt }) => (
         <CardImage size="horizontal" filename={src} alt={alt} loading="lazy" />
       ),
-      [NODE_QUOTE]: (children) => (
+      quote: (children) => (
         <blockquote className="su-font-serif su-font-bold su-type-2 children:su-leading-cozy last:children:su-mb-06em">
           {children}
         </blockquote>

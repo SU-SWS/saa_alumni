@@ -14,7 +14,7 @@ export const membershipPaymentCardSelectedLink =
 export const selectionWrapper =
   'su-absolute su-top-0 su-right-0 su-text-16 su-font-semibold';
 export const checkLinkIcon =
-  'su-inline-block su-right su-text-digital-red-light su-w-[1.4em] su-mt-[-2px] su-mr-[5px]';
+  'su-inline-block su-right su-text-digital-red-light su-w-[1.4em] su--mt-2 su-mr-5';
 export const caption = 'su-text-digital-red-light su-mb-0';
 export const subheadingAndCaptionWrapper = 'su-rs-mb-1';
 export const membershipType = 'su-mb-0';

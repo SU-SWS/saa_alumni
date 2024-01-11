@@ -6,12 +6,12 @@ export const menu = 'su-flex su-list-unstyled su-bg-saa-black';
 export const listItem = 'su-mb-0';
 export const link = ({ isActive }) =>
   dcnb(
-    'su-block su-text-white su-transition-colors su-font-bold su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px] hocus:su-text-digital-red-xlight su-px-20 su-py-[4rem] su-border-b-[5px] su-border-solid su-border-transparent hocus:su-border-digital-red-xlight su-text-21',
+    'su-block su-text-white su-transition-colors su-font-bold su-leading-snug su-no-underline focus:su-outline-none su-underline-offset-[3px] hocus:su-text-digital-red-xlight su-px-20 su-py-40 su-border-b-5 su-border-transparent hocus:su-border-digital-red-xlight su-text-21',
     {
       'su-text-digital-red-xlight !su-border-digital-red-xlight': isActive,
     }
   );
-export const button = 'su-ml-[6rem] xl:su-ml-[8rem] su-mt-[-0.5rem]';
+export const button = 'su-ml-60 xl:su-ml-80 su--mt-5';
 
 // Mobile styles
 export const navWrapperMobile =
@@ -20,23 +20,20 @@ export const rootMobile =
   'section-menu-mobile su-relative su-block lg:su-hidden su-max-w-[35rem] su-mx-auto';
 export const burger = ({ navOpened }) =>
   dcnb(
-    'su-group su-w-full su-flex su-justify-between su-font-semibold su-items-center su-transition-colors su-border-solid su-border su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white hocus:su-shadow-lg',
+    'su-group su-w-full su-flex su-justify-between su-font-semibold su-items-center su-transition-colors su-border su-py-12 su-px-20 hocus:su-bg-digital-red hocus:su-text-white hocus:su-shadow-lg',
     {
       'su-bg-digital-red su-text-white su-border-black-80': navOpened,
       'su-text-black-10 su-border-black-70': !navOpened,
     }
   );
 export const burgerIcon = ({ navOpened }) =>
-  dcnb(
-    'su-transition-colors su-w-[2.4rem] group-hover:su-text-white group-focus:su-text-white',
-    {
-      'su-text-white': navOpened,
-      'su-text-digital-red-xlight': !navOpened,
-    }
-  );
+  dcnb('su-transition-colors su-w-24 group-hocus:su-text-white', {
+    'su-text-white': navOpened,
+    'su-text-digital-red-xlight': !navOpened,
+  });
 export const menuMobile = ({ navOpened }) =>
   dcnb(
-    'su-flex su-flex-col su-absolute su-z-20 su-bg-saa-black su-shadow-xl su-bg-white su-w-full',
+    'su-flex su-flex-col su-absolute su-z-20 su-bg-saa-black su-shadow-xl su-w-full',
     'su-border-l su-border-r su-border-b su-border-black-80',
     {
       'su-block': navOpened,
@@ -50,6 +47,6 @@ export const linkMobile =
 export const buttonWrapperMobile = 'su-px-20 md:su-px-30 su-rs-py-2';
 export const buttonMobile = '!su-w-full su-text-center su-text-21';
 export const reserveBtn =
-  'su-inline-block children:su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-8 md:su-pb-10 su-text-18 md:su-text-20 su-ml-[6rem] xl:su-ml-[8rem] su-mt-[-0.5rem]';
+  'su-inline-block children:su-inline-block su-w-fit su-group su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-7 su-pb-8 md:su-px-26 md:su-pt-8 md:su-pb-10 su-text-18 md:su-text-20 su-ml-60 xl:su-ml-80 su--mt-5';
 export const reserveMobileBtn =
-  'su-inline-block children:su-inline-block su-w-fit su-group su-border-solid su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20 !su-w-full su-text-center su-text-21';
+  'su-inline-block children:su-inline-block su-w-fit su-group su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20 !su-w-full su-text-center su-text-21';

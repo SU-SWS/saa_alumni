@@ -29,14 +29,18 @@ export const closeButtonWrapper = ({ type }) =>
   });
 export const closeButton = ({ type }) =>
   dcnb(
-    'su-group su-bg-transparent su-text-white su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-absolute su-top-[2.2rem] su-right-20 su-z-10',
+    'su-group su-bg-transparent su-font-semibold hocus:su-underline su-text-m1 su-flex su-items-end su-absolute su-top-22 su-z-10',
     {
-      'hover:su-bg-digital-red-xlight hocus:su-rounded-full':
+      'su-text-white hocus:su-text-white hocus:su-bg-digital-red-xlight hocus:su-rounded-full':
         type === 'main-menu',
       'hocus:su-bg-transparent': type !== 'main-menu',
       'su-text-black': type === 'timeout',
       'su-text-black hocus:su-bg-white hocus:su-text-digital-red':
         type === 'mega-menu',
+      'su-text-white hocus:su-text-digital-red-xlight':
+        type !== 'mega-menu' && type !== 'timeout',
+      'su-right-0': type === 'trip-filter',
+      'su-right-20': type !== 'trip-filter',
     }
   );
 export const closeIcon = ({ type }) =>
