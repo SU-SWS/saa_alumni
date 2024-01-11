@@ -68,3 +68,5 @@ src/stanford.pass
 certs
 src/saacard.pass/pass.json
 /src/netlify/certs
+localhost-key.pem
+localhost.pem
