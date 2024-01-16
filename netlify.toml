@@ -2,8 +2,6 @@
 # ##############################################################################
 [build]
   publish = "public"
-  functions = "src/netlify/functions"
-
 
 [dev]
   publish = "public"

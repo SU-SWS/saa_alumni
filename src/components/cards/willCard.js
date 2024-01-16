@@ -8,7 +8,6 @@ import BasicCardContent from './basicCardContent';
 import appleWalletBadge from '../../assets/apple-wallet-badge.svg';
 import AuthContext from '../../contexts/AuthContext';
 
-
 const WillCard = ({
   blok: {
     cta,
@@ -45,7 +44,7 @@ const WillCard = ({
     try {
       const { membershipNumber, firstName, lastName } = userData;
   
-      const response = await fetch('/.netlify/functions/generate-pass', {
+      const response = await fetch('/api/applewalletcard/generate-pass', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

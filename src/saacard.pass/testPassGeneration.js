@@ -4,9 +4,9 @@ const path = require('path');
 
 // Mock data for testing
 const data = {
-  membershipNumber: '123456789',
-  firstName: 'John',
-  lastName: 'Doe',
+  membershipNumber: '18563',
+  firstName: 'William',
+  lastName: 'Francis',
 };
 
 async function generatePass(data) {
