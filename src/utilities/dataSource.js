@@ -135,9 +135,9 @@ export const fontWeights = {
 
 export const heroGradient = {
   black: 'su-from-saa-black',
-  brick: 'su-from-brick su-to-brick/30',
-  'palo-alto-dark': 'su-from-palo-alto-dark su-to-palo-alto-dark/30',
-  white: 'su-from-white su-to-white/30',
+  brick: 'xs:su-from-brick su-to-brick/30',
+  'palo-alto-dark': 'xs:su-from-palo-alto-dark su-to-palo-alto-dark/30',
+  white: 'xs:su-from-white su-to-white/30',
 };
 
 export const modularTypes = {
