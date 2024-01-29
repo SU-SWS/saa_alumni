@@ -1,6 +1,6 @@
 import { dcnb } from 'cnbuilder';
 
-export const container = 'basic-page su-relative su-flex-grow su-w-full';
+export const container = 'basic-page su-relative su-grow su-w-full';
 export const fixedHero = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
 export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
 export const contentWrapper =
@@ -12,7 +12,7 @@ export const heading = 'su-text-white su-rs-mb-5';
 export const formWrapper =
   'su-basefont-23 su-w-full su-cc su-bg-white su-border su-border-saa-grey su-rs-p-2 sm:su-rs-p-6';
 export const logoWrapper = 'su-rs-mb-5';
-export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[350px]';
+export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[35rem]';
 export const purchaseWrapper = '2xl:su-col-start-2';
 export const cardGridHeading = 'su-rs-mb-4';
 export const cardGridWrapper = 'su-rs-pb-3 su-gap-y-xl';
@@ -36,4 +36,4 @@ export const paymentCardsWrapper = 'su-gap-y-xl sm:su-rounded';
 export const promoWrapper = 'su-w-full sm:su-w-auto';
 export const promoLabel = 'su-type-0 su-font-semibold';
 export const promoInput =
-  'sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2';
+  'sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-black-30/40 su-border-b-2';

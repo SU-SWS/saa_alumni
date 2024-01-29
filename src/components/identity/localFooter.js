@@ -36,7 +36,7 @@ const LocalFooter = ({
   return (
     <SbEditable content={blok}>
       <Container
-        className="local-footer print:su-hidden su-bg-saa-black su-text-black-20 su-link-no-underline su-border-b su-border-solid su-border-black-80"
+        className="local-footer print:su-hidden su-bg-saa-black su-text-black-20 su-link-no-underline su-border-b su-border-black-80"
         width="full"
       >
         <Container

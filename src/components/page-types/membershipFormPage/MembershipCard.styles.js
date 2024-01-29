@@ -13,9 +13,9 @@ export const initialAndSelectionWrapper =
 export const initialWrapper =
   'su-leading su-text-center su-w-50 su-h-50 su-text-24 su-border-2 su-rounded-full su-text-saa-grey children:su-text-digital-red';
 export const selectionWrapper =
-  'sm:su-absolute su-self-end sm:su-self-auto su-right-0 md:su-right-[-20px] lg:su-right-0 su-text-16 su-font-semibold';
+  'sm:su-absolute su-self-end sm:su-self-auto su-right-0 md:su--right-20 lg:su-right-0 su-text-16 su-font-semibold';
 export const checkLinkIcon =
-  'su-inline-block su-text-digital-red-light su-w-[1.4em] su-mt-[-2px] su-mr-[2px]';
+  'su-inline-block su-text-digital-red-light su-w-[1.4em] su--mt-2 su-mr-2';
 export const subheading =
   'su-text-center su-rs-mb-1 su-text-18 su-leading-tight su-mt-6';
 export const membershipCardLink =

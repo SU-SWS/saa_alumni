@@ -1,8 +1,7 @@
-@import 'decanter/fonts.css';
+@import 'decanter/fonts-basic.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind variants;
 
 .su-spinner div:nth-child(1) {
   animation-delay: -0.45s;
