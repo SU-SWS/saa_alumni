@@ -42,7 +42,7 @@
 # Fetch vault plugin needs to come before any of the contextual environment
 # variable plugins so they can act on the new vars.
 [[plugins]]
-  package = "netlify-plugin-vault-variables"
+  package = "netlify-plugin-vault-variables@github:SU-SWS/netlify-plugin-vault-variables#task/DS-450_upgrade-node-20"
   [plugins.inputs]
     endpoint = 'https://vault.stanford.edu'
     # Order doesn't matter here as these will be fetched asyncronously.
