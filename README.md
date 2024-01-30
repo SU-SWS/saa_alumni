@@ -96,7 +96,7 @@ netlify dev
 
 Encountering issues with setup? Please refer to the [official Netlify CLI documentation](https://docs.netlify.com/cli/get-started/#netlify-dev) for further asssitance.
 
-## Troubleshooting 
+## Troubleshooting
 
 If you are experiencing issues with this module try reverting the feature first. If you are still experiencing issues try posting an issue on the GitHub issues page.
 
