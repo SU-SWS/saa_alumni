@@ -36,7 +36,7 @@
     "gatsby-source-storyblok": "^3.1.2",
     "luxon": "^2.5.2",
     "netlify-plugin-inline-functions-env": "^1.0.9",
-    "netlify-plugin-vault-variables": "^1.0.7",
+    "netlify-plugin-vault-variables": "^2.0.0",
     "next-connect": "^0.13.0",
     "path-browserify": "^1.0.1",
     "postscribe": "^2.0.8",
