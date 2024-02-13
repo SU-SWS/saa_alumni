@@ -56,7 +56,7 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-fontawesome-css`,
+    `gatsby-plugin-fontawesome-css-2`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {
