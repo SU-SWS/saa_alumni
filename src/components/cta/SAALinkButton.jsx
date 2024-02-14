@@ -58,7 +58,7 @@ export const SAALinkButton = React.forwardRef(
         <SbLink
           ref={ref}
           link={link}
-          attributes={attributes || rel ? {rel, ...attributes} : {}}
+          attributes={attributes || rel ? { rel, ...attributes } : {}}
           classes={dcnb(styles.link, ctaButtonStyle, ctaButtonSize, className)}
           {...rest}
         >

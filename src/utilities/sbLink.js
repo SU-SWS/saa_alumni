@@ -95,7 +95,9 @@ const SbLink = React.forwardRef((props, ref) => {
         ref={ref}
         href={linkUrl}
         className={dcnb(linkClasses, urlClasses)}
-        {...otherAttributes || referrerpolicy ? {referrerpolicy, ...otherAttributes} : {}}
+        {...(otherAttributes || referrerpolicy
+          ? { referrerpolicy, ...otherAttributes }
+          : {})}
       >
         {props.children}
         <span className="su-sr-only"> (external link)</span>
