@@ -7,6 +7,7 @@ const OpenSearchModalButton = React.forwardRef((props, ref) => {
 
   return (
     <button
+      data-test="search--nav-bar"
       type="button"
       className={styles.menuCircles}
       aria-label="Search Stanford Alumni sites"
@@ -19,7 +20,7 @@ const OpenSearchModalButton = React.forwardRef((props, ref) => {
       </span>
       <SearchIcon
         aria-hidden="true"
-        className="su-inline-block su-relative su--top-1 su-w-[2.2rem] lg:su-w-20 lg:su-ml-6 su-h-[1.8rem]"
+        className="su-inline-block su-relative su--top-1 su-w-22 lg:su-w-20 lg:su-ml-6 su-h-18"
       />
     </button>
   );

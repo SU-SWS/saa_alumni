@@ -97,7 +97,7 @@ const StoryPageView = (props) => {
         <Container
           as="main"
           id="main-content"
-          className="story-page su-relative su-flex-grow su-w-full su-basefont-23"
+          className="story-page su-relative su-grow su-w-full su-basefont-23"
           width="full"
         >
           <article>

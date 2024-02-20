@@ -23,7 +23,7 @@
 }
 
 .ggeWidget .ggeContent .ggeQuestion.su-phone {
-  @apply su-mb-[.7rem];
+  @apply su-mb-7;
 }
 
 .ggeWidget .ggeContent .ggeQuestion:last-child {
@@ -61,7 +61,7 @@
   content: "";
   mask: url("../assets/arrow-right.svg");
   -webkit-mask-size: contain;
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1.5rem] su-h-[1.5rem] su--rotate-45 su-bg-white su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-15 su-h-15 su--rotate-45 su-bg-white su-ml-4 su-relative su-top-2 su-transition su-transform-gpu;
 }
 
 .ggeWidget .ggeQuestion--instructions a:hover:after,
@@ -90,7 +90,7 @@
 .ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion select,
 .ggeWidget .ggeQuestion textarea {
-  @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-[1.8rem] md:su-text-[2.1rem] su-border su-border-b-2 su-border-black-50 su-rounded-[3px] su-box-border;
+  @apply su-leading-display su-p-20 su-max-w-full su-w-full su-text-18 md:su-text-21 su-border su-border-b-2 su-border-black-50 su-rounded-[3px] su-box-border;
   background: rgba(16, 15, 13, 0.5);
 }
 
@@ -106,7 +106,7 @@
 .ggeWidget .ggeQuestion input[type="text"],
 .ggeWidget .ggeQuestion input[type="date"],
 .ggeWidget .ggeQuestion textarea {
-  @apply su-px-[21px] md:su-px-[19px] su-py-[20px];
+  @apply su-px-21 md:su-px-19 su-py-20;
 }
 
 .ggeWidget .ggeQuestion input[type="email"]:focus,
@@ -170,10 +170,6 @@
 .ggeWidget .ggeQuestion.ggeQuestion--error textarea {
   @apply su-border su-border-digital-red-xlight;
 }
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration,
-.ggeTally {
-  @apply su-border-3 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue;
-}
 
 .ggeTally tr {
   @apply su-border-none;
@@ -181,7 +177,7 @@
 
 .ggeTally .ggeTally--text,
 .ggeTally .ggeTally--money {
-  @apply su-pt-0 su-pb-[3.2rem];
+  @apply su-pt-0 su-pb-32;
 }
 .ggeTally--text {
   @apply su-border-b su-border-black-30;
@@ -196,7 +192,7 @@
 }
 
 .ggeWidget .ggeQuestion textarea {
-  @apply md:su-pr-[25px];
+  @apply md:su-pr-25;
 }
 
 .ggeWidget .ggePageNav {
@@ -208,24 +204,39 @@
 }
 
 .ggeWidget .ggePageNav--back {
-  @apply su-static su-translate-y-0 su-mr-[2rem] lg:su-mr-[3.6rem];
+  @apply su-static su-translate-y-0 su-mr-20 lg:su-mr-36;
 }
 
-.ggeWidget .ggeStripeBtn,
+.ggeWidget .ggeStripeBtn.ggeApplePay,
+.ggeWidget .ggeStripeBtn.ggeGooglePay {
+  @apply su-px-26 su-w-fit;
+}
+
+.ggeWidget .ggeStripeBtn .ggeGooglePayLabel {
+  @apply su-flex su-flex-row;
+}
+
+.ggeWidget .ggeStripeBtn .ggeGooglePayLabel::before {
+  @apply su-mr-5;
+}
+
+.ggeWidget .ggeStripeBtn .ggeGooglePayLabel img {
+  @apply su-mt-2;
+}
+
 .ggeWidget .ggeButton:disabled,
 .ggeWidget .ggeButton {
-  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md;
+  @apply su-flex su-h-fit su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md;
 }
 
-.ggeWidget .ggeStripeBtn,
 .ggeWidget .ggeButton--forward:disabled,
 .ggeWidget .ggeButton--forward {
-  @apply su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
+  @apply su-border-2 su-pl-30 su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
 }
 
 .ggeWidget .ggeButton--back:disabled,
 .ggeWidget .ggeButton--back {
-  @apply su-static su-border-2 su-pr-[3rem] su-border-solid su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
+  @apply su-static su-border-2 su-pr-30 su-translate-x-0 su-relative su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue su-text-saa-electric-blue hocus:su-text-white hocus:su-bg-gradient-to-tr hocus:su-from-palo-verde-dark hocus:su-to-saa-electric-blue hocus:su-shadow-md su-text-white;
 }
 
 .ggeWidget .ggeButton--forward::after,
@@ -233,7 +244,7 @@
   content: "";
   mask: url("../assets/arrow-right.svg");
   -webkit-mask-size: contain;
-  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-[1em] su-h-[1em];
+  @apply su-inline-block su-bg-cover su-flex-shrink-0 su-w-1em su-h-1em;
 }
 
 .ggeWidget .ggeButton--forward::after {
@@ -241,7 +252,7 @@
 }
 
 .ggeWidget .ggeButton--back::before {
-  @apply su-bg-[#fff] su-rotate-180 su-mr-8;
+  @apply su-bg-white su-rotate-180 su-mr-8;
 }
 
 .ggeWidget.labelsTop .ggeQuestion__label {
@@ -283,11 +294,11 @@
 }
 
 .ggeWidget .ggePrompt {
-  @apply su-flex su-items-center su-mt-[1.1rem] su-mb-[2.6rem] last:su-mb-0;
+  @apply su-flex su-items-center su-mt-11 su-mb-26 last:su-mb-0;
 }
 
 .ggeWidget .ggePrompt .ggePrompt__radio {
-  @apply su-relative su-mr-[1.2rem];
+  @apply su-relative su-mr-12;
 }
 
 .ggeWidget .ggePrompt label {
@@ -295,7 +306,7 @@
 }
 
 .ggeWidget .ggePrompt .ggePrompt__radio input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent su-cursor-pointer;
+  @apply su-flex su-w-24 su-h-24 su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent su-cursor-pointer;
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%)
     border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
@@ -313,12 +324,12 @@
 
 .ggeWidget .ggePrompt__other .ggePrompt input[type="text"],
 .ggeWidget .ggePrompt__other .ggePrompt input[type="date"] {
-  @apply su-ml-[24px];
+  @apply su-ml-24;
 }
 
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
 .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::after {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-12 su-h-12 su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
   content: "";
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
 }
@@ -342,18 +353,18 @@
 }
 
 .form-gradient {
-  @apply su-border-2 su-border-solid;
+  @apply su-border-2 su-backdrop-opacity-30 su-bg-gradient-to-tl su-backdrop-blur-sm su-shadow-lg su-text-white;
   background: linear-gradient(
     140.61deg,
     rgba(24, 29, 28, 0.64) 0%,
     rgba(24, 29, 28, 0.4) 110.98%
     );
-    border-image-source: linear-gradient(
-      140.61deg,
-    rgba(255, 255, 255, 0.5) 0%,
-    rgba(255, 255, 255, 0) 53.2%,
-    rgba(255, 255, 255, 0.5) 109.83%
-    );
+  border-image-source: linear-gradient(
+    140.61deg,
+  rgba(255, 255, 255, 0.5) 0%,
+  rgba(255, 255, 255, 0) 53.2%,
+  rgba(255, 255, 255, 0.5) 109.83%
+  );
 }
 
 .ggeWidget .ggeContent .ggeQuestion.su-phone,
@@ -366,11 +377,11 @@
   @apply su-flex su-items-baseline;
 }
 .ggeQuestion[data-name="DigitalName"] .ggeQuestion__label {
-  @apply su-text-[2.6rem] su-p-0 su-mr-[.7rem];
+  @apply su-text-26 su-p-0 su-mr-7;
 }
 
 .ggeQuestion[data-name="DigitalName"] .ggeQuestion__field input {
-  @apply su-text-[2.6rem] su-font-semibold;
+  @apply su-text-26 su-font-semibold;
 }
 
 .ggeWidget .ggeQuestion[data-name="DigitalName"] input[readonly] {
@@ -399,7 +410,7 @@
 }
 
 .ggeWidget .ggeQuestion.ggeQuestion--mobilepayment .ggeStripeButton .ggeMobilePay {
-  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md su-border-solid su-border-2 su-pl-[3rem] su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
+  @apply su-flex su-leading-none su-inline-block su-w-fit su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-px-20 su-py-10 md:su-px-26 md:su-py-14 su-text-21 md:su-text-23 su-capitalize su-mt-4 md:su-mt-45 hocus:su-shadow-md su-border-2 su-pl-30 su-transition-colors su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red hocus:su-text-white hocus:su-border-cardinal-red su-rounded-none;
 }
 
 .ggeWidget .ggeQuestion.ggeQuestion--mobilepayment #ggeMobileManualEntryInner {
@@ -415,14 +426,14 @@
 
 /* If not US */
 .ggeAddress__zipcode + .ggeAddress__city {
-  @apply su-float-left su-ml-[2rem];
+  @apply su-float-left su-ml-20;
   width: calc(50% - 10px);
 }
 
 .ggeAddress__state,
 .ggePayment--credit--account,
 .ggePayment--credit--monthExpires {
-  @apply su-clear-left su-mr-[2rem];
+  @apply su-clear-left su-mr-20;
 }
 
 /* Confirmation page */
@@ -440,7 +451,7 @@
 }
 
 .ggeConfirmation .ggeConfirmationMessage {
-  @apply su-text-25 lg:su-text-[2.9rem];
+  @apply su-text-25 lg:su-text-29;
 }
 
 .ggeConfirmation .ggeConfirmationMessage > div:first-child {
@@ -452,15 +463,15 @@
 }
 
 .ggeConfirmation h1 {
-  @apply su-text-[3rem] lg:su-text-[5.1rem] su-font-bold su-font-serif su-pt-[11.9rem] lg:su-pt-[12.5rem] su-mb-[3rem] lg:su-mb-[3.6rem];
+  @apply su-text-30 lg:su-text-[5.1rem] su-font-bold su-font-serif su-pt-[11.9rem] lg:su-pt-[12.5rem] su-mb-30 lg:su-mb-36;
 }
 
 .ggeConfirmation .ggeButton {
-  @apply su-m-auto lg:su-text-[2.4rem] su-normal-case;
+  @apply su-m-auto lg:su-text-24 su-normal-case;
 }
 
 .ggeConfirmation .ggeTally--header {
-  @apply su-text-white su-pt-0 su-px-0 su-pb-[3.2rem] lg:su-pb-[4.5rem] su-border-0 su-text-22 lg:su-text-[2.6rem];
+  @apply su-text-white su-pt-0 su-px-0 su-pb-32 lg:su-pb-45 su-border-0 su-text-22 lg:su-text-26;
 }
 
 .ggeConfirmation .ggeTallyTable thead + tbody {
@@ -506,7 +517,7 @@
 }
 
 .ggeWidget .ggePageNav--forward {
-  @apply su-flex su-gap-x-[3rem] lg:su-gap-x-[7rem];
+  @apply su-flex su-gap-x-30 lg:su-gap-x-70;
 }
 
 .ggeWidget .ggeButton.ggeButton--discardRegistrant {
@@ -522,7 +533,7 @@
   content: "Edit";
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13' fill='none'%3E%3Cpath d='M11.6673 1.33265L12.1976 0.802316V0.802316L11.6673 1.33265ZM3.0625 12.1472L3.0625 12.8972C3.26141 12.8972 3.45218 12.8182 3.59283 12.6775L3.0625 12.1472ZM0.875 12.1472H0.125C0.125 12.5614 0.460786 12.8972 0.875 12.8972L0.875 12.1472ZM0.875 9.91526L0.34467 9.38493C0.204018 9.52558 0.125 9.71634 0.125 9.91526H0.875ZM9.98794 1.86298C10.3052 1.54567 10.8197 1.54567 11.137 1.86298L12.1976 0.802316C11.2946 -0.100772 9.83037 -0.100772 8.92728 0.802316L9.98794 1.86298ZM11.137 1.86298C11.4543 2.18028 11.4543 2.69472 11.137 3.01202L12.1976 4.07268C13.1007 3.1696 13.1007 1.7054 12.1976 0.802316L11.137 1.86298ZM11.137 3.01202L2.53217 11.6168L3.59283 12.6775L12.1976 4.07268L11.137 3.01202ZM3.0625 11.3972H0.875L0.875 12.8972H3.0625L3.0625 11.3972ZM8.92728 0.802316L0.34467 9.38493L1.40533 10.4456L9.98794 1.86298L8.92728 0.802316ZM0.125 9.91526L0.125 12.1472H1.625L1.625 9.91526H0.125ZM7.98978 2.80048L10.1995 5.01018L11.2601 3.94952L9.05044 1.73982L7.98978 2.80048Z' fill='%23505EEC'/%3E%3C/svg%3E");
   background-position: left 15px center;
-  @apply su-ml-[1rem] su-pl-[3.8rem] su-text-[1.8rem] su-text-white su-border-l su-border-l-black su-bg-no-repeat;
+  @apply su-ml-10 su-pl-38 su-text-18 su-text-white su-border-l su-border-l-black su-bg-no-repeat;
 }
 
 .ggeWidget .ggeTally__multireg__buttons {
@@ -535,7 +546,7 @@
 
 .ggeWidget .ggeButton.ggeButton--tallyDeleteRegistrant {
   background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.64321 6.88535L13.5183 2.05397C13.9898 1.58677 13.9931 0.827025 13.5259 0.355458C13.0587 -0.116108 12.2989 -0.118291 11.8274 0.347817L6.93706 5.19447L2.04783 0.347817C1.57736 -0.118291 0.816521 -0.113925 0.34932 0.35655C-0.11788 0.827025 -0.114605 1.58677 0.356961 2.05397L5.23091 6.88535L0.35587 11.7167C-0.115697 12.1839 -0.118971 12.9437 0.348229 13.4152C0.582921 13.6521 0.89184 13.77 1.20076 13.77C1.5064 13.77 1.81205 13.6554 2.04565 13.4229L6.93706 8.57622L11.8263 13.4229C12.061 13.6554 12.3655 13.77 12.6712 13.77C12.9801 13.77 13.289 13.6521 13.5237 13.4152C13.9909 12.9437 13.9876 12.1839 13.5161 11.7167L8.64321 6.88535Z' fill='%23F83535'/%3E%3C/svg%3E");
-  @apply su-h-full su-font-semibold su-text-18 su-mt-0 su-absolute su-top-1 su-left-1 su-items-center su-bottom-[-6.5rem] su-py-0 su-pr-0 su-pl-[1.6rem] su-text-transparent su-bg-transparent su-border-0 su-bg-no-repeat;
+  @apply su-h-full su-font-semibold su-text-18 su-mt-0 su-absolute su-top-1 su-left-1 su-items-center su--bottom-65 su-py-0 su-pr-0 su-pl-16 su-text-transparent su-bg-transparent su-border-0 su-bg-no-repeat;
   background-position: left center;
 }
 
@@ -566,6 +577,10 @@
   @apply su-p-0;
 }
 
+.ggeWidget .ggeTally {
+  @apply su-bg-transparent su-border-3 su-pt-26 su-px-26 su-pb-45 su-mb-72 su-gradient-border su-border-to-rt-palo-verde-dark-to-saa-electric-blue;
+}
+
 .ggeWidget .ggeTally--text,
 .ggeWidget .ggeTally--money {
   @apply su-type-1;
@@ -585,16 +600,16 @@
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--text,
 .ggeWidget.membership-installment .ggePage--payment tr:not(:first-of-type) .ggeTally--money {
   @apply su-border-0 su-type-0 su-font-regular su-pt-14 su-pb-0;
-} 
+}
 
 .ggeWidget .ggeTally--total,
 .ggeWidget .ggeTally--total.ggeTally--money {
-  @apply su-type-1 su-font-semibold su-pt-[3rem] su-pb-0;
+  @apply su-type-1 su-font-semibold su-pt-30 su-pb-0;
 }
 
 .ggeWidget td.ggeTally--text,
 .ggeWidget .ggeTally--terms {
-  @apply su-pt-[1.4rem];
+  @apply su-pt-14;
 }
 
 .ggeWidget.public-registration .ggeContent .ggeQuestion.su-phone,
@@ -612,9 +627,13 @@
 }
 
 .ggeWidget .ggeButton--addRegistrant {
-  @apply su-bg-transparent su-text-white su-border-0 su-px-0 su-pr-0 su-pl-[2.7rem] su-big-paragraph su-bg-no-repeat;
+  @apply su-bg-transparent su-text-white su-border-0 su-px-0 su-pr-0 su-pl-27 su-big-paragraph su-bg-no-repeat;
   background-position: left center;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='20' viewBox='0 0 21 20' fill='none'%3E%3Cpath d='M10.5 7V10M10.5 10V13M10.5 10H13.5M10.5 10H7.5M19.5 10C19.5 14.9706 15.4706 19 10.5 19C5.52944 19 1.5 14.9706 1.5 10C1.5 5.02944 5.52944 1 10.5 1C15.4706 1 19.5 5.02944 19.5 10Z' stroke='%23F83535' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.ggeWidget .ggeStripeContainer {
+  @apply su-mx-auto;
 }
 
 .ggeWidget .ggeStripeContainer__upperHr,
@@ -631,15 +650,14 @@
   @apply su-text-center su-type-0;
 }
 
-
 /* GG Checkbox */
 .ggeWidget .ggePrompt .ggePrompt__checkbox,
 .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
-  @apply su-relative su-mr-[1.2rem];
+  @apply su-relative su-mr-12;
 }
 
 .ggeWidget .ggePrompt .ggePrompt__checkbox input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-saa-electric-blue-light su-cursor-pointer;
+  @apply su-flex su-w-24 su-h-24 su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-saa-electric-blue-light su-cursor-pointer;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -656,7 +674,7 @@
 }
 
 .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-20 su-h-20 su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
   content: "";
   background: linear-gradient(222.67deg, #505eec 15.6%, #017e7c 84.05%);
   mask: url("../assets/check-mark.svg");
@@ -674,254 +692,11 @@
   opacity: 0.4;
 }
 
-/* Membership display none */
-.ggeWidget[class*="membership-forms"] .su-membership-dname label,
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion .ggeQuestion__label label[for="Terms and Conditions Acknowledgement|I agree.__input__ggid1"],
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion .ggeQuestion__field textarea[data-fieldid="Terms and Conditions Acknowledgement|I agree."],
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion .ggeQuestion__field #ggeQuestion__caption--1--PhoneNumber,
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion .ggeQuestion__field #ggeQuestion__caption--1--ContactEmail {
-  @apply su-hidden;
+/* Travel-Study Payment Button Workaround */
+.ggeWidget:not([class*="membership-forms"]) div.ggeStripeContainer[role="alert"] {
+  @apply su-rs-mb-2 su-rs-pt-1 su-bg-white su-text-black su-rounded;
 }
 
-/* Membership Recipient Digital Name */
-.ggeWidget[class*="membership-forms"] .su-membership-dname.ggeQuestion[data-name="DigitalName"] {
-  @apply su-rs-mb-0 su-block;
-}
-
-.ggeWidget[class*="membership-forms"] .su-membership-dname.ggeQuestion[data-name="DigitalName"] #DigitalName__ggid1 {
-  @apply su-mt-0;
-}
-
-/* Membership Recipient First and Last Name */
-.ggeWidget[class*="membership-forms"] .ggeQuestion.ggeQuestion--readonly.su-name.su-first-name {
-  @apply su-m-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.ggeQuestion--readonly.su-name label {
-  @apply su-hidden;
-}
-
-
-/* Membership form caption order, spacing, and styling */
-.ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field .ggePrompt__select {
-  @apply su-flex su-flex-col-reverse;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field .ggeQuestion__caption,
-.ggeWidget[class*="membership-forms"] .ggeQuestion .ggeQuestion__field .ggePrompt__select .ggeQuestion__caption {
-  @apply su-mb-0 su-rs-mt-neg1 su-text-15 md:su-text-18 su-text-black-30;
-}
-
-/* Membership Tally Table */
-.ggeWidget[class*="membership-forms"] .ggeSection header h1 {
-  @apply su-mt-0 su-font-semibold;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership {
-  @apply su-mb-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership.su-membership-installment fieldset {
-  @apply su-order-1;
-}
-
-.ggeWidget[class*="membership-forms"] .ggePage--payment tr .ggeTally--terms {
-  @apply su-type-1 su-font-semibold su-rs-pt-3;
-}
-
-/* Membership Installment Tally Table */
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan {
-  @apply su-rs-mt-3;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan header {
-  @apply su-rs-mb-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan h1 {
-  @apply su-font-semibold su-type-2;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption label[for="ggePaymentPlan--installmentOption__ggid1"] {
-  @apply su-block su-text-18 sm:su-text-21 su-font-semibold;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption .ggeQuestion__caption {
-  @apply su-text-15 md:su-text-18 su-text-black-30;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeQuestion.su-membership.su-membership-installment .ggePaymentPlan .ggePrompt--installmentOption.ggePrompt--checked .ggePrompt__radio {
-  @apply su-hidden;
-}
-
-/* Membership Installment Confirmation Tally Table */
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeButton.ggeButton--forward {
-  @apply su-rs-mt-5 su-bg-digital-red-light;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally td {
-  @apply su-border-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--header {
+.ggeWidget:not([class*="membership-forms"]) div.ggeStripeContainer[role="alert"] .ggeStripeContainer__lowerHr {
   @apply su-p-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable .ggeTally--headtext {
-  @apply su-type-1 su-font-semibold su-text-saa-electric-blue-light su-pb-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--subtext,
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--money {
-  @apply su-p-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--confirmation {
-  @apply su-font-semibold su-rs-pb-1;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally .ggeTallyTable td.ggeTally--total {
-  @apply su-border-t su-border-fog-light;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeConfirmation .ggeTally td.ggeTally--subheader {
-  @apply su-rs-pt-5 su-type-1 su-font-semibold;
-}
-
-/* Membership Payment section */
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--nameOnCard {
-  @apply su-w-full;
-}
-
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--nameOnCard .ggeQuestion__field input {
-  @apply su-mr-0 lg:su-w-[80%] 2xl:su-w-[calc(70%_-_2rem)];
-  margin-right: 2rem;
-}
-
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--account {
-  @apply su-mr-0 su-w-full md:su-w-[calc(75%_-_2rem)] 2xl:su-w-[calc(70%_-_2rem)];
-  margin-right: 2rem;
-}
-
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--account .ggeQuestion__field input {
-  @apply su-w-full sm:su-w-[75%] md:su-w-full;
-}
-
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--verification {
-  @apply su-w-full md:su-w-[25%] 2xl:su-w-[30%];
-}
-
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--verification .ggeQuestion__field input {
-  @apply su-w-full sm:su-w-[25%] md:su-w-full;
-}
-
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--monthExpires,
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--yearExpires{
-  @apply su-w-full sm:su-w-[calc(50%_-_10px)];
-}
-
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--monthExpires select,
-.ggeWidget[class*="membership-forms"] .ggePayment--credit.ggePayment--credit--yearExpires select {
-  @apply su-w-full;
-}
-
-/* Email and Phone Number */
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion[data-name="ContactEmail"] {
-  @apply su-rs-mb-neg2 su-rs-mt-3;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion[data-name="PhoneNumber"] {
-  @apply su-rs-mb-neg2;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion[data-name="UpdatePhoneNumber"] {
-  @apply su-rs-mb-5;
-}
-
-/* Address */
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeAddress__state select {
-  @apply su-leading-display;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeAddress__state,
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeAddress__zipcode {
-  @apply su-rs-mb-5;
-}
-
-/* Membership registration leave a comment */
-.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label {
-  @apply su-clear-both;
-}
-.ggeWidget .ggeQuestion[data-name="Comments"] .ggeQuestion__label label[for="Comments__ggid1"] {
-  @apply su-font-semibold;
-}
-
-/* Membership registration terms & conditions */
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions {
-  @apply su-font-semibold su-text-white su-type-0;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #InstallmentPaymentTerms {
-  @apply su-rs-mb-0;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a {
-  @apply su-underline hocus:su-text-digital-red-light hocus:su-decoration-digital-red-light;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion.ggeQuestion--instructions #TermsandConditions a::after {
-  @apply su-hidden;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion--instructions.su-terms-and-conditions {
-  @apply su-rs-mb-1 su-mt-0 su-flex su-flex-col su-justify-start su-w-full;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field {
-  @apply su-items-center;
-  flex-direction: row !important;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeSection--profile .ggeQuestion--acknowledgment.su-terms-and-conditions-check .ggeQuestion__field .ggePrompt {
-  @apply su-mt-0;
-}
-
-/* Membership selection section */
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration header {
-  @apply su-rs-mb-2;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration header h1 {
-  @apply su-type-2;
-}
-
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration .ggePrompt__price::before {
-  @apply su-hidden;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration .ggePrompt__price {
-  @apply su-rs-ml-1;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration .ggePrompt {
-  @apply su-items-start first:su-mt-0 su-rs-mb-2 last:su-mb-0;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label {
-  @apply su-w-full;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label label {
-  @apply su-flex su-justify-between;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption {
-  @apply su-block su-w-10/12 su-leading-display su-ml-0;
-}
-.ggeWidget[class*="membership-forms"] .ggeSection--askArray.ggeSection--registration .ggePrompt .ggePrompt__label .ggeQuestion__caption div {
-  @apply su-mt-02em;
-}
-
-/* Membership Payment Nav Buttons */
-.ggeWidget[class*="membership-forms"] .ggePage--payment .ggePageNav {
-  @apply su-flex su-flex-col sm:su-flex-row su-items-center;
-}
-
-.ggeWidget[class*="membership-forms"] .ggePage--payment .ggePageNav .ggePageNav--back {
-  @apply su-mb-30 sm:su-mb-0;
-}
-
-/* Membership Pay with Card Button */
-
-.ggeWidget[class*="membership-forms"] .ggeStripeBtn {
-  @apply su-border-2 su-pr-[3rem] su-bg-transparent su-border-solid su-border-saa-electric-blue su-text-white hocus:su-bg-saa-electric-blue hocus:su-text-white;
 }

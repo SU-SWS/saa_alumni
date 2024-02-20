@@ -20,7 +20,7 @@ const PromoCodeBanner = ({ blok }) => (
         <span>
           <HeroIcon
             iconType="check"
-            className="su-text-[3rem] su-inline-block su-text-palo-verde su-mr-03em"
+            className="su-text-30 su-inline-block su-text-palo-verde su-mr-03em"
           />
           Promo code copied!
         </span>
@@ -28,7 +28,7 @@ const PromoCodeBanner = ({ blok }) => (
     >
       <HeroIcon
         iconType="document-duplicate"
-        className="su-text-[3rem] su-inline-block su-text-black-80 su-mr-03em group-hocus:su-text-white"
+        className="su-text-30 su-inline-block su-text-black-80 su-mr-03em group-hocus:su-text-white"
       />
       Copy promo code
     </CopyButton>

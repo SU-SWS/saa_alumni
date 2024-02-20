@@ -14,6 +14,7 @@ import { AuthContextProvider } from './src/contexts/AuthContext';
 import './src/styles/global.css';
 import './src/styles/localist.css';
 import './src/styles/forms.css';
+import './src/styles/light-forms.css';
 
 // Exports.
 export const wrapRootElement = ({ element }) => (

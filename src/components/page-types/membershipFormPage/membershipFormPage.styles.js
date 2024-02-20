@@ -1,18 +1,18 @@
 import { dcnb } from 'cnbuilder';
 
-export const container = 'basic-page su-relative su-flex-grow su-w-full';
+export const container = 'basic-page su-relative su-grow su-w-full';
 export const fixedHero = 'su-fixed su-top-0 su-z-0 su-h-full su-w-full';
 export const fixedHeroImg = 'su-object-cover su-h-full su-w-full';
 export const contentWrapper =
-  'su-relative sm:su-cc su-z-10 su-rs-pt-8 sm:su-rs-pb-8 su-text-white';
+  'su-relative sm:su-cc su-z-10 su-rs-pt-8 sm:su-rs-pb-8 su-text-black';
 export const benefitsWrapper = '2xl:su-col-start-2';
 export const superHead =
-  'su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
-export const heading = 'su-rs-mb-5';
+  'su-text-white su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-2 su-text-center su-mx-auto su-rs-mb-2';
+export const heading = 'su-text-white su-rs-mb-5';
 export const formWrapper =
-  'su-basefont-23 su-w-full su-cc su-bg-saa-black-dark su-border-3 su-border-saa-black-dark su-rs-p-2 sm:su-rs-p-6';
+  'su-basefont-23 su-w-full su-cc su-bg-white su-border su-border-saa-grey su-rs-p-2 sm:su-rs-p-6';
 export const logoWrapper = 'su-rs-mb-5';
-export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[350px]';
+export const logo = 'su-w-200 md:su-w-300 2xl:su-w-[35rem]';
 export const purchaseWrapper = '2xl:su-col-start-2';
 export const cardGridHeading = 'su-rs-mb-4';
 export const cardGridWrapper = 'su-rs-pb-3 su-gap-y-xl';
@@ -30,10 +30,10 @@ export const paymentOuterWrapper = (paymentOptionSection) =>
       : 'su-invisible su-scale-y-0 su-h-0 su-opacity-0 su-cursor-none'
   );
 export const paymentInnerWrapper =
-  'su-rs-mb-3 su-bg-gradient-to-tr su-to-saa-electric-blue-dark su-from-palo-verde-xdark su-rs-px-1 sm:su-rs-px-2 su-rs-pb-5';
+  'su-rs-mb-3 su-bg-fog-light su-rs-px-1 sm:su-rs-px-2 su-rs-pb-5';
 export const paymentHeadingWrapper = 'su-text-center su-rs-pt-4 su-rs-pb-0';
 export const paymentCardsWrapper = 'su-gap-y-xl sm:su-rounded';
 export const promoWrapper = 'su-w-full sm:su-w-auto';
 export const promoLabel = 'su-type-0 su-font-semibold';
 export const promoInput =
-  'sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-bg-transparent su-rounded su-border su-border-solid su-border-black-30-opacity-40 su-border-b-2';
+  'sm:su-w-[44rem] su-p-20 su-mt-03em su-rs-mb-2 su-type-0 su-bg-transparent su-rounded su-border su-border-black-30/40 su-border-b-2';

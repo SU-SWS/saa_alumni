@@ -21,7 +21,7 @@ const SearchPager = ({ activePage, nbPages, maxLinks, selectPage }) => {
   const Pager = ({ pagerLinks, className }) => (
     <nav aria-label="Search results pagination" className={className}>
       <div className="su-flex su-rs-mt-6 su-rs-mb-7 su-justify-center md:su-space-x-36">
-        <ul className="su-list-none su-flex su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-text-[26px] su-font-bold">
+        <ul className="su-list-none su-flex su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-text-26 su-font-bold">
           {activePage > 0 && (
             <li className="su-mb-0">
               <a

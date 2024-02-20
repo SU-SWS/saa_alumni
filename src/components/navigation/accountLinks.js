@@ -92,7 +92,7 @@ const AccountLinks = ({ mainLinkClasses }) => {
                     className={dcnb(
                       showDesktop
                         ? mainLinkClasses
-                        : `su-border-t su-border-t-digital-red-xlight su-transition su-text-20 children:su-px-20 children:su-py-32 children:su-flex su-leading-display children:su-text-white hocus:children:su-text-white hocus:su-bg-cardinal-red-xxdark hocus:children:su-decoration-digital-red-xlight su-underline-offset-2 children:su-w-full su-mt-[7rem]`
+                        : `su-border-t su-border-t-digital-red-xlight su-transition su-text-20 children:su-px-20 children:su-py-32 children:su-flex su-leading-display children:su-text-white hocus:children:su-text-white hocus:su-bg-cardinal-red-xxdark hocus:children:su-decoration-digital-red-xlight su-underline-offset-2 children:su-w-full su-mt-70`
                     )}
                     blok={{
                       link: {

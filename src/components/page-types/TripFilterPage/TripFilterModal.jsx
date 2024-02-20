@@ -118,6 +118,7 @@ const TripFilterModal = ({
             type="button"
             onClick={clearAllFilters}
             aria-label="Clear all filters"
+            data-test="filter-btn--clear-all"
           >
             <span className={styles.clearAllText}>
               Clear all

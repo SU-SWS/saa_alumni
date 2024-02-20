@@ -64,6 +64,11 @@ yarn-error.log
 # Local Netlify folder
 .netlify
 
+# Cypress
+cypress/videos/
+cypress/screenshots/
+cypress/results/
+test-results.xml
 src/stanford.pass
 certs
 src/saacard.pass/pass.json

@@ -1,5 +1,5 @@
 export const page =
-  'trip-filter-page su-relative su-flex-grow su-w-full su-bg-saa-black su-basefont-23';
+  'trip-filter-page su-relative su-grow su-w-full su-bg-saa-black su-basefont-23';
 export const header = 'su-basefont-23';
 export const headerContent = 'su-rs-mt-6 su-rs-mb-7';
 export const hero = 'su-aspect-w-5 su-aspect-h-2';
@@ -19,11 +19,11 @@ export const activeFilters =
 export const filterChips = 'su-flex-1 children:su-mr-13 children:su-mb-13';
 export const clearAll = 'su-p-8';
 export const clearAllBtn =
-  'su-group su-flex-row su-items-center su-block su-mt-[-1.5rem]';
+  'su-group su-flex-row su-items-center su-block su--mt-15';
 export const clearAllText = 'su-relative';
 export const clearAllHover =
-  'su-absolute su-bottom-[-0.5rem] su-left-0 su-w-full su-pt-3 group-hover:su-bg-gradient-to-r group-focus:su-bg-gradient-to-r su-from-palo-verde-dark su-to-saa-electric-blue';
+  'su-absolute su--bottom-5 su-left-0 su-w-full su-pt-3 group-hover:su-bg-gradient-to-r group-focus:su-bg-gradient-to-r su-from-palo-verde-dark su-to-saa-electric-blue';
 export const clearAllIcon = 'su-text-saa-electric-blue-light su-ml-8';
 export const filteredContent = 'su-text-white su-col-span-3';
 export const trips =
-  'focus:su-outline-none su-gap-y-xl md:su-gap-y-[5rem] xl:su-gap-y-[7rem] su-justify-items-center';
+  'focus:su-outline-none su-gap-y-xl md:su-gap-y-50 xl:su-gap-y-70 su-justify-items-center';

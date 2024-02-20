@@ -62,11 +62,6 @@
     context = ['branch-deploy', 'preview-build']
 
 [[plugins]]
-  package = "/plugins/netlify-plugin-wildcard-404-redirect"
-  [plugins.inputs]
-    destination = "https://cardinalalumni.stanford.edu/:splat"
-
-[[plugins]]
   package = "@netlify/plugin-gatsby"
 
 # CONTEXTUAL PLUGINS

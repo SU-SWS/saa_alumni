@@ -4,7 +4,7 @@ export const wrapper = 'su-flex su-flex-col lg:su-flex-row';
 export const logoWrapper = 'su-text-center su-mt-5 su-mb-9';
 export const logo = 'su-type-3';
 export const contentWrapper =
-  'lg:su-pl-45 xl:su-pl-50 su-text-left sm:su-text-center lg:su-text-left su-flex-grow';
+  'lg:su-pl-45 xl:su-pl-50 su-text-left sm:su-text-center lg:su-text-left su-grow';
 export const nav =
   'su-flex su-flex-row sm:su-flex-col su-justify-center sm:su-items-center lg:su-items-start su-mb-10';
 export const primaryMenuListItem = 'sm:su-mr-10 md:su-mr-20 lg:su-mr-27';

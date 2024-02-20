@@ -44,9 +44,9 @@ const SaaStoryCard = ({
   }
 
   let wrapperClasses =
-    'su-border su-border-solid su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
+    'su-border su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
   let contentClasses = 'su-flex-1 su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3';
-  let borderColor = 'su-border-black-30-opacity-40';
+  let borderColor = 'su-border-black-30/40';
   let headlineColor = 'su-text-black hocus:su-text-black';
   let headlineIconColor = 'su-text-digital-red-xlight';
   let textColor = 'su-text-black';
@@ -64,8 +64,7 @@ const SaaStoryCard = ({
     if (isDark) {
       textColor = 'su-text-black-20';
       headlineColor = 'su-text-white hocus:su-text-white';
-      headlineIconColor =
-        'su-text-digital-red-light group-hover:su-text-white group-focus:su-text-white';
+      headlineIconColor = 'su-text-digital-red-light group-hocus:su-text-white';
     }
   }
 
@@ -113,7 +112,7 @@ const SaaStoryCard = ({
                 imageFocus={cardImageFocus || imageFocus}
                 smartFocus={focus}
                 size="vertical"
-                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hover:su-scale-[1.03] group-focus-within:su-scale-[1.03]"
+                className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hocus-within:su-scale-[1.03]"
                 loading="lazy"
                 width="600"
                 height="400"

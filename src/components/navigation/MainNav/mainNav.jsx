@@ -96,7 +96,7 @@ const MainNav = ({ blok: { mainMenuGroups }, blok, className }) => {
             <FlexBox
               alignItems="center"
               justifyContent="center"
-              className="su-h-[7rem] su-px-30 su-text-20 su-text-white"
+              className="su-h-70 su-px-30 su-text-20 su-text-white"
             >
               <Heading size="base" weight="regular" className="su-mb-0">
                 Menu
