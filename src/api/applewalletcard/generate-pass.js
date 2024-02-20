@@ -3,10 +3,13 @@ const fs = require('fs');
 const path = require('path');
 
 export async function handler(event, context) {
+  // eslint-disable-next-line no-console
   console.log('HTTP Method:', event.httpMethod);
+  // eslint-disable-next-line no-console
   console.log('Received event:', event);
 
   if (event.httpMethod !== 'POST') {
+    // eslint-disable-next-line no-console
     console.log('Method not allowed. Received:', event.httpMethod);
     return {
       statusCode: 405,
@@ -18,9 +21,11 @@ export async function handler(event, context) {
     if (!event.body) {
       throw new Error('No body in the request');
     }
+    // eslint-disable-next-line no-console
     console.log('Event Body:', event.body);
 
     const { membershipNumber, firstName, lastName } = JSON.parse(event.body);
+    // eslint-disable-next-line no-console
     console.log('Parsed Data:', { membershipNumber, firstName, lastName });
 
     const passModelDirectory = path.join(
