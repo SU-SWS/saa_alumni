@@ -98,7 +98,7 @@ const ComponentList = {
   accordion: Accordion,
   accordionItem: AccordionItem,
   alert: SBAlert,
-  willCard: willCard,
+  willCard,
   alertCtaLink: SBAlertCtaLink,
   associatesDirectoryPage: AssociatesDirectoryPage,
   associatesDirectory: AssociatesDirectory,

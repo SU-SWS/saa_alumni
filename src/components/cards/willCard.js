@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
+import QRCode from 'qrcode.react';
 import { Grid } from '../layout/Grid';
 import CardImage from '../media/cardImage';
 import CircularImage from '../media/circularImage';
 import BasicCardContent from './basicCardContent';
 import appleWalletBadge from '../../assets/apple-wallet-badge.svg';
 import AuthContext from '../../contexts/AuthContext';
-import QRCode from 'qrcode.react';
 
 const WillCard = ({
   blok: {
@@ -41,7 +41,7 @@ const WillCard = ({
       // Create an anchor tag and trigger download
       const link = document.createElement('a');
       link.href = downloadUrl;
-      link.download = "membershipCard.pkpass"; // This can be omitted to use the filename from the Content-Disposition header
+      link.download = 'membershipCard.pkpass'; // This can be omitted to use the filename from the Content-Disposition header
       document.body.appendChild(link); // Append to body
       link.click(); // Simulate click to trigger download
       document.body.removeChild(link); // Clean up
@@ -54,10 +54,10 @@ const WillCard = ({
       alert('User data is not available. Please log in.');
       return;
     }
-  
+
     try {
       const { membershipNumber, firstName, lastName } = userData;
-  
+
       const response = await fetch('/api/applewalletcard/generate-pass', {
         method: 'POST',
         headers: {
@@ -65,17 +65,21 @@ const WillCard = ({
         },
         body: JSON.stringify({ membershipNumber, firstName, lastName }),
       });
-  
+
       if (!response.ok) {
-        console.error(`Error from server: ${response.statusText} (${response.status})`);
-        alert(`Failed to generate pass: ${response.statusText}. Please try again later.`);
+        console.error(
+          `Error from server: ${response.statusText} (${response.status})`
+        );
+        alert(
+          `Failed to generate pass: ${response.statusText}. Please try again later.`
+        );
         return;
       }
-  
+
       const passData = await response.blob();
       if (passData.size === 0) {
-        console.error("Received an empty pass file from the server.");
-        alert("Failed to generate the pass correctly. Please contact support.");
+        console.error('Received an empty pass file from the server.');
+        alert('Failed to generate the pass correctly. Please contact support.');
         return;
       }
 
@@ -83,10 +87,11 @@ const WillCard = ({
       setDownloadUrl(url);
     } catch (error) {
       console.error('Error generating pass:', error);
-      alert(`Error generating pass: ${error.message}. Please check the console for more details.`);
+      alert(
+        `Error generating pass: ${error.message}. Please check the console for more details.`
+      );
     }
   };
-  
 
   // Default wrapper classes for white, non-minimal cards
   let wrapperClasses =
@@ -160,20 +165,37 @@ const WillCard = ({
           )}
         />
         <div>
-  {downloadUrl ? (
-    <>
-      <div>
-        <p>Scan this QR Code with your mobile device to add to Apple Wallet:</p>
-        <QRCode value={downloadUrl} size={128} level={"H"} includeMargin={true} />
-      </div>
-      <a href={downloadUrl} download="pass.pkpass" style={{ display: 'none' }}>Download Pass</a>
-    </>
-  ) : (
-    <button onClick={handleAddToWallet} style={{ background: 'none', border: 'none' }}>
-      <img src={appleWalletBadge} alt="Add to Apple Wallet" />
-    </button>
-  )}
-</div>
+          {downloadUrl ? (
+            <>
+              <div>
+                <p>
+                  Scan this QR Code with your mobile device to add to Apple
+                  Wallet:
+                </p>
+                <QRCode
+                  value={downloadUrl}
+                  size={128}
+                  level="H"
+                  includeMargin
+                />
+              </div>
+              <a
+                href={downloadUrl}
+                download="pass.pkpass"
+                style={{ display: 'none' }}
+              >
+                Download Pass
+              </a>
+            </>
+          ) : (
+            <button
+              onClick={handleAddToWallet}
+              style={{ background: 'none', border: 'none' }}
+            >
+              <img src={appleWalletBadge} alt="Add to Apple Wallet" />
+            </button>
+          )}
+        </div>
       </Grid>
     </SbEditable>
   );
