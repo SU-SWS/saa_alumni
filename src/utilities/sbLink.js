@@ -13,6 +13,10 @@ export const AllowedAnchorAttributes = [
   /^referrerpolicy$/,
   /^type$/,
   /^media$/,
+  /^popover$/,
+  /^tabindex$/,
+  /^role$/,
+  /^title$/,
   /^lang$/,
   /^inputmode$/,
   /^data-.*/,
@@ -162,7 +166,13 @@ const SbLink = React.forwardRef((props, ref) => {
   // Default if we don't know what type this is.
   // ---------------------------------------------------------------------------
   return (
-    <a ref={ref} href={linkUrl} className={linkClasses} {...otherAttributes}>
+    <a
+      ref={ref}
+      href={linkUrl}
+      className={linkClasses}
+      {...otherAttributes}
+      {...customAttributes}
+    >
       {props.children}
     </a>
   );
