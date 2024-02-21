@@ -36,7 +36,6 @@ export const SAALinkButton = React.forwardRef(
       children,
       link,
       rel,
-      referrerpolicy,
       attributes,
       srText,
       className,

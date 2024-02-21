@@ -6,6 +6,21 @@ import { config } from './config';
 import HeroIcon from '../components/simple/heroIcon';
 import { utmParams } from './utmParams';
 
+// List of allowed anchor attributes that can come from the Storyblok custom attributes fields.
+export const AllowedAnchorAttributes = [
+  /^download$/,
+  /^hreflang$/,
+  /^referrerpolicy$/,
+  /^type$/,
+  /^media$/,
+  /^lang$/,
+  /^inputmode$/,
+  /^data-.*/,
+  /^aria-.*/,
+  /^test-.*/,
+  /^id$/,
+];
+
 /**
  * Reusable Storyblok Link component for various link types
  * eg: internal, external, asset
@@ -28,6 +43,16 @@ const SbLink = React.forwardRef((props, ref) => {
   const activeClass = props.activeClass ?? '';
   const assetClasses = props.assetClasses ?? '';
   const otherAttributes = props.attributes ?? {};
+
+  // Filter out any attributes that are not allowed.
+  const customAttributes = Object.keys(props.link).reduce((acc, key) => {
+    if (AllowedAnchorAttributes.some((attr) => attr.test(key))) {
+      if (props.link[key]) {
+        acc[key] = props.link[key];
+      }
+    }
+    return acc;
+  }, {});
 
   // Get out of the url and keep track of specific utm parameters.
   const location = useLocation();
@@ -62,6 +87,7 @@ const SbLink = React.forwardRef((props, ref) => {
         activeClassName={activeClass}
         onClick={openGatsbyLinkInNewTab}
         {...otherAttributes}
+        {...customAttributes}
       >
         {props.children}
       </Link>
@@ -84,20 +110,13 @@ const SbLink = React.forwardRef((props, ref) => {
   }
 
   if (props.link?.linktype === 'url') {
-    let referrerpolicy;
-
-    if (props.link.referrerpolicy) {
-      referrerpolicy = props.link.referrerpolicy;
-    }
-
     return (
       <a
         ref={ref}
         href={linkUrl}
         className={dcnb(linkClasses, urlClasses)}
-        {...(otherAttributes || referrerpolicy
-          ? { referrerpolicy, ...otherAttributes }
-          : {})}
+        {...otherAttributes}
+        {...customAttributes}
       >
         {props.children}
         <span className="su-sr-only"> (external link)</span>
@@ -127,6 +146,7 @@ const SbLink = React.forwardRef((props, ref) => {
         target="_blank"
         rel="noreferrer"
         {...otherAttributes}
+        {...customAttributes}
       >
         {props.children}
       </a>
