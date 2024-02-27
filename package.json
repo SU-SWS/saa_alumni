@@ -1,8 +1,8 @@
 {
   "name": "saa-alumni",
   "description": "Stanford Alumni Association",
-  "version": "4.3.7",
-  "author": "Stanford University | Alumni Association",
+  "version": "4.3.9",
+  "author": "Stanford University | Alumni Association | Stanford Web Services",
   "dependencies": {
     "@babel/runtime": "^7.23.5",
     "@emotion/babel-plugin": "^11.11.0",
