@@ -329,13 +329,8 @@
 }
 
 /* Membership Checkbox */
-<<<<<<< HEAD
 .su-light-form .ggeWidget .ggePrompt .ggePrompt__checkbox input {
   @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-digital-blue su-cursor-pointer;
-=======
-.ggeWidget[class*="membership-forms"] .ggePrompt .ggePrompt__checkbox input {
-  @apply su-flex su-w-24 su-h-24 su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-digital-blue su-cursor-pointer;
->>>>>>> dev
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
