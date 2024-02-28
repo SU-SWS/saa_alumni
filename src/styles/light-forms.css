@@ -71,7 +71,7 @@
 }
 
 .su-light-form .ggeWidget .ggeQuestion .ggeQuestion__field select {
-  @apply su-bg-no-repeat su-text-black su-leading-[2.4rem] md:su-leading-[2.7rem];
+  @apply su-bg-no-repeat su-text-black su-leading-24 md:su-leading-27;
   background-position: right 22px center;
   background-image: url("../assets/arrow-down-black.svg");
   background-size: 21px;
@@ -199,7 +199,7 @@
 }
 
 .su-light-form .ggeWidget .ggePayment--credit.ggePayment--credit--nameOnCard .ggeQuestion__field input {
-  @apply su-mr-0 lg:su-w-[80%] 2xl:su-w-[calc(70%_-_2rem)];
+  @apply su-mr-0 lg:su-w-4/5 2xl:su-w-[calc(70%_-_2rem)];
   margin-right: 2rem;
 }
 
@@ -209,15 +209,15 @@
 }
 
 .su-light-form .ggeWidget .ggePayment--credit.ggePayment--credit--account .ggeQuestion__field input {
-  @apply su-w-full sm:su-w-[75%] md:su-w-full;
+  @apply su-w-full sm:su-w-3/4 md:su-w-full;
 }
 
 .su-light-form .ggeWidget .ggePayment--credit.ggePayment--credit--verification {
-  @apply su-w-full md:su-w-[25%] 2xl:su-w-[30%];
+  @apply su-w-full md:su-w-1/4 2xl:su-w-[30%];
 }
 
 .su-light-form .ggeWidget .ggePayment--credit.ggePayment--credit--verification .ggeQuestion__field input {
-  @apply su-w-full sm:su-w-[25%] md:su-w-full;
+  @apply su-w-full sm:su-w-1/4 md:su-w-full;
 }
 
 .su-light-form .ggeWidget .ggePayment--credit.ggePayment--credit--monthExpires,
@@ -330,7 +330,7 @@
 
 /* Membership Checkbox */
 .su-light-form .ggeWidget .ggePrompt .ggePrompt__checkbox input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-digital-blue su-cursor-pointer;
+  @apply su-flex su-w-24 su-h-24 su-ml-0 su-mb-0 su-rounded-l su-rounded-r su-border-2 su-border-transparent su-bg-digital-blue su-cursor-pointer;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -347,14 +347,14 @@
 }
 
 .su-light-form .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::before {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-20 su-h-20 su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
   content: "";
   background: #006CB8;
   border-radius: 0;
 }
 
 .su-light-form .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__checkbox::after {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[2rem] su-h-[2rem] su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-20 su-h-20 su--translate-y-1/2 su--translate-x-1/2 su-pointer-events-none;
   content: "";
   background: #ffffff;
   mask: url("../assets/check-mark.svg");
@@ -375,7 +375,7 @@
 
 /* Membership Radio Select */
 .su-light-form .ggeWidget .ggePrompt .ggePrompt__radio input {
-  @apply su-flex su-w-[2.4rem] su-h-[2.4rem] su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent su-cursor-pointer;
+  @apply su-flex su-w-24 su-h-24 su-ml-0 su-mb-0 su-rounded-full su-border-2 su-border-transparent su-cursor-pointer;
   background: #006CB8 border-box;
   -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -384,7 +384,7 @@
 
 .su-light-form .ggeWidget .ggePrompt.ggePrompt--checked .ggePrompt__radio::after,
 .su-light-form .ggeWidget .ggePrompt__other.ggePrompt--checked .ggePrompt:first-of-type .ggePrompt__radio::after {
-  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-[1.2rem] su-h-[1.2rem] su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
+  @apply su-absolute su-top-1/2 su-left-1/2 su-flex su-w-12 su-h-12 su--translate-y-1/2 su--translate-x-1/2 su-rounded-full;
   background: #006CB8;
   content: "";
 }
