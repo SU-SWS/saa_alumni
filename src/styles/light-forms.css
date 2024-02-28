@@ -71,7 +71,7 @@
 }
 
 .su-light-form .ggeWidget .ggeQuestion .ggeQuestion__field select {
-  @apply su-bg-no-repeat su-text-black su-leading-24 md:su-leading-27;
+  @apply su-bg-no-repeat su-text-black su-leading-[2.4rem] md:su-leading-[2.7rem];
   background-position: right 22px center;
   background-image: url("../assets/arrow-down-black.svg");
   background-size: 21px;
