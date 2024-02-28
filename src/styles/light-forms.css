@@ -62,7 +62,7 @@
 
 .su-light-form .ggeWidget .ggeSection--askArray.ggeSection--registration,
 .su-light-form .ggeWidget .ggeTally {
-  @apply su-border-2 su-pt-[2.6rem] su-px-[2.6rem] su-pb-[4.5rem] su-mb-[7.2rem] su-border-4 su-border-digital-blue su-bg-fog-light;
+  @apply su-border-2 su-pt-26 su-px-26 su-pb-45 su-mb-72 su-border-4 su-border-digital-blue su-bg-fog-light;
 }
 
 /* Membership form caption order, spacing, and styling */
