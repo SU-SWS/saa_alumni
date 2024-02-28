@@ -6,7 +6,7 @@ import Footer from './partials/footer';
 const Page = ({ blok: { body }, blok, ...rest }) => (
   <SbEditable content={blok}>
     <div className="su-flex su-flex-col su-min-h-screen">
-      <main className="su-flex-grow">
+      <main className="su-grow">
         <CreateBloks blokSection={body} />
       </main>
       <Footer blok={blok} />

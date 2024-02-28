@@ -45,6 +45,8 @@ export const StanfordLogo = ({
       <a
         className={dcnb('su-logo', styles.logoColor({ color }), className)}
         href="https://www.stanford.edu"
+        aria-hidden
+        tabIndex={-1}
       >
         {logoText}
       </a>

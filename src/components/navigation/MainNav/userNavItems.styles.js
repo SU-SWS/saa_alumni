@@ -7,11 +7,11 @@ export const utilityNav2Link =
 export const link =
   'su-flex su-items-baseline su-justify-between su-group su-w-full su-px-20 su-py-12 su-no-underline su-leading-display su-text-white hocus:su-text-white hocus:su-bg-cardinal-red-xxdark su-font-semibold !su-underline-offset-[3px] lg:!su-decoration-digital-red-xlight su-text-20';
 export const heroicon =
-  'su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hocus:su-text-white su-text-[2.6rem] su-relative su-top-[0.15em]';
+  'su-relative su-inline-block su-mt-0 su-text-digital-red-xlight group-hocus:su-text-white su-text-26 su-relative su-top-[0.15em]';
 
 export const menuWrapper = (expanded) =>
   dcnb(
-    'su-transform-gpu su-transition su-origin-top lg:su-origin-top-right lg:su-bg-cardinal-red-xdark lg:su-z-10 lg:su-absolute lg:su-shadow-lg lg:su-rounded-[4px] lg:su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su-mr-[-2rem] sm:su-mr-[-3rem] lg:su-w-[38rem] su-right-0 su-mt-8 su-text-left',
+    'su-transform-gpu su-transition su-origin-top lg:su-origin-top-right lg:su-bg-cardinal-red-xdark lg:su-z-10 lg:su-absolute lg:su-shadow-lg lg:su-rounded-[4px] lg:su-rs-px-1 su-rs-pt-0 su-rs-pb-1 children:su-mb-02em su-w-screen su--mr-20 sm:su--mr-30 lg:su-w-[38rem] su-right-0 su-mt-8 su-text-left',
     {
       'lg:su-scale-y-0 lg:su-scale-x-0 lg:su-opacity-0 lg:su-invisible':
         !expanded,

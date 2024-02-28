@@ -94,7 +94,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
             <FlexBox
               alignItems="center"
               justifyContent="center"
-              className="su-h-[7rem] su-px-30 su-text-20 su-bg-white"
+              className="su-h-70 su-px-30 su-text-20 su-bg-white"
             >
               <Heading size="base" weight="regular" className="su-mb-0">
                 Menu

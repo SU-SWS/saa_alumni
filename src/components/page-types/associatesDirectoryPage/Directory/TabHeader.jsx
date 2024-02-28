@@ -21,7 +21,7 @@ const TabHeader = ({ group, activeTab, handleTabClick, handleKeyPress }) => {
         isActive
           ? 'su-bg-cardinal-red-xdark'
           : 'su-bg-saa-black su-bg-opacity-[80%]'
-      } su-py-[8px] su-px-[15px] su-text-white hover:su-text-white hover:su-no-underline focus:su-text-white focus:su-no-underline su-border su-border-solid su-border-1 su-border-black-30-opacity-40`}
+      } su-py-8 su-px-15 su-text-white hocus:su-text-white hocus:su-no-underline su-border su-border-black-30/40`}
       href={`#${group}`}
       onClick={handleTabClick}
       data-group={group}

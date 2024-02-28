@@ -1,4 +1,4 @@
-export const container = 'basic-page su-relative su-flex-grow su-w-full';
+export const container = 'basic-page su-relative su-grow su-w-full';
 export const contentWrapper = 'su-cc su-rs-pb-8 su-bg-saa-black su-text-white';
 export const grid = 'su-rs-pb-8';
 export const gridHeader = 'lg:su-col-start-4 xl:su-col-start-4';

@@ -10,6 +10,7 @@ const path = require('path');
 const dir = path.resolve(__dirname, 'src/tailwind/plugins');
 
 module.exports = {
+  // We preserve the su- prefix for this repo because we have Storyblok WYSIWYG with su- classes
   prefix: 'su-',
   presets: [require('decanter')],
   content: ['./src/**/*.{js,jsx,md,mdx,ts,tsx}'],
@@ -21,11 +22,6 @@ module.exports = {
     },
   },
   plugins: [
-    function ({ addVariant }) {
-      addVariant('children-hover', '& > *:hover');
-      addVariant('children-hocus', '& > *:hover, & > *:focus');
-    },
-
     // @tailwind base;
     require(`${dir}/base/base.js`)(),
 

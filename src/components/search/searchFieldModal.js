@@ -15,7 +15,7 @@ const SearchFieldModal = React.forwardRef((props, ref) => {
   const [suggestions, setSuggestions] = useState([]);
   const [query, setQuery] = useState('');
 
-  const wrapperClasses = `su-border-0 su-border-b-2 su-border-solid su-border-black-10`;
+  const wrapperClasses = `su-border-0 su-border-b-2 su-border-black-10`;
 
   const inputClasses = `search-input-modal su-border-0 su-bg-transparent su-text-black-10 su-text-black-40::placeholder su-w-full su-flex-1
   su-rs-px-1 su-py-02em su-text-m2 md:su-text-m4 su-leading-display focus:su-outline-none focus:su-ring-0 focus:su-ring-transparent`;

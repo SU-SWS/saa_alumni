@@ -151,7 +151,6 @@ This will ensure that features get labeled and organized correctly in the releas
 Pull requests against dev will need to pass status checks for the following:
 - lint
 - test
-- codeclimate
 - Branch up to date with `dev`
 - Netlify build/deploy preview
 
@@ -195,16 +194,6 @@ Contribution / Collaboration
 ---
 
 You are welcome to contribute functionality, bug fixes, or documentation to this module. If you would like to suggest a fix or new functionality you may add a new issue to the GitHub issue queue or you may fork this repository and submit a pull request. For more help please see [GitHub's article on fork, branch, and pull requests](https://help.github.com/articles/using-pull-requests)
-
-### Component Organization in This Repo
-
-#### Partials
-
-TODO
-
-#### View Modes for Components
-
-TODO
 
 ### Megaprofile Mocking
 Megaprofile mocking can be enabled locally by running `npm run dev:mock`, or by adding the following
