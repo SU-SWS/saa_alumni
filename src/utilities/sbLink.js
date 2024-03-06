@@ -23,6 +23,7 @@ export const AllowedAnchorAttributes = [
   /^aria-.*/,
   /^test-.*/,
   /^id$/,
+  /^rel$/,
 ];
 
 /**
