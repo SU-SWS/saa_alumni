@@ -80,7 +80,7 @@ const Hero = ({
         >
           <FlexBox direction="col" className="lg:su-mt-[19rem]">
             {(sansSuper || serifSuper || headline || sansSub) && (
-              <div className={dcnb("su-text-center", textColor)}>
+              <div className={dcnb('su-text-center', textColor)}>
                 {sansSuper && (
                   <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
                     {sansSuper}
