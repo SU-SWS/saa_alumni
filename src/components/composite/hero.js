@@ -9,6 +9,7 @@ import FullWidthImage from '../media/fullWidthImage';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 import { heroGradient } from '../../utilities/dataSource';
+import * as styles from './hero.styles';
 
 const Hero = ({
   blok: {
@@ -40,6 +41,11 @@ const Hero = ({
 
   if (isDarkGradient) {
     gradient = 'su-to-black-true/20';
+  }
+
+  let textColor = 'su-text-white';
+  if (gradientProp === 'white') {
+    textColor = 'su-black';
   }
 
   const numCta = getNumBloks(cta);
@@ -74,21 +80,21 @@ const Hero = ({
         >
           <FlexBox direction="col" className="lg:su-mt-[19rem]">
             {(sansSuper || serifSuper || headline || sansSub) && (
-              <div className="su-text-center su-text-white">
+              <div className={dcnb("su-text-center", textColor)}>
                 {sansSuper && (
                   <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
                     {sansSuper}
                   </span>
                 )}
                 {serifSuper && (
-                  <span className="su-block su-max-w-prose su-font-serif su-leading-display su-type-2 su-text-shadow su-mx-auto su-mb-05em">
+                  <span className={styles.serifSuper({ textColor })}>
                     {serifSuper}
                   </span>
                 )}
                 {headline && (
                   <span
                     className={dcnb(
-                      'su-block su-font-bold su-font-serif su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em',
+                      styles.headline({ textColor }),
                       heroHeadlineSize
                     )}
                   >
@@ -96,9 +102,7 @@ const Hero = ({
                   </span>
                 )}
                 {sansSub && (
-                  <p className="su-max-w-prose su-type-1 su-leading-display su-text-shadow su-mx-auto su-mb-0">
-                    {sansSub}
-                  </p>
+                  <p className={styles.sansSub({ textColor })}>{sansSub}</p>
                 )}
               </div>
             )}
