@@ -112,7 +112,12 @@ const Hero = ({
               </div>
             )}
             {!isHideScroll && (
-              <div className={dcnb("su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22", blackText)}>
+              <div
+                className={dcnb(
+                  'su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22',
+                  blackText
+                )}
+              >
                 <p className="su-mb-02em">Scroll to explore</p>
                 <a
                   href="#page-title"
