@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactDOM } from 'react';
 import { render } from 'storyblok-rich-text-react-renderer-ts';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
@@ -23,7 +23,7 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
       bold: (children) => <strong>{children}</strong>,
       italic: (children) => <em>{children}</em>,
       link: (children, props) => {
-        if (!children) {
+        if (!children || (typeof children === 'string' && !children.trim())) {
           // No empty links, please
           return null;
         }
