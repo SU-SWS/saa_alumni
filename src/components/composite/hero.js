@@ -43,9 +43,9 @@ const Hero = ({
     gradient = 'su-to-black-true/20';
   }
 
-  let textColor = 'su-text-white';
+  let blackText;
   if (gradientProp === 'white') {
-    textColor = 'su-text-black';
+    blackText = 'xs:su-text-black';
   }
 
   const numCta = getNumBloks(cta);
@@ -80,21 +80,21 @@ const Hero = ({
         >
           <FlexBox direction="col" className="lg:su-mt-[19rem]">
             {(sansSuper || serifSuper || headline || sansSub) && (
-              <div className={dcnb('su-text-center', textColor)}>
+              <div className={dcnb('su-text-center su-text-white', blackText)}>
                 {sansSuper && (
                   <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
                     {sansSuper}
                   </span>
                 )}
                 {serifSuper && (
-                  <span className={styles.serifSuper({ textColor })}>
+                  <span className={styles.serifSuper({ blackText })}>
                     {serifSuper}
                   </span>
                 )}
                 {headline && (
                   <span
                     className={dcnb(
-                      styles.headline({ textColor }),
+                      styles.headline({ blackText }),
                       heroHeadlineSize
                     )}
                   >
@@ -102,7 +102,7 @@ const Hero = ({
                   </span>
                 )}
                 {sansSub && (
-                  <p className={styles.sansSub({ textColor })}>{sansSub}</p>
+                  <p className={styles.sansSub({ blackText })}>{sansSub}</p>
                 )}
               </div>
             )}
