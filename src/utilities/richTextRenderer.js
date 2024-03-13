@@ -23,6 +23,11 @@ const RichTextRenderer = ({ wysiwyg, isDark, className, linkColor }) => {
       bold: (children) => <strong>{children}</strong>,
       italic: (children) => <em>{children}</em>,
       link: (children, props) => {
+        if (!children) {
+          // No empty links, please
+          return null;
+        }
+
         const { href, target, linktype } = props;
         if (linktype === 'email') {
           // Email links: add `mailto:` scheme and map to <a>
