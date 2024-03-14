@@ -1,4 +1,4 @@
-import React, { ReactDOM } from 'react';
+import React from 'react';
 import { render } from 'storyblok-rich-text-react-renderer-ts';
 import { dcnb } from 'cnbuilder';
 import { Link } from 'gatsby';
