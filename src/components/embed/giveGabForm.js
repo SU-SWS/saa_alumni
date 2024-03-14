@@ -17,7 +17,9 @@ const GiveGabForm = ({
   },
   blok,
   urlData,
+  kwoCredentials,
   bgCardStyle,
+  isSpacing,
 }) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
@@ -27,13 +29,21 @@ const GiveGabForm = ({
     embedUrl.searchParams.set('urlData', urlData.replace(' ', ''));
   }
 
+  if (kwoCredentials) {
+    embedUrl.searchParams.set(
+      'kwoCredentials',
+      kwoCredentials.replace(' ', '')
+    );
+  }
+
   if (isAuthenticating) {
     return (
       <div
         aria-live="polite"
         aria-busy="true"
         className={dcnb(
-          'su-flex su-flex-row su-shadow-lg su-text-white su-rs-p-5 md:su-rs-p-6 su-bg-gradient-to-tl su-to-saa-black su-from-saa-black/40 su-backdrop-blur-sm',
+          'su-flex su-flex-row su-shadow-lg su-text-white su-bg-gradient-to-tl su-to-saa-black su-from-saa-black-opacity-40 su-backdrop-blur-sm',
+          isSpacing && 'su-rs-p-5 md:su-rs-p-6',
           bgCardStyle
         )}
       >
@@ -51,7 +61,7 @@ const GiveGabForm = ({
       <Container width="full" className={bgCardStyle}>
         <div
           className={dcnb(
-            'su-rs-p-5 su-rs-pb-6 lg:su-rs-p-6 lg:su-rs-pb-7',
+            isSpacing && 'su-rs-p-5 su-rs-pb-6 lg:su-rs-p-6 lg:su-rs-pb-7',
             bgCardStyle.includes('dark') && 'form-gradient',
             bgCardStyle
           )}

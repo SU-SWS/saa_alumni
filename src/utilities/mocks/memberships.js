@@ -7,6 +7,7 @@ export const membershipsMockData = {
       membershipAffiliation: 'Alum',
       membershipStartDate: '2011',
       membershipGroup: 'SAA',
+      membershipGGPaymentReferenceID: '2XB9QW3',
     },
     {
       membershipStatus: 'Active',
