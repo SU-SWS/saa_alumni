@@ -18,18 +18,13 @@ import TripPrimaryCard from './tripPrimaryCard';
 import TripTravelerCard from './tripTravelerCard';
 import TripTravelerList from './tripTravelerList';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import {
-  findSelectOption,
-  emailTypeList,
-  phoneNumberTypeList,
-} from './registationFormOptions';
-import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './interstitialPage.styles';
 import { formatUsDate } from '../../../utilities/transformDate';
 import { filterRelationships } from '../../../utilities/filterRelationships';
+import { extractUserData } from '../../../utilities/userProfile';
 
 const InterstitialPage = (props) => {
   const {
@@ -99,56 +94,10 @@ const InterstitialPage = (props) => {
     structureTravelerData(relationships)
   );
 
-  const emailData = fetchEmail(
-    userProfile?.emails,
-    userProfile?.contact?.preferredEmail
-  );
-
-  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
-  const primaryRegistrantEmailType = emailData?.type || null;
-
-  const phoneData = fetchPhone(
-    userProfile?.phoneNumbers,
-    userProfile?.contact?.preferredPhoneType
-  );
-
-  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber || null;
-  const primaryRegistrantPhoneNumberType = phoneData?.type || null;
-
-  let digitalName;
-  if (userProfile?.contact.name?.digitalName) {
-    digitalName = userProfile?.contact.name?.digitalName;
-  } else if (userProfile?.contact.name?.fullNameParsed?.firstName) {
-    digitalName = `${userProfile?.contact.name?.fullNameParsed?.firstName} ${userProfile?.contact.name?.fullNameParsed?.lastName}`;
-  } else {
-    digitalName = `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`;
-  }
+  const suUser = extractUserData(userProfile);
 
   const primaryRegistrant = {
-    su_did: userProfile?.session?.encodedSUID,
-    su_dname: digitalName,
-    su_title: userProfile?.contact.name?.fullNameParsed?.prefix,
-    su_first_name:
-      userProfile?.contact.name?.fullNameParsed?.firstName ||
-      userProfile?.session?.firstName,
-    su_middle_name:
-      userProfile?.contact.name?.fullNameParsed?.middleName === null ||
-      userProfile?.contact.name?.fullNameParsed?.middleName === undefined
-        ? '&nbsp;'
-        : userProfile?.contact.name?.fullNameParsed?.middleName,
-    su_last_name:
-      userProfile?.contact.name?.fullNameParsed?.lastName ||
-      userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail,
-    su_email_type: findSelectOption(emailTypeList, primaryRegistrantEmailType),
-    su_phone: primaryRegistrantPhoneNumber,
-    su_phone_type: findSelectOption(
-      phoneNumberTypeList,
-      primaryRegistrantPhoneNumberType
-    ),
-    su_dob: userProfile?.contact.birthDate
-      ? formatUsDate(userProfile?.contact.birthDate)
-      : undefined,
+    ...suUser,
     su_relation: 'Guest',
     su_reg: 'Primary registrant',
   };
