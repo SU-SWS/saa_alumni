@@ -36,6 +36,26 @@
 # More redirects can be found in static/_redirects
 #
 
+# EDGE FUNCTIONS
+# ##############################################################################
+
+# Protected pages can redirect at the edge to the login page.
+[[edge_functions]]
+  path = "/travel-study/custom-journeys/request"
+  function = "protected-content"
+
+[[edge_functions]]
+  path = "/travel-study/destinations/*/reserve"
+  function = "protected-content"
+
+[[edge_functions]]
+  path = "/travel-study/destinations/*/notify"
+  function = "protected-content"
+
+[[edge_functions]]
+  path = "/membership/join"
+  function = "protected-content"
+
 # PLUGINS
 # ##############################################################################
 
