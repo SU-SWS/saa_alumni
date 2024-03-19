@@ -21,6 +21,12 @@ authentication was not providing the cookie to the edge function. See the thread
 
 The known paths of protected content have been added to Netlify.toml for where and when the edge function should validate the cookie.
 
+# Alternatives
+
+Instead of using an HTTP header to do the redirect, the login callback function could return HTML and do a meta tag redirect. This would
+work around the issue of the dropped Strict cookie on the redirect to the final destination but we've decided to go with the LAX cookie
+instead.
+
 ## Consequences
 
 * Redirect to auth should be faster
