@@ -9,11 +9,9 @@ import Layout from '../../partials/layout';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
 import { Grid } from '../../layout/Grid';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
-import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
-import Logo from '../../identity/logo';
 import MembershipCard from './membershipCard';
 import AuthContext from '../../../contexts/AuthContext';
 import * as styles from './membershipFormPage.styles';
@@ -23,8 +21,8 @@ import {
 } from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
 import MembershipPaymentCard from './membershipPaymentCard';
-import { formatUsDate } from '../../../utilities/transformDate';
 import { isAlum } from '../../../utilities/isAlum';
+import { extractUserData } from '../../../utilities/userProfile';
 import AlumniLogo from '../../../images/stanford_alumni-color.png';
 
 // The type of registrant interstitial page has been set as the default preview within StoryBlok
@@ -75,73 +73,24 @@ const MembershipFormPage = (props) => {
       )
   );
 
-  const emailData = fetchEmail(
-    userProfile?.emails,
-    userProfile?.contact?.preferredEmail
-  );
-
-  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
-  const primaryRegistrantEmailType = emailData?.type || null;
-
-  const phoneData = fetchPhone(
-    userProfile?.phoneNumbers,
-    userProfile?.contact?.preferredPhoneType
-  );
-
-  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber
-    ? phoneData.phoneNumber
-    : null;
-  const primaryRegistrantPhoneNumberType = phoneData?.type
-    ? phoneData.type
-    : null;
+  const suUser = extractUserData(userProfile);
 
   const primaryUser = {
-    su_did: userProfile?.session?.encodedSUID,
-    su_dname:
-      userProfile?.contact.name?.digtalName ||
-      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
-    su_first_name:
-      userProfile?.contact.name?.fullNameParsed?.firstName ||
-      userProfile?.session?.firstName,
-    su_last_name:
-      userProfile?.contact.name?.fullNameParsed?.lastName ||
-      userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail,
-    su_phone: primaryRegistrantPhoneNumber,
-    su_recipient_dob: userProfile?.contact.birthDate
-      ? formatUsDate(userProfile?.contact.birthDate)
-      : '',
-    su_recipient_first_name:
-      userProfile?.contact.name?.fullNameParsed?.firstName ||
-      userProfile?.session?.firstName,
-    su_recipient_last_name:
-      userProfile?.contact.name?.fullNameParsed?.lastName ||
-      userProfile?.session?.lastName,
+    ...suUser,
+    su_recipient_dob: suUser?.su_dob,
+    su_recipient_first_name: suUser?.su_first_name,
+    su_recipient_last_name: suUser?.su_last_name,
     su_recipient_relationship: 'Guest',
-    su_recipient_suid: userProfile?.session?.encodedSUID,
-    su_recipient_email: primaryRegistrantEmail,
-    su_recipient_email_type: primaryRegistrantEmailType || undefined,
-    su_recipient_phone: primaryRegistrantPhoneNumber,
-    su_recipient_phone_type: primaryRegistrantPhoneNumberType || undefined,
+    su_recipient_suid: suUser?.su_did,
+    su_recipient_email: suUser?.su_email,
+    su_recipient_phone: suUser?.su_phone,
     su_self_membership: 'yes',
     su_gift: 'no',
     su_reg_type: 'self',
-    su_affiliations: affiliations,
   };
 
   const newContact = {
-    su_did: userProfile?.session?.encodedSUID,
-    su_dname:
-      userProfile?.contact.name?.digtalName ||
-      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
-    su_first_name:
-      userProfile?.contact.name?.fullNameParsed?.firstName ||
-      userProfile?.session?.firstName,
-    su_last_name:
-      userProfile?.contact.name?.fullNameParsed?.lastName ||
-      userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail,
-    su_phone: primaryRegistrantPhoneNumber,
+    ...suUser,
     su_reg_type: 'newContact',
     su_self_membership: 'no',
   };
