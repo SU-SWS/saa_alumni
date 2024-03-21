@@ -69,8 +69,3 @@ cypress/videos/
 cypress/screenshots/
 cypress/results/
 test-results.xml
-src/stanford.pass
-certs
-src/saacard.pass/pass.json
-/src/netlify/certs
-src/saacard.pass/testPassGeneration.js
