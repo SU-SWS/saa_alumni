@@ -92,6 +92,7 @@ import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import GsbCardPage from './page-types/gsbCardPage';
+import WalletPassApple from './wallet/walletPassApple';
 
 const ComponentList = {
   accordion: Accordion,
@@ -186,6 +187,7 @@ const ComponentList = {
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,
+  walletPassApple: WalletPassApple,
   wysiwyg: Wysiwyg,
 };
 
