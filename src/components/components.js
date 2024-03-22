@@ -1,7 +1,6 @@
 import Accordion from './composite/accordion';
 import AccordionItem from './composite/accordionItem';
 import { SBAlert } from './storyblok/alert/alert';
-import willCard from './cards/willCard';
 import { SBAlertCtaLink } from './storyblok/alert/alertCtaLink';
 import BasicCard from './cards/basicCard';
 import BasicCardHorizontal from './cards/basicCardHorizontal';
@@ -93,12 +92,12 @@ import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import GsbCardPage from './page-types/gsbCardPage';
+import WalletPassApple from './wallet/walletPassApple';
 
 const ComponentList = {
   accordion: Accordion,
   accordionItem: AccordionItem,
   alert: SBAlert,
-  willCard,
   alertCtaLink: SBAlertCtaLink,
   associatesDirectoryPage: AssociatesDirectoryPage,
   associatesDirectory: AssociatesDirectory,
@@ -188,6 +187,7 @@ const ComponentList = {
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,
+  walletPassApple: WalletPassApple,
   wysiwyg: Wysiwyg,
 };
 
