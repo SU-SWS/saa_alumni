@@ -3,12 +3,12 @@ describe('Perks - Online Databases Page', () => {
     // Login
     cy.login();
 
-    // Visit the online publication databases page
-    cy.visit('/benefits/online-publication-databases/');
+    // Visit the additional payment form page URL
+    cy.visit('/perks/online-databases/');
 
     cy.get('h1').should('contain.text', 'Online Publication Databases');
     cy.get('main').within(() => {
-      cy.get('h3').first().next().should('contain.text', 'We’re sorry, but this benefit is not available for your account.');
+      cy.get('h3').first().should('contain.text', 'I am sorry but your account is not allowed to see this content.');
     })
 
   });
