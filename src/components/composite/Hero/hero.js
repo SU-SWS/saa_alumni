@@ -52,26 +52,20 @@ const Hero = ({
 
   return (
     <SbEditable content={blok}>
-      <Container
-        className="hero su-relative su-bg-saa-black lg:su-top-0"
-        width="full"
-      >
+      <Container className={styles.container} width="full">
         {filename?.startsWith('http') && (
-          <figure className="su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full">
+          <figure className={styles.imgWrapper}>
             <FullWidthImage
               filename={filename}
               imageFocus={imageFocus}
               smartFocus={focus}
-              className="su-w-full su-h-full su-object-cover"
+              className={styles.img}
               loading="eager"
             />
           </figure>
         )}
         <div
-          className={dcnb(
-            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-t su-from-saa-black',
-            gradient
-          )}
+          className={styles.gradientOverlay({ gradient })}
           aria-hidden="true"
         />
         <Container
@@ -80,11 +74,9 @@ const Hero = ({
         >
           <FlexBox direction="col" className="lg:su-mt-[19rem]">
             {(sansSuper || serifSuper || headline || sansSub) && (
-              <div className={dcnb('su-text-center su-text-white', blackText)}>
+              <div className={styles.textWrapper({ blackText })}>
                 {sansSuper && (
-                  <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
-                    {sansSuper}
-                  </span>
+                  <span className={styles.sansSuper}>{sansSuper}</span>
                 )}
                 {serifSuper && (
                   <span className={styles.serifSuper({ blackText })}>
@@ -114,13 +106,10 @@ const Hero = ({
             {!isHideScroll && (
               <div className={styles.scroll({ blackText })}>
                 <p className="su-mb-02em">Scroll to explore</p>
-                <a
-                  href="#page-title"
-                  className="su-block su-mx-auto su-w-fit su-group"
-                >
+                <a href="#page-title" className={styles.pageTitleLink}>
                   <SrOnlyText>Jump to main content</SrOnlyText>
                   <ArrowDownIcon
-                    className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark"
+                    className={styles.arrowDownIcon}
                     aria-hidden="true"
                   />
                 </a>
