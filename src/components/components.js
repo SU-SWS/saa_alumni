@@ -25,7 +25,7 @@ import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
-import Hero from './composite/hero';
+import Hero from './composite/Hero/hero';
 import IconCard from './cards/iconCard';
 import InterstitialPage from './page-types/registrationFormPage/interstitialPage';
 import Itinerary from './composite/itinerary';

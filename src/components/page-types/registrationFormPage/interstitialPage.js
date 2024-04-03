@@ -7,7 +7,7 @@ import { Heading } from '../../simple/Heading';
 import Layout from '../../partials/layout';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
-import Hero from '../../composite/hero';
+import Hero from '../../composite/Hero/hero';
 import { Grid } from '../../layout/Grid';
 import {
   FormContextProvider,

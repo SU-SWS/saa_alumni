@@ -2,13 +2,13 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import { ArrowDownIcon } from '@heroicons/react/outline';
 import { dcnb } from 'cnbuilder';
-import { FlexBox } from '../layout/FlexBox';
-import { Container } from '../layout/Container';
-import { SrOnlyText } from '../accessibility/SrOnlyText';
-import FullWidthImage from '../media/fullWidthImage';
-import CreateBloks from '../../utilities/createBloks';
-import getNumBloks from '../../utilities/getNumBloks';
-import { heroGradient } from '../../utilities/dataSource';
+import { FlexBox } from '../../layout/FlexBox';
+import { Container } from '../../layout/Container';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
+import FullWidthImage from '../../media/fullWidthImage';
+import CreateBloks from '../../../utilities/createBloks';
+import getNumBloks from '../../../utilities/getNumBloks';
+import { heroGradient } from '../../../utilities/dataSource';
 import * as styles from './hero.styles';
 
 const Hero = ({
