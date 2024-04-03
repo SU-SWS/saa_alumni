@@ -69,10 +69,9 @@ const Hero = ({
           aria-hidden="true"
         />
         <Container
-          className={`su-relative su-rs-pt-9
-          ${isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'}`}
+          className={styles.textContainer({ isHideScroll })}
         >
-          <FlexBox direction="col" className="lg:su-mt-[19rem]">
+          <FlexBox direction="col" className={styles.flexbox}>
             {(sansSuper || serifSuper || headline || sansSub) && (
               <div className={styles.textWrapper({ blackText })}>
                 {sansSuper && (
@@ -99,13 +98,13 @@ const Hero = ({
               </div>
             )}
             {numCta > 0 && (
-              <div className={sansSub ? 'su-rs-mt-4' : ''}>
+              <div className={styles.marginTop}>
                 <CreateBloks blokSection={cta} />
               </div>
             )}
             {!isHideScroll && (
               <div className={styles.scroll({ blackText })}>
-                <p className="su-mb-02em">Scroll to explore</p>
+                <p className={styles.scrollText}>Scroll to explore</p>
                 <a href="#page-title" className={styles.pageTitleLink}>
                   <SrOnlyText>Jump to main content</SrOnlyText>
                   <ArrowDownIcon
