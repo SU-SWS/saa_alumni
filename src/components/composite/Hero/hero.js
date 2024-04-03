@@ -45,7 +45,7 @@ const Hero = ({
 
   let blackText;
   if (gradientProp === 'white') {
-    blackText = 'xs:su-text-black';
+    blackText = 'xs:su-text-black-true';
   }
 
   const numCta = getNumBloks(cta);
