@@ -68,9 +68,7 @@ const Hero = ({
           className={styles.gradientOverlay({ gradient })}
           aria-hidden="true"
         />
-        <Container
-          className={styles.textContainer({ isHideScroll })}
-        >
+        <Container className={styles.textContainer({ isHideScroll })}>
           <FlexBox direction="col" className={styles.flexbox}>
             {(sansSuper || serifSuper || headline || sansSub) && (
               <div className={styles.textWrapper({ blackText })}>

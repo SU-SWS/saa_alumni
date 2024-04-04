@@ -11,7 +11,7 @@ export const gradientOverlay = ({ gradient }) =>
   );
 export const textContainer = ({ isHideScroll }) => `su-relative su-rs-pt-9
   ${isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'}`;
-export const flexbox = "lg:su-mt-[19rem]";
+export const flexbox = 'lg:su-mt-[19rem]';
 export const textWrapper = ({ blackText }) =>
   dcnb('su-text-center su-text-white', blackText);
 export const sansSuper =
@@ -43,7 +43,7 @@ export const scroll = ({ blackText }) =>
     'su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22',
     blackText
   );
-export const scrollText = "su-mb-02em";
+export const scrollText = 'su-mb-02em';
 export const pageTitleLink = 'su-block su-mx-auto su-w-fit su-group';
 export const arrowDownIcon =
   'su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark';
