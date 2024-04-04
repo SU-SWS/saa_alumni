@@ -37,7 +37,7 @@ export const sansSub = ({ blackText }) =>
       'xs:su-text-shadow-white': blackText === 'xs:su-text-black-true',
     }
   );
-export const marginTop = sansSub ? 'su-rs-mt-4' : '';
+export const marginTop = ({ sansSub }) => (sansSub ? 'su-rs-mt-4' : '');
 export const scroll = ({ blackText }) =>
   dcnb(
     'su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22',

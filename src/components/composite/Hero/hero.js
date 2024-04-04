@@ -96,7 +96,7 @@ const Hero = ({
               </div>
             )}
             {numCta > 0 && (
-              <div className={styles.marginTop}>
+              <div className={styles.marginTop({ sansSub })}>
                 <CreateBloks blokSection={cta} />
               </div>
             )}
