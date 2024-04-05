@@ -9,6 +9,7 @@ import FullWidthImage from '../media/fullWidthImage';
 import CreateBloks from '../../utilities/createBloks';
 import getNumBloks from '../../utilities/getNumBloks';
 import { heroGradient } from '../../utilities/dataSource';
+import * as styles from './hero.styles';
 
 const Hero = ({
   blok: {
@@ -40,6 +41,11 @@ const Hero = ({
 
   if (isDarkGradient) {
     gradient = 'su-to-black-true/20';
+  }
+
+  let blackText;
+  if (gradientProp === 'white') {
+    blackText = 'xs:su-text-black';
   }
 
   const numCta = getNumBloks(cta);
@@ -74,21 +80,21 @@ const Hero = ({
         >
           <FlexBox direction="col" className="lg:su-mt-[19rem]">
             {(sansSuper || serifSuper || headline || sansSub) && (
-              <div className="su-text-center su-text-white">
+              <div className={dcnb('su-text-center su-text-white', blackText)}>
                 {sansSuper && (
                   <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
                     {sansSuper}
                   </span>
                 )}
                 {serifSuper && (
-                  <span className="su-block su-max-w-prose su-font-serif su-leading-display su-type-2 su-text-shadow su-mx-auto su-mb-05em">
+                  <span className={styles.serifSuper({ blackText })}>
                     {serifSuper}
                   </span>
                 )}
                 {headline && (
                   <span
                     className={dcnb(
-                      'su-block su-font-bold su-font-serif su-leading-tight su-tracking-normal su-text-shadow-lg su-mb-02em',
+                      styles.headline({ blackText }),
                       heroHeadlineSize
                     )}
                   >
@@ -96,9 +102,7 @@ const Hero = ({
                   </span>
                 )}
                 {sansSub && (
-                  <p className="su-max-w-prose su-type-1 su-leading-display su-text-shadow su-mx-auto su-mb-0">
-                    {sansSub}
-                  </p>
+                  <p className={styles.sansSub({ blackText })}>{sansSub}</p>
                 )}
               </div>
             )}
@@ -108,7 +112,12 @@ const Hero = ({
               </div>
             )}
             {!isHideScroll && (
-              <div className="su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22">
+              <div
+                className={dcnb(
+                  'su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22',
+                  blackText
+                )}
+              >
                 <p className="su-mb-02em">Scroll to explore</p>
                 <a
                   href="#page-title"
