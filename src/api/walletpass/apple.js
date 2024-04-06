@@ -10,7 +10,6 @@ const generatePkPass = async (req, res) => {
     let fullprofile = {};
     let memberships = [];
 
-    console.log('req.user', req.user);
     const profileId = req.user.encodedSUID;
 
     const requests = [
@@ -37,7 +36,9 @@ const generatePkPass = async (req, res) => {
       ...fullprofile,
       memberships,
     };
+
     const pkpass = await generateAplleWalletPass(mpUser);
+    const buffer = pkpass.getAsBuffer();
 
     if (pkpass) {
       res.setHeader('Content-Type', 'application/vnd.apple.pkpass');
@@ -45,12 +46,14 @@ const generatePkPass = async (req, res) => {
         'Content-Disposition',
         'attachment; filename="pass.pkpass"'
       );
-      res.status(200).send(pkpass);
+      res.status(200).send(buffer);
     } else {
       res.status(500).send('Passkit generation failed. Please try again.');
     }
   } catch (error) {
-    res.status(500).send('Passkit generation failed. Please try again.');
+    res
+      .status(500)
+      .send('Passkit generation failed. Please try again or contact support.');
   }
 };
 

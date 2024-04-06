@@ -1,46 +1,15 @@
 {
   "formatVersion" : 1,
   "passTypeIdentifier" : "pass.com.saacard",
-  "serialNumber" : "E5982H-I2",
-  "webServiceURL" : "https://example.com/passes/",
-  "authenticationToken" : "vxwxd7J8AlNNFPS8k0a0FfUFtq0ewzFdc",
   "teamIdentifier" : "TV7YB5JDT2",
-  "barcode" : {
-    "message" : "123456789",
-    "format" : "PKBarcodeFormatPDF417",
-    "messageEncoding" : "iso-8859-1"
-  },
   "organizationName" : "Stanford Alumni Member",
   "description" : "Stanford Membership",
   "logoText" : "Stanford Alumni Member",
   "foregroundColor" : "rgb(255, 255, 255)",
   "backgroundColor" : "rgb(140, 21, 21)",
   "generic" : {
-    "primaryFields" : [
-      {
-        "key" : "member",
-        "value" : "Moises Narvaez"
-      }
-    ],
-    "secondaryFields" : [
-      {
-        "key" : "subtitle",
-        "label" : "MEMBER SINCE",
-        "value" : "2012"
-      }
-    ],
-    "auxiliaryFields" : [
-      {
-        "key" : "level",
-        "label" : "LEVEL",
-        "value" : "Platinum"
-      },
-      {
-        "key" : "favorite",
-        "label" : "FAVORITE TOY",
-        "value" : "Bucky Ball Magnets",
-        "textAlignment" : "PKTextAlignmentRight"
-      }
-    ]
+    "primaryFields" : [],
+    "secondaryFields" : [],
+    "auxiliaryFields" : []
   }
 }
