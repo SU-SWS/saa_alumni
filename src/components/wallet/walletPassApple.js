@@ -11,8 +11,6 @@ const WalletPassApple = (props) => {
 
   useEffect(() => {
     const memberships = auth.userProfile ? auth.userProfile.memberships : [];
-    console.log('auth', auth);
-    console.log('memberships', memberships);
     memberships.forEach((membership) => {
       if (
         membership.membershipStatus?.includes('Active') &&
