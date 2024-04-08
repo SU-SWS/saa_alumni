@@ -20,9 +20,11 @@ const GiveGabForm = ({
   kwoCredentials,
   bgCardStyle,
   isSpacing,
+  className,
 }) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
+  console.log('ClassName:', className);
 
   const embedUrl = new URL(url);
   if (urlData) {
@@ -58,7 +60,7 @@ const GiveGabForm = ({
 
   return (
     <SbEditable content={blok}>
-      <Container width="full" className={bgCardStyle}>
+      <Container width="full" className={dcnb(className, bgCardStyle)}>
         <div
           className={dcnb(
             isSpacing && 'su-rs-p-5 su-rs-pb-6 lg:su-rs-p-6 lg:su-rs-pb-7',
