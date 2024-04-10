@@ -8,6 +8,7 @@ export const membershipsMockData = {
       membershipStartDate: '2011',
       membershipGroup: 'SAA',
       membershipGGPaymentReferenceID: '2XB9QW3',
+      amountDue: 600,
     },
     {
       membershipStatus: 'Active',

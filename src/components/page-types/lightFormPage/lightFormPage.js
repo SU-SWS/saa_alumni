@@ -23,9 +23,9 @@ const NoMembershipError = () => (
       Interested in joining SAA?
     </Heading>
     <p className="su-card-paragraph">
-      <SbLink link="/membership/join">Join now</SbLink> or visit our{' '}
-      <SbLink link="/membership/faq">Membership FAQs</SbLink> page to learn more
-      details about our membership planms and benefits.
+      <SbLink link={{ url: '/membership/join' }}>Join now</SbLink> or visit our{' '}
+      <SbLink link={{ url: '/membership/faq' }}>Membership FAQs</SbLink> page to
+      learn more details about our membership planms and benefits.
     </p>
     <p className="su-card-paragraph su-mb-0">
       If you purchased your membership online more than one business day ago,
@@ -44,9 +44,9 @@ const FullPaidMembership = () => (
       Your membership plan has been paid in full.
     </Heading>
     <p className="su-card-paragraph su-mb-0">
-      Find your membership card <SbLink link="/membership/saacard">here</SbLink>{' '}
-      and{' '}
-      <SbLink link="/perks/">
+      Access your membership card{' '}
+      <SbLink link={{ url: '/membership/saacard' }}>here</SbLink> and{' '}
+      <SbLink link={{ url: '/perks/' }}>
         learn more about your SAA membership benefits
       </SbLink>
       .
@@ -75,6 +75,8 @@ const LightFormPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [paymentRefId, setPaymentRefId] = useState(false);
+  const [paymentComplete, setPaymentComplete] = useState(false);
+  console.log('paymentComplete', paymentComplete);
 
   // Use the useEffect hook to fetch nonce when the component mounts
   useEffect(() => {
@@ -112,6 +114,7 @@ const LightFormPage = (props) => {
 
       if (saaMembership) {
         setPaymentRefId(saaMembership?.membershipGGPaymentReferenceID);
+        setPaymentComplete(saaMembership?.amountDue === 0);
         if (paymentRefId === null) {
           console.error('PaymentRefId is missing.');
           setError(true);
@@ -215,6 +218,9 @@ const LightFormPage = (props) => {
                             blokSection={giveGabForm}
                             bgCardStyle="su-bg-transparent"
                             kwoCredentials={kwoCreds}
+                            className={
+                              paymentComplete ? 'gg-payment-complete' : ''
+                            }
                           />
                         </>
                       )}
