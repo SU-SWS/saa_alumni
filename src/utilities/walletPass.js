@@ -1,7 +1,8 @@
 const { PKPass } = require('passkit-generator');
 const path = require('path');
 
-export const generateAplleWalletPass = async (megaProfileUser) => {
+// walletPass.js
+export const generateAppleWalletPass = async (megaProfileUser) => {
   try {
     const passModelDirectory = '../../../src/utilities/saacard.pass';
     const {
@@ -45,11 +46,11 @@ export const generateAplleWalletPass = async (megaProfileUser) => {
       label: 'SINCE',
       value: membershipStartDate,
     });
-    pass.secondaryFields.push({
-      key: 'membershipType',
-      label: 'TYPE',
-      value: membershipType,
-    });
+    // pass.secondaryFields.push({
+    //   key: 'membershipType',
+    //   label: 'TYPE',
+    //   value: membershipType,
+    // });
 
     // Auxiliary Fields
     pass.auxiliaryFields.push({

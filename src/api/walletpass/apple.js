@@ -1,6 +1,6 @@
 import connect from 'next-connect';
 
-import { generateAplleWalletPass } from '../../utilities/walletPass';
+import { generateAppleWalletPass } from '../../utilities/walletPass';
 import { authInstance } from '../../utilities/authInstance';
 import { MegaProfile } from '../../utilities/MegaProfile';
 
@@ -37,7 +37,7 @@ const generatePkPass = async (req, res) => {
       memberships,
     };
 
-    const pkpass = await generateAplleWalletPass(mpUser);
+    const pkpass = await generateAppleWalletPass(mpUser);
     const buffer = pkpass.getAsBuffer();
 
     if (pkpass) {
