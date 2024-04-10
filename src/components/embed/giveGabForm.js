@@ -24,7 +24,6 @@ const GiveGabForm = ({
 }) => {
   const htmlId = uuid;
   const { isAuthenticating } = useContext(AuthContext);
-  console.log('ClassName:', className);
 
   const embedUrl = new URL(url);
   if (urlData) {
