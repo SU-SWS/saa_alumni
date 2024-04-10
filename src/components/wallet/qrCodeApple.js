@@ -13,9 +13,9 @@ const QrCodeApple = (props) => {
     const memberships = auth.userProfile ? auth.userProfile.memberships : [];
     memberships.forEach((membership) => {
       if (
-        membership.membershipStatus?.includes('Active') &&
-        membership.membershipGroup?.includes('SAA') &&
-        membership.membershipAffiliation?.includes('Alum') ||
+        (membership.membershipStatus?.includes('Active') &&
+          membership.membershipGroup?.includes('SAA') &&
+          membership.membershipAffiliation?.includes('Alum')) ||
         membership.membershipAffiliation?.includes('Affiliate')
       ) {
         setMembershipNumber(membership.membershipNumber);
@@ -31,11 +31,13 @@ const QrCodeApple = (props) => {
             <QRCode
               value={apiUrl}
               size={128}
-              level={"H"}
-              includeMargin={true}
-              renderAs={"svg"} // Renders the QR code as an SVG
+              level="H"
+              includeMargin
+              renderAs="svg" // Renders the QR code as an SVG
             />
-            <p className="su-text-center su-text-m">Scan to add to Apple Wallet</p>
+            <p className="su-text-center su-text-m">
+              Scan to add to Apple Wallet
+            </p>
           </>
         ) : (
           <p className="su-text-center su-text-m">
