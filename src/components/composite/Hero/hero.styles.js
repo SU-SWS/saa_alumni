@@ -30,7 +30,7 @@ export const headline = ({ blackText }) =>
       'xs:su-text-shadow-white-lg': blackText === 'xs:su-text-black-true',
     }
   );
-export const sansSub = ({ blackText }) =>
+export const subhead = ({ blackText }) =>
   dcnb(
     'su-max-w-prose su-type-1 su-leading-display su-text-shadow su-mx-auto su-mb-0 su-text-shadow',
     {

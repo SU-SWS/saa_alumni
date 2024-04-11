@@ -91,7 +91,7 @@ const Hero = ({
                   </span>
                 )}
                 {sansSub && (
-                  <p className={styles.sansSub({ blackText })}>{sansSub}</p>
+                  <p className={styles.subhead({ blackText })}>{sansSub}</p>
                 )}
               </div>
             )}
