@@ -52,7 +52,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
 
   return (
     <div>
-      <nav
+      <div
         className="su-flex su-flex-wrap su-border-b su-border-black-30/40"
         aria-label="Groups of Associates"
         // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
@@ -67,7 +67,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
             handleKeyPress={handleKeyPress}
           />
         ))}
-      </nav>
+      </div>
       <div className="su-my-20">
         {Object.keys(tabsGroups).map((group) => (
           <div
