@@ -93,7 +93,7 @@ import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import GsbCardPage from './page-types/gsbCardPage';
 import WalletPassApple from './wallet/walletPassApple';
-import QrCodeApple from './wallet/qrCodeApple';
+import ScanAppleCard from './wallet/scanAppleCard';
 
 const ComponentList = {
   accordion: Accordion,
@@ -190,7 +190,7 @@ const ComponentList = {
   verticalNavItem: VerticalNavItem,
   walletPassApple: WalletPassApple,
   wysiwyg: Wysiwyg,
-  qrCodeApple: QrCodeApple,
+  scanAppleCard: ScanAppleCard,
 };
 
 const Components = (type) => {

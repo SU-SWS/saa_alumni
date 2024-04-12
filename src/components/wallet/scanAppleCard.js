@@ -4,7 +4,7 @@ import QRCode from 'qrcode.react'; // Import QRCode component
 import AuthContext from '../../contexts/AuthContext';
 import { isIOS, isAndroid } from 'react-device-detect'; // For device detection
 
-const QrCodeApple = (props) => {
+const ScanAppleCard = (props) => {
   const { blok } = props;
   const apiUrl = `${window.location.origin}/api/walletpass/`;
   const [membershipNumber, setMembershipNumber] = useState('');
@@ -55,4 +55,4 @@ const QrCodeApple = (props) => {
   );
 };
 
-export default QrCodeApple;
+export default ScanAppleCard;
