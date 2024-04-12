@@ -1,11 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import SbEditable from 'storyblok-react';
+import QRCode from 'qrcode.react'; // Import QRCode component
 import AuthContext from '../../contexts/AuthContext';
-import AppleWalletBadge from '../../images/apple-wallet-badge.svg';
+import { isIOS, isAndroid } from 'react-device-detect'; // For device detection
 
-const WalletPassApple = (props) => {
+const WalletPass = (props) => {
   const { blok } = props;
-  const apiUrl = '/api/walletpass/apple';
+  const apiUrl = `${window.location.origin}/api/walletpass/`;
   const [membershipNumber, setMembershipNumber] = useState('');
   const auth = useContext(AuthContext);
 
@@ -15,30 +16,38 @@ const WalletPassApple = (props) => {
       if (
         membership.membershipStatus?.includes('Active') &&
         membership.membershipGroup?.includes('SAA') &&
-        membership.membershipAffiliation?.includes('Alum')
-      ) {
-        setMembershipNumber(membership.membershipNumber);
-      } else if (
-        membership.membershipStatus?.includes('Active') &&
-        membership.membershipGroup?.includes('SAA') &&
-        membership.membershipAffiliation?.includes('Affiliate')
+        (membership.membershipAffiliation?.includes('Alum') || membership.membershipAffiliation?.includes('Affiliate'))
       ) {
         setMembershipNumber(membership.membershipNumber);
       }
     });
   }, [auth]);
 
+  const deviceUrl = isIOS ? `${apiUrl}apple` : isAndroid ? `${apiUrl}android` : apiUrl;
+
   return (
     <SbEditable content={blok}>
       <div className="su-mt-30">
-        {membershipNumber && (
-          <a href={apiUrl}>
-            <img src={AppleWalletBadge} alt="Add to Wallet" />
-          </a>
-        )}
-        {!membershipNumber && (
+        {membershipNumber ? (
+          <>
+            {isIOS || isAndroid ? (
+              <a href={deviceUrl}>
+                <img src={`/images/${isIOS ? 'apple-wallet-badge.svg' : 'google-wallet-badge.svg'}`} alt="Add to Wallet" />
+              </a>
+            ) : (
+              <QRCode
+                value={deviceUrl}
+                size={128}
+                level="H"
+                includeMargin
+                renderAs="svg" // Renders the QR code as an SVG
+              />
+            )}
+            <p className="su-text-center su-text-m">Scan or click to add to your wallet</p>
+          </>
+        ) : (
           <p className="su-text-center su-text-m">
-            Please log in to add your membership card to Apple Wallet.
+            Please log in to add your membership card to your wallet.
           </p>
         )}
       </div>
@@ -46,4 +55,4 @@ const WalletPassApple = (props) => {
   );
 };
 
-export default WalletPassApple;
+export default WalletPass;
