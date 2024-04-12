@@ -16,6 +16,7 @@
     "@heroicons/react": "^1.0.6",
     "adapt-auth-sdk": "^1.0.20",
     "algoliasearch": "^4.20.0",
+    "axios": "^0.27.2",
     "body-parser": "^1.20.2",
     "cnbuilder": "^3.1.0",
     "cookie-parser": "^1.4.6",
