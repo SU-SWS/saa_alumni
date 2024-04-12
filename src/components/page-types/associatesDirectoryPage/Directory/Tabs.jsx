@@ -55,6 +55,8 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
       <nav
         className="su-flex su-flex-wrap su-border-b su-border-black-30/40"
         aria-label="Groups of Associates"
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+        role="tablist"
       >
         {Object.keys(tabsGroups).map((group) => (
           <TabHeader
@@ -68,7 +70,12 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
       </nav>
       <div className="su-my-20">
         {Object.keys(tabsGroups).map((group) => (
-          <div key={`content-${group}`} hidden={activeTab !== group}>
+          <div
+            id={`content-${group}`}
+            key={`content-${group}`}
+            role="tabpanel"
+            hidden={activeTab !== group}
+          >
             {tabsGroups[group].map((letter) => (
               <AssociateList
                 key={`content-${letter}`}

@@ -16,7 +16,7 @@ const TabHeader = ({ group, activeTab, handleTabClick, handleKeyPress }) => {
       key={`tab-${group}`}
       role="tab"
       aria-selected={isActive}
-      aria-controls={group}
+      aria-controls={`content-${group}`}
       className={`${
         isActive
           ? 'su-bg-cardinal-red-xdark'
