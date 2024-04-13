@@ -20,8 +20,7 @@ const AssociateListProps = {
 };
 
 const AssociateList = ({ letter, associates, onlyNewMembers, recentYear }) => (
-  // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-  <div tabIndex={0}>
+  <div>
     <h4 className="su-p-10 su-text-cardinal-red-xdark su-font-serif su-border-b su-border-dashed su-border-black-30/40">
       {letter}
     </h4>

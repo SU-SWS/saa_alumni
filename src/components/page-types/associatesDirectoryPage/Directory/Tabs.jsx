@@ -75,6 +75,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
             id={`content-${group}`}
             key={`content-${group}`}
             role="tabpanel"
+            tabIndex={0}
             hidden={activeTab !== group}
           >
             {tabsGroups[group].map((letter) => (
