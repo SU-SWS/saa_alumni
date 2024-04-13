@@ -38,7 +38,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
     if (event.key === 'ArrowLeft') {
       const currentIndex = tabKeys.indexOf(activeTab);
       const isStart = currentIndex === 0;
-      const nextIndex = isStart ? currentIndex - 1 : tabKeys.length - 1;
+      const nextIndex = isStart ? tabKeys.length - 1 : currentIndex - 1;
       const nextTab = tabKeys[nextIndex];
       setActiveTab(nextTab);
     }
