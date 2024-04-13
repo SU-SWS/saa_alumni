@@ -24,6 +24,9 @@ const tabsGroups = {
   'W-X': ['W', 'X'],
   'Y-Z': ['Y', 'Z'],
 };
+
+const tabKeys = Object.keys(tabsGroups);
+
 const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
   const [activeTab, setActiveTab] = useState('A-B');
 
@@ -33,19 +36,17 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
 
   const handleKeyPress = (event) => {
     if (event.key === 'ArrowLeft') {
-      const currentIndex = Object.keys(tabsGroups).indexOf(activeTab);
-      if (currentIndex === 0) return;
-
-      const nextIndex = currentIndex - 1;
-      const nextTab = Object.keys(tabsGroups)[nextIndex];
+      const currentIndex = tabKeys.indexOf(activeTab);
+      const isStart = currentIndex === 0;
+      const nextIndex = isStart ? currentIndex - 1 : tabKeys.length - 1;
+      const nextTab = tabKeys[nextIndex];
       setActiveTab(nextTab);
     }
     if (event.key === 'ArrowRight') {
-      const currentIndex = Object.keys(tabsGroups).indexOf(activeTab);
-      if (currentIndex === Object.keys(tabsGroups).length - 1) return;
-
-      const nextIndex = currentIndex + 1;
-      const nextTab = Object.keys(tabsGroups)[nextIndex];
+      const currentIndex = tabKeys.indexOf(activeTab);
+      const isEnd = currentIndex === tabKeys.length - 1;
+      const nextIndex = isEnd ? 0 : currentIndex + 1;
+      const nextTab = tabKeys[nextIndex];
       setActiveTab(nextTab);
     }
   };
@@ -58,7 +59,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
         // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
         role="tablist"
       >
-        {Object.keys(tabsGroups).map((group) => (
+        {tabKeys.map((group) => (
           <TabHeader
             key={`tab-${group}`}
             group={group}
@@ -69,7 +70,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
         ))}
       </div>
       <div className="su-my-20">
-        {Object.keys(tabsGroups).map((group) => (
+        {tabKeys.map((group) => (
           <div
             id={`content-${group}`}
             key={`content-${group}`}

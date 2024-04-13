@@ -16,6 +16,7 @@ const TabHeader = ({ group, activeTab, handleTabClick, handleKeyPress }) => {
       key={`tab-${group}`}
       role="tab"
       aria-selected={isActive}
+      tabIndex={isActive ? undefined : -1}
       aria-controls={`content-${group}`}
       className={`${
         isActive
