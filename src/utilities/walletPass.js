@@ -10,7 +10,7 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
         name: { digitalName: memberName },
         birthDate,
       },
-      memberships: [{ membershipNumber, membershipStartDate, membershipType }],
+      memberships: [{ membershipNumber, membershipStartDate }],
       emails: [{ emailAddress }],
     } = megaProfileUser;
 
@@ -46,11 +46,6 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
       label: 'SINCE',
       value: membershipStartDate,
     });
-    // pass.secondaryFields.push({
-    //   key: 'membershipType',
-    //   label: 'TYPE',
-    //   value: membershipType,
-    // });
 
     // Auxiliary Fields
     pass.auxiliaryFields.push({
