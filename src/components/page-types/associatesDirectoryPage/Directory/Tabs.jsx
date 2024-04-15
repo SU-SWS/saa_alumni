@@ -40,6 +40,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
       const isStart = currentIndex === 0;
       const nextIndex = isStart ? tabKeys.length - 1 : currentIndex - 1;
       const nextTab = tabKeys[nextIndex];
+      document?.querySelector(`#tab-${nextTab}`)?.focus();
       setActiveTab(nextTab);
     }
     if (event.key === 'ArrowRight') {
@@ -47,6 +48,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
       const isEnd = currentIndex === tabKeys.length - 1;
       const nextIndex = isEnd ? 0 : currentIndex + 1;
       const nextTab = tabKeys[nextIndex];
+      document?.querySelector(`#tab-${nextTab}`)?.focus();
       setActiveTab(nextTab);
     }
   };
