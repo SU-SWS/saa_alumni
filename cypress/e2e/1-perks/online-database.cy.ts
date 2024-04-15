@@ -7,7 +7,7 @@ describe('Perks - Online Databases Page', () => {
     cy.visit('/perks/online-databases/');
 
     cy.get('main').within(() => {
-      cy.contains('I am sorry but your account is not allowed to see this content.').should('exist');
+      cy.get('h3').first().contains('I am sorry but your account is not allowed to see this content.');
     });
   });
 });
