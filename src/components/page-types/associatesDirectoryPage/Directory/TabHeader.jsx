@@ -13,6 +13,7 @@ const TabHeader = ({ group, activeTab, handleTabClick, handleKeyPress }) => {
 
   return (
     <a
+      id={`tab-${group}`}
       key={`tab-${group}`}
       role="tab"
       aria-selected={isActive}

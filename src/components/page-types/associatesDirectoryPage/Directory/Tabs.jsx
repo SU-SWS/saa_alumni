@@ -74,6 +74,7 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
           <div
             id={`content-${group}`}
             key={`content-${group}`}
+            aria-labelledby={`tab-${group}`}
             role="tabpanel"
             tabIndex={0}
             hidden={activeTab !== group}
