@@ -79,7 +79,8 @@ const RegistrationFormPage = (props) => {
     // Global function for the trip cancellation policy link in givegab.
     // GG Doesn't support dynamic urls in their forms so we added an onclick
     // with this function.
-    window.navigateToTripPolicy = () => {
+    window.navigateToTripPolicy = (e) => {
+      e.preventDefault();
       const destUrl = new URL(tripUrl, window.location.origin);
       destUrl.hash = 'cancellation-policy';
       window.open(destUrl, '_blank');
