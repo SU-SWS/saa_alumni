@@ -517,11 +517,16 @@
 .su-light-form.su-payment-history .ggeInstruction,
 .su-light-form.su-payment-update .ggeInstruction,
 /* Hide schedule status on incomplete payment pages */
-.su-light-form.su-payment-history :not(.gg-payment-complete) .ggeScheduleStatus,
+.su-light-form.su-payment-history .ggeScheduleStatus,
 .su-light-form.su-payment-update .ggePayment--scheduleId,
 /* Hide Payment button and update credit card form for completed installments */
 .su-light-form.su-payment-history .gg-payment-complete .ggePayBalanceBtn .ggeButton,
 .su-light-form.su-payment-history .gg-payment-complete .ggeScheduleSuspendedStatus,
 .su-light-form.su-payment-update .gg-payment-complete {
   @apply su-hidden;
+}
+
+
+.su-light-form.su-payment-history .gg-payment-complete .ggeScheduleStatus {
+  @apply su-block;
 }
