@@ -24,6 +24,9 @@ const tabsGroups = {
   'W-X': ['W', 'X'],
   'Y-Z': ['Y', 'Z'],
 };
+
+const tabKeys = Object.keys(tabsGroups);
+
 const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
   const [activeTab, setActiveTab] = useState('A-B');
 
@@ -33,30 +36,32 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
 
   const handleKeyPress = (event) => {
     if (event.key === 'ArrowLeft') {
-      const currentIndex = Object.keys(tabsGroups).indexOf(activeTab);
-      if (currentIndex === 0) return;
-
-      const nextIndex = currentIndex - 1;
-      const nextTab = Object.keys(tabsGroups)[nextIndex];
+      const currentIndex = tabKeys.indexOf(activeTab);
+      const isStart = currentIndex === 0;
+      const nextIndex = isStart ? tabKeys.length - 1 : currentIndex - 1;
+      const nextTab = tabKeys[nextIndex];
+      document?.querySelector(`#tab-${nextTab}`)?.focus();
       setActiveTab(nextTab);
     }
     if (event.key === 'ArrowRight') {
-      const currentIndex = Object.keys(tabsGroups).indexOf(activeTab);
-      if (currentIndex === Object.keys(tabsGroups).length - 1) return;
-
-      const nextIndex = currentIndex + 1;
-      const nextTab = Object.keys(tabsGroups)[nextIndex];
+      const currentIndex = tabKeys.indexOf(activeTab);
+      const isEnd = currentIndex === tabKeys.length - 1;
+      const nextIndex = isEnd ? 0 : currentIndex + 1;
+      const nextTab = tabKeys[nextIndex];
+      document?.querySelector(`#tab-${nextTab}`)?.focus();
       setActiveTab(nextTab);
     }
   };
 
   return (
     <div>
-      <nav
+      <div
         className="su-flex su-flex-wrap su-border-b su-border-black-30/40"
         aria-label="Groups of Associates"
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+        role="tablist"
       >
-        {Object.keys(tabsGroups).map((group) => (
+        {tabKeys.map((group) => (
           <TabHeader
             key={`tab-${group}`}
             group={group}
@@ -65,10 +70,17 @@ const Tabs = ({ groupedNames, onlyNewMembers, recentYear }) => {
             handleKeyPress={handleKeyPress}
           />
         ))}
-      </nav>
+      </div>
       <div className="su-my-20">
-        {Object.keys(tabsGroups).map((group) => (
-          <div key={`content-${group}`} hidden={activeTab !== group}>
+        {tabKeys.map((group) => (
+          <div
+            id={`content-${group}`}
+            key={`content-${group}`}
+            aria-labelledby={`tab-${group}`}
+            role="tabpanel"
+            tabIndex={0}
+            hidden={activeTab !== group}
+          >
             {tabsGroups[group].map((letter) => (
               <AssociateList
                 key={`content-${letter}`}

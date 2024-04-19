@@ -15,13 +15,13 @@ import * as styles from './relatedContactSelection.styles';
 import { formatUsDate } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
-import { fetchEmail, fetchPhone } from '../../../utilities/giveGabVars';
 import MembershipCard from './membershipCard';
 import {
   FormContext,
   FormContextProvider,
 } from '../../../contexts/FormContext';
 import CreateBloks from '../../../utilities/createBloks';
+import { extractUserData } from '../../../utilities/userProfile';
 
 const RelatedContactSelection = (props) => {
   const {
@@ -45,40 +45,14 @@ const RelatedContactSelection = (props) => {
   }
 
   // Map related contacts/relationships data to GiveGab ADC values
-  const emailData = fetchEmail(
-    userProfile?.emails,
-    userProfile?.contact?.preferredEmail
-  );
-
-  const primaryRegistrantEmail = emailData?.email || userProfile?.session.email;
-
-  const phoneData = fetchPhone(
-    userProfile?.phoneNumbers,
-    userProfile?.contact?.preferredPhoneType
-  );
-
-  const primaryRegistrantPhoneNumber = phoneData?.phoneNumber
-    ? phoneData.phoneNumber
-    : null;
-
+  const suUser = extractUserData(userProfile);
   const relationships = userProfile?.relationships;
   const structureRelatedContactData = (relationshipsData = []) => {
     let relatedContacts = [];
     let data = {};
     relationshipsData?.forEach((relationship) => {
       data = {
-        su_did: userProfile?.session?.encodedSUID,
-        su_dname:
-          userProfile?.contact.name?.digtalName ||
-          `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
-        su_first_name:
-          userProfile?.contact.name?.fullNameParsed?.firstName ||
-          userProfile?.session?.firstName,
-        su_last_name:
-          userProfile?.contact.name?.fullNameParsed?.lastName ||
-          userProfile?.session?.lastName,
-        su_email: primaryRegistrantEmail,
-        su_phone: primaryRegistrantPhoneNumber,
+        ...suUser,
         su_recipient_dob: relationship?.birthDate
           ? formatUsDate(relationship?.birthDate)
           : '',
@@ -94,7 +68,6 @@ const RelatedContactSelection = (props) => {
         su_recipient_phone_type: undefined,
         su_self_membership: 'no',
         su_gift: 'yes',
-        su_affiliations: userProfile?.affiliations,
       };
       relatedContacts = [...relatedContacts, data];
     });
@@ -103,18 +76,7 @@ const RelatedContactSelection = (props) => {
   const relatedContacts = structureRelatedContactData(relationships);
 
   const newContact = {
-    su_did: userProfile?.session?.encodedSUID,
-    su_dname:
-      userProfile?.contact.name?.digtalName ||
-      `${userProfile?.session?.firstName} ${userProfile?.session?.lastName}`,
-    su_first_name:
-      userProfile?.contact.name?.fullNameParsed?.firstName ||
-      userProfile?.session?.firstName,
-    su_last_name:
-      userProfile?.contact.name?.fullNameParsed?.lastName ||
-      userProfile?.session?.lastName,
-    su_email: primaryRegistrantEmail || userProfile?.session?.email,
-    su_phone: primaryRegistrantPhoneNumber,
+    ...suUser,
     su_reg_type: 'newContact',
     su_self_membership: 'no',
   };

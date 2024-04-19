@@ -34,5 +34,6 @@ module.exports = {
     // // @tailwind utilities;
     require(`${dir}/utilities/gradient-border/gradient-border.js`)(),
     require(`${dir}/utilities/grid/grid-cols.js`)(),
+    require(`${dir}/utilities/text-shadow/text-shadow.js`)(),
   ],
 };

@@ -17,7 +17,7 @@
     Content-Security-Policy = "default-src https: 'unsafe-inline' 'unsafe-eval'; form-action https:; img-src https: data:"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Strict-Transport-Security = "max-age=2592000"
+    Strict-Transport-Security = "max-age=31536000"
     Permissions-Policy = "vibrate=(), geolocation=(), midi=(), notifications=(), push=(), microphone=(), camera=(), magnetometer=(), gyroscope=(), speaker=()"
     X-Frame-Options = "DENY"
 [[headers]]
@@ -35,6 +35,26 @@
 #
 # More redirects can be found in static/_redirects
 #
+
+# EDGE FUNCTIONS
+# ##############################################################################
+
+# Protected pages can redirect at the edge to the login page.
+[[edge_functions]]
+  path = "/travel-study/custom-journeys/request"
+  function = "protected-content"
+
+[[edge_functions]]
+  path = "/travel-study/destinations/*/reserve"
+  function = "protected-content"
+
+[[edge_functions]]
+  path = "/travel-study/destinations/*/notify"
+  function = "protected-content"
+
+[[edge_functions]]
+  path = "/membership/join"
+  function = "protected-content"
 
 # PLUGINS
 # ##############################################################################
