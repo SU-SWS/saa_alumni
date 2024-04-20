@@ -76,7 +76,6 @@ const LightFormPage = (props) => {
   const [error, setError] = useState(false);
   const [paymentRefId, setPaymentRefId] = useState(false);
   const [paymentComplete, setPaymentComplete] = useState(false);
-  console.log('paymentComplete', paymentComplete);
 
   // Use the useEffect hook to fetch nonce when the component mounts
   useEffect(() => {
@@ -204,24 +203,31 @@ const LightFormPage = (props) => {
                         </>
                       ) : (
                         <>
-                          <div>
-                            <Heading
-                              level={2}
-                              size="2"
-                              weight="semibold"
-                              className="su-rs-mb-3"
-                            >
-                              {formHeading}
-                            </Heading>
-                          </div>
-                          <CreateBloks
-                            blokSection={giveGabForm}
-                            bgCardStyle="su-bg-transparent"
-                            kwoCredentials={kwoCreds}
-                            className={
-                              paymentComplete ? 'gg-payment-complete' : ''
-                            }
-                          />
+                          {widgetType === 'su-payment-update' &&
+                          paymentComplete ? (
+                            <FullPaidMembership />
+                          ) : (
+                            <>
+                              <div>
+                                <Heading
+                                  level={2}
+                                  size="2"
+                                  weight="semibold"
+                                  className="su-rs-mb-3"
+                                >
+                                  {formHeading}
+                                </Heading>
+                              </div>
+                              <CreateBloks
+                                blokSection={giveGabForm}
+                                bgCardStyle="su-bg-transparent"
+                                kwoCredentials={kwoCreds}
+                                className={
+                                  paymentComplete ? 'gg-payment-complete' : ''
+                                }
+                              />
+                            </>
+                          )}
                         </>
                       )}
                     </>
