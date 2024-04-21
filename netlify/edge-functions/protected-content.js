@@ -7,8 +7,9 @@ export default async (req, { cookies }) => {
 
   // Redirect to login.
   const url = new URL('/api/auth/login', req.url);
-  const sourceURL = new URL(req.url);
-  url.searchParams.set('final_destination', sourceURL.pathname);
+  const { pathname, search, hash } = new URL(req.url);
+  const finalDestination = `${pathname}${search}${hash}`;
+  url.searchParams.set('final_destination', finalDestination);
   // eslint-disable-next-line consistent-return
   return Response.redirect(url);
 };
