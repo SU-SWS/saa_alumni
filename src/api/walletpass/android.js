@@ -1,10 +1,10 @@
 import connect from 'next-connect';
 
-import { generateAppleWalletPass } from '../../utilities/walletPass';
+import { generateAndroidWalletPassURL } from '../../utilities/walletPass';
 import { authInstance } from '../../utilities/authInstance';
 import { MegaProfile } from '../../utilities/MegaProfile';
 
-const generatePkPass = async (req, res) => {
+const generatePass = async (req, res) => {
   try {
     const mp = new MegaProfile();
     let fullprofile = {};
@@ -37,16 +37,10 @@ const generatePkPass = async (req, res) => {
       memberships,
     };
 
-    const pkpass = await generateAppleWalletPass(mpUser);
-    const buffer = pkpass.getAsBuffer();
+    const passUrl = await generateAndroidWalletPassURL(mpUser);
 
-    if (pkpass) {
-      res.setHeader('Content-Type', 'application/vnd.apple.pkpass');
-      res.setHeader(
-        'Content-Disposition',
-        'attachment; filename="pass.pkpass"'
-      );
-      res.status(200).send(buffer);
+    if (passUrl) {
+      res.status(200).send(passUrl);
     } else {
       res
         .status(500)
@@ -57,8 +51,8 @@ const generatePkPass = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .send('Passkit generation failed. Please try again or contact support.');
+      .send('Pass URL generation failed. Please try again or contact support.');
   }
 };
 
-export default connect().use(authInstance.authorize()).get(generatePkPass);
+export default connect().use(authInstance.authorize()).get(generatePass);

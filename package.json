@@ -34,6 +34,7 @@
     "gatsby-plugin-use-query-params": "^1.0.1",
     "gatsby-react-router-scroll": "^5.25.0",
     "gatsby-source-storyblok": "^3.1.2",
+    "jsonwebtoken": "^9.0.2",
     "luxon": "^2.5.2",
     "netlify-plugin-inline-functions-env": "^1.0.9",
     "netlify-plugin-vault-variables": "^2.0.0",
