@@ -60,7 +60,7 @@ const LocalFooter = ({
                 <div className="su-pb-02em">{address3}</div>
               </address>
               <CreateBloks blokSection={mapLink} />
-              {actionLinks?.length && (
+              {!!actionLinks?.length && (
                 <ul className="su-list-unstyled su-rs-mt-3 su-rs-mb-4 children:su-mb-05em last:children:su-mb-0 children:su-leading-none">
                   <CreateBloks blokSection={actionLinks} as="li" />
                 </ul>
@@ -134,7 +134,7 @@ const LocalFooter = ({
               >
                 <CreateBloks blokSection={linkGroups} />
               </Grid>
-              {legalLinks?.length && (
+              {!!legalLinks?.length && (
                 <nav aria-label="Legal links">
                   <ul className="su-list-unstyled su-link-regular su-divide-x su-divide-white su-text-17 xl:su-text-20 children:su-inline-block children:su-mb-10 children:su-px-1em children:su-leading-display first:children:su-pl-0 last:children:su-pr-0">
                     <CreateBloks blokSection={legalLinks} />
