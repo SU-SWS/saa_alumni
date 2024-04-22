@@ -67,7 +67,7 @@ const LocalFooter = ({
               )}
               <ul
                 className={`su-flex su-list-unstyled ${
-                  !actionLinks?.length ? 'su-rs-mt-8' : ''
+                  !actionLinks?.length ? 'su-rs-mt-4' : ''
                 }`}
               >
                 <li className="su-mr-1em">
