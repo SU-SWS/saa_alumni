@@ -19,7 +19,7 @@ import SbLink from '../../../utilities/sbLink';
 
 const NoMembershipError = () => (
   <div>
-    <Heading level={2} size="2" weight="semibold" className="su-rs-mb-3">
+    <Heading level={2} size="2" weight="semibold" className="su-rs-mb-1">
       Interested in joining SAA?
     </Heading>
     <p className="su-card-paragraph">
@@ -40,7 +40,7 @@ const NoMembershipError = () => (
 
 const FullPaidMembership = () => (
   <div>
-    <Heading level={2} size="2" weight="semibold" className="su-rs-mb-3">
+    <Heading level={2} size="2" weight="semibold" className="su-rs-mb-1">
       Your membership plan has been paid in full.
     </Heading>
     <p className="su-card-paragraph su-mb-0">
