@@ -8,7 +8,7 @@ describe('Perks - Online Databases Page', () => {
 
     cy.get('h1').should('contain.text', 'Online Publication Databases');
     cy.get('main').within(() => {
-      cy.contains('p', 'We’re sorry, but this benefit is not available for your account.').should('exist');
+      cy.get('p:contains("We’re sorry, but this benefit is not available for your account.")').should('exist');
     });
   });
 });
