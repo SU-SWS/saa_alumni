@@ -18,9 +18,11 @@ const LinkList = ({
         {title}
       </Heading>
     )}
-    <ul className="su-list-unstyled children:su-mb-07em children:su-leading-none">
-      <CreateBloks blokSection={links} as="li" />
-    </ul>
+    {!!links?.length && (
+      <ul className="su-list-unstyled children:su-mb-07em children:su-leading-none">
+        <CreateBloks blokSection={links} as="li" />
+      </ul>
+    )}
   </div>
 );
 
