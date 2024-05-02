@@ -8,7 +8,8 @@ describe('Perks - Online Databases Page', () => {
 
     cy.get('h1').should('contain.text', 'Online Publication Databases');
     cy.get('#topperk').within(() => {
-      cy.get('p').first().should('exist').should('contain.text', 'this benefit is not available for your account');
+      cy.get('h3').first().should('exist').should('contain.text', 'Websites for This Benefit');
+      cy.get('p').eq(1).should('exist').should('contain.text', 'This is a member-only benefit.');
     });
   });
 });
