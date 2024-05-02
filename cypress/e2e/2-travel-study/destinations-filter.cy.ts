@@ -13,12 +13,13 @@ describe('Travel-Study Destinations Page', () => {
     cy.get('.trip-filter-page article h3').should('exist');
   });
 
-  it('should have working filters', { defaultCommandTimeout: 10000 }, () => {
+  it('should have working filters', () => {
     // Visit the destinations page URL
     cy.visit('/travel-study/destinations/');
+    cy.wait(1000);
 
     // Select Filter Month and check for URL update
-    cy.get('[data-test="filter-label--october"]').first().should('exist').click({ force: true });
+    cy.get('[data-test="filter-option--october"]').first().check({ force: true });
     cy.url().should('contain', 'trip-month=oct');
 
     // Load the filter from the URL
