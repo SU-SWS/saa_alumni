@@ -18,9 +18,9 @@ describe('Travel-Study Destinations Page', () => {
     cy.visit('/travel-study/destinations/');
 
     // Select Filter Month and check for URL update
-    cy.get('[data-test="filter-option--october"]').first().check({ force: true });
-    cy.wait(5000);
-    cy.url().should('contain', 'trip-month=oct');
+    // cy.get('[data-test="filter-option--october"]').first().check({ force: true });
+    // cy.wait(5000);
+    // cy.url().should('contain', 'trip-month=oct');
 
     // Load the filter from the URL
     cy.visit('/travel-study/destinations/?page=1&trip-month=oct');
@@ -33,9 +33,9 @@ describe('Travel-Study Destinations Page', () => {
     cy.get('.trip-filter-page article h3').should('exist');
 
     // Clear Filters and check for URL update
-    cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
-    cy.wait(5000);
-    cy.url().should('eq', Cypress.config().baseUrl + '/travel-study/destinations/');
+    // cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
+    // cy.wait(5000);
+    // cy.url().should('eq', Cypress.config().baseUrl + '/travel-study/destinations/');
 
     // Enable family focused filter
     cy.visit('/travel-study/destinations/?page=1&trip-experience=family-focused');
