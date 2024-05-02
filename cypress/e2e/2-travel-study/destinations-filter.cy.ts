@@ -31,6 +31,8 @@ describe('Travel-Study Destinations Page', () => {
     cy.get('[data-test="filter-option--family-focused"]').first().check({force: true});
     cy.reload(); // Needed for local Gatsby build
 
+    // Confirm that the filter chip exists (and wait filters to be applied)
+    cy.get('[data-test="chip:Family-Focused]').should('exist');
     // Confirm that Southeast Asia trip card exists
     cy.get('.trip-filter-page article').contains('Southeast Asia').should('exist');
 
