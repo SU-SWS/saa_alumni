@@ -18,9 +18,9 @@ describe('Travel-Study Destinations Page', () => {
     cy.visit('/travel-study/destinations/');
 
     // Select Filter Month and check for URL update
-    // cy.get('[data-test="filter-option--october"]').first().check({ force: true });
+    cy.get('[data-test="filter-label--october"]').first().should('exist').click();
     // cy.wait(5000);
-    // cy.url().should('contain', 'trip-month=oct');
+    cy.url().should('contain', 'trip-month=oct');
 
     // Load the filter from the URL
     cy.visit('/travel-study/destinations/?page=1&trip-month=oct');
