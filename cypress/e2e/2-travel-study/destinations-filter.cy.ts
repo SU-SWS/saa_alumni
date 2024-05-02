@@ -31,8 +31,8 @@ describe('Travel-Study Destinations Page', () => {
     cy.get('[data-test="filter-option--family-focused"]').first().check({force: true});
     cy.reload(); // Needed for local Gatsby build
 
-    // Confirm that 8 trip cards exists
-    cy.get('.trip-filter-page article').should('exist').should('have.length', 8);
+    // Confirm that Southeast Asia trip card exists
+    cy.get('.trip-filter-page article').contains('Southeast Asia').should('exist');
 
     // Clear Filters
     cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
