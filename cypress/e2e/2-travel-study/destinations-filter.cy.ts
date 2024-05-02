@@ -18,29 +18,22 @@ describe('Travel-Study Destinations Page', () => {
     cy.visit('/travel-study/destinations/');
 
     // Select Filter Month and check for URL update
-    cy.get('[data-test="filter-label--october"]').first().should('exist').click();
-    // cy.wait(5000);
+    cy.get('[data-test="filter-label--october"]').first().should('exist').click({ force: true });
     cy.url().should('contain', 'trip-month=oct');
 
     // Load the filter from the URL
     cy.visit('/travel-study/destinations/?page=1&trip-month=oct');
-    cy.wait(5000);
-
     // Confirm chip exists
     cy.get('[data-test="chip:October"]').should('exist');
-
     // Confirm that a trip card exists
     cy.get('.trip-filter-page article h3').should('exist');
 
     // Clear Filters and check for URL update
-    // cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
-    // cy.wait(5000);
-    // cy.url().should('eq', Cypress.config().baseUrl + '/travel-study/destinations/');
+    cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
+    cy.url().should('not.contain', '?');
 
     // Enable family focused filter
     cy.visit('/travel-study/destinations/?page=1&trip-experience=family-focused');
-    cy.wait(5000);
-
     // Confirm that the filter chip exists (and wait for filters to be applied)
     cy.get('[data-test="chip:Family-Focused"]').should('exist');
     // Confirm that Southeast Asia trip card exists
