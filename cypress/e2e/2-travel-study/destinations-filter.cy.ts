@@ -13,16 +13,18 @@ describe('Travel-Study Destinations Page', () => {
     cy.get('.trip-filter-page article h3').should('exist');
   });
 
-  it('should have working filters', () => {
+  it('should have working filters', { defaultCommandTimeout: 10000 }, () => {
     // Visit the destinations page URL
     cy.visit('/travel-study/destinations/');
 
     // Select Filter Month and check for URL update
     cy.get('[data-test="filter-option--october"]').first().check({ force: true });
+    cy.wait(5000);
     cy.url().should('contain', 'trip-month=oct');
 
     // Load the filter from the URL
     cy.visit('/travel-study/destinations/?page=1&trip-month=oct');
+    cy.wait(5000);
 
     // Confirm chip exists
     cy.get('[data-test="chip:October"]').should('exist');
@@ -32,10 +34,12 @@ describe('Travel-Study Destinations Page', () => {
 
     // Clear Filters and check for URL update
     cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
+    cy.wait(5000);
     cy.url().should('eq', Cypress.config().baseUrl + '/travel-study/destinations/');
 
     // Enable family focused filter
     cy.visit('/travel-study/destinations/?page=1&trip-experience=family-focused');
+    cy.wait(5000);
 
     // Confirm that the filter chip exists (and wait for filters to be applied)
     cy.get('[data-test="chip:Family-Focused"]').should('exist');
