@@ -31,8 +31,8 @@ describe('Travel-Study Destinations Page', () => {
     cy.get('[data-test="filter-option--family-focused"]').first().check({force: true});
     cy.reload(); // Needed for local Gatsby build
 
-    // Confirm that a trip card exists
-    cy.get('.trip-filter-page article h3').should('exist');
+    // Confirm that 8 trip cards exists
+    cy.get('.trip-filter-page article').should('exist').should('have.length', 8);
 
     // Clear Filters
     cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
