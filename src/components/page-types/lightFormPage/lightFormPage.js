@@ -29,8 +29,8 @@ const NoMembershipError = () => (
     </p>
     <p className="su-card-paragraph su-mb-0">
       If you purchased your membership online more than one business day ago,
-      and your membership is not recognized after logging in, call us at (650)
-      725-0692 or email us at{' '}
+      and your membership is not recognized after logging in, call us at <a href="tel:6507250692">(650)
+      725-0692</a> or email us at{' '}
       <a href="mailto:membership@alumni.stanford.edu">
         membership@alumni.stanford.edu
       </a>
