@@ -56,6 +56,14 @@
   path = "/membership/join"
   function = "protected-content"
 
+[[edge_functions]]
+  path = "/membership/payment-update"
+  function = "protected-content"
+
+[[edge_functions]]
+  path = "/membership/payment-history"
+  function = "protected-content"
+
 # PLUGINS
 # ##############################################################################
 
