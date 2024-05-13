@@ -56,14 +56,6 @@
   path = "/membership/join"
   function = "protected-content"
 
-[[edge_functions]]
-  path = "/membership/payment-update"
-  function = "protected-content"
-
-[[edge_functions]]
-  path = "/membership/payment-history"
-  function = "protected-content"
-
 # PLUGINS
 # ##############################################################################
 
@@ -75,7 +67,7 @@
     endpoint = 'https://vault.stanford.edu'
     # Order doesn't matter here as these will be fetched asyncronously.
     # Try not to have dupes.
-    secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/membership']
+    secrets = ['secret/data/projects/adapt/saml', 'secret/data/projects/adapt/alumni']
     # Set which environment variables to use for the approle login
     secretId = 'VAULT_SECRET_ID'
     roleId = 'VAULT_ROLE_ID'
