@@ -73,6 +73,10 @@ const MembershipCard = ({ blok: { publicCtaGroup, ctaGroup }, blok }) => {
                 userType !== 'affiliate' ? 'su-text-white' : '',
                 bgColor
               )}
+              style={{
+                WebkitPrintColorAdjust: 'exact',
+                printColorAdjust: 'exact',
+              }}
             >
               {noCard ? (
                 <img src={exampleImage} alt="Example SAA Digital Member Card" />
