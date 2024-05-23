@@ -133,6 +133,19 @@ export const fontWeights = {
   bold: 'su-font-bold',
 };
 
+export const headerBackgroundColor = {
+  white: 'su-color-white',
+  'cardinal-red': 'su-color-cardinal',
+  'digital-red': 'su-color-digital-red',
+  'palo-alto': 'su-color-palo-alto',
+  'bay-dark': 'su-color-bay-dark',
+  'sky-dark': 'su-color-sky-dark',
+  lagunita: 'su-color-lagunita',
+  'lagunita-dark': 'su-color-lagunita-dark',
+  'palo-verde': 'su-color-palo-verde',
+  'palo-verde-dark': 'su-color-palo-verde-dark',
+};
+
 export const heroGradient = {
   black: 'su-from-saa-black',
   brick: 'xs:su-from-brick su-to-brick/30',
