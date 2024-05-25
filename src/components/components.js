@@ -93,6 +93,7 @@ import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
+import SynchronizedEvent from './content-types/synchronized-event/synchronizedEvent';
 
 const ComponentList = {
   accordion: Accordion,
@@ -175,6 +176,7 @@ const ComponentList = {
   story: Story,
   storyCard: StoryCard,
   saaStoryCard: SaaStoryCard,
+  synchronizedEvent: SynchronizedEvent,
   trip: TripPage,
   tripCard: SBTripCard,
   tripCustomJourneys: TripCustomJourneys,
