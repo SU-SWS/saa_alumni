@@ -102,23 +102,22 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
       id: `${objectId}`,
       classId,
       genericType: 'GENERIC_TYPE_UNSPECIFIED',
-      hexBackgroundColor: '#8c1515',
+      hexBackgroundColor: '#d20707',
       logo: {
         sourceUri: {
-          // TODO: Use a square logo image, in a public URL
-          uri: 'http://identity.stanford.edu/wp-content/uploads/sites/3/2020/07/SU_New_BlockStree_2color_darkbgrd.png',
+          uri: 'https://project-orion-production.s3.us-east-1.amazonaws.com/wallet/logo.png',
         },
       },
       cardTitle: {
         defaultValue: {
           language: 'en',
-          value: 'Stanford Alumni Member',
+          value: 'Stanford Alumni',
         },
       },
       subheader: {
         defaultValue: {
           language: 'en',
-          value: 'Member',
+          value: 'Alumni Membership Card',
         },
       },
       header: {
@@ -133,11 +132,11 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
       //   value: `${objectId}`,
       // },
       // In case we want to include a hero/footer image. It requires a public image URL
-      // heroImage: {
-      //   sourceUri: {
-      //     uri: 'https://storage.googleapis.com/wallet-lab-tools-codelab-artifacts-public/google-io-hero-demo-only.jpg',
-      //   },
-      // },
+      heroImage: {
+        sourceUri: {
+          uri: 'https://project-orion-production.s3.us-east-1.amazonaws.com/wallet/background.png',
+        },
+      },
       textModulesData: [
         {
           header: 'NAME',
