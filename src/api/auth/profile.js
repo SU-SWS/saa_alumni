@@ -3,7 +3,7 @@
 // Do not enable for public use. This is for development/debugging purposes only.
 // Data can be viewed at /api/auth/megaprofile-data
 // -----------------------------------------------------------------------------
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 import { MegaProfile } from '../../utilities/MegaProfile';
 import { authInstance } from '../../utilities/authInstance';
 import {
@@ -48,7 +48,7 @@ const megaprofileHandler = async (req, res, next) => {
     memberships,
   };
   res.status(200).json(mpUser);
-  next();
+  // next();
 };
 
 const storyblokPreviewPassthrough = async (req, res, next) => {
@@ -58,9 +58,9 @@ const storyblokPreviewPassthrough = async (req, res, next) => {
   } else next();
 };
 
-const handler = connect()
-  .get(storyblokPreviewPassthrough)
-  .use(authInstance.authorize())
-  .get(megaprofileHandler);
+const router = createRouter()
+  .get(expressWrapper(storyblokPreviewPassthrough))
+  .use(expressWrapper(authInstance.authorize()))
+  .get(expressWrapper(megaprofileHandler));
 
-export default handler;
+export default router.handler();
