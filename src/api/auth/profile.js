@@ -47,15 +47,16 @@ const megaprofileHandler = async (req, res, next) => {
     ...fullprofile,
     memberships,
   };
-  res.status(200).json(mpUser);
+  return res.status(200).json(mpUser);
   // next();
 };
 
 const storyblokPreviewPassthrough = async (req, res, next) => {
   const isEditor = await isStoryblokEditor(req);
   if (isEditor) {
-    res.json({ ...fullprofileMockData, ...membershipsMockData });
-  } else next();
+    return res.json({ ...fullprofileMockData, ...membershipsMockData });
+  }
+  return next();
 };
 
 const router = createRouter()
