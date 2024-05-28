@@ -1,6 +1,7 @@
 # BUILD Settings:
 # ##############################################################################
 [build]
+  command = "npm run build"
   publish = "public"
 
 [dev]
@@ -89,3 +90,6 @@
 
 [[plugins]]
   package = "@netlify/plugin-gatsby"
+
+[[plugins]]
+  package = "netlify-plugin-clear-cache"
