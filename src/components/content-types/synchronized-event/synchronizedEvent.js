@@ -23,7 +23,6 @@ const SynchronizedEvent = ({
   hideTab,
   isDark,
 }) => {
-  console.log({ blok });
   // Link to external URL (always external for MVP)
   const eventLink = eventUrl;
 
