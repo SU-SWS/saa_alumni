@@ -2,7 +2,7 @@ const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
 require('dotenv').config();
-const adapter = require('gatsby-adapter-netlify');
+const adapter = require('gatsby-adapter-netlify').default;
 
 /**
  * Resolve relations for storyblok.
