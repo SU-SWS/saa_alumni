@@ -12,6 +12,7 @@ import TabLabel from '../../simple/tabLabel';
 import DateBlock from '../../simple/dateBlock';
 import HeroIcon from '../../simple/heroIcon';
 
+// THIS IS A STUB; COMPLETE THE OWL PLZ
 const SynchronizedEvent = ({
   blok: { image: { filename, focus } = {}, title, start, end, eventUrl },
   blok,
@@ -24,7 +25,7 @@ const SynchronizedEvent = ({
 }) => {
   console.log({ blok });
   // Link to external URL (always external for MVP)
-  const eventLink = { linktype: 'url', url: eventUrl } ?? '';
+  const eventLink = eventUrl;
 
   // The date/time string we get from Storyblok is in UTC
   // Convert string to luxon DateTime object and format the pieces for display
