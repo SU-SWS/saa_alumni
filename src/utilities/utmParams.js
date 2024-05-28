@@ -1,8 +1,8 @@
-import { parse } from 'query-string';
+import queryString from 'query-string';
 
 export const utmParams = (locationSearch) => {
   // Get out of the url and keep track of specific utm parameters.
-  const parsedSearch = parse(locationSearch);
+  const parsedSearch = queryString.parse(locationSearch);
   // utms variable will create a string of just the valid params we want to keep.
   let utms = '';
   const passParams = [

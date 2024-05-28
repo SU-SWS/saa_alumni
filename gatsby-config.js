@@ -56,7 +56,7 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-fontawesome-css-2`,
+    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {
@@ -171,7 +171,7 @@ module.exports = {
         mergeSecurityHeaders: false,
       },
     },
-    `gatsby-plugin-use-query-params`,
+    `gatsby-plugin-use-query-params-v2`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

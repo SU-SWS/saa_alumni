@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
 import AuthIdleTimeoutOverlay from '../components/auth/AuthIdleTimeoutOverlay';
 
 const initialAuthState = {
@@ -27,100 +27,69 @@ function authReducer(state, action) {
 }
 
 const AuthContext = createContext(initialAuthState);
+const AuthContextProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(authReducer, initialAuthState);
 
-class AuthContextProvider extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      ...initialAuthState,
-    };
-  }
-
-  componentDidMount() {
+  useEffect(() => {
     const sessionUrl = `${window.location.protocol}//${window.location.host}/api/auth/session`;
     const profileUrl = `${window.location.protocol}//${window.location.host}/api/auth/profile`;
 
-    // Get the session.
-    const sess = fetch(sessionUrl).then(async (res) => {
-      if (res.status === 200) {
-        const body = await res.json();
-        return body;
-      }
-      return false;
-    });
+    const fetchSession = async () => {
+      const res = await fetch(sessionUrl);
+      return res.status === 200 ? res.json() : false;
+    };
 
-    // Get the profile.
-    const prof = fetch(profileUrl).then(async (res) => {
-      if (res.status === 200) {
-        const body = await res.json();
-        return body;
-      }
-      return false;
-    });
+    const fetchProfile = async () => {
+      const res = await fetch(profileUrl);
+      return res.status === 200 ? res.json() : false;
+    };
 
-    // To be logged in, session must be available.
-    Promise.allSettled([sess, prof])
-      .then(([session, profile]) => {
-        if (session.status === 'fullfilled' && session.value) {
-          this.dispatch({ type: 'setAuthenticated', payload: false });
-          this.dispatch({ type: 'setAuthenticating', payload: false });
+    const loadAuthData = async () => {
+      try {
+        const [session, profile] = await Promise.allSettled([
+          fetchSession(),
+          fetchProfile(),
+        ]);
+
+        if (session.status === 'fulfilled' && !session.value) {
+          dispatch({ type: 'setAuthenticated', payload: false });
+          dispatch({ type: 'setAuthenticating', payload: false });
           return;
         }
 
         if (profile.status === 'fulfilled' && profile.value) {
-          this.dispatch({ type: 'setUserProfile', payload: profile.value });
+          dispatch({ type: 'setUserProfile', payload: profile.value });
         }
 
         if (Object.keys(profile.value?.affiliation.affiliations).length === 0) {
-          this.dispatch({ type: 'setError', payload: true });
+          dispatch({ type: 'setError', payload: true });
         }
 
-        this.dispatch({ type: 'setUserSession', payload: session.value });
-        this.dispatch({ type: 'setAuthenticated', payload: true });
-        this.dispatch({ type: 'setAuthenticating', payload: false });
-      })
-      .catch((err) => {
-        this.dispatch({ type: 'setAuthenticated', payload: false });
-        this.dispatch({ type: 'setAuthenticating', payload: false });
-        this.dispatch({ type: 'setError', payload: true });
-      });
-  }
+        dispatch({ type: 'setUserSession', payload: session.value });
+        dispatch({ type: 'setAuthenticated', payload: true });
+        dispatch({ type: 'setAuthenticating', payload: false });
+      } catch (error) {
+        dispatch({ type: 'setAuthenticated', payload: false });
+        dispatch({ type: 'setAuthenticating', payload: false });
+        dispatch({ type: 'setError', payload: true });
+      }
+    };
 
-  reducer(action) {
-    const prevState = this.state;
-    this.setState(authReducer(prevState, action));
-  }
+    loadAuthData();
+  }, []);
 
-  dispatch(action) {
-    this.reducer(action);
-  }
-
-  render() {
-    const { children } = this.props;
-    const {
-      userProfile,
-      userSession,
-      isAuthenticated,
-      isAuthenticating,
-      isError,
-    } = this.state;
-    return (
-      <AuthContext.Provider
-        value={{
-          userProfile,
-          userSession,
-          isAuthenticated,
-          isAuthenticating,
-          isError,
-          setAuthState: this.setAuthState,
-        }}
-      >
-        {isAuthenticated && <AuthIdleTimeoutOverlay />}
-        {children}
-      </AuthContext.Provider>
-    );
-  }
-}
+  return (
+    <AuthContext.Provider
+      value={{
+        ...state,
+        dispatch,
+      }}
+    >
+      {state.isAuthenticated && <AuthIdleTimeoutOverlay />}
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
 export default AuthContext;
 export { AuthContextProvider };

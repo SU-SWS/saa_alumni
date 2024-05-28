@@ -7,7 +7,7 @@ const query = graphql`
   query {
     allStoryblokEntry(
       filter: { field_component: { eq: "alert" } }
-      sort: { fields: published_at, order: DESC }
+      sort: { published_at: DESC }
     ) {
       edges {
         node {
