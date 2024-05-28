@@ -1,7 +1,6 @@
 # BUILD Settings:
 # ##############################################################################
 [build]
-  command = "npm run clean && npm run build"
   publish = "public"
 
 [dev]
