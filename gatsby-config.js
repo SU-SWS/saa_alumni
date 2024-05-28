@@ -2,6 +2,7 @@ const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
 require('dotenv').config();
+const adapter = require('gatsby-adapter-netlify');
 
 /**
  * Resolve relations for storyblok.
@@ -55,6 +56,10 @@ module.exports = {
       resolveRelations: storyblokRelations,
     },
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   plugins: [
     `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
