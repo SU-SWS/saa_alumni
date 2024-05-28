@@ -20,6 +20,6 @@ export const utmParams = (locationSearch) => {
     }
   });
   // Strip off the last ampersand.
-  utms = utms.replace(new RegExp('&$'), '');
+  utms = utms.replace(/&$/, '');
   return utms;
 };
