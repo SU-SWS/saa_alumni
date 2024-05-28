@@ -165,12 +165,6 @@ module.exports = {
         icons: [],
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        mergeSecurityHeaders: false,
-      },
-    },
     `gatsby-plugin-use-query-params-v2`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
