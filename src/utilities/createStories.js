@@ -12,7 +12,7 @@ const CreateStories = ({ stories, ...props }) => {
         currStory = story;
 
         // TODO: remove this check after testing
-        if (!story.content.component) {
+        if (!story?.content?.component) {
           console.error('Story does not have a component', story);
           return null;
         }
