@@ -10,6 +10,7 @@ const CreateStories = ({ stories, ...props }) => {
     try {
       return stories.map((story) => {
         currStory = story;
+        console.log('story', story);
         return React.createElement(Components(story.content.component), {
           // eslint-disable-next-line no-underscore-dangle
           key: story.content._uid,
