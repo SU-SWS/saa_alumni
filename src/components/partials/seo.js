@@ -13,7 +13,7 @@ import useSubsite from '../../hooks/useSubsite';
  */
 function getCanonicalUrl(blok, siteUrl, location = {}) {
   // Default: Use the current path as the canonical URL
-  let canonicalUrl = siteUrl + location?.pathname;
+  let canonicalUrl = siteUrl + (location?.pathname ?? '');
 
   if (!blok.canonicalURL) return canonicalUrl;
 
