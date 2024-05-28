@@ -109,6 +109,7 @@
     "@babel/preset-env": "^7.24.6",
     "@babel/preset-react": "^7.24.6",
     "@tailwindcss/forms": "^0.5.7",
+    "@testing-library/cypress": "^10.0.1",
     "autoprefixer": "^10.4.19",
     "axios-mock-adapter": "^1.22.0",
     "cross-env": "^7.0.3",
