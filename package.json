@@ -133,5 +133,10 @@
     "storyblok": "^3.31.1",
     "toml": "^3.0.0",
     "type-fest": "^4.18.3"
+  },
+  "overrides": {
+    "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
+      "react": "^18.0.0"
+    }
   }
 }
