@@ -19,6 +19,7 @@
     "body-parser": "^1.20.2",
     "cnbuilder": "^3.1.0",
     "cookie-parser": "^1.4.6",
+    "encoding": "^0.1.13",
     "fast-sort": "^3.4.0",
     "gatsby": "^5.13.5",
     "gatsby-link": "^5.13.1",
