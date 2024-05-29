@@ -21,7 +21,6 @@
     "cookie-parser": "^1.4.6",
     "encoding": "^0.1.13",
     "fast-sort": "^3.4.0",
-    "gatsby": "5.13.0",
     "gatsby-link": "^5.13.1",
     "gatsby-plugin-fontawesome-css": "github:SU-SWS/gatsby-plugin-fontawesome-css-3",
     "gatsby-plugin-google-tagmanager": "^5.13.1",
