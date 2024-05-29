@@ -11,7 +11,6 @@ const CreateStories = ({ stories, ...props }) => {
       return stories.map((story) => {
         currStory = story;
 
-        // TODO: remove this check after testing
         if (!story?.content?.component) {
           console.warn('Story does not have a component', story);
           return null;
