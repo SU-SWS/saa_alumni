@@ -13,6 +13,7 @@ const CreateStories = ({ stories, ...props }) => {
 
         // TODO: remove this check after testing
         if (!story?.content?.component) {
+          console.log('TESTESTESTEST')
           console.warn('Story does not have a component', story);
           return null;
         }
