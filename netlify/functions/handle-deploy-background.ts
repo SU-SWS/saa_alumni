@@ -96,5 +96,5 @@ export default async (req: Request) => {
 };
 
 // export const config: Config = {
-//   path: '/api/handle-deploy',
+//   path: '/api-test/handle-deploy',
 // };
