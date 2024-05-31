@@ -1,3 +1,4 @@
+import { type Config } from '@netlify/functions';
 import StoryblokClient from 'storyblok-js-client';
 import algoliasearch from 'algoliasearch';
 import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookType';
@@ -89,4 +90,8 @@ export default async (req: Request) => {
   }
 
   console.log('=== END Deploy Background Function ===');
+};
+
+export const config: Config = {
+  path: '/api/handle-deploy',
 };
