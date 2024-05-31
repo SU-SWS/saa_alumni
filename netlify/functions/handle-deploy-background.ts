@@ -5,6 +5,7 @@ import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookTy
 
 export default async (req: Request) => {
   console.log('=== START Deploy Background Function ===');
+  console.log({ headers: req.headers });
   const signature = req.headers?.['webhook-signature'] ?? '';
   const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
   const algoliaWriteKey = process.env.ALGOLIA_EVENTS_WRITE_KEY ?? '';
