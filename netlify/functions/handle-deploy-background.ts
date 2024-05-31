@@ -5,12 +5,13 @@ import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookTy
 
 export default async (req: Request) => {
   console.log('=== START Deploy Background Function ===');
-  console.log({ headers: req.headers });
-  const signature = req.headers?.['webhook-signature'] ?? '';
+  const signature = req.headers['webhook-signature'] ?? '';
   const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
   const algoliaWriteKey = process.env.ALGOLIA_EVENTS_WRITE_KEY ?? '';
   const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID ?? '';
   const algoliaIndex = process.env.ALGOLIA_EVENTS_INDEX_NAME ?? '';
+
+  console.log({ sig: req.headers['webhook-signature'], signature });
 
   try {
     if (!signature) {
