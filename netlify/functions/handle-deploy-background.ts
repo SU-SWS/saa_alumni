@@ -95,6 +95,6 @@ export default async (req: Request) => {
   console.log('=== END Deploy Background Function ===');
 };
 
-export const config: Config = {
-  path: '/api/handle-deploy',
-};
+// export const config: Config = {
+//   path: '/api/handle-deploy',
+// };
