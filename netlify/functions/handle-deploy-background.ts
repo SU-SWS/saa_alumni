@@ -1,5 +1,6 @@
 import { type Config } from '@netlify/functions';
 import dotenv from 'dotenv';
+import { createHmac } from 'node:crypto';
 import StoryblokClient from 'storyblok-js-client';
 import algoliasearch from 'algoliasearch';
 import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookType';
@@ -8,25 +9,28 @@ dotenv.config();
 
 export default async (req: Request) => {
   console.log('=== START Deploy Background Function ===');
-  const signature = req.headers.get('webhook-signature') ?? '';
-  const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
-  const algoliaWriteKey = process.env.ALGOLIA_EVENTS_WRITE_KEY ?? '';
-  const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID ?? '';
-  const algoliaIndex = process.env.ALGOLIA_EVENTS_INDEX_NAME ?? '';
-
-  console.log({
-    knownSecret: process.env.STORYBLOK_WEBHOOK_SECRET,
-    sentSecret: signature,
-  });
 
   try {
+    const rawData = await req.text();
+
+    if (!rawData) {
+      throw new Error('No payload');
+    }
+
+    const signature = req.headers.get('webhook-signature') ?? '';
+
     if (!signature) {
       throw new Error('No signature');
     }
 
-    if (signature !== process.env.STORYBLOK_WEBHOOK_SECRET) {
+    const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
+    const generatedSignature = createHmac('sha1', webhookSecret).update(rawData).digest('hex');
+  
+    if (signature !== generatedSignature) {
       throw new Error('Wrong signature');
     }
+
+    const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
 
     if (!deployUrl) {
       throw new Error('Missing deploy info');
@@ -64,6 +68,10 @@ export default async (req: Request) => {
     }
 
     // Only pub/unpub actions for alumni events
+
+    const algoliaWriteKey = process.env.ALGOLIA_EVENTS_WRITE_KEY ?? '';
+    const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID ?? '';
+    const algoliaIndex = process.env.ALGOLIA_EVENTS_INDEX_NAME ?? '';
 
     if (!algoliaAppId || !algoliaWriteKey || !algoliaIndex) {
       throw new Error('Missing Algolia API info');
