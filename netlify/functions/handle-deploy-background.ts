@@ -12,6 +12,7 @@ export default async (req: Request) => {
 
   try {
     const rawData = await req.text();
+    console.log({ rawData });
 
     if (!rawData) {
       throw new Error('No payload');
@@ -24,7 +25,13 @@ export default async (req: Request) => {
     }
 
     const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
-    const generatedSignature = createHmac('sha1', webhookSecret).update(rawData).digest('hex');
+    console.log({ webhookSecret });
+    const hmac = createHmac('sha1', webhookSecret);
+    console.log({ hmac });
+    const updatedhmac = hmac.update(rawData);
+    console.log({ updatedhmac });
+    const generatedSignature = updatedhmac.digest('hex');
+    console.log({ generatedSignature });
   
     if (signature !== generatedSignature) {
       throw new Error('Wrong signature');
