@@ -110,7 +110,7 @@ export default async (req: Request) => {
     if (data.action === 'published') {
       // Upsert to Algolia (no rebuild)
       await index.saveObject({
-        objectId: storyId,
+        objectID: storyId,
         ...eventData,
       })
       console.log('Algolia upsert: ', storyId);
