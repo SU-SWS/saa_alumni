@@ -37,11 +37,15 @@ export default async (req: Request) => {
       throw new Error('Wrong signature');
     }
 
+    console.log('Signature fine');
+
     const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
 
     if (!deployUrl) {
       throw new Error('Missing deploy info');
     }
+
+    console.log({ deployUrl });
 
     const data: SBWebhookPayload = await req.json();
     
@@ -49,6 +53,7 @@ export default async (req: Request) => {
       || data.action === 'merged'
       || data.action === 'deleted'
     ) {
+      console.log('trigger deploy');
       // Trigger rebuild and stop
       await fetch(deployUrl, { method: 'POST' });
       console.log('Deploy triggered');
@@ -62,9 +67,19 @@ export default async (req: Request) => {
       accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
     });
 
+    console.log('sb client created');
+
     const story = await storyblok.getStory(data.full_slug);
+
+    console.log({ story });
+
     const contentType = story.data.story.content.component;
+
+    console.log({ contentType });
+
     const isEvent = contentType === 'synchronizedEvent';
+
+    console.log({ isEvent });
 
     if (!isEvent) {
       // Trigger rebuild and stop
