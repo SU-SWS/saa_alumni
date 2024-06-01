@@ -1,4 +1,3 @@
-import { type Config } from '@netlify/functions';
 import dotenv from 'dotenv';
 import { createHmac } from 'node:crypto';
 import StoryblokClient from 'storyblok-js-client';
