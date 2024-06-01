@@ -14,14 +14,10 @@ export default async (req: Request) => {
   const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID ?? '';
   const algoliaIndex = process.env.ALGOLIA_EVENTS_INDEX_NAME ?? '';
 
-  console.log([
-    process.env.DEPLOY_HOOK_URL,
-    process.env.ALGOLIA_EVENTS_WRITE_KEY,
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.ALGOLIA_EVENTS_INDEX_NAME,
-    process.env.STORYBLOK_WEBHOOK_SECRET,
-    process.env.STORYBLOK_ACCESS_TOKEN,
-  ]);
+  console.log({
+    knownSecret: process.env.STORYBLOK_WEBHOOK_SECRET,
+    sentSecret: signature,
+  });
 
   try {
     if (!signature) {
