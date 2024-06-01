@@ -11,6 +11,8 @@ export default async (req: Request) => {
   const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID ?? '';
   const algoliaIndex = process.env.ALGOLIA_EVENTS_INDEX_NAME ?? '';
 
+  console.log(Netlify.env.toObject());
+
   console.log(process.env);
 
   try {
