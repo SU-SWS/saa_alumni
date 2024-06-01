@@ -18,7 +18,7 @@ export default async (req: Request) => {
       throw new Error('No signature');
     }
 
-    if (signature !== process.env.SECRET) {
+    if (signature !== process.env.STORYBLOK_WEBHOOK_SECRET) {
       throw new Error('Wrong signature');
     }
 
