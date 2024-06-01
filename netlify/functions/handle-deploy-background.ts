@@ -1,7 +1,10 @@
 import { type Config } from '@netlify/functions';
+import dotenv from 'dotenv';
 import StoryblokClient from 'storyblok-js-client';
 import algoliasearch from 'algoliasearch';
 import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookType';
+
+dotenv.config();
 
 export default async (req: Request) => {
   console.log('=== START Deploy Background Function ===');
