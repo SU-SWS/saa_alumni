@@ -47,7 +47,7 @@ export default async (req: Request) => {
 
     console.log({ deployUrl });
 
-    const data: SBWebhookPayload = await req.json();
+    const data: SBWebhookPayload = await JSON.parse(rawData);
     
     if (data.action === 'entries_updated'
       || data.action === 'merged'
