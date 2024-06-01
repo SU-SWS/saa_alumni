@@ -12,7 +12,6 @@ export default async (req: Request) => {
 
   try {
     const rawData = await req.text();
-    console.log({ rawData });
 
     if (!rawData) {
       throw new Error('No payload');
@@ -25,19 +24,11 @@ export default async (req: Request) => {
     }
 
     const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
-    console.log({ webhookSecret });
-    const hmac = createHmac('sha1', webhookSecret);
-    console.log({ hmac });
-    const updatedhmac = hmac.update(rawData);
-    console.log({ updatedhmac });
-    const generatedSignature = updatedhmac.digest('hex');
-    console.log({ generatedSignature });
+    const generatedSignature = createHmac('sha1', webhookSecret).update(rawData).digest('hex');
   
     if (signature !== generatedSignature) {
       throw new Error('Wrong signature');
     }
-
-    console.log('Signature fine');
 
     const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
 
@@ -45,15 +36,12 @@ export default async (req: Request) => {
       throw new Error('Missing deploy info');
     }
 
-    console.log({ deployUrl });
-
     const data: SBWebhookPayload = await JSON.parse(rawData);
     
     if (data.action === 'entries_updated'
       || data.action === 'merged'
       || data.action === 'deleted'
     ) {
-      console.log('trigger deploy');
       // Trigger rebuild and stop
       await fetch(deployUrl, { method: 'POST' });
       console.log('Deploy triggered');
@@ -67,19 +55,9 @@ export default async (req: Request) => {
       accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
     });
 
-    console.log('sb client created');
-
     const story = await storyblok.getStory(data.full_slug);
-
-    console.log({ story });
-
     const contentType = story.data.story.content.component;
-
-    console.log({ contentType });
-
     const isEvent = contentType === 'synchronizedEvent';
-
-    console.log({ isEvent });
 
     if (!isEvent) {
       // Trigger rebuild and stop
