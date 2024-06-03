@@ -10,29 +10,28 @@ export default async (req: Request) => {
   console.log('=== START Deploy Background Function ===');
 
   try {
+    const signature = req.headers.get('webhook-signature') ?? '';
+    const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
+    const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
+
+    if (!signature) {
+      throw new Error('No signature');
+    }
+
+    if (!deployUrl) {
+      throw new Error('Missing deploy info');
+    }
+
     const rawData = await req.text();
 
     if (!rawData) {
       throw new Error('No payload');
     }
 
-    const signature = req.headers.get('webhook-signature') ?? '';
-
-    if (!signature) {
-      throw new Error('No signature');
-    }
-
-    const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
     const generatedSignature = createHmac('sha1', webhookSecret).update(rawData).digest('hex');
   
     if (signature !== generatedSignature) {
       throw new Error('Wrong signature');
-    }
-
-    const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
-
-    if (!deployUrl) {
-      throw new Error('Missing deploy info');
     }
 
     const data: SBWebhookPayload = await JSON.parse(rawData);
@@ -66,7 +65,7 @@ export default async (req: Request) => {
       return;
     }
 
-    // Only pub/unpub actions for alumni events
+    // Only pub/unpub actions for alumni events after this
 
     const algoliaWriteKey = process.env.ALGOLIA_EVENTS_WRITE_KEY ?? '';
     const algoliaAppId = process.env.GATSBY_ALGOLIA_APP_ID ?? '';
@@ -109,7 +108,3 @@ export default async (req: Request) => {
 
   console.log('=== END Deploy Background Function ===');
 };
-
-// export const config: Config = {
-//   path: '/api-test/handle-deploy',
-// };
