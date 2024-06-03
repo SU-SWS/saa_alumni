@@ -5,7 +5,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import { useStaticQuery, graphql } from 'gatsby';
 import StoryblokClient from 'storyblok-js-client';
 import Components from '../components/components';
-import Sa11yInit from '../components/Sa11yInit.tsx';
+import Sa11yInit from '../components/Sa11yInit';
 
 const sbClient = new StoryblokClient({});
 

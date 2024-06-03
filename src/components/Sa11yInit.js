@@ -1,10 +1,13 @@
+/* eslint-disable import/extensions */
+
 'use client';
+
 import { useEffect } from 'react';
 import { Sa11y, Lang } from 'sa11y/dist/js/sa11y.esm.js';
 import Sa11yLangEn from 'sa11y/dist/js/lang/en.js';
 import 'sa11y/dist/css/sa11y.min.css';
 
-const Sa11yInit: React.FC = () => {
+const Sa11yInit = () => {
   useEffect(() => {
     // Set translations
     Lang.addI18n(Sa11yLangEn.strings);
@@ -21,6 +24,5 @@ const Sa11yInit: React.FC = () => {
 
   return null;
 };
-
 
 export default Sa11yInit;
