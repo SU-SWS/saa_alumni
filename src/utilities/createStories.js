@@ -10,6 +10,12 @@ const CreateStories = ({ stories, ...props }) => {
     try {
       return stories.map((story) => {
         currStory = story;
+
+        if (!story?.content?.component) {
+          console.warn('Story does not have a component', story);
+          return null;
+        }
+
         return React.createElement(Components(story.content.component), {
           // eslint-disable-next-line no-underscore-dangle
           key: story.content._uid,

@@ -108,30 +108,28 @@ exports.createPages = ({ graphql, actions }) => {
     // Registration Form Pages
     // /////////////////////////////////////////////////////////////////////////
     resolve(
-      graphql(
-        `
-          {
-            allStoryblokEntry(
-              filter: { field_component: { eq: "registrationFormPage" } }
-            ) {
-              edges {
-                node {
-                  id
-                  name
-                  created_at
-                  uuid
-                  slug
-                  full_slug
-                  content
-                  is_startpage
-                  parent_id
-                  group_id
-                }
+      graphql(`
+        {
+          allStoryblokEntry(
+            filter: { field_component: { eq: "registrationFormPage" } }
+          ) {
+            edges {
+              node {
+                id
+                name
+                created_at
+                uuid
+                slug
+                full_slug
+                content
+                is_startpage
+                parent_id
+                group_id
               }
             }
           }
-        `
-      ).then((result) => {
+        }
+      `).then((result) => {
         // No registration page forms.
         if (result.errors) {
           console.log(result.errors);
@@ -191,30 +189,28 @@ exports.createPages = ({ graphql, actions }) => {
     // Membership Form Pages
     // /////////////////////////////////////////////////////////////////////////
     resolve(
-      graphql(
-        `
-          {
-            allStoryblokEntry(
-              filter: { field_component: { eq: "membershipFormPage" } }
-            ) {
-              edges {
-                node {
-                  id
-                  name
-                  created_at
-                  uuid
-                  slug
-                  full_slug
-                  content
-                  is_startpage
-                  parent_id
-                  group_id
-                }
+      graphql(`
+        {
+          allStoryblokEntry(
+            filter: { field_component: { eq: "membershipFormPage" } }
+          ) {
+            edges {
+              node {
+                id
+                name
+                created_at
+                uuid
+                slug
+                full_slug
+                content
+                is_startpage
+                parent_id
+                group_id
               }
             }
           }
-        `
-      ).then((result) => {
+        }
+      `).then((result) => {
         // No membership page forms.
         if (result.errors) {
           console.log(result.errors);
@@ -294,29 +290,27 @@ exports.createPages = ({ graphql, actions }) => {
     // Add Redirects pre-configured in Storyblok.
     // /////////////////////////////////////////////////////////////////////////
     resolve(
-      graphql(
-        `
-          {
-            allStoryblokEntry(
-              filter: {
-                field_enabled_boolean: { eq: true }
-                field_component: { eq: "redirect" }
-              }
-            ) {
-              edges {
-                node {
-                  name
-                  field_to_string
-                  field_from_string
-                  field_enabled_boolean
-                  field_statusCode_string
-                  field_component
-                }
+      graphql(`
+        {
+          allStoryblokEntry(
+            filter: {
+              field_enabled_boolean: { eq: true }
+              field_component: { eq: "redirect" }
+            }
+          ) {
+            edges {
+              node {
+                name
+                field_to_string
+                field_from_string
+                field_enabled_boolean
+                field_statusCode_string
+                field_component
               }
             }
           }
-        `
-      ).then((result) => {
+        }
+      `).then((result) => {
         if (result.errors) {
           console.log(result.errors);
           reject(result.errors);

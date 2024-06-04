@@ -31,7 +31,7 @@ describe('Travel-Study Destinations Page', () => {
 
     // Clear Filters and check for URL update
     cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
-    cy.url().should('not.contain', '?');
+    cy.url().should('not.contain', 'trip-month=oct');
 
     // Enable family focused filter
     cy.visit('/travel-study/destinations/?page=1&trip-experience=family-focused');

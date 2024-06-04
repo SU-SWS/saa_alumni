@@ -8,25 +8,23 @@ import { luxonToday, luxonDate } from '../utilities/dates';
  * (or integrate with Apollo and use the Storyblok CDN)
  */
 export const useTrips = () => {
-  const result = useStaticQuery(
-    graphql`
-      query TripsQuery {
-        trips: allStoryblokEntry(
-          filter: {
-            field_component: { eq: "trip" }
-            field_hideFromFilter_boolean: { ne: true }
-          }
-        ) {
-          nodes {
-            id
-            name
-            full_slug
-            content
-          }
+  const result = useStaticQuery(graphql`
+    query TripsQuery {
+      trips: allStoryblokEntry(
+        filter: {
+          field_component: { eq: "trip" }
+          field_hideFromFilter_boolean: { ne: true }
+        }
+      ) {
+        nodes {
+          id
+          name
+          full_slug
+          content
         }
       }
-    `
-  );
+    }
+  `);
 
   let trips = result.trips.nodes.map((trip) => {
     const tripObj = {
