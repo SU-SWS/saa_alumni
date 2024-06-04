@@ -15,7 +15,7 @@ jobs:
     if: ${{ github.event.pull_request.merged }}
 
     steps:
-      - name: Merge dev into uat
+      - name: Merge dev into events-discovery
         uses: devmasx/merge-branch@v1.3.1
         with:
           type: now
