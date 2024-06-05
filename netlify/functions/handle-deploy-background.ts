@@ -35,8 +35,6 @@ export default async (req: Request) => {
     }
 
     const data: SBWebhookPayload = await JSON.parse(rawData);
-
-    console.log({ data });
     
     if (data.action === 'entries_updated'
       || data.action === 'merged'
@@ -51,8 +49,6 @@ export default async (req: Request) => {
 
     // Only pub/unpub actions after this
 
-    console.log({ token: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN });
-
     const storyblok = new StoryblokClient({
       accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
     });
@@ -61,8 +57,6 @@ export default async (req: Request) => {
     const story = await storyblok.getStory(data.full_slug, { version });
     const contentType = story.data.story.content.component;
     const isEvent = contentType === 'synchronizedEvent';
-
-    console.log({ story, contentType, isEvent });
 
     if (!isEvent) {
       // Trigger rebuild and stop
