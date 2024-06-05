@@ -38,10 +38,7 @@ export default async (req: Request) => {
 
     const data: SBWebhookPayload = await JSON.parse(rawData);
     
-    if (data.action === 'entries_updated'
-      || data.action === 'merged'
-      || data.action === 'deleted'
-    ) {
+    if (data.action !== 'published' && data.action !== 'unpublished') {
       // Trigger rebuild and stop
       await fetch(deployUrl, { method: 'POST' });
       console.log('Deploy triggered');
@@ -57,8 +54,10 @@ export default async (req: Request) => {
 
     const version = data.action === 'unpublished' ? 'draft' : 'published';
     const story = await storyblok.getStory(data.full_slug, { version });
-    const contentType = story.data.story.content.component;
+    const contentType = story?.data?.story?.content?.component;
     const isEvent = contentType === 'synchronizedEvent';
+
+    console.log({ version, story, contentType });
 
     if (!isEvent) {
       // Trigger rebuild and stop
@@ -85,6 +84,8 @@ export default async (req: Request) => {
     const index = client.initIndex(algoliaIndex);
     const storyId = story.data.story.uuid;
     const eventData = story.data.story.content;
+
+    console.log({ storyId, eventData });
 
     if (data.action === 'published') {
       // Upsert to Algolia (no rebuild)
