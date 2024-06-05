@@ -50,7 +50,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
         className={dcnb('main-nav-desktop su-hidden lg:su-block', className)}
         aria-label="Main Navigation Menu"
       >
-        <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end su-list-unstyled children:su-mb-0">
+        <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end lg:su-justify-end su-list-unstyled children:su-mb-0">
           <CreateBloks blokSection={topLevelLinks} />
         </ul>
       </nav>
