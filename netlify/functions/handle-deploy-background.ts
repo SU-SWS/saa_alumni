@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import { type Config } from '@netlify/functions';
 import { createHmac } from 'node:crypto';
 import StoryblokClient from 'storyblok-js-client';
 import algoliasearch from 'algoliasearch';
@@ -109,4 +110,8 @@ export default async (req: Request) => {
   }
 
   console.log('=== END Deploy Background Function ===');
+};
+
+export const config: Config = {
+  path: '/webhook/sb/deploy',
 };
