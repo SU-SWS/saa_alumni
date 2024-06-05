@@ -57,8 +57,6 @@ export default async (req: Request) => {
     const contentType = story?.data?.story?.content?.component;
     const isEvent = contentType === 'synchronizedEvent';
 
-    console.log({ version, story, contentType });
-
     if (!isEvent) {
       // Trigger rebuild and stop
       await fetch(deployUrl, { method: 'POST' });
@@ -84,8 +82,6 @@ export default async (req: Request) => {
     const index = client.initIndex(algoliaIndex);
     const storyId = story.data.story.uuid;
     const eventData = story.data.story.content;
-
-    console.log({ storyId, eventData });
 
     if (data.action === 'published') {
       // Upsert to Algolia (no rebuild)
