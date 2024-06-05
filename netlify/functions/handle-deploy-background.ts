@@ -96,6 +96,9 @@ export default async (req: Request) => {
 
     if (data.action === 'unpublished') {
       // Delete from algolia (no rebuild)
+
+      console.log({ storyId, eventData });
+
       await index.deleteObject(storyId);
       console.log('Algolia delete: ', storyId);
       console.log('=== END Deploy Background Function ===');
