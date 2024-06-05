@@ -113,5 +113,5 @@ export default async (req: Request) => {
 };
 
 export const config: Config = {
-  path: '/test/endpoint/deploy',
+  path: '/api/endpoint/deploy',
 };
