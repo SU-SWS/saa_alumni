@@ -50,7 +50,7 @@ export default async (req: Request) => {
     // Only pub/unpub actions after this
 
     const storyblok = new StoryblokClient({
-      accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+      accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
     });
 
     const story = await storyblok.getStory(data.full_slug);
@@ -96,9 +96,6 @@ export default async (req: Request) => {
 
     if (data.action === 'unpublished') {
       // Delete from algolia (no rebuild)
-
-      console.log({ storyId, eventData });
-
       await index.deleteObject(storyId);
       console.log('Algolia delete: ', storyId);
       console.log('=== END Deploy Background Function ===');
