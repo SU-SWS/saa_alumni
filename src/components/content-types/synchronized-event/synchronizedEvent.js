@@ -17,7 +17,17 @@ import HeroIcon from '../../simple/heroIcon';
 
 // THIS IS A STUB; COMPLETE THE OWL PLZ
 const SynchronizedEvent = ({
-  blok: { title, start, end, eventUrl, location, region, subject, format },
+  blok: {
+    title,
+    start,
+    end,
+    eventUrl,
+    location,
+    region,
+    subject,
+    format,
+    experience,
+  },
   blok,
   isBigHeadline,
   isMinimal,
@@ -133,13 +143,20 @@ const SynchronizedEvent = ({
               aria-hidden="true"
               className={isMinimal ? '' : 'su-z-10 su-rs-ml-1'}
             />
-            {format && (
+            {experience && (
               <div>
-                <span className="su-text-16">{format}</span>
+                <span className="su-text-black-50 su-text-14">
+                  {experience}
+                </span>
               </div>
             )}
           </FlexBox>
           <div>
+            {format && (
+              <div className={dcnb('su-font-bold', headlinePadding)}>
+                {format}
+              </div>
+            )}
             <SbLink
               link={eventLink}
               classes={dcnb(
