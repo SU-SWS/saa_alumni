@@ -12,12 +12,14 @@ import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
 import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import SbLink from '../../../utilities/sbLink';
+import CardImage from '../../media/cardImage';
 import DateBlockNew from '../../simple/dateBlockDiscovery';
 import HeroIcon from '../../simple/heroIcon';
 
 // THIS IS A STUB; COMPLETE THE OWL PLZ
 const SynchronizedEvent = ({
   blok: {
+    image: { filename, focus },
     title,
     start,
     end,
@@ -122,13 +124,13 @@ const SynchronizedEvent = ({
         direction="col"
         as="article"
         className={dcnb(
-          'event-card su-group su-relative su-overflow-hidden sm:su-max-w-[42rem] md:su-max-w-full su-text-black su-break-words su-basefont-23 su-w-full',
+          'event-card su-group su-relative su-overflow-hidden su-text-black su-break-words su-basefont-23 su-w-full',
           wrapperClasses,
           borderColor,
           textColor
         )}
       >
-        <FlexBox direction="row" alignItems="start">
+        <div className="su-flex su-flex-col sm:su-flex-row sm:su-space-x-20">
           <FlexBox direction="col" alignItems="center">
             <DateBlockNew
               startMonth={startMonth}
@@ -145,7 +147,7 @@ const SynchronizedEvent = ({
             />
             {experience && (
               <div>
-                <span className="su-text-black-50 su-text-14">
+                <span className="su-text-black-50 su-text-14 su-pl-20">
                   {experience}
                 </span>
               </div>
@@ -232,25 +234,38 @@ const SynchronizedEvent = ({
                 <FlexBox
                   direction="row"
                   alignItems="start"
-                  className="su-mb-04em su--ml-30 su-mt-20"
+                  className="su-mb-04em sm:su--ml-30 su-mt-20"
                 >
                   <TagIcon className={iconClasses} aria-hidden="true" />
                   <SrOnlyText>Subjects: </SrOnlyText>
-                  <div>
+                  <div className="su-flex su-flex-row su-flex-wrap">
                     {subject.split(',').map((tag) => (
-                      <span
+                      <div
                         key={tag}
                         className="su-border-2 su-border-black su-px-16 su-py-4 su-rounded-2xl su-mr-04em"
                       >
                         {tag.trim()}
-                      </span>
+                      </div>
                     ))}
                   </div>
                 </FlexBox>
               )}
             </div>
           </div>
-        </FlexBox>
+          {filename?.startsWith('http') && (
+            <figure className="su-hidden lg:su-block su-shrink-0">
+              <CardImage
+                filename={filename}
+                smartFocus={focus}
+                size="vertical"
+                className="su-transition-transform su-transform-gpu group-hocus-within:su-scale-[1.03]"
+                loading="lazy"
+                width="300"
+                height="200"
+              />
+            </figure>
+          )}
+        </div>
       </FlexBox>
     </SbEditable>
   );

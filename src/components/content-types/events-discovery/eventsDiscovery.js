@@ -25,13 +25,13 @@ const EventsDiscovery = () => {
       future={{ preserveSharedStateOnUnmount: true }}
       insights
     >
-      <Configure hitsPerPage={2} />
+      <Configure hitsPerPage={5} />
       <Hits
         hitComponent={Hit}
         classNames={{
           root: '',
-          list: 'su-list-none su-grid su-grid-cols-1',
-          item: 'su-mb-0',
+          list: 'su-list-none su-grid su-grid-cols-1 su-w-full',
+          item: 'su-mb-0 su-w-full',
         }}
       />
       <Pagination

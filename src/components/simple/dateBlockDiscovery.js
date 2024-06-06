@@ -18,7 +18,7 @@ const DateBlock = ({
 }) => {
   // Check if the start and end day is the same
   let dateBlockMinWidth;
-  let startDatePadding = 'su-pl-20 su-pr-12';
+  let startDatePadding = 'su-pl-20 su-pr-12 su-pb-10';
 
   if (isSameDay) {
     dateBlockMinWidth = 'su-min-w-[10rem] lg:su-min-w-[11.4rem]';
@@ -26,7 +26,7 @@ const DateBlock = ({
   }
 
   let wrapperClasses = 'su-p-6 su-w-fit';
-  let dateClasses = 'su-justify-center su-w-fit su-h-100 lg:su-h-[11.4rem]';
+  let dateClasses = 'su-justify-center su-w-fit';
 
   let textColor = '';
 
@@ -51,7 +51,10 @@ const DateBlock = ({
     <div className={dcnb(wrapperClasses, className)} {...props}>
       <div
         className={dcnb(
-          'su-flex su-flex-row su-items-center',
+          'su-flex su-items-center',
+          isSameDay
+            ? 'sm:su-flex-row'
+            : 'su-flex-row sm:su-flex-col su-justify-between',
           dateClasses,
           dateBlockMinWidth,
           textColor
@@ -66,7 +69,7 @@ const DateBlock = ({
           </span>
           <span
             className={dcnb(
-              'su-font-bold su-font-serif su-leading-trim',
+              'su-font-bold su-font-serif su-leading-trim su-break-keep',
               monthFontSize
             )}
           >
@@ -75,16 +78,20 @@ const DateBlock = ({
         </time>
         {!isSameDay && (
           <>
-            <span
-              className="su-relative su-top-7 su-text-m4 su-font-bold su-leading-trim"
+            <div
+              className="su-text-m4 su-font-bold su-leading-trim"
               aria-hidden="true"
             >
-              &ndash;
-            </span>
+              <span className="su-hidden sm:su-inline-block">ı</span>
+              <span className="su-inline-blokc sm:su-hidden">-</span>
+            </div>
             <SrOnlyText>to</SrOnlyText>
             <time
               dateTime={endHtmlDate}
-              className="su-flex su-flex-col su-pl-12 su-pr-20"
+              className={dcnb(
+                'su-flex su-flex-col sm:su-pt-16',
+                startDatePadding
+              )}
             >
               <span className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
                 {endMonth}
