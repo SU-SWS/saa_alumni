@@ -94,6 +94,7 @@ import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
 import SynchronizedEvent from './content-types/synchronized-event/synchronizedEvent';
+import EventsDiscovery from './events/eventsDiscovery';
 
 const ComponentList = {
   accordion: Accordion,
@@ -117,6 +118,7 @@ const ComponentList = {
   embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
+  eventsDiscovery: EventsDiscovery,
   formPage: FormPage,
   giveGabForm: GiveGabForm,
   giveGabErrorMessage: GiveGabErrorMessage,
