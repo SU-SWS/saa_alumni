@@ -28,8 +28,9 @@ const EventsDiscovery = () => {
       <Hits
         hitComponent={Hit}
         classNames={{
-          root: 'su-p-30',
-          list: 'su-list-none su-grid su-grid-cols-1 sm:su-grid-cols-2 lg:su-grid-cols-3 su-gap-30 su-mt-30',
+          root: '',
+          list: 'su-list-none su-grid su-grid-cols-1',
+          item: 'su-mb-0',
         }}
       />
       <Pagination

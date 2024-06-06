@@ -1,20 +1,23 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
-import { CalendarIcon } from '@heroicons/react/outline';
+import {
+  CalendarIcon,
+  LocationMarkerIcon,
+  TagIcon,
+} from '@heroicons/react/solid';
+import { GlobeIcon } from '@heroicons/react/outline';
 import { DateTime } from 'luxon';
 import { dcnb } from 'cnbuilder';
 import { Heading } from '../../simple/Heading';
 import { FlexBox } from '../../layout/FlexBox';
 import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import SbLink from '../../../utilities/sbLink';
-import CardImage from '../../media/cardImage';
-import TabLabel from '../../simple/tabLabel';
-import DateBlock from '../../simple/dateBlock';
+import DateBlockNew from '../../simple/dateBlockDiscovery';
 import HeroIcon from '../../simple/heroIcon';
 
 // THIS IS A STUB; COMPLETE THE OWL PLZ
 const SynchronizedEvent = ({
-  blok: { image: { filename, focus } = {}, title, start, end, eventUrl },
+  blok: { title, start, end, eventUrl, location, region, subject, format },
   blok,
   isBigHeadline,
   isMinimal,
@@ -64,7 +67,7 @@ const SynchronizedEvent = ({
   }
 
   let wrapperClasses =
-    'su-rs-pb-3 su-bg-white su-border su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden';
+    'su-rs-py-3 su-bg-white su-border-b su-bg-clip-padding su-backface-hidden';
 
   // This border works well for our light background colors
   let borderColor = 'su-border-black-30/40';
@@ -115,86 +118,122 @@ const SynchronizedEvent = ({
           textColor
         )}
       >
-        {!isMinimal && (
-          <div
-            className="event-card-image-wrapper su-relative su-aspect-w-3 su-aspect-h-2"
-            aria-hidden="true"
-          >
-            {filename?.startsWith('http') && (
-              <figure className="su-overflow-hidden su-w-full su-h-full">
-                <CardImage
-                  filename={filename}
-                  smartFocus={focus}
-                  size="vertical"
-                  className="su-w-full su-h-full su-object-cover su-transition-transform su-transform-gpu group-hocus-within:su-scale-[1.03]"
-                  loading="lazy"
-                  width="600"
-                  height="400"
-                />
-              </figure>
+        <FlexBox direction="row" alignItems="start">
+          <FlexBox direction="col" alignItems="center">
+            <DateBlockNew
+              startMonth={startMonth}
+              startDay={startDay}
+              startHtmlDate={startHtmlDate}
+              endMonth={endMonth}
+              endDay={endDay}
+              endHtmlDate={endHtmlDate}
+              isSameDay={isSameDay}
+              isMinimal={isMinimal}
+              isDark={isDark}
+              aria-hidden="true"
+              className={isMinimal ? '' : 'su-z-10 su-rs-ml-1'}
+            />
+            {format && (
+              <div>
+                <span className="su-text-16">{format}</span>
+              </div>
             )}
-          </div>
-        )}
-        <DateBlock
-          startMonth={startMonth}
-          startDay={startDay}
-          startHtmlDate={startHtmlDate}
-          endMonth={endMonth}
-          endDay={endDay}
-          endHtmlDate={endHtmlDate}
-          isSameDay={isSameDay}
-          isMinimal={isMinimal}
-          isDark={isDark}
-          aria-hidden="true"
-          className={
-            isMinimal
-              ? ''
-              : 'su-mt-[-5.6rem] lg:su-mt-[-6.3rem] su-z-10 su-rs-ml-1'
-          }
-        />
-        <SbLink
-          link={eventLink}
-          classes={dcnb(
-            'su-stretched-link su-group su-z-20 su-rs-mt-0 su-mb-08em su-no-underline hocus:su-underline su-underline-offset-[3px] su-decoration-[0.12em] su-decoration-digital-red-xlight focus:su-outline-none',
-            headlineSize,
-            headlinePadding,
-            headlineColor
-          )}
-        >
-          <Heading
-            level={headingLevel}
-            font="serif"
-            tracking="normal"
-            className="su-relative su-inline su-type-0"
-          >
-            {!hideTab && <SrOnlyText>{`${tabText || 'Event'}: `}</SrOnlyText>}
-            {title}
-          </Heading>
-          <HeroIcon
-            iconType="external"
-            className={headlineIconStyles}
-            isAnimate
-          />
-        </SbLink>
-        {!isMinimal && !hideTab && (
-          <TabLabel text={tabText || 'Event'} aria-hidden="true" />
-        )}
-        <div
-          className={dcnb(
-            'event-card-details su-card-paragraph',
-            detailsPadding
-          )}
-        >
-          <FlexBox direction="row" alignItems="start" className="su-mb-04em">
-            <CalendarIcon className={iconClasses} aria-hidden="true" />
-            <SrOnlyText>Date: </SrOnlyText>
-            <span>
-              {longStartDate}
-              {!isSameDay && ` - ${longEndDate}`}
-              {isSameDay && ` | ${startTime} - ${endTime} ${timeZone}`}
-            </span>
           </FlexBox>
-        </div>
+          <div>
+            <SbLink
+              link={eventLink}
+              classes={dcnb(
+                'su-stretched-link su-group su-z-20 su-rs-mt-0 su-mb-08em su-no-underline hocus:su-underline su-underline-offset-[3px] su-decoration-[0.12em] su-decoration-digital-red-xlight focus:su-outline-none',
+                headlineSize,
+                headlinePadding,
+                headlineColor
+              )}
+            >
+              <Heading
+                level={headingLevel}
+                font="serif"
+                tracking="normal"
+                className="su-relative su-inline su-type-0"
+              >
+                {!hideTab && (
+                  <SrOnlyText>{`${tabText || 'Event'}: `}</SrOnlyText>
+                )}
+                {title}
+              </Heading>
+              <HeroIcon
+                iconType="external"
+                className={headlineIconStyles}
+                isAnimate
+              />
+            </SbLink>
+
+            <div
+              className={dcnb(
+                'event-card-details su-card-paragraph',
+                detailsPadding
+              )}
+            >
+              <FlexBox
+                direction="row"
+                alignItems="start"
+                className="su-mb-04em"
+              >
+                <CalendarIcon className={iconClasses} aria-hidden="true" />
+                <SrOnlyText>Date: </SrOnlyText>
+                <span>
+                  {longStartDate}
+                  {!isSameDay && ` - ${longEndDate}`}
+                  {isSameDay && ` | ${startTime} - ${endTime} ${timeZone}`}
+                </span>
+              </FlexBox>
+              {location && (
+                <FlexBox
+                  direction="row"
+                  alignItems="start"
+                  className="su-mb-04em"
+                >
+                  <LocationMarkerIcon
+                    className={iconClasses}
+                    aria-hidden="true"
+                  />
+                  <SrOnlyText>Location: </SrOnlyText>
+                  <span>{location}</span>
+                </FlexBox>
+              )}
+              {region && (
+                <FlexBox
+                  direction="row"
+                  alignItems="start"
+                  className="su-mb-04em"
+                >
+                  <GlobeIcon className={iconClasses} aria-hidden="true" />
+                  <SrOnlyText>Region: </SrOnlyText>
+                  <span>{region}</span>
+                </FlexBox>
+              )}
+              {subject && (
+                <FlexBox
+                  direction="row"
+                  alignItems="start"
+                  className="su-mb-04em su--ml-30 su-mt-20"
+                >
+                  <TagIcon className={iconClasses} aria-hidden="true" />
+                  <SrOnlyText>Subjects: </SrOnlyText>
+                  <div>
+                    {subject.split(',').map((tag) => (
+                      <span
+                        key={tag}
+                        className="su-border-2 su-border-black su-px-16 su-py-4 su-rounded-2xl su-mr-04em"
+                      >
+                        {tag.trim()}
+                      </span>
+                    ))}
+                  </div>
+                </FlexBox>
+              )}
+            </div>
+          </div>
+        </FlexBox>
       </FlexBox>
     </SbEditable>
   );
