@@ -22,6 +22,7 @@ const EventsDiscovery = () => {
     <InstantSearch
       searchClient={searchClient}
       indexName="dev_alumni-events"
+      future={{ preserveSharedStateOnUnmount: true }}
       insights
     >
       <Configure hitsPerPage={2} />
