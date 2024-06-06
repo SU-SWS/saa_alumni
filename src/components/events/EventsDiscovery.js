@@ -12,7 +12,7 @@ function Hit({ hit }) {
   return <SynchronizedEvent blok={hit} />;
 }
 
-export default function EventsDiscovery() {
+const EventsDiscovery = () => {
   const searchClient = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_API_KEY
@@ -39,4 +39,6 @@ export default function EventsDiscovery() {
       />
     </InstantSearch>
   );
-}
+};
+
+export default EventsDiscovery;
