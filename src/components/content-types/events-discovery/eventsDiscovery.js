@@ -6,7 +6,7 @@ import {
   Pagination,
   Configure,
 } from 'react-instantsearch';
-import SynchronizedEvent from '../content-types/synchronized-event/synchronizedEvent';
+import SynchronizedEvent from '../synchronized-event/synchronizedEvent';
 
 function Hit({ hit }) {
   return <SynchronizedEvent blok={hit} />;
