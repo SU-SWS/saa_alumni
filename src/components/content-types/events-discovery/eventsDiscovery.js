@@ -1,6 +1,11 @@
 import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, InfiniteHits, Configure } from 'react-instantsearch';
+import {
+  InstantSearch,
+  InfiniteHits,
+  Configure,
+  useInstantSearch,
+} from 'react-instantsearch';
 import SynchronizedEvent from '../synchronized-event/synchronizedEvent';
 
 const searchClient = algoliasearch(
@@ -10,6 +15,18 @@ const searchClient = algoliasearch(
 
 const Hit = ({ hit }) => <SynchronizedEvent blok={hit} />;
 
+const LoadingIndicator = () => {
+  const { status } = useInstantSearch();
+  /* Best practice is to display a loading indicator only when status is stalled,
+   * not during a standard (fast) search.
+   * https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/loading-indicator/react/
+   */
+  if (status === 'stalled') {
+    return <p>Loading search results</p>;
+  }
+  return null;
+};
+
 const EventsDiscovery = () => (
   <InstantSearch
     searchClient={searchClient}
@@ -17,6 +34,7 @@ const EventsDiscovery = () => (
     future={{ preserveSharedStateOnUnmount: true }}
     insights
   >
+    <LoadingIndicator />
     <Configure hitsPerPage={2} />
     <div className="su-flex su-flex-row su-justify-center lg:su-space-x-40 su-mx-12">
       <div className="su-hidden lg:su-block su-h-600 su-w-300 su-border-2">
