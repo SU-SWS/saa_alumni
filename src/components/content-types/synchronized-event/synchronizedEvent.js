@@ -25,6 +25,7 @@ const SynchronizedEvent = ({
     end,
     eventUrl,
     location,
+    city,
     region,
     subject,
     format,
@@ -200,12 +201,11 @@ const SynchronizedEvent = ({
                 <CalendarIcon className={iconClasses} aria-hidden="true" />
                 <SrOnlyText>Date: </SrOnlyText>
                 <span>
-                  {longStartDate}
-                  {!isSameDay && ` - ${longEndDate}`}
-                  {isSameDay && ` | ${startTime} - ${endTime} ${timeZone}`}
+                  {!isSameDay && `${longStartDate} to ${longEndDate}`}
+                  {isSameDay && ` ${startTime} - ${endTime} ${timeZone}`}
                 </span>
               </FlexBox>
-              {location && (
+              {(location || city) && (
                 <FlexBox
                   direction="row"
                   alignItems="start"
@@ -215,8 +215,20 @@ const SynchronizedEvent = ({
                     className={iconClasses}
                     aria-hidden="true"
                   />
-                  <SrOnlyText>Location: </SrOnlyText>
-                  <span>{location}</span>
+                  <div className="su-flex su-flex-col">
+                    {location && (
+                      <>
+                        <SrOnlyText>Location: </SrOnlyText>
+                        <span>{location}</span>
+                      </>
+                    )}
+                    {city && (
+                      <>
+                        <SrOnlyText>City: </SrOnlyText>
+                        <span>{city}</span>
+                      </>
+                    )}
+                  </div>
                 </FlexBox>
               )}
               {region && (
@@ -233,7 +245,7 @@ const SynchronizedEvent = ({
               {subject && (
                 <FlexBox
                   direction="row"
-                  alignItems="start"
+                  alignItems="center"
                   className="su-mb-04em sm:su--ml-30 su-mt-20"
                 >
                   <TagIcon className={iconClasses} aria-hidden="true" />

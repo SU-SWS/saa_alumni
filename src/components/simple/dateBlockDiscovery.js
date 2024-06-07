@@ -1,6 +1,5 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-import { SrOnlyText } from '../accessibility/SrOnlyText';
 
 const DateBlock = ({
   startDay,
@@ -52,9 +51,6 @@ const DateBlock = ({
       <div
         className={dcnb(
           'su-flex su-items-center',
-          isSameDay
-            ? 'sm:su-flex-row'
-            : 'su-flex-row sm:su-flex-col su-justify-between',
           dateClasses,
           dateBlockMinWidth,
           textColor
@@ -76,37 +72,6 @@ const DateBlock = ({
             {startDay}
           </span>
         </time>
-        {!isSameDay && (
-          <>
-            <div
-              className="su-text-m4 su-font-bold su-leading-trim"
-              aria-hidden="true"
-            >
-              <span className="su-hidden sm:su-inline-block">ı</span>
-              <span className="su-inline-blokc sm:su-hidden">-</span>
-            </div>
-            <SrOnlyText>to</SrOnlyText>
-            <time
-              dateTime={endHtmlDate}
-              className={dcnb(
-                'su-flex su-flex-col sm:su-pt-16',
-                startDatePadding
-              )}
-            >
-              <span className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
-                {endMonth}
-              </span>
-              <span
-                className={dcnb(
-                  'su-font-bold su-font-serif su-leading-trim',
-                  monthFontSize
-                )}
-              >
-                {endDay}
-              </span>
-            </time>
-          </>
-        )}
       </div>
     </div>
   );
