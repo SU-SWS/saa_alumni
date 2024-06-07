@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import {
   InstantSearch,
@@ -16,25 +16,14 @@ const searchClient = algoliasearch(
 const Hit = ({ hit }) => <SynchronizedEvent blok={hit} />;
 
 const LoadingIndicator = () => {
-  const { status, results } = useInstantSearch();
-  const [isInitialLoading, setIsInitialLoading] = useState(true);
-
-  useEffect(() => {
-    if (results && results.nbHits !== 0) {
-      setIsInitialLoading(false);
-    }
-  }, [results]);
-
-  const showLoading =
-    isInitialLoading || status === 'stalled' || status === 'loading';
-
+  const { status } = useInstantSearch();
   /* Best practice is to display a loading indicator only when status is stalled,
    * not during a standard (fast) search.
    * https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/loading-indicator/react/
    * Added status === 'loading' to show loading indicator when search is in progress.
    * We might want to show a loading indicator when search is in progress.
    */
-  if (showLoading) {
+  if (status === 'stalled' || status === 'loading') {
     return (
       <div className="su-w-full su-flex su-items-center su-justify-center su-rs-my-1">
         <div className="su-flex su-justify-center su-items-center su-h-300 su-w-400">
