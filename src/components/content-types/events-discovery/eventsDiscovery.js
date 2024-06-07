@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
+import { dcnb } from 'cnbuilder';
 import { InstantSearch, InfiniteHits, Configure } from 'react-instantsearch';
 import SynchronizedEvent from '../synchronized-event/synchronizedEvent';
 
-function Hit({ hit }) {
-  return <SynchronizedEvent blok={hit} />;
-}
+const searchClient = algoliasearch(
+  process.env.GATSBY_ALGOLIA_APP_ID,
+  process.env.GATSBY_ALGOLIA_API_KEY
+);
+
+const Hit = ({ hit }) => <SynchronizedEvent blok={hit} />;
 
 const EventsDiscovery = () => {
-  const searchClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_API_KEY
-  );
+  const [filterOpen, setFilterOpen] = useState(false);
 
   return (
     <InstantSearch
@@ -21,10 +22,28 @@ const EventsDiscovery = () => {
       insights
     >
       <Configure hitsPerPage={2} />
-      <div className="su-flex su-flex-row su-justify-center su-space-x-40 su-mx-12">
-        <div className="su-h-600 su-w-300 su-border-2">Filters</div>
+      <div className="su-flex su-flex-row su-justify-center lg:su-space-x-40 su-mx-12">
+        <div className={dcnb(filterOpen ? 'su-block' : 'su-hidden')}>
+          <div className="su-hidden lg:su-block su-h-600 su-w-300 su-border-2">
+            Filters
+          </div>
+        </div>
         <div className="su-flex su-flex-col su-space-y-20">
-          <div className="su-h-100 su-w-800 su-border-2">Chips</div>
+          <div className="su-flex su-flex-row su-justify-between">
+            <div className="su-h-100 su-min-w-200 lg:su-min-w-400 su-max-w-800 su-border-2">
+              Chips
+            </div>
+            <div className="su-h-100 su-max-w-100 su-border-2">
+              <span className="lg:su-hidden">Mobile Filters</span>
+              <button
+                type="button"
+                className="su-hidden lg:su-inline-block hover:su-cursor-pointer"
+                onClick={() => setFilterOpen(!filterOpen)}
+              >
+                Filter Open
+              </button>
+            </div>
+          </div>
           <InfiniteHits
             hitComponent={Hit}
             showPrevious={false}

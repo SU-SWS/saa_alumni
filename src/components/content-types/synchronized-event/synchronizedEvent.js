@@ -253,7 +253,7 @@ const SynchronizedEvent = ({
             </div>
           </div>
           {filename?.startsWith('http') && (
-            <figure className="su-hidden lg:su-block su-shrink-0">
+            <figure className="su-hidden xl:su-block su-shrink-0">
               <CardImage
                 filename={filename}
                 smartFocus={focus}
