@@ -3,6 +3,7 @@ import algoliasearch from 'algoliasearch/lite';
 import {
   InstantSearch,
   Hits,
+  InfiniteHits,
   Pagination,
   Configure,
 } from 'react-instantsearch';
@@ -25,20 +26,28 @@ const EventsDiscovery = () => {
       future={{ preserveSharedStateOnUnmount: true }}
       insights
     >
-      <Configure hitsPerPage={5} />
-      <Hits
-        hitComponent={Hit}
-        classNames={{
-          root: '',
-          list: 'su-list-none su-grid su-grid-cols-1 su-w-full',
-          item: 'su-mb-0 su-w-full',
-        }}
-      />
-      <Pagination
-        classNames={{
-          list: 'su-list-none su-flex su-gap-10 su-mt-30 su-justify-center',
-        }}
-      />
+      <Configure hitsPerPage={2} />
+      <div className="su-flex su-flex-row su-justify-center su-space-x-40 su-mx-12">
+        <div className="su-h-600 su-w-300 su-border-2">Filters</div>
+        <div className="su-flex su-flex-col su-space-y-20">
+          <div className="su-h-100 su-w-800 su-border-2">Chips</div>
+          <InfiniteHits
+            hitComponent={Hit}
+            showPrevious={false}
+            translations={{
+              showMoreButtonText: 'Show more',
+            }}
+            classNames={{
+              root: '',
+              list: 'su-list-none su-pl-0 su-grid su-grid-cols-1 su-w-full',
+              item: 'su-mb-0 su-w-full',
+              loadMore:
+                'su-w-full su-text-center su-mt-8 su-border-2 su-border-cardinal-red su-text-cardinal-red-light su-rounded-md su-p-4 su-cursor-pointer su-transition su-duration-200 su-ease-in-out hover:su-bg-cardinal-red hover:su-text-white',
+              disabledLoadMore: 'su-hidden',
+            }}
+          />
+        </div>
+      </div>
     </InstantSearch>
   );
 };
