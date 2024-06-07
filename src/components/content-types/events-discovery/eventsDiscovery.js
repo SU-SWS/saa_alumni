@@ -17,7 +17,7 @@ const EventsDiscovery = () => {
   return (
     <InstantSearch
       searchClient={searchClient}
-      indexName="dev_alumni-events"
+      indexName="dev_alumni-events_start-asc"
       future={{ preserveSharedStateOnUnmount: true }}
       insights
     >
