@@ -1,12 +1,6 @@
 import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import {
-  InstantSearch,
-  Hits,
-  InfiniteHits,
-  Pagination,
-  Configure,
-} from 'react-instantsearch';
+import { InstantSearch, InfiniteHits, Configure } from 'react-instantsearch';
 import SynchronizedEvent from '../synchronized-event/synchronizedEvent';
 
 function Hit({ hit }) {
