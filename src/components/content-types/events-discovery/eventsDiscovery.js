@@ -20,8 +20,10 @@ const LoadingIndicator = () => {
   /* Best practice is to display a loading indicator only when status is stalled,
    * not during a standard (fast) search.
    * https://www.algolia.com/doc/guides/building-search-ui/ui-and-ux-patterns/loading-indicator/react/
+   * Added status === 'loading' to show loading indicator when search is in progress.
+   * We might want to show a loading indicator when search is in progress.
    */
-  if (status === 'stalled') {
+  if (status === 'stalled' || status === 'loading') {
     return <p>Loading search results</p>;
   }
   return null;
