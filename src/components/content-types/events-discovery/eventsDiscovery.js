@@ -40,7 +40,7 @@ const EventsDiscovery = () => {
                 className="su-hidden lg:su-inline-block hover:su-cursor-pointer"
                 onClick={() => setFilterOpen(!filterOpen)}
               >
-                Filter Open
+                Filter {filterOpen ? 'Close' : 'Open'}
               </button>
             </div>
           </div>
