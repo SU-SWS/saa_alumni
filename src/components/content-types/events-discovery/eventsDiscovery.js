@@ -5,7 +5,6 @@ import {
   InfiniteHits,
   Configure,
   useInstantSearch,
-  SearchBox,
 } from 'react-instantsearch';
 import SynchronizedEvent from '../synchronized-event/synchronizedEvent';
 
@@ -97,7 +96,6 @@ const EventsDiscovery = () => {
       <div className="su-flex su-flex-row su-justify-center lg:su-space-x-40 su-mx-12">
         <div className="su-hidden lg:su-block su-h-600 su-w-300 su-border-2">
           Filters
-          <SearchBox />
         </div>
         <div className="su-flex su-flex-col su-space-y-20">
           <div className="su-flex su-flex-row su-justify-between">
