@@ -111,7 +111,7 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
       cardTitle: {
         defaultValue: {
           language: 'en',
-          value: 'Stanford Alumni',
+          value: 'Stanford Alumni Membership',
         },
       },
       subheader: {
