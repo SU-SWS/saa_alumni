@@ -242,7 +242,7 @@ const SynchronizedEvent = ({
                   <span>{region}</span>
                 </FlexBox>
               )}
-              {subject && (
+              {subject && subject.length > 0 && (
                 <FlexBox
                   direction="row"
                   alignItems="center"
@@ -251,7 +251,7 @@ const SynchronizedEvent = ({
                   <TagIcon className={iconClasses} aria-hidden="true" />
                   <SrOnlyText>Subjects: </SrOnlyText>
                   <div className="su-flex su-flex-row su-flex-wrap">
-                    {subject.split(',').map((tag) => (
+                    {subject.map((tag) => (
                       <div
                         key={tag}
                         className="su-border-2 su-border-black su-px-16 su-py-4 su-rounded-2xl su-mr-04em"
