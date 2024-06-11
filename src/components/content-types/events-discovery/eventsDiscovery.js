@@ -192,14 +192,22 @@ const ChipsComponent = () => {
 };
 
 const EventsDiscovery = () => {
-  // TODO: We might want to remove this loading state and show the loading indicator only when search is in progress.
-  // Show loading indicator for 3 seconds before initial page load
-  // I added this because before the Algolia search results are loaded, the page is blank for a few seconds.
+  // TODO: Review the loading state
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    setTimeout(() => {
+    const handleLoad = () => {
       setLoading(false);
-    }, 3000);
+    };
+
+    if (document.readyState === 'complete') {
+      setLoading(false);
+    } else {
+      window.addEventListener('load', handleLoad);
+    }
+
+    return () => {
+      window.removeEventListener('load', handleLoad);
+    };
   }, []);
 
   const [facets, setFacets] = useState([
