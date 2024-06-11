@@ -108,22 +108,50 @@ const FacetComponent = ({ attribute, label, expanded, toggleFacet }) => {
     return null;
   }
 
+  const refinedItems = refineList.items.filter((item) => item.isRefined);
+  const refinedItemsCount = refinedItems.length;
+
+  const clearRefinements = (e) => {
+    e.stopPropagation();
+    refinedItems.forEach((item) => refineList.refine(item.value));
+  };
+
   return (
     <div className="su-flex su-flex-col su-my-20 first:su-mt-5 su-mx-6 su-pt-8 su-border-t-2 su-border-black">
-      <button
-        type="button"
-        onClick={toggleFacet}
+      <div
         className="su-group su-flex su-flex-row su-justify-between su-items-center su-text-2xl su-font-semibold su-text-cardinal-red-light su-mb-4"
+        onClick={toggleFacet}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            toggleFacet();
+          }
+        }}
       >
         <h3 className="su-text-black group-hover:su-text-cardinal-red group-hover:su-underline group-focus-visible:su-text-cardinal-red group-focus-visible:su-underline su-text-4xl su-font-semibold su-mb-4">
           {label}
         </h3>
-        {expanded ? (
-          <ChevronDownIcon className="su-w-40 su-h-40" />
-        ) : (
-          <ChevronRightIcon className="su-w-40 su-h-40" />
-        )}
-      </button>
+        <div className="su-flex su-space-x-2">
+          {refinedItemsCount > 0 && (
+            <button
+              type="button"
+              onClick={clearRefinements}
+              className="su-text-2xl su-text-cardinal-red-light hocus:su-text-black hocus:su-underline"
+            >
+              Clear{' '}
+              {refinedItemsCount > 1
+                ? `${refinedItemsCount} filters`
+                : 'filter'}
+            </button>
+          )}
+          {expanded ? (
+            <ChevronDownIcon className="su-w-40 su-h-40" />
+          ) : (
+            <ChevronRightIcon className="su-w-40 su-h-40" />
+          )}
+        </div>
+      </div>
       <RefinementList
         attribute={attribute}
         classNames={{
@@ -131,7 +159,7 @@ const FacetComponent = ({ attribute, label, expanded, toggleFacet }) => {
           list: 'su-list-none su-pl-0',
           item: 'su-mb-0',
           checkbox:
-            'su-mx-4 su-items-center su-rounded-md su-bg-white su-w-20 su-h-20 su-border-2 su-border-cardinal-red-light su-text-cardinal-red-light su-cursor-pointer su-transition su-duration-200 su-ease-in-out hover:su-bg-cardinal-red focus:su-ring-0',
+            'su-mx-4 su-items-center su-rounded-md su-bg-white su-w-20 su-h-20 su-border-2 su-border-cardinal-red-light su-text-cardinal-red-light su-cursor-pointer su-transition su-duration-200 su-ease-in-out hocus:su-bg-cardinal-red focus:su-ring-0',
           label: 'hover:su-cursor-pointer',
           count: "su-ml-4 before:su-content-['('] after:su-content-[')']",
         }}
