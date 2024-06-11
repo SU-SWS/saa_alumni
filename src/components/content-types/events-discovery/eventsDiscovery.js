@@ -315,14 +315,17 @@ const EventsDiscovery = () => {
           <NoResultsBoundary fallback={<NoResultsComponent />}>
             <InfiniteHits
               hitComponent={Hit}
-              showPrevious={false}
               translations={{
-                showMoreButtonText: 'Show more',
+                showMoreButtonText: 'Show more events',
+                showPreviousButtonText: 'Show previous events',
               }}
               classNames={{
                 root: '',
                 list: 'su-list-none su-pl-0 su-grid su-grid-cols-1 su-w-full',
                 item: 'su-mb-0 su-w-full',
+                loadPrevious:
+                  'su-w-full su-text-center su-mt-8 su-border-2 su-border-cardinal-red su-text-cardinal-red-light su-rounded-md su-p-4 su-cursor-pointer su-transition su-duration-200 su-ease-in-out hover:su-bg-cardinal-red hover:su-text-white',
+                disabledLoadPrevious: 'su-hidden',
                 loadMore:
                   'su-w-full su-text-center su-mt-8 su-border-2 su-border-cardinal-red su-text-cardinal-red-light su-rounded-md su-p-4 su-cursor-pointer su-transition su-duration-200 su-ease-in-out hover:su-bg-cardinal-red hover:su-text-white',
                 disabledLoadMore: 'su-hidden',
