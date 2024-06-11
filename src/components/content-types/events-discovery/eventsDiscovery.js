@@ -84,6 +84,17 @@ const NoResultsComponent = () => (
         <p className="su-text-center">
           Try changing your search criteria or filter options to find events.
         </p>
+        <div>
+          <ClearRefinements
+            translations={{
+              resetButtonText: 'Reset filters',
+            }}
+            classNames={{
+              button:
+                'disabled:su-hidden su-text-3xl su-border-2 su-border-cardinal-red su-px-10 su-py-6 su-rounded-xl su-text-cardinal-red-light hover:su-underline su-underline-offset-2 hover:su-cursor-pointer hocus:su-text-white hocus:su-bg-cardinal-red-light',
+            }}
+          />
+        </div>
       </div>
     </div>
   </div>
