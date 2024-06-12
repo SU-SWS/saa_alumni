@@ -8,6 +8,7 @@ import {
   RefinementList,
   ClearRefinements,
   useRefinementList,
+  useCurrentRefinements,
 } from 'react-instantsearch';
 import {
   ChevronDownIcon,
@@ -174,35 +175,21 @@ const Chip = ({ attribute, label, remove }) => (
 );
 
 const ChipsComponent = () => {
-  const { indexUiState, setIndexUiState } = useInstantSearch();
+  const { items } = useCurrentRefinements();
 
-  if (
-    !indexUiState?.refinementList ||
-    (indexUiState?.refinementList &&
-      !Object.entries(indexUiState?.refinementList).length)
-  ) {
+  if (items?.length === 0) {
     return <div />;
   }
 
   return (
     <div className="su-flex su-flex-row su-flex-wrap su-space-x-4 su-max-w-500 lg:su-max-w-900">
-      {Object.entries(indexUiState?.refinementList).map(([attribute, values]) =>
-        values.map((value) => (
+      {items.map((item) =>
+        item.refinements.map((refinement) => (
           <Chip
-            key={value}
-            attribute={attribute}
-            label={value}
-            remove={() => {
-              setIndexUiState((prev) => ({
-                ...prev,
-                refinementList: {
-                  ...prev.refinementList,
-                  [attribute]: prev.refinementList[attribute].filter(
-                    (v) => v !== value
-                  ),
-                },
-              }));
-            }}
+            key={`${refinement.attribute}-${refinement.label}`}
+            attribute={refinement.attribute}
+            label={refinement.label}
+            remove={() => item.refine(refinement)}
           />
         ))
       )}
