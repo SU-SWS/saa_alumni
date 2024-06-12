@@ -111,46 +111,37 @@ const FacetComponent = ({ attribute, label, expanded, toggleFacet }) => {
   const refinedItems = refineList.items.filter((item) => item.isRefined);
   const refinedItemsCount = refinedItems.length;
 
-  const clearRefinements = (e) => {
-    e.stopPropagation();
-    refinedItems.forEach((item) => refineList.refine(item.value));
-  };
-
   return (
     <div className="su-flex su-flex-col su-my-20 first:su-mt-5 su-mx-6 su-pt-8 su-border-t-2 su-border-black">
-      <div
-        className="su-group su-flex su-flex-row su-justify-between su-items-center su-text-2xl su-font-semibold su-text-cardinal-red-light su-mb-4"
-        onClick={toggleFacet}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            toggleFacet();
-          }
-        }}
-      >
-        <h3 className="su-text-black group-hover:su-text-cardinal-red group-hover:su-underline group-focus-visible:su-text-cardinal-red group-focus-visible:su-underline su-text-4xl su-font-semibold su-mb-4">
-          {label}
-        </h3>
-        <div className="su-flex su-space-x-2">
-          {refinedItemsCount > 0 && (
-            <button
-              type="button"
-              onClick={clearRefinements}
-              className="su-text-2xl su-text-cardinal-red-light hocus:su-text-black hocus:su-underline"
-            >
-              Clear{' '}
-              {refinedItemsCount > 1
-                ? `${refinedItemsCount} filters`
-                : 'filter'}
-            </button>
-          )}
+      <div className="su-relative">
+        <button
+          type="button"
+          className="su-group su-flex su-flex-row su-justify-between su-items-center su-w-full su-text-2xl su-font-semibold su-text-cardinal-red-light su-mb-4"
+          onClick={toggleFacet}
+        >
+          <h3 className="su-text-black group-hover:su-text-cardinal-red group-hover:su-underline group-focus-visible:su-text-cardinal-red group-focus-visible:su-underline su-text-4xl su-font-semibold su-mb-4">
+            {label}
+          </h3>
+
           {expanded ? (
             <ChevronDownIcon className="su-w-40 su-h-40" />
           ) : (
             <ChevronRightIcon className="su-w-40 su-h-40" />
           )}
-        </div>
+        </button>
+        <ClearRefinements
+          includedAttributes={[attribute]}
+          translations={{
+            resetButtonText:
+              refinedItemsCount > 1
+                ? `Reset ${refinedItemsCount} filters`
+                : 'Reset filters',
+          }}
+          classNames={{
+            button:
+              'su-absolute su-right-40 su-top-9 disabled:su-hidden su-text-2xl su-text-cardinal-red-light hocus:su-underline su-underline-offset-2 hover:su-cursor-pointer hocus:su-text-black',
+          }}
+        />
       </div>
       <RefinementList
         attribute={attribute}
