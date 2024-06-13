@@ -64,7 +64,11 @@ export const MobileFilter = () => {
         <AdjustmentsIcon className="su-w-24 su-h-24 su-mr-2" />
         <span className="su-inline-block">Filter</span>
       </button>
-      <Drawer isOpen={isDrawerOpen} onClose={handleToggleDrawer}>
+      <Drawer
+        isOpen={isDrawerOpen}
+        onClose={handleToggleDrawer}
+        header="Filter"
+      >
         <div className="su-my-20 su-mx-6">
           <h2 className="su-text-5xl su-font-bold su-mb-0">Filter by</h2>
           <ClearRefinements
