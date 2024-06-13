@@ -8,6 +8,7 @@ import { NoResultsComponent } from './components/NoResults/NoResultsComponent';
 import { NoResultsBoundary } from './components/NoResults/NoResultsBoundary';
 import { ChipsComponent } from './components/Chips/ChipsComponent';
 import { DesktopFilter } from './components/Filters/DesktopFilter';
+import { MobileFilter } from './components/Filters/MobileFilter';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -52,9 +53,7 @@ const EventsDiscovery = () => {
         <div className="su-flex su-flex-col su-space-y-20">
           <div className="su-flex su-flex-row su-justify-between">
             <ChipsComponent />
-            <div className="lg:su-hidden su-p-4 su-border-2">
-              <span className="">Mobile Filters</span>
-            </div>
+            <MobileFilter />
           </div>
           <NoResultsBoundary fallback={<NoResultsComponent />}>
             <InfiniteHits

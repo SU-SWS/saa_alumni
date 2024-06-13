@@ -10,17 +10,19 @@ export const ChipsComponent = () => {
   }
 
   return (
-    <div className="su-flex su-flex-row su-flex-wrap su-space-x-4 su-max-w-500 lg:su-max-w-900">
-      {items.map((item) =>
-        item.refinements.map((refinement) => (
-          <Chip
-            key={`${refinement.attribute}-${refinement.label}`}
-            attribute={refinement.attribute}
-            label={refinement.label}
-            remove={() => item.refine(refinement)}
-          />
-        ))
-      )}
+    <div className="su-max-w-500 lg:su-max-w-900">
+      <div className="su-flex su-flex-row su-flex-wrap su-space-x-4">
+        {items.map((item) =>
+          item.refinements.map((refinement) => (
+            <Chip
+              key={`${refinement.attribute}-${refinement.label}`}
+              attribute={refinement.attribute}
+              label={refinement.label}
+              remove={() => item.refine(refinement)}
+            />
+          ))
+        )}
+      </div>
     </div>
   );
 };
