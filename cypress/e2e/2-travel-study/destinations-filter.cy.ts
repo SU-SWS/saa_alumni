@@ -12,31 +12,32 @@ describe('Travel-Study Destinations Page', () => {
     // Confirm that a trip card exists
     cy.get('.trip-filter-page article h3').should('exist');
   });
+
   it('should have working filters', () => {
     // Visit the destinations page URL
     cy.visit('/travel-study/destinations/');
+    cy.wait(1000);
 
-    // Select Filter Month
+    // Select Filter Month and check for URL update
     cy.get('[data-test="filter-option--october"]').first().check({ force: true });
-    cy.reload(); // Needed for local Gatsby build
+    cy.url().should('contain', 'trip-month=oct');
 
+    // Load the filter from the URL
+    cy.visit('/travel-study/destinations/?page=1&trip-month=oct');
+    // Confirm chip exists
+    cy.get('[data-test="chip:October"]').should('exist');
     // Confirm that a trip card exists
     cy.get('.trip-filter-page article h3').should('exist');
 
-    // Clear Filters
+    // Clear Filters and check for URL update
     cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
-    cy.reload(); // Needed for local Gatsby build
+    cy.url().should('not.contain', '?');
 
-    //  Select Filter Experience
-    cy.get('[data-test="filter-option--family-focused"]').first().check({force: true});
-    cy.reload(); // Needed for local Gatsby build
-
+    // Enable family focused filter
+    cy.visit('/travel-study/destinations/?page=1&trip-experience=family-focused');
+    // Confirm that the filter chip exists (and wait for filters to be applied)
+    cy.get('[data-test="chip:Family-Focused"]').should('exist');
     // Confirm that Southeast Asia trip card exists
-    cy.get('.trip-filter-page article h3').should('contain.text', 'Southeast');
-
-    // Clear Filters
-    cy.get('[data-test="filter-btn--clear-all"]').first().click({force: true});
-    cy.reload(); // Needed for local Gatsby build
+    cy.get('.trip-filter-page article').contains('Southeast Asia').should('exist');
   });
-    
 });

@@ -128,6 +128,7 @@ const FormPage = (props) => {
               >
                 <CreateBloks
                   blokSection={giveGabForm}
+                  isSpacing
                   bgCardStyle={
                     isSingleColumn ? 'su-bg-saa-black-dark' : 'form-gradient'
                   }
