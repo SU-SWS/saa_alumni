@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ClearRefinements } from 'react-instantsearch';
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { FacetComponent } from '../Facets/FacetComponent';
