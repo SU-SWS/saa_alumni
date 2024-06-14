@@ -83,11 +83,28 @@ export default async (req: Request) => {
     const storyId = story.data.story.uuid;
     const eventData = story.data.story.content;
 
+    // Function to add Unix timestamps
+    const addUnixTimestamps = (eventData) => {
+      if (eventData.start) {
+        const startDate = new Date(`${eventData.start}Z`); // Ensure the date is treated as UTC
+        eventData.startUnix = Math.floor(startDate.getTime() / 1000); // Unix timestamp in seconds
+      }
+      if (eventData.end) {
+        const endDate = new Date(`${eventData.end}Z`); // Ensure the date is treated as UTC
+        eventData.endUnix = Math.floor(endDate.getTime() / 1000); // Unix timestamp in seconds
+      }
+      return eventData;
+    };
+
+    const updatedEventData = addUnixTimestamps(mergeEventOverrides(eventData));
+
+
     if (data.action === 'published') {
       // Upsert to Algolia (no rebuild)
       await index.saveObject({
         objectID: storyId,
-        ...mergeEventOverrides(eventData),
+        //...mergeEventOverrides(eventData),
+        ...updatedEventData,
       })
       console.log('Algolia upsert: ', storyId);
       console.log('=== END Deploy Background Function ===');
