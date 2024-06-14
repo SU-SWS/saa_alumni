@@ -1,56 +1,29 @@
 import React, { useState } from 'react';
 import { ClearRefinements } from 'react-instantsearch';
-import {
-  AdjustmentsIcon,
-  ChevronDownIcon,
-  ChevronRightIcon,
-} from '@heroicons/react/outline';
+import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { Drawer } from '../Drawer/Drawer';
-import { FacetComponent } from '../Facets/FacetComponent';
-import { facetLabels } from '../constants';
+import { MobileFacetComponent } from '../Facets/MobileFacetComponent';
+import { useFacets } from '../Facets/useFacets';
 
 export const MobileFilter = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { facets } = useFacets();
 
   const handleToggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const [facets, setFacets] = useState([
-    {
-      attribute: 'format',
-      label: facetLabels.format.label,
-      expanded: true,
-    },
-    {
-      attribute: 'experience',
-      label: facetLabels.experience.label,
-      expanded: false,
-    },
-    {
-      attribute: 'subject',
-      label: facetLabels.subject.label,
-      expanded: false,
-    },
-  ]);
-
-  const facetsExpanded = facets.every((facet) => facet.expanded);
-
-  const toggleFacets = () => {
-    const updatedFacets = facets.map((facet) => ({
-      ...facet,
-      expanded: !facetsExpanded,
-    }));
-    setFacets(updatedFacets);
-  };
-
-  const toggleFacet = (index) => {
-    const updatedFacets = facets.map((facet, i) => ({
-      ...facet,
-      expanded: i === index ? !facet.expanded : facet.expanded,
-    }));
-    setFacets(updatedFacets);
-  };
+  const ClearButton = (
+    <ClearRefinements
+      translations={{
+        resetButtonText: 'Clear all',
+      }}
+      classNames={{
+        button:
+          'su-group hover:su-underline focus-visible:su-underline su-transition su-px-13 su-py-9 md:su-px-15 md:su-py-10 su-text-16 su-font-regular su-no-underline su-leading-display su-bg-white hocus:su-bg-white su-text-cardinal-red hocus:su-text-cardinal-red-dark su-border hocus:su-border su-rounded su-border-cardinal-red-light hocus:su-border-cardinal-red-light active:su-border-cardinal-red-light su-shadow hover:su-shadow-md focus:su-ring-2 active:su-ring-2 focus:su-ring-cardinal-red-light active:su-ring-cardinal-red-light hocus:su-decoration-1 su-outline-none disabled:su-hidden',
+      }}
+    />
+  );
 
   return (
     <div className="lg:su-hidden">
@@ -68,46 +41,16 @@ export const MobileFilter = () => {
         isOpen={isDrawerOpen}
         onClose={handleToggleDrawer}
         header="Filter"
+        clearButton={ClearButton}
       >
-        <div className="su-my-20 su-mx-6">
-          <h2 className="su-text-5xl su-font-bold su-mb-0">Filter by</h2>
-          <ClearRefinements
-            translations={{
-              resetButtonText: 'Reset filters',
-            }}
-            classNames={{
-              button:
-                'disabled:su-hidden su-text-3xl su-text-cardinal-red-light hover:su-underline su-underline-offset-2 hover:su-cursor-pointer hocus:su-text-black',
-            }}
-          />
-        </div>
-        <div className="su-flex su-justify-end su-mx-6">
-          <button
-            type="button"
-            className="su-text-3xl hocus:su-underline hocus:su-text-cardinal-red"
-            onClick={toggleFacets}
-          >
-            {facets.every((facet) => facet.expanded) ? (
-              <div className="su-flex su-items-center">
-                <span className="su-inline-block">Collapse all</span>
-                <ChevronDownIcon className="su-w-30 su-h-30" />
-              </div>
-            ) : (
-              <div className="su-flex su-items-center">
-                <span className="su-inline-block">Expand all</span>
-                <ChevronRightIcon className="su-w-30 su-h-30" />
-              </div>
-            )}
-          </button>
-        </div>
         <div>
-          {facets.map((facet, index) => (
-            <FacetComponent
+          {facets.map((facet) => (
+            <MobileFacetComponent
               key={facet.attribute}
               attribute={facet.attribute}
               label={facet.label}
-              expanded={facet.expanded}
-              toggleFacet={() => toggleFacet(index)}
+              previousDrawer={isDrawerOpen}
+              setPreviousDrawer={setIsDrawerOpen}
             />
           ))}
         </div>

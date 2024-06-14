@@ -2,44 +2,10 @@ import React, { useState } from 'react';
 import { ClearRefinements } from 'react-instantsearch';
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/solid';
 import { FacetComponent } from '../Facets/FacetComponent';
-import { facetLabels } from '../constants';
+import { useFacets } from '../Facets/useFacets';
 
 export const DesktopFilter = () => {
-  const [facets, setFacets] = useState([
-    {
-      attribute: 'format',
-      label: facetLabels.format.label,
-      expanded: true,
-    },
-    {
-      attribute: 'experience',
-      label: facetLabels.experience.label,
-      expanded: false,
-    },
-    {
-      attribute: 'subject',
-      label: facetLabels.subject.label,
-      expanded: false,
-    },
-  ]);
-
-  const facetsExpanded = facets.every((facet) => facet.expanded);
-
-  const toggleFacets = () => {
-    const updatedFacets = facets.map((facet) => ({
-      ...facet,
-      expanded: !facetsExpanded,
-    }));
-    setFacets(updatedFacets);
-  };
-
-  const toggleFacet = (index) => {
-    const updatedFacets = facets.map((facet, i) => ({
-      ...facet,
-      expanded: i === index ? !facet.expanded : facet.expanded,
-    }));
-    setFacets(updatedFacets);
-  };
+  const { facets, facetsExpanded, toggleFacets, toggleFacet } = useFacets();
 
   return (
     <div className="su-hidden lg:su-block su-w-300">

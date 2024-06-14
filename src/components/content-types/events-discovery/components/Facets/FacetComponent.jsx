@@ -41,7 +41,7 @@ export const FacetComponent = ({ attribute, label, expanded, toggleFacet }) => {
             resetButtonText:
               refinedItemsCount > 1
                 ? `Reset ${refinedItemsCount} filters`
-                : 'Reset filters',
+                : 'Reset filter',
           }}
           classNames={{
             button:
@@ -56,7 +56,7 @@ export const FacetComponent = ({ attribute, label, expanded, toggleFacet }) => {
           list: 'su-list-none su-pl-0',
           item: 'su-mb-0',
           checkbox:
-            'su-mx-4 su-items-center su-rounded-md su-bg-white su-w-20 su-h-20 su-border-2 su-border-cardinal-red-light su-text-cardinal-red-light su-cursor-pointer su-transition su-duration-200 su-ease-in-out hocus:su-bg-cardinal-red focus:su-ring-0',
+            'su-mx-4 su-items-center su-rounded-md su-bg-white su-w-20 su-h-20 su-border-2 su-border-cardinal-red-light su-text-cardinal-red-light su-cursor-pointer su-transition su-duration-200 su-ease-in-out hocus:su-bg-cardinal-red focus:su-ring-1 focus:su-ring-cardinal-red-light',
           label: 'hover:su-cursor-pointer',
           count: "su-ml-4 before:su-content-['('] after:su-content-[')']",
         }}
