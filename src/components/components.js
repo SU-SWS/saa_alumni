@@ -91,6 +91,7 @@ import MegaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
 import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
+import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
 import WalletPass from './wallet/walletPass';
 
@@ -129,6 +130,7 @@ const ComponentList = {
   interstitialPage: InterstitialPage,
   itinerary: Itinerary,
   itineraryItem: ItineraryItem,
+  lightFormPage: LightFormPage,
   linkGroup: LinkGroup,
   linkList: LinkList,
   localFooter: LocalFooter,
