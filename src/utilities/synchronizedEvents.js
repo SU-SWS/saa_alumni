@@ -1,3 +1,5 @@
+import { render } from 'storyblok-rich-text-react-renderer-ts';
+import sanitizeHtml from 'sanitize-html';
 import { luxonDate } from './dates';
 
 const isString = (val) => typeof val === 'string';
@@ -68,11 +70,18 @@ export const storyToAlgoliaEvent = (story) => {
   const endTimestamp = mergedEventData.end
     ? luxonDate(mergedEventData.end).toUnixInteger()
     : null;
+  const descriptionText = mergedEventData.description
+    ? sanitizeHtml(render(mergedEventData.description), {
+        allowedTags: [],
+        allowedAttributes: {},
+      })
+    : null;
 
   return {
     objectID: storyId,
     startTimestamp,
     endTimestamp,
+    descriptionText,
     ...mergedEventData,
   };
 };
