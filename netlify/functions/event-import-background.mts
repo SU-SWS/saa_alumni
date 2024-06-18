@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { Context, type Config } from '@netlify/functions';
-import { GoogleSpreadsheet, type GoogleSpreadsheetWorksheet } from 'google-spreadsheet';
+import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import StoryblokClient from 'storyblok-js-client';
 
