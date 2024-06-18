@@ -70,8 +70,9 @@ export const storyToAlgoliaEvent = (story) => {
   const endTimestamp = mergedEventData.end
     ? luxonDate(mergedEventData.end).toUnixInteger()
     : null;
-  const descriptionText = mergedEventData.description
-    ? sanitizeHtml(render(mergedEventData.description), {
+  const renderedDescription = render(mergedEventData.description);
+  const descriptionText = renderedDescription
+    ? sanitizeHtml(renderedDescription, {
         allowedTags: [],
         allowedAttributes: {},
       })
