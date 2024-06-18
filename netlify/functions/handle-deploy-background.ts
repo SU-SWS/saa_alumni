@@ -4,7 +4,7 @@ import { createHmac } from 'node:crypto';
 import StoryblokClient from 'storyblok-js-client';
 import algoliasearch from 'algoliasearch';
 import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookType';
-import { mergeEventOverrides } from '../../src/utilities/mergeEventOverrides';
+import { storyToAlgoliaEvent } from '../../src/utilities/synchronizedEvents';
 
 dotenv.config();
 
@@ -81,14 +81,12 @@ export default async (req: Request) => {
     );
     const index = client.initIndex(algoliaIndex);
     const storyId = story.data.story.uuid;
-    const eventData = story.data.story.content;
 
     if (data.action === 'published') {
       // Upsert to Algolia (no rebuild)
-      await index.saveObject({
-        objectID: storyId,
-        ...mergeEventOverrides(eventData),
-      })
+      const algoliaEvent = storyToAlgoliaEvent(story);
+      await index.saveObject(algoliaEvent);
+
       console.log('Algolia upsert: ', storyId);
       console.log('=== END Deploy Background Function ===');
       return;
