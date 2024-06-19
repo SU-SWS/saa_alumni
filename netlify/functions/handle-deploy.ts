@@ -43,7 +43,7 @@ export default async (req: Request) => {
       await fetch(deployUrl, { method: 'POST' });
       console.log('Deploy triggered');
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
 
     // Only pub/unpub actions after this
@@ -62,7 +62,7 @@ export default async (req: Request) => {
       await fetch(deployUrl, { method: 'POST' });
       console.log('Deploy triggered');
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
 
     // Only pub/unpub actions for alumni events after this
@@ -89,7 +89,7 @@ export default async (req: Request) => {
 
       console.log('Algolia upsert: ', storyId);
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
 
     if (data.action === 'unpublished') {
@@ -97,7 +97,7 @@ export default async (req: Request) => {
       await index.deleteObject(storyId);
       console.log('Algolia delete: ', storyId);
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
     
   } catch (err) {
@@ -105,6 +105,7 @@ export default async (req: Request) => {
   }
 
   console.log('=== END Deploy Background Function ===');
+  return new Response('Accepted', { status: 202 });
 };
 
 export const config: Config = {
