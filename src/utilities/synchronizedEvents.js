@@ -68,13 +68,9 @@ export const storyToAlgoliaEvent = (story) => {
   const endTimestamp = mergedEventData.end
     ? luxonDate(mergedEventData.end).toUnixInteger()
     : null;
-  const geo =
-    mergedEventData.latitude && mergedEventData.longitude
-      ? {
-          lat: mergedEventData.latitude,
-          lng: mergedEventData.longitude,
-        }
-      : null;
+  const lat = parseFloat(mergedEventData.latitude) || null;
+  const lng = parseFloat(mergedEventData.longitude) || null;
+  const geo = lat && lng ? { lat, lng } : null;
 
   return {
     objectID: storyId,
