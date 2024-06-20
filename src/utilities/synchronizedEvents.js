@@ -82,3 +82,7 @@ export const storyToAlgoliaEvent = (story) => {
     ...mergedEventData,
   };
 };
+
+export const googleRowToStory = (row) => {
+  // Complete the owl
+};

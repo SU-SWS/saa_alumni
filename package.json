@@ -28,7 +28,7 @@
     "gatsby-plugin-netlify": "^4.4.0",
     "gatsby-plugin-postcss": "^5.25.0",
     "gatsby-plugin-react-helmet": "^5.25.0",
-    "gatsby-plugin-robots-txt": "^1.7.0",
+    "gatsby-plugin-robots-txt": "~1.7.0",
     "gatsby-plugin-sitemap": "^5.25.0",
     "gatsby-plugin-smoothscroll": "^1.2.0",
     "gatsby-plugin-use-query-params": "^1.0.1",
