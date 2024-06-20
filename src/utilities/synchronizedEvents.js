@@ -1,3 +1,5 @@
+import { luxonDate } from './dates';
+
 const isString = (val) => typeof val === 'string';
 
 const isLink = (val) =>
@@ -54,4 +56,29 @@ export const mergeEventOverrides = (eventContent) => {
   });
 
   return merged;
+};
+
+export const storyToAlgoliaEvent = (story) => {
+  const storyId = story.data.story.uuid;
+  const eventData = story.data.story.content;
+  const mergedEventData = mergeEventOverrides(eventData);
+  const startTimestamp = mergedEventData.start
+    ? luxonDate(mergedEventData.start).toUnixInteger()
+    : null;
+  const endTimestamp = mergedEventData.end
+    ? luxonDate(mergedEventData.end).toUnixInteger()
+    : null;
+  const lat = parseFloat(mergedEventData.latitude);
+  const lng = parseFloat(mergedEventData.longitude);
+  const hasValidLat = !!lat || lat === 0;
+  const hasValidLng = !!lng || lng === 0;
+  const geo = hasValidLat && hasValidLng ? { lat, lng } : null;
+
+  return {
+    objectID: storyId,
+    startTimestamp,
+    endTimestamp,
+    _geoloc: geo,
+    ...mergedEventData,
+  };
 };
