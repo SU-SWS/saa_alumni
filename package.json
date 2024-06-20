@@ -72,7 +72,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby clean && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "dev": "npm run develop",
     "dev:mock": "MEGAPROFILE_MOCK=true npm run develop",
