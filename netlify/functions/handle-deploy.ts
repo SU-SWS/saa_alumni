@@ -4,7 +4,7 @@ import { createHmac } from 'node:crypto';
 import StoryblokClient from 'storyblok-js-client';
 import algoliasearch from 'algoliasearch';
 import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookType';
-import { mergeEventOverrides } from '../../src/utilities/mergeEventOverrides';
+import { storyToAlgoliaEvent } from '../../src/utilities/synchronizedEvents';
 
 dotenv.config();
 
@@ -43,7 +43,7 @@ export default async (req: Request) => {
       await fetch(deployUrl, { method: 'POST' });
       console.log('Deploy triggered');
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
 
     // Only pub/unpub actions after this
@@ -62,7 +62,7 @@ export default async (req: Request) => {
       await fetch(deployUrl, { method: 'POST' });
       console.log('Deploy triggered');
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
 
     // Only pub/unpub actions for alumni events after this
@@ -81,17 +81,15 @@ export default async (req: Request) => {
     );
     const index = client.initIndex(algoliaIndex);
     const storyId = story.data.story.uuid;
-    const eventData = story.data.story.content;
 
     if (data.action === 'published') {
       // Upsert to Algolia (no rebuild)
-      await index.saveObject({
-        objectID: storyId,
-        ...mergeEventOverrides(eventData),
-      })
+      const algoliaEvent = storyToAlgoliaEvent(story);
+      await index.saveObject(algoliaEvent);
+
       console.log('Algolia upsert: ', storyId);
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
 
     if (data.action === 'unpublished') {
@@ -99,7 +97,7 @@ export default async (req: Request) => {
       await index.deleteObject(storyId);
       console.log('Algolia delete: ', storyId);
       console.log('=== END Deploy Background Function ===');
-      return;
+      return new Response('Accepted', { status: 202 });
     }
     
   } catch (err) {
@@ -107,6 +105,7 @@ export default async (req: Request) => {
   }
 
   console.log('=== END Deploy Background Function ===');
+  return new Response('Accepted', { status: 202 });
 };
 
 export const config: Config = {
