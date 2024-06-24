@@ -366,6 +366,10 @@ exports.onCreateWebpackConfig = ({
             test: /postscribe/,
             use: loaders.null(),
           },
+          {
+            test: /sa11y/,
+            use: loaders.null(),
+          },
         ],
       },
     });
