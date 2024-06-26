@@ -7,14 +7,13 @@ import {
 import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/solid';
 
 export const FacetComponent = ({ attribute, label, expanded, toggleFacet }) => {
-  const refineList = useRefinementList({ attribute });
+  const { items, canRefine } = useRefinementList({ attribute });
 
-  if (refineList?.items?.length === 0) {
-    if (!expanded) toggleFacet();
+  if (!canRefine) {
     return null;
   }
 
-  const refinedItems = refineList.items.filter((item) => item.isRefined);
+  const refinedItems = items.filter((item) => item.isRefined);
   const refinedItemsCount = refinedItems.length;
 
   return (

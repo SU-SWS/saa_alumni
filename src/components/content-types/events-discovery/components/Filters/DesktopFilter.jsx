@@ -1,6 +1,6 @@
 import React from 'react';
 import { ClearRefinements } from 'react-instantsearch';
-import { ChevronDownIcon, ChevronRightIcon } from '@heroicons/react/solid';
+import { ChevronRightIcon } from '@heroicons/react/solid';
 import { FacetComponent } from '../Facets/FacetComponent';
 import { useFacets } from '../Facets/useFacets';
 
@@ -27,17 +27,16 @@ export const DesktopFilter = () => {
           className="su-text-3xl hocus:su-underline hocus:su-text-cardinal-red"
           onClick={toggleFacets}
         >
-          {facetsExpanded ? (
-            <div className="su-flex su-items-center">
-              <span className="su-inline-block">Collapse all</span>
-              <ChevronDownIcon className="su-w-30 su-h-30" />
-            </div>
-          ) : (
-            <div className="su-flex su-items-center">
-              <span className="su-inline-block">Expand all</span>
-              <ChevronRightIcon className="su-w-30 su-h-30" />
-            </div>
-          )}
+          <div className="su-flex su-items-center">
+            <span className="su-inline-block">
+              {facetsExpanded ? 'Collapse' : 'Expand'} all
+            </span>
+            <ChevronRightIcon
+              className={`su-w-30 su-h-30 ${
+                facetsExpanded ? 'su-rotate-90' : ''
+              }`}
+            />
+          </div>
         </button>
       </div>
       <div>

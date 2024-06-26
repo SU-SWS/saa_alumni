@@ -84,17 +84,14 @@ export const Drawer = ({
             >
               <ArrowLeftIcon className="su-w-36 su-h-36" />
             </button>
-            {header ? (
+            {header && (
               <h2
                 id="drawer-title"
                 className="su-text-5xl su-text-cardinal-red su-font-semibold su-mb-0 su-mr-8"
               >
                 {header}
               </h2>
-            ) : (
-              <div />
             )}
-            <div />
           </div>
           <div className="su-grow">{children}</div>
           <div className="su-w-full su-sticky su-bottom-0 su-border-t su-border-t-black-30 su-bg-fog-light su-p-26 su-z-10">

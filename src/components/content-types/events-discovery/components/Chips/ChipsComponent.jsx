@@ -3,10 +3,10 @@ import { useCurrentRefinements } from 'react-instantsearch';
 import { Chip } from './Chip';
 
 export const ChipsComponent = () => {
-  const { items } = useCurrentRefinements();
+  const { items, canRefine } = useCurrentRefinements();
 
-  if (items?.length === 0) {
-    return <div />;
+  if (!canRefine) {
+    return null;
   }
 
   return (
