@@ -180,7 +180,17 @@ export const googleRowToStory = (row, source) => {
 };
 
 export const compareStoryContent = (a, b) => {
-  // TODO: complex fields (description, eventUrl, experience, subject)
+  // TODO: complex fields (description)
+  const sortedExperienceA = a.experience.sort();
+  const sortedExperienceB = b.experience.sort();
+  const isExperienceEq = sortedExperienceA.length === sortedExperienceB.length
+    && sortedExperienceA.every((e, i) => e === sortedExperienceB[i]);
+
+  const sortedSubjectA = a.subject.sort();
+  const sortedSubjectB = b.subject.sort();
+  const isSubjectEq = sortedSubjectA.length === sortedSubjectB.length
+    && sortedSubjectA.every((e, i) => e === sortedSubjectB[i]);
+
   return a.title !== b.title
     || a.start !== b.start
     || a.end !== b.end
@@ -191,5 +201,8 @@ export const compareStoryContent = (a, b) => {
     || a.format !== b.format
     || a.region !== b.region
     || a.latitude !== b.latitude
-    || a.longitude !== b.longitude;
+    || a.longitude !== b.longitude
+    || a.eventUrl?.url !== b.eventUrl?.url
+    || !isExperienceEq
+    || !isSubjectEq;
 }
