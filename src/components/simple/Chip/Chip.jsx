@@ -23,10 +23,11 @@ export const Chip = ({
     className={dcnb(className, styles.root)}
     type="button"
     onClick={onClick}
+    data-test={`chip:${label}`}
   >
-    <div className={styles.inner}>
+    <span className={styles.inner}>
       {label} <FaIcon className={styles.icon} iconChoice={icon} isOutline />
-    </div>
+    </span>
   </button>
 );
 Chip.propTypes = ChipProps;

@@ -87,7 +87,8 @@ const MembershipInstallmentsForm = (props) => {
                   >
                     <CreateBloks
                       blokSection={installmentsForm}
-                      bgCardStyle="su-bg-white"
+                      bgCardStyle="su-bg-white su-light-form"
+                      isSpacing
                       urlData={promoCode}
                     />
                   </GridCell>

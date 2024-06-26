@@ -21,19 +21,21 @@ const AssociateListProps = {
 
 const AssociateList = ({ letter, associates, onlyNewMembers, recentYear }) => (
   <div>
-    <h4 className="su-p-10 su-text-cardinal-red-xdark su-font-serif su-border-b su-border-dashed su-border-black-30/40">
+    <h2 className="su-type-2 su-p-10 su-text-cardinal-red-xdark su-font-serif su-border-b su-border-dashed su-border-black-30/40">
       {letter}
-    </h4>
-    <ul className="su-p-0 su-list-none">
-      {associates?.map((person, index) => (
-        <Associate
-          // eslint-disable-next-line react/no-array-index-key
-          key={`person-${person.entryTitle}-${index}`}
-          person={person}
-          isEnabled={!onlyNewMembers || person.yearAdded === recentYear}
-        />
-      ))}
-    </ul>
+    </h2>
+    {!!associates?.length && (
+      <ul className="su-p-0 su-list-none">
+        {associates.map((person, index) => (
+          <Associate
+            // eslint-disable-next-line react/no-array-index-key
+            key={`person-${person.entryTitle}-${index}`}
+            person={person}
+            isEnabled={!onlyNewMembers || person.yearAdded === recentYear}
+          />
+        ))}
+      </ul>
+    )}
     <BackToTopLink />
   </div>
 );
