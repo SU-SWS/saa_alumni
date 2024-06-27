@@ -163,7 +163,7 @@ const SynchronizedEvent = ({
             <SbLink
               link={eventLink}
               classes={dcnb(
-                'su-stretched-link su-group su-z-20 su-rs-mt-0 su-mb-08em su-no-underline hocus:su-underline su-underline-offset-[3px] su-decoration-[0.12em] su-decoration-digital-red-xlight focus:su-outline-none',
+                'su-block su-stretched-link su-group su-z-20 su-mt-0 su-mb-8 su-no-underline hocus:su-underline su-underline-offset-[3px] su-decoration-[0.12em] su-decoration-digital-red-xlight focus:su-outline-none',
                 headlineSize,
                 headlinePadding,
                 headlineColor
@@ -250,11 +250,11 @@ const SynchronizedEvent = ({
                 >
                   <TagIcon className={iconClasses} aria-hidden="true" />
                   <SrOnlyText>Subjects: </SrOnlyText>
-                  <div className="su-flex su-flex-row su-flex-wrap">
+                  <div className="su-flex su-flex-row su-flex-wrap su-gap-4">
                     {subject.map((tag) => (
                       <div
                         key={tag}
-                        className="su-border-2 su-border-black su-px-16 su-py-4 su-rounded-2xl su-mr-04em"
+                        className="su-border su-border-black su-px-18 su-py-2 su-rounded-2xl"
                       >
                         {tag.trim()}
                       </div>

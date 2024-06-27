@@ -8,12 +8,7 @@ export const NoResultsBoundary = ({ children, fallback }) => {
   // when no hits have been returned.
   // eslint-disable-next-line no-underscore-dangle
   if (!results.__isArtificial && results.nbHits === 0) {
-    return (
-      <>
-        {fallback}
-        <div hidden>{children}</div>
-      </>
-    );
+    return fallback;
   }
 
   return children;

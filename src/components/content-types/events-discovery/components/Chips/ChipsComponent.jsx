@@ -11,7 +11,7 @@ export const ChipsComponent = () => {
 
   return (
     <div className="su-max-w-500 lg:su-max-w-900">
-      <div className="su-flex su-flex-row su-flex-wrap su-space-x-4">
+      <div className="su-flex su-flex-row su-flex-wrap su-gap-4">
         {items.map((item) =>
           item.refinements.map((refinement) => (
             <Chip

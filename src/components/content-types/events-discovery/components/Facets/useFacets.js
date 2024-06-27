@@ -38,10 +38,24 @@ export const useFacets = () => {
     setFacets(updatedFacets);
   };
 
+  const expandFacets = () => {
+    setFacets((currentFacets) =>
+      currentFacets.map((f) => ({ ...f, expanded: true }))
+    );
+  };
+
+  const collapseFacets = () => {
+    setFacets((currentFacets) =>
+      currentFacets.map((f) => ({ ...f, expanded: false }))
+    );
+  };
+
   return {
     facets,
     facetsExpanded,
     toggleFacets,
     toggleFacet,
+    expandFacets,
+    collapseFacets,
   };
 };

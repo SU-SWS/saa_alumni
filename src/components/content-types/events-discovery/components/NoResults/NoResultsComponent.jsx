@@ -14,7 +14,7 @@ export const NoResultsComponent = () => (
         <div>
           <ClearRefinements
             translations={{
-              resetButtonText: 'Reset filters',
+              resetButtonText: 'Reset all filters',
             }}
             classNames={{
               button:
