@@ -21,6 +21,7 @@ const SBImageGallery = ({
       original: image.filename,
       thumbnail: image.filename,
       originalAlt: image.alt,
+      thumbnailAlt: image.alt,
       description: image.title,
     });
   });
