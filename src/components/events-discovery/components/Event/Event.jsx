@@ -103,13 +103,13 @@ export const Event = ({
           />
         </div>
         {filename?.startsWith('http') && (
-          <figure className="su-block su-shrink-0 su-max-w-200 2xl:su-max-w-300 su-transition-all">
+          <figure className="su-block su-shrink-0 su-max-w-300 sm:su-max-w-200 2xl:su-max-w-300 su-transition-all">
             <CardImage
               filename={filename}
               alt={alt}
               smartFocus={focus}
               size="vertical"
-              className="su-w-full su-origin-top-right su-transition-transform hocus:su-scale-[1.03]"
+              className="su-w-full su-h-auto su-origin-top-right su-transition-transform hocus:su-scale-[1.03]"
               loading="lazy"
               width="300"
               height="200"
