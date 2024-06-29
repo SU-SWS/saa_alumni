@@ -2,7 +2,18 @@ import React from 'react';
 import { XIcon } from '@heroicons/react/solid';
 import { facetLabels } from '../constants';
 
-export const Chip = ({ attribute, label, remove }) => (
+/**
+ * @typedef {object} Props
+ * @property {string} attribute
+ * @property {string} label
+ * @property {() => void} [remove]
+ */
+
+/**
+ * @type {React.FC<Props>}
+ * @returns {React.ReactElement}
+ */
+export const Chip = ({ attribute, label, remove = () => null }) => (
   <button
     type="button"
     onClick={remove}

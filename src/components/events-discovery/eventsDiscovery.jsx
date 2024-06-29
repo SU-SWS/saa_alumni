@@ -1,13 +1,18 @@
 import React, { useMemo } from 'react';
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, Hits, Configure, useInstantSearch } from 'react-instantsearch';
+import {
+  InstantSearch,
+  Hits,
+  Configure,
+  useInstantSearch,
+} from 'react-instantsearch';
 import { LoadingIndicator } from './components/Loading';
 import { NoResultsComponent, NoResultsBoundary } from './components/NoResults';
 import { ChipsComponent } from './components/Chips';
 import { DesktopFilter, MobileFilter } from './components/Filters';
-import { Pagination } from './components/Pagination'
+import { Pagination } from './components/Pagination';
 import { StatusHeader } from './components/StatusHeader';
-import { Hit } from './components/Hit/Hit'
+import { Hit } from './components/Hit/Hit';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,

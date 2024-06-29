@@ -1,27 +1,32 @@
 import React, { useMemo } from 'react';
-import { type ClassValue, dcnb } from 'cnbuilder';
-import { type DateTime } from 'luxon';
+// eslint-disable-next-line no-unused-vars
+import { ClassValue, dcnb } from 'cnbuilder';
+// eslint-disable-next-line no-unused-vars
+import { DateTime } from 'luxon';
 
-export type DateBlockProps = React.ComponentProps<'div'> & {
-  start: DateTime;
-  className?: ClassValue;
-  isDark?: boolean;
-  isMinimal?: boolean;
-};
+/**
+ * @typedef {object} Props
+ * @property {DateTime} start
+ * @property {ClassValue} [className]
+ * @property {boolean} [isDark]
+ * @property {boolean} [isMinimal]
+ * @property {...React.ComponentProps<'div'>} [...]
+ */
 
+/**
+ * @type {React.FC<Props>}
+ * @returns {React.ReactElement}
+ */
 export const DateBlock = ({
   start,
   className = '',
   isDark = false,
   isMinimal = false,
   ...rest
-}: DateBlockProps) => {
-  const wrapperClasses = dcnb(
-    'su-p-6 su-w-fit',
-    {
-      'su-bg-transparent': isMinimal,
-    }
-  );
+}) => {
+  const wrapperClasses = dcnb('su-p-6 su-w-fit', {
+    'su-bg-transparent': isMinimal,
+  });
   const dateClasses = dcnb(
     'su-justify-center su-w-fit su-h-100 lg:su-h-[11.4rem]',
     {
@@ -34,7 +39,7 @@ export const DateBlock = ({
   const dateBoxPadding = dcnb('su-pl-20 su-pr-12 su-pb-10', {
     'su-pl-0 su-pr-12': isMinimal,
   });
-  
+
   const ptStart = useMemo(() => start.setZone('America/Los_Angeles'), [start]);
   const { monthShort, day } = ptStart;
   const iso = useMemo(() => ptStart.toISO(), [ptStart]);
@@ -44,7 +49,8 @@ export const DateBlock = ({
   return (
     <div className={dcnb(wrapperClasses, className)} {...rest}>
       <div
-        className={dcnb('su-flex su-items-center su-min-w-[10rem] lg:su-min-w-[11.4rem]',
+        className={dcnb(
+          'su-flex su-items-center su-min-w-[10rem] lg:su-min-w-[11.4rem]',
           dateClasses,
           textColor
         )}

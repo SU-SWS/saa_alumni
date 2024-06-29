@@ -3,33 +3,36 @@ import HeroIcon from '../../../simple/heroIcon';
 import { Heading } from '../../../simple/Heading';
 import SbLink from '../../../../utilities/sbLink';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
-import { type EventLink } from '../../types';
+// eslint-disable-next-line no-unused-vars, import/extensions
+import { EventLink } from '../../types';
 
-export type EventHeadingProps = {
-  headingLevel?: number;
-  title: string;
-  eventUrl: EventLink;
-};
+/**
+ * @typedef {object} Props
+ * @property {number} [headingLevel]
+ * @property {string} title
+ * @property {EventLink} eventUrl
+ */
 
-export const EventHeading = ({
-  headingLevel = 3,
-  title,
-  eventUrl,
-}: EventHeadingProps) => {
-  const headlineIconStyles = 'su-relative su-inline-block su-text-digital-red-xlight';
+/**
+ * @type {React.FC<Props>}
+ * @returns {React.ReactElement}
+ */
+export const EventHeading = ({ headingLevel = 3, title, eventUrl }) => {
+  const headlineIconStyles =
+    'su-relative su-inline-block su-text-digital-red-xlight';
 
   return (
     <Heading
       level={headingLevel}
       font="serif"
       tracking="normal"
-      className="su-relative su-inline su-type-1 su-mb-16" 
-      size={undefined} 
-      align={undefined} 
-      id={undefined} 
-      uppercase={undefined} 
-      italic={undefined} 
-      srOnly={undefined} 
+      className="su-relative su-inline su-type-1 su-mb-16"
+      size={undefined}
+      align={undefined}
+      id={undefined}
+      uppercase={undefined}
+      italic={undefined}
+      srOnly={undefined}
     >
       <SbLink
         link={eventUrl}

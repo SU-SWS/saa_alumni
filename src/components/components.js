@@ -94,7 +94,7 @@ import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
 import SynchronizedEvent from './content-types/synchronized-event/synchronizedEvent';
-import EventsDiscovery from './events-discovery/eventsDiscovery.tsx';
+import EventsDiscovery from './events-discovery/eventsDiscovery';
 
 const ComponentList = {
   accordion: Accordion,

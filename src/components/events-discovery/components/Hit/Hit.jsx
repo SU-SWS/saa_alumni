@@ -1,8 +1,18 @@
 import React from 'react';
-import { type EventHit } from '../../types'; 
+// eslint-disable-next-line no-unused-vars, import/extensions
+import { EventHit } from '../../types';
 import { Event } from '../Event';
 
-export const Hit = ({ hit }: { hit: EventHit }) => {
+/**
+ * @typedef {object} Props
+ * @property {EventHit} hit
+ */
+
+/**
+ * @type {React.FC<Props>}
+ * @returns {React.ReactElement}
+ */
+export const Hit = ({ hit }) => {
   const {
     title,
     image,

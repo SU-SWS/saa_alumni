@@ -1,8 +1,13 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
+// eslint-disable-next-line no-unused-vars
 import { usePagination, UsePaginationProps } from 'react-instantsearch';
 
-export const Pagination = (props: UsePaginationProps) => {
+/**
+ * @type {React.FC<UsePaginationProps>}
+ * @returns {React.ReactElement}
+ */
+export const Pagination = (props) => {
   const {
     pages,
     currentRefinement,
@@ -17,26 +22,27 @@ export const Pagination = (props: UsePaginationProps) => {
     return null;
   }
 
-  const pageItemCommon = 'su-flex su-items-center su-justify-center su-min-w-[3.2rem] md:su-min-w-[3.6rem] su-min-h-[3.2rem] md:su-min-h-[3.6rem] su-pb-4 su-text-black su-font-normal su-leading-none su-no-underline';
-  const pageItemCommonHocus = 'hocus:su-border-b-4 hocus:su-pb-0 hocus:su-border-digital-red hocus:su-text-digital-red hocus:su-no-underline';
-  
-  const directionCta = ({ isShown = false }: { isShown?: boolean }) => dcnb(
-    'su-flex su-items-center su-justify-center su-min-w-[3.4rem] md:su-min-w-[4rem] su-min-h-[3.2rem] md:su-min-h-[3.6rem] su-leading-none su-text-black su-font-normal su-no-underline su-pb-4',
-    pageItemCommonHocus,
-    {
-      'su-invisible': !isShown,
-      'su-visible': isShown,
-    }
-  );
-  
-  const pageCta = ({ isActive = false }: { isActive?: boolean }) => dcnb(
-    pageItemCommon,
-    pageItemCommonHocus,
-    {
+  const pageItemCommon =
+    'su-flex su-items-center su-justify-center su-min-w-[3.2rem] md:su-min-w-[3.6rem] su-min-h-[3.2rem] md:su-min-h-[3.6rem] su-pb-4 su-text-black su-font-normal su-leading-none su-no-underline';
+  const pageItemCommonHocus =
+    'hocus:su-border-b-4 hocus:su-pb-0 hocus:su-border-digital-red hocus:su-text-digital-red hocus:su-no-underline';
+
+  const directionCta = ({ isShown = false }) =>
+    dcnb(
+      'su-flex su-items-center su-justify-center su-min-w-[3.4rem] md:su-min-w-[4rem] su-min-h-[3.2rem] md:su-min-h-[3.6rem] su-leading-none su-text-black su-font-normal su-no-underline su-pb-4',
+      pageItemCommonHocus,
+      {
+        'su-invisible': !isShown,
+        'su-visible': isShown,
+      }
+    );
+
+  const pageCta = ({ isActive = false }) =>
+    dcnb(pageItemCommon, pageItemCommonHocus, {
       'su-pb-4': !isActive,
-      'su-border-b-4 su-border-digital-red-dark su-pb-0 su-text-digital-red-dark su-font-semibold': isActive,
-    }
-  );
+      'su-border-b-4 su-border-digital-red-dark su-pb-0 su-text-digital-red-dark su-font-semibold':
+        isActive,
+    });
 
   return (
     <nav>
@@ -63,7 +69,9 @@ export const Pagination = (props: UsePaginationProps) => {
                 e.preventDefault();
                 refine(page);
               }}
-              aria-label={isLastPage ? `Last page, page ${page + 1}` : `Page ${page + 1}`}
+              aria-label={
+                isLastPage ? `Last page, page ${page + 1}` : `Page ${page + 1}`
+              }
               aria-current={currentRefinement === page ? 'page' : undefined}
               className={pageCta({ isActive: currentRefinement === page })}
             >

@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { DateTime } from 'luxon';
 import {
   CalendarIcon,
@@ -8,15 +9,20 @@ import {
 import { GlobeIcon } from '@heroicons/react/outline';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
-export type EventContentProps = {
-  start: DateTime;
-  end: DateTime;
-  location?: string;
-  city?: string;
-  region?: string;
-  subject?: string[];
-};
+/**
+ * @typedef {object} Props
+ * @property {DateTime} start
+ * @property {DateTime} end
+ * @property {string} [location]
+ * @property {string} [city]
+ * @property {string} [region]
+ * @property {string[]} [subject]
+ */
 
+/**
+ * @type {React.FC<Props>}
+ * @returns {React.ReactElement}
+ */
 export const EventContent = ({
   start,
   end,
@@ -24,7 +30,7 @@ export const EventContent = ({
   city = '',
   region = '',
   subject = [],
-}: EventContentProps) => {
+}) => {
   const ptStart = useMemo(() => start.setZone('America/Los_Angeles'), [start]);
   const timeZone = useMemo(() => ptStart.toFormat('ZZZZ'), [ptStart]);
   const longStartDate = useMemo(() => ptStart.toFormat('DDDD'), [ptStart]);
@@ -34,7 +40,10 @@ export const EventContent = ({
   const longEndDate = useMemo(() => ptEnd.toFormat('DDDD'), [ptEnd]);
   const endTime = useMemo(() => ptEnd.toFormat('t'), [ptEnd]);
 
-  const isSameDay = useMemo(() => longStartDate === longEndDate, [longStartDate, longEndDate]);
+  const isSameDay = useMemo(
+    () => longStartDate === longEndDate,
+    [longStartDate, longEndDate]
+  );
 
   const iconClasses =
     'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-1em';

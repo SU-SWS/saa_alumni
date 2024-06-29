@@ -1,16 +1,21 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/solid';
 
-export type DrawerProps = {
-  header?: string;
-  isOpen?: boolean;
-  onClose?: () => void;
-  onCloseAll?: () => void;
-  clearButton?: React.ReactNode;
-  sub?: boolean;
-  children?: React.ReactNode;
-}
+/**
+ * @typedef {object} Props
+ * @property {string} [header]
+ * @property {boolean} [isOpen]
+ * @property {() => void} [onClose]
+ * @property {() => void} [onCloseAll]
+ * @property {React.ReactNode} [clearButton]
+ * @property {boolean} [sub]
+ * @property {React.ReactNode} [children]
+ */
 
+/**
+ * @type {React.FC<Props>}
+ * @returns {React.ReactElement}
+ */
 export const Drawer = ({
   header,
   isOpen = false,
@@ -19,11 +24,11 @@ export const Drawer = ({
   clearButton,
   sub = false,
   children,
-}: DrawerProps) => {
+}) => {
   const drawerRef = useRef(null);
 
   useEffect(() => {
-    const previouslyFocusedElement = document.activeElement as HTMLElement;
+    const previouslyFocusedElement = document.activeElement;
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
