@@ -1,19 +1,29 @@
 import React, { useEffect, useRef } from 'react';
 import { ArrowLeftIcon } from '@heroicons/react/solid';
 
+export type DrawerProps = {
+  header?: string;
+  isOpen?: boolean;
+  onClose?: () => void;
+  onCloseAll?: () => void;
+  clearButton?: React.ReactNode;
+  sub?: boolean;
+  children?: React.ReactNode;
+}
+
 export const Drawer = ({
   header,
-  isOpen,
+  isOpen = false,
   onClose,
   onCloseAll,
   clearButton,
   sub = false,
   children,
-}) => {
+}: DrawerProps) => {
   const drawerRef = useRef(null);
 
   useEffect(() => {
-    const previouslyFocusedElement = document.activeElement;
+    const previouslyFocusedElement = document.activeElement as HTMLElement;
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {

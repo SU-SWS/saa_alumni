@@ -63,7 +63,7 @@ export const Pagination = (props: UsePaginationProps) => {
                 e.preventDefault();
                 refine(page);
               }}
-              aria-label={isLastPage ? `Last page, page ${page}` : `Page ${page}`}
+              aria-label={isLastPage ? `Last page, page ${page + 1}` : `Page ${page + 1}`}
               aria-current={currentRefinement === page ? 'page' : undefined}
               className={pageCta({ isActive: currentRefinement === page })}
             >

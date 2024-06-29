@@ -26,7 +26,7 @@ export const MobileFilter = () => {
   );
 
   return (
-    <div className="lg:su-hidden">
+    <div className="lg:su-hidden su-ml-auto">
       <button
         type="button"
         className="su-flex su-items-center su-px-16 su-py-10 su-rounded-md su-border-2 su-border-cardinal-red su-text-cardinal-red hover:su-bg-cardinal-red-light hover:su-text-white focus-visible:su-bg-cardinal-red-light focus-visible:su-text-white"

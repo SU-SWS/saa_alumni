@@ -27,8 +27,8 @@ export const AllowedAnchorAttributes = [
 /**
  * Reusable Storyblok Link component for various link types
  * eg: internal, external, asset
+ * @type React.ForwardRefRenderFunction<HTMLAnchorElement, Records<any, any>> - This type is temporary to make TS happy
  * */
-
 const SbLink = React.forwardRef((props, ref) => {
   // Storyblok link object either has a url (external links)
   // or cached_url (internal or asset links)

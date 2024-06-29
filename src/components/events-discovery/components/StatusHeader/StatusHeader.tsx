@@ -14,7 +14,7 @@ export const StatusHeader = ({ hitsPerPage }: { hitsPerPage: number }) => {
       return 'No results found';
     }
 
-    return `${nbHits} events found. Showing ${firstPageResult} - ${lastPageResult}`;
+    return `${nbHits} events found. Showing ${firstPageResult} - ${lastPageResult}.`;
   }, [nbItems, nbHits, firstPageResult, lastPageResult]);
 
   return (

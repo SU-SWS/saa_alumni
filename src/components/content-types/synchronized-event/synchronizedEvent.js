@@ -13,9 +13,10 @@ import { FlexBox } from '../../layout/FlexBox';
 import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
-import DateBlockNew from '../../simple/dateBlockDiscovery';
 import HeroIcon from '../../simple/heroIcon';
+import { DateBlock } from '../../events-discovery/components/Event/DateBlock.tsx';
 
+// THIS COMPONENT IS ONLY FOR PREVIEW
 // THIS IS A STUB; COMPLETE THE OWL PLZ
 const SynchronizedEvent = ({
   blok: {
@@ -51,11 +52,6 @@ const SynchronizedEvent = ({
   const timeZone = luxonStart.toFormat('ZZZZ');
   const longStartDate = luxonStart.toFormat('DDDD');
   const startTime = luxonStart.toFormat('t');
-  const startMonth = luxonStart.toFormat('LLL');
-  const startDay = luxonStart.toFormat('dd');
-
-  // Valid datetime for HTML Time element
-  const startHtmlDate = `${start}Z`;
 
   // End date and time
   const luxonEnd = DateTime.fromFormat(end, 'yyyy-MM-dd T', { zone: 'UTC' })
@@ -63,9 +59,6 @@ const SynchronizedEvent = ({
     .setLocale('en-us');
   const longEndDate = luxonEnd.toFormat('DDDD');
   const endTime = luxonEnd.toFormat('t');
-  const endMonth = luxonEnd.toFormat('LLL');
-  const endDay = luxonEnd.toFormat('dd');
-  const endHtmlDate = `${end}Z`;
 
   // Boolean to check if this is a same day event for conditional rendering elements
   const isSameDay = longStartDate === longEndDate;
@@ -133,14 +126,8 @@ const SynchronizedEvent = ({
       >
         <div className="su-flex su-flex-col sm:su-flex-row sm:su-space-x-20">
           <FlexBox direction="col" alignItems="center">
-            <DateBlockNew
-              startMonth={startMonth}
-              startDay={startDay}
-              startHtmlDate={startHtmlDate}
-              endMonth={endMonth}
-              endDay={endDay}
-              endHtmlDate={endHtmlDate}
-              isSameDay={isSameDay}
+            <DateBlock
+              start={luxonStart}
               isMinimal={isMinimal}
               isDark={isDark}
               aria-hidden="true"
