@@ -1,0 +1,28 @@
+import React from 'react';
+import { useCurrentRefinements } from 'react-instantsearch';
+import { Chip } from './Chip';
+
+export const ChipsComponent = () => {
+  const { items, canRefine } = useCurrentRefinements();
+
+  if (!canRefine) {
+    return null;
+  }
+
+  return (
+    <div className="su-max-w-500 lg:su-max-w-900">
+      <div className="su-flex su-flex-row su-flex-wrap su-gap-4">
+        {items.map((item) =>
+          item.refinements.map((refinement) => (
+            <Chip
+              key={`${refinement.attribute}-${refinement.label}`}
+              attribute={refinement.attribute}
+              label={refinement.label}
+              remove={() => item.refine(refinement)}
+            />
+          ))
+        )}
+      </div>
+    </div>
+  );
+};
