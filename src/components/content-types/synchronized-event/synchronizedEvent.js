@@ -14,7 +14,7 @@ import { SrOnlyText } from '../../accessibility/SrOnlyText';
 import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
 import HeroIcon from '../../simple/heroIcon';
-import { DateBlock } from '../../events-discovery/components/Event/DateBlock.tsx';
+import { DateBlock } from '../../events-discovery/components/Event/DateBlock';
 
 // THIS COMPONENT IS ONLY FOR PREVIEW
 // THIS IS A STUB; COMPLETE THE OWL PLZ
