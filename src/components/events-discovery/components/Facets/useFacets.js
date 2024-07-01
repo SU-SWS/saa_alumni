@@ -6,7 +6,7 @@ export const useFacets = () => {
     {
       attribute: 'format',
       label: facetLabels.format.label,
-      expanded: true,
+      expanded: false,
     },
     {
       attribute: 'experience',

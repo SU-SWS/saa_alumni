@@ -1,11 +1,13 @@
 import React, { useMemo } from 'react';
 import algoliasearch from 'algoliasearch/lite';
+import { history } from 'instantsearch.js/es/lib/routers';
 import {
   InstantSearch,
   Hits,
   Configure,
   useInstantSearch,
 } from 'react-instantsearch';
+import { DateTime } from 'luxon';
 import { LoadingIndicator } from './components/Loading';
 import { NoResultsComponent, NoResultsBoundary } from './components/NoResults';
 import { ChipsComponent } from './components/Chips';
@@ -64,7 +66,39 @@ const EventsDiscovery = () => (
     indexName="dev_alumni-events_start-asc"
     future={{ preserveSharedStateOnUnmount: true }}
     stalledSearchDelay={2000}
-    routing
+    routing={{
+      router: history(),
+      stateMapping: {
+        stateToRoute(uiState) {
+          const indexUiState = uiState['dev_alumni-events_start-asc'];
+
+          return {
+            q: indexUiState.query,
+            page: indexUiState.page,
+            format: indexUiState.refinementList?.format,
+            experience: indexUiState.refinementList?.experience,
+            subject: indexUiState.refinementList?.subject,
+            startTimestamp: indexUiState.numericMenu?.startTimestamp,
+          };
+        },
+        routeToState(routeState) {
+          return {
+            'dev_alumni-events_start-asc': {
+              query: routeState.q,
+              page: routeState.page,
+              refinementList: {
+                format: routeState.format,
+                experience: routeState.experience,
+                subject: routeState.subject,
+              },
+              numericMenu: {
+                startTimestamp: routeState.startTimestamp,
+              },
+            },
+          };
+        },
+      },
+    }}
     insights
   >
     <Configure hitsPerPage={hitsPerPage} />
