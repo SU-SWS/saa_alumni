@@ -10,7 +10,7 @@ import { RadioInput } from './RadioInput';
 
 const theme = createTheme({
   typography: {
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: [
       '"Source Sans 3"',
       '"Source Sans Pro"',
@@ -19,6 +19,38 @@ const theme = createTheme({
       'Arial',
       'sans-serif',
     ],
+  },
+  components: {
+    MuiPickersCalendarHeader: {
+      styleOverrides: {
+        labelContainer: {
+          fontSize: '1.6rem',
+        },
+      },
+    },
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          fontSize: '1.6rem',
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          boxShadow: 'none !important',
+          fontSize: '1.4rem',
+        },
+      },
+    },
+    MuiFormHelperText: {
+      styleOverrides: {
+        root: {
+          margin: '0',
+          padding: '0 1rem',
+        },
+      },
+    },
   },
 });
 
@@ -49,8 +81,7 @@ export const DateFilter = () => {
     []
   );
   const getTimestamp = useCallback(
-    (daysFromNow) =>
-      midnight.plus({ days: daysFromNow }).toUTC().toUnixInteger(),
+    (daysFromNow) => midnight.plus({ days: daysFromNow }).toUnixInteger(),
     [midnight]
   );
   const plus7Days = useMemo(() => getTimestamp(7), [getTimestamp]);
@@ -59,6 +90,16 @@ export const DateFilter = () => {
 
   const [custom, setCustom] = useState(false);
   const [expanded, setExpanded] = useState(true);
+  const [startValidationError, setStartValidationError] = useState('');
+  const [endValidationError, setEndValidationError] = useState('');
+
+  const getValidationMessage = (err) => {
+    if (err === 'minDate') return 'Please pick a later date';
+    if (err === 'maxDate') return 'Please pick an earlier date';
+    if (err) return 'Not a valid date';
+    return '';
+  };
+
   const toggleExpanded = useCallback(
     () => setExpanded((curr) => !curr),
     [setExpanded]
@@ -72,7 +113,11 @@ export const DateFilter = () => {
   );
 
   const handleOptionsSelect = useCallback(
-    (value) => {
+    (value, isCustom = false) => {
+      setCustom(isCustom);
+      setEndValidationError('');
+      setStartValidationError('');
+
       if (value === '7') {
         triggerRefine({ end: plus7Days });
         return;
@@ -108,7 +153,9 @@ export const DateFilter = () => {
       return null;
     }
 
-    return DateTime.fromSeconds(startRefinement.value).endOf('day');
+    return DateTime.fromSeconds(startRefinement.value, {
+      zone: 'America/Los_Angeles',
+    }).startOf('day');
   }, [startRefinement]);
 
   const dateEnd = useMemo(() => {
@@ -116,16 +163,23 @@ export const DateFilter = () => {
       return null;
     }
 
-    return DateTime.fromSeconds(endRefinement.value).endOf('day');
+    return DateTime.fromSeconds(endRefinement.value, {
+      zone: 'America/Los_Angeles',
+    }).endOf('day');
   }, [endRefinement]);
+
+  console.log({ dateStart, dateEnd, midnight });
 
   const handleDateStartChange = useCallback(
     (newValue, context) => {
+      setStartValidationError(getValidationMessage(context.validationError));
+
       if (!newValue || context.validationError || !newValue.isValid) {
         return;
       }
+
       triggerRefine({
-        start: newValue.toUnixInteger(),
+        start: newValue.startOf('day').toUnixInteger(),
         end: endRefinement?.value,
       });
     },
@@ -134,12 +188,15 @@ export const DateFilter = () => {
 
   const handleDateEndChange = useCallback(
     (newValue, context) => {
+      setEndValidationError(getValidationMessage(context.validationError));
+
       if (!newValue || context.validationError || !newValue.isValid) {
         return;
       }
+
       triggerRefine({
         start: startRefinement?.value,
-        end: newValue.toUnixInteger(),
+        end: newValue.endOf('day').toUnixInteger(),
       });
     },
     [triggerRefine, startRefinement]
@@ -188,10 +245,9 @@ export const DateFilter = () => {
         showReset={!isAllChecked}
         onReset={() => {
           handleOptionsSelect();
-          setCustom(false);
         }}
       >
-        <fieldset className="su-flex su-flex-col su-gap-8 su-mt-8 su-pl-8">
+        <fieldset className="su-flex su-flex-col su-gap-8 su-mt-8 su-px-8">
           <legend className="su-sr-only">Narrow events by date range</legend>
           <RadioInput
             labelText="All"
@@ -199,8 +255,7 @@ export const DateFilter = () => {
             value="all"
             checked={isAllChecked}
             onChange={() => {
-              handleOptionsSelect();
-              setCustom(false);
+              handleOptionsSelect(null);
             }}
           />
           <RadioInput
@@ -210,7 +265,6 @@ export const DateFilter = () => {
             checked={is7Checked}
             onChange={() => {
               handleOptionsSelect('7');
-              setCustom(false);
             }}
           />
           <RadioInput
@@ -220,7 +274,6 @@ export const DateFilter = () => {
             checked={is30Checked}
             onChange={() => {
               handleOptionsSelect('30');
-              setCustom(false);
             }}
           />
           <RadioInput
@@ -230,7 +283,6 @@ export const DateFilter = () => {
             checked={is60Checked}
             onChange={() => {
               handleOptionsSelect('60');
-              setCustom(false);
             }}
           />
           <RadioInput
@@ -239,8 +291,7 @@ export const DateFilter = () => {
             value="custom"
             checked={isCustomChecked}
             onChange={() => {
-              handleOptionsSelect();
-              setCustom(true);
+              handleOptionsSelect(null, true);
             }}
           />
           {isCustomChecked && (
@@ -253,6 +304,12 @@ export const DateFilter = () => {
                     minDate={midnight}
                     maxDate={dateEnd || midnight.plus({ days: 90 })}
                     onChange={handleDateStartChange}
+                    timezone="America/Los_Angeles"
+                    slotProps={{
+                      textField: {
+                        helperText: startValidationError,
+                      },
+                    }}
                   />
                   <DesktopDatePicker
                     label="To"
@@ -260,6 +317,12 @@ export const DateFilter = () => {
                     minDate={dateStart || midnight}
                     maxDate={midnight.plus({ days: 90 })}
                     onChange={handleDateEndChange}
+                    timezone="America/Los_Angeles"
+                    slotProps={{
+                      textField: {
+                        helperText: endValidationError,
+                      },
+                    }}
                   />
                 </ThemeProvider>
               </div>

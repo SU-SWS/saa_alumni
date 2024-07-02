@@ -25,35 +25,36 @@ export const ChipsComponent = () => {
           const endRefinement = item.refinements.find(
             (r) => r.operator === '<='
           );
-          let startLabel = 'today';
-          let endLabel = '90';
+          const now = DateTime.local({ zone: 'America/Los_Angeles' });
 
-          if (startRefinement) {
-            const startLuxonValue = DateTime.fromSeconds(
-              startRefinement.value
-            ).setZone('America/Los_Angeles');
-            const startDiff = startLuxonValue.diff(midnight, 'days');
-            const startDays = Math.floor(startDiff.days);
-            if (startDays !== 0) {
-              startLabel = startDiff === 1 ? 'tomorrow' : `${startDays}`;
-            }
-          }
+          const startLuxonValue = startRefinement
+            ? DateTime.fromSeconds(startRefinement.value, {
+                zone: 'America/Los_Angeles',
+              })
+            : now;
 
-          if (endRefinement) {
-            const endLuxonValue = DateTime.fromSeconds(
-              endRefinement.value
-            ).setZone('America/Los_Angeles');
-            const endDiff = endLuxonValue.diff(midnight, 'days');
-            const endDays = Math.floor(endDiff.days);
-            endLabel = `${endDays}`;
-          }
+          const endLuxonValue = endRefinement
+            ? DateTime.fromSeconds(endRefinement.value, {
+                zone: 'America/Los_Angeles',
+              })
+            : midnight.plus({ days: 90 });
+
+          const startLabel = startLuxonValue.hasSame(now, 'day')
+            ? 'Today'
+            : startLuxonValue.toFormat('M/d/yyyy');
+
+          const endLabel = startLuxonValue.hasSame(endLuxonValue, 'day')
+            ? ''
+            : ` to ${endLuxonValue.toFormat('M/d/yyyy')}`;
+
+          const label = `${startLabel}${endLabel}`;
 
           return [
             ...acc,
             {
               key: 'startTimestamp',
               attribute: 'startTimestamp',
-              label: `From ${startLabel} to ${endLabel} days from now`,
+              label,
               remove: () => {
                 if (startRefinement) item.refine(startRefinement);
                 if (endRefinement) item.refine(endRefinement);

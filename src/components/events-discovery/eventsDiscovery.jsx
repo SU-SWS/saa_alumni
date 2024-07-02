@@ -7,7 +7,6 @@ import {
   Configure,
   useInstantSearch,
 } from 'react-instantsearch';
-import { DateTime } from 'luxon';
 import { LoadingIndicator } from './components/Loading';
 import { NoResultsComponent, NoResultsBoundary } from './components/NoResults';
 import { ChipsComponent } from './components/Chips';
