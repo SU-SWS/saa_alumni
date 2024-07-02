@@ -168,8 +168,6 @@ export const DateFilter = () => {
     }).endOf('day');
   }, [endRefinement]);
 
-  console.log({ dateStart, dateEnd, midnight });
-
   const handleDateStartChange = useCallback(
     (newValue, context) => {
       setStartValidationError(getValidationMessage(context.validationError));
@@ -296,7 +294,7 @@ export const DateFilter = () => {
           />
           {isCustomChecked && (
             <>
-              <div className="su-flex su-gap-4 su-mt-16">
+              <div className="su-flex su-flex-col su-gap-16 su-mt-16 su-max-w-170">
                 <ThemeProvider theme={theme}>
                   <DesktopDatePicker
                     label="From"
