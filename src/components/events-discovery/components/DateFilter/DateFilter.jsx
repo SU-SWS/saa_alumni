@@ -1,12 +1,26 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { LocalizationProvider } from '@mui/x-date-pickers';
+import { DesktopDatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterLuxon } from '@mui/x-date-pickers/AdapterLuxon';
 import { useCurrentRefinements, useNumericMenu } from 'react-instantsearch';
-import { Slider } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material';
 import { DateTime } from 'luxon';
 import { FilterAccordion } from '../FilterAccordion';
 import { luxonToday } from '../../../../utilities/dates';
 import { RadioInput } from './RadioInput';
+
+const theme = createTheme({
+  typography: {
+    fontSize: 20,
+    fontFamily: [
+      '"Source Sans 3"',
+      '"Source Sans Pro"',
+      '"Helvetica Neue"',
+      'Helvetica',
+      'Arial',
+      'sans-serif',
+    ],
+  },
+});
 
 /**
  * @typedef {object} Props
@@ -60,17 +74,17 @@ export const DateFilter = () => {
   const handleOptionsSelect = useCallback(
     (value) => {
       if (value === '7') {
-        triggerRefine({ start: plus7Days });
+        triggerRefine({ end: plus7Days });
         return;
       }
 
       if (value === '30') {
-        triggerRefine({ start: plus30Days });
+        triggerRefine({ end: plus30Days });
         return;
       }
 
       if (value === '60') {
-        triggerRefine({ start: plus60Days });
+        triggerRefine({ end: plus60Days });
         return;
       }
 
@@ -89,48 +103,46 @@ export const DateFilter = () => {
     [items]
   );
 
-  const rangeStart = useMemo(() => {
+  const dateStart = useMemo(() => {
     if (!startRefinement) {
-      return 0;
+      return null;
     }
 
-    return Math.floor(
-      DateTime.fromSeconds(startRefinement.value).diff(midnight, 'days').days
-    );
-  }, [startRefinement, midnight]);
+    return DateTime.fromSeconds(startRefinement.value).endOf('day');
+  }, [startRefinement]);
 
-  const rangeEnd = useMemo(() => {
+  const dateEnd = useMemo(() => {
     if (!endRefinement) {
-      return 90;
+      return null;
     }
 
-    return Math.floor(
-      DateTime.fromSeconds(endRefinement.value).diff(midnight, 'days').days
-    );
-  }, [endRefinement, midnight]);
+    return DateTime.fromSeconds(endRefinement.value).endOf('day');
+  }, [endRefinement]);
 
-  const handleRangeChange = useCallback(
-    (event, newValue, activeThumb) => {
-      if (activeThumb === 0) {
-        triggerRefine({
-          start: getTimestamp(Math.min(newValue[0], rangeEnd - 7)),
-          end: endRefinement?.value,
-        });
-      } else {
-        triggerRefine({
-          start: startRefinement?.value,
-          end: getTimestamp(Math.max(newValue[1], rangeStart + 7)),
-        });
+  const handleDateStartChange = useCallback(
+    (newValue, context) => {
+      if (!newValue || context.validationError || !newValue.isValid) {
+        return;
       }
+      triggerRefine({
+        start: newValue.toUnixInteger(),
+        end: endRefinement?.value,
+      });
     },
-    [
-      startRefinement,
-      endRefinement,
-      rangeStart,
-      rangeEnd,
-      getTimestamp,
-      triggerRefine,
-    ]
+    [triggerRefine, endRefinement]
+  );
+
+  const handleDateEndChange = useCallback(
+    (newValue, context) => {
+      if (!newValue || context.validationError || !newValue.isValid) {
+        return;
+      }
+      triggerRefine({
+        start: startRefinement?.value,
+        end: newValue.toUnixInteger(),
+      });
+    },
+    [triggerRefine, startRefinement]
   );
 
   const isAllChecked = useMemo(
@@ -140,25 +152,25 @@ export const DateFilter = () => {
   const is7Checked = useMemo(
     () =>
       !custom &&
-      !endRefinement &&
-      startRefinement &&
-      startRefinement.value === plus7Days,
+      !startRefinement &&
+      endRefinement &&
+      endRefinement.value === plus7Days,
     [custom, endRefinement, startRefinement, plus7Days]
   );
   const is30Checked = useMemo(
     () =>
       !custom &&
-      !endRefinement &&
-      startRefinement &&
-      startRefinement.value === plus30Days,
+      !startRefinement &&
+      endRefinement &&
+      endRefinement.value === plus30Days,
     [custom, endRefinement, startRefinement, plus30Days]
   );
   const is60Checked = useMemo(
     () =>
       !custom &&
-      !endRefinement &&
-      startRefinement &&
-      startRefinement.value === plus60Days,
+      !startRefinement &&
+      endRefinement &&
+      endRefinement.value === plus60Days,
     [custom, endRefinement, startRefinement, plus60Days]
   );
   const isCustomChecked = useMemo(
@@ -233,31 +245,24 @@ export const DateFilter = () => {
           />
           {isCustomChecked && (
             <>
-              <div className="su-flex su-mt-16 su-pl-22 su-pr-30">
-                <Slider
-                  getAriaLabel={(activeThumb) =>
-                    activeThumb === 0
-                      ? 'From days after today'
-                      : 'To days after today'
-                  }
-                  value={[rangeStart, rangeEnd]}
-                  valueLabelDisplay="auto"
-                  onChange={handleRangeChange}
-                  getAriaValueText={(v) => `${v} days from today`}
-                  disableSwap
-                  min={0}
-                  max={90}
-                  step={1}
-                  marks={[
-                    { value: 0, label: 'Today' },
-                    { value: 30, label: '30 days' },
-                    { value: 60, label: '60 days' },
-                    { value: 90, label: '90 days' },
-                  ]}
-                  className="[&_*]:!su-font-sans [&_*]:!su-text-14 !su-text-digital-red"
-                />
+              <div className="su-flex su-gap-4 su-mt-16">
+                <ThemeProvider theme={theme}>
+                  <DesktopDatePicker
+                    label="From"
+                    value={dateStart}
+                    minDate={midnight}
+                    maxDate={dateEnd || midnight.plus({ days: 90 })}
+                    onChange={handleDateStartChange}
+                  />
+                  <DesktopDatePicker
+                    label="To"
+                    value={dateEnd}
+                    minDate={dateStart || midnight}
+                    maxDate={midnight.plus({ days: 90 })}
+                    onChange={handleDateEndChange}
+                  />
+                </ThemeProvider>
               </div>
-              <div className="su-flex su-gap-4" />
             </>
           )}
         </fieldset>
