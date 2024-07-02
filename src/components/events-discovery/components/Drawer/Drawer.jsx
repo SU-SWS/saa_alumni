@@ -63,7 +63,8 @@ export const Drawer = ({
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       if (previouslyFocusedElement) {
-        previouslyFocusedElement.focus();
+        // TODO: This is breaking focus for all filters, do something
+        // previouslyFocusedElement.focus();
       }
     };
   }, [isOpen, onClose]);

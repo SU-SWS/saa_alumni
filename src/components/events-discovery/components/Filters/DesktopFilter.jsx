@@ -2,6 +2,7 @@ import React from 'react';
 import { ClearRefinements } from 'react-instantsearch';
 import { FacetComponent } from '../Facets/FacetComponent';
 import { useFacets } from '../Facets/useFacets';
+import { DateFilter } from '../DateFilter';
 
 export const DesktopFilter = () => {
   const { facets, toggleFacet, collapseFacets, expandFacets } = useFacets();
@@ -40,6 +41,7 @@ export const DesktopFilter = () => {
         </button>
       </div>
       <div className="su-flex su-flex-col su-gap-28 su-mt-8">
+        <DateFilter />
         {facets.map((facet, index) => (
           <FacetComponent
             key={facet.attribute}

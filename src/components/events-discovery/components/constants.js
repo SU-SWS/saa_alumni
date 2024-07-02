@@ -8,4 +8,7 @@ export const facetLabels = {
   subject: {
     label: 'Subject',
   },
+  startTimestamp: {
+    label: 'Start date',
+  },
 };
