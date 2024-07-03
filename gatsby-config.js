@@ -93,6 +93,7 @@ module.exports = {
         excludes: [
           `/editor/**`,
           `/editor`,
+          `/events/sync/**`,
           `/global-components/**`,
           `/travel-study/global-components/**`,
           `/test/**`,
@@ -106,10 +107,11 @@ module.exports = {
           if (
             // Exclude non-canonical pages.
             !page.pageContext.isCanonical ||
-            // Exlude form, registration form, and membership form pages
+            // Exlude form, registration form, membership form pages, and synchronized events
             page.pageContext.story.content.includes('formPage') ||
             page.pageContext.story.content.includes('registrationFormPage') ||
             page.pageContext.story.content.includes('membershipFormPage') ||
+            page.pageContext.story.content.includes('synchronizedEvent') ||
             // Exclude pages marked with "noindex"
             page.pageContext.noIndex ||
             // Exclude pages that match the "excludes" array. (default condition)
