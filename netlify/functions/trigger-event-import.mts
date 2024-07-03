@@ -4,23 +4,23 @@ import { type Config } from '@netlify/functions';
 dotenv.config();
 
 export default async (req: Request) => {
-  if (process.env.CONTEXT !== 'production') {
-    // Make sure we only run this in production
-    return Response.json({ statusCode: 200 });
-  }
-
-  const secret = process.env.EVENT_IMPORT_SECRET ?? '';
-  console.log('=== START Trigger Event Import ===');
-
-  if (!secret) {
-    console.error('No secret available');
-    return Response.json({ statusCode: 200 });
-  }
-
-  const url = new URL('/webhook/sb/import-events', req.url);
-  url.searchParams.set('secret', secret);
-
   try {
+    const secret = process.env.EVENT_IMPORT_SECRET ?? '';
+    console.log('=== START Trigger Event Import ===');
+
+    // Make sure we only run this in production
+    if (process.env.CONTEXT !== 'production') {
+      throw new Error('Not in prod');
+    }
+
+    if (!secret) {
+      throw new Error('No secret available');
+    }
+
+    const url = new URL('/webhook/sb/import-events', req.url);
+    url.searchParams.set('secret', secret);
+
+  
     const triggerRes = await fetch(url, { method: 'POST' });
 
     if (triggerRes.ok) {
@@ -34,6 +34,7 @@ export default async (req: Request) => {
   }
 
   console.log('=== END Trigger Event Import ===');
+  return Response.json({ statusCode: 200 });
 };
 
 export const config: Config = {
