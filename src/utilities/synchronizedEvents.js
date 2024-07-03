@@ -4,19 +4,6 @@ import markdownToRichtextService from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
 
-const knownIdentityTags = [
-  'API (Asian/Pacific Islander)',
-  'Black/African American',
-  'FLI (First-Generation and/or Low-income)',
-  'Jewish',
-  'Latino/a/x',
-  'Military Verteran',
-  'Muslim',
-  'Native or Indigenous',
-  'Queer/LGBTQ',
-  'Women',
-];
-
 const { markdownToRichtext } = markdownToRichtextService;
 const turndownService = new TurndownService();
 
@@ -94,8 +81,12 @@ export const storyToAlgoliaEvent = (story) => {
   const hasValidLng = !!lng || lng === 0;
   const geo = hasValidLat && hasValidLng ? { lat, lng } : null;
   const { subject } = eventData;
-  const generalTags = subject.filter((s) => !knownIdentityTags.includes(s));
-  const identityTags = subject.filter((s) => knownIdentityTags.includes(s));
+  const generalTags = subject.filter(
+    (s) => !s.endsWith('; Diversity/Inclusion')
+  );
+  const identityTags = subject
+    .filter((s) => s.endsWith('; Diversity/Inclusion'))
+    .map((s) => s.replace('; Diversity/Inclusion', ''));
 
   return {
     objectID: storyId,
