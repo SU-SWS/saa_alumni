@@ -4,6 +4,19 @@ import { markdownToRichtext } from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
 
+const knownIdentityTags = [
+  'API (Asian/Pacific Islander)',
+  'Black/African American',
+  'FLI (First-Generation and/or Low-income)',
+  'Jewish',
+  'Latino/a/x',
+  'Military Verteran',
+  'Muslim',
+  'Native or Indigenous',
+  'Queer/LGBTQ',
+  'Women',
+];
+
 const turndownService = new TurndownService();
 
 const isString = (val) => typeof val === 'string';
@@ -79,11 +92,16 @@ export const storyToAlgoliaEvent = (story) => {
   const hasValidLat = !!lat || lat === 0;
   const hasValidLng = !!lng || lng === 0;
   const geo = hasValidLat && hasValidLng ? { lat, lng } : null;
+  const { subject } = eventData;
+  const generalTags = subject.filter((s) => !knownIdentityTags.includes(s));
+  const identityTags = subject.filter((s) => knownIdentityTags.includes(s));
 
   return {
     objectID: storyId,
     startTimestamp,
     endTimestamp,
+    generalTags,
+    identityTags,
     _geoloc: geo,
     ...mergedEventData,
   };
@@ -180,7 +198,7 @@ export const googleRowToStory = (row, source) => {
 };
 
 export const compareStoryContent = (a, b) => {
-  // TODO: complex fields (description)
+  // TODO: Do we need to check description?
   const sortedExperienceA = a.experience.sort();
   const sortedExperienceB = b.experience.sort();
   const isExperienceEq =
