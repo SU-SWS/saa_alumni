@@ -1,42 +1,47 @@
-import { useCallback, useMemo, useState } from 'react';
-import { facetLabels } from '../constants';
+import { useCallback, useContext, useMemo } from 'react';
+import { FacetContext } from './FacetCtx';
+
+/**
+ * @typedef {object} RegisterFacetProps
+ * @property {string} attribute
+ * @property {string} label
+ * @property {boolean} [defaultExpanded]
+ */
 
 export const useFacets = () => {
-  const [facets, setFacets] = useState([
-    {
-      attribute: 'startTimestamp',
-      label: 'Date',
-      expanded: true,
-      show: false,
-    },
-    {
-      attribute: 'format',
-      label: facetLabels.format.label,
-      expanded: false,
-      show: true,
-    },
-    {
-      attribute: 'experience',
-      label: facetLabels.experience.label,
-      expanded: false,
-      show: true,
-    },
-    {
-      attribute: 'subject',
-      label: facetLabels.subject.label,
-      expanded: false,
-      show: true,
-    },
-  ]);
+  const { facets, setFacets } = useContext(FacetContext);
 
-  const shownFacets = useMemo(
-    () => facets.filter((facet) => facet.show),
+  const facetsExpanded = useMemo(
+    () => facets?.every((facet) => facet.expanded),
     [facets]
   );
 
-  const facetsExpanded = useMemo(
-    () => facets.every((facet) => facet.expanded),
+  const getFacet = useCallback(
+    (attribute) => facets?.find((facet) => facet.attribute === attribute),
     [facets]
+  );
+
+  const getFacets = useCallback(
+    (attributes = []) =>
+      facets?.filter((facet) => attributes.includes(facet.attribute)),
+    [facets]
+  );
+
+  /**
+   * @type {(props:RegisterFacetProps) => void}
+   */
+  const registerFacet = useCallback(
+    ({ attribute, label, defaultExpanded = false }) => {
+      setFacets([
+        ...facets,
+        {
+          attribute,
+          label,
+          expanded: defaultExpanded,
+        },
+      ]);
+    },
+    [facets, setFacets]
   );
 
   const toggleFacets = useCallback(() => {
@@ -47,6 +52,9 @@ export const useFacets = () => {
     setFacets(updatedFacets);
   }, [facets, facetsExpanded, setFacets]);
 
+  /**
+   * @type {(attribute:string) => void}
+   */
   const toggleFacet = useCallback(
     (attribute) => {
       const updatedFacets = facets.map((facet) => ({
@@ -73,8 +81,10 @@ export const useFacets = () => {
 
   return {
     facets,
-    shownFacets,
     facetsExpanded,
+    getFacet,
+    getFacets,
+    registerFacet,
     toggleFacets,
     toggleFacet,
     expandFacets,

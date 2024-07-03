@@ -4,29 +4,15 @@ import {
   useClearRefinements,
   useRefinementList,
 } from 'react-instantsearch';
-import { FilterAccordion } from '../FilterAccordion';
+import { SubfilterAccordion } from '../FilterAccordion';
 
-/**
- * @typedef {object} Props
- * @property {string} attribute
- * @property {string} label
- * @property {boolean} expanded
- * @property {() => void} [onToggleExpanded]
- */
-
-/**
- * @type {React.FC<Props>}
- * @returns {React.ReactElement}
- */
-export const FacetComponent = ({
-  attribute,
-  label,
-  expanded,
+export const OnlineOptionsSubfilter = ({
+  expanded = false,
   onToggleExpanded = () => null,
 }) => {
-  const { items, canRefine } = useRefinementList({ attribute });
-  const { refine } = useClearRefinements({
-    includedAttributes: [attribute],
+  const { items, canRefine } = useRefinementList({ attribute: 'experience' });
+  const { refine: clear } = useClearRefinements({
+    includedAttributes: ['experience'],
   });
   const hasRefinedItems = useMemo(
     () => items.some((item) => item.isRefined),
@@ -34,16 +20,16 @@ export const FacetComponent = ({
   );
 
   return (
-    <FilterAccordion
+    <SubfilterAccordion
       expanded={expanded}
-      label={label}
-      onReset={refine}
-      onToggleExpanded={onToggleExpanded}
       showReset={hasRefinedItems}
+      label="Online options"
+      onToggleExpanded={onToggleExpanded}
+      onReset={clear}
     >
       {canRefine ? (
         <RefinementList
-          attribute={attribute}
+          attribute="experience"
           classNames={{
             root: 'su-mt-8',
             list: 'su-flex su-flex-col su-gap-4 su-list-none su-pl-8',
@@ -57,6 +43,6 @@ export const FacetComponent = ({
       ) : (
         <p className="su-m-0 su-text-16">No available filters.</p>
       )}
-    </FilterAccordion>
+    </SubfilterAccordion>
   );
 };

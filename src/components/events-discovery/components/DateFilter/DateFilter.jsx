@@ -56,14 +56,14 @@ const theme = createTheme({
 /**
  * @typedef {object} Props
  * @property {boolean} expanded
- * @property {() => void} [toggleFacet]
+ * @property {() => void} [onToggleExpanded]
  */
 
 /**
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const DateFilter = ({ expanded, toggleFacet = () => null }) => {
+export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
   const { items } = useCurrentRefinements({
     includedAttributes: ['startTimestamp'],
   });
@@ -221,7 +221,7 @@ export const DateFilter = ({ expanded, toggleFacet = () => null }) => {
       <FilterAccordion
         expanded={expanded}
         label="Date"
-        onToggle={toggleFacet}
+        onToggleExpanded={onToggleExpanded}
         showReset={!isAllChecked}
         onReset={() => {
           handleOptionsSelect();

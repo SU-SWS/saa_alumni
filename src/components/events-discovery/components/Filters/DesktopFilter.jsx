@@ -1,16 +1,17 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { ClearRefinements } from 'react-instantsearch';
 import { FacetComponent } from '../Facets/FacetComponent';
-import { useFacets } from '../Facets/useFacets';
 import { DateFilter } from '../DateFilter';
+import { LocationFilter } from '../LocationFilter/LocationFilter';
+import { useFacets } from '../Facets/useFacets';
 
 export const DesktopFilter = () => {
-  const { facets, shownFacets, toggleFacet, collapseFacets, expandFacets } =
+  const { getFacet, getFacets, toggleFacet, collapseFacets, expandFacets } =
     useFacets();
-  const dateFacet = useMemo(
-    () => facets.find((facet) => facet.attribute === 'startTimestamp'),
-    [facets]
-  );
+
+  const dateFacet = getFacet('startTimestamp');
+  const additionalFacets = getFacets(['format', 'subject']);
+  const locationFacet = getFacet('location');
 
   return (
     <>
@@ -46,19 +47,27 @@ export const DesktopFilter = () => {
         </button>
       </div>
       <div className="su-flex su-flex-col su-gap-28 su-mt-8">
-        <DateFilter
-          expanded={dateFacet.expanded}
-          toggleFacet={() => toggleFacet('startTimestamp')}
-        />
-        {shownFacets.map((facet) => (
+        {dateFacet && (
+          <DateFilter
+            expanded={dateFacet.expanded}
+            onToggleExpanded={() => toggleFacet('startTimestamp')}
+          />
+        )}
+        {additionalFacets.map(({ attribute, label, expanded }) => (
           <FacetComponent
-            key={facet.attribute}
-            attribute={facet.attribute}
-            label={facet.label}
-            expanded={facet.expanded}
-            toggleFacet={() => toggleFacet(facet.attribute)}
+            key={attribute}
+            attribute={attribute}
+            label={label}
+            expanded={expanded}
+            onToggleExpanded={() => toggleFacet(attribute)}
           />
         ))}
+        {locationFacet && (
+          <LocationFilter
+            expanded={locationFacet.expanded}
+            onToggleExpanded={() => toggleFacet('location')}
+          />
+        )}
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import { dcnb } from 'cnbuilder';
  * @property {boolean} showReset
  * @property {string} label
  * @property {string} [resetLabel]
- * @property {() => void} [onToggle]
+ * @property {() => void} [onToggleExpanded]
  * @property {() => void} [onReset]
  * @property {React.ReactNode} children
  */
@@ -22,7 +22,7 @@ export const FilterAccordion = ({
   showReset,
   label,
   resetLabel = 'Reset filter',
-  onToggle = () => null,
+  onToggleExpanded = () => null,
   onReset = () => null,
   children,
 }) => {
@@ -42,8 +42,8 @@ export const FilterAccordion = ({
         <h3 className="su-group su-text-4xl su-font-semibold su-mb-0">
           <button
             type="button"
-            className="su-flex su-flex-row su-justify-between su-items-center group-hover:su-text-cardinal-red group-hover:su-underline group-focus-visible:su-text-cardinal-red group-focus-visible:su-underline su-w-full su-font-semibold"
-            onClick={onToggle}
+            className="su-flex su-flex-row su-justify-between su-items-center group-hover:su-text-cardinal-red group-hover:su-underline group-focus-visible:su-text-cardinal-red group-focus-visible:su-underline su-w-full"
+            onClick={onToggleExpanded}
             aria-expanded={expanded}
             aria-controls={uniqueId}
           >
