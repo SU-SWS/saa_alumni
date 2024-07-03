@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ClearRefinements } from 'react-instantsearch';
 import { FacetComponent } from '../Facets/FacetComponent';
 import { useFacets } from '../Facets/useFacets';
 import { DateFilter } from '../DateFilter';
 
 export const DesktopFilter = () => {
-  const { facets, toggleFacet, collapseFacets, expandFacets } = useFacets();
+  const { facets, shownFacets, toggleFacet, collapseFacets, expandFacets } =
+    useFacets();
+  const dateFacet = useMemo(
+    () => facets.find((facet) => facet.attribute === 'startTimestamp'),
+    [facets]
+  );
 
   return (
     <>
@@ -41,14 +46,17 @@ export const DesktopFilter = () => {
         </button>
       </div>
       <div className="su-flex su-flex-col su-gap-28 su-mt-8">
-        <DateFilter />
-        {facets.map((facet, index) => (
+        <DateFilter
+          expanded={dateFacet.expanded}
+          toggleFacet={toggleFacet('startTimestamp')}
+        />
+        {shownFacets.map((facet) => (
           <FacetComponent
             key={facet.attribute}
             attribute={facet.attribute}
             label={facet.label}
             expanded={facet.expanded}
-            toggleFacet={() => toggleFacet(index)}
+            toggleFacet={() => toggleFacet(facet.attribute)}
           />
         ))}
       </div>

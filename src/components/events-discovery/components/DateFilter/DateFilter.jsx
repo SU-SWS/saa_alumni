@@ -63,7 +63,7 @@ const theme = createTheme({
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const DateFilter = () => {
+export const DateFilter = ({ expanded, toggleFacet = () => null }) => {
   const { items } = useCurrentRefinements({
     includedAttributes: ['startTimestamp'],
   });
@@ -81,7 +81,6 @@ export const DateFilter = () => {
   const plus60Days = useMemo(() => getTimestamp(60), [getTimestamp]);
 
   const [custom, setCustom] = useState(false);
-  const [expanded, setExpanded] = useState(true);
   const [startValidationError, setStartValidationError] = useState('');
   const [endValidationError, setEndValidationError] = useState('');
 
@@ -91,11 +90,6 @@ export const DateFilter = () => {
     if (err) return 'Not a valid date';
     return '';
   };
-
-  const toggleExpanded = useCallback(
-    () => setExpanded((curr) => !curr),
-    [setExpanded]
-  );
 
   const triggerRefine = useCallback(
     (range) => {
@@ -227,7 +221,7 @@ export const DateFilter = () => {
       <FilterAccordion
         expanded={expanded}
         label="Date"
-        onToggle={toggleExpanded}
+        onToggle={toggleFacet}
         showReset={!isAllChecked}
         onReset={() => {
           handleOptionsSelect();
