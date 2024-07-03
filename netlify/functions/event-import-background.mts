@@ -1,5 +1,5 @@
 import dotenv from 'dotenv';
-import { Context, type Config } from '@netlify/functions';
+import { type Config } from '@netlify/functions';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import StoryblokClient from 'storyblok-js-client';
@@ -7,9 +7,9 @@ import { compareStoryContent, googleRowToStory } from '../../src/utilities/synch
 
 dotenv.config();
 
-export default async (req: Request, context: Context) => {
+export default async (req: Request) => {
   try {
-    const { secret } = context.params ?? {};
+    const secret = new URL(req.url).searchParams.get('secret');
 
     if (!secret) {
       throw new Error('Missing secret');
