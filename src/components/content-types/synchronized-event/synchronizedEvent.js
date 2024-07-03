@@ -29,23 +29,25 @@ const SynchronizedEvent = ({
 
   return (
     <SbEditable content={blok}>
-      <Event
-        title={title}
-        image={image}
-        start={start}
-        end={end}
-        city={city}
-        location={location}
-        region={region}
-        eventUrl={eventUrl}
-        subject={subject}
-        experience={experience}
-        format={format}
-        isDark={isDark}
-        isMinimal={isMinimal}
-        isBigHeadline={isBigHeadline}
-        headingLevel={headingLevel}
-      />
+      <div className="su-cc">
+        <Event
+          title={title}
+          image={image}
+          start={start}
+          end={end}
+          city={city}
+          location={location}
+          region={region}
+          eventUrl={eventUrl}
+          subject={subject}
+          experience={experience}
+          format={format}
+          isDark={isDark}
+          isMinimal={isMinimal}
+          isBigHeadline={isBigHeadline}
+          headingLevel={headingLevel}
+        />
+      </div>
     </SbEditable>
   );
 };
