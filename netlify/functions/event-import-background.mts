@@ -11,11 +11,6 @@ export default async (req: Request) => {
   try {
     const secret = new URL(req.url).searchParams.get('secret');
 
-    console.log({
-      secret,
-      known: process.env.EVENT_IMPORT_SECRET,
-    });
-
     if (!secret) {
       throw new Error('Missing secret');
     }
