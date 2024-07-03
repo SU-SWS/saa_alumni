@@ -48,7 +48,7 @@ export const DesktopFilter = () => {
       <div className="su-flex su-flex-col su-gap-28 su-mt-8">
         <DateFilter
           expanded={dateFacet.expanded}
-          toggleFacet={toggleFacet('startTimestamp')}
+          toggleFacet={() => toggleFacet('startTimestamp')}
         />
         {shownFacets.map((facet) => (
           <FacetComponent
