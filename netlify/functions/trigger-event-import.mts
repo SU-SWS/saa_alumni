@@ -4,6 +4,11 @@ import { type Config } from '@netlify/functions';
 dotenv.config();
 
 export default async (req: Request) => {
+  if (process.env.CONTEXT !== 'production') {
+    // Make sure we only run this in production
+    return Response.json({ statusCode: 200 });
+  }
+
   const secret = process.env.EVENT_IMPORT_SECRET ?? '';
   console.log('=== START Trigger Event Import ===');
 
