@@ -11,8 +11,12 @@ export default async (req: Request, context: Context) => {
   try {
     const { secret } = context.params ?? {};
 
-    if (secret !== process.env.EVENT_IMPORT_SECRET) {
+    if (!secret) {
       throw new Error('Missing secret');
+    }
+
+    if (secret !== process.env.EVENT_IMPORT_SECRET) {
+      throw new Error('Secret incorrect');
     }
 
     const spaceId = process.env.SPACE_ID ?? '';
