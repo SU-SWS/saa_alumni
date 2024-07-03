@@ -18,10 +18,10 @@ export default async (req: Request, context: Context) => {
     const spaceId = process.env.SPACE_ID ?? '';
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? '';
     const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY ?? '';
-    const hivebrightSheetId = process.env.SHEET_ID_HIVEBRIGHT ?? '';
+    const hivebriteSheetId = process.env.SHEET_ID_HIVEBRITE ?? '';
     const cventSheetId = process.env.SHEET_ID_CVENT ?? '';
 
-    if (!email || !key || !spaceId || !hivebrightSheetId || !cventSheetId) {
+    if (!email || !key || !spaceId || !hivebriteSheetId || !cventSheetId) {
       throw new Error('Missing required values');
     }
 
@@ -35,13 +35,13 @@ export default async (req: Request, context: Context) => {
 
     const googleStories: any[] = [];
 
-    const hivebrightDoc = new GoogleSpreadsheet(hivebrightSheetId, auth);
-    await hivebrightDoc.loadInfo();
-    const hivebrightSheet = hivebrightDoc.sheetsByIndex[0];
-    const hivebrightRows = await hivebrightSheet.getRows();
+    const hivebriteDoc = new GoogleSpreadsheet(hivebriteSheetId, auth);
+    await hivebriteDoc.loadInfo();
+    const hivebriteSheet = hivebriteDoc.sheetsByIndex[0];
+    const hivebriteRows = await hivebriteSheet.getRows();
     
-    hivebrightRows.forEach((row) => {
-      googleStories.push(googleRowToStory(row.toObject(), 'Hivebright'));
+    hivebriteRows.forEach((row) => {
+      googleStories.push(googleRowToStory(row.toObject(), 'Hivebrite'));
     });
 
     const cventDoc = new GoogleSpreadsheet(cventSheetId, auth);
@@ -50,7 +50,7 @@ export default async (req: Request, context: Context) => {
     const cventRows = await cventSheet.getRows();
     
     cventRows.forEach((row) => {
-      googleStories.push(googleRowToStory(row.toObject(), 'CVent'));
+      googleStories.push(googleRowToStory(row.toObject(), 'Cvent'));
     });
 
     const storyblokContent = new StoryblokClient({
@@ -80,7 +80,7 @@ export default async (req: Request, context: Context) => {
       data.set(storyId, value);
     });
     data.forEach(async ({ google, storyblok }, id) => {
-      if (!!google && !!storyblok) {
+      if (google && storyblok) {
         // Compare and update as needed then publish
         if (!compareStoryContent(google.content, storyblok.content)) {
           return;
@@ -92,15 +92,15 @@ export default async (req: Request, context: Context) => {
         });
       }
 
-      if (!!google) {
+      if (google) {
         // Post to SB then publish
-        await storyblokManagement.post(`/spaces/:space_id/stories/`, {
+        await storyblokManagement.post(`spaces/${spaceId}/stories/`, {
           story: google,
           publish: 1,
         })
       }
 
-      if (!!storyblok) {
+      if (storyblok) {
         // Unpublish
         await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
       }

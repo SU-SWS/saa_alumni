@@ -105,7 +105,7 @@ const googleDateTimeToStoryDateTime = (date, time) => {
 
 export const googleRowToStoryContent = (data, source) => {
   const {
-    externalId,
+    externalID: externalId,
     title,
     startDate,
     endDate,
