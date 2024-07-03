@@ -5,7 +5,6 @@ import { useCurrentRefinements, useNumericMenu } from 'react-instantsearch';
 import { ThemeProvider, createTheme } from '@mui/material';
 import { DateTime } from 'luxon';
 import { FilterAccordion } from '../FilterAccordion';
-import { luxonToday } from '../../../../utilities/dates';
 import { RadioInput } from './RadioInput';
 
 const theme = createTheme({
@@ -72,14 +71,7 @@ export const DateFilter = () => {
     attribute: 'startTimestamp',
     items: [{}],
   });
-  const midnight = useMemo(
-    () =>
-      luxonToday()
-        .setZone('America/Los_Angeles')
-        .plus({ days: 1 })
-        .startOf('day'),
-    []
-  );
+  const midnight = useMemo(() => DateTime.local().endOf('day'), []);
   const getTimestamp = useCallback(
     (daysFromNow) => midnight.plus({ days: daysFromNow }).toUnixInteger(),
     [midnight]
@@ -153,9 +145,7 @@ export const DateFilter = () => {
       return null;
     }
 
-    return DateTime.fromSeconds(startRefinement.value, {
-      zone: 'America/Los_Angeles',
-    }).startOf('day');
+    return DateTime.fromSeconds(startRefinement.value).toLocal().startOf('day');
   }, [startRefinement]);
 
   const dateEnd = useMemo(() => {
@@ -163,9 +153,7 @@ export const DateFilter = () => {
       return null;
     }
 
-    return DateTime.fromSeconds(endRefinement.value, {
-      zone: 'America/Los_Angeles',
-    }).endOf('day');
+    return DateTime.fromSeconds(endRefinement.value).toLocal().endOf('day');
   }, [endRefinement]);
 
   const handleDateStartChange = useCallback(
@@ -302,7 +290,7 @@ export const DateFilter = () => {
                     minDate={midnight}
                     maxDate={dateEnd || midnight.plus({ days: 90 })}
                     onChange={handleDateStartChange}
-                    timezone="America/Los_Angeles"
+                    timezone="system"
                     slotProps={{
                       textField: {
                         helperText: startValidationError,
@@ -315,7 +303,7 @@ export const DateFilter = () => {
                     minDate={dateStart || midnight}
                     maxDate={midnight.plus({ days: 90 })}
                     onChange={handleDateEndChange}
-                    timezone="America/Los_Angeles"
+                    timezone="system"
                     slotProps={{
                       textField: {
                         helperText: endValidationError,

@@ -2,18 +2,10 @@ import React, { useMemo } from 'react';
 import { useCurrentRefinements } from 'react-instantsearch';
 import { DateTime } from 'luxon';
 import { Chip } from './Chip';
-import { luxonToday } from '../../../../utilities/dates';
 
 export const ChipsComponent = () => {
   const { items, canRefine } = useCurrentRefinements();
-  const midnight = useMemo(
-    () =>
-      luxonToday()
-        .setZone('America/Los_Angeles')
-        .plus({ days: 1 })
-        .startOf('day'),
-    []
-  );
+  const midnight = useMemo(() => DateTime.local().endOf('day'), []);
 
   const processedItems = useMemo(
     () =>
@@ -25,18 +17,14 @@ export const ChipsComponent = () => {
           const endRefinement = item.refinements.find(
             (r) => r.operator === '<='
           );
-          const now = DateTime.local({ zone: 'America/Los_Angeles' });
+          const now = DateTime.local();
 
           const startLuxonValue = startRefinement
-            ? DateTime.fromSeconds(startRefinement.value, {
-                zone: 'America/Los_Angeles',
-              })
+            ? DateTime.fromSeconds(startRefinement.value).toLocal()
             : now;
 
           const endLuxonValue = endRefinement
-            ? DateTime.fromSeconds(endRefinement.value, {
-                zone: 'America/Los_Angeles',
-              })
+            ? DateTime.fromSeconds(endRefinement.value).toLocal()
             : midnight.plus({ days: 90 });
 
           const startLabel = startLuxonValue.hasSame(now, 'day')
