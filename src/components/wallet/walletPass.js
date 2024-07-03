@@ -6,36 +6,34 @@ import QRCode from 'qrcode.react';
 import AppleWalletBadge from '../../images/apple-wallet-badge.svg';
 import AndroidWalletBadge from '../../images/android-wallet-badge.svg';
 import AuthContext from '../../contexts/AuthContext';
+import getSiteUrl from '../../utilities/getSiteUrl';
 
 const WalletPass = (props) => {
   const { blok } = props;
+  const location = typeof window !== `undefined` ? window.location : {};
+  const siteUrl = getSiteUrl();
 
-  const deviceParam = new URLSearchParams(window.location.search).get('device');
+  const deviceParam = new URLSearchParams(location.search).get('device');
   const [membershipNumber, setMembershipNumber] = useState('');
   const [mobileSelected, setMobileSelected] = useState(isIOS || isAndroid);
   const [qrUrl, setQrUrl] = useState('');
-  const [iosButtonUrl] = useState(
-    `${window.location.origin}/api/walletpass/ios`
-  );
+  const iosButtonUrl = `${siteUrl}/api/walletpass/ios`;
   const [androidButtonUrl, setAndroidButtonUrl] = useState();
 
   const auth = useContext(AuthContext);
 
   const getAndroidButtonUrl = async () => {
-    const response = await fetch(
-      `${window.location.origin}/api/walletpass/android`
-    );
+    const response = await fetch(`${siteUrl}/api/walletpass/android`);
     const url = await response.text();
     return url;
   };
 
   const handleDeviceChange = async (e) => {
     const { value } = e.target;
-    const url = new URL(window.location.href);
+    const url = new URL(location.href);
 
     url.searchParams.set('redirect', 'true');
     url.searchParams.set('device', value);
-    console.log(url.toString());
     setQrUrl(url.toString());
 
     setMobileSelected(true);
@@ -66,23 +64,23 @@ const WalletPass = (props) => {
     if (isAndroid) {
       getAndroidButtonUrl().then((url) => setAndroidButtonUrl(url));
     }
-  }, []);
+  });
 
   // Redirect to Wallet Pass URL
   useEffect(() => {
     async function redirectToPassURL() {
       if (deviceParam && membershipNumber) {
         if (deviceParam === 'ios') {
-          window.location.href = iosButtonUrl;
+          location.href = iosButtonUrl;
         } else if (deviceParam === 'android') {
           const url = await getAndroidButtonUrl();
-          window.location.href = url;
+          location.href = url;
         }
       }
     }
 
     redirectToPassURL();
-  }, [deviceParam, membershipNumber, iosButtonUrl]);
+  });
 
   let walletContent;
 

@@ -21,7 +21,7 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
           wwdr: process.env.APPLE_WWDR_CERTIFICATE,
           signerCert: process.env.PASS_SIGNING_CERTIFICATE,
           signerKey: process.env.PASS_SIGNING_CERTIFICATE_KEY,
-          signerKeyPassphrase: 'test', // This is valid, process.env.PASS_CERTIFICATE_PASSWORD has an invalid value
+          signerKeyPassphrase: process.env.PASS_CERTIFICATE_PASSWORD,
         },
       },
       {
