@@ -7,10 +7,13 @@ import AppleWalletBadge from '../../images/apple-wallet-badge.svg';
 import AndroidWalletBadge from '../../images/android-wallet-badge.svg';
 import AuthContext from '../../contexts/AuthContext';
 import getSiteUrl from '../../utilities/getSiteUrl';
+import SbLink from '../../utilities/sbLink';
 
 const WalletPass = (props) => {
   const { blok } = props;
   const location = typeof window !== `undefined` ? window.location : {};
+  const buttonClasses =
+    'su-inline-block su-w-fit su-group su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20';
   const siteUrl = getSiteUrl();
 
   const deviceParam = new URLSearchParams(location.search).get('device');
@@ -82,6 +85,18 @@ const WalletPass = (props) => {
     redirectToPassURL();
   });
 
+  const joinMembershipContent = () => (
+    <p className="su-text-center su-text-m">
+      Unlock this benefit and upgraded versions of select perks—while also
+      supporting programs for students and alums—with a Stanford Alumni
+      Association (SAA) membership.
+      <div className="su-mt-20">
+        <SbLink link={{ url: '/membership/join' }} classes={buttonClasses}>
+          Join now
+        </SbLink>
+      </div>
+    </p>
+  );
   let walletContent;
 
   if (isIOS) {
@@ -134,7 +149,7 @@ const WalletPass = (props) => {
   }
 
   if (deviceParam) {
-    if (!membershipNumber) {
+    if (!auth?.userProfile) {
       return (
         <div>
           <p className="su-text-center su-text-m">
@@ -142,6 +157,10 @@ const WalletPass = (props) => {
           </p>
         </div>
       );
+    }
+
+    if (!membershipNumber) {
+      return <div>{joinMembershipContent()}</div>;
     }
 
     return (
@@ -154,13 +173,15 @@ const WalletPass = (props) => {
 
   return (
     <SbEditable content={blok}>
-      {membershipNumber ? (
-        <div className="su-mt-30">{walletContent}</div>
-      ) : (
+      {!auth?.userProfile && (
         <p className="su-text-center su-text-m">
           Please log in to add your membership card to your wallet.
         </p>
       )}
+      {auth?.userProfile && !membershipNumber && (
+        <div>{joinMembershipContent()}</div>
+      )}
+      {membershipNumber && <div className="su-mt-30">{walletContent}</div>}
     </SbEditable>
   );
 };
