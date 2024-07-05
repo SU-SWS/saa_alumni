@@ -222,11 +222,6 @@ export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
       <FilterAccordion
         expanded={expanded}
         label="Date"
-        resetLabel={
-          <>
-            Reset <SrOnlyText>date</SrOnlyText> filter
-          </>
-        }
         onToggleExpanded={onToggleExpanded}
         showReset={!isAllChecked}
         onReset={() => {

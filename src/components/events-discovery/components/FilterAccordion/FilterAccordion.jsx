@@ -1,6 +1,7 @@
 import React, { useId } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import { dcnb } from 'cnbuilder';
+import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
 /**
  * @typedef {object} Props
@@ -21,7 +22,11 @@ export const FilterAccordion = ({
   expanded,
   showReset,
   label,
-  resetLabel = 'Reset filter',
+  resetLabel = (
+    <>
+      Reset <SrOnlyText>{label}</SrOnlyText> filter
+    </>
+  ),
   onToggleExpanded = () => null,
   onReset = () => null,
   children,
