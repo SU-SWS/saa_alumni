@@ -7,7 +7,7 @@ import { dcnb } from 'cnbuilder';
  * @property {boolean} expanded
  * @property {boolean} showReset
  * @property {string} label
- * @property {string} [resetLabel]
+ * @property {React.ReactNode} [resetLabel]
  * @property {() => void} [onToggleExpanded]
  * @property {() => void} [onReset]
  * @property {React.ReactNode} children

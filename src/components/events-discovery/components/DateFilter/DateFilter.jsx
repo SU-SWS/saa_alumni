@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import { DateTime } from 'luxon';
 import { FilterAccordion } from '../FilterAccordion';
 import { RadioInput } from './RadioInput';
+import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
 const theme = createTheme({
   typography: {
@@ -221,6 +222,11 @@ export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
       <FilterAccordion
         expanded={expanded}
         label="Date"
+        resetLabel={
+          <>
+            Reset <SrOnlyText>date</SrOnlyText> filter
+          </>
+        }
         onToggleExpanded={onToggleExpanded}
         showReset={!isAllChecked}
         onReset={() => {

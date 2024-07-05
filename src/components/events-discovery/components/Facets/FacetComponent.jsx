@@ -5,6 +5,7 @@ import {
   useRefinementList,
 } from 'react-instantsearch';
 import { FilterAccordion } from '../FilterAccordion';
+import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
 /**
  * @typedef {object} Props
@@ -37,6 +38,11 @@ export const FacetComponent = ({
     <FilterAccordion
       expanded={expanded}
       label={label}
+      resetLabel={
+        <>
+          Reset <SrOnlyText>{label}</SrOnlyText> filter
+        </>
+      }
       onReset={refine}
       onToggleExpanded={onToggleExpanded}
       showReset={hasRefinedItems}
