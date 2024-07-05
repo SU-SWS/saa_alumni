@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import { DateTime } from 'luxon';
 import { FilterAccordion } from '../FilterAccordion';
 import { RadioInput } from './RadioInput';
+import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
 const theme = createTheme({
   typography: {
@@ -56,14 +57,14 @@ const theme = createTheme({
 /**
  * @typedef {object} Props
  * @property {boolean} expanded
- * @property {() => void} [toggleFacet]
+ * @property {() => void} [onToggleExpanded]
  */
 
 /**
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const DateFilter = ({ expanded, toggleFacet = () => null }) => {
+export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
   const { items } = useCurrentRefinements({
     includedAttributes: ['startTimestamp'],
   });
@@ -221,7 +222,7 @@ export const DateFilter = ({ expanded, toggleFacet = () => null }) => {
       <FilterAccordion
         expanded={expanded}
         label="Date"
-        onToggle={toggleFacet}
+        onToggleExpanded={onToggleExpanded}
         showReset={!isAllChecked}
         onReset={() => {
           handleOptionsSelect();
@@ -285,6 +286,8 @@ export const DateFilter = ({ expanded, toggleFacet = () => null }) => {
                     maxDate={dateEnd || midnight.plus({ days: 90 })}
                     onChange={handleDateStartChange}
                     timezone="system"
+                    views={['day']}
+                    format="MM/dd/yyyy"
                     slotProps={{
                       textField: {
                         helperText: startValidationError,
@@ -298,6 +301,8 @@ export const DateFilter = ({ expanded, toggleFacet = () => null }) => {
                     maxDate={midnight.plus({ days: 90 })}
                     onChange={handleDateEndChange}
                     timezone="system"
+                    views={['day']}
+                    format="MM/dd/yyyy"
                     slotProps={{
                       textField: {
                         helperText: endValidationError,

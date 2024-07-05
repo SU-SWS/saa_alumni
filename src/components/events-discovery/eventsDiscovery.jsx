@@ -14,6 +14,7 @@ import { DesktopFilter, MobileFilter } from './components/Filters';
 import { Pagination } from './components/Pagination';
 import { StatusHeader } from './components/StatusHeader';
 import { Hit } from './components/Hit/Hit';
+import { FacetProvider } from './components/Facets/FacetCtx';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
@@ -32,30 +33,32 @@ const EventDiscoveryContent = () => {
   const isStalled = useMemo(() => status === 'stalled', [status]);
 
   return (
-    <div className="su-cc lg:su-flex lg:su-gap-x-40 su-mx-12">
-      <div className="su-hidden lg:su-block su-flex-none su-w-300">
-        <DesktopFilter />
-      </div>
-      <div className="su-flex su-flex-col su-gap-y-20 su-w-full">
-        <StatusHeader hitsPerPage={hitsPerPage} />
-        <div className="su-flex su-flex-none su-flex-row">
-          <ChipsComponent />
-          <MobileFilter />
+    <FacetProvider>
+      <div className="su-cc lg:su-flex lg:su-gap-x-40 su-mx-12">
+        <div className="su-hidden lg:su-block su-flex-none su-w-300">
+          <DesktopFilter />
         </div>
-        {isStalled && <LoadingIndicator />}
-        <NoResultsBoundary fallback={<NoResultsComponent />}>
-          <Hits
-            hitComponent={Hit}
-            classNames={{
-              root: `${isStalled ? 'su-opacity-50' : ''}`,
-              list: 'su-list-none su-pl-0 su-grid su-grid-cols-1 su-w-full',
-              item: 'su-mb-0 su-w-full su-border-b su-pb-30 su-mb-30 su-px-20',
-            }}
-          />
-          <Pagination />
-        </NoResultsBoundary>
+        <div className="su-flex su-flex-col su-gap-y-20 su-w-full">
+          <StatusHeader hitsPerPage={hitsPerPage} />
+          <div className="su-flex su-flex-none su-flex-row">
+            <ChipsComponent />
+            <MobileFilter />
+          </div>
+          {isStalled && <LoadingIndicator />}
+          <NoResultsBoundary fallback={<NoResultsComponent />}>
+            <Hits
+              hitComponent={Hit}
+              classNames={{
+                root: `${isStalled ? 'su-opacity-50' : ''}`,
+                list: 'su-list-none su-pl-0 su-grid su-grid-cols-1 su-w-full',
+                item: 'su-mb-0 su-w-full su-border-b su-pb-30 su-mb-30 su-px-20',
+              }}
+            />
+            <Pagination />
+          </NoResultsBoundary>
+        </div>
       </div>
-    </div>
+    </FacetProvider>
   );
 };
 
