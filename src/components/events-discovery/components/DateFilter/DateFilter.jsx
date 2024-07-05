@@ -285,6 +285,8 @@ export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
                     maxDate={dateEnd || midnight.plus({ days: 90 })}
                     onChange={handleDateStartChange}
                     timezone="system"
+                    views={['day']}
+                    format="MM/dd/yyyy"
                     slotProps={{
                       textField: {
                         helperText: startValidationError,
@@ -298,6 +300,8 @@ export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
                     maxDate={midnight.plus({ days: 90 })}
                     onChange={handleDateEndChange}
                     timezone="system"
+                    views={['day']}
+                    format="MM/dd/yyyy"
                     slotProps={{
                       textField: {
                         helperText: endValidationError,
