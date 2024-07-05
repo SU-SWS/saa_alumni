@@ -6,6 +6,7 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import { DateTime } from 'luxon';
 import { FilterAccordion } from '../FilterAccordion';
 import { RadioInput } from './RadioInput';
+import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
 const theme = createTheme({
   typography: {
@@ -285,6 +286,8 @@ export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
                     maxDate={dateEnd || midnight.plus({ days: 90 })}
                     onChange={handleDateStartChange}
                     timezone="system"
+                    views={['day']}
+                    format="MM/dd/yyyy"
                     slotProps={{
                       textField: {
                         helperText: startValidationError,
@@ -298,6 +301,8 @@ export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
                     maxDate={midnight.plus({ days: 90 })}
                     onChange={handleDateEndChange}
                     timezone="system"
+                    views={['day']}
+                    format="MM/dd/yyyy"
                     slotProps={{
                       textField: {
                         helperText: endValidationError,

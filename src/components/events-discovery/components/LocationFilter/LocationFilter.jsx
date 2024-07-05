@@ -18,6 +18,7 @@ export const LocationFilter = ({ expanded, onToggleExpanded }) => {
 
   const onlineOptionsFacet = getFacet('experience');
 
+  // TODO: Top-level location reset to be handled in DS-707
   return (
     <FilterAccordion
       expanded={expanded}

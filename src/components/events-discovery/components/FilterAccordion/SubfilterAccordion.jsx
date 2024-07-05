@@ -1,13 +1,14 @@
 import React, { useId } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import { dcnb } from 'cnbuilder';
+import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
 /**
  * @typedef {object} Props
  * @property {boolean} expanded
  * @property {boolean} showReset
  * @property {string} label
- * @property {string} [resetLabel]
+ * @property {React.ReactNode} [resetLabel]
  * @property {() => void} [onToggleExpanded]
  * @property {() => void} [onReset]
  * @property {React.ReactNode} children
@@ -19,8 +20,15 @@ import { dcnb } from 'cnbuilder';
  */
 export const SubfilterAccordion = ({
   expanded,
+  showReset,
   label,
-  onToggleExpanded,
+  resetLabel = (
+    <>
+      Reset <SrOnlyText>{label}</SrOnlyText> filter
+    </>
+  ),
+  onToggleExpanded = () => null,
+  onReset = () => null,
   children,
 }) => {
   const uniqueId = useId();
@@ -35,7 +43,7 @@ export const SubfilterAccordion = ({
         }
       )}
     >
-      <div>
+      <div className="su-relative">
         <h4 className="su-group su-text-3xl su-font-semibold su-mb-0">
           <button
             type="button"
@@ -55,6 +63,15 @@ export const SubfilterAccordion = ({
             />
           </button>
         </h4>
+        {showReset && (
+          <button
+            type="button"
+            className="su-absolute su-right-40 su-top-9 disabled:su-hidden su-text-2xl su-text-cardinal-red-light hocus:su-underline su-underline-offset-2 hover:su-cursor-pointer hocus:su-text-black"
+            onClick={onReset}
+          >
+            {resetLabel}
+          </button>
+        )}
       </div>
       <div
         id={uniqueId}
