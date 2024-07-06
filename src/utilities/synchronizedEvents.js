@@ -80,20 +80,11 @@ export const storyToAlgoliaEvent = (story) => {
   const hasValidLat = !!lat || lat === 0;
   const hasValidLng = !!lng || lng === 0;
   const geo = hasValidLat && hasValidLng ? { lat, lng } : null;
-  const { subject } = eventData;
-  const generalTags = subject.filter(
-    (s) => !s.endsWith('; Diversity/Inclusion')
-  );
-  const identityTags = subject
-    .filter((s) => s.endsWith('; Diversity/Inclusion'))
-    .map((s) => s.replace('; Diversity/Inclusion', ''));
 
   return {
     objectID: storyId,
     startTimestamp,
     endTimestamp,
-    generalTags,
-    identityTags,
     _geoloc: geo,
     ...mergedEventData,
   };
