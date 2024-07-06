@@ -65,9 +65,9 @@ export default async (req: Request) => {
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories/events/sync', { content_type: 'synchronizedEvent', level: 1 }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories/events/sync', { content_type: 'synchronizedEvent', level: 1, version: 'draft' }) ?? [];
-    const sbEvents = [...sbPublishedEvents?.map((s) => s.data.story), ...sbUnpublishedEvents?.map((s) => s.data.story)];
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: '/events/sync/', content_type: 'synchronizedEvent', level: 1 }) ?? [];
+    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: '/events/sync/', content_type: 'synchronizedEvent', level: 1, version: 'draft' }) ?? [];
+    const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s.data.story, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s.data.story, isPublished: false }))];
 
     const data = new Map();
     googleStories.forEach((event) => {
@@ -85,14 +85,14 @@ export default async (req: Request) => {
     });
     data.forEach(async ({ google, storyblok }, id) => {
       if (google && storyblok) {
-        // Compare and update as needed then publish
+        // Compare and update as needed then publish if already published
         if (!compareStoryContent(google.content, storyblok.content)) {
           return;
         }
 
         await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
           story: google,
-          publish: 1,
+          publish: storyblok.isPublished ? 1 : 0,
         });
       }
 
