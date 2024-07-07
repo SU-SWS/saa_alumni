@@ -64,6 +64,8 @@ export default async (req: Request) => {
       googleStories.push(googleRowToStory(row.toObject(), 'Cvent'));
     });
 
+    console.log('test: ', { googleStories });
+
     const storyblokContent = new StoryblokClient({
       accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
     });
@@ -80,9 +82,11 @@ export default async (req: Request) => {
 
     const data = new Map();
     googleStories.forEach((event) => {
+      console.log('Google event: ', { event });
       data.set(event.externalId, { google: event, storyblok: undefined });
     });
     sbEvents.forEach((story) => {
+      console.log('SB story: ', { story });
       const storyId = story.uuid;
       const existing = data.get(storyId);
 
@@ -94,6 +98,7 @@ export default async (req: Request) => {
     });
     data.forEach(async ({ google, storyblok }, id) => {
       console.log('Processing: ', id);
+      console.log('test: ', { google, storyblok });
       if (google && storyblok) {
         console.log('Exists in Google and Storyblok...');
         // Compare and update as needed then publish if already published
