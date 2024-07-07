@@ -168,7 +168,7 @@ export const googleRowToStoryContent = (data, source) => {
 };
 
 export const googleRowToStory = (row, source) => {
-  const { title, externalId } = row;
+  const { title, externalID: externalId } = row;
   const content = googleRowToStoryContent(row, source);
   const slug = `${slugify(externalId)}-${slugify(title)}`;
 

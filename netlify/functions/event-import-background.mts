@@ -80,7 +80,7 @@ export default async (req: Request) => {
 
     const data = new Map();
     googleStories.forEach((event) => {
-      data.set(event.externalID, { google: event, storyblok: undefined });
+      data.set(event.externalId, { google: event, storyblok: undefined });
     });
     sbEvents.forEach((story) => {
       const storyId = story.uuid;
