@@ -64,8 +64,6 @@ export default async (req: Request) => {
       googleStories.push(googleRowToStory(row.toObject(), 'Cvent'));
     });
 
-    console.log('test: ', { googleStories });
-
     const storyblokContent = new StoryblokClient({
       accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
     });
@@ -75,19 +73,19 @@ export default async (req: Request) => {
     });
 
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: '/events/sync/', content_type: 'synchronizedEvent', level: 1 }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: '/events/sync/', content_type: 'synchronizedEvent', level: 1, version: 'draft' }) ?? [];
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent', level: 1 }) ?? [];
+    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent', level: 1, version: 'draft' }) ?? [];
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s.data.story, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s.data.story, isPublished: false }))];
     console.log('Fetching Storyblok events done!');
 
     const data = new Map();
     googleStories.forEach((event) => {
       console.log('Google event: ', { event });
-      data.set(event.externalId, { google: event, storyblok: undefined });
+      data.set(event.content.externalId, { google: event, storyblok: undefined });
     });
     sbEvents.forEach((story) => {
       console.log('SB story: ', { story });
-      const storyId = story.uuid;
+      const storyId = story.content.externalId;
       const existing = data.get(storyId);
 
       const value = existing
