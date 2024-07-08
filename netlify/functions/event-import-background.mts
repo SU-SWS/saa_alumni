@@ -96,7 +96,6 @@ export default async (req: Request) => {
     const OldCutoff = DateTime.utc().startOf('day').minus({ days: 2 });
 
     googleStories.forEach((event) => {
-      console.log('Google event: ', { event });
       const id = event?.content?.externalId;
 
       if (id) {
@@ -106,7 +105,6 @@ export default async (req: Request) => {
       }
     });
     sbEvents.forEach((story) => {
-      console.log('SB story: ', { story });
       const id = story.content.externalId;
 
       if (id) {
@@ -210,18 +208,6 @@ export default async (req: Request) => {
           || story.content.startOverride 
           || story.content.start
         ) < OldCutoff;
-
-        console.log({ 
-          parsed: luxonDate(
-            story.content.endOverride 
-            || story.content.end 
-            || story.content.startOverride 
-            || story.content.start), 
-          endOverride: story.content.endOverride, 
-          end: story.content.end, 
-          startOverride: story.content.startOverride,
-          start: story.content.start,
-        });
 
         if (isOld) {
           console.log('Story is old. Moving...');
