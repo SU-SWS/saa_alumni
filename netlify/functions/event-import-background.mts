@@ -159,9 +159,9 @@ export default async (req: Request) => {
         if (storyblok) {
           const isOld = luxonDate(
             storyblok.content.endOverride 
-            ?? storyblok.content.end 
-            ?? storyblok.content.startOverride 
-            ?? storyblok.content.start
+            || storyblok.content.end 
+            || storyblok.content.startOverride 
+            || storyblok.content.start
           ) < OldCutoff;
 
           if (storyblok.isPublished) {
@@ -199,17 +199,17 @@ export default async (req: Request) => {
       try {
         const isOld = luxonDate(
           story.content.endOverride 
-          ?? story.content.end 
-          ?? story.content.startOverride 
-          ?? story.content.start
+          || story.content.end 
+          || story.content.startOverride 
+          || story.content.start
         ) < OldCutoff;
 
         console.log({ 
           parsed: luxonDate(
             story.content.endOverride 
-            ?? story.content.end 
-            ?? story.content.startOverride 
-            ?? story.content.start), 
+            || story.content.end 
+            || story.content.startOverride 
+            || story.content.start), 
           endOverride: story.content.endOverride, 
           end: story.content.end, 
           startOverride: story.content.startOverride,
