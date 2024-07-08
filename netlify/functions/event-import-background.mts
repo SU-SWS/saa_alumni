@@ -78,6 +78,8 @@ export default async (req: Request) => {
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s.data.story, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s.data.story, isPublished: false }))];
     console.log('Fetching Storyblok events done!');
 
+    console.log({ sbPublishedEvents, sbUnpublishedEvents });
+
     const data = new Map();
     googleStories.forEach((event) => {
       console.log('Google event: ', { event });
