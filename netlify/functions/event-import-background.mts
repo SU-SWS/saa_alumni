@@ -162,6 +162,7 @@ export default async (req: Request) => {
           }
           console.log('Posted!');
         } else if (storyblok) {
+          console.log('Exists in Storyblok only.');
           const isOld = luxonDate(
             storyblok.content.endOverride 
             || storyblok.content.end 
@@ -171,7 +172,7 @@ export default async (req: Request) => {
 
           if (storyblok.isPublished) {
             // Unpublish
-            console.log('Exists in Storyblok only. Unpublishing...');
+            console.log('Unpublishing...');
             if (run) {
               await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
             }
