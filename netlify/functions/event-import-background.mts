@@ -22,6 +22,14 @@ export default async (req: Request) => {
       throw new Error('Secret incorrect');
     }
 
+    // stop, test, or run
+    const mode = process.env.EVENT_IMPORT_MODE ?? 'stop';
+
+    if (mode === 'stop') {
+      throw new Error('Import mode set to "stop"');
+    }
+
+    const run = mode !== 'run';
     const spaceId = process.env.SPACE_ID ?? '';
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? '';
     const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY ?? '';
@@ -82,6 +90,10 @@ export default async (req: Request) => {
 
     const syncedEvents = new Map();
     const manualEvents = new Map();
+    // We can't be too aggressive with the cutoff due to timezones.
+    // We'll consider anything midnight (UTC) - 2 as "old" for the sync purposes
+    // and do some dynamic date filtering in the front end.
+    const OldCutoff = DateTime.utc().startOf('day').minus({ days: 2 });
 
     googleStories.forEach((event) => {
       console.log('Google event: ', { event });
@@ -109,87 +121,121 @@ export default async (req: Request) => {
         manualEvents.set(story.id, story);
       }
     });
+
     syncedEvents.forEach(async ({ google, storyblok }, id) => {
       console.log('>>> Processing: ', id);
-      if (google && storyblok) {
-        console.log('Exists in Google and Storyblok...');
-        // Compare and update as needed then publish if already published
-        if (!compareStoryContent(google.content, storyblok.content)) {
-          console.log('No changes needed.');
-          console.log('Processing complete: ', id);
-          return;
+      try {
+        if (google && storyblok) {
+          console.log('Exists in Google and Storyblok...');
+          // Compare and update as needed then publish if already published
+          if (!compareStoryContent(google.content, storyblok.content)) {
+            console.log('No changes needed.');
+            console.log('Processing complete: ', id);
+            return;
+          }
+
+          console.log('Changes detected. Syncing changes to Storyblok...');
+          if (run) {
+            await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+              story: google,
+              publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
+            });
+          }
+          console.log('Synced!');
         }
 
-        console.log('Changes detected. Syncing changes to Storyblok...');
-        // await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
-        //   story: google,
-        //   publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
-        // });
-        console.log('Synced!');
-      }
-
-      if (google) {
-        console.log('Exists in Google only. Posting to Storyblok...');
-        // Post to SB then publish
-        // const res = await storyblokManagement.post(`spaces/${spaceId}/stories`, {
-        //   story: google,
-        //   publish: 1,
-        // });
-        // console.log({ res });
-        console.log('Posted!');
-      }
-
-      if (storyblok) {
-        const isOld = luxonDate(
-          storyblok.content.endOverride 
-          ?? storyblok.content.end 
-          ?? storyblok.content.startOverride 
-          ?? storyblok.content.start
-        ) < DateTime.now();
-
-        if (storyblok.isPublished) {
-          // Unpublish
-          console.log('Exists in Storyblok only. Unpublishing...');
-          // await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
-          console.log('Unpublished!');
+        if (google) {
+          console.log('Exists in Google only. Posting to Storyblok...');
+          // Post to SB then publish
+          if (run) {
+            await storyblokManagement.post(`spaces/${spaceId}/stories`, {
+              story: google,
+              publish: 1,
+            });
+          }
+          console.log('Posted!');
         }
 
-        if (isOld) {
-          console.log('Story is old. Moving...');
-          // await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
-          //   story: { 
-          //     ...storyblok,
-          //     full_slug: `events/sync/archived/${storyblok.slug}`,
-          //   },
-          // });
-          console.log('Unpublished!');
+        if (storyblok) {
+          const isOld = luxonDate(
+            storyblok.content.endOverride 
+            ?? storyblok.content.end 
+            ?? storyblok.content.startOverride 
+            ?? storyblok.content.start
+          ) < OldCutoff;
+
+          if (storyblok.isPublished) {
+            // Unpublish
+            console.log('Exists in Storyblok only. Unpublishing...');
+            if (run) {
+              await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+            }
+            console.log('Unpublished!');
+          }
+
+          if (isOld) {
+            console.log('Story is old. Moving...');
+            if (run) {
+              await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+                story: { 
+                  ...storyblok,
+                  full_slug: `events/sync/archived/${storyblok.slug}`,
+                },
+              });
+            }
+            console.log('Unpublished!');
+          }
         }
+      } catch(err) {
+        console.error('Error during proccessing: ', err);
       }
 
       console.log('Processing complete: ', id);
     });
+
     manualEvents.forEach(async (story, id) => {
       console.log('>>> Processing Manual Event: ', id);
-      const isOld = luxonDate(
-        story.content.endOverride 
-        ?? story.content.end 
-        ?? story.content.startOverride 
-        ?? story.content.start
-      ) < DateTime.now();
 
-      if (isOld) {
-        console.log('Story is old. Moving...');
-        // await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
-        //   story: { 
-        //     ...storyblok,
-        //     full_slug: `events/sync/archived/${storyblok.slug}`,
-        //   },
-        // });
-        console.log('Unpublished!');
+      try {
+        const isOld = luxonDate(
+          story.content.endOverride 
+          ?? story.content.end 
+          ?? story.content.startOverride 
+          ?? story.content.start
+        ) < OldCutoff;
+
+        console.log({ 
+          parsed: luxonDate(
+            story.content.endOverride 
+            ?? story.content.end 
+            ?? story.content.startOverride 
+            ?? story.content.start), 
+          endOverride: story.content.endOverride, 
+          end: story.content.end, 
+          startOverride: story.content.startOverride,
+          start: story.content.start,
+        });
+
+        if (isOld) {
+          console.log('Story is old. Moving...');
+          if (run) {
+            await storyblokManagement.put(`spaces/${spaceId}/stories/${story.id}`, {
+              story: { 
+                ...story,
+                full_slug: `events/sync/archived/${story.slug}`,
+              },
+            });
+          }
+          console.log('Unpublished!');
+        }
+      } catch (err) {
+        console.error('Error during proccessing: ', err);
       }
+
+      console.log('Processing complete: ', id);
     });
   } catch (err) {
-    console.error(err);
+    console.error('Error: ', err);
   }
 
   console.log('=== END Import Background Function ===');
