@@ -101,7 +101,7 @@ export default async (req: Request) => {
       if (id) {
         syncedEvents.set(event.content.externalId, { google: event, storyblok: undefined });
       } else {
-        console.log('No ID for Google event: ', event);
+        console.log('No ID for Google event: ', event?.full_slug || event?.name || '???');
       }
     });
     sbEvents.forEach((story) => {
