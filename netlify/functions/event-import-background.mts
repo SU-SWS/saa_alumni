@@ -140,7 +140,12 @@ export default async (req: Request) => {
       }
 
       if (storyblok) {
-        const isOld = luxonDate(storyblok.content.end ?? storyblok.content.start) < DateTime.now();
+        const isOld = luxonDate(
+          storyblok.content.endOverride 
+          ?? storyblok.content.end 
+          ?? storyblok.content.startOverride 
+          ?? storyblok.content.start
+        ) < DateTime.now();
 
         if (storyblok.isPublished) {
           // Unpublish
@@ -165,7 +170,13 @@ export default async (req: Request) => {
     });
     manualEvents.forEach(async (story, id) => {
       console.log('>>> Processing Manual Event: ', id);
-      const isOld = luxonDate(story.content.end ?? story.content.start) < DateTime.now();
+      const isOld = luxonDate(
+        story.content.endOverride 
+        ?? story.content.end 
+        ?? story.content.startOverride 
+        ?? story.content.start
+      ) < DateTime.now();
+
       if (isOld) {
         console.log('Story is old. Moving...');
         // await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
