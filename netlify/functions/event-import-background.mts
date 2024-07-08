@@ -75,26 +75,34 @@ export default async (req: Request) => {
     console.log('Fetching Storyblok events...');
     const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', excluding_slugs: 'events/sync/archived/*', content_type: 'synchronizedEvent' }) ?? [];
     const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', excluding_slugs: 'events/sync/archived/*', content_type: 'synchronizedEvent', version: 'draft' }) ?? [];
-    const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s.data, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s.data, isPublished: false }))];
+    const sbEvents = [...sbPublishedEvents.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents.map((s) => ({ ...s, isPublished: false }))];
     console.log('Fetching Storyblok events done!');
-
-    console.log({ sbPublishedEvents, sbUnpublishedEvents });
 
     const data = new Map();
     googleStories.forEach((event) => {
       console.log('Google event: ', { event });
-      data.set(event.content.externalId, { google: event, storyblok: undefined });
+      const id = event?.content?.externalId;
+
+      if (id) {
+        data.set(event.content.externalId, { google: event, storyblok: undefined });
+      } else {
+        console.log('No ID for Google event: ', event);
+      }
     });
     sbEvents.forEach((story) => {
       console.log('SB story: ', { story });
-      const storyId = story.content.externalId;
-      const existing = data.get(storyId);
+      const id = story.content.externalId;
 
-      const value = existing
-        ? { ...existing, storyblok: story }
-        : { google: undefined, storyblok: story }
+      if (id) {
+        const existing = data.get(id);
+        const value = existing
+          ? { ...existing, storyblok: story }
+          : { google: undefined, storyblok: story }
 
-      data.set(storyId, value);
+        data.set(id, value);
+      } else {
+        console.log('No ID for SB event: ', story);
+      }
     });
     data.forEach(async ({ google, storyblok }, id) => {
       console.log('Processing: ', id);
