@@ -73,8 +73,8 @@ export default async (req: Request) => {
     });
 
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent' }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent', version: 'draft' }) ?? [];
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', excluding_slugs: 'events/sync/archived/*', content_type: 'synchronizedEvent' }) ?? [];
+    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', excluding_slugs: 'events/sync/archived/*', content_type: 'synchronizedEvent', version: 'draft' }) ?? [];
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s.data.story, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s.data.story, isPublished: false }))];
     console.log('Fetching Storyblok events done!');
 
@@ -110,7 +110,7 @@ export default async (req: Request) => {
         console.log('Changes detected. Syncing changes to Storyblok...');
         await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
           story: google,
-          publish: storyblok.isPublished ? 1 : 0,
+          publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
         });
         console.log('Synced!');
       }
