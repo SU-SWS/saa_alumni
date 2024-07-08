@@ -142,9 +142,18 @@ export default async (req: Request) => {
             });
           }
           console.log('Synced!');
-        }
+        } else if (google) {
+          const isOld = luxonDate(
+            google.content.endOverride 
+            || google.content.end 
+            || google.content.startOverride 
+            || google.content.start
+          ) < OldCutoff;
 
-        if (google) {
+          if (isOld) {
+            throw new Error(`Story ${id} is too old to import`);
+          }
+
           console.log('Exists in Google only. Posting to Storyblok...');
           // Post to SB then publish
           if (run) {
@@ -154,9 +163,7 @@ export default async (req: Request) => {
             });
           }
           console.log('Posted!');
-        }
-
-        if (storyblok) {
+        } else if (storyblok) {
           const isOld = luxonDate(
             storyblok.content.endOverride 
             || storyblok.content.end 
