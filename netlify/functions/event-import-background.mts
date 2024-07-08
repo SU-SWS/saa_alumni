@@ -4,6 +4,8 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import StoryblokClient from 'storyblok-js-client';
 import { compareStoryContent, googleRowToStory } from '../../src/utilities/synchronizedEvents';
+import { luxonDate } from '../../src/utilities/dates';
+import { DateTime } from 'luxon';
 
 dotenv.config();
 
@@ -78,13 +80,15 @@ export default async (req: Request) => {
     const sbEvents = [...sbPublishedEvents.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents.map((s) => ({ ...s, isPublished: false }))];
     console.log('Fetching Storyblok events done!');
 
-    const data = new Map();
+    const syncedEvents = new Map();
+    const manualEvents = new Map();
+
     googleStories.forEach((event) => {
       console.log('Google event: ', { event });
       const id = event?.content?.externalId;
 
       if (id) {
-        data.set(event.content.externalId, { google: event, storyblok: undefined });
+        syncedEvents.set(event.content.externalId, { google: event, storyblok: undefined });
       } else {
         console.log('No ID for Google event: ', event);
       }
@@ -94,18 +98,19 @@ export default async (req: Request) => {
       const id = story.content.externalId;
 
       if (id) {
-        const existing = data.get(id);
+        const existing = syncedEvents.get(id);
         const value = existing
           ? { ...existing, storyblok: story }
           : { google: undefined, storyblok: story }
 
-        data.set(id, value);
+        syncedEvents.set(id, value);
       } else {
-        console.log('No ID for SB event: ', story);
+        console.log('No ID for SB event: ', story.full_slug);
+        manualEvents.set(story.id, story);
       }
     });
-    data.forEach(async ({ google, storyblok }, id) => {
-      console.log('Processing: ', id);
+    syncedEvents.forEach(async ({ google, storyblok }, id) => {
+      console.log('>>> Processing: ', id);
       if (google && storyblok) {
         console.log('Exists in Google and Storyblok...');
         // Compare and update as needed then publish if already published
@@ -135,13 +140,42 @@ export default async (req: Request) => {
       }
 
       if (storyblok) {
-        // Unpublish
-        console.log('Exists in Storyblok only. Unpublishing...');
-        // await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
-        console.log('Unpublished!');
+        const isOld = luxonDate(storyblok.content.end ?? storyblok.content.start) < DateTime.now();
+
+        if (storyblok.isPublished) {
+          // Unpublish
+          console.log('Exists in Storyblok only. Unpublishing...');
+          // await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+          console.log('Unpublished!');
+        }
+
+        if (isOld) {
+          console.log('Story is old. Moving...');
+          // await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+          //   story: { 
+          //     ...storyblok,
+          //     full_slug: `events/sync/archived/${storyblok.slug}`,
+          //   },
+          // });
+          console.log('Unpublished!');
+        }
       }
 
       console.log('Processing complete: ', id);
+    });
+    manualEvents.forEach(async (story, id) => {
+      console.log('>>> Processing Manual Event: ', id);
+      const isOld = luxonDate(story.content.end ?? story.content.start) < DateTime.now();
+      if (isOld) {
+        console.log('Story is old. Moving...');
+        // await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+        //   story: { 
+        //     ...storyblok,
+        //     full_slug: `events/sync/archived/${storyblok.slug}`,
+        //   },
+        // });
+        console.log('Unpublished!');
+      }
     });
   } catch (err) {
     console.error(err);
