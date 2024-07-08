@@ -73,8 +73,8 @@ export default async (req: Request) => {
     });
 
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent', level: 1 }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent', level: 1, version: 'draft' }) ?? [];
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent' }) ?? [];
+    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', content_type: 'synchronizedEvent', version: 'draft' }) ?? [];
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s.data.story, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s.data.story, isPublished: false }))];
     console.log('Fetching Storyblok events done!');
 
@@ -96,7 +96,6 @@ export default async (req: Request) => {
     });
     data.forEach(async ({ google, storyblok }, id) => {
       console.log('Processing: ', id);
-      console.log('test: ', { google, storyblok });
       if (google && storyblok) {
         console.log('Exists in Google and Storyblok...');
         // Compare and update as needed then publish if already published
@@ -117,10 +116,11 @@ export default async (req: Request) => {
       if (google) {
         console.log('Exists in Google only. Posting to Storyblok...');
         // Post to SB then publish
-        await storyblokManagement.post(`spaces/${spaceId}/stories/`, {
+        const res = await storyblokManagement.post(`spaces/${spaceId}/stories`, {
           story: google,
           publish: 1,
         });
+        console.log({ res });
         console.log('Posted!');
       }
 
