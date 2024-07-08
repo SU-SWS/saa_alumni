@@ -1,59 +1,51 @@
-:root {
-  --su-digital-red: #B1040E;
-}
-
-.image-gallery-left-nav .image-gallery-svg,
-.image-gallery-right-nav .image-gallery-svg {
-  width: 120px;
+.image-gallery {
+  @apply su-mx-auto xl:su-max-w-[1250px];
 }
 
 .image-gallery-svg path {
-  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.10);
+  @apply su-shadow-[5px_5px_20px_0_rgba(0,0,0,0.10)];
 }
 
 .image-gallery-icon:focus {
-  outline: 2px solid var(--su-digital-red);
+  @apply su-outline-digital-red;
 }
 
 .image-gallery-bullets .image-gallery-bullet:focus {
-  background: var(--su-digital-red);
-  border: 1px solid var(--su-digital-red);
+  @apply su-bg-digital-red su-border-digital-red;
 }
 
 .image-gallery-thumbnail.active,
 .image-gallery-thumbnail:focus {
-  border: 4px solid var(--su-digital-red);
+  @apply su-border-digital-red;
 }
 
 @media(hover: hover) and (pointer: fine) {
   .image-gallery-icon:hover {
-    color: var(--su-digital-red);
+    @apply su-text-digital-red;
   }
 
   .image-gallery-bullets .image-gallery-bullet:hover {
-    background: var(--su-digital-red);
-    border: 1px solid var(--su-digital-red);
+    @apply su-bg-digital-red su-border-digital-red;
   }
 
   .image-gallery-bullets .image-gallery-bullet.active:hover {
-    background: var(--su-digital-red);
+    @apply su-bg-digital-red;
   }
 
   .image-gallery-thumbnail:hover {
-    border: 4px solid var(--su-digital-red);
+    @apply su-border-digital-red;
   }
 }
 
 @media(max-width: 768px) {
-
   .image-gallery-thumbnail.active,
   .image-gallery-thumbnail:focus {
-    border: 3px solid var(--su-digital-red);
+    @apply su-border-digital-red;
   }
 }
 
 @media(hover: hover) and (pointer: fine) and (max-width: 768px) {
   .image-gallery-thumbnail:hover {
-    border: 3px solid var(--su-digital-red);
+    @apply su-border-digital-red;
   }
 }
