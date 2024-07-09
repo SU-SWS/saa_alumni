@@ -17,6 +17,10 @@ export default async (req: Request) => {
     const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
     const mode = process.env.DEPLOY_MODE ?? 'stop';
 
+    console.log({
+      deployUrl,
+    });
+
     if (mode === 'stop') {
       throw new Error('Deploy mode set to "stop"');
     }
