@@ -102,6 +102,8 @@ export default async (req: Request) => {
       const regions = await storyblok.get('cdn/datasource_entries', {
         datasource: 'synchronized-event-regions'
       });
+
+      console.log('Regions: ', { regions });
       const algoliaEvent = storyToAlgoliaEvent(story, regions);
       if (run) {
         await index.saveObject(algoliaEvent);
