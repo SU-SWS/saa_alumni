@@ -45,6 +45,8 @@ export default async (req: Request) => {
     }
 
     const data: SBWebhookPayload = await JSON.parse(rawData);
+
+    console.log('Recieved: ', { data });
     
     if (data.action !== 'published' && data.action !== 'unpublished') {
       // Trigger rebuild and stop
@@ -62,8 +64,6 @@ export default async (req: Request) => {
     const storyblok = new StoryblokClient({
       accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
     });
-
-    console.log('Recieved: ', { data });
 
     const version = data.action === 'unpublished' ? 'draft' : 'published';
     const story = await storyblok.getStory(data.full_slug, { version });
@@ -103,8 +103,7 @@ export default async (req: Request) => {
         datasource: 'synchronized-event-regions'
       });
 
-      console.log('Regions: ', { regions });
-      const algoliaEvent = storyToAlgoliaEvent(story, regions);
+      const algoliaEvent = storyToAlgoliaEvent(story, regions?.data?.datasource_entries);
       if (run) {
         await index.saveObject(algoliaEvent);
       }
