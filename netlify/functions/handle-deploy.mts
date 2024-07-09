@@ -63,6 +63,8 @@ export default async (req: Request) => {
       accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
     });
 
+    console.log('Recieved: ', { data });
+
     const version = data.action === 'unpublished' ? 'draft' : 'published';
     const story = await storyblok.getStory(data.full_slug, { version });
     const contentType = story?.data?.story?.content?.component;
