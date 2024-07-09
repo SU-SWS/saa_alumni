@@ -67,7 +67,7 @@ export default async (req: Request) => {
     const version = data.action === 'unpublished' ? 'draft' : 'published';
     const story = await storyblok.getStory(data.full_slug, { version });
 
-    console.log({ story });
+    console.log({ story: story?.data?.story });
 
     const isFolder = story?.data?.story?.is_folder;
     const contentType = story?.data?.story?.content?.component;
