@@ -4,6 +4,12 @@ import markdownToRichtextService from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
 
+const usRegions = [
+  'CA - Northern California',
+  'CA - Stanford Campus',
+  'CA - Bay Area',
+];
+
 const { markdownToRichtext } = markdownToRichtextService;
 const turndownService = new TurndownService();
 
@@ -65,7 +71,7 @@ export const mergeEventOverrides = (eventContent) => {
   return merged;
 };
 
-export const storyToAlgoliaEvent = (story) => {
+export const storyToAlgoliaEvent = (story, regionDataSource) => {
   const storyId = story.data.story.uuid;
   const eventData = story.data.story.content;
   const mergedEventData = mergeEventOverrides(eventData);
@@ -80,11 +86,28 @@ export const storyToAlgoliaEvent = (story) => {
   const hasValidLat = !!lat || lat === 0;
   const hasValidLng = !!lng || lng === 0;
   const geo = hasValidLat && hasValidLng ? { lat, lng } : null;
+  const { region } = mergedEventData;
+  let usRegion = null;
+  let intRegion = null;
+
+  if (region && regionDataSource) {
+    const regionDimension = regionDataSource?.find(
+      (ds) => ds.value === region
+    )?.dimension_value;
+
+    if (regionDimension === 'us') {
+      usRegion = region;
+    } else if (regionDimension === 'international') {
+      intRegion = region;
+    }
+  }
 
   return {
     objectID: storyId,
     startTimestamp,
     endTimestamp,
+    usRegion,
+    intRegion,
     _geoloc: geo,
     ...mergedEventData,
   };

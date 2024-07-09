@@ -84,7 +84,10 @@ export default async (req: Request) => {
 
     if (data.action === 'published') {
       // Upsert to Algolia (no rebuild)
-      const algoliaEvent = storyToAlgoliaEvent(story);
+      const regions = await storyblok.get('cdn/datasource_entries', {
+        datasource: 'synchronized-event-regions'
+      });
+      const algoliaEvent = storyToAlgoliaEvent(story, regions);
       await index.saveObject(algoliaEvent);
 
       console.log('Algolia upsert: ', storyId);
