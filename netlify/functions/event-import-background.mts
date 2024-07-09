@@ -82,9 +82,29 @@ export default async (req: Request) => {
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
+    const archiveCutoff = DateTime.utc().startOf('day').minus({ days: 180 }).toFormat('yyyy-MM-dd');
+
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', excluding_slugs: 'events/sync/archived/*', content_type: 'synchronizedEvent' }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { starts_with: 'events/sync/', excluding_slugs: 'events/sync/archived/*', content_type: 'synchronizedEvent', version: 'draft' }) ?? [];
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+      starts_with: 'events/sync/', 
+      excluding_slugs: 'events/sync/archived/*', 
+      content_type: 'synchronizedEvent' 
+    }) ?? [];
+    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+      starts_with: 'events/sync/', 
+      excluding_slugs: 'events/sync/archived/*', 
+      content_type: 'synchronizedEvent', 
+      version: 'draft' 
+    }) ?? [];
+    const oldArchivedEvents = await storyblokContent.getAll('cdn/stories', { 
+      starts_with: 'events/sync/archived/', 
+      filter_query: { __or: [
+        { end: { lt_date: archiveCutoff }},
+        { endOverride: { lt_date: archiveCutoff }}
+      ]}, 
+      content_type: 'synchronizedEvent', 
+      version: 'draft' 
+    }) ?? [];
     const sbEvents = [...sbPublishedEvents.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents.map((s) => ({ ...s, isPublished: false }))];
     console.log('Fetching Storyblok events done!');
 
@@ -227,6 +247,22 @@ export default async (req: Request) => {
       }
 
       console.log('Processing complete: ', id);
+    });
+
+    oldArchivedEvents.forEach(async (story) => {
+      console.log('>>> Processing expired archived event: ', story.id);
+
+      try {
+        console.log('Deleting...');
+        if (run) {
+          await storyblokManagement.delete(`spaces/${spaceId}/stories/${story.id}`, {});
+        }
+        console.log('Deleted!');
+      } catch (err) {
+        console.error('Error during processing: ', err);
+      }
+
+      console.log('Processing complete: ', story.id);
     });
   } catch (err) {
     console.error('Error: ', err);
