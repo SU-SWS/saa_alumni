@@ -29,7 +29,9 @@ export default async (req: Request) => {
       throw new Error('Import mode set to "stop"');
     }
 
-    const run = mode !== 'run';
+    console.log(`Running in ${mode} mode`);
+
+    const run = mode === 'run';
     const spaceId = process.env.SPACE_ID ?? '';
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? '';
     const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY ?? '';
