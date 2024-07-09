@@ -48,6 +48,8 @@ export default async (req: Request) => {
       throw new Error('Wrong signature');
     }
 
+    console.log('Raw data: ', { rawData });
+
     const data: SBWebhookPayload = await JSON.parse(rawData);
 
     console.log('Recieved: ', { data });
@@ -128,7 +130,7 @@ export default async (req: Request) => {
     }
     
   } catch (err) {
-    console.error('Error during deploy function: ', err);
+    // console.error('Error during deploy function: ', err);
   }
 
   console.log('=== END Deploy Background Function ===');
