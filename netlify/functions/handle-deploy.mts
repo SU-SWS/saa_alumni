@@ -17,10 +17,6 @@ export default async (req: Request) => {
     const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
     const mode = process.env.DEPLOY_MODE ?? 'stop';
 
-    console.log({
-      deployUrl,
-    });
-
     if (mode === 'stop') {
       throw new Error('Deploy mode set to "stop"');
     }
@@ -48,10 +44,7 @@ export default async (req: Request) => {
       throw new Error('Wrong signature');
     }
 
-    console.log('Raw data: ', { rawData });
-
     const data: SBWebhookPayload = await JSON.parse(rawData);
-
     console.log('Recieved: ', { data });
     
     if (data.action !== 'published' && data.action !== 'unpublished') {
@@ -73,10 +66,14 @@ export default async (req: Request) => {
 
     const version = data.action === 'unpublished' ? 'draft' : 'published';
     const story = await storyblok.getStory(data.full_slug, { version });
+
+    console.log({ story });
+
+    const isFolder = story?.data?.story?.is_folder;
     const contentType = story?.data?.story?.content?.component;
     const isEvent = contentType === 'synchronizedEvent';
 
-    if (!isEvent) {
+    if (isFolder || !isEvent) {
       // Trigger rebuild and stop
       if (run) {
         await fetch(deployUrl, { method: 'POST' });
@@ -130,7 +127,7 @@ export default async (req: Request) => {
     }
     
   } catch (err) {
-    // console.error('Error during deploy function: ', err);
+    console.error('Error during deploy function: ', err);
   }
 
   console.log('=== END Deploy Background Function ===');
