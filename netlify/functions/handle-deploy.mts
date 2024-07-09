@@ -15,6 +15,14 @@ export default async (req: Request) => {
     const signature = req.headers.get('webhook-signature') ?? '';
     const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
     const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
+    const mode = process.env.DEPLOY_MODE ?? 'stop';
+
+    if (mode === 'stop') {
+      throw new Error('Deploy mode set to "stop"');
+    }
+
+    const run = mode === 'run';
+    console.log(`Running in ${mode} mode`);
 
     if (!signature) {
       throw new Error('No signature');
@@ -40,7 +48,10 @@ export default async (req: Request) => {
     
     if (data.action !== 'published' && data.action !== 'unpublished') {
       // Trigger rebuild and stop
-      await fetch(deployUrl, { method: 'POST' });
+
+      if (run) {
+        await fetch(deployUrl, { method: 'POST' });
+      }
       console.log('Deploy triggered');
       console.log('=== END Deploy Background Function ===');
       return new Response('Accepted', { status: 202 });
@@ -59,7 +70,9 @@ export default async (req: Request) => {
 
     if (!isEvent) {
       // Trigger rebuild and stop
-      await fetch(deployUrl, { method: 'POST' });
+      if (run) {
+        await fetch(deployUrl, { method: 'POST' });
+      }
       console.log('Deploy triggered');
       console.log('=== END Deploy Background Function ===');
       return new Response('Accepted', { status: 202 });
@@ -88,7 +101,9 @@ export default async (req: Request) => {
         datasource: 'synchronized-event-regions'
       });
       const algoliaEvent = storyToAlgoliaEvent(story, regions);
-      await index.saveObject(algoliaEvent);
+      if (run) {
+        await index.saveObject(algoliaEvent);
+      }
 
       console.log('Algolia upsert: ', storyId);
       console.log('=== END Deploy Background Function ===');
@@ -97,7 +112,9 @@ export default async (req: Request) => {
 
     if (data.action === 'unpublished') {
       // Delete from algolia (no rebuild)
-      await index.deleteObject(storyId);
+      if (run) {
+        await index.deleteObject(storyId);
+      }
       console.log('Algolia delete: ', storyId);
       console.log('=== END Deploy Background Function ===');
       return new Response('Accepted', { status: 202 });
