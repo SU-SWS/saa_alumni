@@ -97,6 +97,7 @@ const googleDateTimeToStoryDateTime = (date, time) => {
 
   const combinedRaw = time ? `${date} ${time}` : date;
   const combinedRawFormat = time ? 'yyyy-MM-dd t' : 'yyyy-MM-dd';
+  // TODO DS-793: This will need to change when timezones are added to source
   const luxonStartDate = DateTime.fromFormat(combinedRaw, combinedRawFormat, {
     zone: 'America/Los_Angeles',
   });
@@ -132,6 +133,14 @@ export const googleRowToStoryContent = (data, source) => {
     .split(',')
     .map((s) => s.trim())
     .filter((s) => !!s.length);
+  const generalTags = subject.filter(
+    (s, index, arr) =>
+      s !== 'Diversity/Identity' && arr.at(index + 1) !== 'Diversity/Identity'
+  );
+  const identityTags = subject.filter(
+    (s, index, arr) =>
+      s !== 'Diversity/Identity' && arr.at(index + 1) === 'Diversity/Identity'
+  );
   const experience = experienceRaw ? [experienceRaw] : [];
   const eventUrl = eventUrlRaw
     ? {
@@ -158,7 +167,10 @@ export const googleRowToStoryContent = (data, source) => {
     city,
     country,
     address,
+    // TODO DS-712: Jettison subject
     subject,
+    generalTags,
+    identityTags,
     format,
     region,
     latitude,
@@ -188,11 +200,18 @@ export const compareStoryContent = (a, b) => {
     sortedExperienceA.length === sortedExperienceB.length &&
     sortedExperienceA.every((e, i) => e === sortedExperienceB[i]);
 
+  // TODO DS-712: Jettison subject
   const sortedSubjectA = a.subject.sort();
   const sortedSubjectB = b.subject.sort();
   const isSubjectEq =
     sortedSubjectA.length === sortedSubjectB.length &&
     sortedSubjectA.every((e, i) => e === sortedSubjectB[i]);
+
+  const sortedTagsA = [...a.generalTags.sort(), ...a.identityTags.sort()];
+  const sortedTagsB = [...b.generalTags.sort(), ...b.identityTags.sort()];
+  const isTagsEq =
+    sortedTagsA.length === sortedTagsB.length &&
+    sortedTagsA.every((e, i) => e === sortedTagsB[i]);
 
   return (
     a.title !== b.title ||
@@ -208,6 +227,7 @@ export const compareStoryContent = (a, b) => {
     a.longitude !== b.longitude ||
     a.eventUrl?.url !== b.eventUrl?.url ||
     !isExperienceEq ||
-    !isSubjectEq
+    !isSubjectEq ||
+    !isTagsEq
   );
 };
