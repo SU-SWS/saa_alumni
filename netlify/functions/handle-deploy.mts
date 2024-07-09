@@ -49,7 +49,7 @@ export default async (req: Request) => {
     
     if (data.action !== 'published' && data.action !== 'unpublished') {
       // Trigger rebuild and stop
-
+      console.log('Non publish event detected. Deploying...');
       if (run) {
         await fetch(deployUrl, { method: 'POST' });
       }
@@ -72,9 +72,11 @@ export default async (req: Request) => {
     const isFolder = story?.data?.story?.is_folder;
     const contentType = story?.data?.story?.content?.component;
     const isEvent = contentType === 'synchronizedEvent';
+    const isEventFolder = isFolder && data.full_slug === 'events' || data.full_slug === 'events/sync';
 
-    if (isFolder || !isEvent) {
+    if ((isFolder || !isEvent) && !isEventFolder) {
       // Trigger rebuild and stop
+      console.log('Publish event detected. Deploying...');
       if (run) {
         await fetch(deployUrl, { method: 'POST' });
       }
@@ -99,33 +101,46 @@ export default async (req: Request) => {
     );
     const index = client.initIndex(algoliaIndex);
     const storyId = story.data.story.uuid;
+    let storiesToProcess = [story];
 
-    if (data.action === 'published') {
-      // Upsert to Algolia (no rebuild)
-      const regions = await storyblok.get('cdn/datasource_entries', {
-        datasource: 'synchronized-event-regions'
-      });
-
-      const algoliaEvent = storyToAlgoliaEvent(story, regions?.data?.datasource_entries);
-      if (run) {
-        await index.saveObject(algoliaEvent);
-      }
-
-      console.log('Algolia upsert: ', storyId);
-      console.log('=== END Deploy Background Function ===');
-      return new Response('Accepted', { status: 202 });
+    if (isEventFolder) {
+      storiesToProcess = await storyblok.getAll('cdn/stories', { 
+        starts_with: 'events/sync/', 
+        excluding_slugs: 'events/sync/archived/*', 
+        content_type: 'synchronizedEvent', 
+        version: 'draft' 
+      }) ?? [];
     }
 
-    if (data.action === 'unpublished') {
-      // Delete from algolia (no rebuild)
-      if (run) {
-        await index.deleteObject(storyId);
+    const regions = await storyblok.get('cdn/datasource_entries', {
+      datasource: 'synchronized-event-regions'
+    });
+
+    storiesToProcess.forEach(async (story) => {
+      if (data.action === 'published') {
+        // Upsert to Algolia (no rebuild)
+        console.log(`Upserting ${storyId} to algolia...`);
+        const algoliaEvent = storyToAlgoliaEvent(story, regions?.data?.datasource_entries);
+        if (run) {
+          await index.saveObject(algoliaEvent);
+        }
+  
+        console.log('Algolia upsert: ', storyId);
+        console.log('=== END Deploy Background Function ===');
+        return new Response('Accepted', { status: 202 });
       }
-      console.log('Algolia delete: ', storyId);
-      console.log('=== END Deploy Background Function ===');
-      return new Response('Accepted', { status: 202 });
-    }
-    
+  
+      if (data.action === 'unpublished') {
+        // Delete from algolia (no rebuild)
+        console.log(`Deleting ${storyId} from algolia...`);
+        if (run) {
+          await index.deleteObject(storyId);
+        }
+        console.log('Algolia delete: ', storyId);
+        console.log('=== END Deploy Background Function ===');
+        return new Response('Accepted', { status: 202 });
+      }
+    });
   } catch (err) {
     console.error('Error during deploy function: ', err);
   }
