@@ -98,8 +98,16 @@ export default async (req: Request) => {
       content_type: 'synchronizedEvent', 
       version: 'draft' 
     }) ?? [];
-    const oldArchivedEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync/archived/', 
+    const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+      starts_with: 'events/sync-archive/', 
+      filter_query: { __or: [
+        { end: { lt_date: archiveCutoff }},
+        { endOverride: { lt_date: archiveCutoff }}
+      ]}, 
+      content_type: 'synchronizedEvent', 
+    }) ?? [];
+    const oldArchivedUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+      starts_with: 'events/sync-archive/', 
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
         { endOverride: { lt_date: archiveCutoff }}
@@ -108,6 +116,7 @@ export default async (req: Request) => {
       version: 'draft' 
     }) ?? [];
     const sbEvents = [...sbPublishedEvents.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents.map((s) => ({ ...s, isPublished: false }))];
+    const oldArchivedEvents = [...oldArchivedPublishedEvents, oldArchivedUnpublishedEvents];
     console.log('Fetching Storyblok events done!');
 
     const syncedEvents = new Map();
@@ -238,7 +247,7 @@ export default async (req: Request) => {
             await storyblokManagement.put(`spaces/${spaceId}/stories/${story.id}`, {
               story: { 
                 ...story,
-                full_slug: `events/sync/archived/${story.slug}`,
+                full_slug: `events/sync-archive/${story.slug}`,
               },
             });
           }

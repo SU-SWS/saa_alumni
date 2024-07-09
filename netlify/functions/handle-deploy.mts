@@ -61,11 +61,11 @@ export default async (req: Request) => {
     // Only pub/unpub actions after this
 
     const storyblok = new StoryblokClient({
-      accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
+      oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
     const version = data.action === 'unpublished' ? 'draft' : 'published';
-    const story = await storyblok.getStory(data.full_slug, { version });
+    const story = await storyblok.get(`spaces/${data.space_id}/stories/${data.story_id}`, { version });
 
     console.log({ story: story?.data?.story });
 
@@ -104,9 +104,8 @@ export default async (req: Request) => {
     let storiesToProcess = [story];
 
     if (isEventFolder) {
-      storiesToProcess = await storyblok.getAll('cdn/stories', { 
+      storiesToProcess = await storyblok.getAll(`spaces/${data.space_id}/stories`, { 
         starts_with: 'events/sync/', 
-        excluding_slugs: 'events/sync/archived/*', 
         content_type: 'synchronizedEvent', 
         version: 'draft' 
       }) ?? [];
@@ -116,7 +115,7 @@ export default async (req: Request) => {
       datasource: 'synchronized-event-regions'
     });
 
-    storiesToProcess.forEach(async (story) => {
+    storiesToProcess.filter((story) => story.data.story.full_slug.startsWith('events/sync/')).forEach(async (story) => {
       if (data.action === 'published') {
         // Upsert to Algolia (no rebuild)
         console.log(`Upserting ${storyId} to algolia...`);
