@@ -37,6 +37,14 @@ export const Hit = ({ hit }) => {
     );
   }
 
+  if (!eventUrl) {
+    return (
+      <p className="su-bg-cardinal-red su-text-white su-text-6xl su-rs-p-3">
+        Invalid URL for &quot;{title}&quot;
+      </p>
+    );
+  }
+
   return (
     <Event
       title={title}

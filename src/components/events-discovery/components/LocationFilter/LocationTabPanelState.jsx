@@ -11,7 +11,7 @@ const LocationTabPanelState = () => {
   const { activeTab } = useContext(LocationContext);
   const searchFieldId = useId();
   const title = 'Find a US State / Canadian Province';
-  const field = 'region';
+  const field = 'state';
   const isDesktop = window.innerWidth >= 1024; // TODO: Fix this window check to be a real on breakpoint.
   const { refine: clearRefinement } = useClearRefinements({
     includedAttributes: [field, 'city', 'country'],

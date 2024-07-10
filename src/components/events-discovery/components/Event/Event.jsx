@@ -68,7 +68,6 @@ export const Event = ({
   }
 
   const experienceDisplay = experience?.length ? experience.join(', ') : '';
-  const { filename, alt, focus } = image;
 
   return (
     <article className="su-flex su-flex-col sm:su-flex-row su-items-center sm:su-items-start su-flex-wrap">
@@ -102,12 +101,12 @@ export const Event = ({
             subject={subject}
           />
         </div>
-        {filename?.startsWith('http') && (
+        {image?.filename?.startsWith('http') && (
           <figure className="su-block su-shrink-0 su-max-w-300 sm:su-max-w-200 2xl:su-max-w-300 su-transition-all">
             <CardImage
-              filename={filename}
-              alt={alt}
-              smartFocus={focus}
+              filename={image.filename}
+              alt={image.alt}
+              smartFocus={image.focus}
               size="vertical"
               className="su-w-full su-h-auto su-origin-top-right su-transition-transform hocus:su-scale-[1.03]"
               loading="lazy"

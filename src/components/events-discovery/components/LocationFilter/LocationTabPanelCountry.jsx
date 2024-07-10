@@ -14,7 +14,7 @@ const LocationTabPanelCountry = () => {
   const field = 'country';
   const isDesktop = window.innerWidth >= 1024; // TODO: Fix this window check to be a real on breakpoint.
   const { refine: clearRefinement } = useClearRefinements({
-    includedAttributes: [field, 'city', 'region'],
+    includedAttributes: [field, 'city', 'state'],
   });
   const { items, refine } = useRefinementList({
     attribute: field,

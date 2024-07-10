@@ -4,10 +4,11 @@ import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
 import MUIToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { dcnb } from 'cnbuilder';
+import { useConnector, useGeoSearch } from 'react-instantsearch';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
-import { useGeoSearch } from 'react-instantsearch';
+import RadialGeoSearchConnector from './RadialGeoSearchConnector';
 
 const LocationTabPanelCity = () => {
   // CONTEXT
@@ -18,7 +19,10 @@ const LocationTabPanelCity = () => {
 
   // STATE
   const [distanceState, setDistanceState] = useState('40000');
-  const { items, refine } = useGeoSearch();
+  const { refine } = useConnector(RadialGeoSearchConnector, {
+    radius: parseInt(distanceState, 10),
+    precision: 1000,
+  });
 
   // If not active. Return.
   if (activeTab !== 'city') return null;
@@ -42,14 +46,8 @@ const LocationTabPanelCity = () => {
                 options={['Vancouver', 'Toronto', 'Montreal']}
                 onChange={(e, value) => {
                   refine({
-                    northEast: {
-                      lat: 10,
-                      lng: 10,
-                    },
-                    southWest: {
-                      lat: -10,
-                      lng: -10,
-                    },
+                    lat: 47.62,
+                    lng: -122.33,
                   });
                 }}
                 renderInput={(props) => (
@@ -105,6 +103,7 @@ const LocationTabPanelCity = () => {
             className={styles.toggleButtonGroup}
             value={distanceState}
             aria-label="Select distance from your chosen location"
+            onChange={(e, value) => setDistanceState(value)}
           >
             <MUIToggleButton
               value="40000"
