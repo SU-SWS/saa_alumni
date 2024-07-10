@@ -4,12 +4,6 @@ import markdownToRichtextService from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
 
-const usRegions = [
-  'CA - Northern California',
-  'CA - Stanford Campus',
-  'CA - Bay Area',
-];
-
 const { markdownToRichtext } = markdownToRichtextService;
 const turndownService = new TurndownService();
 
@@ -89,6 +83,8 @@ export const storyToAlgoliaEvent = (story, regionDataSource) => {
   const { region } = mergedEventData;
   let usRegion = null;
   let intRegion = null;
+
+  console.log({ region, regionDataSource });
 
   if (region && regionDataSource) {
     const regionDimension = regionDataSource?.find(

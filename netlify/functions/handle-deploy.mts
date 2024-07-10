@@ -78,7 +78,7 @@ export default async (req: Request) => {
 
     if ((isFolder || !isEvent) && !isEventFolder) {
       // Trigger rebuild and stop
-      console.log('Publish event detected. Deploying...');
+      console.log('(Un)publish event detected. Deploying...');
       if (run) {
         await fetch(deployUrl, { method: 'POST' });
       }
@@ -112,6 +112,12 @@ export default async (req: Request) => {
       });
 
       storiesToProcess = storiesRes?.data?.stories;
+
+      console.log('Event folder (un)publish event detected. Deploying...');
+      if (run) {
+        await fetch(deployUrl, { method: 'POST' });
+      }
+      console.log('Deploy triggered');
     }
 
     storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
