@@ -102,7 +102,6 @@ export default async (req: Request) => {
       algoliaWriteKey,
     );
     const index = client.initIndex(algoliaIndex);
-    const storyId = story.uuid;
     let storiesToProcess = [story];
 
     if (isEventFolder) {
@@ -125,24 +124,24 @@ export default async (req: Request) => {
       try {
         if (data.action === 'published') {
           // Upsert to Algolia (no rebuild)
-          console.log(`Upserting ${storyId} to algolia...`);
+          console.log(`Upserting ${story.uuid} to algolia...`);
           const algoliaEvent = storyToAlgoliaEvent(story, regions?.data?.datasource_entries);
           if (run) {
             await index.saveObject(algoliaEvent);
           }
-          console.log('Algolia upsert: ', storyId);
+          console.log('Algolia upsert: ', story.uuid);
         }
     
         if (data.action === 'unpublished') {
           // Delete from algolia (no rebuild)
-          console.log(`Deleting ${storyId} from algolia...`);
+          console.log(`Deleting ${story.uuid} from algolia...`);
           if (run) {
-            await index.deleteObject(storyId);
+            await index.deleteObject(story.uuid);
           }
-          console.log('Algolia delete: ', storyId);
+          console.log('Algolia delete: ', story.uuid);
         }
       } catch (err) {
-        console.log(`Error handling ${storyId}: `, err);
+        console.log(`Error handling ${story.uuid}: `, err);
       }
     }));
   } catch (err) {
