@@ -123,6 +123,14 @@ const googleDateTimeToStoryDateTime = (date, time) => {
 };
 
 export const googleRowToStoryContent = (data, source) => {
+  const processedData = Object.entries(data).reduce(
+    (acc, [key, val]) => ({
+      ...acc,
+      [key]: val.trim(),
+    }),
+    {}
+  );
+
   const {
     externalID: externalId,
     title,
@@ -143,7 +151,7 @@ export const googleRowToStoryContent = (data, source) => {
     longitude = '',
     description: descriptionRaw = '',
     experience: experienceRaw = '',
-  } = data;
+  } = processedData;
 
   const start = googleDateTimeToStoryDateTime(startDate, startTime);
   const end = googleDateTimeToStoryDateTime(endDate, endTime);
