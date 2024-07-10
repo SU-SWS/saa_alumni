@@ -87,18 +87,18 @@ export default async (req: Request) => {
     const archiveCutoff = DateTime.utc().startOf('day').minus({ days: 180 }).toFormat('yyyy-MM-dd');
 
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+    const sbPublishedEvents = await storyblokContent.getStories({ 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent' 
     }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+    const sbUnpublishedEvents = await storyblokContent.getStories({ 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent', 
       version: 'draft' 
     }) ?? [];
-    const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+    const oldArchivedPublishedEvents = await storyblokContent.getStories({ 
       starts_with: 'events/sync-archive/', 
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
@@ -106,7 +106,7 @@ export default async (req: Request) => {
       ]}, 
       content_type: 'synchronizedEvent', 
     }) ?? [];
-    const oldArchivedUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+    const oldArchivedUnpublishedEvents = await storyblokContent.getStories({ 
       starts_with: 'events/sync-archive/', 
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
@@ -115,8 +115,8 @@ export default async (req: Request) => {
       content_type: 'synchronizedEvent', 
       version: 'draft' 
     }) ?? [];
-    const sbEvents = [...sbPublishedEvents.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents.map((s) => ({ ...s, isPublished: false }))];
-    const oldArchivedEvents = [...oldArchivedPublishedEvents, oldArchivedUnpublishedEvents];
+    const sbEvents = [...sbPublishedEvents?.data?.stories?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.data?.stories?.map((s) => ({ ...s, isPublished: false }))];
+    const oldArchivedEvents = [...oldArchivedPublishedEvents?.data?.stories, oldArchivedUnpublishedEvents?.data?.stories].filter((s) => !!s);
     console.log('Fetching Storyblok events done!');
 
     const syncedEvents = new Map();
