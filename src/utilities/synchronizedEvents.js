@@ -122,6 +122,17 @@ const googleDateTimeToStoryDateTime = (date, time, source) => {
     zone: 'America/Los_Angeles',
   });
 
+  console.log({
+    date,
+    time,
+    source,
+    combinedRaw,
+    dateTimeFormat,
+    dateFormat,
+    combinedRawFormat,
+    luxonStartDate,
+  });
+
   return luxonStartDate.toFormat('yyyy-MM-dd T', { zone: 'UTC' });
 };
 
@@ -153,7 +164,7 @@ export const googleRowToStoryContent = (data, source) => {
     latitude = '',
     longitude = '',
     description: descriptionRaw = '',
-    experience: experienceRaw = '',
+    experience = '',
   } = processedData;
 
   const start = googleDateTimeToStoryDateTime(startDate, startTime, source);
@@ -175,7 +186,6 @@ export const googleRowToStoryContent = (data, source) => {
     (s, index, arr) =>
       s !== 'Diversity/Identity' && arr.at(index + 1) === 'Diversity/Identity'
   );
-  const experience = experienceRaw ? [experienceRaw] : [];
   const eventUrl = eventUrlRaw
     ? {
         url: eventUrlRaw,
@@ -196,14 +206,12 @@ export const googleRowToStoryContent = (data, source) => {
     end,
     description,
     eventUrl,
-    experience,
+    experience: experience.toLowerCase(),
     location,
     city,
     state,
     country,
     address,
-    // TODO DS-712: Jettison subject
-    subject,
     generalTags,
     identityTags,
     format,
@@ -238,22 +246,9 @@ export const combineStories = (fromStory, toStory) => ({
 
 export const compareStoryContent = (a, b) => {
   // TODO: Do we need to check description?
-  const sortedExperienceA = a.experience.sort();
-  const sortedExperienceB = b.experience.sort();
-  const isExperienceEq =
-    sortedExperienceA.length === sortedExperienceB.length &&
-    sortedExperienceA.every((e, i) => e === sortedExperienceB[i]);
-
-  // TODO DS-712: Jettison subject
-  const sortedSubjectA = a.subject?.sort?.() ?? [];
-  const sortedSubjectB = b.subject?.sort?.() ?? [];
-  const isSubjectEq =
-    sortedSubjectA.length === sortedSubjectB.length &&
-    sortedSubjectA.every((e, i) => e === sortedSubjectB[i]);
-
   const sortedTagsA = [
     ...(a.generalTags?.sort?.() ?? []),
-    ...(a.identityTags.sort?.() ?? []),
+    ...(a.identityTags?.sort?.() ?? []),
   ];
   const sortedTagsB = [
     ...(b.generalTags?.sort?.() ?? []),
@@ -274,6 +269,7 @@ export const compareStoryContent = (a, b) => {
     a.start !== b.start ||
     a.end !== b.end ||
     a.location !== b.location ||
+    a.experience !== b.experience ||
     a.city !== b.city ||
     a.state !== b.state ||
     a.country !== b.country ||
@@ -282,8 +278,6 @@ export const compareStoryContent = (a, b) => {
     a.latitude !== b.latitude ||
     a.longitude !== b.longitude ||
     a.eventUrl?.url !== b.eventUrl?.url ||
-    !isExperienceEq ||
-    !isSubjectEq ||
     !isTagsEq ||
     !isFormatEq
   );

@@ -39,6 +39,9 @@ export default async (req: Request) => {
     const cventSheetId = process.env.SHEET_ID_CVENT ?? '';
     const eventFolderId = process.env.EVENT_FOLDER_ID ?? '';
     const eventArchiveFolderId = process.env.EVENT_ARCHIVE_FOLDER_ID ?? '';
+    const formatDatasourceId =  process.env.EVENT_DATASOURCE_FORMAT_ID ?? '';
+    const generalTagsDatasourceId =  process.env.EVENT_DATASOURCE_GENERAL_TAGS_ID ?? '';
+    const identityTagsDatasourceId =  process.env.EVENT_DATASOURCE_IDENTITY_TAGS_ID ?? '';
 
     if (!email || !key || !spaceId || !hivebriteSheetId || !cventSheetId) {
       throw new Error('Missing required values');
@@ -64,7 +67,7 @@ export default async (req: Request) => {
     console.log('Fetching Hiverbrite data done!');
     
     hivebriteRows.forEach((row) => {
-      googleStories.push(googleRowToStory(row.toObject(), 'Hivebrite'));
+      googleStories.push(googleRowToStory(row.toObject(), 'hivebrite'));
     });
 
     console.log('Fetching Cvent data...');
@@ -75,7 +78,7 @@ export default async (req: Request) => {
     console.log('Fetching Cvent data done!');
     
     cventRows.forEach((row) => {
-      googleStories.push(googleRowToStory(row.toObject(), 'Cvent'));
+      googleStories.push(googleRowToStory(row.toObject(), 'cvent'));
     });
 
     const storyblokContent = new StoryblokClient({
@@ -89,6 +92,15 @@ export default async (req: Request) => {
     const archiveCutoff = DateTime.utc().startOf('day').minus({ days: 180 }).toFormat('yyyy-MM-dd');
 
     console.log('Fetching Storyblok events...');
+    const formatDatasource = await storyblokContent.get('cdn/datasource_entries', {
+      datasource: 'synchronized-event-format',
+    });
+    const GeneralTagsDatasource = await storyblokContent.get('cdn/datasource_entries', {
+      datasource: 'synchronized-event-general-tags',
+    });
+    const IdentityTagsDatasource = await storyblokContent.get('cdn/datasource_entries', {
+      datasource: 'synchronized-event-identity-tags',
+    });
     const sbPublishedEvents = await storyblokContent.getStories({ 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
@@ -123,6 +135,12 @@ export default async (req: Request) => {
 
     const syncedEvents = new Map();
     const manualEvents = new Map();
+    const knownFormats = new Set<string>(formatDatasource?.data?.datasource?.datasource_entries?.map?.((d) => d.value));
+    const knownGeneralTags = new Set<string>(GeneralTagsDatasource?.data?.datasource?.datasource_entries?.map?.((d) => d.value));
+    const knownIdentityTags = new Set<string>(IdentityTagsDatasource?.data?.datasource?.datasource_entries?.map?.((d) => d.value));
+    const incomingFormats: string[] = [];
+    const incomingGeneralTags: string[] = [];
+    const incomingIdentityTags: string[] = [];
     // We can't be too aggressive with the cutoff due to timezones.
     // We'll consider anything midnight (UTC) - 2 as "old" for the sync purposes
     // and do some dynamic date filtering in the front end.
@@ -130,6 +148,14 @@ export default async (req: Request) => {
 
     googleStories.forEach((event) => {
       const id = event?.content?.externalId;
+
+      const format: string[] = event?.content?.format ?? [];
+      const generalTags: string[] = event?.content?.generalTags ?? [];
+      const identityTags: string[] = event?.content?.identityTags ?? [];
+
+      format.forEach((f) => incomingFormats.push(f));
+      generalTags.forEach((t) => incomingGeneralTags.push(t));
+      identityTags.forEach((t) => incomingIdentityTags.push(t));
 
       if (id) {
         syncedEvents.set(event.content.externalId, { google: event, storyblok: undefined });
@@ -152,6 +178,40 @@ export default async (req: Request) => {
         manualEvents.set(story.id, story);
       }
     });
+
+    const newFormats = incomingFormats.filter((f) => !knownFormats.has(f));
+    const newGeneralTags = incomingGeneralTags.filter((f) => !knownGeneralTags.has(f));
+    const newIdentityTags = incomingIdentityTags.filter((f) => !knownIdentityTags.has(f));
+
+    for (const format of newFormats) {
+      await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+        datasource_entry: {
+          name: format,
+          value: format,
+          datasource_id: formatDatasourceId,
+        }
+      } as any);
+    }
+
+    for (const tag of newGeneralTags) {
+      await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+        datasource_entry: {
+          name: tag,
+          value: tag,
+          datasource_id: generalTagsDatasourceId,
+        }
+      } as any);
+    }
+
+    for (const tag of newIdentityTags) {
+      await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+        datasource_entry: {
+          name: tag,
+          value: tag,
+          datasource_id: identityTagsDatasourceId,
+        }
+      } as any);
+    }
 
     for (const [id, {google, storyblok}] of syncedEvents) {
       console.log('>>> Processing: ', id);
