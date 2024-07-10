@@ -81,8 +81,8 @@ export const storyToAlgoliaEvent = (story, regionDataSource) => {
   const hasValidLng = !!lng || lng === 0;
   const geo = hasValidLat && hasValidLng ? { lat, lng } : null;
   const { region } = mergedEventData;
-  let usRegion = null;
-  let intRegion = null;
+  let usRegion = '';
+  let intRegion = '';
 
   if (region && regionDataSource) {
     const regionDimension = regionDataSource?.find(
