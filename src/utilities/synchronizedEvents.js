@@ -245,20 +245,26 @@ export const compareStoryContent = (a, b) => {
     sortedExperienceA.every((e, i) => e === sortedExperienceB[i]);
 
   // TODO DS-712: Jettison subject
-  const sortedSubjectA = a.subject.sort();
-  const sortedSubjectB = b.subject.sort();
+  const sortedSubjectA = a.subject?.sort?.() ?? [];
+  const sortedSubjectB = b.subject?.sort?.() ?? [];
   const isSubjectEq =
     sortedSubjectA.length === sortedSubjectB.length &&
     sortedSubjectA.every((e, i) => e === sortedSubjectB[i]);
 
-  const sortedTagsA = [...a.generalTags.sort(), ...a.identityTags.sort()];
-  const sortedTagsB = [...b.generalTags.sort(), ...b.identityTags.sort()];
+  const sortedTagsA = [
+    ...(a.generalTags?.sort?.() ?? []),
+    ...(a.identityTags.sort?.() ?? []),
+  ];
+  const sortedTagsB = [
+    ...(b.generalTags?.sort?.() ?? []),
+    ...(b.identityTags.sort?.() ?? []),
+  ];
   const isTagsEq =
     sortedTagsA.length === sortedTagsB.length &&
     sortedTagsA.every((e, i) => e === sortedTagsB[i]);
 
-  const sortedFormatA = a.format?.sort() ?? [];
-  const sortedFormatB = b.format?.sort() ?? [];
+  const sortedFormatA = a.format?.sort?.() ?? [];
+  const sortedFormatB = b.format?.sort?.() ?? [];
   const isFormatEq =
     sortedFormatA.length === sortedFormatB.length &&
     sortedFormatA.every((e, i) => e === sortedFormatB[i]);
