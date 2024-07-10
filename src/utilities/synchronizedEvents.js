@@ -107,13 +107,16 @@ export const storyToAlgoliaEvent = (story, regionDataSource) => {
   };
 };
 
-const googleDateTimeToStoryDateTime = (date, time) => {
+const googleDateTimeToStoryDateTime = (date, time, source) => {
   if (!date) {
     return '';
   }
 
   const combinedRaw = time ? `${date} ${time}` : date;
-  const combinedRawFormat = time ? 'yyyy-MM-dd hh:mm a' : 'yyyy-MM-dd';
+  const dateTimeFormat =
+    source === 'cvent' ? 'M/d/yy h:mm a' : 'yyyy-MM-dd hh:mm a';
+  const dateFormat = source === 'cvent' ? 'M/d/yy' : 'yyyy-MM-dd';
+  const combinedRawFormat = time ? dateTimeFormat : dateFormat;
   // TODO DS-793: This will need to change when timezones are added to source
   const luxonStartDate = DateTime.fromFormat(combinedRaw, combinedRawFormat, {
     zone: 'America/Los_Angeles',
@@ -153,8 +156,8 @@ export const googleRowToStoryContent = (data, source) => {
     experience: experienceRaw = '',
   } = processedData;
 
-  const start = googleDateTimeToStoryDateTime(startDate, startTime);
-  const end = googleDateTimeToStoryDateTime(endDate, endTime);
+  const start = googleDateTimeToStoryDateTime(startDate, startTime, source);
+  const end = googleDateTimeToStoryDateTime(endDate, endTime, source);
 
   console.log({ startDate, startTime, start, endDate, endTime, end });
 
