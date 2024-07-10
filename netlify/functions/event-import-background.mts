@@ -151,7 +151,7 @@ export default async (req: Request) => {
       }
     });
 
-    syncedEvents.forEach(async ({ google, storyblok }, id) => {
+    for (const [{google, storyblok}, id] of syncedEvents) {
       console.log('>>> Processing: ', id);
       try {
         if (google && storyblok) {
@@ -228,9 +228,9 @@ export default async (req: Request) => {
       }
 
       console.log('Processing complete: ', id);
-    });
+    }
 
-    manualEvents.forEach(async (story, id) => {
+    for (const [story, id] of manualEvents) {
       console.log('>>> Processing Manual Event: ', id);
 
       try {
@@ -258,9 +258,9 @@ export default async (req: Request) => {
       }
 
       console.log('Processing complete: ', id);
-    });
+    }
 
-    oldArchivedEvents.forEach(async (story) => {
+    for (const story of oldArchivedEvents) {
       console.log('>>> Processing expired archived event: ', story.id);
 
       try {
@@ -274,7 +274,7 @@ export default async (req: Request) => {
       }
 
       console.log('Processing complete: ', story.id);
-    });
+    }
   } catch (err) {
     console.error('Error: ', err);
   }
