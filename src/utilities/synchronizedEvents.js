@@ -147,6 +147,9 @@ export const googleRowToStoryContent = (data, source) => {
 
   const start = googleDateTimeToStoryDateTime(startDate, startTime);
   const end = googleDateTimeToStoryDateTime(endDate, endTime);
+
+  console.log({ startDate, startTime, start, endDate, endTime, end });
+
   const subject = subjectRaw
     .split(',')
     .map((s) => s.trim())
