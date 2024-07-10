@@ -11,4 +11,13 @@ export const facetLabels = {
   startTimestamp: {
     label: 'Start date',
   },
+  country: {
+    label: 'Country',
+  },
+  region: {
+    label: 'US State / Canadian Province',
+  },
+  city: {
+    label: 'City',
+  },
 };

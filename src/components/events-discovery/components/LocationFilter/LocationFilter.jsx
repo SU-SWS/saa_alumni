@@ -2,6 +2,11 @@ import React from 'react';
 import { FilterAccordion } from '../FilterAccordion';
 import { OnlineOptionsSubfilter } from './OnlineOptionsSubfilter';
 import { useFacets } from '../Facets/useFacets';
+import LocationFacetProvider from './LocationFacetProvider';
+import LocationFacetTabs from './LocationFacetTabs';
+import LocationTabPanelCity from './LocationTabPanelCity';
+import LocationTabPanelState from './LocationTabPanelState';
+import LocationTabPanelCountry from './LocationTabPanelCountry';
 
 /**
  * @typedef {object} Props
@@ -18,7 +23,6 @@ export const LocationFilter = ({ expanded, onToggleExpanded }) => {
 
   const onlineOptionsFacet = getFacet('experience');
 
-  // TODO: Top-level location reset to be handled in DS-707
   return (
     <FilterAccordion
       expanded={expanded}
@@ -26,6 +30,13 @@ export const LocationFilter = ({ expanded, onToggleExpanded }) => {
       onToggleExpanded={onToggleExpanded}
       showReset={false}
     >
+      <LocationFacetProvider>
+        <LocationFacetTabs />
+        <LocationTabPanelCity />
+        <LocationTabPanelState />
+        <LocationTabPanelCountry />
+      </LocationFacetProvider>
+
       {onlineOptionsFacet && (
         <OnlineOptionsSubfilter
           expanded={onlineOptionsFacet.expanded}

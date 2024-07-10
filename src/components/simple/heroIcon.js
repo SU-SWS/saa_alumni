@@ -4,6 +4,7 @@ import {
   VideoCameraIcon,
   MicrophoneIcon,
   DocumentDuplicateIcon,
+  LocationMarkerIcon,
 } from '@heroicons/react/outline';
 import {
   ArrowLeftIcon,
@@ -16,6 +17,7 @@ import {
   CheckIcon,
   MinusSmIcon,
   PlusSmIcon,
+  XIcon,
 } from '@heroicons/react/solid';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 
@@ -89,6 +91,16 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
     },
     minus: {
       heroicon: MinusSmIcon,
+      baseStyle: 'su-w-1em',
+      animate: 'group-hocus:su-translate-x-02em',
+    },
+    close: {
+      heroicon: XIcon,
+      baseStyle: 'su-w-1em',
+      animate: 'group-hocus:su-translate-x-02em',
+    },
+    location: {
+      heroicon: LocationMarkerIcon,
       baseStyle: 'su-w-1em',
       animate: 'group-hocus:su-translate-x-02em',
     },
