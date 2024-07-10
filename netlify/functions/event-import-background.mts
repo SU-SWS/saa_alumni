@@ -116,7 +116,7 @@ export default async (req: Request) => {
       version: 'draft' 
     }) ?? [];
     const sbEvents = [...sbPublishedEvents?.data?.stories?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.data?.stories?.map((s) => ({ ...s, isPublished: false }))];
-    const oldArchivedEvents = [...oldArchivedPublishedEvents?.data?.stories, oldArchivedUnpublishedEvents?.data?.stories].filter((s) => !!s);
+    const oldArchivedEvents = [...oldArchivedPublishedEvents?.data?.stories, ...oldArchivedUnpublishedEvents?.data?.stories].filter((s) => !!s);
     console.log('Fetching Storyblok events done!');
 
     const syncedEvents = new Map();
@@ -151,7 +151,7 @@ export default async (req: Request) => {
       }
     });
 
-    for (const [{google, storyblok}, id] of syncedEvents) {
+    for (const [id, {google, storyblok}] of syncedEvents) {
       console.log('>>> Processing: ', id);
       try {
         if (google && storyblok) {
@@ -230,7 +230,7 @@ export default async (req: Request) => {
       console.log('Processing complete: ', id);
     }
 
-    for (const [story, id] of manualEvents) {
+    for (const [id, story] of manualEvents) {
       console.log('>>> Processing Manual Event: ', id);
 
       try {
