@@ -84,8 +84,6 @@ export const storyToAlgoliaEvent = (story, regionDataSource) => {
   let usRegion = null;
   let intRegion = null;
 
-  console.log({ region, regionDataSource });
-
   if (region && regionDataSource) {
     const regionDimension = regionDataSource?.find(
       (ds) => ds.value === region
