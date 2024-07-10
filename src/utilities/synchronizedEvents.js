@@ -257,8 +257,8 @@ export const compareStoryContent = (a, b) => {
     sortedTagsA.length === sortedTagsB.length &&
     sortedTagsA.every((e, i) => e === sortedTagsB[i]);
 
-  const sortedFormatA = a.format.sort();
-  const sortedFormatB = b.format.sort();
+  const sortedFormatA = a.format?.sort() ?? [];
+  const sortedFormatB = b.format?.sort() ?? [];
   const isFormatEq =
     sortedFormatA.length === sortedFormatB.length &&
     sortedFormatA.every((e, i) => e === sortedFormatB[i]);
