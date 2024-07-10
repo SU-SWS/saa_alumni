@@ -31,8 +31,7 @@ export default async (req: Request) => {
 
     console.log(`Running in ${mode} mode`);
 
-    // const run = mode === 'run';
-    const run = false;
+    const run = mode === 'run';
     const spaceId = process.env.SPACE_ID ?? '';
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? '';
     const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY ?? '';
