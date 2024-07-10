@@ -133,6 +133,7 @@ export const googleRowToStoryContent = (data, source) => {
     eventUrlRaw = '',
     location = '',
     city = '',
+    state = '',
     country = '',
     address = '',
     subject: subjectRaw = '',
@@ -182,6 +183,7 @@ export const googleRowToStoryContent = (data, source) => {
     experience,
     location,
     city,
+    state,
     country,
     address,
     // TODO DS-712: Jettison subject
@@ -205,9 +207,18 @@ export const googleRowToStory = (row, source) => {
     name: title,
     content,
     slug,
-    full_slug: `events/sync/${slug}`,
   };
 };
+
+export const combineStories = (fromStory, toStory) => ({
+  ...toStory,
+  name: toStory.name !== fromStory.name ? fromStory.name : toStory.name,
+  slug: toStory.slug !== fromStory.slug ? fromStory.slug : toStory.slug,
+  content: {
+    ...toStory.content,
+    ...fromStory.content,
+  },
+});
 
 export const compareStoryContent = (a, b) => {
   // TODO: Do we need to check description?
@@ -236,6 +247,7 @@ export const compareStoryContent = (a, b) => {
     a.end !== b.end ||
     a.location !== b.location ||
     a.city !== b.city ||
+    a.state !== b.state ||
     a.country !== b.country ||
     a.address !== b.address ||
     a.format !== b.format ||

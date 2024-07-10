@@ -3,7 +3,7 @@ import { type Config } from '@netlify/functions';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import StoryblokClient from 'storyblok-js-client';
-import { compareStoryContent, googleRowToStory } from '../../src/utilities/synchronizedEvents';
+import { compareStoryContent, googleRowToStory, combineStories } from '../../src/utilities/synchronizedEvents';
 import { luxonDate } from '../../src/utilities/dates';
 import { DateTime } from 'luxon';
 
@@ -31,12 +31,15 @@ export default async (req: Request) => {
 
     console.log(`Running in ${mode} mode`);
 
-    const run = mode === 'run';
+    // const run = mode === 'run';
+    const run = false;
     const spaceId = process.env.SPACE_ID ?? '';
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? '';
     const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY ?? '';
     const hivebriteSheetId = process.env.SHEET_ID_HIVEBRITE ?? '';
     const cventSheetId = process.env.SHEET_ID_CVENT ?? '';
+    const eventFolderId = process.env.EVENT_FOLDER_ID ?? '';
+    const eventArchiveFolderId = process.env.EVENT_ARCHIVE_FOLDER_ID ?? '';
 
     if (!email || !key || !spaceId || !hivebriteSheetId || !cventSheetId) {
       throw new Error('Missing required values');
@@ -166,7 +169,10 @@ export default async (req: Request) => {
           console.log('Changes detected. Syncing changes to Storyblok...');
           if (run) {
             await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
-              story: google,
+              story: {
+                ...combineStories(google, storyblok),
+                parent_id: eventFolderId,
+              },
               publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
             });
           }
@@ -187,7 +193,10 @@ export default async (req: Request) => {
           // Post to SB then publish
           if (run) {
             await storyblokManagement.post(`spaces/${spaceId}/stories`, {
-              story: google,
+              story: {
+                ...google,
+                parent_id: eventFolderId,
+              },
               publish: 1,
             });
           }
@@ -247,7 +256,7 @@ export default async (req: Request) => {
             await storyblokManagement.put(`spaces/${spaceId}/stories/${story.id}`, {
               story: { 
                 ...story,
-                full_slug: `events/sync-archive/${story.slug}`,
+                parent_id: eventArchiveFolderId,
               },
             });
           }
