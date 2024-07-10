@@ -72,8 +72,8 @@ export const mergeEventOverrides = (eventContent) => {
 };
 
 export const storyToAlgoliaEvent = (story, regionDataSource) => {
-  const storyId = story.data.story.uuid;
-  const eventData = story.data.story.content;
+  const storyId = story.uuid;
+  const eventData = story.content;
   const mergedEventData = mergeEventOverrides(eventData);
   const startTimestamp = mergedEventData.start
     ? luxonDate(mergedEventData.start).toUnixInteger()

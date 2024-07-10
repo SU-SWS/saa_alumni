@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 import { type Config } from '@netlify/functions';
 import { createHmac } from 'node:crypto';
-import StoryblokClient from 'storyblok-js-client';
+import StoryblokClient, { ISbStories } from 'storyblok-js-client';
 import algoliasearch from 'algoliasearch';
 import { type SBWebhookPayload } from '../../src/types/storyblok/api/SBWebhookType';
 import { storyToAlgoliaEvent } from '../../src/utilities/synchronizedEvents';
@@ -60,17 +60,22 @@ export default async (req: Request) => {
 
     // Only pub/unpub actions after this
 
-    const storyblok = new StoryblokClient({
+    const storyblokContent = new StoryblokClient({
+      accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
+    });
+
+    const storyblokManagement = new StoryblokClient({
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
     const version = data.action === 'unpublished' ? 'draft' : 'published';
-    const story = await storyblok.get(`spaces/${data.space_id}/stories/${data.story_id}`, { version });
+    const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`);
+    const story = storyRes?.data?.story;
 
-    console.log({ story: story?.data?.story });
+    console.log({ story });
 
-    const isFolder = story?.data?.story?.is_folder;
-    const contentType = story?.data?.story?.content?.component;
+    const isFolder = story?.is_folder;
+    const contentType = story?.content?.component;
     const isEvent = contentType === 'synchronizedEvent';
     const isEventFolder = isFolder && data.full_slug === 'events' || data.full_slug === 'events/sync';
 
@@ -100,22 +105,24 @@ export default async (req: Request) => {
       algoliaWriteKey,
     );
     const index = client.initIndex(algoliaIndex);
-    const storyId = story.data.story.uuid;
+    const storyId = story.uuid;
     let storiesToProcess = [story];
 
     if (isEventFolder) {
-      storiesToProcess = await storyblok.getAll(`spaces/${data.space_id}/stories`, { 
+      const storiesRes = await storyblokContent.getStories({ 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
         version: 'draft' 
-      }) ?? [];
+      });
+
+      storiesToProcess = storiesRes?.data?.stories;
     }
 
-    const regions = await storyblok.get('cdn/datasource_entries', {
+    const regions = await storyblokContent.get('cdn/datasource_entries', {
       datasource: 'synchronized-event-regions'
     });
 
-    storiesToProcess.filter((story) => story.data.story.full_slug.startsWith('events/sync/')).forEach(async (story) => {
+    storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/')).forEach(async (story) => {
       if (data.action === 'published') {
         // Upsert to Algolia (no rebuild)
         console.log(`Upserting ${storyId} to algolia...`);
