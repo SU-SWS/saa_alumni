@@ -71,9 +71,6 @@ export default async (req: Request) => {
     const version = data.action === 'unpublished' ? 'draft' : 'published';
     const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`);
     const story = storyRes?.data?.story;
-
-    console.log({ story });
-
     const isFolder = story?.is_folder;
     const contentType = story?.content?.component;
     const isEvent = contentType === 'synchronizedEvent';
@@ -118,11 +115,13 @@ export default async (req: Request) => {
       storiesToProcess = storiesRes?.data?.stories;
     }
 
+    storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
+
     const regions = await storyblokContent.get('cdn/datasource_entries', {
       datasource: 'synchronized-event-regions'
     });
 
-    storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/')).forEach(async (story) => {
+    await Promise.allSettled(storiesToProcess.map(async (story) => {
       if (data.action === 'published') {
         // Upsert to Algolia (no rebuild)
         console.log(`Upserting ${storyId} to algolia...`);
@@ -130,10 +129,7 @@ export default async (req: Request) => {
         if (run) {
           await index.saveObject(algoliaEvent);
         }
-  
         console.log('Algolia upsert: ', storyId);
-        console.log('=== END Deploy Background Function ===');
-        return new Response('Accepted', { status: 202 });
       }
   
       if (data.action === 'unpublished') {
@@ -143,10 +139,8 @@ export default async (req: Request) => {
           await index.deleteObject(storyId);
         }
         console.log('Algolia delete: ', storyId);
-        console.log('=== END Deploy Background Function ===');
-        return new Response('Accepted', { status: 202 });
       }
-    });
+    }));
   } catch (err) {
     console.error('Error during deploy function: ', err);
   }
