@@ -126,7 +126,7 @@ export const googleRowToStoryContent = (data, source) => {
   const processedData = Object.entries(data).reduce(
     (acc, [key, val]) => ({
       ...acc,
-      [key]: val.trim(),
+      [key]: val?.trim(),
     }),
     {}
   );
