@@ -123,7 +123,8 @@ export default async (req: Request) => {
     storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
 
     const regions = await storyblokContent.get('cdn/datasource_entries', {
-      datasource: 'synchronized-event-regions'
+      datasource: 'synchronized-event-regions',
+      dimension: 'us-or-international',
     });
 
     await Promise.allSettled(storiesToProcess.map(async (story) => {
