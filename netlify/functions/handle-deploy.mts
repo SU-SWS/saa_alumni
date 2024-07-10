@@ -45,7 +45,7 @@ export default async (req: Request) => {
     }
 
     const data: SBWebhookPayload = await JSON.parse(rawData);
-    console.log('Recieved: ', { data });
+    console.log(data.text);
     
     if (data.action !== 'published' && data.action !== 'unpublished') {
       // Trigger rebuild and stop
@@ -122,23 +122,27 @@ export default async (req: Request) => {
     });
 
     await Promise.allSettled(storiesToProcess.map(async (story) => {
-      if (data.action === 'published') {
-        // Upsert to Algolia (no rebuild)
-        console.log(`Upserting ${storyId} to algolia...`);
-        const algoliaEvent = storyToAlgoliaEvent(story, regions?.data?.datasource_entries);
-        if (run) {
-          await index.saveObject(algoliaEvent);
+      try {
+        if (data.action === 'published') {
+          // Upsert to Algolia (no rebuild)
+          console.log(`Upserting ${storyId} to algolia...`);
+          const algoliaEvent = storyToAlgoliaEvent(story, regions?.data?.datasource_entries);
+          if (run) {
+            await index.saveObject(algoliaEvent);
+          }
+          console.log('Algolia upsert: ', storyId);
         }
-        console.log('Algolia upsert: ', storyId);
-      }
-  
-      if (data.action === 'unpublished') {
-        // Delete from algolia (no rebuild)
-        console.log(`Deleting ${storyId} from algolia...`);
-        if (run) {
-          await index.deleteObject(storyId);
+    
+        if (data.action === 'unpublished') {
+          // Delete from algolia (no rebuild)
+          console.log(`Deleting ${storyId} from algolia...`);
+          if (run) {
+            await index.deleteObject(storyId);
+          }
+          console.log('Algolia delete: ', storyId);
         }
-        console.log('Algolia delete: ', storyId);
+      } catch (err) {
+        console.log(`Error handling ${storyId}: `, err);
       }
     }));
   } catch (err) {
