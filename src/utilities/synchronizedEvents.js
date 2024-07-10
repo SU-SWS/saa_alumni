@@ -148,7 +148,7 @@ export const googleRowToStoryContent = (data, source) => {
     country = '',
     address = '',
     subject: subjectRaw = '',
-    format = '',
+    format: formatRaw = '',
     region = '',
     latitude = '',
     longitude = '',
@@ -159,8 +159,10 @@ export const googleRowToStoryContent = (data, source) => {
   const start = googleDateTimeToStoryDateTime(startDate, startTime, source);
   const end = googleDateTimeToStoryDateTime(endDate, endTime, source);
 
-  console.log({ startDate, startTime, start, endDate, endTime, end });
-
+  const format = formatRaw
+    .split(',')
+    .map((s) => s.trim())
+    .filter((s) => !!s.length);
   const subject = subjectRaw
     .split(',')
     .map((s) => s.trim())
@@ -255,6 +257,12 @@ export const compareStoryContent = (a, b) => {
     sortedTagsA.length === sortedTagsB.length &&
     sortedTagsA.every((e, i) => e === sortedTagsB[i]);
 
+  const sortedFormatA = a.format.sort();
+  const sortedFormatB = b.format.sort();
+  const isFormatEq =
+    sortedFormatA.length === sortedFormatB.length &&
+    sortedFormatA.every((e, i) => e === sortedFormatB[i]);
+
   return (
     a.title !== b.title ||
     a.start !== b.start ||
@@ -264,13 +272,13 @@ export const compareStoryContent = (a, b) => {
     a.state !== b.state ||
     a.country !== b.country ||
     a.address !== b.address ||
-    a.format !== b.format ||
     a.region !== b.region ||
     a.latitude !== b.latitude ||
     a.longitude !== b.longitude ||
     a.eventUrl?.url !== b.eventUrl?.url ||
     !isExperienceEq ||
     !isSubjectEq ||
-    !isTagsEq
+    !isTagsEq ||
+    !isFormatEq
   );
 };
