@@ -113,7 +113,7 @@ const googleDateTimeToStoryDateTime = (date, time) => {
   }
 
   const combinedRaw = time ? `${date} ${time}` : date;
-  const combinedRawFormat = time ? 'yyyy-MM-dd t' : 'yyyy-MM-dd';
+  const combinedRawFormat = time ? 'yyyy-MM-dd HH:mm a' : 'yyyy-MM-dd';
   // TODO DS-793: This will need to change when timezones are added to source
   const luxonStartDate = DateTime.fromFormat(combinedRaw, combinedRawFormat, {
     zone: 'America/Los_Angeles',
