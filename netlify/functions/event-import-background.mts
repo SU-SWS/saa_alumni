@@ -179,9 +179,9 @@ export default async (req: Request) => {
       }
     });
 
-    const newFormats = incomingFormats.filter((f) => !knownFormats.has(f));
-    const newGeneralTags = incomingGeneralTags.filter((f) => !knownGeneralTags.has(f));
-    const newIdentityTags = incomingIdentityTags.filter((f) => !knownIdentityTags.has(f));
+    const newFormats = new Set(incomingFormats.filter((f) => !knownFormats.has(f)));
+    const newGeneralTags = new Set(incomingGeneralTags.filter((f) => !knownGeneralTags.has(f)));
+    const newIdentityTags = new Set(incomingIdentityTags.filter((f) => !knownIdentityTags.has(f)));
 
     for (const format of newFormats) {
       try {
@@ -190,7 +190,7 @@ export default async (req: Request) => {
           datasource_entry: {
             name: format,
             value: format,
-            datasource_id: formatDatasourceId.toString(),
+            datasource_id: formatDatasourceId,
           }
         } as any);
       } catch (err) {
@@ -205,7 +205,7 @@ export default async (req: Request) => {
           datasource_entry: {
             name: tag,
             value: tag,
-            datasource_id: generalTagsDatasourceId.toString(),
+            datasource_id: generalTagsDatasourceId,
           }
         } as any);
       } catch (err) {
@@ -220,7 +220,7 @@ export default async (req: Request) => {
           datasource_entry: {
             name: tag,
             value: tag,
-            datasource_id: identityTagsDatasourceId.toString(),
+            datasource_id: identityTagsDatasourceId,
           }
         } as any);
       } catch (err) {
