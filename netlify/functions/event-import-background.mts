@@ -183,27 +183,14 @@ export default async (req: Request) => {
     const newGeneralTags = incomingGeneralTags.filter((f) => !knownGeneralTags.has(f));
     const newIdentityTags = incomingIdentityTags.filter((f) => !knownIdentityTags.has(f));
 
-    console.log({
-      newFormats,
-      newGeneralTags,
-      newIdentityTags,
-    });
-
-    console.log({
-      spaceId,
-      formatDatasourceId,
-    });
-
-    return;
-
     for (const format of newFormats) {
       try {
         console.log('Adding format datasource entry: ', format);
-        await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+        const res = await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
           datasource_entry: {
             name: format,
             value: format,
-            datasource_id: formatDatasourceId,
+            datasource_id: formatDatasourceId.toString(),
           }
         } as any);
       } catch (err) {
@@ -218,7 +205,7 @@ export default async (req: Request) => {
           datasource_entry: {
             name: tag,
             value: tag,
-            datasource_id: generalTagsDatasourceId,
+            datasource_id: generalTagsDatasourceId.toString(),
           }
         } as any);
       } catch (err) {
@@ -233,7 +220,7 @@ export default async (req: Request) => {
           datasource_entry: {
             name: tag,
             value: tag,
-            datasource_id: identityTagsDatasourceId,
+            datasource_id: identityTagsDatasourceId.toString(),
           }
         } as any);
       } catch (err) {
