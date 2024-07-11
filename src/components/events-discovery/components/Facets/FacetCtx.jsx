@@ -6,6 +6,8 @@ const knownFacets = [
   { attribute: 'experience', label: 'Experience' },
   { attribute: 'subject', label: 'Subject' },
   { attribute: 'location', label: 'Location' },
+  { attribute: 'usRegion', label: 'United States' },
+  { attribute: 'intRegion', label: 'International' },
 ];
 
 /**

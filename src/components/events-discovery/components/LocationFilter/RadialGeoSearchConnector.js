@@ -4,6 +4,8 @@
 
 const noop = () => {};
 
+const debug = false;
+
 /**
  * Algolia custom connector.
  */
@@ -15,22 +17,28 @@ export default (renderFn, unmountFn = noop) =>
     const connectorState = {
       radius,
       precision,
+      name: null,
       lat: null,
       lng: null,
       refine:
         (helper) =>
-        ({ lat, lng }) => {
-          console.log('Refining to', lat, lng);
+        ({ lat, lng, name }) => {
+          connectorState.name = name;
           connectorState.lat = lat;
           connectorState.lng = lng;
           helper.setQueryParameter('aroundLatLng', [lat, lng]);
           helper.search();
         },
       clearRefinements: (helper) => () => {
-        console.log('Clearing refinements');
         connectorState.lat = null;
         connectorState.lng = null;
-        helper.setQueryParameter('aroundLatLng', null);
+        connectorState.name = null;
+        helper.setQueryParameter('aroundLatLng', undefined);
+        helper.search();
+      },
+      setRadius: (helper) => (newRadius) => {
+        connectorState.radius = parseInt(newRadius, 10);
+        helper.setQueryParameter('aroundRadius', newRadius);
         helper.search();
       },
     };
@@ -44,12 +52,6 @@ export default (renderFn, unmountFn = noop) =>
        * @returns
        */
       getWidgetSearchParameters(searchParameters, { uiState }) {
-        console.log(
-          'Get Widget Search Parameters',
-          searchParameters,
-          uiState,
-          connectorState
-        );
         let state = searchParameters;
         state = state.setQueryParameter('aroundRadius', connectorState.radius);
         state = state.setQueryParameter(
@@ -66,6 +68,8 @@ export default (renderFn, unmountFn = noop) =>
         ) {
           const lat = parseFloat(uiState.radialGeoSearch.lat, 10);
           const lng = parseFloat(uiState.radialGeoSearch.lng, 10);
+          connectorState.radius = parseInt(uiState.radialGeoSearch.radius, 10);
+          connectorState.name = uiState.radialGeoSearch.name;
           connectorState.lat = lat;
           connectorState.lng = lng;
           state = state.setQueryParameter('aroundLatLng', [lat, lng]);
@@ -79,10 +83,11 @@ export default (renderFn, unmountFn = noop) =>
        * @returns
        */
       getWidgetUiState(uiState, { searchParameters }) {
-        console.log('Get Widget UI State', uiState, searchParameters);
         return {
           ...uiState,
           radialGeoSearch: {
+            radius: connectorState.radius,
+            name: connectorState.name,
             lat: connectorState.lat,
             lng: connectorState.lng,
           },
@@ -95,10 +100,11 @@ export default (renderFn, unmountFn = noop) =>
        * @returns
        */
       getRenderState(renderState, renderOptions) {
-        console.log('Get Render State', renderState, renderOptions);
         return {
           ...renderState,
           radialGeoSearch: {
+            radius: connectorState.radius,
+            name: connectorState.name,
             lat: connectorState.lat,
             lng: connectorState.lng,
           },
@@ -110,14 +116,14 @@ export default (renderFn, unmountFn = noop) =>
        */
       getWidgetRenderState(renderOptions) {
         const { helper, state, results, instantSearchInstance } = renderOptions;
-        console.log('Get Widget Render State', renderOptions);
         return {
           refine: connectorState.refine(helper),
           clearRefinements: connectorState.clearRefinements(helper),
-          radialGeoSearch: {
-            lat: connectorState.lat,
-            lng: connectorState.lng,
-          },
+          setRadius: connectorState.setRadius(helper),
+          radius: connectorState.radius,
+          name: connectorState.name,
+          lat: connectorState.lat,
+          lng: connectorState.lng,
         };
       },
       /**
@@ -125,7 +131,6 @@ export default (renderFn, unmountFn = noop) =>
        * @param {*} initOptions
        */
       init(initOptions) {
-        console.log('Init', initOptions);
         renderFn(
           {
             ...this.getWidgetRenderState(initOptions),
@@ -139,7 +144,6 @@ export default (renderFn, unmountFn = noop) =>
        * @param {*} renderOptions
        */
       render(renderOptions) {
-        console.log('Render', renderOptions);
         renderFn(
           {
             ...this.getWidgetRenderState(renderOptions),

@@ -2,7 +2,11 @@ import React, { useId, useContext } from 'react';
 import { dcnb } from 'cnbuilder';
 import MUIAutocomplete from '@mui/material/Autocomplete';
 import MUITextField from '@mui/material/TextField';
-import { useClearRefinements, useRefinementList } from 'react-instantsearch';
+import {
+  useClearRefinements,
+  useCurrentRefinements,
+  useRefinementList,
+} from 'react-instantsearch';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
@@ -14,7 +18,7 @@ const LocationTabPanelState = () => {
   const field = 'state';
   const isDesktop = window.innerWidth >= 1024; // TODO: Fix this window check to be a real on breakpoint.
   const { refine: clearRefinement } = useClearRefinements({
-    includedAttributes: [field, 'city', 'country'],
+    includedAttributes: [field, 'country'],
   });
   const { items, refine } = useRefinementList({
     attribute: field,
@@ -22,13 +26,24 @@ const LocationTabPanelState = () => {
     sortBy: ['name:asc'],
   });
 
+  const reformattedItems = items.map((item) => ({
+    label: item.label,
+    value: item.value,
+  }));
+
+  const { items: refinedItems } = useCurrentRefinements({
+    includedAttributes: [field],
+  });
+
+  const selectedItem = refinedItems?.[0]?.refinements?.[0] ?? null;
+
   if (activeTab !== 'state') return null;
 
   return (
     <div id="state-panel" role="tabpanel">
       <fieldset className={styles.fieldset} data-test={`${field}-facet`}>
         <legend className={dcnb(styles.locationLabels, styles.legend)}>
-          US State / Canadian Province
+          US State
         </legend>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className={styles.locationWrapper}>
@@ -40,11 +55,22 @@ const LocationTabPanelState = () => {
                 multiple={false}
                 openOnFocus={false}
                 autoSelect={false}
-                options={items}
+                options={reformattedItems}
                 noOptionsText="No Results"
-                onChange={(e, { value }) => {
-                  clearRefinement();
-                  refine(value);
+                value={selectedItem}
+                isOptionEqualToValue={(option, value) =>
+                  option.value === value.value
+                }
+                onChange={(e, value, reason) => {
+                  if (reason === 'clear') {
+                    clearRefinement();
+                    return;
+                  }
+
+                  if (reason === 'selectOption') {
+                    clearRefinement();
+                    refine(value.value);
+                  }
                 }}
                 renderInput={(props) => (
                   <MUITextField
@@ -58,23 +84,18 @@ const LocationTabPanelState = () => {
                     data-test={`${field}-facet-search`}
                   />
                 )}
-                renderOption={(props, option, { selected }) => {
-                  if (option.value === '') {
-                    return null;
-                  }
-                  return (
-                    <li
-                      {...props}
-                      className={dcnb(
-                        styles.option({ selected }),
-                        props.className
-                      )}
-                      data-test={`${field}-facet-option`}
-                    >
-                      {option.value}
-                    </li>
-                  );
-                }}
+                renderOption={(props, option, { selected }) => (
+                  <li
+                    {...props}
+                    className={dcnb(
+                      styles.option({ selected }),
+                      props.className
+                    )}
+                    data-test={`${field}-facet-option`}
+                  >
+                    {option.value}
+                  </li>
+                )}
                 clearIcon={
                   <HeroIcon
                     iconType="close"
@@ -95,11 +116,7 @@ const LocationTabPanelState = () => {
                 }}
               />
             </div>
-            <HeroIcon
-              iconType="location"
-              noBaseStyle
-              className={styles.pinIcon}
-            />
+            <HeroIcon iconType="location" className={styles.pinIcon} />
           </div>
         </form>
       </fieldset>

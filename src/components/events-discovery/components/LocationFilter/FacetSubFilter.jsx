@@ -6,13 +6,15 @@ import {
 } from 'react-instantsearch';
 import { SubfilterAccordion } from '../FilterAccordion';
 
-export const OnlineOptionsSubfilter = ({
+export const FacetSubFilter = ({
   expanded = false,
   onToggleExpanded = () => null,
+  attribute,
+  label,
 }) => {
-  const { items, canRefine } = useRefinementList({ attribute: 'experience' });
+  const { items, canRefine } = useRefinementList({ attribute });
   const { refine: clear } = useClearRefinements({
-    includedAttributes: ['experience'],
+    includedAttributes: [attribute],
   });
   const hasRefinedItems = useMemo(
     () => items.some((item) => item.isRefined),
@@ -23,13 +25,13 @@ export const OnlineOptionsSubfilter = ({
     <SubfilterAccordion
       expanded={expanded}
       showReset={hasRefinedItems}
-      label="Online options"
+      label={label}
       onToggleExpanded={onToggleExpanded}
       onReset={clear}
     >
       {canRefine ? (
         <RefinementList
-          attribute="experience"
+          attribute={attribute}
           classNames={{
             root: 'su-mt-8',
             list: 'su-flex su-flex-col su-gap-4 su-list-none su-pl-8',

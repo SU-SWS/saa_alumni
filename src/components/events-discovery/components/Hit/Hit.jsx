@@ -27,7 +27,9 @@ export const Hit = ({ hit }) => {
     format,
   } = hit;
 
-  // TODO: Sanitize on the way in to Algolia.
+  // TODO: Remove these checks once the Algolia data is clean
+  // ----------------------------------------------------------------------------------------------------
+
   // Sanitize on the way out of Algolia.
   if (start === 'Invalid DateTime' || end === 'Invalid DateTime') {
     return (
@@ -45,6 +47,14 @@ export const Hit = ({ hit }) => {
     );
   }
 
+  let exp = experience;
+  if (typeof experience === 'string') {
+    exp = [experience];
+  }
+
+  // END TODO
+  // ----------------------------------------------------------------------------------------------------
+
   return (
     <Event
       title={title}
@@ -56,7 +66,7 @@ export const Hit = ({ hit }) => {
       region={region}
       eventUrl={eventUrl}
       subject={subject}
-      experience={experience}
+      experience={exp}
       format={format}
     />
   );

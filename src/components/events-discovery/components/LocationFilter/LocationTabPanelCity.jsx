@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
 import MUIAutocomplete from '@mui/material/Autocomplete';
 import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
 import MUIToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { dcnb } from 'cnbuilder';
-import { useConnector } from 'react-instantsearch';
+import { useConnector, useClearRefinements } from 'react-instantsearch';
 import axios from 'axios';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
@@ -18,28 +19,37 @@ const LocationTabPanelCity = () => {
   // TODO: Fix this window check to be a real on breakpoint.
   const isDesktop = window ?? window.innerWidth >= 1024;
 
-  // STATE
-  const [distanceState, setDistanceState] = useState('40000');
-  const [locationSuggestions, setLocationSuggestions] = useState([
-    'Current location',
-  ]);
-  const [locationIsLoading, setLocationIsLoading] = useState(false);
+  // Algolia Hooks.
+  const { refine: clearLocationRefinements } = useClearRefinements({
+    includedAttributes: ['state', 'country'],
+  });
 
-  const { refine, clearRefinements: clearGeoRefinement } = useConnector(
-    RadialGeoSearchConnector,
-    {
-      radius: parseInt(distanceState, 10),
-      precision: 1000,
-    }
-  );
+  // Custom Connector Hook.
+  const {
+    refine,
+    clearRefinements: clearGeoRefinement,
+    name: locationName,
+    radius,
+    setRadius,
+  } = useConnector(RadialGeoSearchConnector, {
+    radius: 40000,
+    precision: 1000,
+  });
+
+  // Is loading suggestions.
+  const [locationIsLoading, setLocationIsLoading] = useState(false);
+  // Suggestions for the location search.
+  const [locationSuggestions, setLocationSuggestions] = useState([
+    locationName || 'Current location',
+  ]);
 
   // Handle the input typing into the location search.
   const onInputType = async (e, query, reason) => {
     switch (reason) {
-      case 'input':
+      case 'input': {
         setLocationIsLoading(true);
         // Don't start lookup until at least three characters have been entered.
-        if (!query || query?.length < 3) {
+        if (!query || query?.length < 3 || query === 'Current location') {
           setLocationSuggestions(['Current location']);
           setLocationIsLoading(false);
           return;
@@ -56,30 +66,52 @@ const LocationTabPanelCity = () => {
             results.data.results.map((r) => r.description)
           );
         } else {
-          setLocationSuggestions(['Current location']);
+          setLocationSuggestions(['Current location', locationName]);
         }
         setLocationIsLoading(false);
         break;
-      case 'clear':
+      }
+      case 'clear': {
         setLocationSuggestions(['Current location']);
         clearGeoRefinement();
         break;
-      case 'reset':
-        setLocationSuggestions(['Current location']);
-        break;
+      }
+      // case 'reset': {
+      //   console.log('Resetting location suggestions');
+      //   setLocationSuggestions(['Current location']);
+      //   break;
+      // }
       default:
-        console.log('Unknown reason', reason);
+        // eslint-disable-next-line no-console
+        console.debug('Unhandled reason', reason);
     }
   };
 
   // Handle the city change.
   const onCityChange = async (e, value, reason) => {
     switch (reason) {
-      case 'selectOption':
+      case 'selectOption': {
+        // Clear out other location refinements.
+        clearLocationRefinements();
+
+        // If the value is current location, use the current location.
         if (value === 'Current location') {
           // Use the current location.
+
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              refine({
+                name: 'Current location',
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              });
+            },
+            (error) => {
+              console.error('Error getting current location', error);
+            }
+          );
         } else {
-          // Lookup the location.
+          // If not current location, lookup the location by name.
           const params = new URLSearchParams({
             q: value,
           });
@@ -88,15 +120,20 @@ const LocationTabPanelCity = () => {
           );
           if (results?.data?.location) {
             refine({
+              name: value,
               lat: results.data.location.geometry.location.lat,
               lng: results.data.location.geometry.location.lng,
             });
           }
+          console.error('Unable to find location coordinates', value);
         }
         break;
-      case 'clear':
-        // Clear the location.
+      }
+      case 'clear': {
+        console.log('Clearing location from change');
+        clearGeoRefinement();
         break;
+      }
       default:
         console.log('Unknown reason', reason);
     }
@@ -121,15 +158,16 @@ const LocationTabPanelCity = () => {
             <div className={styles.root}>
               <MUIAutocomplete
                 multiple={false}
+                autoSelect={false}
                 options={locationSuggestions}
                 onInputChange={onInputType}
                 onChange={onCityChange}
+                value={locationName}
                 loading={locationIsLoading}
+                filterOptions={(x) => x}
                 renderInput={(props) => (
                   <MUITextField
                     {...props}
-                    openOnFocus={false}
-                    autoSelect={false}
                     variant="standard"
                     placeholder="Find a city"
                     inputProps={{
@@ -157,11 +195,7 @@ const LocationTabPanelCity = () => {
                 }}
               />
             </div>
-            <HeroIcon
-              iconType="location"
-              noBaseStyle
-              className={styles.pinIcon}
-            />
+            <HeroIcon iconType="location" className={styles.pinIcon} />
           </div>
         </form>
 
@@ -176,37 +210,38 @@ const LocationTabPanelCity = () => {
             exclusive
             id="location-distance-buttons"
             className={styles.toggleButtonGroup}
-            value={distanceState}
+            value={parseInt(radius, 10)}
             aria-label="Select distance from your chosen location"
-            onChange={(e, value) => setDistanceState(value)}
+            onChange={(e, value) => setRadius(value)}
+            disabled={!locationName}
           >
             <MUIToggleButton
-              value="40000"
+              value={40000}
               className={styles.toggleButton}
               disableRipple
               aria-label="25 mile radius"
               data-test="location-facet-25"
-              selected={distanceState === '40000'}
+              selected={radius === 40000}
             >
               25mi
             </MUIToggleButton>
             <MUIToggleButton
-              value="80000"
+              value={80000}
               className={styles.toggleButton}
               disableRipple
               aria-label="50 mile radius"
               data-test="location-facet-50"
-              selected={distanceState === '80000'}
+              selected={radius === 80000}
             >
               50mi
             </MUIToggleButton>
             <MUIToggleButton
-              value="160000"
+              value={160000}
               className={styles.toggleButton}
               disableRipple
               aria-label="100 mile radius"
               data-test="location-facet-100"
-              selected={distanceState === '160000'}
+              selected={radius === 160000}
             >
               100mi
             </MUIToggleButton>

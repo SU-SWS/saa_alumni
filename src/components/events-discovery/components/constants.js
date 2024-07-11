@@ -15,9 +15,15 @@ export const facetLabels = {
     label: 'Country',
   },
   state: {
-    label: 'US State / Canadian Province',
+    label: 'US State',
   },
   city: {
     label: 'City',
+  },
+  usRegion: {
+    label: 'United States',
+  },
+  intRegion: {
+    label: 'International',
   },
 };

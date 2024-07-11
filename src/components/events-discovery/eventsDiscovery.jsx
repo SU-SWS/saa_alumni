@@ -74,25 +74,40 @@ const EventsDiscovery = () => (
         stateToRoute(uiState) {
           const indexUiState = uiState['dev_alumni-events_start-asc'];
 
-          return {
-            q: indexUiState.query,
+          // Normal Good params.
+          const ret = {
             page: indexUiState.page,
             format: indexUiState.refinementList?.format,
             experience: indexUiState.refinementList?.experience,
             subject: indexUiState.refinementList?.subject,
             startTimestamp: indexUiState.numericMenu?.startTimestamp,
-            near: indexUiState.radialGeoSearch,
+            region: indexUiState.refinementList?.usRegion,
+            intRegion: indexUiState.refinementList?.intRegion,
+            country: indexUiState.refinementList?.country,
           };
+
+          // Silly always has values params.
+          if (
+            indexUiState.radialGeoSearch &&
+            indexUiState.radialGeoSearch.lat &&
+            parseFloat(indexUiState.radialGeoSearch.lat)
+          ) {
+            ret.near = indexUiState.radialGeoSearch;
+          }
+
+          return ret;
         },
         routeToState(routeState) {
           return {
             'dev_alumni-events_start-asc': {
-              query: routeState.q,
               page: routeState.page,
               refinementList: {
                 format: routeState.format,
                 experience: routeState.experience,
                 subject: routeState.subject,
+                usRegion: routeState.region,
+                intRegion: routeState.intRegion,
+                country: routeState.country,
               },
               numericMenu: {
                 startTimestamp: routeState.startTimestamp,
