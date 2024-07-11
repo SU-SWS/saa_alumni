@@ -4,7 +4,8 @@ import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
 import MUIToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { dcnb } from 'cnbuilder';
-import { useConnector, useGeoSearch } from 'react-instantsearch';
+import { useConnector } from 'react-instantsearch';
+import axios from 'axios';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
@@ -19,10 +20,87 @@ const LocationTabPanelCity = () => {
 
   // STATE
   const [distanceState, setDistanceState] = useState('40000');
-  const { refine } = useConnector(RadialGeoSearchConnector, {
-    radius: parseInt(distanceState, 10),
-    precision: 1000,
-  });
+  const [locationSuggestions, setLocationSuggestions] = useState([
+    'Current location',
+  ]);
+  const [locationIsLoading, setLocationIsLoading] = useState(false);
+
+  const { refine, clearRefinements: clearGeoRefinement } = useConnector(
+    RadialGeoSearchConnector,
+    {
+      radius: parseInt(distanceState, 10),
+      precision: 1000,
+    }
+  );
+
+  // Handle the input typing into the location search.
+  const onInputType = async (e, query, reason) => {
+    switch (reason) {
+      case 'input':
+        setLocationIsLoading(true);
+        // Don't start lookup until at least three characters have been entered.
+        if (!query || query?.length < 3) {
+          setLocationSuggestions(['Current location']);
+          setLocationIsLoading(false);
+          return;
+        }
+        // Fetch the location suggestions.
+        const params = new URLSearchParams({
+          q: query,
+        });
+        const results = await axios.get(
+          `/api/location/autocomplete?${params.toString()}`
+        );
+        if (results?.data?.results && results.data.results.length > 0) {
+          setLocationSuggestions(
+            results.data.results.map((r) => r.description)
+          );
+        } else {
+          setLocationSuggestions(['Current location']);
+        }
+        setLocationIsLoading(false);
+        break;
+      case 'clear':
+        setLocationSuggestions(['Current location']);
+        clearGeoRefinement();
+        break;
+      case 'reset':
+        setLocationSuggestions(['Current location']);
+        break;
+      default:
+        console.log('Unknown reason', reason);
+    }
+  };
+
+  // Handle the city change.
+  const onCityChange = async (e, value, reason) => {
+    switch (reason) {
+      case 'selectOption':
+        if (value === 'Current location') {
+          // Use the current location.
+        } else {
+          // Lookup the location.
+          const params = new URLSearchParams({
+            q: value,
+          });
+          const results = await axios.get(
+            `/api/location/lookup?${params.toString()}`
+          );
+          if (results?.data?.location) {
+            refine({
+              lat: results.data.location.geometry.location.lat,
+              lng: results.data.location.geometry.location.lng,
+            });
+          }
+        }
+        break;
+      case 'clear':
+        // Clear the location.
+        break;
+      default:
+        console.log('Unknown reason', reason);
+    }
+  };
 
   // If not active. Return.
   if (activeTab !== 'city') return null;
@@ -43,13 +121,10 @@ const LocationTabPanelCity = () => {
             <div className={styles.root}>
               <MUIAutocomplete
                 multiple={false}
-                options={['Vancouver', 'Toronto', 'Montreal']}
-                onChange={(e, value) => {
-                  refine({
-                    lat: 47.62,
-                    lng: -122.33,
-                  });
-                }}
+                options={locationSuggestions}
+                onInputChange={onInputType}
+                onChange={onCityChange}
+                loading={locationIsLoading}
                 renderInput={(props) => (
                   <MUITextField
                     {...props}

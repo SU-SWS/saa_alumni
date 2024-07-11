@@ -26,6 +26,13 @@ export default (renderFn, unmountFn = noop) =>
           helper.setQueryParameter('aroundLatLng', [lat, lng]);
           helper.search();
         },
+      clearRefinements: (helper) => () => {
+        console.log('Clearing refinements');
+        connectorState.lat = null;
+        connectorState.lng = null;
+        helper.setQueryParameter('aroundLatLng', null);
+        helper.search();
+      },
     };
 
     return {
@@ -37,21 +44,31 @@ export default (renderFn, unmountFn = noop) =>
        * @returns
        */
       getWidgetSearchParameters(searchParameters, { uiState }) {
-        const state = searchParameters;
-        console.log('Search Params', searchParameters);
-        searchParameters.setQueryParameter(
-          'aroundRadius',
-          connectorState.radius
+        console.log(
+          'Get Widget Search Parameters',
+          searchParameters,
+          uiState,
+          connectorState
         );
-        searchParameters.setQueryParameter(
+        let state = searchParameters;
+        state = state.setQueryParameter('aroundRadius', connectorState.radius);
+        state = state.setQueryParameter(
           'aroundPrecision',
           connectorState.precision
         );
-        if (connectorState.lat !== null && connectorState.lng !== null) {
-          searchParameters.setQueryParameter('aroundLatLng', [
-            connectorState.lat,
-            connectorState.lng,
-          ]);
+
+        // If we find the `radialGeoSearch` key in the `uiState` object,
+        // This is usually from the initial load.
+        if (
+          uiState.radialGeoSearch &&
+          uiState.radialGeoSearch.lat !== null &&
+          uiState.radialGeoSearch.lng !== null
+        ) {
+          const lat = parseFloat(uiState.radialGeoSearch.lat, 10);
+          const lng = parseFloat(uiState.radialGeoSearch.lng, 10);
+          connectorState.lat = lat;
+          connectorState.lng = lng;
+          state = state.setQueryParameter('aroundLatLng', [lat, lng]);
         }
 
         return state;
@@ -61,9 +78,14 @@ export default (renderFn, unmountFn = noop) =>
        * @param {*} uiState
        * @returns
        */
-      getWidgetUiState(uiState) {
+      getWidgetUiState(uiState, { searchParameters }) {
+        console.log('Get Widget UI State', uiState, searchParameters);
         return {
           ...uiState,
+          radialGeoSearch: {
+            lat: connectorState.lat,
+            lng: connectorState.lng,
+          },
         };
       },
       /**
@@ -74,13 +96,12 @@ export default (renderFn, unmountFn = noop) =>
        */
       getRenderState(renderState, renderOptions) {
         console.log('Get Render State', renderState, renderOptions);
-        const rndr =
-          this &&
-          this.getWidgetRenderState &&
-          this.getWidgetRenderState(renderOptions);
         return {
           ...renderState,
-          refine: rndr?.refine,
+          radialGeoSearch: {
+            lat: connectorState.lat,
+            lng: connectorState.lng,
+          },
         };
       },
       /**
@@ -88,11 +109,15 @@ export default (renderFn, unmountFn = noop) =>
        * @returns
        */
       getWidgetRenderState(renderOptions) {
-        const { helper, results, instantSearchInstance } = renderOptions;
-
-        console.log('Get Widget Render State', connectorState);
+        const { helper, state, results, instantSearchInstance } = renderOptions;
+        console.log('Get Widget Render State', renderOptions);
         return {
           refine: connectorState.refine(helper),
+          clearRefinements: connectorState.clearRefinements(helper),
+          radialGeoSearch: {
+            lat: connectorState.lat,
+            lng: connectorState.lng,
+          },
         };
       },
       /**

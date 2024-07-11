@@ -81,6 +81,7 @@ const EventsDiscovery = () => (
             experience: indexUiState.refinementList?.experience,
             subject: indexUiState.refinementList?.subject,
             startTimestamp: indexUiState.numericMenu?.startTimestamp,
+            near: indexUiState.radialGeoSearch,
           };
         },
         routeToState(routeState) {
@@ -96,6 +97,7 @@ const EventsDiscovery = () => (
               numericMenu: {
                 startTimestamp: routeState.startTimestamp,
               },
+              radialGeoSearch: routeState.near,
             },
           };
         },
