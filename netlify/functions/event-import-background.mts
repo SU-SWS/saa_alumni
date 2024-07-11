@@ -325,8 +325,9 @@ export default async (req: Request) => {
         ) < OldCutoff;
 
         if (isOld) {
-          console.log('Story is old. Moving...');
+          console.log('Story is old. Unpublishing and moving...');
           if (run) {
+            await storyblokManagement.get(`spaces/${spaceId}/stories/${story.id}/unpublish`);
             await storyblokManagement.put(`spaces/${spaceId}/stories/${story.id}`, {
               story: { 
                 ...story,
@@ -334,7 +335,7 @@ export default async (req: Request) => {
               },
             });
           }
-          console.log('Unpublished!');
+          console.log('Done!');
         }
       } catch (err) {
         console.error('Error during proccessing: ', err);
