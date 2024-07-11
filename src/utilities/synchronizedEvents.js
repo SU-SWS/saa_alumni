@@ -122,17 +122,6 @@ const googleDateTimeToStoryDateTime = (date, time, source) => {
     zone: 'America/Los_Angeles',
   });
 
-  console.log({
-    date,
-    time,
-    source,
-    combinedRaw,
-    dateTimeFormat,
-    dateFormat,
-    combinedRawFormat,
-    luxonStartDate,
-  });
-
   return luxonStartDate.toFormat('yyyy-MM-dd T', { zone: 'UTC' });
 };
 

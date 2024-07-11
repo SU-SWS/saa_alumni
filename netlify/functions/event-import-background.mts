@@ -183,34 +183,52 @@ export default async (req: Request) => {
     const newGeneralTags = incomingGeneralTags.filter((f) => !knownGeneralTags.has(f));
     const newIdentityTags = incomingIdentityTags.filter((f) => !knownIdentityTags.has(f));
 
+    console.log({
+      newFormats,
+      newGeneralTags,
+      newIdentityTags,
+    });
+
     for (const format of newFormats) {
-      await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
-        datasource_entry: {
-          name: format,
-          value: format,
-          datasource_id: formatDatasourceId,
-        }
-      } as any);
+      try { 
+        await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+          datasource_entry: {
+            name: format,
+            value: format,
+            datasource_id: formatDatasourceId,
+          }
+        } as any);
+      } catch (err) {
+        throw new Error(`Error during format datasource update: ${err}`);
+      }
     }
 
     for (const tag of newGeneralTags) {
-      await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
-        datasource_entry: {
-          name: tag,
-          value: tag,
-          datasource_id: generalTagsDatasourceId,
-        }
-      } as any);
+      try {
+        await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+          datasource_entry: {
+            name: tag,
+            value: tag,
+            datasource_id: generalTagsDatasourceId,
+          }
+        } as any);
+      } catch (err) {
+        throw new Error(`Error during general tags datasource update: ${err}`);
+      }
     }
 
     for (const tag of newIdentityTags) {
-      await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
-        datasource_entry: {
-          name: tag,
-          value: tag,
-          datasource_id: identityTagsDatasourceId,
-        }
-      } as any);
+      try {
+        await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+          datasource_entry: {
+            name: tag,
+            value: tag,
+            datasource_id: identityTagsDatasourceId,
+          }
+        } as any);
+      } catch (err) {
+        throw new Error(`Error during identity tags datasource update: ${err}`);
+      }
     }
 
     for (const [id, {google, storyblok}] of syncedEvents) {
