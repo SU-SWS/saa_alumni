@@ -189,8 +189,16 @@ export default async (req: Request) => {
       newIdentityTags,
     });
 
+    console.log({
+      spaceId,
+      formatDatasourceId,
+    });
+
+    return;
+
     for (const format of newFormats) {
-      try { 
+      try {
+        console.log('Adding format datasource entry: ', format);
         await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
           datasource_entry: {
             name: format,
@@ -199,12 +207,13 @@ export default async (req: Request) => {
           }
         } as any);
       } catch (err) {
-        throw new Error(`Error during format datasource update: ${err}`);
+        console.log('Error during format datasource update: ', err);
       }
     }
 
     for (const tag of newGeneralTags) {
       try {
+        console.log('Adding general tag datasource entry: ', tag);
         await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
           datasource_entry: {
             name: tag,
@@ -213,12 +222,13 @@ export default async (req: Request) => {
           }
         } as any);
       } catch (err) {
-        throw new Error(`Error during general tags datasource update: ${err}`);
+        console.log('Error during general tags datasource update: ', err);
       }
     }
 
     for (const tag of newIdentityTags) {
       try {
+        console.log('Adding identity tag datasource entry: ', tag);
         await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
           datasource_entry: {
             name: tag,
@@ -227,7 +237,7 @@ export default async (req: Request) => {
           }
         } as any);
       } catch (err) {
-        throw new Error(`Error during identity tags datasource update: ${err}`);
+        console.log('Error during identity tags datasource update: ', err);
       }
     }
 
@@ -240,7 +250,7 @@ export default async (req: Request) => {
           if (!compareStoryContent(google.content, storyblok.content)) {
             console.log('No changes needed.');
             console.log('Processing complete: ', id);
-            return;
+            continue;
           }
 
           console.log('Changes detected. Syncing changes to Storyblok...');
