@@ -67,7 +67,10 @@ export const Event = ({
     return null;
   }
 
-  const experienceDisplay = experience?.length ? experience.join(', ') : '';
+  const experienceDisplay =
+    typeof experience !== 'string' && experience?.length
+      ? experience.join(', ')
+      : '';
 
   return (
     <article className="su-flex su-flex-col sm:su-flex-row su-items-center sm:su-items-start su-flex-wrap">
