@@ -122,7 +122,7 @@ export default async (req: Request) => {
 
     storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
 
-    const regions = await storyblokContent.get('cdn/datasource_entries', {
+    const regions = await storyblokContent.getAll('cdn/datasource_entries', {
       datasource: 'synchronized-event-regions',
       dimension: 'us-or-international',
     });
@@ -132,7 +132,7 @@ export default async (req: Request) => {
         if (data.action === 'published') {
           // Upsert to Algolia (no rebuild)
           console.log(`Upserting ${story.uuid} to algolia...`);
-          const algoliaEvent = storyToAlgoliaEvent(story, regions?.data?.datasource_entries);
+          const algoliaEvent = storyToAlgoliaEvent(story, regions);
           if (run) {
             await index.saveObject(algoliaEvent);
           }
