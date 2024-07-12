@@ -9,8 +9,6 @@ const autocompleteHandler = async (req, res) => {
     key: process.env.GOOGLE_MAPS_API_KEY,
   });
 
-  console.log('Params:', params);
-
   // eslint-disable-next-line max-len
   const suggestions = await axios
     .get(
