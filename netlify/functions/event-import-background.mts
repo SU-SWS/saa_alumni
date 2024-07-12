@@ -92,13 +92,13 @@ export default async (req: Request) => {
     const archiveCutoff = DateTime.utc().startOf('day').minus({ days: 180 }).toFormat('yyyy-MM-dd');
 
     console.log('Fetching Storyblok events...');
-    const formatDatasource = await storyblokContent.get('cdn/datasource_entries', {
+    const formatDatasource = await storyblokContent.getAll('cdn/datasource_entries', {
       datasource: 'synchronized-event-format',
     });
-    const GeneralTagsDatasource = await storyblokContent.get('cdn/datasource_entries', {
+    const GeneralTagsDatasource = await storyblokContent.getAll('cdn/datasource_entries', {
       datasource: 'synchronized-event-general-tags',
     });
-    const IdentityTagsDatasource = await storyblokContent.get('cdn/datasource_entries', {
+    const IdentityTagsDatasource = await storyblokContent.getAll('cdn/datasource_entries', {
       datasource: 'synchronized-event-identity-tags',
     });
     const sbPublishedEvents = await storyblokContent.getStories({ 
@@ -135,9 +135,9 @@ export default async (req: Request) => {
 
     const syncedEvents = new Map();
     const manualEvents = new Map();
-    const knownFormats = new Set<string>(formatDatasource?.data?.datasource?.datasource_entries?.map?.((d) => d.value));
-    const knownGeneralTags = new Set<string>(GeneralTagsDatasource?.data?.datasource?.datasource_entries?.map?.((d) => d.value));
-    const knownIdentityTags = new Set<string>(IdentityTagsDatasource?.data?.datasource?.datasource_entries?.map?.((d) => d.value));
+    const knownFormats = new Set<string>(formatDatasource?.map?.((d) => d.value));
+    const knownGeneralTags = new Set<string>(GeneralTagsDatasource?.map?.((d) => d.value));
+    const knownIdentityTags = new Set<string>(IdentityTagsDatasource?.map?.((d) => d.value));
     const incomingFormats: string[] = [];
     const incomingGeneralTags: string[] = [];
     const incomingIdentityTags: string[] = [];
