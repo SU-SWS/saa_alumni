@@ -8,10 +8,8 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
     const {
       contact: {
         name: { digitalName: memberName },
-        birthDate,
       },
       memberships: [{ membershipNumber, membershipStartDate }],
-      emails: [{ emailAddress }],
     } = megaProfileUser;
 
     const pass = await PKPass.from(
@@ -47,18 +45,6 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
       value: membershipStartDate,
     });
 
-    // Auxiliary Fields
-    pass.auxiliaryFields.push({
-      key: 'emailAddress',
-      label: 'EMAIL',
-      value: emailAddress,
-    });
-    pass.auxiliaryFields.push({
-      key: 'birthDate',
-      label: 'BIRTHDATE',
-      value: birthDate,
-    });
-
     return pass;
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -72,7 +58,6 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
     const {
       contact: {
         name: { digitalName: memberName },
-        birthDate,
       },
       memberships: [{ membershipNumber, membershipStartDate }],
       emails: [{ emailAddress }],
@@ -105,7 +90,7 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
       hexBackgroundColor: '#d20707',
       logo: {
         sourceUri: {
-          uri: 'https://project-orion-production.s3.us-east-1.amazonaws.com/wallet/logo.png',
+          uri: process.env.ANDROID_PASS_LOGO_URL,
         },
       },
       cardTitle: {
@@ -134,7 +119,7 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
       // In case we want to include a hero/footer image. It requires a public image URL
       heroImage: {
         sourceUri: {
-          uri: 'https://project-orion-production.s3.us-east-1.amazonaws.com/wallet/background.png',
+          uri: process.env.ANDROID_PASS_IMAGE_URL,
         },
       },
       textModulesData: [
@@ -152,16 +137,6 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
           header: 'SINCE',
           body: membershipStartDate,
           id: 'memberSince',
-        },
-        {
-          header: 'EMAIL',
-          body: emailAddress,
-          id: 'emailAddress',
-        },
-        {
-          header: 'BIRTHDATE',
-          body: birthDate,
-          id: 'birthDate',
         },
       ],
     };
