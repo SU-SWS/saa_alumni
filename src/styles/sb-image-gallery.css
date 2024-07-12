@@ -2,10 +2,6 @@
   @apply su-mx-auto xl:su-max-w-[125rem];
 }
 
-.image-gallery-slide .image-gallery-image {
-  @apply su-mx-auto md:su-px-8 lg:su-px-0 su-w-4/5 sm:su-w-10/12 xl:su-w-full;
-}
-
 .image-gallery-svg path {
   @apply su-shadow-[5px_5px_20px_0_rgba(0,0,0,0.10)];
 }
