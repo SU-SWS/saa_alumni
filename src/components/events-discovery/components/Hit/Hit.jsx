@@ -20,9 +20,11 @@ export const Hit = ({ hit }) => {
     end,
     city,
     location,
-    region,
+    usRegion,
+    intRegion,
     eventUrl,
-    subject,
+    generalTags,
+    identityTags,
     experience,
     format,
   } = hit;
@@ -35,9 +37,11 @@ export const Hit = ({ hit }) => {
       end={end}
       city={city}
       location={location}
-      region={region}
+      usRegion={usRegion}
+      intRegion={intRegion}
       eventUrl={eventUrl}
-      subject={subject}
+      generalTags={generalTags}
+      identityTags={identityTags}
       experience={experience}
       format={format}
     />

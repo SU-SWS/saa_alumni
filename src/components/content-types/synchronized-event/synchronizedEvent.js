@@ -22,7 +22,8 @@ const SynchronizedEvent = ({
     location,
     region,
     eventUrl,
-    subject,
+    generalTags,
+    identityTags,
     experience,
     format,
   } = mergeEventOverrides(blok);
@@ -39,7 +40,8 @@ const SynchronizedEvent = ({
           location={location}
           region={region}
           eventUrl={eventUrl}
-          subject={subject}
+          generalTags={generalTags}
+          identityTags={identityTags}
           experience={experience}
           format={format}
           isDark={isDark}

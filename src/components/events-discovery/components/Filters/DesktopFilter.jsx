@@ -4,14 +4,16 @@ import { FacetComponent } from '../Facets/FacetComponent';
 import { DateFilter } from '../DateFilter';
 import { LocationFilter } from '../LocationFilter/LocationFilter';
 import { useFacets } from '../Facets/useFacets';
+import { SubjectFilter } from '../SubjectFilter';
 
 export const DesktopFilter = () => {
   const { getFacet, getFacets, toggleFacet, collapseFacets, expandFacets } =
     useFacets();
 
   const dateFacet = getFacet('startTimestamp');
-  const additionalFacets = getFacets(['format', 'subject']);
+  const additionalFacets = getFacets(['format']);
   const locationFacet = getFacet('location');
+  const subjectFacet = getFacet('subject');
 
   return (
     <>
@@ -66,6 +68,12 @@ export const DesktopFilter = () => {
           <LocationFilter
             expanded={locationFacet.expanded}
             onToggleExpanded={() => toggleFacet('location')}
+          />
+        )}
+        {subjectFacet && (
+          <SubjectFilter
+            expanded={subjectFacet.expanded}
+            onToggleExpanded={() => toggleFacet('subject')}
           />
         )}
       </div>
