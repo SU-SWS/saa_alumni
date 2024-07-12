@@ -4,14 +4,13 @@
 
 const noop = () => {};
 
-const debug = false;
-
 /**
  * Algolia custom connector.
  */
 export default (renderFn, unmountFn = noop) =>
   (widgetParams) => {
     const { radius, precision } = widgetParams;
+
     // A `connectorState` object is used to store information
     // that needs to be shared across multiple method calls.
     const connectorState = {
@@ -20,117 +19,157 @@ export default (renderFn, unmountFn = noop) =>
       name: null,
       lat: null,
       lng: null,
-      refine:
-        (helper) =>
-        ({ lat, lng, name }) => {
-          connectorState.name = name;
-          connectorState.lat = lat;
-          connectorState.lng = lng;
-          helper.setQueryParameter('aroundLatLng', [lat, lng]);
-          helper.search();
-        },
-      clearRefinements: (helper) => () => {
-        connectorState.lat = null;
-        connectorState.lng = null;
-        connectorState.name = null;
-        helper.setQueryParameter('aroundLatLng', undefined);
-        helper.search();
-      },
-      setRadius: (helper) => (newRadius) => {
-        connectorState.radius = parseInt(newRadius, 10);
-        helper.setQueryParameter('aroundRadius', newRadius);
-        helper.search();
-      },
+      // Random ID to avoid collisions with other connectors.
+      id: Math.random().toString(36).substr(2, 9),
     };
 
+    /**
+     * The refine function is used to update the search state.
+     */
+    const refine =
+      (helper) =>
+      ({ lat, lng, name }) => {
+        connectorState.name = name;
+        connectorState.lat = lat;
+        connectorState.lng = lng;
+
+        helper.setQueryParameter('aroundLatLng', [
+          parseFloat(lat, 10),
+          parseFloat(lng, 10),
+        ]);
+        helper.search();
+      };
+
+    /**
+     * The clearRefinements function is used to clear the search state.
+     */
+    const clearRefinements = (helper) => () => {
+      connectorState.name = null;
+      connectorState.lat = null;
+      connectorState.lng = null;
+
+      helper.setQueryParameter('aroundLatLng', undefined);
+      helper.search();
+    };
+
+    /**
+     * The setRadius function is used to update the search radius.
+     */
+    const setRadius = (helper) => (newRadius) => {
+      connectorState.radius = newRadius;
+      helper.setQueryParameter('aroundRadius', newRadius);
+      helper.search();
+    };
+
+    /**
+     * The connector object is returned to the InstantSearch library.
+     */
     return {
       $$type: 'adapt.radialGeoSearch',
       /**
+       * This function is required for a widget to behave correctly when a URL is
+       * loaded via e.g. Routing. It receives the current UiState and applied search
+       * parameters, and is expected to return a new search parameters.
        *
-       * @param {*} searchParameters
-       * @param {*} param1
-       * @returns
+       * @param searchParameters - Applied search parameters.
+       * @param widgetSearchParametersOptions - Extra information to calculate next searchParameters.
        */
       getWidgetSearchParameters(searchParameters, { uiState }) {
         let state = searchParameters;
-        state = state.setQueryParameter('aroundRadius', connectorState.radius);
-        state = state.setQueryParameter(
-          'aroundPrecision',
-          connectorState.precision
-        );
 
-        // If we find the `radialGeoSearch` key in the `uiState` object,
-        // This is usually from the initial load.
-        if (
-          uiState.radialGeoSearch &&
-          uiState.radialGeoSearch.lat !== null &&
-          uiState.radialGeoSearch.lng !== null
-        ) {
-          const lat = parseFloat(uiState.radialGeoSearch.lat, 10);
-          const lng = parseFloat(uiState.radialGeoSearch.lng, 10);
-          connectorState.radius = parseInt(uiState.radialGeoSearch.radius, 10);
-          connectorState.name = uiState.radialGeoSearch.name;
-          connectorState.lat = lat;
-          connectorState.lng = lng;
-          state = state.setQueryParameter('aroundLatLng', [lat, lng]);
+        if (uiState.radialGeoSearch) {
+          state = state.setQueryParameter(
+            'aroundRadius',
+            connectorState.radius
+          );
+          if (uiState.radialGeoSearch.lat && uiState.radialGeoSearch.lng) {
+            state = state.setQueryParameter('aroundLatLng', [
+              parseFloat(uiState.radialGeoSearch.lat, 10),
+              parseFloat(uiState.radialGeoSearch.lng, 10),
+            ]);
+          }
         }
 
         return state;
       },
       /**
+       * This function is required for a widget to be taken in account for routing.
+       * It will derive a uiState for this widget based on the existing uiState and
+       * the search parameters applied.
        *
-       * @param {*} uiState
-       * @returns
+       * Here, we also use the UI state to update the internal connectorState for
+       * each of the instances of the connector as the uiState is the source of truth.
+       *
+       * @param uiState - Current state.
+       * @param widgetStateOptions - Extra information to calculate uiState.
        */
       getWidgetUiState(uiState, { searchParameters }) {
+        const { aroundRadius, aroundLatLng } = searchParameters;
+
+        // Return the UI state to the connector state for sharing across instances.
+        // We're only interested in the name when the user has searched as the other
+        // values are stored in the search parameters.
+        if (uiState?.radialGeoSearch?.name && aroundLatLng) {
+          connectorState.name = uiState.radialGeoSearch.name;
+        }
+
+        // Remove the name across instances for when the user clears the search.
+        if (
+          connectorState.name &&
+          !uiState?.radialGeoSearch?.name &&
+          !aroundLatLng
+        ) {
+          connectorState.name = null;
+        }
+
         return {
           ...uiState,
           radialGeoSearch: {
-            radius: connectorState.radius,
+            lat: aroundLatLng ? aroundLatLng[0] : null,
+            lng: aroundLatLng ? aroundLatLng[1] : null,
+            radius: aroundRadius,
             name: connectorState.name,
-            lat: connectorState.lat,
-            lng: connectorState.lng,
           },
         };
       },
       /**
-       *
-       * @param {*} renderState
-       * @param {*} renderOptions
-       * @returns
+       * Returns IndexRenderState of the current index component tree
+       * to build the render state of the whole app.
        */
       getRenderState(renderState, renderOptions) {
         return {
           ...renderState,
-          radialGeoSearch: {
-            radius: connectorState.radius,
-            name: connectorState.name,
-            lat: connectorState.lat,
-            lng: connectorState.lng,
-          },
+          radialGeoSearch: this.getWidgetRenderState(renderOptions),
         };
       },
       /**
+       * Returns the render state of the current widget to pass to the render function.
+       * This function is called on the first render and every time the widget is rendered.
        *
-       * @returns
+       * The connectorState is used for the shared values across widget instances.
        */
       getWidgetRenderState(renderOptions) {
-        const { helper, state, results, instantSearchInstance } = renderOptions;
+        const { helper } = renderOptions;
+        const { state } = helper;
+
+        // To ensure the helper function is passed to the action functions so that the same
+        // helper instance is used across all instances of the application.
         return {
-          refine: connectorState.refine(helper),
-          clearRefinements: connectorState.clearRefinements(helper),
-          setRadius: connectorState.setRadius(helper),
-          radius: connectorState.radius,
+          refine: refine(helper),
+          clearRefinements: clearRefinements(helper),
+          setRadius: setRadius(helper),
+          radius: state.aroundRadius,
           name: connectorState.name,
-          lat: connectorState.lat,
-          lng: connectorState.lng,
+          lat: state.aroundLatLng ? state.aroundLatLng[0] : null,
+          lng: state.aroundLatLng ? state.aroundLatLng[1] : null,
         };
       },
       /**
-       *
-       * @param {*} initOptions
+       * Called once before the first search.
        */
       init(initOptions) {
+        const { helper } = initOptions;
+        helper.setQueryParameter('aroundPrecision', precision);
         renderFn(
           {
             ...this.getWidgetRenderState(initOptions),
@@ -140,8 +179,7 @@ export default (renderFn, unmountFn = noop) =>
         );
       },
       /**
-       *
-       * @param {*} renderOptions
+       * Called after each search response has been received.
        */
       render(renderOptions) {
         renderFn(
@@ -153,7 +191,8 @@ export default (renderFn, unmountFn = noop) =>
         );
       },
       /**
-       * Cleanup.
+       * Called when this widget is unmounted. Used to remove refinements set by
+       * during this widget's initialization and life time.
        */
       dispose() {
         unmountFn();
