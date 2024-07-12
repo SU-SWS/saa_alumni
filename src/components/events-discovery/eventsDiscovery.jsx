@@ -69,10 +69,14 @@ const EventsDiscovery = () => (
     future={{ preserveSharedStateOnUnmount: true }}
     stalledSearchDelay={2000}
     routing={{
-      router: history(),
+      router: history({
+        cleanUrlOnDispose: false,
+      }),
       stateMapping: {
         stateToRoute(uiState) {
           const indexUiState = uiState['dev_alumni-events_start-asc'];
+
+          console.log('router indexUiState', indexUiState);
 
           // Normal Good params.
           const ret = {

@@ -10,6 +10,8 @@ import {
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
+// import LocationFilterClearContent from './LocationFilterClearContent';
+import useRadialGeoSearch from './useRadialGeoSearch';
 
 const LocationTabPanelState = () => {
   const { activeTab } = useContext(LocationContext);
@@ -17,6 +19,11 @@ const LocationTabPanelState = () => {
   const title = 'Find a US State / Canadian Province';
   const field = 'state';
   const isDesktop = window.innerWidth >= 1024; // TODO: Fix this window check to be a real on breakpoint.
+
+  const { name: locationName } = useRadialGeoSearch();
+  const { items: countryItems } = useCurrentRefinements({
+    includedAttributes: ['country'],
+  });
   const { refine: clearRefinement } = useClearRefinements({
     includedAttributes: [field, 'country'],
   });
@@ -37,7 +44,13 @@ const LocationTabPanelState = () => {
 
   const selectedItem = refinedItems?.[0]?.refinements?.[0] ?? null;
 
+  // If not this active tab, return null.
   if (activeTab !== 'state') return null;
+
+  // If the city or country tab is active, show the clear message and button.
+  // if (countryItems.length > 0 || locationName) {
+  //   return <LocationFilterClearContent activeTab={activeTab} />;
+  // }
 
   return (
     <div id="state-panel" role="tabpanel">

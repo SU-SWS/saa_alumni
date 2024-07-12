@@ -5,12 +5,12 @@ import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
 import MUIToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { dcnb } from 'cnbuilder';
-import { useConnector, useClearRefinements } from 'react-instantsearch';
+import { useClearRefinements } from 'react-instantsearch';
 import axios from 'axios';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
-import RadialGeoSearchConnector from './RadialGeoSearchConnector';
+import useRadialGeoSearch from './useRadialGeoSearch';
 
 const LocationTabPanelCity = () => {
   // CONTEXT
@@ -24,17 +24,16 @@ const LocationTabPanelCity = () => {
     includedAttributes: ['state', 'country'],
   });
 
-  // Custom Connector Hook.
+  // Custom Connector
   const {
     refine,
     clearRefinements: clearGeoRefinement,
     name: locationName,
     radius,
     setRadius,
-  } = useConnector(RadialGeoSearchConnector, {
-    radius: 40000,
-    precision: 1000,
-  });
+    lat,
+    lng,
+  } = useRadialGeoSearch();
 
   // Is loading suggestions.
   const [locationIsLoading, setLocationIsLoading] = useState(false);
@@ -66,7 +65,7 @@ const LocationTabPanelCity = () => {
             results.data.results.map((r) => r.description)
           );
         } else {
-          setLocationSuggestions(['Current location', locationName]);
+          setLocationSuggestions(['Current location']);
         }
         setLocationIsLoading(false);
         break;
@@ -76,11 +75,6 @@ const LocationTabPanelCity = () => {
         clearGeoRefinement();
         break;
       }
-      // case 'reset': {
-      //   console.log('Resetting location suggestions');
-      //   setLocationSuggestions(['Current location']);
-      //   break;
-      // }
       default:
         // eslint-disable-next-line no-console
         console.debug('Unhandled reason', reason);
@@ -124,13 +118,14 @@ const LocationTabPanelCity = () => {
               lat: results.data.location.geometry.location.lat,
               lng: results.data.location.geometry.location.lng,
             });
+            break;
           }
           console.error('Unable to find location coordinates', value);
         }
         break;
       }
       case 'clear': {
-        console.log('Clearing location from change');
+        setLocationSuggestions(['Current location']);
         clearGeoRefinement();
         break;
       }
@@ -141,6 +136,8 @@ const LocationTabPanelCity = () => {
 
   // If not active. Return.
   if (activeTab !== 'city') return null;
+
+  console.log('DEBUG', locationName, radius, lat, lng);
 
   // Return the city tab panel.
   return (

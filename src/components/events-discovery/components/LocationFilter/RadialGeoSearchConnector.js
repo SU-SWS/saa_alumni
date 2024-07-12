@@ -4,8 +4,6 @@
 
 const noop = () => {};
 
-const debug = false;
-
 /**
  * Algolia custom connector.
  */
@@ -46,46 +44,64 @@ export default (renderFn, unmountFn = noop) =>
     return {
       $$type: 'adapt.radialGeoSearch',
       /**
+       * This function is required for a widget to behave correctly when a URL is
+       * loaded via e.g. Routing. It receives the current UiState and applied search
+       * parameters, and is expected to return a new search parameters.
        *
-       * @param {*} searchParameters
-       * @param {*} param1
-       * @returns
+       * @param searchParameters - Applied search parameters.
+       * @param widgetSearchParametersOptions - Extra information to calculate next searchParameters.
        */
       getWidgetSearchParameters(searchParameters, { uiState }) {
         let state = searchParameters;
+
+        console.group('getWidgetSearchParameters');
+        console.log('Search Parameters', searchParameters);
+        console.log('Other States', uiState);
+        console.log('Connector State', connectorState);
+        console.groupEnd();
+
+        // Get state from the UI state and store it in the connector state.
+        if (uiState.radialGeoSearch && uiState?.radialGeoSearch?.lat) {
+          connectorState.name = uiState.radialGeoSearch?.name;
+          connectorState.lat = uiState.radialGeoSearch?.lat;
+          connectorState.lng = uiState.radialGeoSearch?.lng;
+          connectorState.radius = uiState.radialGeoSearch.radius;
+        }
+
+        // Set the aroundRadius parameter.
         state = state.setQueryParameter('aroundRadius', connectorState.radius);
+        // Add the precision parameter.
         state = state.setQueryParameter(
           'aroundPrecision',
           connectorState.precision
         );
-
-        // If we find the `radialGeoSearch` key in the `uiState` object,
-        // This is usually from the initial load.
-        if (
-          uiState.radialGeoSearch &&
-          uiState.radialGeoSearch.lat !== null &&
-          uiState.radialGeoSearch.lng !== null
-        ) {
-          const lat = parseFloat(uiState.radialGeoSearch.lat, 10);
-          const lng = parseFloat(uiState.radialGeoSearch.lng, 10);
-          connectorState.radius = parseInt(uiState.radialGeoSearch.radius, 10);
-          connectorState.name = uiState.radialGeoSearch.name;
-          connectorState.lat = lat;
-          connectorState.lng = lng;
-          state = state.setQueryParameter('aroundLatLng', [lat, lng]);
+        // Set the around lat/lng if they are defined.
+        if (connectorState.lat && connectorState.lng) {
+          state.setQueryParameter('aroundLatLng', [
+            connectorState.lat,
+            connectorState.lng,
+          ]);
         }
 
         return state;
       },
       /**
+       * This function is required for a widget to be taken in account for routing.
+       * It will derive a uiState for this widget based on the existing uiState and
+       * the search parameters applied.
        *
-       * @param {*} uiState
-       * @returns
+       * @param uiState - Current state.
+       * @param widgetStateOptions - Extra information to calculate uiState.
        */
-      getWidgetUiState(uiState, { searchParameters }) {
+      getWidgetUiState(uiState, widgetStateOptions) {
+        // console.group('getWidgetUiState');
+        // console.log('UI State', uiState);
+        // console.log('Other Parameters', widgetStateOptions);
+        // console.groupEnd();
         return {
           ...uiState,
           radialGeoSearch: {
+            ...uiState.radialGeoSearch,
             radius: connectorState.radius,
             name: connectorState.name,
             lat: connectorState.lat,
@@ -94,34 +110,38 @@ export default (renderFn, unmountFn = noop) =>
         };
       },
       /**
-       *
-       * @param {*} renderState
-       * @param {*} renderOptions
-       * @returns
+       * Returns IndexRenderState of the current index component tree
+       * to build the render state of the whole app.
        */
       getRenderState(renderState, renderOptions) {
+        console.group('getRenderState');
+        console.log('Render State', renderState);
+        console.log('Render Options', renderOptions);
+        console.groupEnd();
         return {
           ...renderState,
           radialGeoSearch: {
-            radius: connectorState.radius,
-            name: connectorState.name,
-            lat: connectorState.lat,
-            lng: connectorState.lng,
+            ...renderState.radialGeoSearch,
+            ...this.getWidgetRenderState(renderOptions),
           },
         };
       },
       /**
-       *
-       * @returns
+       * Returns the render state of the current widget to pass to the render function.
        */
       getWidgetRenderState(renderOptions) {
-        const { helper, state, results, instantSearchInstance } = renderOptions;
+        // console.group('getWidgetRenderState');
+        // console.log('Render Options', renderOptions);
+        // console.groupEnd();
+
+        const { helper } = renderOptions;
+
         return {
           refine: connectorState.refine(helper),
           clearRefinements: connectorState.clearRefinements(helper),
           setRadius: connectorState.setRadius(helper),
-          radius: connectorState.radius,
           name: connectorState.name,
+          radius: connectorState.radius,
           lat: connectorState.lat,
           lng: connectorState.lng,
         };
@@ -156,6 +176,7 @@ export default (renderFn, unmountFn = noop) =>
        * Cleanup.
        */
       dispose() {
+        console.log('dispose');
         unmountFn();
       },
     };
