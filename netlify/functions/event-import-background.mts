@@ -186,13 +186,15 @@ export default async (req: Request) => {
     for (const format of newFormats) {
       try {
         console.log('Adding format datasource entry: ', format);
-        const res = await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
-          datasource_entry: {
-            name: format,
-            value: format,
-            datasource_id: formatDatasourceId,
-          }
-        } as any);
+        if (run) {
+          await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+            datasource_entry: {
+              name: format,
+              value: format,
+              datasource_id: formatDatasourceId,
+            }
+          } as any);
+        }
       } catch (err) {
         console.log('Error during format datasource update: ', err);
       }
@@ -201,13 +203,15 @@ export default async (req: Request) => {
     for (const tag of newGeneralTags) {
       try {
         console.log('Adding general tag datasource entry: ', tag);
-        await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
-          datasource_entry: {
-            name: tag,
-            value: tag,
-            datasource_id: generalTagsDatasourceId,
-          }
-        } as any);
+        if (run) {
+          await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+            datasource_entry: {
+              name: tag,
+              value: tag,
+              datasource_id: generalTagsDatasourceId,
+            }
+          } as any);
+        }
       } catch (err) {
         console.log('Error during general tags datasource update: ', err);
       }
@@ -216,13 +220,15 @@ export default async (req: Request) => {
     for (const tag of newIdentityTags) {
       try {
         console.log('Adding identity tag datasource entry: ', tag);
-        await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
-          datasource_entry: {
-            name: tag,
-            value: tag,
-            datasource_id: identityTagsDatasourceId,
-          }
-        } as any);
+        if (run) {
+          await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
+            datasource_entry: {
+              name: tag,
+              value: tag,
+              datasource_id: identityTagsDatasourceId,
+            }
+          } as any);
+        }
       } catch (err) {
         console.log('Error during identity tags datasource update: ', err);
       }
