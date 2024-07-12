@@ -107,22 +107,24 @@ export const storyToAlgoliaEvent = (story, regionDataSource) => {
   };
 };
 
-const googleDateTimeToStoryDateTime = (date, time, source) => {
+const googleDateTimeToStoryDateTime = (date, time, timezone) => {
   if (!date) {
     return '';
   }
 
   const combinedRaw = time ? `${date} ${time}` : date;
-  const dateTimeFormat =
-    source === 'cvent' ? 'M/d/yy h:mm a' : 'yyyy-MM-dd hh:mm a';
-  const dateFormat = source === 'cvent' ? 'M/d/yy' : 'yyyy-MM-dd';
-  const combinedRawFormat = time ? dateTimeFormat : dateFormat;
-  // TODO DS-793: This will need to change when timezones are added to source
-  const luxonStartDate = DateTime.fromFormat(combinedRaw, combinedRawFormat, {
-    zone: 'America/Los_Angeles',
+  const dateFormat = 'M/d/yy';
+  const timeFormat = 'h:mm a';
+  const combinedRawFormat = time ? `${dateFormat} ${timeFormat}` : dateFormat;
+  const luxonDatetime = DateTime.fromFormat(combinedRaw, combinedRawFormat, {
+    zone: timezone,
   });
 
-  return luxonStartDate.toFormat('yyyy-MM-dd T', { zone: 'UTC' });
+  if (!luxonDatetime.isValid) {
+    return '';
+  }
+
+  return luxonDatetime.toFormat('yyyy-MM-dd T', { zone: 'UTC' });
 };
 
 export const googleRowToStoryContent = (data, source) => {
@@ -141,6 +143,7 @@ export const googleRowToStoryContent = (data, source) => {
     endDate,
     startTime,
     endTime,
+    timezone: localTimezone = 'America/Los_Angeles',
     eventUrlRaw = '',
     location = '',
     city = '',
@@ -156,8 +159,12 @@ export const googleRowToStoryContent = (data, source) => {
     experience = '',
   } = processedData;
 
-  const start = googleDateTimeToStoryDateTime(startDate, startTime, source);
-  const end = googleDateTimeToStoryDateTime(endDate, endTime, source);
+  const start = googleDateTimeToStoryDateTime(
+    startDate,
+    startTime,
+    localTimezone
+  );
+  const end = googleDateTimeToStoryDateTime(endDate, endTime, localTimezone);
 
   const format = formatRaw
     .split(',')
@@ -169,11 +176,13 @@ export const googleRowToStoryContent = (data, source) => {
     .filter((s) => !!s.length);
   const generalTags = subject.filter(
     (s, index, arr) =>
-      s !== 'Diversity/Identity' && arr.at(index + 1) !== 'Diversity/Identity'
+      s !== 'Diversity/Identity' &&
+      (index === 0 || arr.at(index - 1) !== 'Diversity/Identity')
   );
   const identityTags = subject.filter(
     (s, index, arr) =>
-      s !== 'Diversity/Identity' && arr.at(index + 1) === 'Diversity/Identity'
+      s !== 'Diversity/Identity' &&
+      (index === 0 || arr.at(index - 1) === 'Diversity/Identity')
   );
   const eventUrl = eventUrlRaw
     ? {
@@ -207,6 +216,7 @@ export const googleRowToStoryContent = (data, source) => {
     region,
     latitude,
     longitude,
+    localTimezone,
     source,
   };
 };
@@ -257,6 +267,7 @@ export const compareStoryContent = (a, b) => {
     a.title !== b.title ||
     a.start !== b.start ||
     a.end !== b.end ||
+    a.localTimezone !== b.localTimezone ||
     a.location !== b.location ||
     a.experience !== b.experience ||
     a.city !== b.city ||
