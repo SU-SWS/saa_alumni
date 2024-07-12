@@ -186,6 +186,7 @@ export const googleRowToStoryContent = (data, source) => {
   );
   const eventUrl = eventUrlRaw
     ? {
+        id: crypto.randomUUID(),
         url: eventUrlRaw,
         linktype: 'url',
         fieldtype: 'multilink',
