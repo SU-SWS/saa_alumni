@@ -10,16 +10,19 @@ import { EventContent } from './EventContent';
 /**
  * @typedef {object} Props
  * @property {string} title
- * @property {EventImage} image
+ * @property {EventImage} [image]
  * @property {string} start
  * @property {string} end
  * @property {string} [city]
  * @property {string} [location]
  * @property {string} [region]
+ * @property {string} [usRegion]
+ * @property {string} [intRegion]
  * @property {EventLink} [eventUrl]
- * @property {string[]} [subject]
- * @property {string[]} [experience]
- * @property {string} [format]
+ * @property {string[]} [generalTags]
+ * @property {string[]} [identityTags]
+ * @property {string} [experience]
+ * @property {string[]} [format]
  * @property {boolean} [isDark]
  * @property {boolean} [isMinimal]
  * @property {boolean} [isBigHeadline]
@@ -32,14 +35,17 @@ import { EventContent } from './EventContent';
  */
 export const Event = ({
   title,
-  image,
+  image = {},
   start,
   end,
   city,
   location,
-  region,
+  usRegion,
+  intRegion,
+  region = usRegion || intRegion || '',
   eventUrl,
-  subject,
+  generalTags = [],
+  identityTags = [],
   experience,
   format,
   isDark = false,
@@ -47,14 +53,21 @@ export const Event = ({
   isBigHeadline = false,
   headingLevel = 3,
 }) => {
+  const subject = useMemo(
+    () => [...generalTags, ...identityTags],
+    [generalTags, identityTags]
+  );
+
+  const formatDisplay = format?.join?.(', ') ?? '';
+
   const luxonStart = useMemo(() => luxonDate(start), [start]);
   const ptStart = useMemo(
     () => luxonStart.setZone('America/Los_Angeles'),
     [luxonStart]
   );
   const { monthShort, day } = ptStart;
-  const monthDisplay = useMemo(() => monthShort.toString(), [monthShort]);
-  const dayDisplay = useMemo(() => day.toString().padStart(2, '0'), [day]);
+  const monthDisplay = useMemo(() => monthShort?.toString(), [monthShort]);
+  const dayDisplay = useMemo(() => day?.toString().padStart(2, '0'), [day]);
 
   const luxonEnd = useMemo(() => luxonDate(end), [end]);
 
@@ -63,11 +76,10 @@ export const Event = ({
   const luxonCurrent = DateTime.fromJSDate(currentUTCDate);
 
   // If the current date/time is after the event end date/time, don't render the card
-  if (luxonCurrent > luxonEnd) {
+  if (!title || !start || !end || luxonCurrent > luxonEnd) {
     return null;
   }
 
-  const experienceDisplay = experience?.length ? experience.join(', ') : '';
   const { filename, alt, focus } = image;
 
   return (
@@ -82,16 +94,16 @@ export const Event = ({
               {dayDisplay}
             </div>
           </div>
-          {experienceDisplay && (
+          {experience && (
             <div className="su-text-black-80 su-text-14 su-mt-16">
-              {experienceDisplay}
+              {experience}
             </div>
           )}
         </div>
       </div>
       <div className="su-flex su-flex-1 su-justify-between su-flex-wrap su-gap-16 su-min-w-full sm:su-min-w-0">
         <div className="su-flex su-flex-col su-flex-1 su-basis-300">
-          {format && <div className="su-font-bold">{format}</div>}
+          {formatDisplay && <div className="su-font-bold">{formatDisplay}</div>}
           <EventHeading title={title} eventUrl={eventUrl} />
           <EventContent
             start={luxonStart}
