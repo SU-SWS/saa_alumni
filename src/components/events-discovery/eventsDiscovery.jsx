@@ -39,10 +39,16 @@ const EventDiscoveryContent = () => {
           <DesktopFilter />
         </div>
         <div className="su-flex su-flex-col su-gap-y-20 su-w-full">
-          <StatusHeader hitsPerPage={hitsPerPage} />
-          <div className="su-flex su-flex-none su-flex-row">
-            <ChipsComponent />
-            <MobileFilter />
+          <div className="su-flex su-flex-col md:su-flex-row su-justify-between su-flex-wrap su-gap-y-20">
+            <div className="su-flex-none md:su-order-2">
+              <MobileFilter />
+            </div>
+            <div className="su-flex su-gap-y-20 su-flex-col">
+              <ChipsComponent />
+              <div className="sm:su-px-20">
+                <StatusHeader />
+              </div>
+            </div>
           </div>
           {isStalled && <LoadingIndicator />}
           <NoResultsBoundary fallback={<NoResultsComponent />}>
@@ -51,7 +57,7 @@ const EventDiscoveryContent = () => {
               classNames={{
                 root: `${isStalled ? 'su-opacity-50' : ''}`,
                 list: 'su-list-none su-pl-0 su-grid su-grid-cols-1 su-w-full',
-                item: 'su-mb-0 su-w-full su-border-b su-pb-30 su-mb-30 su-px-20',
+                item: 'su-mb-0 su-w-full su-border-b su-pb-30 su-mb-30 sm:su-px-20',
               }}
             />
             <Pagination />

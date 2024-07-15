@@ -6,7 +6,6 @@ import { ThemeProvider, createTheme } from '@mui/material';
 import { DateTime } from 'luxon';
 import { FilterAccordion } from '../FilterAccordion';
 import { RadioInput } from './RadioInput';
-import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 
 const theme = createTheme({
   typography: {
