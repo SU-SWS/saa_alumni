@@ -45,6 +45,10 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
       value: membershipStartDate,
     });
 
+    if (process.env.PASS_INCLUDE_QR_CODE === 'true') {
+      pass.setBarcodes(membershipNumber);
+    }
+
     return pass;
   } catch (error) {
     // eslint-disable-next-line no-console
@@ -62,6 +66,10 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
       memberships: [{ membershipNumber, membershipStartDate }],
       emails: [{ emailAddress }],
     } = megaProfileUser;
+
+    // Test with custom user information
+    // const memberName = 'Moises Narvaez';
+    // const emailAddress = 'moisesnarvaez+8532@gmail.com';
 
     const issuerId = process.env.ANDROID_PASS_ISSUER_ID;
     const classId = `${issuerId}.stanford-alumni-pass`;
@@ -111,12 +119,6 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
           value: memberName,
         },
       },
-      // In case we want to include a bar or QR code
-      // barcode: {
-      //   type: 'QR_CODE',
-      //   value: `${objectId}`,
-      // },
-      // In case we want to include a hero/footer image. It requires a public image URL
       heroImage: {
         sourceUri: {
           uri: process.env.ANDROID_PASS_IMAGE_URL,
@@ -140,6 +142,13 @@ export const generateAndroidWalletPassURL = async (megaProfileUser) => {
         },
       ],
     };
+
+    if (process.env.ANDROID_PASS_INCLUDE_QR_CODE === 'true') {
+      genericObject.barcode = {
+        type: 'QR_CODE',
+        value: `${membershipNumber}`,
+      };
+    }
 
     const claims = {
       iss: credentials.client_email,
