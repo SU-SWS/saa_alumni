@@ -144,7 +144,7 @@ export const googleRowToStoryContent = (data, source) => {
     startTime,
     endTime,
     timezone: localTimezone = 'America/Los_Angeles',
-    eventUrlRaw = '',
+    eventURL: eventUrlRaw = '',
     location = '',
     city = '',
     state = '',
