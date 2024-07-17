@@ -256,13 +256,6 @@ export default async (req: Request) => {
 
           console.log('Changes detected. Syncing changes to Storyblok...');
           if (run) {
-            console.log('Updated story: ', {
-              story: {
-                ...combineStories(google, storyblok),
-                parent_id: eventFolderId,
-              },
-            });
-
             await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
               story: {
                 ...combineStories(google, storyblok),
@@ -287,14 +280,6 @@ export default async (req: Request) => {
           console.log('Exists in Google only. Posting to Storyblok...');
           // Post to SB then publish
           if (run) {
-            console.log('New story: ', {
-              story: {
-                ...google,
-                parent_id: eventFolderId,
-              },
-              publish: 1,
-            });
-
             await storyblokManagement.post(`spaces/${spaceId}/stories`, {
               story: {
                 ...google,
