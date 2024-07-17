@@ -64,7 +64,7 @@ export default async (req: Request) => {
     await hivebriteDoc.loadInfo();
     const hivebriteSheet = hivebriteDoc.sheetsByIndex[0];
     const hivebriteRows = await hivebriteSheet.getRows();
-    console.log('Fetching Hiverbrite data done!');
+    console.log(`Fetching Hiverbrite data done! (${hivebriteRows?.length ?? 0} found)`);
     
     hivebriteRows.forEach((row) => {
       googleStories.push(googleRowToStory(row.toObject(), 'hivebrite'));
@@ -75,7 +75,7 @@ export default async (req: Request) => {
     await cventDoc.loadInfo();
     const cventSheet = cventDoc.sheetsByIndex[0];
     const cventRows = await cventSheet.getRows();
-    console.log('Fetching Cvent data done!');
+    console.log(`Fetching Cvent data done! (${cventRows?.length ?? 0} found)`);
     
     cventRows.forEach((row) => {
       googleStories.push(googleRowToStory(row.toObject(), 'cvent'));
@@ -91,16 +91,20 @@ export default async (req: Request) => {
 
     const archiveCutoff = DateTime.utc().startOf('day').minus({ days: 180 }).toFormat('yyyy-MM-dd');
 
-    console.log('Fetching Storyblok events...');
+    console.log('Fetching Storyblok datasources...');
     const formatDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
       datasource_id: formatDatasourceId,
-    } as any);
-    const GeneralTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
+    } as any) ?? [];
+    const generalTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
       datasource_id: generalTagsDatasourceId,
-    } as any);
-    const IdentityTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
+    } as any) ?? [];
+    const identityTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
       datasource_id: identityTagsDatasourceId,
-    } as any);
+    } as any) ?? [];
+    console.log('Fetching Storyblok datasources done!');
+    console.log(`(${formatDatasource?.length ?? 0} formats, ${generalTagsDatasource?.length ?? 0} general, ${identityTagsDatasource?.length ?? 0} D/I)`);
+
+    console.log('Fetching Storyblok events...');
     const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
@@ -137,19 +141,13 @@ export default async (req: Request) => {
     }) ?? [];
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
     const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
-    console.log('Fetching Storyblok events done!');
-
-    console.log({
-      formatDatasource,
-      GeneralTagsDatasource,
-      IdentityTagsDatasource,
-    });
+    console.log(`Fetching Storyblok events done! (${sbEvents?.length ?? 0} found)`);
 
     const syncedEvents = new Map();
     const manualEvents = new Map();
     const knownFormats = new Set<string>(formatDatasource?.map?.((d) => d.value));
-    const knownGeneralTags = new Set<string>(GeneralTagsDatasource?.map?.((d) => d.value));
-    const knownIdentityTags = new Set<string>(IdentityTagsDatasource?.map?.((d) => d.value));
+    const knownGeneralTags = new Set<string>(generalTagsDatasource?.map?.((d) => d.value));
+    const knownIdentityTags = new Set<string>(identityTagsDatasource?.map?.((d) => d.value));
     const incomingFormats: string[] = [];
     const incomingGeneralTags: string[] = [];
     const incomingIdentityTags: string[] = [];
@@ -194,18 +192,6 @@ export default async (req: Request) => {
     const newFormats = new Set(incomingFormats.filter((f) => !knownFormats.has(f)));
     const newGeneralTags = new Set(incomingGeneralTags.filter((f) => !knownGeneralTags.has(f)));
     const newIdentityTags = new Set(incomingIdentityTags.filter((f) => !knownIdentityTags.has(f)));
-
-    console.log({
-      knownFormats,
-      knownGeneralTags,
-      knownIdentityTags,
-      incomingFormats,
-      incomingGeneralTags,
-      incomingIdentityTags,
-      newFormats,
-      newGeneralTags,
-      newIdentityTags,
-    });
 
     for (const format of newFormats) {
       try {
