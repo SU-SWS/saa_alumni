@@ -104,7 +104,7 @@ export default async (req: Request) => {
     let storiesToProcess = [story];
 
     if (isEventFolder) {
-      storiesToProcess = await storyblokContent.getAll(`/spaces/${data.space_id}/stories`, { 
+      storiesToProcess = await storyblokContent.getAll('cdn/stories', { 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
         version: data.action === 'published' ? 'draft' : 'published' 

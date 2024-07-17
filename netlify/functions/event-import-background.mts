@@ -101,19 +101,19 @@ export default async (req: Request) => {
     const IdentityTagsDatasource = await storyblokContent.getAll('cdn/datasource_entries', {
       datasource: 'synchronized-event-identity-tags',
     });
-    const sbPublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`, { 
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent',
       version: 'published',
     }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`, { 
+    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent', 
       version: 'draft',
     }) ?? [];
-    const oldArchivedPublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`, { 
+    const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync-archive/', 
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
@@ -122,7 +122,7 @@ export default async (req: Request) => {
       content_type: 'synchronizedEvent',
       version: 'published',
     }) ?? [];
-    const oldArchivedUnpublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`,{ 
+    const oldArchivedUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync-archive/', 
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
