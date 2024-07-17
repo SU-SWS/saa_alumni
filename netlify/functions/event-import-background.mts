@@ -185,6 +185,12 @@ export default async (req: Request) => {
     const newGeneralTags = new Set(incomingGeneralTags.filter((f) => !knownGeneralTags.has(f)));
     const newIdentityTags = new Set(incomingIdentityTags.filter((f) => !knownIdentityTags.has(f)));
 
+    console.log({ 
+      newFormats,
+      newGeneralTags,
+      newIdentityTags,
+    });
+
     for (const format of newFormats) {
       try {
         console.log('Adding format datasource entry: ', format);
