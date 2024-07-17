@@ -185,8 +185,6 @@ export const googleRowToStoryContent = (data, source) => {
     (s, index, arr) => s !== 'D/I' && arr.at(index + 1) === 'D/I'
   );
 
-  console.log({ generalTags, identityTags });
-
   const eventUrl = eventUrlRaw
     ? {
         id: '',

@@ -135,6 +135,12 @@ export default async (req: Request) => {
     const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
     console.log('Fetching Storyblok events done!');
 
+    console.log({
+      formatDatasource,
+      GeneralTagsDatasource,
+      IdentityTagsDatasource,
+    });
+
     const syncedEvents = new Map();
     const manualEvents = new Map();
     const knownFormats = new Set<string>(formatDatasource?.map?.((d) => d.value));
@@ -185,7 +191,13 @@ export default async (req: Request) => {
     const newGeneralTags = new Set(incomingGeneralTags.filter((f) => !knownGeneralTags.has(f)));
     const newIdentityTags = new Set(incomingIdentityTags.filter((f) => !knownIdentityTags.has(f)));
 
-    console.log({ 
+    console.log({
+      knownFormats,
+      knownGeneralTags,
+      knownIdentityTags,
+      incomingFormats,
+      incomingGeneralTags,
+      incomingIdentityTags,
       newFormats,
       newGeneralTags,
       newIdentityTags,
