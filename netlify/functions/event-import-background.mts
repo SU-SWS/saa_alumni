@@ -92,26 +92,28 @@ export default async (req: Request) => {
     const archiveCutoff = DateTime.utc().startOf('day').minus({ days: 180 }).toFormat('yyyy-MM-dd');
 
     console.log('Fetching Storyblok events...');
-    const formatDatasource = await storyblokContent.getAll('cdn/datasource_entries', {
-      datasource: 'synchronized-event-format',
-    });
-    const GeneralTagsDatasource = await storyblokContent.getAll('cdn/datasource_entries', {
-      datasource: 'synchronized-event-general-tags',
-    });
-    const IdentityTagsDatasource = await storyblokContent.getAll('cdn/datasource_entries', {
-      datasource: 'synchronized-event-identity-tags',
-    });
+    const formatDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
+      datasource_id: formatDatasourceId,
+    } as any);
+    const GeneralTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
+      datasource_id: generalTagsDatasourceId,
+    } as any);
+    const IdentityTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
+      datasource_id: identityTagsDatasourceId,
+    } as any);
     const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent',
       version: 'published',
+      per_page: 100,
     }) ?? [];
     const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent', 
       version: 'draft',
+      per_page: 100,
     }) ?? [];
     const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync-archive/', 
@@ -121,6 +123,7 @@ export default async (req: Request) => {
       ]}, 
       content_type: 'synchronizedEvent',
       version: 'published',
+      per_page: 100,
     }) ?? [];
     const oldArchivedUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync-archive/', 
@@ -130,6 +133,7 @@ export default async (req: Request) => {
       ]}, 
       content_type: 'synchronizedEvent', 
       version: 'draft',
+      per_page: 100,
     }) ?? [];
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
     const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
