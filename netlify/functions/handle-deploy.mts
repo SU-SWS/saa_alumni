@@ -104,13 +104,11 @@ export default async (req: Request) => {
     let storiesToProcess = [story];
 
     if (isEventFolder) {
-      const storiesRes = await storyblokContent.getStories({ 
+      storiesToProcess = await storyblokContent.getAll(`/spaces/${data.space_id}/stories`, { 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
-        version: 'draft' 
-      });
-
-      storiesToProcess = storiesRes?.data?.stories;
+        version: data.action === 'published' ? 'draft' : 'published' 
+      }) ?? [];
 
       console.log('Event folder (un)publish event detected. Deploying...');
       if (run) {
