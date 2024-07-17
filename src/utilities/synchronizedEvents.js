@@ -107,15 +107,19 @@ export const storyToAlgoliaEvent = (story, regionDataSource) => {
   };
 };
 
-const googleDateTimeToStoryDateTime = (date, time, timezone) => {
+const googleDateTimeToStoryDateTime = (date, time = '', timezone) => {
   if (!date) {
     return '';
   }
 
-  const combinedRaw = time ? `${date} ${time}` : date;
+  const fixedTime = time.replace('a.m.', 'AM').replace('p.m.', 'PM');
+
+  const combinedRaw = fixedTime ? `${date} ${fixedTime}` : date;
   const dateFormat = 'M/d/yy';
   const timeFormat = 'h:mm a';
-  const combinedRawFormat = time ? `${dateFormat} ${timeFormat}` : dateFormat;
+  const combinedRawFormat = fixedTime
+    ? `${dateFormat} ${timeFormat}`
+    : dateFormat;
   const luxonDatetime = DateTime.fromFormat(combinedRaw, combinedRawFormat, {
     zone: timezone,
   });
