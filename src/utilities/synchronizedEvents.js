@@ -175,14 +175,10 @@ export const googleRowToStoryContent = (data, source) => {
     .map((s) => s.trim())
     .filter((s) => !!s.length);
   const generalTags = subject.filter(
-    (s, index, arr) =>
-      s !== 'Diversity/Identity' &&
-      (index === 0 || arr.at(index - 1) !== 'Diversity/Identity')
+    (s, index, arr) => s !== 'D/I' && arr.at(index + 1) !== 'D/I'
   );
   const identityTags = subject.filter(
-    (s, index, arr) =>
-      s !== 'Diversity/Identity' &&
-      (index === 0 || arr.at(index - 1) === 'Diversity/Identity')
+    (s, index, arr) => s !== 'D/I' && arr.at(index + 1) === 'D/I'
   );
   const eventUrl = eventUrlRaw
     ? {

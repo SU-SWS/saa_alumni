@@ -68,7 +68,6 @@ export default async (req: Request) => {
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
-    const version = data.action === 'unpublished' ? 'draft' : 'published';
     const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`);
     const story = storyRes?.data?.story;
     const isFolder = story?.is_folder;
