@@ -7,6 +7,7 @@ import {
   Configure,
   useInstantSearch,
 } from 'react-instantsearch';
+import { DateTime } from 'luxon';
 import { LoadingIndicator } from './components/Loading';
 import { NoResultsComponent, NoResultsBoundary } from './components/NoResults';
 import { ChipsComponent } from './components/Chips';
@@ -21,7 +22,7 @@ const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_API_KEY
 );
 
-const hitsPerPage = 2;
+const hitsPerPage = 6;
 
 const EventDiscoveryContent = () => {
   const { status } = useInstantSearch();
@@ -109,7 +110,13 @@ const EventsDiscovery = () => (
     }}
     insights
   >
-    <Configure hitsPerPage={hitsPerPage} />
+    <Configure
+      hitsPerPage={hitsPerPage}
+      // Don't let any expired events slip through
+      filters={`endTimestamp > ${DateTime.now()
+        .startOf('day')
+        .toUnixInteger()}`}
+    />
     <EventDiscoveryContent />
   </InstantSearch>
 );
