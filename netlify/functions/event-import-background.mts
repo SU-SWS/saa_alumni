@@ -104,13 +104,14 @@ export default async (req: Request) => {
     const sbPublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`, { 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
-      content_type: 'synchronizedEvent' 
+      content_type: 'synchronizedEvent',
+      version: 'published',
     }) ?? [];
     const sbUnpublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`, { 
       starts_with: 'events/sync/', 
       excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent', 
-      version: 'draft' 
+      version: 'draft',
     }) ?? [];
     const oldArchivedPublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`, { 
       starts_with: 'events/sync-archive/', 
@@ -118,7 +119,8 @@ export default async (req: Request) => {
         { end: { lt_date: archiveCutoff }},
         { endOverride: { lt_date: archiveCutoff }}
       ]}, 
-      content_type: 'synchronizedEvent', 
+      content_type: 'synchronizedEvent',
+      version: 'published',
     }) ?? [];
     const oldArchivedUnpublishedEvents = await storyblokContent.getAll(`/spaces/${spaceId}/stories/`,{ 
       starts_with: 'events/sync-archive/', 
@@ -127,7 +129,7 @@ export default async (req: Request) => {
         { endOverride: { lt_date: archiveCutoff }}
       ]}, 
       content_type: 'synchronizedEvent', 
-      version: 'draft' 
+      version: 'draft',
     }) ?? [];
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
     const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
