@@ -38,6 +38,7 @@
     "gatsby-plugin-use-query-params-v2": "^2.0.0",
     "gatsby-react-router-scroll": "^6.13.1",
     "gatsby-source-storyblok": "^7.0.8",
+    "instantsearch.js": "^4.73.2",
     "luxon": "^3.4.4",
     "netlify-plugin-inline-functions-env": "^1.0.9",
     "netlify-plugin-vault-variables": "^3.0.0",
