@@ -7,7 +7,7 @@ import {
   TagIcon,
 } from '@heroicons/react/solid';
 import { GlobeIcon } from '@heroicons/react/outline';
-import { NativeSelect } from '@mui/material';
+import { MenuItem, NativeSelect, Select, createTheme } from '@mui/material';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 import HeroIcon from '../../../simple/heroIcon';
 
@@ -74,6 +74,11 @@ export const EventContent = ({
     [longStartDate, longEndDate]
   );
 
+  const selectRootClasses =
+    '!su-font-sans !su-ml-4 !su-border-b-2 !su-border-transparent hocus:!su-border-digital-red-light before:!su-hidden after:!su-hidden';
+  const selectClasses =
+    '!su-text-17 !su-leading-[1.9] !su-py-0 !su-px-0 hocus:!su-bg-transparent !su-outline-none !su-border-none';
+  const selectMenuRootClasses = '!su-text-16';
   const iconClasses =
     'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-1em';
 
@@ -91,28 +96,39 @@ export const EventContent = ({
               <span className="su-ml-4">{currentTimezoneDisplay}</span>
             )}
             {!isEventLocal && (
-              <NativeSelect
+              <Select
+                variant="standard"
+                renderValue={(v) => DateTime.now().setZone(v).offsetNameShort}
                 value={selectedTimezone}
                 onChange={(e) => setSelectedTimezone(e.target.value)}
                 classes={{
-                  root: 'su-relative su-font-sans su-ml-4 su-border-b-2 su-border-transparent hocus:su-border-digital-red-light before:!su-hidden after:!su-hidden hover-within:!su-border-2',
-                  select:
-                    '!su-text-19 su-py-0 !su-pr-24 hocus:!su-bg-transparent su-z-[1] !su-outline-none !su-border-none',
+                  root: selectRootClasses,
+                  select: selectClasses,
                 }}
                 IconComponent={() => (
                   <HeroIcon
                     iconType="chevron-down"
-                    className="su-absolute su-shrink-0 su-right-0 su-top-8 !su-w-18 !su-h-18 su-z-0 su-text-digital-red-light"
+                    className="su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
                   />
                 )}
               >
-                <option value={eventTimezoneName}>
-                  {eventTimezoneDisplay}
-                </option>
-                <option value={localTimezoneName}>
-                  {localTimezoneDisplay}
-                </option>
-              </NativeSelect>
+                <MenuItem
+                  classes={{
+                    root: selectMenuRootClasses,
+                  }}
+                  value={eventTimezoneName}
+                >
+                  {eventTimezoneDisplay} (event time zone)
+                </MenuItem>
+                <MenuItem
+                  classes={{
+                    root: selectMenuRootClasses,
+                  }}
+                  value={localTimezoneName}
+                >
+                  {localTimezoneDisplay} (your time zone)
+                </MenuItem>
+              </Select>
             )}
           </span>
         )}
