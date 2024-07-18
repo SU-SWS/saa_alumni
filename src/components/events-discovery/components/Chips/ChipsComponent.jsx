@@ -1,9 +1,10 @@
 import React, { useMemo } from 'react';
-import { useCurrentRefinements } from 'react-instantsearch';
+import { useCurrentRefinements, useSearchBox } from 'react-instantsearch';
 import { DateTime } from 'luxon';
 import { Chip } from './Chip';
 
 export const ChipsComponent = () => {
+  const { query, refine } = useSearchBox();
   const { items, canRefine } = useCurrentRefinements();
   const midnight = useMemo(() => DateTime.local().endOf('day'), []);
 
@@ -64,14 +65,30 @@ export const ChipsComponent = () => {
     [items, midnight]
   );
 
-  if (!canRefine) {
+  const processedItemsWithQuery = useMemo(() => {
+    if (!query) {
+      return [...processedItems];
+    }
+
+    return [
+      ...processedItems,
+      {
+        key: 'query',
+        attribute: 'query',
+        label: query,
+        remove: () => refine(''),
+      },
+    ];
+  }, [processedItems, query, refine]);
+
+  if (!canRefine && !query) {
     return null;
   }
 
   return (
     <div className="su-max-w-500 lg:su-max-w-900">
       <div className="su-flex su-flex-row su-flex-wrap su-gap-4">
-        {processedItems.map((refinement) => (
+        {processedItemsWithQuery.map((refinement) => (
           <Chip
             key={refinement.key}
             attribute={refinement.attribute}

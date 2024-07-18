@@ -36,7 +36,7 @@ export const FilterAccordion = ({
   return (
     <div
       className={dcnb(
-        'su-grid grid-flow-col su-mx-6 su-pt-8 su-border-t-2 su-border-black su-transition-all',
+        'su-grid grid-flow-col su-pt-8 su-border-t-2 su-border-black su-transition-all',
         {
           'su-grid-rows-[min-content_1fr]': expanded,
           'su-grid-rows-[min-content_0fr]': !expanded,

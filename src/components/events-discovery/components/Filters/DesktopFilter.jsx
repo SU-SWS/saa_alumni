@@ -17,7 +17,7 @@ export const DesktopFilter = () => {
 
   return (
     <>
-      <div className="su-mb-14 su-mx-6">
+      <div className="su-mb-14">
         <h2 className="su-text-5xl su-font-bold su-mb-0">Filter by</h2>
         <div className="su-min-h-28">
           <ClearRefinements
@@ -31,7 +31,7 @@ export const DesktopFilter = () => {
           />
         </div>
       </div>
-      <div className="su-flex su-justify-end su-mx-6 su-gap-8">
+      <div className="su-flex su-justify-end su-gap-8">
         <button
           type="button"
           className="su-text-3xl hocus:su-underline hocus:su-text-cardinal-red"

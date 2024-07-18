@@ -20,4 +20,7 @@ export const facetLabels = {
   internationalRegion: {
     label: 'International',
   },
+  query: {
+    label: 'Search',
+  },
 };
