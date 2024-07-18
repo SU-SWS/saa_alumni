@@ -147,7 +147,7 @@ export const googleRowToStoryContent = (data, source) => {
     endDate,
     startTime,
     endTime,
-    timezone: localTimezone = 'America/Los_Angeles',
+    timezone: eventTimezone = 'America/Los_Angeles',
     eventURL: eventUrlRaw = '',
     location = '',
     city = '',
@@ -160,15 +160,15 @@ export const googleRowToStoryContent = (data, source) => {
     latitude = '',
     longitude = '',
     description: descriptionRaw = '',
-    experience = '',
+    experience: experienceRaw = '',
   } = processedData;
 
   const start = googleDateTimeToStoryDateTime(
     startDate,
     startTime,
-    localTimezone
+    eventTimezone
   );
-  const end = googleDateTimeToStoryDateTime(endDate, endTime, localTimezone);
+  const end = googleDateTimeToStoryDateTime(endDate, endTime, eventTimezone);
 
   const format = formatRaw
     .split(',')
@@ -198,6 +198,20 @@ export const googleRowToStoryContent = (data, source) => {
     ? markdownToRichtext(turndownService.turndown(descriptionRaw))
     : null;
 
+  const experinceRawLowerCase = experienceRaw.toLowerCase();
+  let experience = '';
+
+  if (experinceRawLowerCase === 'in-person') {
+    experience = 'In-Person';
+  } else if (experinceRawLowerCase === 'hybrid') {
+    experience = 'Hybrid';
+  } else if (
+    experinceRawLowerCase === 'remote' ||
+    experinceRawLowerCase === 'virtual'
+  ) {
+    experience = 'Remote';
+  }
+
   return {
     component: 'synchronizedEvent',
     externalId,
@@ -218,7 +232,7 @@ export const googleRowToStoryContent = (data, source) => {
     region,
     latitude,
     longitude,
-    localTimezone,
+    eventTimezone,
     source,
   };
 };
@@ -269,7 +283,7 @@ export const compareStoryContent = (a, b) => {
     a.title !== b.title ||
     a.start !== b.start ||
     a.end !== b.end ||
-    a.localTimezone !== b.localTimezone ||
+    a.eventTimezone !== b.eventTimezone ||
     a.location !== b.location ||
     a.experience !== b.experience ||
     a.city !== b.city ||
