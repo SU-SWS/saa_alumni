@@ -12,6 +12,7 @@ import { EventContent } from './EventContent';
  * @property {EventImage} [image]
  * @property {string} start
  * @property {string} end
+ * @property {string} [eventTimezone]
  * @property {string} [city]
  * @property {string} [location]
  * @property {string} [region]
@@ -37,6 +38,7 @@ export const Event = ({
   image = {},
   start,
   end,
+  eventTimezone,
   city,
   location,
   usRegion,
@@ -77,7 +79,7 @@ export const Event = ({
       <div className="su-flex su-basis-130 sm:su-basis-150 su-flex-none">
         <div className="su-flex su-flex-col su-items-center">
           <div>
-            <div className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
+            <div className="su-mb-8 su-ml-2 su-uppercase su-text-20 lg:su-text-22">
               {monthDisplay}
             </div>
             <div className="su-font-bold su-font-serif su-leading-trim su-break-keep su-text-m5 md:su-text-m4 lg:su-text-m5">
@@ -98,6 +100,7 @@ export const Event = ({
           <EventContent
             start={luxonStart}
             end={luxonEnd}
+            eventTimezone={eventTimezone}
             location={location}
             city={city}
             region={region}
