@@ -7,7 +7,7 @@ import {
   TagIcon,
 } from '@heroicons/react/solid';
 import { GlobeIcon } from '@heroicons/react/outline';
-import { MenuItem, NativeSelect, Select, createTheme } from '@mui/material';
+import { MenuItem, Select } from '@mui/material';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 import HeroIcon from '../../../simple/heroIcon';
 
