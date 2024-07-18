@@ -48,10 +48,16 @@ const EventDiscoveryContent = () => {
             <DesktopFilter />
           </div>
           <div className="su-flex su-flex-col su-gap-y-20 su-w-full">
-            <StatusHeader hitsPerPage={hitsPerPage} />
-            <div className="su-flex su-flex-none su-flex-row">
-              <ChipsComponent />
-              <MobileFilter />
+            <div className="su-flex su-flex-col md:su-flex-row su-justify-between su-flex-wrap su-gap-y-20">
+              <div className="su-flex-none md:su-order-2">
+                <MobileFilter />
+              </div>
+              <div className="su-flex su-gap-y-20 su-flex-col">
+                <ChipsComponent />
+                <div className="sm:su-px-20">
+                  <StatusHeader />
+                </div>
+              </div>
             </div>
             {isStalled && <LoadingIndicator />}
             <NoResultsBoundary fallback={<NoResultsComponent />}>
