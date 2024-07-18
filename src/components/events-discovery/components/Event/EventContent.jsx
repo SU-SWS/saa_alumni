@@ -97,6 +97,7 @@ export const EventContent = ({
             )}
             {!isEventLocal && (
               <Select
+                aria-label="Time zone"
                 variant="standard"
                 renderValue={(v) => DateTime.now().setZone(v).offsetNameShort}
                 value={selectedTimezone}
