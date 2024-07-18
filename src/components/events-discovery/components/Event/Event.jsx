@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import { DateTime } from 'luxon';
 // eslint-disable-next-line no-unused-vars, import/extensions
 import { EventImage, EventLink } from '../../types';
 import { luxonDate } from '../../../../utilities/dates';
@@ -71,20 +70,11 @@ export const Event = ({
 
   const luxonEnd = useMemo(() => luxonDate(end), [end]);
 
-  // Find current UTC date/time
-  const currentUTCDate = new Date();
-  const luxonCurrent = DateTime.fromJSDate(currentUTCDate);
-
-  // If the current date/time is after the event end date/time, don't render the card
-  if (!title || !start || !end || luxonCurrent > luxonEnd) {
-    return null;
-  }
-
   const { filename, alt, focus } = image;
 
   return (
     <article className="su-flex su-flex-col sm:su-flex-row su-items-center sm:su-items-start su-flex-wrap">
-      <div className="su-flex su-basis-150 su-flex-none">
+      <div className="su-flex su-basis-130 sm:su-basis-150 su-flex-none">
         <div className="su-flex su-flex-col su-items-center">
           <div>
             <div className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
@@ -104,7 +94,7 @@ export const Event = ({
       <div className="su-flex su-flex-1 su-justify-between su-flex-wrap su-gap-16 su-min-w-full sm:su-min-w-0">
         <div className="su-flex su-flex-col su-flex-1 su-basis-300">
           {formatDisplay && <div className="su-font-bold">{formatDisplay}</div>}
-          <EventHeading title={title} eventUrl={eventUrl} />
+          <EventHeading title={title || 'Untitled'} eventUrl={eventUrl} />
           <EventContent
             start={luxonStart}
             end={luxonEnd}
