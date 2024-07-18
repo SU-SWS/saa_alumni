@@ -59,7 +59,6 @@ export const SearchBar = ({ searchClient, indexName }) => {
 
   const handleInputChange = useCallback(
     (v) => {
-      console.log('Input Value: ', v);
       setInputValue(v);
     },
     [setInputValue]
@@ -67,10 +66,10 @@ export const SearchBar = ({ searchClient, indexName }) => {
 
   const handleValueChange = useCallback(
     (v) => {
-      console.log('Value: ', v);
       setValue(v);
+      refine(v);
     },
-    [setValue]
+    [setValue, refine]
   );
 
   const handleSubmit = useCallback(
@@ -82,6 +81,12 @@ export const SearchBar = ({ searchClient, indexName }) => {
     },
     [setValue, refine, inputValue]
   );
+
+  const handleClear = useCallback(() => {
+    setInputValue('');
+    setValue('');
+    refine('');
+  }, [setInputValue, setValue, refine]);
 
   return (
     <form
@@ -102,7 +107,7 @@ export const SearchBar = ({ searchClient, indexName }) => {
           onChange={(_e, v) => handleValueChange(v)}
           filterOptions={(x) => x}
           options={options}
-          className="[&_label.Mui-focused]:su-text-lagunita"
+          className="[&_label.MuiInputLabel-shrink]:su-text-black-80 [&_label.MuiInputLabel-shrink]:!-su-translate-y-8 [&_label.MuiInputLabel-shrink]:!su-scale-75"
           renderInput={(params) => (
             <TextField
               {...params}
@@ -116,8 +121,8 @@ export const SearchBar = ({ searchClient, indexName }) => {
           )}
           classes={{
             inputRoot:
-              '!su-text-18 md:!su-text-21 !su-font-sans !su-p-0 focus-within:before:!su-border-lagunita-light before:!su-border-b-2 before:!su-border-b-black-50 after:!su-border-b-0',
-            input: '!su-px-20',
+              '!su-text-18 md:!su-text-21 !su-font-sans !su-p-0 focus-within:before:!su-border-lagunita before:!su-border-b-2 before:!su-border-b-black-50 after:!su-border-b-0',
+            input: '!su-pl-20 !su-pr-40',
             clearIndicator:
               '!su-text-18 !su-bg-transparent !su-text-transparent',
             paper:
@@ -126,14 +131,24 @@ export const SearchBar = ({ searchClient, indexName }) => {
               'su-border-b su-border-black-50 md:su-border-b-0 md:su-rounded-full !su-my-0 md:!su-my-10 md:!su-mx-18 !su-py-14 md:!su-py-3 !su-px-36 md:!su-px-20 first:!su-border-t md:first:!su-border-t-0 first:su-mt-20 last:su-mb-10 !su-text-black-70 !su-decoration-1 !su-underline-offset-2',
           }}
         />
+        {!!value && (
+          <button
+            type="button"
+            onClick={handleClear}
+            className="su-flex su-items-center su-text-16 su-text-digital-red hocus:su-text-digital-red-dark su-transition-colors su-ml-auto su-mt-8"
+          >
+            <X className="su-w-16 su-h-16" aria-hidden />
+            Clear search
+          </button>
+        )}
       </div>
       <div>
         <button
           type="submit"
           aria-label="Search events"
-          className="su-flex su-items-center su-justify-center su-rounded-full su-bg-digital-red-light hocus:su-bg-digital-red-dark su-text-white su-w-50 su-aspect-1 su-transition-colors"
+          className="su-flex su-items-center su-justify-center su-shrink-0 su-rounded-full su-w-36 su-h-36 md:su-w-50 md:su-h-50 su-bg-digital-red-light hocus:su-bg-cardinal-red-dark su-transition-colors"
         >
-          <Search className="su-w-30 su-h-30" />
+          <Search className="su-transition su-text-white su-w-18 md:su-w-30 su-h-18 md:su-h-30" />
         </button>
       </div>
     </form>
