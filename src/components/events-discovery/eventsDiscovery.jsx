@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo } from 'react';
-import algoliasearch, { SearchClient } from 'algoliasearch/lite';
+import React, { useMemo } from 'react';
+import algoliasearch from 'algoliasearch/lite';
 import { history } from 'instantsearch.js/es/lib/routers';
 import {
   InstantSearch,
@@ -43,7 +43,7 @@ const EventDiscoveryContent = () => {
             indexName="dev_alumni-events_start-asc"
           />
         </div>
-        <div className="lg:su-flex lg:su-gap-x-40 su-mt-40">
+        <div className="lg:su-flex lg:su-gap-x-40 su-mt-80">
           <div className="su-hidden lg:su-block su-flex-none su-w-300">
             <DesktopFilter />
           </div>
