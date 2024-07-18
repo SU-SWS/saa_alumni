@@ -18,7 +18,7 @@ export const Hit = ({ hit }) => {
     image,
     start,
     end,
-    localTimezone,
+    eventTimezone,
     city,
     location,
     usRegion,
@@ -36,7 +36,7 @@ export const Hit = ({ hit }) => {
       image={image}
       start={start}
       end={end}
-      eventTimezone={localTimezone}
+      eventTimezone={eventTimezone}
       city={city}
       location={location}
       usRegion={usRegion}
