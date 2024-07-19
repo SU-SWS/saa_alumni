@@ -75,15 +75,15 @@ export const EventContent = ({
   );
 
   const selectRootClasses =
-    '!su-font-sans !su-ml-4 !su-border-b-2 !su-border-transparent hocus:!su-border-digital-red-light before:!su-hidden after:!su-hidden';
+    '!su-relative !su-font-sans !su-ml-4 !su-border-b-2 !su-border-transparent hocus:!su-border-digital-red-light before:!su-hidden after:!su-hidden';
   const selectClasses =
-    '!su-text-17 !su-leading-[1.9] !su-py-0 !su-px-0 hocus:!su-bg-transparent !su-outline-none !su-border-none';
+    '!su-relative !su-z-[1] !su-text-19 !su-leading-normal !su-py-0 !su-pl-0 !su-pr-20 hocus:!su-bg-transparent !su-outline-none !su-border-none';
   const selectMenuRootClasses = '!su-text-16';
   const iconClasses =
     'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-1em';
 
   return (
-    <div className="event-card-details su-text-19 su-leading-snug">
+    <div className="event-card-details su-text-19 su-leading-snug su-lea">
       <div className="su-flex su-mb-04em">
         <CalendarIcon className={iconClasses} aria-hidden="true" />
         <SrOnlyText>Date: </SrOnlyText>
@@ -109,7 +109,7 @@ export const EventContent = ({
                 IconComponent={() => (
                   <HeroIcon
                     iconType="chevron-down"
-                    className="su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
+                    className="su-absolute su-right-0 su-z-0 su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
                   />
                 )}
               >
