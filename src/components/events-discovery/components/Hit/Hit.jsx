@@ -46,6 +46,7 @@ export const Hit = ({ hit }) => {
       identityTags={identityTags}
       experience={experience}
       format={format}
+      hit={hit}
     />
   );
 };
