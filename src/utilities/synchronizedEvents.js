@@ -124,11 +124,19 @@ const googleDateTimeToStoryDateTime = (date, time = '', timezone) => {
     zone: timezone,
   });
 
+  console.log({
+    combinedRaw,
+    timezone,
+    datetz: luxonDatetime.offsetNameShort,
+    dateT: luxonDatetime.toFormat('yyyy-MM-dd T'),
+    utc: luxonDatetime.toUTC().toFormat('yyyy-MM-dd T'),
+  });
+
   if (!luxonDatetime.isValid) {
     return '';
   }
 
-  return luxonDatetime.toFormat('yyyy-MM-dd T', { zone: 'UTC' });
+  return luxonDatetime.toUTC().toFormat('yyyy-MM-dd T');
 };
 
 export const googleRowToStoryContent = (data, source) => {
