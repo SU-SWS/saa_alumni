@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 // eslint-disable-next-line no-unused-vars, import/extensions
-import { EventImage, EventLink } from '../../types';
+import { EventImage, EventLink, EventHit } from '../../types';
 import { luxonDate } from '../../../../utilities/dates';
 import CardImage from '../../../media/cardImage';
 import { EventHeading } from './EventHeading';
@@ -27,6 +27,7 @@ import { EventContent } from './EventContent';
  * @property {boolean} [isMinimal]
  * @property {boolean} [isBigHeadline]
  * @property {number} [headingLevel]
+ * @property {EventHit} [hit]
  */
 
 /**
@@ -49,6 +50,7 @@ export const Event = ({
   identityTags = [],
   experience,
   format,
+  hit,
   isDark = false,
   isMinimal = false,
   isBigHeadline = false,
@@ -95,8 +97,14 @@ export const Event = ({
       </div>
       <div className="su-flex su-flex-1 su-justify-between su-flex-wrap su-gap-16 su-min-w-full sm:su-min-w-0">
         <div className="su-flex su-flex-col su-flex-1 su-basis-300">
-          {formatDisplay && <div className="su-font-bold">{formatDisplay}</div>}
-          <EventHeading title={title || 'Untitled'} eventUrl={eventUrl} />
+          {formatDisplay && (
+            <div className="su-font-bold su-text-18">{formatDisplay}</div>
+          )}
+          <EventHeading
+            title={title || 'Untitled'}
+            eventUrl={eventUrl}
+            hit={hit}
+          />
           <EventContent
             start={luxonStart}
             end={luxonEnd}
