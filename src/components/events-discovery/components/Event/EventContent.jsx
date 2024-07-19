@@ -38,26 +38,33 @@ export const EventContent = ({
 }) => {
   const [selectedTimezone, setSelectedTimezone] = useState(eventTimezone);
 
-  const eventTime = DateTime.now().setZone(eventTimezone);
-  const { zoneName: eventTimezoneName, offsetNameShort: eventTimezoneDisplay } =
-    eventTime;
-
   const localTime = DateTime.local();
-  const { zoneName: localTimezoneName, offsetNameShort: localTimezoneDisplay } =
-    localTime;
+  const {
+    zoneName: localTimezoneName,
+    offsetNameShort: localTimezoneDisplay,
+    offset: localOffset,
+  } = localTime;
+
+  const eventTime = localTime.setZone(eventTimezone);
+  const {
+    zoneName: eventTimezoneName,
+    offsetNameShort: eventTimezoneDisplay,
+    offset: eventOffset,
+  } = eventTime;
 
   const isEventLocal = useMemo(
     () => eventTimezoneDisplay === localTimezoneDisplay,
     [eventTimezoneDisplay, localTimezoneDisplay]
   );
 
+  const isOffsetSame = useMemo(
+    () => localOffset === eventOffset,
+    [localOffset, eventOffset]
+  );
+
   const ptStart = useMemo(
     () => start?.setZone(selectedTimezone),
     [start, selectedTimezone]
-  );
-  const currentTimezoneDisplay = useMemo(
-    () => ptStart?.toFormat('ZZZZ'),
-    [ptStart]
   );
   const longStartDate = useMemo(() => ptStart?.toFormat('DDDD'), [ptStart]);
   const startTime = useMemo(() => ptStart?.toFormat('t'), [ptStart]);
@@ -93,9 +100,14 @@ export const EventContent = ({
               ? `${startTime} - ${endTime} `
               : `${longStartDate} to ${longEndDate} `}
             {isEventLocal && (
-              <span className="su-ml-4">{currentTimezoneDisplay}</span>
+              <span className="su-ml-4">{eventTimezoneDisplay}</span>
             )}
-            {!isEventLocal && (
+            {!isEventLocal && isOffsetSame && (
+              <span className="su-ml-4">
+                {eventTimezoneDisplay} (Same as {localTimezoneDisplay})
+              </span>
+            )}
+            {!isEventLocal && !isOffsetSame && (
               <Select
                 aria-label="Time zone"
                 variant="standard"
