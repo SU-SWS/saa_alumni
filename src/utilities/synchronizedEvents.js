@@ -279,6 +279,11 @@ export const compareStoryContent = (a, b) => {
     sortedFormatA.length === sortedFormatB.length &&
     sortedFormatA.every((e, i) => e === sortedFormatB[i]);
 
+  console.log({
+    aExperience: a.experience,
+    bExperience: b.experience,
+  });
+
   return (
     a.title !== b.title ||
     a.start !== b.start ||
