@@ -96,18 +96,17 @@ export const EventContent = ({
         <SrOnlyText>Date: </SrOnlyText>
         {!!start && !!end && (
           <span>
-            {isSameDay
-              ? `${startTime} - ${endTime} `
-              : `${longStartDate} to ${longEndDate} `}
-            {isEventLocal && (
+            {!isSameDay && `${longStartDate} to ${longEndDate}`}
+            {isSameDay && `${startTime} - ${endTime} `}
+            {isSameDay && isEventLocal && (
               <span className="su-ml-4">{eventTimezoneDisplay}</span>
             )}
-            {!isEventLocal && isOffsetSame && (
+            {isSameDay && !isEventLocal && isOffsetSame && (
               <span className="su-ml-4">
-                {eventTimezoneDisplay} (Same as {localTimezoneDisplay})
+                {eventTimezoneDisplay}/{localTimezoneDisplay}
               </span>
             )}
-            {!isEventLocal && !isOffsetSame && (
+            {isSameDay && !isEventLocal && !isOffsetSame && (
               <Select
                 aria-label="Time zone"
                 variant="standard"
