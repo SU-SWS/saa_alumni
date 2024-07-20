@@ -96,8 +96,6 @@ export const storyToAlgoliaEvent = (story, regionDataSource) => {
     }
   }
 
-  console.log({ storyId, regionDataSource, region, usRegion, intRegion });
-
   return {
     objectID: storyId,
     startTimestamp,
