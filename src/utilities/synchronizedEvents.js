@@ -220,7 +220,7 @@ export const googleRowToStoryContent = (data, source) => {
     end,
     description,
     eventUrl,
-    experience: experience.toLowerCase(),
+    experience,
     location,
     city,
     state,
@@ -278,11 +278,6 @@ export const compareStoryContent = (a, b) => {
   const isFormatEq =
     sortedFormatA.length === sortedFormatB.length &&
     sortedFormatA.every((e, i) => e === sortedFormatB[i]);
-
-  console.log({
-    aExperience: a.experience,
-    bExperience: b.experience,
-  });
 
   return (
     a.title !== b.title ||
