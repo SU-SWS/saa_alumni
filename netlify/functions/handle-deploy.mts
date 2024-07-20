@@ -15,6 +15,7 @@ export default async (req: Request) => {
     const signature = req.headers.get('webhook-signature') ?? '';
     const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
     const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
+    const regionsDatasourceId =  process.env.EVENT_DATASOURCE_REGIONS_ID ?? '';
     const mode = process.env.DEPLOY_MODE ?? 'stop';
 
     if (mode === 'stop') {
@@ -119,10 +120,10 @@ export default async (req: Request) => {
 
     storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
 
-    const regions = await storyblokContent.getAll('cdn/datasource_entries', {
-      datasource: 'synchronized-event-regions',
+    const regions = await storyblokManagement.getAll(`/spaces/${data.space_id}/datasource_entries`, {
+      datasource_id: regionsDatasourceId,
       dimension: 'us-or-international',
-    });
+    } as any);
 
     await Promise.allSettled(storiesToProcess.map(async (story) => {
       try {
