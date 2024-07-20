@@ -55,6 +55,12 @@ export const DesktopFilter = () => {
             onToggleExpanded={() => toggleFacet('startTimestamp')}
           />
         )}
+        {locationFacet && (
+          <LocationFilter
+            expanded={locationFacet.expanded}
+            onToggleExpanded={() => toggleFacet('location')}
+          />
+        )}
         {additionalFacets.map(({ attribute, label, expanded }) => (
           <FacetComponent
             key={attribute}
@@ -64,12 +70,6 @@ export const DesktopFilter = () => {
             onToggleExpanded={() => toggleFacet(attribute)}
           />
         ))}
-        {locationFacet && (
-          <LocationFilter
-            expanded={locationFacet.expanded}
-            onToggleExpanded={() => toggleFacet('location')}
-          />
-        )}
         {subjectFacet && (
           <SubjectFilter
             expanded={subjectFacet.expanded}
