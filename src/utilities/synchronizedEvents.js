@@ -3,6 +3,7 @@ import TurndownService from 'turndown';
 import markdownToRichtextService from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
+import regions from './regions.json';
 
 const { markdownToRichtext } = markdownToRichtextService;
 const turndownService = new TurndownService();
@@ -63,6 +64,66 @@ export const mergeEventOverrides = (eventContent) => {
   });
 
   return merged;
+};
+
+export const setStoryRegion = async (story, mapKey) => {
+  const updatedStory = { ...story };
+  const { region, latitude, longitude } = updatedStory.content;
+
+  if (region || !latitude || !longitude) {
+    return updatedStory;
+  }
+
+  const lat = parseFloat(latitude);
+  const lng = parseFloat(longitude);
+  const hasValidLat = !!lat || lat === 0;
+  const hasValidLng = !!lng || lng === 0;
+
+  if (!hasValidLat || !hasValidLng) {
+    return updatedStory;
+  }
+
+  try {
+    const mapRes = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code&language=en&latlng=${latitude},${longitude}&key=${mapKey}`
+    );
+
+    if (!mapRes.ok) {
+      throw new Error('Nope');
+    }
+
+    const mapData = await mapRes.json();
+
+    if (!mapData?.results?.length) {
+      return updatedStory;
+    }
+
+    const zipData = mapData.results.find((r) =>
+      r?.types?.includes('postal_code')
+    );
+    const zip = zipData?.address_components?.find((z) =>
+      z?.types?.includes('postal_code')
+    )?.short_name;
+    const countryData = mapData.results.find((r) =>
+      r?.types?.includes('country')
+    );
+    const country = countryData?.address_components?.find((z) =>
+      z?.types?.includes('country')
+    )?.long_name;
+
+    if (country === 'United States' && !!zip) {
+      const matchedRegion = regions.find((r) => r.zip === zip);
+      updatedStory.content.region = matchedRegion?.region ?? '';
+    } else if (country) {
+      const matchedRegion = regions.find((r) => r.country === country);
+      updatedStory.content.region = matchedRegion?.region ?? '';
+    }
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error(err);
+  }
+
+  return updatedStory;
 };
 
 export const storyToAlgoliaEvent = (story, regionDataSource) => {

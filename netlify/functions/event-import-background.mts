@@ -3,7 +3,7 @@ import { type Config } from '@netlify/functions';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import StoryblokClient from 'storyblok-js-client';
-import { compareStoryContent, googleRowToStory, combineStories } from '../../src/utilities/synchronizedEvents';
+import { compareStoryContent, googleRowToStory, combineStories, setStoryRegion } from '../../src/utilities/synchronizedEvents';
 import { luxonDate } from '../../src/utilities/dates';
 import { DateTime } from 'luxon';
 
@@ -35,6 +35,7 @@ export default async (req: Request) => {
     const spaceId = process.env.SPACE_ID ?? '';
     const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL ?? '';
     const key = process.env.GOOGLE_SERVICE_ACCOUNT_KEY ?? '';
+    const googleMapsKey = process.env.GOOGLE_MAPS_API_KEY ?? '';
     const hivebriteSheetId = process.env.SHEET_ID_HIVEBRITE ?? '';
     const cventSheetId = process.env.SHEET_ID_CVENT ?? '';
     const eventFolderId = process.env.EVENT_FOLDER_ID ?? '';
@@ -257,10 +258,17 @@ export default async (req: Request) => {
           }
 
           console.log('Changes detected. Syncing changes to Storyblok...');
+
           if (run) {
+            let updatedGoogle = google;
+            if (google.content.latitude !== storyblok.content.latitude || google.content.longitude !== storyblok.content.longitude) {
+              console.log('Generating region...');
+              updatedGoogle = await setStoryRegion(google, googleMapsKey);
+              console.log('Generating region done!');
+            }
             await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
               story: {
-                ...combineStories(google, storyblok),
+                ...combineStories(updatedGoogle, storyblok),
                 parent_id: eventFolderId,
               },
               publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
@@ -282,9 +290,12 @@ export default async (req: Request) => {
           console.log('Exists in Google only. Posting to Storyblok...');
           // Post to SB then publish
           if (run) {
+            console.log('Generating region...');
+            const updatedGoogle = await setStoryRegion(google, googleMapsKey);
+            console.log('Generating region done!');
             await storyblokManagement.post(`spaces/${spaceId}/stories`, {
               story: {
-                ...google,
+                ...updatedGoogle,
                 parent_id: eventFolderId,
               },
               publish: 1,
