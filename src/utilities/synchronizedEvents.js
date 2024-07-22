@@ -125,6 +125,7 @@ export const setStoryRegion = async (story, mapKey) => {
       console.log('us');
       const matchedRegion = regions.find((r) => r.zip === zip);
       updatedStory.content.region = matchedRegion?.region ?? '';
+      console.log({ matchedRegion, regions });
     } else if (country) {
       console.log('int');
       const matchedRegion = regions.find((r) => r.country === country);
