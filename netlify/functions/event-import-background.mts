@@ -260,15 +260,12 @@ export default async (req: Request) => {
           console.log('Changes detected. Syncing changes to Storyblok...');
 
           if (run) {
-            let updatedGoogle = google;
-            if (google.content.latitude !== storyblok.content.latitude || google.content.longitude !== storyblok.content.longitude) {
-              console.log('Generating region...');
-              updatedGoogle = await setStoryRegion(google, googleMapsKey);
-              console.log('Generating region done!');
-            }
+            console.log('Generating region...');
+            const combinedStory = await setStoryRegion(combineStories(google, storyblok));
+            console.log('Generating region done!');
             await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
               story: {
-                ...combineStories(updatedGoogle, storyblok),
+                ...combinedStory,
                 parent_id: eventFolderId,
               },
               publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
