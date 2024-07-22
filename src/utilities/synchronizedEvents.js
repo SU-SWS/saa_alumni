@@ -6,11 +6,15 @@ import { slugify } from './slugify';
 import regions from './regions.json';
 
 const usRegions = new Map(
-  regions.filter((r) => !!r.zip).map((r) => [r.zip, r.region])
+  regions
+    .filter(({ zip }) => zip !== 'n/a')
+    .map(({ zip, region }) => [zip.toString(), region])
 );
 
 const intRegions = new Map(
-  regions.filter((r) => !r.zip).map((r) => [r.country, r.region])
+  regions
+    .filter(({ zip }) => zip === 'n/a')
+    .map(({ country, region }) => [country, region])
 );
 
 const { markdownToRichtext } = markdownToRichtextService;
@@ -78,8 +82,6 @@ export const setStoryRegion = async (story, mapKey) => {
   const updatedStory = { ...story };
   const { region, latitude, longitude } = updatedStory.content;
 
-  console.log({ updatedStory });
-
   if (region || !latitude || !longitude) {
     return updatedStory;
   }
@@ -121,24 +123,16 @@ export const setStoryRegion = async (story, mapKey) => {
       z?.types?.includes('country')
     )?.long_name;
 
-    console.log({ zip });
-    console.log({ regionstest: usRegions.get('94063') });
-
     if (country === 'United States' && !!zip) {
-      console.log('us');
       updatedStory.content.region = usRegions.get(zip) ?? '';
-      console.log({ matchedRegion: usRegions.get(zip) });
     } else if (country) {
-      console.log('int');
       updatedStory.content.region = intRegions.get(country) ?? '';
-      console.log({ matchedRegion: intRegions.get(country) });
     }
   } catch (err) {
     // eslint-disable-next-line no-console
     console.error(err);
   }
 
-  console.log({ updatedStory });
   return updatedStory;
 };
 
