@@ -114,7 +114,8 @@ export const setStoryRegion = async (story, mapKey) => {
     )?.long_name;
 
     console.log({ zip });
-    console.log({ regionstest: regions.map((r) => r.zip) });
+    console.log({ regionstest: regions.filter((r) => r.zip === '94063') });
+    console.log({ regionstest2: regions.find((r) => r.zip === '94063') });
 
     if (country === 'United States' && !!zip) {
       console.log('us');
