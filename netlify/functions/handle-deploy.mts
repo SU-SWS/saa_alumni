@@ -16,6 +16,7 @@ export default async (req: Request) => {
     const webhookSecret = process.env.STORYBLOK_WEBHOOK_SECRET ?? '';
     const deployUrl = process.env.DEPLOY_HOOK_URL ?? '';
     const regionsDatasourceId =  process.env.EVENT_DATASOURCE_REGIONS_ID ?? '';
+    const regionsDatasourceDimensionId =  process.env.EVENT_DATASOURCE_REGIONS_DIMENSION_ID ?? '';
     const mode = process.env.DEPLOY_MODE ?? 'stop';
 
     if (mode === 'stop') {
@@ -122,7 +123,7 @@ export default async (req: Request) => {
 
     const regions = await storyblokManagement.getAll(`/spaces/${data.space_id}/datasource_entries`, {
       datasource_id: regionsDatasourceId,
-      dimension: 'us-or-international',
+      dimension: regionsDatasourceDimensionId,
     } as any);
 
     await Promise.allSettled(storiesToProcess.map(async (story) => {
