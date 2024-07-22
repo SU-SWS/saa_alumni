@@ -5,6 +5,14 @@ import { luxonDate } from './dates';
 import { slugify } from './slugify';
 import regions from './regions.json';
 
+const usRegions = new Map(
+  regions.filter((r) => !!r.zip).map((r) => [r.zip, r.region])
+);
+
+const intRegions = new Map(
+  regions.filter((r) => !r.zip).map((r) => [r.country, r.region])
+);
+
 const { markdownToRichtext } = markdownToRichtextService;
 const turndownService = new TurndownService();
 
@@ -114,19 +122,16 @@ export const setStoryRegion = async (story, mapKey) => {
     )?.long_name;
 
     console.log({ zip });
-    console.log({ regionstest: regions.filter((r) => r.zip === '94063') });
-    console.log({ regionstest2: regions.find((r) => r.zip === '94063') });
+    console.log({ regionstest: usRegions.get('94063') });
 
     if (country === 'United States' && !!zip) {
       console.log('us');
-      const matchedRegion = regions.find((r) => r.zip === zip);
-      updatedStory.content.region = matchedRegion?.region ?? '';
-      console.log({ matchedRegion });
+      updatedStory.content.region = usRegions.get(zip) ?? '';
+      console.log({ matchedRegion: usRegions.get(zip) });
     } else if (country) {
       console.log('int');
-      const matchedRegion = regions.find((r) => r.country === country);
-      updatedStory.content.region = matchedRegion?.region ?? '';
-      console.log({ matchedRegion });
+      updatedStory.content.region = intRegions.get(country) ?? '';
+      console.log({ matchedRegion: intRegions.get(country) });
     }
   } catch (err) {
     // eslint-disable-next-line no-console
