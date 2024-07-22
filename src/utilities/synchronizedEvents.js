@@ -91,7 +91,7 @@ export const setStoryRegion = async (story, mapKey) => {
     );
 
     if (!mapRes.ok) {
-      throw new Error('Nope');
+      throw new Error('Google maps error: ', mapRes.status);
     }
 
     const mapData = await mapRes.json();
@@ -117,7 +117,10 @@ export const setStoryRegion = async (story, mapKey) => {
 
     if (country === 'United States' && !!zip) {
       console.log('us');
-      const matchedRegion = regions.find((r) => r.zip === zip);
+      const matchedRegion = regions.find((r) => {
+        console.log({ r, zip, rzip: r.zip });
+        return r.zip === zip;
+      });
       updatedStory.content.region = matchedRegion?.region ?? '';
       console.log({ matchedRegion });
     } else if (country) {
