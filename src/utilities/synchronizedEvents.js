@@ -81,8 +81,6 @@ export const setStoryRegion = async (story, mapKey) => {
   const hasValidLat = !!lat || lat === 0;
   const hasValidLng = !!lng || lng === 0;
 
-  console.log({ lat, lng });
-
   if (!hasValidLat || !hasValidLng) {
     return updatedStory;
   }
@@ -92,15 +90,11 @@ export const setStoryRegion = async (story, mapKey) => {
       `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code&language=en&latlng=${latitude},${longitude}&key=${mapKey}`
     );
 
-    console.log({ mapRes });
-
     if (!mapRes.ok) {
       throw new Error('Nope');
     }
 
     const mapData = await mapRes.json();
-
-    console.log({ mapData });
 
     if (!mapData?.results?.length) {
       return updatedStory;
@@ -119,17 +113,18 @@ export const setStoryRegion = async (story, mapKey) => {
       z?.types?.includes('country')
     )?.long_name;
 
-    console.log({ zipData, zip, countryData, country });
+    console.log({ regions });
 
     if (country === 'United States' && !!zip) {
       console.log('us');
       const matchedRegion = regions.find((r) => r.zip === zip);
       updatedStory.content.region = matchedRegion?.region ?? '';
-      console.log({ matchedRegion, regions });
+      console.log({ matchedRegion });
     } else if (country) {
       console.log('int');
       const matchedRegion = regions.find((r) => r.country === country);
       updatedStory.content.region = matchedRegion?.region ?? '';
+      console.log({ matchedRegion });
     }
   } catch (err) {
     // eslint-disable-next-line no-console
