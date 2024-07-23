@@ -4,18 +4,20 @@ import { FacetComponent } from '../Facets/FacetComponent';
 import { DateFilter } from '../DateFilter';
 import { LocationFilter } from '../LocationFilter/LocationFilter';
 import { useFacets } from '../Facets/useFacets';
+import { SubjectFilter } from '../SubjectFilter';
 
 export const DesktopFilter = () => {
   const { getFacet, getFacets, toggleFacet, collapseFacets, expandFacets } =
     useFacets();
 
   const dateFacet = getFacet('startTimestamp');
-  const additionalFacets = getFacets(['format', 'subject']);
+  const additionalFacets = getFacets(['format']);
   const locationFacet = getFacet('location');
+  const subjectFacet = getFacet('subject');
 
   return (
     <>
-      <div className="su-mb-14 su-mx-6">
+      <div className="su-mb-14">
         <h2 className="su-text-5xl su-font-bold su-mb-0">Filter by</h2>
         <div className="su-min-h-28">
           <ClearRefinements
@@ -29,7 +31,7 @@ export const DesktopFilter = () => {
           />
         </div>
       </div>
-      <div className="su-flex su-justify-end su-mx-6 su-gap-8">
+      <div className="su-flex su-justify-end su-gap-8">
         <button
           type="button"
           className="su-text-3xl hocus:su-underline hocus:su-text-cardinal-red"
@@ -53,6 +55,12 @@ export const DesktopFilter = () => {
             onToggleExpanded={() => toggleFacet('startTimestamp')}
           />
         )}
+        {locationFacet && (
+          <LocationFilter
+            expanded={locationFacet.expanded}
+            onToggleExpanded={() => toggleFacet('location')}
+          />
+        )}
         {additionalFacets.map(({ attribute, label, expanded }) => (
           <FacetComponent
             key={attribute}
@@ -62,10 +70,10 @@ export const DesktopFilter = () => {
             onToggleExpanded={() => toggleFacet(attribute)}
           />
         ))}
-        {locationFacet && (
-          <LocationFilter
-            expanded={locationFacet.expanded}
-            onToggleExpanded={() => toggleFacet('location')}
+        {subjectFacet && (
+          <SubjectFilter
+            expanded={subjectFacet.expanded}
+            onToggleExpanded={() => toggleFacet('subject')}
           />
         )}
       </div>

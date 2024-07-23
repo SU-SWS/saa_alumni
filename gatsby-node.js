@@ -25,6 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
       'verticalNavWrapper',
       'promoCodeBanner',
       'protectedContentItem',
+      'synchronizedEvent',
     ];
     const omittedComponentsArray = JSON.stringify(contentTypesToOmit);
 

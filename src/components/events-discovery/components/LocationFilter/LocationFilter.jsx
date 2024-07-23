@@ -7,6 +7,8 @@ import LocationFacetTabs from './LocationFacetTabs';
 import LocationTabPanelCity from './LocationTabPanelCity';
 import LocationTabPanelState from './LocationTabPanelState';
 import LocationTabPanelCountry from './LocationTabPanelCountry';
+import { UsSubfilter } from './UsSubfilter';
+import { InternationalSubfilter } from './InternationalSubfilter';
 
 /**
  * @typedef {object} Props
@@ -21,8 +23,8 @@ import LocationTabPanelCountry from './LocationTabPanelCountry';
 export const LocationFilter = ({ expanded, onToggleExpanded }) => {
   const { getFacet, toggleFacet } = useFacets();
   const onlineOptionsFacet = getFacet('experience');
-  const usRegionFacet = getFacet('usRegion');
-  const intRegionFacet = getFacet('intRegion');
+  const usFacet = getFacet('usRegion');
+  const internationalFacet = getFacet('intRegion');
 
   return (
     <FilterAccordion
@@ -46,21 +48,15 @@ export const LocationFilter = ({ expanded, onToggleExpanded }) => {
           onToggleExpanded={() => toggleFacet('experience')}
         />
       )}
-
-      {usRegionFacet && (
-        <FacetSubFilter
-          attribute="usRegion"
-          label="United States"
-          expanded={usRegionFacet.expanded}
+      {usFacet && (
+        <UsSubfilter
+          expanded={usFacet.expanded}
           onToggleExpanded={() => toggleFacet('usRegion')}
         />
       )}
-
-      {intRegionFacet && (
-        <FacetSubFilter
-          attribute="intRegion"
-          label="International"
-          expanded={intRegionFacet.expanded}
+      {internationalFacet && (
+        <InternationalSubfilter
+          expanded={internationalFacet.expanded}
           onToggleExpanded={() => toggleFacet('intRegion')}
         />
       )}

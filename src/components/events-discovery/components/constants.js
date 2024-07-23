@@ -5,9 +5,6 @@ export const facetLabels = {
   experience: {
     label: 'Experience',
   },
-  subject: {
-    label: 'Subject',
-  },
   startTimestamp: {
     label: 'Start date',
   },
@@ -20,10 +17,19 @@ export const facetLabels = {
   city: {
     label: 'City',
   },
-  usRegion: {
-    label: 'United States',
+  generalTags: {
+    label: 'General',
   },
-  intRegion: {
+  identityTags: {
+    label: 'Diversity/Identity',
+  },
+  usRegion: {
+    label: 'US',
+  },
+  internationalRegion: {
     label: 'International',
+  },
+  query: {
+    label: 'Search',
   },
 };

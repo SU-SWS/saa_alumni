@@ -3,9 +3,13 @@ import React, { createContext, useMemo, useState } from 'react';
 const knownFacets = [
   { attribute: 'startTimestamp', label: 'Date', defaultExpanded: true },
   { attribute: 'format', label: 'Format' },
-  { attribute: 'experience', label: 'Experience' },
+  // Subject
   { attribute: 'subject', label: 'Subject' },
+  { attribute: 'generalTags', label: 'General' },
+  { attribute: 'identityTags', label: 'Diversity/Identity' },
+  // Location
   { attribute: 'location', label: 'Location' },
+  { attribute: 'experience', label: 'Experience' },
   { attribute: 'usRegion', label: 'United States' },
   { attribute: 'intRegion', label: 'International' },
 ];

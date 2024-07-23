@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { DateTime } from 'luxon';
 import {
@@ -7,12 +7,15 @@ import {
   TagIcon,
 } from '@heroicons/react/solid';
 import { GlobeIcon } from '@heroicons/react/outline';
+import { MenuItem, Select } from '@mui/material';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
+import HeroIcon from '../../../simple/heroIcon';
 
 /**
  * @typedef {object} Props
  * @property {DateTime} start
  * @property {DateTime} end
+ * @property {string} [eventTimezone]
  * @property {string} [location]
  * @property {string} [city]
  * @property {string} [region]
@@ -26,37 +29,121 @@ import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 export const EventContent = ({
   start,
   end,
+  // Should we default to something else?
+  eventTimezone = 'America/Los_Angeles',
   location = '',
   city = '',
   region = '',
   subject = [],
 }) => {
-  const ptStart = useMemo(() => start.setZone('America/Los_Angeles'), [start]);
-  const timeZone = useMemo(() => ptStart.toFormat('ZZZZ'), [ptStart]);
-  const longStartDate = useMemo(() => ptStart.toFormat('DDDD'), [ptStart]);
-  const startTime = useMemo(() => ptStart.toFormat('t'), [ptStart]);
+  const [selectedTimezone, setSelectedTimezone] = useState(eventTimezone);
 
-  const ptEnd = useMemo(() => end.setZone('America/Los_Angeles'), [end]);
-  const longEndDate = useMemo(() => ptEnd.toFormat('DDDD'), [ptEnd]);
-  const endTime = useMemo(() => ptEnd.toFormat('t'), [ptEnd]);
+  const localTime = DateTime.local();
+  const {
+    zoneName: localTimezoneName,
+    offsetNameShort: localTimezoneDisplay,
+    offset: localOffset,
+  } = localTime;
+
+  const eventTime = localTime.setZone(eventTimezone);
+  const {
+    zoneName: eventTimezoneName,
+    offsetNameShort: eventTimezoneDisplay,
+    offset: eventOffset,
+  } = eventTime;
+
+  const isEventLocal = useMemo(
+    () => eventTimezoneDisplay === localTimezoneDisplay,
+    [eventTimezoneDisplay, localTimezoneDisplay]
+  );
+
+  const isOffsetSame = useMemo(
+    () => localOffset === eventOffset,
+    [localOffset, eventOffset]
+  );
+
+  const ptStart = useMemo(
+    () => start?.setZone(selectedTimezone),
+    [start, selectedTimezone]
+  );
+  const longStartDate = useMemo(() => ptStart?.toFormat('DDDD'), [ptStart]);
+  const startTime = useMemo(() => ptStart?.toFormat('t'), [ptStart]);
+
+  const ptEnd = useMemo(
+    () => end?.setZone(selectedTimezone),
+    [end, selectedTimezone]
+  );
+  const longEndDate = useMemo(() => ptEnd?.toFormat('DDDD'), [ptEnd]);
+  const endTime = useMemo(() => ptEnd?.toFormat('t'), [ptEnd]);
 
   const isSameDay = useMemo(
     () => longStartDate === longEndDate,
     [longStartDate, longEndDate]
   );
 
+  const selectRootClasses =
+    '!su-relative !su-font-sans !su-ml-4 !su-border-b-2 !su-border-transparent hocus:!su-border-digital-red-light before:!su-hidden after:!su-hidden';
+  const selectClasses =
+    '!su-relative !su-z-[1] !su-text-19 !su-leading-normal !su-py-0 !su-pl-0 !su-pr-20 hocus:!su-bg-transparent !su-outline-none !su-border-none';
+  const selectMenuRootClasses = '!su-text-16';
   const iconClasses =
     'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-1em';
 
   return (
-    <div className="event-card-details su-card-paragraph">
+    <div className="event-card-details su-text-19 su-leading-snug su-lea">
       <div className="su-flex su-mb-04em">
         <CalendarIcon className={iconClasses} aria-hidden="true" />
         <SrOnlyText>Date: </SrOnlyText>
-        <span>
-          {!isSameDay && `${longStartDate} to ${longEndDate}`}
-          {isSameDay && ` ${startTime} - ${endTime} ${timeZone}`}
-        </span>
+        {!!start && !!end && (
+          <span>
+            {!isSameDay && `${longStartDate} to ${longEndDate}`}
+            {isSameDay && `${startTime} - ${endTime} `}
+            {isSameDay && isEventLocal && (
+              <span className="su-ml-4">{eventTimezoneDisplay}</span>
+            )}
+            {isSameDay && !isEventLocal && isOffsetSame && (
+              <span className="su-ml-4">
+                {eventTimezoneDisplay}/{localTimezoneDisplay}
+              </span>
+            )}
+            {isSameDay && !isEventLocal && !isOffsetSame && (
+              <Select
+                aria-label="Time zone"
+                variant="standard"
+                renderValue={(v) => DateTime.now().setZone(v).offsetNameShort}
+                value={selectedTimezone}
+                onChange={(e) => setSelectedTimezone(e.target.value)}
+                classes={{
+                  root: selectRootClasses,
+                  select: selectClasses,
+                }}
+                IconComponent={() => (
+                  <HeroIcon
+                    iconType="chevron-down"
+                    className="su-absolute su-right-0 su-z-0 su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
+                  />
+                )}
+              >
+                <MenuItem
+                  classes={{
+                    root: selectMenuRootClasses,
+                  }}
+                  value={eventTimezoneName}
+                >
+                  {eventTimezoneDisplay} (event time zone)
+                </MenuItem>
+                <MenuItem
+                  classes={{
+                    root: selectMenuRootClasses,
+                  }}
+                  value={localTimezoneName}
+                >
+                  {localTimezoneDisplay} (your time zone)
+                </MenuItem>
+              </Select>
+            )}
+          </span>
+        )}
       </div>
       {(location || city) && (
         <div className="su-flex su-mb-04em">

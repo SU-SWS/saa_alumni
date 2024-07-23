@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react';
-import { DateTime } from 'luxon';
 // eslint-disable-next-line no-unused-vars, import/extensions
-import { EventImage, EventLink } from '../../types';
+import { EventImage, EventLink, EventHit } from '../../types';
 import { luxonDate } from '../../../../utilities/dates';
 import CardImage from '../../../media/cardImage';
 import { EventHeading } from './EventHeading';
@@ -10,20 +9,25 @@ import { EventContent } from './EventContent';
 /**
  * @typedef {object} Props
  * @property {string} title
- * @property {EventImage} image
+ * @property {EventImage} [image]
  * @property {string} start
  * @property {string} end
+ * @property {string} [eventTimezone]
  * @property {string} [city]
  * @property {string} [location]
  * @property {string} [region]
+ * @property {string} [usRegion]
+ * @property {string} [intRegion]
  * @property {EventLink} [eventUrl]
- * @property {string[]} [subject]
- * @property {string[]} [experience]
- * @property {string} [format]
+ * @property {string[]} [generalTags]
+ * @property {string[]} [identityTags]
+ * @property {string} [experience]
+ * @property {string[]} [format]
  * @property {boolean} [isDark]
  * @property {boolean} [isMinimal]
  * @property {boolean} [isBigHeadline]
  * @property {number} [headingLevel]
+ * @property {EventHit} [hit]
  */
 
 /**
@@ -32,29 +36,41 @@ import { EventContent } from './EventContent';
  */
 export const Event = ({
   title,
-  image,
+  image = {},
   start,
   end,
+  eventTimezone,
   city,
   location,
-  region,
+  usRegion,
+  intRegion,
+  region = usRegion || intRegion || '',
   eventUrl,
-  subject,
+  generalTags = [],
+  identityTags = [],
   experience,
   format,
+  hit,
   isDark = false,
   isMinimal = false,
   isBigHeadline = false,
   headingLevel = 3,
 }) => {
+  const subject = useMemo(
+    () => [...generalTags, ...identityTags],
+    [generalTags, identityTags]
+  );
+
+  const formatDisplay = format?.join?.(', ') ?? '';
+
   const luxonStart = useMemo(() => luxonDate(start), [start]);
   const ptStart = useMemo(
     () => luxonStart.setZone('America/Los_Angeles'),
     [luxonStart]
   );
   const { monthShort, day } = ptStart;
-  const monthDisplay = useMemo(() => monthShort.toString(), [monthShort]);
-  const dayDisplay = useMemo(() => day.toString().padStart(2, '0'), [day]);
+  const monthDisplay = useMemo(() => monthShort?.toString(), [monthShort]);
+  const dayDisplay = useMemo(() => day?.toString().padStart(2, '0'), [day]);
 
   const luxonEnd = useMemo(() => luxonDate(end), [end]);
 
@@ -71,33 +87,42 @@ export const Event = ({
     typeof experience !== 'string' && experience?.length
       ? experience.join(', ')
       : '';
+  
+  const { filename, alt, focus } = image;
 
   return (
     <article className="su-flex su-flex-col sm:su-flex-row su-items-center sm:su-items-start su-flex-wrap">
-      <div className="su-flex su-basis-150 su-flex-none">
+      <div className="su-flex su-basis-130 sm:su-basis-150 su-flex-none">
         <div className="su-flex su-flex-col su-items-center">
           <div>
-            <div className="su-mb-8 su-ml-2 su-uppercase su-leading-none su-text-20 lg:su-text-22">
+            <div className="su-mb-8 su-ml-2 su-uppercase su-text-20 lg:su-text-22">
               {monthDisplay}
             </div>
             <div className="su-font-bold su-font-serif su-leading-trim su-break-keep su-text-m5 md:su-text-m4 lg:su-text-m5">
               {dayDisplay}
             </div>
           </div>
-          {experienceDisplay && (
+          {experience && (
             <div className="su-text-black-80 su-text-14 su-mt-16">
-              {experienceDisplay}
+              {experience}
             </div>
           )}
         </div>
       </div>
       <div className="su-flex su-flex-1 su-justify-between su-flex-wrap su-gap-16 su-min-w-full sm:su-min-w-0">
         <div className="su-flex su-flex-col su-flex-1 su-basis-300">
-          {format && <div className="su-font-bold">{format}</div>}
-          <EventHeading title={title} eventUrl={eventUrl} />
+          {formatDisplay && (
+            <div className="su-font-bold su-text-18">{formatDisplay}</div>
+          )}
+          <EventHeading
+            title={title || 'Untitled'}
+            eventUrl={eventUrl}
+            hit={hit}
+          />
           <EventContent
             start={luxonStart}
             end={luxonEnd}
+            eventTimezone={eventTimezone}
             location={location}
             city={city}
             region={region}
@@ -107,9 +132,9 @@ export const Event = ({
         {image?.filename?.startsWith('http') && (
           <figure className="su-block su-shrink-0 su-max-w-300 sm:su-max-w-200 2xl:su-max-w-300 su-transition-all">
             <CardImage
-              filename={image.filename}
-              alt={image.alt}
-              smartFocus={image.focus}
+              filename={filename}
+              alt={alt}
+              smartFocus={focus}
               size="vertical"
               className="su-w-full su-h-auto su-origin-top-right su-transition-transform hocus:su-scale-[1.03]"
               loading="lazy"
