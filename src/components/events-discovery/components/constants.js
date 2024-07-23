@@ -26,7 +26,7 @@ export const facetLabels = {
   usRegion: {
     label: 'US',
   },
-  internationalRegion: {
+  intRegion: {
     label: 'International',
   },
   query: {

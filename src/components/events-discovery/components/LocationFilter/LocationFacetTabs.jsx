@@ -5,6 +5,13 @@ import { LocationContext } from './LocationFacetProvider';
 
 /**
  * Location Facet Tab
+ *
+ * @param {object} props
+ * @param {boolean} props.isActive
+ * @param {string} props.value
+ * @param {React.ReactNode} props.children
+ *
+ * @returns {JSX.Element} LocationFacetTab
  */
 const LocationFacetTab = ({ isActive, value, children, ...props }) => (
   <button
@@ -27,6 +34,8 @@ const LocationFacetTab = ({ isActive, value, children, ...props }) => (
 
 /**
  * Location Facet Tabs
+ *
+ * @returns {JSX.Element} LocationFacetTabs
  */
 const LocationFacetTabs = () => {
   const { activeTab, setActiveTab } = useContext(LocationContext);

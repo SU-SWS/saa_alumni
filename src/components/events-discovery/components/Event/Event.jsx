@@ -51,10 +51,6 @@ export const Event = ({
   experience,
   format,
   hit,
-  isDark = false,
-  isMinimal = false,
-  isBigHeadline = false,
-  headingLevel = 3,
 }) => {
   const subject = useMemo(
     () => [...generalTags, ...identityTags],
@@ -74,20 +70,6 @@ export const Event = ({
 
   const luxonEnd = useMemo(() => luxonDate(end), [end]);
 
-  // Find current UTC date/time
-  const currentUTCDate = new Date();
-  const luxonCurrent = DateTime.fromJSDate(currentUTCDate);
-
-  // If the current date/time is after the event end date/time, don't render the card
-  if (luxonCurrent > luxonEnd) {
-    return null;
-  }
-
-  const experienceDisplay =
-    typeof experience !== 'string' && experience?.length
-      ? experience.join(', ')
-      : '';
-  
   const { filename, alt, focus } = image;
 
   return (
@@ -129,7 +111,7 @@ export const Event = ({
             subject={subject}
           />
         </div>
-        {image?.filename?.startsWith('http') && (
+        {filename?.startsWith('http') && (
           <figure className="su-block su-shrink-0 su-max-w-300 sm:su-max-w-200 2xl:su-max-w-300 su-transition-all">
             <CardImage
               filename={filename}

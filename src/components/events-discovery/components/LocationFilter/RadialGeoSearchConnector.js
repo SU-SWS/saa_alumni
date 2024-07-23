@@ -170,6 +170,7 @@ export default (renderFn, unmountFn = noop) =>
       init(initOptions) {
         const { helper } = initOptions;
         helper.setQueryParameter('aroundPrecision', precision);
+        helper.setQueryParameter('getRankingInfo', 'true');
         renderFn(
           {
             ...this.getWidgetRenderState(initOptions),

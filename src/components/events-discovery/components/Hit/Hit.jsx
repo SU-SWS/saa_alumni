@@ -28,35 +28,8 @@ export const Hit = ({ hit }) => {
     identityTags,
     experience,
     format,
+    subject,
   } = hit;
-
-  // TODO: Remove these checks once the Algolia data is clean
-  // ----------------------------------------------------------------------------------------------------
-
-  // Sanitize on the way out of Algolia.
-  if (start === 'Invalid DateTime' || end === 'Invalid DateTime') {
-    return (
-      <p className="su-bg-cardinal-red su-text-white su-text-6xl su-rs-p-3">
-        Invalid Time Data for &quot;{title}&quot;
-      </p>
-    );
-  }
-
-  if (!eventUrl) {
-    return (
-      <p className="su-bg-cardinal-red su-text-white su-text-6xl su-rs-p-3">
-        Invalid URL for &quot;{title}&quot;
-      </p>
-    );
-  }
-
-  let exp = experience;
-  if (typeof experience === 'string') {
-    exp = [experience];
-  }
-
-  // END TODO
-  // ----------------------------------------------------------------------------------------------------
 
   return (
     <Event
@@ -71,7 +44,7 @@ export const Hit = ({ hit }) => {
       intRegion={intRegion}
       eventUrl={eventUrl}
       subject={subject}
-      experience={exp}
+      experience={experience}
       generalTags={generalTags}
       identityTags={identityTags}
       format={format}

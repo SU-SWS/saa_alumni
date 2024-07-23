@@ -112,6 +112,8 @@ const EventsDiscovery = () => (
             ret.near = indexUiState.radialGeoSearch;
           }
 
+          ret.q = indexUiState.query;
+
           return ret;
         },
         routeToState(routeState) {
@@ -132,6 +134,7 @@ const EventsDiscovery = () => (
                 startTimestamp: routeState.startTimestamp,
               },
               radialGeoSearch: routeState.near,
+              query: routeState.q,
             },
           };
         },
