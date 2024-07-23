@@ -25,6 +25,7 @@ exports.createPages = ({ graphql, actions }) => {
       'verticalNavWrapper',
       'promoCodeBanner',
       'protectedContentItem',
+      'synchronizedEvent',
     ];
     const omittedComponentsArray = JSON.stringify(contentTypesToOmit);
 
@@ -364,6 +365,10 @@ exports.onCreateWebpackConfig = ({
         rules: [
           {
             test: /postscribe/,
+            use: loaders.null(),
+          },
+          {
+            test: /sa11y/,
             use: loaders.null(),
           },
         ],

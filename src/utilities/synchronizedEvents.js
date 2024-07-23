@@ -1,5 +1,3 @@
-import { render } from 'storyblok-rich-text-react-renderer-ts';
-import sanitizeHtml from 'sanitize-html';
 import { luxonDate } from './dates';
 
 const isString = (val) => typeof val === 'string';
@@ -70,26 +68,16 @@ export const storyToAlgoliaEvent = (story) => {
   const endTimestamp = mergedEventData.end
     ? luxonDate(mergedEventData.end).toUnixInteger()
     : null;
-  const renderedDescription = render(mergedEventData.description);
-  const descriptionText = renderedDescription
-    ? sanitizeHtml(renderedDescription, {
-        allowedTags: [],
-        allowedAttributes: {},
-      })
-    : null;
-  const geo =
-    mergedEventData.latitude && mergedEventData.longitude
-      ? {
-          lat: mergedEventData.latitude,
-          lng: mergedEventData.longitude,
-        }
-      : null;
+  const lat = parseFloat(mergedEventData.latitude);
+  const lng = parseFloat(mergedEventData.longitude);
+  const hasValidLat = !!lat || lat === 0;
+  const hasValidLng = !!lng || lng === 0;
+  const geo = hasValidLat && hasValidLng ? { lat, lng } : null;
 
   return {
     objectID: storyId,
     startTimestamp,
     endTimestamp,
-    descriptionText,
     _geoloc: geo,
     ...mergedEventData,
   };
