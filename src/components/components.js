@@ -27,6 +27,7 @@ import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
+import SBImageGallery from './media/imageGallery';
 import InterstitialPage from './page-types/registrationFormPage/interstitialPage';
 import Itinerary from './composite/itinerary';
 import ItineraryItem from './composite/itineraryItem';
@@ -126,6 +127,7 @@ const ComponentList = {
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
+  imageGallery: SBImageGallery,
   interstitialPage: InterstitialPage,
   itinerary: Itinerary,
   itineraryItem: ItineraryItem,
