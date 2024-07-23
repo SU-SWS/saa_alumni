@@ -1,13 +1,6 @@
 import { useCallback, useContext, useMemo } from 'react';
 import { FacetContext } from './FacetCtx';
 
-/**
- * @typedef {object} RegisterFacetProps
- * @property {string} attribute
- * @property {string} label
- * @property {boolean} [defaultExpanded]
- */
-
 export const useFacets = () => {
   const { facets, setFacets } = useContext(FacetContext);
 
@@ -25,23 +18,6 @@ export const useFacets = () => {
     (attributes = []) =>
       facets?.filter((facet) => attributes.includes(facet.attribute)),
     [facets]
-  );
-
-  /**
-   * @type {(props:RegisterFacetProps) => void}
-   */
-  const registerFacet = useCallback(
-    ({ attribute, label, defaultExpanded = false }) => {
-      setFacets([
-        ...facets,
-        {
-          attribute,
-          label,
-          expanded: defaultExpanded,
-        },
-      ]);
-    },
-    [facets, setFacets]
   );
 
   const toggleFacets = useCallback(() => {
@@ -84,7 +60,6 @@ export const useFacets = () => {
     facetsExpanded,
     getFacet,
     getFacets,
-    registerFacet,
     toggleFacets,
     toggleFacet,
     expandFacets,

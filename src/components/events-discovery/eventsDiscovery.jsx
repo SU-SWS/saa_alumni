@@ -10,7 +10,7 @@ import {
 import { DateTime } from 'luxon';
 import { LoadingIndicator } from './components/Loading';
 import { NoResultsComponent, NoResultsBoundary } from './components/NoResults';
-import { ChipsComponent } from './components/Chips';
+import { Chips } from './components/Chips';
 import { DesktopFilter, MobileFilter } from './components/Filters';
 import { Pagination } from './components/Pagination';
 import { StatusHeader } from './components/StatusHeader';
@@ -45,12 +45,12 @@ const EventDiscoveryContent = () => {
           <MobileFilter />
         </div>
         <div className="lg:su-flex lg:su-gap-x-40 su-mt-40 lg:su-mt-80">
-          <div className="su-hidden lg:su-block su-flex-none su-w-300">
+          <div className="su-hidden lg:su-block su-flex-none su-w-350">
             <DesktopFilter />
           </div>
           <div className="su-flex su-flex-col su-gap-y-20 su-w-full">
             <div className="su-flex su-gap-y-20 su-flex-col">
-              <ChipsComponent />
+              <Chips />
               <div className="sm:su-px-20">
                 <StatusHeader />
               </div>

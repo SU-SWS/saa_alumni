@@ -1,8 +1,6 @@
 import React from 'react';
 import { FilterAccordion } from '../FilterAccordion';
-import { GeneralTagsSubfilter } from './GeneralTagsFilter';
-import { IdentityTagsSubfilter } from './IdentityTagsFilter';
-import { useFacets } from '../Facets/useFacets';
+import { FacetList } from '../Facets';
 
 /**
  * @typedef {object} Props
@@ -14,31 +12,14 @@ import { useFacets } from '../Facets/useFacets';
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const SubjectFilter = ({ expanded, onToggleExpanded }) => {
-  const { getFacet, toggleFacet } = useFacets();
-
-  const generalTagsFacet = getFacet('generalTags');
-  const identityTagsFacet = getFacet('identityTags');
-
-  return (
-    <FilterAccordion
-      expanded={expanded}
-      label="Subject"
-      onToggleExpanded={onToggleExpanded}
-      showReset={false}
-    >
-      {generalTagsFacet && (
-        <GeneralTagsSubfilter
-          expanded={generalTagsFacet.expanded}
-          onToggleExpanded={() => toggleFacet('generalTags')}
-        />
-      )}
-      {identityTagsFacet && (
-        <IdentityTagsSubfilter
-          expanded={identityTagsFacet.expanded}
-          onToggleExpanded={() => toggleFacet('identityTags')}
-        />
-      )}
-    </FilterAccordion>
-  );
-};
+export const SubjectFilter = ({ expanded, onToggleExpanded }) => (
+  <FilterAccordion
+    expanded={expanded}
+    label="Subject"
+    onToggleExpanded={onToggleExpanded}
+    showReset={false}
+  >
+    <FacetList attribute="generalTags" label="Interest Areas" subfilter />
+    <FacetList attribute="identityTags" label="Diversity/Identity" subfilter />
+  </FilterAccordion>
+);

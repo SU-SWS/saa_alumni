@@ -1,17 +1,15 @@
 import React from 'react';
 import { ClearRefinements } from 'react-instantsearch';
-import { FacetComponent } from '../Facets/FacetComponent';
 import { DateFilter } from '../DateFilter';
 import { LocationFilter } from '../LocationFilter/LocationFilter';
 import { useFacets } from '../Facets/useFacets';
 import { SubjectFilter } from '../SubjectFilter';
+import { FacetList } from '../Facets';
 
 export const DesktopFilter = () => {
-  const { getFacet, getFacets, toggleFacet, collapseFacets, expandFacets } =
-    useFacets();
+  const { getFacet, toggleFacet, collapseFacets, expandFacets } = useFacets();
 
   const dateFacet = getFacet('startTimestamp');
-  const additionalFacets = getFacets(['format']);
   const locationFacet = getFacet('location');
   const subjectFacet = getFacet('subject');
 
@@ -55,21 +53,14 @@ export const DesktopFilter = () => {
             onToggleExpanded={() => toggleFacet('startTimestamp')}
           />
         )}
+        <FacetList attribute="experience" label="Mode of Participation" />
         {locationFacet && (
           <LocationFilter
             expanded={locationFacet.expanded}
             onToggleExpanded={() => toggleFacet('location')}
           />
         )}
-        {additionalFacets.map(({ attribute, label, expanded }) => (
-          <FacetComponent
-            key={attribute}
-            attribute={attribute}
-            label={label}
-            expanded={expanded}
-            onToggleExpanded={() => toggleFacet(attribute)}
-          />
-        ))}
+        <FacetList attribute="format" label="Format" />
         {subjectFacet && (
           <SubjectFilter
             expanded={subjectFacet.expanded}
