@@ -9,8 +9,6 @@ const LocationFilterClearContent = ({ activeTab }) => {
   });
   const { name: locationName, clearRefinements } = useRadialGeoSearch();
 
-  console.log('LocationFilterClearContent', locationName);
-
   let attribute = '';
   let removeChip = () => null;
   let facetLabel = '';
@@ -67,12 +65,12 @@ const LocationFilterClearContent = ({ activeTab }) => {
 
   return (
     <div
-      className="flex flex-col text-center rs-mt-2"
+      className="su-flex su-flex-col su-text-center su-rs-mt-2"
       data-test="location-facet-clear"
     >
-      <p>{ClearContentFirstText}</p>
-      <p>{ClearContentSecondText}</p>
-      <div>
+      <p className='su-font-sans su-font-semibold su-text-black-70 su-text-18 su-leading-[1.3]'>{ClearContentFirstText}</p>
+      <p className='su-font-sans su-font-regular su-text-black-70 su-text-18 su-leading-[1.3]'>{ClearContentSecondText}</p>
+      <div className='su-flex su-justify-center'>
         <Chip attribute={attribute} label={facetLabel} remove={removeChip} />
       </div>
     </div>

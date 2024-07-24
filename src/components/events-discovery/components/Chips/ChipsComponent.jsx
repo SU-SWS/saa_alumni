@@ -1,12 +1,21 @@
 import React, { useMemo } from 'react';
 import { useCurrentRefinements, useSearchBox } from 'react-instantsearch';
 import { DateTime } from 'luxon';
+import useRadialGeoSearch from '../LocationFilter/useRadialGeoSearch';
 import { Chip } from './Chip';
 
 export const ChipsComponent = () => {
   const { query, refine } = useSearchBox();
   const { items, canRefine } = useCurrentRefinements();
+  const {
+    name: LocationName,
+    radius,
+    clearRefinements: clearGeoRefinement,
+  } = useRadialGeoSearch();
   const midnight = useMemo(() => DateTime.local().endOf('day'), []);
+
+  // KMs to Miles for you Americans.
+  const miles = Math.ceil(radius / 1609.344);
 
   const processedItems = useMemo(
     () =>
@@ -81,7 +90,7 @@ export const ChipsComponent = () => {
     ];
   }, [processedItems, query, refine]);
 
-  if (!canRefine && !query) {
+  if (!canRefine && !query && !LocationName) {
     return null;
   }
 
@@ -96,6 +105,13 @@ export const ChipsComponent = () => {
             remove={refinement.remove}
           />
         ))}
+        {LocationName && (
+          <Chip
+            attribute="city"
+            label={`Within ${miles} miles of ${LocationName}`}
+            remove={clearGeoRefinement}
+          />
+        )}
       </div>
     </div>
   );

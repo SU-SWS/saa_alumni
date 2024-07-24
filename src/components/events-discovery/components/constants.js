@@ -12,7 +12,7 @@ export const facetLabels = {
     label: 'Country',
   },
   state: {
-    label: 'US State',
+    label: 'US State / CDN Province',
   },
   city: {
     label: 'City',

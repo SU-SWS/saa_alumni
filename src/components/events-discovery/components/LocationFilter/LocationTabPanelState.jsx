@@ -20,8 +20,7 @@ const LocationTabPanelState = () => {
   const field = 'state';
   const isDesktop = window.innerWidth >= 1024; // TODO: Fix this window check to be a real on breakpoint.
 
-  const geo = useRadialGeoSearch();
-  console.log('LocationTabPanelState', geo);
+  const { name: locationName } = useRadialGeoSearch();
   const { items: countryItems } = useCurrentRefinements({
     includedAttributes: ['country'],
   });
@@ -49,15 +48,15 @@ const LocationTabPanelState = () => {
   if (activeTab !== 'state') return null;
 
   // If the city or country tab is active, show the clear message and button.
-  if (countryItems.length > 0 || geo?.name) {
+  if (countryItems.length > 0 || locationName) {
     return <LocationFilterClearContent activeTab={activeTab} />;
   }
 
   return (
-    <div id="state-panel" role="tabpanel">
+    <div id="state-panel" role="tabpanel" className={dcnb(styles.tabPanel)}>
       <fieldset className={styles.fieldset} data-test={`${field}-facet`}>
         <legend className={dcnb(styles.locationLabels, styles.legend)}>
-          US State
+          US State / Canadian Province
         </legend>
         <form onSubmit={(e) => e.preventDefault()}>
           <div className={styles.locationWrapper}>

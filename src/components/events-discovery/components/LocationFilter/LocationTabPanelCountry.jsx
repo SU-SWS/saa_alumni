@@ -54,7 +54,7 @@ const LocationTabPanelCountry = () => {
   }
 
   return (
-    <div id="country-panel" role="tabpanel">
+    <div id="country-panel" role="tabpanel" className={dcnb(styles.tabPanel)}>
       <fieldset className={styles.fieldset} data-test={`${field}-facet`}>
         <legend className={dcnb(styles.locationLabels, styles.legend)}>
           Country

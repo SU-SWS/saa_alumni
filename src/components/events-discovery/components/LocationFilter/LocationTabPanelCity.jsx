@@ -5,13 +5,14 @@ import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
 import MUIToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { dcnb } from 'cnbuilder';
-import { useClearRefinements } from 'react-instantsearch';
 import axios from 'axios';
+import { useCurrentRefinements } from 'react-instantsearch';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
 import useRadialGeoSearch from './useRadialGeoSearch';
 import { LocationListItem } from './LocationListItem';
+import LocationFilterClearContent from './LocationFilterClearContent';
 
 const LocationTabPanelCity = () => {
   // CONTEXT
@@ -20,21 +21,18 @@ const LocationTabPanelCity = () => {
   // TODO: Fix this window check to be a real on breakpoint.
   const isDesktop = window ?? window.innerWidth >= 1024;
 
-  // Algolia Hooks.
-  const { refine: clearLocationRefinements } = useClearRefinements({
+  const { items: otherLocationItems } = useCurrentRefinements({
     includedAttributes: ['state', 'country'],
   });
 
   // Custom Connector Hook.
-  const geo = useRadialGeoSearch({ primary: true });
-  console.log('LocationTabPanelCity', geo);
   const {
     refine,
     clearRefinements: clearGeoRefinement,
     name: locationName,
     radius,
     setRadius,
-  } = geo;
+  } = useRadialGeoSearch({ primary: true });
 
   // Is loading suggestions.
   const [locationIsLoading, setLocationIsLoading] = useState(false);
@@ -86,10 +84,6 @@ const LocationTabPanelCity = () => {
   const onCityChange = async (e, value, reason) => {
     switch (reason) {
       case 'selectOption': {
-        // Clear out other location refinements.
-        // TODO: Change this so that it doesn't trigger a search.
-        // clearLocationRefinements();
-
         // If the value is current location, use the current location.
         if (value === 'Current location') {
           // Use the current location.
@@ -138,9 +132,14 @@ const LocationTabPanelCity = () => {
   // If not active. Return.
   if (activeTab !== 'city') return null;
 
+  // If the state or country tab is active, show the clear message and button.
+  if (otherLocationItems.length > 0) {
+    return <LocationFilterClearContent activeTab={activeTab} />;
+  }
+
   // Return the city tab panel.
   return (
-    <div id="city-panel" role="tabpanel">
+    <div id="city-panel" role="tabpanel" className={dcnb(styles.tabPanel)}>
       <fieldset className={styles.fieldset} data-test="location-facet">
         <legend className={dcnb(styles.locationLabels, styles.legend)}>
           City
@@ -156,10 +155,6 @@ const LocationTabPanelCity = () => {
                 multiple={false}
                 autoSelect={false}
                 options={locationSuggestions}
-                // isOptionEqualToValue={(option, value) => {
-                //   console.log(option, value);
-                //   return option === value;
-                // }}
                 onInputChange={onInputType}
                 onChange={onCityChange}
                 value={locationName}
@@ -235,7 +230,7 @@ const LocationTabPanelCity = () => {
 
         <div className={styles.toggleGroupWrapper}>
           <label
-            className={styles.locationLabels}
+            className={dcnb(styles.locationLabels, styles.legend)}
             htmlFor="location-distance-buttons"
           >
             Within:
