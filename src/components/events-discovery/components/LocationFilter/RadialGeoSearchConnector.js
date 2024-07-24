@@ -9,16 +9,17 @@ const noop = () => {};
  */
 export default (renderFn, unmountFn = noop) =>
   (widgetParams) => {
-    const { radius, precision } = widgetParams;
+    const { radius, precision, primary } = widgetParams;
 
     // A `connectorState` object is used to store information
     // that needs to be shared across multiple method calls.
     const connectorState = {
       radius,
       precision,
-      name: null,
+      name: '',
       lat: null,
       lng: null,
+      primary,
       // Random ID to avoid collisions with other connectors.
       id: Math.random().toString(36).substr(2, 9),
     };
@@ -34,6 +35,8 @@ export default (renderFn, unmountFn = noop) =>
         connectorState.lng = lng;
 
         helper.setQueryParameter('relevancyStrictness', 0);
+        helper.setQueryParameter('aroundPrecision', precision);
+        helper.setQueryParameter('aroundRadius', connectorState.radius);
         helper.setQueryParameter('aroundLatLng', [
           parseFloat(lat),
           parseFloat(lng),
@@ -51,16 +54,28 @@ export default (renderFn, unmountFn = noop) =>
 
       helper.setQueryParameter('aroundLatLng', undefined);
       helper.setQueryParameter('relevancyStrictness', undefined);
+      helper.setQueryParameter('aroundPrecision', undefined);
+      helper.setQueryParameter('aroundRadius', undefined);
       helper.search();
     };
 
     /**
      * The setRadius function is used to update the search radius.
+     *
+     * @param helper - The Algolia helper instance.
+     * @param newRadius - The new radius to set in meters.
      */
     const setRadius = (helper) => (newRadius) => {
-      connectorState.radius = newRadius;
-      helper.setQueryParameter('aroundRadius', newRadius);
-      helper.search();
+      if (newRadius && newRadius > 0) {
+        connectorState.radius = newRadius;
+        helper.setQueryParameter('aroundRadius', newRadius);
+        helper.search();
+      } else {
+        // Default to 100 miles if no radius is set or it failed to parse.
+        connectorState.radius = 160000;
+        helper.setQueryParameter('aroundRadius', 160000);
+        helper.search();
+      }
     };
 
     /**
@@ -75,22 +90,33 @@ export default (renderFn, unmountFn = noop) =>
        *
        * @param searchParameters - Applied search parameters.
        * @param widgetSearchParametersOptions - Extra information to calculate next searchParameters.
+       *
+       * @returns {SearchParameters} - The new search parameters.
        */
       getWidgetSearchParameters(searchParameters, { uiState }) {
         let state = searchParameters;
 
-        if (uiState.radialGeoSearch) {
+        // If there is nothing in the search params, but there is in the uiState, set it.
+        if (!searchParameters.aroundLatLng && uiState.radialGeoSearch?.lat) {
+          state = state.setQueryParameter('aroundLatLng', [
+            parseFloat(uiState.radialGeoSearch.lat),
+            parseFloat(uiState.radialGeoSearch.lng),
+          ]);
+          state = state.setQueryParameter('relevancyStrictness', 0);
+          state = state.setQueryParameter(
+            'aroundPrecision',
+            connectorState.precision
+          );
           state = state.setQueryParameter(
             'aroundRadius',
-            connectorState.radius
+            uiState.radialGeoSearch.radius
           );
-          if (uiState.radialGeoSearch.lat && uiState.radialGeoSearch.lng) {
-            state = state.setQueryParameter('relevancyStrictness', 0);
-            state = state.setQueryParameter('aroundLatLng', [
-              parseFloat(uiState.radialGeoSearch.lat),
-              parseFloat(uiState.radialGeoSearch.lng),
-            ]);
-          }
+
+          // Also set the connectorState
+          connectorState.name = uiState.radialGeoSearch.name;
+          connectorState.radius = parseInt(uiState.radialGeoSearch.radius, 10);
+          connectorState.lat = parseFloat(uiState.radialGeoSearch.lat);
+          connectorState.lng = parseFloat(uiState.radialGeoSearch.lng);
         }
 
         return state;
@@ -100,29 +126,20 @@ export default (renderFn, unmountFn = noop) =>
        * It will derive a uiState for this widget based on the existing uiState and
        * the search parameters applied.
        *
-       * Here, we also use the UI state to update the internal connectorState for
-       * each of the instances of the connector as the uiState is the source of truth.
-       *
        * @param uiState - Current state.
        * @param widgetStateOptions - Extra information to calculate uiState.
        */
       getWidgetUiState(uiState, { searchParameters }) {
         const { aroundRadius, aroundLatLng } = searchParameters;
 
-        // Return the UI state to the connector state for sharing across instances.
-        // We're only interested in the name when the user has searched as the other
-        // values are stored in the search parameters.
-        if (uiState?.radialGeoSearch?.name && aroundLatLng) {
-          connectorState.name = uiState.radialGeoSearch.name;
+        // No Search params. No need to update.
+        if (!aroundLatLng) {
+          return uiState;
         }
 
-        // Remove the name across instances for when the user clears the search.
-        if (
-          connectorState.name &&
-          !uiState?.radialGeoSearch?.name &&
-          !aroundLatLng
-        ) {
-          connectorState.name = null;
+        // Only run on the primary plugin.
+        if (!connectorState.primary) {
+          return uiState;
         }
 
         return {
@@ -138,11 +155,22 @@ export default (renderFn, unmountFn = noop) =>
       /**
        * Returns IndexRenderState of the current index component tree
        * to build the render state of the whole app.
+       *
+       * In InstantSearch, each widget you add registers its render state in one global object.
+       * You need to specify how to store your widget render state in this global tree
+       *
+       * @param renderState - The render state of the index component tree.
+       * @param renderOptions - The render options of the index component tree.
        */
       getRenderState(renderState, renderOptions) {
         return {
           ...renderState,
-          radialGeoSearch: this.getWidgetRenderState(renderOptions),
+          radialGeoSearch: {
+            [connectorState.id]: connectorState,
+            primary: connectorState.primary
+              ? connectorState
+              : renderState?.radialGeoSearch?.primary,
+          },
         };
       },
       /**
@@ -150,29 +178,41 @@ export default (renderFn, unmountFn = noop) =>
        * This function is called on the first render and every time the widget is rendered.
        *
        * The connectorState is used for the shared values across widget instances.
+       *
+       * @param renderOptions - The render options of the index component tree.
+       * @param renderState - The render state of the index component
        */
       getWidgetRenderState(renderOptions) {
-        const { helper } = renderOptions;
-        const { state } = helper;
+        const {
+          helper,
+          renderState,
+          instantSearchInstance: { indexName },
+        } = renderOptions;
 
-        // To ensure the helper function is passed to the action functions so that the same
-        // helper instance is used across all instances of the application.
-        return {
-          refine: refine(helper),
-          clearRefinements: clearRefinements(helper),
-          setRadius: setRadius(helper),
-          radius: state.aroundRadius,
-          name: connectorState.name,
-          lat: state.aroundLatLng ? state.aroundLatLng[0] : null,
-          lng: state.aroundLatLng ? state.aroundLatLng[1] : null,
-        };
+        // Return only the primary widget render state.
+        if (renderState[indexName]?.radialGeoSearch?.primary) {
+          return renderState[indexName]?.radialGeoSearch?.primary;
+        }
+
+        if (!connectorState.refine) {
+          connectorState.refine = refine(helper);
+        }
+
+        if (!connectorState.clearRefinements) {
+          connectorState.clearRefinements = clearRefinements(helper);
+        }
+
+        if (!connectorState.setRadius) {
+          connectorState.setRadius = setRadius(helper);
+        }
+
+        return connectorState;
       },
       /**
        * Called once before the first search.
        */
       init(initOptions) {
         const { helper } = initOptions;
-        helper.setQueryParameter('aroundPrecision', precision);
         helper.setQueryParameter('getRankingInfo', 'true');
         renderFn(
           {

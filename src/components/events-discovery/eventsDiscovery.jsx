@@ -24,6 +24,7 @@ const searchClient = algoliasearch(
 );
 
 const hitsPerPage = 6;
+const indexName = 'dev_alumni-events_start-asc';
 
 const EventDiscoveryContent = () => {
   const { status } = useInstantSearch();
@@ -38,10 +39,7 @@ const EventDiscoveryContent = () => {
     <FacetProvider>
       <div className="su-cc su-mx-12">
         <div className="su-flex su-items-center su-max-w-600 su-mx-auto su-gap-x-16">
-          <SearchBar
-            searchClient={searchClient}
-            indexName="dev_alumni-events_start-asc"
-          />
+          <SearchBar searchClient={searchClient} indexName={indexName} />
           <MobileFilter />
         </div>
         <div className="lg:su-flex lg:su-gap-x-40 su-mt-40 lg:su-mt-80">
@@ -77,7 +75,7 @@ const EventDiscoveryContent = () => {
 const EventsDiscovery = () => (
   <InstantSearch
     searchClient={searchClient}
-    indexName="dev_alumni-events_start-asc"
+    indexName={indexName}
     future={{ preserveSharedStateOnUnmount: true }}
     stalledSearchDelay={2000}
     routing={{
@@ -86,7 +84,7 @@ const EventsDiscovery = () => (
       }),
       stateMapping: {
         stateToRoute(uiState) {
-          const indexUiState = uiState['dev_alumni-events_start-asc'];
+          const indexUiState = uiState[indexName];
 
           // Normal Good params.
           const ret = {
@@ -103,7 +101,7 @@ const EventsDiscovery = () => (
             country: indexUiState.refinementList?.country,
           };
 
-          // Silly always has values params.
+          // Location Search params.
           if (
             indexUiState.radialGeoSearch &&
             indexUiState.radialGeoSearch.lat
@@ -117,7 +115,7 @@ const EventsDiscovery = () => (
         },
         routeToState(routeState) {
           return {
-            'dev_alumni-events_start-asc': {
+            [indexName]: {
               page: routeState.page,
               refinementList: {
                 format: routeState.format,

@@ -11,6 +11,7 @@ import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
 import useRadialGeoSearch from './useRadialGeoSearch';
+import { LocationListItem } from './LocationListItem';
 
 const LocationTabPanelCity = () => {
   // CONTEXT
@@ -25,7 +26,8 @@ const LocationTabPanelCity = () => {
   });
 
   // Custom Connector Hook.
-  const geo = useRadialGeoSearch();
+  const geo = useRadialGeoSearch({ primary: true });
+  console.log('LocationTabPanelCity', geo);
   const {
     refine,
     clearRefinements: clearGeoRefinement,
@@ -38,6 +40,7 @@ const LocationTabPanelCity = () => {
   const [locationIsLoading, setLocationIsLoading] = useState(false);
   // Suggestions for the location search.
   const [locationSuggestions, setLocationSuggestions] = useState([
+    '',
     locationName || 'Current location',
   ]);
 
@@ -48,7 +51,6 @@ const LocationTabPanelCity = () => {
         setLocationIsLoading(true);
         // Don't start lookup until at least three characters have been entered.
         if (!query || query?.length < 3 || query === 'Current location') {
-          setLocationSuggestions(['Current location']);
           setLocationIsLoading(false);
           return;
         }
@@ -154,6 +156,10 @@ const LocationTabPanelCity = () => {
                 multiple={false}
                 autoSelect={false}
                 options={locationSuggestions}
+                // isOptionEqualToValue={(option, value) => {
+                //   console.log(option, value);
+                //   return option === value;
+                // }}
                 onInputChange={onInputType}
                 onChange={onCityChange}
                 value={locationName}
@@ -171,6 +177,40 @@ const LocationTabPanelCity = () => {
                     data-test="location-facet-search"
                   />
                 )}
+                renderOption={(props, option, { selected }) => {
+                  if (option === '') {
+                    return null;
+                  }
+                  if (option === 'Current location') {
+                    return (
+                      <LocationListItem
+                        {...props}
+                        className={dcnb(
+                          styles.option({ selected }),
+                          props.className
+                        )}
+                      >
+                        <span className="su-flex">
+                          <HeroIcon iconType="location" />
+                          &nbsp;
+                          {option}
+                        </span>
+                      </LocationListItem>
+                    );
+                  }
+                  return (
+                    <LocationListItem
+                      {...props}
+                      className={dcnb(
+                        styles.option({ selected }),
+                        props.className
+                      )}
+                      data-test="location-facet-option"
+                    >
+                      {option}
+                    </LocationListItem>
+                  );
+                }}
                 clearIcon={
                   <HeroIcon
                     iconType="close"

@@ -8,6 +8,9 @@ const LocationFilterClearContent = ({ activeTab }) => {
     includedAttributes: ['state', 'country'],
   });
   const { name: locationName, clearRefinements } = useRadialGeoSearch();
+
+  console.log('LocationFilterClearContent', locationName);
+
   let attribute = '';
   let removeChip = () => null;
   let facetLabel = '';

@@ -21,6 +21,7 @@ const LocationTabPanelState = () => {
   const isDesktop = window.innerWidth >= 1024; // TODO: Fix this window check to be a real on breakpoint.
 
   const geo = useRadialGeoSearch();
+  console.log('LocationTabPanelState', geo);
   const { items: countryItems } = useCurrentRefinements({
     includedAttributes: ['country'],
   });
