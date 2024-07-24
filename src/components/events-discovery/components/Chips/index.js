@@ -1,2 +1,2 @@
 export * from './Chip';
-export * from './ChipsComponent';
+export * from './Chips';

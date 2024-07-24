@@ -4,32 +4,48 @@ import {
   useClearRefinements,
   useRefinementList,
 } from 'react-instantsearch';
-import { SubfilterAccordion } from '../FilterAccordion';
+import { FilterAccordion } from '../FilterAccordion';
+import { useFacets } from './useFacets';
 
-export const InternationalSubfilter = ({
-  expanded = false,
-  onToggleExpanded = () => null,
-}) => {
-  const { items, canRefine } = useRefinementList({ attribute: 'intRegion' });
-  const { refine: clear } = useClearRefinements({
-    includedAttributes: ['intRegion'],
+/**
+ * @typedef {object} Props
+ * @property {string} attribute
+ * @property {string} label
+ * @property {boolean} [subfilter]
+ */
+
+/**
+ * @type {React.FC<Props>}
+ * @returns {React.ReactElement}
+ */
+export const FacetList = ({ attribute, label, subfilter = false }) => {
+  const { getFacet, toggleFacet } = useFacets();
+  const { items, canRefine } = useRefinementList({ attribute });
+  const { refine } = useClearRefinements({
+    includedAttributes: [attribute],
   });
   const hasRefinedItems = useMemo(
     () => items.some((item) => item.isRefined),
     [items]
   );
+  const facetState = getFacet(attribute);
+
+  if (!facetState) {
+    return null;
+  }
 
   return (
-    <SubfilterAccordion
-      expanded={expanded}
+    <FilterAccordion
+      expanded={facetState.expanded}
+      label={label}
+      onReset={refine}
+      onToggleExpanded={() => toggleFacet(attribute)}
       showReset={hasRefinedItems}
-      label="International"
-      onToggleExpanded={onToggleExpanded}
-      onReset={clear}
+      subfilter={subfilter}
     >
       {canRefine ? (
         <RefinementList
-          attribute="intRegion"
+          attribute={attribute}
           classNames={{
             root: 'su-mt-8',
             list: 'su-flex su-flex-col su-gap-4 su-list-none su-pl-8',
@@ -43,6 +59,6 @@ export const InternationalSubfilter = ({
       ) : (
         <p className="su-m-0 su-text-16">No available filters.</p>
       )}
-    </SubfilterAccordion>
+    </FilterAccordion>
   );
 };

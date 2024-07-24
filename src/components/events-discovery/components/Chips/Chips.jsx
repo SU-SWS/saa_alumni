@@ -3,7 +3,7 @@ import { useCurrentRefinements, useSearchBox } from 'react-instantsearch';
 import { DateTime } from 'luxon';
 import { Chip } from './Chip';
 
-export const ChipsComponent = () => {
+export const Chips = () => {
   const { query, refine } = useSearchBox();
   const { items, canRefine } = useCurrentRefinements();
   const midnight = useMemo(() => DateTime.local().endOf('day'), []);
