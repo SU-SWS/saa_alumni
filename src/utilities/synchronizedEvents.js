@@ -280,7 +280,7 @@ export const googleRowToStoryContent = (data, source) => {
     experinceRawLowerCase === 'remote' ||
     experinceRawLowerCase === 'virtual'
   ) {
-    experience = 'Remote';
+    experience = 'Virtual';
   }
 
   return {
