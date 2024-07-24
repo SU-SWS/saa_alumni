@@ -9,6 +9,11 @@ import { DateTime } from 'luxon';
 
 dotenv.config();
 
+// Keep SB API happy
+const delay = (m = 250) => new Promise((resolve) => {
+  setTimeout(() => resolve(null), m);
+});
+
 export default async (req: Request) => {
   console.log('=== START Import Background Function ===');
   try {
@@ -205,6 +210,7 @@ export default async (req: Request) => {
               datasource_id: formatDatasourceId,
             }
           } as any);
+          await delay();
         }
       } catch (err) {
         console.log('Error during format datasource update: ', err);
@@ -222,6 +228,7 @@ export default async (req: Request) => {
               datasource_id: generalTagsDatasourceId,
             }
           } as any);
+          await delay();
         }
       } catch (err) {
         console.log('Error during general tags datasource update: ', err);
@@ -239,6 +246,7 @@ export default async (req: Request) => {
               datasource_id: identityTagsDatasourceId,
             }
           } as any);
+          await delay();
         }
       } catch (err) {
         console.log('Error during identity tags datasource update: ', err);
@@ -270,6 +278,7 @@ export default async (req: Request) => {
               },
               publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
             });
+            await delay();
           }
           console.log('Synced!');
         } else if (google) {
@@ -297,6 +306,7 @@ export default async (req: Request) => {
               },
               publish: 1,
             });
+            await delay();
           }
           console.log('Posted!');
         } else if (storyblok) {
@@ -313,6 +323,7 @@ export default async (req: Request) => {
             console.log('Unpublishing...');
             if (run) {
               await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+              await delay();
             }
             console.log('Unpublished!');
           }
@@ -326,6 +337,7 @@ export default async (req: Request) => {
                   full_slug: `events/sync/archived/${storyblok.slug}`,
                 },
               });
+              await delay();
             }
             console.log('Unpublished!');
           }
@@ -352,12 +364,14 @@ export default async (req: Request) => {
           console.log('Story is old. Unpublishing and moving...');
           if (run) {
             await storyblokManagement.get(`spaces/${spaceId}/stories/${story.id}/unpublish`);
+            await delay();
             await storyblokManagement.put(`spaces/${spaceId}/stories/${story.id}`, {
               story: { 
                 ...story,
                 parent_id: eventArchiveFolderId,
               },
             });
+            await delay();
           }
           console.log('Done!');
         }
@@ -375,6 +389,7 @@ export default async (req: Request) => {
         console.log('Deleting...');
         if (run) {
           await storyblokManagement.delete(`spaces/${spaceId}/stories/${story.id}`, {});
+          await delay();
         }
         console.log('Deleted!');
       } catch (err) {
