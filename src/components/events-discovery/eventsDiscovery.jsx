@@ -106,8 +106,7 @@ const EventsDiscovery = () => (
           // Silly always has values params.
           if (
             indexUiState.radialGeoSearch &&
-            indexUiState.radialGeoSearch.lat &&
-            parseFloat(indexUiState.radialGeoSearch.lat)
+            indexUiState.radialGeoSearch.lat
           ) {
             ret.near = indexUiState.radialGeoSearch;
           }

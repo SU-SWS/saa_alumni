@@ -85,7 +85,8 @@ const LocationTabPanelCity = () => {
     switch (reason) {
       case 'selectOption': {
         // Clear out other location refinements.
-        clearLocationRefinements();
+        // TODO: Change this so that it doesn't trigger a search.
+        // clearLocationRefinements();
 
         // If the value is current location, use the current location.
         if (value === 'Current location') {

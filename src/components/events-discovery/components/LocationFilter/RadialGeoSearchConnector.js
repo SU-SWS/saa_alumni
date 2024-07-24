@@ -33,9 +33,10 @@ export default (renderFn, unmountFn = noop) =>
         connectorState.lat = lat;
         connectorState.lng = lng;
 
+        helper.setQueryParameter('relevancyStrictness', 0);
         helper.setQueryParameter('aroundLatLng', [
-          parseFloat(lat, 10),
-          parseFloat(lng, 10),
+          parseFloat(lat),
+          parseFloat(lng),
         ]);
         helper.search();
       };
@@ -49,6 +50,7 @@ export default (renderFn, unmountFn = noop) =>
       connectorState.lng = null;
 
       helper.setQueryParameter('aroundLatLng', undefined);
+      helper.setQueryParameter('relevancyStrictness', undefined);
       helper.search();
     };
 
@@ -83,9 +85,10 @@ export default (renderFn, unmountFn = noop) =>
             connectorState.radius
           );
           if (uiState.radialGeoSearch.lat && uiState.radialGeoSearch.lng) {
+            state = state.setQueryParameter('relevancyStrictness', 0);
             state = state.setQueryParameter('aroundLatLng', [
-              parseFloat(uiState.radialGeoSearch.lat, 10),
-              parseFloat(uiState.radialGeoSearch.lng, 10),
+              parseFloat(uiState.radialGeoSearch.lat),
+              parseFloat(uiState.radialGeoSearch.lng),
             ]);
           }
         }
