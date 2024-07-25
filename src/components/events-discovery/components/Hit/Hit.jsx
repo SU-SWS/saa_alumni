@@ -24,8 +24,7 @@ export const Hit = ({ hit }) => {
     usRegion,
     intRegion,
     eventUrl,
-    generalTags,
-    identityTags,
+    subject,
     experience,
     format,
   } = hit;
@@ -42,8 +41,7 @@ export const Hit = ({ hit }) => {
       usRegion={usRegion}
       intRegion={intRegion}
       eventUrl={eventUrl}
-      generalTags={generalTags}
-      identityTags={identityTags}
+      subject={subject}
       experience={experience}
       format={format}
       hit={hit}

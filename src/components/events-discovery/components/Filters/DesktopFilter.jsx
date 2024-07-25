@@ -3,7 +3,6 @@ import { ClearRefinements } from 'react-instantsearch';
 import { DateFilter } from '../DateFilter';
 import { LocationFilter } from '../LocationFilter/LocationFilter';
 import { useFacets } from '../Facets/useFacets';
-import { SubjectFilter } from '../SubjectFilter';
 import { FacetList } from '../Facets';
 
 export const DesktopFilter = () => {
@@ -11,7 +10,6 @@ export const DesktopFilter = () => {
 
   const dateFacet = getFacet('startTimestamp');
   const locationFacet = getFacet('location');
-  const subjectFacet = getFacet('subject');
 
   return (
     <>
@@ -61,12 +59,7 @@ export const DesktopFilter = () => {
           />
         )}
         <FacetList attribute="format" label="Format" />
-        {subjectFacet && (
-          <SubjectFilter
-            expanded={subjectFacet.expanded}
-            onToggleExpanded={() => toggleFacet('subject')}
-          />
-        )}
+        <FacetList attribute="subject" label="Interest Areas" />
       </div>
     </>
   );

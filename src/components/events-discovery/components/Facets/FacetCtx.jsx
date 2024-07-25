@@ -8,18 +8,10 @@ const knownFacets = [
     expanded: true,
   },
   { attribute: 'format', label: 'Format', chip: 'Format', expanded: false },
-  // Subject
-  { attribute: 'subject', label: 'Subject', chip: 'Subject', expanded: false },
   {
-    attribute: 'generalTags',
+    attribute: 'subject',
     label: 'Interest Areas',
     chip: 'Interest',
-    expanded: false,
-  },
-  {
-    attribute: 'identityTags',
-    label: 'Diversity/Identity',
-    chip: 'Diversity/Identity',
     expanded: false,
   },
   // Location
