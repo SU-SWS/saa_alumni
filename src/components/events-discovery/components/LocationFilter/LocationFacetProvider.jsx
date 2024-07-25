@@ -13,8 +13,19 @@ export const LocationContext = createContext(defaultState);
  * @returns {JSX.Element} LocationFacetProvider
  */
 const LocationFacetProvider = ({ children }) => {
+  // Holds the state for the active tab.
   const [activeTab, setActiveTab] = useState('city');
-  const contextValue = { ...LocationContext, activeTab, setActiveTab };
+  // Holds the state for the error message.
+  const [locError, setLocError] = useState(null);
+
+  // Put it all together.
+  const contextValue = {
+    ...LocationContext,
+    activeTab,
+    setActiveTab,
+    locError,
+    setLocError,
+  };
 
   return (
     <LocationContext.Provider value={contextValue}>

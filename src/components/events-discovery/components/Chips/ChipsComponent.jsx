@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { useCurrentRefinements, useSearchBox } from 'react-instantsearch';
 import { DateTime } from 'luxon';
-import useRadialGeoSearch from '../LocationFilter/useRadialGeoSearch';
+import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { Chip } from './Chip';
 
 export const ChipsComponent = () => {

@@ -18,6 +18,7 @@ import {
   MinusSmIcon,
   PlusSmIcon,
   XIcon,
+  ExclamationCircleIcon,
 } from '@heroicons/react/solid';
 import { SrOnlyText } from '../accessibility/SrOnlyText';
 
@@ -101,6 +102,11 @@ const HeroIcon = ({ iconType, srText, isAnimate, className, ...props }) => {
     },
     location: {
       heroicon: LocationMarkerIcon,
+      baseStyle: 'su-w-1em',
+      animate: 'group-hocus:su-translate-x-02em',
+    },
+    alert: {
+      heroicon: ExclamationCircleIcon,
       baseStyle: 'su-w-1em',
       animate: 'group-hocus:su-translate-x-02em',
     },

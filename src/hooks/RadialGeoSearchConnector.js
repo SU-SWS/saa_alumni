@@ -97,7 +97,11 @@ export default (renderFn, unmountFn = noop) =>
         let state = searchParameters;
 
         // If there is nothing in the search params, but there is in the uiState, set it.
-        if (!searchParameters.aroundLatLng && uiState.radialGeoSearch?.lat) {
+        if (
+          !searchParameters.aroundLatLng &&
+          uiState.radialGeoSearch?.lat &&
+          connectorState.primary
+        ) {
           state = state.setQueryParameter('aroundLatLng', [
             parseFloat(uiState.radialGeoSearch.lat),
             parseFloat(uiState.radialGeoSearch.lng),

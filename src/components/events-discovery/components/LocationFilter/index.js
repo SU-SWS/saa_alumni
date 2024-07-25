@@ -1,6 +1,5 @@
 export * from './LocationFilter';
 export * from './LocationTabPanelCity';
-export * from './RadialGeoSearchConnector';
 export * from './LocationFilter.styles';
 export * from './FacetSubFilter';
 export * from './InternationalSubfilter';
@@ -9,5 +8,4 @@ export * from './LocationTabPanelState';
 export * from './LocationFacetProvider';
 export * from './LocationFacetTabs';
 export * from './LocationListItem';
-export * from './useRadialGeoSearch';
 export * from './UsSubfilter';

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useId, useEffect } from 'react';
 import MUIAutocomplete from '@mui/material/Autocomplete';
 import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
@@ -10,16 +10,15 @@ import { useCurrentRefinements } from 'react-instantsearch';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
-import useRadialGeoSearch from './useRadialGeoSearch';
+import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { LocationListItem } from './LocationListItem';
 import LocationFilterClearContent from './LocationFilterClearContent';
 
 const LocationTabPanelCity = () => {
   // CONTEXT
-  const { activeTab } = useContext(LocationContext);
-
-  // TODO: Fix this window check to be a real on breakpoint.
-  const isDesktop = window ?? window.innerWidth >= 1024;
+  const { activeTab, locError, setLocError } = useContext(LocationContext);
+  const searchFieldId = useId();
+  const isDesktop = window ?? window.innerWidth >= 991;
 
   const { items: otherLocationItems } = useCurrentRefinements({
     includedAttributes: ['state', 'country'],
@@ -47,6 +46,7 @@ const LocationTabPanelCity = () => {
     switch (reason) {
       case 'input': {
         setLocationIsLoading(true);
+        setLocError(null);
         // Don't start lookup until at least three characters have been entered.
         if (!query || query?.length < 3 || query === 'Current location') {
           setLocationIsLoading(false);
@@ -60,16 +60,19 @@ const LocationTabPanelCity = () => {
           `/api/location/autocomplete?${params.toString()}`
         );
         if (results?.data?.results && results.data.results.length > 0) {
-          setLocationSuggestions(
-            results.data.results.map((r) => r.description)
-          );
+          setLocationSuggestions([
+            ...results.data.results.map((r) => r.description),
+            'Current location',
+          ]);
         } else {
+          console.warn('No results found for location', query);
           setLocationSuggestions(['Current location']);
         }
         setLocationIsLoading(false);
         break;
       }
       case 'clear': {
+        setLocError(null);
         setLocationSuggestions(['Current location']);
         clearGeoRefinement();
         break;
@@ -98,6 +101,9 @@ const LocationTabPanelCity = () => {
             },
             (error) => {
               console.error('Error getting current location', error);
+              setLocError({
+                message: 'Unable to get current location. Please try again.',
+              });
             }
           );
         } else {
@@ -116,11 +122,15 @@ const LocationTabPanelCity = () => {
             });
             return;
           }
+          setLocError({
+            message: 'Unable to find location coordinates. Please try again.',
+          });
           console.error('Unable to find location coordinates', value);
         }
         break;
       }
       case 'clear': {
+        setLocError(null);
         clearGeoRefinement();
         break;
       }
@@ -151,7 +161,11 @@ const LocationTabPanelCity = () => {
         >
           <div className={styles.locationWrapper}>
             <div className={styles.root}>
+              <label className="su-sr-only" htmlFor={searchFieldId}>
+                Find a city
+              </label>
               <MUIAutocomplete
+                id={searchFieldId}
                 multiple={false}
                 autoSelect={false}
                 options={locationSuggestions}
@@ -159,7 +173,6 @@ const LocationTabPanelCity = () => {
                 onChange={onCityChange}
                 value={locationName}
                 loading={locationIsLoading}
-                filterOptions={(x) => x}
                 renderInput={(props) => (
                   <MUITextField
                     {...props}
@@ -217,9 +230,8 @@ const LocationTabPanelCity = () => {
                 disablePortal
                 classes={{
                   popper: isDesktop ? '' : styles.popperMobile,
-                  inputRoot: styles.inputRoot,
+                  inputRoot: styles.inputRoot({ locError }),
                   paper: styles.paper,
-                  listbox: styles.listbox,
                   clearIndicator: styles.clearLocation,
                 }}
               />
@@ -227,6 +239,13 @@ const LocationTabPanelCity = () => {
             <HeroIcon iconType="location" className={styles.pinIcon} />
           </div>
         </form>
+
+        {locError && (
+          <div className={styles.error}>
+            <HeroIcon iconType="alert" className="su-mr-10" />{' '}
+            <span>{locError.message}</span>
+          </div>
+        )}
 
         <div className={styles.toggleGroupWrapper}>
           <label

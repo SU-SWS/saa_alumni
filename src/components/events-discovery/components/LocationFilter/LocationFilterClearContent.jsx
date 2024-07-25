@@ -1,9 +1,10 @@
 import React from 'react';
 import { useCurrentRefinements } from 'react-instantsearch';
+import { dcnb } from 'cnbuilder';
 import { Chip } from '../Chips/Chip';
-import useRadialGeoSearch from './useRadialGeoSearch';
+import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 
-const LocationFilterClearContent = ({ activeTab }) => {
+const LocationFilterClearContent = ({ activeTab, className }) => {
   const { items } = useCurrentRefinements({
     includedAttributes: ['state', 'country'],
   });
@@ -65,12 +66,19 @@ const LocationFilterClearContent = ({ activeTab }) => {
 
   return (
     <div
-      className="su-flex su-flex-col su-text-center su-rs-mt-2"
+      className={dcnb(
+        'su-flex su-flex-col su-text-center su-rs-mt-2',
+        className
+      )}
       data-test="location-facet-clear"
     >
-      <p className='su-font-sans su-font-semibold su-text-black-70 su-text-18 su-leading-[1.3]'>{ClearContentFirstText}</p>
-      <p className='su-font-sans su-font-regular su-text-black-70 su-text-18 su-leading-[1.3]'>{ClearContentSecondText}</p>
-      <div className='su-flex su-justify-center'>
+      <p className="su-font-sans su-font-semibold su-text-black-70 su-text-18 su-leading-[1.3]">
+        {ClearContentFirstText}
+      </p>
+      <p className="su-font-sans su-font-regular su-text-black-70 su-text-18 su-leading-[1.3]">
+        {ClearContentSecondText}
+      </p>
+      <div className="su-flex su-justify-center">
         <Chip attribute={attribute} label={facetLabel} remove={removeChip} />
       </div>
     </div>

@@ -24,6 +24,7 @@ const searchClient = algoliasearch(
 );
 
 const hitsPerPage = 6;
+// TODO: Swap out for env var.
 const indexName = 'dev_alumni-events_start-asc';
 
 const EventDiscoveryContent = () => {
@@ -86,7 +87,7 @@ const EventsDiscovery = () => (
         stateToRoute(uiState) {
           const indexUiState = uiState[indexName];
 
-          // Normal Good params.
+          // Normal params.
           const ret = {
             page: indexUiState.page,
             format: indexUiState.refinementList?.format,

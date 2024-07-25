@@ -11,17 +11,17 @@ import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
 import LocationFilterClearContent from './LocationFilterClearContent';
-import useRadialGeoSearch from './useRadialGeoSearch';
+import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
+import { LocationListItem } from './LocationListItem';
 
 const LocationTabPanelCountry = () => {
   const { activeTab } = useContext(LocationContext);
   const searchFieldId = useId();
   const title = 'Find a country';
   const field = 'country';
-  const isDesktop = window.innerWidth >= 1024; // TODO: Fix this window check to be a real on breakpoint.
+  const isDesktop = window ?? window.innerWidth >= 991;
 
-  const geo = useRadialGeoSearch();
-  console.log('LocationTabPanelCountry', geo);
+  const { name: locationName } = useRadialGeoSearch();
   const { items: stateItems } = useCurrentRefinements({
     includedAttributes: ['state'],
   });
@@ -49,8 +49,13 @@ const LocationTabPanelCountry = () => {
   if (activeTab !== 'country') return null;
 
   // If the city or country tab is active, show the clear message and button.
-  if (stateItems.length > 0 || geo?.name) {
-    return <LocationFilterClearContent activeTab={activeTab} />;
+  if (stateItems.length > 0 || locationName) {
+    return (
+      <LocationFilterClearContent
+        activeTab={activeTab}
+        className={dcnb(styles.tabPanel)}
+      />
+    );
   }
 
   return (
@@ -66,8 +71,9 @@ const LocationTabPanelCountry = () => {
                 {title}
               </label>
               <MUIAutocomplete
+                id={searchFieldId}
+                disablePortal
                 multiple={false}
-                openOnFocus={false}
                 autoSelect={false}
                 options={reformattedItems}
                 noOptionsText="No Results"
@@ -75,7 +81,7 @@ const LocationTabPanelCountry = () => {
                 isOptionEqualToValue={(option, value) =>
                   option.value === value.value
                 }
-                onChange={(e, value, reason) => {
+                onChange={(_, value, reason) => {
                   if (reason === 'clear') {
                     clearRefinement();
                     return;
@@ -99,7 +105,7 @@ const LocationTabPanelCountry = () => {
                   />
                 )}
                 renderOption={(props, option, { selected }) => (
-                  <li
+                  <LocationListItem
                     {...props}
                     className={dcnb(
                       styles.option({ selected }),
@@ -108,7 +114,7 @@ const LocationTabPanelCountry = () => {
                     data-test={`${field}-facet-option`}
                   >
                     {option.label}
-                  </li>
+                  </LocationListItem>
                 )}
                 clearIcon={
                   <HeroIcon
@@ -118,14 +124,12 @@ const LocationTabPanelCountry = () => {
                   />
                 }
                 popupIcon={null}
-                disablePortal
                 classes={{
-                  popper: isDesktop ? '' : styles.popperMobile,
+                  popper: isDesktop ? styles.popper : styles.popperMobile,
+                  popperDisablePortal: styles.popper,
                   inputRoot: styles.inputRoot,
                   paper: styles.paper,
-                  listbox: isDesktop
-                    ? styles.listboxCountry
-                    : styles.listboxCountryMobile,
+                  listbox: isDesktop ? styles.listbox : styles.listboxMobile,
                   clearIndicator: styles.clearLocation,
                 }}
               />
