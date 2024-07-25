@@ -104,7 +104,7 @@ export default async (req: Request) => {
       datasource_id: subjectDatasourceId,
     } as any) ?? [];
     console.log('Fetching Storyblok datasources done!');
-    console.log(`(${formatDatasource?.length ?? 0} formats, ${subjectDatasource?.length ?? 0} subjects`);
+    console.log(`(${formatDatasource?.length ?? 0} formats, ${subjectDatasource?.length ?? 0} subjects)`);
 
     console.log('Fetching Storyblok events...');
     const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
@@ -159,8 +159,6 @@ export default async (req: Request) => {
     googleStories.forEach((event) => {
       const id = event?.content?.externalId;
 
-      console.log('google: ', { id, subject: event?.content?.subject });
-
       const format: string[] = event?.content?.format ?? [];
       const subject: string[] = event?.content?.subject ?? [];
 
@@ -175,8 +173,6 @@ export default async (req: Request) => {
     });
     sbEvents.forEach((story) => {
       const id = story.content.externalId;
-
-      console.log('sb: ', { id, subject: story?.content?.subject });
 
       if (id) {
         const existing = syncedEvents.get(id);
