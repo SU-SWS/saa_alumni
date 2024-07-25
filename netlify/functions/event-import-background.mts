@@ -156,10 +156,10 @@ export default async (req: Request) => {
     // and do some dynamic date filtering in the front end.
     const OldCutoff = DateTime.utc().startOf('day').minus({ days: 2 });
 
-    console.log({ googleStories, sbEvents });
-
     googleStories.forEach((event) => {
       const id = event?.content?.externalId;
+
+      console.log('google: ', { id, subject: event?.content?.subject });
 
       const format: string[] = event?.content?.format ?? [];
       const subject: string[] = event?.content?.subject ?? [];
@@ -175,6 +175,8 @@ export default async (req: Request) => {
     });
     sbEvents.forEach((story) => {
       const id = story.content.externalId;
+
+      console.log('sb: ', { id, subject: story?.content?.subject });
 
       if (id) {
         const existing = syncedEvents.get(id);
