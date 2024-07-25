@@ -249,10 +249,10 @@ const LocationTabPanelCity = () => {
 
         <div className={styles.toggleGroupWrapper}>
           <label
-            className={dcnb(styles.locationLabels, styles.legend)}
+            className={dcnb(styles.locationLabels, styles.legend, 'su-block')}
             htmlFor="location-distance-buttons"
           >
-            Within:
+            Within
           </label>
           <MUIToggleButtonGroup
             exclusive
