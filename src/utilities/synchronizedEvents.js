@@ -248,13 +248,7 @@ export const googleRowToStoryContent = (data, source) => {
   const subject = subjectRaw
     .split(',')
     .map((s) => s.trim())
-    .filter((s) => !!s.length);
-  const generalTags = subject.filter(
-    (s, index, arr) => s !== 'D/I' && arr.at(index + 1) !== 'D/I'
-  );
-  const identityTags = subject.filter(
-    (s, index, arr) => s !== 'D/I' && arr.at(index + 1) === 'D/I'
-  );
+    .filter((s) => !!s.length && s !== 'D/I');
 
   const eventUrl = eventUrlRaw
     ? {
@@ -297,8 +291,7 @@ export const googleRowToStoryContent = (data, source) => {
     state,
     country,
     address,
-    generalTags,
-    identityTags,
+    subject,
     format,
     region,
     latitude,
@@ -332,17 +325,11 @@ export const combineStories = (fromStory, toStory) => ({
 
 export const compareStoryContent = (a, b) => {
   // TODO: Do we need to check description?
-  const sortedTagsA = [
-    ...(a.generalTags?.sort?.() ?? []),
-    ...(a.identityTags?.sort?.() ?? []),
-  ];
-  const sortedTagsB = [
-    ...(b.generalTags?.sort?.() ?? []),
-    ...(b.identityTags.sort?.() ?? []),
-  ];
-  const isTagsEq =
-    sortedTagsA.length === sortedTagsB.length &&
-    sortedTagsA.every((e, i) => e === sortedTagsB[i]);
+  const sortedSubjectA = a.subject?.sort?.() ?? [];
+  const sortedSubjectB = b.subject?.sort?.() ?? [];
+  const isSubjectEq =
+    sortedSubjectA.length === sortedSubjectB.length &&
+    sortedSubjectA.every((e, i) => e === sortedSubjectB[i]);
 
   const sortedFormatA = a.format?.sort?.() ?? [];
   const sortedFormatB = b.format?.sort?.() ?? [];
@@ -365,7 +352,7 @@ export const compareStoryContent = (a, b) => {
     a.latitude !== b.latitude ||
     a.longitude !== b.longitude ||
     a.eventUrl?.url !== b.eventUrl?.url ||
-    !isTagsEq ||
+    !isSubjectEq ||
     !isFormatEq
   );
 };

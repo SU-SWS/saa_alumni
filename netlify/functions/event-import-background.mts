@@ -46,8 +46,7 @@ export default async (req: Request) => {
     const eventFolderId = process.env.EVENT_FOLDER_ID ?? '';
     const eventArchiveFolderId = process.env.EVENT_ARCHIVE_FOLDER_ID ?? '';
     const formatDatasourceId =  process.env.EVENT_DATASOURCE_FORMAT_ID ?? '';
-    const generalTagsDatasourceId =  process.env.EVENT_DATASOURCE_GENERAL_TAGS_ID ?? '';
-    const identityTagsDatasourceId =  process.env.EVENT_DATASOURCE_IDENTITY_TAGS_ID ?? '';
+    const subjectDatasourceId = process.env.EVENT_DATASOURCE_SUBJECT_ID ?? '';
 
     if (!email || !key || !spaceId || !hivebriteSheetId || !cventSheetId) {
       throw new Error('Missing required values');
@@ -101,14 +100,11 @@ export default async (req: Request) => {
     const formatDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
       datasource_id: formatDatasourceId,
     } as any) ?? [];
-    const generalTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
-      datasource_id: generalTagsDatasourceId,
-    } as any) ?? [];
-    const identityTagsDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
-      datasource_id: identityTagsDatasourceId,
+    const subjectDatasource = await storyblokManagement.getAll(`/spaces/${spaceId}/datasource_entries`, {
+      datasource_id: subjectDatasourceId,
     } as any) ?? [];
     console.log('Fetching Storyblok datasources done!');
-    console.log(`(${formatDatasource?.length ?? 0} formats, ${generalTagsDatasource?.length ?? 0} general, ${identityTagsDatasource?.length ?? 0} D/I)`);
+    console.log(`(${formatDatasource?.length ?? 0} formats, ${subjectDatasource?.length ?? 0} subjects`);
 
     console.log('Fetching Storyblok events...');
     const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
@@ -152,11 +148,9 @@ export default async (req: Request) => {
     const syncedEvents = new Map();
     const manualEvents = new Map();
     const knownFormats = new Set<string>(formatDatasource?.map?.((d) => d.value));
-    const knownGeneralTags = new Set<string>(generalTagsDatasource?.map?.((d) => d.value));
-    const knownIdentityTags = new Set<string>(identityTagsDatasource?.map?.((d) => d.value));
+    const knownSubjects = new Set<string>(subjectDatasource?.map?.((d) => d.value));
     const incomingFormats: string[] = [];
-    const incomingGeneralTags: string[] = [];
-    const incomingIdentityTags: string[] = [];
+    const incomingSubjects: string[] = [];
     // We can't be too aggressive with the cutoff due to timezones.
     // We'll consider anything midnight (UTC) - 2 as "old" for the sync purposes
     // and do some dynamic date filtering in the front end.
@@ -166,12 +160,10 @@ export default async (req: Request) => {
       const id = event?.content?.externalId;
 
       const format: string[] = event?.content?.format ?? [];
-      const generalTags: string[] = event?.content?.generalTags ?? [];
-      const identityTags: string[] = event?.content?.identityTags ?? [];
+      const subject: string[] = event?.content?.subject ?? [];
 
       format.forEach((f) => incomingFormats.push(f));
-      generalTags.forEach((t) => incomingGeneralTags.push(t));
-      identityTags.forEach((t) => incomingIdentityTags.push(t));
+      subject.forEach((t) => incomingSubjects.push(t));
 
       if (id) {
         syncedEvents.set(event.content.externalId, { google: event, storyblok: undefined });
@@ -196,8 +188,7 @@ export default async (req: Request) => {
     });
 
     const newFormats = new Set(incomingFormats.filter((f) => !knownFormats.has(f)));
-    const newGeneralTags = new Set(incomingGeneralTags.filter((f) => !knownGeneralTags.has(f)));
-    const newIdentityTags = new Set(incomingIdentityTags.filter((f) => !knownIdentityTags.has(f)));
+    const newSubjects = new Set(incomingSubjects.filter((s) => !knownSubjects.has(s)));
 
     for (const format of newFormats) {
       try {
@@ -217,39 +208,21 @@ export default async (req: Request) => {
       }
     }
 
-    for (const tag of newGeneralTags) {
+    for (const subject of newSubjects) {
       try {
-        console.log('Adding general tag datasource entry: ', tag);
+        console.log('Adding subject datasource entry: ', subject);
         if (run) {
           await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
             datasource_entry: {
-              name: tag,
-              value: tag,
-              datasource_id: generalTagsDatasourceId,
+              name: subject,
+              value: subject,
+              datasource_id: subjectDatasourceId,
             }
           } as any);
           await delay();
         }
       } catch (err) {
-        console.log('Error during general tags datasource update: ', err);
-      }
-    }
-
-    for (const tag of newIdentityTags) {
-      try {
-        console.log('Adding identity tag datasource entry: ', tag);
-        if (run) {
-          await storyblokManagement.post(`/spaces/${spaceId}/datasource_entries`, {
-            datasource_entry: {
-              name: tag,
-              value: tag,
-              datasource_id: identityTagsDatasourceId,
-            }
-          } as any);
-          await delay();
-        }
-      } catch (err) {
-        console.log('Error during identity tags datasource update: ', err);
+        console.log('Error during subject datasource update: ', err);
       }
     }
 
