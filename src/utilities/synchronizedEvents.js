@@ -329,7 +329,7 @@ export const compareStoryContent = (a, b) => {
   const sortedSubjectB = b.subject?.sort?.() ?? [];
   const isSubjectEq =
     sortedSubjectA.length === sortedSubjectB.length &&
-    sortedSubjectA.every((e, i) => e === sortedSubjectB[i]);
+    sortedSubjectA.every((s, i) => s === sortedSubjectB[i]);
 
   const sortedFormatA = a.format?.sort?.() ?? [];
   const sortedFormatB = b.format?.sort?.() ?? [];
