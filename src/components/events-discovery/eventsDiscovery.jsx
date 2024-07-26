@@ -17,13 +17,12 @@ import { StatusHeader } from './components/StatusHeader';
 import { Hit } from './components/Hit/Hit';
 import { FacetProvider } from './components/Facets/FacetCtx';
 import { SearchBar } from './components/SearchBar';
+import { EventsPerPage } from './components/EventsPerPage';
 
 const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
   process.env.GATSBY_ALGOLIA_API_KEY
 );
-
-const hitsPerPage = 6;
 
 const EventDiscoveryContent = () => {
   const { status } = useInstantSearch();
@@ -51,8 +50,9 @@ const EventDiscoveryContent = () => {
           <div className="su-flex su-flex-col su-gap-y-20 su-w-full">
             <div className="su-flex su-gap-y-20 su-flex-col">
               <Chips />
-              <div className="sm:su-px-20">
+              <div className="su-flex su-items-center su-justify-between sm:su-px-20">
                 <StatusHeader />
+                <EventsPerPage />
               </div>
             </div>
             {isStalled && <LoadingIndicator />}
@@ -95,6 +95,7 @@ const EventsDiscovery = () => (
             us: indexUiState.refinementList?.usRegion,
             int: indexUiState.refinementList?.intRegion,
             startTimestamp: indexUiState.numericMenu?.startTimestamp,
+            eventsPerPage: indexUiState.hitsPerPage,
           };
         },
         routeToState(routeState) {
@@ -112,6 +113,7 @@ const EventsDiscovery = () => (
               numericMenu: {
                 startTimestamp: routeState.startTimestamp,
               },
+              hitsPerPage: routeState.eventsPerPage,
             },
           };
         },
@@ -120,7 +122,6 @@ const EventsDiscovery = () => (
     insights
   >
     <Configure
-      hitsPerPage={hitsPerPage}
       // Don't let any expired events slip through
       filters={`endTimestamp > ${DateTime.now()
         .startOf('day')

@@ -25,7 +25,7 @@ export const Chip = ({ attribute, label, remove = () => null }) => {
     <button
       type="button"
       onClick={remove}
-      className="su-flex su-items-center su-px-12 su-py-6 su-text-xl sm:su-text-2xl su-border-2 su-border-cardinal-red su-break-words su-text-cardinal-red hocus:su-text-white hocus:su-bg-cardinal-red-light su-rounded-full su-cursor-pointer"
+      className="su-flex su-items-center su-px-12 su-py-6 su-text-xl sm:su-text-2xl su-border-2 su-border-digital-red su-break-words su-text-digital-red hocus:su-text-white hocus:su-bg-cardinal-red-xdark su-rounded-full su-cursor-pointer su-transition-colors"
     >
       <span className="su-inline-block su-text-3xl">
         <span className="su-font-semibold">{facet.chip}:</span> {label}

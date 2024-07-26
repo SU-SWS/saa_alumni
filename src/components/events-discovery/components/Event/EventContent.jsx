@@ -86,6 +86,7 @@ export const EventContent = ({
   const selectClasses =
     '!su-relative !su-z-[1] !su-text-19 !su-leading-normal !su-py-0 !su-pl-0 !su-pr-20 hocus:!su-bg-transparent !su-outline-none !su-border-none';
   const selectMenuRootClasses = '!su-text-16';
+  const selectMenuSelectedClasses = '!su-bg-digital-red-light/10';
   const iconClasses =
     'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-1em';
 
@@ -127,6 +128,7 @@ export const EventContent = ({
                 <MenuItem
                   classes={{
                     root: selectMenuRootClasses,
+                    selected: selectMenuSelectedClasses,
                   }}
                   value={eventTimezoneName}
                 >
@@ -135,6 +137,7 @@ export const EventContent = ({
                 <MenuItem
                   classes={{
                     root: selectMenuRootClasses,
+                    selected: selectMenuSelectedClasses,
                   }}
                   value={localTimezoneName}
                 >
