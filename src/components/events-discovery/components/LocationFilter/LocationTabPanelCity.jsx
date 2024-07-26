@@ -233,12 +233,9 @@ const LocationTabPanelCity = () => {
                   />
                 }
                 popupIcon={null}
-                disablePortal
                 classes={{
                   popper: isDesktop ? '' : styles.popperMobile,
-                  listbox: isDesktop
-                    ? styles.listboxCity
-                    : styles.listboxMobile,
+                  listbox: isDesktop ? styles.listbox : styles.listboxMobile,
                   inputRoot: styles.inputRoot({ locError }),
                   paper: styles.paper,
                   clearIndicator: styles.clearLocation,

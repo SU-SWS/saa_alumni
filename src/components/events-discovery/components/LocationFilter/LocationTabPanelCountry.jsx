@@ -78,7 +78,6 @@ const LocationTabPanelCountry = () => {
               </label>
               <MUIAutocomplete
                 id={searchFieldId}
-                disablePortal
                 multiple={false}
                 autoSelect={false}
                 options={reformattedItems}
