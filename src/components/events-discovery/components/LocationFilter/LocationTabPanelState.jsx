@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, { useId, useContext } from 'react';
 import { dcnb } from 'cnbuilder';
 import MUIAutocomplete from '@mui/material/Autocomplete';
@@ -15,12 +16,11 @@ import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { LocationListItem } from './LocationListItem';
 
 const LocationTabPanelState = () => {
-  const { activeTab } = useContext(LocationContext);
+  const { activeTab, setActiveTab } = useContext(LocationContext);
   const searchFieldId = useId();
   const title = 'Find a US State / Canadian Province';
   const field = 'state';
   const isDesktop = window ?? window.innerWidth >= 991;
-
   const { name: locationName } = useRadialGeoSearch();
   const { items: countryItems } = useCurrentRefinements({
     includedAttributes: ['country'],
@@ -60,7 +60,13 @@ const LocationTabPanelState = () => {
 
   // Show them the State / Province search.
   return (
-    <div id="state-panel" role="tabpanel" className={dcnb(styles.tabPanel)}>
+    <div
+      id="state-panel"
+      role="tabpanel"
+      tabIndex={0}
+      aria-labelledby="state-tab"
+      className={dcnb(styles.tabPanel)}
+    >
       <fieldset className={styles.fieldset} data-test={`${field}-facet`}>
         <legend className={dcnb(styles.locationLabels, styles.legend)}>
           US State / Canadian Province

@@ -22,8 +22,9 @@ export const popperMobile =
   '!su-w-[calc(100%_+_52px)] !su-relative !su-translate-y-0 !su--ml-26 !su-overflow-x-hidden !su-h-full';
 export const paper =
   '!su-mt-18 lg:!su-mt-2 lg:!su-rounded !su-shadow-none lg:!su-shadow-lg !su-font-sans !su-text-18 lg:!su-border lg:!su-border-lagunita-light !su-w-full';
-export const listbox = '!su-max-h-280';
+export const listbox = '!su-max-h-200';
 export const listboxMobile = '!su-max-h-full';
+export const listboxCity = '!su-max-h-280';
 export const option = ({ selected }) =>
   dcnb(
     '!su-px-26 !su-py-14 lg:!su-px-14 lg:!su-py-10 lg:!su-mx-19 lg:!su-my-6 !su-my-0 !su-leading-display first:su-mt-20 last:su-mb-10 !su-text-black-70 lg:!su-text-black lg:!su-rounded-[2.8rem] hover:!su-text-digital-red-dark hover:!su-bg-digital-red-20 hover:!su-underline',

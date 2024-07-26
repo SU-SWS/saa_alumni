@@ -59,7 +59,13 @@ const LocationTabPanelCountry = () => {
   }
 
   return (
-    <div id="country-panel" role="tabpanel" className={dcnb(styles.tabPanel)}>
+    <div
+      id="country-panel"
+      role="tabpanel"
+      tabIndex={0}
+      aria-labelledby="country-tab"
+      className={dcnb(styles.tabPanel)}
+    >
       <fieldset className={styles.fieldset} data-test={`${field}-facet`}>
         <legend className={dcnb(styles.locationLabels, styles.legend)}>
           Country

@@ -100,6 +100,7 @@ const EventsDiscovery = () => (
             region: indexUiState.refinementList?.usRegion,
             intRegion: indexUiState.refinementList?.intRegion,
             country: indexUiState.refinementList?.country,
+            state: indexUiState.refinementList?.state,
           };
 
           // Location Search params.
@@ -125,6 +126,7 @@ const EventsDiscovery = () => (
                 experience: routeState.experience,
                 subject: routeState.subject,
                 country: routeState.country,
+                state: routeState.state,
                 usRegion: routeState.us,
                 intRegion: routeState.int,
               },

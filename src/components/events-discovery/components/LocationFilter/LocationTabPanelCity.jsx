@@ -149,7 +149,13 @@ const LocationTabPanelCity = () => {
 
   // Return the city tab panel.
   return (
-    <div id="city-panel" role="tabpanel" className={dcnb(styles.tabPanel)}>
+    <div
+      id="city-panel"
+      role="tabpanel"
+      tabIndex={0}
+      aria-labelledby="city-tab"
+      className={dcnb(styles.tabPanel)}
+    >
       <fieldset className={styles.fieldset} data-test="location-facet">
         <legend className={dcnb(styles.locationLabels, styles.legend)}>
           City
@@ -230,7 +236,9 @@ const LocationTabPanelCity = () => {
                 disablePortal
                 classes={{
                   popper: isDesktop ? '' : styles.popperMobile,
-                  listbox: isDesktop ? styles.listbox : styles.listboxMobile,
+                  listbox: isDesktop
+                    ? styles.listboxCity
+                    : styles.listboxMobile,
                   inputRoot: styles.inputRoot({ locError }),
                   paper: styles.paper,
                   clearIndicator: styles.clearLocation,
