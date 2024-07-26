@@ -22,7 +22,7 @@ export const popperMobile =
   '!su-w-[calc(100%_+_52px)] !su-relative !su-translate-y-0 !su--ml-26 !su-overflow-x-hidden !su-h-full';
 export const paper =
   '!su-mt-18 lg:!su-mt-2 lg:!su-rounded !su-shadow-none lg:!su-shadow-lg !su-font-sans !su-text-18 lg:!su-border lg:!su-border-lagunita-light !su-w-full';
-export const listbox = '!su-max-h-360';
+export const listbox = '!su-max-h-280';
 export const listboxMobile = '!su-max-h-full';
 export const option = ({ selected }) =>
   dcnb(

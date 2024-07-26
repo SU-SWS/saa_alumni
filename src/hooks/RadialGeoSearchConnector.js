@@ -216,8 +216,6 @@ export default (renderFn, unmountFn = noop) =>
        * Called once before the first search.
        */
       init(initOptions) {
-        const { helper } = initOptions;
-        helper.setQueryParameter('getRankingInfo', 'true');
         renderFn(
           {
             ...this.getWidgetRenderState(initOptions),

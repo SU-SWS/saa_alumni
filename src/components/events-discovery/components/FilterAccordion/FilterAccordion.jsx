@@ -76,8 +76,8 @@ export const FilterAccordion = ({
       <div
         id={uniqueId}
         aria-hidden={!expanded}
-        className={dcnb('su-block', {
-          'su-hidden': !expanded,
+        className={dcnb('su-block su-overflow-hidden', {
+          'su-invisible': !expanded,
         })}
       >
         {children}
