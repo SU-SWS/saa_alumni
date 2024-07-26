@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { Chip } from './Chip';
 
-export const ChipsComponent = () => {
+export const Chips = () => {
   const { query, refine } = useSearchBox();
   const { items, canRefine } = useCurrentRefinements();
   const {

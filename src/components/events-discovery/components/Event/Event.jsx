@@ -19,8 +19,7 @@ import { EventContent } from './EventContent';
  * @property {string} [usRegion]
  * @property {string} [intRegion]
  * @property {EventLink} [eventUrl]
- * @property {string[]} [generalTags]
- * @property {string[]} [identityTags]
+ * @property {string[]} [subject]
  * @property {string} [experience]
  * @property {string[]} [format]
  * @property {boolean} [isDark]
@@ -46,17 +45,11 @@ export const Event = ({
   intRegion,
   region = usRegion || intRegion || '',
   eventUrl,
-  generalTags = [],
-  identityTags = [],
+  subject = [],
   experience,
-  format,
+  format = [],
   hit,
 }) => {
-  const subject = useMemo(
-    () => [...generalTags, ...identityTags],
-    [generalTags, identityTags]
-  );
-
   const formatDisplay = format?.join?.(', ') ?? '';
 
   const luxonStart = useMemo(() => luxonDate(start), [start]);

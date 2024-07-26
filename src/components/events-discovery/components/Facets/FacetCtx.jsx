@@ -1,23 +1,75 @@
 import React, { createContext, useMemo, useState } from 'react';
 
 const knownFacets = [
-  { attribute: 'startTimestamp', label: 'Date', defaultExpanded: true },
-  { attribute: 'format', label: 'Format' },
-  // Subject
-  { attribute: 'subject', label: 'Subject' },
-  { attribute: 'generalTags', label: 'General' },
-  { attribute: 'identityTags', label: 'Diversity/Identity' },
+  {
+    attribute: 'startTimestamp',
+    label: 'Date',
+    chip: 'Date',
+    expanded: true,
+  },
+  { attribute: 'format', label: 'Format', chip: 'Format', expanded: false },
+  {
+    attribute: 'subject',
+    label: 'Interest Areas',
+    chip: 'Interest',
+    expanded: false,
+  },
   // Location
-  { attribute: 'location', label: 'Location' },
-  { attribute: 'experience', label: 'Experience' },
-  { attribute: 'usRegion', label: 'United States' },
-  { attribute: 'intRegion', label: 'International' },
+  {
+    attribute: 'location',
+    label: 'Location',
+    chip: 'Location',
+    expanded: false,
+  },
+  {
+    attribute: 'experience',
+    label: 'Experience',
+    chip: 'Mode',
+    expanded: false,
+  },
+  {
+    attribute: 'usRegion',
+    label: 'United States',
+    chip: 'US',
+    expanded: false,
+  },
+  {
+    attribute: 'intRegion',
+    label: 'International',
+    chip: 'International',
+    expanded: false,
+  },
+  {
+    attribute: 'query',
+    label: 'Search',
+    chip: 'Search',
+    expanded: false,
+  },
+  {
+    attribute: 'city',
+    label: 'City',
+    chip: 'City',
+    expanded: false,
+  },
+  {
+    attribute: 'state',
+    label: 'US State / Canadian Province',
+    chip: 'State/Province',
+    expanded: false,
+  },
+  {
+    attribute: 'country',
+    label: 'Country',
+    chip: 'Country',
+    expanded: false,
+  },
 ];
 
 /**
  * @typedef {object} FacetMeta
  * @property {string} attribute
  * @property {string} label
+ * @property {string} chip
  * @property {boolean} expanded
  */
 
