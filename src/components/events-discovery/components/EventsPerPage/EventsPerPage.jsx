@@ -19,7 +19,7 @@ export const EventsPerPage = () => {
   }
 
   const selectRootClasses =
-    'group [&>.MuiOutlinedInput-notchedOutline]:!su-border-0 !su-relative !su-font-sans !su-border-2 !su-border-digital-red focus-within:su-ring focus-within:su-ring-digital-blue-light focus-within:su-ring-offset-1 hover:su-bg-cardinal-red-xdark focus-within:su-bg-cardinal-red-xdark su-transition-colors su-text-digital-red hover:su-text-white focus-within:su-text-white su-font-semibold';
+    'group [&>.MuiOutlinedInput-notchedOutline]:!su-border-0 !su-relative !su-font-sans !su-border-2 !su-border-digital-red focus-within:!su-ring focus-within:!su-ring-digital-blue-light focus-within:!su-ring-offset-1 hover:!su-bg-cardinal-red-xdark focus-within:!su-bg-cardinal-red-xdark !su-transition-colors !su-text-digital-red hover:!su-text-white focus-within:!su-text-white !su-font-semibold';
   const selectClasses =
     '!su-relative !su-z-[1] !su-text-16 !su-leading-normal !su-pl-12 !su-py-8 !su-pr-40 group-hocus-within:!su-bg-digital-red';
 
