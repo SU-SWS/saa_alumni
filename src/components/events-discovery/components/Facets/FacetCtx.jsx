@@ -10,8 +10,8 @@ const knownFacets = [
   { attribute: 'format', label: 'Format', chip: 'Format', expanded: false },
   {
     attribute: 'subject',
-    label: 'Interest Areas',
-    chip: 'Interest',
+    label: 'Subject',
+    chip: 'Subject',
     expanded: false,
   },
   // Location
