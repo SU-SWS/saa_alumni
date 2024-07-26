@@ -10,7 +10,6 @@ import * as styles from './megaMenuPanel.styles';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
-import { link } from '../MainNav/userNavItems.styles';
 
 const MegaMenuPanel = ({
   blok: { parentText, parentTextSecond, linkGroups, sectionCtaLink, fourthCol },
