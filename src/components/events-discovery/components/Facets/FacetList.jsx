@@ -46,6 +46,8 @@ export const FacetList = ({ attribute, label, subfilter = false }) => {
       {canRefine ? (
         <RefinementList
           attribute={attribute}
+          limit={1000}
+          sortBy={['isRefined', 'name']}
           classNames={{
             root: 'su-mt-8',
             list: 'su-flex su-flex-col su-gap-4 su-list-none su-pl-8',
