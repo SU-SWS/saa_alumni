@@ -10,6 +10,7 @@ import * as styles from './megaMenuPanel.styles';
 import useOnClickOutside from '../../../hooks/useOnClickOutside';
 import { Grid } from '../../layout/Grid';
 import { GridCell } from '../../layout/GridCell';
+import { link } from '../MainNav/userNavItems.styles';
 
 const MegaMenuPanel = ({
   blok: { parentText, parentTextSecond, linkGroups, sectionCtaLink, fourthCol },
@@ -46,23 +47,29 @@ const MegaMenuPanel = ({
   if (isBrowser) {
     const browserUrl = window.location.pathname;
 
-    // Loop through children menu items and add active styles to parent button if any childrem items are active
+    // Loop through children menu items and add active styles to parent button if any children items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
       if (Object.keys(linkGroups[i]).includes('links')) {
         for (let j = 0; j < linkGroups[i].links.length; j += 1) {
-          if (
-            linkGroups[i].links[j].link?.cached_url &&
-            browserUrl.includes(linkGroups[i].links[j].link.cached_url)
-          ) {
-            isActiveButton = true;
+          if (linkGroups[i].links[j].link?.cached_url) {
+            // Remove trailing and leading slashes from the URL.
+            const cachedUrl = linkGroups[i].links[j].link.cached_url.replace(/^\/|\/$/g, '');
+            const browserUrlNoSlash = browserUrl.replace(/^\/|\/$/g, '');
+            if (cachedUrl === browserUrlNoSlash) {
+              isActiveButton = true;
+            }
           }
         }
       }
-      if (
-        linkGroups[i].secondaryLink?.cached_url &&
-        browserUrl.includes(linkGroups[i].secondaryLink.cached_url)
-      ) {
-        isActiveButton = true;
+      if (linkGroups[i].secondaryLink?.cached_url) {
+        if (linkGroups[i].secondaryLink.cached_url) {
+          // Remove trailing and leading slashes from the URL.
+          const cachedUrl = linkGroups[i].secondaryLink.cached_url.replace(/^\/|\/$/g, '');
+          const browserUrlNoSlash = browserUrl.replace(/^\/|\/$/g, '');
+          if (cachedUrl === browserUrlNoSlash) {
+            isActiveButton = true;
+          }
+        }
       }
     }
   }
