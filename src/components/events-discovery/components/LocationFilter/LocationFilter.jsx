@@ -31,7 +31,7 @@ export const LocationFilter = ({ expanded, onToggleExpanded }) => (
       <LocationTabPanelCountry />
     </LocationFacetProvider>
 
-    <FacetList attribute="usRegion" label="United States" subfilter />
-    <FacetList attribute="intRegion" label="International" subfilter />
+    <FacetList attribute="usRegion" subfilter />
+    <FacetList attribute="intRegion" subfilter />
   </FilterAccordion>
 );
