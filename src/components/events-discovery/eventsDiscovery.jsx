@@ -50,7 +50,7 @@ const EventDiscoveryContent = () => {
           <div className="su-flex su-flex-col su-gap-y-20 su-w-full">
             <div className="su-flex su-gap-y-20 su-flex-col">
               <Chips />
-              <div className="su-flex su-items-center su-justify-between sm:su-px-20 su-lea">
+              <div className="su-flex su-items-center su-justify-between sm:su-px-20">
                 <StatusHeader />
                 <EventsPerPage />
               </div>
