@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useEffect, useContext, useState } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';

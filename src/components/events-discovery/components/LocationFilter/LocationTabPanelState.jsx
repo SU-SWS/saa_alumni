@@ -16,7 +16,7 @@ import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { LocationListItem } from './LocationListItem';
 
 const LocationTabPanelState = () => {
-  const { activeTab, setActiveTab } = useContext(LocationContext);
+  const { activeTab } = useContext(LocationContext);
   const searchFieldId = useId();
   const title = 'Find a US State / Canadian Province';
   const field = 'state';

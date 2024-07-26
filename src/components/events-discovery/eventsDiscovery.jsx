@@ -122,7 +122,6 @@ const EventsDiscovery = () => (
                 format: routeState.format,
                 subject: routeState.subject,
                 experience: routeState.experience,
-                subject: routeState.subject,
                 country: routeState.country,
                 state: routeState.state,
                 usRegion: routeState.us,

@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useContext, useState, useId, useEffect } from 'react';
+import React, { useContext, useState, useId } from 'react';
 import MUIAutocomplete from '@mui/material/Autocomplete';
 import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
