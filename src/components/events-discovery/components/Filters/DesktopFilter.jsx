@@ -51,15 +51,15 @@ export const DesktopFilter = () => {
             onToggleExpanded={() => toggleFacet('startTimestamp')}
           />
         )}
-        <FacetList attribute="experience" label="Mode of Participation" />
+        <FacetList attribute="experience" />
         {locationFacet && (
           <LocationFilter
             expanded={locationFacet.expanded}
             onToggleExpanded={() => toggleFacet('location')}
           />
         )}
-        <FacetList attribute="format" label="Format" />
-        <FacetList attribute="subject" label="Interest Areas" />
+        <FacetList attribute="format" />
+        <FacetList attribute="subject" />
       </div>
     </>
   );

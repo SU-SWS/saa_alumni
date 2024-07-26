@@ -19,7 +19,7 @@ export const LocationFilter = ({ expanded, onToggleExpanded }) => (
     onToggleExpanded={onToggleExpanded}
     showReset={false}
   >
-    <FacetList attribute="usRegion" label="United States" subfilter />
-    <FacetList attribute="intRegion" label="International" subfilter />
+    <FacetList attribute="usRegion" subfilter />
+    <FacetList attribute="intRegion" subfilter />
   </FilterAccordion>
 );

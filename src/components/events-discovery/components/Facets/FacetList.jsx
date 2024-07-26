@@ -10,7 +10,6 @@ import { useFacets } from './useFacets';
 /**
  * @typedef {object} Props
  * @property {string} attribute
- * @property {string} label
  * @property {boolean} [subfilter]
  */
 
@@ -18,7 +17,7 @@ import { useFacets } from './useFacets';
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const FacetList = ({ attribute, label, subfilter = false }) => {
+export const FacetList = ({ attribute, subfilter = false }) => {
   const { getFacet, toggleFacet } = useFacets();
   const { items, canRefine } = useRefinementList({ attribute });
   const { refine } = useClearRefinements({
@@ -37,7 +36,7 @@ export const FacetList = ({ attribute, label, subfilter = false }) => {
   return (
     <FilterAccordion
       expanded={facetState.expanded}
-      label={label}
+      label={facetState.label}
       onReset={refine}
       onToggleExpanded={() => toggleFacet(attribute)}
       showReset={hasRefinedItems}
