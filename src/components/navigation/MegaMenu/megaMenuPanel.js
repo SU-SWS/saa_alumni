@@ -3,7 +3,6 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
-import { Container } from '../../layout/Container';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { ModalContext } from '../../layout/Modal/ModalContext';
 import * as styles from './megaMenuPanel.styles';
@@ -52,7 +51,10 @@ const MegaMenuPanel = ({
         for (let j = 0; j < linkGroups[i].links.length; j += 1) {
           if (linkGroups[i].links[j].link?.cached_url) {
             // Remove trailing and leading slashes from the URL.
-            const cachedUrl = linkGroups[i].links[j].link.cached_url.replace(/^\/|\/$/g, '');
+            const cachedUrl = linkGroups[i].links[j].link.cached_url.replace(
+              /^\/|\/$/g,
+              ''
+            );
             const browserUrlNoSlash = browserUrl.replace(/^\/|\/$/g, '');
             if (cachedUrl === browserUrlNoSlash) {
               isActiveButton = true;
@@ -63,7 +65,10 @@ const MegaMenuPanel = ({
       if (linkGroups[i].secondaryLink?.cached_url) {
         if (linkGroups[i].secondaryLink.cached_url) {
           // Remove trailing and leading slashes from the URL.
-          const cachedUrl = linkGroups[i].secondaryLink.cached_url.replace(/^\/|\/$/g, '');
+          const cachedUrl = linkGroups[i].secondaryLink.cached_url.replace(
+            /^\/|\/$/g,
+            ''
+          );
           const browserUrlNoSlash = browserUrl.replace(/^\/|\/$/g, '');
           if (cachedUrl === browserUrlNoSlash) {
             isActiveButton = true;
