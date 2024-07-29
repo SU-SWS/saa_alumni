@@ -133,7 +133,7 @@
     "postcss": "^8.4.31",
     "prettier": "^2.8.8",
     "start-server-and-test": "^2.0.3",
-    "storyblok": "^3.25.3",
+    "storyblok": "^3.32.3",
     "toml": "^3.0.0",
     "type-fest": "^2.19.0"
   }
