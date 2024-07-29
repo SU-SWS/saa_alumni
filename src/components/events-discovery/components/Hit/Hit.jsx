@@ -18,9 +18,11 @@ export const Hit = ({ hit }) => {
     image,
     start,
     end,
+    eventTimezone,
     city,
     location,
-    region,
+    usRegion,
+    intRegion,
     eventUrl,
     subject,
     experience,
@@ -33,13 +35,16 @@ export const Hit = ({ hit }) => {
       image={image}
       start={start}
       end={end}
+      eventTimezone={eventTimezone}
       city={city}
       location={location}
-      region={region}
+      usRegion={usRegion}
+      intRegion={intRegion}
       eventUrl={eventUrl}
       subject={subject}
       experience={experience}
       format={format}
+      hit={hit}
     />
   );
 };
