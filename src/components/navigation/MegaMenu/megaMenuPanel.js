@@ -46,8 +46,6 @@ const MegaMenuPanel = ({
     const { origin, pathname, hash } = window.location;
     const browserUrl = new URL(pathname.replace(/\/+$/, '') + hash, origin);
 
-    console.log(browserUrl.toString());
-
     // Loop through children menu items and add active styles to parent button if any children items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
       if (Object.keys(linkGroups[i]).includes('links')) {
