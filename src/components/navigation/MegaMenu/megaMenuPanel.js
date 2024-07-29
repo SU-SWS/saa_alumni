@@ -43,20 +43,20 @@ const MegaMenuPanel = ({
   let isActiveButton;
 
   if (isBrowser) {
-    const browserUrl = window.location.pathname;
+    const { origin, pathname, hash } = window.location;
+    const browserUrl = new URL(pathname + hash, origin);
 
     // Loop through children menu items and add active styles to parent button if any children items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
       if (Object.keys(linkGroups[i]).includes('links')) {
         for (let j = 0; j < linkGroups[i].links.length; j += 1) {
           if (linkGroups[i].links[j].link?.cached_url) {
-            // Remove trailing and leading slashes from the URL.
-            const cachedUrl = linkGroups[i].links[j].link.cached_url.replace(
-              /^\/|\/$/g,
-              ''
-            );
-            const browserUrlNoSlash = browserUrl.replace(/^\/|\/$/g, '');
-            if (cachedUrl === browserUrlNoSlash) {
+            const { link } = linkGroups[i].links[j];
+            const cachedUrl = new URL(link.cached_url, origin);
+            if (link.anchor) {
+              cachedUrl.hash = link.anchor;
+            }
+            if (cachedUrl.toString() === browserUrl.toString()) {
               isActiveButton = true;
             }
           }
@@ -64,13 +64,12 @@ const MegaMenuPanel = ({
       }
       if (linkGroups[i].secondaryLink?.cached_url) {
         if (linkGroups[i].secondaryLink.cached_url) {
-          // Remove trailing and leading slashes from the URL.
-          const cachedUrl = linkGroups[i].secondaryLink.cached_url.replace(
-            /^\/|\/$/g,
-            ''
-          );
-          const browserUrlNoSlash = browserUrl.replace(/^\/|\/$/g, '');
-          if (cachedUrl === browserUrlNoSlash) {
+          const link = linkGroups[i].secondaryLink;
+          const cachedUrl = new URL(link.cached_url, origin);
+          if (link.anchor) {
+            cachedUrl.hash = link.anchor;
+          }
+          if (cachedUrl.toString() === browserUrl.toString()) {
             isActiveButton = true;
           }
         }
