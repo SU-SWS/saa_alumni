@@ -44,7 +44,9 @@ const MegaMenuPanel = ({
 
   if (isBrowser) {
     const { origin, pathname, hash } = window.location;
-    const browserUrl = new URL(pathname + hash, origin);
+    const browserUrl = new URL(pathname.replace(/\/+$/, '') + hash, origin);
+
+    console.log(browserUrl.toString());
 
     // Loop through children menu items and add active styles to parent button if any children items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
@@ -52,7 +54,9 @@ const MegaMenuPanel = ({
         for (let j = 0; j < linkGroups[i].links.length; j += 1) {
           if (linkGroups[i].links[j].link?.cached_url) {
             const { link } = linkGroups[i].links[j];
-            const cachedUrl = new URL(link.cached_url, origin);
+            // Create a new URL object from the cached_url with stripped trailing slashes
+            const stripped = link.cached_url.replace(/\/+$/, '');
+            const cachedUrl = new URL(stripped, origin);
             if (link.anchor) {
               cachedUrl.hash = link.anchor;
             }
@@ -65,7 +69,8 @@ const MegaMenuPanel = ({
       if (linkGroups[i].secondaryLink?.cached_url) {
         if (linkGroups[i].secondaryLink.cached_url) {
           const link = linkGroups[i].secondaryLink;
-          const cachedUrl = new URL(link.cached_url, origin);
+          const stripped = link.cached_url.replace(/\/+$/, '');
+          const cachedUrl = new URL(stripped, origin);
           if (link.anchor) {
             cachedUrl.hash = link.anchor;
           }
