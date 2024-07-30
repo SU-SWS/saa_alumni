@@ -23,8 +23,8 @@ const knownFacets = [
   },
   {
     attribute: 'experience',
-    label: 'Mode of Participation',
-    chip: 'Mode',
+    label: 'Experience',
+    chip: 'Experience',
     expanded: false,
   },
   {
