@@ -6,11 +6,17 @@ import { useStats } from 'react-instantsearch';
  * @returns {React.ReactElement}
  */
 export const StatusHeader = () => {
-  const { nbHits, hitsPerPage, nbPages, page } = useStats();
+  const { nbHits, hitsPerPage, nbPages, page, areHitsSorted, nbSortedHits } =
+    useStats();
+
+  const numHits = useMemo(
+    () => (areHitsSorted ? nbSortedHits : nbHits),
+    [areHitsSorted, nbHits, nbSortedHits]
+  );
 
   const lastPageHits = useMemo(
-    () => nbHits % hitsPerPage,
-    [nbHits, hitsPerPage]
+    () => numHits % hitsPerPage,
+    [numHits, hitsPerPage]
   );
 
   const isShowFirstPage = useMemo(() => page === 0, [page]);
@@ -33,8 +39,8 @@ export const StatusHeader = () => {
   );
 
   const countDisplay = useMemo(
-    () => `${nbHits} ${nbHits > 1 ? 'events' : 'event'}`,
-    [nbHits]
+    () => `${numHits} ${numHits > 1 ? 'events' : 'event'}`,
+    [numHits]
   );
   const pageDisplay = useMemo(
     () => `; showing ${firstPageResult} to ${lastPageResult}`,
@@ -48,7 +54,7 @@ export const StatusHeader = () => {
       aria-atomic="true"
       className="su-text-black-80 su-text-20"
     >
-      {nbHits ? (
+      {numHits ? (
         <>
           {countDisplay}
           <span className="su-sr-only">{pageDisplay}</span>

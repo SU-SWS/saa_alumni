@@ -45,6 +45,24 @@ const knownFacets = [
     chip: 'Search',
     expanded: false,
   },
+  {
+    attribute: 'city',
+    label: 'City',
+    chip: 'City',
+    expanded: false,
+  },
+  {
+    attribute: 'state',
+    label: 'US State / Canadian Province',
+    chip: 'State/Province',
+    expanded: false,
+  },
+  {
+    attribute: 'country',
+    label: 'Country',
+    chip: 'Country',
+    expanded: false,
+  },
 ];
 
 /**

@@ -24,6 +24,9 @@ const searchClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_API_KEY
 );
 
+// TODO: Swap out for env var.
+const indexName = 'dev_alumni-events_start-asc';
+
 const EventDiscoveryContent = () => {
   const { status } = useInstantSearch();
   /* Best practice is to display a loading indicator only when status is stalled,
@@ -37,10 +40,7 @@ const EventDiscoveryContent = () => {
     <FacetProvider>
       <div className="su-cc su-mx-12">
         <div className="su-flex su-items-center su-max-w-600 su-mx-auto su-gap-x-16">
-          <SearchBar
-            searchClient={searchClient}
-            indexName="dev_alumni-events_start-asc"
-          />
+          <SearchBar searchClient={searchClient} indexName={indexName} />
           <MobileFilter />
         </div>
         <div className="lg:su-flex lg:su-gap-x-40 su-mt-40 lg:su-mt-80">
@@ -77,17 +77,19 @@ const EventDiscoveryContent = () => {
 const EventsDiscovery = () => (
   <InstantSearch
     searchClient={searchClient}
-    indexName="dev_alumni-events_start-asc"
+    indexName={indexName}
     future={{ preserveSharedStateOnUnmount: true }}
     stalledSearchDelay={2000}
     routing={{
-      router: history(),
+      router: history({
+        cleanUrlOnDispose: true,
+      }),
       stateMapping: {
         stateToRoute(uiState) {
-          const indexUiState = uiState['dev_alumni-events_start-asc'];
+          const indexUiState = uiState[indexName];
 
-          return {
-            q: indexUiState.query,
+          // Normal params.
+          const ret = {
             page: indexUiState.page,
             format: indexUiState.refinementList?.format,
             experience: indexUiState.refinementList?.experience,
@@ -95,24 +97,43 @@ const EventsDiscovery = () => (
             us: indexUiState.refinementList?.usRegion,
             int: indexUiState.refinementList?.intRegion,
             startTimestamp: indexUiState.numericMenu?.startTimestamp,
+            region: indexUiState.refinementList?.usRegion,
+            intRegion: indexUiState.refinementList?.intRegion,
+            country: indexUiState.refinementList?.country,
+            state: indexUiState.refinementList?.state,
             eventsPerPage: indexUiState.hitsPerPage,
           };
+
+          // Location Search params.
+          if (
+            indexUiState.radialGeoSearch &&
+            indexUiState.radialGeoSearch.lat
+          ) {
+            ret.near = indexUiState.radialGeoSearch;
+          }
+
+          ret.q = indexUiState.query;
+
+          return ret;
         },
         routeToState(routeState) {
           return {
-            'dev_alumni-events_start-asc': {
-              query: routeState.q,
+            [indexName]: {
               page: routeState.page,
               refinementList: {
                 format: routeState.format,
                 subject: routeState.subject,
                 experience: routeState.experience,
+                country: routeState.country,
+                state: routeState.state,
                 usRegion: routeState.us,
                 intRegion: routeState.int,
               },
               numericMenu: {
                 startTimestamp: routeState.startTimestamp,
               },
+              radialGeoSearch: routeState.near,
+              query: routeState.q,
               hitsPerPage: routeState.eventsPerPage,
             },
           };
