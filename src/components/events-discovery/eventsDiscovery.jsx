@@ -88,8 +88,8 @@ const EventsDiscovery = () => (
         stateToRoute(uiState) {
           const indexUiState = uiState[indexName];
 
-          // Normal params.
-          const ret = {
+          return {
+            q: indexUiState.query,
             page: indexUiState.page,
             format: indexUiState.refinementList?.format,
             experience: indexUiState.refinementList?.experience,
@@ -97,24 +97,13 @@ const EventsDiscovery = () => (
             us: indexUiState.refinementList?.usRegion,
             int: indexUiState.refinementList?.intRegion,
             startTimestamp: indexUiState.numericMenu?.startTimestamp,
-            region: indexUiState.refinementList?.usRegion,
-            intRegion: indexUiState.refinementList?.intRegion,
             country: indexUiState.refinementList?.country,
             state: indexUiState.refinementList?.state,
             eventsPerPage: indexUiState.hitsPerPage,
+            near: indexUiState.radialGeoSearch?.lat
+              ? indexUiState.radialGeoSearch
+              : undefined,
           };
-
-          // Location Search params.
-          if (
-            indexUiState.radialGeoSearch &&
-            indexUiState.radialGeoSearch.lat
-          ) {
-            ret.near = indexUiState.radialGeoSearch;
-          }
-
-          ret.q = indexUiState.query;
-
-          return ret;
         },
         routeToState(routeState) {
           return {

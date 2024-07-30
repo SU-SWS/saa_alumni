@@ -1,2 +1,2 @@
 export * from './FacetList';
-export * from './MobileFacetComponent';
+export * from './MobileFacetList';

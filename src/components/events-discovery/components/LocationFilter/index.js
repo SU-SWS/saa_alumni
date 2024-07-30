@@ -8,3 +8,4 @@ export * from './LocationFacetTabs';
 export * from './LocationFacetTab';
 export * from './LocationListItem';
 export * from './LocationFilterClearContent';
+export * from './MobileLocationFilter';
