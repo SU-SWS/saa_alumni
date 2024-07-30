@@ -3,7 +3,6 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
-import { Container } from '../../layout/Container';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { ModalContext } from '../../layout/Modal/ModalContext';
 import * as styles from './megaMenuPanel.styles';

@@ -49,10 +49,6 @@ export const Event = ({
   experience,
   format = [],
   hit,
-  isDark = false,
-  isMinimal = false,
-  isBigHeadline = false,
-  headingLevel = 3,
 }) => {
   const formatDisplay = format?.join?.(', ') ?? '';
 
