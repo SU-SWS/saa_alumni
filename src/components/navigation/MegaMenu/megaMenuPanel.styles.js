@@ -20,7 +20,7 @@ export const parentButton = ({ panelOpened, isActiveButton } = {}) =>
     {
       '!su-bg-white !su-border-cardinal-red-xdark lg:hover:!su-bg-transparent !su-text-digital-red-light su-border-b !su-border-black-20 lg:!su-bg-transparent lg:!su-border-digital-red-light':
         panelOpened,
-      'su-bg-white lg:!su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight':
+      'su-bg-white lg:!su-text-digital-red-xlight lg:su-bg-transparent lg:!su-border-digital-red-xlight active-button':
         isActiveButton,
     }
   );

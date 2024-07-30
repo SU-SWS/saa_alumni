@@ -40,12 +40,11 @@ const MegaMenuPanel = ({
 
   useOnClickOutside(ref, () => setPanelOpened(false));
 
-  let isActiveButton;
+  let isActiveButton = false;
 
   if (isBrowser) {
     const { origin, pathname, hash } = window.location;
     const browserUrl = new URL(pathname.replace(/\/+$/, '') + hash, origin);
-
     // Loop through children menu items and add active styles to parent button if any children items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
       if (Object.keys(linkGroups[i]).includes('links')) {
@@ -58,6 +57,7 @@ const MegaMenuPanel = ({
             if (link.anchor) {
               cachedUrl.hash = link.anchor;
             }
+
             if (cachedUrl.toString() === browserUrl.toString()) {
               isActiveButton = true;
             }
@@ -69,6 +69,37 @@ const MegaMenuPanel = ({
           const link = linkGroups[i].secondaryLink;
           const stripped = link.cached_url.replace(/\/+$/, '');
           const cachedUrl = new URL(stripped, origin);
+          if (link.anchor) {
+            cachedUrl.hash = link.anchor;
+          }
+          if (cachedUrl.toString() === browserUrl.toString()) {
+            isActiveButton = true;
+          }
+        }
+      }
+    }
+    // Check the fourth column for active links
+    if (fourthCol && fourthCol.length > 0) {
+      const fourthComponent = fourthCol[0];
+      if (fourthComponent.component === 'megaMenuLinkGroup') {
+        const { links, secondaryLink } = fourthComponent;
+        for (let j = 0; j < links.length; j += 1) {
+          if (links[j].link?.cached_url) {
+            const { link } = links[j];
+            const stripped = link.cached_url.replace(/\/+$/, '');
+            const cachedUrl = new URL(stripped, window.location.origin);
+            if (link.anchor) {
+              cachedUrl.hash = link.anchor;
+            }
+            if (cachedUrl.toString() === browserUrl.toString()) {
+              isActiveButton = true;
+            }
+          }
+        }
+        if (secondaryLink?.cached_url) {
+          const link = secondaryLink;
+          const stripped = link.cached_url.replace(/\/+$/, '');
+          const cachedUrl = new URL(stripped, window.location.origin);
           if (link.anchor) {
             cachedUrl.hash = link.anchor;
           }
