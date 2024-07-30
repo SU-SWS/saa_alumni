@@ -23,10 +23,10 @@ const LocationFacetTab = forwardRef(
       tabIndex={isActive ? 0 : -1}
       data-test={`location-${value}-tab`}
       className={dcnb(
-        'su-text-16 su-rs-px-neg2 su-rs-py-neg2 su-text-cardinal-red-dark hocus-visible:su-bg-carinal-red-light-05 hocus:su-decoration-cardinal-red-dark su-transition',
+        'su-text-16 su-rs-px-neg2 su-rs-py-neg2 su-border-b-4 su-text-cardinal-red-dark hocus-visible:su-bg-carinal-red-light-05 hocus:su-decoration-cardinal-red-dark su-transition',
         {
-          'su-border-b-4 su-border-cardinal-red-light su-font-semibold':
-            isActive,
+          'su-border-transparent': !isActive,
+          'su-border-cardinal-red-light su-font-semibold': isActive,
         },
         { 'su-col-span-3': value !== 'state' },
         { 'su-col-span-6': value === 'state' }

@@ -41,9 +41,12 @@ const LocationFacetTabs = () => {
         if (activeTab === 'country') {
           setActiveTab('state');
           stateRef.current.focus();
-        } else {
+        } else if (activeTab === 'state') {
           setActiveTab('city');
           cityRef.current.focus();
+        } else {
+          setActiveTab('country');
+          countryRef.current.focus();
         }
         break;
       }
@@ -59,9 +62,12 @@ const LocationFacetTabs = () => {
         if (activeTab === 'city') {
           setActiveTab('state');
           stateRef.current.focus();
-        } else {
+        } else if (activeTab === 'state') {
           setActiveTab('country');
           countryRef.current.focus();
+        } else {
+          setActiveTab('city');
+          cityRef.current.focus();
         }
         break;
       }
