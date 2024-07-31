@@ -2,6 +2,7 @@ const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
 require('dotenv').config();
+const adapter = require('gatsby-adapter-netlify').default;
 
 /**
  * Resolve relations for storyblok.
@@ -55,8 +56,12 @@ module.exports = {
       resolveRelations: storyblokRelations,
     },
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   plugins: [
-    `gatsby-plugin-fontawesome-css-2`,
+    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {
@@ -168,13 +173,7 @@ module.exports = {
         icons: [],
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        mergeSecurityHeaders: false,
-      },
-    },
-    `gatsby-plugin-use-query-params`,
+    `gatsby-plugin-use-query-params-v2`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

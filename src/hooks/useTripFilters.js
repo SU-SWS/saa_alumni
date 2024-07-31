@@ -6,7 +6,7 @@ import {
   withDefault,
 } from 'use-query-params';
 import { encodeQueryParams } from 'serialize-query-params';
-import { stringify } from 'query-string';
+import queryString from 'query-string';
 import { useLocation } from '@reach/router';
 import { useTripFilterDatasources } from './useTripFilterDatasources';
 import { useTrips } from './useTrips';
@@ -206,7 +206,7 @@ export const useTripFilters = (primaryPageFilter = {}) => {
   const location = useLocation();
   const getPageLink = useCallback(
     (pg = 1) => {
-      const encodedParams = stringify(
+      const encodedParams = queryString.stringify(
         encodeQueryParams(queryConfig, { ...params, page: pg })
       );
 
