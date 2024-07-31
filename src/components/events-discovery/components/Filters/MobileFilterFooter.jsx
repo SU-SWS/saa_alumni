@@ -9,7 +9,8 @@ export const MobileFilterFooter = ({
   showClear = true,
 }) => {
   const { canRefine, refine: clearRefinements } = useClearRefinements();
-  const { clearRefinements: clearGeoSearch } = useRadialGeoSearch();
+  const { name: geoSearchName, clearRefinements: clearGeoSearch } =
+    useRadialGeoSearch();
 
   const rootStyles = dcnb(
     'su-flex su-flex-wrap su-gap-8 su-justify-between su-w-full su-sticky su-bottom-0 su-border-t su-border-t-black-30 su-bg-fog-light su-p-26 su-z-10',
@@ -29,7 +30,7 @@ export const MobileFilterFooter = ({
       {showClear && (
         <button
           type="button"
-          disabled={!canRefine}
+          disabled={!canRefine && !geoSearchName}
           onClick={() => {
             clearRefinements();
             clearGeoSearch();
