@@ -93,11 +93,18 @@ const LocationTabPanelCity = () => {
 
           navigator.geolocation.getCurrentPosition(
             (position) => {
-              refine({
-                name: 'Current location',
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-              });
+              if (!refine) {
+                console.error('Error refining current location');
+                setLocError({
+                  message: 'Unable to get current location. Please try again.',
+                });
+              } else {
+                refine({
+                  name: 'Current location',
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude,
+                });
+              }
             },
             (error) => {
               console.error('Error getting current location', error);
