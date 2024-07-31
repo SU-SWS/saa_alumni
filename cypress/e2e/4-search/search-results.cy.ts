@@ -28,7 +28,7 @@ describe('Search Results', () => {
     cy.get('input[value="Alumni"]').should('exist').check({ force: true });
 
     cy.reload() // Needed for local Gatsby build
-    cy.url().should('include', '/search/?q=travel%20study&site=Alumni');
+    cy.url().should('include', '/search/?q=travel+study&site=Alumni');
   });
   it('should return no search results when searching lorem ipsum', () => {
     cy.visit('/search/?q=lorem%20ipsum');

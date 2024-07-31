@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 import { authInstance } from '../../utilities/authInstance';
 import { AssetClient } from '../../utilities/asset';
 
@@ -39,5 +39,8 @@ const assetHandler = async (req, res) => {
   }
 };
 
-const handler = connect().use(authInstance.authorize()).get(assetHandler);
-export default handler;
+const router = createRouter()
+  .use(expressWrapper(authInstance.authorize()))
+  .get(expressWrapper(assetHandler));
+
+export default router.handler();
