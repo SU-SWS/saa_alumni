@@ -8,19 +8,22 @@ import {
   useCurrentRefinements,
   useRefinementList,
 } from 'react-instantsearch';
+import { useMediaQuery } from '@mui/material';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
 import LocationFilterClearContent from './LocationFilterClearContent';
 import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { LocationListItem } from './LocationListItem';
+import { config } from '../../../../utilities/config';
 
 const LocationTabPanelState = () => {
   const { activeTab } = useContext(LocationContext);
   const searchFieldId = useId();
   const title = 'Find a US State / Canadian Province';
   const field = 'state';
-  const isDesktop = window ?? window.innerWidth >= 991;
+  const { breakpoints } = config;
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
   const { name: locationName } = useRadialGeoSearch();
   const { items: countryItems } = useCurrentRefinements({
     includedAttributes: ['country'],
@@ -79,7 +82,6 @@ const LocationTabPanelState = () => {
               </label>
               <MUIAutocomplete
                 id={searchFieldId}
-                disablePortal
                 multiple={false}
                 autoSelect={false}
                 options={reformattedItems}
@@ -103,10 +105,17 @@ const LocationTabPanelState = () => {
                   <MUITextField
                     {...props}
                     variant="standard"
-                    placeholder={title}
+                    label={title}
+                    InputLabelProps={{
+                      classes: {
+                        root: 'su-font-sans !su-text-18 md:!su-text-21 lg:!su-hidden !su-pl-40',
+                        focused: 'xs:!su-pl-0 xs:!su-ml-0',
+                        filled: 'xs:!su-pl-0 xs:!su-ml-0',
+                      },
+                    }}
                     inputProps={{
                       ...props.inputProps,
-                      className: styles.input,
+                      className: styles.input(isDesktop),
                     }}
                     data-test={`${field}-facet-search`}
                   />
@@ -131,6 +140,7 @@ const LocationTabPanelState = () => {
                   />
                 }
                 popupIcon={null}
+                disablePortal={!isDesktop}
                 classes={{
                   popper: isDesktop ? styles.popper : styles.popperMobile,
                   inputRoot: styles.inputRoot,

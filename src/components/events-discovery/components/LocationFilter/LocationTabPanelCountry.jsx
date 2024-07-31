@@ -7,19 +7,22 @@ import {
   useCurrentRefinements,
   useRefinementList,
 } from 'react-instantsearch';
+import { useMediaQuery } from '@mui/material';
 import { LocationContext } from './LocationFacetProvider';
 import * as styles from './LocationFilter.styles';
 import HeroIcon from '../../../simple/heroIcon';
 import LocationFilterClearContent from './LocationFilterClearContent';
 import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { LocationListItem } from './LocationListItem';
+import { config } from '../../../../utilities/config';
 
 const LocationTabPanelCountry = () => {
   const { activeTab } = useContext(LocationContext);
   const searchFieldId = useId();
   const title = 'Find a country';
   const field = 'country';
-  const isDesktop = window ?? window.innerWidth >= 991;
+  const { breakpoints } = config;
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   const { name: locationName } = useRadialGeoSearch();
   const { items: stateItems } = useCurrentRefinements({
@@ -101,10 +104,17 @@ const LocationTabPanelCountry = () => {
                   <MUITextField
                     {...props}
                     variant="standard"
-                    placeholder={title}
+                    label={title}
+                    InputLabelProps={{
+                      classes: {
+                        root: 'su-font-sans !su-text-18 md:!su-text-21 lg:!su-hidden !su-pl-40',
+                        focused: 'xs:!su-pl-0 xs:!su-ml-0',
+                        filled: 'xs:!su-pl-0 xs:!su-ml-0',
+                      },
+                    }}
                     inputProps={{
                       ...props.inputProps,
-                      className: styles.input,
+                      className: styles.input(isDesktop),
                     }}
                     data-test={`${field}-facet-search`}
                   />
@@ -129,9 +139,9 @@ const LocationTabPanelCountry = () => {
                   />
                 }
                 popupIcon={null}
+                disablePortal={!isDesktop}
                 classes={{
                   popper: isDesktop ? styles.popper : styles.popperMobile,
-                  popperDisablePortal: styles.popper,
                   inputRoot: styles.inputRoot,
                   paper: styles.paper,
                   listbox: isDesktop ? styles.listbox : styles.listboxMobile,

@@ -15,8 +15,14 @@ export const inputRoot = ({ locError }) =>
         !!locError,
     }
   );
-export const input =
-  '!su-text-18 focus:!su-ring-0 !su-px-48 !su-py-18 !su-leading-display focus:!su-border-0 selection:su-bg-digital-red-20 !su-caret-digital-red !su-transition-colors placeholder:!su-opacity-100 placeholder:!su-text-black-70 placeholder:lg:!su-text-transparent !su-width-100';
+export const input = (isDesktop) =>
+  dcnb(
+    '!su-text-18 focus:!su-ring-0 !su-px-48 !su-leading-display focus:!su-border-0 selection:su-bg-digital-red-20 !su-caret-digital-red !su-transition-colors placeholder:!su-text-transparent !su-width-100',
+    {
+      '!su-py-18': isDesktop,
+      '!su-pt-22': !isDesktop,
+    }
+  );
 export const popper = '';
 export const popperMobile =
   '!su-w-[calc(100%_+_52px)] !su-relative !su-translate-y-0 !su--ml-26 !su-overflow-x-hidden !su-h-full';
@@ -34,7 +40,7 @@ export const option = ({ selected }) =>
   );
 export const fieldset = 'su-mt-18 lg:su-mt-0 lg:su-mb-18 su-mx-26 2xl:su-mx-27';
 export const legend =
-  '!su-mx-20 !su-mt-10 lg:!su-mx-0 lg:!su-mt-0 lg:su-mb-8 su-text-18';
+  '!su-mx-20 !su-mt-10 lg:!su-mx-0 lg:!su-mt-0 lg:su-mb-8 su-text-18 su-hidden lg:su-block';
 export const locationWrapper = 'su-relative';
 export const locationLabels = '';
 export const clearLocation = 'hocus:!su-bg-transparent !su-bg-transparent';
