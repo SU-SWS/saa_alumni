@@ -152,7 +152,7 @@ export default (renderFn, unmountFn = noop) =>
             lat: aroundLatLng ? aroundLatLng[0] : null,
             lng: aroundLatLng ? aroundLatLng[1] : null,
             radius: aroundRadius,
-            name: connectorState.name,
+            name: connectorState.name || 'Missing name',
           },
         };
       },
@@ -167,9 +167,23 @@ export default (renderFn, unmountFn = noop) =>
        * @param renderOptions - The render options of the index component tree.
        */
       getRenderState(renderState, renderOptions) {
+        // Enforce only one primary widget.
+        // This is protection against multiple primary widgets due to rendering or
+        // human error.
+        if (connectorState.primary) {
+          if (renderState?.radialGeoSearch?.primary) {
+            if (
+              renderState?.radialGeoSearch?.primary?.id !== connectorState.id
+            ) {
+              connectorState.primary = false;
+            }
+          }
+        }
+
         return {
           ...renderState,
           radialGeoSearch: {
+            ...renderState.radialGeoSearch,
             [connectorState.id]: connectorState,
             primary: connectorState.primary
               ? connectorState
@@ -194,11 +208,10 @@ export default (renderFn, unmountFn = noop) =>
         } = renderOptions;
 
         // Return only the primary widget render state.
-        if (
-          renderState[indexName]?.radialGeoSearch?.primary &&
-          renderState[indexName]?.radialGeoSearch?.primary.refine
-        ) {
-          return renderState[indexName]?.radialGeoSearch?.primary;
+        if (renderState[indexName]?.radialGeoSearch?.primary) {
+          if (renderState[indexName]?.radialGeoSearch?.primary.refine) {
+            return renderState[indexName]?.radialGeoSearch?.primary;
+          }
         }
 
         if (!connectorState.refine) {

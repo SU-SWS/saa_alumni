@@ -108,7 +108,7 @@ const EventsDiscovery = () => (
             country: indexUiState.refinementList?.country,
             state: indexUiState.refinementList?.state,
             eventsPerPage: indexUiState.hitsPerPage,
-            near: indexUiState.radialGeoSearch?.lat
+            near: indexUiState.radialGeoSearch?.name
               ? indexUiState.radialGeoSearch
               : undefined,
           };
