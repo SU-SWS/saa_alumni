@@ -82,7 +82,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby clean && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "dev": "npm run develop",
     "dev:mock": "MEGAPROFILE_MOCK=true npm run develop",
@@ -151,5 +151,8 @@
     "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
       "react": "^18.0.0"
     }
+  },
+  "optionalDependencies": {
+    "@parcel/watcher-linux-x64-glibc": "^2.4.2-alpha.0"
   }
 }
