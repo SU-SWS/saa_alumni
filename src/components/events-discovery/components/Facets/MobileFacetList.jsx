@@ -22,22 +22,22 @@ export const MobileFacetList = ({ attribute }) => {
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label
             htmlFor={item.label}
-            className="su-font-sans su-text-cardinal-red su-w-full"
+            className="su-group su-flex su-items-center su-font-sans su-pl-16 su-text-cardinal-red su-w-full su-transition-colors hover:su-bg-cardinal-red-light hover:su-text-white focus-within:su-bg-cardinal-red-light focus-within:su-text-white"
           >
             <input
               name={item.label}
               id={item.label}
               type="checkbox"
-              className="su-sr-only su-peer"
+              className="su-peer su-mr-6 su-items-center su-rounded-md su-bg-white su-w-20 su-h-20 su-border-2 su-border-cardinal-red-light su-text-cardinal-red-light su-cursor-pointer su-transition su-duration-200 su-ease-in-out group-hocus:su-ring-1 group-hocus:su-ring-cardinal-red"
               checked={item.isRefined}
               onChange={() => refine(item.value)}
             />
-            <span className="su-font-sans su-flex su-flex-row-reverse su-w-full su-text-18 su-px-26 su-py-14 peer-checked:su-bg-cardinal-red peer-checked:su-text-white su-cursor-pointer hover:su-underline su-transition-colors hover:su-bg-cardinal-red-light hover:su-text-white peer-focus-visible:su-bg-cardinal-red-light peer-focus-visible:su-text-white peer-focus-visible:su-underline peer-checked:first:children:su-text-current hover:peer-checked:su-bg-cardinal-red-light hover:peer-checked:su-text-white su-underline-offset-2 peer-indeterminate:su-bg-cardinal-red peer-indeterminate:su-text-white peer-indeterminate:first:children:su-text-current hover:peer-indeterminate:su-bg-cardinal-red-light hover:peer-indeterminate:su-text-white">
-              <XIcon className="su-transition su-inline-block su-shrink-0 su-w-[1.2em] su-text-transparent su-transition-none su-ml-16 su--mr-4" />
+            <span className="su-font-sans su-flex su-w-full su-text-18 su-pl-16 su-pr-26 su-py-14 su-cursor-pointer hover:su-underline">
               <span className="su-grow">
                 {item.label}
                 <span className="su-font-sans"> ({item.count})</span>
               </span>
+              <XIcon className="su-transition su-inline-block su-shrink-0 su-w-[1.2em] su-text-transparent su-transition-none su-ml-16 su--mr-4" />
             </span>
           </label>
         </li>
