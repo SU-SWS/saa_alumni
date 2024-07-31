@@ -3,7 +3,6 @@ import { ChevronDownIcon } from '@heroicons/react/outline';
 import SbEditable from 'storyblok-react';
 import CreateBloks from '../../../utilities/createBloks';
 import useEscape from '../../../hooks/useEscape';
-import { Container } from '../../layout/Container';
 import { isExpanded, isBrowser } from '../../../utilities/menuHelpers';
 import { ModalContext } from '../../layout/Modal/ModalContext';
 import * as styles from './megaMenuPanel.styles';
@@ -41,28 +40,73 @@ const MegaMenuPanel = ({
 
   useOnClickOutside(ref, () => setPanelOpened(false));
 
-  let isActiveButton;
+  let isActiveButton = false;
 
   if (isBrowser) {
-    const browserUrl = window.location.pathname;
-
-    // Loop through children menu items and add active styles to parent button if any childrem items are active
+    const { origin, pathname, hash } = window.location;
+    const browserUrl = new URL(pathname.replace(/\/+$/, '') + hash, origin);
+    // Loop through children menu items and add active styles to parent button if any children items are active
     for (let i = 0; i < linkGroups.length; i += 1) {
       if (Object.keys(linkGroups[i]).includes('links')) {
         for (let j = 0; j < linkGroups[i].links.length; j += 1) {
-          if (
-            linkGroups[i].links[j].link?.cached_url &&
-            browserUrl.includes(linkGroups[i].links[j].link.cached_url)
-          ) {
+          if (linkGroups[i].links[j].link?.cached_url) {
+            const { link } = linkGroups[i].links[j];
+            // Create a new URL object from the cached_url with stripped trailing slashes
+            const stripped = link.cached_url.replace(/\/+$/, '');
+            const cachedUrl = new URL(stripped, origin);
+            if (link.anchor) {
+              cachedUrl.hash = link.anchor;
+            }
+
+            if (cachedUrl.toString() === browserUrl.toString()) {
+              isActiveButton = true;
+            }
+          }
+        }
+      }
+      if (linkGroups[i].secondaryLink?.cached_url) {
+        if (linkGroups[i].secondaryLink.cached_url) {
+          const link = linkGroups[i].secondaryLink;
+          const stripped = link.cached_url.replace(/\/+$/, '');
+          const cachedUrl = new URL(stripped, origin);
+          if (link.anchor) {
+            cachedUrl.hash = link.anchor;
+          }
+          if (cachedUrl.toString() === browserUrl.toString()) {
             isActiveButton = true;
           }
         }
       }
-      if (
-        linkGroups[i].secondaryLink?.cached_url &&
-        browserUrl.includes(linkGroups[i].secondaryLink.cached_url)
-      ) {
-        isActiveButton = true;
+    }
+    // Check the fourth column for active links
+    if (fourthCol && fourthCol.length > 0) {
+      const fourthComponent = fourthCol[0];
+      if (fourthComponent.component === 'megaMenuLinkGroup') {
+        const { links, secondaryLink } = fourthComponent;
+        for (let j = 0; j < links.length; j += 1) {
+          if (links[j].link?.cached_url) {
+            const { link } = links[j];
+            const stripped = link.cached_url.replace(/\/+$/, '');
+            const cachedUrl = new URL(stripped, window.location.origin);
+            if (link.anchor) {
+              cachedUrl.hash = link.anchor;
+            }
+            if (cachedUrl.toString() === browserUrl.toString()) {
+              isActiveButton = true;
+            }
+          }
+        }
+        if (secondaryLink?.cached_url) {
+          const link = secondaryLink;
+          const stripped = link.cached_url.replace(/\/+$/, '');
+          const cachedUrl = new URL(stripped, window.location.origin);
+          if (link.anchor) {
+            cachedUrl.hash = link.anchor;
+          }
+          if (cachedUrl.toString() === browserUrl.toString()) {
+            isActiveButton = true;
+          }
+        }
       }
     }
   }
