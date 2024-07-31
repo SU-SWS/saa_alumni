@@ -108,15 +108,13 @@ export default async (req: Request) => {
 
     console.log('Fetching Storyblok events...');
     const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync/', 
-      excluding_slugs: 'events/sync/archived/*', 
+      starts_with: 'events/sync/',  
       content_type: 'synchronizedEvent',
       version: 'published',
       per_page: 100,
     }) ?? [];
     const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/', 
-      excluding_slugs: 'events/sync/archived/*', 
       content_type: 'synchronizedEvent', 
       version: 'draft',
       per_page: 100,
@@ -307,7 +305,7 @@ export default async (req: Request) => {
               await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
                 story: { 
                   ...storyblok,
-                  full_slug: `events/sync/archived/${storyblok.slug}`,
+                  full_slug: `events/sync-archive/${storyblok.slug}`,
                 },
               });
               await delay();
