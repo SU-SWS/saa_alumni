@@ -1,6 +1,5 @@
 import React from 'react';
 import { useRefinementList } from 'react-instantsearch';
-import { XIcon } from '@heroicons/react/solid';
 
 export const MobileFacetList = ({ attribute }) => {
   const { canRefine, items, refine } = useRefinementList({ attribute });
@@ -32,12 +31,11 @@ export const MobileFacetList = ({ attribute }) => {
               checked={item.isRefined}
               onChange={() => refine(item.value)}
             />
-            <span className="su-font-sans su-flex su-w-full su-text-18 su-pl-16 su-pr-26 su-py-14 su-cursor-pointer hover:su-underline">
+            <span className="su-font-sans su-flex su-w-full su-text-18 su-pl-16 su-pr-26 su-py-14 su-cursor-pointer group-hover:su-underline peer-focus:su-underline">
               <span className="su-grow">
                 {item.label}
                 <span className="su-font-sans"> ({item.count})</span>
               </span>
-              <XIcon className="su-transition su-inline-block su-shrink-0 su-w-[1.2em] su-text-transparent su-transition-none su-ml-16 su--mr-4" />
             </span>
           </label>
         </li>
