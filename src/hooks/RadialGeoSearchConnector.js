@@ -194,7 +194,10 @@ export default (renderFn, unmountFn = noop) =>
         } = renderOptions;
 
         // Return only the primary widget render state.
-        if (renderState[indexName]?.radialGeoSearch?.primary) {
+        if (
+          renderState[indexName]?.radialGeoSearch?.primary &&
+          renderState[indexName]?.radialGeoSearch?.primary.refine
+        ) {
           return renderState[indexName]?.radialGeoSearch?.primary;
         }
 
