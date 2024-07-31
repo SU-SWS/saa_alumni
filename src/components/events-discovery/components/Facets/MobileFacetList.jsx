@@ -21,7 +21,7 @@ export const MobileFacetList = ({ attribute }) => {
           {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
           <label
             htmlFor={item.label}
-            className="su-group su-flex su-items-center su-font-sans su-pl-16 su-text-cardinal-red su-w-full su-transition-colors hover:su-bg-cardinal-red-light hover:su-text-white focus-within:su-bg-cardinal-red-light focus-within:su-text-white"
+            className="su-group su-flex su-items-center su-font-sans su-pl-16 su-text-cardinal-red su-w-full su-transition-colors hover:su-bg-cardinal-red-light hover:su-text-white"
           >
             <input
               name={item.label}
