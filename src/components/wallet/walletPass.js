@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useCallback } from 'react';
 import SbEditable from 'storyblok-react';
 import { isIOS, isAndroid } from 'react-device-detect';
 import QRCode from 'qrcode.react';
@@ -6,7 +6,6 @@ import QRCode from 'qrcode.react';
 import AppleWalletBadge from '../../images/apple-wallet-badge.svg';
 import AndroidWalletBadge from '../../images/android-wallet-badge.svg';
 import AuthContext from '../../contexts/AuthContext';
-import getSiteUrl from '../../utilities/getSiteUrl';
 import SbLink from '../../utilities/sbLink';
 
 const WalletPass = (props) => {
@@ -14,7 +13,7 @@ const WalletPass = (props) => {
   const location = typeof window !== `undefined` ? window.location : {};
   const buttonClasses =
     'su-inline-block su-w-fit su-group su-border-3 su-transition-colors su-no-underline su-underline-offset-[3px] su-font-regular hocus:su-underline su-border-digital-red su-bg-digital-red su-text-white hocus:su-bg-cardinal-red-xdark hocus:su-text-white hocus:su-border-cardinal-red-xdark hocus:su-shadow-md su-px-20 su-pt-10 su-pb-11 md:su-px-26 md:su-pt-14 md:su-pb-16 su-text-18 md:su-text-20';
-  const siteUrl = getSiteUrl();
+  const siteUrl = location.origin;
 
   const deviceParam = new URLSearchParams(location.search).get('device');
   const [membershipNumber, setMembershipNumber] = useState('');
@@ -25,11 +24,11 @@ const WalletPass = (props) => {
 
   const auth = useContext(AuthContext);
 
-  const getAndroidButtonUrl = async () => {
+  const getAndroidButtonUrl = useCallback(async () => {
     const response = await fetch(`${siteUrl}/api/walletpass/android`);
     const url = await response.text();
     return url;
-  };
+  }, [siteUrl]);
 
   const handleDeviceChange = async (e) => {
     const { value } = e.target;
@@ -64,10 +63,15 @@ const WalletPass = (props) => {
 
   // Load Android Wallet Pass URL
   useEffect(() => {
-    if (isAndroid) {
-      getAndroidButtonUrl().then((url) => setAndroidButtonUrl(url));
-    }
-  });
+    const loadAndroidButtonUrl = async () => {
+      if (isAndroid && membershipNumber) {
+        const url = await getAndroidButtonUrl();
+        setAndroidButtonUrl(url);
+      }
+    };
+
+    loadAndroidButtonUrl();
+  }, [membershipNumber, getAndroidButtonUrl]);
 
   // Redirect to Wallet Pass URL
   useEffect(() => {
