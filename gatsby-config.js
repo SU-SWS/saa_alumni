@@ -94,6 +94,7 @@ module.exports = {
           `/editor/**`,
           `/editor`,
           `/events/sync/**`,
+          `/events/sync-archive/**`,
           `/global-components/**`,
           `/travel-study/global-components/**`,
           `/test/**`,
