@@ -62,6 +62,16 @@ const theme = createTheme({
  * @returns {React.ReactElement}
  */
 export const MobileDateFilter = ({ onCloseMenu = () => null }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const open = useCallback(() => {
+    setIsOpen(true);
+  }, [setIsOpen]);
+
+  const close = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
   const { items } = useCurrentRefinements({
     includedAttributes: ['startTimestamp'],
   });
@@ -152,9 +162,15 @@ export const MobileDateFilter = ({ onCloseMenu = () => null }) => {
 
   return (
     <MobileParentFilter
+      isOpen={isOpen}
+      onOpen={open}
+      onClose={close}
       label="Date"
       count={hasRefinement ? 1 : 0}
-      onCloseMenu={onCloseMenu}
+      onCloseMenu={() => {
+        close();
+        onCloseMenu();
+      }}
     >
       <LocalizationProvider dateAdapter={AdapterLuxon}>
         <fieldset className="su-flex su-flex-col su-gap-8 su-mt-8 su-px-8">

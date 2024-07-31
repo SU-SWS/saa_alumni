@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useCurrentRefinements } from 'react-instantsearch';
 import LocationFacetProvider from './LocationFacetProvider';
 import LocationFacetTabs from './LocationFacetTabs';
@@ -31,14 +31,32 @@ export const MobileLocationFilter = ({ onCloseMenu }) => {
     [items]
   );
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const open = useCallback(() => {
+    setIsOpen(true);
+  }, [setIsOpen]);
+
+  const close = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
+  const closeAll = useCallback(() => {
+    close();
+    onCloseMenu();
+  }, [close, onCloseMenu]);
+
   return (
     <MobileParentFilter
+      isOpen={isOpen}
+      onOpen={open}
+      onClose={close}
       label="Location"
       count={count}
-      onCloseMenu={onCloseMenu}
+      onCloseMenu={closeAll}
     >
-      <MobileFacetFilter attribute="usRegion" onCloseMenu={onCloseMenu} />
-      <MobileFacetFilter attribute="intRegion" onCloseMenu={onCloseMenu} />
+      <MobileFacetFilter attribute="usRegion" onCloseMenu={closeAll} />
+      <MobileFacetFilter attribute="intRegion" onCloseMenu={closeAll} />
       <div className="su-px-16">
         <LocationFacetProvider>
           <LocationFacetTabs />
