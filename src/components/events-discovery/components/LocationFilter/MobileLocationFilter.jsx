@@ -7,6 +7,7 @@ import LocationTabPanelState from './LocationTabPanelState';
 import LocationTabPanelCountry from './LocationTabPanelCountry';
 import { MobileParentFilter } from '../Filters/MobileParentFilter';
 import { MobileFacetFilter } from '../Facets/MobileFacetFilter';
+import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 
 /**
  * @typedef {object} Props
@@ -21,15 +22,16 @@ export const MobileLocationFilter = ({ onCloseMenu }) => {
   const { items } = useCurrentRefinements({
     includedAttributes: ['usRegion', 'intRegion', 'state', 'country'],
   });
+  const { name: geoSearchName } = useRadialGeoSearch();
 
-  const count = useMemo(
-    () =>
+  const count = useMemo(() => {
+    const refinementCount =
       items?.reduce((sum, item) => {
         const numRefinements = item?.refinements?.length ?? 0;
         return sum + numRefinements;
-      }, 0) ?? 0,
-    [items]
-  );
+      }, 0) ?? 0;
+    return geoSearchName ? refinementCount + 1 : refinementCount;
+  }, [items, geoSearchName]);
 
   const [isOpen, setIsOpen] = useState(false);
 
