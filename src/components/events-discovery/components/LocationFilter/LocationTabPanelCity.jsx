@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import React, { useContext, useState, useId } from 'react';
 import MUIAutocomplete from '@mui/material/Autocomplete';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import MUITextField from '@mui/material/TextField';
 import MUIToggleButton from '@mui/material/ToggleButton';
 import MUIToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -13,12 +14,14 @@ import HeroIcon from '../../../simple/heroIcon';
 import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 import { LocationListItem } from './LocationListItem';
 import LocationFilterClearContent from './LocationFilterClearContent';
+import { config } from '../../../../utilities/config';
 
 const LocationTabPanelCity = () => {
   // CONTEXT
   const { activeTab, locError, setLocError } = useContext(LocationContext);
   const searchFieldId = useId();
-  const isDesktop = window ?? window.innerWidth >= 991;
+  const { breakpoints } = config;
+  const isDesktop = useMediaQuery(`(min-width: ${breakpoints.lg}px)`);
 
   const { items: otherLocationItems } = useCurrentRefinements({
     includedAttributes: ['state', 'country'],
@@ -93,11 +96,18 @@ const LocationTabPanelCity = () => {
 
           navigator.geolocation.getCurrentPosition(
             (position) => {
-              refine({
-                name: 'Current location',
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-              });
+              if (!refine) {
+                console.error('Error refining current location');
+                setLocError({
+                  message: 'Unable to get current location. Please try again.',
+                });
+              } else {
+                refine({
+                  name: 'Current location',
+                  lat: position.coords.latitude,
+                  lng: position.coords.longitude,
+                });
+              }
             },
             (error) => {
               console.error('Error getting current location', error);
@@ -183,10 +193,17 @@ const LocationTabPanelCity = () => {
                   <MUITextField
                     {...props}
                     variant="standard"
-                    placeholder="Find a city"
+                    label="Find a city"
+                    InputLabelProps={{
+                      classes: {
+                        root: 'su-font-sans !su-text-18 md:!su-text-21 lg:!su-hidden !su-pl-40',
+                        focused: 'xs:!su-pl-0 xs:!su-ml-0',
+                        filled: 'xs:!su-pl-0 xs:!su-ml-0',
+                      },
+                    }}
                     inputProps={{
                       ...props.inputProps,
-                      className: styles.input,
+                      className: styles.input(isDesktop),
                     }}
                     data-test="location-facet-search"
                   />
@@ -233,6 +250,7 @@ const LocationTabPanelCity = () => {
                   />
                 }
                 popupIcon={null}
+                disablePortal={!isDesktop}
                 classes={{
                   popper: isDesktop ? '' : styles.popperMobile,
                   listbox: isDesktop ? styles.listbox : styles.listboxMobile,

@@ -15,13 +15,19 @@ export const inputRoot = ({ locError }) =>
         !!locError,
     }
   );
-export const input =
-  '!su-text-18 focus:!su-ring-0 !su-px-48 !su-py-18 !su-leading-display focus:!su-border-0 selection:su-bg-digital-red-20 !su-caret-digital-red !su-transition-colors placeholder:!su-opacity-100 placeholder:!su-text-black-70 placeholder:lg:!su-text-transparent !su-width-100';
+export const input = (isDesktop) =>
+  dcnb(
+    '!su-text-18 focus:!su-ring-0 !su-px-48 !su-leading-display focus:!su-border-0 selection:su-bg-digital-red-20 !su-caret-digital-red !su-transition-colors placeholder:!su-text-transparent !su-width-100',
+    {
+      '!su-py-18': isDesktop,
+      '!su-pt-22': !isDesktop,
+    }
+  );
 export const popper = '';
 export const popperMobile =
   '!su-w-[calc(100%_+_52px)] !su-relative !su-translate-y-0 !su--ml-26 !su-overflow-x-hidden !su-h-full';
 export const paper =
-  '!su-mt-18 lg:!su-mt-2 lg:!su-rounded !su-shadow-none lg:!su-shadow-lg !su-font-sans !su-text-18 lg:!su-border lg:!su-border-lagunita-light !su-w-full';
+  '!su-mt-18 lg:!su-mt-2 lg:!su-rounded !su-shadow-none lg:!su-shadow-lg !su-font-sans !su-text-18 !su-border !su-border-lagunita-light !su-w-full';
 export const listbox = '!su-max-h-280';
 export const listboxMobile = '!su-max-h-full';
 export const option = ({ selected }) =>
@@ -34,7 +40,7 @@ export const option = ({ selected }) =>
   );
 export const fieldset = 'su-mt-18 lg:su-mt-0 lg:su-mb-18 su-mx-26 2xl:su-mx-27';
 export const legend =
-  '!su-mx-20 !su-mt-10 lg:!su-mx-0 lg:!su-mt-0 lg:su-mb-8 su-text-18';
+  '!su-mx-20 !su-mt-10 lg:!su-mx-0 lg:!su-mt-0 lg:su-mb-8 su-text-18 su-hidden lg:su-block';
 export const locationWrapper = 'su-relative';
 export const locationLabels = '';
 export const clearLocation = 'hocus:!su-bg-transparent !su-bg-transparent';
@@ -43,7 +49,7 @@ export const clearIcon =
 export const pinIcon =
   'su-text-black-70 su-absolute su-top-22 su-left-8 lg:su-left-16 su-w-24';
 export const toggleGroupWrapper =
-  'su-px-45 su-mt-18 lg:su-mt-12 lg:su-px-0 su-mb-[200px] lg:su-mb-0';
+  'su-px-45 su-mt-18 lg:su-mt-12 lg:su-px-0 su-mb-0';
 export const toggleButtonGroup = 'su-w-full su-shadow';
 export const toggleButton =
   'su-w-full su-transition-colors !su-leading-none !su-px-2 !su-pt-10 !su-pb-11 !su-border-digital-red-light hover:!su-bg-digital-red-20 focus-visible:!su-bg-digital-red-20 !su-text-digital-red hover:!su-text-digital-red-dark focus-visible:!su-text-digital-red-dark hocus:!su-underline aria-pressed:!su-bg-digital-red aria-pressed:!su-text-white !su-text-16 !su-font-sans !su-normal-case disabled:!su-bg-black-10 disabled:!su-border-black-40 disabled:!su-text-black-70 disabled:aria-pressed:!su-bg-black-70';
