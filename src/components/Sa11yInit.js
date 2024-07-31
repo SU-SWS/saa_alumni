@@ -15,6 +15,7 @@ const Sa11yInit = () => {
     // Check if the custom element is already defined
     if (!customElements.get('sa11y-heading-label')) {
       // Instantiate and run Sa11y
+      // eslint-disable-next-line no-unused-vars
       const sa11y = new Sa11y({
         checkRoot: 'body',
         // Customize with props

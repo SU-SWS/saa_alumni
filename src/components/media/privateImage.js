@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
 import { dcnb } from 'cnbuilder';
 import axios from 'axios';

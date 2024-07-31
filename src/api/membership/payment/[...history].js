@@ -1,4 +1,4 @@
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 import { GiveGabNonce } from '../../../utilities/givegab/GiveGabNonce';
 import { authInstance } from '../../../utilities/authInstance';
 import {
@@ -18,6 +18,7 @@ const paymentHandler = async (req, res) => {
     const nonceToken = await ggNonce.getToken(orgId, dssId, scheduleId);
     res.json({ ...nonceToken });
   } catch (err) {
+    // eslint-disable-next-line no-console
     console.error('ERROR:', err);
     res.status(404).json({ error: 'Nonce token not found' });
   }
@@ -30,9 +31,9 @@ const storyblokPreviewPassthrough = async (req, res, next) => {
   } else next();
 };
 
-const handler = connect()
+const router = createRouter()
   .get(storyblokPreviewPassthrough)
-  .use(authInstance.authorize())
+  .use(expressWrapper(authInstance.authorize()))
   .get(paymentHandler);
 
-export default handler;
+export default router.handler();
