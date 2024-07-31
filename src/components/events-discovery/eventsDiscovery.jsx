@@ -16,7 +16,7 @@ import { Pagination } from './components/Pagination';
 import { StatusHeader } from './components/StatusHeader';
 import { Hit } from './components/Hit/Hit';
 import { FacetProvider } from './components/Facets/FacetCtx';
-import { SearchBar } from './components/SearchBar';
+import { MobileSearchBar, SearchBar } from './components/SearchBar';
 import { EventsPerPage } from './components/EventsPerPage';
 
 const searchClient = algoliasearch(
@@ -40,7 +40,15 @@ const EventDiscoveryContent = () => {
     <FacetProvider>
       <div className="su-cc su-mx-12">
         <div className="su-flex su-items-center su-max-w-600 su-mx-auto su-gap-x-16">
-          <SearchBar searchClient={searchClient} indexName={indexName} />
+          <div className="su-hidden lg:su-block su-w-full">
+            <SearchBar searchClient={searchClient} indexName={indexName} />
+          </div>
+          <div className="su-block lg:su-hidden su-w-full">
+            <MobileSearchBar
+              searchClient={searchClient}
+              indexName={indexName}
+            />
+          </div>
           <MobileFilter />
         </div>
         <div className="lg:su-flex lg:su-gap-x-40 su-mt-40 lg:su-mt-80">

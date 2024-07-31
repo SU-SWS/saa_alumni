@@ -1,12 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { ClearRefinements } from 'react-instantsearch';
 import { AdjustmentsIcon } from '@heroicons/react/outline';
 import { SwipeableDrawer } from '@mui/material';
-import { MobileFacetList } from '../Facets';
-import { useFacets } from '../Facets/useFacets';
 import { MobileFilterHeader } from './MobileFilterHeader';
 import { MobileFilterFooter } from './MobileFilterFooter';
-import { MobileParentFilter } from './MobileParentFilter';
 import { MobileFacetFilter } from '../Facets/MobileFacetFilter';
 import { MobileDateFilter } from '../DateFilter';
 import { MobileLocationFilter } from '../LocationFilter';
@@ -29,12 +25,13 @@ export const MobileFilter = () => {
         className="su-flex su-items-center su-px-16 su-py-10 su-rounded-md su-border-2 su-border-cardinal-red su-text-cardinal-red hover:su-bg-cardinal-red-light hover:su-text-white focus-visible:su-bg-cardinal-red-light focus-visible:su-text-white"
         onClick={openMenu}
         aria-expanded={isDrawerOpen}
-        aria-controls="filter-drawer"
+        aria-controls="event-filter-drawer"
       >
         <AdjustmentsIcon className="su-w-24 su-h-24 su-mr-2" />
         <span className="su-inline-block">Filter</span>
       </button>
       <SwipeableDrawer
+        id="event-filter-drawer"
         role="dialog"
         anchor="right"
         open={isDrawerOpen}

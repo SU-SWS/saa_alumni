@@ -3,6 +3,7 @@ import { SwipeableDrawer } from '@mui/material';
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import { MobileFilterHeader } from './MobileFilterHeader';
 import { MobileFilterFooter } from './MobileFilterFooter';
+import { slugify } from '../../../../utilities/slugify';
 
 export const MobileParentFilter = ({
   label,
@@ -27,7 +28,7 @@ export const MobileParentFilter = ({
         className="su-group su-flex su-items-center su-w-full su-rounded-none su-p-16 su-border-b hover:su-bg-cardinal-red-light hover:su-text-white focus-visible:su-bg-cardinal-red-light focus-visible:su-text-white"
         onClick={open}
         aria-expanded={isOpen}
-        aria-controls="filter-drawer"
+        aria-controls={`event-filter-drawer-${slugify(label)}`}
       >
         <span className="su-inline-block su-mr-auto">
           {label}{' '}
@@ -40,6 +41,7 @@ export const MobileParentFilter = ({
         <ChevronRightIcon className="su-w-20 su-h-20" />
       </button>
       <SwipeableDrawer
+        id={`event-filter-drawer-${slugify(label)}`}
         role="dialog"
         anchor="right"
         open={isOpen}
