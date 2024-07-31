@@ -91,6 +91,7 @@ import MegaMenu from './navigation/MegaMenu/megaMenu';
 import MegaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
 import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
+import MegaMenuTopLevelLinkItem from './navigation/MegaMenu/megaMenuTopLevelLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
@@ -145,6 +146,7 @@ const ComponentList = {
   megaMenuPanel: MegaMenuPanel,
   megaMenuCard: MegaMenuCard,
   megaMenuLinkItem: MegaMenuLinkItem,
+  megaMenuTopLevelLinkItem: MegaMenuTopLevelLinkItem,
   megaMenuLinkGroup: MegaMenuLinkGroup,
   membershipCard: MembershipCard,
   membershipFormPage: MembershipFormPage,
