@@ -1,6 +1,7 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import { useClearRefinements } from 'react-instantsearch';
+import useRadialGeoSearch from '../../../../hooks/useRadialGeoSearch';
 
 export const MobileFilterFooter = ({
   onCloseMenu,
@@ -8,6 +9,7 @@ export const MobileFilterFooter = ({
   showClear = true,
 }) => {
   const { canRefine, refine: clearRefinements } = useClearRefinements();
+  const { clearRefinements: clearGeoSearch } = useRadialGeoSearch();
 
   const rootStyles = dcnb(
     'su-flex su-flex-wrap su-gap-8 su-justify-between su-w-full su-sticky su-bottom-0 su-border-t su-border-t-black-30 su-bg-fog-light su-p-26 su-z-10',
@@ -28,7 +30,10 @@ export const MobileFilterFooter = ({
         <button
           type="button"
           disabled={!canRefine}
-          onClick={() => clearRefinements()}
+          onClick={() => {
+            clearRefinements();
+            clearGeoSearch();
+          }}
           className={clearButtonStyles}
         >
           Clear all
