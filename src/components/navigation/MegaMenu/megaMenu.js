@@ -40,6 +40,16 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
     }
   };
 
+  // Just for the top level, change the component to the top level component.
+  // Look at the top level links and find the link component. Change the
+  // component to the top level component.
+  topLevelLinks.forEach((element, i) => {
+    if (element.component === 'megaMenuLinkItem') {
+      // eslint-disable-next-line no-param-reassign
+      topLevelLinks[i].component = 'megaMenuTopLevelLinkItem';
+    }
+  });
+
   useEscape(() => {
     handleClose();
   });
