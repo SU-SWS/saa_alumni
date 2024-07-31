@@ -6,6 +6,7 @@ import {
   Hits,
   Configure,
   useInstantSearch,
+  useCurrentRefinements,
 } from 'react-instantsearch';
 import { DateTime } from 'luxon';
 import { LoadingIndicator } from './components/Loading';
@@ -19,15 +20,60 @@ import { FacetProvider } from './components/Facets/FacetCtx';
 import { MobileSearchBar, SearchBar } from './components/SearchBar';
 import { EventsPerPage } from './components/EventsPerPage';
 
-const searchClient = algoliasearch(
+const algoliaClient = algoliasearch(
   process.env.GATSBY_ALGOLIA_APP_ID,
   process.env.GATSBY_ALGOLIA_API_KEY
 );
 
-// TODO: Swap out for env var.
-const indexName = 'dev_alumni-events_start-asc';
+const searchClient = {
+  ...algoliaClient,
+  search(requests) {
+    const processedRequests = requests.map((request) => {
+      const numericFilters = request?.params?.numericFilters?.filter(
+        (f) => !f.includes('startTimestamp')
+      );
+
+      return {
+        ...request,
+        params: {
+          ...request?.params,
+          ...(!!numericFilters?.length && numericFilters),
+        },
+      };
+    });
+
+    return algoliaClient.search(processedRequests);
+  },
+};
+
+const indexName = process.env.GATSBY_EVENT_ALGOLIA_INDEX;
 
 const EventDiscoveryContent = () => {
+  const { items } = useCurrentRefinements({
+    includedAttributes: ['startTimestamp'],
+  });
+  const dateRefinements = items?.[0]?.refinements;
+
+  const filters = useMemo(() => {
+    const baseFilter = `endTimestamp > ${DateTime.now()
+      .startOf('day')
+      .toUnixInteger()}`;
+
+    if (!dateRefinements?.length) {
+      return baseFilter;
+    }
+
+    if (dateRefinements.length === 1) {
+      const refinement = dateRefinements[0];
+      return `(startTimestamp ${refinement.operator} ${refinement.value} OR endTimestamp ${refinement.operator} ${refinement.value}) AND (${baseFilter})`;
+    }
+
+    const startRefinement = dateRefinements.find((r) => r.operator === '>=');
+    const endRefinement = dateRefinements.find((r) => r.operator === '<=');
+
+    return `((startTimestamp:${startRefinement.value} TO ${endRefinement.value}) OR (endTimestamp:${startRefinement.value} TO ${endRefinement.value})) AND (${baseFilter})`;
+  }, [dateRefinements]);
+
   const { status } = useInstantSearch();
   /* Best practice is to display a loading indicator only when status is stalled,
    * not during a standard (fast) search.
@@ -38,6 +84,7 @@ const EventDiscoveryContent = () => {
 
   return (
     <FacetProvider>
+      <Configure filters={filters} />
       <div className="su-cc su-mx-12">
         <div className="su-flex su-items-center su-max-w-600 su-mx-auto su-gap-x-16">
           <div className="su-hidden lg:su-block su-w-full">
@@ -104,7 +151,7 @@ const EventsDiscovery = () => (
             subject: indexUiState.refinementList?.subject,
             us: indexUiState.refinementList?.usRegion,
             int: indexUiState.refinementList?.intRegion,
-            startTimestamp: indexUiState.numericMenu?.startTimestamp,
+            date: indexUiState.numericMenu?.startTimestamp,
             country: indexUiState.refinementList?.country,
             state: indexUiState.refinementList?.state,
             eventsPerPage: indexUiState.hitsPerPage,
@@ -127,7 +174,7 @@ const EventsDiscovery = () => (
                 intRegion: routeState.int,
               },
               numericMenu: {
-                startTimestamp: routeState.startTimestamp,
+                startTimestamp: routeState.date,
               },
               radialGeoSearch: routeState.near,
               query: routeState.q,
@@ -139,12 +186,6 @@ const EventsDiscovery = () => (
     }}
     insights
   >
-    <Configure
-      // Don't let any expired events slip through
-      filters={`endTimestamp > ${DateTime.now()
-        .startOf('day')
-        .toUnixInteger()}`}
-    />
     <EventDiscoveryContent />
   </InstantSearch>
 );
