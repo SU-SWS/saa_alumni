@@ -261,25 +261,25 @@ export default async (req: Request) => {
           ) < OldCutoff;
 
           if (isOld) {
-            throw new Error(`Story ${id} is too old to import`);
+            console.error(`Story ${id} is too old to import`);
+          } else {
+            console.log('Exists in Google only. Posting to Storyblok...');
+            // Post to SB then publish
+            if (run) {
+              console.log('Generating region...');
+              const updatedGoogle = await setStoryRegion(google, googleMapsKey);
+              console.log('Generating region done!');
+              await storyblokManagement.post(`/spaces/${spaceId}/stories`, {
+                story: {
+                  ...updatedGoogle,
+                  parent_id: eventFolderId,
+                },
+                publish: 1,
+              });
+              await delay();
+            }
+            console.log('Posted!');
           }
-
-          console.log('Exists in Google only. Posting to Storyblok...');
-          // Post to SB then publish
-          if (run) {
-            console.log('Generating region...');
-            const updatedGoogle = await setStoryRegion(google, googleMapsKey);
-            console.log('Generating region done!');
-            await storyblokManagement.post(`/spaces/${spaceId}/stories`, {
-              story: {
-                ...updatedGoogle,
-                parent_id: eventFolderId,
-              },
-              publish: 1,
-            });
-            await delay();
-          }
-          console.log('Posted!');
         } else if (storyblok) {
           console.log('Exists in Storyblok only.');
           const isOld = luxonDate(
@@ -289,28 +289,20 @@ export default async (req: Request) => {
             || storyblok.content.start
           ) < OldCutoff;
 
-          if (storyblok.isPublished) {
-            // Unpublish
-            console.log('Unpublishing...');
+          if (isOld) {
+            console.log('Story is old. Unpublishing and moving...');
             if (run) {
               await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
               await delay();
-            }
-            console.log('Unpublished!');
-          }
-
-          if (isOld) {
-            console.log('Story is old. Moving...');
-            if (run) {
               await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
                 story: { 
                   ...storyblok,
-                  full_slug: `events/sync-archive/${storyblok.slug}`,
+                  parent_id: eventArchiveFolderId,
                 },
               });
               await delay();
             }
-            console.log('Unpublished!');
+            console.log('Done!');
           }
         }
       } catch(err) {
