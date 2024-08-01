@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import TurndownService from 'turndown';
-import { markdownToRichtext } from 'storyblok-markdown-richtext';
+import markdownToRichtextService from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
 import regions from './regions.json';
@@ -17,6 +17,7 @@ const intRegions = new Map(
     .map(({ country, region }) => [country, region])
 );
 
+const { markdownToRichtext } = markdownToRichtextService;
 const turndownService = new TurndownService();
 
 const isString = (val) => typeof val === 'string';
