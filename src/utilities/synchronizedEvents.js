@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import TurndownService from 'turndown';
-import markdownToRichtextService from 'storyblok-markdown-richtext';
+import * as markdownToRichtextService from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
 import regions from './regions.json';
