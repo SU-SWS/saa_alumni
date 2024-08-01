@@ -1,8 +1,8 @@
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 import { authInstance } from '../../utilities/authInstance';
 
-const authHandler = connect()
-  .use(authInstance.authenticate())
+const router = createRouter()
+  .use(expressWrapper(authInstance.authenticate()))
   .post((req, res) => {
     // Check to see that cookies were set and then adjust the SameSite attribute on the *-session
     // Cookies to Lax. On the redirect through the Edge Functions the cookies are not passed to it
@@ -27,4 +27,4 @@ const authHandler = connect()
     res.redirect(redirectUrl);
   });
 
-export default authHandler;
+export default router.handler();

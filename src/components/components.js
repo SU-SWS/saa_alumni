@@ -91,9 +91,12 @@ import MegaMenu from './navigation/MegaMenu/megaMenu';
 import MegaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
 import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
+import MegaMenuTopLevelLinkItem from './navigation/MegaMenu/megaMenuTopLevelLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
+import SynchronizedEvent from './content-types/synchronized-event/synchronizedEvent';
+import EventsDiscovery from './events-discovery/eventsDiscovery';
 
 const ComponentList = {
   accordion: Accordion,
@@ -117,6 +120,7 @@ const ComponentList = {
   embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
+  eventsDiscovery: EventsDiscovery,
   formPage: FormPage,
   giveGabForm: GiveGabForm,
   giveGabErrorMessage: GiveGabErrorMessage,
@@ -145,6 +149,7 @@ const ComponentList = {
   megaMenuPanel: MegaMenuPanel,
   megaMenuCard: MegaMenuCard,
   megaMenuLinkItem: MegaMenuLinkItem,
+  megaMenuTopLevelLinkItem: MegaMenuTopLevelLinkItem,
   megaMenuLinkGroup: MegaMenuLinkGroup,
   membershipCard: MembershipCard,
   membershipFormPage: MembershipFormPage,
@@ -177,6 +182,7 @@ const ComponentList = {
   story: Story,
   storyCard: StoryCard,
   saaStoryCard: SaaStoryCard,
+  synchronizedEvent: SynchronizedEvent,
   trip: TripPage,
   tripCard: SBTripCard,
   tripCustomJourneys: TripCustomJourneys,
