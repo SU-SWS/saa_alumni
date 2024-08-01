@@ -228,8 +228,42 @@ export default async (req: Request) => {
       console.log('>>> Processing: ', id);
       try {
         if (google && storyblok) {
+          const isGoogleOld = luxonDate(
+            google.content.endOverride 
+            || google.content.end 
+            || google.content.startOverride 
+            || google.content.start
+          ) < OldCutoff;
+
+          const isSbOld = luxonDate(
+            storyblok.content.endOverride 
+            || storyblok.content.end 
+            || storyblok.content.startOverride 
+            || storyblok.content.start
+          ) < OldCutoff;
+
+          const isOld = isGoogleOld && isSbOld;
+
           console.log('Exists in Google and Storyblok...');
-          // Compare and update as needed then publish if already published
+
+          if (isOld) {
+            console.log('Story is old. Unpublishing and moving...');
+            if (run) {
+              await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+              await delay();
+              await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
+                story: { 
+                  ...storyblok,
+                  parent_id: eventArchiveFolderId,
+                },
+              });
+              await delay();
+            }
+            console.log('Done!');
+            console.log('Processing complete: ', id);
+            continue;
+          }
+
           if (!compareStoryContent(google.content, storyblok.content)) {
             console.log('No changes needed.');
             console.log('Processing complete: ', id);
@@ -262,24 +296,26 @@ export default async (req: Request) => {
 
           if (isOld) {
             console.error(`Story ${id} is too old to import`);
-          } else {
-            console.log('Exists in Google only. Posting to Storyblok...');
-            // Post to SB then publish
-            if (run) {
-              console.log('Generating region...');
-              const updatedGoogle = await setStoryRegion(google, googleMapsKey);
-              console.log('Generating region done!');
-              await storyblokManagement.post(`/spaces/${spaceId}/stories`, {
-                story: {
-                  ...updatedGoogle,
-                  parent_id: eventFolderId,
-                },
-                publish: 1,
-              });
-              await delay();
-            }
-            console.log('Posted!');
+            console.log('Processing complete: ', id);
+            continue;
           }
+
+          console.log('Exists in Google only. Posting to Storyblok...');
+          // Post to SB then publish
+          if (run) {
+            console.log('Generating region...');
+            const updatedGoogle = await setStoryRegion(google, googleMapsKey);
+            console.log('Generating region done!');
+            await storyblokManagement.post(`/spaces/${spaceId}/stories`, {
+              story: {
+                ...updatedGoogle,
+                parent_id: eventFolderId,
+              },
+              publish: 1,
+            });
+            await delay();
+          }
+          console.log('Posted!');
         } else if (storyblok) {
           console.log('Exists in Storyblok only.');
           const isOld = luxonDate(
@@ -303,6 +339,13 @@ export default async (req: Request) => {
               await delay();
             }
             console.log('Done!');
+          } else if (storyblok.isPublished) {
+            console.log('Unpublishing...');
+            if (run) {
+              await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+              await delay();
+            }
+            console.log('Unpublished!');
           }
         }
       } catch(err) {
