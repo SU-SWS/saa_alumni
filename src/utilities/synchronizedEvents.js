@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import TurndownService from 'turndown';
-import * as markdownToRichtextService from 'storyblok-markdown-richtext';
+import markdownConverter from 'storyblok-markdown-richtext';
 import { luxonDate } from './dates';
 import { slugify } from './slugify';
 import regions from './regions.json';
@@ -17,7 +17,6 @@ const intRegions = new Map(
     .map(({ country, region }) => [country, region])
 );
 
-const { markdownToRichtext } = markdownToRichtextService;
 const turndownService = new TurndownService();
 
 const isString = (val) => typeof val === 'string';
@@ -260,7 +259,9 @@ export const googleRowToStoryContent = (data, source) => {
       }
     : null;
   const description = descriptionRaw
-    ? markdownToRichtext(turndownService.turndown(descriptionRaw))
+    ? markdownConverter.markdownToRichtext(
+        turndownService.turndown(descriptionRaw)
+      )
     : null;
 
   const experinceRawLowerCase = experienceRaw.toLowerCase();
