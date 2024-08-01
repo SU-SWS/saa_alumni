@@ -242,7 +242,7 @@ export default async (req: Request) => {
             console.log('Generating region...');
             const combinedStory = await setStoryRegion(combineStories(google, storyblok));
             console.log('Generating region done!');
-            await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+            await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
               story: {
                 ...combinedStory,
                 parent_id: eventFolderId,
@@ -270,7 +270,7 @@ export default async (req: Request) => {
             console.log('Generating region...');
             const updatedGoogle = await setStoryRegion(google, googleMapsKey);
             console.log('Generating region done!');
-            await storyblokManagement.post(`spaces/${spaceId}/stories`, {
+            await storyblokManagement.post(`/spaces/${spaceId}/stories`, {
               story: {
                 ...updatedGoogle,
                 parent_id: eventFolderId,
@@ -293,7 +293,7 @@ export default async (req: Request) => {
             // Unpublish
             console.log('Unpublishing...');
             if (run) {
-              await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+              await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
               await delay();
             }
             console.log('Unpublished!');
@@ -302,7 +302,7 @@ export default async (req: Request) => {
           if (isOld) {
             console.log('Story is old. Moving...');
             if (run) {
-              await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+              await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
                 story: { 
                   ...storyblok,
                   full_slug: `events/sync-archive/${storyblok.slug}`,
@@ -334,9 +334,9 @@ export default async (req: Request) => {
         if (isOld) {
           console.log('Story is old. Unpublishing and moving...');
           if (run) {
-            await storyblokManagement.get(`spaces/${spaceId}/stories/${story.id}/unpublish`);
+            await storyblokManagement.get(`/spaces/${spaceId}/stories/${story.id}/unpublish`);
             await delay();
-            await storyblokManagement.put(`spaces/${spaceId}/stories/${story.id}`, {
+            await storyblokManagement.put(`/spaces/${spaceId}/stories/${story.id}`, {
               story: { 
                 ...story,
                 parent_id: eventArchiveFolderId,
@@ -359,7 +359,7 @@ export default async (req: Request) => {
       try {
         console.log('Deleting...');
         if (run) {
-          await storyblokManagement.delete(`spaces/${spaceId}/stories/${story.id}`, {});
+          await storyblokManagement.delete(`/spaces/${spaceId}/stories/${story.id}`, {});
           await delay();
         }
         console.log('Deleted!');
