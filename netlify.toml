@@ -40,8 +40,9 @@
 # FUNCTIONS
 # ##############################################################################
 
-[functions.walletpass]
-  included_files = ["saacard.pass/**"]
+[functions."*walletpass*"]
+  node_bundler = "esbuild"
+  included_files = ["/src/api/walletpass/saacard.pass/**"]
 
 # EDGE FUNCTIONS
 # ##############################################################################
