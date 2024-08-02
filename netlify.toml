@@ -43,8 +43,9 @@
 [functions."*ios*"]
   node_bundler = "esbuild"
   included_files = [
-    "/src/api/walletpass/saacard.pass**",
-    "/src/api/walletpass/saacard.pass/**"
+    "src/api/walletpass/**",
+    "src/api/walletpass/saacard.pass**",
+    "src/api/walletpass/saacard.pass/**"
   ]
 
 # EDGE FUNCTIONS
