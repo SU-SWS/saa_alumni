@@ -44,6 +44,7 @@ const generatePkPass = async (req, res) => {
 
     console.log('passModelDirectory', passModelDirectory);
     // get and list all the files in the directory node js
+    console.log('------------------------------------------------------------');
     // eslint-disable-next-line consistent-return
     fs.readdir(path.dirname(passModelDirectory), (err, files) => {
       // handling error
@@ -56,6 +57,7 @@ const generatePkPass = async (req, res) => {
         console.log(file);
       });
     });
+    console.log('------------------------------------------------------------');
 
     const pkpass = await generateAppleWalletPass(mpUser, passModelDirectory);
     const buffer = pkpass.getAsBuffer();
