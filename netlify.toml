@@ -40,16 +40,9 @@
 # FUNCTIONS
 # ##############################################################################
 
-[functions]
+[functions."*ios*"]
   included_files = [
     "README.md",
-    "src/utilities/saacard.pass/**"
-  ]
-
-[functions-internal]
-  included_files = [
-    "README.md",
-    "src/utilities/saacard.pass/**"
   ]
 
 # EDGE FUNCTIONS

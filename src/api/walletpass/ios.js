@@ -46,6 +46,7 @@ const generatePkPass = async (req, res) => {
     // get and list all the files in the directory node js
     // eslint-disable-next-line consistent-return
     await fs.readdir(path.dirname(passModelDirectory), (err, files) => {
+      console.log('FOund files', files.length);
       // handling error
       if (err) {
         return console.log(`Unable to scan directory: ${err}`);
