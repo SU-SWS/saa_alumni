@@ -40,9 +40,19 @@
 # FUNCTIONS
 # ##############################################################################
 
-[functions."*ios*"]
+[functions]
   included_files = [
-    "README.md",
+    "**",
+  ]
+
+[functions.internal]
+  included_files = [
+    "**",
+  ]
+
+[functions-internal]
+  included_files = [
+    "**",
   ]
 
 # EDGE FUNCTIONS
