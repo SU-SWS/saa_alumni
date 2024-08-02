@@ -37,6 +37,12 @@
 # More redirects can be found in static/_redirects
 #
 
+# FUNCTIONS
+# ##############################################################################
+
+[functions.walletpass]
+  included_files = "saacard.pass/**"
+
 # EDGE FUNCTIONS
 # ##############################################################################
 

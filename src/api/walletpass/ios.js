@@ -1,5 +1,6 @@
 import { createRouter, expressWrapper } from 'next-connect';
 
+import path from 'path';
 import { generateAppleWalletPass } from '../../utilities/walletPass';
 import { authInstance } from '../../utilities/authInstance';
 import { MegaProfile } from '../../utilities/MegaProfile';
@@ -36,8 +37,10 @@ const generatePkPass = async (req, res) => {
       ...fullprofile,
       memberships,
     };
-
-    const pkpass = await generateAppleWalletPass(mpUser);
+    const passModelDirectory = path.resolve(
+      './src/api/walletpass/saacard.pass'
+    );
+    const pkpass = await generateAppleWalletPass(mpUser, passModelDirectory);
     const buffer = pkpass.getAsBuffer();
 
     if (pkpass) {
@@ -55,6 +58,7 @@ const generatePkPass = async (req, res) => {
         );
     }
   } catch (error) {
+    console.error(error);
     res
       .status(500)
       .send('Passkit generation failed. Please try again or contact support.');

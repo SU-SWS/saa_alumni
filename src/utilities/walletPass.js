@@ -2,9 +2,8 @@ const { PKPass } = require('passkit-generator');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 
-export const generateAppleWalletPass = async (megaProfileUser) => {
+export const generateAppleWalletPass = async (megaProfileUser, passModelDirectory) => {
   try {
-    const passModelDirectory = './saacard.pass';
     const {
       contact: {
         name: { digitalName: memberName },
