@@ -1,8 +1,9 @@
 // This file is just to monitor that functions are working.
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 
-const handler = connect().get((req, res) => {
-  res.status(200).send('Ok');
+const router = createRouter().get((req, res) => {
+  res.statusCode = 200;
+  res.end('Ok');
 });
 
-export default handler;
+export default router.handler();

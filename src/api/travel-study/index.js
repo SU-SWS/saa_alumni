@@ -1,5 +1,5 @@
 import StoryblokClient from 'storyblok-js-client';
-import connect from 'next-connect';
+import { createRouter } from 'next-connect';
 
 const tripsCollection = async (req, res) => {
   const storyblok = new StoryblokClient({
@@ -46,6 +46,7 @@ const tripsCollection = async (req, res) => {
     })
     .catch((err) => {
       res.status(500).json({ error: err.message });
+      // eslint-disable-next-line no-console
       console.log(err);
     });
 
@@ -68,6 +69,6 @@ const tripsCollection = async (req, res) => {
   res.status(200).json(ret);
 };
 
-const handler = connect().get(tripsCollection);
+const router = createRouter().get(tripsCollection);
 
-export default handler;
+export default router.handler();

@@ -1,5 +1,5 @@
 import StoryblokClient from 'storyblok-js-client';
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 import { authInstance } from '../utilities/authInstance';
 import { MegaProfile } from '../utilities/MegaProfile';
 
@@ -42,6 +42,8 @@ const privateProxy = async (req, res) => {
   }
 };
 
-const handler = connect().use(authInstance.authorize()).get(privateProxy);
+const router = createRouter()
+  .use(expressWrapper(authInstance.authorize()))
+  .get(privateProxy);
 
-export default handler;
+export default router.handler();

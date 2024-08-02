@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Url from 'url-parse';
 import { ClientCredentials } from 'simple-oauth2';
 import axios from 'axios';

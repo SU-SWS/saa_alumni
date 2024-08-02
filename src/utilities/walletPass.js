@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 export const generateAppleWalletPass = async (megaProfileUser) => {
   try {
-    const passModelDirectory = '../../../src/utilities/saacard.pass';
+    const passModelDirectory = './saacard.pass';
     const {
       contact: {
         name: { digitalName: memberName },
