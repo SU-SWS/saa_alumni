@@ -37,9 +37,9 @@ const generatePkPass = async (req, res) => {
       ...fullprofile,
       memberships,
     };
-    const passModelDirectory = path.resolve(
-      './src/api/walletpass/saacard.pass'
-    );
+    const passModelDirectory = process.env.NETLIFY
+      ? path.resolve(__dirname, './saacard.pass')
+      : path.resolve('src/api/walletpass/saacard.pass');
     const pkpass = await generateAppleWalletPass(mpUser, passModelDirectory);
     const buffer = pkpass.getAsBuffer();
 
