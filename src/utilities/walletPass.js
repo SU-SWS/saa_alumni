@@ -11,11 +11,6 @@ export const generateAppleWalletPass = async (megaProfileUser, passModelDirector
       memberships: [{ membershipNumber, membershipStartDate }],
     } = megaProfileUser;
 
-    console.log('APPLE_WWDR', process.env.APPLE_WWDR_CERTIFICATE);
-    console.log('SIGNING_CERT', process.env.PASS_SIGNING_CERTIFICATE);
-    console.log('SIGNING_KEY', process.env.PASS_SIGNING_CERTIFICATE_KEY);
-    console.log('PASS_CERT_PASS', process.env.PASS_CERTIFICATE_PASSWORD);
-
     const pass = await PKPass.from(
       {
         model: passModelDirectory,
