@@ -48,6 +48,14 @@
     "src/api/walletpass/saacard.pass/**"
   ]
 
+[functions-internal]
+  included_files = [
+    "README.md",
+    "src/api/walletpass/**",
+    "src/api/walletpass/saacard.pass**",
+    "src/api/walletpass/saacard.pass/**"
+  ]
+
 # EDGE FUNCTIONS
 # ##############################################################################
 
