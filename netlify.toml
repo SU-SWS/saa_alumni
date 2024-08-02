@@ -37,24 +37,6 @@
 # More redirects can be found in static/_redirects
 #
 
-# FUNCTIONS
-# ##############################################################################
-
-[functions]
-  included_files = [
-    "**",
-  ]
-
-[functions.internal]
-  included_files = [
-    "**",
-  ]
-
-[functions-internal]
-  included_files = [
-    "**",
-  ]
-
 # EDGE FUNCTIONS
 # ##############################################################################
 
