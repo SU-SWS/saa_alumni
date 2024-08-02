@@ -1,7 +1,7 @@
+/* eslint-disable no-console */
 import { createRouter, expressWrapper } from 'next-connect';
 
 import path from 'path';
-import fs from 'fs';
 import { generateAppleWalletPass } from '../../utilities/walletPass';
 import { authInstance } from '../../utilities/authInstance';
 import { MegaProfile } from '../../utilities/MegaProfile';
@@ -41,23 +41,6 @@ const generatePkPass = async (req, res) => {
     const passModelDirectory = process.env.NETLIFY
       ? path.resolve(__dirname, './saacard.pass')
       : path.resolve('src/utilities/saacard.pass');
-
-    console.log('passModelDirectory', passModelDirectory);
-    // get and list all the files in the directory node js
-    // eslint-disable-next-line consistent-return
-    await fs.readdir(path.dirname(passModelDirectory), (err, files) => {
-      console.log('FOund files', files.length);
-      // handling error
-      if (err) {
-        return console.log(`Unable to scan directory: ${err}`);
-      }
-      // listing all files using forEach
-      files.forEach((file) => {
-        // Do whatever you want to do with the file
-        console.log(file);
-      });
-    });
-    console.log('------------------------------------------------------------');
 
     const pkpass = await generateAppleWalletPass(mpUser, passModelDirectory);
     const buffer = pkpass.getAsBuffer();
