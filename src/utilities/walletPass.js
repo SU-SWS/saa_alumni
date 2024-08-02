@@ -14,7 +14,7 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
 
     const pass = await PKPass.from(
       {
-        model: path.resolve(__dirname, passModelDirectory),
+        model: passModelDirectory,
         certificates: {
           wwdr: process.env.APPLE_WWDR_CERTIFICATE,
           signerCert: process.env.PASS_SIGNING_CERTIFICATE,
