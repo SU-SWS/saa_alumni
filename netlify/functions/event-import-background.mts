@@ -228,8 +228,42 @@ export default async (req: Request) => {
       console.log('>>> Processing: ', id);
       try {
         if (google && storyblok) {
+          const isGoogleOld = luxonDate(
+            google.content.endOverride 
+            || google.content.end 
+            || google.content.startOverride 
+            || google.content.start
+          ) < OldCutoff;
+
+          const isSbOld = luxonDate(
+            storyblok.content.endOverride 
+            || storyblok.content.end 
+            || storyblok.content.startOverride 
+            || storyblok.content.start
+          ) < OldCutoff;
+
+          const isOld = isGoogleOld && isSbOld;
+
           console.log('Exists in Google and Storyblok...');
-          // Compare and update as needed then publish if already published
+
+          if (isOld) {
+            console.log('Story is old. Unpublishing and moving...');
+            if (run) {
+              await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+              await delay();
+              await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
+                story: { 
+                  ...storyblok,
+                  parent_id: eventArchiveFolderId,
+                },
+              });
+              await delay();
+            }
+            console.log('Done!');
+            console.log('Processing complete: ', id);
+            continue;
+          }
+
           if (!compareStoryContent(google.content, storyblok.content)) {
             console.log('No changes needed.');
             console.log('Processing complete: ', id);
@@ -242,7 +276,7 @@ export default async (req: Request) => {
             console.log('Generating region...');
             const combinedStory = await setStoryRegion(combineStories(google, storyblok));
             console.log('Generating region done!');
-            await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+            await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
               story: {
                 ...combinedStory,
                 parent_id: eventFolderId,
@@ -261,7 +295,9 @@ export default async (req: Request) => {
           ) < OldCutoff;
 
           if (isOld) {
-            throw new Error(`Story ${id} is too old to import`);
+            console.error(`Story ${id} is too old to import`);
+            console.log('Processing complete: ', id);
+            continue;
           }
 
           console.log('Exists in Google only. Posting to Storyblok...');
@@ -270,7 +306,7 @@ export default async (req: Request) => {
             console.log('Generating region...');
             const updatedGoogle = await setStoryRegion(google, googleMapsKey);
             console.log('Generating region done!');
-            await storyblokManagement.post(`spaces/${spaceId}/stories`, {
+            await storyblokManagement.post(`/spaces/${spaceId}/stories`, {
               story: {
                 ...updatedGoogle,
                 parent_id: eventFolderId,
@@ -289,25 +325,24 @@ export default async (req: Request) => {
             || storyblok.content.start
           ) < OldCutoff;
 
-          if (storyblok.isPublished) {
-            // Unpublish
-            console.log('Unpublishing...');
-            if (run) {
-              await storyblokManagement.get(`spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
-              await delay();
-            }
-            console.log('Unpublished!');
-          }
-
           if (isOld) {
-            console.log('Story is old. Moving...');
+            console.log('Story is old. Unpublishing and moving...');
             if (run) {
-              await storyblokManagement.put(`spaces/${spaceId}/stories/${storyblok.id}`, {
+              await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
+              await delay();
+              await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
                 story: { 
                   ...storyblok,
-                  full_slug: `events/sync-archive/${storyblok.slug}`,
+                  parent_id: eventArchiveFolderId,
                 },
               });
+              await delay();
+            }
+            console.log('Done!');
+          } else if (storyblok.isPublished) {
+            console.log('Unpublishing...');
+            if (run) {
+              await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
               await delay();
             }
             console.log('Unpublished!');
@@ -334,9 +369,9 @@ export default async (req: Request) => {
         if (isOld) {
           console.log('Story is old. Unpublishing and moving...');
           if (run) {
-            await storyblokManagement.get(`spaces/${spaceId}/stories/${story.id}/unpublish`);
+            await storyblokManagement.get(`/spaces/${spaceId}/stories/${story.id}/unpublish`);
             await delay();
-            await storyblokManagement.put(`spaces/${spaceId}/stories/${story.id}`, {
+            await storyblokManagement.put(`/spaces/${spaceId}/stories/${story.id}`, {
               story: { 
                 ...story,
                 parent_id: eventArchiveFolderId,
@@ -359,7 +394,7 @@ export default async (req: Request) => {
       try {
         console.log('Deleting...');
         if (run) {
-          await storyblokManagement.delete(`spaces/${spaceId}/stories/${story.id}`, {});
+          await storyblokManagement.delete(`/spaces/${spaceId}/stories/${story.id}`, {});
           await delay();
         }
         console.log('Deleted!');
