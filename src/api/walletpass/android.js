@@ -1,4 +1,4 @@
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 
 import { generateAndroidWalletPassURL } from '../../utilities/walletPass';
 import { authInstance } from '../../utilities/authInstance';
@@ -55,4 +55,8 @@ const generatePass = async (req, res) => {
   }
 };
 
-export default connect().use(authInstance.authorize()).get(generatePass);
+const router = createRouter()
+  .use(expressWrapper(authInstance.authorize()))
+  .get(generatePass);
+
+export default router.handler();

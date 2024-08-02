@@ -1,4 +1,4 @@
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 
 import { generateAppleWalletPass } from '../../utilities/walletPass';
 import { authInstance } from '../../utilities/authInstance';
@@ -61,4 +61,8 @@ const generatePkPass = async (req, res) => {
   }
 };
 
-export default connect().use(authInstance.authorize()).get(generatePkPass);
+const router = createRouter()
+  .use(expressWrapper(authInstance.authorize()))
+  .get(generatePkPass);
+
+export default router.handler();
