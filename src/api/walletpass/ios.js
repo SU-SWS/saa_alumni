@@ -40,11 +40,10 @@ const generatePkPass = async (req, res) => {
     };
     const passModelDirectory = process.env.NETLIFY
       ? path.resolve(__dirname, './saacard.pass')
-      : path.resolve('src/api/walletpass/saacard.pass');
+      : path.resolve('src/utilities/saacard.pass');
 
     console.log('passModelDirectory', passModelDirectory);
     // get and list all the files in the directory node js
-    console.log('------------------------------------------------------------');
     // eslint-disable-next-line consistent-return
     await fs.readdir(path.dirname(passModelDirectory), (err, files) => {
       // handling error
