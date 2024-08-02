@@ -40,9 +40,9 @@
 # FUNCTIONS
 # ##############################################################################
 
-[functions."*ios*"]
-  node_bundler = "esbuild"
+[functions]
   included_files = [
+    "README.md",
     "src/api/walletpass/**",
     "src/api/walletpass/saacard.pass**",
     "src/api/walletpass/saacard.pass/**"
