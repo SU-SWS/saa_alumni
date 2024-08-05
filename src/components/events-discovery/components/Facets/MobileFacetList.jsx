@@ -2,7 +2,10 @@ import React from 'react';
 import { useRefinementList } from 'react-instantsearch';
 
 export const MobileFacetList = ({ attribute }) => {
-  const { canRefine, items, refine } = useRefinementList({ attribute });
+  const { canRefine, items, refine } = useRefinementList({
+    attribute,
+    limit: 1000,
+  });
 
   if (!canRefine) {
     return (

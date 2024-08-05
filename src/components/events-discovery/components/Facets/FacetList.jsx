@@ -72,7 +72,6 @@ export const FacetList = ({ attribute, subfilter = false }) => {
             id={`${slugify(facetState.label)}-${uniqueId}`}
             attribute={attribute}
             limit={isExpanded ? 1000 : 10}
-            sortBy={['isRefined', 'name']}
             classNames={{
               root: 'su-mt-8',
               list: 'su-flex su-flex-col su-gap-4 su-list-none su-pl-8',
