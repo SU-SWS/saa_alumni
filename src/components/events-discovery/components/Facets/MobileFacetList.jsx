@@ -5,6 +5,7 @@ export const MobileFacetList = ({ attribute }) => {
   const { canRefine, items, refine } = useRefinementList({
     attribute,
     limit: 1000,
+    sortBy: ['isRefined', 'count'],
   });
 
   if (!canRefine) {
