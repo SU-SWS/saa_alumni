@@ -12,6 +12,7 @@ import GlobalAlert from '../composite/Alert/globalAlert';
 
 const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => (
   <SbEditable content={blok}>
+    <Skiplink />
     <GlobalAlert />
     <CreateBloks blokSection={alert} />
     <Container
@@ -19,7 +20,6 @@ const Header = ({ blok: { masthead, alert }, blok, hasHero, isDark }) => (
       width="full"
       className="su-relative su-z-50 print:su-hidden"
     >
-      <Skiplink />
       <CreateBloks blokSection={masthead} hasHero={hasHero} isDark={isDark} />
     </Container>
   </SbEditable>
