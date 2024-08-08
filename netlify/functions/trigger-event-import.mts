@@ -8,11 +8,6 @@ export default async (req: Request) => {
     const secret = process.env.EVENT_IMPORT_SECRET ?? '';
     console.log('=== START Trigger Event Import ===');
 
-    // Make sure we only run this in production
-    if (process.env.CONTEXT !== 'production') {
-      throw new Error('Not in prod');
-    }
-
     if (!secret) {
       throw new Error('No secret available');
     }
@@ -30,7 +25,7 @@ export default async (req: Request) => {
       console.error(triggerRes.statusText);
     }
   } catch (err) {
-    console.error('Error duing request: ', err);
+    console.error('Error during request: ', err);
   }
 
   console.log('=== END Trigger Event Import ===');
