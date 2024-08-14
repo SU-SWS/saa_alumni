@@ -42,7 +42,7 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
         labelColor: 'rgb(255, 255, 255)',
         logoText: 'Stanford Alumni Membership',
         organizationName: 'Stanford Alumni',
-        passTypeIdentifier: 'pass.com.saacard',
+        passTypeIdentifier: process.env.PASS_TYPE_IDENTIFIER,
         serialNumber: membershipNumber,
         teamIdentifier: 'TV7YB5JDT2',
       }
