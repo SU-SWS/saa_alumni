@@ -1,8 +1,18 @@
 const { PKPass } = require('passkit-generator');
-const path = require('path');
+const axios = require('axios');
 const jwt = require('jsonwebtoken');
 
-export const generateAppleWalletPass = async (megaProfileUser, passModelDirectory) => {
+const fetchUrlToBuffer = async (url) => {
+  try {
+    const response = await axios.get(url, { responseType: 'arraybuffer' });
+    return Buffer.from(response.data);
+  } catch (error) {
+    console.error(`Failed to fetch URL: ${url}`, error);
+    throw error;
+  }
+};
+
+export const generateAppleWalletPass = async (megaProfileUser) => {
   try {
     const {
       contact: {
@@ -11,20 +21,35 @@ export const generateAppleWalletPass = async (megaProfileUser, passModelDirector
       memberships: [{ membershipNumber, membershipStartDate }],
     } = megaProfileUser;
 
-    const pass = await PKPass.from(
+    const pass = new PKPass(
+      {},
       {
-        model: passModelDirectory,
-        certificates: {
-          wwdr: process.env.APPLE_WWDR_CERTIFICATE,
-          signerCert: process.env.PASS_SIGNING_CERTIFICATE,
-          signerKey: process.env.PASS_SIGNING_CERTIFICATE_KEY,
-          signerKeyPassphrase: process.env.PASS_CERTIFICATE_PASSWORD,
-        },
+        wwdr: process.env.APPLE_WWDR_CERTIFICATE,
+        signerCert: process.env.PASS_SIGNING_CERTIFICATE,
+        signerKey: process.env.PASS_SIGNING_CERTIFICATE_KEY,
+        signerKeyPassphrase: process.env.PASS_CERTIFICATE_PASSWORD,
       },
       {
+        backgroundColor: 'rgb(210, 7, 7)',
+        description: 'Alumni Membership Card',
+        foregroundColor: 'rgb(255, 255, 255)',
+        formatVersion: 1,
+        generic: {
+          primaryFields: [],
+          secondaryFields: [],
+          auxiliaryFields: [],
+        },
+        labelColor: 'rgb(255, 255, 255)',
+        logoText: 'Stanford Alumni Membership',
+        organizationName: 'Stanford Alumni',
+        passTypeIdentifier: 'pass.com.saacard',
         serialNumber: membershipNumber,
+        teamIdentifier: 'TV7YB5JDT2',
       }
     );
+
+    pass.type = 'generic';
+
     // Primary Fields
     pass.primaryFields.push({
       key: 'memberName',
@@ -43,6 +68,32 @@ export const generateAppleWalletPass = async (megaProfileUser, passModelDirector
       label: 'SINCE',
       value: membershipStartDate,
     });
+
+    const bufferIcon = await fetchUrlToBuffer(process.env.IOS_PASS_ICON_URL);
+    pass.addBuffer('icon.png', bufferIcon);
+
+    const bufferIcon2x = await fetchUrlToBuffer(
+      process.env.IOS_PASS_ICON_2X_URL
+    );
+    pass.addBuffer('icon@2x.png', bufferIcon2x);
+
+    const bufferLogo = await fetchUrlToBuffer(process.env.IOS_PASS_LOGO_URL);
+    pass.addBuffer('logo.png', bufferLogo);
+
+    const bufferLogo2x = await fetchUrlToBuffer(
+      process.env.IOS_PASS_LOGO_2X_URL
+    );
+    pass.addBuffer('logo@2x.png', bufferLogo2x);
+
+    const bufferThumbnail = await fetchUrlToBuffer(
+      process.env.IOS_PASS_THUMBNAIL_URL
+    );
+    pass.addBuffer('thumbnail.png', bufferThumbnail);
+
+    const bufferThumbnail2x = await fetchUrlToBuffer(
+      process.env.IOS_PASS_THUMBNAIL_2X_URL
+    );
+    pass.addBuffer('thumbnail2x.png', bufferThumbnail2x);
 
     if (process.env.PASS_INCLUDE_QR_CODE === 'true') {
       pass.setBarcodes(membershipNumber);

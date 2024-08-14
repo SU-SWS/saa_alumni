@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { createRouter, expressWrapper } from 'next-connect';
 
-import path from 'path';
 import { generateAppleWalletPass } from '../../utilities/walletPass';
 import { authInstance } from '../../utilities/authInstance';
 import { MegaProfile } from '../../utilities/MegaProfile';
@@ -38,11 +37,8 @@ const generatePkPass = async (req, res) => {
       ...fullprofile,
       memberships,
     };
-    const passModelDirectory = process.env.NETLIFY
-      ? path.resolve(__dirname, './saacard.pass')
-      : path.resolve('src/utilities/saacard.pass');
 
-    const pkpass = await generateAppleWalletPass(mpUser, passModelDirectory);
+    const pkpass = await generateAppleWalletPass(mpUser);
     const buffer = pkpass.getAsBuffer();
 
     if (pkpass) {
