@@ -50,12 +50,6 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
     }
   });
 
-  const populatedTopLevelLinks =
-    topLevelLinks?.filter(
-      (l) =>
-        l?.component === 'megaMenuTopLevelLinkItem' || l?.url || l?.cached_url
-    ) ?? [];
-
   useEscape(() => {
     handleClose();
   });
@@ -67,7 +61,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
         aria-label="Main Navigation Menu"
       >
         <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end lg:su-justify-end su-list-unstyled children:su-mb-0">
-          <CreateBloks blokSection={populatedTopLevelLinks} />
+          <CreateBloks blokSection={topLevelLinks} />
         </ul>
       </nav>
       <button
@@ -122,7 +116,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
               className={styles.menuMobileHomesite({ mainMenuOpened })}
               aria-hidden={!mainMenuOpened}
             >
-              <CreateBloks blokSection={populatedTopLevelLinks} />
+              <CreateBloks blokSection={topLevelLinks} />
             </ul>
           )}
 
