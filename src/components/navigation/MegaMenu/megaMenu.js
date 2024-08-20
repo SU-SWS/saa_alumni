@@ -40,13 +40,16 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
     }
   };
 
+  const populatedTopLevelLinks =
+    topLevelLinks?.filter((l) => l?.url || l?.cached_url) ?? [];
+
   // Just for the top level, change the component to the top level component.
   // Look at the top level links and find the link component. Change the
   // component to the top level component.
-  topLevelLinks.forEach((element, i) => {
+  populatedTopLevelLinks.forEach((element, i) => {
     if (element.component === 'megaMenuLinkItem') {
       // eslint-disable-next-line no-param-reassign
-      topLevelLinks[i].component = 'megaMenuTopLevelLinkItem';
+      populatedTopLevelLinks[i].component = 'megaMenuTopLevelLinkItem';
     }
   });
 
@@ -61,7 +64,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
         aria-label="Main Navigation Menu"
       >
         <ul className="su-hidden lg:su-flex su-flex-col lg:su-ml-auto lg:su-flex-row lg:su-items-end lg:su-justify-end su-list-unstyled children:su-mb-0">
-          <CreateBloks blokSection={topLevelLinks} />
+          <CreateBloks blokSection={populatedTopLevelLinks} />
         </ul>
       </nav>
       <button
@@ -116,7 +119,7 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
               className={styles.menuMobileHomesite({ mainMenuOpened })}
               aria-hidden={!mainMenuOpened}
             >
-              <CreateBloks blokSection={topLevelLinks} />
+              <CreateBloks blokSection={populatedTopLevelLinks} />
             </ul>
           )}
 
