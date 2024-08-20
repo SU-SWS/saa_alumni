@@ -40,18 +40,21 @@ const MegaMenu = ({ blok: { topLevelLinks }, blok, className }) => {
     }
   };
 
-  const populatedTopLevelLinks =
-    topLevelLinks?.filter((l) => l?.url || l?.cached_url) ?? [];
-
   // Just for the top level, change the component to the top level component.
   // Look at the top level links and find the link component. Change the
   // component to the top level component.
-  populatedTopLevelLinks.forEach((element, i) => {
+  topLevelLinks.forEach((element, i) => {
     if (element.component === 'megaMenuLinkItem') {
       // eslint-disable-next-line no-param-reassign
-      populatedTopLevelLinks[i].component = 'megaMenuTopLevelLinkItem';
+      topLevelLinks[i].component = 'megaMenuTopLevelLinkItem';
     }
   });
+
+  const populatedTopLevelLinks =
+    topLevelLinks?.filter(
+      (l) =>
+        l?.component === 'megaMenuTopLevelLinkItem' || l?.url || l?.cached_url
+    ) ?? [];
 
   useEscape(() => {
     handleClose();
