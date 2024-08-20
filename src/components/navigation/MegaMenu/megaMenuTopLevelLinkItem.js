@@ -10,22 +10,17 @@ const MegaMenuTopLevelLinkItem = ({ blok: { link, linkText }, blok }) => {
   const location = useLocation();
   const baseUrl = location?.origin || getSiteUrl();
 
-  const processedLink =
-    link?.url || link?.cached_url
-      ? link
-      : { ...link, cached_url: 'home', linktype: 'story' };
-
   // Compare the current browser URL to the link URL to determine if the button is active.
   const browserUrl = new URL(
     location.pathname.replace(/\/+$/, '') + location.hash,
     baseUrl
   );
 
-  const linkUrl = processedLink.url || processedLink.cached_url;
+  const linkUrl = link.url || link.cached_url;
   const strippedLink = linkUrl.replace(/\/+$/, '');
   const linkUrlFull = new URL(strippedLink, baseUrl);
-  if (processedLink.anchor) {
-    linkUrlFull.hash = processedLink.anchor;
+  if (link.anchor) {
+    linkUrlFull.hash = link.anchor;
   }
   const isActiveButton = browserUrl.toString() === linkUrlFull.toString();
 
@@ -34,7 +29,7 @@ const MegaMenuTopLevelLinkItem = ({ blok: { link, linkText }, blok }) => {
     <SbEditable content={blok}>
       <li className="su-float-left su-border-b lg:su-inline-block lg:su-border-none su-border-black-20">
         <SbLink
-          link={processedLink}
+          link={link}
           classes={[
             panelStyles.parentButton({
               panelOpened: false,
