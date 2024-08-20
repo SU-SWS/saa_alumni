@@ -5,7 +5,9 @@ import * as styles from './megaMenuLink.styles';
 
 const MegaMenuLinkItem = ({ blok: { link, linkText }, blok }) => {
   const processedLink =
-    link?.url || link?.cached_url ? link : { ...link, cached_url: 'home', linktype: 'story' };
+    link?.url || link?.cached_url
+      ? link
+      : { ...link, cached_url: 'home', linktype: 'story' };
 
   return (
     <SbEditable content={blok}>
