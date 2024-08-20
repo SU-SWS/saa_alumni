@@ -140,7 +140,7 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.33.2",
-    "gatsby-adapter-netlify": "^1.1.5",
+    "gatsby-adapter-netlify": "^1.1.7",
     "local-ssl-proxy": "^2.0.5",
     "netlify-cli": "^17.23.8",
     "node-vault": "^0.10.2",
