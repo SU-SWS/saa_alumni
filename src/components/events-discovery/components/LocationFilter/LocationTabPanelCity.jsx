@@ -250,6 +250,7 @@ const LocationTabPanelCity = () => {
                   />
                 }
                 popupIcon={null}
+                forcePopupIcon={false}
                 disablePortal={!isDesktop}
                 classes={{
                   popper: isDesktop ? '' : styles.popperMobile,
