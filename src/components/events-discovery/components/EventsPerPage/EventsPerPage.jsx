@@ -35,7 +35,9 @@ export const EventsPerPage = () => {
       </label>
       <Select
         id={`eventsPerPageSelect-${uniqueId}`}
-        aria-labelledby={`eventsPerPageSelectLabel-${uniqueId}`}
+        SelectDisplayProps={{
+          'aria-labelledby': `eventsPerPageSelectLabel-${uniqueId}`,
+        }}
         value={currentValue}
         onChange={(e) => {
           refine(e.target.value);
