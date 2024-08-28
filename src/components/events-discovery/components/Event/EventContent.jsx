@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useId, useMemo, useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { DateTime } from 'luxon';
 import {
@@ -36,6 +36,7 @@ export const EventContent = ({
   region = '',
   subject = [],
 }) => {
+  const uniqueId = useId();
   const [selectedTimezone, setSelectedTimezone] = useState(eventTimezone);
 
   const localTime = DateTime.local();
@@ -108,42 +109,52 @@ export const EventContent = ({
               </span>
             )}
             {isSameDay && !isEventLocal && !isOffsetSame && (
-              <Select
-                aria-label="Time zone"
-                variant="standard"
-                renderValue={(v) => DateTime.now().setZone(v).offsetNameShort}
-                value={selectedTimezone}
-                onChange={(e) => setSelectedTimezone(e.target.value)}
-                classes={{
-                  root: selectRootClasses,
-                  select: selectClasses,
-                }}
-                IconComponent={() => (
-                  <HeroIcon
-                    iconType="chevron-down"
-                    className="su-absolute su-right-0 su-z-0 su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
-                  />
-                )}
-              >
-                <MenuItem
-                  classes={{
-                    root: selectMenuRootClasses,
-                    selected: selectMenuSelectedClasses,
-                  }}
-                  value={eventTimezoneName}
+              <>
+                <label
+                  id={`timezone-${uniqueId}`}
+                  htmlFor={`timezone-select-${uniqueId}`}
+                  className="su-sr-only"
                 >
-                  {eventTimezoneDisplay} (event time zone)
-                </MenuItem>
-                <MenuItem
+                  Time zone
+                </label>
+                <Select
+                  id={`timezone-select-${uniqueId}`}
+                  labelId={`timezone-${uniqueId}`}
+                  variant="standard"
+                  renderValue={(v) => DateTime.now().setZone(v).offsetNameShort}
+                  value={selectedTimezone}
+                  onChange={(e) => setSelectedTimezone(e.target.value)}
                   classes={{
-                    root: selectMenuRootClasses,
-                    selected: selectMenuSelectedClasses,
+                    root: selectRootClasses,
+                    select: selectClasses,
                   }}
-                  value={localTimezoneName}
+                  IconComponent={() => (
+                    <HeroIcon
+                      iconType="chevron-down"
+                      className="su-absolute su-right-0 su-z-0 su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
+                    />
+                  )}
                 >
-                  {localTimezoneDisplay} (your time zone)
-                </MenuItem>
-              </Select>
+                  <MenuItem
+                    classes={{
+                      root: selectMenuRootClasses,
+                      selected: selectMenuSelectedClasses,
+                    }}
+                    value={eventTimezoneName}
+                  >
+                    {eventTimezoneDisplay} (event time zone)
+                  </MenuItem>
+                  <MenuItem
+                    classes={{
+                      root: selectMenuRootClasses,
+                      selected: selectMenuSelectedClasses,
+                    }}
+                    value={localTimezoneName}
+                  >
+                    {localTimezoneDisplay} (your time zone)
+                  </MenuItem>
+                </Select>
+              </>
             )}
           </span>
         )}
