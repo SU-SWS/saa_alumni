@@ -95,6 +95,7 @@ const SearchResults = ({ results }) => {
                   dangerouslySetInnerHTML={{
                     // eslint-disable-next-line no-underscore-dangle
                     __html: sanitize(result._snippetResult.body.value),
+                    allowedTags: ['br'],
                   }}
                 />
               )}
