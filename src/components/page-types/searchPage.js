@@ -170,7 +170,7 @@ const SearchPage = (props) => {
       .multipleQueries([
         // Query for search results.
         {
-          indexName: 'crawler_federated-search',
+          indexName: 'federated-search-with-events',
           query,
           params: {
             hitsPerPage,
@@ -181,7 +181,7 @@ const SearchPage = (props) => {
         },
         // Disjunctive query for siteName facet values.
         {
-          indexName: 'crawler_federated-search',
+          indexName: 'federated-search-with-events',
           query,
           params: {
             facets: ['siteName', 'fileType'],
@@ -190,7 +190,7 @@ const SearchPage = (props) => {
         },
         // Disjunctive query for fileType facet values.
         {
-          indexName: 'crawler_federated-search',
+          indexName: 'federated-search-with-events',
           query,
           params: {
             facets: ['siteName', 'fileType'],
