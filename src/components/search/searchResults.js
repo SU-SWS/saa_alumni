@@ -66,6 +66,7 @@ const SearchResults = ({ results }) => {
                     dangerouslySetInnerHTML={{
                       // eslint-disable-next-line no-underscore-dangle
                       __html: sanitize(result.title, {
+                        allowedTags: ['br'],
                         decodeEntities: false,
                       }),
                     }}
