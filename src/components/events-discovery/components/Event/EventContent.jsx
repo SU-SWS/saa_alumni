@@ -120,7 +120,6 @@ export const EventContent = ({
                 <Select
                   id={`timezone-select-${uniqueId}`}
                   labelId={`timezone-${uniqueId}`}
-                  inputProps={{}}
                   variant="standard"
                   renderValue={(v) => DateTime.now().setZone(v).offsetNameShort}
                   value={selectedTimezone}
