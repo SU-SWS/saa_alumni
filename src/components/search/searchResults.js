@@ -66,7 +66,6 @@ const SearchResults = ({ results }) => {
                     dangerouslySetInnerHTML={{
                       // eslint-disable-next-line no-underscore-dangle
                       __html: sanitize(result.title, {
-                        allowedTags: ['br'],
                         decodeEntities: false,
                       }),
                     }}
@@ -94,8 +93,9 @@ const SearchResults = ({ results }) => {
                   // eslint-disable-next-line react/no-danger
                   dangerouslySetInnerHTML={{
                     // eslint-disable-next-line no-underscore-dangle
-                    __html: sanitize(result._snippetResult.body.value),
-                    allowedTags: ['br'],
+                    __html: sanitize(result._highlightResult.body.value, {
+                      allowedTags: ['br'],
+                    }),
                   }}
                 />
               )}
