@@ -6,6 +6,7 @@ import { HeadingLevelType } from '../../../types/HeadingLevelType';
 import { ClassNameType } from '../../../types/CommonType';
 import { useEvents } from '../../../hooks/useEvents';
 import { SynchronizedEventCard } from './synchronizedEventCard';
+import CreateBloks from '../../../utilities/createBloks';
 
 export const SynchronizedEventCardListProps = {
   headline: PropTypes.string,
@@ -23,11 +24,17 @@ export const SynchronizedEventCardListProps = {
 };
 
 const SynchronizedEventCardList = ({
-  blok: { numEventsShown, subjects, regions },
+  blok: { numEventsShown, subjects, regions, formats, lastCard = [] },
   blok,
   orientation,
 }) => {
-  const events = useEvents({ subjects, regions, maxNumEvents: numEventsShown });
+  const hasLastCard = !!lastCard?.length;
+  const events = useEvents({
+    subjects,
+    regions,
+    formats,
+    maxNumEvents: hasLastCard ? numEventsShown - 1 : numEventsShown,
+  });
 
   if (!events?.length) {
     return null;
@@ -39,6 +46,7 @@ const SynchronizedEventCardList = ({
         {events.map((event) => (
           <SynchronizedEventCard key={event.id} {...event.content} />
         ))}
+        {hasLastCard && <CreateBloks blokSection={lastCard} />}
       </div>
     </SbEditable>
   );

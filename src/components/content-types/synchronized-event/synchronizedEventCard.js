@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import CardImage from '../../media/cardImage';
 import { luxonDate } from '../../../utilities/dates';
 import { EventContent } from '../../events-discovery/components/Event/EventContent';
 import { EventHeading } from '../../events-discovery/components/Event/EventHeading';
@@ -33,7 +32,6 @@ import { EventHeading } from '../../events-discovery/components/Event/EventHeadi
  */
 export const SynchronizedEventCard = ({
   title,
-  image = {},
   start,
   end,
   eventTimezone,
@@ -47,6 +45,8 @@ export const SynchronizedEventCard = ({
   experience,
   format = [],
 }) => {
+  const formatDisplay = format?.join?.(', ') ?? '';
+
   const luxonStart = useMemo(() => luxonDate(start), [start]);
   const ptStart = useMemo(
     () => luxonStart.setZone('America/Los_Angeles'),
@@ -58,24 +58,8 @@ export const SynchronizedEventCard = ({
 
   const luxonEnd = useMemo(() => luxonDate(end), [end]);
 
-  const { filename, alt, focus } = image;
-
   return (
     <div className="su-group su-flex su-flex-col story-card su-group su-relative su-overflow-hidden su-break-words su-basefont-23 su-w-full sm:su-max-w-[42rem] md:su-max-w-full su-border su-bg-clip-padding su-shadow-sm focus-within:su-shadow-md hover:su-shadow-md su-backface-hidden su-border-black-30/40 su-text-black">
-      {filename?.startsWith('http') && (
-        <figure className="su-block su-transition-all">
-          <CardImage
-            filename={filename}
-            alt={alt}
-            smartFocus={focus}
-            size="vertical"
-            className="su-w-full su-h-auto su-origin-top-right su-transition-transform hocus:su-scale-[1.03]"
-            loading="lazy"
-            width="300"
-            height="200"
-          />
-        </figure>
-      )}
       <div className="su-flex su-flex-col su-flex-1 su-bg-white su-rs-pt-2 su-rs-px-2 su-rs-pb-3">
         <div className="su-flex su-flex-col su-rs-mb-neg2">
           <div className="su-mb-8 su-ml-2 su-text-20 lg:su-text-22">
@@ -87,6 +71,9 @@ export const SynchronizedEventCard = ({
             </div>
           </div>
         </div>
+        {formatDisplay && (
+          <div className="su-font-bold su-text-18">{formatDisplay}</div>
+        )}
         <EventHeading title={title || 'Untitled'} eventUrl={eventUrl} />
         <EventContent
           start={luxonStart}
@@ -95,6 +82,7 @@ export const SynchronizedEventCard = ({
           location={location}
           city={city}
           region={region}
+          subject={subject}
         />
       </div>
     </div>

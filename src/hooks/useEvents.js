@@ -6,6 +6,7 @@ import { luxonDate } from '../utilities/dates';
 export const useEvents = ({
   regions = [],
   subjects = [],
+  formats = [],
   maxNumEvents,
 } = {}) => {
   const result = useStaticQuery(graphql`
@@ -75,6 +76,13 @@ export const useEvents = ({
       }
 
       if (regions?.length && !regions.includes(event.content?.region)) {
+        return false;
+      }
+
+      if (
+        formats?.length &&
+        !formats.some((s) => event.content?.format?.includes(s))
+      ) {
         return false;
       }
 
