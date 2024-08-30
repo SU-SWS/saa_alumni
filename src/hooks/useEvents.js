@@ -1,9 +1,15 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { luxonToday, luxonDate } from '../utilities/dates';
+import { DateTime } from 'luxon';
+import { mergeEventOverrides } from '../utilities/synchronizedEvents';
+import { luxonDate } from '../utilities/dates';
 
-export const useEvents = () => {
+export const useEvents = ({
+  region = '',
+  subjects = [],
+  maxNumEvents,
+} = {}) => {
   const result = useStaticQuery(graphql`
-    query TripsQuery {
+    query EventsQuery {
       events: allStoryblokEntry(
         filter: {
           field_component: { eq: "synchronizedEvent" }
@@ -20,17 +26,61 @@ export const useEvents = () => {
     }
   `);
 
-  let events = result.events.nodes.map((event) => {
-    const eventObj = {
-      ...event,
-      content: JSON.parse(event.content),
-    };
+  console.log({ region, subjects });
 
-    const startDate = luxonDate(event.content.start);
-    return luxonToday().startOf('day') < startDate.startOf('day')
-      ? eventObj
-      : false;
-  });
-  events = events.filter((event) => event !== false);
-  return events;
+  const now = DateTime.now().toUnixInteger();
+
+  return result.events.nodes
+    .map((event) => {
+      const mergedContent = mergeEventOverrides(JSON.parse(event.content));
+      const startTimestamp = mergedContent.start
+        ? luxonDate(mergedContent.start).toUnixInteger()
+        : null;
+      const endTimestamp = mergedContent.end
+        ? luxonDate(mergedContent.end).toUnixInteger()
+        : null;
+
+      return {
+        ...event,
+        content: {
+          ...mergedContent,
+          startTimestamp,
+          endTimestamp,
+        },
+      };
+    })
+    .filter((event) => {
+      if (!event.content?.start || !event.content?.end) {
+        return false;
+      }
+
+      return (
+        event.content.startTimestamp > now || event.content.endTimestamp > now
+      );
+    })
+    .sort((a, b) => {
+      const { startTimestamp: aStart, endTimestamp: aEnd } = a.content;
+      const { startTimestamp: bStart, endTimestamp: bEnd } = b.content;
+
+      if (aStart === bStart) {
+        return aEnd - bEnd;
+      }
+
+      return aStart - bStart;
+    })
+    .filter((event) => {
+      if (
+        subjects?.length &&
+        !subjects.some((s) => event.content?.subject?.includes(s))
+      ) {
+        return false;
+      }
+
+      if (region && event.content?.region !== region) {
+        return false;
+      }
+
+      return true;
+    })
+    .slice(0, maxNumEvents);
 };
