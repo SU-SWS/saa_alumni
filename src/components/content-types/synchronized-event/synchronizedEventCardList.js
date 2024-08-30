@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import SbEditable from 'storyblok-react';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
@@ -23,15 +23,11 @@ export const SynchronizedEventCardListProps = {
 };
 
 const SynchronizedEventCardList = ({
-  blok: { numEventsShown, subjects, region },
+  blok: { numEventsShown, subjects, regions },
   blok,
   orientation,
 }) => {
-  console.log({ numEventsShown, subjects });
-
-  const events = useEvents({ subjects, region, maxNumEvents: numEventsShown });
-
-  console.log({ events });
+  const events = useEvents({ subjects, regions, maxNumEvents: numEventsShown });
 
   if (!events?.length) {
     return null;

@@ -4,7 +4,7 @@ import { mergeEventOverrides } from '../utilities/synchronizedEvents';
 import { luxonDate } from '../utilities/dates';
 
 export const useEvents = ({
-  region = '',
+  regions = [],
   subjects = [],
   maxNumEvents,
 } = {}) => {
@@ -25,8 +25,6 @@ export const useEvents = ({
       }
     }
   `);
-
-  console.log({ region, subjects });
 
   const now = DateTime.now().toUnixInteger();
 
@@ -76,7 +74,7 @@ export const useEvents = ({
         return false;
       }
 
-      if (region && event.content?.region !== region) {
+      if (regions?.length && !regions.includes(event.content?.region)) {
         return false;
       }
 

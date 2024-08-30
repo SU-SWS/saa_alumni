@@ -1,17 +1,5 @@
 import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import { dcnb } from 'cnbuilder';
-import { FlexBox } from '../../layout/FlexBox';
-import { Heading } from '../../simple/Heading';
-import { SrOnlyText } from '../../accessibility/SrOnlyText';
-import SbLink from '../../../utilities/sbLink';
 import CardImage from '../../media/cardImage';
-import TabLabel from '../../simple/tabLabel';
-import { largeMarginBottom } from '../../../utilities/dataSource';
-import HeroIcon from '../../simple/heroIcon';
-import { SBLinkType } from '../../../types/storyblok/SBLinkType';
-import { HeadingLevelType } from '../../../types/HeadingLevelType';
-import { ClassNameType } from '../../../types/CommonType';
 import { luxonDate } from '../../../utilities/dates';
 import { EventContent } from '../../events-discovery/components/Event/EventContent';
 import { EventHeading } from '../../events-discovery/components/Event/EventHeading';
@@ -59,14 +47,12 @@ export const SynchronizedEventCard = ({
   experience,
   format = [],
 }) => {
-  const formatDisplay = format?.join?.(', ') ?? '';
-
   const luxonStart = useMemo(() => luxonDate(start), [start]);
   const ptStart = useMemo(
     () => luxonStart.setZone('America/Los_Angeles'),
     [luxonStart]
   );
-  const { monthLong, monthShort, day } = ptStart;
+  const { monthLong, day } = ptStart;
   const monthDisplay = useMemo(() => monthLong?.toString(), [monthLong]);
   const dayDisplay = useMemo(() => day?.toString().padStart(2, '0'), [day]);
 
