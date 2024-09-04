@@ -134,16 +134,16 @@ export const fontWeights = {
 };
 
 export const headerBackgroundColor = {
-  white: 'su-color-white',
-  'cardinal-red': 'su-color-cardinal',
-  'digital-red': 'su-color-digital-red',
-  'palo-alto': 'su-color-palo-alto',
-  'bay-dark': 'su-color-bay-dark',
-  'sky-dark': 'su-color-sky-dark',
-  lagunita: 'su-color-lagunita',
-  'lagunita-dark': 'su-color-lagunita-dark',
-  'palo-verde': 'su-color-palo-verde',
-  'palo-verde-dark': 'su-color-palo-verde-dark',
+  white: 'su-bg-white su-text-black',
+  'cardinal-red': 'su-bg-cardinal',
+  'digital-red': 'su-bg-digital-red',
+  'palo-alto': 'su-bg-palo-alto',
+  'bay-dark': 'su-bg-bay-dark',
+  'sky-dark': 'su-bg-sky-dark',
+  lagunita: 'su-bg-lagunita',
+  'lagunita-dark': 'su-bg-lagunita-dark',
+  'palo-verde': 'su-bg-palo-verde',
+  'palo-verde-dark': 'su-bg-palo-verde-dark',
 };
 
 export const heroGradient = {

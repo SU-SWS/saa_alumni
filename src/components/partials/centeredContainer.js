@@ -1,18 +1,25 @@
 import React from 'react';
 
-const CenteredContainer = (props) => {
-  const Element = props.element ?? 'div';
+const CenteredContainer = ({
+  element,
+  centeredDisabled,
+  flex,
+  srOnly,
+  classes,
+  children,
+}) => {
+  const Element = element ?? 'div';
 
   return (
     <Element
       className={`
-       ${props.centered_disabled ? '' : 'centered-container'}
-       ${props.flex ? 'flex-container' : ''}
-       ${props.srOnly ? 'su-sr-only-element' : ''}
-       ${props.classes ?? ''}
+       ${centeredDisabled ? '' : 'su-cc'}
+       ${flex ? 'flex' : ''}
+       ${srOnly ? 'su-sr-only-element' : ''}
+       ${classes ?? ''}
   `}
     >
-      {props.children}
+      {children}
     </Element>
   );
 };

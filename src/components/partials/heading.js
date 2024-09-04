@@ -1,20 +1,30 @@
 import React from 'react';
 
-const Heading = (props) => {
-  const HeadingTag = props.level || props.defaultLevel || 'h3';
+const Heading = ({
+  level,
+  defaultLevel,
+  classes,
+  serif,
+  weight,
+  color,
+  align,
+  external,
+  children,
+}) => {
+  const HeadingTag = level || defaultLevel || 'h3';
 
   return (
     <HeadingTag
       className={`
-                ${props.classes ? props.classes : ''}
-                ${props.serif ? 'su-serif' : ''}
-                ${props.weight ? `su-${props.weight}` : ''}
-                ${props.color ? `su-text-${props.color}` : ''}
-                ${props.align ? `su-text-align-${props.align}` : ''}
-                ${props.external ? 'su-link--external' : ''}
+                ${classes || ''}
+                ${serif ? 'su-font-serif' : ''}
+                ${weight ? `su-font-${weight}` : ''}
+                ${color ? `su-text-${color}` : ''}
+                ${align ? `su-text-${align}` : ''}
+                ${external ? 'su-link--external' : ''}
     `}
     >
-      {props.children}
+      {children}
     </HeadingTag>
   );
 };
