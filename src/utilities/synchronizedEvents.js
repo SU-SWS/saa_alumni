@@ -359,7 +359,6 @@ export const compareStoryContent = (a, b) => {
     a.state !== b.state ||
     a.country !== b.country ||
     a.address !== b.address ||
-    a.region !== b.region ||
     a.latitude !== b.latitude ||
     a.longitude !== b.longitude ||
     a.eventUrl?.url !== b.eventUrl?.url ||
