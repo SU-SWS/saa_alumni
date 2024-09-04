@@ -17,9 +17,6 @@ const intRegions = new Map(
     .map(({ country, region }) => [country, region])
 );
 
-console.log({ usRegions });
-console.log({ intRegions });
-
 const turndownService = new TurndownService();
 
 const isString = (val) => typeof val === 'string';
@@ -107,20 +104,10 @@ export const setStoryRegion = async (story, mapKey) => {
     return updatedStory;
   }
 
-  console.log({
-    url: `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code&language=en&latlng=${latitude},${longitude}&key=${mapKey}`,
-  });
-
   try {
     const mapRes = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code&language=en&latlng=${latitude},${longitude}&key=${mapKey}`
     );
-
-    console.log({
-      ok: mapRes.ok,
-      status: mapRes.status,
-      statusText: mapRes.statusText,
-    });
 
     if (!mapRes.ok) {
       throw new Error('Google maps error: ', mapRes.status);
@@ -128,13 +115,9 @@ export const setStoryRegion = async (story, mapKey) => {
 
     const mapData = await mapRes.json();
 
-    console.log({ mapData });
-
     if (!mapData?.results?.length) {
       return updatedStory;
     }
-
-    console.log({ results: mapData.results });
 
     const zipData = mapData.results.find((r) =>
       r?.types?.includes('postal_code')
