@@ -109,6 +109,12 @@ export const setStoryRegion = async (story, mapKey) => {
       `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code&language=en&latlng=${latitude},${longitude}&key=${mapKey}`
     );
 
+    console.log({
+      ok: mapRes.ok,
+      status: mapRes.status,
+      statusText: mapRes.statusText,
+    });
+
     if (!mapRes.ok) {
       throw new Error('Google maps error: ', mapRes.status);
     }
