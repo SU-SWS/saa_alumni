@@ -17,6 +17,9 @@ const intRegions = new Map(
     .map(({ country, region }) => [country, region])
 );
 
+console.log({ usRegions });
+console.log({ intRegions });
+
 const turndownService = new TurndownService();
 
 const isString = (val) => typeof val === 'string';
@@ -121,9 +124,13 @@ export const setStoryRegion = async (story, mapKey) => {
 
     const mapData = await mapRes.json();
 
+    console.log({ mapData });
+
     if (!mapData?.results?.length) {
       return updatedStory;
     }
+
+    console.log({ results: mapData.results });
 
     const zipData = mapData.results.find((r) =>
       r?.types?.includes('postal_code')
