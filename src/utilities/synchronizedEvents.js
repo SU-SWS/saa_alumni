@@ -107,6 +107,10 @@ export const setStoryRegion = async (story, mapKey) => {
     return updatedStory;
   }
 
+  console.log({
+    url: `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code&language=en&latlng=${latitude},${longitude}&key=${mapKey}`,
+  });
+
   try {
     const mapRes = await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?result_type=country|postal_code&language=en&latlng=${latitude},${longitude}&key=${mapKey}`
