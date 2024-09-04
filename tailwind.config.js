@@ -35,6 +35,5 @@ module.exports = {
     require(`${dir}/utilities/gradient-border/gradient-border.js`)(),
     require(`${dir}/utilities/grid/grid-cols.js`)(),
     require(`${dir}/utilities/text-shadow/text-shadow.js`)(),
-    require(`${dir}/utilities/box-shadow/box-shadow.js`)(),
   ],
 };
