@@ -277,7 +277,7 @@ export default async (req: Request) => {
           if (run) {
             console.log('Generating region...');
             const combinedStory = await setStoryRegion(combineStories(google, storyblok));
-            console.log('Generating region done!');
+            console.log(combinedStory.content.region ? 'Generating region done!' : 'Generating region failed!');
             await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
               story: {
                 ...combinedStory,
