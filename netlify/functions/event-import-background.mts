@@ -3,7 +3,7 @@ import { type Config } from '@netlify/functions';
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { JWT } from 'google-auth-library';
 import StoryblokClient from 'storyblok-js-client';
-import { compareStoryContent, googleRowToStory, combineStories, setStoryRegion } from '../../src/utilities/synchronizedEvents';
+import { compareStoryContent, googleRowToStory, combineStories, setStoryRegion, storyHasValidLatLong } from '../../src/utilities/synchronizedEvents';
 import { luxonDate } from '../../src/utilities/dates';
 import { DateTime } from 'luxon';
 
@@ -244,6 +244,8 @@ export default async (req: Request) => {
 
           const isOld = isGoogleOld && isSbOld;
 
+          const isMissingRegion = !storyblok.content.region && storyHasValidLatLong(storyblok);
+
           console.log('Exists in Google and Storyblok...');
 
           if (isOld) {
@@ -264,7 +266,7 @@ export default async (req: Request) => {
             continue;
           }
 
-          if (!compareStoryContent(google.content, storyblok.content)) {
+          if (!isMissingRegion && !compareStoryContent(google.content, storyblok.content)) {
             console.log('No changes needed.');
             console.log('Processing complete: ', id);
             continue;
