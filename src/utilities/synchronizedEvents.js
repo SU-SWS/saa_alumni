@@ -77,6 +77,21 @@ export const mergeEventOverrides = (eventContent) => {
   return merged;
 };
 
+export const storyHasValidLatLong = (story) => {
+  const { latitude, longitude } = story?.content ?? {};
+
+  if (!latitude || !longitude) {
+    return false;
+  }
+
+  const lat = parseFloat(latitude);
+  const lng = parseFloat(longitude);
+  const hasValidLat = !!lat || lat === 0;
+  const hasValidLng = !!lng || lng === 0;
+
+  return hasValidLat && hasValidLng;
+};
+
 export const setStoryRegion = async (story, mapKey) => {
   const updatedStory = { ...story };
   const { region, latitude, longitude } = updatedStory.content;
@@ -85,12 +100,7 @@ export const setStoryRegion = async (story, mapKey) => {
     return updatedStory;
   }
 
-  const lat = parseFloat(latitude);
-  const lng = parseFloat(longitude);
-  const hasValidLat = !!lat || lat === 0;
-  const hasValidLng = !!lng || lng === 0;
-
-  if (!hasValidLat || !hasValidLng) {
+  if (!storyHasValidLatLong(updatedStory)) {
     return updatedStory;
   }
 
