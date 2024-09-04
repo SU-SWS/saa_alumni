@@ -1,9 +1,9 @@
-import connect from 'next-connect';
+import { createRouter, expressWrapper } from 'next-connect';
 import { authInstance } from '../../utilities/authInstance';
 import { sessionMockData } from '../../utilities/mocks/session';
 import { isStoryblokEditor } from '../../utilities/isStoryblokEditor';
 
-const handler = connect()
+const router = createRouter()
   // Pass-through for Storyblok Editor preview.
   .get(async (req, res, next) => {
     const isEditor = await isStoryblokEditor(req);
@@ -11,9 +11,9 @@ const handler = connect()
       res.json(sessionMockData);
     } else next();
   })
-  .use(authInstance.authorize())
+  .use(expressWrapper(authInstance.authorize()))
   .get((req, res) => {
     res.json(req.user);
   });
 
-export default handler;
+export default router.handler();

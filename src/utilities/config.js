@@ -6,9 +6,9 @@ const config = {
       ? '/'
       : process.env.GATSBY_BASE_PATH,
   assetCdn: process.env.GATSBY_ASSET_CDN ?? 'https://assets.stanford.edu/',
-  breakpoint: {
+  breakpoints: {
     '2xs': 0,
-    xs: 375,
+    xs: 375, // We sometimes need extra styling between 360px and 375px
     sm: 576,
     md: 768,
     lg: 992,

@@ -2,6 +2,7 @@ const activeEnv =
   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || 'development';
 
 require('dotenv').config();
+const adapter = require('gatsby-adapter-netlify').default;
 
 /**
  * Resolve relations for storyblok.
@@ -55,8 +56,12 @@ module.exports = {
       resolveRelations: storyblokRelations,
     },
   },
+  adapter: adapter({
+    excludeDatastoreFromEngineFunction: false,
+    imageCDN: false,
+  }),
   plugins: [
-    `gatsby-plugin-fontawesome-css-2`,
+    `gatsby-plugin-fontawesome-css`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-postcss`,
     {
@@ -93,6 +98,8 @@ module.exports = {
         excludes: [
           `/editor/**`,
           `/editor`,
+          `/events/sync/**`,
+          `/events/sync-archive/**`,
           `/global-components/**`,
           `/travel-study/global-components/**`,
           `/test/**`,
@@ -106,10 +113,11 @@ module.exports = {
           if (
             // Exclude non-canonical pages.
             !page.pageContext.isCanonical ||
-            // Exlude form, registration form, and membership form pages
+            // Exlude form, registration form, membership form pages, and synchronized events
             page.pageContext.story.content.includes('formPage') ||
             page.pageContext.story.content.includes('registrationFormPage') ||
             page.pageContext.story.content.includes('membershipFormPage') ||
+            page.pageContext.story.content.includes('synchronizedEvent') ||
             // Exclude pages marked with "noindex"
             page.pageContext.noIndex ||
             // Exclude pages that match the "excludes" array. (default condition)
@@ -165,13 +173,7 @@ module.exports = {
         icons: [],
       },
     },
-    {
-      resolve: `gatsby-plugin-netlify`,
-      options: {
-        mergeSecurityHeaders: false,
-      },
-    },
-    `gatsby-plugin-use-query-params`,
+    `gatsby-plugin-use-query-params-v2`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
