@@ -12,7 +12,7 @@ export default async (req: Request) => {
       throw new Error('No secret available');
     }
 
-    const url = new URL('webhook/sb/event-import', req.url);
+    const url = new URL('/webhook/sb/event-import', req.url);
     url.searchParams.set('secret', secret);
 
     const triggerRes = await fetch(url, { method: 'POST' });
