@@ -348,25 +348,6 @@ export const compareStoryContent = (a, b) => {
     sortedFormatA.length === sortedFormatB.length &&
     sortedFormatA.every((e, i) => e === sortedFormatB[i]);
 
-  console.log({
-    title: a.title !== b.title,
-    start: a.start !== b.start,
-    end: a.end !== b.end,
-    eventTimezone: a.eventTimezone !== b.eventTimezone,
-    location: a.location !== b.location,
-    experience: a.experience !== b.experience,
-    city: a.city !== b.city,
-    state: a.state !== b.state,
-    country: a.country !== b.country,
-    address: a.address !== b.address,
-    region: a.region !== b.region,
-    lat: a.latitude !== b.latitude,
-    long: a.longitude !== b.longitude,
-    url: a.eventUrl?.url !== b.eventUrl?.url,
-    subject: !isSubjectEq,
-    format: !isFormatEq,
-  });
-
   return (
     a.title !== b.title ||
     a.start !== b.start ||
@@ -378,7 +359,6 @@ export const compareStoryContent = (a, b) => {
     a.state !== b.state ||
     a.country !== b.country ||
     a.address !== b.address ||
-    a.region !== b.region ||
     a.latitude !== b.latitude ||
     a.longitude !== b.longitude ||
     a.eventUrl?.url !== b.eventUrl?.url ||
