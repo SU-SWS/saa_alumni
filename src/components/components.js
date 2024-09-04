@@ -57,7 +57,6 @@ import Poster from './composite/poster';
 import ProtectedPage from './page-types/protectedPage';
 import Redirect from './redirect/Redirect';
 import RegistrationFormPage from './page-types/registrationFormPage/registrationFormPage';
-import RichTextField from '../utilities/richTextField';
 import { SBSAAMainNav } from './storyblok/saaMainNav';
 import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
 import SearchFacet from './search/searchFacet';
@@ -165,7 +164,6 @@ const ComponentList = {
   protectedPage: ProtectedPage,
   redirect: Redirect,
   registrationFormPage: RegistrationFormPage,
-  richTextField: RichTextField,
   saaMainNav: SBSAAMainNav,
   saaMainMenuGroup: SBSAAMainMenuGroup,
   searchFacet: SearchFacet,
