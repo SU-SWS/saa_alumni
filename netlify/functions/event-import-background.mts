@@ -274,18 +274,20 @@ export default async (req: Request) => {
 
           console.log('Changes detected. Syncing changes to Storyblok...');
 
+          console.log({ id, isMissingRegion, google, storyblok });
+
           if (run) {
-            console.log('Generating region...');
-            const combinedStory = await setStoryRegion(combineStories(google, storyblok), googleMapsKey);
-            console.log(combinedStory.content.region ? 'Generating region done!' : 'Generating region failed!');
-            await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
-              story: {
-                ...combinedStory,
-                parent_id: eventFolderId,
-              },
-              publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
-            });
-            await delay();
+            // console.log('Generating region...');
+            // const combinedStory = await setStoryRegion(combineStories(google, storyblok), googleMapsKey);
+            // console.log(combinedStory.content.region ? 'Generating region done!' : 'Generating region failed!');
+            // await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
+            //   story: {
+            //     ...combinedStory,
+            //     parent_id: eventFolderId,
+            //   },
+            //   publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
+            // });
+            // await delay();
           }
           console.log('Synced!');
         } else if (google) {
@@ -307,7 +309,7 @@ export default async (req: Request) => {
           if (run) {
             console.log('Generating region...');
             const updatedGoogle = await setStoryRegion(google, googleMapsKey);
-            console.log('Generating region done!');
+            console.log(updatedGoogle.content.region ? 'Generating region done!' : 'Generating region failed!');
             await storyblokManagement.post(`/spaces/${spaceId}/stories`, {
               story: {
                 ...updatedGoogle,
