@@ -34,7 +34,7 @@ const HeaderMinimal = ({
               }`}
       >
         <CenteredContainer flex>
-          {windowSize.width < config.breakpoint.lg &&
+          {windowSize.width < config.breakpoints.lg &&
             layout !== 'no-sidebar' && (
               <CreateBloks blokSection={contentMenu} />
             )}
