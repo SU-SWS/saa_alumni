@@ -1,32 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import SbEditable from 'storyblok-react';
-import { SBLinkType } from '../../../types/storyblok/SBLinkType';
-import { HeadingLevelType } from '../../../types/HeadingLevelType';
-import { ClassNameType } from '../../../types/CommonType';
 import { useEvents } from '../../../hooks/useEvents';
 import { SynchronizedEventCard } from './synchronizedEventCard';
 import CreateBloks from '../../../utilities/createBloks';
 
-export const SynchronizedEventCardListProps = {
-  headline: PropTypes.string,
-  description: PropTypes.string,
-  link: SBLinkType,
-  filename: PropTypes.string,
-  focus: PropTypes.string,
-  imageFocus: PropTypes.string,
-  tabText: PropTypes.string,
-  headingLevel: HeadingLevelType,
-  orientation: PropTypes.string,
-  spacingBottom: PropTypes.string,
-  isDark: PropTypes.bool,
-  className: ClassNameType,
-};
-
 const SynchronizedEventCardList = ({
   blok: { numEventsShown, subjects, regions, formats, lastCard = [] },
   blok,
-  orientation,
 }) => {
   const hasLastCard = !!lastCard?.length;
   const events = useEvents({
@@ -51,6 +31,5 @@ const SynchronizedEventCardList = ({
     </SbEditable>
   );
 };
-SynchronizedEventCardList.propTypes = SynchronizedEventCardListProps;
 
 export default SynchronizedEventCardList;
