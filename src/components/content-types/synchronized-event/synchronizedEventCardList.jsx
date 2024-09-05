@@ -1,7 +1,7 @@
 import React from 'react';
 import SbEditable from 'storyblok-react';
 import { useEvents } from '../../../hooks/useEvents';
-import { SynchronizedEventCard } from './synchronizedEventCard';
+import { SynchronizedEventCard } from './SynchronizedEventCard';
 import CreateBloks from '../../../utilities/createBloks';
 
 const SynchronizedEventCardList = ({
