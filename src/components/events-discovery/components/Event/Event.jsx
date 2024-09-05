@@ -66,7 +66,7 @@ export const Event = ({
   const { filename, alt, focus } = image;
 
   return (
-    <article className="su-flex su-flex-col sm:su-flex-row su-items-center sm:su-items-start su-flex-wrap">
+    <article className="su-flex su-flex-col sm:su-flex-row su-items-start su-flex-wrap">
       <div className="su-flex su-basis-130 sm:su-basis-150 su-flex-none">
         <div className="su-flex su-flex-col su-items-center">
           <div>
