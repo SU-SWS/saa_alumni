@@ -52,8 +52,8 @@ export const SynchronizedEventCard = ({
     () => luxonStart.setZone('America/Los_Angeles'),
     [luxonStart]
   );
-  const { monthLong, day } = ptStart;
-  const monthDisplay = useMemo(() => monthLong?.toString(), [monthLong]);
+  const { monthShort, day } = ptStart;
+  const monthDisplay = useMemo(() => monthShort?.toString(), [monthShort]);
   const dayDisplay = useMemo(() => day?.toString().padStart(2, '0'), [day]);
 
   const luxonEnd = useMemo(() => luxonDate(end), [end]);
@@ -64,9 +64,14 @@ export const SynchronizedEventCard = ({
         <div className="su-flex su-flex-col su-rs-mb-neg2">
           <div className="su-mb-8 su-ml-2 su-text-20 lg:su-text-22">
             <div className="su-flex su-justify-between">
-              <span className="su-uppercase">
-                {monthDisplay} {dayDisplay}
-              </span>
+              <div>
+                <div className="su-mb-8 su-ml-2 su-uppercase su-text-20 lg:su-text-22">
+                  {monthDisplay}
+                </div>
+                <div className="su-font-bold su-font-serif su-leading-trim su-break-keep su-text-m5 md:su-text-m4 lg:su-text-m5">
+                  {dayDisplay}
+                </div>
+              </div>
               <span className="su-text-black-80 su-text-3xl">{experience}</span>
             </div>
           </div>
@@ -83,6 +88,7 @@ export const SynchronizedEventCard = ({
           city={city}
           region={region}
           subject={subject}
+          showTagIcon={false}
         />
       </div>
     </div>
