@@ -2,12 +2,10 @@ import React, { useId, useMemo, useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { DateTime } from 'luxon';
 import { MenuItem, Select } from '@mui/material';
-import { dcnb } from 'cnbuilder';
 import {
   CalendarIcon,
   LocationMarkerIcon,
   GlobeIcon,
-  TagIcon,
 } from '@heroicons/react/outline';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 import HeroIcon from '../../../simple/heroIcon';
@@ -21,7 +19,6 @@ import HeroIcon from '../../../simple/heroIcon';
  * @property {string} [city]
  * @property {string} [region]
  * @property {string[]} [subject]
- * @property {boolean} [showTagIcon]
  */
 
 /**
@@ -37,7 +34,6 @@ export const EventContent = ({
   city = '',
   region = '',
   subject = [],
-  showTagIcon = true,
 }) => {
   const uniqueId = useId();
   const [selectedTimezone, setSelectedTimezone] = useState(eventTimezone);
@@ -189,14 +185,7 @@ export const EventContent = ({
         </div>
       )}
       {!!subject?.length && (
-        <div
-          className={dcnb('su-flex su-items-center su-mb-04em su-mt-20', {
-            'sm:su--ml-30': showTagIcon,
-          })}
-        >
-          {showTagIcon && (
-            <TagIcon className={iconClasses} aria-hidden="true" />
-          )}
+        <div className="su-flex su-items-center su-mb-04em su-mt-20">
           <SrOnlyText>Subjects: </SrOnlyText>
           <div className="su-flex su-flex-row su-flex-wrap su-gap-4">
             {subject.map((tag) => (

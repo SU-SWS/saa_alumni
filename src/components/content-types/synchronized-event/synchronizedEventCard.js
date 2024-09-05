@@ -88,7 +88,6 @@ export const SynchronizedEventCard = ({
           city={city}
           region={region}
           subject={subject}
-          showTagIcon={false}
         />
       </div>
     </div>
