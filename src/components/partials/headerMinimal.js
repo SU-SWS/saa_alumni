@@ -1,15 +1,20 @@
 import SbEditable from 'storyblok-react';
 import React from 'react';
+import { dcnb } from 'cnbuilder';
 import UseWindowSize from '../../hooks/useWindowSize';
 import CenteredContainer from './centeredContainer';
 import Heading from './heading';
 import CreateBloks from '../../utilities/createBloks';
+import {
+  headerBackgroundColor,
+  headerSpacingBottom,
+} from '../../utilities/dataSource';
 import { config } from '../../utilities/config';
 
 const HeaderMinimal = ({
   blok: {
-    headerBackgroundColor,
-    headerSpacingBottom,
+    headerBackgroundColor: color,
+    headerSpacingBottom: marginSize,
     layout,
     contentMenu,
     title,
@@ -17,7 +22,10 @@ const HeaderMinimal = ({
   blok,
 }) => {
   const windowSize = UseWindowSize();
+  const backgroundColor = headerBackgroundColor[color];
+  const headerMarginBottom = headerSpacingBottom[marginSize];
   let headingTextColor = 'white';
+
   if (headerBackgroundColor === 'white') {
     headingTextColor = 'black-90';
   }
@@ -25,13 +33,11 @@ const HeaderMinimal = ({
   return (
     <SbEditable content={blok}>
       <header
-        className={`su-py-38 md:su-py-72 lg:su-py-108 xl:su-py-[11.1rem] su-basefont-23
-              su-bg-${headerBackgroundColor}
-              ${
-                headerSpacingBottom !== 'none'
-                  ? `su-rs-mb-${headerSpacingBottom}`
-                  : ''
-              }`}
+        className={dcnb(
+          'su-py-38 md:su-py-72 lg:su-py-108 xl:su-py-[11.1rem] su-basefont-23',
+          backgroundColor,
+          headerMarginBottom
+        )}
       >
         <CenteredContainer flex>
           {windowSize.width < config.breakpoints.lg &&

@@ -146,6 +146,15 @@ export const headerBackgroundColor = {
   'palo-verde-dark': 'su-bg-palo-verde-dark',
 };
 
+export const headerSpacingBottom = {
+  3: 'su-rs-mb-3',
+  4: 'su-rs-mb-4',
+  6: 'su-rs-mb-6',
+  8: 'su-rs-mb-8',
+  9: 'su-rs-mb-9',
+  none: '',
+};
+
 export const heroGradient = {
   black: 'su-from-saa-black',
   brick: 'xs:su-from-brick su-to-brick/30',
