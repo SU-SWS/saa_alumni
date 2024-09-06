@@ -24,9 +24,9 @@ const HeaderMinimal = ({
   const windowSize = UseWindowSize();
   const backgroundColor = headerBackgroundColor[color];
   const headerMarginBottom = headerSpacingBottom[marginSize];
-  let headingTextColor = 'white';
 
-  if (headerBackgroundColor === 'white') {
+  let headingTextColor = 'white';
+  if (backgroundColor === 'su-bg-white') {
     headingTextColor = 'black-90';
   }
 

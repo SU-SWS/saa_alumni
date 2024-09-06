@@ -134,7 +134,7 @@ export const fontWeights = {
 };
 
 export const headerBackgroundColor = {
-  white: 'su-bg-white su-text-black',
+  white: 'su-bg-white',
   'cardinal-red': 'su-bg-cardinal',
   'digital-red': 'su-bg-digital-red',
   'palo-alto': 'su-bg-palo-alto',
