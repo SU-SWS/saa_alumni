@@ -25,7 +25,7 @@ const HeaderMinimal = ({
   return (
     <SbEditable content={blok}>
       <header
-        className={`ood-interior-page__header su-py-38 md:su-py-72 lg:su-py-108 xl:su-py-[11.1rem] su-basefont-23
+        className={`su-py-38 md:su-py-72 lg:su-py-108 xl:su-py-[11.1rem] su-basefont-23
               su-bg-${headerBackgroundColor}
               ${
                 headerSpacingBottom !== 'none'
