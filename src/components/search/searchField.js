@@ -1,182 +1,39 @@
-import React, { useState, createRef, useEffect } from 'react';
+import React from 'react';
+
+import { SearchBox } from 'react-instantsearch';
 import { X, Search } from 'react-hero-icon/solid';
-import { useLocation } from '@reach/router';
-import SearchAutocomplete from './searchAutocomplete';
-import useOnClickOutside from '../../hooks/useOnClickOutside';
-import { utmParams } from '../../utilities/utmParams';
 
-const SearchField = React.forwardRef(
-  (
-    {
-      onSubmit,
-      onReset,
-      onInput,
-      autocompleteSuggestions,
-      defaultValue,
-      inputClasses,
-      wrapperClasses,
-      submitBtnClasses,
-      clearBtnClasses,
-      autocompleteLinkClasses,
-      autocompleteLinkFocusClasses,
-      autocompleteContainerClasses,
-      placeholder,
-    },
-    ref
-  ) => {
-    const [query, setQuery] = useState(defaultValue || '');
-    const [showAutocomplete, setShowAutocomplete] = useState(false);
-    const [selectedSuggestion, setSelectedSuggestion] = useState(null);
-    const inputWrapper = createRef();
-    const inputRef = ref || createRef();
+// CSS Classes.
+// --------------------------------------------------
+const wrapperClasses = `su-grow su-w-auto su-border-0 su-border-b su-border-black-60`;
+const clearBtnClasses = `su-flex su-items-center su-bg-transparent hocus:su-bg-transparent su-text-black-70 hocus:su-text-black hocus:su-underline su-text-m0 su-font-semibold su-border-none  su-p-0 su-rs-mr-1 su-mt-03em`;
+const inputClasses = `su-border-0 su-text-m2 su-leading-display su-w-full su-flex-1 su-rs-px-1 su-py-10 su-outline-none focus:su-ring-0 focus:su-ring-transparent`;
+const submitBtnClasses = `su-flex su-items-center su-justify-center su-w-40 su-min-w-[4rem] su-h-40 md:children:su-w-20 md:children:su-h-20 su-rounded-full su-transition-colors su-bg-digital-red-light hocus:su-bg-cardinal-red-xdark su-ml-10`;
+const autocompleteLinkClasses = `su-cursor-pointer su-font-regular su-inline-block su-w-full su-text-white su-no-underline su-px-15 su-py-10 su-rounded-full hover:su-bg-digital-red hover:su-text-white`;
+const autocompleteLinkFocusClasses = `su-bg-digital-red`;
+const autocompleteContainerClasses = `su-absolute su-top-[100%] su-bg-cardinal-red-xxdark su-p-10 su-shadow-md su-w-full su-border su-border-digital-red-light su-rounded-b-[0.5rem] su-z-20`;
 
-    const location = useLocation();
-    const utms = utmParams(location.search);
-
-    const submitHandler = (e) => {
-      e.preventDefault();
-      setShowAutocomplete(false);
-      let queryParams = query;
-      if (utms.length > 0) {
-        queryParams += `&${utms}`;
-      }
-      onSubmit(queryParams);
-    };
-
-    const inputHandler = (e) => {
-      setQuery(e.target.value);
-      onInput(e.target.value);
-      setShowAutocomplete(true);
-      setSelectedSuggestion(null);
-    };
-
-    const clearHandler = (e) => {
-      e.preventDefault();
-      setQuery('');
-      setShowAutocomplete(false);
-      setSelectedSuggestion(null);
-      onReset();
-    };
-
-    const selectSuggestion = (e, suggestion) => {
-      e.preventDefault();
-      setQuery(suggestion);
-      setShowAutocomplete(false);
-      setSelectedSuggestion(null);
-      let suggestionParams = suggestion;
-      if (utms.length > 0) {
-        suggestionParams += `&${utms}`;
-      }
-      onSubmit(suggestionParams);
-    };
-
-    useEffect(() => {
-      setQuery(defaultValue);
-    }, [defaultValue]);
-
-    useOnClickOutside(inputWrapper, () => {
-      setShowAutocomplete(false);
-    });
-
-    // If no suggestion is selected, or if the last suggested item is selected,
-    // using the down arrow will set focus on the first suggestion
-    const handleArrowKeys = (e) => {
-      if (e.key === 'ArrowDown') {
-        if (
-          selectedSuggestion === null ||
-          selectedSuggestion === autocompleteSuggestions.length - 1
-        ) {
-          setSelectedSuggestion(0);
-        } else {
-          setSelectedSuggestion(selectedSuggestion + 1);
-        }
-        // if the first suggested selection is selected,
-        // using the up arrow will loop back to set focus on the last suggestion
-      } else if (e.key === 'ArrowUp') {
-        if (selectedSuggestion === 0) {
-          setSelectedSuggestion(autocompleteSuggestions.length - 1);
-        } else {
-          setSelectedSuggestion(selectedSuggestion - 1);
-        }
-      } else if (
-        e.key === 'Enter' &&
-        autocompleteSuggestions[selectedSuggestion]
-      ) {
-        selectSuggestion(e, autocompleteSuggestions[selectedSuggestion].query);
-      }
-    };
-
-    return (
-      <div>
-        <form onSubmit={submitHandler}>
-          <div className="su-flex su-items-center">
-            <span className="" />
-            <div
-              className={`su-flex su-w-full su-items-center su-relative ${wrapperClasses}`}
-              ref={inputWrapper}
-            >
-              <label className="su-grow su-max-w-full">
-                <span className="su-sr-only">Search</span>
-                <input
-                  data-test="search--modal-input"
-                  type="text"
-                  role="combobox"
-                  aria-autocomplete="list"
-                  aria-controls="search-autocomplete-listbox"
-                  aria-expanded={showAutocomplete ? 'true' : 'false'}
-                  aria-activedescendant={
-                    selectedSuggestion !== null
-                      ? `search-autocomplete-listbox-${selectedSuggestion}`
-                      : ''
-                  }
-                  aria-haspopup="listbox"
-                  onChange={inputHandler}
-                  onKeyDown={handleArrowKeys}
-                  className={inputClasses}
-                  placeholder={placeholder || ''}
-                  value={query}
-                  ref={inputRef}
-                />
-              </label>
-              <button
-                type="button"
-                onClick={clearHandler}
-                className={clearBtnClasses}
-              >
-                Clear
-                <X
-                  className="su-inline-block su-ml-3 su-h-[1.1em] su-w-[1.1em]"
-                  aria-hidden="true"
-                />
-              </button>
-              <SearchAutocomplete
-                autocompleteSuggestions={autocompleteSuggestions}
-                showAutocomplete={showAutocomplete}
-                onSelect={selectSuggestion}
-                selectedSuggestion={selectedSuggestion}
-                setShowAutocomplete={setShowAutocomplete}
-                setSelectedSuggestion={setSelectedSuggestion}
-                autocompleteContainerClasses={autocompleteContainerClasses}
-                autocompleteLinkClasses={autocompleteLinkClasses}
-                autocompleteLinkFocusClasses={autocompleteLinkFocusClasses}
-              />
-            </div>
-            <button
-              data-cy="search--submit-btn"
-              type="submit"
-              className={submitBtnClasses}
-            >
-              <Search
-                className="su-text-white su-w-20 su-h-20"
-                aria-hidden="true"
-              />
-              <span className="su-sr-only">Search</span>
-            </button>
-          </div>
-        </form>
-      </div>
-    );
-  }
-);
+const SearchField = React.forwardRef(({ placeholder }, ref) => (
+  <div className="su-flex su-items-center">
+    <span className="" />
+    <div
+      className={`su-flex su-w-full su-items-center su-relative ${wrapperClasses}`}
+    >
+      <label className="su-grow su-max-w-full" htmlFor="search-input-field">
+        <span className="su-sr-only">Search</span>
+      </label>
+      <SearchBox
+        id="search-input-field"
+        placeholder={placeholder}
+        searchAsYouType={false}
+        autoFocus
+        submitIconComponent={Search}
+        resetIconComponent={X}
+        // loadingIconComponent={() => JSX.Element}
+        classNames={inputClasses}
+      />
+    </div>
+  </div>
+));
 
 export default SearchField;
