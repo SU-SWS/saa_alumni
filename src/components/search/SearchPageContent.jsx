@@ -1,12 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import {
-  Configure,
-  Hits,
-  Pagination,
-  RefinementList,
-  Stats,
-  useStats,
-} from 'react-instantsearch';
+import React, { useMemo } from 'react';
+import { Configure, Pagination, useStats } from 'react-instantsearch';
 import SbEditable from 'storyblok-react';
 import { Container } from '../layout/Container';
 import Layout from '../partials/Layout';
@@ -17,6 +10,8 @@ import SearchField from './searchField';
 import getNumBloks from '../../utilities/getNumBloks';
 import CreateBloks from '../../utilities/createBloks';
 import { Skiplink } from '../accessibility/Skiplink';
+import SearchFacet from './searchFacet';
+import SearchResults from './searchResults';
 
 /**
  * Content Block.
@@ -41,14 +36,12 @@ const SearchPageContent = (props) => {
     [itemsPerPage]
   );
 
-  // Mobile State.
-  // --------------------------------------------------
-  const [opened, setOpened] = useState(false);
-
   return (
     <>
-      <Configure hitsPerPage={itemsPerPageInt} />
-
+      <Configure
+        hitsPerPage={itemsPerPageInt}
+        attributesToSnippet={['body:50']}
+      />
       <SbEditable content={blok}>
         <Layout hasHero={false} {...props}>
           <Container
@@ -103,25 +96,20 @@ const SearchPageContent = (props) => {
                   Filter Search Results
                 </Heading>
                 <div>
-                  <p>Sites</p>
-                  <RefinementList attribute="siteName" />
-                  <p>Media</p>
-                  <RefinementList attribute="fileType" />
+                  <SearchFacet
+                    attribute="siteName"
+                    label="Sites"
+                    excludes={['YouTube', 'SoundCloud', 'Apple Podcasts']}
+                  />
+                  <SearchFacet
+                    attribute="fileType"
+                    label="Media"
+                    excludes={['html', 'pdf']}
+                  />
                 </div>
               </GridCell>
-              <GridCell xs={12} lg={3} className="su-mb-40">
-                <div
-                  className="su-text-21 lg:su-mb-40"
-                  aria-live="polite"
-                  aria-atomic="true"
-                  // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-                  tabIndex="0"
-                  id="number-search-results"
-                >
-                  <span className="su-font-semibold">{resultCount}</span>{' '}
-                  results:
-                </div>
-                <Hits />
+              <GridCell xs={12} lg={9} className="su-mb-40">
+                <SearchResults />
               </GridCell>
             </Grid>
             <Grid>
