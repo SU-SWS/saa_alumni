@@ -12,10 +12,9 @@ export default async (req: Request) => {
       throw new Error('No secret available');
     }
 
-    const url = new URL('/webhook/sb/import-events', req.url);
+    const url = new URL('/webhook/sb/event-import', req.url);
     url.searchParams.set('secret', secret);
 
-  
     const triggerRes = await fetch(url, { method: 'POST' });
 
     if (triggerRes.ok) {
@@ -33,5 +32,5 @@ export default async (req: Request) => {
 };
 
 export const config: Config = {
-  schedule: '0 15 * * *', // Every day at 3 PM UTC (8 AM PT)
+  schedule: '30 15 * * *', // Every day at 3:30 PM UTC (7:30 PST/8:30 PDT)
 };
