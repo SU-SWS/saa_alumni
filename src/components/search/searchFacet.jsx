@@ -7,6 +7,10 @@ const SearchFacet = ({ className, attribute, label, excludes = [] }) => {
   // Filter out any items we don't want to show.
   const filteredItems = items.filter((item) => !excludes.includes(item.value));
 
+  if (!filteredItems.length) {
+    return null;
+  }
+
   return (
     <div
       className={
@@ -32,7 +36,7 @@ const SearchFacet = ({ className, attribute, label, excludes = [] }) => {
             className="su-peer su-form-checkbox su-text-digital-red-light su-mr-10 su-w-15 su-h-15 su-cursor-pointer su-rounded su-border-black-40 hocus:su-border-none hocus:su-ring hocus:su-ring-digital-red-light hocus:su-ring-offset-0"
             onChange={() => refine(option.value)}
           />
-          <span className="su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light">
+          <span className="su-text-16 lg:su-text-19 peer-hover:su-text-digital-red-light peer-focus:su-text-digital-red-light peer-hover:su-underline peer-focus:su-underline hover:su-underline hover:su-text-digital-red-light su-capitalize">
             {option.label}
             <span> ({option.count.toLocaleString('en-us')})</span>
           </span>

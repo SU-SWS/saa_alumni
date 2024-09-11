@@ -6,12 +6,13 @@ import Layout from '../partials/Layout';
 import { Heading } from '../simple/Heading';
 import { Grid } from '../layout/Grid';
 import { GridCell } from '../layout/GridCell';
-import SearchField from './searchField';
+import SearchField from './SearchField';
 import getNumBloks from '../../utilities/getNumBloks';
 import CreateBloks from '../../utilities/createBloks';
 import { Skiplink } from '../accessibility/Skiplink';
-import SearchFacet from './searchFacet';
-import SearchResults from './searchResults';
+import SearchFacet from './SearchFacet';
+import SearchResults from './SearchResults';
+import SearchPager from './SearchPager';
 
 /**
  * Content Block.
@@ -114,9 +115,7 @@ const SearchPageContent = (props) => {
             </Grid>
             <Grid>
               <GridCell>
-                <Pagination
-                  classNames={{ list: 'su-flex su-list-none', item: 'su-px-6' }}
-                />
+                <SearchPager />
               </GridCell>
             </Grid>
           </Container>

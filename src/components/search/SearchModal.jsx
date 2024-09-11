@@ -3,8 +3,8 @@ import { useStaticQuery, graphql, navigate } from 'gatsby';
 import { Container } from '../layout/Container';
 import { Heading } from '../simple/Heading';
 import Modal from '../layout/Modal/Modal';
-import SearchFieldModal from './searchFieldModal';
-import SearchSuggestions from './searchSuggestions';
+import SearchFieldModal from './SearchFieldModal';
+import SearchSuggestions from './SearchSuggestions';
 
 const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
   const searchFieldRef = React.createRef();
@@ -51,7 +51,6 @@ const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
         onClose();
         setShowEmptyMessage(false);
       }}
-      initialFocus={searchFieldRef}
       ariaLabel="Search Stanford Alumni websites"
     >
       <Container>

@@ -25,7 +25,7 @@ const SearchPage = (props) => {
       stateToRoute(uiState) {
         const uiIndexState = uiState[indexName];
         return {
-          query: uiIndexState.query,
+          q: uiIndexState.query,
           page: uiIndexState.page,
           sites: uiIndexState.refinementList?.siteName,
           media: uiIndexState.refinementList?.fileType,
@@ -34,7 +34,7 @@ const SearchPage = (props) => {
       routeToState(routeState) {
         return {
           [indexName]: {
-            query: routeState.query,
+            query: routeState.q,
             page: routeState.page,
             refinementList: {
               siteName: routeState.sites,

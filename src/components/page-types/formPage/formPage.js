@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from 'react';
 import SbEditable from 'storyblok-react';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
-import Layout from '../../partials/layout';
+import Layout from '../../partials/Layout';
 import CreateBloks from '../../../utilities/createBloks';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';

@@ -7,7 +7,7 @@ import CreateBloks from '../../../utilities/createBloks';
 import Logo from '../logo';
 import OpenSearchModalButton from '../../search/openSearchModalButton';
 import SbLink from '../../../utilities/sbLink';
-import SearchModal from '../../search/searchModal';
+import SearchModal from '../../search/SearchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import useEscape from '../../../hooks/useEscape';

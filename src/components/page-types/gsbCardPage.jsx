@@ -9,7 +9,7 @@ import GsbLogoColor from '../../images/gsb_logo-color.png';
 import RichTextRenderer from '../../utilities/richTextRenderer';
 import { Grid } from '../layout/Grid';
 import { GridCell } from '../layout/GridCell';
-import Layout from '../partials/layout';
+import Layout from '../partials/Layout';
 import AuthenticatedPage from '../auth/AuthenticatedPage';
 import { Container } from '../layout/Container';
 import { Heading } from '../simple/Heading';

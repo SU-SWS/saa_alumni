@@ -1,11 +1,11 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useId } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../utilities/createBloks';
 import Logo from './logo';
 import { FlexBox } from '../layout/FlexBox';
 import OpenSearchModalButton from '../search/openSearchModalButton';
-import SearchModal from '../search/searchModal';
+import SearchModal from '../search/SearchModal';
 import * as styles from './GlobalHeader/GlobalHeader.styles';
 import useEscape from '../../hooks/useEscape';
 import useDisplay from '../../hooks/useDisplay';
@@ -20,8 +20,6 @@ const Masthead = ({
   const [modalOpen, setModalOpen] = useState(false);
   const desktopRef = useRef(null);
   const mobileRef = useRef(null);
-  const openSearchRef = useRef(null);
-  const openSearchMobileRef = useRef(null);
 
   let mainNavBgColorXl =
     'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
@@ -32,33 +30,6 @@ const Masthead = ({
     mainNavBgColorXl = 'xl:su-bg-saa-black';
     mainNavBgColorLg = 'su-bg-saa-black';
   }
-
-  const returnFocus = () => {
-    if (openSearchRef.current) {
-      openSearchRef.current.focus();
-    } else if (openSearchMobileRef.current) {
-      openSearchMobileRef.current.focus();
-    }
-  };
-
-  const handleClose = () => {
-    setModalOpen(false);
-    returnFocus();
-  };
-
-  useEscape(() => {
-    // Only do this if the search modal is open
-    if (modalOpen) {
-      const searchInputModal =
-        document.getElementsByClassName('search-input-modal')[0];
-
-      // Only close the modal with Escape key if the autocomplete dropdown is not open
-      if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
-        setModalOpen(false);
-        returnFocus();
-      }
-    }
-  });
 
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
   const { showDesktop, showMobile } = useDisplay();
@@ -89,9 +60,8 @@ const Masthead = ({
             </FlexBox>
             <FlexBox>
               <OpenSearchModalButton
-                openOpen={modalOpen}
                 setModalOpen={setModalOpen}
-                ref={openSearchMobileRef}
+                id="mastead-search-openmodal-mobile"
               />
               <CreateBloks blokSection={mainNav} className="su-shrink-0" />
             </FlexBox>
@@ -133,9 +103,8 @@ const Masthead = ({
                   </ul>
                 </nav>
                 <OpenSearchModalButton
-                  openOpen={modalOpen}
                   setModalOpen={setModalOpen}
-                  ref={openSearchRef}
+                  id="mastead-search-openmodal-desktop"
                 />
               </FlexBox>
               <CreateBloks
@@ -153,12 +122,7 @@ const Masthead = ({
           />
         </div>
       )}
-      <SearchModal
-        isOpen={modalOpen}
-        setIsOpen={setModalOpen}
-        onClose={handleClose}
-        searchPageUrl={searchPageUrl}
-      />
+      <SearchModal isOpen={modalOpen} searchPageUrl={searchPageUrl} />
     </SbEditable>
   );
 };

@@ -6,7 +6,7 @@ import { GridCell } from '../../layout/GridCell';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import { Skiplink } from '../../accessibility/Skiplink';
-import Layout from '../../partials/layout';
+import Layout from '../../partials/Layout';
 import CreateBloks from '../../../utilities/createBloks';
 import { useTripFilters } from '../../../hooks/useTripFilters';
 import { TripFilterList } from '../../composite/TripFilterList/TripFilterList';
