@@ -3,7 +3,7 @@ import { DateTime } from 'luxon';
 export const luxonDate = (dateString = '') => {
   const date = DateTime.fromFormat(dateString, 'yyyy-MM-dd T', {
     zone: 'UTC',
-  }).setLocale('en-us');
+  }).setLocale('en-US');
   return date;
 };
 
