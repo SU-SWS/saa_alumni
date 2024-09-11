@@ -150,7 +150,7 @@
     "node-vault": "^0.10.2",
     "postcss": "^8.4.38",
     "prettier": "^2.8.8",
-    "start-server-and-test": "^2.0.3",
+    "start-server-and-test": "^2.0.7",
     "storyblok": "^3.31.1",
     "toml": "^3.0.0",
     "type-fest": "^4.18.3"
