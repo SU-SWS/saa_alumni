@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import {
+  DynamicWidgets,
   RefinementList,
   useClearRefinements,
   useRefinementList,
@@ -20,8 +21,9 @@ import { slugify } from '../../../../utilities/slugify';
  */
 export const FacetList = ({ attribute, subfilter = false }) => {
   const uniqueId = useId();
-  const [isExpanded, setIsExpaned] = useState(false);
   const { getFacet, toggleFacet } = useFacets();
+  const facetState = getFacet(attribute);
+  const [isExpanded, setIsExpaned] = useState(!facetState.limitResults);
   const { items, canRefine, hasExhaustiveItems } = useRefinementList({
     attribute,
   });
@@ -32,7 +34,6 @@ export const FacetList = ({ attribute, subfilter = false }) => {
     () => items.some((item) => item.isRefined),
     [items]
   );
-  const facetState = getFacet(attribute);
 
   const toggleExpanded = useCallback(() => {
     setIsExpaned((c) => !c);
@@ -68,23 +69,24 @@ export const FacetList = ({ attribute, subfilter = false }) => {
     >
       {canRefine ? (
         <>
-          <RefinementList
-            id={`${slugify(facetState.label)}-${uniqueId}`}
-            attribute={attribute}
-            limit={isExpanded ? 1000 : 10}
-            sortBy={['isRefined', 'count']}
-            classNames={{
-              root: 'su-mt-8',
-              list: 'su-flex su-flex-col su-gap-4 su-list-none su-pl-8',
-              item: 'su-mb-0',
-              checkbox:
-                'su-mr-6 su-items-center su-rounded-md su-bg-white su-w-20 su-h-20 su-border-2 su-border-cardinal-red-light su-text-cardinal-red-light su-cursor-pointer su-transition su-duration-200 su-ease-in-out hocus:su-bg-cardinal-red focus:su-ring-1 focus:su-ring-cardinal-red-light',
-              label:
-                'su-flex su-items-center hover:su-cursor-pointer su-text-18',
-              count: "su-ml-4 before:su-content-['('] after:su-content-[')']",
-            }}
-          />
-          {(!hasExhaustiveItems || isExpanded) && (
+          <DynamicWidgets>
+            <RefinementList
+              id={`${slugify(facetState.label)}-${uniqueId}`}
+              attribute={attribute}
+              limit={isExpanded ? 1000 : 10}
+              classNames={{
+                root: 'su-mt-8',
+                list: 'su-flex su-flex-col su-gap-4 su-list-none su-pl-8',
+                item: 'su-mb-0',
+                checkbox:
+                  'su-mr-6 su-items-center su-rounded-md su-bg-white su-w-20 su-h-20 su-border-2 su-border-cardinal-red-light su-text-cardinal-red-light su-cursor-pointer su-transition su-duration-200 su-ease-in-out hocus:su-bg-cardinal-red focus:su-ring-1 focus:su-ring-cardinal-red-light',
+                label:
+                  'su-flex su-items-center hover:su-cursor-pointer su-text-18',
+                count: "su-ml-4 before:su-content-['('] after:su-content-[')']",
+              }}
+            />
+          </DynamicWidgets>
+          {facetState.limitResults && (!hasExhaustiveItems || isExpanded) && (
             <button
               type="button"
               onClick={toggleExpanded}

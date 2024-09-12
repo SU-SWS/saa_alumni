@@ -36,7 +36,7 @@ export const MobileSearchBar = ({ searchClient, indexName }) => {
         aria-controls="event-search-drawer"
         aria-label="Search by event title"
       >
-        <SearchIcon className="su-w-16 su-h-16 su-shrink-0" />{' '}
+        <SearchIcon className="su-w-16 su-h-16 su-shrink-0" aria-hidden />{' '}
         <span>
           Search <span className="su-hidden sm:su-inline">by event title</span>
         </span>
