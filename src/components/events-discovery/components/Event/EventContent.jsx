@@ -30,13 +30,14 @@ export const EventContent = ({
   start,
   end,
   // Should we default to something else?
-  eventTimezone = 'America/Los_Angeles',
+  eventTimezone: rawEventTimezone,
   location = '',
   city = '',
   region = '',
   subject = [],
 }) => {
   const uniqueId = useId();
+  const eventTimezone = rawEventTimezone || 'America/Los_Angeles';
   const [selectedTimezone, setSelectedTimezone] = useState(eventTimezone);
 
   const localTime = DateTime.local();
