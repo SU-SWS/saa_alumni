@@ -204,7 +204,7 @@ const LocationTabPanelCity = () => {
                     inputProps={{
                       ...props.inputProps,
                       className: styles.input(isDesktop),
-                      'aria-labelledby': locError
+                      'aria-describedby': locError
                         ? 'location-distance-error'
                         : undefined,
                     }}
