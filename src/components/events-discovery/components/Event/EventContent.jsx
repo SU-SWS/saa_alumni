@@ -94,7 +94,7 @@ export const EventContent = ({
   return (
     <div className="event-card-details su-text-19 su-leading-snug">
       <ul className="su-list-none su-m-0 su-p-0">
-        <li className="su-flex su-mb-04em">
+        <li className="su-flex su-mb-04em su-leading-snug">
           <CalendarIcon className={iconClasses} aria-hidden="true" />
           <SrOnlyText>Date: </SrOnlyText>
           {!!start && !!end && (
@@ -163,7 +163,7 @@ export const EventContent = ({
           )}
         </li>
         {(location || city) && (
-          <li className="su-flex su-mb-04em">
+          <li className="su-flex su-mb-04em su-leading-snug">
             <LocationMarkerIcon className={iconClasses} aria-hidden="true" />
             <span className="su-flex su-flex-col">
               {location && (
@@ -182,7 +182,7 @@ export const EventContent = ({
           </li>
         )}
         {region && (
-          <li className="su-flex su-mb-04em">
+          <li className="su-flex su-mb-04em su-leading-snug">
             <GlobeIcon className={iconClasses} aria-hidden="true" />
             <SrOnlyText>Region: </SrOnlyText>
             <span>{region}</span>
@@ -197,7 +197,7 @@ export const EventContent = ({
             {subject.map((tag) => (
               <li
                 key={tag}
-                className="su-border su-border-black su-px-18 su-py-2 su-rounded-2xl"
+                className="su-border su-border-black su-m-0 su-px-18 su-py-2 su-rounded-2xl su-leading-snug"
               >
                 {tag.trim()}
               </li>
