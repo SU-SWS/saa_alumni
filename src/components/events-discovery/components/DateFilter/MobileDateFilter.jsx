@@ -67,6 +67,20 @@ const theme = createTheme({
         },
       },
     },
+    MuiDialogActions: {
+      styleOverrides: {
+        root: {
+          '& .MuiButtonBase-root:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '& .MuiButtonBase-root:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+        },
+      },
+    },
     MuiInputBase: {
       styleOverrides: {
         input: {
