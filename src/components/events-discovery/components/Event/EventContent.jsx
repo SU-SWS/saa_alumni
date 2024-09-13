@@ -83,7 +83,7 @@ export const EventContent = ({
   );
 
   const selectRootClasses =
-    '!su-relative !su-font-sans !su-ml-4 !su-border-b-2 !su-border-transparent hocus:!su-border-digital-red-light before:!su-hidden after:!su-hidden';
+    '!su-relative !su-font-sans !su-ml-4 !su-border-b-2 !su-border-transparent hocus:!su-border-digital-red-light focus-within:!su-border-digital-red-light focus-within:su-ring focus-within:su-ring-digital-blue-light focus-within:su-ring-offset-1 before:!su-hidden after:!su-hidden';
   const selectClasses =
     '!su-relative !su-z-[1] !su-text-19 !su-leading-normal !su-py-0 !su-pl-0 !su-pr-20 hocus:!su-bg-transparent !su-outline-none !su-border-none';
   const selectMenuRootClasses = '!su-text-16';
@@ -92,113 +92,117 @@ export const EventContent = ({
     'su-inline-block su-shrink-0 su-mt-2 md:su-mt-3 su-mr-06em su-w-1em';
 
   return (
-    <div className="event-card-details su-text-19 su-leading-snug su-lea">
-      <div className="su-flex su-mb-04em">
-        <CalendarIcon className={iconClasses} aria-hidden="true" />
-        <SrOnlyText>Date: </SrOnlyText>
-        {!!start && !!end && (
-          <span>
-            {!isSameDay && `${longStartDate} to ${longEndDate}`}
-            {isSameDay && `${startTime} - ${endTime} `}
-            {isSameDay && isEventLocal && (
-              <span className="su-ml-4">{eventTimezoneDisplay}</span>
-            )}
-            {isSameDay && !isEventLocal && isOffsetSame && (
-              <span className="su-ml-4">
-                {eventTimezoneDisplay}/{localTimezoneDisplay}
-              </span>
-            )}
-            {isSameDay && !isEventLocal && !isOffsetSame && (
-              <>
-                <label
-                  id={`timezone-${uniqueId}`}
-                  htmlFor={`timezone-select-${uniqueId}`}
-                  className="su-sr-only"
-                >
-                  Time zone
-                </label>
-                <Select
-                  id={`timezone-select-${uniqueId}`}
-                  labelId={`timezone-${uniqueId}`}
-                  variant="standard"
-                  renderValue={(v) => DateTime.now().setZone(v).offsetNameShort}
-                  value={selectedTimezone}
-                  onChange={(e) => setSelectedTimezone(e.target.value)}
-                  classes={{
-                    root: selectRootClasses,
-                    select: selectClasses,
-                  }}
-                  IconComponent={() => (
-                    <HeroIcon
-                      iconType="chevron-down"
-                      className="su-absolute su-right-0 su-z-0 su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
-                    />
-                  )}
-                >
-                  <MenuItem
-                    classes={{
-                      root: selectMenuRootClasses,
-                      selected: selectMenuSelectedClasses,
-                    }}
-                    value={eventTimezoneName}
+    <div className="event-card-details su-text-19 su-leading-snug">
+      <ul className="su-list-none su-m-0 su-p-0">
+        <li className="su-flex su-mb-04em">
+          <CalendarIcon className={iconClasses} aria-hidden="true" />
+          <SrOnlyText>Date: </SrOnlyText>
+          {!!start && !!end && (
+            <span>
+              {!isSameDay && `${longStartDate} to ${longEndDate}`}
+              {isSameDay && `${startTime} - ${endTime} `}
+              {isSameDay && isEventLocal && (
+                <span className="su-ml-4">{eventTimezoneDisplay}</span>
+              )}
+              {isSameDay && !isEventLocal && isOffsetSame && (
+                <span className="su-ml-4">
+                  {eventTimezoneDisplay}/{localTimezoneDisplay}
+                </span>
+              )}
+              {isSameDay && !isEventLocal && !isOffsetSame && (
+                <>
+                  <label
+                    id={`timezone-${uniqueId}`}
+                    htmlFor={`timezone-select-${uniqueId}`}
+                    className="su-sr-only"
                   >
-                    {eventTimezoneDisplay} (event time zone)
-                  </MenuItem>
-                  <MenuItem
+                    Time zone
+                  </label>
+                  <Select
+                    id={`timezone-select-${uniqueId}`}
+                    labelId={`timezone-${uniqueId}`}
+                    variant="standard"
+                    renderValue={(v) =>
+                      DateTime.now().setZone(v).offsetNameShort
+                    }
+                    value={selectedTimezone}
+                    onChange={(e) => setSelectedTimezone(e.target.value)}
                     classes={{
-                      root: selectMenuRootClasses,
-                      selected: selectMenuSelectedClasses,
+                      root: selectRootClasses,
+                      select: selectClasses,
                     }}
-                    value={localTimezoneName}
+                    IconComponent={() => (
+                      <HeroIcon
+                        iconType="chevron-down"
+                        className="su-absolute su-right-0 su-z-0 su-shrink-0 !su-w-18 !su-h-18 su-text-digital-red-light"
+                      />
+                    )}
                   >
-                    {localTimezoneDisplay} (your time zone)
-                  </MenuItem>
-                </Select>
-              </>
-            )}
-          </span>
+                    <MenuItem
+                      classes={{
+                        root: selectMenuRootClasses,
+                        selected: selectMenuSelectedClasses,
+                      }}
+                      value={eventTimezoneName}
+                    >
+                      {eventTimezoneDisplay} (event time zone)
+                    </MenuItem>
+                    <MenuItem
+                      classes={{
+                        root: selectMenuRootClasses,
+                        selected: selectMenuSelectedClasses,
+                      }}
+                      value={localTimezoneName}
+                    >
+                      {localTimezoneDisplay} (your time zone)
+                    </MenuItem>
+                  </Select>
+                </>
+              )}
+            </span>
+          )}
+        </li>
+        {(location || city) && (
+          <li className="su-flex su-mb-04em">
+            <LocationMarkerIcon className={iconClasses} aria-hidden="true" />
+            <span className="su-flex su-flex-col">
+              {location && (
+                <>
+                  <SrOnlyText>Location: </SrOnlyText>
+                  <span>{location}</span>
+                </>
+              )}
+              {city && (
+                <>
+                  <SrOnlyText>City: </SrOnlyText>
+                  <span>{city}</span>
+                </>
+              )}
+            </span>
+          </li>
         )}
-      </div>
-      {(location || city) && (
-        <div className="su-flex su-mb-04em">
-          <LocationMarkerIcon className={iconClasses} aria-hidden="true" />
-          <div className="su-flex su-flex-col">
-            {location && (
-              <>
-                <SrOnlyText>Location: </SrOnlyText>
-                <span>{location}</span>
-              </>
-            )}
-            {city && (
-              <>
-                <SrOnlyText>City: </SrOnlyText>
-                <span>{city}</span>
-              </>
-            )}
-          </div>
-        </div>
-      )}
-      {region && (
-        <div className="su-flex su-mb-04em">
-          <GlobeIcon className={iconClasses} aria-hidden="true" />
-          <SrOnlyText>Region: </SrOnlyText>
-          <span>{region}</span>
-        </div>
-      )}
+        {region && (
+          <li className="su-flex su-mb-04em">
+            <GlobeIcon className={iconClasses} aria-hidden="true" />
+            <SrOnlyText>Region: </SrOnlyText>
+            <span>{region}</span>
+          </li>
+        )}
+      </ul>
       {!!subject?.length && (
         <div className="su-flex su-items-center su-mb-04em sm:su--ml-30 su-mt-20">
           <TagIcon className={iconClasses} aria-hidden="true" />
-          <SrOnlyText>Subjects: </SrOnlyText>
-          <div className="su-flex su-flex-row su-flex-wrap su-gap-4">
+          <h4 className="su-sr-only">Subjects</h4>
+          <ul className="su-list-none su-m-0 su-p-0 su-flex su-flex-row su-flex-wrap su-gap-4">
             {subject.map((tag) => (
-              <div
+              <li
                 key={tag}
                 className="su-border su-border-black su-px-18 su-py-2 su-rounded-2xl"
               >
                 {tag.trim()}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
     </div>

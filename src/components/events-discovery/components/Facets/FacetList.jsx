@@ -62,6 +62,8 @@ export const FacetList = ({ attribute, subfilter = false }) => {
     <FilterAccordion
       expanded={facetState.expanded}
       label={facetState.label}
+      labelId={`${slugify(facetState.label)}-label-${uniqueId}`}
+      headingLevel={subfilter ? 4 : 3}
       onReset={refine}
       onToggleExpanded={() => toggleFacet(attribute)}
       showReset={hasRefinedItems}
@@ -72,6 +74,8 @@ export const FacetList = ({ attribute, subfilter = false }) => {
           <DynamicWidgets>
             <RefinementList
               id={`${slugify(facetState.label)}-${uniqueId}`}
+              role="group"
+              aria-labelledby={`${slugify(facetState.label)}-label-${uniqueId}`}
               attribute={attribute}
               limit={isExpanded ? 1000 : 10}
               classNames={{

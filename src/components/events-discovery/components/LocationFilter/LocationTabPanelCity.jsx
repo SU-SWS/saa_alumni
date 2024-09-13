@@ -204,6 +204,9 @@ const LocationTabPanelCity = () => {
                     inputProps={{
                       ...props.inputProps,
                       className: styles.input(isDesktop),
+                      'aria-labelledby': locError
+                        ? 'location-distance-error'
+                        : undefined,
                     }}
                     data-test="location-facet-search"
                   />
@@ -266,8 +269,8 @@ const LocationTabPanelCity = () => {
         </form>
 
         {locError && (
-          <div className={styles.error}>
-            <HeroIcon iconType="alert" className="su-mr-10" />{' '}
+          <div id="location-distance-error" className={styles.error}>
+            <HeroIcon iconType="alert" className="su-mr-10" aria-hidden />{' '}
             <span>{locError.message}</span>
           </div>
         )}
