@@ -97,6 +97,7 @@ import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
 import SynchronizedEvent from './content-types/synchronized-event/synchronizedEvent';
 import EventsDiscovery from './events-discovery/eventsDiscovery';
+import SynchronizedEventCardList from './content-types/synchronized-event/synchronizedEventCardList';
 
 const ComponentList = {
   accordion: Accordion,
@@ -183,6 +184,7 @@ const ComponentList = {
   storyCard: StoryCard,
   saaStoryCard: SaaStoryCard,
   synchronizedEvent: SynchronizedEvent,
+  synchronizedEventCardList: SynchronizedEventCardList,
   trip: TripPage,
   tripCard: SBTripCard,
   tripCustomJourneys: TripCustomJourneys,
