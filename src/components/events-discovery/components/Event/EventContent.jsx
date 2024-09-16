@@ -9,6 +9,7 @@ import {
 } from '@heroicons/react/outline';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
 import HeroIcon from '../../../simple/heroIcon';
+import { Heading } from '../../../simple/Heading';
 
 /**
  * @typedef {object} Props
@@ -19,6 +20,7 @@ import HeroIcon from '../../../simple/heroIcon';
  * @property {string} [city]
  * @property {string} [region]
  * @property {string[]} [subject]
+ * @property {number} [subjectHeadingLevel]
  */
 
 /**
@@ -34,6 +36,7 @@ export const EventContent = ({
   city = '',
   region = '',
   subject = [],
+  subjectHeadingLevel = 4,
 }) => {
   const uniqueId = useId();
   const eventTimezone = rawEventTimezone || 'America/Los_Angeles';
@@ -191,7 +194,15 @@ export const EventContent = ({
       </ul>
       {!!subject?.length && (
         <div className="su-flex su-items-center su-mb-04em su-mt-20">
-          <h4 className="su-sr-only">Subjects</h4>
+          {!subjectHeadingLevel ||
+          subjectHeadingLevel < 2 ||
+          subjectHeadingLevel > 6 ? (
+            <SrOnlyText>Subjects:</SrOnlyText>
+          ) : (
+            <Heading level={subjectHeadingLevel} className="su-sr-only">
+              Subjects
+            </Heading>
+          )}
           <ul className="su-list-none su-m-0 su-p-0 su-flex su-flex-row su-flex-wrap su-gap-4">
             {subject.map((tag) => (
               <li
