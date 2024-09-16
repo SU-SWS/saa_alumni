@@ -6,7 +6,6 @@ import { EventHeading } from '../../events-discovery/components/Event/EventHeadi
 /**
  * @typedef {object} Props
  * @property {string} title
- * @property {EventImage} [image]
  * @property {string} start
  * @property {string} end
  * @property {string} [eventTimezone]
@@ -19,11 +18,7 @@ import { EventHeading } from '../../events-discovery/components/Event/EventHeadi
  * @property {string[]} [subject]
  * @property {string} [experience]
  * @property {string[]} [format]
- * @property {boolean} [isDark]
- * @property {boolean} [isMinimal]
- * @property {boolean} [isBigHeadline]
  * @property {number} [headingLevel]
- * @property {EventHit} [hit]
  */
 
 /**
@@ -44,6 +39,7 @@ export const SynchronizedEventCard = ({
   subject = [],
   experience,
   format = [],
+  headingLevel = 3,
 }) => {
   const formatDisplay = format?.join?.(', ') ?? '';
 
@@ -79,7 +75,11 @@ export const SynchronizedEventCard = ({
         {formatDisplay && (
           <div className="su-font-bold su-text-18">{formatDisplay}</div>
         )}
-        <EventHeading title={title || 'Untitled'} eventUrl={eventUrl} />
+        <EventHeading
+          title={title || 'Untitled'}
+          eventUrl={eventUrl}
+          headingLevel={headingLevel}
+        />
         <EventContent
           start={luxonStart}
           end={luxonEnd}
