@@ -21,6 +21,7 @@ import { Heading } from '../../../simple/Heading';
  * @property {string} [region]
  * @property {string[]} [subject]
  * @property {number} [subjectHeadingLevel]
+ * @property {boolean} [localTimezoneOnly]
  */
 
 /**
@@ -37,6 +38,7 @@ export const EventContent = ({
   region = '',
   subject = [],
   subjectHeadingLevel = 4,
+  localTimezoneOnly = false,
 }) => {
   const uniqueId = useId();
   const eventTimezone = rawEventTimezone || 'America/Los_Angeles';
@@ -57,8 +59,8 @@ export const EventContent = ({
   } = eventTime;
 
   const isEventLocal = useMemo(
-    () => eventTimezoneDisplay === localTimezoneDisplay,
-    [eventTimezoneDisplay, localTimezoneDisplay]
+    () => localTimezoneOnly || eventTimezoneDisplay === localTimezoneDisplay,
+    [localTimezoneOnly, eventTimezoneDisplay, localTimezoneDisplay]
   );
 
   const isOffsetSame = useMemo(
