@@ -13,7 +13,7 @@ export const MobileFilterFooter = ({
     useRadialGeoSearch();
 
   const rootStyles = dcnb(
-    'su-flex su-flex-wrap su-gap-8 su-justify-between su-w-full su-sticky su-bottom-0 su-border-t su-border-t-black-30 su-bg-fog-light su-p-26 su-z-10',
+    'su-flex su-flex-wrap su-gap-8 su-justify-between su-w-full su-border-t su-border-t-black-30 su-bg-fog-light su-p-26 su-mt-8 su-z-10',
     className
   );
   const clearButtonStyles =

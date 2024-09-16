@@ -88,6 +88,7 @@ export const SynchronizedEventCard = ({
           city={city}
           region={region}
           subject={subject}
+          subjectHeadingLevel={headingLevel + 1}
         />
       </div>
     </div>
