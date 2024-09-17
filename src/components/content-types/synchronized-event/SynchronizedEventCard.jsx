@@ -79,6 +79,7 @@ export const SynchronizedEventCard = ({
           title={title || 'Untitled'}
           eventUrl={eventUrl}
           headingLevel={headingLevel}
+          stretchLink
         />
         <EventContent
           start={luxonStart}
@@ -89,6 +90,7 @@ export const SynchronizedEventCard = ({
           region={region}
           subject={subject}
           subjectHeadingLevel={headingLevel + 1}
+          localTimezoneOnly
         />
       </div>
     </div>
