@@ -27,10 +27,44 @@ const theme = createTheme({
         },
       },
     },
+    MuiPickersArrowSwitcher: {
+      styleOverrides: {
+        button: {
+          '&:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+        },
+      },
+    },
     MuiPickersDay: {
       styleOverrides: {
         root: {
           fontSize: '1.6rem',
+          '&:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&.Mui-selected': {
+            backgroundColor: '#e50808',
+            color: '#ffffff',
+          },
+          '&.Mui-selected:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&.Mui-selected:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
         },
       },
     },
@@ -227,7 +261,7 @@ export const DateFilter = ({ expanded, onToggleExpanded = () => null }) => {
           handleOptionsSelect();
         }}
       >
-        <fieldset className="su-flex su-flex-col su-gap-8 su-mt-8 su-px-8">
+        <fieldset className="su-flex su-flex-col su-gap-8 su-mt-8 su-px-8 su-text-digital-red">
           <legend className="su-sr-only">Narrow events by date range</legend>
           <RadioInput
             labelText="All"

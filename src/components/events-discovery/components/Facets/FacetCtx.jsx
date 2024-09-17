@@ -1,5 +1,17 @@
 import React, { createContext, useMemo, useState } from 'react';
 
+/**
+ * @typedef {object} FacetMeta
+ * @property {string} attribute
+ * @property {string} label
+ * @property {string} chip
+ * @property {boolean} expanded
+ * @property {boolean} limitResults
+ */
+
+/**
+ * @type {FacetMeta[]}
+ */
 const knownFacets = [
   {
     attribute: 'startTimestamp',
@@ -7,12 +19,19 @@ const knownFacets = [
     chip: 'Date',
     expanded: true,
   },
-  { attribute: 'format', label: 'Format', chip: 'Format', expanded: false },
+  {
+    attribute: 'format',
+    label: 'Format',
+    chip: 'Format',
+    expanded: false,
+    limitResults: true,
+  },
   {
     attribute: 'subject',
     label: 'Subject',
     chip: 'Subject',
     expanded: false,
+    limitResults: true,
   },
   // Location
   {
@@ -64,14 +83,6 @@ const knownFacets = [
     expanded: false,
   },
 ];
-
-/**
- * @typedef {object} FacetMeta
- * @property {string} attribute
- * @property {string} label
- * @property {string} chip
- * @property {boolean} expanded
- */
 
 /**
  * @typedef {object} FacetContext
