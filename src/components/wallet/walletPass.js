@@ -125,12 +125,6 @@ const WalletPass = (props) => {
   } else {
     walletContent = (
       <>
-        <b>Scan next QR in your device to download your Passport:</b>
-        <br />
-        <i className="su-text-center su-text-m">
-          (You will need to be identified as a user in the browser on your
-          device.)
-        </i>
         <select
           className="su-select su-select-m su-mt-20"
           onChange={(e) => handleDeviceChange(e)}
