@@ -41,12 +41,12 @@ export const MobileParentFilter = ({
       onClose={onClose}
       classes={{
         paper:
-          '!su-w-full sm:!su-w-400 md:!su-w-500 !su-overflow-y-hidden su-overflow-x-hidden',
+          '!su-w-full sm:!su-w-400 md:!su-w-500 !su-overflow-y-auto su-overflow-x-hidden',
       }}
     >
-      <div className="su-flex su-flex-col su-min-h-screen su-relative">
+      <div className="su-flex su-flex-col su-min-h-400 su-h-dvh su-relative">
         <MobileFilterHeader heading={label} count={count} onClose={onClose} />
-        <div className="su-grow su-overflow-y-auto">{children}</div>
+        <div className="su-grow">{children}</div>
         <MobileFilterFooter onCloseMenu={onCloseMenu} />
       </div>
     </SwipeableDrawer>
