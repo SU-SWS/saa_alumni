@@ -22,7 +22,7 @@ export const RadioInput = ({
   labelText,
   onChange = () => null,
 }) => (
-  <label className="su-group su-flex su-items-center su-gap-6 su-cursor-pointer su-text-18">
+  <label className="su-group su-flex su-items-center su-gap-6 su-cursor-pointer su-text-18 su-text-black">
     <input
       type="radio"
       name={name}
