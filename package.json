@@ -149,7 +149,7 @@
     "netlify-cli": "^17.23.8",
     "node-vault": "^0.10.2",
     "postcss": "^8.4.38",
-    "prettier": "^2.8.8",
+    "prettier": "^3.3.3",
     "start-server-and-test": "^2.0.3",
     "storyblok": "^3.31.1",
     "toml": "^3.0.0",
