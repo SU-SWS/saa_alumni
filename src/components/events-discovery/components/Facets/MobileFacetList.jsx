@@ -38,7 +38,10 @@ export const MobileFacetList = ({ attribute }) => {
             <span className="su-font-sans su-flex su-w-full su-text-18 su-pl-16 su-pr-26 su-py-14 su-cursor-pointer group-hover:su-underline peer-focus:su-underline">
               <span className="su-grow">
                 {item.label}
-                <span className="su-font-sans"> ({item.count})</span>
+                <span className="su-font-sans su-text-cardinal-red">
+                  {' '}
+                  ({item.count})
+                </span>
               </span>
             </span>
           </label>
