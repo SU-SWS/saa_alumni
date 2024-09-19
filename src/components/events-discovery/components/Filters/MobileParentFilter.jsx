@@ -17,7 +17,7 @@ export const MobileParentFilter = ({
   <>
     <button
       type="button"
-      className="su-group su-flex su-items-center su-w-full su-rounded-none su-p-16 su-border-b hover:su-bg-cardinal-red-light hover:su-text-white focus-visible:su-bg-cardinal-red-light focus-visible:su-text-white"
+      className="su-group su-flex su-items-center su-w-full su-rounded-none su-p-16 su-border-b su-text-black hover:su-bg-cardinal-red-light hover:su-text-white focus-visible:su-bg-cardinal-red-light focus-visible:su-text-white"
       onClick={onOpen}
       aria-expanded={isOpen}
       aria-controls={`event-filter-drawer-${slugify(label)}`}
