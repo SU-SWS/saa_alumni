@@ -131,7 +131,7 @@
     "autoprefixer": "^10.4.19",
     "axios-mock-adapter": "^1.22.0",
     "cross-env": "^7.0.3",
-    "cypress": "^13.10.0",
+    "cypress": "^13.14.2",
     "decanter": "^7.3.0",
     "dotenv": "^16.4.5",
     "eslint": "^7.32.0",
