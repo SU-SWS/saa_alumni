@@ -2,12 +2,15 @@ import React, { useId } from 'react';
 import { ChevronRightIcon } from '@heroicons/react/solid';
 import { dcnb } from 'cnbuilder';
 import { SrOnlyText } from '../../../accessibility/SrOnlyText';
+import { Heading } from '../../../simple/Heading';
 
 /**
  * @typedef {object} Props
  * @property {boolean} expanded
  * @property {boolean} showReset
  * @property {string} label
+ * @property {string} [labelId]
+ * @property {number} [headingLevel]
  * @property {boolean} [subfilter]
  * @property {React.ReactNode} [resetLabel]
  * @property {() => void} [onToggleExpanded]
@@ -23,6 +26,8 @@ export const FilterAccordion = ({
   expanded,
   showReset,
   label,
+  labelId,
+  headingLevel = 3,
   subfilter = false,
   resetLabel = (
     <>
@@ -72,7 +77,7 @@ export const FilterAccordion = ({
   return (
     <div className={rootClasses}>
       <div className="su-relative">
-        <h3 className={headingClasses}>
+        <Heading level={headingLevel} id={labelId} className={headingClasses}>
           <button
             type="button"
             className={toggleButtonClasses}
@@ -83,7 +88,7 @@ export const FilterAccordion = ({
             <span>{label}</span>
             <ChevronRightIcon className={chevronClasses} />
           </button>
-        </h3>
+        </Heading>
         {showReset && (
           <button
             type="button"

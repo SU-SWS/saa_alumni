@@ -93,7 +93,12 @@ export const generateAppleWalletPass = async (megaProfileUser) => {
     const bufferThumbnail2x = await fetchUrlToBuffer(
       process.env.IOS_PASS_THUMBNAIL_2X_URL
     );
-    pass.addBuffer('thumbnail2x.png', bufferThumbnail2x);
+    pass.addBuffer('thumbnail@2x.png', bufferThumbnail2x);
+
+    const bufferThumbnail3x = await fetchUrlToBuffer(
+      process.env.IOS_PASS_THUMBNAIL_3X_URL
+    );
+    pass.addBuffer('thumbnail@3x.png', bufferThumbnail3x);
 
     if (process.env.PASS_INCLUDE_QR_CODE === 'true') {
       pass.setBarcodes(membershipNumber);

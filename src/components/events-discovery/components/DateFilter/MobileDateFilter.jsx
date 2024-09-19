@@ -26,10 +26,58 @@ const theme = createTheme({
         },
       },
     },
+    MuiPickersArrowSwitcher: {
+      styleOverrides: {
+        button: {
+          '&:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+        },
+      },
+    },
     MuiPickersDay: {
       styleOverrides: {
         root: {
           fontSize: '1.6rem',
+          '&:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&.Mui-selected': {
+            backgroundColor: '#e50808',
+            color: '#ffffff',
+          },
+          '&.Mui-selected:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '&.Mui-selected:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+        },
+      },
+    },
+    MuiDialogActions: {
+      styleOverrides: {
+        root: {
+          '& .MuiButtonBase-root:focus': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
+          '& .MuiButtonBase-root:hover': {
+            backgroundColor: '#b1040e',
+            color: '#ffffff',
+          },
         },
       },
     },
