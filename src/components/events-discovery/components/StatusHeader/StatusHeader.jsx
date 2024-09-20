@@ -47,21 +47,18 @@ export const StatusHeader = () => {
     [firstPageResult, lastPageResult]
   );
 
+  if (!numHits) {
+    return null;
+  }
+
   return (
-    <div
-      role="status"
+    <h2
       aria-live="polite"
       aria-atomic="true"
-      className="su-text-black-80 su-text-20"
+      className="su-text-black-80 su-text-20 su-font-normal"
     >
-      {numHits ? (
-        <>
-          {countDisplay}
-          <span className="su-sr-only">{pageDisplay}</span>
-        </>
-      ) : (
-        <>No results found</>
-      )}
-    </div>
+      {countDisplay}
+      <span className="su-sr-only">{pageDisplay}</span>
+    </h2>
   );
 };

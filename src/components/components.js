@@ -98,6 +98,7 @@ import GsbCardPage from './page-types/gsbCardPage';
 import WalletPass from './wallet/walletPass';
 import SynchronizedEvent from './content-types/synchronized-event/synchronizedEvent';
 import EventsDiscovery from './events-discovery/eventsDiscovery';
+import SynchronizedEventCardList from './content-types/synchronized-event/synchronizedEventCardList';
 
 const ComponentList = {
   accordion: Accordion,
@@ -184,6 +185,7 @@ const ComponentList = {
   storyCard: StoryCard,
   saaStoryCard: SaaStoryCard,
   synchronizedEvent: SynchronizedEvent,
+  synchronizedEventCardList: SynchronizedEventCardList,
   trip: TripPage,
   tripCard: SBTripCard,
   tripCustomJourneys: TripCustomJourneys,

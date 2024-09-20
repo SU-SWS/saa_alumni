@@ -17,7 +17,7 @@ export const MobileParentFilter = ({
   <>
     <button
       type="button"
-      className="su-group su-flex su-items-center su-w-full su-rounded-none su-p-16 su-border-b hover:su-bg-cardinal-red-light hover:su-text-white focus-visible:su-bg-cardinal-red-light focus-visible:su-text-white"
+      className="su-group su-flex su-items-center su-w-full su-rounded-none su-p-16 su-border-b su-text-black hover:su-bg-cardinal-red-light hover:su-text-white focus-visible:su-bg-cardinal-red-light focus-visible:su-text-white"
       onClick={onOpen}
       aria-expanded={isOpen}
       aria-controls={`event-filter-drawer-${slugify(label)}`}
@@ -41,12 +41,12 @@ export const MobileParentFilter = ({
       onClose={onClose}
       classes={{
         paper:
-          '!su-w-full sm:!su-w-400 md:!su-w-500 !su-overflow-y-hidden su-overflow-x-hidden',
+          '!su-w-full sm:!su-w-400 md:!su-w-500 !su-overflow-y-auto su-overflow-x-hidden',
       }}
     >
-      <div className="su-flex su-flex-col su-min-h-screen su-relative">
+      <div className="su-flex su-flex-col su-min-h-400 su-h-dvh su-relative">
         <MobileFilterHeader heading={label} count={count} onClose={onClose} />
-        <div className="su-grow su-overflow-y-auto">{children}</div>
+        <div className="su-grow">{children}</div>
         <MobileFilterFooter onCloseMenu={onCloseMenu} />
       </div>
     </SwipeableDrawer>
