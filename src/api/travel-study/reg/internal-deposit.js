@@ -16,7 +16,7 @@ const storyblok = new StoryblokClient({
  */
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  // res.setHeader('Content-Type', 'text/csv');
+  res.setHeader('Content-Type', 'text/csv');
   res.setHeader('x-robots-tag', ['noindex', 'nofollow', 'nosnippet']);
   res.setHeader('x-content-type-options', 'nosniff');
   res.setHeader('x-xss-protection', '1; mode=block');
@@ -56,7 +56,7 @@ export default async function handler(req, res) {
 
   trips.forEach((trip) => {
     // No trip Id. No Entry.
-    if (!Number(trip.content.tripId)) {
+    if (!Number(trip.content.tripId.trim())) {
       return;
     }
 
@@ -66,7 +66,7 @@ export default async function handler(req, res) {
         trip.content?.depositCost.replace(/\D/g, '');
       data.push([
         'prompt',
-        trip.content.tripId,
+        trip.content.tripId.trim(),
         'Traveler',
         'TRUE',
         '',
@@ -82,7 +82,7 @@ export default async function handler(req, res) {
       ]);
       data.push([
         'prompt',
-        trip.content.tripId,
+        trip.content.tripId.trim(),
         'Non-traveling Caller',
         'TRUE',
         '',
