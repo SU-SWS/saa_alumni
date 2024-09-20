@@ -1,7 +1,7 @@
 import React from 'react';
 import { dcnb } from 'cnbuilder';
-// eslint-disable-next-line no-unused-vars
-import { usePagination, UsePaginationProps } from 'react-instantsearch';
+import { usePagination } from 'react-instantsearch';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 
 /**
  * @type {React.FC<UsePaginationProps>}
@@ -45,22 +45,35 @@ const SearchPager = (props) => {
         isActive,
     });
 
+  /**
+   * Handle scroll and focus.
+   * */
+  const scrollToResults = () => {
+    document
+      .getElementById('number-search-results')
+      .focus({ preventScroll: true });
+    scrollTo('#search-results');
+  };
+
   return (
-    <nav>
-      <ul className="su-list-none su-flex su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-font-bold">
-        <li className="su-m-0">
-          <a
-            href={createURL(currentRefinement - 1)}
-            onClick={(e) => {
-              e.preventDefault();
-              refine(currentRefinement - 1);
-            }}
-            aria-label="Previous page"
-            className={directionCta({ isShown: !isFirstPage })}
-          >
-            Previous
-          </a>
-        </li>
+    <nav id="search-results-pager" aria-label="Search results pagination">
+      <ul className="su-list-none su-flex su-rs-mt-6 su-rs-mb-7 su-justify-center su-space-x-10 md:su-space-x-15 su-p-0 su-font-serif su-text-26 su-font-bold">
+        {!isFirstPage && (
+          <li className="su-m-0">
+            <a
+              href={createURL(currentRefinement - 1)}
+              onClick={(e) => {
+                e.preventDefault();
+                refine(currentRefinement - 1);
+                scrollToResults();
+              }}
+              aria-label="Previous page"
+              className={directionCta({ isShown: !isFirstPage })}
+            >
+              Previous
+            </a>
+          </li>
+        )}
 
         {pages.map((page) => (
           <li key={page} className="su-m-0">
@@ -69,6 +82,7 @@ const SearchPager = (props) => {
               onClick={(e) => {
                 e.preventDefault();
                 refine(page);
+                scrollToResults();
               }}
               aria-label={
                 isLastPage ? `Last page, page ${page + 1}` : `Page ${page + 1}`
@@ -81,19 +95,22 @@ const SearchPager = (props) => {
           </li>
         ))}
 
-        <li className="su-m-0">
-          <a
-            href={createURL(currentRefinement + 1)}
-            onClick={(e) => {
-              e.preventDefault();
-              refine(currentRefinement + 1);
-            }}
-            aria-label="Next page"
-            className={directionCta({ isShown: !isLastPage })}
-          >
-            Next
-          </a>
-        </li>
+        {!isLastPage && (
+          <li className="su-m-0">
+            <a
+              href={createURL(currentRefinement + 1)}
+              onClick={(e) => {
+                e.preventDefault();
+                refine(currentRefinement + 1);
+                scrollToResults();
+              }}
+              aria-label="Next page"
+              className={directionCta({ isShown: !isLastPage })}
+            >
+              Next
+            </a>
+          </li>
+        )}
       </ul>
     </nav>
   );

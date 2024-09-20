@@ -2,8 +2,9 @@
 import React from 'react';
 import sanitize from 'sanitize-html';
 import { useLocation } from '@reach/router';
-import { useHits } from 'react-instantsearch';
+import { useHits, useInstantSearch } from 'react-instantsearch';
 import { DateTime } from 'luxon';
+import { Skeleton } from '@mui/material';
 import { Heading } from '../simple/Heading';
 import HeroIcon from '../simple/heroIcon';
 import { utmParams } from '../../utilities/utmParams';
@@ -30,10 +31,27 @@ const checkParams = (url, utms) => {
  */
 const SearchResults = () => {
   const { results, items } = useHits();
+  const { status } = useInstantSearch();
+
+  // Show loading.
+  if (status === 'loading') {
+    return (
+      <div>
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+      </div>
+    );
+  }
 
   // No Results.
-  if (!items) {
-    return <div />;
+  if (!results || !results.nbHits) {
+    return null;
   }
 
   return (
@@ -51,10 +69,14 @@ const SearchResults = () => {
       {items.map((result) => {
         switch (result.type) {
           case 'alumni-event': {
-            return <SearchResultAlumniEvent result={result} />;
+            return (
+              <SearchResultAlumniEvent result={result} key={result.objectID} />
+            );
           }
           default: {
-            return <SearchResultDefault result={result} />;
+            return (
+              <SearchResultDefault result={result} key={result.objectID} />
+            );
           }
         }
       })}
@@ -83,45 +105,38 @@ const SearchResultAlumniEvent = ({ result }) => {
     timeZone,
     location,
     city,
-    format,
-    region,
-    address,
     country,
-    subject,
-    experience,
   } = result;
 
-  const timeZoneShort = DateTime.local().setZone(timeZone).toFormat('ZZZZ');
-  const formattedStart = DateTime.fromISO(start)
-    .setZone(timeZone)
-    .toFormat('cccc, LLLL d, yyyy');
-  const formattedEnd = DateTime.fromISO(end)
-    .setZone(timeZone)
-    .toFormat('cccc, LLLL d, yyyy');
+  // Format the location string.
+  // The format should be "location, city, country"
+  const formattedLocation = () => {
+    const locationArray = [location, city, country];
+    return locationArray.filter((loc) => loc).join(', ');
+  };
 
-  // Format a date and time span string between start and end times in the format of
-  // "Friday, October 8, 2021 8:00 AM - 9:00 AM PDT"
-  // If the start and end dates are the same, only show the start date.
-  // If the start and end times are the same, only show the date.
-  // If the start and end dates are different, show both dates.
-  // If the start and end times are different, show both times.
-  // If the start and end dates and times are different, show both dates and times.
+  // Time of events.
+  const startTime = DateTime.fromISO(start).setZone(timeZone);
+  const endTime = DateTime.fromISO(end).setZone(timeZone);
+  // Format a date and time span string between start and end times in the formats of
+  // If the start and end date and times are the same use this format
+  // "Friday, October 8, 2021 8:00 AM PDT"
+  // If the start and end date are the same but the times are different use this format
+  // "Friday, October 8, 2021 8:00 AM - 10:00 AM PDT"
+  // If the start and end date are different use this format
+  // "October 8, 2021 8:00 AM - October 9, 2021 10:00 AM PDT"
   const formattedDateTimeSpan = () => {
-    if (start === end) {
-      return formattedStart;
+    if (startTime.hasSame(endTime, 'day')) {
+      if (startTime.hasSame(endTime, 'minute')) {
+        return `${startTime.toFormat('EEEE, LLLL d, yyyy h:mm a ZZZZ')}`;
+      }
+      return `${startTime.toFormat(
+        'EEEE, LLLL d, yyyy h:mm a ZZZZ'
+      )} - ${endTime.toFormat('h:mm a ZZZZ')}`;
     }
-    if (formattedStart === formattedEnd) {
-      return `${formattedStart} ${DateTime.fromISO(start)
-        .setZone(timeZone)
-        .toFormat('h:mm a')} - ${DateTime.fromISO(end)
-        .setZone(timeZone)
-        .toFormat('h:mm a')} ${timeZoneShort}`;
-    }
-    return `${formattedStart} ${DateTime.fromISO(start)
-      .setZone(timeZone)
-      .toFormat('h:mm a')} - ${formattedEnd} ${DateTime.fromISO(end)
-      .setZone(timeZone)
-      .toFormat('h:mm a')} ${timeZoneShort} `;
+    return `${startTime.toFormat(
+      'LLLL d, yyyy h:mm a ZZZZ'
+    )} - ${endTime.toFormat('LLLL d, yyyy h:mm a ZZZZ')}`;
   };
 
   return (
@@ -161,18 +176,17 @@ const SearchResultAlumniEvent = ({ result }) => {
             </a>
           </Heading>
           {start && end && (
-            <p>
-              <span className="su-leading-1">
-                When: {formattedDateTimeSpan()}{' '}
-              </span>
+            <p className="su-card-paragraph su-leading-snug su-mb-0">
+              <span className="su-font-semibold">When: </span>
+              {formattedDateTimeSpan()}{' '}
             </p>
           )}
-          {location && (
-            <p>
-              <span className="su-leading-1">Where:</span>
-              {location}
-            </p>
-          )}
+
+          <p className="su-card-paragraph su-leading-snug">
+            <span className="su-font-semibold">Where: </span>
+            {formattedLocation()}
+          </p>
+
           {/* eslint-disable-next-line no-underscore-dangle */}
           {_snippetResult?.body.value && (
             <p

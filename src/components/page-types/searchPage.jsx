@@ -1,7 +1,7 @@
 import React from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { history } from 'instantsearch.js/es/lib/routers';
-import { InstantSearch } from 'react-instantsearch';
+import { InstantSearch, Configure } from 'react-instantsearch';
 import SearchPageContent from '../search/SearchPageContent';
 
 /**
@@ -10,7 +10,7 @@ import SearchPageContent from '../search/SearchPageContent';
  * @param {*} props
  * @returns
  */
-const SearchPage = (props) => {
+const SearchPage = ({ blok: { itemsPerPageInt }, ...props }) => {
   // Algolia.
   // --------------------------------------------------
   const algoliaClient = algoliasearch(
@@ -53,6 +53,10 @@ const SearchPage = (props) => {
       stalledSearchDelay={2000}
       routing={routing}
     >
+      <Configure
+        hitsPerPage={itemsPerPageInt}
+        attributesToSnippet={['body:50']}
+      />
       <SearchPageContent {...props} />
     </InstantSearch>
   );
