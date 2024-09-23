@@ -8,7 +8,7 @@ const tripsCollection = async (req, res) => {
 
   let trips = [];
   try {
-    trips = await storyblok.get(`cdn/stories`, {
+    trips = await storyblok.getAll(`cdn/stories`, {
       filter_query: {
         component: {
           in: 'trip',
@@ -18,6 +18,11 @@ const tripsCollection = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).send('Unable to fetch trips');
+    return;
+  }
+
+  if (!trips || !trips.length) {
+    res.status(200).json([]);
     return;
   }
 
