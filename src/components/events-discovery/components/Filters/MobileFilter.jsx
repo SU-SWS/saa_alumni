@@ -39,12 +39,12 @@ export const MobileFilter = () => {
         onClose={closeMenu}
         classes={{
           paper:
-            '!su-w-full sm:!su-w-400 md:!su-w-500 !su-overflow-y-hidden su-overflow-x-hidden',
+            '!su-w-full sm:!su-w-400 md:!su-w-500 !su-overflow-y-auto su-overflow-x-hidden',
         }}
       >
-        <div className="su-flex su-flex-col su-min-h-screen su-relative">
+        <div className="su-flex su-flex-col su-min-h-400 su-h-dvh su-relative">
           <MobileFilterHeader heading="Filter by" onClose={closeMenu} />
-          <div className="su-grow su-overflow-y-auto">
+          <div className="su-grow">
             <MobileDateFilter onCloseMenu={closeMenu} />
             <MobileFacetFilter attribute="experience" onCloseMenu={closeMenu} />
             <MobileLocationFilter onCloseMenu={closeMenu} />

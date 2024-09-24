@@ -4,7 +4,7 @@ import { ArrowLeftIcon } from '@heroicons/react/solid';
 import { slugify } from '../../../../utilities/slugify';
 
 export const MobileFilterHeader = ({ heading, count, onClose, className }) => (
-  <div className={dcnb('absolute top-0 w-full xl:hidden', className)}>
+  <div className={dcnb('w-full xl:hidden', className)}>
     <div className="su-flex su-items-center su-px-58 su-h-75 su-w-full su-border-b su-border-b-black-30 su-bg-white">
       <button
         type="button"
