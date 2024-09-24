@@ -7,7 +7,7 @@ export const NoResultsComponent = () => (
       <div className="su-text-center">
         <h2
           id="event-search-count-heading"
-          className="su-text-center su-text-cardinal-red-light"
+          className="su-text-center su-text-cardinal-red-light su-scroll-mt-16"
         >
           No events found!
         </h2>

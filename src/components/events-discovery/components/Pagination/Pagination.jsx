@@ -24,8 +24,13 @@ export const Pagination = (props) => {
     const heading = document.getElementById('event-search-count-heading');
 
     if (heading) {
-      heading.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth' });
-      heading.focus({ preventScroll: true });
+      setTimeout(() => {
+        heading.focus({ preventScroll: true });
+        heading.scrollIntoView({
+          block: 'start',
+          behavior: reduceMotion ? 'instant' : 'smooth',
+        });
+      }, 150);
     }
   }, []);
 
