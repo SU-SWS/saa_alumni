@@ -5,7 +5,10 @@ export const NoResultsComponent = () => (
   <div className="su-w-full su-flex su-items-center su-justify-center">
     <div className="su-flex su-justify-center su-items-center su-rs-my-2">
       <div className="su-text-center">
-        <h2 className="su-text-center su-text-cardinal-red-light">
+        <h2
+          id="event-search-count-heading"
+          className="su-text-center su-text-cardinal-red-light"
+        >
           No events found!
         </h2>
         <p className="su-text-center">
