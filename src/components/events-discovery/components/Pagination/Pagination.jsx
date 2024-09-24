@@ -21,17 +21,18 @@ export const Pagination = (props) => {
   const scrollToHeading = useCallback(() => {
     const reduceMotion = !!window.matchMedia('(prefers-reduced-motion: reduce)')
       ?.matches;
-    const heading = document.getElementById('event-search-count-heading');
 
-    if (heading) {
-      setTimeout(() => {
+    setTimeout(() => {
+      const heading = document.getElementById('event-search-count-heading');
+
+      if (heading) {
         heading.focus({ preventScroll: true });
         heading.scrollIntoView({
           block: 'start',
           behavior: reduceMotion ? 'instant' : 'smooth',
         });
-      }, 150);
-    }
+      }
+    }, 150);
   }, []);
 
   const handlePageSelect = useCallback(
