@@ -57,6 +57,7 @@ export const StatusHeader = () => {
       aria-live="polite"
       aria-atomic="true"
       className="su-text-black-80 su-text-20 su-font-normal su-scroll-mt-16"
+      tabIndex={-1}
     >
       {countDisplay}
       <span className="su-sr-only">{pageDisplay}</span>
