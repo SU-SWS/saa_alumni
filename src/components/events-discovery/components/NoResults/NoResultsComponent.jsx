@@ -8,6 +8,7 @@ export const NoResultsComponent = () => (
         <h2
           id="event-search-count-heading"
           className="su-text-center su-text-cardinal-red-light su-scroll-mt-16"
+          tabIndex={-1}
         >
           No events found!
         </h2>
