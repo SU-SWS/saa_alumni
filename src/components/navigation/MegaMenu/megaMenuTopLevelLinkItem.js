@@ -38,7 +38,7 @@ const MegaMenuTopLevelLinkItem = ({ blok: { link, linkText }, blok }) => {
             'su-no-underline',
           ]}
           hasExternalIcon
-          externalIconClasses={styles.externalIcon}
+          externalIconClasses={styles.externalIconWhite}
         >
           {linkText}
         </SbLink>
