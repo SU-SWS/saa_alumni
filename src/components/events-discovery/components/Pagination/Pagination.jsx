@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { dcnb } from 'cnbuilder';
 // eslint-disable-next-line no-unused-vars
 import { usePagination, UsePaginationProps } from 'react-instantsearch';
@@ -17,6 +17,31 @@ export const Pagination = (props) => {
     refine,
     createURL,
   } = usePagination(props);
+
+  const scrollToHeading = useCallback(() => {
+    const reduceMotion = !!window.matchMedia('(prefers-reduced-motion: reduce)')
+      ?.matches;
+
+    setTimeout(() => {
+      const heading = document.getElementById('event-search-count-heading');
+
+      if (heading) {
+        heading.focus({ preventScroll: true });
+        heading.scrollIntoView({
+          block: 'start',
+          behavior: reduceMotion ? 'instant' : 'smooth',
+        });
+      }
+    }, 150);
+  }, []);
+
+  const handlePageSelect = useCallback(
+    (nextPage) => {
+      refine(nextPage);
+      scrollToHeading();
+    },
+    [refine, scrollToHeading]
+  );
 
   if (!canRefine) {
     return null;
@@ -52,7 +77,7 @@ export const Pagination = (props) => {
             href={createURL(currentRefinement - 1)}
             onClick={(e) => {
               e.preventDefault();
-              refine(currentRefinement - 1);
+              handlePageSelect(currentRefinement - 1);
             }}
             aria-label="Previous page"
             className={directionCta({ isShown: !isFirstPage })}
@@ -67,7 +92,7 @@ export const Pagination = (props) => {
               href={createURL(page)}
               onClick={(e) => {
                 e.preventDefault();
-                refine(page);
+                handlePageSelect(page);
               }}
               aria-label={
                 isLastPage ? `Last page, page ${page + 1}` : `Page ${page + 1}`
@@ -85,7 +110,7 @@ export const Pagination = (props) => {
             href={createURL(currentRefinement + 1)}
             onClick={(e) => {
               e.preventDefault();
-              refine(currentRefinement + 1);
+              handlePageSelect(currentRefinement + 1);
             }}
             aria-label="Next page"
             className={directionCta({ isShown: !isLastPage })}
