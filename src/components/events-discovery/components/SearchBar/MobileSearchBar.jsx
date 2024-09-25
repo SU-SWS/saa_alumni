@@ -9,13 +9,14 @@ import { MobileFilterFooter } from '../Filters/MobileFilterFooter';
  * @typedef {object} Props
  * @property {SearchClient} searchClient
  * @property {string} indexName
+ * @property {string} filters
  */
 
 /**
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const MobileSearchBar = ({ searchClient, indexName }) => {
+export const MobileSearchBar = ({ searchClient, indexName, filters }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const open = useCallback(() => {
@@ -56,7 +57,11 @@ export const MobileSearchBar = ({ searchClient, indexName }) => {
         <div className="su-flex su-flex-col su-min-h-screen su-relative">
           <MobileFilterHeader heading="Search" onClose={close} />
           <div className="su-grow su-overflow-y-auto su-px-24 su-pt-24">
-            <SearchBar searchClient={searchClient} indexName={indexName} />
+            <SearchBar
+              searchClient={searchClient}
+              indexName={indexName}
+              filters={filters}
+            />
           </div>
           <MobileFilterFooter onCloseMenu={close} showClear={false} />
         </div>

@@ -53,9 +53,11 @@ export const StatusHeader = () => {
 
   return (
     <h2
+      id="event-search-count-heading"
       aria-live="polite"
       aria-atomic="true"
-      className="su-text-black-80 su-text-20 su-font-normal"
+      className="su-text-black-80 su-text-20 su-font-normal su-scroll-mt-16"
+      tabIndex={-1}
     >
       {countDisplay}
       <span className="su-sr-only">{pageDisplay}</span>
