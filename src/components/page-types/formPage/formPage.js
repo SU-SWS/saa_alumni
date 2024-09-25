@@ -15,7 +15,7 @@ import {
   setGiveGabVars,
   unsetGiveGabVars,
 } from '../../../utilities/giveGabVars';
-import Hero from '../../composite/hero';
+import Hero from '../../composite/Hero/hero';
 import {
   formatFmDate,
   formatEmailDate,
