@@ -70,9 +70,7 @@ export default async (req: Request) => {
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
-    const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`, {
-      version: data.action === 'published' ? 'published' : 'draft',
-    });
+    const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`);
     const story = storyRes?.data?.story;
     const isFolder = story?.is_folder;
     const contentType = story?.content?.component;
@@ -111,8 +109,10 @@ export default async (req: Request) => {
       storiesToProcess = await storyblokContent.getAll('cdn/stories', { 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
-        version: data.action === 'published' ? 'published' : 'draft' 
+        version: data.action === 'published' ? 'published' : 'draft', 
       }) ?? [];
+
+      storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
 
       console.log('Event folder (un)publish event detected. Deploying...');
       if (run) {
@@ -120,8 +120,6 @@ export default async (req: Request) => {
       }
       console.log('Deploy triggered');
     }
-
-    storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
 
     const regions = await storyblokManagement.getAll(`/spaces/${data.space_id}/datasource_entries`, {
       datasource_id: regionsDatasourceId,
