@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react';
-// eslint-disable-next-line no-unused-vars
 import algoliasearch from 'algoliasearch/lite';
 import { Autocomplete, TextField } from '@mui/material';
 import { useSearchBox } from 'react-instantsearch';
@@ -7,22 +6,19 @@ import { X, Search } from 'react-hero-icon/solid';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
 
 /**
- * @typedef {object} Props
- * @property {SearchClient} searchClient
- * @property {string} indexName
- */
-
-/**
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
 const SearchField = ({ emptySearchMessage }) => {
+  // Algolia Client.
   const algoliaClient = algoliasearch(
     process.env.GATSBY_ALGOLIA_APP_ID,
     process.env.GATSBY_ALGOLIA_API_KEY
   );
-  const indexName = 'federated-search-with-events';
+  const indexName = 'federated-search-with-events'; // TODO: CHANGE THIS BACK BEFORE MERGING
   const index = algoliaClient.initIndex(indexName);
+
+  // Hooks and state.
   const { query, refine } = useSearchBox();
   const [value, setValue] = useState(query);
   const [inputValue, setInputValue] = useState(query);
@@ -30,11 +26,15 @@ const SearchField = ({ emptySearchMessage }) => {
   const debouncedInputValue = useDebouncedValue(inputValue);
   const [options, setOptions] = useState([]);
 
+  // Update the values when the query changes.
+  // ------------------------------------------
   useEffect(() => {
     setValue(query);
     setInputValue(query);
   }, [query]);
 
+  // Debounce the input value and fetch options.
+  // -------------------------------------------
   useEffect(() => {
     const fetchOptions = async () => {
       if (!debouncedInputValue) {
@@ -63,6 +63,8 @@ const SearchField = ({ emptySearchMessage }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedInputValue]);
 
+  // Handle input change as the user types
+  // --------------------------------------
   const handleInputChange = useCallback(
     (v) => {
       setInputValue(v);
@@ -70,6 +72,8 @@ const SearchField = ({ emptySearchMessage }) => {
     [setInputValue]
   );
 
+  // Handle value change when the user selects an option.
+  // ----------------------------------------------------
   const handleValueChange = useCallback(
     (v) => {
       setValue(v);
@@ -78,6 +82,8 @@ const SearchField = ({ emptySearchMessage }) => {
     [setValue, refine]
   );
 
+  // Handle form submission.
+  // -----------------------
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
@@ -93,12 +99,16 @@ const SearchField = ({ emptySearchMessage }) => {
     [setValue, refine, inputValue]
   );
 
+  // Handle clearing the search field.
+  // ---------------------------------
   const handleClear = useCallback(() => {
     setInputValue('');
     setValue('');
     refine('');
   }, [setInputValue, setValue, refine]);
 
+  // The search field component.
+  // ---------------------------
   return (
     <>
       <form
