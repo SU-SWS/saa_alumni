@@ -110,7 +110,7 @@ export default async (req: Request) => {
       storiesToProcess = await storyblokContent.getAll('cdn/stories', { 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
-        version: data.action === 'published' ? 'draft' : 'published' 
+        version: data.action === 'published' ? 'published' : 'draft', 
       }) ?? [];
 
       console.log('Event folder (un)publish event detected. Deploying...');
