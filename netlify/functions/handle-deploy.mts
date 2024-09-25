@@ -77,8 +77,6 @@ export default async (req: Request) => {
     const isEvent = contentType === 'synchronizedEvent';
     const isEventFolder = isFolder && data.full_slug === 'events' || data.full_slug === 'events/sync';
 
-    console.log({ story });
-
     if ((isFolder || !isEvent) && !isEventFolder) {
       // Trigger rebuild and stop
       console.log('(Un)publish event detected. Deploying...');
@@ -114,6 +112,8 @@ export default async (req: Request) => {
         version: data.action === 'published' ? 'published' : 'draft', 
       }) ?? [];
 
+      storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
+
       console.log('Event folder (un)publish event detected. Deploying...');
       if (run) {
         await fetch(deployUrl, { method: 'POST' });
@@ -121,17 +121,12 @@ export default async (req: Request) => {
       console.log('Deploy triggered');
     }
 
-    storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
-
-    console.log({ storiesToProcess });
-
     const regions = await storyblokManagement.getAll(`/spaces/${data.space_id}/datasource_entries`, {
       datasource_id: regionsDatasourceId,
       dimension: regionsDatasourceDimensionId,
     } as any);
 
     await Promise.allSettled(storiesToProcess.map(async (story) => {
-      console.log({ story });
       try {
         if (data.action === 'published') {
           // Upsert to Algolia (no rebuild)
