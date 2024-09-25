@@ -44,7 +44,7 @@ const SearchFieldModal = () => {
       try {
         const res = await index.search(debouncedInputValue, {
           attributesToRetrieve: ['title'],
-          hitsPerPage: 5,
+          hitsPerPage: 8,
         });
         const newOptions = res.hits.map((hit) => hit.title);
 
@@ -72,7 +72,7 @@ const SearchFieldModal = () => {
   const handleValueChange = useCallback(
     (v) => {
       setValue(v);
-      navigate(`/search?q=${v}`);
+      // navigate(`/search?q=${v}`);
     },
     [setValue]
   );
@@ -99,7 +99,7 @@ const SearchFieldModal = () => {
       role="search"
       className="su-flex su-items-center su-w-full su-gap-16"
     >
-      <div className="su-w-full">
+      <div className="su-flex su-w-full su-items-center su-relative su-border-b-2 su-border-black-10">
         <Autocomplete
           freeSolo
           popupIcon={null}
@@ -111,38 +111,63 @@ const SearchFieldModal = () => {
           onChange={(_e, v) => handleValueChange(v)}
           filterOptions={(x) => x}
           options={options}
-          className="[&_label.MuiInputLabel-shrink]:su-text-black-80 [&_label.MuiInputLabel-shrink]:!-su-translate-y-8 [&_label.MuiInputLabel-shrink]:!su-scale-75"
+          className="[&_label.MuiInputLabel-shrink]:su-text-black-80 [&_label.MuiInputLabel-shrink]:!-su-translate-y-8 [&_label.MuiInputLabel-shrink]:!su-scale-75 su-grow"
           renderInput={(params) => (
-            <TextField
-              {...params}
-              variant="standard"
-              placeholder="Search for something..."
-              InputProps={{ ...params.InputProps, type: 'searchbox' }}
-              InputLabelProps={{
-                className: 'su-font-sans !su-text-18 md:!su-text-21 su-pl-20',
-              }}
-            />
+            // eslint-disable-next-line jsx-a11y/label-has-associated-control
+            <label>
+              <span className="su-sr-only">Search</span>
+              <TextField
+                {...params}
+                variant="standard"
+                placeholder="Search"
+                InputProps={{ ...params.InputProps, type: 'searchbox' }}
+                InputLabelProps={{
+                  className: 'su-font-sans !su-text-18 md:!su-text-21 su-pl-20',
+                }}
+              />
+            </label>
           )}
+          renderOption={(props, option) => {
+            // eslint-disable-next-line no-unused-vars
+            const { className, ...rest } = props;
+            return (
+              <li
+                className="su-border-none su-rounded-full su-my-0 md:su-my-10 md:su-mx-18 su-py-14 md:su-py-3 su-px-36 md:su-px-20 su-text-white su-decoration-1 su-underline-offset-2 su-cursor-pointer"
+                {...rest}
+              >
+                <span>{option}</span>
+              </li>
+            );
+          }}
+          slotProps={{
+            popper: {
+              sx: {
+                '& .Mui-focused': {
+                  backgroundColor: 'rgb(177, 4, 14)',
+                },
+              },
+            },
+          }}
           classes={{
             inputRoot:
-              '!su-text-18 md:!su-text-21 !su-font-sans !su-p-0 focus-within:before:!su-border-lagunita before:!su-border-b-2 before:!su-border-b-black-50 after:!su-border-b-0',
-            input: '!su-pl-20 !su-pr-40',
-            clearIndicator:
-              '!su-text-18 !su-bg-transparent !su-text-transparent',
+              '!su-text-18 md:!su-text-21 !su-font-sans !su-p-0 focus-within:before:!su-border-none before:!su-border-none after:!su-border-none',
+            input:
+              'search-input-modal !su-border-0 !su-bg-transparent !su-text-black-10 !su-text-black-40::placeholder !su-w-full !su-flex-1 !su-rs-px-2 !su-py-02em !su-text-m4 !md:su-text-m4 !su-leading-display focus:!su-outline-none focus:!su-ring-0 focus:!su-ring-transparent',
             paper:
-              '!su-w-[calc(100%_+_106px)] md:!su-w-auto !-su-ml-26 md:!su-ml-0 !su-mt-18 md:!su-mt-0 !su-shadow-none md:!su-shadow-lg md:!su-shadow-black/30 md:!su-rounded-b !su-font-sans !su-text-18 md:!su-text-21',
-            option:
-              'su-border-b su-border-black-50 md:su-border-b-0 md:su-rounded-full !su-my-0 md:!su-my-10 md:!su-mx-18 !su-py-14 md:!su-py-3 !su-px-36 md:!su-px-20 first:!su-border-t md:first:!su-border-t-0 first:su-mt-20 last:su-mb-10 !su-text-black-70 !su-decoration-1 !su-underline-offset-2',
+              '!su-w-[calc(100%_+_106px)] !su-shadow-none md:!su-shadow-lg md:!su-shadow-black/30 md:!su-rounded-b !su-font-sans !su-text-18 md:!su-text-21 !su-bg-cardinal-red-xxdark !su-border !su-border-digital-red',
           }}
         />
-        {!!value && (
+        {!!inputValue && (
           <button
             type="button"
             onClick={handleClear}
-            className="su-flex su-items-center su-text-16 su-text-digital-red hocus:su-text-digital-red-dark su-transition-colors su-ml-auto su-mt-8"
+            className="su-flex su-items-center su-transition-colors su-ml-auto hocus:su-text-digital-red-xlight hocus:su-underline su-text-m0 md:su-text-m1 su-font-semibold su-border-none su-text-white su-p-0 focus:!su-bg-transparent su-rs-mr-1 su-mt-03em"
           >
-            <X className="su-w-16 su-h-16" aria-hidden />
-            Clear search
+            Clear
+            <X
+              className="su-inline-block su-ml-3 su-h-[1.1em] su-w-[1.1em]"
+              aria-hidden
+            />
           </button>
         )}
       </div>
@@ -150,7 +175,7 @@ const SearchFieldModal = () => {
         <button
           type="submit"
           aria-label="Search events"
-          className="su-flex su-items-center su-justify-center su-shrink-0 su-rounded-full su-w-36 su-h-36 md:su-w-50 md:su-h-50 su-bg-digital-red-light hocus:su-bg-cardinal-red-dark su-transition-colors"
+          className="su-flex su-items-center su-justify-center su-min-w-[4rem] su-w-40 su-h-40 md:su-min-w-[7rem] md:su-w-70 md:su-h-70 md:children:su-w-40 md:children:su-h-40 su-rounded-full su-transition-colors su-bg-digital-red hocus:su-bg-digital-red-xlight su-origin-center !su-ml-0"
         >
           <Search className="su-transition su-text-white su-w-18 md:su-w-30 su-h-18 md:su-h-30" />
         </button>
