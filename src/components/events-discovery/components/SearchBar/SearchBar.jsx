@@ -10,13 +10,14 @@ import { useDebouncedValue } from '../../../../hooks/useDebouncedValue';
  * @typedef {object} Props
  * @property {SearchClient} searchClient
  * @property {string} indexName
+ * @property {string} filters
  */
 
 /**
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const SearchBar = ({ searchClient, indexName }) => {
+export const SearchBar = ({ searchClient, indexName, filters }) => {
   const index = searchClient.initIndex(indexName);
   const { query, refine } = useSearchBox();
   const [value, setValue] = useState(query);
@@ -40,6 +41,7 @@ export const SearchBar = ({ searchClient, indexName }) => {
         const res = await index.search(debouncedInputValue, {
           attributesToRetrieve: ['title'],
           hitsPerPage: 5,
+          filters,
         });
         const newOptions = res.hits.map((hit) => hit.title);
 

@@ -47,7 +47,7 @@ export default async (req: Request) => {
     }
 
     const data: SBWebhookPayload = await JSON.parse(rawData);
-    console.log(data.text);
+    console.log(data);
     
     if (data.action !== 'published' && data.action !== 'unpublished') {
       // Trigger rebuild and stop
@@ -109,8 +109,10 @@ export default async (req: Request) => {
       storiesToProcess = await storyblokContent.getAll('cdn/stories', { 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
-        version: data.action === 'published' ? 'draft' : 'published' 
+        version: data.action === 'published' ? 'published' : 'draft', 
       }) ?? [];
+
+      storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
 
       console.log('Event folder (un)publish event detected. Deploying...');
       if (run) {
@@ -118,8 +120,6 @@ export default async (req: Request) => {
       }
       console.log('Deploy triggered');
     }
-
-    storiesToProcess = storiesToProcess.filter((story) => story.full_slug.startsWith('events/sync/'));
 
     const regions = await storyblokManagement.getAll(`/spaces/${data.space_id}/datasource_entries`, {
       datasource_id: regionsDatasourceId,
