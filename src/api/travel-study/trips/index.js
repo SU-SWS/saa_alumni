@@ -6,49 +6,25 @@ const tripsCollection = async (req, res) => {
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   });
 
-  let currentPage = 1;
   let trips = [];
-  const perpage = 25;
-  const requests = [];
-  const storyblokRes = await storyblok.get(`cdn/stories/`, {
-    filter_query: {
-      component: {
-        in: 'trip',
-      },
-    },
-    per_page: perpage,
-    page: currentPage,
-  });
-
-  const { total } = storyblokRes;
-  trips = trips.concat(storyblokRes.data.stories);
-
-  while (currentPage * perpage < total) {
-    currentPage += 1;
-    requests.push(
-      storyblok.get(`cdn/stories/`, {
-        filter_query: {
-          component: {
-            in: 'trip',
-          },
+  try {
+    trips = await storyblok.getAll(`cdn/stories`, {
+      filter_query: {
+        component: {
+          in: 'trip',
         },
-        per_page: perpage,
-        page: currentPage,
-      })
-    );
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Unable to fetch trips');
+    return;
   }
 
-  await Promise.all(requests)
-    .then((vals) => {
-      vals.forEach((val) => {
-        trips = trips.concat(val.data.stories);
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-      // eslint-disable-next-line no-console
-      console.log(err);
-    });
+  if (!trips || !trips.length) {
+    res.status(200).json([]);
+    return;
+  }
 
   const ret = {};
   trips.forEach((story) => {
@@ -59,7 +35,7 @@ const tripsCollection = async (req, res) => {
       slug: story.slug,
       full_slug: story.full_slug,
       tripConfigName: story.name,
-      tripId: story.content?.tripId,
+      tripId: story.content?.tripId?.trim(),
       tripSize: story.content?.tripSize,
       minAge: story.content?.minAge,
       startDate: story.content?.startDate,
