@@ -88,12 +88,17 @@ const EventDiscoveryContent = () => {
       <div className="su-cc su-mx-12">
         <div className="su-flex su-items-center su-max-w-600 su-mx-auto su-gap-x-16">
           <div className="su-hidden lg:su-block su-w-full">
-            <SearchBar searchClient={searchClient} indexName={indexName} />
+            <SearchBar
+              searchClient={searchClient}
+              indexName={indexName}
+              filters={filters}
+            />
           </div>
           <div className="su-block lg:su-hidden su-w-full">
             <MobileSearchBar
               searchClient={searchClient}
               indexName={indexName}
+              filters={filters}
             />
           </div>
           <MobileFilter />

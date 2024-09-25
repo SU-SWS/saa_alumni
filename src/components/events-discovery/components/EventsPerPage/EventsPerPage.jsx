@@ -58,8 +58,8 @@ export const EventsPerPage = () => {
             key={item.value}
             value={item.value}
             classes={{
-              root: '!su-text-16',
-              selected: '!su-bg-digital-red-light/10',
+              root: '!su-text-16 hocus:!su-bg-digital-red-dark hocus:!su-text-white su-transition-colors',
+              selected: '!su-bg-digital-red !su-text-white',
             }}
           >
             {item.label}

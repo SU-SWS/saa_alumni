@@ -10,13 +10,14 @@ import { useDebouncedValue } from '../../../../hooks/useDebouncedValue';
  * @typedef {object} Props
  * @property {SearchClient} searchClient
  * @property {string} indexName
+ * @property {string} filters
  */
 
 /**
  * @type {React.FC<Props>}
  * @returns {React.ReactElement}
  */
-export const SearchBar = ({ searchClient, indexName }) => {
+export const SearchBar = ({ searchClient, indexName, filters }) => {
   const index = searchClient.initIndex(indexName);
   const { query, refine } = useSearchBox();
   const [value, setValue] = useState(query);
@@ -40,6 +41,7 @@ export const SearchBar = ({ searchClient, indexName }) => {
         const res = await index.search(debouncedInputValue, {
           attributesToRetrieve: ['title'],
           hitsPerPage: 5,
+          filters,
         });
         const newOptions = res.hits.map((hit) => hit.title);
 
@@ -148,7 +150,10 @@ export const SearchBar = ({ searchClient, indexName }) => {
           aria-label="Search events"
           className="su-flex su-items-center su-justify-center su-shrink-0 su-rounded-full su-w-36 su-h-36 md:su-w-50 md:su-h-50 su-bg-digital-red-light hocus:su-bg-cardinal-red-dark su-transition-colors"
         >
-          <Search className="su-transition su-text-white su-w-18 md:su-w-30 su-h-18 md:su-h-30" />
+          <Search
+            className="su-transition su-text-white su-w-18 md:su-w-30 su-h-18 md:su-h-30"
+            aria-hidden
+          />
         </button>
       </div>
     </form>

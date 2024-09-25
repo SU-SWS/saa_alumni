@@ -47,7 +47,7 @@ export default async (req: Request) => {
     }
 
     const data: SBWebhookPayload = await JSON.parse(rawData);
-    console.log(data.text);
+    console.log(data);
     
     if (data.action !== 'published' && data.action !== 'unpublished') {
       // Trigger rebuild and stop
@@ -70,7 +70,9 @@ export default async (req: Request) => {
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
-    const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`);
+    const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`, {
+      version: data.action === 'published' ? 'published' : 'draft',
+    });
     const story = storyRes?.data?.story;
     const isFolder = story?.is_folder;
     const contentType = story?.content?.component;
@@ -109,7 +111,7 @@ export default async (req: Request) => {
       storiesToProcess = await storyblokContent.getAll('cdn/stories', { 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
-        version: data.action === 'published' ? 'draft' : 'published' 
+        version: data.action === 'published' ? 'published' : 'draft' 
       }) ?? [];
 
       console.log('Event folder (un)publish event detected. Deploying...');
