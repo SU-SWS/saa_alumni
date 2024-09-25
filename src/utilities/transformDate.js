@@ -1,26 +1,21 @@
+import { DateTime } from 'luxon';
+import { luxonDate } from './dates';
+
 export const formatFmDate = (tripDate) => {
-  const date = new Date(tripDate).toLocaleDateString('en-US');
+  const date = luxonDate(tripDate).toLocaleString();
   return date;
 };
 
 export const formatEmailDate = (tripDate) => {
-  const dateFormat = {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  };
-  const date = new Date(tripDate).toLocaleDateString('en-US', dateFormat);
+  const date = luxonDate(tripDate).toLocaleString(DateTime.DATE_FULL);
   return date;
 };
 
 export const formatUsDate = (tripDate) => {
-  const date = new Date(tripDate);
-  if (Number.isNaN(Number(date))) {
+  const date = luxonDate(tripDate);
+  if (!date?.isValid) {
     return undefined;
   }
-  const month = date.getUTCMonth() + 1;
-  const day = date.getUTCDate();
-  const year = date.getUTCFullYear();
-  const newDate = `${month}/${day}/${year}`;
+  const newDate = date.toLocaleString();
   return newDate;
 };

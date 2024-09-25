@@ -27,6 +27,7 @@ import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
 import Hero from './composite/Hero/hero';
 import IconCard from './cards/iconCard';
+import SBImageGallery from './media/imageGallery';
 import InterstitialPage from './page-types/registrationFormPage/interstitialPage';
 import Itinerary from './composite/itinerary';
 import ItineraryItem from './composite/itineraryItem';
@@ -90,9 +91,14 @@ import MegaMenu from './navigation/MegaMenu/megaMenu';
 import MegaMenuPanel from './navigation/MegaMenu/megaMenuPanel';
 import MegaMenuCard from './navigation/MegaMenu/megaMenuCard';
 import MegaMenuLinkItem from './navigation/MegaMenu/megaMenuLinkItem';
+import MegaMenuTopLevelLinkItem from './navigation/MegaMenu/megaMenuTopLevelLinkItem';
 import MegaMenuLinkGroup from './navigation/MegaMenu/megaMenuLinkGroup';
 import LightFormPage from './page-types/lightFormPage/lightFormPage';
 import GsbCardPage from './page-types/gsbCardPage';
+import WalletPass from './wallet/walletPass';
+import SynchronizedEvent from './content-types/synchronized-event/synchronizedEvent';
+import EventsDiscovery from './events-discovery/eventsDiscovery';
+import SynchronizedEventCardList from './content-types/synchronized-event/synchronizedEventCardList';
 
 const ComponentList = {
   accordion: Accordion,
@@ -116,6 +122,7 @@ const ComponentList = {
   embedVideo: EmbedVideo,
   event: Event,
   eventCard: EventCard,
+  eventsDiscovery: EventsDiscovery,
   formPage: FormPage,
   giveGabForm: GiveGabForm,
   giveGabErrorMessage: GiveGabErrorMessage,
@@ -126,6 +133,7 @@ const ComponentList = {
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
+  imageGallery: SBImageGallery,
   interstitialPage: InterstitialPage,
   itinerary: Itinerary,
   itineraryItem: ItineraryItem,
@@ -143,6 +151,7 @@ const ComponentList = {
   megaMenuPanel: MegaMenuPanel,
   megaMenuCard: MegaMenuCard,
   megaMenuLinkItem: MegaMenuLinkItem,
+  megaMenuTopLevelLinkItem: MegaMenuTopLevelLinkItem,
   megaMenuLinkGroup: MegaMenuLinkGroup,
   membershipCard: MembershipCard,
   membershipFormPage: MembershipFormPage,
@@ -175,6 +184,8 @@ const ComponentList = {
   story: Story,
   storyCard: StoryCard,
   saaStoryCard: SaaStoryCard,
+  synchronizedEvent: SynchronizedEvent,
+  synchronizedEventCardList: SynchronizedEventCardList,
   trip: TripPage,
   tripCard: SBTripCard,
   tripCustomJourneys: TripCustomJourneys,
@@ -188,6 +199,7 @@ const ComponentList = {
   verticalNav: VerticalNav,
   verticalNavWrapper: VerticalNavWrapper,
   verticalNavItem: VerticalNavItem,
+  walletPass: WalletPass,
   wysiwyg: Wysiwyg,
 };
 

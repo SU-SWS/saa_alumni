@@ -1,6 +1,7 @@
 export const slugify = (str = '') =>
   str
     .toLowerCase()
-    .replace(/[^a-z0-9]+/i, '-')
-    .replace(/^-/, '')
-    .replace(/-$/, '');
+    .replaceAll(/[^a-z0-9]+/gi, '-') // Replace all non-alphanum characters with hyphens
+    .replaceAll(/-{2,}/g, '-') // Replace groups of multiple hyphens with a single hyphen
+    .replace(/^-/, '') // No leading hyphen
+    .replace(/-$/, ''); // No trailing hyphen

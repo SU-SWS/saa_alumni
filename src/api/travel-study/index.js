@@ -1,53 +1,27 @@
 import StoryblokClient from 'storyblok-js-client';
-import connect from 'next-connect';
+import { createRouter } from 'next-connect';
 
 const tripsCollection = async (req, res) => {
   const storyblok = new StoryblokClient({
     accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
   });
 
-  let currentPage = 1;
-  let trips = [];
-  const perpage = 25;
-  const requests = [];
-  const storyblokRes = await storyblok.get(`cdn/stories/`, {
-    filter_query: {
-      component: {
-        in: 'trip',
-      },
-    },
-    per_page: perpage,
-    page: currentPage,
-  });
-
-  const { total } = storyblokRes;
-  trips = trips.concat(storyblokRes.data.stories);
-
-  while (currentPage * perpage < total) {
-    currentPage += 1;
-    requests.push(
-      storyblok.get(`cdn/stories/`, {
-        filter_query: {
-          component: {
-            in: 'trip',
-          },
+  let trips;
+  try {
+    trips = await storyblok.getAll(`cdn/stories`, {
+      filter_query: {
+        component: {
+          in: 'trip',
         },
-        per_page: perpage,
-        page: currentPage,
-      })
-    );
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Unable to fetch trips');
+    return;
   }
 
-  await Promise.all(requests)
-    .then((vals) => {
-      vals.forEach((val) => {
-        trips = trips.concat(val.data.stories);
-      });
-    })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
-      console.log(err);
-    });
+  console.log('TRIPS', trips);
 
   const ret = {};
   trips.forEach((story) => {
@@ -68,6 +42,6 @@ const tripsCollection = async (req, res) => {
   res.status(200).json(ret);
 };
 
-const handler = connect().get(tripsCollection);
+const router = createRouter().get(tripsCollection);
 
-export default handler;
+export default router.handler();
