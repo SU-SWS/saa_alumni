@@ -71,7 +71,6 @@ export default async (req: Request) => {
     });
 
     const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`);
-    console.log(storyRes);
     const story = storyRes?.data?.story;
     const isFolder = story?.is_folder;
     const contentType = story?.content?.component;
