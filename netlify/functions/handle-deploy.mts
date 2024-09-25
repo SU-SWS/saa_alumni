@@ -70,9 +70,8 @@ export default async (req: Request) => {
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
 
-    const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`, {
-      version: data.action === 'published' ? 'published' : 'draft',
-    });
+    const storyRes = await storyblokManagement.get(`/spaces/${data.space_id}/stories/${data.story_id}`);
+    console.log(storyRes);
     const story = storyRes?.data?.story;
     const isFolder = story?.is_folder;
     const contentType = story?.content?.component;
@@ -111,7 +110,7 @@ export default async (req: Request) => {
       storiesToProcess = await storyblokContent.getAll('cdn/stories', { 
         starts_with: 'events/sync/', 
         content_type: 'synchronizedEvent', 
-        version: data.action === 'published' ? 'published' : 'draft' 
+        version: data.action === 'published' ? 'draft' : 'published' 
       }) ?? [];
 
       console.log('Event folder (un)publish event detected. Deploying...');
