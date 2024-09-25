@@ -71,7 +71,7 @@ export const FacetList = ({ attribute, subfilter = false }) => {
     >
       {canRefine ? (
         <>
-          <DynamicWidgets>
+          <DynamicWidgets maxValuesPerFacet={1000}>
             <RefinementList
               id={`${slugify(facetState.label)}-${uniqueId}`}
               role="group"
