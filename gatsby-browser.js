@@ -9,6 +9,7 @@ import React from 'react';
 // Contexts.
 import { GlobalStateProvider } from './src/contexts/GlobalContext';
 import { AuthContextProvider } from './src/contexts/AuthContext';
+import { SearchModalProvider } from './src/components/search/SearchModalContext';
 
 // CSS
 import './src/styles/global.css';
@@ -19,7 +20,9 @@ import './src/styles/light-forms.css';
 // Exports.
 export const wrapRootElement = ({ element }) => (
   <GlobalStateProvider>
-    <AuthContextProvider>{element}</AuthContextProvider>
+    <AuthContextProvider>
+      <SearchModalProvider>{element}</SearchModalProvider>
+    </AuthContextProvider>
   </GlobalStateProvider>
 );
 

@@ -6,7 +6,7 @@ import { Redirect, useLocation } from '@reach/router';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
 import { HeroImage } from '../../composite/HeroImage/HeroImage';
-import Layout from '../../partials/layout';
+import Layout from '../../partials/Layout';
 import { Grid } from '../../layout/Grid';
 import AuthContext from '../../../contexts/AuthContext';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
