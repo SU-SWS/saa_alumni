@@ -1,9 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import algoliasearch from 'algoliasearch/lite';
 import { Autocomplete, TextField } from '@mui/material';
 import { useSearchBox } from 'react-instantsearch';
 import { X, Search } from 'react-hero-icon/solid';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
+import SearchModalContext from './SearchModalContext';
 
 /**
  * @type {React.FC<Props>}
@@ -25,6 +26,7 @@ const SearchField = ({ emptySearchMessage }) => {
   const [emptySearch, setEmptySearch] = useState(false);
   const debouncedInputValue = useDebouncedValue(inputValue);
   const [options, setOptions] = useState([]);
+  const { searchInputRef } = useContext(SearchModalContext);
 
   // Update the values when the query changes.
   // ------------------------------------------
@@ -132,6 +134,7 @@ const SearchField = ({ emptySearchMessage }) => {
             className="[&_label.MuiInputLabel-shrink]:su-text-black-80 [&_label.MuiInputLabel-shrink]:!-su-translate-y-8 [&_label.MuiInputLabel-shrink]:!su-scale-75"
             renderInput={(params) => (
               <TextField
+                inputRef={searchInputRef}
                 {...params}
                 variant="standard"
                 placeholder="Search for something..."
@@ -144,7 +147,7 @@ const SearchField = ({ emptySearchMessage }) => {
             classes={{
               inputRoot:
                 '!su-text-18 md:!su-text-21 !su-font-sans !su-p-0 focus-within:before:!su-border-lagunita before:!su-border-b-2 before:!su-border-b-black-50 after:!su-border-b-0',
-              input: '!su-pl-20 !su-pr-40',
+              input: '!su-pl-20 !su-pr-40 su-text-m2',
               clearIndicator:
                 '!su-text-18 !su-bg-transparent !su-text-transparent',
               paper:

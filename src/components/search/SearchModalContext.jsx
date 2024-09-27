@@ -1,10 +1,11 @@
 import React, { createContext, useState, useRef } from 'react';
+import scrollTo from 'gatsby-plugin-smoothscroll';
 import useEscape from '../../hooks/useEscape';
 import useDisplay from '../../hooks/useDisplay';
+
 /**
  * A context to manage the state of the search modal.
  */
-
 const SearchModalContext = createContext({});
 export const SearchModalContextProvider = SearchModalContext.Provider;
 export default SearchModalContext;
@@ -19,17 +20,34 @@ export function SearchModalProvider({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const desktopButtonRef = useRef();
   const mobileButtonRef = useRef();
+  const modalSearchInputRef = useRef();
   const searchInputRef = useRef();
 
+  // Close handler.
   const close = () => {
     setIsOpen(false);
     if (showDesktop) desktopButtonRef.current.focus();
     if (showMobile) mobileButtonRef.current.focus();
   };
 
+  // Open handler.
   const open = () => {
+    // Don't open the modal if the user is already on the search page.
+    // Instead focus on the search input.
+    if (
+      window &&
+      window.location &&
+      window.location.pathname.startsWith('/search')
+    ) {
+      searchInputRef.current.focus();
+      scrollTo(searchInputRef.current);
+
+      return;
+    }
+
     setIsOpen(true);
-    searchInputRef.current.focus();
+    // Don't need to do the next line because the Modal component will handle it.
+    // searchInputRef.current.focus();
   };
 
   // Close the modal when the escape key is pressed.
@@ -46,6 +64,7 @@ export function SearchModalProvider({ children }) {
         close,
         desktopButtonRef,
         mobileButtonRef,
+        modalSearchInputRef,
         searchInputRef,
       }}
     >

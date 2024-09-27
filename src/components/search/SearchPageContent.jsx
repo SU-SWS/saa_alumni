@@ -15,6 +15,7 @@ import SearchFacet from './SearchFacet';
 import SearchResults from './SearchResults';
 import SearchPager from './SearchPager';
 import SearchNoResults from './SearchNoResults';
+import SearchKeywordBanner from './SearchKeywordBanner';
 
 /**
  * Content Block.
@@ -36,7 +37,7 @@ const SearchPageContent = (props) => {
 
   return (
     <SbEditable content={blok}>
-      <Layout hasHero={false} {...props}>
+      <Layout hasHero={false} {...props} blok={blok}>
         <Container
           as="section"
           width="full"
@@ -87,7 +88,7 @@ const SearchPageContent = (props) => {
               <Heading level={2} srOnly>
                 Filter Search Results
               </Heading>
-              <div>
+              <div className="su-w-full">
                 <SearchFacet
                   attribute="siteName"
                   label="Sites"
@@ -106,6 +107,7 @@ const SearchPageContent = (props) => {
               className="su-mb-40"
               id="search-results-section"
             >
+              <SearchKeywordBanner />
               <SearchResults />
               <SearchPager />
             </GridCell>

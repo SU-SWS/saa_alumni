@@ -16,14 +16,14 @@ const SearchFacet = ({ className, attribute, label, excludes = [] }) => {
   if (status === 'loading') {
     return (
       <div>
-        <Skeleton variant="text" className="su-my-3" height={35} />;
-        <Skeleton variant="text" className="su-my-3" height={35} />;
-        <Skeleton variant="text" className="su-my-3" height={35} />;
-        <Skeleton variant="text" className="su-my-3" height={35} />;
-        <Skeleton variant="text" className="su-my-3" height={35} />;
-        <Skeleton variant="text" className="su-my-3" height={35} />;
-        <Skeleton variant="text" className="su-my-3" height={35} />;
-        <Skeleton variant="text" className="su-my-3" height={35} />;
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
+        <Skeleton variant="text" className="su-my-3 su-w-full" height={35} />
       </div>
     );
   }

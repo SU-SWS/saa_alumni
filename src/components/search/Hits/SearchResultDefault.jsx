@@ -6,6 +6,7 @@ import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { utmParams } from '../../../utilities/utmParams';
 import { checkParams } from '../../../utilities/checkParams';
+import { decodeHtmlEntities } from '../../../utilities/decodeHtmlEntities';
 /**
  * Default {Hit}
  * @param {*} result
@@ -75,9 +76,13 @@ const SearchResultDefault = ({ result }) => {
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 // eslint-disable-next-line no-underscore-dangle
-                __html: sanitize(_snippetResult.body.value, {
-                  allowedTags: ['br', 'mark', 'i', 'b'],
-                }),
+                __html: sanitize(
+                  decodeHtmlEntities(_snippetResult.body.value),
+                  {
+                    decodeEntities: false,
+                    allowedTags: ['mark', 'i', 'b', 'em', 'strong', 'br'],
+                  }
+                ),
               }}
             />
           )}

@@ -57,9 +57,9 @@ const SearchResultAlumniEvent = ({ result }) => {
         'EEEE, LLLL d, yyyy h:mm a ZZZZ'
       )} - ${endTime.toFormat('h:mm a ZZZZ')}`;
     }
-    return `${startTime.toFormat(
+    return `${startTime.toFormat('LLLL d, yyyy h:mm a')} - ${endTime.toFormat(
       'LLLL d, yyyy h:mm a ZZZZ'
-    )} - ${endTime.toFormat('LLLL d, yyyy h:mm a ZZZZ')}`;
+    )}`;
   };
 
   return (
@@ -118,7 +118,7 @@ const SearchResultAlumniEvent = ({ result }) => {
               dangerouslySetInnerHTML={{
                 // eslint-disable-next-line no-underscore-dangle
                 __html: sanitize(_snippetResult.body.value, {
-                  allowedTags: ['br', 'mark', 'i', 'b'],
+                  allowedTags: ['br', 'mark', 'i', 'b', 'em', 'strong'],
                 }),
               }}
             />

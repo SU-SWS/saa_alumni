@@ -1,10 +1,12 @@
-import React, { useCallback, useEffect, useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import algoliasearch from 'algoliasearch/lite';
 import { Autocomplete, TextField } from '@mui/material';
 import { X, Search } from 'react-hero-icon/solid';
 import { navigate } from 'gatsby-link';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
+import SearchModalContext from './SearchModalContext';
 
 /**
  * @type {React.FC<Props>}
@@ -20,19 +22,12 @@ const SearchFieldModal = React.forwardRef(({ emptySearchMessage }, ref) => {
   const index = algoliaClient.initIndex(indexName);
 
   // Hooks and state.
-  const query = '';
-  const [value, setValue] = useState(query);
-  const [inputValue, setInputValue] = useState(query);
+  const [value, setValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
   const debouncedInputValue = useDebouncedValue(inputValue);
   const [options, setOptions] = useState([]);
   const [showEmptyMessage, setShowEmptyMessage] = useState(false);
-
-  // Update the values when the query changes.
-  // ------------------------------------------
-  useEffect(() => {
-    setValue(query);
-    setInputValue(query);
-  }, [query]);
+  const { close } = useContext(SearchModalContext);
 
   // Debounce the input value and fetch options.
   // -------------------------------------------
@@ -98,8 +93,9 @@ const SearchFieldModal = React.forwardRef(({ emptySearchMessage }, ref) => {
 
       setValue(inputValue);
       navigate(`/search?q=${inputValue}`);
+      close();
     },
-    [setValue, inputValue]
+    [setValue, inputValue, close]
   );
 
   // Handle clear button click.
@@ -133,20 +129,16 @@ const SearchFieldModal = React.forwardRef(({ emptySearchMessage }, ref) => {
             options={options}
             className="[&_label.MuiInputLabel-shrink]:su-text-black-80 [&_label.MuiInputLabel-shrink]:!-su-translate-y-8 [&_label.MuiInputLabel-shrink]:!su-scale-75 su-grow"
             renderInput={(params) => (
-              <>
-                <label htmlFor="search-modal-field" className="su-sr-only">
-                  Search
-                </label>
-
+              <label>
+                <span className="su-sr-only">Search</span>
                 <TextField
                   {...params}
                   variant="standard"
                   placeholder="Search"
                   InputProps={{ ...params.InputProps, type: 'searchbox' }}
-                  id="search-modal-field"
                   inputRef={ref}
                 />
-              </>
+              </label>
             )}
             renderOption={(props, option) => {
               // eslint-disable-next-line no-unused-vars

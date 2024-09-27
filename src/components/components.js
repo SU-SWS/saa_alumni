@@ -61,7 +61,7 @@ import { SBSAAMainNav } from './storyblok/saaMainNav';
 import { SBSAAMainMenuGroup } from './storyblok/saaMainMenuGroup';
 import SearchFacet from './search/SearchFacet';
 import SearchField from './search/SearchField';
-import SearchPage from './page-types/SearchPage';
+import SearchPage from './page-types/searchPage';
 import SearchPager from './search/SearchPager';
 import SearchResults from './search/SearchResults';
 import SearchSuggestions from './search/SearchSuggestions';

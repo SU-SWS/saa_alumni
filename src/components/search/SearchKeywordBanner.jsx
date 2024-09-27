@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
+import { useSearchBox } from 'react-instantsearch';
 import CreateBloks from '../../utilities/createBloks';
 
 // Get most recently created Banner.
@@ -21,7 +22,9 @@ const getBanner = (data, q) => {
   return max && created[max] ? created[max].content : '';
 };
 
-const SearchKeywordBanner = function ({ queryText }) {
+const SearchKeywordBanner = function () {
+  const { query } = useSearchBox();
+
   // Get Search Keyword Banners.
   const data = useStaticQuery(graphql`
     query searchKeywordBanners {
@@ -42,7 +45,7 @@ const SearchKeywordBanner = function ({ queryText }) {
     return null;
   }
 
-  const banner = getBanner(data.allStoryblokEntry, queryText);
+  const banner = getBanner(data.allStoryblokEntry, query);
   if (banner) {
     return (
       <div className="su-rs-mb-5">

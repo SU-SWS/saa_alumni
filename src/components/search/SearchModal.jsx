@@ -8,7 +8,7 @@ import SearchSuggestions from './SearchSuggestions';
 import SearchModalContext from './SearchModalContext';
 
 const SearchModal = () => {
-  const { isOpen, close, searchInputRef } = useContext(SearchModalContext);
+  const { isOpen, close, modalSearchInputRef } = useContext(SearchModalContext);
 
   const data = useStaticQuery(graphql`
     {
@@ -43,7 +43,7 @@ const SearchModal = () => {
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      initialFocus={searchInputRef}
+      initialFocus={modalSearchInputRef}
       ariaLabel="Search Stanford Alumni websites"
     >
       <Container>
@@ -60,7 +60,7 @@ const SearchModal = () => {
           </Heading>
           <SearchFieldModal
             emptySearchMessage={emptySearchMessage}
-            ref={searchInputRef}
+            ref={modalSearchInputRef}
           />
           {story && content && (
             <div className="su-rs-pb-7">

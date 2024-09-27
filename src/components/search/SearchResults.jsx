@@ -18,14 +18,14 @@ const SearchResults = () => {
   if (status === 'loading') {
     return (
       <div>
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
-        <Skeleton variant="rectangular" className="su-my-3" height={35} />;
+        <Skeleton variant="rectangular" className="su-rs-mb-1" height={135} />
+        <Skeleton variant="rectangular" className="su-rs-my-1" height={135} />
+        <Skeleton variant="rectangular" className="su-rs-my-1" height={135} />
+        <Skeleton variant="rectangular" className="su-rs-my-1" height={135} />
+        <Skeleton variant="rectangular" className="su-rs-my-1" height={135} />
+        <Skeleton variant="rectangular" className="su-rs-my-1" height={135} />
+        <Skeleton variant="rectangular" className="su-rs-my-1" height={135} />
+        <Skeleton variant="rectangular" className="su-rs-my-1" height={135} />
       </div>
     );
   }
