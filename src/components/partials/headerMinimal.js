@@ -2,8 +2,8 @@ import SbEditable from 'storyblok-react';
 import React from 'react';
 import { dcnb } from 'cnbuilder';
 import UseWindowSize from '../../hooks/useWindowSize';
-import CenteredContainer from './centeredContainer';
-import Heading from './heading';
+import { Container } from '../layout/Container';
+import { Heading } from '../simple/Heading';
 import CreateBloks from '../../utilities/createBloks';
 import {
   headerBackgroundColor,
@@ -25,9 +25,9 @@ const HeaderMinimal = ({
   const backgroundColor = headerBackgroundColor[color];
   const headerMarginBottom = headerSpacingBottom[marginSize];
 
-  let headingTextColor = 'white';
+  let headingTextColor = 'su-text-white';
   if (backgroundColor === 'su-bg-white') {
-    headingTextColor = 'black-90';
+    headingTextColor = 'su-text-black-90';
   }
 
   return (
@@ -39,22 +39,22 @@ const HeaderMinimal = ({
           headerMarginBottom
         )}
       >
-        <CenteredContainer flex>
+        <Container>
           {windowSize.width < config.breakpoints.lg &&
             layout !== 'no-sidebar' && (
               <CreateBloks blokSection={contentMenu} />
             )}
           <Heading
-            level="h1"
-            serif
-            color={headingTextColor}
-            weight="bold"
-            classes="su-type-5 su-tracking-normal su-mb-0 md:su-mx-auto"
+            level="1"
+            font="serif"
+            size="5"
+            tracking="normal"
+            className={dcnb('su-mb-0 su-mx-auto', headingTextColor)}
             align="center"
           >
             {title}
           </Heading>
-        </CenteredContainer>
+        </Container>
       </header>
     </SbEditable>
   );
