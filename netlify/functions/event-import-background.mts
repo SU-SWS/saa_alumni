@@ -86,6 +86,10 @@ export default async (req: Request) => {
       googleStories.push(googleRowToStory(row.toObject(), 'cvent'));
     });
 
+    const storyblokContent = new StoryblokClient({
+      accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
+    });
+
     const storyblokManagement = new StoryblokClient({
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
@@ -103,31 +107,43 @@ export default async (req: Request) => {
     console.log(`(${formatDatasource?.length ?? 0} formats, ${subjectDatasource?.length ?? 0} subjects)`);
 
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokManagement.getAll(`/spaces/${spaceId}/stories`, {
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/',  
-      story_only: true,
-      is_published: true,
+      content_type: 'synchronizedEvent',
+      version: 'published',
+      per_page: 100,
     }) ?? [];
-    const sbUnpublishedEvents = await storyblokManagement.getAll(`/spaces/${spaceId}/stories`, { 
+    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync/', 
-      story_only: true,
-      is_published: false,
+      content_type: 'synchronizedEvent', 
+      version: 'draft',
+      per_page: 100,
     }) ?? [];
-    const oldArchivedEvents = await storyblokManagement.getAll(`/spaces/${spaceId}/stories`, { 
+    const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync-archive/', 
-      story_only: true,
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
         { endOverride: { lt_date: archiveCutoff }}
       ]}, 
+      content_type: 'synchronizedEvent',
+      version: 'published',
+      per_page: 100,
     }) ?? [];
-
-    console.log({ sbPublishedEvents, sbUnpublishedEvents, oldArchivedEvents });
-
-    return;
-
+    const oldArchivedUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+      starts_with: 'events/sync-archive/', 
+      filter_query: { __or: [
+        { end: { lt_date: archiveCutoff }},
+        { endOverride: { lt_date: archiveCutoff }}
+      ]}, 
+      content_type: 'synchronizedEvent', 
+      version: 'draft',
+      per_page: 100,
+    }) ?? [];
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
+    const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
     console.log(`Fetching Storyblok events done! (${sbEvents?.length ?? 0} found)`);
+
+    console.log({ sbPublishedEvents, sbUnpublishedEvents });
 
     const syncedEvents = new Map();
     const manualEvents = new Map();
