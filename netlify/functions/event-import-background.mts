@@ -107,40 +107,30 @@ export default async (req: Request) => {
     console.log(`(${formatDatasource?.length ?? 0} formats, ${subjectDatasource?.length ?? 0} subjects)`);
 
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+    const sbPublishedEvents = await storyblokManagement.getAll(`/spaces/${spaceId}/stories`, {
       starts_with: 'events/sync/',  
-      content_type: 'synchronizedEvent',
-      version: 'published',
-      per_page: 100,
+      story_only: true,
+      is_published: true,
     }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+    const sbUnpublishedEvents = await storyblokManagement.getAll('/spaces/${spaceId}/stories', { 
       starts_with: 'events/sync/', 
-      content_type: 'synchronizedEvent', 
-      version: 'draft',
-      per_page: 100,
+      story_only: true,
+      is_published: false,
     }) ?? [];
-    const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
+    const oldArchivedEvents = await storyblokManagement.getAll('/spaces/${spaceId}/stories', { 
       starts_with: 'events/sync-archive/', 
+      story_only: true,
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
         { endOverride: { lt_date: archiveCutoff }}
       ]}, 
-      content_type: 'synchronizedEvent',
-      version: 'published',
-      per_page: 100,
     }) ?? [];
-    const oldArchivedUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync-archive/', 
-      filter_query: { __or: [
-        { end: { lt_date: archiveCutoff }},
-        { endOverride: { lt_date: archiveCutoff }}
-      ]}, 
-      content_type: 'synchronizedEvent', 
-      version: 'draft',
-      per_page: 100,
-    }) ?? [];
+
+    console.log({ sbPublishedEvents, sbUnpublishedEvents, oldArchivedEvents });
+
+    return;
+
     const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
-    const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
     console.log(`Fetching Storyblok events done! (${sbEvents?.length ?? 0} found)`);
 
     const syncedEvents = new Map();
@@ -169,14 +159,14 @@ export default async (req: Request) => {
         console.log('No ID for Google event: ', event?.full_slug || event?.name || '???');
       }
     });
-    sbEvents.forEach((story) => {
+    sbEvents.forEach(({ isPublished, ...story }) => {
       const id = story.content.externalId;
 
       if (id) {
         const existing = syncedEvents.get(id);
         const value = existing
-          ? { ...existing, storyblok: story }
-          : { google: undefined, storyblok: story }
+          ? { ...existing, storyblok: story, isPublished }
+          : { google: undefined, storyblok: story, isPublished }
 
         syncedEvents.set(id, value);
       } else {
@@ -224,7 +214,7 @@ export default async (req: Request) => {
       }
     }
 
-    for (const [id, {google, storyblok}] of syncedEvents) {
+    for (const [id, {google, storyblok, isPublished}] of syncedEvents) {
       console.log('>>> Processing: ', id);
       try {
         if (google && storyblok) {
@@ -283,7 +273,7 @@ export default async (req: Request) => {
                 ...combinedStory,
                 parent_id: eventFolderId,
               },
-              publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
+              publish: isPublished ? 1 : 0, // Don't re-publish manually unpublished events
             });
             await delay();
           }
@@ -341,7 +331,7 @@ export default async (req: Request) => {
               await delay();
             }
             console.log('Done!');
-          } else if (storyblok.isPublished) {
+          } else if (isPublished) {
             console.log('Unpublishing...');
             if (run) {
               await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
