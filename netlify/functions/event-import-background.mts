@@ -86,10 +86,6 @@ export default async (req: Request) => {
       googleStories.push(googleRowToStory(row.toObject(), 'cvent'));
     });
 
-    const storyblokContent = new StoryblokClient({
-      accessToken: process.env.STORYBLOK_WEBHOOK_PREVIEW_ACCESS_TOKEN,
-    });
-
     const storyblokManagement = new StoryblokClient({
       oauthToken: process.env.STORYBLOK_MANAGEMENT_OAUTH_TOKEN,
     });
