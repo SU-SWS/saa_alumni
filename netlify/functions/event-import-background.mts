@@ -265,7 +265,7 @@ export default async (req: Request) => {
           console.log('Exists in Google and Storyblok...');
 
           if (isOld) {
-            console.log('Story is old. Unpublishing and moving...', storyblok);
+            console.log('Story is old. Unpublishing and moving...', storyblok.id);
             if (run) {
               await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
               await delay();
@@ -336,7 +336,7 @@ export default async (req: Request) => {
           }
           console.log('Posted!');
         } else if (storyblok) {
-          console.log('Exists in Storyblok only.', storyblok);
+          console.log('Exists in Storyblok only.', storyblok.id);
           const isOld = luxonDate(
             storyblok.content.endOverride
             || storyblok.content.end
@@ -389,7 +389,7 @@ export default async (req: Request) => {
         ) < OldCutoff;
 
         if (isOld) {
-          console.log('Story is old. Unpublishing and moving...', story);
+          console.log('Story is old. Unpublishing and moving...', story.id);
           if (run) {
             await storyblokManagement.get(`/spaces/${spaceId}/stories/${story.id}/unpublish`);
             await delay();
