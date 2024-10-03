@@ -108,12 +108,12 @@ export default async (req: Request) => {
       story_only: true,
       is_published: true,
     }) ?? [];
-    const sbUnpublishedEvents = await storyblokManagement.getAll('/spaces/${spaceId}/stories', { 
+    const sbUnpublishedEvents = await storyblokManagement.getAll(`/spaces/${spaceId}/stories`, { 
       starts_with: 'events/sync/', 
       story_only: true,
       is_published: false,
     }) ?? [];
-    const oldArchivedEvents = await storyblokManagement.getAll('/spaces/${spaceId}/stories', { 
+    const oldArchivedEvents = await storyblokManagement.getAll(`/spaces/${spaceId}/stories`, { 
       starts_with: 'events/sync-archive/', 
       story_only: true,
       filter_query: { __or: [
