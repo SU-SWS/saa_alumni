@@ -146,6 +146,7 @@ export default async (req: Request) => {
     console.log(`Fetching Storyblok events done! (${sbEvents?.length ?? 0} found)`);
 
     console.log({ sbPublishedEvents, sbUnpublishedEvents, filteredSbUnpublishedEvents });
+    return;
 
     const syncedEvents = new Map();
     const manualEvents = new Map();
