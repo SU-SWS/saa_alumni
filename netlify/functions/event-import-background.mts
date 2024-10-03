@@ -70,7 +70,7 @@ export default async (req: Request) => {
     const hivebriteSheet = hivebriteDoc.sheetsByIndex[0];
     const hivebriteRows = await hivebriteSheet.getRows();
     console.log(`Fetching Hiverbrite data done! (${hivebriteRows?.length ?? 0} found)`);
-    
+
     hivebriteRows.forEach((row) => {
       googleStories.push(googleRowToStory(row.toObject(), 'hivebrite'));
     });
@@ -81,7 +81,7 @@ export default async (req: Request) => {
     const cventSheet = cventDoc.sheetsByIndex[0];
     const cventRows = await cventSheet.getRows();
     console.log(`Fetching Cvent data done! (${cventRows?.length ?? 0} found)`);
-    
+
     cventRows.forEach((row) => {
       googleStories.push(googleRowToStory(row.toObject(), 'cvent'));
     });
@@ -113,9 +113,9 @@ export default async (req: Request) => {
       version: 'published',
       per_page: 100,
     }) ?? [];
-    const sbDraftEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync/', 
-      content_type: 'synchronizedEvent', 
+    const sbDraftEvents = await storyblokContent.getAll('cdn/stories', {
+      starts_with: 'events/sync/',
+      content_type: 'synchronizedEvent',
       version: 'draft',
       per_page: 100,
     }) ?? [];
@@ -386,9 +386,9 @@ export default async (req: Request) => {
 
       try {
         const isOld = luxonDate(
-          story.content.endOverride 
-          || story.content.end 
-          || story.content.startOverride 
+          story.content.endOverride
+          || story.content.end
+          || story.content.startOverride
           || story.content.start
         ) < OldCutoff;
 
