@@ -119,6 +119,7 @@ export default async (req: Request) => {
       version: 'draft',
       per_page: 100,
     }) ?? [];
+    const filteredSbUnpublishedEvents = sbUnpublishedEvents?.filter((event) => !sbPublishedEvents.some((pubEvent) => pubEvent.id === event.id));
     const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
       starts_with: 'events/sync-archive/', 
       filter_query: { __or: [
@@ -139,11 +140,12 @@ export default async (req: Request) => {
       version: 'draft',
       per_page: 100,
     }) ?? [];
-    const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
-    const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
+    const filteredOldArchivedUnpublishedEvents = oldArchivedUnpublishedEvents?.filter((event) => !oldArchivedPublishedEvents.some((pubEvent) => pubEvent.id === event.id));
+    const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...filteredSbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
+    const oldArchivedEvents = [...oldArchivedPublishedEvents, ...filteredOldArchivedUnpublishedEvents].filter((s) => !!s);
     console.log(`Fetching Storyblok events done! (${sbEvents?.length ?? 0} found)`);
 
-    console.log({ sbPublishedEvents, sbUnpublishedEvents });
+    console.log({ sbPublishedEvents, sbUnpublishedEvents, filteredSbUnpublishedEvents });
 
     const syncedEvents = new Map();
     const manualEvents = new Map();
