@@ -70,7 +70,7 @@ export default async (req: Request) => {
     const hivebriteSheet = hivebriteDoc.sheetsByIndex[0];
     const hivebriteRows = await hivebriteSheet.getRows();
     console.log(`Fetching Hiverbrite data done! (${hivebriteRows?.length ?? 0} found)`);
-    
+
     hivebriteRows.forEach((row) => {
       googleStories.push(googleRowToStory(row.toObject(), 'hivebrite'));
     });
@@ -81,7 +81,7 @@ export default async (req: Request) => {
     const cventSheet = cventDoc.sheetsByIndex[0];
     const cventRows = await cventSheet.getRows();
     console.log(`Fetching Cvent data done! (${cventRows?.length ?? 0} found)`);
-    
+
     cventRows.forEach((row) => {
       googleStories.push(googleRowToStory(row.toObject(), 'cvent'));
     });
@@ -107,40 +107,62 @@ export default async (req: Request) => {
     console.log(`(${formatDatasource?.length ?? 0} formats, ${subjectDatasource?.length ?? 0} subjects)`);
 
     console.log('Fetching Storyblok events...');
-    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync/',  
+    const sbPublishedEvents = await storyblokContent.getAll('cdn/stories', {
+      starts_with: 'events/sync/',
       content_type: 'synchronizedEvent',
       version: 'published',
       per_page: 100,
     }) ?? [];
-    const sbUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync/', 
-      content_type: 'synchronizedEvent', 
+    const sbDraftEvents = await storyblokContent.getAll('cdn/stories', {
+      starts_with: 'events/sync/',
+      content_type: 'synchronizedEvent',
       version: 'draft',
       per_page: 100,
     }) ?? [];
-    const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync-archive/', 
+    const oldArchivedPublishedEvents = await storyblokContent.getAll('cdn/stories', {
+      starts_with: 'events/sync-archive/',
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
-        { endOverride: { lt_date: archiveCutoff }}
-      ]}, 
+        { endOverride: { lt_date: archiveCutoff }},
+      ]},
       content_type: 'synchronizedEvent',
       version: 'published',
       per_page: 100,
     }) ?? [];
-    const oldArchivedUnpublishedEvents = await storyblokContent.getAll('cdn/stories', { 
-      starts_with: 'events/sync-archive/', 
+    const oldArchivedDraftEvents = await storyblokContent.getAll('cdn/stories', {
+      starts_with: 'events/sync-archive/',
       filter_query: { __or: [
         { end: { lt_date: archiveCutoff }},
-        { endOverride: { lt_date: archiveCutoff }}
-      ]}, 
-      content_type: 'synchronizedEvent', 
+        { endOverride: { lt_date: archiveCutoff }},
+      ]},
+      content_type: 'synchronizedEvent',
       version: 'draft',
       per_page: 100,
     }) ?? [];
-    const sbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbUnpublishedEvents?.map((s) => ({ ...s, isPublished: false }))];
-    const oldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedUnpublishedEvents].filter((s) => !!s);
+    const allSbEvents = [...sbPublishedEvents?.map((s) => ({ ...s, isPublished: true })), ...sbDraftEvents?.map((s) => ({ ...s, isPublished: false }))];
+    const allOldArchivedEvents = [...oldArchivedPublishedEvents, ...oldArchivedDraftEvents].filter((s) => !!s);
+
+    const seenEventIds = new Set();
+    const seenArchivedEventIds = new Set();
+    const sbEvents = allSbEvents.filter((s) => {
+      if (seenEventIds.has(s.id)) {
+        console.log('Duplicate event found (unpublished changes): ', s.id);
+        return false;
+      }
+
+      seenEventIds.add(s.id);
+      return true;
+    });
+    const oldArchivedEvents = allOldArchivedEvents.filter((s) => {
+      if (seenArchivedEventIds.has(s.id)) {
+        console.log('Duplicate archived event found (unpublished changes): ', s.id);
+        return false;
+      }
+
+      seenArchivedEventIds.add(s.id);
+      return true;
+    });
+
     console.log(`Fetching Storyblok events done! (${sbEvents?.length ?? 0} found)`);
 
     const syncedEvents = new Map();
@@ -169,14 +191,14 @@ export default async (req: Request) => {
         console.log('No ID for Google event: ', event?.full_slug || event?.name || '???');
       }
     });
-    sbEvents.forEach((story) => {
+    sbEvents.forEach(({ isPublished, ...story }) => {
       const id = story.content.externalId;
 
       if (id) {
         const existing = syncedEvents.get(id);
         const value = existing
-          ? { ...existing, storyblok: story }
-          : { google: undefined, storyblok: story }
+          ? { ...existing, storyblok: story, isPublished }
+          : { google: undefined, storyblok: story, isPublished }
 
         syncedEvents.set(id, value);
       } else {
@@ -224,21 +246,21 @@ export default async (req: Request) => {
       }
     }
 
-    for (const [id, {google, storyblok}] of syncedEvents) {
+    for (const [id, {google, storyblok, isPublished}] of syncedEvents) {
       console.log('>>> Processing: ', id);
       try {
         if (google && storyblok) {
           const isGoogleOld = luxonDate(
-            google.content.endOverride 
-            || google.content.end 
-            || google.content.startOverride 
+            google.content.endOverride
+            || google.content.end
+            || google.content.startOverride
             || google.content.start
           ) < OldCutoff;
 
           const isSbOld = luxonDate(
-            storyblok.content.endOverride 
-            || storyblok.content.end 
-            || storyblok.content.startOverride 
+            storyblok.content.endOverride
+            || storyblok.content.end
+            || storyblok.content.startOverride
             || storyblok.content.start
           ) < OldCutoff;
 
@@ -249,12 +271,12 @@ export default async (req: Request) => {
           console.log('Exists in Google and Storyblok...');
 
           if (isOld) {
-            console.log('Story is old. Unpublishing and moving...');
+            console.log('Story is old. Unpublishing and moving...', storyblok.id);
             if (run) {
               await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
               await delay();
               await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
-                story: { 
+                story: {
                   ...storyblok,
                   parent_id: eventArchiveFolderId,
                 },
@@ -283,16 +305,16 @@ export default async (req: Request) => {
                 ...combinedStory,
                 parent_id: eventFolderId,
               },
-              publish: storyblok.isPublished ? 1 : 0, // Don't re-publish manually unpublished events
+              publish: isPublished ? 1 : 0, // Don't re-publish manually unpublished events
             });
             await delay();
           }
           console.log('Synced!');
         } else if (google) {
           const isOld = luxonDate(
-            google.content.endOverride 
-            || google.content.end 
-            || google.content.startOverride 
+            google.content.endOverride
+            || google.content.end
+            || google.content.startOverride
             || google.content.start
           ) < OldCutoff;
 
@@ -321,9 +343,9 @@ export default async (req: Request) => {
         } else if (storyblok) {
           console.log('Exists in Storyblok only.');
           const isOld = luxonDate(
-            storyblok.content.endOverride 
-            || storyblok.content.end 
-            || storyblok.content.startOverride 
+            storyblok.content.endOverride
+            || storyblok.content.end
+            || storyblok.content.startOverride
             || storyblok.content.start
           ) < OldCutoff;
 
@@ -333,7 +355,7 @@ export default async (req: Request) => {
               await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
               await delay();
               await storyblokManagement.put(`/spaces/${spaceId}/stories/${storyblok.id}`, {
-                story: { 
+                story: {
                   ...storyblok,
                   parent_id: eventArchiveFolderId,
                 },
@@ -341,13 +363,15 @@ export default async (req: Request) => {
               await delay();
             }
             console.log('Done!');
-          } else if (storyblok.isPublished) {
+          } else if (isPublished) {
             console.log('Unpublishing...');
             if (run) {
               await storyblokManagement.get(`/spaces/${spaceId}/stories/${storyblok.id}/unpublish`);
               await delay();
             }
             console.log('Unpublished!');
+          } else {
+            console.log('Only in SB and not published. No changes needed.');
           }
         }
       } catch(err) {
@@ -362,19 +386,19 @@ export default async (req: Request) => {
 
       try {
         const isOld = luxonDate(
-          story.content.endOverride 
-          || story.content.end 
-          || story.content.startOverride 
+          story.content.endOverride
+          || story.content.end
+          || story.content.startOverride
           || story.content.start
         ) < OldCutoff;
 
         if (isOld) {
-          console.log('Story is old. Unpublishing and moving...');
+          console.log('Story is old. Unpublishing and moving...', story.id);
           if (run) {
             await storyblokManagement.get(`/spaces/${spaceId}/stories/${story.id}/unpublish`);
             await delay();
             await storyblokManagement.put(`/spaces/${spaceId}/stories/${story.id}`, {
-              story: { 
+              story: {
                 ...story,
                 parent_id: eventArchiveFolderId,
               },
@@ -394,7 +418,7 @@ export default async (req: Request) => {
       console.log('>>> Processing expired archived event: ', story.id);
 
       try {
-        console.log('Deleting...');
+        console.log('Deleting...', story.id);
         if (run) {
           await storyblokManagement.delete(`/spaces/${spaceId}/stories/${story.id}`, {});
           await delay();
