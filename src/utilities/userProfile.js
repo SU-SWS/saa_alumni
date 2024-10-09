@@ -1,5 +1,5 @@
 import { fetchEmail, fetchPhone } from './giveGabVars';
-import { formatUsDate } from './transformDate';
+import { formatUsDateFromIso } from './transformDate';
 import {
   findSelectOption,
   emailTypeList,
@@ -57,7 +57,7 @@ export const extractUserData = (userProfile) => {
     ),
     su_recipient_phone_type: primaryRegistrantPhoneNumberType || undefined,
     su_dob: userProfile?.contact.birthDate
-      ? formatUsDate(userProfile?.contact.birthDate)
+      ? formatUsDateFromIso(userProfile?.contact.birthDate)
       : '',
     su_affiliations: affiliations,
   };
