@@ -11,8 +11,8 @@ export const formatEmailDate = (tripDate) => {
   return date;
 };
 
-export const formatUsDate = (tripDate) => {
-  const date = luxonDate(tripDate);
+export const formatUsDateFromIso = (isoDate) => {
+  const date = DateTime.fromISO(isoDate);
   if (!date?.isValid) {
     return undefined;
   }
