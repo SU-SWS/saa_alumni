@@ -12,7 +12,7 @@ import AuthContext from '../../../contexts/AuthContext';
 import AuthenticatedPage from '../../auth/AuthenticatedPage';
 import { GridCell } from '../../layout/GridCell';
 import * as styles from './relatedContactSelection.styles';
-import { formatUsDate } from '../../../utilities/transformDate';
+import { formatUsDateFromIso } from '../../../utilities/transformDate';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import MembershipCard from './membershipCard';
@@ -54,7 +54,7 @@ const RelatedContactSelection = (props) => {
       data = {
         ...suUser,
         su_recipient_dob: relationship?.birthDate
-          ? formatUsDate(relationship?.birthDate)
+          ? formatUsDateFromIso(relationship?.birthDate)
           : '',
         su_recipient_first_name:
           relationship?.relatedContactFullNameParsed?.relatedContactFirstName,
