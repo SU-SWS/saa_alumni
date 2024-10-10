@@ -1,6 +1,5 @@
 import React, { useId, useMemo, useState } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { DateTime, Interval, Duration } from 'luxon';
+import { DateTime } from 'luxon';
 import { MenuItem, Select } from '@mui/material';
 import {
   CalendarIcon,
