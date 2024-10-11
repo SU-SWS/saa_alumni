@@ -1,5 +1,4 @@
 import React, { useId, useMemo, useState } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { DateTime } from 'luxon';
 import { MenuItem, Select } from '@mui/material';
 import {
@@ -31,7 +30,6 @@ import { Heading } from '../../../simple/Heading';
 export const EventContent = ({
   start,
   end,
-  // Should we default to something else?
   eventTimezone: rawEventTimezone,
   location = '',
   city = '',
@@ -41,50 +39,117 @@ export const EventContent = ({
   localTimezoneOnly = false,
 }) => {
   const uniqueId = useId();
+
+  // IANA time zone identifier format
   const eventTimezone = rawEventTimezone || 'America/Los_Angeles';
   const [selectedTimezone, setSelectedTimezone] = useState(eventTimezone);
 
-  const localTime = DateTime.local();
-  const {
-    zoneName: localTimezoneName,
-    offsetNameShort: localTimezoneDisplay,
-    offset: localOffset,
-  } = localTime;
-
-  const eventTime = localTime.setZone(eventTimezone);
+  // Time zone info for the event
   const {
     zoneName: eventTimezoneName,
     offsetNameShort: eventTimezoneDisplay,
     offset: eventOffset,
-  } = eventTime;
+  } = DateTime.now().setZone(eventTimezone);
+
+  // Time zone info reported by the user's local system
+  const {
+    zoneName: localTimezoneName,
+    offsetNameShort: localTimezoneDisplay,
+    offset: localOffset,
+  } = DateTime.local();
 
   const isEventLocal = useMemo(
     () => localTimezoneOnly || eventTimezoneDisplay === localTimezoneDisplay,
     [localTimezoneOnly, eventTimezoneDisplay, localTimezoneDisplay]
   );
 
+  // Different time zones can have the same offset
   const isOffsetSame = useMemo(
     () => localOffset === eventOffset,
     [localOffset, eventOffset]
   );
 
-  const ptStart = useMemo(
+  const eventStart = useMemo(
+    () => start?.setZone(eventTimezone),
+    [start, eventTimezone]
+  );
+  const selectedStart = useMemo(
     () => start?.setZone(selectedTimezone),
     [start, selectedTimezone]
   );
-  const longStartDate = useMemo(() => ptStart?.toFormat('DDDD'), [ptStart]);
-  const startTime = useMemo(() => ptStart?.toFormat('t'), [ptStart]);
 
-  const ptEnd = useMemo(
+  const eventEnd = useMemo(
+    () => end?.setZone(eventTimezone),
+    [end, eventTimezone]
+  );
+  const selectedEnd = useMemo(
     () => end?.setZone(selectedTimezone),
     [end, selectedTimezone]
   );
-  const longEndDate = useMemo(() => ptEnd?.toFormat('DDDD'), [ptEnd]);
-  const endTime = useMemo(() => ptEnd?.toFormat('t'), [ptEnd]);
 
-  const isSameDay = useMemo(
-    () => longStartDate === longEndDate,
-    [longStartDate, longEndDate]
+  const longStartDate = useMemo(
+    () => selectedStart?.toFormat('DDDD'),
+    [selectedStart]
+  );
+  const longEndDate = useMemo(
+    () => selectedEnd?.toFormat('DDDD'),
+    [selectedEnd]
+  );
+
+  const isSingleDay = useMemo(
+    () => eventStart.hasSame(eventEnd, 'day'),
+    [eventStart, eventEnd]
+  );
+
+  const startDaysOffset = useMemo(() => {
+    const eventStartDate = DateTime.fromISO(eventStart.toISODate());
+    const selectedStartDate = DateTime.fromISO(selectedStart.toISODate());
+
+    return selectedStartDate.diff(eventStartDate, 'days').get('days');
+  }, [selectedStart, eventStart]);
+
+  const startDaysOffestDisplay = useMemo(() => {
+    if (!startDaysOffset) {
+      return '';
+    }
+
+    const suffix = Math.abs(startDaysOffset) === 1 ? ' day' : ' days';
+    const prefix = startDaysOffset > 0 ? '+' : '';
+
+    return `${prefix}${startDaysOffset}${suffix}`;
+  }, [startDaysOffset]);
+
+  const endDaysOffset = useMemo(() => {
+    const eventEndDate = DateTime.fromISO(eventEnd.toISODate());
+    const selectedEndDate = DateTime.fromISO(selectedEnd.toISODate());
+
+    return selectedEndDate.diff(eventEndDate, 'days').get('days');
+  }, [eventEnd, selectedEnd]);
+
+  const endDaysOffsetDisplay = useMemo(() => {
+    if (!endDaysOffset) {
+      return '';
+    }
+
+    const suffix = Math.abs(endDaysOffset) === 1 ? ' day' : ' days';
+    const prefix = endDaysOffset > 0 ? '+' : '';
+
+    return `${prefix}${endDaysOffset}${suffix}`;
+  }, [endDaysOffset]);
+
+  const startTime = useMemo(
+    () =>
+      startDaysOffestDisplay
+        ? `${selectedStart?.toFormat('t')} (${startDaysOffestDisplay})`
+        : selectedStart?.toFormat('t'),
+    [startDaysOffestDisplay, selectedStart]
+  );
+  const endTime = useMemo(
+    () =>
+      endDaysOffsetDisplay
+        ? `${selectedEnd?.toFormat('t')} (${endDaysOffsetDisplay})`
+        : selectedEnd?.toFormat('t'),
+    [endDaysOffsetDisplay, selectedEnd]
   );
 
   const selectRootClasses =
@@ -104,17 +169,17 @@ export const EventContent = ({
           <SrOnlyText>Date: </SrOnlyText>
           {!!start && !!end && (
             <span>
-              {!isSameDay && `${longStartDate} to ${longEndDate}`}
-              {isSameDay && `${startTime} - ${endTime} `}
-              {isSameDay && isEventLocal && (
+              {!isSingleDay && `${longStartDate} to ${longEndDate}`}
+              {isSingleDay && `${startTime} - ${endTime} `}
+              {isSingleDay && isEventLocal && (
                 <span className="su-ml-4">{eventTimezoneDisplay}</span>
               )}
-              {isSameDay && !isEventLocal && isOffsetSame && (
+              {isSingleDay && !isEventLocal && isOffsetSame && (
                 <span className="su-ml-4">
                   {eventTimezoneDisplay}/{localTimezoneDisplay}
                 </span>
               )}
-              {isSameDay && !isEventLocal && !isOffsetSame && (
+              {isSingleDay && !isEventLocal && !isOffsetSame && (
                 <>
                   <label
                     id={`timezone-${uniqueId}`}
