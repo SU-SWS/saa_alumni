@@ -22,7 +22,7 @@ import { GridCell } from '../../layout/GridCell';
 import { FlexBox } from '../../layout/FlexBox';
 import HeroIcon from '../../simple/heroIcon';
 import * as styles from './interstitialPage.styles';
-import { formatUsDate } from '../../../utilities/transformDate';
+import { formatUsDateFromIso } from '../../../utilities/transformDate';
 import { filterRelationships } from '../../../utilities/filterRelationships';
 import { extractUserData } from '../../../utilities/userProfile';
 
@@ -80,7 +80,7 @@ const InterstitialPage = (props) => {
           relationship?.relatedContactFullNameParsed?.relatedContactLastName,
         su_relation: relationship?.type,
         su_dob: relationship?.birthDate
-          ? formatUsDate(relationship?.birthDate)
+          ? formatUsDateFromIso(relationship?.birthDate)
           : undefined,
         su_reg: 'Related contact',
         su_email: undefined,
