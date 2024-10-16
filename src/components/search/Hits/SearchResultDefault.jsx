@@ -16,7 +16,7 @@ const SearchResultDefault = ({ result }) => {
   const location = useLocation();
   const utms = utmParams(location.search);
 
-  const { objectID, domain, url, fileType, title, image, _snippetResult } =
+  const { objectID, domain, url, fileType, title, image, _highlightResult } =
     result;
 
   return (
@@ -70,14 +70,14 @@ const SearchResultDefault = ({ result }) => {
             </a>
           </Heading>
           {/* eslint-disable-next-line no-underscore-dangle */}
-          {_snippetResult?.body.value && (
+          {_highlightResult?.body.value && (
             <p
               className="su-card-paragraph su-leading-snug su-mb-0"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 // eslint-disable-next-line no-underscore-dangle
                 __html: sanitize(
-                  decodeHtmlEntities(_snippetResult.body.value),
+                  decodeHtmlEntities(_highlightResult.body.value),
                   {
                     decodeEntities: false,
                     allowedTags: ['mark', 'i', 'b', 'em', 'strong', 'br'],

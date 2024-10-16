@@ -64,7 +64,7 @@ const SearchPage = (props) => {
     >
       <Configure
         hitsPerPage={itemsPerPageInt}
-        attributesToSnippet={['body:50']}
+        attributesToHighlight={['body:400']}
         highlightPreTag="<b>"
         highlightPostTag="</b>"
       />

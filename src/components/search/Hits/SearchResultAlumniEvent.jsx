@@ -7,6 +7,7 @@ import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { utmParams } from '../../../utilities/utmParams';
 import { checkParams } from '../../../utilities/checkParams';
+import { decodeHtmlEntities } from '../../../utilities/decodeHtmlEntities';
 
 /**
  * Alumni Event {Hit}
@@ -22,7 +23,7 @@ const SearchResultAlumniEvent = ({ result }) => {
     domain,
     url,
     title,
-    _snippetResult,
+    _highlightResult,
     start,
     end,
     timeZone,
@@ -111,15 +112,18 @@ const SearchResultAlumniEvent = ({ result }) => {
           </p>
 
           {/* eslint-disable-next-line no-underscore-dangle */}
-          {_snippetResult?.body.value && (
+          {_highlightResult?.body.value && (
             <p
               className="su-card-paragraph su-leading-snug su-mb-0"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 // eslint-disable-next-line no-underscore-dangle
-                __html: sanitize(_snippetResult.body.value, {
-                  allowedTags: ['br', 'mark', 'i', 'b', 'em', 'strong'],
-                }),
+                __html: sanitize(
+                  decodeHtmlEntities(_highlightResult.body.value),
+                  {
+                    allowedTags: ['br', 'mark', 'i', 'b', 'em', 'strong'],
+                  }
+                ),
               }}
             />
           )}
