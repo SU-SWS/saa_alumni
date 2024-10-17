@@ -1,7 +1,7 @@
 import React, { createContext, useState, useRef } from 'react';
 import scrollTo from 'gatsby-plugin-smoothscroll';
-import useEscape from '../../hooks/useEscape';
-import useDisplay from '../../hooks/useDisplay';
+import useEscape from '../../../hooks/useEscape';
+import useDisplay from '../../../hooks/useDisplay';
 
 /**
  * A context to manage the state of the search modal.
@@ -40,14 +40,11 @@ export function SearchModalProvider({ children }) {
       window.location.pathname.startsWith('/search')
     ) {
       searchInputRef.current.focus();
-      scrollTo(searchInputRef.current);
-
+      scrollTo(`#${searchInputRef.current.id}`);
       return;
     }
 
     setIsOpen(true);
-    // Don't need to do the next line because the Modal component will handle it.
-    // searchInputRef.current.focus();
   };
 
   // Close the modal when the escape key is pressed.

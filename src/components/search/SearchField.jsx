@@ -4,7 +4,7 @@ import { Autocomplete, TextField } from '@mui/material';
 import { useSearchBox } from 'react-instantsearch';
 import { X, Search } from 'react-hero-icon/solid';
 import { useDebouncedValue } from '../../hooks/useDebouncedValue';
-import SearchModalContext from './SearchModalContext';
+import SearchModalContext from './Modal/SearchModalContext';
 
 /**
  * @type {React.FC<Props>}
@@ -47,7 +47,7 @@ const SearchField = ({ emptySearchMessage }) => {
       try {
         const res = await index.search(debouncedInputValue, {
           attributesToRetrieve: ['title'],
-          hitsPerPage: 5,
+          hitsPerPage: 10,
         });
         const newOptions = res.hits.map((hit) => hit.title);
 
@@ -122,6 +122,7 @@ const SearchField = ({ emptySearchMessage }) => {
         <div className="su-w-full">
           <Autocomplete
             freeSolo
+            id="search-field-input"
             popupIcon={null}
             disableClearable
             disablePortal
@@ -144,6 +145,27 @@ const SearchField = ({ emptySearchMessage }) => {
                 }}
               />
             )}
+            renderOption={(props, option) => {
+              // eslint-disable-next-line no-unused-vars
+              const { className, ...rest } = props;
+              return (
+                <li
+                  className="su-border-none su-rounded-full su-rs-px-1 su-mx-10 su-py-5 su-text-white su-decoration-1 su-underline-offset-2 su-cursor-pointer"
+                  {...rest}
+                >
+                  <span>{option}</span>
+                </li>
+              );
+            }}
+            slotProps={{
+              popper: {
+                sx: {
+                  '& .Mui-focused': {
+                    backgroundColor: 'rgb(177, 4, 14)',
+                  },
+                },
+              },
+            }}
             classes={{
               inputRoot:
                 '!su-text-18 md:!su-text-21 !su-font-sans !su-p-0 focus-within:before:!su-border-lagunita before:!su-border-b-2 before:!su-border-b-black-50 after:!su-border-b-0',
@@ -151,9 +173,7 @@ const SearchField = ({ emptySearchMessage }) => {
               clearIndicator:
                 '!su-text-18 !su-bg-transparent !su-text-transparent',
               paper:
-                '!su-w-[calc(100%_+_106px)] md:!su-w-auto !-su-ml-26 md:!su-ml-0 !su-mt-18 md:!su-mt-0 !su-shadow-none md:!su-shadow-lg md:!su-shadow-black/30 md:!su-rounded-b !su-font-sans !su-text-18 md:!su-text-21',
-              option:
-                'su-border-b su-border-black-50 md:su-border-b-0 md:su-rounded-full !su-my-0 md:!su-my-10 md:!su-mx-18 !su-py-14 md:!su-py-3 !su-px-36 md:!su-px-20 first:!su-border-t md:first:!su-border-t-0 first:su-mt-20 last:su-mb-10 !su-text-black-70 !su-decoration-1 !su-underline-offset-2',
+                '!su-w-[calc(100%_+_53px)] md:!su-w-[calc(100%_+_106px)] !su-shadow-none md:!su-shadow-lg su-mt-2 md:!su-shadow-black/30 md:!su-rounded-b !su-font-sans !su-text-18 md:!su-text-21 !su-bg-cardinal-red-xxdark !su-border !su-border-digital-red su-z-10',
             }}
           />
           {!!value && (

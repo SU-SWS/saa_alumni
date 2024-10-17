@@ -5,13 +5,13 @@ import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import * as styles from './GlobalHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 import Logo from '../logo';
-import OpenSearchModalButton from '../../search/OpenSearchModalButton';
+import OpenSearchModalButton from '../../search/Modal/OpenSearchModalButton';
 import SbLink from '../../../utilities/sbLink';
-import SearchModal from '../../search/SearchModal';
+import SearchModal from '../../search/Modal/SearchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
 import useDisplay from '../../../hooks/useDisplay';
-import SearchModalContext from '../../search/SearchModalContext';
+import SearchModalContext from '../../search/Modal/SearchModalContext';
 
 export const GlobalHeaderProps = {
   siteName: PropTypes.string,

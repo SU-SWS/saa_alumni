@@ -2,12 +2,14 @@ import React from 'react';
 import { dcnb } from 'cnbuilder';
 import { usePagination } from 'react-instantsearch';
 import scrollTo from 'gatsby-plugin-smoothscroll';
+import useDisplay from '../../hooks/useDisplay';
 
 /**
  * @type {React.FC<UsePaginationProps>}
  * @returns {React.ReactElement}
  */
 const SearchPager = (props) => {
+  const { showMobile } = useDisplay();
   const {
     pages,
     currentRefinement,
@@ -16,32 +18,27 @@ const SearchPager = (props) => {
     canRefine,
     refine,
     createURL,
-  } = usePagination(props);
+  } = usePagination({ padding: showMobile ? 1 : 3, ...props });
 
   if (!canRefine) {
     return null;
   }
 
   const pageItemCommon =
-    'su-flex su-items-center su-justify-center su-min-w-[3.2rem] md:su-min-w-[3.6rem] su-min-h-[3.2rem] md:su-min-h-[3.6rem] su-pb-4 su-text-black su-font-normal su-leading-none su-no-underline';
+    'su-border-b-4 su-border-transparent su-flex su-items-center su-justify-center su-min-w-[3.2rem] md:su-min-w-[3.6rem] su-min-h-[3.2rem] md:su-min-h-[3.6rem] su-font-normal su-leading-none su-no-underline';
   const pageItemCommonHocus =
-    'hocus:su-border-b-4 hocus:su-pb-0 hocus:su-border-digital-red hocus:su-text-digital-red hocus:su-no-underline';
+    'hocus:su-border-b-4 hocus:su-border-digital-red hocus:su-text-digital-red hocus:su-no-underline';
 
   const directionCta = ({ isShown = false }) =>
-    dcnb(
-      'su-text-digital-red-light hover:su-border-b-4 su-text-20 su-no-underline su-font-regular su-self-center su-mr-9 md:su-mr-11',
-      pageItemCommonHocus,
-      {
-        'su-invisible': !isShown,
-        'su-visible': isShown,
-      }
-    );
+    dcnb(pageItemCommon, pageItemCommonHocus, 'su-text-22', {
+      'su-invisible': !isShown,
+      'su-visible': isShown,
+    });
 
   const pageCta = ({ isActive = false }) =>
     dcnb(pageItemCommon, pageItemCommonHocus, {
-      'su-px-9 md:su-px-11 su-no-underline su-text-digital-red-light hover:su-border-b-4':
-        !isActive,
-      'su-px-9 md:su-px-11 su-no-underline su-text-cardinal-red su-border-b-4 su-cursor-default su-pointer-events-none':
+      'su-px-9 md:su-px-11 su-text-digital-red-light': !isActive,
+      'su-px-9 md:su-px-11 su-text-black su-border-b-black-20 su-cursor-default su-pointer-events-none':
         isActive,
     });
 

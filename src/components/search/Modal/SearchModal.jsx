@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import { Container } from '../layout/Container';
-import { Heading } from '../simple/Heading';
-import Modal from '../layout/Modal/Modal';
+import { Container } from '../../layout/Container';
+import { Heading } from '../../simple/Heading';
+import Modal from '../../layout/Modal/Modal';
 import SearchFieldModal from './SearchFieldModal';
-import SearchSuggestions from './SearchSuggestions';
+import SearchSuggestions from '../SearchSuggestions';
 import SearchModalContext from './SearchModalContext';
 
 const SearchModal = () => {

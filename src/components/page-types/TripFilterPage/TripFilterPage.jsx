@@ -183,7 +183,7 @@ const TripFilterPage = (props) => {
                   className={dcnb('filtered-trips-list', styles.trips)}
                 >
                   {trips.map((trip) => (
-                    <TripCard key={trip.id} trip={trip} />
+                    <TripCard key={`trip-${trip.id}`} trip={trip} />
                   ))}
                 </Grid>
                 {totalPages > 1 && (

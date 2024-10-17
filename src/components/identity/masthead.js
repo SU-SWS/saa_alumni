@@ -4,12 +4,12 @@ import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../utilities/createBloks';
 import Logo from './logo';
 import { FlexBox } from '../layout/FlexBox';
-import OpenSearchModalButton from '../search/OpenSearchModalButton';
-import SearchModal from '../search/SearchModal';
+import OpenSearchModalButton from '../search/Modal/OpenSearchModalButton';
+import SearchModal from '../search/Modal/SearchModal';
 import * as styles from './GlobalHeader/GlobalHeader.styles';
 import useDisplay from '../../hooks/useDisplay';
 import AccountLinks from '../navigation/accountLinks';
-import SearchModalContext from '../search/SearchModalContext';
+import SearchModalContext from '../search/Modal/SearchModalContext';
 
 const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
   let mainNavBgColorXl =

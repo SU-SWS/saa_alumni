@@ -9,7 +9,7 @@ import React from 'react';
 // Contexts.
 import { GlobalStateProvider } from './src/contexts/GlobalContext';
 import { AuthContextProvider } from './src/contexts/AuthContext';
-import { SearchModalProvider } from './src/components/search/SearchModalContext';
+import { SearchModalProvider } from './src/components/search/Modal/SearchModalContext';
 
 // CSS
 import './src/styles/global.css';

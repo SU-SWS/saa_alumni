@@ -5,7 +5,7 @@ import algoliasearch from 'algoliasearch/lite';
 import { Autocomplete, TextField } from '@mui/material';
 import { X, Search } from 'react-hero-icon/solid';
 import { navigate } from 'gatsby-link';
-import { useDebouncedValue } from '../../hooks/useDebouncedValue';
+import { useDebouncedValue } from '../../../hooks/useDebouncedValue';
 import SearchModalContext from './SearchModalContext';
 
 /**

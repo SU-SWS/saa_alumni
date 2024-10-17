@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
-import * as styles from '../navigation/MainNav/mainNav.styles';
+import * as styles from '../../navigation/MainNav/mainNav.styles';
 import SearchModalContext from './SearchModalContext';
 
 const OpenSearchModalButton = React.forwardRef(({ id }, ref) => {
