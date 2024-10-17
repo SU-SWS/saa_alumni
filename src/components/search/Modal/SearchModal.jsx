@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
-import { useStaticQuery, graphql, navigate } from 'gatsby';
-import { Container } from '../layout/Container';
-import { Heading } from '../simple/Heading';
-import Modal from '../layout/Modal/Modal';
-import SearchFieldModal from './searchFieldModal';
-import SearchSuggestions from './searchSuggestions';
+import React, { useContext } from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
+import { Container } from '../../layout/Container';
+import { Heading } from '../../simple/Heading';
+import Modal from '../../layout/Modal/Modal';
+import SearchFieldModal from './SearchFieldModal';
+import SearchSuggestions from '../SearchSuggestions';
+import SearchModalContext from './SearchModalContext';
 
-const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
-  const searchFieldRef = React.createRef();
+const SearchModal = () => {
+  const { isOpen, close, modalSearchInputRef } = useContext(SearchModalContext);
+
   const data = useStaticQuery(graphql`
     {
       storyblokEntry(
@@ -33,25 +35,15 @@ const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
     emptySearchMessage = content.emptySearchMessage;
   }
 
-  const [showEmptyMessage, setShowEmptyMessage] = useState(false);
-  const searchSubmit = (queryText) => {
-    if (!queryText.length) {
-      setShowEmptyMessage(true);
-    } else {
-      setShowEmptyMessage(false);
-      navigate(`/${searchPageUrl.cached_url || 'search'}?q=${queryText}`);
-      setIsOpen(false);
-    }
+  const onClose = () => {
+    close();
   };
 
   return (
     <Modal
       isOpen={isOpen}
-      onClose={() => {
-        onClose();
-        setShowEmptyMessage(false);
-      }}
-      initialFocus={searchFieldRef}
+      onClose={onClose}
+      initialFocus={modalSearchInputRef}
       ariaLabel="Search Stanford Alumni websites"
     >
       <Container>
@@ -67,17 +59,9 @@ const SearchModal = ({ isOpen, setIsOpen, onClose, searchPageUrl }) => {
             {introduction}
           </Heading>
           <SearchFieldModal
-            ref={searchFieldRef}
-            emptySearch={showEmptyMessage}
-            onSubmit={(queryText) => searchSubmit(queryText)}
+            emptySearchMessage={emptySearchMessage}
+            ref={modalSearchInputRef}
           />
-          {showEmptyMessage ? (
-            <p className="su-text-m1 su-text-white su-font-serif su-font-bold su-rs-mt-2 su-mb-0">
-              {emptySearchMessage}
-            </p>
-          ) : (
-            ''
-          )}
           {story && content && (
             <div className="su-rs-pb-7">
               <SearchSuggestions blok={content} />

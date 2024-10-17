@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SearchIcon } from '@heroicons/react/solid';
-import * as styles from '../navigation/MainNav/mainNav.styles';
+import * as styles from '../../navigation/MainNav/mainNav.styles';
+import SearchModalContext from './SearchModalContext';
 
-const OpenSearchModalButton = React.forwardRef((props, ref) => {
-  const { setModalOpen, id } = props;
+const OpenSearchModalButton = React.forwardRef(({ id }, ref) => {
+  const { open } = useContext(SearchModalContext);
 
   return (
     <button
@@ -11,7 +12,7 @@ const OpenSearchModalButton = React.forwardRef((props, ref) => {
       type="button"
       className={styles.menuCircles}
       aria-label="Search Stanford Alumni sites"
-      onClick={(e) => setModalOpen(true)}
+      onClick={open}
       id={id}
       ref={ref}
     >

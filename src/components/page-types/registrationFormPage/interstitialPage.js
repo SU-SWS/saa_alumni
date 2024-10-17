@@ -4,7 +4,7 @@ import SbEditable from 'storyblok-react';
 import { Link } from 'gatsby';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
-import Layout from '../../partials/layout';
+import Layout from '../../partials/Layout';
 import getNumBloks from '../../../utilities/getNumBloks';
 import Ankle from '../../partials/ankle/ankle';
 import Hero from '../../composite/hero';
