@@ -138,7 +138,7 @@ const SearchField = ({ emptySearchMessage }) => {
                 inputRef={searchInputRef}
                 {...params}
                 variant="standard"
-                placeholder="Search for something..."
+                placeholder="something..."
                 InputProps={{ ...params.InputProps, type: 'searchbox' }}
                 InputLabelProps={{
                   className: 'su-font-sans !su-text-18 md:!su-text-21 su-pl-20',
@@ -169,11 +169,11 @@ const SearchField = ({ emptySearchMessage }) => {
             classes={{
               inputRoot:
                 '!su-text-18 md:!su-text-21 !su-font-sans !su-p-0 focus-within:before:!su-border-lagunita before:!su-border-b-2 before:!su-border-b-black-50 after:!su-border-b-0',
-              input: '!su-pl-20 !su-pr-40 su-text-m2',
+              input: '!su-px-20 !su-text-m2',
               clearIndicator:
                 '!su-text-18 !su-bg-transparent !su-text-transparent',
               paper:
-                '!su-w-[calc(100%_+_53px)] md:!su-w-[calc(100%_+_106px)] !su-shadow-none md:!su-shadow-lg su-mt-2 md:!su-shadow-black/30 md:!su-rounded-b !su-font-sans !su-text-18 md:!su-text-21 !su-bg-cardinal-red-xxdark !su-border !su-border-digital-red su-z-10',
+                '!su-shadow-none md:!su-shadow-lg su-mt-2 md:!su-shadow-black/30 md:!su-rounded-b !su-font-sans !su-text-18 md:!su-text-21 !su-bg-cardinal-red-xxdark !su-border !su-border-digital-red su-z-10',
             }}
           />
           {!!value && (

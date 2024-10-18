@@ -56,7 +56,7 @@ const SearchPage = (props) => {
     <InstantSearch
       searchClient={algoliaClient}
       indexName={indexName}
-      stalledSearchDelay={2000}
+      stalledSearchDelay={3000}
       routing={routing}
       future={{
         preserveSharedStateOnUnmount: true,
@@ -64,9 +64,8 @@ const SearchPage = (props) => {
     >
       <Configure
         hitsPerPage={itemsPerPageInt}
-        attributesToHighlight={['body:400']}
-        highlightPreTag="<b>"
-        highlightPostTag="</b>"
+        attributesToHighlight={['body']}
+        attributesToSnippet={['body:50']}
       />
       <SearchPageContent {...props} />
     </InstantSearch>

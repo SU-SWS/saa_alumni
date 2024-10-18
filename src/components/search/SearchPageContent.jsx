@@ -3,6 +3,7 @@ import {
   useStats,
   useInstantSearch,
   useClearRefinements,
+  ClearRefinements,
 } from 'react-instantsearch';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
@@ -63,7 +64,7 @@ const SearchPageContent = (props) => {
           width="site"
           className="su-py-45 su-max-w-full su-w-full md:su-py-80 "
         >
-          <Grid gap xs={12} className="su-z-20 su-relative su-basefont-19">
+          <Grid gap xs={12} className="su-relative su-basefont-19 su-z-50">
             <GridCell
               xs={12}
               lg={resultCount > 0 ? 6 : 8}
@@ -71,10 +72,7 @@ const SearchPageContent = (props) => {
                 resultCount > 0 ? 'lg:su-col-start-4' : 'lg:su-col-start-3'
               }
             >
-              <SearchField
-                placeholder="Search for something..."
-                emptySearchMessage={blok.emptySearchMessage}
-              />
+              <SearchField emptySearchMessage={blok.emptySearchMessage} />
             </GridCell>
           </Grid>
 
@@ -113,55 +111,58 @@ const SearchPageContent = (props) => {
                     </span>
                   )}
                 </button>
-                {opened && (
-                  <div className="su-absolute su-w-full">
-                    <div
-                      className={dcnb(
-                        'su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-black-10 su-rs-px-1 su-rs-pt-1'
-                      )}
-                    >
-                      <SearchFacet
-                        attribute="siteName"
-                        label="Sites"
-                        excludes={['YouTube', 'SoundCloud', 'Apple Podcasts']}
-                      />
-                      <SearchFacet
-                        attribute="fileType"
-                        label="Media"
-                        excludes={['html', 'pdf']}
-                        className={dcnb('su-rs-pb-0')}
-                      />
-                    </div>
-                    <div
-                      className={dcnb(
-                        'su-flex su-justify-end su-rs-px-0 su-rs-py-1 su-bg-foggy-light su-border-t su-border-black-20',
-                        {
-                          'su-hidden': !opened,
-                        }
-                      )}
-                    >
-                      <button
-                        type="button"
-                        className="su-text-digital-red-light su-text-18 md:su-text-20 hocus:su-text-cardinal-red hocus:su-shadow-none hocus:su-underline su-transition-colors"
-                        onClick={() => {
-                          clearFilters();
-                        }}
-                      >
-                        Clear all
-                      </button>
-                      <SAAButton
-                        buttonStyle="primary"
-                        size="small-short"
-                        className="su-ml-36"
-                        onClick={() => {
-                          setOpened(false);
-                        }}
-                      >
-                        View results
-                      </SAAButton>
-                    </div>
+
+                <div
+                  className={dcnb('su-absolute su-w-full', {
+                    'su-hidden': !opened,
+                  })}
+                >
+                  <div
+                    className={dcnb(
+                      'su-left-0 su-w-full su-z-10 su-bg-white su-shadow-2xl su-border su-border-black-10 su-rs-px-1 su-rs-pt-1'
+                    )}
+                  >
+                    <SearchFacet
+                      attribute="siteName"
+                      label="Sites"
+                      excludes={['YouTube', 'SoundCloud', 'Apple Podcasts']}
+                    />
+                    <SearchFacet
+                      attribute="fileType"
+                      label="Media"
+                      excludes={['html', 'pdf']}
+                      className={dcnb('su-rs-pb-0')}
+                    />
                   </div>
-                )}
+                  <div
+                    className={dcnb(
+                      'su-flex su-justify-end su-rs-px-0 su-rs-py-1 su-bg-foggy-light su-border-t su-border-black-20',
+                      {
+                        'su-hidden': !opened,
+                      }
+                    )}
+                  >
+                    <button
+                      type="button"
+                      className="su-text-digital-red-light su-text-18 md:su-text-20 hocus:su-text-cardinal-red hocus:su-shadow-none hocus:su-underline su-transition-colors"
+                      onClick={() => {
+                        clearFilters();
+                      }}
+                    >
+                      Clear all
+                    </button>
+                    <SAAButton
+                      buttonStyle="primary"
+                      size="small-short"
+                      className="su-ml-36"
+                      onClick={() => {
+                        setOpened(false);
+                      }}
+                    >
+                      View results
+                    </SAAButton>
+                  </div>
+                </div>
               </GridCell>
             </Grid>
           )}
@@ -192,10 +193,24 @@ const SearchPageContent = (props) => {
                 >
                   Skip past filters to search results
                 </Skiplink>
-                <Heading level={2} srOnly>
-                  Filter Search Results
-                </Heading>
                 <div className="su-w-full">
+                  <div className="su-mb-14">
+                    <h2 className="su-text-5xl su-font-bold su-mb-0">
+                      Filter by
+                    </h2>
+                    <div className="su-min-h-28">
+                      <ClearRefinements
+                        translations={{
+                          resetButtonText: 'Reset all filters',
+                        }}
+                        classNames={{
+                          button:
+                            'disabled:su-hidden su-text-3xl su-text-cardinal-red-light hover:su-underline su-underline-offset-2 hover:su-cursor-pointer hocus:su-text-black',
+                        }}
+                      />
+                    </div>
+                  </div>
+
                   <SearchFacet
                     attribute="siteName"
                     label="Sites"

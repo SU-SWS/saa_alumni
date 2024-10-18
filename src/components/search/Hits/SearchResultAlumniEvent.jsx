@@ -23,7 +23,7 @@ const SearchResultAlumniEvent = ({ result }) => {
     domain,
     url,
     title,
-    _highlightResult,
+    _snippetResult,
     start,
     end,
     timeZone,
@@ -112,14 +112,14 @@ const SearchResultAlumniEvent = ({ result }) => {
           </p>
 
           {/* eslint-disable-next-line no-underscore-dangle */}
-          {_highlightResult?.body.value && (
+          {_snippetResult?.body.value && (
             <p
               className="su-card-paragraph su-leading-snug su-mb-0"
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
                 // eslint-disable-next-line no-underscore-dangle
                 __html: sanitize(
-                  decodeHtmlEntities(_highlightResult.body.value),
+                  decodeHtmlEntities(_snippetResult.body.value),
                   {
                     allowedTags: ['br', 'mark', 'i', 'b', 'em', 'strong'],
                   }
