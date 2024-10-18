@@ -5,7 +5,7 @@ import SbEditable from 'storyblok-react';
 import useScrollSpy from 'react-use-scrollspy';
 import { Alert } from '../../composite/Alert/Alert';
 import { luxonDate, luxonToday } from '../../../utilities/dates';
-import Layout from '../../partials/layout';
+import Layout from '../../partials/Layout';
 import { TripContent } from '../../../types/TripType';
 import * as styles from './TripPage.styles';
 import Ankle from '../../partials/ankle/ankle';
