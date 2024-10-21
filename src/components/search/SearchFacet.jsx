@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  useClearRefinements,
-  useInstantSearch,
-  useRefinementList,
-} from 'react-instantsearch';
+import { useInstantSearch, useRefinementList } from 'react-instantsearch';
 import scrollTo from 'gatsby-plugin-smoothscroll';
 import { Skeleton } from '@mui/material';
 import { Heading } from '../simple/Heading';
