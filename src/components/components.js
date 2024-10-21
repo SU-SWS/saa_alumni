@@ -25,6 +25,7 @@ import { SBGlobalHeader } from './storyblok/globalHeader';
 import { SBGlobalHeaderPicker } from './storyblok/globalHeaderPicker';
 import { SBGrid } from './storyblok/grid';
 import { SBHeading } from './storyblok/heading';
+import HeaderMinimal from './partials/headerMinimal';
 import Hero from './composite/hero';
 import IconCard from './cards/iconCard';
 import SBImageGallery from './media/imageGallery';
@@ -130,6 +131,7 @@ const ComponentList = {
   globalHeaderPicker: SBGlobalHeaderPicker,
   grid: SBGrid,
   gsbCardPage: GsbCardPage,
+  headerMinimal: HeaderMinimal,
   heading: SBHeading,
   hero: Hero,
   iconCard: IconCard,
