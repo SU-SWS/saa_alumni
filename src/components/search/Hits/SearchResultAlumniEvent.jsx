@@ -3,11 +3,13 @@ import React from 'react';
 import sanitize from 'sanitize-html';
 import { useLocation } from '@reach/router';
 import { DateTime } from 'luxon';
+import { CalendarIcon, LocationMarkerIcon } from '@heroicons/react/outline';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { utmParams } from '../../../utilities/utmParams';
 import { checkParams } from '../../../utilities/checkParams';
 import { decodeHtmlEntities } from '../../../utilities/decodeHtmlEntities';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
 
 /**
  * Alumni Event {Hit}
@@ -101,13 +103,22 @@ const SearchResultAlumniEvent = ({ result }) => {
           </Heading>
           {start && end && (
             <p className="su-card-paragraph su-leading-snug su-mb-0">
-              <span className="su-font-semibold">When: </span>
+              <SrOnlyText>When:</SrOnlyText>{' '}
+              <CalendarIcon
+                className="su-inline-block su-shrink-0 su-mr-06em su-w-1em"
+                aria-hidden="true"
+              />
               {formattedDateTimeSpan()}{' '}
             </p>
           )}
 
           <p className="su-card-paragraph su-leading-snug">
-            <span className="su-font-semibold">Where: </span>
+            <SrOnlyText>Where:</SrOnlyText>
+            <LocationMarkerIcon
+              className="su-inline-block su-shrink-0 su-mr-06em su-w-1em"
+              aria-hidden="true"
+            />
+
             {formattedLocation()}
           </p>
 
