@@ -2,13 +2,13 @@ import React from 'react';
 import SbEditable from 'storyblok-react';
 import { ArrowDownIcon } from '@heroicons/react/outline';
 import { dcnb } from 'cnbuilder';
-import { FlexBox } from '../layout/FlexBox';
-import { Container } from '../layout/Container';
-import { SrOnlyText } from '../accessibility/SrOnlyText';
-import FullWidthImage from '../media/fullWidthImage';
-import CreateBloks from '../../utilities/createBloks';
-import getNumBloks from '../../utilities/getNumBloks';
-import { heroGradient } from '../../utilities/dataSource';
+import { FlexBox } from '../../layout/FlexBox';
+import { Container } from '../../layout/Container';
+import { SrOnlyText } from '../../accessibility/SrOnlyText';
+import FullWidthImage from '../../media/fullWidthImage';
+import CreateBloks from '../../../utilities/createBloks';
+import getNumBloks from '../../../utilities/getNumBloks';
+import { heroGradient } from '../../../utilities/dataSource';
 import * as styles from './hero.styles';
 
 const Hero = ({
@@ -45,46 +45,35 @@ const Hero = ({
 
   let blackText;
   if (gradientProp === 'white') {
-    blackText = 'xs:su-text-black';
+    blackText = 'xs:su-text-black-true';
   }
 
   const numCta = getNumBloks(cta);
 
   return (
     <SbEditable content={blok}>
-      <Container
-        className="hero su-relative su-bg-saa-black lg:su-top-0"
-        width="full"
-      >
+      <Container className={styles.container} width="full">
         {filename?.startsWith('http') && (
-          <figure className="su-absolute su-top-0 su-overflow-hidden su-w-full su-h-full">
+          <figure className={styles.imgWrapper}>
             <FullWidthImage
               filename={filename}
               imageFocus={imageFocus}
               smartFocus={focus}
-              className="su-w-full su-h-full su-object-cover"
+              className={styles.img}
               loading="eager"
             />
           </figure>
         )}
         <div
-          className={dcnb(
-            'su-absolute su-block su-w-full su-h-full su-top-0 su-bg-gradient-to-t su-from-saa-black',
-            gradient
-          )}
+          className={styles.gradientOverlay({ gradient })}
           aria-hidden="true"
         />
-        <Container
-          className={`su-relative su-rs-pt-9
-          ${isHideScroll ? 'su-rs-pb-8' : 'su-rs-pb-4'}`}
-        >
-          <FlexBox direction="col" className="lg:su-mt-[19rem]">
+        <Container className={styles.textContainer({ isHideScroll })}>
+          <FlexBox direction="col" className={styles.flexbox}>
             {(sansSuper || serifSuper || headline || sansSub) && (
-              <div className={dcnb('su-text-center su-text-white', blackText)}>
+              <div className={styles.textWrapper({ blackText })}>
                 {sansSuper && (
-                  <span className="su-block su-max-w-prose su-font-semibold su-leading-display su-text-shadow-md su-type-4 su-mx-auto su-mb-01em">
-                    {sansSuper}
-                  </span>
+                  <span className={styles.sansSuper}>{sansSuper}</span>
                 )}
                 {serifSuper && (
                   <span className={styles.serifSuper({ blackText })}>
@@ -102,30 +91,22 @@ const Hero = ({
                   </span>
                 )}
                 {sansSub && (
-                  <p className={styles.sansSub({ blackText })}>{sansSub}</p>
+                  <p className={styles.subhead({ blackText })}>{sansSub}</p>
                 )}
               </div>
             )}
             {numCta > 0 && (
-              <div className={sansSub ? 'su-rs-mt-4' : ''}>
+              <div className={styles.marginTop({ sansSub })}>
                 <CreateBloks blokSection={cta} />
               </div>
             )}
             {!isHideScroll && (
-              <div
-                className={dcnb(
-                  'su-text-center su-text-white su-grow-0 su-rs-mt-5 su-font-serif su-font-regular su-text-19 md:su-text-22',
-                  blackText
-                )}
-              >
-                <p className="su-mb-02em">Scroll to explore</p>
-                <a
-                  href="#page-title"
-                  className="su-block su-mx-auto su-w-fit su-group"
-                >
+              <div className={styles.scroll({ blackText })}>
+                <p className={styles.scrollText}>Scroll to explore</p>
+                <a href="#page-title" className={styles.pageTitleLink}>
                   <SrOnlyText>Jump to main content</SrOnlyText>
                   <ArrowDownIcon
-                    className="su-transition-colors su-text-digital-red-xlight su-w-40 su-h-40 su-p-6 su-border-2 su-border-cardinal-red su-rounded-full group-hocus:su-text-white group-hocus:su-bg-cardinal-red-dark"
+                    className={styles.arrowDownIcon}
                     aria-hidden="true"
                   />
                 </a>
