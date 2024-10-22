@@ -4,7 +4,7 @@
  * @param {*} utms
  * @returns
  */
-export const checkParams = (url, utms) => {
+export const checkUTMParams = (url, utms) => {
   let linkUrl = url;
   if (linkUrl.match(/\?/) && utms.length) {
     linkUrl += `&${utms}`;

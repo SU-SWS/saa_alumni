@@ -5,7 +5,7 @@ import { useLocation } from '@reach/router';
 import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { utmParams } from '../../../utilities/utmParams';
-import { checkParams } from '../../../utilities/checkParams';
+import { checkUTMParams } from '../../../utilities/checkUTMParams';
 import { decodeHtmlEntities } from '../../../utilities/decodeHtmlEntities';
 /**
  * Default {Hit}
@@ -30,7 +30,7 @@ const SearchResultDefault = ({ result }) => {
           <Heading level={3} size={1} font="serif">
             <a
               className="su-text-digital-red-light su-group su-transition-colors hocus:su-underline"
-              href={checkParams(url, utms)}
+              href={checkUTMParams(url, utms)}
             >
               {fileType === 'video' && (
                 <HeroIcon
