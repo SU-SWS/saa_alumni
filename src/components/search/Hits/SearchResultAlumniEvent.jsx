@@ -8,7 +8,6 @@ import { Heading } from '../../simple/Heading';
 import HeroIcon from '../../simple/heroIcon';
 import { utmParams } from '../../../utilities/utmParams';
 import { checkParams } from '../../../utilities/checkParams';
-import { decodeHtmlEntities } from '../../../utilities/decodeHtmlEntities';
 import { SrOnlyText } from '../../accessibility/SrOnlyText';
 
 /**
@@ -25,7 +24,6 @@ const SearchResultAlumniEvent = ({ result }) => {
     domain,
     url,
     title,
-    _snippetResult,
     start,
     end,
     timeZone,
@@ -121,23 +119,6 @@ const SearchResultAlumniEvent = ({ result }) => {
 
             {formattedLocation()}
           </p>
-
-          {/* eslint-disable-next-line no-underscore-dangle */}
-          {_snippetResult?.body.value && (
-            <p
-              className="su-card-paragraph su-leading-snug su-mb-0"
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                // eslint-disable-next-line no-underscore-dangle
-                __html: sanitize(
-                  decodeHtmlEntities(_snippetResult.body.value),
-                  {
-                    allowedTags: ['br', 'mark', 'i', 'b', 'em', 'strong'],
-                  }
-                ),
-              }}
-            />
-          )}
         </div>
       </div>
     </div>
