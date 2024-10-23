@@ -107,7 +107,8 @@ const SearchField = ({ emptySearchMessage }) => {
     setInputValue('');
     setValue('');
     refine('');
-  }, [setInputValue, setValue, refine]);
+    searchInputRef.current.focus();
+  }, [setInputValue, setValue, refine, searchInputRef]);
 
   // The search field component.
   // ---------------------------

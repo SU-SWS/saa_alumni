@@ -27,7 +27,7 @@ const SearchFieldModal = React.forwardRef(({ emptySearchMessage }, ref) => {
   const debouncedInputValue = useDebouncedValue(inputValue);
   const [options, setOptions] = useState([]);
   const [showEmptyMessage, setShowEmptyMessage] = useState(false);
-  const { close } = useContext(SearchModalContext);
+  const { close, modalSearchInputRef } = useContext(SearchModalContext);
 
   // Debounce the input value and fetch options.
   // -------------------------------------------
@@ -103,7 +103,8 @@ const SearchFieldModal = React.forwardRef(({ emptySearchMessage }, ref) => {
   const handleClear = useCallback(() => {
     setInputValue('');
     setValue('');
-  }, [setInputValue, setValue]);
+    modalSearchInputRef.current.focus();
+  }, [setInputValue, setValue, modalSearchInputRef]);
 
   // Render the search field.
   // ------------------------
