@@ -1,28 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useContext } from 'react';
 import SbEditable from 'storyblok-react';
 import { dcnb } from 'cnbuilder';
 import CreateBloks from '../../utilities/createBloks';
 import Logo from './logo';
 import { FlexBox } from '../layout/FlexBox';
-import OpenSearchModalButton from '../search/openSearchModalButton';
-import SearchModal from '../search/searchModal';
+import OpenSearchModalButton from '../search/Modal/OpenSearchModalButton';
+import SearchModal from '../search/Modal/SearchModal';
 import * as styles from './GlobalHeader/GlobalHeader.styles';
-import useEscape from '../../hooks/useEscape';
 import useDisplay from '../../hooks/useDisplay';
 import AccountLinks from '../navigation/accountLinks';
+import SearchModalContext from '../search/Modal/SearchModalContext';
 
-const Masthead = ({
-  blok: { mainNav, utilityNav, searchPageUrl },
-  blok,
-  hasHero,
-  isDark,
-}) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const desktopRef = useRef(null);
-  const mobileRef = useRef(null);
-  const openSearchRef = useRef(null);
-  const openSearchMobileRef = useRef(null);
-
+const Masthead = ({ blok: { mainNav, utilityNav }, blok, hasHero, isDark }) => {
   let mainNavBgColorXl =
     'xl:su-bg-transparent xl:su-bg-gradient-to-b xl:su-from-masthead-black-top xl:su-to-masthead-black-bottom su-backface-hidden';
   let mainNavBgColorLg =
@@ -33,43 +22,16 @@ const Masthead = ({
     mainNavBgColorLg = 'su-bg-saa-black';
   }
 
-  const returnFocus = () => {
-    if (openSearchRef.current) {
-      openSearchRef.current.focus();
-    } else if (openSearchMobileRef.current) {
-      openSearchMobileRef.current.focus();
-    }
-  };
-
-  const handleClose = () => {
-    setModalOpen(false);
-    returnFocus();
-  };
-
-  useEscape(() => {
-    // Only do this if the search modal is open
-    if (modalOpen) {
-      const searchInputModal =
-        document.getElementsByClassName('search-input-modal')[0];
-
-      // Only close the modal with Escape key if the autocomplete dropdown is not open
-      if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
-        setModalOpen(false);
-        returnFocus();
-      }
-    }
-  });
-
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
   const { showDesktop, showMobile } = useDisplay();
+
+  // Get refs from the SearchModalContext
+  const { desktopButtonRef, mobileButtonRef } = useContext(SearchModalContext);
 
   return (
     <SbEditable content={blok}>
       {showMobile && (
-        <div
-          className="masthead-mobile su-relative su-w-full lg:su-hidden su-bg-cardinal-red-xdark"
-          ref={mobileRef}
-        >
+        <div className="masthead-mobile su-relative su-w-full lg:su-hidden su-bg-cardinal-red-xdark">
           <nav aria-label="Utility Menu" className={styles.utilNavMobile}>
             <ul className={styles.utilNavMenuMobile}>
               <CreateBloks
@@ -89,9 +51,8 @@ const Masthead = ({
             </FlexBox>
             <FlexBox>
               <OpenSearchModalButton
-                openOpen={modalOpen}
-                setModalOpen={setModalOpen}
-                ref={openSearchMobileRef}
+                id="mastead-search-openmodal-mobile"
+                ref={mobileButtonRef}
               />
               <CreateBloks blokSection={mainNav} className="su-shrink-0" />
             </FlexBox>
@@ -102,7 +63,6 @@ const Masthead = ({
         <div
           className={`masthead-desktop su-hidden lg:su-block su-w-full su-z-20
                   ${hasHero ? 'su-absolute' : 'su-relative'}`}
-          ref={desktopRef}
         >
           <FlexBox>
             <FlexBox
@@ -133,9 +93,8 @@ const Masthead = ({
                   </ul>
                 </nav>
                 <OpenSearchModalButton
-                  openOpen={modalOpen}
-                  setModalOpen={setModalOpen}
-                  ref={openSearchRef}
+                  id="mastead-search-openmodal-desktop"
+                  ref={desktopButtonRef}
                 />
               </FlexBox>
               <CreateBloks
@@ -153,12 +112,7 @@ const Masthead = ({
           />
         </div>
       )}
-      <SearchModal
-        isOpen={modalOpen}
-        setIsOpen={setModalOpen}
-        onClose={handleClose}
-        searchPageUrl={searchPageUrl}
-      />
+      <SearchModal />
     </SbEditable>
   );
 };

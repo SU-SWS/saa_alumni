@@ -3,7 +3,7 @@ import React from 'react';
 import { DateTime } from 'luxon';
 import { Container } from '../../layout/Container';
 import { Heading } from '../../simple/Heading';
-import Layout from '../../partials/layout';
+import Layout from '../../partials/Layout';
 import CreateBloks from '../../../utilities/createBloks';
 import FullWidthImage from '../../media/fullWidthImage';
 import getNumBloks from '../../../utilities/getNumBloks';

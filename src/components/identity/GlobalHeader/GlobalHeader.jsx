@@ -1,17 +1,17 @@
-import React, { useState, useRef } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { FlexBox } from '../../layout/FlexBox';
 import { SBLinkType } from '../../../types/storyblok/SBLinkType';
 import * as styles from './GlobalHeader.styles';
 import CreateBloks from '../../../utilities/createBloks';
 import Logo from '../logo';
-import OpenSearchModalButton from '../../search/openSearchModalButton';
+import OpenSearchModalButton from '../../search/Modal/OpenSearchModalButton';
 import SbLink from '../../../utilities/sbLink';
-import SearchModal from '../../search/searchModal';
+import SearchModal from '../../search/Modal/SearchModal';
 import AlumniLogo from '../../../images/saa-logo-white.svg';
 import { SBBlokType } from '../../../types/storyblok/SBBlokType';
-import useEscape from '../../../hooks/useEscape';
 import useDisplay from '../../../hooks/useDisplay';
+import SearchModalContext from '../../search/Modal/SearchModalContext';
 
 export const GlobalHeaderProps = {
   siteName: PropTypes.string,
@@ -30,48 +30,15 @@ const GlobalHeader = ({
   mainNav,
   hasHero,
   isDark,
-  searchPageUrl,
 }) => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const desktopRef = useRef(null);
-  const mobileRef = useRef(null);
-  const openSearchRef = useRef(null);
-  const openSearchMobileRef = useRef(null);
-
-  const returnFocus = () => {
-    if (openSearchRef.current) {
-      openSearchRef.current.focus();
-    } else if (openSearchMobileRef.current) {
-      openSearchMobileRef.current.focus();
-    }
-  };
-
-  const handleClose = () => {
-    setModalOpen(false);
-    returnFocus();
-  };
-
-  useEscape(() => {
-    // Only do this if the search modal is open
-    if (modalOpen) {
-      const searchInputModal =
-        document.getElementsByClassName('search-input-modal')[0];
-
-      // Only close the modal with Escape key if the autocomplete dropdown is not open
-      if (searchInputModal.getAttribute('aria-expanded') !== 'true') {
-        setModalOpen(false);
-        returnFocus();
-      }
-    }
-  });
-
   // Use the useDisplay hook to determine whether to display the desktop of mobile header
   const { showDesktop, showMobile } = useDisplay();
+  const { desktopButtonRef, mobileButtonRef } = useContext(SearchModalContext);
 
   return (
     <>
       {showMobile && (
-        <div className={styles.rootMobile} ref={mobileRef}>
+        <div className={styles.rootMobile}>
           <CreateBloks
             blokSection={utilityNav}
             ariaLabel="Utility Menu"
@@ -98,9 +65,8 @@ const GlobalHeader = ({
             </div>
             <FlexBox>
               <OpenSearchModalButton
-                openOpen={modalOpen}
-                setModalOpen={setModalOpen}
-                ref={openSearchMobileRef}
+                id="mastead-search-openmodal-mobile"
+                ref={mobileButtonRef}
               />
               <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
             </FlexBox>
@@ -108,7 +74,7 @@ const GlobalHeader = ({
         </div>
       )}
       {showDesktop && (
-        <div className={styles.root({ hasHero, isDark })} ref={desktopRef}>
+        <div className={styles.root({ hasHero, isDark })}>
           <FlexBox justifyContent="between" alignItems="start">
             <div className={styles.logoWrapper}>
               <Logo className={styles.logo} />
@@ -122,9 +88,8 @@ const GlobalHeader = ({
                 itemClasses={styles.utilNavItem}
               />
               <OpenSearchModalButton
-                openOpen={modalOpen}
-                setModalOpen={setModalOpen}
-                ref={openSearchRef}
+                id="mastead-search-openmodal-desktop"
+                ref={desktopButtonRef}
               />
             </div>
           </FlexBox>
@@ -136,12 +101,7 @@ const GlobalHeader = ({
           <CreateBloks blokSection={mainNav} ariaLabel="Main Menu" />
         </div>
       )}
-      <SearchModal
-        isOpen={modalOpen}
-        setIsOpen={setModalOpen}
-        searchPageUrl={searchPageUrl}
-        onClose={handleClose}
-      />
+      <SearchModal />
     </>
   );
 };
