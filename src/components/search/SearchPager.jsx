@@ -8,8 +8,13 @@ import useDisplay from '../../hooks/useDisplay';
  * @type {React.FC<UsePaginationProps>}
  * @returns {React.ReactElement}
  */
-const SearchPager = (props) => {
+const SearchPager = ({ maxDesktop = 6, maxMobile = 1 }) => {
   const { showMobile } = useDisplay();
+
+  // Handle the "span" of the pagination.
+  const maxDesktopSpan = Math.floor(maxDesktop / 2) || 1;
+  const maxMobileSpan = Math.floor(maxMobile / 2) || 1;
+
   const {
     pages,
     currentRefinement,
@@ -18,7 +23,7 @@ const SearchPager = (props) => {
     canRefine,
     refine,
     createURL,
-  } = usePagination({ padding: showMobile ? 1 : 3, ...props });
+  } = usePagination({ padding: showMobile ? maxMobileSpan : maxDesktopSpan });
 
   if (!canRefine) {
     return null;

@@ -38,6 +38,9 @@ const SearchPageContent = (props) => {
   const [opened, setOpened] = useState(false);
   const { refine: clearFilters } = useClearRefinements();
   const { showDesktop, showMobile } = useDisplay();
+  const { maxPagerLinks, maxPagerLinksMobile } = blok;
+  const maxPagerLinksInt = parseInt(maxPagerLinks, 10);
+  const maxPagerLinksMobileInt = parseInt(maxPagerLinksMobile, 10);
 
   const resultCount = useMemo(() => {
     if (areHitsSorted) {
@@ -234,7 +237,10 @@ const SearchPageContent = (props) => {
             >
               <SearchKeywordBanner />
               <SearchResults />
-              <SearchPager />
+              <SearchPager
+                maxDesktop={maxPagerLinksInt}
+                maxMobile={maxPagerLinksMobileInt}
+              />
             </GridCell>
           </Grid>
 
